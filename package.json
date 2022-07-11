@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "vitepress dev app",
     "build": "vitepress build app",
-    "lint": "eslint 'app/.vitepress/src/**/*.{js,ts,vue,jsx,tsx}'",
-    "fix": "eslint --fix 'app/.vitepress/src/**/*.{js,ts,vue,jsx,tsx}'",
-    "lint:components": "eslint 'opendesign/**/*.{js,ts,vue,jsx,tsx}'",
+    "lint": "eslint \"app/.vitepress/src/**/*.{js,ts,vue,jsx,tsx}\"",
+    "fix": "eslint --fix \"app/.vitepress/src/**/*.{js,ts,vue,jsx,tsx}\"",
+    "lint:components": "eslint \"opendesign/**/*.{js,ts,vue,jsx,tsx}\"",
     "prepare": "husky install"
   },
   "keywords": [],
