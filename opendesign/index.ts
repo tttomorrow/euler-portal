@@ -7,8 +7,21 @@ import { Select } from './select';
 import { Icon } from './icon';
 import { Card } from './card';
 import { Input } from './input';
+import { Pagination } from './pagination';
+import { Table, TableColumn } from './table';
 
-const components = [Button, Radio, RadioGroup, Select, Icon, Card, Input];
+const components = [
+  Button,
+  Radio,
+  RadioGroup,
+  Select,
+  Icon,
+  Card,
+  Input,
+  Pagination,
+  Table,
+  TableColumn,
+];
 
 export default {
   install(app: App): void {

@@ -13,8 +13,32 @@ const home = computed(() => {
 
 const name = ref('');
 
-// const a = 2;
-// const m = 1;
+const currentPage1 = ref(5);
+const pageSize4 = ref(100);
+const total = ref(100);
+
+const tableData = [
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+];
 
 onMounted(() => {
   window.addEventListener('click', () => {
@@ -24,6 +48,32 @@ onMounted(() => {
 </script>
 <template>
   <div class="demo">
+    <div class="page-box">
+      <OTable :data="tableData" style="width: 100%">
+        <OTableColumn prop="date" label="Date" width="180" />
+        <OTableColumn prop="name" label="Name" width="180" />
+        <OTableColumn prop="address" label="Address" width="180" />
+      </OTable>
+    </div>
+
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="date" label="Date" width="180" />
+      <el-table-column prop="name" label="Name" width="180" />
+      <el-table-column prop="address" label="Address" />
+    </el-table>
+
+    <div class="page-box">
+      <OPagination
+        :background="true"
+        v-model:currentPage="currentPage1"
+        v-model:page-size="pageSize4"
+        :page-sizes="[100, 200, 300, 400]"
+        layout="sizes, prev, pager, next, slot, jumper"
+        :total="total"
+      >
+        <span>5/50</span>
+      </OPagination>
+    </div>
     <h1>{{ i18n.a }}</h1>
     <h1>{{ home.info }}</h1>
     <OButton>sss</OButton>
@@ -38,8 +88,11 @@ onMounted(() => {
 <style lang="scss" scoped>
 .demo {
   min-height: 800px;
+  padding-top: 100px;
 }
-
+.page-box {
+  margin: 20px 0 20px 100px;
+}
 h4 {
   margin-top: 20px;
 }
