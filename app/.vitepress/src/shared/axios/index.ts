@@ -10,11 +10,17 @@ import type {
 import handleResponse from './handleResponse';
 import handleError from './handleError';
 import setConfig from './setConfig';
+import { ElLoading, ElMessage } from 'element-plus';
+import { LoadingInstance } from 'element-plus/lib/components/loading/src/loading';
 
 interface RequestConfig<D = any> extends AxiosRequestConfig {
   data?: D;
   global?: boolean; // 是否为全局请求， 全局请求在清除请求池时，不清除
 }
+
+// 全局loading
+let loadingInstance: LoadingInstance | null = null;
+let loadingCount = 0;
 
 interface RequestInstance extends AxiosInstance {
   removeRequestInterceptor(): void;
@@ -73,6 +79,14 @@ const pendingPool: Map<string, any> = new Map();
  */
 const requestInterceptorId = request.interceptors.request.use(
   (config: AxiosRequestConfig) => {
+    if (loadingCount === 0) {
+      loadingInstance = ElLoading.service({
+        fullscreen: true,
+        text: 'Loading',
+        background: 'transparent',
+      });
+    }
+    loadingCount++;
     // 存储请求信息
     // request.config = Object.assign({}, config);
     // 定义取消请求
@@ -103,6 +117,11 @@ const requestInterceptorId = request.interceptors.request.use(
  */
 const responseInterceptorId = request.interceptors.response.use(
   (response: AxiosResponse) => {
+    loadingCount--;
+    if (loadingCount === 0 && loadingInstance) {
+      loadingInstance.close();
+      loadingInstance = null;
+    }
     const { config } = response;
     // 请求完成，移除请求池
     if (config.url) {
@@ -112,6 +131,16 @@ const responseInterceptorId = request.interceptors.response.use(
     return Promise.resolve(handleResponse(response));
   },
   (err: AxiosError) => {
+    if (loadingInstance) {
+      loadingInstance.close()
+    }
+    if (typeof err === 'string') {
+      ElMessage({
+        type: 'error',
+        message: err,
+        center: true,
+      });
+    }
     const { config } = err;
 
     // 非取消请求发生异常，同样将请求移除请求池

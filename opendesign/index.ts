@@ -6,9 +6,20 @@ import { Select } from './select';
 
 import { Icon } from './icon';
 import { Card } from './card';
+import { Tabs, TabPane } from './tabs';
 import { Input } from './input';
 
-const components = [Button, Radio, RadioGroup, Select, Icon, Card, Input];
+const components = [
+  Button,
+  Radio,
+  RadioGroup,
+  Select,
+  Icon,
+  Card,
+  Input,
+  Tabs,
+  TabPane,
+];
 
 export default {
   install(app: App): void {

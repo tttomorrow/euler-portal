@@ -74,9 +74,9 @@
   // 阴影
   --o-shadow-base: 0px 1px 5px 0px rgba(45, 47, 51, 0.1); // 一级投影，应用场景：默认状态卡片、楼层、导航栏等
   --o-shadow-base_hover: 0px 6px 18px 0px rgba(0, 47, 167, 0.14); // 一级投影hover态
-  --0-shadow-secondary: 0px 6px 18px 0px rgba(45, 47, 51, 0.14); // 二级投影
+  --o-shadow-secondary: 0px 6px 18px 0px rgba(45, 47, 51, 0.14); // 二级投影
   --o-shadow-secondary_hover: 0px 6px 18px 0px rgba(0, 47, 167, 0.14); // 二级投影hover态
-  --o-shadow-overlay: 0px 10px 32px rbga(45, 47, 31, 0.18); // 覆盖投影，应用场景：信息提示（tips，活动进入按钮等）
-  --o-shadow-overlay_hover: 0px 10px 32px rbga(0, 47, 167, 0.18); // 覆盖投影hover态
-  --o-shadow-pop: 0px 12px 42px rbga(45, 47, 31, 0.24); // 弹出层投影：应用场景：模态框弹窗
+  --o-shadow-overlay: 0px 10px 32px rgba(45, 47, 31, 0.18); // 覆盖投影，应用场景：信息提示（tips，活动进入按钮等）
+  --o-shadow-overlay_hover: 0px 10px 32px rgba(0, 47, 167, 0.18); // 覆盖投影hover态
+  --o-shadow-pop: 0px 12px 42px rgba(45, 47, 31, 0.24); // 弹出层投影：应用场景：模态框弹窗
 }

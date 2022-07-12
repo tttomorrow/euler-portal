@@ -210,7 +210,7 @@ const navItems = computed(() => {
         {
           id: 'safety-bulletin',
           label: '安全公告',
-          path: 'security/safety-bulletin/',
+          path: 'security/safety-bulletin',
         },
         {
           id: 'isula',
