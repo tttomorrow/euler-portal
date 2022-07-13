@@ -51,4 +51,13 @@ export default defineConfig({
     //   useSource: true,
     // }),
   ],
+  server: {
+    proxy: {
+      '/api-mirror': {
+        target: 'https://api.openeuler.org/mirrors',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-mirror/, ''),
+      },
+    },
+  },
 });
