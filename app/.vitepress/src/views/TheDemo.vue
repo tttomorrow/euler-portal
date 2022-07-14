@@ -50,17 +50,11 @@ onMounted(() => {
   <div class="demo">
     <div class="page-box">
       <OTable :data="tableData" style="width: 100%">
-        <OTableColumn prop="date" label="Date" width="180" />
+        <OTableColumn label="Date" prop="date" width="180" />
         <OTableColumn prop="name" label="Name" width="180" />
-        <OTableColumn prop="address" label="Address" width="180" />
+        <OTableColumn prop="address" label="Address" />
       </OTable>
     </div>
-
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="date" label="Date" width="180" />
-      <el-table-column prop="name" label="Name" width="180" />
-      <el-table-column prop="address" label="Address" />
-    </el-table>
 
     <div class="page-box">
       <OPagination
@@ -91,7 +85,7 @@ onMounted(() => {
   padding-top: 100px;
 }
 .page-box {
-  margin: 20px 0 20px 100px;
+  margin: 20px 100px 20px 100px;
 }
 h4 {
   margin-top: 20px;
