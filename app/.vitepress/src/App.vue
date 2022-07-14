@@ -1,17 +1,27 @@
 <script setup lang="ts">
+import { useData } from 'vitepress';
+import { computed } from 'vue';
+
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
+
+const { frontmatter } = useData();
+const isDoc = computed(() => {
+  return !!frontmatter.value.doc;
+});
 </script>
 
 <template>
   <AppHeader />
-  <main><Content /></main>
+  <main><Content :class="{ markdown: isDoc }" /></main>
   <AppFooter />
 </template>
 
 <style lang="scss" scoped>
 main {
-  margin-top: 80px;
+  margin: 80px auto 0;
+  max-width: 1504px;
+  padding: 0 var(--o-spacing-m);
   @media (max-width: 1100px) {
     margin-top: 48px;
   }

@@ -5,16 +5,12 @@ import { useI18n } from 'vue-i18n';
 
 const { theme } = useData();
 const i18n = theme.value;
-
 const { t, locale } = useI18n();
 const home = computed(() => {
   return { info: t('button1') };
 });
 
 const name = ref('');
-
-// const a = 2;
-// const m = 1;
 
 onMounted(() => {
   window.addEventListener('click', () => {

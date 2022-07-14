@@ -25,17 +25,17 @@ const footer = computed(() => {
       {
         id: 'brand',
         label: '品牌',
-        path: '/brand/',
+        path: '/other/brand/',
       },
       {
         id: 'privacypolicy',
         label: '隐私政策',
-        path: '/privacy/',
+        path: '/other/privacy/',
       },
       {
         id: 'legalnotice',
         label: '法律声明',
-        path: '/legal/',
+        path: '/other/legal/',
       },
       {
         id: 'serviceStatus',
