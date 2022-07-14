@@ -5,7 +5,7 @@ import type { TabsPaneContext } from 'element-plus';
 const activeName = ref('first');
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event);
+  alert(tab, event);
 };
 </script>
 
