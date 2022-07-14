@@ -5,7 +5,7 @@ const attrs = useAttrs();
 </script>
 
 <template>
-  <ElCard class="o-card" v-bind="attrs"></ElCard>
+  <ElCard class="o-card" v-bind="attrs"><slot></slot></ElCard>
 </template>
 
 <style lang="scss">
