@@ -153,7 +153,7 @@ $color: #fff;
   .copyright {
     font-size: var(--o-font-size-text);
     color: $color;
-    margin-top: var(--o-spacing-s2);
+    margin-top: var(--o-spacing-h5);
   }
 
   .footer-option {
@@ -181,7 +181,7 @@ $color: #fff;
     p {
       color: $color;
       font-size: var(--o-font-size-tip);
-      margin-top: var(--o-spacing-s1);
+      margin-top: var(--o-spacing-h8);
     }
   }
   .link {
@@ -196,23 +196,23 @@ $color: #fff;
 
 @media (max-width: 1100px) {
   .footer {
-    padding: var(--o-spacing-m) 0 0;
+    padding: var(--o-spacing-h2) 0 0;
     .atom-text {
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
     }
     .atom-logo {
       height: 32px;
-      margin: var(--o-spacing-s2) 0 var(--o-spacing-s3);
+      margin: var(--o-spacing-h5) 0 var(--o-spacing-h4);
     }
     .wrapper {
       display: grid;
       text-align: center;
       justify-content: center;
-      padding: var(--o-spacing-s3) 0;
+      padding: var(--o-spacing-h4) 0;
     }
     .footer-logo {
-      margin: var(--o-spacing-s2) 0;
+      margin: var(--o-spacing-h5) 0;
       img {
         margin-bottom: 4px;
       }
@@ -224,7 +224,7 @@ $color: #fff;
       }
       .copyright {
         font-size: var(--o-font-size-tip);
-        margin-top: var(--o-spacing-s1);
+        margin-top: var(--o-spacing-h8);
       }
     }
   }

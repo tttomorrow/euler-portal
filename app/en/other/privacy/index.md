@@ -1,8 +1,9 @@
 ---
 title: "Privacy"
-doc: true
-tags: privacy
+module: privacy
 ---
+
+<div class='markdown'>
 
 The openEuler Community ("Community") understands the importance of your privacy and fully respects it. <u>**Please read this openEuler Community Privacy Statement ("Statement") carefully before you submit your personal data to us.**</u> If you have any questions about how we process your personal data, please feel free to contact us. Unless otherwise specified, "we" and "us" in this Statement refers to the Community.
 
@@ -100,3 +101,5 @@ We may update this Statement from time to time according to changes of our servi
 If you want to contact us or exercise your rights, please contact us at <contact@openeuler.io>.
 
 Last updated: May, 2022
+
+</div>

@@ -110,7 +110,7 @@ watch(
     top: 60px;
     left: -24px;
     background: var(--o-color-bg);
-    padding: 0 var(--o-spacing-s2);
+    padding: 0 var(--o-spacing-h5);
     cursor: pointer;
     z-index: 80;
     .lang-item {

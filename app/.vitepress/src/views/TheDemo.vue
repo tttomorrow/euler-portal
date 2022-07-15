@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+import { getMeetingData } from '@/api/api-calendar';
+import { TableData } from '@/shared/@types/type-calendar';
+
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
+import AppCalendar from '@/components/AppCalendar.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
@@ -36,6 +40,30 @@ const tableData = [
 ];
 
 const inputName = ref('zhangsan');
+interface MeetingData {
+  tableData: TableData[];
+}
+getMeetingData().then((res: MeetingData) => {
+  calendarData.value = res.tableData;
+});
+
+const calendarData = ref<TableData[]>([
+  {
+    date: '',
+    timeData: [
+      {
+        creator: '',
+        duration_time: '',
+        join_url: '',
+        startTime: '',
+        start_date: '',
+        endTiem: '',
+        url: '',
+        id: '',
+      },
+    ],
+  },
+]);
 </script>
 
 <template>
@@ -46,6 +74,11 @@ const inputName = ref('zhangsan');
         <OTableColumn label="Date" prop="date" width="180" />
         <OTableColumn prop="name" label="Name" width="180" />
         <OTableColumn prop="address" label="Address" />
+        <OTableColumn label="Date" prop="date">
+          <template #default="scope">
+            <div>{{ scope.row.date }}</div>
+          </template>
+        </OTableColumn>
       </OTable>
     </div>
 
@@ -100,6 +133,8 @@ const inputName = ref('zhangsan');
       :right-arrow="true"
       :left-arrow="true"
     ></OTimeline>
+    <h4>日历</h4>
+    <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
   </div>
 </template>
 

@@ -50,18 +50,39 @@ const { theme: i18n } = useData();
   </main>
 </template>
 <style lang="scss" scoped>
-.sig-ul {
-  font-size: var(--o-font-size-text);
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  line-height: var(--o-line-height-h8);
-  color: var(--o-color-text2);
-  max-width: 1380px;
-  margin: var(--o-spacing-l) auto;
-  ul {
-    list-style: disc;
-    li {
-      margin-top: var(--o-spacing-s1);
+.sig-list {
+  max-width: 1504px;
+  margin: 0 auto;
+  .list-table {
+    width: 100%;
+    padding: var(--o-spacing-h2);
+    background-color: var(--o-color-bg);
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      thead {
+        background-color: var(--o-color-bg3);
+        th {
+          height: 54px;
+          border: none !important;
+          text-align: left;
+          &:nth-of-type(1) {
+            width: 300px;
+            padding-left: var(--o-spacing-h2);
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            height: 54px;
+            &:nth-of-type(1) {
+              width: 300px;
+              padding-left: var(--o-spacing-h2);
+            }
+          }
+        }
+      }
     }
   }
 }

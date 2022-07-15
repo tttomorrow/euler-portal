@@ -133,7 +133,7 @@ const urlStyle = computed(() => {
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: var(--o-spacing-s3);
+    grid-gap: var(--o-spacing-h4);
     &-item {
       width: 100%;
       max-width: 456px;
@@ -148,7 +148,7 @@ const urlStyle = computed(() => {
   }
 
   &-desc {
-    margin-top: var(--o-spacing-s2);
+    margin-top: var(--o-spacing-h5);
     font-size: var(--o-font-size-text);
     font-family: 'PingFangSC-Regular, PingFang SC';
     color: var(--o-color-text3);
@@ -162,13 +162,13 @@ const urlStyle = computed(() => {
   }
 
   &-button {
-    margin-top: var(--o-spacing-s3);
+    margin-top: var(--o-spacing-h4);
     padding: 4px 16px;
     line-height: var(--o-line-height-h8);
     font-size: var(--o-font-size-text);
 
     &-icon {
-      margin-left: var(--o-spacing-s1);
+      margin-left: var(--o-spacing-h8);
       width: var(--o-font-size-tip);
       height: var(--o-font-size-tip);
       color: var(--o-color-text);

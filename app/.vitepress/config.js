@@ -2,8 +2,6 @@ import i18n from './src/i18n';
 
 module.exports = {
   base: '/',
-  title: 'openEuler',
-  description: 'openEuler',
   head: [
     [
       'link',
@@ -20,6 +18,8 @@ module.exports = {
       },
     ],
   ],
+  appearance: true, // enable dynamic scripts from dark mode
+  titleTemplate: false, //  vitepress supports pageTitileTemplate since 1.0.0
   locales: {
     '/': {
       lang: 'zh',
@@ -49,8 +49,8 @@ module.exports = {
   themeConfig: {
     locales: {
       '/': i18n.zh,
-      '/zh/':  i18n.zh,
-      '/en/':  i18n.en,
+      '/zh/': i18n.zh,
+      '/en/': i18n.en,
       '/ru/': i18n.ru,
     },
   },

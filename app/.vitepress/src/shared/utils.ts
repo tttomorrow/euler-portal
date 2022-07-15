@@ -6,3 +6,10 @@ export function formatNumber(num: number) {
     ? `${(num / 1e4).toFixed(1)}W`
     : num;
 }
+// TS 对象key合法检查
+export function isValidKey(
+  key: string | number | symbol,
+  object: object
+): key is keyof typeof object {
+  return key in object;
+}

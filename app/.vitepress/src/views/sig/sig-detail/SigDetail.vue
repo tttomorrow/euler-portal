@@ -96,7 +96,7 @@ import IconArrowRight from '~icons/app/right.svg';
   margin: 0 auto;
   .content {
     width: 100%;
-    padding: var(--o-spacing-m);
+    padding: var(--o-spacing-h2);
     background-color: var(--o-color-bg);
     h3 {
       font-size: var(--o-font-size-h3);
@@ -105,35 +105,35 @@ import IconArrowRight from '~icons/app/right.svg';
       font-weight: 500;
     }
     .brief-introduction {
-      margin-top: var(--o-spacing-m);
+      margin-top: var(--o-spacing-h2);
       h4 {
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-height-h5);
         color: var(--o-color-text2);
       }
       p {
-        margin-top: var(--o-spacing-s2);
+        margin-top: var(--o-spacing-h5);
         font-size: var(--o-font-size-text);
         line-height: 22px;
         color: var(--o-color-text3);
       }
     }
     .meeting {
-      margin-top: var(--o-spacing-m);
+      margin-top: var(--o-spacing-h2);
       color: var(--o-color-text2);
       h5 {
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
       }
       .schedule {
-        margin-top: var(--o-spacing-s3);
+        margin-top: var(--o-spacing-h4);
         .calendar {
           width: 448px;
         }
       }
     }
     .member {
-      margin-top: var(--o-spacing-m);
+      margin-top: var(--o-spacing-h2);
       color: var(--o-color-text2);
       h5 {
         font-size: var(--o-font-size-h6);
@@ -141,12 +141,12 @@ import IconArrowRight from '~icons/app/right.svg';
       }
       ul {
         display: flex;
-        margin-top: var(--o-spacing-s3);
+        margin-top: var(--o-spacing-h4);
         li {
           text-align: center;
           margin-right: 72px;
           .name {
-            margin-top: var(--o-spacing-s2);
+            margin-top: var(--o-spacing-h5);
             font-size: var(--o-font-size-h8);
             line-height: var(--o-line-height-h8);
           }
@@ -158,7 +158,7 @@ import IconArrowRight from '~icons/app/right.svg';
       }
     }
     .recent-event {
-      margin-top: var(--o-spacing-m);
+      margin-top: var(--o-spacing-h2);
       color: var(--o-color-text2);
       h5 {
         font-size: var(--o-font-size-h6);
@@ -169,7 +169,7 @@ import IconArrowRight from '~icons/app/right.svg';
         width: 100%;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 24px;
-        margin-top: var(--o-spacing-s3);
+        margin-top: var(--o-spacing-h4);
         .item {
           max-width: 656px;
           padding: 40px;
@@ -197,7 +197,7 @@ import IconArrowRight from '~icons/app/right.svg';
               cursor: pointer;
               .icon-more {
                 font-size: var(--o-font-size-h8);
-                margin-left: var(--o-spacing-s1);
+                margin-left: var(--o-spacing-h8);
                 position: relative;
                 top: 2px;
                 color: var(--o-color-brand);
@@ -205,7 +205,7 @@ import IconArrowRight from '~icons/app/right.svg';
             }
           }
           .body {
-            margin-top: var(--o-spacing-s3);
+            margin-top: var(--o-spacing-h4);
             font-size: var(--o-font-size-text);
             line-height: 22px;
           }
