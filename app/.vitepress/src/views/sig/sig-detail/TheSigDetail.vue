@@ -1,60 +1,116 @@
 <script setup lang="ts">
-import BreadCrumbs from './BreadCrumbs.vue';
+import { computed, ref, onMounted } from 'vue';
+import { useData } from 'vitepress';
+
+import BreadCrumbs from '@/components/BreadCrumbs.vue';
+
+import { getSigDetail, getSigMember } from '@/api/api-sig';
+
 import IconArrowRight from '~icons/app/right.svg';
+
+const { theme: i18n, lang } = useData();
+// const router = useRoute();
+// console.log(router);
+
+const sigDetail = computed(() => {
+  return i18n.value.sig.SIG_DETAIL;
+});
+const sigMeetingData: any = ref('');
+const sigMemberData: any = ref('');
+const memberList: any = ref([]);
+const memberCurLen = ref(0);
+function getSigDetails() {
+  try {
+    getSigDetail(1).then((res: any) => {
+      sigMeetingData.value = res;
+    });
+  } catch (error) {
+    // console.log(error);
+  }
+}
+function getSigMembers() {
+  try {
+    getSigMember(2).then((res: any) => {
+      sigMemberData.value = res;
+      memberList.value = JSON.parse(res.owners);
+      memberCurLen.value = memberList.value.length;
+      if (memberList.value.length > 4) {
+        memberCurLen.value = 4;
+      }
+      memberList.value = memberList.value.slice(0, memberCurLen.value);
+    });
+  } catch (error) {
+    // console.log(error);
+  }
+}
+onMounted(() => {
+  getSigDetails();
+  getSigMembers();
+});
 </script>
 <template>
   <div class="sig-detail">
-    <BreadCrumbs />
+    <BreadCrumbs
+      bread1="SIG"
+      :bread2="sigMemberData.group_name"
+      link1="/zh/sig/sig-list/"
+    />
     <div class="content">
-      <h3>A-Tune</h3>
+      <h3>{{ sigMemberData.group_name }}</h3>
       <div class="brief-introduction">
-        <h4>SIG简介</h4>
-        <p>
-          The A-Tune team is responsible for exploration of optimization
-          technologies and AI-assisted performance analysis
+        <h4>{{ sigDetail.INTRODUCTION }}</h4>
+        <p v-if="sigMemberData.description" class="no-meeting">
+          {{ sigMemberData.description }}
+        </p>
+        <p v-else class="no-meeting">
+          {{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT1
+          }}<a
+            target="_blank"
+            :href="
+              'https://gitee.com/openeuler/community/tree/master/sig/' + 'a-tm'
+            "
+            >{{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT2 }}</a
+          >{{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT3 }}
         </p>
         <p class="email">
-          <span>邮件列表:</span>
+          <span>{{ sigDetail.MAIL_LIST }}:</span>
           <a href="mailto:a-tune@openeuler.org">a-tune@openeuler.org</a>
         </p>
       </div>
       <div class="meeting">
-        <h5>组织会议</h5>
-        <div class="schedule"></div>
+        <h5>{{ sigDetail.ORGANIZING_MEETINGS }}</h5>
+        <div v-if="sigMeetingData.length" class="calender-wrapper">
+          <!-- <calender :table-data="sigMeetingData" /> -->
+        </div>
+        <p v-else class="no-meeting">
+          {{ sigDetail.NO_MEETINGS }}
+        </p>
       </div>
       <div class="member">
-        <h5>项目成员</h5>
+        <h5>{{ sigDetail.MEMBERS }}</h5>
         <ul>
-          <li>
-            <img src="../../../assets/sig-detail/yangdi.png" alt="yangdi" />
-            <p class="name">杨迪</p>
-            <p class="introduction">Maintainer</p>
-          </li>
-          <li>
-            <img src="../../../assets/sig-detail/yangdi.png" alt="yangdi" />
-            <p class="name">杨迪</p>
-            <p class="introduction">Maintainer</p>
-          </li>
-          <li>
-            <img src="../../../assets/sig-detail/yangdi.png" alt="yangdi" />
-            <p class="name">杨迪</p>
-            <p class="introduction">Maintainer</p>
-          </li>
-          <li>
-            <img src="../../../assets/sig-detail/yangdi.png" alt="yangdi" />
-            <p class="name">杨迪</p>
-            <p class="introduction">Maintainer</p>
+          <li v-for="item in memberList" :key="item.gitee_id">
+            <img :src="item.avatar_url" alt="yangdi" />
+            <p class="name">{{ item.gitee_id }}</p>
+            <p class="introduction">
+              <span
+                v-for="(itemIntroduction, itemIndex) in item.sigs"
+                :key="itemIndex"
+                >{{ itemIntroduction }}{{ ' ' }}</span
+              >
+              <span>SIG Maintainer</span>
+            </p>
           </li>
         </ul>
       </div>
       <div class="recent-event">
-        <h5>最新动态</h5>
+        <h5>{{ sigDetail.LATEST_DYNAMIC }}</h5>
         <div class="dynamic">
           <div class="item">
             <div class="header">
-              <span class="left">博客</span>
+              <span class="left">{{ sigDetail.BLOG }}</span>
               <a class="right">
-                <span>更多</span>
+                <span>{{ sigDetail.MORE }}</span>
                 <OIcon class="icon-more">
                   <IconArrowRight />
                 </OIcon>
@@ -62,16 +118,20 @@ import IconArrowRight from '~icons/app/right.svg';
             </div>
             <ul class="body">
               <li class="empty">
-                我看你骨骼惊奇，必是写文好手。这里有一本发<a href="">博客攻略</a
-                >，赶紧拿回去看看吧。
+                {{ sigDetail.BLOG_EMPTY1
+                }}<a
+                  :href="'/' + lang + '/interaction/post-blog/'"
+                  target="_blank"
+                  >{{ sigDetail.BLOG_EMPTY2 }}</a
+                >{{ sigDetail.BLOG_EMPTY3 }}
               </li>
             </ul>
           </div>
           <div class="item">
             <div class="header">
-              <span class="left">博客</span>
+              <span class="left">{{ sigDetail.NEWS }}</span>
               <a class="right">
-                <span>更多</span>
+                <span>{{ sigDetail.MORE }}</span>
                 <OIcon class="icon-more">
                   <IconArrowRight />
                 </OIcon>
@@ -79,8 +139,12 @@ import IconArrowRight from '~icons/app/right.svg';
             </div>
             <ul class="body">
               <li class="empty">
-                我看你骨骼惊奇，必是写文好手。这里有一本发<a href="">博客攻略</a
-                >，赶紧拿回去看看吧。
+                {{ sigDetail.NEWS_EMPTY
+                }}<a
+                  href="https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/zh/interaction/post-news/README.md"
+                  target="_blank"
+                  >{{ sigDetail.NEWS_EMPTY3 }}</a
+                >{{ sigDetail.NEWS_EMPTY4 }}
               </li>
             </ul>
           </div>
@@ -93,7 +157,7 @@ import IconArrowRight from '~icons/app/right.svg';
 .sig-detail {
   max-width: 1504px;
   padding: 0 44px;
-  margin: 0 auto;
+  margin: 0 auto var(--o-spacing-h1);
   .content {
     width: 100%;
     padding: var(--o-spacing-h2);
@@ -145,6 +209,11 @@ import IconArrowRight from '~icons/app/right.svg';
         li {
           text-align: center;
           margin-right: 72px;
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+          }
           .name {
             margin-top: var(--o-spacing-h5);
             font-size: var(--o-font-size-h8);
@@ -212,6 +281,7 @@ import IconArrowRight from '~icons/app/right.svg';
           &:hover {
             background-color: var(--o-color-bg);
             border: 1px solid var(--o-color-brand_hover);
+            box-shadow: var(--o-shadow-overlay);
           }
         }
       }

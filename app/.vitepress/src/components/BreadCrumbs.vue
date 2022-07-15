@@ -1,13 +1,31 @@
 <script setup lang="ts">
+import { toRefs } from 'vue';
 import IconArrowRight from '~icons/app/right.svg';
+const props = defineProps({
+  bread1: {
+    type: String,
+    default: '',
+  },
+  bread2: {
+    type: String,
+    default: '',
+  },
+  link1: {
+    type: String,
+    default: '#',
+  },
+});
+const { bread1, bread2, link1 } = toRefs(props);
 </script>
 <template>
   <div class="bread-crumbs">
-    <span>SIG</span>
+    <span>
+      <a :href="link1">{{ bread1 }}</a>
+    </span>
     <OIcon>
       <IconArrowRight />
     </OIcon>
-    <span>A-Tune</span>
+    <span>{{ bread2 }}</span>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -19,7 +37,9 @@ import IconArrowRight from '~icons/app/right.svg';
   display: flex;
   align-items: center;
   span:nth-of-type(1) {
-    color: var(--o-color-text3);
+    a {
+      color: var(--o-color-text3);
+    }
   }
   span:nth-of-type(2) {
     margin: 0 4px;

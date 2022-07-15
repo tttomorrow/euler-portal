@@ -59,6 +59,8 @@ export default {
   SIG_DESCRIPTION: {
     MEANING:
       'SIG 就是 Special Interest Group 的缩写，openEuler 社区按照不同的 SIG 来组织，以便于更好的管理和改善工作流程。SIG 组均是开放的，欢迎任何人来参与。',
+    P1: 'SIG 就是 Special Interest Group 的缩写，openEuler 社区按照不同的 SIG 来组织，以便于更好的管理和改善工作流程。',
+    P2: 'SIG 组均是开放的，欢迎任何人来参与。',
     LI1: '每一个SIG在Gitee上都会拥有一个或多个项目，这些项目会拥有一个或多个Repository，SIG的交付成果会保存在这些Repository内。您可以在SIG对应的Repository内提交Issue、针对特定问题参与讨论，提交和解决问题，参与评审等。',
     LI2: 'SIG都是针对特定的一个或多个技术主题而成立的。SIG的核心成员主导SIG的治理，SIG内的成员推动交付成果输出，并争取让交付成果成为openEuler社区发行的一部分。',
     LI3: '在SIG团队项目的gitee首页README.md文件中，可以找到该项目所属的SIG信息、交流方式、成员和联系方式等，欢迎通过邮件列表、公开例会及对应的README.md 文件中提到的联系方式积极参与进SIG内的交流。',
@@ -390,4 +392,59 @@ export default {
       ],
     },
   ],
+  SIG_DETAIL: {
+    VIDEO: '视频',
+    NEWS: '新闻',
+    MORE: '更多 >',
+    BLOG: '博客',
+    LATEST_DYNAMIC: '最新动态',
+    SIG_EMPTY_TEXT1: '这里空空如也，快给你的SIG',
+    SIG_EMPTY_TEXT2: '添加简介',
+    SIG_EMPTY_TEXT3: '吧!',
+    INTRODUCTION: 'SIG简介',
+    NO_MEETINGS: '暂无会议',
+    ORGANIZING_MEETINGS: 'SIG会议',
+    MEMBERS: 'SIG成员',
+    CONTACT: '联系方式',
+    MAIL_LIST: '邮件列表',
+    EXPAND: '展开全部',
+    RETRACT: '收起全部',
+    BLOG_EMPTY1: '我看你骨骼惊奇，必是写文好手。这里有一本',
+    BLOG_EMPTY2: '发博客攻略',
+    BLOG_EMPTY3: '，赶紧拿回去看看吧。',
+    NEWS_EMPTY: '不想当裁缝的厨子不是好司机，不发新闻的博客不是好视频。',
+    NEWS_EMPTY2: '',
+    NEWS_EMPTY3: '点击',
+    NEWS_EMPTY4: '发送SIG的第一篇新闻。',
+    VIDEO_EMPTY: '我都把最好的位置留给你啦，你愿意投递一个视频吗？',
+  },
+  ROLE_DESCRIPTION: {
+    ROLE_DESCRIPTION: '角色说明',
+    TABLE_TITLE: '社区成员',
+    TABLE_DESCRIPTION:
+      '本文简要描述了openEuler社区中贡献者角色的各种职责。大部分角色的职责限于这些SIG(Special Interest Group)内：',
+    TABLE_THEAD: ['角色', '职责范围（简要描述）', '要求', '定义的文件'],
+    TABLE_TBODY: [
+      {
+        ROLE: 'Contributor',
+        RESPONSIBILITIES: '项目的贡献者',
+        REQUIREMENT: '',
+        DEFINED_DOCUMENT: 'Gitee注册成员',
+      },
+      {
+        ROLE: 'Committer',
+        RESPONSIBILITIES: '审核其他成员的贡献',
+        REQUIREMENT: 'SIG的积极贡献者，经验丰富，愿意投入精力参与到审核工作',
+        DEFINED_DOCUMENT:
+          'openEuler SIG拥有的存储库中OWNERS文件中的Committer条目。',
+      },
+      {
+        ROLE: 'Maintainer',
+        RESPONSIBILITIES: '项目Owner',
+        REQUIREMENT: '经验丰富，富有责任心、出色的技术能力和管理能力',
+        DEFINED_DOCUMENT:
+          'openEuler SIG拥有的存储库中OWNERS文件中的Maintainer条目。',
+      },
+    ],
+  },
 };
