@@ -1,0 +1,57 @@
+@import '../../style/variable.scss';
+@import './var.scss';
+
+.o-tag {
+  padding: var(--o-tag-padding);
+  font-size: var(--o-tag-font-size);
+  line-height: var(--o-tag-line-height);
+  color: var(--o-tag-font-color);
+  border: var(--o-tag-border);
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+
+  &:active {
+    color: var(--o-tag-font-color_active);
+    border: var(--o-tag-font-color_active);
+  }
+
+  &.o-tag-type-primary {
+    color: var(--o-tag-font-color-primary);
+    border: var(--o-tag-border-primary);
+    &:hover {
+      color: var(--o-color-brand_hover);
+      border: var(--o-tag-border-primary_hover);
+    }
+  }
+
+  &.o-tag-type-secondary {
+    color: var(--o-tag-font-color-secondary);
+    border: var(--o-tag-border-secondary);
+    line-height: var(--o-tag-small-line-height);
+    padding: var(--o-tag-secondary-padding);
+    background: var(--o-tag-bg-color-secondary);
+  }
+
+  &.o-tag-type-text {
+    color: var(--o-tag-font-color);
+    border: var(--o-tag-border-text);
+    background: none;
+    &:hover,
+    &:active {
+      color: var(--o-tag-font-color_hover);
+    }
+  }
+  &.o-tag-size-small {
+    padding: var(--o-tag-small-padding);
+    font-size: var(--o-tag-small-font-size);
+    line-height: var(--o-tag-small-line-height);
+    cursor: default;
+    &:hover,
+    &:active {
+      color: var(--o-tag-font-color);
+      border: var(--o-tag-border);
+    }
+  }
+}

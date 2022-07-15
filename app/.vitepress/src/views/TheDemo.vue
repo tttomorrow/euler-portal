@@ -30,6 +30,11 @@ const name = ref('zhangsan');
 
     <h4>OButton</h4>
     <OButton>OButton</OButton>
+    <h4>OTag</h4>
+    <OTag type="text">OTag-0</OTag>
+    <OTag type="primary">OTag-0</OTag>
+    <OTag type="secondary">特殊tag</OTag>
+    <OTag size="small">OTag-1</OTag>
 
     <h4>封装elementplus OInput</h4>
     <OInput v-model="name"></OInput>
