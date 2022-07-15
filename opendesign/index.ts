@@ -6,6 +6,8 @@ import { Select } from './select';
 
 import { Icon } from './icon';
 import { Card } from './card';
+import { Tag } from './tag';
+import { Tabs, TabPane } from './tabs';
 import { Input } from './input';
 import { Pagination } from './pagination';
 import { Table, TableColumn } from './table';
@@ -21,6 +23,10 @@ const components = [
   Pagination,
   Table,
   TableColumn,
+  Tag,
+  Input,
+  Tabs,
+  TabPane,
 ];
 
 export default {

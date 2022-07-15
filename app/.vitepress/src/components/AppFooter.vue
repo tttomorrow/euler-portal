@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 // import { useI18n } from 'vue-i18n';
 
-import footerLogo from '@/assets/footer-logo2.svg';
+import footerLogo from '@/assets/footer-logo2.png';
 import atomLogo from '@/assets/atom-pc.png';
 import wechatImg from '@/assets/qrcode.png';
 
@@ -25,17 +25,17 @@ const footer = computed(() => {
       {
         id: 'brand',
         label: '品牌',
-        path: '/brand/',
+        path: '/other/brand/',
       },
       {
         id: 'privacypolicy',
         label: '隐私政策',
-        path: '/privacy/',
+        path: '/other/privacy/',
       },
       {
         id: 'legalnotice',
         label: '法律声明',
-        path: '/legal/',
+        path: '/other/legal/',
       },
       {
         id: 'serviceStatus',
@@ -103,11 +103,14 @@ const handleNavClick = (link: NavItem) => {
 <style lang="scss" scoped>
 $color: #fff;
 .footer {
-  padding: var(--o-spacing-l) 0 0;
   background: #121212;
   .atom {
     text-align: center;
-
+    max-width: 1416px;
+    padding: 64px 0 40px;
+    position: relative;
+    margin: 0 auto;
+    display: none;
     &-text {
       font-size: var(--o-font-size-h5);
       font-weight: 400;
@@ -116,36 +119,35 @@ $color: #fff;
     }
     &-logo {
       height: 48px;
-      margin: var(--o-spacing-m) 0;
+      margin-top: 40px;
+    }
+    &::after {
+      background: #e5e5e5;
+      opacity: 0.12;
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 1416px;
+      content: '';
+      height: 2px;
     }
   }
 
   &-content {
     background: url('/img/footer-bg.png') no-repeat bottom center;
-
     .inner {
       max-width: 1416px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: var(--o-spacing-m) 0;
+      padding: 42px 0 64px;
       position: relative;
-      &::after {
-        background: #e5e5e5;
-        opacity: 0.12;
-        position: absolute;
-        top: 0px;
-        left: 0;
-        width: 1416px;
-        content: '';
-        height: 2px;
-      }
+      min-height: 210px;
     }
   }
   &-logo img {
-    height: 28px;
-    margin-bottom: var(--o-spacing-s2);
+    height: 60px;
   }
 
   .copyright {
@@ -156,9 +158,7 @@ $color: #fff;
 
   .footer-option {
     text-align: center;
-    &-item {
-      margin-bottom: 12px;
-    }
+
     .link {
       color: $color;
       font-size: var(--o-font-size-text);
