@@ -7,11 +7,70 @@ import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
+const name = ref('');
+
+const currentPage1 = ref(5);
+const pageSize4 = ref(100);
+const total = ref(100);
+
+const tableData = [
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+];
+
+onMounted(() => {
+  window.addEventListener('click', () => {
+    locale.value = locale.value === 'zh' ? 'en' : 'zh';
+  });
+});
 const name = ref('zhangsan');
 </script>
 
 <template>
   <div class="demo">
+    <div class="page-box">
+      <OTable :data="tableData" style="width: 100%">
+        <OTableColumn label="Date" prop="date" width="180" />
+        <OTableColumn prop="name" label="Name" width="180" />
+        <OTableColumn prop="address" label="Address" />
+      </OTable>
+    </div>
+
+    <div class="page-box">
+      <OPagination
+        :background="true"
+        v-model:currentPage="currentPage1"
+        v-model:page-size="pageSize4"
+        :page-sizes="[100, 200, 300, 400]"
+        layout="sizes, prev, pager, next, slot, jumper"
+        :total="total"
+      >
+        <span>5/50</span>
+      </OPagination>
+    </div>
+    <h1>{{ i18n.a }}</h1>
+    <h1>{{ home.info }}</h1>
+    <OButton>sss</OButton>
+    <!-- <ElInput /> -->
+    <h4>封装elementplus</h4>
     <h4>BannerLevel2.vue</h4>
     <BannerLevel2
       :background-image="banner"
@@ -49,8 +108,11 @@ const name = ref('zhangsan');
   max-width: 1504px;
   padding: 20px 44px;
   min-height: 800px;
+  padding-top: 100px;
 }
-
+.page-box {
+  margin: 20px 100px 20px 100px;
+}
 h4 {
   margin-top: 30px;
   margin-bottom: 10px;

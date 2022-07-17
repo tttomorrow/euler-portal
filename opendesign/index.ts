@@ -9,6 +9,8 @@ import { Card } from './card';
 import { Tag } from './tag';
 import { Tabs, TabPane } from './tabs';
 import { Input } from './input';
+import { Pagination } from './pagination';
+import { Table, TableColumn } from './table';
 
 const components = [
   Button,
@@ -17,6 +19,10 @@ const components = [
   Select,
   Icon,
   Card,
+  Input,
+  Pagination,
+  Table,
+  TableColumn,
   Tag,
   Input,
   Tabs,

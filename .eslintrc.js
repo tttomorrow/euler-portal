@@ -27,5 +27,6 @@ module.exports = {
     'no-unused-vars': 'error',
     eqeqeq: 'error',
     '@typescript-eslint/no-explicit-any': 'off',
+    'vue/no-v-model-argument': 'off',
   },
 };
