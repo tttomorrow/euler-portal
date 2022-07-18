@@ -12,11 +12,19 @@ const attrs = useAttrs();
 
 <style lang="scss" scoped>
 .o-pagination {
+  --o-pagination-font-color: var(--o-color-base_inverse);
+  --o-pagination-font-color_active: var(--o-color-brand_active);
+  --o-pagination-bg-color: var(--o-color-brand_disabled);
+  --o-pagination-bg-color_hover: var(--o-color-brand_disabled);
+  --o-pagination-bg-color_selected: var(--o-color-brand_disabled);
+  --o-pagination-bg-color_disabled: var(--o-color-secondary);
+  --o-pagination-number-border-color_active: var(--o-color-brand);
+
   :deep.el-pagination {
-    --el-pagination-button-bg-color: var(--o-color-secondary);
+    --el-pagination-button-bg-color: var(--o-pagination-bg-color_disabled);
     .el-input {
-      --el-input-bg-color: var(--o-color-secondary);
-      --el-input-text-color: var(--o-color-base_inverse);
+      --el-input-bg-color: var(--o-pagination-bg-color_disabled);
+      --el-input-text-color: var(--o-pagination-font-color);
     }
     .el-input__wrapper {
       border-radius: 0px;
@@ -26,11 +34,11 @@ const attrs = useAttrs();
       --el-select-border-color-hover: none;
       --el-select-input-focus-border-color: none;
       & .el-input .el-select__caret {
-        color: var(--o-color-base_inverse);
+        color: var(--o-pagination-font-color);
       }
     }
     .el-pager li {
-      color: var(--o-color-base_inverse);
+      color: var(--o-pagination-font-color);
       border-radius: 0px;
       &:hover {
         background-color: var(--o-color-brand_disabled);
@@ -45,10 +53,10 @@ const attrs = useAttrs();
     }
     .btn-next,
     .btn-prev {
-      color: var(--o-color-base_inverse);
+      color: var(--o-pagination-font-color);
       border-radius: 0px;
       &:disabled {
-        background: var(--o-color-secondary);
+        background: var(--o-pagination-bg-color_disabled);
       }
     }
     .btn-next {
@@ -57,6 +65,7 @@ const attrs = useAttrs();
     .el-pagination__jump {
       color: var(--o-color-base_inverse);
       border-radius: 0px;
+      margin-left: var(--o-spacing-s4);
     }
   }
 }
