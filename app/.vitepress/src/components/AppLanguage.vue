@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { watch, ref, onMounted } from 'vue';
-import { useI18n } from 'vue-i18n';
+// import { useI18n } from 'vue-i18n';
 import { useRouter, useData } from 'vitepress';
 
 import IconDown from '~icons/app/icon-down.svg';
@@ -14,7 +14,7 @@ defineProps({
 });
 
 const router = useRouter();
-const { locale } = useI18n();
+// const { locale } = useI18n();
 const { lang } = useData();
 
 // 选择语言;
@@ -47,13 +47,13 @@ const hideSub = () => {
   isMenu.value = false;
 };
 onMounted(() => {
-  locale.value = lang.value;
+  // locale.value = lang.value;
 });
 watch(
   () => lang.value,
   (val) => {
     if (val) {
-      locale.value = val;
+      // locale.value = val;
     }
   }
 );

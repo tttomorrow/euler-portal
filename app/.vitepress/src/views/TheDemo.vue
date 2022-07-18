@@ -7,8 +7,6 @@ import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
-const name = ref('');
-
 const currentPage1 = ref(5);
 const pageSize4 = ref(100);
 const total = ref(100);
@@ -36,16 +34,12 @@ const tableData = [
   },
 ];
 
-onMounted(() => {
-  window.addEventListener('click', () => {
-    locale.value = locale.value === 'zh' ? 'en' : 'zh';
-  });
-});
-const name = ref('zhangsan');
+const inputName = ref('zhangsan');
 </script>
 
 <template>
   <div class="demo">
+    <h4>OTable</h4>
     <div class="page-box">
       <OTable :data="tableData" style="width: 100%">
         <OTableColumn label="Date" prop="date" width="180" />
@@ -54,23 +48,20 @@ const name = ref('zhangsan');
       </OTable>
     </div>
 
+    <h4>OPagination</h4>
     <div class="page-box">
       <OPagination
-        :background="true"
         v-model:currentPage="currentPage1"
         v-model:page-size="pageSize4"
         :page-sizes="[100, 200, 300, 400]"
+        :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
         :total="total"
       >
         <span>5/50</span>
       </OPagination>
     </div>
-    <h1>{{ i18n.a }}</h1>
-    <h1>{{ home.info }}</h1>
-    <OButton>sss</OButton>
-    <!-- <ElInput /> -->
-    <h4>封装elementplus</h4>
+
     <h4>BannerLevel2.vue</h4>
     <BannerLevel2
       :background-image="banner"
@@ -89,6 +80,7 @@ const name = ref('zhangsan');
 
     <h4>OButton</h4>
     <OButton>OButton</OButton>
+
     <h4>OTag</h4>
     <OTag type="text">OTag-0</OTag>
     <OTag type="primary">OTag-0</OTag>
@@ -96,7 +88,7 @@ const name = ref('zhangsan');
     <OTag size="small">OTag-1</OTag>
 
     <h4>封装elementplus OInput</h4>
-    <OInput v-model="name"></OInput>
+    <OInput v-model="inputName"></OInput>
 
     <h4>封装elementplus OCard</h4>
     <OCard header="OCard" shadow="hover"></OCard>

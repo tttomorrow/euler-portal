@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { computed, ref, onMounted, watch } from 'vue';
-import { useI18n } from 'vue-i18n';
 import { useCommon } from '@/stores/common';
 
 import IconMoonLight from '~icons/app/sun.svg';
@@ -15,7 +14,7 @@ defineProps({
 });
 
 const commonStore = useCommon();
-const { t } = useI18n();
+// const { t } = useI18n();
 
 const changeTheme = () => {
   const theme = commonStore.theme === 'dark' ? 'light' : 'dark';
@@ -74,8 +73,8 @@ onMounted(() => {
       <el-switch
         v-model="mobileTheme"
         size="large"
-        :active-text="t('theme_dark')"
-        :inactive-text="t('theme_light')"
+        active-text="dark"
+        inactive-text="light"
         active-color="#00685a"
         @click.stop="changeTheme"
       />
