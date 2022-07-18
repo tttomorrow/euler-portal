@@ -10,6 +10,7 @@ import search from '@/assets/illustrations/search.png';
 const currentPage1 = ref(5);
 const pageSize4 = ref(100);
 const total = ref(100);
+const date = ref('2022-07');
 
 const tableData = [
   {
@@ -92,6 +93,13 @@ const inputName = ref('zhangsan');
 
     <h4>封装elementplus OCard</h4>
     <OCard header="OCard" shadow="hover"></OCard>
+
+    <h4>OTimelien</h4>
+    <OTimeline
+      v-model="date"
+      :right-arrow="true"
+      :left-arrow="true"
+    ></OTimeline>
   </div>
 </template>
 
