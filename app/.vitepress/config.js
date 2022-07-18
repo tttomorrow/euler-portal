@@ -1,3 +1,5 @@
+import i18n from './src/i18n';
+
 module.exports = {
   base: '/',
   title: 'openEuler',
@@ -45,8 +47,11 @@ module.exports = {
     },
   },
   themeConfig: {
-    '/':{a:0},
-    '/zh/':{a:1},
-    '/en':{a:2}
+    locales: {
+      '/': i18n.zh,
+      '/zh/':  i18n.zh,
+      '/en/':  i18n.en,
+      '/ru/': i18n.ru,
+    },
   },
 };

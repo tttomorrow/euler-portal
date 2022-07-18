@@ -1,31 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
-const tableHeadList = computed(() => {
-  return [
-    t('listName[0]'),
-    t('listName[1]'),
-    t('listName[2]'),
-    t('listName[3]'),
-  ];
-});
-const tableBodyList = computed(() => {
-  return [
-    {
-      name: t('listMember[0].name'),
-      gitee: t('listMember[0].gitee'),
-      email: t('listMember[0].email'),
-      id: '232443',
-    },
-    {
-      name: t('listMember[1].name'),
-      gitee: t('listMember[1].gitee'),
-      email: t('listMember[1].email'),
-      id: 'wretrt',
-    },
-  ];
-});
+import { useData } from 'vitepress';
+
+const { theme: i18n } = useData();
 </script>
 <template>
   <div class="sig-list">
@@ -33,16 +9,18 @@ const tableBodyList = computed(() => {
       <table>
         <thead>
           <tr>
-            <th v-for="item in tableHeadList" :key="item">{{ item }}</th>
+            <th>{{ i18n.sig.SIG_LIST.HOME_PAGE }}</th>
+            <th>{{ i18n.sig.SIG_LIST.MAIL }}</th>
+            <th>{{ i18n.sig.SIG_LIST.IRC }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in tableBodyList" :key="item.id">
-            <td>{{ item.name }}</td>
-            <td>{{ item.gitee }}</td>
+          <!-- <tr v-for="item in t('sig.SIG_LIST.DEMO')"> -->
+          <!-- <td>{{ item }}</td> -->
+          <!-- <td>{{ item.gitee }}</td>
             <td>{{ item.email }}</td>
-            <td>暂无</td>
-          </tr>
+            <td>暂无</td> -->
+          <!-- </tr> -->
         </tbody>
       </table>
     </div>
