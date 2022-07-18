@@ -3,6 +3,11 @@ import { onMounted, Ref, ref } from 'vue';
 import { getAllMirror } from '@/api/api-mirror';
 import IconCpoy from '~icons/app/icon-copy.svg';
 import { ElMessage } from 'element-plus';
+import BannerLevel3 from '@/components/BannerLevel3.vue';
+import banner from '@/assets/banner-secondary.png';
+import { useData } from 'vitepress';
+
+const { theme: i18n } = useData();
 
 interface MirrorMsg {
   name: string;
@@ -88,7 +93,18 @@ onMounted(async () => {
 </script>
 
 <template>
+  <BannerLevel3
+    :background-image="banner"
+    background-text="DOWNLOAD"
+    :title="i18n.download.MIRROR_ALL.TITLE"
+  />
   <div class="mirror-list">
+    <p>
+      {{ i18n.download.MIRROR_ALL.CONTENT[0] }}
+      <a href="mailto:admin@openeuler.io">
+        {{ i18n.download.MIRROR_ALL.CONTENT[1] }}</a
+      >.
+    </p>
     <el-table
       :data="tableData"
       header-cell-class-name="mirror-list-header"
@@ -97,7 +113,7 @@ onMounted(async () => {
     >
       <el-table-column
         prop="name"
-        label="MirrorName"
+        :label="i18n.download.MIRROR_ALL.NAME"
         width="350"
         class-name="mirror-name"
       >
@@ -107,15 +123,19 @@ onMounted(async () => {
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="location" label="Location" min-width="100" />
-      <el-table-column label="Sponsor" min-width="80">
+      <el-table-column
+        prop="location"
+        :label="i18n.download.MIRROR_ALL.LOCATION"
+        min-width="100"
+      />
+      <el-table-column :label="i18n.download.MIRROR_ALL.SPONSOR" min-width="80">
         <template #default="scope">
           <a :href="scope.row.sponsor" target="_blank"
             ><img :src="scope.row.sponsorLogo" class="mirror-list-img"
           /></a>
         </template>
       </el-table-column>
-      <el-table-column label="RSNC" min-width="80">
+      <el-table-column :label="i18n.download.MIRROR_ALL.RSNC" min-width="80">
         <template #default="scope">
           <span v-if="scope.row.rsnc === '-'">{{ scope.row.rsnc }}</span>
           <IconCpoy
@@ -125,7 +145,7 @@ onMounted(async () => {
           />
         </template>
       </el-table-column>
-      <el-table-column label="Ftp" min-width="80">
+      <el-table-column :label="i18n.download.MIRROR_ALL.FTP" min-width="80">
         <template #default="scope">
           <span v-if="scope.row.ftp === '-'">{{ scope.row.ftp }}</span>
           <IconCpoy
@@ -136,9 +156,9 @@ onMounted(async () => {
         </template>
       </el-table-column>
       <el-table-column
-        label="NetworkBandwidth(Mb/s)"
+        :label="i18n.download.MIRROR_ALL.Mbs"
         prop="netband"
-        width="240"
+        width="260"
       >
       </el-table-column>
     </el-table>
@@ -210,9 +230,19 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .mirror-list {
   max-width: 1504px;
-  padding: 0 44px;
   margin: var(--o-spacing-m) auto;
-  margin-top: 120px;
+  margin-top: var(--o-spacing-l);
+  > p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 34px;
+    margin: 60px 0 30px 0;
+    > a {
+      text-decoration: none;
+      color: #002fa7;
+    }
+  }
 
   &-img {
     height: 34px;
