@@ -45,6 +45,11 @@ const inputName = ref('zhangsan');
         <OTableColumn label="Date" prop="date" width="180" />
         <OTableColumn prop="name" label="Name" width="180" />
         <OTableColumn prop="address" label="Address" />
+        <OTableColumn label="Date" prop="date">
+          <template #default="scope">
+            <div>{{ scope.row.date }}</div>
+          </template>
+        </OTableColumn>
       </OTable>
     </div>
 

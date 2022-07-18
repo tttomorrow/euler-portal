@@ -1,0 +1,21 @@
+.el-popper.filter {
+    box-shadow: none !important;
+    --el-popper-border-radius: none;
+
+    .el-popper__arrow {
+        display: none;
+    }
+
+    .el-select-dropdown__item {
+        color: var(--o-color-base_inverse);
+
+        &:hover {
+            color: var(--o-color-brand);
+        }
+    }
+
+    .el-select-dropdown__item.selected {
+        font-weight: normal;
+        color: var(--o-color-brand);
+    }
+}

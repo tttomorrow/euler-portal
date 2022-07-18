@@ -5,7 +5,7 @@ const attrs = useAttrs();
 </script>
 
 <template>
-  <ElPagination class="o-pagination" v-bind="attrs">
+  <ElPagination popper-class="filter" class="o-pagination" v-bind="attrs">
     <slot></slot>
   </ElPagination>
 </template>
@@ -24,6 +24,7 @@ const attrs = useAttrs();
     }
     .el-select {
       --el-select-border-color-hover: none;
+      --el-select-input-focus-border-color: none;
       & .el-input .el-select__caret {
         color: var(--o-color-base_inverse);
       }
@@ -31,10 +32,14 @@ const attrs = useAttrs();
     .el-pager li {
       color: var(--o-color-base_inverse);
       border-radius: 0px;
+      &:hover {
+        background-color: var(--o-color-brand_disabled);
+      }
     }
     .el-pager li.is-active.number {
       background: var(--o-color-brand_disabled);
       color: var(--o-color-brand_active);
+      border: 1px solid var(--o-color-brand);
       font-weight: 400;
       font-size: var(--o-font-size-text);
     }
@@ -50,7 +55,7 @@ const attrs = useAttrs();
       margin-right: var(--o-spacing-s2);
     }
     .el-pagination__jump {
-      color: var(--o-color-secondary_active);
+      color: var(--o-color-base_inverse);
       border-radius: 0px;
     }
   }
