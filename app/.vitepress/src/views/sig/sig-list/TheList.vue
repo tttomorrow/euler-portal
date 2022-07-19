@@ -1,0 +1,4 @@
+
+<template>
+  <OTable></OTable>
+</template>
