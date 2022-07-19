@@ -1,7 +1,3 @@
----
-title: "角色说明"
-doc: true
----
 <script setup>
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner-secondary.png';
@@ -27,6 +23,7 @@ import illustration from '@/assets/illustrations/search.png';
     }
   ]
 </script>
+
 <BannerLevel2
 class="app-header"
   :background-image="banner"
@@ -34,14 +31,18 @@ class="app-header"
   title="角色说明"
   :illustration="illustration"
 />
+
+<div class="markdown">
+<OTable :data="tableData" class="duty-table">
+  <OTableColumn prop="SigName" label="SIG名称"/>
+  <OTableColumn prop="Gitee" label="Gitee主页"/>
+  <OTableColumn prop="Email" label="邮件"/>
+  <OTableColumn prop="IRC" label="IRC频道"/>
+</OTable>
+
 ## 社区成员 
 本文简要描述了openEuler社区中贡献者角色的各种职责。大部分角色的职责限于这些SIG(Special Interest Group)内：
-<el-table :data="tableData" class="duty-table">
-  <el-table-column prop="SigName" label="SIG名称"/>
-  <el-table-column prop="Gitee" label="Gitee主页"/>
-  <el-table-column prop="Email" label="邮件"/>
-  <el-table-column prop="IRC" label="IRC频道"/>
-</el-table>
+
 
 说明：Maintainer和Committer在Gitee的权限上不做区分，两者的区分主要是集中在SIG治理的管理范围上。详细可以见下面的描述。
 ## 新的贡献者
@@ -119,10 +120,15 @@ class="app-header"
 * 参与社区协调活动：作为SIG的代表参与openEuler技术委员会或理事会组织的活动和特定会议等。
 * 召集SIG组会议：定期召集SIG会议，决策SIG内上升的争议。
 
-<style scoped>
-  .duty-table {
+</div>
+
+<style scoped lang="scss">
+  .markdown {
+    margin-top: 64px;
+    .duty-table {
     margin-top: 24px;
     margin-bottom: 16px;
+   }
   }
   ul {
     list-style: disc;
