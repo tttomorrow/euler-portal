@@ -11,6 +11,7 @@ import { Tabs, TabPane } from './tabs';
 import { Input } from './input';
 import { Pagination } from './pagination';
 import { Table, TableColumn } from './table';
+import { Timeline } from './timeline';
 
 const components = [
   Button,
@@ -24,6 +25,7 @@ const components = [
   Table,
   TableColumn,
   Tag,
+  Timeline,
   Input,
   Tabs,
   TabPane,
