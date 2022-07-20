@@ -7,7 +7,7 @@ WORKDIR /home/openeuler/web
 COPY . /home/openeuler/web
 
 RUN pnpm install
-RUN pnpm build:p
+RUN pnpm build
 
 FROM nginx:1.20.0
 

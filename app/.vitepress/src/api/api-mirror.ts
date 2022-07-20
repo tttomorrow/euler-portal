@@ -1,6 +1,3 @@
-import { request } from '@/shared/axios';
-import type { AxiosResponse } from '@/shared/axios';
-
 /**
  * 调用接口获取镜像列表
  * @name getAllMirror
@@ -8,7 +5,10 @@ import type { AxiosResponse } from '@/shared/axios';
  * @return {Array} 镜像列表
  */
 
+import { request } from '@/shared/axios';
+import type { AxiosResponse } from '@/shared/axios';
+
 export function getAllMirror() {
-  const url = '/api-mirror/?mirrorstats=true';
+  const url = '/api/mirrors/?mirrorstats=true';
   return request.get(url).then((res: AxiosResponse) => res.data);
 }

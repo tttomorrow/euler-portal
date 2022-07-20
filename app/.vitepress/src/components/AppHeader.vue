@@ -406,7 +406,7 @@ onUnmounted(() => {
 }
 .mobile-menu-icon {
   display: none;
-  margin-right: var(--o-spacing-s2);
+  margin-right: var(--o-spacing-h5);
   @media (max-width: 1100px) {
     display: block;
   }
@@ -519,7 +519,7 @@ onUnmounted(() => {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-h3);
         color: var(--o-color-text2);
-        padding: 0 var(--o-spacing-s2);
+        padding: 0 var(--o-spacing-h5);
         position: relative;
         cursor: pointer;
         &::after {
@@ -544,7 +544,7 @@ onUnmounted(() => {
       }
     }
     .mobile-tools {
-      padding: 0 var(--o-spacing-s2);
+      padding: 0 var(--o-spacing-h5);
       margin-bottom: 24px;
     }
     .el-switch {

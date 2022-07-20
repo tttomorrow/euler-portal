@@ -91,7 +91,7 @@ const rootStyle = computed(() => {
         color: var(--o-color-text);
         font-size: var(--o-font-size-h2);
         line-height: var(--o-line-height-h2);
-        margin-top: var(--o-spacing-m);
+        margin-top: var(--o-spacing-h2);
       }
 
       .banner-subtitle {

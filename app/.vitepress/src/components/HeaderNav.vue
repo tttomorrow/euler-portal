@@ -105,7 +105,7 @@ const hideSub = () => {
       display: inline-flex;
       align-items: center;
       height: 100%;
-      margin: 0 var(--o-spacing-s3);
+      margin: 0 var(--o-spacing-h4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-h8);
       color: var(--o-color-text2);
@@ -160,7 +160,7 @@ const hideSub = () => {
           color: var(--o-color-text2);
           display: block;
           white-space: nowrap;
-          padding: 0 var(--o-spacing-s1);
+          padding: 0 var(--o-spacing-h8);
           min-width: 106px;
           &.active {
             background-color: var(--o-color-brand);
