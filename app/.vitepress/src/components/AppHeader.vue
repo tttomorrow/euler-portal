@@ -11,13 +11,16 @@ import MenuIcon from '~icons/app/menu.svg';
 
 const router = useRouter();
 const configData = useData();
+const { theme: i18n } = useData();
 const language = configData.lang;
 
 interface NavItem {
-  id: string;
-  label: string;
-  path: string;
-  children?: NavItem;
+  NAME: string;
+  PATH: string;
+  ID: string;
+  CHILDREN: NavItem;
+  IS_OPEN_WINDOW?: Number;
+  IS_OPEN_MINISITE_WINDOW?: string;
 }
 
 // 导航列表
@@ -25,216 +28,214 @@ const navItems = computed(() => {
   return [
     {
       id: 'download',
-      label: '下载',
+      label: i18n.value.common.NAV_ROUTER.DOWNLOAD,
       path: 'download',
       children: [
         {
           id: 'iso',
-          label: 'ISO',
+          label: i18n.value.common.NAV_ROUTER.ISO,
           path: 'download',
         },
-        { id: 'mirror', label: '镜像仓列表', path: 'mirror' },
+        {
+          id: 'mirror',
+          label: i18n.value.common.NAV_ROUTER.MIRRORLIST,
+          path: 'mirror',
+        },
       ],
     },
     {
       id: 'learn',
-      label: '学习',
+      label: i18n.value.common.NAV_ROUTER.LEARNING,
       path: 'learn',
       children: [
         {
           id: 'docs',
-          label: '文档',
+          label: i18n.value.common.NAV_ROUTER.DOCS,
           path: '',
         },
-        { id: 'mooc', label: '慕课', path: 'learning/mooc' },
+        {
+          id: 'mooc',
+          label: i18n.value.common.NAV_ROUTER.MOOC,
+          path: 'learning/mooc',
+        },
         {
           id: 'internship',
-          label: 'internship',
+          label: i18n.value.common.NAV_ROUTER.INTERNSHIP,
           path: 'learning/internship',
         },
       ],
     },
     {
       id: 'interaction',
-      label: '互动',
+      label: i18n.value.common.NAV_ROUTER.CONNECT,
       path: '',
       children: [
         {
           id: 'news',
-          label: '新闻',
-          path: 'interaction/news-list/',
+          label: i18n.value.common.NAV_ROUTER.NEWS,
+          path: 'interaction/news-list',
         },
         {
           id: 'blog',
-          label: '博客',
-          path: 'interaction/blog-list/',
+          label: i18n.value.common.NAV_ROUTER.BLOG,
+          path: 'interaction/blog-list',
         },
         {
           id: 'live',
-          label: '直播',
-          path: 'interaction/live-list/',
+          label: i18n.value.common.NAV_ROUTER.LIVE,
+          path: 'interaction/live-list',
         },
         {
           id: 'salon',
-          label: '沙龙',
-          path: 'interaction/salon-list/',
+          label: i18n.value.common.NAV_ROUTER.SALON,
+          path: 'interaction/salon-list',
         },
         {
           id: 'summit',
-          label: '峰会',
-          path: 'interaction/summit-list/',
+          label: i18n.value.common.NAV_ROUTER.SUMMIT,
+          path: 'interaction/summit-list',
         },
       ],
     },
     {
       id: 'community',
-      label: '社区',
+      label: i18n.value.common.NAV_ROUTER.COMMUNITY,
       path: '',
       children: [
         {
           id: 'contribution',
-          label: '贡献攻略',
-          path: 'community/contribution/',
+          label: i18n.value.common.NAV_ROUTER.CONTRIBUTION,
+          path: 'community/contribution',
         },
         {
           id: 'conduct',
-          label: '行为守则',
-          path: 'community/conduct/',
+          label: i18n.value.common.NAV_ROUTER.CONVENTION,
+          path: 'community/conduct',
         },
         {
           id: 'events',
-          label: '邮件列表',
-          path: 'community/mailing-list/',
+          label: i18n.value.common.NAV_ROUTER.MAILINGLIST,
+          path: 'community/mailing-list',
         },
         {
           id: 'certification',
-          label: '个人认证',
-          path: 'community/certification-services/',
+          label: i18n.value.common.NAV_ROUTER.CERTIFICATION,
+          path: 'community/certification-services',
         },
         {
           id: 'talent',
-          label: '人才评测',
+          label: i18n.value.common.NAV_ROUTER.TALENT,
           path: 'https://training-assessment.osinfra.cn/login/index?sxz-lang=zh_CN',
         },
         {
           id: 'statistics',
-          label: '贡献看板',
+          label: i18n.value.common.NAV_ROUTER.STATISTICS,
           path: 'https://datastat.openeuler.org/en/overview',
         },
       ],
     },
     {
       id: 'sig',
-      label: 'SIG',
+      label: i18n.value.common.NAV_ROUTER.SIG,
       path: '',
       children: [
         {
           id: 'siglist',
-          label: '查看SIG',
-          path: 'sig/sig-list/',
+          label: i18n.value.common.NAV_ROUTER.SIGLIST,
+          path: 'sig/sig-list',
         },
         {
           id: 'guidance',
-          label: '申请流程',
-          path: 'sig/sig-guidance/',
+          label: i18n.value.common.NAV_ROUTER.APPLICATION,
+          path: 'sig/sig-guidance',
         },
         {
           id: 'role',
-          label: '角色说明',
-          path: 'sig/role-description/',
-        },
-        {
-          id: 'guidance',
-          label: '申请流程',
-          path: 'sig/sig-guidance/',
+          label: i18n.value.common.NAV_ROUTER.ROLES,
+          path: 'sig/role-description',
         },
         {
           id: 'meeting',
-          label: '会议指南',
-          path: 'sig/meeting-guide/',
+          label: i18n.value.common.NAV_ROUTER.MEETINGGUIDE,
+          path: 'sig/meeting-guide',
         },
       ],
     },
     {
       id: 'projects',
-      label: '探索',
+      label: i18n.value.common.NAV_ROUTER.DISCOVERY,
       path: 'other/projects',
       children: [
         {
           id: 'atune',
-          label: 'A-Tune',
-          path: 'other/projects/atune/',
+          label: i18n.value.common.NAV_ROUTER.ATUNE,
+          path: 'other/projects/atune',
         },
         {
           id: 'bishengjdk',
-          label: 'BiSheng JDK',
-          path: 'other/projects/bishengjdk/',
+          label: i18n.value.common.NAV_ROUTER.BISHENGJDK,
+          path: 'other/projects/bishengjdk',
         },
         {
           id: 'isula',
-          label: 'iSula',
-          path: 'other/projects/isula/',
+          label: i18n.value.common.NAV_ROUTER.ISULA,
+          path: 'other/projects/isula',
         },
         {
           id: 'secgear',
-          label: 'secGear',
-          path: 'other/projects/secgear/',
+          label: i18n.value.common.NAV_ROUTER.SECGEAR,
+          path: 'other/projects/secgear',
         },
         {
           id: 'compassci',
-          label: 'Compass-CI',
-          path: 'https://compass-ci.openeuler.org/',
+          label: i18n.value.common.NAV_ROUTER.COMPASSCI,
+          path: 'https://compass-ci.openeuler.org',
         },
         {
           id: 'compliance',
-          label: 'Compliance',
-          path: 'https://compliance.openeuler.org/',
+          label: i18n.value.common.NAV_ROUTER.COMPLIANCE,
+          path: 'https://compliance.openeuler.org',
         },
         {
           id: 'pkgmanage',
-          label: 'Pkgship',
-          path: 'https://pkgmanage.openeuler.org/',
+          label: i18n.value.common.NAV_ROUTER.PKGSHIP,
+          path: 'https://pkgmanage.openeuler.org',
         },
       ],
     },
     {
       id: 'security',
-      label: '支持',
+      label: i18n.value.common.NAV_ROUTER.SUPPORT,
       path: '',
       children: [
         {
           id: 'vulnerability-reporting',
-          label: '漏洞管理',
-          path: 'security/vulnerability-reporting/',
+          label: i18n.value.common.NAV_ROUTER.VULNERABILITY,
+          path: 'security/vulnerability-reporting',
         },
         {
           id: 'safety-bulletin',
-          label: '安全公告',
+          label: i18n.value.common.NAV_ROUTER.SAFETY,
           path: 'security/safety-bulletin',
         },
         {
-          id: 'isula',
-          label: 'iSula',
-          path: 'other/projects/isula/',
-        },
-        {
           id: 'cve',
-          label: 'CVE',
+          label: i18n.value.common.NAV_ROUTER.CVE,
           path: 'security/cve/',
         },
         {
           id: 'approve',
-          label: 'OSV技术测评列表',
+          label: i18n.value.common.NAV_ROUTER.APPROVE,
           path: 'approve/',
         },
         {
           id: 'compliance',
-          label: '兼容性技术测评',
+          label: i18n.value.common.NAV_ROUTER.COMPATIBILITY_EVALUATION,
           path: '',
         },
         {
           id: 'compatibility',
-          label: '兼容性列表',
+          label: i18n.value.common.NAV_ROUTER.COMPATIBILITY,
           path: 'compatibility/',
         },
       ],
@@ -242,9 +243,13 @@ const navItems = computed(() => {
   ];
 });
 
+const navRouter = computed(() => {
+  return i18n.value.common.NAV_ROUTER_CONFIG;
+});
+
 const activeNav = ref<string>();
 const handleNavClick = (item: NavItem) => {
-  activeNav.value = item.path;
+  activeNav.value = item.PATH;
 };
 
 // 移动端
@@ -276,24 +281,32 @@ const handleMenuLayer = (e: any) => {
 };
 
 const goMobile = (item: NavItem) => {
-  if (item.hasOwnProperty('children')) {
-    mobileChildMenu.value = item.children;
+  if (item.hasOwnProperty('CHILDREN')) {
+    mobileChildMenu.value = item.CHILDREN;
   } else {
     mobileChildMenu.value = [];
     mobileMenuIcon.value = false;
-    router.go(`/${language.value}/${item.path}/`);
+
+    router.go(language.value + item.PATH);
     document.documentElement.classList.remove('overflow');
   }
-  activeNav.value = item.id;
+  activeNav.value = item.ID;
 };
 
 const goMobileList = (item: NavItem) => {
   mobileMenuIcon.value = false;
   document.documentElement.classList.remove('overflow');
-  if (item.path.startsWith('https:')) {
-    window.open(item.path, '_blank');
-  } else {
-    router.go(`/${language.value}/${item.path}/`);
+
+  if (item.IS_OPEN_WINDOW) {
+    window.open(i18n.value.docsUrl + item.PATH);
+    return;
+  }
+  if (item.IS_OPEN_MINISITE_WINDOW) {
+    window.open(item.PATH);
+    return;
+  }
+  if (item.PATH) {
+    router.go(language.value + item.PATH);
   }
 };
 
@@ -304,6 +317,11 @@ onMounted(() => {
 onUnmounted(() => {
   toBody.value = false;
 });
+
+// 返回首页
+const goHome = () => {
+  router.go(language.value + '/');
+};
 </script>
 
 <template>
@@ -316,10 +334,15 @@ onUnmounted(() => {
         </OIcon>
         <OIcon v-else class="icon"><XIcon /></OIcon>
       </div>
-      <img class="logo" alt="openEuler logo" src="../assets/logo.png" />
+      <img
+        class="logo"
+        alt="openEuler logo"
+        @click="goHome"
+        src="../assets/logo.png"
+      />
       <div class="header-content">
         <div class="header-nav">
-          <HeaderNav :nav-items="navItems" @nav-click="handleNavClick" />
+          <HeaderNav :nav-items="navRouter" @nav-click="handleNavClick" />
         </div>
         <div class="header-tool">
           <div class="header-tool-search">
@@ -340,12 +363,12 @@ onUnmounted(() => {
           <div class="mobile-menu-side">
             <div class="mobile-nav">
               <a
-                v-for="item in navItems"
-                :key="item.id"
+                v-for="item in navRouter"
+                :key="item.ID"
                 class="link"
-                :class="[activeNav === item.id ? 'active' : '']"
+                :class="[activeNav === item.ID ? 'active' : '']"
                 @click.stop="goMobile(item)"
-                >{{ item.label }}</a
+                >{{ item.NAME }}</a
               >
             </div>
             <div class="mobile-tools">
@@ -363,10 +386,10 @@ onUnmounted(() => {
             <div class="mobile-menu-list">
               <a
                 v-for="item in mobileChildMenu"
-                :key="item.id"
+                :key="item.ID"
                 class="link"
                 @click="goMobileList(item)"
-                >{{ item.label }}</a
+                >{{ item.NAME }}</a
               >
             </div>
           </div>
@@ -400,6 +423,7 @@ onUnmounted(() => {
 }
 .logo {
   height: 32px;
+  cursor: pointer;
   @media (max-width: 1100px) {
     height: 24px;
   }

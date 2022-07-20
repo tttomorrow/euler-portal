@@ -53,5 +53,6 @@ module.exports = {
       '/en/': i18n.en,
       '/ru/': i18n.ru,
     },
+    docsUrl: 'https://docs.openeuler.org',
   },
 };
