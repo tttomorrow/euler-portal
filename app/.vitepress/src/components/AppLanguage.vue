@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { watch, ref, onMounted } from 'vue';
-// import { useI18n } from 'vue-i18n';
+import { ref } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import IconDown from '~icons/app/icon-down.svg';
@@ -14,7 +13,6 @@ defineProps({
 });
 
 const router = useRouter();
-// const { locale } = useI18n();
 const { lang } = useData();
 
 // 选择语言;
@@ -26,15 +24,15 @@ const langOptions = [
 
 // 选择语言
 const emits = defineEmits(['language-click']);
-const mobileChaneLanguage = (id: string) => {
-  chaneLanguage(id);
+const mobileChaneLanguage = (newlang: string) => {
+  chaneLanguage(newlang);
   emits('language-click');
 };
 
-function chaneLanguage(id: string) {
-  if (lang.value === id) return;
+function chaneLanguage(newlang: string) {
+  if (lang.value === newlang) return;
   const pathname = router.route.path;
-  const newHref = pathname.replace(`/${lang.value}/`, `/${id}/`);
+  const newHref = pathname.replace(`/${lang.value}/`, `/${newlang}/`);
   isMenu.value = false;
   router.go(newHref);
 }
@@ -46,17 +44,6 @@ const showSub = () => {
 const hideSub = () => {
   isMenu.value = false;
 };
-onMounted(() => {
-  // locale.value = lang.value;
-});
-watch(
-  () => lang.value,
-  (val) => {
-    if (val) {
-      // locale.value = val;
-    }
-  }
-);
 </script>
 
 <template>

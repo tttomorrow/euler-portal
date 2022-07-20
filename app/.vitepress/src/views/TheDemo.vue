@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 import { getMeetingData } from '@/api/api-calendar';
 import { TableData } from '@/shared/@types/type-calendar';
@@ -7,6 +7,8 @@ import { TableData } from '@/shared/@types/type-calendar';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
+import Anchor from '@/components/Anchor.vue';
+import TagFilter from '@/components/TagFilter.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
@@ -64,77 +66,131 @@ const calendarData = ref<TableData[]>([
     ],
   },
 ]);
+
+const anchorData = ['anchor1', 'anchor2', 'anchor3'];
+
+// tagFiter start
+const tagArr = [
+  'anchor1',
+  'anchor2',
+  'anchor3',
+  'anchor1',
+  'anchor2',
+  'anchor3',
+  'anchor1',
+  'anchor2',
+  'anchor3',
+  'anchor1',
+  'anchor2',
+  'anchor3',
+  'anchor1',
+  'anchor1',
+  'anchor2',
+  'anchor3',
+  'anchor1',
+  'anchor2',
+  'anchor3',
+  'anchor1',
+  'anchor2',
+];
+const isAll = ref(false);
+const tagArrLen = computed(() => {
+  return isAll.value ? tagArr : tagArr.slice(0, 12);
+});
+const toggleClick = (flag: boolean) => {
+  isAll.value = flag;
+};
+
+const activeIndex = ref(0);
+const tagClick = (i: number) => {
+  activeIndex.value = i;
+};
+// tagFiter end
 </script>
 
 <template>
   <div class="demo">
-    <h4>OTable</h4>
-    <div class="page-box">
-      <OTable :data="tableData" style="width: 100%">
-        <OTableColumn label="Date" prop="date" width="180" />
-        <OTableColumn prop="name" label="Name" width="180" />
-        <OTableColumn prop="address" label="Address" />
-        <OTableColumn label="Date" prop="date">
-          <template #default="scope">
-            <div>{{ scope.row.date }}</div>
-          </template>
-        </OTableColumn>
-      </OTable>
+    <div id="anchor1">
+      <h4>OTable</h4>
+      <div class="page-box">
+        <OTable :data="tableData" style="width: 100%">
+          <OTableColumn label="Date" prop="date" width="180" />
+          <OTableColumn prop="name" label="Name" width="180" />
+          <OTableColumn prop="address" label="Address" />
+          <OTableColumn label="Date" prop="date">
+            <template #default="scope">
+              <div>{{ scope.row.date }}</div>
+            </template>
+          </OTableColumn>
+        </OTable>
+      </div>
+
+      <h4>OPagination</h4>
+      <div class="page-box">
+        <OPagination
+          v-model:currentPage="currentPage1"
+          v-model:page-size="pageSize4"
+          :page-sizes="[100, 200, 300, 400]"
+          :background="true"
+          layout="sizes, prev, pager, next, slot, jumper"
+          :total="total"
+        >
+          <span>5/50</span>
+        </OPagination>
+      </div>
+      <h4>BannerLevel2.vue</h4>
+      <BannerLevel2
+        :background-image="banner"
+        background-text="CONTENT"
+        title="SIG"
+        subtitle="SIG 就是 Special Interest Group 的缩写，openEuler 社区按照不同的 SIG 来组织"
+        :illustration="search"
+      />
     </div>
-
-    <h4>OPagination</h4>
-    <div class="page-box">
-      <OPagination
-        v-model:currentPage="currentPage1"
-        v-model:page-size="pageSize4"
-        :page-sizes="[100, 200, 300, 400]"
-        :background="true"
-        layout="sizes, prev, pager, next, slot, jumper"
-        :total="total"
-      >
-        <span>5/50</span>
-      </OPagination>
+    <div id="anchor2">
+      <h4>BannerLevel3.vue</h4>
+      <BannerLevel3
+        :background-image="banner"
+        background-text="CONTENT"
+        title="下载"
+      />
+      <h4>日历</h4>
+      <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
     </div>
+    <div id="anchor3">
+      <h4>TagFilter</h4>
+      <TagFilter label="全部" :show="true" @toggle-click="toggleClick">
+        <OTag
+          v-for="(item, index) in tagArrLen"
+          :type="activeIndex === index ? 'primary' : 'text'"
+          :key="'tag' + index"
+          @click="tagClick(index)"
+        >
+          {{ item }}
+        </OTag>
+      </TagFilter>
 
-    <h4>BannerLevel2.vue</h4>
-    <BannerLevel2
-      :background-image="banner"
-      background-text="CONTENT"
-      title="SIG"
-      subtitle="SIG 就是 Special Interest Group 的缩写，openEuler 社区按照不同的 SIG 来组织"
-      :illustration="search"
-    />
+      <h4>OTag</h4>
+      <OTag type="text">OTag-0</OTag>
+      <OTag type="primary">OTag-0</OTag>
+      <OTag type="secondary">特殊tag</OTag>
+      <OTag size="small">OTag-1</OTag>
 
-    <h4>BannerLevel3.vue</h4>
-    <BannerLevel3
-      :background-image="banner"
-      background-text="CONTENT"
-      title="下载"
-    />
+      <h4>封装elementplus OInput</h4>
+      <OInput v-model="inputName"></OInput>
 
-    <h4>OButton</h4>
-    <OButton>OButton</OButton>
+      <h4>封装elementplus OCard</h4>
+      <OCard header="OCard" shadow="hover"></OCard>
 
-    <h4>OTag</h4>
-    <OTag type="text">OTag-0</OTag>
-    <OTag type="primary">OTag-0</OTag>
-    <OTag type="secondary">特殊tag</OTag>
-    <OTag size="small">OTag-1</OTag>
-
-    <h4>封装elementplus OInput</h4>
-    <OInput v-model="inputName"></OInput>
-
-    <h4>封装elementplus OCard</h4>
-    <OCard header="OCard" shadow="hover"></OCard>
-
-    <h4>OTimelien</h4>
-    <OTimeline
-      v-model="date"
-      :right-arrow="true"
-      :left-arrow="true"
-    ></OTimeline>
-    <h4>日历</h4>
-    <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
+      <h4>OTimelien</h4>
+      <OTimeline
+        v-model="date"
+        :right-arrow="true"
+        :left-arrow="true"
+      ></OTimeline>
+    </div>
+    <h4>Anchor</h4>
+    <Anchor :data="anchorData" />
   </div>
 </template>
 
@@ -151,5 +207,8 @@ const calendarData = ref<TableData[]>([
 h4 {
   margin-top: 30px;
   margin-bottom: 10px;
+}
+body {
+  background: var(--o-color-bg2);
 }
 </style>

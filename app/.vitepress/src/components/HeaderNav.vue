@@ -12,13 +12,15 @@ defineProps({
 });
 
 interface NavItem {
-  id: string;
-  label: string;
-  path: string;
+  NAME: string;
+  PATH: string;
+  ID: string;
+  IS_OPEN_WINDOW?: Number;
+  IS_OPEN_MINISITE_WINDOW?: string;
 }
 
 const router = useRouter();
-const data = useData();
+const { lang, theme } = useData();
 const activeItem = ref(router.route.path.split('/')[2]);
 watch(
   () => router.route.path,
@@ -27,34 +29,30 @@ watch(
     activeItem.value = p;
   }
 );
-
-const emits = defineEmits(['nav-click']);
-// 点击大导航事件
-const handleClick = (item: NavItem) => {
-  emits('nav-click', item);
-};
-
 // 点击子导航事件
-const handleChildClick = (item: NavItem) => {
-  if (item.path.includes('https')) {
-    window.open(item.path, '_blank');
-  } else {
-    emits('nav-click', item);
-    router.go(`/${data.lang.value}/${item.path}/`);
+const goPath = (item: NavItem) => {
+  if (item.IS_OPEN_WINDOW) {
+    window.open(theme.value.docsUrl + item.PATH);
+    return;
+  }
+  if (item.IS_OPEN_MINISITE_WINDOW) {
+    window.open(item.PATH);
+    return;
+  }
+  if (item.PATH) {
+    router.go(lang.value + item.PATH);
   }
   isShow.value = false;
 };
 
 const isShow = ref(true);
 const navActive = ref('');
-
-//鼠标移入大导航事件
 const showSub = (item: NavItem) => {
-  navActive.value = item.id;
+  navActive.value = item.ID;
   isShow.value = true;
+  console.log(navActive.value);
 };
 
-// 鼠标移出大导航事件
 const hideSub = () => {
   navActive.value = '';
 };
@@ -62,32 +60,31 @@ const hideSub = () => {
 
 <template>
   <nav class="o-nav">
-    <ul class="o-nav-list">
+    <ul class="o-nav-list" :class="{ 'lang-en': lang == 'en' }">
       <li
         v-for="item in navItems"
-        :key="item.id"
+        :key="item.ID"
         :class="{
-          active: activeItem === item.id,
-          hover: navActive === item.id,
+          active: activeItem === item.ID,
+          hover: navActive === item.ID,
         }"
         @mouseenter="showSub(item)"
         @mouseleave="hideSub()"
       >
-        <span @click="handleClick(item)">{{ item.label }} </span>
-        <template v-if="isShow">
-          <div class="sub-menu">
-            <ul class="sub-menu-content">
-              <li
-                v-for="children in item.children"
-                :key="children.id"
-                class="sub-menu-item"
-                @click="handleChildClick(children)"
-              >
-                {{ children.label }}
-              </li>
-            </ul>
-          </div>
-        </template>
+        <span @click="goPath(item)">{{ item.NAME }} </span>
+
+        <div class="sub-menu" v-if="isShow">
+          <ul class="sub-menu-content">
+            <li
+              v-for="(subItem, subItemIndex) in item.CHILDREN"
+              :key="subItemIndex"
+              class="sub-menu-item"
+              @click="goPath(subItem)"
+            >
+              {{ subItem.NAME }}
+            </li>
+          </ul>
+        </div>
       </li>
     </ul>
   </nav>
