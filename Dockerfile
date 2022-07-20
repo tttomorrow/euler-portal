@@ -19,4 +19,3 @@ ENV RUN_USER nginx
 ENV RUN_GROUP nginx
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
-

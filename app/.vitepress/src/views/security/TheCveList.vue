@@ -7,79 +7,69 @@ import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 import IconSearch from '~icons/app/icon-search.svg';
 
-import { getSecurityList } from '@/api/api-security';
-import { useData, useRouter } from 'vitepress';
+import { getCveList } from '@/api/api-security';
+import { useData } from 'vitepress';
 
-const router = useRouter();
-const { theme: i18n } = useData();
 const inputName = ref('');
+const { theme: i18n } = useData();
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-
 interface query {
   page: number;
-  pageSize: number;
+  size: number;
 }
 
-interface securityLists {
-  affectedComponent: string;
-  affectedProduct: string;
+interface cveLists {
   announcementTime: string;
-  securityNoticeNo: string;
+  cveId: string;
+  cvsssCoreOE: string;
+  status: string;
   summary: string;
-  type: string;
+  updateTime: string;
 }
 
-const tableData = ref<securityLists[]>([
+const tableData = ref<cveLists[]>([
   {
-    affectedComponent: '',
-    affectedProduct: '',
     announcementTime: '',
-    securityNoticeNo: '',
+    cveId: '',
+    cvsssCoreOE: '',
+    status: '',
     summary: '',
-    type: '',
+    updateTime: '',
   },
 ]);
 
 const queryData: query = reactive({
   page: 1,
-  pageSize: 10,
+  size: 10,
 });
-
-function getSecurityLists(data) {
+function getCveLists(data) {
   try {
-    getSecurityList(data).then((res: any) => {
-      tableData.value = res.result.securityNoticeList;
+    getCveList(data).then((res: any) => {
+      tableData.value = res.result.cveDatabaseList;
       total.value = res.result.totalCount;
     });
   } catch (e) {}
 }
-getSecurityLists(queryData);
-
+getCveLists(queryData);
 const handleSizeChange = (val: number) => {
-  queryData.pageSize = val;
+  queryData.size = val;
 };
 const handleCurrentChange = (val: number) => {
   queryData.page = val;
 };
-
-function jumpBulletinDetail(val) {
-  router.go(`zh/security/safety-bulletin/detail/?id=${JSON.stringify(val)}`);
-}
-
 watch(queryData, () =>
-  getSecurityLists({
-    pages: { page: queryData.page, size: queryData.pageSize },
+  getCveLists({
+    pages: { page: queryData.page, size: queryData.size },
   })
 );
 </script>
-
 <template>
-  <div class="wrapper">
+  <div>
     <BannerLevel2
       :background-image="banner"
       background-text="CONTENT"
-      :title="i18n.security.SECURITY_ADVISORIES"
+      :title="i18n.security.CVE"
       subtitle=""
       :illustration="search"
     />
@@ -96,55 +86,39 @@ watch(queryData, () =>
           <span
             v-for="item in i18n.security.SEVERITY_LIST"
             :key="item"
-            class="category-item"
+            class="category-item active"
             >{{ item.NAME }}</span
           >
         </div>
       </template>
-      <div class="card-body">
-        <span class="category">{{ i18n.security.YEAR }}</span>
-        <span class="category-item">2021</span>
-      </div>
     </OCard>
     <OTable :data="tableData" style="width: 100%">
-      <el-table-column>
-        <template #header>
-          <span>{{ i18n.security.ADVISORY }}</span>
-        </template>
-        <template #default="scope">
-          <span @click="jumpBulletinDetail(scope.row.securityNoticeNo)">
-            {{ scope.row.securityNoticeNo }}
-          </span>
-        </template>
-      </el-table-column>
+      <OTableColumn :label="i18n.security.CVE" prop="cveId"> </OTableColumn>
       <OTableColumn
         :label="i18n.security.SYNOPSIS"
         prop="summary"
       ></OTableColumn>
       <OTableColumn
-        :label="i18n.security.SEVERITY"
-        prop="type"
-        width="140"
+        :label="i18n.security.CVSS_SCORE"
+        prop="cvsssCoreOE"
       ></OTableColumn>
       <OTableColumn
-        :label="i18n.security.AFFECTED_PRODUCTS"
-        prop="affectedProduct"
-      ></OTableColumn>
-      <OTableColumn
-        :label="i18n.security.AFFECTED_COMPONENTS"
-        prop="affectedComponent"
-        width="200"
-      ></OTableColumn>
-      <OTableColumn
+        width="210"
         :label="i18n.security.RELEASE_DATE"
-        prop="announcementTime"
-        width="160"
+        prop="updateTime"
       ></OTableColumn>
+      <OTableColumn
+        width="210"
+        :label="i18n.security.MODIFIED_TIME"
+        prop="updateTime"
+      ></OTableColumn>
+      <OTableColumn :label="i18n.security.STATUS" prop="status"></OTableColumn>
+      <OTableColumn :label="i18n.security.OPERATION"> </OTableColumn>
     </OTable>
     <OPagination
       class="pagination"
       :background="true"
-      v-model:page-size="queryData.pageSize"
+      v-model:page-size="queryData.size"
       v-model:currentPage="queryData.page"
       :page-sizes="[10, 20, 40, 80]"
       :layout="layout"
@@ -156,7 +130,6 @@ watch(queryData, () =>
     </OPagination>
   </div>
 </template>
-
 <style lang="scss" scoped>
 .filter-card {
   margin: var(--o-spacing-s3) 0;
@@ -176,12 +149,10 @@ watch(queryData, () =>
     line-height: var(--o-line-height-text);
     margin-left: var(--o-spacing-s4);
   }
-  .card-header {
-    padding-bottom: 19px;
-    border-bottom: 1px solid #ccc;
-  }
-  .card-body {
-    padding-top: 19px;
+  .active {
+    border: 1px solid #002fa7;
+    color: #002fa7;
+    padding: 3px 12px;
   }
 }
 .pagination {
