@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 
-import { getMeetingData } from '@/api/api-calendar';
-import { TableData } from '@/shared/@types/type-calendar';
-
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
