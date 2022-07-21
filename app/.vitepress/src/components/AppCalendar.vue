@@ -101,7 +101,9 @@ function changeTab(index: number) {
         return item.activity_category === index - 1;
       });
     }
-  } catch (error) {}
+  } catch (error) {
+    throw Error();
+  }
 }
 
 function meetClick(day: string) {
@@ -136,7 +138,9 @@ function meetClick(day: string) {
         isMeeting.value = false;
       }
     });
-  } catch (e) {}
+  } catch (e) {
+    throw Error();
+  }
 }
 
 // 为日历单元格绑定会议次数 (弃用)
