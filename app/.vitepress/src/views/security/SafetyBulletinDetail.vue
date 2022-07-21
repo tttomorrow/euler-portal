@@ -1,31 +1,34 @@
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue';
 import { useData } from 'vitepress';
+
 import { getSecurityDetail } from '@/api/api-security';
+import { DetailParams } from '@/shared/@types/type-bulletin-detail';
+
 const { theme: i18n } = useData();
-const index1 = decodeURIComponent(window.location.href).indexOf('"');
-const index2 = decodeURIComponent(window.location.href).indexOf(
-  '"',
-  index1 + 1
-);
-interface QueryParams {
-  securityNoticeNo: string;
-}
-const queryData: QueryParams = reactive({
+
+const queryData: DetailParams = reactive({
   securityNoticeNo: '',
 });
-queryData.securityNoticeNo = decodeURIComponent(window.location.href).substring(
-  index1 + 1,
-  index2
-);
+
 function getSecurityDetailInfo(data: any) {
   try {
     getSecurityDetail(data).then((res: any) => {
       return res;
     });
-  } catch (e) {}
+  } catch (e: any) {
+    throw new Error(e);
+  }
 }
 onMounted(() => {
+  const index1 = decodeURIComponent(window.location.href).indexOf('"');
+  const index2 = decodeURIComponent(window.location.href).indexOf(
+    '"',
+    index1 + 1
+  );
+  queryData.securityNoticeNo = decodeURIComponent(
+    window.location.href
+  ).substring(index1 + 1, index2);
   getSecurityDetailInfo(queryData);
 });
 </script>
