@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, CSSProperties, defineProps } from 'vue';
+import { computed, CSSProperties } from 'vue';
 
 const props = defineProps({
   backgroundImage: {
@@ -62,28 +62,56 @@ const rootStyle = computed(() => {
 .banner-level2 {
   width: 100%;
   min-height: 280px;
-  padding-top: 50px;
+  // padding-top: 50px;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: var(--o-color-brand);
+
+  @media screen and (max-width: 768px) {
+    min-height: 126px;
+  }
+
   .wrap {
     max-width: 1504px;
+    margin: 0 auto;
     padding: 0 44px;
     display: flex;
     justify-content: space-between;
-    height: 100%;
+    min-height: 280px;
+    @media screen and (max-width: 768px) {
+      min-height: 126px;
+      padding: 0 24px;
+    }
     .banner-text {
       position: relative;
+      padding-top: 50px;
       padding-bottom: 20px;
+
+      @media screen and (max-width: 768px) {
+        padding-top: 32px;
+        padding-bottom: 16px;
+      }
 
       .banner-text-bg {
         position: absolute;
-        top: 10px;
+        top: 60px;
         color: #2e4fb0;
         opacity: 0.8;
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
         font-weight: bold;
+        user-select: none;
+
+        @media screen and (max-width: 1080px) {
+          font-size: var(--o-font-size-h2);
+          line-height: var(--o-line-height-h2);
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-h6);
+          line-height: var(--o-line-height-h6);
+          top: 32px;
+        }
       }
       .banner-title {
         position: relative;
@@ -92,6 +120,17 @@ const rootStyle = computed(() => {
         font-size: var(--o-font-size-h2);
         line-height: var(--o-line-height-h2);
         margin-top: var(--o-spacing-h2);
+
+        @media screen and (max-width: 1080px) {
+          font-size: var(--o-font-size-h3);
+          line-height: var(--o-line-height-h3);
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-h6);
+          line-height: var(--o-line-height-h6);
+          margin-top: var(--o-spacing-h6);
+        }
       }
 
       .banner-subtitle {
@@ -100,10 +139,37 @@ const rootStyle = computed(() => {
         color: var(--o-color-text);
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
-        margin-top: 6px;
+        margin-top: var(--o-spacing-h9);
+
+        @media screen and (max-width: 1080px) {
+          font-size: var(--o-font-size-h7);
+          line-height: var(--o-line-height-h7);
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-h8);
+          line-height: var(--o-line-height-h8);
+        }
       }
     }
     .banner-illustration {
+      margin-left: var(--o-spacing-h7);
+      display: flex;
+      flex-direction: column-reverse;
+      object-fit: fill;
+
+      @media screen and (max-width: 768px) {
+        justify-content: center;
+      }
+
+      img {
+        max-height: 230px;
+
+        @media screen and (max-width: 768px) {
+          justify-content: center;
+          max-height: 94px;
+        }
+      }
     }
   }
 }

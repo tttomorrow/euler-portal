@@ -2,6 +2,8 @@
 import { ref, watch } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
+import { debounce } from 'lodash';
+
 defineProps({
   navItems: {
     type: Object,
@@ -15,13 +17,14 @@ interface NavItem {
   NAME: string;
   PATH: string;
   ID: string;
-  IS_OPEN_WINDOW?: Number;
+  IS_OPEN_WINDOW?: number;
   IS_OPEN_MINISITE_WINDOW?: string;
 }
 
 const router = useRouter();
 const { lang, theme } = useData();
 const activeItem = ref(router.route.path.split('/')[2]);
+
 watch(
   () => router.route.path,
   (val: string) => {
@@ -39,22 +42,30 @@ const goPath = (item: NavItem) => {
     window.open(item.PATH);
     return;
   }
+
   if (item.PATH) {
-    router.go(lang.value + item.PATH);
+    router.go('/' + lang.value + item.PATH);
   }
   isShow.value = false;
 };
 
 const isShow = ref(true);
 const navActive = ref('');
-const showSub = (item: NavItem) => {
-  navActive.value = item.ID;
-  isShow.value = true;
-  console.log(navActive.value);
-};
-
-const hideSub = () => {
-  navActive.value = '';
+const toggleSubDebounced = (item: NavItem | null) => {
+  debounce(
+    () => {
+      if (item === null) {
+        navActive.value = '';
+      } else {
+        navActive.value = item.ID;
+        isShow.value = true;
+      }
+    },
+    300,
+    {
+      trailing: true,
+    }
+  )();
 };
 </script>
 
@@ -68,12 +79,12 @@ const hideSub = () => {
           active: activeItem === item.ID,
           hover: navActive === item.ID,
         }"
-        @mouseenter="showSub(item)"
-        @mouseleave="hideSub()"
+        @mouseenter="toggleSubDebounced(item)"
+        @mouseleave="toggleSubDebounced(null)"
       >
-        <span @click="goPath(item)">{{ item.NAME }} </span>
+        <span class="text" @click="goPath(item)">{{ item.NAME }} </span>
 
-        <div class="sub-menu" v-if="isShow">
+        <div v-if="isShow" class="sub-menu">
           <ul class="sub-menu-content">
             <li
               v-for="(subItem, subItemIndex) in item.CHILDREN"
@@ -102,7 +113,7 @@ const hideSub = () => {
       display: inline-flex;
       align-items: center;
       height: 100%;
-      margin: 0 var(--o-spacing-h4);
+      padding: 0 var(--o-spacing-h4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-h8);
       color: var(--o-color-text2);
@@ -127,9 +138,9 @@ const hideSub = () => {
       &::after {
         content: '';
         position: absolute;
-        left: 0;
+        left: var(--o-spacing-h4);
         bottom: 0;
-        right: 0;
+        width: calc(100% - var(--o-spacing-h4) * 2);
         height: 2px;
         border-radius: 1px;
         transition: all 0.3s ease-in-out;

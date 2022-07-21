@@ -1,3 +1,6 @@
+---
+title: '角色说明'
+---
 <script setup>
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner-secondary.png';
@@ -33,6 +36,7 @@ class="app-header"
 />
 
 <div class="markdown">
+
 <OTable :data="tableData" class="duty-table">
   <OTableColumn prop="SigName" label="SIG名称"/>
   <OTableColumn prop="Gitee" label="Gitee主页"/>
@@ -121,16 +125,3 @@ class="app-header"
 * 召集SIG组会议：定期召集SIG会议，决策SIG内上升的争议。
 
 </div>
-
-<style scoped lang="scss">
-  .markdown {
-    margin-top: 64px;
-    .duty-table {
-    margin-top: 24px;
-    margin-bottom: 16px;
-   }
-  }
-  ul {
-    list-style: disc;
-  }
-</style>

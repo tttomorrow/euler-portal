@@ -24,11 +24,11 @@ const toggle = () => {
 <template>
   <div class="tag-filter">
     <span class="label">{{ label }}</span>
-    <div class="tag-filter-box">
+    <div class="tag-filter-box" :class="{ max: isDown }">
       <slot />
     </div>
-    <div class="more" v-if="show" :class="{ active: isDown }">
-      <OIcon @click="toggle" class="icon">
+    <div v-if="show" class="more" :class="{ active: isDown }">
+      <OIcon class="icon" @click="toggle">
         <IconDown />
       </OIcon>
     </div>
@@ -39,7 +39,7 @@ const toggle = () => {
 .tag-filter {
   display: grid;
   background: var(--o-color-bg);
-  padding: var(--o-spacing-h4) var(--o-spacing-h2);
+  padding: var(--o-spacing-h6) 0;
   grid-template-columns: 60px auto 60px;
   gap: var(--o-spacing-h4);
   position: relative;
@@ -52,8 +52,8 @@ const toggle = () => {
   }
   .more {
     position: absolute;
-    top: var(--o-spacing-h4);
-    right: var(--o-spacing-h2);
+    top: var(--o-spacing-h6);
+    right: var(--o-spacing-h4);
     transition: all 0.3s;
     .icon {
       font-size: var(--o-font-size-h5);
@@ -62,6 +62,26 @@ const toggle = () => {
     }
     &.active {
       transform: rotate(-180deg);
+    }
+  }
+  &-box {
+    &.max {
+      max-height: 90px;
+      overflow: auto;
+      &::-webkit-scrollbar-track {
+        border-radius: 4px;
+        background-color: #fff;
+      }
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        background-color: #fff;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: #ccc;
+      }
     }
   }
 }

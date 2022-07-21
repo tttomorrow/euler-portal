@@ -63,11 +63,6 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-cve/, ''),
       },
-      '/api-cve': {
-        target: 'https://www.openeuler.org/api-cve',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-cve/, ''),
-      },
     },
   },
 });

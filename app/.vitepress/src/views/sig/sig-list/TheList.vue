@@ -1,4 +1,3 @@
-
 <template>
   <OTable></OTable>
 </template>

@@ -48,268 +48,279 @@ export default {
     COMPATIBILITY: '兼容性列表',
     MIGRATION: '迁移指南',
   },
-  NAV_ROUTER_CONFIG: [{
-    PATH: '',
-    NAME: '下载',
-    ID: 'download',
-    CHILDREN: [
-      {
-        NAME: 'ISO',
-        ID: 'iso',
-        PATH: '/download/'
-      },
-      {
-        NAME: '镜像仓列表',
-        ID: 'mirror-list',
-        PATH: '/mirror/list/'
-      }
-    ],
-    CLASS: []
-  },
-  {
-    NAME: '学习',
-    ID: 'learning',
-    CHILDREN: [
-      {
-        NAME: '文档',
-        PATH: '/zh/',
-        ID: 'docs',
-        IS_OPEN_WINDOW: 1
-      },
-      {
-        NAME: '慕课',
-        ID: 'mooc',
-        PATH: '/learn/mooc/'
-      },
-      {
-        NAME: '实习',
-        ID: 'internship',
-        PATH: '/internship/'
-      }
-    ],
-    CLASS: []
-  },
-  {
-    PATH: '',
-    NAME: '互动',
-    ID: 'connect',
-    CHILDREN: [{
-      NAME: '新闻',
-      ID: 'news',
-      PATH: '/interaction/news-list/'
+  NAV_ROUTER_CONFIG: [
+    {
+      PATH: '',
+      NAME: '下载',
+      ID: 'download',
+      CHILDREN: [
+        {
+          NAME: 'ISO',
+          ID: 'iso',
+          PATH: '/download/',
+        },
+        {
+          NAME: '镜像仓列表',
+          ID: 'mirror-list',
+          PATH: '/mirror/list/',
+        },
+      ],
+      CLASS: [],
     },
     {
-      NAME: '博客',
-      ID: 'blog',
-      PATH: '/interaction/blog-list/'
+      NAME: '学习',
+      ID: 'learning',
+      CHILDREN: [
+        {
+          NAME: '文档',
+          PATH: '/zh/',
+          ID: 'docs',
+          IS_OPEN_WINDOW: 1,
+        },
+        {
+          NAME: '慕课',
+          ID: 'mooc',
+          PATH: '/learn/mooc/',
+        },
+        {
+          NAME: '实习',
+          ID: 'internship',
+          PATH: '/internship/',
+        },
+      ],
+      CLASS: [],
     },
     {
-      NAME: '直播',
-      ID: 'live',
-      PATH: '/interaction/live-list/'
+      PATH: '',
+      NAME: '互动',
+      ID: 'connect',
+      CHILDREN: [
+        {
+          NAME: '新闻',
+          ID: 'news',
+          PATH: '/interaction/news-list/',
+        },
+        {
+          NAME: '博客',
+          ID: 'blog',
+          PATH: '/interaction/blog-list/',
+        },
+        {
+          NAME: '直播',
+          ID: 'live',
+          PATH: '/interaction/live-list/',
+        },
+        {
+          NAME: '沙龙',
+          ID: 'salon',
+          PATH: '/interaction/salon-list/',
+        },
+        {
+          NAME: '峰会',
+          ID: 'summit',
+          PATH: '/interaction/summit-list/devday2022/',
+        },
+      ],
+      OTHER_CHILDREN: [
+        {
+          PATH: '/news/',
+        },
+        {
+          PATH: '/blog/',
+        },
+      ],
+      CLASS: [],
     },
     {
-      NAME: '沙龙',
-      ID: 'salon',
-      PATH: '/interaction/salon-list/'
+      PATH: '',
+      NAME: '社区',
+      ID: 'community',
+      CHILDREN: [
+        {
+          NAME: '贡献攻略',
+          ID: 'contribution',
+          PATH: '/community/contribution/',
+        },
+        {
+          NAME: '行为守则',
+          ID: 'convention',
+          PATH: '/community/conduct/',
+        },
+        {
+          NAME: '邮件列表',
+          ID: 'mailing-list',
+          PATH: '/community/mailing-list/',
+        },
+        {
+          NAME: '个人认证',
+          ID: 'certification',
+          PATH: '/community/certification-services/',
+        },
+      ],
+      CLASS: [],
     },
     {
-      NAME: '峰会',
-      ID: 'summit',
-      PATH: '/interaction/summit-list/devday2022/'
-    }
-    ],
-    OTHER_CHILDREN: [
-      {
-        PATH: '/news/'
-      },
-      {
-        PATH: '/blog/'
-      }
-    ],
-    CLASS: []
-  },
-  {
-    PATH: '',
-    NAME: '社区',
-    ID: 'community',
-    CHILDREN: [{
-      NAME: '贡献攻略',
-      ID: 'contribution',
-      PATH: '/community/contribution/'
+      PATH: '',
+      NAME: 'SIG',
+      ID: 'sig',
+      CHILDREN: [
+        {
+          NAME: '查看SIG',
+          ID: 'sig-list',
+          PATH: '/sig/sig-list/',
+        },
+        {
+          NAME: '申请流程',
+          ID: 'application',
+          PATH: '/sig/sig-guidance/',
+        },
+        {
+          NAME: '角色说明',
+          ID: 'roles',
+          PATH: '/sig/role-description/',
+        },
+        {
+          NAME: '会议指南',
+          ID: 'meeting-guide',
+          PATH: '/sig/meeting-guide/',
+        },
+      ],
+      CLASS: [],
     },
     {
-      NAME: '行为守则',
-      ID: 'convention',
-      PATH: '/community/conduct/'
+      PATH: '',
+      NAME: '探索',
+      ID: 'discovery',
+      CHILDREN: [
+        {
+          NAME: 'A-Tune',
+          ID: 'atune',
+          PATH: '/other/projects/atune',
+        },
+        {
+          NAME: 'Bisheng JDK',
+          ID: 'bishengjdk',
+          PATH: '/other/projects/bishengjdk',
+        },
+        {
+          NAME: 'iSula',
+          ID: 'isula',
+          PATH: '/other/projects/isula',
+        },
+        {
+          NAME: 'secGear',
+          ID: 'secgear',
+          PATH: '/other/projects/secgear',
+        },
+        {
+          NAME: 'StratoVirt',
+          ID: 'stratovirt',
+          PATH: '/other/projects/stratovirt',
+        },
+        {
+          NAME: 'Compass-CI',
+          ID: 'compass-ci',
+          PATH: 'https://compass-ci.openeuler.org/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'Compliance',
+          ID: 'compliance',
+          PATH: 'https://compliance.openeuler.org/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'Pkgship',
+          ID: 'pkgship',
+          PATH: 'https://pkgmanage.openeuler.org/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+      ],
+      CLASS: [],
     },
     {
-      NAME: '邮件列表',
-      ID: 'mailing-list',
-      PATH: '/community/mailing-list/'
+      PATH: '',
+      NAME: '支持',
+      ID: 'support',
+      CHILDREN: [
+        {
+          NAME: '漏洞管理',
+          ID: 'vulnerability-reporting',
+          PATH: '/security/vulnerability-reporting/',
+        },
+        {
+          NAME: '安全公告',
+          ID: 'safety-bulletin',
+          PATH: '/security/safety-bulletin/',
+        },
+        {
+          NAME: 'CVE',
+          ID: 'cve',
+          PATH: '/security/cve/',
+        },
+        {
+          NAME: '兼容性列表',
+          ID: 'compatibility',
+          PATH: '/compatibility/',
+        },
+        {
+          NAME: '迁移指南',
+          ID: 'migration',
+          PATH: '/other/migration/',
+        },
+      ],
+      CLASS: [],
     },
-    {
-      NAME: '个人认证',
-      ID: 'certification',
-      PATH: '/community/certification-services/'
-    },
-    ],
-    CLASS: []
-  },
-  {
-    PATH: '',
-    NAME: 'SIG',
-    ID: 'sig',
-    CHILDREN: [{
-      NAME: '查看SIG',
-      ID: 'sig-list',
-      PATH: '/sig/sig-list/'
-    },
-    {
-      NAME: '申请流程',
-      ID: 'application',
-      PATH: '/sig/sig-guidance/'
-    },
-    {
-      NAME: '角色说明',
-      ID: 'roles',
-      PATH: '/sig/role-description/'
-    },
-    {
-      NAME: '会议指南',
-      ID: 'meeting-guide',
-      PATH: '/sig/meeting-guide/'
-    }
-    ],
-    CLASS: []
-  },
-  {
-    PATH: '',
-    NAME: '探索',
-    ID: 'discovery',
-    CHILDREN: [{
-      NAME: 'A-Tune',
-      ID: 'atune',
-      PATH: '/other/projects/atune'
-    },
-    {
-      NAME: 'Bisheng JDK',
-      ID: 'bishengjdk',
-      PATH: '/other/projects/bishengjdk'
-    },
-    {
-      NAME: 'iSula',
-      ID: 'isula',
-      PATH: '/other/projects/isula'
-    },
-    {
-      NAME: 'secGear',
-      ID: 'secgear',
-      PATH: '/other/projects/secgear'
-    },
-    {
-      NAME: 'StratoVirt',
-      ID: 'stratovirt',
-      PATH: '/other/projects/stratovirt'
-    },
-    {
-      NAME: 'Compass-CI',
-      ID: 'compass-ci',
-      PATH: 'https://compass-ci.openeuler.org/',
-      IS_OPEN_MINISITE_WINDOW: 1
-    },
-    {
-      NAME: 'Compliance',
-      ID: 'compliance',
-      PATH: 'https://compliance.openeuler.org/',
-      IS_OPEN_MINISITE_WINDOW: 1
-    },
-    {
-      NAME: 'Pkgship',
-      ID: 'pkgship',
-      PATH: 'https://pkgmanage.openeuler.org/',
-      IS_OPEN_MINISITE_WINDOW: 1
-    }
-    ],
-    CLASS: []
-  },
-  {
-    PATH: '',
-    NAME: '支持',
-    ID: 'support',
-    CHILDREN: [{
-      NAME: '漏洞管理',
-      ID: 'vulnerability-reporting',
-      PATH: '/security/vulnerability-reporting/'
-    },
-    {
-      NAME: '安全公告',
-      ID: 'safety-bulletin',
-      PATH: '/security/safety-bulletin/'
-    },
-    {
-      NAME: 'CVE',
-      ID: 'cve',
-      PATH: '/security/cve/'
-    },
-    {
-      NAME: '兼容性列表',
-      ID: 'compatibility',
-      PATH: '/compatibility/'
-    },
-    {
-      NAME: '迁移指南',
-      ID: 'migration',
-      PATH: '/other/migration/'
-    }
-    ],
-    CLASS: []
-  }
   ],
   LANG: '中文',
   LANG_LIST: ['中文', 'English', 'Русский'],
   GITTE: '源码',
   CODE: '代码',
-  GITTE_RESOURCE_LIST: [{
-    NAME: '代码仓',
-    URL: 'https://gitee.com/openeuler'
-  },
-  {
-    NAME: '软件包仓',
-    URL: 'https://gitee.com/src-openeuler'
-  },
-  {
-    NAME: 'GitHub镜像仓',
-    URL: 'https://github.com/openeuler-mirror'
-  }
+  GITTE_RESOURCE_LIST: [
+    {
+      NAME: '代码仓',
+      URL: 'https://gitee.com/openeuler',
+    },
+    {
+      NAME: '软件包仓',
+      URL: 'https://gitee.com/src-openeuler',
+    },
+    {
+      NAME: 'GitHub镜像仓',
+      URL: 'https://github.com/openeuler-mirror',
+    },
   ],
   FOOTER: {
-    ATOM_TEXT: 'openEuler 是由开放原子开源基金会（OpenAtom Foundation）孵化及运营的开源项目',
+    ATOM_TEXT:
+      'openEuler 是由开放原子开源基金会（OpenAtom Foundation）孵化及运营的开源项目',
     ATOM_PC: '/atom-pc.png',
     ATOM_MO: '/atom-mo.png',
     MAIL: 'contact@openeuler.io',
     COPY_RIGHT: '版权所有 © 2022 openEuler 保留一切权利',
-    RIGHT_LIST: [{
-      NAME: '品牌',
-      URL: '/other/brand/'
-    },
-    {
-      NAME: '隐私政策',
-      URL: '/other/privacy/'
-    },
-    {
-      NAME: '法律声明',
-      URL: '/other/legal/'
-    },
-    {
-      NAME: '服务状态',
-      URL: 'https://status.openeuler.org/'
-    },
+    RIGHT_LIST: [
+      {
+        NAME: '品牌',
+        URL: '/other/brand/',
+      },
+      {
+        NAME: '隐私政策',
+        URL: '/other/privacy/',
+      },
+      {
+        NAME: '法律声明',
+        URL: '/other/legal/',
+      },
+      {
+        NAME: '服务状态',
+        URL: 'https://status.openeuler.org/',
+      },
     ],
-    QR_CODE: '扫码关注公众号'
+    LINKS: [],
+    QR_CODE: 'openEuler公众号',
+    QR_ASSISTANT: 'openEuler小助手',
   },
   BUILDING: {
     BUILDING: '建设中',
-    BUILDINGMES: '敬请期待...'
-  }
+    BUILDINGMES: '敬请期待...',
+  },
 };

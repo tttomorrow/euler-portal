@@ -143,14 +143,12 @@ const urlStyle = computed(() => {
   }
   &-name {
     font-size: var(--o-font-size-h5);
-    font-family: 'PingFangSC-Medium, PingFang SC';
     line-height: var(--o-line-height-h5);
   }
 
   &-desc {
     margin-top: var(--o-spacing-h5);
     font-size: var(--o-font-size-text);
-    font-family: 'PingFangSC-Regular, PingFang SC';
     color: var(--o-color-text3);
     line-height: var(--o-line-height-h8);
     overflow: hidden;
@@ -184,7 +182,6 @@ const urlStyle = computed(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    font-family: 'PingFangSC-Regular, PingFang SC';
     color: var(--o-color-brand);
   }
 }
@@ -197,7 +194,6 @@ const urlStyle = computed(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    font-family: 'PingFangSC-Regular, PingFang SC';
     color: var(--o-color-brand);
   }
 }
@@ -210,7 +206,6 @@ const urlStyle = computed(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    font-family: 'PingFangSC-Regular, PingFang SC';
     color: var(--o-color-brand);
   }
 }

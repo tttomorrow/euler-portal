@@ -1,63 +1,101 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
-// import { useI18n } from 'vue-i18n';
 
-import footerLogo from '@/assets/footer-logo2.png';
-import atomLogo from '@/assets/atom-pc.png';
-import wechatImg from '@/assets/qrcode.png';
+import LogoFooter from '@/assets/footer/footer-logo2.png';
+import LogoAtom from '@/assets/footer/atom-logo.svg';
+import LogoBilibili from '@/assets/footer/bilibili.png';
+import LogoInfoq from '@/assets/footer/infoq.png';
+import LogoJuejin from '@/assets/footer/juejin.png';
+import LogoOschina from '@/assets/footer/oschina.png';
+import LogoCsdn from '@/assets/footer/csdn.png';
+import Logo51cto from '@/assets/footer/51cto.png';
 
-interface NavItem {
-  id: string;
-  label: string;
-  path: string;
-}
-// const { t } = useI18n();
-const data = useData();
+// 公众号、小助手
+import CodeTitleXzs from '@/assets/footer/img-xzs.png';
+import CodeTitleGzh from '@/assets/footer/img-gzh.png';
+import CodeImgXzs from '@/assets/footer/code-xzs.png';
+import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
-// footer
-const footer = computed(() => {
-  return {
-    copyright: '版权所有 © 2022 openEuler 保留一切权利',
-    codeDesc: '扫码关注公众号',
-    email: 'contact@openlookeng.io',
-    footerOptions: [
-      {
-        id: 'brand',
-        label: '品牌',
-        path: '/other/brand/',
-      },
-      {
-        id: 'privacypolicy',
-        label: '隐私政策',
-        path: '/other/privacy/',
-      },
-      {
-        id: 'legalnotice',
-        label: '法律声明',
-        path: '/other/legal/',
-      },
-      {
-        id: 'serviceStatus',
-        label: '服务状态',
-        path: '',
-      },
-      {
-        id: 'serviceStatus',
-        label: '2021 年报',
-        path: '',
-      },
-    ],
-    atom: 'openEuler 是由开放原子开源基金会（OpenAtom Foundation）孵化及运营的开源项目',
-    atomLogo: atomLogo,
-  };
-});
+const { theme: i18n, lang } = useData();
 const router = useRouter();
-const handleNavClick = (link: NavItem) => {
-  if (link.path.startsWith('https:')) {
-    window.open(link.path, '_blank');
+
+interface linkItem {
+  path: string;
+  logo: string;
+  id: string;
+}
+
+// 友情链接
+const linksData = {
+  zh: [
+    {
+      path: 'https://my.oschina.net/openeuler',
+      logo: LogoOschina,
+      id: 'oschina',
+    },
+    {
+      path: 'https://blog.csdn.net/openEuler_?spm=1000.2115.3001.5343',
+      logo: LogoCsdn,
+      id: 'csdn',
+    },
+    {
+      path: 'https://juejin.cn/user/3183782863845454',
+      logo: LogoJuejin,
+      id: 'juejin',
+    },
+    {
+      path: 'https://space.bilibili.com/527064077/channel/series',
+      logo: LogoBilibili,
+      id: 'bilibili',
+    },
+    {
+      path: 'https://www.infoq.cn/profile/6E6CE3E2316F28/publish',
+      logo: LogoInfoq,
+      id: 'infoq',
+    },
+    {
+      path: 'https://blog.51cto.com/u_14948868',
+      logo: Logo51cto,
+      id: '51cto',
+    },
+  ],
+  en: [],
+  ru: [],
+};
+
+const footerLinks = computed(() => {
+  const result = ref<linkItem[]>([]);
+  if (lang.value === 'zh') {
+    result.value = linksData.zh;
+  }
+  if (lang.value === 'en') {
+    result.value = linksData.en;
+  }
+  if (lang.value === 'ru') {
+    result.value = linksData.ru;
+  }
+  return result;
+});
+
+const footerCodeList = [
+  {
+    img: CodeTitleXzs,
+    code: CodeImgXzs,
+    label: i18n.value.common.FOOTER.QR_CODE,
+  },
+  {
+    img: CodeTitleGzh,
+    code: CodeImgZgz,
+    label: i18n.value.common.FOOTER.QR_ASSISTANT,
+  },
+];
+
+const handleNavClick = (path: string) => {
+  if (path.startsWith('https:')) {
+    window.open(path, '_blank');
   } else {
-    router.go(`/${data.lang.value}` + link.path);
+    router.go(`/${lang.value}` + path);
   }
 };
 </script>
@@ -65,35 +103,62 @@ const handleNavClick = (link: NavItem) => {
 <template>
   <div class="footer">
     <div class="atom">
-      <p class="atom-text">{{ footer.atom }}}</p>
-      <img :src="footer.atomLogo" class="atom-logo" alt="" />
+      <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}</p>
+      <img :src="LogoAtom" class="atom-logo" alt="" />
     </div>
     <div class="footer-content">
       <div class="inner">
         <div class="footer-logo">
-          <img :src="footerLogo" alt="" />
+          <img :src="LogoFooter" alt="" />
           <p>
-            <a class="email" :href="'mailto:' + footer.email" target="_blank">
-              {{ footer.email }}
+            <a
+              class="email"
+              :href="'mailto:' + i18n.common.FOOTER.MAIL"
+              target="_blank"
+            >
+              {{ i18n.common.FOOTER.MAIL }}
             </a>
           </p>
         </div>
         <div class="footer-option">
           <div class="footer-option-item">
             <a
-              v-for="link in footer.footerOptions"
-              :key="link.id"
+              v-for="link in i18n.common.FOOTER.RIGHT_LIST"
+              :key="link.URL"
               href="javascript:;"
               class="link"
-              @click="handleNavClick(link)"
-              >{{ link.label }}</a
+              @click="handleNavClick(link.URL)"
+              >{{ link.NAME }}</a
             >
           </div>
-          <p class="copyright">{{ footer.copyright }}</p>
+          <p class="copyright">{{ i18n.common.FOOTER.COPY_RIGHT }}</p>
         </div>
         <div class="footer-right">
-          <img :src="wechatImg" class="img" alt="" />
-          <p class="text">{{ footer.codeDesc }}</p>
+          <div v-if="lang === 'zh'" class="code-box">
+            <a
+              v-for="(item, index) in footerCodeList"
+              :key="index"
+              class="code-pop"
+              href="javascript:;"
+            >
+              <img :src="item.img" class="code-img" alt="" />
+              <div class="code-layer">
+                <img :src="item.code" alt="" />
+                <p class="txt">{{ item.label }}</p>
+              </div>
+            </a>
+          </div>
+          <div class="footer-links">
+            <a
+              v-for="item in footerLinks"
+              :key="item.id"
+              :href="item.path"
+              class="img"
+              target="_blank"
+            >
+              <img :src="item.logo" alt="" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -107,29 +172,42 @@ $color: #fff;
   .atom {
     text-align: center;
     max-width: 1416px;
-    padding: 64px 0 40px;
+    padding: var(--o-spacing-h3) 0 var(--o-spacing-h4);
     position: relative;
     margin: 0 auto;
-    display: none;
+    @media (max-width: 1440px) {
+      padding: var(--o-spacing-h4) 0;
+      margin: 0 var(--o-spacing-h4);
+    }
+
     &-text {
-      font-size: var(--o-font-size-h5);
+      font-size: var(--o-font-size-h6);
       font-weight: 400;
       color: $color;
-      line-height: var(--o-line-height-h5);
+      line-height: var(--o-line-height-h6);
+      @media (max-width: 1440px) {
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+      }
     }
     &-logo {
-      height: 48px;
-      margin-top: 40px;
+      height: 40px;
+      margin-top: 16px;
+      @media (max-width: 1100px) {
+        height: 30px;
+      }
     }
     &::after {
-      background: #e5e5e5;
-      opacity: 0.12;
+      background: rgba(229, 229, 229, 0.12);
       position: absolute;
       bottom: 0px;
       left: 0;
       width: 1416px;
       content: '';
       height: 2px;
+      @media (max-width: 1440px) {
+        width: 100%;
+      }
     }
   }
 
@@ -141,92 +219,168 @@ $color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 42px 0 64px;
+      padding: 18px 0 32px;
       position: relative;
-      min-height: 210px;
+      min-height: 118px;
+      @media (max-width: 1439px) {
+        padding: var(--o-spacing-h4);
+        flex-direction: column;
+        justify-content: space-between;
+      }
     }
   }
-  &-logo img {
-    height: 60px;
+  &-logo {
+    flex: 1;
+    img {
+      height: 46px;
+    }
+    @media (max-width: 1439px) {
+      text-align: center;
+      margin: 16px 0 40px;
+    }
   }
 
   .copyright {
     font-size: var(--o-font-size-text);
     color: $color;
     margin-top: var(--o-spacing-h5);
+    @media (max-width: 1439px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      margin-top: var(--o-spacing-h8);
+    }
   }
 
   .footer-option {
     text-align: center;
-
     .link {
       color: $color;
       font-size: var(--o-font-size-text);
       display: inline-block;
-      padding: 0 12px;
+      padding: 0 var(--o-spacing-h6);
       border-right: 1px solid $color;
       &:last-child {
         border-right: 0;
       }
+      @media (max-width: 1439px) {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        padding: 0 var(--o-spacing-h9);
+      }
+    }
+    @media (max-width: 1439px) {
+      order: -1;
     }
   }
 
   .footer-right {
-    text-align: center;
-    .img {
-      width: 78px;
-      width: 78px;
-      vertical-align: top;
+    flex: 1;
+    .code-box {
+      display: flex;
+      justify-content: right;
+      gap: 16px;
+      margin-bottom: 18px;
+      .code-pop {
+        position: relative;
+        height: 20px;
+        display: block;
+        > img {
+          height: 100%;
+          object-fit: cover;
+        }
+        .code-layer {
+          position: absolute;
+          top: -105px;
+          left: -32px;
+          z-index: 99;
+          display: none;
+          background: #fff;
+          padding: 6px;
+          img {
+            width: 78px;
+            height: 78px;
+          }
+          .txt {
+            font-size: 12px;
+            color: $color;
+            display: none;
+          }
+          &::after {
+            border: 10px solid transparent;
+            content: '';
+            border-top-color: #fff;
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: block;
+          }
+          @media (max-width: 800px) {
+            display: block;
+            position: initial;
+            background: none;
+            padding: 0;
+            text-align: center;
+            &::after {
+              display: none !important;
+            }
+            .txt {
+              display: block;
+            }
+          }
+        }
+        &:hover {
+          .code-layer {
+            display: block;
+          }
+        }
+        @media (max-width: 800px) {
+          height: auto;
+          > img {
+            display: none;
+          }
+        }
+      }
+      @media (max-width: 1439px) {
+        justify-content: center;
+      }
     }
+    .footer-links {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      gap: 12px;
+      .img {
+        height: 14px;
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      @media (max-width: 1439px) {
+        justify-content: center;
+      }
+      @media (max-width: 800px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        text-align: center;
+        margin-top: 40px;
+        .img {
+          height: 16px;
+        }
+      }
+    }
+
     p {
       color: $color;
       font-size: var(--o-font-size-tip);
       margin-top: var(--o-spacing-h8);
     }
   }
-  .link {
-    color: $color;
-    font-size: 14px;
-  }
+
   .email {
     color: $color;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 1100px) {
-  .footer {
-    padding: var(--o-spacing-h2) 0 0;
-    .atom-text {
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-    }
-    .atom-logo {
-      height: 32px;
-      margin: var(--o-spacing-h5) 0 var(--o-spacing-h4);
-    }
-    .wrapper {
-      display: grid;
-      text-align: center;
-      justify-content: center;
-      padding: var(--o-spacing-h4) 0;
-    }
-    .footer-logo {
-      margin: var(--o-spacing-h5) 0;
-      img {
-        margin-bottom: 4px;
-      }
-    }
-    .footer-option {
-      order: -1;
-      .link {
-        font-size: var(--o-font-size-tip);
-      }
-      .copyright {
-        font-size: var(--o-font-size-tip);
-        margin-top: var(--o-spacing-h8);
-      }
-    }
+    font-size: 14px;
   }
 }
 </style>
