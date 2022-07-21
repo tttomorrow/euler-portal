@@ -22,6 +22,7 @@ const attrs = useAttrs();
 
   :deep.el-pagination {
     --el-pagination-button-bg-color: var(--o-pagination-bg-color_disabled);
+    justify-content: center;
     .el-input {
       --el-input-bg-color: var(--o-pagination-bg-color_disabled);
       --el-input-text-color: var(--o-pagination-font-color);
@@ -60,12 +61,12 @@ const attrs = useAttrs();
       }
     }
     .btn-next {
-      margin-right: var(--o-spacing-s2);
+      margin-right: var(--o-spacing-h5);
     }
     .el-pagination__jump {
       color: var(--o-color-base_inverse);
       border-radius: 0px;
-      margin-left: var(--o-spacing-s4);
+      margin-left: var(--o-spacing-h4);
     }
   }
 }

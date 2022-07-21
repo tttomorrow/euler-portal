@@ -1,25 +1,20 @@
 <script lang="ts" setup>
 import { reactive, ref, watch } from 'vue';
-
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 import IconSearch from '~icons/app/icon-search.svg';
-
 import { getCveList } from '@/api/api-security';
 import { useData } from 'vitepress';
-
 const inputName = ref('');
 const { theme: i18n } = useData();
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-interface query {
+interface QueryParams {
   page: number;
   size: number;
 }
-
-interface cveLists {
+interface CveLists {
   announcementTime: string;
   cveId: string;
   cvsssCoreOE: string;
@@ -27,8 +22,7 @@ interface cveLists {
   summary: string;
   updateTime: string;
 }
-
-const tableData = ref<cveLists[]>([
+const tableData = ref<CveLists[]>([
   {
     announcementTime: '',
     cveId: '',
@@ -38,8 +32,7 @@ const tableData = ref<cveLists[]>([
     updateTime: '',
   },
 ]);
-
-const queryData: query = reactive({
+const queryData: QueryParams = reactive({
   page: 1,
   size: 10,
 });
@@ -116,13 +109,13 @@ watch(queryData, () =>
       <OTableColumn :label="i18n.security.OPERATION"> </OTableColumn>
     </OTable>
     <OPagination
-      class="pagination"
-      :background="true"
       v-model:page-size="queryData.size"
       v-model:currentPage="queryData.page"
+      class="pagination"
       :page-sizes="[10, 20, 40, 80]"
       :layout="layout"
       :total="total"
+      :background="true"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     >
@@ -132,7 +125,7 @@ watch(queryData, () =>
 </template>
 <style lang="scss" scoped>
 .filter-card {
-  margin: var(--o-spacing-s3) 0;
+  margin: var(--o-spacing-h4) 0;
   .category {
     display: inline-block;
     width: 56px;
@@ -147,7 +140,7 @@ watch(queryData, () =>
     font-weight: 400;
     color: var(--o-color-text3);
     line-height: var(--o-line-height-text);
-    margin-left: var(--o-spacing-s4);
+    margin-left: var(--o-spacing-h4);
   }
   .active {
     border: 1px solid #002fa7;
@@ -156,7 +149,7 @@ watch(queryData, () =>
   }
 }
 .pagination {
-  margin: var(--o-spacing-m) 0 var(--o-spacing-l) 0;
+  margin: var(--o-spacing-h2) 0 var(--o-spacing-h1) 0;
   margin-left: 50%;
   transform: translateX(-50%);
 }
