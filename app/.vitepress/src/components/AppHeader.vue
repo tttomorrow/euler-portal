@@ -5,9 +5,9 @@ import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
 
-import SearchIcon from '~icons/app/search.svg';
-import XIcon from '~icons/app/x.svg';
-import MenuIcon from '~icons/app/menu.svg';
+import IconSearch from '~icons/app/search.svg';
+import IconX from '~icons/app/x.svg';
+import IconMenu from '~icons/app/menu.svg';
 
 const router = useRouter();
 const configData = useData();
@@ -19,229 +19,9 @@ interface NavItem {
   PATH: string;
   ID: string;
   CHILDREN: NavItem;
-  IS_OPEN_WINDOW?: Number;
+  IS_OPEN_WINDOW?: number;
   IS_OPEN_MINISITE_WINDOW?: string;
 }
-
-// 导航列表
-const navItems = computed(() => {
-  return [
-    {
-      id: 'download',
-      label: i18n.value.common.NAV_ROUTER.DOWNLOAD,
-      path: 'download',
-      children: [
-        {
-          id: 'iso',
-          label: i18n.value.common.NAV_ROUTER.ISO,
-          path: 'download',
-        },
-        {
-          id: 'mirror',
-          label: i18n.value.common.NAV_ROUTER.MIRRORLIST,
-          path: 'mirror',
-        },
-      ],
-    },
-    {
-      id: 'learn',
-      label: i18n.value.common.NAV_ROUTER.LEARNING,
-      path: 'learn',
-      children: [
-        {
-          id: 'docs',
-          label: i18n.value.common.NAV_ROUTER.DOCS,
-          path: '',
-        },
-        {
-          id: 'mooc',
-          label: i18n.value.common.NAV_ROUTER.MOOC,
-          path: 'learning/mooc',
-        },
-        {
-          id: 'internship',
-          label: i18n.value.common.NAV_ROUTER.INTERNSHIP,
-          path: 'learning/internship',
-        },
-      ],
-    },
-    {
-      id: 'interaction',
-      label: i18n.value.common.NAV_ROUTER.CONNECT,
-      path: '',
-      children: [
-        {
-          id: 'news',
-          label: i18n.value.common.NAV_ROUTER.NEWS,
-          path: 'interaction/news-list',
-        },
-        {
-          id: 'blog',
-          label: i18n.value.common.NAV_ROUTER.BLOG,
-          path: 'interaction/blog-list',
-        },
-        {
-          id: 'live',
-          label: i18n.value.common.NAV_ROUTER.LIVE,
-          path: 'interaction/live-list',
-        },
-        {
-          id: 'salon',
-          label: i18n.value.common.NAV_ROUTER.SALON,
-          path: 'interaction/salon-list',
-        },
-        {
-          id: 'summit',
-          label: i18n.value.common.NAV_ROUTER.SUMMIT,
-          path: 'interaction/summit-list',
-        },
-      ],
-    },
-    {
-      id: 'community',
-      label: i18n.value.common.NAV_ROUTER.COMMUNITY,
-      path: '',
-      children: [
-        {
-          id: 'contribution',
-          label: i18n.value.common.NAV_ROUTER.CONTRIBUTION,
-          path: 'community/contribution',
-        },
-        {
-          id: 'conduct',
-          label: i18n.value.common.NAV_ROUTER.CONVENTION,
-          path: 'community/conduct',
-        },
-        {
-          id: 'events',
-          label: i18n.value.common.NAV_ROUTER.MAILINGLIST,
-          path: 'community/mailing-list',
-        },
-        {
-          id: 'certification',
-          label: i18n.value.common.NAV_ROUTER.CERTIFICATION,
-          path: 'community/certification-services',
-        },
-        {
-          id: 'talent',
-          label: i18n.value.common.NAV_ROUTER.TALENT,
-          path: 'https://training-assessment.osinfra.cn/login/index?sxz-lang=zh_CN',
-        },
-        {
-          id: 'statistics',
-          label: i18n.value.common.NAV_ROUTER.STATISTICS,
-          path: 'https://datastat.openeuler.org/en/overview',
-        },
-      ],
-    },
-    {
-      id: 'sig',
-      label: i18n.value.common.NAV_ROUTER.SIG,
-      path: '',
-      children: [
-        {
-          id: 'siglist',
-          label: i18n.value.common.NAV_ROUTER.SIGLIST,
-          path: 'sig/sig-list',
-        },
-        {
-          id: 'guidance',
-          label: i18n.value.common.NAV_ROUTER.APPLICATION,
-          path: 'sig/sig-guidance',
-        },
-        {
-          id: 'role',
-          label: i18n.value.common.NAV_ROUTER.ROLES,
-          path: 'sig/role-description',
-        },
-        {
-          id: 'meeting',
-          label: i18n.value.common.NAV_ROUTER.MEETINGGUIDE,
-          path: 'sig/meeting-guide',
-        },
-      ],
-    },
-    {
-      id: 'projects',
-      label: i18n.value.common.NAV_ROUTER.DISCOVERY,
-      path: 'other/projects',
-      children: [
-        {
-          id: 'atune',
-          label: i18n.value.common.NAV_ROUTER.ATUNE,
-          path: 'other/projects/atune',
-        },
-        {
-          id: 'bishengjdk',
-          label: i18n.value.common.NAV_ROUTER.BISHENGJDK,
-          path: 'other/projects/bishengjdk',
-        },
-        {
-          id: 'isula',
-          label: i18n.value.common.NAV_ROUTER.ISULA,
-          path: 'other/projects/isula',
-        },
-        {
-          id: 'secgear',
-          label: i18n.value.common.NAV_ROUTER.SECGEAR,
-          path: 'other/projects/secgear',
-        },
-        {
-          id: 'compassci',
-          label: i18n.value.common.NAV_ROUTER.COMPASSCI,
-          path: 'https://compass-ci.openeuler.org',
-        },
-        {
-          id: 'compliance',
-          label: i18n.value.common.NAV_ROUTER.COMPLIANCE,
-          path: 'https://compliance.openeuler.org',
-        },
-        {
-          id: 'pkgmanage',
-          label: i18n.value.common.NAV_ROUTER.PKGSHIP,
-          path: 'https://pkgmanage.openeuler.org',
-        },
-      ],
-    },
-    {
-      id: 'security',
-      label: i18n.value.common.NAV_ROUTER.SUPPORT,
-      path: '',
-      children: [
-        {
-          id: 'vulnerability-reporting',
-          label: i18n.value.common.NAV_ROUTER.VULNERABILITY,
-          path: 'security/vulnerability-reporting',
-        },
-        {
-          id: 'safety-bulletin',
-          label: i18n.value.common.NAV_ROUTER.SAFETY,
-          path: 'security/safety-bulletin',
-        },
-        {
-          id: 'cve',
-          label: i18n.value.common.NAV_ROUTER.CVE,
-          path: 'security/cve/',
-        },
-        {
-          id: 'approve',
-          label: i18n.value.common.NAV_ROUTER.APPROVE,
-          path: 'approve/',
-        },
-        {
-          id: 'compliance',
-          label: i18n.value.common.NAV_ROUTER.COMPATIBILITY_EVALUATION,
-          path: '',
-        },
-        {
-          id: 'compatibility',
-          label: i18n.value.common.NAV_ROUTER.COMPATIBILITY,
-          path: 'compatibility/',
-        },
-      ],
-    },
-  ];
-});
 
 const navRouter = computed(() => {
   return i18n.value.common.NAV_ROUTER_CONFIG;
@@ -330,15 +110,15 @@ const goHome = () => {
       <!-- 移动端菜单图标 -->
       <div class="mobile-menu-icon" @click="mobileMenuPanel">
         <OIcon v-if="!mobileMenuIcon" class="icon">
-          <MenuIcon />
+          <IconMenu />
         </OIcon>
-        <OIcon v-else class="icon"><XIcon /></OIcon>
+        <OIcon v-else class="icon"><IconX /></OIcon>
       </div>
       <img
         class="logo"
         alt="openEuler logo"
-        @click="goHome"
         src="../assets/logo.png"
+        @click="goHome"
       />
       <div class="header-content">
         <div class="header-nav">
@@ -346,7 +126,7 @@ const goHome = () => {
         </div>
         <div class="header-tool">
           <div class="header-tool-search">
-            <OIcon class="icon"><SearchIcon /></OIcon>
+            <OIcon class="icon"><IconSearch /></OIcon>
           </div>
           <!-- 中英文切换 -->
           <AppLanguage :device="isPC" />

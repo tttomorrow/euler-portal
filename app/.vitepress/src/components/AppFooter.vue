@@ -1,63 +1,61 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
-// import { useI18n } from 'vue-i18n';
 
-import footerLogo from '@/assets/footer-logo2.png';
-import atomLogo from '@/assets/atom-pc.png';
-import wechatImg from '@/assets/qrcode.png';
+import LogoFooter from '@/assets/footer/footer-logo2.png';
+import LogoAtom from '@/assets/footer/atom-logo.svg';
+import LogoBilibili from '@/assets/footer/bilibili.png';
+import LogoInfoq from '@/assets/footer/infoq.png';
+import LogoJuejin from '@/assets/footer/juejin.png';
+import LogoOschina from '@/assets/footer/oschina.png';
+import LogoCsdn from '@/assets/footer/csdn.png';
+import Logo51cto from '@/assets/footer/51cto.png';
 
-interface NavItem {
-  id: string;
-  label: string;
-  path: string;
-}
-// const { t } = useI18n();
-const data = useData();
+import ImgXzs from '@/assets/footer/img-xzs.png';
+import ImgGzh from '@/assets/footer/img-gzh.png';
+import CodeXzs from '@/assets/footer/code-xzs.png';
+import CodeZgz from '@/assets/footer/code-zgz.png';
 
-// footer
-const footer = computed(() => {
-  return {
-    copyright: '版权所有 © 2022 openEuler 保留一切权利',
-    codeDesc: '扫码关注公众号',
-    email: 'contact@openlookeng.io',
-    footerOptions: [
-      {
-        id: 'brand',
-        label: '品牌',
-        path: '/other/brand/',
-      },
-      {
-        id: 'privacypolicy',
-        label: '隐私政策',
-        path: '/other/privacy/',
-      },
-      {
-        id: 'legalnotice',
-        label: '法律声明',
-        path: '/other/legal/',
-      },
-      {
-        id: 'serviceStatus',
-        label: '服务状态',
-        path: '',
-      },
-      {
-        id: 'serviceStatus',
-        label: '2021 年报',
-        path: '',
-      },
-    ],
-    atom: 'openEuler 是由开放原子开源基金会（OpenAtom Foundation）孵化及运营的开源项目',
-    atomLogo: atomLogo,
-  };
-});
+const { theme: i18n, lang } = useData();
+
+// 友情链接
+const footerLinks = [
+  {
+    path: '',
+    logo: LogoOschina,
+    id: 'oschina',
+  },
+  {
+    path: '',
+    logo: LogoCsdn,
+    id: 'csdn',
+  },
+  {
+    path: '',
+    logo: LogoJuejin,
+    id: 'juejin',
+  },
+  {
+    path: '',
+    logo: LogoBilibili,
+    id: 'bilibili',
+  },
+  {
+    path: '',
+    logo: LogoInfoq,
+    id: 'infoq',
+  },
+  {
+    path: '',
+    logo: Logo51cto,
+    id: '51cto',
+  },
+];
 const router = useRouter();
-const handleNavClick = (link: NavItem) => {
-  if (link.path.startsWith('https:')) {
-    window.open(link.path, '_blank');
+const handleNavClick = (path: string) => {
+  if (path.startsWith('https:')) {
+    window.open(path, '_blank');
   } else {
-    router.go(`/${data.lang.value}` + link.path);
+    router.go(`/${lang.value}` + path);
   }
 };
 </script>
@@ -65,35 +63,63 @@ const handleNavClick = (link: NavItem) => {
 <template>
   <div class="footer">
     <div class="atom">
-      <p class="atom-text">{{ footer.atom }}}</p>
-      <img :src="footer.atomLogo" class="atom-logo" alt="" />
+      <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}}</p>
+      <img :src="LogoAtom" class="atom-logo" alt="" />
     </div>
     <div class="footer-content">
       <div class="inner">
         <div class="footer-logo">
-          <img :src="footerLogo" alt="" />
+          <img :src="LogoFooter" alt="" />
           <p>
-            <a class="email" :href="'mailto:' + footer.email" target="_blank">
-              {{ footer.email }}
+            <a
+              class="email"
+              :href="'mailto:' + i18n.common.FOOTER.MAIL"
+              target="_blank"
+            >
+              {{ i18n.common.FOOTER.MAIL }}
             </a>
           </p>
         </div>
         <div class="footer-option">
           <div class="footer-option-item">
             <a
-              v-for="link in footer.footerOptions"
-              :key="link.id"
+              v-for="link in i18n.common.FOOTER.RIGHT_LIST"
+              :key="link.URL"
               href="javascript:;"
               class="link"
-              @click="handleNavClick(link)"
-              >{{ link.label }}</a
+              @click="handleNavClick(link.URL)"
+              >{{ link.NAME }}</a
             >
           </div>
-          <p class="copyright">{{ footer.copyright }}</p>
+          <p class="copyright">{{ i18n.common.FOOTER.COPY_RIGHT }}</p>
         </div>
         <div class="footer-right">
-          <img :src="wechatImg" class="img" alt="" />
-          <p class="text">{{ footer.codeDesc }}</p>
+          <div class="code-box">
+            <a href="javascript:;" class="code-pop">
+              <img :src="ImgXzs" class="img-xzs" alt="" />
+              <div class="code-layer">
+                <img :src="CodeXzs" alt="" />
+              </div>
+            </a>
+            <a href="javascript:;" class="code-pop">
+              <img :src="ImgGzh" class="img-gzh" alt="" />
+              <div class="code-layer">
+                <img :src="CodeZgz" alt="" />
+              </div>
+            </a>
+          </div>
+          <div class="footer-links">
+            <a
+              v-for="item in footerLinks"
+              :key="item.id"
+              :href="item.path"
+              class="img"
+              :title="item.id"
+              target="_blank"
+            >
+              <img :src="item.logo" alt="" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -107,19 +133,19 @@ $color: #fff;
   .atom {
     text-align: center;
     max-width: 1416px;
-    padding: 64px 0 40px;
+    padding: 32px 0 24px;
     position: relative;
     margin: 0 auto;
-    display: none;
+
     &-text {
-      font-size: var(--o-font-size-h5);
+      font-size: var(--o-font-size-h6);
       font-weight: 400;
       color: $color;
-      line-height: var(--o-line-height-h5);
+      line-height: var(--o-line-height-h6);
     }
     &-logo {
-      height: 48px;
-      margin-top: 40px;
+      height: 40px;
+      margin-top: 16px;
     }
     &::after {
       background: #e5e5e5;
@@ -141,13 +167,16 @@ $color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 42px 0 64px;
+      padding: 18px 0 32px;
       position: relative;
-      min-height: 210px;
+      min-height: 118px;
     }
   }
-  &-logo img {
-    height: 60px;
+  &-logo {
+    min-width: 385px;
+    img {
+      height: 46px;
+    }
   }
 
   .copyright {
@@ -172,12 +201,65 @@ $color: #fff;
   }
 
   .footer-right {
-    text-align: center;
-    .img {
-      width: 78px;
-      width: 78px;
-      vertical-align: top;
+    text-align: right;
+    .code-box {
+      display: flex;
+      justify-content: right;
+      gap: 16px;
+      margin-bottom: 18px;
+      .code-pop {
+        position: relative;
+        height: 20px;
+        display: block;
+        > img {
+          height: 100%;
+          object-fit: cover;
+        }
+        .code-layer {
+          position: absolute;
+          top: -105px;
+          left: -32px;
+          z-index: 99;
+          display: none;
+          background: #fff;
+          padding: 6px;
+          img {
+            width: 78px;
+            height: 78px;
+          }
+          &::after {
+            border: 10px solid transparent;
+            content: '';
+            border-top-color: #fff;
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: block;
+          }
+        }
+        &:hover {
+          .code-layer {
+            display: block;
+          }
+        }
+      }
     }
+    .footer-links {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      gap: 12px;
+      .img {
+        height: 14px;
+        display: inline-flex;
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
     p {
       color: $color;
       font-size: var(--o-font-size-tip);
@@ -190,7 +272,7 @@ $color: #fff;
   }
   .email {
     color: $color;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 

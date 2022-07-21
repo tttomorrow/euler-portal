@@ -7,8 +7,8 @@ const props = defineProps({
     default: '',
   },
   data: {
-    type: Array as () => string[],
-    default: [],
+    type: Array,
+    default: () => [],
   },
   offsetValue: {
     type: Number,
@@ -33,7 +33,8 @@ const scroll = () => {
   const targetArr: any = ref([]);
   targetArr.value = props.data.filter(function (item) {
     return (
-      scrollTop + props.offsetValue > document.getElementById(item).offsetTop
+      scrollTop + props.offsetValue >
+      (document.getElementById(item) as HTMLAnchorElement).offsetTop
     );
   });
 

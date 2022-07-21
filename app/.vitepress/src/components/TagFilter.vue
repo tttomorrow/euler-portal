@@ -27,8 +27,8 @@ const toggle = () => {
     <div class="tag-filter-box">
       <slot />
     </div>
-    <div class="more" v-if="show" :class="{ active: isDown }">
-      <OIcon @click="toggle" class="icon">
+    <div v-if="show" class="more" :class="{ active: isDown }">
+      <OIcon class="icon" @click="toggle">
         <IconDown />
       </OIcon>
     </div>
