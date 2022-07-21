@@ -66,33 +66,10 @@ const calendarData = ref<TableData[]>([
 
 const anchorData = ['anchor1', 'anchor2', 'anchor3'];
 
-// tagFiter start
-const tagArr = [
-  'anchor1',
-  'anchor2',
-  'anchor3',
-  'anchor1',
-  'anchor2',
-  'anchor3',
-  'anchor1',
-  'anchor2',
-  'anchor3',
-  'anchor1',
-  'anchor2',
-  'anchor3',
-  'anchor1',
-  'anchor1',
-  'anchor2',
-  'anchor3',
-  'anchor1',
-  'anchor2',
-  'anchor3',
-  'anchor1',
-  'anchor2',
-];
+// tagFiter strart
 const isAll = ref(false);
 const tagArrLen = computed(() => {
-  return isAll.value ? tagArr : tagArr.slice(0, 12);
+  return isAll.value ? 30 : 10;
 });
 const toggleClick = (flag: boolean) => {
   isAll.value = flag;
@@ -176,10 +153,14 @@ onMounted(() => {
           :type="activeIndex === index ? 'primary' : 'text'"
           @click="tagClick(index)"
         >
-          {{ item }}
+          {{ 'TagFilter' + index }}
         </OTag>
       </TagFilter>
-    </div>
+      <TagFilter label="全部">
+        <OButton v-for="(item, index) in 10" :key="'tag' + index">
+          {{ item }}
+        </OButton>
+      </TagFilter>
 
     <div class="demo-box">
       <h4>OTag</h4>

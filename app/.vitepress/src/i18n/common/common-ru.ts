@@ -277,6 +277,7 @@ export default {
       },
     ],
     QR_CODE: 'Подписка на WeChat',
+    QR_ASSISTANT: 'openeuler Assistant',
   },
   BUILDING: {
     BUILDING: 'Создание',

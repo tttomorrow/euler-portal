@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import LogoFooter from '@/assets/footer/footer-logo2.png';
@@ -10,47 +11,86 @@ import LogoOschina from '@/assets/footer/oschina.png';
 import LogoCsdn from '@/assets/footer/csdn.png';
 import Logo51cto from '@/assets/footer/51cto.png';
 
-import ImgXzs from '@/assets/footer/img-xzs.png';
-import ImgGzh from '@/assets/footer/img-gzh.png';
-import CodeXzs from '@/assets/footer/code-xzs.png';
-import CodeZgz from '@/assets/footer/code-zgz.png';
+// 公众号、小助手
+import CodeTitleXzs from '@/assets/footer/img-xzs.png';
+import CodeTitleGzh from '@/assets/footer/img-gzh.png';
+import CodeImgXzs from '@/assets/footer/code-xzs.png';
+import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
 const { theme: i18n, lang } = useData();
+const router = useRouter();
+
+interface linkItem {
+  path: string;
+  logo: string;
+  id: string;
+}
 
 // 友情链接
-const footerLinks = [
+const linksData = {
+  zh: [
+    {
+      path: 'https://my.oschina.net/openeuler',
+      logo: LogoOschina,
+      id: 'oschina',
+    },
+    {
+      path: 'https://blog.csdn.net/openEuler_?spm=1000.2115.3001.5343',
+      logo: LogoCsdn,
+      id: 'csdn',
+    },
+    {
+      path: 'https://juejin.cn/user/3183782863845454',
+      logo: LogoJuejin,
+      id: 'juejin',
+    },
+    {
+      path: 'https://space.bilibili.com/527064077/channel/series',
+      logo: LogoBilibili,
+      id: 'bilibili',
+    },
+    {
+      path: 'https://www.infoq.cn/profile/6E6CE3E2316F28/publish',
+      logo: LogoInfoq,
+      id: 'infoq',
+    },
+    {
+      path: 'https://blog.51cto.com/u_14948868',
+      logo: Logo51cto,
+      id: '51cto',
+    },
+  ],
+  en: [],
+  ru: [],
+};
+
+const footerLinks = computed(() => {
+  const result = ref<linkItem[]>([]);
+  if (lang.value === 'zh') {
+    result.value = linksData.zh;
+  }
+  if (lang.value === 'en') {
+    result.value = linksData.en;
+  }
+  if (lang.value === 'ru') {
+    result.value = linksData.ru;
+  }
+  return result;
+});
+
+const footerCodeList = [
   {
-    path: '',
-    logo: LogoOschina,
-    id: 'oschina',
+    img: CodeTitleXzs,
+    code: CodeImgXzs,
+    label: i18n.value.common.FOOTER.QR_CODE,
   },
   {
-    path: '',
-    logo: LogoCsdn,
-    id: 'csdn',
-  },
-  {
-    path: '',
-    logo: LogoJuejin,
-    id: 'juejin',
-  },
-  {
-    path: '',
-    logo: LogoBilibili,
-    id: 'bilibili',
-  },
-  {
-    path: '',
-    logo: LogoInfoq,
-    id: 'infoq',
-  },
-  {
-    path: '',
-    logo: Logo51cto,
-    id: '51cto',
+    img: CodeTitleGzh,
+    code: CodeImgZgz,
+    label: i18n.value.common.FOOTER.QR_ASSISTANT,
   },
 ];
-const router = useRouter();
+
 const handleNavClick = (path: string) => {
   if (path.startsWith('https:')) {
     window.open(path, '_blank');
@@ -63,7 +103,7 @@ const handleNavClick = (path: string) => {
 <template>
   <div class="footer">
     <div class="atom">
-      <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}}</p>
+      <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}</p>
       <img :src="LogoAtom" class="atom-logo" alt="" />
     </div>
     <div class="footer-content">
@@ -94,17 +134,17 @@ const handleNavClick = (path: string) => {
           <p class="copyright">{{ i18n.common.FOOTER.COPY_RIGHT }}</p>
         </div>
         <div class="footer-right">
-          <div class="code-box">
-            <a href="javascript:;" class="code-pop">
-              <img :src="ImgXzs" class="img-xzs" alt="" />
+          <div v-if="lang === 'zh'" class="code-box">
+            <a
+              v-for="(item, index) in footerCodeList"
+              :key="index"
+              class="code-pop"
+              href="javascript:;"
+            >
+              <img :src="item.img" class="code-img" alt="" />
               <div class="code-layer">
-                <img :src="CodeXzs" alt="" />
-              </div>
-            </a>
-            <a href="javascript:;" class="code-pop">
-              <img :src="ImgGzh" class="img-gzh" alt="" />
-              <div class="code-layer">
-                <img :src="CodeZgz" alt="" />
+                <img :src="item.code" alt="" />
+                <p class="txt">{{ item.label }}</p>
               </div>
             </a>
           </div>
@@ -114,7 +154,6 @@ const handleNavClick = (path: string) => {
               :key="item.id"
               :href="item.path"
               class="img"
-              :title="item.id"
               target="_blank"
             >
               <img :src="item.logo" alt="" />
@@ -133,29 +172,42 @@ $color: #fff;
   .atom {
     text-align: center;
     max-width: 1416px;
-    padding: 32px 0 24px;
+    padding: var(--o-spacing-h3) 0 var(--o-spacing-h4);
     position: relative;
     margin: 0 auto;
+    @media (max-width: 1440px) {
+      padding: var(--o-spacing-h4) 0;
+      margin: 0 var(--o-spacing-h4);
+    }
 
     &-text {
       font-size: var(--o-font-size-h6);
       font-weight: 400;
       color: $color;
       line-height: var(--o-line-height-h6);
+      @media (max-width: 1440px) {
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+      }
     }
     &-logo {
       height: 40px;
       margin-top: 16px;
+      @media (max-width: 1100px) {
+        height: 30px;
+      }
     }
     &::after {
-      background: #e5e5e5;
-      opacity: 0.12;
+      background: rgba(229, 229, 229, 0.12);
       position: absolute;
       bottom: 0px;
       left: 0;
       width: 1416px;
       content: '';
       height: 2px;
+      @media (max-width: 1440px) {
+        width: 100%;
+      }
     }
   }
 
@@ -170,12 +222,21 @@ $color: #fff;
       padding: 18px 0 32px;
       position: relative;
       min-height: 118px;
+      @media (max-width: 1439px) {
+        padding: var(--o-spacing-h4);
+        flex-direction: column;
+        justify-content: space-between;
+      }
     }
   }
   &-logo {
-    min-width: 385px;
+    flex: 1;
     img {
       height: 46px;
+    }
+    @media (max-width: 1439px) {
+      text-align: center;
+      margin: 16px 0 40px;
     }
   }
 
@@ -183,25 +244,37 @@ $color: #fff;
     font-size: var(--o-font-size-text);
     color: $color;
     margin-top: var(--o-spacing-h5);
+    @media (max-width: 1439px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      margin-top: var(--o-spacing-h8);
+    }
   }
 
   .footer-option {
     text-align: center;
-
     .link {
       color: $color;
       font-size: var(--o-font-size-text);
       display: inline-block;
-      padding: 0 12px;
+      padding: 0 var(--o-spacing-h6);
       border-right: 1px solid $color;
       &:last-child {
         border-right: 0;
       }
+      @media (max-width: 1439px) {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        padding: 0 var(--o-spacing-h9);
+      }
+    }
+    @media (max-width: 1439px) {
+      order: -1;
     }
   }
 
   .footer-right {
-    text-align: right;
+    flex: 1;
     .code-box {
       display: flex;
       justify-content: right;
@@ -227,6 +300,11 @@ $color: #fff;
             width: 78px;
             height: 78px;
           }
+          .txt {
+            font-size: 12px;
+            color: $color;
+            display: none;
+          }
           &::after {
             border: 10px solid transparent;
             content: '';
@@ -237,12 +315,34 @@ $color: #fff;
             transform: translateX(-50%);
             display: block;
           }
+          @media (max-width: 800px) {
+            display: block;
+            position: initial;
+            background: none;
+            padding: 0;
+            text-align: center;
+            &::after {
+              display: none !important;
+            }
+            .txt {
+              display: block;
+            }
+          }
         }
         &:hover {
           .code-layer {
             display: block;
           }
         }
+        @media (max-width: 800px) {
+          height: auto;
+          > img {
+            display: none;
+          }
+        }
+      }
+      @media (max-width: 1439px) {
+        justify-content: center;
       }
     }
     .footer-links {
@@ -252,10 +352,21 @@ $color: #fff;
       gap: 12px;
       .img {
         height: 14px;
-        display: inline-flex;
         img {
           height: 100%;
           object-fit: cover;
+        }
+      }
+      @media (max-width: 1439px) {
+        justify-content: center;
+      }
+      @media (max-width: 800px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        text-align: center;
+        margin-top: 40px;
+        .img {
+          height: 16px;
         }
       }
     }
@@ -266,49 +377,10 @@ $color: #fff;
       margin-top: var(--o-spacing-h8);
     }
   }
-  .link {
-    color: $color;
-    font-size: 14px;
-  }
+
   .email {
     color: $color;
     font-size: 14px;
-  }
-}
-
-@media (max-width: 1100px) {
-  .footer {
-    padding: var(--o-spacing-h2) 0 0;
-    .atom-text {
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-    }
-    .atom-logo {
-      height: 32px;
-      margin: var(--o-spacing-h5) 0 var(--o-spacing-h4);
-    }
-    .wrapper {
-      display: grid;
-      text-align: center;
-      justify-content: center;
-      padding: var(--o-spacing-h4) 0;
-    }
-    .footer-logo {
-      margin: var(--o-spacing-h5) 0;
-      img {
-        margin-bottom: 4px;
-      }
-    }
-    .footer-option {
-      order: -1;
-      .link {
-        font-size: var(--o-font-size-tip);
-      }
-      .copyright {
-        font-size: var(--o-font-size-tip);
-        margin-top: var(--o-spacing-h8);
-      }
-    }
   }
 }
 </style>

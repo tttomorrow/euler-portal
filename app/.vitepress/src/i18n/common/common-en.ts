@@ -302,6 +302,7 @@ export default {
       },
     ],
     QR_CODE: 'WeChat Subscription',
+    QR_ASSISTANT: 'WeChat Assistant',
   },
   BUILDING: {
     BUILDING: 'Building',
