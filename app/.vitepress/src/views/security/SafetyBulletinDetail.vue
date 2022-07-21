@@ -34,12 +34,10 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div>
-    <div class="breadcrumb">
-      {{ i18n.security.SECURITY_ADVISORIES }}>{{
-        i18n.security.SECURITY_ADVISORIES_DETAIL
-      }}
-    </div>
+  <div class="breadcrumb">
+    {{ i18n.security.SECURITY_ADVISORIES }}>{{
+      i18n.security.SECURITY_ADVISORIES_DETAIL
+    }}
   </div>
 </template>
 <style lang="scss" scoped>
