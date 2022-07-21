@@ -9,24 +9,13 @@ import search from '@/assets/illustrations/search.png';
 import IconSearch from '~icons/app/icon-search.svg';
 
 import { getCveList } from '@/api/api-security';
+import { CveLists, QueryParams } from '@/shared/@types/type-cvelist';
 
 const inputName = ref('');
 const { theme: i18n } = useData();
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 
-interface QueryParams {
-  page: number;
-  size: number;
-}
-interface CveLists {
-  announcementTime: string;
-  cveId: string;
-  cvsssCoreOE: string;
-  status: string;
-  summary: string;
-  updateTime: string;
-}
 const tableData = ref<CveLists[]>([
   {
     announcementTime: '',
@@ -49,7 +38,9 @@ function getCveLists(data: QueryParams) {
       tableData.value = res.result.cveDatabaseList;
       total.value = res.result.totalCount;
     });
-  } catch (e) {}
+  } catch (e: any) {
+    throw new Error(e);
+  }
 }
 getCveLists(queryData);
 
@@ -63,10 +54,10 @@ const handleCurrentChange = (val: number) => {
 
 watch(
   queryData,
-  () => getCveLists(queryData)
   //   {
   //   pages: { page: queryData.page, size: queryData.size },
   // }
+  () => getCveLists(queryData)
 );
 </script>
 <template>

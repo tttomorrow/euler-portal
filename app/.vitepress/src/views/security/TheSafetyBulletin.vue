@@ -8,6 +8,10 @@ import search from '@/assets/illustrations/search.png';
 import IconSearch from '~icons/app/icon-search.svg';
 
 import { getSecurityList } from '@/api/api-security';
+import {
+  BulletinParams,
+  SecurityLists,
+} from '@/shared/@types/type-safety-bulletin';
 
 const router = useRouter();
 const { theme: i18n } = useData();
@@ -15,18 +19,6 @@ const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 
-interface QueryParams {
-  page: number;
-  pageSize: number;
-}
-interface SecurityLists {
-  affectedComponent: string;
-  affectedProduct: string;
-  announcementTime: string;
-  securityNoticeNo: string;
-  summary: string;
-  type: string;
-}
 const tableData = ref<SecurityLists[]>([
   {
     affectedComponent: '',
@@ -37,18 +29,20 @@ const tableData = ref<SecurityLists[]>([
     type: '',
   },
 ]);
-const queryData: QueryParams = reactive({
+const queryData: BulletinParams = reactive({
   page: 1,
   pageSize: 10,
 });
 
-function getSecurityLists(data: QueryParams) {
+function getSecurityLists(data: BulletinParams) {
   try {
     getSecurityList(data).then((res: any) => {
       tableData.value = res.result.securityNoticeList;
       total.value = res.result.totalCount;
     });
-  } catch (e) {}
+  } catch (e: any) {
+    throw new Error(e);
+  }
 }
 
 const handleSizeChange = (val: number) => {
@@ -100,7 +94,7 @@ watch(
             <span
               v-for="item in i18n.security.SEVERITY_LIST"
               :key="item"
-              class="category-item"
+              class="category-item active"
               >{{ item.NAME }}</span
             >
           </div>
@@ -186,12 +180,18 @@ watch(
       line-height: var(--o-line-height-text);
     }
     .category-item {
-      width: 28px;
+      // width: 28px;
       font-size: var(--o-font-size-text);
       font-weight: 400;
       color: var(--o-color-text3);
       line-height: var(--o-line-height-text);
       margin-left: var(--o-spacing-h4);
+    }
+    .active {
+      display: inline-block;
+      border: 1px solid #002fa7;
+      color: #002fa7;
+      padding: 3px 12px;
     }
     .card-header {
       padding-bottom: 19px;
