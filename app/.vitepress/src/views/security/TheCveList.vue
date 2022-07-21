@@ -10,12 +10,12 @@ import IconSearch from '~icons/app/icon-search.svg';
 
 import { getCveList } from '@/api/api-security';
 import { CveLists, QueryParams } from '@/shared/@types/type-cvelist';
-// import type { AxiosResponse } from '@/shared/axios';
 
 const inputName = ref('');
 const { theme: i18n } = useData();
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
+const classIndex = ref(-1);
 
 const tableData = ref<CveLists[]>([
   {
@@ -42,6 +42,10 @@ function getCveLists(data: QueryParams) {
   } catch (e: any) {
     throw new Error(e);
   }
+}
+
+function handleselectClass(index: number) {
+  classIndex.value = index;
 }
 
 const handleSizeChange = (val: number) => {
@@ -81,9 +85,11 @@ watch(
       <div class="card-header">
         <span class="category">{{ i18n.security.SEVERITY }}</span>
         <span
-          v-for="item in i18n.security.SEVERITY_LIST"
+          v-for="(item, index) in i18n.security.SEVERITY_LIST"
           :key="item"
-          class="category-item active"
+          class="category-item"
+          :class="index === classIndex ? 'active' : ''"
+          @click="handleselectClass(index)"
           >{{ item.NAME }}</span
         >
       </div>
@@ -134,6 +140,9 @@ watch(
     color: var(--o-color-text2);
     line-height: var(--o-line-height-text);
   }
+  .card-header {
+    line-height: 54px;
+  }
   .category-item {
     width: 28px;
     font-size: var(--o-font-size-text);
@@ -141,6 +150,7 @@ watch(
     color: var(--o-color-text3);
     line-height: var(--o-line-height-text);
     margin-left: var(--o-spacing-h4);
+    cursor: pointer;
   }
   .active {
     border: 1px solid #002fa7;

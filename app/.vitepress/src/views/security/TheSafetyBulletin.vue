@@ -19,6 +19,7 @@ const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const classIndex = ref(-1);
+// const yearIndex = ref(-1);
 
 const tableData = ref<SecurityLists[]>([
   {
@@ -202,8 +203,9 @@ watch(
       padding: 0px 12px;
     }
     .card-header {
-      padding-bottom: 19px;
+      padding-bottom: 14px;
       border-bottom: 1px solid #ccc;
+      line-height: 54px;
     }
     .card-body {
       padding-top: 19px;
