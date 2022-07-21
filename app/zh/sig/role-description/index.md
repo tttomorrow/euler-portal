@@ -1,3 +1,6 @@
+---
+title: '角色说明'
+---
 <script setup>
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner-secondary.png';
@@ -121,16 +124,3 @@ class="app-header"
 * 召集SIG组会议：定期召集SIG会议，决策SIG内上升的争议。
 
 </div>
-
-<style scoped lang="scss">
-  .markdown {
-    margin-top: 64px;
-    .duty-table {
-    margin-top: 24px;
-    margin-bottom: 16px;
-   }
-  }
-  ul {
-    list-style: disc;
-  }
-</style>
