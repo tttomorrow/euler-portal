@@ -315,7 +315,9 @@ export default {
         URL: 'https://status.openeuler.org/',
       },
     ],
-    QR_CODE: '扫码关注公众号',
+    LINKS: [],
+    QR_CODE: 'openEuler公众号',
+    QR_ASSISTANT: 'openEuler小助手',
   },
   BUILDING: {
     BUILDING: '建设中',

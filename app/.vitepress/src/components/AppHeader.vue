@@ -100,7 +100,7 @@ onUnmounted(() => {
 
 // 返回首页
 const goHome = () => {
-  router.go(language.value + '/');
+  router.go(`/${language.value}/`);
 };
 </script>
 
