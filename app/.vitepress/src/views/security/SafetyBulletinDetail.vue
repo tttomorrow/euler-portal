@@ -4,6 +4,7 @@ import { useData } from 'vitepress';
 
 import { getSecurityDetail } from '@/api/api-security';
 import { DetailParams } from '@/shared/@types/type-bulletin-detail';
+import type { AxiosResponse } from '@/shared/axios';
 
 const { theme: i18n } = useData();
 
@@ -13,7 +14,7 @@ const queryData: DetailParams = reactive({
 
 function getSecurityDetailInfo(data: any) {
   try {
-    getSecurityDetail(data).then((res: any) => {
+    getSecurityDetail(data).then((res: AxiosResponse) => {
       return res;
     });
   } catch (e: any) {
