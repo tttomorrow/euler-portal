@@ -122,10 +122,10 @@ const urlStyle = computed(() => {
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--o-spacing-l);
+  margin-bottom: var(--o-spacing-h1);
 }
 .download {
-  margin: var(--o-spacing-m) 0;
+  margin: var(--o-spacing-h2) 0;
   &-list {
     display: grid;
     max-width: 1504px;
@@ -163,7 +163,7 @@ const urlStyle = computed(() => {
 
   &-button {
     margin-top: var(--o-spacing-h4);
-    padding: 4px 16px;
+    padding: var(--o-spacing-h10) var(--o-spacing-h5);
     line-height: var(--o-line-height-h8);
     font-size: var(--o-font-size-text);
 
@@ -177,10 +177,10 @@ const urlStyle = computed(() => {
 }
 
 .url-list-zh {
-  margin-top: var(--o-spacing-s3);
+  margin-top: var(--o-spacing-h4);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: var(--o-spacing-s2) var(--o-spacing-s1);
+  grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
 
   a {
     font-size: var(--o-font-size-text);
@@ -190,10 +190,10 @@ const urlStyle = computed(() => {
 }
 
 .url-list-en {
-  margin-top: var(--o-spacing-s3);
+  margin-top: var(--o-spacing-h4);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: var(--o-spacing-s2) var(--o-spacing-s1);
+  grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
 
   a {
     font-size: var(--o-font-size-text);
@@ -203,10 +203,10 @@ const urlStyle = computed(() => {
 }
 
 .url-list-ru {
-  margin-top: var(--o-spacing-s3);
+  margin-top: var(--o-spacing-h4);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: var(--o-spacing-s2) var(--o-spacing-s1);
+  grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
 
   a {
     font-size: var(--o-font-size-text);
