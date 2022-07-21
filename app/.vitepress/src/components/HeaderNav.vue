@@ -15,7 +15,7 @@ interface NavItem {
   NAME: string;
   PATH: string;
   ID: string;
-  IS_OPEN_WINDOW?: Number;
+  IS_OPEN_WINDOW?: number;
   IS_OPEN_MINISITE_WINDOW?: string;
 }
 
@@ -50,7 +50,6 @@ const navActive = ref('');
 const showSub = (item: NavItem) => {
   navActive.value = item.ID;
   isShow.value = true;
-  console.log(navActive.value);
 };
 
 const hideSub = () => {
@@ -73,7 +72,7 @@ const hideSub = () => {
       >
         <span @click="goPath(item)">{{ item.NAME }} </span>
 
-        <div class="sub-menu" v-if="isShow">
+        <div v-if="isShow" class="sub-menu">
           <ul class="sub-menu-content">
             <li
               v-for="(subItem, subItemIndex) in item.CHILDREN"

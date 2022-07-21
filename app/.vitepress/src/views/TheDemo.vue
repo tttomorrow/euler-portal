@@ -4,7 +4,7 @@ import { ref, onMounted, computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
-import Anchor from '@/components/Anchor.vue';
+import AppAnchor from '@/components/AppAnchor.vue';
 import TagFilter from '@/components/TagFilter.vue';
 
 import banner from '@/assets/banner-secondary.png';
@@ -188,8 +188,8 @@ onMounted(() => {
         :left-arrow="true"
       ></OTimeline>
     </div>
-    <h4>Anchor</h4>
-    <Anchor :data="anchorData" />
+    <h4>AppAnchor</h4>
+    <AppAnchor :data="anchorData" />
   </div>
 </template>
 
