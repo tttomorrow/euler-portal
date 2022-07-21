@@ -18,6 +18,7 @@ const { theme: i18n } = useData();
 const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
+const classIndex = ref(-1);
 
 const tableData = ref<SecurityLists[]>([
   {
@@ -60,7 +61,9 @@ function jumpBulletinDetail(val: any) {
 onMounted(() => {
   getSecurityLists(queryData);
 });
-
+function handleselectClass(i: number) {
+  classIndex.value = i;
+}
 watch(
   queryData,
   //   {
@@ -92,9 +95,11 @@ watch(
           <div class="card-header">
             <span class="category">{{ i18n.security.SEVERITY }}</span>
             <span
-              v-for="item in i18n.security.SEVERITY_LIST"
+              v-for="(item, index) in i18n.security.SEVERITY_LIST"
               :key="item"
-              class="category-item active"
+              class="category-item"
+              :class="index === classIndex ? 'active' : ''"
+              @click="handleselectClass(index)"
               >{{ item.NAME }}</span
             >
           </div>
@@ -180,18 +185,21 @@ watch(
       line-height: var(--o-line-height-text);
     }
     .category-item {
-      // width: 28px;
+      display: inline-block;
+      height: 28px;
+      border: none;
       font-size: var(--o-font-size-text);
       font-weight: 400;
       color: var(--o-color-text3);
       line-height: var(--o-line-height-text);
       margin-left: var(--o-spacing-h4);
+      cursor: pointer;
     }
     .active {
       display: inline-block;
       border: 1px solid #002fa7;
       color: #002fa7;
-      padding: 3px 12px;
+      padding: 0px 12px;
     }
     .card-header {
       padding-bottom: 19px;

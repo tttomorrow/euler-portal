@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, watch } from 'vue';
+import { reactive, ref, watch, onMounted } from 'vue';
 import { useData } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -43,7 +43,6 @@ function getCveLists(data: QueryParams) {
     throw new Error(e);
   }
 }
-getCveLists(queryData);
 
 const handleSizeChange = (val: number) => {
   queryData.size = val;
@@ -52,7 +51,9 @@ const handleSizeChange = (val: number) => {
 const handleCurrentChange = (val: number) => {
   queryData.page = val;
 };
-
+onMounted(() => {
+  getCveLists(queryData);
+});
 watch(
   queryData,
   //   {
