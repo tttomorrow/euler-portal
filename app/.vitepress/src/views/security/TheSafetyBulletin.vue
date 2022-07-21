@@ -1,16 +1,20 @@
 <script lang="ts" setup>
 import { reactive, ref, watch, onMounted } from 'vue';
 import { useData, useRouter } from 'vitepress';
+
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 import IconSearch from '~icons/app/icon-search.svg';
+
 import { getSecurityList } from '@/api/api-security';
+
 const router = useRouter();
 const { theme: i18n } = useData();
 const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
+
 interface QueryParams {
   page: number;
   pageSize: number;
@@ -38,7 +42,7 @@ const queryData: QueryParams = reactive({
   pageSize: 10,
 });
 
-function getSecurityLists(data) {
+function getSecurityLists(data: QueryParams) {
   try {
     getSecurityList(data).then((res: any) => {
       tableData.value = res.result.securityNoticeList;
@@ -46,22 +50,29 @@ function getSecurityLists(data) {
     });
   } catch (e) {}
 }
+
 const handleSizeChange = (val: number) => {
   queryData.pageSize = val;
 };
+
 const handleCurrentChange = (val: number) => {
   queryData.page = val;
 };
-function jumpBulletinDetail(val) {
+
+function jumpBulletinDetail(val: any) {
   router.go(`zh/security/safety-bulletin/detail/?id=${JSON.stringify(val)}`);
 }
+
 onMounted(() => {
   getSecurityLists(queryData);
 });
-watch(queryData, () =>
-  getSecurityLists({
-    pages: { page: queryData.page, size: queryData.pageSize },
-  })
+
+watch(
+  queryData,
+  () => getSecurityLists(queryData)
+  //   {
+  //   pages: { page: queryData.page, size: queryData.pageSize },
+  // }
 );
 </script>
 
