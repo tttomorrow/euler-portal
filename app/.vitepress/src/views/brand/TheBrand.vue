@@ -10,7 +10,7 @@ const { theme: i18n } = useData();
 
 const list: Ref<any[]> = ref([]);
 
-onMounted(() => {
+const initList = () => {
   const result = [];
   const cndata = i18n.value.brand;
   const nameList = [
@@ -38,9 +38,10 @@ onMounted(() => {
     };
     result.push(temp);
   }
+  return result;
+};
 
-  list.value = result;
-});
+list.value = initList();
 </script>
 
 <template>

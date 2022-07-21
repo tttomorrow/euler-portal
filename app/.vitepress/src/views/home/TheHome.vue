@@ -6,7 +6,7 @@ import CommunityActivity from './CommunityActivity.vue';
 
 <template>
   <!-- <ImgCarousel></ImgCarousel> -->
-  <user-case></user-case>
+  <UserCase></UserCase>
   <CommunityActivity></CommunityActivity>
 </template>
 

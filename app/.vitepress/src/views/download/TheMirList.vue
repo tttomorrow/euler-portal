@@ -88,7 +88,9 @@ onMounted(async () => {
   try {
     const responeData = await getAllMirror();
     tableData.value = initTable(responeData);
-  } catch (e) {}
+  } catch (e) {
+    throw new Error(e);
+  }
 });
 </script>
 
