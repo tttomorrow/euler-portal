@@ -69,5 +69,6 @@ const { theme: i18n } = useData();
 .sig-list {
   max-width: 1504px;
   margin: var(--o-spacing-h1) auto;
+  height: 100px;
 }
 </style>

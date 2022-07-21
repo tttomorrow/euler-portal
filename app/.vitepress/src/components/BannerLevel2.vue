@@ -68,6 +68,7 @@ const rootStyle = computed(() => {
   background-color: var(--o-color-brand);
   .wrap {
     max-width: 1504px;
+    margin: 0 auto;
     padding: 0 44px;
     display: flex;
     justify-content: space-between;

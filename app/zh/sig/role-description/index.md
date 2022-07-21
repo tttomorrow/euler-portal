@@ -36,6 +36,7 @@ class="app-header"
 />
 
 <div class="markdown">
+
 <OTable :data="tableData" class="duty-table">
   <OTableColumn prop="SigName" label="SIG名称"/>
   <OTableColumn prop="Gitee" label="Gitee主页"/>

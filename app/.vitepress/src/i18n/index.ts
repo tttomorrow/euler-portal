@@ -6,6 +6,7 @@ import brand from './brand';
 import security from './security';
 import home from './home';
 import common from './common';
+import mooc from './learn';
 
 const i18n = {
   zh: {
@@ -15,6 +16,7 @@ const i18n = {
     security: security.zh,
     home: home.zh,
     common: common.zh,
+    mooc: mooc.zh,
   },
   en: {
     sig: sig.en,

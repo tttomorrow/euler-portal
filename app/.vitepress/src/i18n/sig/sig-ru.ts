@@ -70,6 +70,8 @@ export default {
   SIG_DESCRIPTION: {
     MEANING:
       'The openEuler community is organized based on Special Interest Groups (SIGs) to better manage and improve the work processes.SIGs are open to everyone.',
+    P1: 'The openEuler community is organized based on Special Interest Groups (SIGs) to better manage and improve the work processes.',
+    P2: 'SIGs are open to everyone.',
     LI1: 'Each SIG comprises one or more projects on Gitee, and each project has repositories that store SIG deliverables. Registering with an SIG enables you to submit, discuss, and resolve issues with other members, as well as participate in reviews in an SIG repository.',
     LI2: 'An SIG is established for one or more specific technical topics. Core members of an SIG can manage each group, and members can contribute to the quality and the output of deliverables for the openEuler community.',
     LI3: 'In the README.md file on the project Gitee page, you can find project SIG information, members, and contact information. You can join specific SIGs by mailing the listed email addresses. Also, you can attend public meetings, join discussions or forums, or participate in other activities listed in the corresponding README.md file.',
@@ -402,4 +404,66 @@ export default {
       ],
     },
   ],
+  SIG_DETAIL: {
+    VIDEO: 'Video',
+    NEWS: 'News',
+    MORE: 'Read More',
+    BLOG: 'Blog',
+    LATEST_DYNAMIC: "What's New",
+    SIG_EMPTY_TEXT1: 'Nothing found. ',
+    SIG_EMPTY_TEXT2: 'Add a profile ',
+    SIG_EMPTY_TEXT3: 'to your SIG.',
+    INTRODUCTION: 'SIG Introduction',
+    NO_MEETINGS: 'Not available now',
+    ORGANIZING_MEETINGS: 'SIG Schedule',
+    MEMBERS: 'SIG Members',
+    CONTACT: 'Contact',
+    MAIL_LIST: 'Mailing list',
+    EXPAND: 'Expand All',
+    RETRACT: 'Collapse All',
+    BLOG_EMPTY1: 'Dive into the ',
+    BLOG_EMPTY2: 'blogging guide',
+    BLOG_EMPTY3: ' and post your first blog.',
+    NEWS_EMPTY: 'Broadcast the latest news of your SIG.',
+    NEWS_EMPTY2: 'Click ',
+    NEWS_EMPTY3: 'here ',
+    NEWS_EMPTY4: 'to publish your first SIG news.',
+    VIDEO_EMPTY: 'Share your first video now.',
+  },
+  ROLE_DESCRIPTION: {
+    ROLE_DESCRIPTION: 'Role Description',
+    TABLE_TITLE: 'Community Member',
+    TABLE_DESCRIPTION:
+      'This article briefly describes the responsibilities and privilege of the contributor in the openEuler community. The responsibilities of most contributor are limited to SIG (Special Interest groups) :',
+    TABLE_THEAD: [
+      'Role',
+      'Responsibilities',
+      'Requirement',
+      'Defined Document',
+    ],
+    TABLE_TBODY: [
+      {
+        ROLE: 'Contributor',
+        RESPONSIBILITIES: 'Contributors of the project',
+        REQUIREMENT: '',
+        DEFINED_DOCUMENT: 'Registered members on Gitee',
+      },
+      {
+        ROLE: 'Committer',
+        RESPONSIBILITIES: 'Review and approve the contributions submitted',
+        REQUIREMENT:
+          'Frequently contributing to SIG, experienced,and willing to undertake review work',
+        DEFINED_DOCUMENT:
+          'developer entry in the OWNERS file owned by openEuler SIG',
+      },
+      {
+        ROLE: 'Maintainer',
+        RESPONSIBILITIES: 'Owner of the project',
+        REQUIREMENT:
+          'Experienced, responsible, outstanding technologies and management skills',
+        DEFINED_DOCUMENT:
+          'developer entry in the OWNERS file owned by openEuler SIG',
+      },
+    ],
+  },
 };

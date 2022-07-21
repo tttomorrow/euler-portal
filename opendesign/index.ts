@@ -9,6 +9,7 @@ import { Card } from './card';
 import { Tag } from './tag';
 import { Tabs, TabPane } from './tabs';
 import { Input } from './input';
+import { Tree } from './tree';
 import { Pagination } from './pagination';
 import { Table, TableColumn } from './table';
 import { Timeline } from './timeline';
@@ -29,8 +30,8 @@ const components = [
   Input,
   Tabs,
   TabPane,
+  Tree,
 ];
-
 export default {
   install(app: App): void {
     components.forEach((component) => {
