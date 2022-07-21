@@ -1,15 +1,20 @@
 <script lang="ts" setup>
 import { reactive, ref, watch } from 'vue';
+import { useData } from 'vitepress';
+
 import BannerLevel2 from '@/components/BannerLevel2.vue';
+
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 import IconSearch from '~icons/app/icon-search.svg';
+
 import { getCveList } from '@/api/api-security';
-import { useData } from 'vitepress';
+
 const inputName = ref('');
 const { theme: i18n } = useData();
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
+
 interface QueryParams {
   page: number;
   size: number;
@@ -32,11 +37,13 @@ const tableData = ref<CveLists[]>([
     updateTime: '',
   },
 ]);
+
 const queryData: QueryParams = reactive({
   page: 1,
   size: 10,
 });
-function getCveLists(data) {
+
+function getCveLists(data: QueryParams) {
   try {
     getCveList(data).then((res: any) => {
       tableData.value = res.result.cveDatabaseList;
@@ -45,16 +52,21 @@ function getCveLists(data) {
   } catch (e) {}
 }
 getCveLists(queryData);
+
 const handleSizeChange = (val: number) => {
   queryData.size = val;
 };
+
 const handleCurrentChange = (val: number) => {
   queryData.page = val;
 };
-watch(queryData, () =>
-  getCveLists({
-    pages: { page: queryData.page, size: queryData.size },
-  })
+
+watch(
+  queryData,
+  () => getCveLists(queryData)
+  //   {
+  //   pages: { page: queryData.page, size: queryData.size },
+  // }
 );
 </script>
 <template>

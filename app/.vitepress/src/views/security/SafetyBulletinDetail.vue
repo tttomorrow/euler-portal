@@ -18,15 +18,15 @@ queryData.securityNoticeNo = decodeURIComponent(window.location.href).substring(
   index1 + 1,
   index2
 );
-function SecurityDetail(data: any) {
+function getSecurityDetailInfo(data: any) {
   try {
-    getSecurityDetail(data).then((res) => {
+    getSecurityDetail(data).then((res: any) => {
       return res;
     });
   } catch (e) {}
 }
 onMounted(() => {
-  SecurityDetail(queryData);
+  getSecurityDetailInfo(queryData);
 });
 </script>
 <template>
