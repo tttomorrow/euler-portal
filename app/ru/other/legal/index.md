@@ -19,7 +19,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
     :illustration="search"
   />
 </ClientOnly>
-<div class="markdown" style="margin-top:var(--o-spacing-l)">
+<div class="markdown" style="margin-top:var(--o-spacing-h1)">
 
 В этом правовом уведомлении собраны правовые политики, применимые в отношении сообщества openEuler. Данные политики регулируют размещаемые сообществом openEuler рабочие версии и контент данного веб-сайта.
 

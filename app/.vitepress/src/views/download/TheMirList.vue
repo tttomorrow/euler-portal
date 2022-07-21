@@ -230,8 +230,8 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .mirror-list {
   max-width: 1504px;
-  margin: var(--o-spacing-m) auto;
-  margin-top: var(--o-spacing-l);
+  margin: var(--o-spacing-h2) auto;
+  margin-top: var(--o-spacing-h1);
   > p {
     font-size: 18px;
     font-weight: 400;
