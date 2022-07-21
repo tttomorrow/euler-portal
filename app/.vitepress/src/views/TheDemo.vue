@@ -161,6 +161,7 @@ onMounted(() => {
           {{ item }}
         </OButton>
       </TagFilter>
+    </div>
 
     <div class="demo-box">
       <h4>OTag</h4>
