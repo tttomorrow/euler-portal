@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-
-import { getMeetingData } from '@/api/api-calendar';
-import { TableData } from '@/shared/@types/type-calendar';
+import { ref, onMounted, computed } from 'vue';
 
 import { getMeetingData } from '@/api/api-calendar';
 import { TableData } from '@/shared/@types/type-calendar';
@@ -48,9 +45,6 @@ const inputName = ref('zhangsan');
 interface MeetingData {
   tableData: TableData[];
 }
-getMeetingData().then((res: MeetingData) => {
-  calendarData.value = res.tableData;
-});
 
 const calendarData = ref<TableData[]>([
   {
@@ -109,6 +103,11 @@ const tagClick = (i: number) => {
   activeIndex.value = i;
 };
 // tagFiter end
+onMounted(() => {
+  getMeetingData().then((res: MeetingData) => {
+    calendarData.value = res.tableData;
+  });
+});
 </script>
 
 <template>
@@ -165,8 +164,8 @@ const tagClick = (i: number) => {
       <TagFilter label="全部" :show="true" @toggle-click="toggleClick">
         <OTag
           v-for="(item, index) in tagArrLen"
-          :type="activeIndex === index ? 'primary' : 'text'"
           :key="'tag' + index"
+          :type="activeIndex === index ? 'primary' : 'text'"
           @click="tagClick(index)"
         >
           {{ item }}
