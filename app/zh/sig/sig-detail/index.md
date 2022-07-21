@@ -1,5 +1,5 @@
 <script setup>
-  import SigDetail from "@/views/sig/sig-detail/SigDetail.vue"
+  import TheSigDetail from "@/views/sig/sig-detail/TheSigDetail.vue"
 </script>
 
-<SigDetail />
+<TheSigDetail />

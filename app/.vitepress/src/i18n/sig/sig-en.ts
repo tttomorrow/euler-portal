@@ -70,12 +70,15 @@ export default {
     GITEE_PAGE: 'Gitee',
   },
   SIG_DESCRIPTION: {
-    MEANING: 'The openEuler community is organized based on Special Interest Groups (SIGs) to better manage and improve the work processes.SIGs are open to everyone.',
+    MEANING:
+      'The openEuler community is organized based on Special Interest Groups (SIGs) to better manage and improve the work processes.SIGs are open to everyone.',
+    P1: 'The openEuler community is organized based on Special Interest Groups (SIGs) to better manage and improve the work processes.',
+    P2: 'SIGs are open to everyone.',
     LI1: 'Each SIG comprises one or more projects on Gitee, and each project has repositories that store SIG deliverables. Registering with an SIG enables you to submit, discuss, and resolve issues with other members, as well as participate in reviews in an SIG repository.',
     LI2: 'An SIG is established for one or more specific technical topics. Core members of an SIG can manage each group, and members can contribute to the quality and the output of deliverables for the openEuler community.',
-    LI3: 'In the README.md file on the project Gitee page, you can find project SIG information, members, and contact information. You can join specific SIGs by mailing the listed email addresses. Also, you can attend public meetings, join discussions or forums, or participate in other activities listed in the corresponding README.md file.'
+    LI3: 'In the README.md file on the project Gitee page, you can find project SIG information, members, and contact information. You can join specific SIGs by mailing the listed email addresses. Also, you can attend public meetings, join discussions or forums, or participate in other activities listed in the corresponding README.md file.',
   },
-  SIG_LANDSCAPE:[
+  SIG_LANDSCAPE: [
     {
       CATEGORY_NAME: 'Code Repository Management/Technology Innovation',
       SUB_LIST: [
@@ -84,229 +87,229 @@ export default {
           COLOR: '#7f6ffe',
           LIST: [
             {
-              NAME: 'sig-bio'
+              NAME: 'sig-bio',
             },
             {
-              NAME: 'sig-ROS'
+              NAME: 'sig-ROS',
             },
             {
-              NAME: 'sig-android-middleware'
+              NAME: 'sig-android-middleware',
             },
             {
-              NAME: 'Application'
+              NAME: 'Application',
             },
             {
-               NAME: 'sig-industrial-control'
-            }
-          ]
+              NAME: 'sig-industrial-control',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'General-Purpose Middleware',
           COLOR: '#db7c61',
           LIST: [
             {
-              NAME: 'sig-embedded'
+              NAME: 'sig-embedded',
             },
             {
-              NAME: 'sig-OpenResty'
+              NAME: 'sig-OpenResty',
             },
             {
-              NAME: 'sig-cms'
+              NAME: 'sig-cms',
             },
             {
-              NAME: 'DB'
+              NAME: 'DB',
             },
             {
-              NAME: 'sig-Ha'
+              NAME: 'sig-Ha',
             },
             {
-              NAME: 'sig-ai-bigdata'
+              NAME: 'sig-ai-bigdata',
             },
             {
-              NAME: 'sig-compat-winapp'
+              NAME: 'sig-compat-winapp',
             },
             {
-              NAME: 'sig-ceph'
-            }
-          ]
+              NAME: 'sig-ceph',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Toolchains/Languages/Running',
           COLOR: '#505d75',
           LIST: [
             {
-              NAME: 'sig-Rust'
+              NAME: 'sig-Rust',
             },
             {
-              NAME: 'sig-perl-modules'
+              NAME: 'sig-perl-modules',
             },
             {
-              NAME: 'sig-python-modules'
+              NAME: 'sig-python-modules',
             },
             {
-              NAME: 'sig-Java'
+              NAME: 'sig-Java',
             },
             {
-              NAME: 'sig-nodejs'
+              NAME: 'sig-nodejs',
             },
             {
-              NAME: 'dev-utils'
+              NAME: 'dev-utils',
             },
             {
-              NAME: 'Runtime'
+              NAME: 'Runtime',
             },
             {
-              NAME: 'sig-libboundscheck'
+              NAME: 'sig-libboundscheck',
             },
             {
-              NAME: 'System-tool'
+              NAME: 'System-tool',
             },
             {
-              NAME: 'sig-golang'
+              NAME: 'sig-golang',
             },
             {
-              NAME: 'sig-ruby'
+              NAME: 'sig-ruby',
             },
             {
-              NAME: 'Compiler'
+              NAME: 'Compiler',
             },
             {
               NAME: 'Programming-language',
-              IS_WIDER: 1
-            }
-          ]
+              IS_WIDER: 1,
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Architecture/Processor/Core/Driver',
           COLOR: '#fec456',
           LIST: [
             {
-              NAME: 'sig-RaspberryPi'
+              NAME: 'sig-RaspberryPi',
             },
             {
-              NAME: 'sig-RISC-V'
+              NAME: 'sig-RISC-V',
             },
             {
-              NAME: 'sig-aarch32'
+              NAME: 'sig-aarch32',
             },
             {
-              NAME: 'Kernel'
+              NAME: 'Kernel',
             },
             {
-              NAME: 'sig-WayCa'
+              NAME: 'sig-WayCa',
             },
             {
-              NAME: 'sig-DyscheOS'
+              NAME: 'sig-DyscheOS',
             },
             {
-              NAME: 'sig-REDF'
-            }
-          ]
+              NAME: 'sig-REDF',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Cloud Native Infrastructure',
           COLOR: '#4d7dff',
           LIST: [
             {
-              NAME: 'sig-CloudNative'
+              NAME: 'sig-CloudNative',
             },
             {
-              NAME: 'sig-ONL'
+              NAME: 'sig-ONL',
             },
             {
-              NAME: 'sig-openstack'
+              NAME: 'sig-openstack',
             },
             {
-              NAME: 'sig-OKD'
+              NAME: 'sig-OKD',
             },
             {
-              NAME: 'Virt'
+              NAME: 'Virt',
             },
             {
-              NAME: 'iSulad'
+              NAME: 'iSulad',
             },
             {
-              NAME: 'oVirt'
+              NAME: 'oVirt',
             },
             {
-              NAME: 'sig-KubeSphere'
-            }
-          ]
+              NAME: 'sig-KubeSphere',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Desktop/Graphics System',
           COLOR: '#8e9aaf',
           LIST: [
             {
-              NAME: 'sig-mate-desktop'
+              NAME: 'sig-mate-desktop',
             },
             {
-              NAME: 'sig-desktop-apps'
+              NAME: 'sig-desktop-apps',
             },
             {
-              NAME: 'Desktop'
+              NAME: 'Desktop',
             },
             {
-              NAME: 'GNOME'
+              NAME: 'GNOME',
             },
             {
-              NAME: 'sig-KDE'
+              NAME: 'sig-KDE',
             },
             {
-              NAME: 'xfce'
+              NAME: 'xfce',
             },
             {
-              NAME: 'sig-DDE'
+              NAME: 'sig-DDE',
             },
             {
-              NAME: 'sig-UKUI'
+              NAME: 'sig-UKUI',
             },
             {
-              NAME: 'sig-KIRAN-DESKTOP'
-            }
-          ]
+              NAME: 'sig-KIRAN-DESKTOP',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Basic Functions/Features/Tools',
           COLOR: '#2a9d8f',
           LIST: [
             {
-              NAME: 'A-Tune'
+              NAME: 'A-Tune',
             },
             {
-              NAME: 'Storage'
+              NAME: 'Storage',
             },
             {
-              NAME: 'Base-service'
+              NAME: 'Base-service',
             },
             {
-              NAME: 'Computing'
+              NAME: 'Computing',
             },
             {
-              NAME: 'sig-ops'
+              NAME: 'sig-ops',
             },
             {
-              NAME: 'sig-bootstrap'
+              NAME: 'sig-bootstrap',
             },
             {
-              NAME: 'Networking'
+              NAME: 'Networking',
             },
             {
-              NAME: 'sig-security-facility'
+              NAME: 'sig-security-facility',
             },
             {
               NAME: 'sig-high-performance-network',
-              IS_WIDER: 1
+              IS_WIDER: 1,
             },
             {
               NAME: 'sig-confidential-computing',
-              IS_WIDER: 1
-            }
-          ]
-        }
-      ]
-   },
-   {
+              IS_WIDER: 1,
+            },
+          ],
+        },
+      ],
+    },
+    {
       CATEGORY_NAME: 'Community Governance and Operations',
       SUB_LIST: [
         {
@@ -314,92 +317,155 @@ export default {
           COLOR: '#8e583d',
           LIST: [
             {
-              NAME: 'Marketing'
+              NAME: 'Marketing',
             },
             {
-              NAME: 'sig-minzuchess'
+              NAME: 'sig-minzuchess',
             },
             {
-              NAME: 'sig-Compatibility-Infra'
-            }
-          ]
+              NAME: 'sig-Compatibility-Infra',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Version Release Related',
           COLOR: '#cec79a',
           LIST: [
             {
-              NAME: 'sig-QA'
+              NAME: 'sig-QA',
             },
             {
-              NAME: 'doc'
+              NAME: 'doc',
             },
             {
-              NAME: 'sig-release-management'
-            }
-          ]
+              NAME: 'sig-release-management',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Build Systems/Tools/Dependencies',
           COLOR: '#19647e',
           LIST: [
             {
-              NAME: 'sig-OS-Builder'
+              NAME: 'sig-OS-Builder',
             },
             {
-              NAME: 'sig-Ostree-Assembly'
-            }
-          ]
+              NAME: 'sig-Ostree-Assembly',
+            },
+          ],
         },
         {
-          SUB_CATEGORY_NAME: 'Security Committee/Technical Committee/Community Secretariat',
+          SUB_CATEGORY_NAME:
+            'Security Committee/Technical Committee/Community Secretariat',
           COLOR: '#73c0de',
           LIST: [
             {
-              NAME: 'TC'
+              NAME: 'TC',
             },
             {
-              NAME: 'sig-Community'
+              NAME: 'sig-Community',
             },
             {
-              NAME: 'security-committee'
-            }
-          ]
+              NAME: 'security-committee',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Software Package Management',
           COLOR: '#4c3e72',
           LIST: [
             {
-              NAME: 'Packaging'
+              NAME: 'Packaging',
             },
             {
-              NAME: 'sig-recycle'
+              NAME: 'sig-recycle',
             },
             {
-              NAME: 'sig-EasyLife'
-            }
-          ]
+              NAME: 'sig-EasyLife',
+            },
+          ],
         },
         {
           SUB_CATEGORY_NAME: 'Community Infrastructure',
           COLOR: '#c44e4e',
           LIST: [
             {
-              NAME: 'Infrastructure'
+              NAME: 'Infrastructure',
             },
             {
-              NAME: 'sig-CICD'
+              NAME: 'sig-CICD',
             },
             {
-              NAME: 'sig-Gatekeeper'
+              NAME: 'sig-Gatekeeper',
             },
             {
-              NAME: 'security-committee'
-            }
-          ]
-        }
-      ]
-    }
-  ]
+              NAME: 'security-committee',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  SIG_DETAIL: {
+    VIDEO: 'Video',
+    NEWS: 'News',
+    MORE: 'Read More',
+    BLOG: 'Blog',
+    LATEST_DYNAMIC: "What's New",
+    SIG_EMPTY_TEXT1: 'Nothing found. ',
+    SIG_EMPTY_TEXT2: 'Add a profile',
+    SIG_EMPTY_TEXT3: ' to your SIG.',
+    INTRODUCTION: 'SIG Introduction',
+    NO_MEETINGS: 'Not available now',
+    ORGANIZING_MEETINGS: 'SIG Schedule',
+    MEMBERS: 'SIG Members',
+    CONTACT: 'Contact',
+    MAIL_LIST: 'Mailing list',
+    EXPAND: 'Expand All',
+    RETRACT: 'Collapse All',
+    BLOG_EMPTY1: 'Dive into the ',
+    BLOG_EMPTY2: 'blogging guide',
+    BLOG_EMPTY3: ' and post your first blog.',
+    NEWS_EMPTY: 'Broadcast the latest news of your SIG.',
+    NEWS_EMPTY2: 'Click ',
+    NEWS_EMPTY3: 'here ',
+    NEWS_EMPTY4: 'to publish your first SIG news.',
+    VIDEO_EMPTY: 'Share your first video now.',
+  },
+  ROLE_DESCRIPTION: {
+    ROLE_DESCRIPTION: 'Role Description',
+    TABLE_TITLE: 'Community Member',
+    TABLE_DESCRIPTION:
+      'This article briefly describes the responsibilities and privilege of the contributor in the openEuler community. The responsibilities of most contributor are limited to SIG (Special Interest groups) :',
+    TABLE_THEAD: [
+      'Role',
+      'Responsibilities',
+      'Requirement',
+      'Defined Document',
+    ],
+    TABLE_TBODY: [
+      {
+        ROLE: 'Contributor',
+        RESPONSIBILITIES: 'Contributors of the project',
+        REQUIREMENT: '',
+        DEFINED_DOCUMENT: 'Registered members on Gitee',
+      },
+      {
+        ROLE: 'Committer',
+        RESPONSIBILITIES: 'Review and approve the contributions submitted',
+        REQUIREMENT:
+          'Frequently contributing to SIG, experienced,and willing to undertake review work',
+        DEFINED_DOCUMENT:
+          'developer entry in the OWNERS file owned by openEuler SIG',
+      },
+      {
+        ROLE: 'Maintainer',
+        RESPONSIBILITIES: 'Owner of the project',
+        REQUIREMENT:
+          'Experienced, responsible, outstanding technologies and management skills',
+        DEFINED_DOCUMENT:
+          'developer entry in the OWNERS file owned by openEuler SIG',
+      },
+    ],
+  },
 };

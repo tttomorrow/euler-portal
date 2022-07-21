@@ -1,46 +1,43 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 import { useData } from 'vitepress';
 
 import { getSecurityDetail } from '@/api/api-security';
+import { DetailParams } from '@/shared/@types/type-bulletin-detail';
+import type { AxiosResponse } from '@/shared/axios';
 
 const { theme: i18n } = useData();
 
-const index1 = decodeURIComponent(window.location.href).indexOf('"');
-const index2 = decodeURIComponent(window.location.href).indexOf('"', index1 + 1);
-
-interface query {
-  securityNoticeNo: string;
-}
-
-const queryData: query = reactive({
+const queryData: DetailParams = reactive({
   securityNoticeNo: '',
 });
 
-queryData.securityNoticeNo = decodeURIComponent(window.location.href).substring(
-  index1 + 1,
-  index2
-);
-console.log(queryData);
-
-function SecurityDetail(data: any) {
+function getSecurityDetailInfo(data: any) {
   try {
-    getSecurityDetail(data).then((res) => {
-      console.log(res);
+    getSecurityDetail(data).then((res: AxiosResponse) => {
+      return res;
     });
-  } catch (e) {}
+  } catch (e: any) {
+    throw new Error(e);
+  }
 }
-SecurityDetail(queryData);
-
-// TODO:window方法 放在onMOunted里面
+onMounted(() => {
+  const index1 = decodeURIComponent(window.location.href).indexOf('"');
+  const index2 = decodeURIComponent(window.location.href).indexOf(
+    '"',
+    index1 + 1
+  );
+  queryData.securityNoticeNo = decodeURIComponent(
+    window.location.href
+  ).substring(index1 + 1, index2);
+  getSecurityDetailInfo(queryData);
+});
 </script>
 <template>
-  <div>
-    <div class="breadcrumb">
-      {{ i18n.security.SECURITY_ADVISORIES }}>{{
-        i18n.security.SECURITY_ADVISORIES_DETAIL
-      }}
-    </div>
+  <div class="breadcrumb">
+    {{ i18n.security.SECURITY_ADVISORIES }}>{{
+      i18n.security.SECURITY_ADVISORIES_DETAIL
+    }}
   </div>
 </template>
 <style lang="scss" scoped>

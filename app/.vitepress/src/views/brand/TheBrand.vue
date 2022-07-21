@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, Ref, ref } from 'vue';
+import { Ref, ref } from 'vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
@@ -10,7 +10,7 @@ const { theme: i18n } = useData();
 
 const list: Ref<any[]> = ref([]);
 
-onMounted(() => {
+const initList = () => {
   const result = [];
   const cndata = i18n.value.brand;
   const nameList = [
@@ -38,9 +38,10 @@ onMounted(() => {
     };
     result.push(temp);
   }
+  return result;
+};
 
-  list.value = result;
-});
+list.value = initList();
 </script>
 
 <template>
@@ -98,11 +99,11 @@ onMounted(() => {
 .button {
   display: grid;
   width: 100%;
-  margin-top: var(--o-spacing-s2);
+  margin-top: var(--o-spacing-h5);
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: var(--o-spacing-s1);
+  grid-gap: var(--o-spacing-h8);
   a {
     width: 100%;
     display: flex;
@@ -112,7 +113,7 @@ onMounted(() => {
   }
 
   &-item {
-    padding: 4px 0;
+    padding: var(--o-spacing-h10) 0;
     max-width: 70px;
     width: 100%;
     font-size: var(--o-font-size-text);
@@ -126,7 +127,7 @@ onMounted(() => {
   }
 }
 .brand {
-  margin: var(--o-spacing-l) 0;
+  margin: var(--o-spacing-h1) 0;
   &-title {
     font-size: var(--o-font-size-h3);
     font-family: 'PingFangSC-Light, PingFang SC';
@@ -143,22 +144,22 @@ onMounted(() => {
     font-weight: 300;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h7);
-    margin-top: 4px;
+    margin-top: var(--o-spacing-h10);
   }
 
   &-list {
     display: grid;
     width: 100%;
-    margin-top: var(--o-spacing-m);
+    margin-top: var(--o-spacing-h2);
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: var(--o-spacing-s3);
+    grid-gap: var(--o-spacing-h4);
   }
 
   &-item {
     width: 100%;
-    padding: 4px;
+    padding: var(--o-spacing-h10);
     max-width: 336px;
 
     &-title {
@@ -167,12 +168,12 @@ onMounted(() => {
       font-weight: 400;
       color: var(--o-color-text2);
       line-height: var(--o-line-height-h7);
-      margin-top: 4px;
+      margin-top: var(--o-spacing-h10);
     }
     &-img {
       height: 120px;
       width: 100%;
-      margin-top: var(--o-spacing-s2);
+      margin-top: var(--o-spacing-h5);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -184,7 +185,7 @@ onMounted(() => {
   }
 
   &-ppt {
-    margin-top: var(--o-spacing-m);
+    margin-top: var(--o-spacing-h2);
     width: 100%;
 
     h3 {
@@ -203,11 +204,11 @@ onMounted(() => {
   &-list {
     display: grid;
     width: 100%;
-    margin-top: var(--o-spacing-m);
+    margin-top: var(--o-spacing-h2);
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: var(--o-spacing-s3);
+    grid-gap: var(--o-spacing-h4);
   }
   &-item {
     width: 100%;
@@ -218,7 +219,7 @@ onMounted(() => {
         width: 100%;
       }
     }
-    ::v-deep .el-card__body {
+    :deep(.el-card__body) {
       padding: 0;
     }
   }
