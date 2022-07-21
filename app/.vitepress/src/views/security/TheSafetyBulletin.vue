@@ -63,10 +63,10 @@ onMounted(() => {
 
 watch(
   queryData,
-  () => getSecurityLists(queryData)
   //   {
   //   pages: { page: queryData.page, size: queryData.pageSize },
   // }
+  () => getSecurityLists(queryData)
 );
 </script>
 
