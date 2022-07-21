@@ -132,7 +132,7 @@ const responseInterceptorId = request.interceptors.response.use(
   },
   (err: AxiosError) => {
     if (loadingInstance) {
-      loadingInstance.close()
+      loadingInstance.close();
     }
     if (typeof err === 'string') {
       ElMessage({
@@ -163,7 +163,7 @@ const responseInterceptorId = request.interceptors.response.use(
         err.message = '连接服务器失败!';
       }
     }
-    return Promise.reject(err);
+    return Promise.reject(err).catch(() => {});
   }
 );
 // 移除全局的请求拦截器
