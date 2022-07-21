@@ -8,8 +8,9 @@ import search from '@/assets/illustrations/search.png';
 import IconSearch from '~icons/app/icon-search.svg';
 
 import { getSecurityList } from '@/api/api-security';
-import { useData } from 'vitepress';
+import { useData, useRouter } from 'vitepress';
 
+const router = useRouter();
 const { theme: i18n } = useData();
 const inputName = ref('');
 const total = ref(0);
@@ -61,6 +62,11 @@ const handleSizeChange = (val: number) => {
 const handleCurrentChange = (val: number) => {
   queryData.page = val;
 };
+
+function jumpBulletinDetail(val) {
+  router.go(`zh/security/safety-bulletin/detail/?id=${JSON.stringify(val)}`);
+}
+
 watch(queryData, () =>
   getSecurityLists({
     pages: { page: queryData.page, size: queryData.pageSize },
@@ -101,10 +107,16 @@ watch(queryData, () =>
       </div>
     </OCard>
     <OTable :data="tableData" style="width: 100%">
-      <OTableColumn
-        :label="i18n.security.ADVISORY"
-        prop="securityNoticeNo"
-      ></OTableColumn>
+      <el-table-column>
+        <template #header>
+          <span>{{ i18n.security.ADVISORY }}</span>
+        </template>
+        <template #default="scope">
+          <span @click="jumpBulletinDetail(scope.row.securityNoticeNo)">
+            {{ scope.row.securityNoticeNo }}
+          </span>
+        </template>
+      </el-table-column>
       <OTableColumn
         :label="i18n.security.SYNOPSIS"
         prop="summary"

@@ -53,10 +53,10 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      '/api-mirror': {
-        target: 'https://api.openeuler.org/mirrors',
+      '/api': {
+        target: 'https://api.openeuler.org',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-mirror/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
       '/api-cve': {
         target: 'https://www.openeuler.org/api-cve',

@@ -185,12 +185,12 @@ onMounted(async () => {
   }
   &-header:first-child {
     .cell {
-      padding-left: var(--o-spacing-m);
+      padding-left: var(--o-spacing-h2);
     }
   }
   &-header:last-child {
     .cell {
-      padding-right: var(--o-spacing-m);
+      padding-right: var(--o-spacing-h2);
     }
   }
 
@@ -216,12 +216,12 @@ onMounted(async () => {
   }
   &-row:first-child {
     .cell {
-      padding-left: var(--o-spacing-m);
+      padding-left: var(--o-spacing-h2);
     }
   }
   &-row:last-child {
     .cell {
-      padding-right: var(--o-spacing-m);
+      padding-right: var(--o-spacing-h2);
     }
   }
 }

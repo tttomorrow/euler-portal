@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="网页首页/dark" transform="translate(-1040.000000, -2288.000000)">
+            <g id="社区贡献者+社区软件+sig组+社区用户+商用OSV" transform="translate(752.000000, 2238.000000)">
+                <g id="楼层一/五个三级插画区域" transform="translate(276.000000, 50.000000)">
+                    <g id="插画/openEuler/三级插画/1" transform="translate(12.000000, 0.000000)">
+                        <g id="编组-13" transform="translate(5.000000, 3.000000)">
+                            <rect id="矩形" stroke="#FFFFFF" stroke-width="2" x="5" y="0" width="28" height="9.54545455" rx="4.77272727"></rect>
+                            <rect id="矩形" stroke="#FFFFFF" stroke-width="2" x="5" y="9.54545455" width="28" height="9.54545455" rx="4.77272727"></rect>
+                            <rect id="矩形" stroke="#FFFFFF" stroke-width="2" x="5" y="19.0909091" width="28" height="9.54545455" rx="4.77272727"></rect>
+                            <ellipse id="椭圆形" fill="#406FE7" cx="10" cy="4.77272727" rx="2" ry="1.90909091"></ellipse>
+                            <ellipse id="椭圆形" fill="#406FE7" cx="10" cy="14.3181818" rx="2" ry="1.90909091"></ellipse>
+                            <ellipse id="椭圆形" fill="#406FE7" cx="10" cy="23.8636364" rx="2" ry="1.90909091"></ellipse>
+                            <line x1="19" y1="28.6363636" x2="19" y2="34.3636364" id="路径-8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="bevel"></line>
+                            <line x1="38" y1="38.1818182" x2="24" y2="38.1818182" id="路径-8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="bevel"></line>
+                            <line x1="14" y1="38.1818182" x2="0" y2="38.1818182" id="路径-8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="bevel"></line>
+                            <ellipse id="椭圆形" stroke="#406FE7" stroke-width="2" cx="19" cy="38.1818182" rx="4" ry="3.81818182"></ellipse>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

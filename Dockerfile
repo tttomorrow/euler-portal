@@ -7,7 +7,7 @@ WORKDIR /home/openeuler/web
 COPY . /home/openeuler/web
 
 RUN pnpm install
-RUN pnpm build:p
+RUN pnpm build
 
 FROM nginx:1.20.0
 
@@ -19,4 +19,3 @@ ENV RUN_USER nginx
 ENV RUN_GROUP nginx
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
-

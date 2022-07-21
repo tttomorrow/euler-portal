@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 :root {
   // 基础颜色
   --o-color-base: #ffffff; // 基础色
@@ -64,12 +65,16 @@
   --o-line-height-tip: 18px;
 
   // 间距
-  --o-spacing-l: 64px;
-  --o-spacing-m: 40px;
-  --o-spacing-s4: 32px;
-  --o-spacing-s3: 24px;
-  --o-spacing-s2: 16px;
-  --o-spacing-s1: 8px;
+  --o-spacing-h1: 64px;
+  --o-spacing-h2: 40px;
+  --o-spacing-h3: 32px;
+  --o-spacing-h4: 24px;
+  --o-spacing-h5: 16px;
+  --o-spacing-h6: 12px;
+  --o-spacing-h7: 10px;
+  --o-spacing-h8: 8px;
+  --o-spacing-h9: 6px;
+  --o-spacing-h10: 4px;
 
   // 阴影
   --o-shadow-base: 0px 1px 5px 0px rgba(45, 47, 51, 0.1); // 一级投影，应用场景：默认状态卡片、楼层、导航栏等

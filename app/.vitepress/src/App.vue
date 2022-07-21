@@ -20,8 +20,7 @@ const isDoc = computed(() => {
 <style lang="scss" scoped>
 main {
   margin: 80px auto 0;
-  max-width: 1504px;
-  padding: 0 var(--o-spacing-m);
+  padding: 0 var(--o-spacing-h2);
   @media (max-width: 1100px) {
     margin-top: 48px;
   }

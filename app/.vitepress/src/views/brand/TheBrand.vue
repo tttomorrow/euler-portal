@@ -218,7 +218,7 @@ onMounted(() => {
         width: 100%;
       }
     }
-    ::v-deep .el-card__body {
+    :deep(.el-card__body) {
       padding: 0;
     }
   }

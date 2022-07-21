@@ -1,5 +1,5 @@
 <script setup>
-  import TheHome from "@/views/TheHome.vue"
+  import TheHome from "@/views/home/TheHome.vue"
 </script>
 
 <TheHome />

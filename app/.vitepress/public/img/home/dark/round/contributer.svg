@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="网页首页/dark" transform="translate(-894.000000, -2288.000000)" stroke-width="2">
+            <g id="社区贡献者+社区软件+sig组+社区用户+商用OSV" transform="translate(752.000000, 2238.000000)">
+                <g id="楼层一/五个三级插画区域" transform="translate(121.000000, 50.000000)">
+                    <g id="插画/openEuler/三级插画/1" transform="translate(21.000000, 0.000000)">
+                        <g id="编组-12" transform="translate(5.000000, 2.000000)">
+                            <path d="M16.0735828,33.7490678 L10.3923048,43.5884573 L7.19615242,37.1243557 L3.55271368e-15,37.5884573 L5.74232051,27.6421098 C8.27814266,30.7971301 11.9170003,33.0278863 16.0735828,33.7490678 Z" id="形状结合" stroke="#FFFFFF" stroke-linejoin="round"></path>
+                            <path d="M31.8990567,28.073597 L37.3923048,37.5884573 L30.1961524,37.1243557 L27,43.5884573 L21.3692414,33.8362211 C25.5632095,33.2514098 29.2672121,31.1364709 31.8990567,28.073597 Z" id="形状结合" stroke="#FFFFFF" stroke-linejoin="round"></path>
+                            <circle id="椭圆形" stroke="#FFFFFF" cx="19" cy="17" r="17"></circle>
+                            <circle id="椭圆形" stroke="#406FE7" cx="19" cy="17" r="11"></circle>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

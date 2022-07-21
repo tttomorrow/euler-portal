@@ -8,10 +8,10 @@
 -->
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import BannerLevel2 from '@/components/BannerLevel2.vue'
-import TheList from './TheList.vue'
-import TheBoard from './TheBoard.vue'
-import TheLandscape from './TheLandscape.vue'
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+import TheList from './TheList.vue';
+import TheBoard from './TheBoard.vue';
+import TheLandscape from './TheLandscape.vue';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
 
@@ -21,47 +21,69 @@ const { theme: i18n } = useData();
 <template>
   <header>
     <BannerLevel2
-    :background-image="banner"
-    :illustration="illustration"
-    title="SIG"
-    :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"/>
+      :background-image="banner"
+      :illustration="illustration"
+      title="SIG"
+      :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
+    />
   </header>
   <div class="sig-ul">
-     <ul>
-      <li>{{i18n.sig.SIG_DESCRIPTION.LI1}}</li>
-      <li>{{i18n.sig.SIG_DESCRIPTION.LI2}}</li>
-      <li>{{i18n.sig.SIG_DESCRIPTION.LI3}}</li>
+    <ul>
+      <li>{{ i18n.sig.SIG_DESCRIPTION.LI1 }}</li>
+      <li>{{ i18n.sig.SIG_DESCRIPTION.LI2 }}</li>
+      <li>{{ i18n.sig.SIG_DESCRIPTION.LI3 }}</li>
     </ul>
   </div>
   <main>
     <div class="sig-list">
       <OTabs>
         <OTabPane label="SIG List">
-          <TheList/>
+          <TheList />
         </OTabPane>
         <OTabPane label="SIG Board">
-          <TheBoard/>
+          <TheBoard />
         </OTabPane>
         <OTabPane label="SIG Landscape">
-          <TheLandscape/>
+          <TheLandscape />
         </OTabPane>
       </OTabs>
     </div>
   </main>
 </template>
 <style lang="scss" scoped>
-.sig-ul {
-  font-size: var(--o-font-size-text);
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  line-height: var(--o-line-height-h8);
-  color: var(--o-color-text2);
-  max-width: 1380px;
-  margin: var(--o-spacing-l) auto;
-  ul {
-    list-style: disc;
-    li {
-      margin-top: var(--o-spacing-s1);
+.sig-list {
+  max-width: 1504px;
+  margin: 0 auto;
+  .list-table {
+    width: 100%;
+    padding: var(--o-spacing-h2);
+    background-color: var(--o-color-bg);
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      thead {
+        background-color: var(--o-color-bg3);
+        th {
+          height: 54px;
+          border: none !important;
+          text-align: left;
+          &:nth-of-type(1) {
+            width: 300px;
+            padding-left: var(--o-spacing-h2);
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            height: 54px;
+            &:nth-of-type(1) {
+              width: 300px;
+              padding-left: var(--o-spacing-h2);
+            }
+          }
+        }
+      }
     }
   }
 }

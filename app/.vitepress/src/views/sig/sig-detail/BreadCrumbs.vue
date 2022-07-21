@@ -13,7 +13,7 @@ import IconArrowRight from '~icons/app/right.svg';
 <style lang="scss" scoped>
 .bread-crumbs {
   width: 1120px;
-  padding: var(--o-spacing-m) 0;
+  padding: var(--o-spacing-h2) 0;
   font-size: var(--o-font-size-tip);
   line-height: var(--o-line-height-tip);
   display: flex;
