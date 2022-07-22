@@ -12,19 +12,21 @@ const attrs = useAttrs();
 
 <style lang="scss" scoped>
 .o-pagination {
-  --o-pagination-font-color: var(--o-color-base_inverse);
+  --o-pagination-font-color: var(--o-color-text2);
   --o-pagination-font-color_active: var(--o-color-brand_active);
-  --o-pagination-bg-color: var(--o-color-brand_disabled);
+
+  --o-pagination-bg-color: var(--o-color-bg4);
   --o-pagination-bg-color_hover: var(--o-color-brand_disabled);
   --o-pagination-bg-color_selected: var(--o-color-brand_disabled);
   --o-pagination-bg-color_disabled: var(--o-color-secondary);
+
   --o-pagination-number-border-color_active: var(--o-color-brand);
 
   :deep.el-pagination {
     --el-pagination-button-bg-color: var(--o-pagination-bg-color_disabled);
     justify-content: center;
     .el-input {
-      --el-input-bg-color: var(--o-pagination-bg-color_disabled);
+      --el-input-bg-color: var(--o-pagination-bg-color);
       --el-input-text-color: var(--o-pagination-font-color);
     }
     .el-input__wrapper {
@@ -40,14 +42,16 @@ const attrs = useAttrs();
     }
     .el-pager li {
       color: var(--o-pagination-font-color);
+      background: var(--o-pagination-bg-color);
       border-radius: 0px;
       &:hover {
+        color: var(--o-pagination-font-color);
         background-color: var(--o-color-brand_disabled);
       }
     }
     .el-pager li.is-active.number {
       background: var(--o-color-brand_disabled);
-      color: var(--o-color-brand_active);
+      color: var(--o-pagination-font-color);
       border: 1px solid var(--o-color-brand);
       font-weight: 400;
       font-size: var(--o-font-size-text);
@@ -56,15 +60,16 @@ const attrs = useAttrs();
     .btn-prev {
       color: var(--o-pagination-font-color);
       border-radius: 0px;
+      background: var(--o-pagination-bg-color);
       &:disabled {
-        background: var(--o-pagination-bg-color_disabled);
+        background: var(--o-pagination-bg-color);
       }
     }
     .btn-next {
       margin-right: var(--o-spacing-h5);
     }
     .el-pagination__jump {
-      color: var(--o-color-base_inverse);
+      color: var(--o-pagination-font-color);
       border-radius: 0px;
       margin-left: var(--o-spacing-h4);
     }
