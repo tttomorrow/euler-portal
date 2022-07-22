@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, CSSProperties, computed } from 'vue';
 
 const props = defineProps({
   id: {
@@ -16,46 +16,61 @@ const props = defineProps({
   },
   top: {
     type: String,
-    default: '16rem',
+    default: '100',
   },
   right: {
     type: String,
-    default: '40px',
+    default: '40',
+  },
+  left: {
+    type: String,
+    default: 'inherit',
   },
 });
 
+// 当前选中标签
 const selectId = ref('');
 
 const scroll = () => {
+  // 为了保证兼容性，这里取两个值，哪个有值取哪一个
+  // scrollTop就是触发滚轮事件时滚轮的高度
   const scrollTop =
     document.documentElement.scrollTop || document.body.scrollTop;
 
   const targetArr: any = ref([]);
-  targetArr.value = props.data.filter(function (item) {
-    return (
-      scrollTop + props.offsetValue >
-      (document.getElementById(item) as HTMLAnchorElement).offsetTop
-    );
+  targetArr.value = props.data.filter((item: string) => {
+    const div = document.querySelector(`#${item}`) as HTMLElement;
+    return scrollTop + props.offsetValue > div.offsetTop;
   });
 
   if (targetArr.value.length) {
     selectId.value =
-      targetArr.value.slice(targetArr.value.length - 1).join('') || '';
+      targetArr.value.slice(targetArr.value.length - 1).shift() || '';
   }
 };
 
-selectId.value = props.data.slice(0, 1).shift() || '';
+selectId.value = props.data.slice(0, 1).join('') || '';
 
+// 点击滚动事件
 const selectAnchor = (id: string) => {
   const doc = document.getElementById(id);
-  props.data.forEach((item) => {
+  props.data.forEach((item: string) => {
     if (item === id) {
       const h = doc?.offsetTop;
-      window.scrollTo({
-        left: 0,
-        top: h,
-        behavior: 'smooth',
-      });
+      if (props.id) {
+        const div = document.querySelector(`#${props.id}`) as HTMLElement;
+        div.scrollTo({
+          left: 0,
+          top: h,
+          behavior: 'smooth',
+        });
+      } else {
+        window.scrollTo({
+          left: 0,
+          top: h,
+          behavior: 'smooth',
+        });
+      }
     }
   });
 };
@@ -67,6 +82,7 @@ const selectAnchor = (id: string) => {
 
 onMounted(() => {
   const body = props.id ? document.getElementById(props.id) : window;
+
   body?.addEventListener('scroll', scroll);
 });
 
@@ -74,10 +90,25 @@ onUnmounted(() => {
   const body = props.id ? document.getElementById(props.id) : window;
   body?.removeEventListener('scroll', scroll);
 });
+
+const rootStyle = computed(() => {
+  const result: CSSProperties = {};
+  if (props.top) {
+    result.top = `${props.top}px`;
+  }
+
+  if (props.left) {
+    result.left = `${props.left}px`;
+  }
+  if (props.right) {
+    result.right = `${props.right}px`;
+  }
+  return result;
+});
 </script>
 
 <template>
-  <div class="anchor" :style="{ top, right }">
+  <div class="anchor" :class="id ? 'scroll-target' : ''" :style="rootStyle">
     <div
       v-for="item in data"
       :key="item"
@@ -99,6 +130,9 @@ onUnmounted(() => {
   position: fixed;
   width: 200px;
   z-index: 99;
+  &.scroll-target {
+    position: absolute;
+  }
   .icon {
     font-size: 34px;
     cursor: pointer;

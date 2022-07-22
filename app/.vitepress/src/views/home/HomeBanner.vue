@@ -9,6 +9,7 @@ import { useData } from 'vitepress';
 import HomeConfig from './config';
 
 import IconArrowRight from '~icons/app/icon-arrow-right1.svg';
+
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const { lang } = useData();
@@ -25,10 +26,19 @@ const onSwiper = (swiper: any) => {
   flag.value = computed(() => swiper.animating);
 };
 
-const homeBanner = computed(() =>
-  lang.value === 'zh' ? HomeConfig.HOMEBANNER.zh : HomeConfig.HOMEBANNER.en
-);
-function jump(item: any) {
+// 判断语言 banner
+const homeBanner = computed(() => {
+  if (lang.value === 'en') {
+    return HomeConfig.HOMEBANNER.en;
+  } else if (lang.value === 'ru') {
+    return HomeConfig.HOMEBANNER.ru;
+  } else {
+    return HomeConfig.HOMEBANNER.zh;
+  }
+});
+
+// banner跳转事件
+const jump = (item: any) => {
   if (flag.value) {
     if (item.targetTap === 1) {
       window.open(item.link, '_blank');
@@ -36,7 +46,7 @@ function jump(item: any) {
       window.open(item.link, '_self');
     }
   }
-}
+};
 </script>
 
 <template>
@@ -107,7 +117,7 @@ $banner-color: #fff;
     opacity: 1;
     transition: all 0.33s;
     &-content {
-      width: 1416px;
+      max-width: 1416px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -115,9 +125,12 @@ $banner-color: #fff;
       height: 100%;
       .title {
         font-size: var(--o-font-size-h1);
-        font-weight: normal;
-        color: var(--o-color-text);
         line-height: var(--o-line-height-h1);
+        color: var(--o-color-text);
+        @media screen and (max-width: 1439px) {
+          font-size: var(--o-font-size-h2);
+          line-height: var(--o-line-height-h2);
+        }
       }
       .desc {
         font-size: var(--o-font-size-h5);
@@ -125,12 +138,19 @@ $banner-color: #fff;
         color: var(--o-color-text);
         line-height: var(--o-line-height-h5);
         margin-top: var(--o-spacing-h6);
+        @media screen and (max-width: 1439px) {
+          font-size: var(--o-font-size-h6);
+          line-height: var(--o-line-height-h6);
+        }
       }
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {
           color: var(--o-color-text);
         }
+      }
+      @media screen and (max-width: 1439px) {
+        padding: 0 16px;
       }
     }
     &-cover {
@@ -146,6 +166,26 @@ $banner-color: #fff;
     .isPCshow {
       display: block;
     }
+    @media screen and (max-width: 767px) {
+      position: static !important;
+      .isPCshow,
+      .block {
+        display: none !important;
+      }
+      .isH5show {
+        display: block !important;
+        width: 100%;
+      }
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    height: 400px;
+  }
+  @media screen and (max-width: 824px) {
+    height: 320px;
+  }
+  @media screen and (max-width: 767px) {
+    height: auto;
   }
 }
 
@@ -166,6 +206,20 @@ $banner-color: #fff;
   .swiper-pagination-bullet-active {
     background: var(--o-color-auxiliary);
     opacity: 1;
+  }
+  @media screen and (max-width: 1439px) {
+    width: 1080px !important;
+    padding: 0 16px;
+    left: 0 !important;
+    transform: translateX(0);
+  }
+  @media screen and (max-width: 1100px) {
+    width: 100% !important;
+    text-align: center;
+
+    .swiper-pagination-bullet {
+      width: 20px !important;
+    }
   }
 }
 :deep(.swiper-button-prev) {
@@ -196,80 +250,6 @@ $banner-color: #fff;
   }
   &.show {
     opacity: 1;
-  }
-}
-@media screen and (min-width: 1921px) {
-  .block {
-    display: -webkit-inline-box !important;
-    display: -ms-inline-flexbox !important;
-    display: inline-flex !important;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-  }
-  .center-img {
-    -webkit-box-flex: 222;
-    -ms-flex: 222;
-    flex: 222;
-  }
-  .banner-panel {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1440px) {
-  .home-banner {
-    .banner-panel-content {
-      width: 1080px;
-      padding: 0 16px;
-      .title {
-        font-size: 48px;
-        line-height: 60px;
-      }
-      .desc {
-        font-size: 16px;
-      }
-    }
-  }
-  :deep(.swiper-pagination) {
-    width: 1080px !important;
-    padding: 0 16px;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .home-banner {
-    height: 400px;
-  }
-  :deep(.swiper-pagination) {
-    width: 100% !important;
-    text-align: center;
-
-    .swiper-pagination-bullet {
-      width: 20px !important;
-    }
-  }
-}
-@media screen and (min-width: 640px) and (max-width: 824px) {
-  .home-banner {
-    height: 320px;
-  }
-}
-@media screen and (max-width: 639px) {
-  .isPCshow,
-  .block {
-    display: none !important;
-  }
-  .banner-panel {
-    position: static !important;
-  }
-  .home-banner {
-    height: auto !important;
-  }
-  .isH5show {
-    display: block !important;
-    width: 100%;
   }
 }
 </style>
