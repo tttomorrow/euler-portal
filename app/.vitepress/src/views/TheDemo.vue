@@ -65,7 +65,7 @@ const calendarData = ref<TableData[]>([
 ]);
 
 const anchorData = ['anchor1', 'anchor2', 'anchor3'];
-const anchorData1 = ['anchor4', 'anchor5', 'anchor6'];
+const anchorData1 = ['anchor4', 'anchor5', 'anchor6', 'anchor7'];
 
 // tagFiter strart
 const isAll = ref(false);
@@ -200,14 +200,15 @@ onMounted(() => {
       <div id="anchor3" class="anchor-item">archor3</div>
       <AppAnchor :data="anchorData" />
       <h4>AppAnchor 更换滚动容器</h4>
-      <div id="anchor-test" class="anchor-main">
+      <div class="anchor-main">
         <div class="anchor-side">
-          <AppAnchor id="anchor-test" :data="anchorData1" left="10" />
+          <AppAnchor id="anchor-test" :data="anchorData1" left="12px" top="0" />
         </div>
-        <div class="anchor-content">
+        <div id="anchor-test" class="anchor-content">
           <div id="anchor4" class="anchor-item">archor4</div>
           <div id="anchor5" class="anchor-item">archor5</div>
           <div id="anchor6" class="anchor-item">archor6</div>
+          <div id="anchor7" class="anchor-item">archor7</div>
         </div>
       </div>
     </div>
@@ -234,19 +235,20 @@ body {
 }
 .anchor-main {
   display: flex;
+  margin-bottom: 100px;
+  background-color: var(--o-color-bg);
   .anchor-side {
-    width: 220px;
+    width: 200px;
     position: relative;
   }
   .anchor-content {
     flex: 1;
+    height: 300px;
+    overflow: auto;
+    position: relative;
   }
 }
-#anchor-test {
-  height: 300px;
-  overflow: auto;
-  position: relative;
-}
+
 .anchor-item {
   width: 100%;
   height: 200px;

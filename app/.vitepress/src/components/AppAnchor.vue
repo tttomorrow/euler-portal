@@ -7,8 +7,8 @@ const props = defineProps({
     default: '',
   },
   data: {
-    type: Array,
-    default: () => [],
+    type: Object,
+    default: () => null,
   },
   offsetValue: {
     type: Number,
@@ -16,11 +16,11 @@ const props = defineProps({
   },
   top: {
     type: String,
-    default: '100',
+    default: '15rem',
   },
   right: {
     type: String,
-    default: '40',
+    default: '24px',
   },
   left: {
     type: String,
@@ -28,7 +28,7 @@ const props = defineProps({
   },
 });
 
-// 当前选中标签
+// 当前选中项
 const selectId = ref('');
 
 const scroll = () => {
@@ -37,10 +37,18 @@ const scroll = () => {
   const scrollTop =
     document.documentElement.scrollTop || document.body.scrollTop;
 
+  //自定义滚动容器滚轮高度
+  const targetScrollTop = props.id
+    ? (document.querySelector(`#${props.id}`) as HTMLElement).scrollTop
+    : 0;
+
   const targetArr: any = ref([]);
   targetArr.value = props.data.filter((item: string) => {
     const div = document.querySelector(`#${item}`) as HTMLElement;
-    return scrollTop + props.offsetValue > div.offsetTop;
+    return (
+      (props.id ? targetScrollTop : scrollTop) + props.offsetValue >
+      div.offsetTop
+    );
   });
 
   if (targetArr.value.length) {
@@ -57,20 +65,15 @@ const selectAnchor = (id: string) => {
   props.data.forEach((item: string) => {
     if (item === id) {
       const h = doc?.offsetTop;
-      if (props.id) {
-        const div = document.querySelector(`#${props.id}`) as HTMLElement;
-        div.scrollTo({
-          left: 0,
-          top: h,
-          behavior: 'smooth',
-        });
-      } else {
-        window.scrollTo({
-          left: 0,
-          top: h,
-          behavior: 'smooth',
-        });
-      }
+
+      const container = props.id
+        ? (document.querySelector(`#${props.id}`) as HTMLElement)
+        : window;
+      container.scrollTo({
+        left: 0,
+        top: h,
+        behavior: 'smooth',
+      });
     }
   });
 };
@@ -82,7 +85,6 @@ const selectAnchor = (id: string) => {
 
 onMounted(() => {
   const body = props.id ? document.getElementById(props.id) : window;
-
   body?.addEventListener('scroll', scroll);
 });
 
@@ -91,17 +93,17 @@ onUnmounted(() => {
   body?.removeEventListener('scroll', scroll);
 });
 
+//自定义样式
 const rootStyle = computed(() => {
   const result: CSSProperties = {};
   if (props.top) {
-    result.top = `${props.top}px`;
+    result.top = props.top;
   }
-
   if (props.left) {
-    result.left = `${props.left}px`;
+    result.left = props.left;
   }
   if (props.right) {
-    result.right = `${props.right}px`;
+    result.right = props.right;
   }
   return result;
 });
@@ -109,19 +111,17 @@ const rootStyle = computed(() => {
 
 <template>
   <div class="anchor" :class="id ? 'scroll-target' : ''" :style="rootStyle">
-    <div
-      v-for="item in data"
-      :key="item"
-      class="anchor-item"
-      :class="item === selectId ? 'active' : ''"
-    >
-      <div class="item">
-        <div class="circle"></div>
-        <a :title="item" class="label" @click="selectAnchor(item)">
-          {{ item }}
-        </a>
-      </div>
-    </div>
+    <ul>
+      <li
+        v-for="item in data"
+        :key="item"
+        class="anchor-item"
+        :class="item === selectId ? 'active' : ''"
+        @click="selectAnchor(item)"
+      >
+        {{ item }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -138,46 +138,46 @@ const rootStyle = computed(() => {
     cursor: pointer;
   }
   &-item {
-    border-left: 2px solid #bfbfbf;
-    margin-left: 16px;
     position: relative;
-    height: 48px;
-    .item {
-      position: absolute;
-      bottom: -3px;
-      left: -7px;
-      display: flex;
-      align-items: center;
-      .circle {
-        width: 12px;
-        height: 12px;
-        border: 2px solid #bfbfbf;
-        border-radius: 50%;
-        display: inline-block;
-        background-color: #ffffff;
-      }
-      .label {
-        font-size: var(--o-font-size-h8);
-        color: var(--o-color-text2);
-        margin-left: 8px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        max-width: 180px;
-        cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    font-size: var(--o-font-size-h8);
+    color: var(--o-color-text2);
+    cursor: pointer;
+    &:not(:first-of-type) {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -32px;
+        left: 5px;
+        width: 1px;
+        height: 32px;
+        border-left: 2px solid var(--o-color-bg4);
       }
     }
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      text-align: center;
+      line-height: 26px;
+      border-radius: 50%;
+      background: var(--o-color-bg);
+      margin-right: 20px;
+      border: 2px solid var(--o-color-bg4);
+    }
+
     &.active {
-      .circle {
+      &::before {
         border-color: var(--o-color-brand);
       }
-      .label {
-        color: var(--o-color-brand);
-      }
     }
-  }
-  .first-line {
-    height: 30px;
+    &:not(:first-of-type) {
+      margin-top: 32px;
+    }
   }
 }
 </style>

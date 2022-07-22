@@ -61,7 +61,7 @@ const handleMenuLayer = (e: any) => {
 };
 
 const goMobile = (item: NavItem) => {
-  if (item.hasOwnProperty('CHILDREN')) {
+  if (Object.prototype.hasOwnProperty.call(item, 'CHILDREN')) {
     mobileChildMenu.value = item.CHILDREN;
   } else {
     mobileChildMenu.value = [];

@@ -12,13 +12,13 @@ export default {
         btn: '了解更多',
       },
       {
-        pcBanner: 'https://openlookeng.io/img/banner/homeBanner2.jpg',
-        moBanner: 'https://openlookeng.io/img/banner/homeBannerMo2.jpg',
+        pcBanner: 'https://www.openeuler.org/img/activities/pc/summit.png',
+        moBanner: 'https://www.openeuler.org/img/activities/mobile/banner.png',
         link: '',
         targetTap: 0,
-        title: 'openLooKeng新版本1.7.0正式发布',
-        desc: '面向大数据库的数据虚拟化引擎',
-        btn: '查看详情',
+        title: '',
+        desc: '',
+        btn: '',
       },
     ],
     en: [

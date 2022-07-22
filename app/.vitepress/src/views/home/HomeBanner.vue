@@ -50,15 +50,15 @@ const jump = (item: any) => {
 </script>
 
 <template>
+  <!--  :autoplay="{
+      delay: 5000,
+      disableOnInteraction: false,
+    }" -->
   <swiper
     class="home-banner"
     :loop="true"
     :pagination="{
       clickable: true,
-    }"
-    :autoplay="{
-      delay: 5000,
-      disableOnInteraction: false,
     }"
     :navigation="true"
     @swiper="onSwiper"
@@ -66,7 +66,7 @@ const jump = (item: any) => {
     <swiper-slide v-for="item in homeBanner" :key="item.link">
       <a class="banner-panel" @click="jump(item)">
         <div
-          class="banner-panel-cover isPCshow"
+          class="banner-panel-cover"
           :style="{ backgroundImage: 'url(' + item.pcBanner + ')' }"
         >
           <div
@@ -84,8 +84,8 @@ const jump = (item: any) => {
               </OButton>
             </div>
           </div>
+          <img v-else class="isH5show" :src="item.moBanner" alt="" />
         </div>
-        <img class="isH5show" :src="item.moBanner" alt="" />
       </a>
     </swiper-slide>
   </swiper>
@@ -99,6 +99,11 @@ $banner-color: #fff;
 .home-banner-btn {
   border-color: $banner-color;
   color: $banner-color;
+  @media screen and (max-width: 824px) {
+    padding: 5px 12px 5px 16px;
+    line-height: 22px;
+    font-size: 14px;
+  }
 }
 
 .home-banner {
@@ -131,6 +136,10 @@ $banner-color: #fff;
           font-size: var(--o-font-size-h2);
           line-height: var(--o-line-height-h2);
         }
+        @media screen and (max-width: 824px) {
+          font-size: var(--o-font-size-h6);
+          line-height: var(--o-line-height-h6);
+        }
       }
       .desc {
         font-size: var(--o-font-size-h5);
@@ -142,15 +151,28 @@ $banner-color: #fff;
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
         }
+        @media screen and (max-width: 824px) {
+          margin-top: var(--o-spacing-h9);
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+        }
       }
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {
           color: var(--o-color-text);
         }
+        @media screen and (max-width: 824px) {
+          margin-top: var(--o-spacing-h5);
+        }
       }
       @media screen and (max-width: 1439px) {
         padding: 0 16px;
+      }
+      @media screen and (max-width: 824px) {
+        justify-content: flex-start;
+        padding-top: var(--o-spacing-h4);
+        box-sizing: border-box;
       }
     }
     &-cover {
@@ -162,20 +184,19 @@ $banner-color: #fff;
     }
     .isH5show {
       display: none;
+      object-fit: cover;
+      width: 100%;
+      @media screen and (max-width: 824px) {
+        display: block;
+        height: 320px;
+      }
+      @media screen and (max-width: 767px) {
+        height: 216px;
+      }
     }
-    .isPCshow {
-      display: block;
-    }
+
     @media screen and (max-width: 767px) {
       position: static !important;
-      .isPCshow,
-      .block {
-        display: none !important;
-      }
-      .isH5show {
-        display: block !important;
-        width: 100%;
-      }
     }
   }
   @media screen and (max-width: 1100px) {
@@ -185,7 +206,7 @@ $banner-color: #fff;
     height: 320px;
   }
   @media screen and (max-width: 767px) {
-    height: auto;
+    height: 216px;
   }
 }
 
@@ -215,10 +236,10 @@ $banner-color: #fff;
   }
   @media screen and (max-width: 1100px) {
     width: 100% !important;
-    text-align: center;
-
+    bottom: 72px;
     .swiper-pagination-bullet {
       width: 20px !important;
+      margin: 0 4px 0 0;
     }
   }
 }
