@@ -18,14 +18,16 @@ const isDoc = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-main {
-  margin: 80px auto 0;
-  @media (max-width: 1100px) {
-    margin-top: 48px;
-  }
-}
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  background-color: var(--o-color-bg2);
+  margin-top: 80px;
+  @media (max-width: 1100px) {
+    margin-top: 48px;
+  }
 }
 </style>
