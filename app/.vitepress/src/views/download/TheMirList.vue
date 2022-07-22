@@ -176,7 +176,6 @@ onMounted(async () => {
   &-header {
     background: var(--o-color-bg3) !important;
     font-size: var(--o-font-size-h8);
-    font-family: 'PingFangSC-Regular, PingFang SC';
     font-weight: 400;
     color: var(--o-color-text2);
     line-height: 54px;
@@ -199,7 +198,6 @@ onMounted(async () => {
   &-area {
     .mirror-list-row {
       font-size: var(--o-font-size-h7) !important;
-      font-family: 'PingFangSC-Regular, PingFang SC';
       font-weight: 800 !important;
       height: 72px !important;
       border: none !important;
@@ -208,7 +206,6 @@ onMounted(async () => {
 
   &-row {
     font-size: var(--o-font-size-h8);
-    font-family: 'PingFangSC-Regular, PingFang SC';
     font-weight: 400;
     color: var(--o-color-text2);
     height: 54px;
