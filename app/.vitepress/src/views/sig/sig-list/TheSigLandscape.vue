@@ -57,7 +57,6 @@ const { theme: i18n } = useData();
       column-gap: 20px;
       .sig-category-item {
         break-inside: avoid;
-        transform: translate3d(0, 0, 0);
         border: 1px solid;
         border-radius: 4px;
         margin-bottom: var(--o-spacing-h4);
@@ -81,7 +80,7 @@ const { theme: i18n } = useData();
             width: 162px;
             text-align: center;
             color: var(--o-color-text2);
-            font-size: var(--o-font-size-h8);
+            font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-h5);
             height: var(--o-line-height-h5);
             border: 1px solid;
