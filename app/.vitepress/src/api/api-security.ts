@@ -8,7 +8,6 @@ import { BulletinParams } from '@/shared/@types/type-safety-bulletin';
  * 调用接口获取安全公告列表
  * @name getSecurityList
  */
-
 export function getSecurityList(params: BulletinParams) {
   // const url = '/api-cve/cve-security-notice-server/securitynotice/findAll';
   const url = '/api-cve/cve-security-notice-server/securitynotice/findAll';
