@@ -90,7 +90,10 @@ onMounted(() => {
         <h5>{{ sigDetail.MEMBERS }}</h5>
         <ul>
           <li v-for="item in memberList" :key="item.gitee_id">
-            <img :src="item.avatar_url" alt="yangdi" />
+            <div class="member-img">
+              <img :src="item.avatar_url" alt="yangdi" />
+            </div>
+
             <p class="name">{{ item.gitee_id }}</p>
             <p class="introduction">
               <span
@@ -209,11 +212,16 @@ onMounted(() => {
         li {
           text-align: center;
           margin-right: 72px;
-          img {
+          .member-img {
             width: 120px;
             height: 120px;
-            border-radius: 50%;
+            img {
+              width: 120px;
+              height: 120px;
+              border-radius: 50%;
+            }
           }
+
           .name {
             margin-top: var(--o-spacing-h5);
             font-size: var(--o-font-size-h8);
