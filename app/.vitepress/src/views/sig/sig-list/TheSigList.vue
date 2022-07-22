@@ -2,7 +2,7 @@
  * @Author: xjc 2324881835@qq.com
  * @Date: 2022-07-18 16:18:31
  * @LastEditors: xjc 2324881835@qq.com
- * @LastEditTime: 2022-07-21 12:53:54
+ * @LastEditTime: 2022-07-21 21:11:15
  * @FilePath: \openEuler-portal\app\.vitepress\src\views\sig\sig-list\SigList.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -67,8 +67,7 @@ const { theme: i18n } = useData();
   }
 }
 .sig-list {
-  max-width: 1504px;
+  max-width: 1380px;
   margin: var(--o-spacing-h1) auto;
-  height: 100px;
 }
 </style>
