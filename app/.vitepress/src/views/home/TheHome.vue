@@ -6,8 +6,8 @@ import ImgCarousel from './ImgCarousel.vue';
 </script>
 
 <template>
-  <ImgCarousel />
   <HomeBanner />
+  <ImgCarousel />
   <UserCase />
   <CommunityActivity />
 </template>
