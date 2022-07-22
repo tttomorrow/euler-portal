@@ -11,7 +11,7 @@ RUN pnpm build
 
 FROM nginx:1.20.0
 
-COPY --from=Builder /home/openeuler/web/packages/portal/.vitepress/dist /usr/share/nginx/html/
+COPY --from=Builder /home/openeuler/web/app/.vitepress/dist /usr/share/nginx/html/
 RUN chmod -R 755 /usr/share/nginx/html
 COPY ./deploy/nginx/nginx.conf /etc/nginx/nginx.conf
 

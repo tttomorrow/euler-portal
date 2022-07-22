@@ -13,6 +13,7 @@ import { Tree } from './tree';
 import { Pagination } from './pagination';
 import { Table, TableColumn } from './table';
 import { Timeline } from './timeline';
+import { Search } from './search';
 
 const components = [
   Button,
@@ -31,6 +32,7 @@ const components = [
   Tabs,
   TabPane,
   Tree,
+  Search,
 ];
 export default {
   install(app: App): void {

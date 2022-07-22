@@ -13,7 +13,7 @@ const attrs = useAttrs();
 
 <style lang="scss">
 .o-card {
-  --o-font-color: var(--o-color-text2);
+  --o-card-font-color: var(--o-color-text2);
   --o-card-bg-color: var(--o-color-bg);
   --o-card-border-color: var(--o-color-border);
 
