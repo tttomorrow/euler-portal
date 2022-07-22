@@ -7,6 +7,11 @@ import security from './security';
 import home from './home';
 import common from './common';
 import mooc from './learn';
+import atune from './projects/atune';
+import bishengjdk from './projects/bishengjdk';
+import isula from './projects/isula';
+import secgear from './projects/secgear';
+import stratovirt from './projects/stratovirt';
 
 const i18n = {
   zh: {
@@ -17,6 +22,11 @@ const i18n = {
     home: home.zh,
     common: common.zh,
     mooc: mooc.zh,
+    atune: atune.zh,
+    bishengjdk: bishengjdk.zh,
+    isula: isula.zh,
+    secgear: secgear.zh,
+    stratovirt: stratovirt.zh,
   },
   en: {
     sig: sig.en,
@@ -25,6 +35,11 @@ const i18n = {
     security: security.en,
     home: home.en,
     common: common.en,
+    atune: atune.en,
+    bishengjdk: bishengjdk.en,
+    isula: isula.en,
+    secgear: secgear.en,
+    stratovirt: stratovirt.en,
   },
   ru: {
     sig: sig.ru,
@@ -33,6 +48,11 @@ const i18n = {
     security: security.ru,
     home: home.ru,
     common: common.ru,
+    atune: atune.ru,
+    bishengjdk: bishengjdk.ru,
+    isula: isula.ru,
+    secgear: secgear.ru,
+    stratovirt: stratovirt.ru,
   },
 };
 
