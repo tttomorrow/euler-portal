@@ -96,7 +96,6 @@ const { theme: i18n } = useData();
 
   &-value {
     font-size: var(--o-font-size-h5);
-    font-family: 'PingFangSC-Medium, PingFang SC';
     font-weight: 500;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h5);
@@ -110,7 +109,6 @@ const { theme: i18n } = useData();
 
   &-title {
     font-size: var(--o-font-size-h7);
-    font-family: 'PingFangSC-Medium, PingFang SC';
     font-weight: 400;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h7);
@@ -138,7 +136,6 @@ const { theme: i18n } = useData();
   }
   h3 {
     font-size: var(--o-font-size-h3);
-    font-family: 'PingFangSC-Light, PingFang SC';
     font-weight: 300;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h3);
@@ -152,7 +149,6 @@ const { theme: i18n } = useData();
 
   &-title {
     font-size: var(--o-font-size-h7);
-    font-family: 'PingFangSC-Medium, PingFang SC';
     font-weight: 500;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h7);
@@ -164,7 +160,6 @@ const { theme: i18n } = useData();
 
   &-word {
     font-size: var(--o-font-size-text);
-    font-family: 'PingFangSC-Regular, PingFang SC';
     font-weight: 400;
     color: var(--o-color-text3);
     line-height: var(--o-line-height-text);
@@ -197,7 +192,6 @@ const { theme: i18n } = useData();
 
   &-detail {
     font-size: var(--o-font-size-text);
-    font-family: 'PingFangSC-Regular, PingFang SC';
     font-weight: 400;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-text);

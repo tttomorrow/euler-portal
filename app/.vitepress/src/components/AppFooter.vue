@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import LogoFooter from '@/assets/footer/footer-logo2.png';
+import LogoFooter1 from '@/assets/footer-logo1.svg';
 import LogoAtom from '@/assets/footer/atom-logo.svg';
 import LogoBilibili from '@/assets/footer/bilibili.png';
 import LogoInfoq from '@/assets/footer/infoq.png';
@@ -19,12 +20,6 @@ import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
 const { theme: i18n, lang } = useData();
 const router = useRouter();
-
-interface linkItem {
-  path: string;
-  logo: string;
-  id: string;
-}
 
 // 友情链接
 const linksData = {
@@ -60,22 +55,40 @@ const linksData = {
       id: '51cto',
     },
   ],
-  en: [],
-  ru: [],
+  en: [
+    {
+      path: 'https://my.oschina.net/openeuler',
+      logo: LogoOschina,
+      id: 'oschina',
+    },
+    {
+      path: 'https://blog.csdn.net/openEuler_?spm=1000.2115.3001.5343',
+      logo: LogoCsdn,
+      id: 'csdn',
+    },
+  ],
+  ru: [
+    {
+      path: 'https://my.oschina.net/openeuler',
+      logo: LogoOschina,
+      id: 'oschina',
+    },
+    {
+      path: 'https://blog.csdn.net/openEuler_?spm=1000.2115.3001.5343',
+      logo: LogoCsdn,
+      id: 'csdn',
+    },
+  ],
 };
 
 const footerLinks = computed(() => {
-  const result = ref<linkItem[]>([]);
-  if (lang.value === 'zh') {
-    result.value = linksData.zh;
-  }
   if (lang.value === 'en') {
-    result.value = linksData.en;
+    return linksData.en;
+  } else if (lang.value === 'ru') {
+    return linksData.ru;
+  } else {
+    return linksData.zh;
   }
-  if (lang.value === 'ru') {
-    result.value = linksData.ru;
-  }
-  return result;
 });
 
 const footerCodeList = [
@@ -109,7 +122,8 @@ const handleNavClick = (path: string) => {
     <div class="footer-content">
       <div class="inner">
         <div class="footer-logo">
-          <img :src="LogoFooter" alt="" />
+          <img class="show-pc" :src="LogoFooter" alt="" />
+          <img class="show-mo" :src="LogoFooter1" alt="" />
           <p>
             <a
               class="email"
@@ -234,9 +248,22 @@ $color: #fff;
     img {
       height: 46px;
     }
+    .show-pc {
+      display: block;
+    }
+    .show-mo {
+      display: none;
+    }
     @media (max-width: 1439px) {
       text-align: center;
       margin: 16px 0 40px;
+      .show-pc {
+        display: none;
+      }
+      .show-mo {
+        display: inline-block;
+        height: 20px;
+      }
     }
   }
 
@@ -381,6 +408,9 @@ $color: #fff;
   .email {
     color: $color;
     font-size: 14px;
+    @media (max-width: 1439px) {
+      font-size: 12px;
+    }
   }
 }
 </style>

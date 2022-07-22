@@ -117,7 +117,6 @@ list.value = initList();
     max-width: 70px;
     width: 100%;
     font-size: var(--o-font-size-text);
-    font-family: 'PingFangSC-Light, PingFang SC';
     font-weight: 400;
     line-height: var(--o-line-height-text);
   }
@@ -130,7 +129,6 @@ list.value = initList();
   margin: var(--o-spacing-h1) 0;
   &-title {
     font-size: var(--o-font-size-h3);
-    font-family: 'PingFangSC-Light, PingFang SC';
     font-weight: 300;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h3);
@@ -140,7 +138,6 @@ list.value = initList();
 
   &-word {
     font-size: var(--o-font-size-h7);
-    font-family: 'PingFangSC-Light, PingFang SC';
     font-weight: 300;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h7);
@@ -164,7 +161,6 @@ list.value = initList();
 
     &-title {
       font-size: var(--o-font-size-h7);
-      font-family: 'PingFangSC-Light, PingFang SC';
       font-weight: 400;
       color: var(--o-color-text2);
       line-height: var(--o-line-height-h7);
@@ -190,7 +186,6 @@ list.value = initList();
 
     h3 {
       font-size: var(--o-font-size-h3);
-      font-family: 'PingFangSC-Light, PingFang SC';
       font-weight: 300;
       color: var(--o-color-text2);
       line-height: var(--o-line-height-h3);
