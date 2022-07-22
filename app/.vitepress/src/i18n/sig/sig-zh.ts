@@ -395,7 +395,7 @@ export default {
   SIG_DETAIL: {
     VIDEO: '视频',
     NEWS: '新闻',
-    MORE: '更多 >',
+    MORE: '更多',
     BLOG: '博客',
     LATEST_DYNAMIC: '最新动态',
     SIG_EMPTY_TEXT1: '这里空空如也，快给你的SIG',
