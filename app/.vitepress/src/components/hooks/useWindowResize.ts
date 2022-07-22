@@ -1,7 +1,21 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const useWindowResize = () => {
-  const screenWidth = ref(NaN);
+  let width: number = NaN;
+
+  if (typeof global === 'undefined') {
+    width =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+  }
+
+  const screenWidth = ref(width);
+  screenWidth.value =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+
   const onResize = () => {
     screenWidth.value =
       window.innerWidth ||
