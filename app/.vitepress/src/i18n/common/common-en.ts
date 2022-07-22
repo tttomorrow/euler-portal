@@ -186,27 +186,27 @@ export default {
         {
           NAME: 'A-Tune',
           ID: 'atune',
-          PATH: '/other/projects/atune',
+          PATH: '/other/projects/atune/',
         },
         {
           NAME: 'Bisheng JDK',
           ID: 'bishengjdk',
-          PATH: '/other/projects/bishengjdk',
+          PATH: '/other/projects/bishengjdk/',
         },
         {
           NAME: 'iSula',
           ID: 'isula',
-          PATH: '/other/projects/isula',
+          PATH: '/other/projects/isula/',
         },
         {
           NAME: 'secGear',
           ID: 'secgear',
-          PATH: '/other/projects/secgear',
+          PATH: '/other/projects/secgear/',
         },
         {
           NAME: 'StratoVirt',
           ID: 'stratovirt',
-          PATH: '/other/projects/stratovirt',
+          PATH: '/other/projects/stratovirt/',
         },
         {
           NAME: 'Compass-CI',
