@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import LogoFooter from '@/assets/footer/footer-logo2.png';
+import LogoFooter1 from '@/assets/footer-logo1.svg';
 import LogoAtom from '@/assets/footer/atom-logo.svg';
 import LogoBilibili from '@/assets/footer/bilibili.png';
 import LogoInfoq from '@/assets/footer/infoq.png';
@@ -121,7 +122,8 @@ const handleNavClick = (path: string) => {
     <div class="footer-content">
       <div class="inner">
         <div class="footer-logo">
-          <img :src="LogoFooter" alt="" />
+          <img class="show-pc" :src="LogoFooter" alt="" />
+          <img class="show-mo" :src="LogoFooter1" alt="" />
           <p>
             <a
               class="email"
@@ -246,9 +248,22 @@ $color: #fff;
     img {
       height: 46px;
     }
+    .show-pc {
+      display: block;
+    }
+    .show-mo {
+      display: none;
+    }
     @media (max-width: 1439px) {
       text-align: center;
       margin: 16px 0 40px;
+      .show-pc {
+        display: none;
+      }
+      .show-mo {
+        display: inline-block;
+        height: 20px;
+      }
     }
   }
 
@@ -393,6 +408,9 @@ $color: #fff;
   .email {
     color: $color;
     font-size: 14px;
+    @media (max-width: 1439px) {
+      font-size: 12px;
+    }
   }
 }
 </style>
