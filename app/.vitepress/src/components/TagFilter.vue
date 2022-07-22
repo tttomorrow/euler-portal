@@ -43,6 +43,7 @@ const toggle = () => {
   grid-template-columns: 60px auto 60px;
   gap: var(--o-spacing-h4);
   position: relative;
+  align-items: baseline;
   .label {
     font-size: var(--o-font-size-text);
     color: var(--o-color-text3);

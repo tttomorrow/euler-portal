@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import LogoFooter from '@/assets/footer/footer-logo2.png';
@@ -19,12 +19,6 @@ import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
 const { theme: i18n, lang } = useData();
 const router = useRouter();
-
-interface linkItem {
-  path: string;
-  logo: string;
-  id: string;
-}
 
 // 友情链接
 const linksData = {
@@ -60,22 +54,40 @@ const linksData = {
       id: '51cto',
     },
   ],
-  en: [],
-  ru: [],
+  en: [
+    {
+      path: 'https://my.oschina.net/openeuler',
+      logo: LogoOschina,
+      id: 'oschina',
+    },
+    {
+      path: 'https://blog.csdn.net/openEuler_?spm=1000.2115.3001.5343',
+      logo: LogoCsdn,
+      id: 'csdn',
+    },
+  ],
+  ru: [
+    {
+      path: 'https://my.oschina.net/openeuler',
+      logo: LogoOschina,
+      id: 'oschina',
+    },
+    {
+      path: 'https://blog.csdn.net/openEuler_?spm=1000.2115.3001.5343',
+      logo: LogoCsdn,
+      id: 'csdn',
+    },
+  ],
 };
 
 const footerLinks = computed(() => {
-  const result = ref<linkItem[]>([]);
-  if (lang.value === 'zh') {
-    result.value = linksData.zh;
-  }
   if (lang.value === 'en') {
-    result.value = linksData.en;
+    return linksData.en;
+  } else if (lang.value === 'ru') {
+    return linksData.ru;
+  } else {
+    return linksData.zh;
   }
-  if (lang.value === 'ru') {
-    result.value = linksData.ru;
-  }
-  return result;
 });
 
 const footerCodeList = [
