@@ -1,5 +1,5 @@
 <script setup>
-  import TheSigList from "@/views/sig/sig-list/TheSigList.vue"
+  import ExamineSig from "@/views/sig/sig-list/ExamineSig.vue"
 </script>
 
-<TheSigList />
+<ExamineSig />
