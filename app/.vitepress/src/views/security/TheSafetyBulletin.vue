@@ -18,8 +18,7 @@ const { theme: i18n } = useData();
 const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-const classIndex = ref(-1);
-// const yearIndex = ref(-1);
+const activeIndex = ref(0);
 
 const tableData = ref<SecurityLists[]>([
   {
@@ -47,6 +46,10 @@ function getSecurityLists(data: BulletinParams) {
   }
 }
 
+const tagClick = (i: number) => {
+  activeIndex.value = i;
+};
+
 const handleSizeChange = (val: number) => {
   queryData.pageSize = val;
 };
@@ -62,9 +65,7 @@ function jumpBulletinDetail(val: any) {
 onMounted(() => {
   getSecurityLists(queryData);
 });
-function handleselectClass(i: number) {
-  classIndex.value = i;
-}
+
 watch(
   queryData,
   //   {
@@ -95,14 +96,16 @@ watch(
         <template #header>
           <div class="card-header">
             <span class="category">{{ i18n.security.SEVERITY }}</span>
-            <span
-              v-for="(item, index) in i18n.security.SEVERITY_LIST"
-              :key="item"
-              class="category-item"
-              :class="index === classIndex ? 'active' : ''"
-              @click="handleselectClass(index)"
-              >{{ item.NAME }}</span
-            >
+            <TagFilter label="全部" :show="true">
+              <OTag
+                v-for="(item, index) in i18n.security.SEVERITY_LIST"
+                :key="'tag' + index"
+                :type="activeIndex === index ? 'primary' : 'text'"
+                @click="tagClick(index)"
+              >
+                {{ item.NAME }}
+              </OTag>
+            </TagFilter>
           </div>
         </template>
         <div class="card-body">
@@ -156,7 +159,7 @@ watch(
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       >
-        <span>5/20</span>
+        <span class="slot-content">5/20</span>
       </OPagination>
     </div>
   </div>
@@ -184,6 +187,7 @@ watch(
       font-weight: 400;
       color: var(--o-color-text2);
       line-height: var(--o-line-height-text);
+      margin-right: var(--o-spacing-h4);
     }
     .category-item {
       display: inline-block;
@@ -193,7 +197,7 @@ watch(
       font-weight: 400;
       color: var(--o-color-text3);
       line-height: var(--o-line-height-text);
-      margin-left: var(--o-spacing-h4);
+
       cursor: pointer;
     }
     .active {
@@ -213,6 +217,9 @@ watch(
   }
   .pagination {
     margin: var(--o-spacing-h2) 0 var(--o-spacing-h1) 0;
+  }
+  .slot-content {
+    color: var(--o-color-text2);
   }
 }
 </style>

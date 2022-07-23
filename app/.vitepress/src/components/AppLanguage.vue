@@ -54,7 +54,7 @@ const hideSub = () => {
     @mouseleave="hideSub()"
   >
     <span class="lang-menu-link">
-      {{ lang === 'zh' ? '中文' : 'English' }}
+      {{ lang === 'zh' ? '中文' : lang === 'ru' ? '俄文' : 'English' }}
       <OIcon><icon-down></icon-down></OIcon>
     </span>
     <ul v-if="isMenu" class="lang-menu-list">
@@ -109,7 +109,7 @@ const hideSub = () => {
         border-bottom: 1px solid var(--o-color-division);
       }
       &.active {
-        color: var(--theme-active);
+        color: var(--o-color-brand);
       }
     }
   }

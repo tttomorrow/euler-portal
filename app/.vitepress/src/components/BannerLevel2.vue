@@ -61,15 +61,9 @@ const rootStyle = computed(() => {
 <style lang="scss" scoped>
 .banner-level2 {
   width: 100%;
-  min-height: 280px;
-  // padding-top: 50px;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: var(--o-color-brand);
-
-  @media screen and (max-width: 768px) {
-    min-height: 126px;
-  }
 
   .wrap {
     max-width: 1504px;
@@ -85,11 +79,11 @@ const rootStyle = computed(() => {
     .banner-text {
       position: relative;
       padding-top: 50px;
-      padding-bottom: 20px;
+      padding-bottom: 32px;
 
       @media screen and (max-width: 768px) {
         padding-top: 32px;
-        padding-bottom: 16px;
+        padding-bottom: 32px;
       }
 
       .banner-text-bg {
@@ -147,26 +141,30 @@ const rootStyle = computed(() => {
         }
 
         @media screen and (max-width: 768px) {
-          font-size: var(--o-font-size-h8);
-          line-height: var(--o-line-height-h8);
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
         }
       }
     }
     .banner-illustration {
-      margin-left: var(--o-spacing-h7);
+      margin-left: var(--o-spacing-h);
       display: flex;
       flex-direction: column-reverse;
       object-fit: fill;
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 1080px) {
         justify-content: center;
       }
 
       img {
         max-height: 230px;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1080px) {
           justify-content: center;
+          max-height: 160px;
+        }
+
+        @media screen and (max-width: 768px) {
           max-height: 94px;
         }
       }

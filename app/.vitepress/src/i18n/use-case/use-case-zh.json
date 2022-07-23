@@ -1,52 +1,93 @@
 {
   "type": "案例类别",
-  "tagArr": ["全部","金融", "运营商", "能源", "物流", "其他"],
+  "tagArr": ["全部", "金融", "运营商", "能源", "物流", "其他"],
   "find1": "发现",
   "find2": "个案例研究",
   "caseList": [
     {
-      "name": "中国建设银行",
-      "detail": "分布式信用卡核心业务系统单日交易量超过 1 亿笔，峰值 TPS 超过 6000"
-    },
-    {
       "name": "兴业银行",
-      "detail": "某核心业务系统国产化改造项目"
-    },
-    {
-      "name": "中国移动云",
-      "detail": "能力中心基于欧拉打造 BC-Linux，分布式块存储，读 IOPS 提升 100%"
-    },
-    {
-      "name": "中国电信天翼云",
-      "detail": "基于欧拉打造 CTyunOS，服务电信集团云改数转战略，助力数字经济发展"
+      "detail": "某核心业务系统国产化改造项目",
+      "type": "finance",
+      "img": "/img/user-case/finance.png",
+      "path": "/zh/showcase/finance/20220719/"
     },
     {
       "name": "浙江移动",
-      "detail": "核心系统平滑完成操作系统无感知迁移，实现业务高效稳定运行"
+      "detail": "浙江移动客户中心、业务大厅等核心系统，平滑完成操作系统无感知迁移，实现业务高效稳定运",
+      "type": "provider",
+      "img": "/img/user-case/provider.png",
+      "path": "/zh/showcase/provider/20220719-pe1/"
+    },
+    {
+      "name": "中国联通",
+      "detail": "中国联通软件研究院随沃行移动端业务系统，平滑完成操作系统无感知创新升级，实现业务高效稳定运行",
+      "type": "provider",
+      "img": "/img/user-case/provider.png",
+      "path": "/zh/showcase/provider/20220719-pe2/"
+    },
+    {
+      "name": "中国移动浙江公司",
+      "detail": "中国移动浙江公司核心业务系统，平滑完成操作系统迁移",
+      "type": "provider",
+      "img": "/img/user-case/provider.png",
+      "path": "/zh/showcase/provider/20220719-pe3/"
     },
     {
       "name": "国家电网",
-      "detail": "智能调度系统 D5000 工程实现对电力核心调度系统的操作系统迁移改造"
+      "detail": "智能调度系统 D5000 工程实现对电力核心调度系统的操作系统迁移改造",
+      "type": "energy",
+      "img": "/img/user-case/energy.png",
+      "path": "/zh/showcase/energy/20220718-power1/"
     },
     {
       "name": "中国南方电网",
-      "detail": "信息业务系统平滑完成操作系统迁移，实现完全系统升级"
+      "detail": "中国南方电网信息业务系统，平滑完成操作系统迁移，实现完全系统升级",
+      "type": "energy",
+      "img": "/img/user-case/energy.png",
+      "path": "/zh/showcase/energy/20220718-power2/"
+    },
+    {
+      "name": "华电芜湖电厂",
+      "detail": "华电芜湖电厂 DCS 核心控制系统，平滑完成操作系统迁移，实现业务高效稳定运行",
+      "type": "energy",
+      "img": "/img/user-case/energy.png",
+      "path": "/zh/showcase/energy/20220718-power3/"
+    },
+    {
+      "name": "国家电网",
+      "detail": "“国家电网河北智慧标杆站” 智慧工地系统，平滑完成操作系统创新，实现业务高效稳定运行",
+      "type": "energy",
+      "img": "/img/user-case/energy.png",
+      "path": "/zh/showcase/energy/20220718-power4/"
     },
     {
       "name": "中国邮政集团 ",
-      "detail": "OA 业务系统迁移改造"
+      "detail": "中国邮政集团 OA 业务系统迁移改造",
+      "type": "logistics",
+      "img": "/img/user-case/logistics.png",
+      "path": "/zh/showcase/logistics/20220718-post1/"
     },
     {
       "name": "华润集团",
-      "detail": "创新云专区项目"
+      "detail": "华润集团创新云专区项目",
+      "type": "others",
+      "img": "/img/user-case/other.png",
+      "path": "/zh/showcase/others/20220719-01/"
     },
     {
       "name": "黑龙江省烟草公司",
-      "detail": "安全邮件系统建设项目"
-    },  {
-        "name": "江西省医保局",
-        "detail": "云平台建设项目"
-      }
+      "detail": "黑龙江省烟草公司安全邮件系统建设项目",
+      "type": "others",
+      "img": "/img/user-case/other.png",
+      "path": "/zh/showcase/others/20220719-02/"
+    },
+    {
+      "name": "江西省医保局",
+      "detail": "江西省医保局云平台建设项目",
+      "type": "others",
+      "img": "/img/user-case/other.png",
+      "path": "/zh/showcase/others/20220719-03/"
+    }
   ],
   "button": "阅读案例"
 }

@@ -1,5 +1,5 @@
 <script setup>
-  import SafetyBulltinDetail from "@/views/security/SafetyBulletinDetail.vue";
+  import TheSafetyBulletinDetail from "@/views/security/TheSafetyBulletinDetail.vue";
 </script>
 
-<SafetyBulltinDetail />
+<TheSafetyBulletinDetail />
