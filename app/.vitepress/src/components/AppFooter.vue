@@ -5,12 +5,21 @@ import { useRouter, useData } from 'vitepress';
 import LogoFooter from '@/assets/footer/footer-logo2.png';
 import LogoFooter1 from '@/assets/footer-logo1.svg';
 import LogoAtom from '@/assets/footer/atom-logo.svg';
+
+// 中文友情链接
 import LogoBilibili from '@/assets/footer/bilibili.png';
 import LogoInfoq from '@/assets/footer/infoq.png';
 import LogoJuejin from '@/assets/footer/juejin.png';
 import LogoOschina from '@/assets/footer/oschina.png';
 import LogoCsdn from '@/assets/footer/csdn.png';
 import Logo51cto from '@/assets/footer/51cto.png';
+
+// 英文、俄文友情链接
+import LogoRedditSquare from '@/assets/footer/reddit-square@2x.png';
+import LogoBilibili2 from '@/assets/footer/bilibili@2x.png';
+import LogoLinkedin from '@/assets/footer/linkedin@2x.png';
+import LogoYoutube from '@/assets/footer/youtube@2x.png';
+import LogoTwitter from '@/assets/footer/twitter@2x.png';
 
 // 公众号、小助手
 import CodeTitleXzs from '@/assets/footer/img-xzs.png';
@@ -57,26 +66,56 @@ const linksData = {
   ],
   en: [
     {
-      path: 'https://my.oschina.net/openeuler',
-      logo: LogoOschina,
-      id: 'oschina',
+      path: 'https://www.reddit.com/r/openEuler/',
+      logo: LogoRedditSquare,
+      id: 'reddit-square',
     },
     {
-      path: 'https://blog.csdn.net/openEuler_?spm=1000.2115.3001.5343',
-      logo: LogoCsdn,
-      id: 'csdn',
+      path: 'https://www.linkedin.com/company/openeuler',
+      logo: LogoLinkedin,
+      id: 'linkedin',
+    },
+    {
+      path: 'https://twitter.com/openEuler',
+      logo: LogoTwitter,
+      id: 'twitter',
+    },
+    {
+      path: 'https://space.bilibili.com/527064077/channel/series',
+      logo: LogoBilibili2,
+      id: 'bilibili',
+    },
+    {
+      path: 'https://www.youtube.com/channel/UCPzSqXqCgmJmdIicbY7GAeA',
+      logo: LogoYoutube,
+      id: 'youtube',
     },
   ],
   ru: [
     {
-      path: 'https://my.oschina.net/openeuler',
-      logo: LogoOschina,
-      id: 'oschina',
+      path: 'https://www.reddit.com/r/openEuler/',
+      logo: LogoRedditSquare,
+      id: 'reddit-square',
     },
     {
-      path: 'https://blog.csdn.net/openEuler_?spm=1000.2115.3001.5343',
-      logo: LogoCsdn,
-      id: 'csdn',
+      path: 'https://www.linkedin.com/company/openeuler',
+      logo: LogoLinkedin,
+      id: 'linkedin',
+    },
+    {
+      path: 'https://twitter.com/openEuler',
+      logo: LogoTwitter,
+      id: 'twitter',
+    },
+    {
+      path: 'https://space.bilibili.com/527064077/channel/series',
+      logo: LogoBilibili2,
+      id: 'bilibili',
+    },
+    {
+      path: 'https://www.youtube.com/channel/UCPzSqXqCgmJmdIicbY7GAeA',
+      logo: LogoYoutube,
+      id: 'youtube',
     },
   ],
 };
@@ -91,6 +130,7 @@ const footerLinks = computed(() => {
   }
 });
 
+// 公众号、小助手
 const footerCodeList = [
   {
     img: CodeTitleXzs,
@@ -162,12 +202,12 @@ const handleNavClick = (path: string) => {
               </div>
             </a>
           </div>
-          <div class="footer-links">
+          <div class="footer-links" :class="{ iszh: lang === 'zh' }">
             <a
               v-for="item in footerLinks"
               :key="item.id"
               :href="item.path"
-              class="img"
+              class="links-logo"
               target="_blank"
             >
               <img :src="item.logo" alt="" />
@@ -231,15 +271,16 @@ $color: #fff;
       max-width: 1416px;
       margin: 0 auto;
       display: flex;
-      align-items: center;
+      align-items: end;
       justify-content: space-between;
       padding: 18px 0 32px;
       position: relative;
       min-height: 118px;
       @media (max-width: 1439px) {
-        padding: var(--o-spacing-h4);
+        padding: var(--o-spacing-h4) var(--o-spacing-h5);
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
       }
     }
   }
@@ -256,7 +297,7 @@ $color: #fff;
     }
     @media (max-width: 1439px) {
       text-align: center;
-      margin: 16px 0 40px;
+      margin: 16px 0;
       .show-pc {
         display: none;
       }
@@ -306,7 +347,7 @@ $color: #fff;
       display: flex;
       justify-content: right;
       gap: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       .code-pop {
         position: relative;
         height: 20px;
@@ -370,15 +411,16 @@ $color: #fff;
       }
       @media (max-width: 1439px) {
         justify-content: center;
+        margin-top: 24px;
       }
     }
     .footer-links {
       display: flex;
       justify-content: right;
       align-items: center;
-      gap: 12px;
-      .img {
-        height: 14px;
+      gap: 16px;
+      .links-logo {
+        height: 16px;
         img {
           height: 100%;
           object-fit: cover;
@@ -388,12 +430,25 @@ $color: #fff;
         justify-content: center;
       }
       @media (max-width: 800px) {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
         text-align: center;
-        margin-top: 40px;
         .img {
           height: 16px;
+        }
+      }
+      &.iszh {
+        gap: 12px;
+        .links-logo {
+          height: 14px;
+        }
+        @media (max-width: 800px) {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          text-align: center;
+          margin-top: 40px;
+          .img {
+            height: 16px;
+          }
         }
       }
     }

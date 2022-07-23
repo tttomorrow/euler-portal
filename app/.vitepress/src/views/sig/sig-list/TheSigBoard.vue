@@ -56,8 +56,8 @@ const toSigDetail = (value: any) => {
         </ul>
         <ul class="sig-list-item-admin">
           <li
-            v-for="(subItem, index) in JSON.parse(item.owners).slice(0, 4)"
-            :key="index"
+            v-for="(subItem, sindex) in JSON.parse(item.owners).slice(0, 4)"
+            :key="sindex"
           >
             <img :src="subItem.avatar_url" />
             <span>{{ subItem.gitee_id }}</span>
