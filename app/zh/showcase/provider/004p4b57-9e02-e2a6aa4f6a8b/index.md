@@ -3,6 +3,9 @@ module: showcase
 industry: 运营商
 company: 中国联通
 summary: 中国联通软件研究院随沃行移动端业务系统，平滑完成操作系统无感知创新升级，实现业务高效稳定运行
+customLayout: true
+banner: /img/showcase/case-detail-bg.jpg
+img: /img/showcase/provider.png
 ---
 
 <div class="markdown">

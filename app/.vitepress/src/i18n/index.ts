@@ -12,6 +12,7 @@ import bishengjdk from './projects/bishengjdk';
 import isula from './projects/isula';
 import secgear from './projects/secgear';
 import stratovirt from './projects/stratovirt';
+import showcase from './showcase';
 
 const i18n = {
   zh: {
@@ -27,6 +28,7 @@ const i18n = {
     isula: isula.zh,
     secgear: secgear.zh,
     stratovirt: stratovirt.zh,
+    showcase: showcase,
   },
   en: {
     sig: sig.en,
