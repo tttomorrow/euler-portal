@@ -56,8 +56,8 @@ const toSigDetail = (value: any) => {
         </ul>
         <ul class="sig-list-item-admin">
           <li
-            v-for="(subItem, index) in JSON.parse(item.owners).slice(0, 4)"
-            :key="index"
+            v-for="subItem in JSON.parse(item.owners).slice(0, 4)"
+            :key="subItem.gitee_id"
           >
             <img :src="subItem.avatar_url" />
             <span>{{ subItem.gitee_id }}</span>
@@ -86,6 +86,7 @@ const toSigDetail = (value: any) => {
     margin-bottom: var(--o-spacing-h1);
     break-inside: avoid;
     padding: var(--o-spacing-h2);
+    background-color: var(--o-color-bg);
     @media (max-width: 1080px) {
       width: 100%;
       padding: var(--o-spacing-h3) var(--o-spacing-h3) 0 var(--o-spacing-h3);
@@ -97,11 +98,13 @@ const toSigDetail = (value: any) => {
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
+      color: var(--o-color-text2);
       &:hover {
         color: var(--o-color-brand_hover);
       }
     }
     &-info {
+      color: var(--o-color-text2);
       @media (max-width: 1080px) {
         margin-top: var(--o-spacing-h7);
       }
@@ -146,6 +149,7 @@ const toSigDetail = (value: any) => {
         span {
           display: inline-block;
           margin-top: var(--o-spacing-h6);
+          color: var(--o-color-text2);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
