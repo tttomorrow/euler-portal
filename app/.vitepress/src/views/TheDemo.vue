@@ -3,12 +3,12 @@ import { ref, onMounted, computed } from 'vue';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
-import AppCalendar from '@/components/AppCalendar.vue';
+// import AppCalendar from '@/components/AppCalendar.vue';
 import AppAnchor from '@/components/AppAnchor.vue';
 import TagFilter from '@/components/TagFilter.vue';
 
-import { getMeetingData } from '@/api/api-calendar';
-import { TableData } from '@/shared/@types/type-calendar';
+// import { getMeetingData } from '@/api/api-calendar';
+// import { TableData } from '@/shared/@types/type-calendar';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
@@ -42,27 +42,27 @@ const tableData = [
 ];
 
 const inputName = ref('zhangsan');
-interface MeetingData {
-  tableData: TableData[];
-}
+// interface MeetingData {
+//   tableData: TableData[];
+// }
 
-const calendarData = ref<TableData[]>([
-  {
-    date: '',
-    timeData: [
-      {
-        creator: '',
-        duration_time: '',
-        join_url: '',
-        startTime: '',
-        start_date: '',
-        endTiem: '',
-        url: '',
-        id: '',
-      },
-    ],
-  },
-]);
+// const calendarData = ref<TableData[]>([
+//   {
+//     date: '',
+//     timeData: [
+//       {
+//         creator: '',
+//         duration_time: '',
+//         join_url: '',
+//         startTime: '',
+//         start_date: '',
+//         endTiem: '',
+//         url: '',
+//         id: '',
+//       },
+//     ],
+//   },
+// ]);
 
 const anchorData = ['anchor1', 'anchor2', 'anchor3'];
 const anchorData1 = ['anchor4', 'anchor5', 'anchor6', 'anchor7'];
