@@ -82,14 +82,19 @@ const tagClick = (i: number) => {
 };
 // tagFiter end
 onMounted(() => {
-  getMeetingData().then((res: MeetingData) => {
-    calendarData.value = res.tableData;
-  });
+  // getMeetingData().then((res: MeetingData) => {
+  //   calendarData.value = res.tableData;
+  // });
 });
 </script>
 
 <template>
   <div class="demo">
+    <div class="demo-box">
+      <h4>OSearch</h4>
+      <OSearch v-model="inputName"></OSearch>
+    </div>
+
     <div class="demo-box">
       <h4>OTable</h4>
       <OTable :data="tableData" style="width: 100%">
@@ -140,10 +145,10 @@ onMounted(() => {
       title="下载"
     />
 
-    <div class="demo-box">
+    <!-- <div class="demo-box">
       <h4>日历</h4>
       <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
-    </div>
+    </div> -->
 
     <div class="demo-box">
       <h4>TagFilter</h4>

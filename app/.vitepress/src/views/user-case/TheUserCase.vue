@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import useCaseZh from '@/i18n/use-case/use-case-zh.json';
+
+import banner from '@/assets/banner-secondary.png';
+import search from '@/assets/illustrations/search.png';
 
 const isAll = ref(false);
 const userCaseData = computed(() => useCaseZh);
@@ -67,8 +73,14 @@ const totalPage = computed(() => {
 </script>
 
 <template>
+  <BannerLevel2
+    :background-image="banner"
+    background-text="COMMNUNITY"
+    title="用户案例"
+    :illustration="search"
+  />
   <div class="user-case">
-    <div class="banner"></div>
+    <OSearch :style="{ marginBottom: '50px', marginTop: '100px' }"></OSearch>
     <div class="tag-box">
       <TagFilter
         :label="userCaseData.type"
