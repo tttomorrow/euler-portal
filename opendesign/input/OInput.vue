@@ -8,4 +8,31 @@ const attrs = useAttrs();
   <ElInput class="o-input" v-bind="attrs"></ElInput>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.o-input {
+  --o-input-height: 36px;
+  --o-input-border-color: var(--o-color-base_inverse);
+  --o-input-font-color: var(--o-color-text2);
+  --o-input-font-size: var(--o-font-size-text);
+  --o-input-line-height: var(--o-line-height-text);
+  --o-input-color-bg: var(--o-color-bg);
+
+  &.el-input {
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-input-font-size);
+
+    .el-input__wrapper {
+      border-radius: 0;
+      padding: 1px 15px;
+      background-color: var(--o-input-color-bg);
+      box-shadow: 0 0 0 1px var(--o-input-border-color) inset;
+
+      .el-input__inner {
+        height: var(--o-input-height);
+        line-height: var(--o-input-font-size);
+        color: var(--o-input-font-color);
+      }
+    }
+  }
+}
+</style>

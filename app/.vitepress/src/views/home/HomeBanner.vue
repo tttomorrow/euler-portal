@@ -50,15 +50,15 @@ const jump = (item: any) => {
 </script>
 
 <template>
-  <!--  :autoplay="{
-      delay: 5000,
-      disableOnInteraction: false,
-    }" -->
   <swiper
     class="home-banner"
     :loop="true"
     :pagination="{
       clickable: true,
+    }"
+    :autoplay="{
+      delay: 5000,
+      disableOnInteraction: false,
     }"
     :navigation="true"
     @swiper="onSwiper"
@@ -73,8 +73,10 @@ const jump = (item: any) => {
             v-if="item.title !== ''"
             class="banner-panel-content flex-column"
           >
-            <p class="title">{{ item.title }}</p>
-            <p class="desc">{{ item.desc }}</p>
+            <div class="box">
+              <p class="title">{{ item.title }}</p>
+              <p class="desc">{{ item.desc }}</p>
+            </div>
             <div class="action">
               <OButton class="home-banner-btn">
                 {{ item.btn }}
@@ -131,30 +133,33 @@ $banner-color: #fff;
       .title {
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
-        color: var(--o-color-text);
+        // color: var(--o-color-text);
+        filter: invert(1);
+        font-weight: 600;
         @media screen and (max-width: 1439px) {
           font-size: var(--o-font-size-h2);
           line-height: var(--o-line-height-h2);
         }
         @media screen and (max-width: 824px) {
-          font-size: var(--o-font-size-h6);
-          line-height: var(--o-line-height-h6);
+          font-size: var(--o-font-size-h4);
+          line-height: var(--o-line-height-h4);
         }
       }
       .desc {
         font-size: var(--o-font-size-h5);
         font-weight: normal;
-        color: var(--o-color-text);
+        // color: var(--o-color-text);
         line-height: var(--o-line-height-h5);
         margin-top: var(--o-spacing-h6);
+        filter: invert(1);
         @media screen and (max-width: 1439px) {
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
         }
         @media screen and (max-width: 824px) {
           margin-top: var(--o-spacing-h9);
-          font-size: var(--o-font-size-tip);
-          line-height: var(--o-line-height-tip);
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
         }
       }
       .action {
@@ -163,16 +168,17 @@ $banner-color: #fff;
           color: var(--o-color-text);
         }
         @media screen and (max-width: 824px) {
-          margin-top: var(--o-spacing-h5);
+          margin-top: 0;
         }
       }
       @media screen and (max-width: 1439px) {
         padding: 0 16px;
       }
       @media screen and (max-width: 824px) {
-        justify-content: flex-start;
-        padding-top: var(--o-spacing-h4);
+        padding: 72px 16px 50px;
+        justify-content: space-between;
         box-sizing: border-box;
+        text-align: center;
       }
     }
     &-cover {
@@ -188,10 +194,7 @@ $banner-color: #fff;
       width: 100%;
       @media screen and (max-width: 824px) {
         display: block;
-        height: 320px;
-      }
-      @media screen and (max-width: 767px) {
-        height: 216px;
+        height: 300px;
       }
     }
 
@@ -203,10 +206,7 @@ $banner-color: #fff;
     height: 400px;
   }
   @media screen and (max-width: 824px) {
-    height: 320px;
-  }
-  @media screen and (max-width: 767px) {
-    height: 216px;
+    height: 300px;
   }
 }
 
@@ -241,6 +241,12 @@ $banner-color: #fff;
       width: 20px !important;
       margin: 0 4px 0 0;
     }
+  }
+  @media screen and (max-width: 824px) {
+    left: 50% !important;
+    transform: translateX(-50%);
+    text-align: center;
+    bottom: 24px;
   }
 }
 :deep(.swiper-button-prev) {
