@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, CSSProperties, defineProps } from 'vue';
+import { computed, CSSProperties } from 'vue';
 
 const props = defineProps({
   backgroundImage: {
@@ -15,6 +15,10 @@ const props = defineProps({
     default: '',
   },
   title: {
+    type: String,
+    default: '',
+  },
+  subtitle: {
     type: String,
     default: '',
   },
@@ -40,7 +44,14 @@ const rootStyle = computed(() => {
         <p v-if="backgroundText" class="banner-text-bg">
           {{ backgroundText }}
         </p>
-        <h1 v-if="title" class="banner-title">{{ title }}</h1>
+        <h1
+          v-if="title"
+          class="banner-title"
+          :class="{ 'margin-top-0': !backgroundText }"
+        >
+          {{ title }}
+        </h1>
+        <p v-if="subtitle" class="banner-subtitle">{{ subtitle }}</p>
       </div>
     </div>
   </div>
@@ -49,21 +60,24 @@ const rootStyle = computed(() => {
 <style lang="scss" scoped>
 .banner-level3 {
   width: 100%;
-  min-height: 160px;
-  padding-top: 50px;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: var(--o-color-brand);
   .wrap {
     max-width: 1504px;
+    margin: 0 auto;
     padding: 0 44px;
     display: flex;
     justify-content: space-between;
-    height: 100%;
+    align-items: center;
+    min-height: 160px;
+    @media screen and (max-width: 768px) {
+      min-height: 126px;
+      padding: 0 24px;
+    }
     .banner-text {
       position: relative;
-      padding-bottom: 20px;
-
+      width: 50%;
       .banner-text-bg {
         position: absolute;
         color: #2e4fb0;
@@ -71,6 +85,16 @@ const rootStyle = computed(() => {
         font-size: var(--o-font-size-h3);
         line-height: var(--o-line-height-h3);
         font-weight: bold;
+
+        @media screen and (max-width: 1080px) {
+          font-size: var(--o-font-size-h4);
+          line-height: var(--o-line-height-h4);
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-h6);
+          line-height: var(--o-line-height-h6);
+        }
       }
       .banner-title {
         position: relative;
@@ -78,7 +102,42 @@ const rootStyle = computed(() => {
         color: var(--o-color-text);
         font-size: var(--o-font-size-h3);
         line-height: var(--o-line-height-h3);
-        margin-top: 16px;
+        margin-top: var(--o-spacing-h5);
+        font-weight: bold;
+
+        &.margin-top-0 {
+          margin-top: 0 !important;
+        }
+
+        @media screen and (max-width: 1080px) {
+          font-size: var(--o-font-size-h4);
+          line-height: var(--o-line-height-h4);
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-h6);
+          line-height: var(--o-line-height-h6);
+          margin-top: var(--o-spacing-h6);
+        }
+      }
+
+      .banner-subtitle {
+        position: relative;
+        z-index: 1;
+        color: var(--o-color-text);
+        font-size: var(--o-font-size-h7);
+        line-height: var(--o-line-height-h7);
+        margin-top: var(--o-spacing-h10);
+
+        @media screen and (max-width: 1080px) {
+          font-size: var(--o-font-size-h7);
+          line-height: var(--o-line-height-h7);
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+        }
       }
     }
   }
