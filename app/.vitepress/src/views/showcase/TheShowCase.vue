@@ -102,7 +102,6 @@ function setCurrentCaseListAll() {
     } else {
       currentCaseListAll.value = [];
     }
-    console.log(currentCaseListAll.value);
   });
 }
 // 搜索功能
