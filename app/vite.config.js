@@ -63,6 +63,16 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-cve/, ''),
       },
+      '/showcase': {
+        target: 'https://doc-search.test.osinfra.cn/showcase',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/showcase/, ''),
+      },
+      '/industry': {
+        target: 'https://doc-search.test.osinfra.cn/industry',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/industry/, ''),
+      },
     },
   },
 });

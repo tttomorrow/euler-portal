@@ -1,56 +1,53 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useData } from 'vitepress';
+import { getUserCaseData, getCaseTagData } from '@/api/api-showcase';
 
 // import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
-import useCaseZh from '@/i18n/use-case/use-case-zh.json';
+import NotFound from '@/NotFound.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
-const isAll = ref(false);
-const userCaseData = computed(() => useCaseZh);
+import IconChevronLeft from '~icons/app/icon-chevron-left.svg';
+import IconChevronRight from '~icons/app/icon-chevron-right.svg';
+
+// import useCaseZh from '@/i18n/showcase/showcase.json';
+const keyWord = ref('');
+const { theme: i18n } = useData();
+const userCaseData = computed(() => i18n.value.showcase);
 
 const activeIndex = ref(0);
-const tagClick = (i: number) => {
+const tagClick = (i: number, type: string) => {
   activeIndex.value = i;
+  filterCase(type);
 };
-const toggleClick = (flag: boolean) => {
-  isAll.value = flag;
-};
+// tag筛选及搜索传输的参数
+const data = ref({
+  keyword: '',
+  type: '',
+});
 // 根据tag筛选需要显示的案例
 function filterCase(type: string) {
-  const caseList: any = [];
-  userCaseData.value.caseList.forEach((item) => {
-    if (item.type === type) {
-      caseList.push(item);
-    }
-  });
-  return caseList;
-}
-// 当前显示的案例
-const currentPage1 = ref(1);
-const pageSize4 = ref(12);
-const currentCaseListAll = computed(() => {
-  switch (activeIndex.value) {
-    case 0:
-      return userCaseData.value.caseList;
-    case 1:
-      return filterCase('finance');
-    case 2:
-      return filterCase('provider');
-    case 3:
-      return filterCase('energy');
-    case 4:
-      return filterCase('logistics');
-    case 5:
-      return filterCase('others');
-    default:
-      return [];
+  if (type === '全部') {
+    data.value.type = '';
+  } else {
+    data.value.type = type;
   }
-});
+  setCurrentCaseListAll();
+}
+// 用户案例类型
+const tagArr: any = ref([]);
+// 当前显示的页码
+const currentPage1 = ref(1);
+// 每页数据
+const pageSize4 = ref(12);
+// 当前分类的所有案例
+const currentCaseListAll: any = ref([]);
+// 当前显示的案例
 const currentCaseList = computed(() => {
   if (currentCaseListAll.value.length > pageSize4.value) {
     return currentCaseListAll.value.slice(
@@ -70,6 +67,79 @@ const total = computed(() => {
 const totalPage = computed(() => {
   return Math.ceil(total.value / pageSize4.value);
 });
+//控制移动端导航栏吸顶
+const isTopNavMo = ref(false);
+const isShow = computed(() => {
+  return totalPage.value === 1 ? false : true;
+});
+// 根据滚动位置移动端tag吸顶
+const onscroll = () => {
+  const scrollTop =
+    document.body.scrollTop || document.documentElement.scrollTop;
+  if (scrollTop > 156) {
+    isTopNavMo.value = true;
+  } else {
+    isTopNavMo.value = false;
+  }
+};
+// 移动端翻页事件
+function turnPage(option: string) {
+  if (option === 'prev' && currentPage1.value > 1) {
+    currentPage1.value = currentPage1.value - 1;
+  } else if (option === 'next' && currentPage1.value < totalPage.value) {
+    currentPage1.value = currentPage1.value + 1;
+  }
+}
+// 点击跳转案例详情页面
+function goDetail(link: string, item: any) {
+  window.open('/' + item.lang + '/' + link.replace('index', ''));
+}
+// 设置当前tag的所有案例
+function setCurrentCaseListAll() {
+  getUserCaseData(data.value).then((res: any) => {
+    if (res.status === 200 && res.obj.records) {
+      currentCaseListAll.value = res.obj.records;
+    } else {
+      currentCaseListAll.value = [];
+    }
+    console.log(currentCaseListAll.value);
+  });
+}
+// 搜索功能
+function searchCase() {
+  data.value.keyword = keyWord.value;
+  data.value.type = '';
+  activeIndex.value = 0;
+  setCurrentCaseListAll();
+}
+onMounted(() => {
+  window.addEventListener('scroll', onscroll);
+  getCaseTagData().then((res: any) => {
+    const orderArr: any = [];
+    let countAll = 0;
+    tagArr.value = res.obj.totalNum;
+    res.obj.totalNum.forEach((item: any) => {
+      countAll = countAll + item.count;
+      if (item.key === '金融') {
+        orderArr[1] = item;
+      } else if (item.key === '运营商') {
+        orderArr[2] = item;
+      } else if (item.key === '能源') {
+        orderArr[3] = item;
+      } else if (item.key === '物流') {
+        orderArr[4] = item;
+      } else if (item.key === '其他') {
+        orderArr[5] = item;
+      }
+    });
+    orderArr[0] = { count: countAll, key: '全部' };
+    tagArr.value = orderArr;
+  });
+  setCurrentCaseListAll();
+});
+onUnmounted(() => {
+  window.removeEventListener('scroll', onscroll);
+});
 </script>
 
 <template>
@@ -80,30 +150,31 @@ const totalPage = computed(() => {
     :illustration="search"
   />
   <div class="user-case">
-    <OSearch :style="{ marginBottom: '50px', marginTop: '100px' }"></OSearch>
-    <div class="tag-box">
-      <TagFilter
-        :label="userCaseData.type"
-        class="tag-pc"
-        @toggle-click="toggleClick"
-      >
+    <OSearch
+      v-model="keyWord"
+      :style="{ marginBottom: '50px', marginTop: '100px' }"
+      class="search"
+      @change="searchCase"
+    ></OSearch>
+    <div class="tag-box" :class="isTopNavMo ? 'tag-top' : ''">
+      <TagFilter :label="userCaseData.type" class="tag-pc">
         <OTag
-          v-for="(item, index) in userCaseData.tagArr"
+          v-for="(item, index) in tagArr"
           :key="'tag' + index"
           :type="activeIndex === index ? 'primary' : 'text'"
-          @click="tagClick(index)"
+          @click="tagClick(index, item.key)"
         >
-          {{ item }}
+          {{ item.key }}
         </OTag>
       </TagFilter>
-      <TagFilter class="tag-h5" @toggle-click="toggleClick">
+      <TagFilter class="tag-h5">
         <OTag
-          v-for="(item, index) in userCaseData.tagArr"
+          v-for="(item, index) in tagArr"
           :key="'tag' + index"
           :type="activeIndex === index ? 'primary' : 'text'"
-          @click="tagClick(index)"
+          @click="tagClick(index, item.key)"
         >
-          {{ item }}
+          {{ item.key }}
         </OTag>
       </TagFilter>
     </div>
@@ -114,11 +185,11 @@ const totalPage = computed(() => {
     <div class="case-list">
       <OCard v-for="item in currentCaseList" :key="item.path" class="case-card">
         <div class="card-content-text">
-          <h4>{{ item.name }}</h4>
+          <h4>{{ item.company }}</h4>
           <p class="detail">
-            {{ item.detail }}
+            {{ item.summary }}
           </p>
-          <a :href="item.path" target="_blank">
+          <a @click="goDetail(item.path, item)">
             <OButton type="primary" class="button">{{
               userCaseData.button
             }}</OButton>
@@ -129,18 +200,44 @@ const totalPage = computed(() => {
         </div>
       </OCard>
     </div>
+    <NotFound v-if="total === 0" />
     <div class="page-box">
       <OPagination
         v-model:currentPage="currentPage1"
         v-model:page-size="pageSize4"
+        class="pagination-pc"
         hide-on-single-page="true"
-        :page-sizes="[12]"
+        :page-sizes="[pageSize4]"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
         :total="total"
       >
         <span>{{ currentPage1 }}/{{ totalPage }}</span>
       </OPagination>
+      <div v-if="isShow" class="pagination-h5">
+        <OIcon class="icon-prev">
+          <IconChevronLeft />
+        </OIcon>
+        <span
+          class="prev"
+          :class="currentPage1 === 1 ? 'disable-button' : ''"
+          @click="turnPage('prev')"
+          >{{ userCaseData.prev }}</span
+        >
+        <span class="page-number">
+          <span>{{ currentPage1 }}</span>
+          <span>/{{ totalPage }}</span>
+        </span>
+        <span
+          class="next"
+          :class="currentPage1 === totalPage ? 'disable-button' : ''"
+          @click="turnPage('next')"
+          >{{ userCaseData.next }}</span
+        >
+        <OIcon class="icon-next">
+          <IconChevronRight />
+        </OIcon>
+      </div>
     </div>
   </div>
 </template>
@@ -148,17 +245,12 @@ const totalPage = computed(() => {
 <style lang="scss" scoped>
 .user-case {
   max-width: 1504px;
+  min-height: 63.9vh;
   padding: 0 44px;
   margin: 0 auto;
   @media (max-width: 768px) {
     padding: 0;
     background-color: var(--o-color-bg2);
-  }
-  .banner {
-    @media (max-width: 768px) {
-      width: 100px;
-      height: 156px;
-    }
   }
   .tag-box {
     width: 100%;
@@ -203,10 +295,27 @@ const totalPage = computed(() => {
       }
     }
   }
+  .search {
+    height: 48px;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .tag-top {
+    @media (max-width: 768px) {
+      position: fixed;
+      top: 48px;
+      left: 0;
+      z-index: 9;
+    }
+  }
   .case-number {
     margin-top: var(--o-spacing-h4);
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
   .case-list {
     display: grid;
@@ -220,12 +329,11 @@ const totalPage = computed(() => {
     @media (max-width: 768px) {
       grid-template-columns: repeat(1, 1fr);
       padding: 0 16px;
-      margin-top: 48px;
     }
     .case-card {
       height: 198px;
       padding: 40px 26px 40px 40px;
-      background-image: url(@/assets/user-case/case-bg.png);
+      background-image: url(@/assets/showcase/case-bg.png);
       background-size: cover;
       position: relative;
       display: flex;
@@ -299,6 +407,38 @@ const totalPage = computed(() => {
   }
   .page-box {
     margin-top: var(--o-spacing-h2);
+    padding-bottom: var(--o-spacing-h2);
+    .pagination-pc {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+    .pagination-h5 {
+      display: none;
+      @media (max-width: 768px) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-size: var(--o-font-size-tip);
+        .icon-prev {
+          margin-right: 8px;
+          color: var(--o-color-brand);
+        }
+        .disable-button {
+          color: var(--o-color-disabled);
+        }
+        .page-number {
+          margin: 0 28px;
+          span:nth-of-type(1) {
+            color: var(--o-color-brand);
+          }
+        }
+        .icon-next {
+          margin-left: 8px;
+          color: var(--o-color-brand);
+        }
+      }
+    }
   }
 }
 </style>

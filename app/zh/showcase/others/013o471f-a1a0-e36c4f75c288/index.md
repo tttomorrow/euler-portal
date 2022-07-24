@@ -3,6 +3,9 @@ module: showcase
 industry: 其他
 company: 江西省医保局
 summary: 江西省医保局云平台建设项目
+customLayout: true
+banner: /img/showcase/case-detail-bg.jpg
+img: /img/showcase/others.png
 ---
 
 <div class="markdown">

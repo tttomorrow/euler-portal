@@ -1,11 +1,10 @@
 .markdown {
   max-width: 1504px;
   padding: var(--o-spacing-h2);
-  margin: var(--o-spacing-h1) auto;
+  margin: 0 auto;
   margin-top: var(--o-spacing-h2);
   background-color: var(--o-color-bg);
   --o-color-table: #dfe1e8; // 表格边框
-
   ol,
   ul {
     list-style: inherit;

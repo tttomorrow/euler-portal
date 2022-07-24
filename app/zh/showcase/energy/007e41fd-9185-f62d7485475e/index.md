@@ -3,6 +3,9 @@ module: showcase
 industry: 能源
 company: 中国南方电网
 summary: 信息业务系统，平滑完成操作系统迁移，实现完全系统升级
+customLayout: true
+banner: /img/showcase/case-detail-bg.jpg
+img: /img/showcase/energy.png
 ---
 
 <div class="markdown">
