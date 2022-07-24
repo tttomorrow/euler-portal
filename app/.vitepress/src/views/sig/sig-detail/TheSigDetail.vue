@@ -3,14 +3,33 @@ import { computed, ref, onMounted } from 'vue';
 import { useData } from 'vitepress';
 
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
+import AppCalendar from '@/components/AppCalendar.vue';
 
 import { getSigDetail, getSigMember } from '@/api/api-sig';
 
 import IconArrowRight from '~icons/app/right.svg';
 
 const { theme: i18n, lang } = useData();
-// const router = useRoute();
-// console.log(router);
+
+function GetUrlParam(paraName: any) {
+  const url = document.location.toString();
+  const arrObj = url.split('?');
+  if (arrObj.length > 1) {
+    const arrPara = arrObj[1].split('&');
+    let arr;
+    for (let i = 0; i < arrPara.length; i++) {
+      arr = arrPara[i].split('=');
+      if (arr !== null && arr[0] === paraName) {
+        return arr[1];
+      }
+    }
+    return '';
+  } else {
+    return '';
+  }
+}
+
+const sidDetailId: number = parseInt(GetUrlParam('id'));
 
 const sigDetail = computed(() => {
   return i18n.value.sig.SIG_DETAIL;
@@ -21,16 +40,16 @@ const memberList: any = ref([]);
 const memberCurLen = ref(0);
 function getSigDetails() {
   try {
-    getSigDetail(1).then((res: any) => {
+    getSigDetail(sidDetailId).then((res: any) => {
       sigMeetingData.value = res;
     });
   } catch (error) {
-    // console.log(error);
+    throw Error();
   }
 }
 function getSigMembers() {
   try {
-    getSigMember(2).then((res: any) => {
+    getSigMember(sidDetailId).then((res: any) => {
       sigMemberData.value = res;
       memberList.value = JSON.parse(res.owners);
       memberCurLen.value = memberList.value.length;
@@ -40,7 +59,7 @@ function getSigMembers() {
       memberList.value = memberList.value.slice(0, memberCurLen.value);
     });
   } catch (error) {
-    // console.log(error);
+    throw Error();
   }
 }
 onMounted(() => {
@@ -79,8 +98,8 @@ onMounted(() => {
       </div>
       <div class="meeting">
         <h5>{{ sigDetail.ORGANIZING_MEETINGS }}</h5>
-        <div v-if="sigMeetingData.length" class="calender-wrapper">
-          <!-- <calender :table-data="sigMeetingData" /> -->
+        <div v-if="sigMeetingData.tableData" class="calender-wrapper">
+          <AppCalendar :table-data="sigMeetingData.tableData" />
         </div>
         <p v-else class="no-meeting">
           {{ sigDetail.NO_MEETINGS }}
@@ -93,7 +112,6 @@ onMounted(() => {
             <div class="member-img">
               <img :src="item.avatar_url" alt="yangdi" />
             </div>
-
             <p class="name">{{ item.gitee_id }}</p>
             <p class="introduction">
               <span
@@ -207,14 +225,24 @@ onMounted(() => {
         line-height: var(--o-line-height-h6);
       }
       ul {
+        // display: flex;
+        // margin-top: var(--o-spacing-h4);
+        padding: 0 var(--o-spacing-h7);
         display: flex;
-        margin-top: var(--o-spacing-h4);
+        justify-content: start;
+        flex-wrap: wrap;
         li {
+          flex: 0 0 25%;
           text-align: center;
-          margin-right: 72px;
+          margin-top: var(--o-spacing-h5);
+          @media (max-width: 1080px) {
+            flex: 0 0 50%;
+          }
           .member-img {
             width: 120px;
             height: 120px;
+            display: block;
+            margin: 0 auto;
             img {
               width: 120px;
               height: 120px;
