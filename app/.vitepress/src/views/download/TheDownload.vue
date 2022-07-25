@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue';
 import IconDownload from '~icons/app/icon-download.svg';
 import banner from '@/assets/banner-secondary.png';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import { useData } from 'vitepress';
@@ -14,13 +15,27 @@ const downloadUrl = (url: string) => {
 const currentPage = ref(1);
 const pageSize = ref(9);
 const total = ref(i18n.value.download.DOWNLOAD_LIST.length);
+const screenWidth = useWindowResize();
 
 const dataList = computed(() => {
-  return i18n.value.download.DOWNLOAD_LIST.slice(
-    (currentPage.value - 1) * pageSize.value,
-    currentPage.value * pageSize.value
-  );
+  if (screenWidth.value > 768) {
+    return i18n.value.download.DOWNLOAD_LIST.slice(
+      (currentPage.value - 1) * pageSize.value,
+      currentPage.value * pageSize.value
+    );
+  } else {
+    return i18n.value.download.DOWNLOAD_LIST.slice(
+      0,
+      currentPage.value * pageSize.value
+    );
+  }
 });
+
+const LoadMore = () => {
+  if (currentPage.value * pageSize.value < total.value) {
+    currentPage.value = currentPage.value + 1;
+  }
+};
 
 const urlStyle = computed(() => {
   if (lang.value === 'zh') {
@@ -45,51 +60,55 @@ const urlStyle = computed(() => {
       <OCard
         v-for="(download, index) in dataList"
         :key="index"
+        :style="{ padding: '0px' }"
         class="download-list-item"
       >
-        <h5 class="download-name">
-          {{ download.NAME }}
-        </h5>
-        <div class="download-desc">
-          {{ download.DESC }}
+        <div>
+          <h5 class="download-name">
+            {{ download.NAME }}
+          </h5>
+          <div class="download-desc">
+            {{ download.DESC }}
+          </div>
+          <div :class="urlStyle">
+            <div v-if="download.SEEK_HELP_URL ? true : false">
+              <a target="_blank" :href="download.SEEK_HELP_URL">
+                {{ i18n.download.SEEK_HELP }}
+              </a>
+            </div>
+            <div v-if="download.GET_ISO_URL ? true : false">
+              <a target="_blank" :href="download.GET_ISO_URL">
+                {{ i18n.download.GET_ISO }}
+              </a>
+            </div>
+            <div v-if="download.LIFE_CYCLE_URL ? true : false">
+              <a target="_blank" :href="download.LIFE_CYCLE_URL">
+                {{ i18n.download.LIFE_CYCLE }}
+              </a>
+            </div>
+            <div v-if="download.RELEASE_DESC_URL ? true : false">
+              <a target="_blank" :href="download.RELEASE_DESC_URL">
+                {{ i18n.download.RELEASE_DESC }}
+              </a>
+            </div>
+            <div v-if="download.INSTALL_GUIDENCE_URL ? true : false">
+              <a target="_blank" :href="download.INSTALL_GUIDENCE_URL">
+                {{ i18n.download.INSTALL_GUIDENCE }}
+              </a>
+            </div>
+            <div v-if="download.WHITE_PAPER ? true : false">
+              <a target="_blank" :href="download.WHITE_PAPER">
+                {{ i18n.download.WHITE_PAPER }}
+              </a>
+            </div>
+            <div v-if="download.WEBSITE_SELECT ? true : false">
+              <a target="_blank" :href="download.WEBSITE_SELECT">
+                {{ i18n.download.WEBSITE_SELECT }}
+              </a>
+            </div>
+          </div>
         </div>
-        <div :class="urlStyle">
-          <div v-if="download.SEEK_HELP_URL ? true : false">
-            <a target="_blank" :href="download.SEEK_HELP_URL">
-              {{ i18n.download.SEEK_HELP }}
-            </a>
-          </div>
-          <div v-if="download.GET_ISO_URL ? true : false">
-            <a target="_blank" :href="download.GET_ISO_URL">
-              {{ i18n.download.GET_ISO }}
-            </a>
-          </div>
-          <div v-if="download.LIFE_CYCLE_URL ? true : false">
-            <a target="_blank" :href="download.LIFE_CYCLE_URL">
-              {{ i18n.download.LIFE_CYCLE }}
-            </a>
-          </div>
-          <div v-if="download.RELEASE_DESC_URL ? true : false">
-            <a target="_blank" :href="download.RELEASE_DESC_URL">
-              {{ i18n.download.RELEASE_DESC }}
-            </a>
-          </div>
-          <div v-if="download.INSTALL_GUIDENCE_URL ? true : false">
-            <a target="_blank" :href="download.INSTALL_GUIDENCE_URL">
-              {{ i18n.download.INSTALL_GUIDENCE }}
-            </a>
-          </div>
-          <div v-if="download.WHITE_PAPER ? true : false">
-            <a target="_blank" :href="download.WHITE_PAPER">
-              {{ i18n.download.WHITE_PAPER }}
-            </a>
-          </div>
-          <div v-if="download.WEBSITE_SELECT ? true : false">
-            <a target="_blank" :href="download.WEBSITE_SELECT">
-              {{ i18n.download.WEBSITE_SELECT }}
-            </a>
-          </div>
-        </div>
+
         <OButton
           size="small"
           type="primary"
@@ -101,18 +120,45 @@ const urlStyle = computed(() => {
         </OButton>
       </OCard>
     </div>
-  </div>
-  <div class="page-box">
-    <OPagination
-      v-model:currentPage="currentPage"
-      v-model:page-size="pageSize"
-      :page-sizes="[9, 12, 18, 36]"
-      :background="true"
-      layout="sizes, prev, pager, next, slot, jumper"
-      :total="total"
-    >
-      <span>5/50</span>
-    </OPagination>
+    <div class="page-box">
+      <OPagination
+        v-if="screenWidth > 768"
+        v-model:currentPage="currentPage"
+        v-model:page-size="pageSize"
+        class="pagination"
+        :page-sizes="[9, 12, 18, 36]"
+        :background="true"
+        layout="sizes, prev, pager, next, slot, jumper"
+        :total="total"
+      >
+        <span>{{ pageSize }} / {{ total }}</span>
+      </OPagination>
+      <div v-else class="page-box-mobile">
+        <div>
+          已显示{{
+            pageSize * currentPage < total ? pageSize * currentPage : total
+          }}条记录/共{{ total }}条
+        </div>
+        <div class="page-box-divide">
+          <div
+            class="page-box-divide-in"
+            :style="{
+              width:
+                (pageSize * currentPage * 100) / total > 100
+                  ? (pageSize * currentPage * 100) / total
+                  : '100' + '%',
+            }"
+          ></div>
+        </div>
+        <OButton
+          v-if="currentPage * pageSize < total"
+          class="page-box-button"
+          @click="LoadMore"
+        >
+          加载更多
+        </OButton>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -123,13 +169,43 @@ const urlStyle = computed(() => {
   justify-content: center;
   align-items: center;
   margin-bottom: var(--o-spacing-h1);
+
+  &-mobile {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-divide {
+    max-width: 328px;
+    width: 100%;
+    height: 1px;
+    margin-top: var(--o-spacing-h5);
+    background-color: var(--o-color-division);
+    &-in {
+      height: 100%;
+      background-color: var(--o-color-brand);
+    }
+  }
+
+  &-button {
+    margin-top: var(--o-spacing-h5);
+    padding: var(--o-spacing-h10) var(--o-spacing-h4);
+  }
 }
 .download {
-  margin: var(--o-spacing-h2) 0;
+  margin: 0 auto;
+  max-width: 1504px;
+  padding: 0 var(--o-spacing-h2);
+  @media (max-width: 1100px) {
+    padding: 0 var(--o-spacing-h5);
+  }
+
   &-list {
     display: grid;
-    max-width: 1504px;
-    margin: 0 auto;
+    margin: var(--o-spacing-h2) auto;
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(3, 1fr);
@@ -137,26 +213,50 @@ const urlStyle = computed(() => {
     &-item {
       width: 100%;
       max-width: 456px;
-      padding: 20px;
       height: 100%;
+
+      @media (max-width: 768px) {
+        max-width: 328px;
+      }
+
+      :deep(.el-card__body) {
+        padding: var(--o-spacing-h2);
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 100%;
+        @media (max-width: 768px) {
+          padding: var(--o-spacing-h5) var(--o-spacing-h6);
+        }
+      }
     }
   }
   &-name {
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+    }
   }
 
   &-desc {
     margin-top: var(--o-spacing-h5);
     font-size: var(--o-font-size-text);
     color: var(--o-color-text3);
-    line-height: var(--o-line-height-h8);
+    line-height: var(--o-line-height-text);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    height: var(--o-line-height-h3);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      margin-top: var(--o-spacing-h10);
+    }
   }
 
   &-button {
@@ -179,10 +279,17 @@ const urlStyle = computed(() => {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
+  @media (max-width: 768px) {
+    grid-gap: var(--o-spacing-h8);
+  }
 
   a {
     font-size: var(--o-font-size-text);
     color: var(--o-color-brand);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+    }
   }
 }
 
@@ -191,10 +298,17 @@ const urlStyle = computed(() => {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
+  @media (max-width: 768px) {
+    grid-gap: var(--o-spacing-h8);
+  }
 
   a {
     font-size: var(--o-font-size-text);
     color: var(--o-color-brand);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+    }
   }
 }
 
@@ -203,10 +317,17 @@ const urlStyle = computed(() => {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
+  @media (max-width: 768px) {
+    grid-gap: var(--o-spacing-h8);
+  }
 
   a {
     font-size: var(--o-font-size-text);
     color: var(--o-color-brand);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+    }
   }
 }
 
