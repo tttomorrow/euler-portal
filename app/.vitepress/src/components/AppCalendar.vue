@@ -101,8 +101,8 @@ function changeTab(index: number) {
         return item.activity_category === index - 1;
       });
     }
-  } catch (error) {
-    throw Error();
+  } catch (error: any) {
+    throw Error(error);
   }
 }
 
