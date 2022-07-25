@@ -28,6 +28,8 @@ const tagClick = (i: number, type: string) => {
 // tag筛选及搜索传输的参数
 const data = ref({
   keyword: '',
+  page: 1,
+  pageSize: 10000,
   type: '',
 });
 // 根据tag筛选需要显示的案例
@@ -98,7 +100,13 @@ function goDetail(link: string, item: any) {
 function setCurrentCaseListAll() {
   getUserCaseData(data.value).then((res: any) => {
     if (res.status === 200 && res.obj.records) {
-      currentCaseListAll.value = res.obj.records;
+      const CaseListAll = res.obj.records;
+      CaseListAll.forEach((item: any, index: number) => {
+        if (item.summary === '') {
+          CaseListAll.splice(index, 1);
+        }
+      });
+      currentCaseListAll.value = CaseListAll;
     } else {
       currentCaseListAll.value = [];
     }
@@ -111,6 +119,7 @@ function searchCase() {
   activeIndex.value = 0;
   setCurrentCaseListAll();
 }
+// 获取所有案例及设置当前需要显示的案例
 onMounted(() => {
   window.addEventListener('scroll', onscroll);
   getCaseTagData().then((res: any) => {
@@ -200,7 +209,7 @@ onUnmounted(() => {
       </OCard>
     </div>
     <NotFound v-if="total === 0" />
-    <div class="page-box">
+    <div v-if="isShow" class="page-box">
       <OPagination
         v-model:currentPage="currentPage1"
         v-model:page-size="pageSize4"
@@ -213,7 +222,7 @@ onUnmounted(() => {
       >
         <span>{{ currentPage1 }}/{{ totalPage }}</span>
       </OPagination>
-      <div v-if="isShow" class="pagination-h5">
+      <div class="pagination-h5">
         <OIcon class="icon-prev">
           <IconChevronLeft />
         </OIcon>
@@ -244,7 +253,6 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .user-case {
   max-width: 1504px;
-  min-height: 63.9vh;
   padding: 0 44px;
   margin: 0 auto;
   @media (max-width: 768px) {
@@ -255,7 +263,6 @@ onUnmounted(() => {
     width: 100%;
     display: flex;
     @media (max-width: 768px) {
-      padding: 0 16px;
       background-color: #ffffff;
       position: sticky;
       top: 48px;
@@ -274,9 +281,11 @@ onUnmounted(() => {
     }
     .tag-h5 {
       display: none;
+      width: 100%;
+      box-shadow: var(--o-shadow-base);
+      padding: 0 16px;
       @media (max-width: 768px) {
         display: block;
-        padding: 0;
       }
       .tag-filter-box {
         span {
