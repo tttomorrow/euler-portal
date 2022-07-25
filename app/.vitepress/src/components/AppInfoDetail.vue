@@ -24,11 +24,4 @@ const isDoc = computed(() => {
   </div>
 </template>
 
-<style lang="scss">
-.makdown-wrap {
-  padding: 0 var(--o-spacing-h2);
-  @media (max-width: 1100px) {
-    padding: 0 var(--o-spacing-h7);
-  }
-}
-</style>
+<style lang="scss"></style>
