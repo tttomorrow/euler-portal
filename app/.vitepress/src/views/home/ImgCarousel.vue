@@ -64,7 +64,6 @@ const changeActive = (index: number) => {
 <style lang="scss" scoped>
 .carousel {
   max-width: 1504px;
-  padding: 40px;
   margin: 0 auto;
   padding: 0;
   h3 {

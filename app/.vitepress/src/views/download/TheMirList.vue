@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { onMounted, Ref, ref } from 'vue';
+import { computed, onMounted, Ref, ref } from 'vue';
 import { getAllMirror } from '@/api/api-mirror';
 import IconCpoy from '~icons/app/icon-copy.svg';
 import { ElMessage } from 'element-plus';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
 import { useData } from 'vitepress';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 const { theme: i18n } = useData();
 
@@ -21,6 +22,8 @@ interface MirrorMsg {
   netband?: string;
   area?: boolean;
 }
+
+const screenWidth = useWindowResize();
 
 const tableData: Ref<MirrorMsg[]> = ref([]);
 
@@ -72,7 +75,8 @@ const tableRowClassName = ({ row }: any) => {
   }
   return '';
 };
-const copyText = (value: string) => {
+const copyText = (value: string | undefined) => {
+  if (!value) return;
   if (inputDom.value) {
     (inputDom.value as HTMLInputElement).value = value;
     (inputDom.value as HTMLInputElement).select();
@@ -83,12 +87,16 @@ const copyText = (value: string) => {
     type: 'success',
   });
 };
+
+const listData = computed(() => {
+  return tableData.value.filter((item) => typeof item.area === 'undefined');
+});
 onMounted(async () => {
   inputDom.value = document.getElementById('useCopy');
   try {
     const responeData = await getAllMirror();
     tableData.value = initTable(responeData);
-  } catch (e) {
+  } catch (e: any) {
     throw new Error(e);
   }
 });
@@ -108,6 +116,7 @@ onMounted(async () => {
       >.
     </p>
     <el-table
+      v-if="screenWidth > 768"
       :data="tableData"
       header-cell-class-name="mirror-list-header"
       cell-class-name="mirror-list-row"
@@ -130,14 +139,14 @@ onMounted(async () => {
         :label="i18n.download.MIRROR_ALL.LOCATION"
         min-width="100"
       />
-      <el-table-column :label="i18n.download.MIRROR_ALL.SPONSOR" min-width="80">
+      <el-table-column :label="i18n.download.MIRROR_ALL.SPONSOR" min-width="90">
         <template #default="scope">
           <a :href="scope.row.sponsor" target="_blank"
             ><img :src="scope.row.sponsorLogo" class="mirror-list-img"
           /></a>
         </template>
       </el-table-column>
-      <el-table-column :label="i18n.download.MIRROR_ALL.RSNC" min-width="80">
+      <el-table-column :label="i18n.download.MIRROR_ALL.RSNC" min-width="90">
         <template #default="scope">
           <span v-if="scope.row.rsnc === '-'">{{ scope.row.rsnc }}</span>
           <IconCpoy
@@ -164,6 +173,68 @@ onMounted(async () => {
       >
       </el-table-column>
     </el-table>
+    <div v-else class="mirror-mobile">
+      <OCard v-for="(item, index) in listData" :key="index" class="mirror-card">
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_ALL.NAME }}
+          </div>
+          <div class="mirror-card-word">{{ item.name }}</div>
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_ALL.LOCATION }}
+          </div>
+          <div class="mirror-card-word">{{ item.location }}</div>
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_ALL.HTTPS }}
+          </div>
+          <div class="mirror-card-word">{{ item.sponsor }}</div>
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_ALL.SPONSOR }}
+          </div>
+          <div class="mirror-card-word">
+            <a :href="item.http" target="_blank">{{ item.http }}</a>
+          </div>
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_ALL.RSNC }}
+          </div>
+          <div v-if="item.rsnc === '-'" class="mirror-card-word">
+            {{ item.rsnc }}
+          </div>
+          <IconCpoy
+            v-else-if="item.rsnc && item.rsnc != ''"
+            class="mirror-card-rsnc"
+            @click="copyText(item.rsnc)"
+          />
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_ALL.FTP }}
+          </div>
+          <div v-if="item.ftp === '-'" class="mirror-card-word">
+            {{ item.ftp }}
+          </div>
+          <IconCpoy
+            v-else-if="item.ftp && item.ftp != ''"
+            class="mirror-card-rsnc"
+            @click="copyText(item.ftp)"
+          />
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_ALL.Mbs }}
+          </div>
+          <div class="mirror-card-word">{{ item.netband }}</div>
+        </div>
+      </OCard>
+    </div>
     <div class="input-box">
       <!-- 用于复制RSNC的值 -->
       <input id="useCopy" type="text" />
@@ -227,19 +298,80 @@ onMounted(async () => {
 </style>
 
 <style lang="scss" scoped>
+.mirror {
+  &-mobile {
+    > :nth-child(odd) {
+      background-color: var(--o-color-bg3);
+    }
+  }
+  &-card {
+    :deep(.el-card__body) {
+      padding: var(--o-spacing-h5);
+      :first-child .mirror-card-title,
+      :first-child .mirror-card-word {
+        margin-top: 0px;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-flow: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    &-title {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      color: var(--o-color-text3);
+      margin-right: var(--o-spacing-h10);
+      margin-top: var(--o-spacing-h8);
+    }
+
+    &-word {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      color: var(--o-color-secondary_active);
+      margin-top: var(--o-spacing-h8);
+      a {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        margin-top: var(--o-spacing-h8);
+        color: var(--o-color-brand);
+      }
+    }
+
+    &-rsnc {
+      margin-top: var(--o-spacing-h8);
+      width: var(--o-font-size-h8);
+      height: var(--o-font-size-h8);
+      color: var(--o-color-brand);
+    }
+  }
+}
 .mirror-list {
   max-width: 1504px;
-  margin: var(--o-spacing-h2) auto;
-  margin-top: var(--o-spacing-h1);
+  margin: 0 auto;
+  padding: 0 var(--o-spacing-h2);
+  @media (max-width: 1100px) {
+    padding: 0 var(--o-spacing-h5);
+  }
   > p {
-    font-size: 18px;
+    font-size: var(--o-font-size-h7);
     font-weight: 400;
-    color: #000000;
-    line-height: 34px;
-    margin: 60px 0 30px 0;
+    color: var(--o-color-text2);
+    line-height: var(--o-line-height-h7);
+    margin: var(--o-spacing-h1) 0 var(--o-spacing-h2) 0;
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      margin: var(--o-spacing-h2) 0 var(--o-spacing-h5) 0;
+    }
+
     > a {
       text-decoration: none;
-      color: #002fa7;
+      color: var(--o-color-brand);
     }
   }
 
