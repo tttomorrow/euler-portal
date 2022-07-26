@@ -134,7 +134,7 @@ onMounted(async () => {
           </div>
         </template>
       </el-table-column>
-      <el-table-column
+      <OTableColumn
         prop="location"
         :label="i18n.download.MIRROR_ALL.LOCATION"
         min-width="100"
@@ -166,12 +166,12 @@ onMounted(async () => {
           />
         </template>
       </el-table-column>
-      <el-table-column
+      <OTableColumn
         :label="i18n.download.MIRROR_ALL.Mbs"
         prop="netband"
         width="260"
       >
-      </el-table-column>
+      </OTableColumn>
     </el-table>
     <div v-else class="mirror-mobile">
       <OCard v-for="(item, index) in listData" :key="index" class="mirror-card">

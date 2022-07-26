@@ -2,21 +2,32 @@
 import { useData } from 'vitepress';
 import { ref } from 'vue';
 import IconArrowRight from '~icons/app/arrow-right.svg';
-import IconDown from '~icons/app/icon-down.svg';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+const screenWidth = useWindowResize();
 
 const { theme: i18n } = useData();
 
 const active = ref(0);
 
+const activeMobile = ref(0);
+
 const changeActive = (index: number) => {
   active.value = index;
+  activeMobile.value = index;
+};
+
+const changeActiveMobile = (activeNames: any) => {
+  if (activeNames !== '') {
+    active.value = activeNames;
+  }
 };
 </script>
 
 <template>
   <div class="carousel">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
-    <div class="carousel-pc">
+    <div v-if="screenWidth >= 1100" class="carousel-pc">
       <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
         <div class="carousel-pc-content">
           <div class="carousel-pc-list">
@@ -30,34 +41,42 @@ const changeActive = (index: number) => {
             </div>
           </div>
           <div class="carousel-pc-img">
-            <img :src="i18n.home.IMG_CAROUSE.LIST[active].IMG_URL" />
+            <img :src="i18n.home.IMG_CAROUSE.LIST[active]?.IMG_URL" />
           </div>
         </div>
         <div class="carousel-pc-button">
-          {{ i18n.home.IMG_CAROUSE.BUTTON }}
-          <IconArrowRight class="carousel-pc-button-icon"></IconArrowRight>
+          <a target="_blank" :href="i18n.home.IMG_CAROUSE.TRY_URL">
+            {{ i18n.home.IMG_CAROUSE.BUTTON }}
+            <IconArrowRight class="carousel-pc-button-icon"></IconArrowRight>
+          </a>
         </div>
       </OCard>
     </div>
-    <div class="carousel-mobile">
-      <div v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST" :key="index">
-        <OCard
-          class="carousel-mobile-card"
-          :style="{ padding: '0px' }"
-          @click="changeActive(index)"
-        >
+    <el-collapse
+      v-else
+      v-model="activeMobile"
+      class="carousel-mobile"
+      accordion
+      @change="changeActiveMobile"
+    >
+      <el-collapse-item
+        v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
+        :key="index"
+        :name="index"
+        class="carousel-mobile-card"
+      >
+        <template #title>
           <div class="carousel-mobile-content">
             <div class="carousel-mobile-title">
               {{ item.TITLE }}
             </div>
-            <IconDown class="carousel-mobile-icon"></IconDown>
           </div>
-        </OCard>
-        <div v-if="index === active" class="carousel-mobile-img">
-          <img :src="i18n.home.IMG_CAROUSE.LIST[active].IMG_URL" />
+        </template>
+        <div class="carousel-mobile-img">
+          <img :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL" />
         </div>
-      </div>
-    </div>
+      </el-collapse-item>
+    </el-collapse>
   </div>
 </template>
 
@@ -65,7 +84,10 @@ const changeActive = (index: number) => {
 .carousel {
   max-width: 1504px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 var(--o-spacing-h2);
+  @media (max-width: 1100px) {
+    padding: 0 var(--o-spacing-h5);
+  }
   h3 {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
@@ -83,17 +105,24 @@ const changeActive = (index: number) => {
 
   &-mobile {
     margin-top: var(--o-spacing-h5);
-    display: none;
-    @media (max-width: 1080px) {
-      display: flex;
-      flex-flow: column;
-    }
+
+    flex-flow: column;
+
     &-card {
-      :deep(.el-card__body) {
+      :deep(.el-collapse-item__content) {
+        padding-bottom: 0px;
+      }
+
+      :deep(.el-collapse-item__header) {
+        height: 100%;
         padding: var(--o-spacing-h4);
         @media (max-width: 768px) {
           padding: var(--o-spacing-h8);
         }
+      }
+
+      :deep(.el-collapse-item__wrap) {
+        margin: var(--o-spacing-h5) 0;
       }
     }
 
@@ -106,7 +135,8 @@ const changeActive = (index: number) => {
 
     &-img {
       width: 100%;
-      margin: var(--o-spacing-h5) 0;
+      height: 100%;
+
       img {
         width: 100%;
         height: 100%;
@@ -115,6 +145,7 @@ const changeActive = (index: number) => {
     }
 
     &-title {
+      cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 500;
       color: var(--o-color-text2);
@@ -132,9 +163,7 @@ const changeActive = (index: number) => {
   }
   &-pc {
     margin-top: var(--o-spacing-h2);
-    @media (max-width: 1080px) {
-      display: none;
-    }
+
     &-card {
       :deep(.el-card__body) {
         padding: var(--o-spacing-h1) var(--o-spacing-h1) var(--o-spacing-h2);
@@ -177,6 +206,7 @@ const changeActive = (index: number) => {
     }
 
     &-title {
+      cursor: pointer;
       font-size: var(--o-font-size-h4);
       font-weight: 400;
       color: var(--o-color-text2);
@@ -191,15 +221,37 @@ const changeActive = (index: number) => {
 
     &-button {
       display: flex;
-      flex-flow: row;
+      margin-top: var(--o-line-height-h3);
       justify-content: center;
       align-items: center;
-      margin-top: var(--o-spacing-h2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--o-color-text2);
+      transition: all 0.3s;
+
       &-icon {
+        margin-left: var(--o-spacing-h8);
         width: var(--o-font-size-h8);
         height: var(--o-font-size-h8);
+        transition: all 0.3s;
         color: var(--o-color-brand);
-        margin-left: var(--o-spacing-h8);
+      }
+
+      a {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--o-color-text2);
+        transition: all 0.3s;
+        &:hover {
+          color: var(--o-color-brand);
+          .carousel-pc-button-icon {
+            transform: translateX(3px);
+          }
+        }
       }
     }
   }

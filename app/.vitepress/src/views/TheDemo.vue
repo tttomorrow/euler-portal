@@ -191,7 +191,7 @@ onMounted(() => {
     </div>
 
     <div class="demo-box">
-      <h4>OTimelien</h4>
+      <h4>OTimeline</h4>
       <OTimeline
         v-model="date"
         :right-arrow="true"
