@@ -15,6 +15,7 @@ import { Table, TableColumn } from './table';
 import { Timeline } from './timeline';
 import { Search } from './search';
 import { Drawer } from './drawer';
+import { Collapse, CollapseItem } from './collapse';
 
 const components = [
   Button,
@@ -34,6 +35,8 @@ const components = [
   Tree,
   Search,
   Drawer,
+  Collapse,
+  CollapseItem,
 ];
 export default {
   install(app: App): void {

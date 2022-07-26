@@ -263,6 +263,36 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <div class="demo-box">
+      <h4>OCollapse不带图片</h4>
+      <OCollapse>
+        <OCollapseItem title="title1">
+          <div>
+            Consistent with real life: in line with the process and logic of
+            real life, and comply with languages and habits that the users are
+            used to;
+          </div>
+        </OCollapseItem>
+      </OCollapse>
+    </div>
+    <div class="demo-box">
+      <h4>OCollapse带图片</h4>
+      <OCollapse>
+        <OCollapseItem>
+          <template #title>
+            <div style="display: flex">
+              <img src="@/assets/svg-icons/icon-time.svg" />
+              <p style="padding: 5px">title2</p>
+            </div>
+          </template>
+          <div>
+            Consistent with real life: in line with the process and logic of
+            real life, and comply with languages and habits that the users are
+            used to;
+          </div>
+        </OCollapseItem>
+      </OCollapse>
+    </div>
   </div>
 </template>
 
