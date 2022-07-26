@@ -75,6 +75,9 @@ const { theme: i18n } = useData();
           column-gap: unset;
           display: flex;
           flex-wrap: wrap;
+          @media (max-width: 768px) {
+            padding: 10px 10px;
+          }
           li {
             flex-shrink: 0;
             width: 162px;

@@ -1,11 +1,3 @@
-<!--
- * @Author: xjc 2324881835@qq.com
- * @Date: 2022-07-18 16:18:31
- * @LastEditors: xjc 2324881835@qq.com
- * @LastEditTime: 2022-07-22 17:21:26
- * @FilePath: \openEuler-portal\app\.vitepress\src\views\sig\sig-list\SigList.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <script setup lang="ts">
 import { useData } from 'vitepress';
 import { onMounted, ref } from 'vue';
@@ -72,6 +64,10 @@ onMounted(() => {
   color: var(--o-color-text2);
   max-width: 1380px;
   margin: var(--o-spacing-h1) auto;
+  padding: 0 44px;
+  @media (max-width: 768px) {
+    padding: 0 var(--o-spacing-h4);
+  }
   ul {
     list-style: disc;
     li {
@@ -85,8 +81,10 @@ onMounted(() => {
 .sig-list {
   max-width: 1380px;
   margin: var(--o-spacing-h1) auto;
+  padding: 0 44px;
   @media (max-width: 1080px) {
     margin: 0px var(--o-spacing-h4);
+    padding: 0 0;
   }
 }
 </style>
