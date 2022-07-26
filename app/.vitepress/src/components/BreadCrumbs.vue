@@ -14,8 +14,12 @@ const props = defineProps({
     type: String,
     default: '#',
   },
+  link2: {
+    type: String,
+    default: '#',
+  },
 });
-const { bread1, bread2, link1 } = toRefs(props);
+const { bread1, bread2, link1, link2 } = toRefs(props);
 </script>
 <template>
   <div class="bread-crumbs">
@@ -25,7 +29,10 @@ const { bread1, bread2, link1 } = toRefs(props);
     <OIcon>
       <IconArrowRight />
     </OIcon>
-    <span>{{ bread2 }}</span>
+    <span
+      ><a :href="link2" :class="link2==='#'?'no-click':''">{{ bread2 }}</a></span
+    >
+    <slot></slot>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -47,7 +54,12 @@ const { bread1, bread2, link1 } = toRefs(props);
   }
   span:nth-of-type(2),
   span:nth-of-type(3) {
-    color: var(--o-color-text2);
+    a {
+      color: var(--o-color-text2);
+    }
+    .no-click{
+      cursor: default;
+    }
   }
 }
 </style>
