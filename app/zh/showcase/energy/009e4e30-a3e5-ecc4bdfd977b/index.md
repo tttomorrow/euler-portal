@@ -1,4 +1,5 @@
 ---
+title: 国家电网
 module: showcase
 industry: 能源
 company: 国家电网
@@ -10,14 +11,13 @@ img: /img/showcase/energy.png
 
 <div class="markdown">
 
-
 ## 应用场景
 
 博微智慧工地平台在“河北 110 千伏裕翔城市智慧标杆站”项目中已稳定运行半年有余，平台属于典型+创新的智慧工地。智慧工地平台包括业务管理平台与物联感知平台两大平台，其中业务管理平台贯穿项目前期、工程前期、工程建设、投运总结工程建设全生命周期，覆盖安全、质量、进度、队伍、物资、BIM 六大专业；物联感知平台囊括人员通道、体温监测、人员定位等多达 23 种的硬件接入和相关的服务应用。
 
 ## 解决方案
 
-<div align="center"><img src="./e4.jpg"/></div>
+<div align="center" class="case-img"><img src="./e4.jpg"/></div>
 
 - 麒麟与博微携手，历时 2 个月时间，将智慧工地解决方案整体迁移到银河麒麟高级服务器操作系统 V10 上，并于近期在“河北 110 千伏裕翔城市智慧标杆站”项目上实现升级上线 。
 
@@ -29,6 +29,6 @@ img: /img/showcase/energy.png
 
 ## 伙伴
 
-<div align="center"><img src="./qiling.png"/></div>
+<div ><img src="./qiling.png"/></div>
 
 </div>

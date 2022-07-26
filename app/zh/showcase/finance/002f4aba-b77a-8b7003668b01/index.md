@@ -1,4 +1,5 @@
 ---
+title: 兴业银行
 module: showcase
 industry: 金融
 company: 兴业银行
@@ -16,7 +17,7 @@ img: /img/showcase/finance.png
 
 ## 解决方案
 
-<div align="center"><img src="./img2.jpg"/></div>
+<div align="center" class="case-img"><img src="./img2.jpg"/></div>
 
 - **整机：** 华为鲲鹏服务器
 - **操作系统：** 银河麒麟高级服务器操作系统 V10
@@ -32,6 +33,6 @@ img: /img/showcase/finance.png
 
 ## 伙伴
 
-<div align="center"><img src="./qiling.png"/></div>
+<div><img src="./qiling.png"/></div>
 
 </div>
