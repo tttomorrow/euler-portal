@@ -83,6 +83,11 @@ const tagClick = (i: number) => {
   activeIndex.value = i;
 };
 // tagFiter end
+
+const isDrawerOpen = ref(false);
+const toggleDrawer = () => {
+  isDrawerOpen.value = !isDrawerOpen.value;
+};
 onMounted(() => {
   // getMeetingData().then((res: MeetingData) => {
   //   calendarData.value = res.tableData;
@@ -117,6 +122,18 @@ onMounted(() => {
           </template>
         </OButton>
       </div>
+    </div>
+
+    <div class="demo-box">
+      <h4>ODrawer</h4>
+      <OButton type="primary" @click="toggleDrawer">toggle drawer</OButton>
+      <ODrawer
+        v-model="isDrawerOpen"
+        direction="btt"
+        :show-close="false"
+        custom-class="o-drawer"
+      >
+      </ODrawer>
     </div>
 
     <div class="demo-box">

@@ -14,6 +14,7 @@ import { Pagination } from './pagination';
 import { Table, TableColumn } from './table';
 import { Timeline } from './timeline';
 import { Search } from './search';
+import { Drawer } from './drawer';
 
 const components = [
   Button,
@@ -32,6 +33,7 @@ const components = [
   TabPane,
   Tree,
   Search,
+  Drawer,
 ];
 export default {
   install(app: App): void {
