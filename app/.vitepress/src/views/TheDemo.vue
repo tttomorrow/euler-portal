@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
+import IconLeft from '~icons/app/icon-left.svg';
+import IconRight from '~icons/app/icon-right.svg';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
@@ -90,6 +92,33 @@ onMounted(() => {
 
 <template>
   <div class="demo">
+    <div class="demo-box">
+      <h4>OButton</h4>
+      <div class="button-box">
+        <OButton>type=outline</OButton>
+        <OButton type="primary" theme="light">type=primary</OButton>
+        <OButton type="secondary">type=secondary</OButton>
+        <OButton type="text">type=text</OButton>
+      </div>
+      <div class="button-box">
+        <OButton type="primary">size=medium</OButton>
+        <OButton type="primary" size="small">size=small</OButton>
+        <OButton type="primary" size="mini">size=mini</OButton>
+      </div>
+
+      <div class="button-box">
+        <OButton animation type="primary" size="medium">
+          <template #prefixIcon>
+            <OIcon><IconLeft /></OIcon>
+          </template>
+          Icon插槽
+          <template #suffixIcon>
+            <OIcon><IconRight /></OIcon>
+          </template>
+        </OButton>
+      </div>
+    </div>
+
     <div class="demo-box">
       <h4>OSearch</h4>
       <OSearch v-model="inputName"></OSearch>
@@ -238,6 +267,19 @@ h4 {
 body {
   background: var(--o-color-bg2);
 }
+
+.button-box {
+  display: flex;
+  align-items: center;
+
+  & + .button-box {
+    margin-top: 20px;
+  }
+  .o-button {
+    margin-left: 10px;
+  }
+}
+
 .anchor-main {
   display: flex;
   margin-bottom: 100px;

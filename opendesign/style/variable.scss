@@ -9,12 +9,12 @@
   --o-color-brand: #002fa7; // 品牌色
   --o-color-brand_hover: #406fe7; // 品牌色 hover态
   --o-color-brand_active: #00195a; // 品牌色 active态
-  --o-color-brand_disabled: rgba(0, 25, 90, 0.2); // 品牌色 disabeld态
+  --o-color-brand_disabled: #cdd1dd; // 品牌色 disabeld态
 
   --o-color-secondary: #e5e5e5; // 次要颜色
   --o-color-secondary_hover: #cccccc; // 次要颜色 hover态
   --o-color-secondary_active: #999999; // 次要颜色 active态
-  --o-color-secondary_disabled: rgba(229, 229, 229, 0.2); // 次要颜色 disabled态
+  --o-color-secondary_disabled: #fafafa; // 次要颜色 disabled态
 
   --o-color-auxiliary: #feb32a; // 辅助色
 
@@ -24,7 +24,7 @@
   --o-color-disabled: #cccccc; //禁用色
 
   --o-color-text: #ffffff; // 文字颜色
-  --o-color-text_disabled: rgba(255, 255, 255, 1); // 文字颜色 disabled态
+  --o-color-text_disabled: rgba(255, 255, 255, 0.8); // 文字颜色 disabled态
   --o-color-text2: #000000; // 文字颜色2
   --o-color-text2_disabled: rgba(0, 0, 0, 0.2); // 文字颜色2 disabled态
   --o-color-text3: #555555; // 文字颜色3

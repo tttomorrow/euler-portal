@@ -5,7 +5,6 @@ import NotFound from '@/NotFound.vue';
 
 import '@/shared/styles/index.scss';
 
-// import i18n from '@/i18n';
 import { createPinia } from 'pinia';
 
 import OpenDesign from 'opendesign';
@@ -23,6 +22,5 @@ export default {
     app.use(OpenDesign);
     app.use(ElementPlus);
     app.use(createPinia());
-    // app.use(i18n);
   },
 };

@@ -5,6 +5,7 @@ type ButtonType = 'outline' | 'primary' | 'secondary' | 'text';
 // TODO:status颜色规范待补充
 // type ButtonStatus = 'normal' | 'success' | 'warning' | 'danger';
 type ButtonStatus = 'normal';
+type ButtonThemeType = '' | 'light' | 'dark';
 type ButtonNativeType = 'button' | 'submit' | 'reset';
 
 export const buttonProps = {
@@ -21,6 +22,14 @@ export const buttonProps = {
     default: 'nomral',
   },
   disabled: {
+    type: Boolean,
+    default: false,
+  },
+  theme: {
+    type: String as PropType<ButtonThemeType>,
+    default: '',
+  },
+  animation: {
     type: Boolean,
     default: false,
   },
