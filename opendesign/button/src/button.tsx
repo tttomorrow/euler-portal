@@ -7,17 +7,21 @@ export default defineComponent({
   props: buttonProps,
   emits: ['click'],
   setup(props: ButtonProps, { emit, slots }) {
-    const { size, type, status, disabled, nativeType } = toRefs(props);
+    const { size, type, status, disabled, animation, theme, nativeType } =
+      toRefs(props);
 
-    const classNames = computed(() => {
-      return [
-        'o-button',
-        `o-button-size-${size.value}`,
-        `o-button-type-${type.value}`,
-        `o-button-status-${status.value}`,
-        disabled.value && 'is-disabled',
-      ].join(' ');
-    });
+    const classNames = computed(() => ({
+      'o-button': true,
+      [`o-button-size-${size.value}`]: true,
+      [`o-button-type-${type.value}`]: true,
+      [`o-button-status-${status.value}`]: true,
+      'with-prefix': slots.prefixIcon,
+      'with-suffix': slots.suffix,
+      animation: animation.value,
+      light: theme.value === 'light',
+      dark: theme.value === '',
+      'is-disabled': disabled.value,
+    }));
 
     const onClick = (e: MouseEvent) => {
       emit('click', e);
@@ -30,9 +34,17 @@ export default defineComponent({
           onClick={onClick}
           type={nativeType.value}
         >
-          {slots.prefixIcon ? <span class="prefix-icon"></span> : ''}
+          {slots.prefixIcon ? (
+            <span class="prefix-icon">{slots.prefixIcon()}</span>
+          ) : (
+            ''
+          )}
           <span>{slots.default?.()}</span>
-          {slots.suffixIcon ? <span class="suffix-icon"></span> : ''}
+          {slots.suffixIcon ? (
+            <span class="suffix-icon">{slots.suffixIcon()}</span>
+          ) : (
+            ''
+          )}
         </button>
       );
     };

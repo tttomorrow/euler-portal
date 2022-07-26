@@ -59,16 +59,32 @@
 
   // font-size
   --o-button-font-size: var(--o-font-size-h8);
+  --o-button-font-size-small: var(--o-font-size-text);
+  --o-button-font-size-mini: var(--o-font-size-tip);
 
   // line-height
   --o-button-line-height: var(--o-line-height-h8);
+  --o-button-line-height-small: var(--o-line-height-text);
+  --o-button-fline-height-mini: var(--o-line-height-tip);
 
   // padding
-  --o-button-paddding: 11px 28px;
+  --o-button-padding: 11px 28px;
+  --o-button-padding-small: 9px 28px;
+  --o-button-padding-mini: 7px 16px;
 
   // icon margin
   --o-button-icon-margin: 8px;
+  --o-button-icon-margin-small: 8px;
+  --o-button-icon-margin-mini: 4px;
+  // icon font-size
+  --o-button-icon-font-size: var(--o-font-size-h5);
+  --o-button-icon-font-size-small: var(--o-font-size-h8);
+  --o-button-icon-font-size-mini: var(--o-font-size-tip);
+  // icon padding
+  --o-button-icon-paddding: 20px;
+  --o-button-icon-paddding-small: 14px;
+  --o-button-icon-paddding-mini: 6x;
 
-  // 动画
+  // animation
   -o-button-transition: color 0.2s, background-color 0.3s, border 0.3s;
 }

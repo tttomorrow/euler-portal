@@ -22,7 +22,6 @@ const components = [
   Select,
   Icon,
   Card,
-  Input,
   Pagination,
   Table,
   TableColumn,
