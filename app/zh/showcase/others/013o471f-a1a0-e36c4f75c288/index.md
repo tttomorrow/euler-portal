@@ -1,4 +1,5 @@
 ---
+title: 江西省医保局
 module: showcase
 industry: 其他
 company: 江西省医保局
@@ -16,7 +17,7 @@ img: /img/showcase/others.png
 
 ## 解决方案
 
-<div align="center"><img src="./er3.jpg"/></div>
+<div align="center" class="case-img"><img src="./er3.jpg"/></div>
 
 - **芯片：** Intel（X86 架构）
 - **整机：** 浪潮/华三服务器
@@ -31,6 +32,6 @@ img: /img/showcase/others.png
 
 ## 伙伴
 
-<div align="center"><img src="./qiling.png"/></div>
+<div ><img src="./qiling.png"/></div>
 
 </div>

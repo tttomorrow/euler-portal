@@ -8,6 +8,12 @@ const { frontmatter } = useData();
 const isDoc = computed(() => {
   return !!frontmatter.value.doc;
 });
+const title=computed(()=>{
+  return frontmatter.value.title||frontmatter.value.company
+})
+const subtitle=computed(()=>{
+  return frontmatter.value.summary|| frontmatter.value.subtitle
+})
 </script>
 
 <template>
@@ -15,8 +21,8 @@ const isDoc = computed(() => {
     <BannerLevel3
       v-if="frontmatter.banner"
       :background-image="frontmatter.banner"
-      :title="frontmatter.company"
-      :subtitle="frontmatter.summary"
+      :title="title"
+      :subtitle="subtitle"
     />
     <div class="makdown-wrap">
       <Content :class="{ markdown: isDoc }" />

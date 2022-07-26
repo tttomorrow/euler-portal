@@ -1,4 +1,5 @@
 ---
+title: 中国南方电网
 module: showcase
 industry: 能源
 company: 中国南方电网
@@ -16,7 +17,7 @@ img: /img/showcase/energy.png
 
 ## 解决方案
 
-<div align="center"><img src="./e2.jpg"/></div>
+<div align="center" class="case-img"><img src="./e2.jpg"/></div>
 
 - 客户原有的大部分业务系统运行在 x86 服务器和部分 Power 及安腾小型机上；
 
@@ -30,6 +31,6 @@ img: /img/showcase/energy.png
 
 ## 伙伴
 
-<div align="center"><img src="./qiling.png"/></div>
+<div ><img src="./qiling.png"/></div>
 
 </div>

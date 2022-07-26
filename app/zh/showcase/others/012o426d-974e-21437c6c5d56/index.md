@@ -1,4 +1,5 @@
 ---
+title: 黑龙江省烟草公司
 module: showcase
 industry: 其他
 company: 黑龙江省烟草公司
@@ -16,7 +17,7 @@ img: /img/showcase/others.png
 
 ## 解决方案
 
-<div align="center"><img src="./er2.jpg"/></div>
+<div align="center" class="case-img"><img src="./er2.jpg"/></div>
 
 - **芯片：** ARM（FT-2000+/64）
 - **整机：** 浪潮英信服务器
@@ -30,6 +31,6 @@ img: /img/showcase/others.png
 
 ## 伙伴
 
-<div align="center"><img src="./qiling.png"/></div>
+<div ><img src="./qiling.png"/></div>
 
 </div>
