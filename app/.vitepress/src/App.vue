@@ -4,16 +4,19 @@ import { computed } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
+import AppInfoDetail from '@/components/AppInfoDetail.vue';
 
 const { frontmatter } = useData();
-const isDoc = computed(() => {
-  return !!frontmatter.value.doc;
-});
+
+const isCustomLayout = computed(() => !!frontmatter.value.customLayout);
 </script>
 
 <template>
   <AppHeader />
-  <main><Content :class="{ markdown: isDoc }" /></main>
+  <main>
+    <AppInfoDetail v-if="isCustomLayout" />
+    <Content v-else />
+  </main>
   <AppFooter />
 </template>
 
@@ -24,10 +27,13 @@ const isDoc = computed(() => {
 }
 
 main {
+  min-height: calc(100vh - 198px);
   background-color: var(--o-color-bg2);
-  margin-top: 80px;
+  padding-top: 80px;
+  padding-bottom: var(--o-spacing-h1);
   @media (max-width: 1100px) {
-    margin-top: 48px;
+    padding-top: 48px;
+    padding-bottom: var(--o-spacing-h2);
   }
 }
 </style>

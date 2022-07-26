@@ -126,7 +126,12 @@ list.value = initList();
   }
 }
 .brand {
-  margin: var(--o-spacing-h1) 0;
+  margin: var(--o-spacing-h1) auto;
+  padding: 0 var(--o-spacing-h2);
+  max-width: 1504px;
+  @media (max-width: 1100px) {
+    padding: 0 var(--o-spacing-h5);
+  }
   &-title {
     font-size: var(--o-font-size-h3);
     font-weight: 300;

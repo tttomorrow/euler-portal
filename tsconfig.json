@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -16,16 +17,15 @@
       "@/*": ["./app/.vitepress/src/*"],
       "opendesign": ["./opendesign"]
     },
-    "types": ["unplugin-icons/types/vue", "element-plus/global"]
+    "types": ["unplugin-icons/types/vue", "element-plus/global", "node"]
   },
   "include": [
+    "./env.d.ts",
     "app/.vitepress/**/*.ts",
     "app/.vitepress/**/*.d.ts",
     "app/.vitepress/**/*.tsx",
     "app/.vitepress/**/*.vue",
-    "./env.d.ts",
     "app/.vitepress/config.js",
     "app/.vitepress/theme/index.ts"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  ]
 }

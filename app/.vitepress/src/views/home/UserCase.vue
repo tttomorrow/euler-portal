@@ -17,78 +17,81 @@ const changeActive = (index: number) => {
 </script>
 
 <template>
-  <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
-  <div class="case-mobile">
-    <div
-      v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
-      :key="index"
-      class="case-mobile-list"
-    >
-      <OCard
-        :style="{ padding: '0px' }"
-        class="case-mobile-card"
-        @click="changeActive(index)"
+  <div class="case-main">
+    <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
+    <div class="case-mobile">
+      <div
+        v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
+        :key="index"
+        class="case-mobile-list"
       >
-        <div class="case-mobile-card-content">
-          <div class="case-mobile-title">
-            <img
-              class="case-mobile-img"
-              :src="commonStore.theme === 'dark' ? item.URL_DARK : item.URL"
-            />
-
-            <div class="case-mobile-word">{{ item.TYPE }}</div>
-          </div>
-          <IconDown class="case-mobile-icon"></IconDown>
-        </div>
-      </OCard>
-      <div v-if="active === index" class="user-mobile">
-        <div
-          v-for="(user, index2) in i18n.home.USER_CASE.CASE_LIST[active]
-            .CONTENT"
-          :key="index2"
-          class="user-card"
+        <OCard
+          :style="{ padding: '0px' }"
+          class="case-mobile-card"
+          @click="changeActive(index)"
         >
-          <div class="user-title">{{ user.NAME }}</div>
-          <div class="user-word">{{ user.WORD }}</div>
+          <div class="case-mobile-card-content">
+            <div class="case-mobile-title">
+              <img
+                class="case-mobile-img"
+                :src="commonStore.theme === 'dark' ? item.URL_DARK : item.URL"
+              />
+
+              <div class="case-mobile-word">{{ item.TYPE }}</div>
+            </div>
+            <IconDown class="case-mobile-icon"></IconDown>
+          </div>
+        </OCard>
+        <div v-if="active === index" class="user-mobile">
+          <div
+            v-for="(user, index2) in i18n.home.USER_CASE.CASE_LIST[active]
+              .CONTENT"
+            :key="index2"
+            class="user-card"
+          >
+            <div class="user-title">{{ user.NAME }}</div>
+            <div class="user-word">{{ user.WORD }}</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="case">
-    <OCard class="case-card">
-      <div class="case-tab">
-        <div
-          v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
-          :key="index"
-          class="case-tab-item"
-        >
-          <img
-            class="case-img"
-            :src="commonStore.theme === 'dark' ? item.URL_DARK : item.URL"
-          />
+    <div class="case">
+      <OCard class="case-card">
+        <div class="case-tab">
           <div
-            :class="['case-word', active === index ? 'active' : '']"
-            @click="changeActive(index)"
+            v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
+            :key="index"
+            class="case-tab-item"
           >
-            {{ item.TYPE }}
+            <img
+              class="case-img"
+              :src="commonStore.theme === 'dark' ? item.URL_DARK : item.URL"
+            />
+            <div
+              :class="['case-word', active === index ? 'active' : '']"
+              @click="changeActive(index)"
+            >
+              {{ item.TYPE }}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="case-user">
-        <div
-          v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST[active].CONTENT"
-          :key="index"
-          class="user-card"
-        >
-          <div class="user-title">{{ item.NAME }}</div>
-          <div class="user-word">{{ item.WORD }}</div>
+        <div class="case-user">
+          <div
+            v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST[active]
+              .CONTENT"
+            :key="index"
+            class="user-card"
+          >
+            <div class="user-title">{{ item.NAME }}</div>
+            <div class="user-word">{{ item.WORD }}</div>
+          </div>
         </div>
-      </div>
-      <div class="case-more">
-        {{ i18n.home.USER_CASE.VIEW_MORE }}
-        <IconArrowRight class="case-more-icon"></IconArrowRight>
-      </div>
-    </OCard>
+        <div class="case-more">
+          {{ i18n.home.USER_CASE.VIEW_MORE }}
+          <IconArrowRight class="case-more-icon"></IconArrowRight>
+        </div>
+      </OCard>
+    </div>
   </div>
 </template>
 
@@ -227,6 +230,11 @@ h3 {
   }
 }
 .case {
+  &-main {
+    max-width: 1504px;
+    margin: 0 auto;
+    padding: 0;
+  }
   display: block;
   @media (max-width: 1080px) {
     display: none;

@@ -130,6 +130,9 @@ const { theme: i18n } = useData();
   }
 }
 .community {
+  max-width: 1504px;
+  margin: 0 auto;
+  padding: 0;
   margin-top: var(--o-spacing-h1);
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h2);

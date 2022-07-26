@@ -25,6 +25,7 @@ module.exports = {
     'no-debugger': 'error',
     'no-var': 'error',
     'no-unused-vars': 'error',
+    'no-multiple-empty-lines': 'error',
     eqeqeq: 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     'vue/no-v-model-argument': 'off',

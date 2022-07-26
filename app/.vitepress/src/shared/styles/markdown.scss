@@ -1,11 +1,14 @@
 .markdown {
-  max-width: 1504px;
+  width: calc(100% - 32px);
+  max-width: 1416px;
   padding: var(--o-spacing-h2);
-  margin: var(--o-spacing-h1) auto;
+  margin: 0 auto;
   margin-top: var(--o-spacing-h2);
   background-color: var(--o-color-bg);
   --o-color-table: #dfe1e8; // 表格边框
-
+  @media (max-width: 1416px) {
+    padding: var(--o-spacing-h7);
+  }
   ol,
   ul {
     list-style: inherit;
@@ -40,8 +43,14 @@
 
   h2 {
     margin-top: var(--o-spacing-h2);
+    margin-bottom: var(--o-font-size-h5);
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
+    @media screen and (max-width: 1416px) {
+      margin: var(--o-spacing-h5) 0;
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-text);
+    }
   }
 
   h3 {
@@ -70,6 +79,9 @@
     font-weight: normal;
     color: var(--o-color-text3);
     line-height: var(--o-line-height-text);
+    @media screen and (max-width: 1416px) {
+      font-size: var(--o-font-size-tip);
+    }
   }
 
   ul,
@@ -113,23 +125,13 @@
     max-width: 100%;
   }
 
-  div[class*="language-"] {
-    margin-bottom: var(--o-spacing-h4);
-    border: 1px solid rgba(151, 151, 151, 1);
-    border-radius: 0;
-
-    @media (max-width: 1000px) {
-      margin-bottom: 8px;
-    }
-
-    pre {
-      padding: 1em;
-      margin: .5em 0;
-      overflow: auto;
-    }
-  }
-
   a[href^='#'] {
     display: none;
+  }
+  img {
+    margin-top: var(--o-spacing-h5);
+    @media screen and (max-width: 1416px) {
+      margin-top: var(--o-font-size-h7);
+    }
   }
 }

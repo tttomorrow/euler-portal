@@ -3,6 +3,9 @@ module: showcase
 industry: 运营商
 company: 中国移动
 summary: 浙江公司核心业务系统，平滑完成操作系统迁移
+customLayout: true
+banner: /img/showcase/case-detail-bg.jpg
+img: /img/showcase/provider.png
 ---
 
 <div class="markdown">

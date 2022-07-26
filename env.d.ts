@@ -12,3 +12,5 @@ declare module '*.gif';
 declare module '*.bmp';
 declare module '*.tiff';
 declare module '*.json';
+declare module '*.md';
+declare module '*.mp4';
