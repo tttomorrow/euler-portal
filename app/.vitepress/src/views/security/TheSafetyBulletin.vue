@@ -30,9 +30,9 @@ const tableData = ref<SecurityLists[]>([
     type: '',
   },
 ]);
-const queryData: BulletinParams = reactive({
+const queryData = reactive({
   page: 1,
-  pageSize: 10,
+  size: 10,
 });
 
 function getSecurityLists(data: BulletinParams) {
@@ -51,7 +51,7 @@ const tagClick = (i: number) => {
 };
 
 const handleSizeChange = (val: number) => {
-  queryData.pageSize = val;
+  queryData.size = val;
 };
 
 const handleCurrentChange = (val: number) => {
@@ -63,13 +63,14 @@ function jumpBulletinDetail(val: any) {
 }
 
 onMounted(() => {
+  // { pages: { page: queryData.page, size: queryData.size } }
   getSecurityLists(queryData);
 });
 
 watch(
   queryData,
   //   {
-  //   pages: { page: queryData.page, size: queryData.pageSize },
+  //   pages: { page: queryData.page, size: queryData.size },
   // }
   () => getSecurityLists(queryData)
 );
@@ -131,7 +132,6 @@ watch(
         <OTableColumn
           :label="i18n.security.SEVERITY"
           prop="type"
-          width="140"
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.AFFECTED_PRODUCTS"
@@ -140,16 +140,14 @@ watch(
         <OTableColumn
           :label="i18n.security.AFFECTED_COMPONENTS"
           prop="affectedComponent"
-          width="200"
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.RELEASE_DATE"
           prop="announcementTime"
-          width="160"
         ></OTableColumn>
       </OTable>
       <OPagination
-        v-model:page-size="queryData.pageSize"
+        v-model:page-size="queryData.size"
         v-model:currentPage="queryData.page"
         class="pagination"
         :page-sizes="[10, 20, 40, 80]"
@@ -171,7 +169,7 @@ watch(
   padding: var(--o-spacing-h2);
   margin: var(--o-spacing-h1) auto;
   margin-top: var(--o-spacing-h2);
-  background-color: var(--o-color-bg);
+  // background-color: var(--o-color-bg);
   .input-container {
     margin-top: var(--o-spacing-h1);
     .o-input {

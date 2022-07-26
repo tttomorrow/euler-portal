@@ -35,7 +35,7 @@ const attrs = useAttrs();
       padding: var(--o-spacing-h5) 0;
     }
     .cell {
-      padding: 0 var(--o-spacing-h2);
+      padding: 0 var(--o-spacing-h4);
     }
   }
 }
