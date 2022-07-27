@@ -227,7 +227,7 @@ export default {
         {
           NAME: 'Список совместимости',
           ID: 'compatibility',
-          PATH: '/compatibility/',
+          PATH: '/security/compatibility/',
         },
       ],
       CLASS: [],

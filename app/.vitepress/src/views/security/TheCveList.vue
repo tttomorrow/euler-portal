@@ -142,7 +142,6 @@ watch(
   padding: var(--o-spacing-h2);
   margin: var(--o-spacing-h1) auto;
   margin-top: var(--o-spacing-h2);
-  background-color: var(--o-color-bg);
 }
 .filter-card {
   margin: var(--o-spacing-h4) 0;

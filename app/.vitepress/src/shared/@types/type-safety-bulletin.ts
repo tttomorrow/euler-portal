@@ -1,6 +1,6 @@
 export interface BulletinParams {
   page: number;
-  pageSize: number;
+  size: number;
 }
 export interface SecurityLists {
   affectedComponent: string;

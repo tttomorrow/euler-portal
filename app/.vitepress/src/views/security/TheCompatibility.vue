@@ -16,7 +16,7 @@ const layout = ref('sizes, prev, pager, next, slot, jumper');
 
 const queryData: BulletinParams = reactive({
   page: 1,
-  pageSize: 10,
+  size: 10,
 });
 
 const tagClick = (i: number) => {
@@ -24,7 +24,7 @@ const tagClick = (i: number) => {
 };
 
 const handleSizeChange = (val: number) => {
-  queryData.pageSize = val;
+  queryData.size = val;
 };
 
 const handleCurrentChange = (val: number) => {
@@ -69,7 +69,7 @@ const handleCurrentChange = (val: number) => {
           <OTableColumn label="架构" prop=""></OTableColumn>
         </OTable>
         <OPagination
-          v-model:page-size="queryData.pageSize"
+          v-model:page-size="queryData.size"
           v-model:currentPage="queryData.page"
           class="pagination"
           :page-sizes="[10, 20, 40, 80]"
