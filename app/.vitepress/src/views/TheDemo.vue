@@ -299,7 +299,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 .demo {
   // max-width: 1504px;
-  // padding: 20px 44px;
   min-height: 800px;
   padding-top: 100px;
 }

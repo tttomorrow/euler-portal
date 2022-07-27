@@ -6,7 +6,6 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
-import IconSearch from '~icons/app/icon-search.svg';
 
 import { getCveList } from '@/api/api-security';
 import { CveLists, QueryParams } from '@/shared/@types/type-cvelist';
@@ -75,12 +74,7 @@ watch(
     :illustration="search"
   />
   <div class="wrapper">
-    <OInput
-      v-model="inputName"
-      :prefix-icon="IconSearch"
-      :placeholder="i18n.security.SEARCH"
-      style="margin-top: 64px; height: 48px"
-    ></OInput>
+    <OSearch class="o-search" v-model="inputName"></OSearch>
     <OCard class="filter-card">
       <template #header>
         <div class="card-header">
@@ -139,9 +133,11 @@ watch(
 <style lang="scss" scoped>
 .wrapper {
   max-width: 1504px;
-  padding: var(--o-spacing-h2);
-  margin: var(--o-spacing-h1) auto;
-  margin-top: var(--o-spacing-h2);
+  margin: var(--o-spacing-h1) auto 0;
+  padding: var(--o-spacing-h1) var(--o-spacing-h2) 0px;
+  .o-search {
+    height: 48px;
+  }
 }
 .filter-card {
   margin: var(--o-spacing-h4) 0;
