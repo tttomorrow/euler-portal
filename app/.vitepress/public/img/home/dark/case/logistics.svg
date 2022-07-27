@@ -1,73 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>切片</title>
-    <defs>
-        <filter id="filter-1">
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
-        </filter>
-        <filter id="filter-2">
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
-        </filter>
-        <filter id="filter-3">
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
-        </filter>
-        <filter id="filter-4">
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.250980 0 0 0 0 0.435294 0 0 0 0 0.905882 0 0 0 1.000000 0"></feColorMatrix>
-        </filter>
-        <filter id="filter-5">
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.250980 0 0 0 0 0.435294 0 0 0 0 0.905882 0 0 0 1.000000 0"></feColorMatrix>
-        </filter>
-        <filter id="filter-6">
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.250980 0 0 0 0 0.435294 0 0 0 0 0.905882 0 0 0 1.000000 0"></feColorMatrix>
-        </filter>
-    </defs>
-    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="网页首页/dark" transform="translate(-1192.000000, -1587.000000)">
-            <g id="编组-4" transform="translate(252.000000, 1547.000000)">
-                <g id="编组-3" transform="translate(940.000000, 40.000000)">
-                    <g id="编组-3" transform="translate(12.232646, 12.000000)">
-                        <polygon id="矩形" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round" points="27.7336971 14.4 40.5000403 20.7401137 27.7336971 27.0802274 14.9673539 20.7401137"></polygon>
-                        <polygon id="矩形" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round" points="14.9673539 20.8262295 27.819813 27.252459 27.819813 42.4 14.9673539 34.9447083"></polygon>
-                        <polygon id="矩形" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round" transform="translate(34.246042, 31.613115) scale(-1, 1) translate(-34.246042, -31.613115) " points="27.819813 20.8262295 40.672272 27.252459 40.672272 42.4 27.819813 34.9447083"></polygon>
-                        <g filter="url(#filter-1)" id="编组">
-                            <g transform="translate(23.767354, 0.000000)">
-                                <circle id="椭圆形" stroke="#000000" stroke-width="2" cx="4" cy="4" r="4"></circle>
-                                <line x1="4.05245902" y1="8" x2="4.05245902" y2="15.4" id="路径-14" stroke="#000000" stroke-width="2"></line>
-                            </g>
-                        </g>
-                        <g filter="url(#filter-2)" id="编组">
-                            <g transform="translate(8.668396, 38.748503) rotate(-120.000000) translate(-8.668396, -38.748503) translate(4.668396, 31.048503)">
-                                <circle id="椭圆形" stroke="#000000" stroke-width="2" cx="4" cy="4" r="4"></circle>
-                                <line x1="4.05245902" y1="8" x2="4.05245902" y2="15.4" id="路径-14" stroke="#000000" stroke-width="2"></line>
-                            </g>
-                        </g>
-                        <g filter="url(#filter-3)" id="编组">
-                            <g transform="translate(46.668396, 38.748503) scale(-1, 1) rotate(-120.000000) translate(-46.668396, -38.748503) translate(42.668396, 31.048503)">
-                                <circle id="椭圆形" stroke="#000000" stroke-width="2" cx="4" cy="4" r="4"></circle>
-                                <line x1="4.05245902" y1="8" x2="4.05245902" y2="15.4" id="路径-14" stroke="#000000" stroke-width="2"></line>
-                            </g>
-                        </g>
-                        <g filter="url(#filter-4)" id="编组-2">
-                            <g transform="translate(6.767354, 16.000000) rotate(-60.000000) translate(-6.767354, -16.000000) translate(3.767354, 11.000000)">
-                                <circle id="椭圆形" fill="#002FA7" cx="3" cy="3" r="3"></circle>
-                                <rect id="矩形" fill="#002FA7" x="2" y="5" width="2" height="5" rx="1"></rect>
-                            </g>
-                        </g>
-                        <g filter="url(#filter-5)" id="编组-2">
-                            <g transform="translate(27.767354, 51.000000) scale(1, -1) translate(-27.767354, -51.000000) translate(24.767354, 46.000000)">
-                                <circle id="椭圆形" fill="#002FA7" cx="3" cy="3" r="3"></circle>
-                                <rect id="矩形" fill="#002FA7" x="2" y="5" width="2" height="5" rx="1"></rect>
-                            </g>
-                        </g>
-                        <g filter="url(#filter-6)" id="编组-2">
-                            <g transform="translate(48.767354, 16.000000) scale(-1, 1) rotate(-60.000000) translate(-48.767354, -16.000000) translate(45.767354, 11.000000)">
-                                <circle id="椭圆形" fill="#002FA7" cx="3" cy="3" r="3"></circle>
-                                <rect id="矩形" fill="#002FA7" x="2" y="5" width="2" height="5" rx="1"></rect>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<!-- Generated by IcoMoon.io -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<title></title>
+<g id="icomoon-ignore">
+</g>
+<path fill="none" stroke="#fff" stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M511.569 337.92l163.409 81.153-163.409 81.153-163.409-81.153z"></path>
+<path fill="none" stroke="#fff" stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M348.16 420.176l164.511 82.256v193.889l-164.511-95.428z"></path>
+<path fill="none" stroke="#fff" stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M677.183 420.176l-164.511 82.256v193.889l164.511-95.428z"></path>
+<path fill="none" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M563.2 204.8c0 28.277-22.923 51.2-51.2 51.2s-51.2-22.923-51.2-51.2c0-28.277 22.923-51.2 51.2-51.2s51.2 22.923 51.2 51.2z"></path>
+<path fill="none" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M512.671 256v94.72"></path>
+<path fill="none" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M200.918 628.92c24.489-14.138 55.802-5.748 69.941 18.741s5.748 55.802-18.741 69.941c-24.489 14.138-55.802 5.748-69.941-18.741s-5.748-55.802 18.741-69.941z"></path>
+<path fill="none" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M270.523 647.079l82.030-47.36"></path>
+<path fill="none" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M820.548 628.92c-24.489-14.138-55.802-5.748-69.941 18.741s-5.748 55.802 18.741 69.941c24.489 14.138 55.802 5.748 69.941-18.741s5.748-55.802-18.741-69.941z"></path>
+<path fill="none" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="25.6" d="M750.944 647.079l-82.030-47.36"></path>
+<path fill="#002fa7" d="M240.23 312.345c18.366 10.604 24.659 34.089 14.055 52.455s-34.089 24.659-52.455 14.055c-18.366-10.604-24.659-34.089-14.055-52.455s34.089-24.659 52.455-14.055z"></path>
+<path fill="#002fa7" d="M243.2 358.4c3.535-6.122 11.363-8.22 17.485-4.685l33.255 19.2c6.122 3.535 8.22 11.363 4.685 17.485s-11.363 8.22-17.485 4.685l-33.255-19.2c-6.122-3.535-8.22-11.363-4.685-17.485z"></path>
+<path fill="#002fa7" d="M550.4 832c0-21.208-17.192-38.4-38.4-38.4s-38.4 17.192-38.4 38.4c0 21.208 17.192 38.4 38.4 38.4s38.4-17.192 38.4-38.4z"></path>
+<path fill="#002fa7" d="M512 806.4c7.069 0 12.8-5.731 12.8-12.8v-38.4c0-7.069-5.731-12.8-12.8-12.8s-12.8 5.731-12.8 12.8v38.4c0 7.069 5.731 12.8 12.8 12.8z"></path>
+<path fill="#002fa7" d="M783.77 312.345c-18.366 10.604-24.659 34.089-14.055 52.455s34.089 24.659 52.455 14.055c18.366-10.604 24.659-34.089 14.055-52.455s-34.089-24.659-52.455-14.055z"></path>
+<path fill="#002fa7" d="M780.8 358.4c-3.535-6.122-11.363-8.22-17.485-4.685l-33.255 19.2c-6.122 3.535-8.22 11.363-4.685 17.485s11.363 8.22 17.485 4.685l33.255-19.2c6.122-3.535 8.22-11.363 4.685-17.485z"></path>
 </svg>

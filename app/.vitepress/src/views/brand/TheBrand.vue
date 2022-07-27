@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
 import banner from '@/assets/banner-secondary.png';
-import search from '@/assets/illustrations/search.png';
+import brand from '@/assets/illustrations/brand.png';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import { useData } from 'vitepress';
@@ -30,11 +30,21 @@ const initList = () => {
     '/img/other/brand/block-hor-poster.png',
   ];
 
+  const imageListMobile = [
+    '/img/other/brand/brand-mobile-1.png',
+    '/img/other/brand/brand-mobile-2.png',
+    '/img/other/brand/brand-mobile-3.png',
+    '/img/other/brand/brand-mobile-4.png',
+    '/img/other/brand/brand-mobile-5.png',
+    '/img/other/brand/brand-mobile-6.png',
+  ];
+
   for (let i = 0; i < imageList.length; i++) {
     const temp = {
       name: cndata.PICTURE_TITLE[i],
       url: imageList[i],
       image: cndata[nameList[i]],
+      mobile: imageListMobile[i],
     };
     result.push(temp);
   }
@@ -49,7 +59,7 @@ list.value = initList();
     :background-image="banner"
     background-text="CONTENT"
     :title="i18n.brand.BRAND"
-    :illustration="search"
+    :illustration="brand"
   />
   <div class="brand">
     <div class="brand-all-word">
@@ -60,13 +70,13 @@ list.value = initList();
       <OCard v-for="(brand, index) in list" :key="index" class="brand-item">
         <div class="brand-item-title">{{ brand.name }}</div>
         <div class="brand-item-img">
-          <img :src="brand.url" />
+          <img :src="brand.mobile" />
         </div>
         <div class="button">
           <a
             v-for="(item, index2) in brand.image"
             :key="index2"
-            :href="'/img/other/brand/horizontal-right.svg'"
+            :href="item.URL"
             target="_blank"
             download
           >
@@ -119,6 +129,9 @@ list.value = initList();
     font-size: var(--o-font-size-text);
     font-weight: 400;
     line-height: var(--o-line-height-text);
+    @media (max-width: 768px) {
+      max-width: 80px;
+    }
   }
   &-item:hover {
     background-color: var(--o-color-brand);
@@ -131,6 +144,7 @@ list.value = initList();
   max-width: 1504px;
   @media (max-width: 1100px) {
     padding: 0 var(--o-spacing-h5);
+    margin: var(--o-spacing-h2) auto;
   }
   &-title {
     font-size: var(--o-font-size-h3);
@@ -139,6 +153,10 @@ list.value = initList();
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
+    }
   }
 
   &-word {
@@ -147,6 +165,11 @@ list.value = initList();
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h7);
     margin-top: var(--o-spacing-h10);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      margin-top: var(--o-spacing-h5);
+    }
   }
 
   &-list {
@@ -161,8 +184,14 @@ list.value = initList();
 
   &-item {
     width: 100%;
-    padding: var(--o-spacing-h10);
+    padding: 0;
     max-width: 336px;
+    :deep(.el-card__body) {
+      padding: var(--o-spacing-h4);
+      @media (max-width: 768px) {
+        padding: var(--o-spacing-h5) var(--o-spacing-h6);
+      }
+    }
 
     &-title {
       font-size: var(--o-font-size-h7);
@@ -170,6 +199,10 @@ list.value = initList();
       color: var(--o-color-text2);
       line-height: var(--o-line-height-h7);
       margin-top: var(--o-spacing-h10);
+      @media (max-width: 768px) {
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+      }
     }
     &-img {
       height: 120px;
@@ -179,8 +212,15 @@ list.value = initList();
       align-items: center;
       justify-content: center;
       img {
-        max-width: 100%;
-        max-height: 100%;
+        object-fit: contain;
+        max-width: 220px;
+        height: 100%;
+        @media (max-width: 768px) {
+          max-width: 240px;
+        }
+      }
+      @media (max-width: 768px) {
+        height: 80px;
       }
     }
   }
@@ -196,6 +236,10 @@ list.value = initList();
       line-height: var(--o-line-height-h3);
       width: 100%;
       text-align: center;
+      @media (max-width: 768px) {
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
+      }
     }
   }
 }
@@ -209,6 +253,10 @@ list.value = initList();
     align-items: center;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: var(--o-spacing-h4);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
+    }
   }
   &-item {
     width: 100%;
@@ -229,6 +277,13 @@ list.value = initList();
   .ppt-list,
   .brand-list {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 980px) {
+  .ppt-list,
+  .brand-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
