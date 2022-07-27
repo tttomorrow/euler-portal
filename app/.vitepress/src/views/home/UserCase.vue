@@ -2,50 +2,69 @@
 import { useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
-import IconDown from '~icons/app/icon-down.svg';
 import { ref } from 'vue';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 const { theme: i18n } = useData();
 
 const commonStore = useCommon();
 
 const active = ref(0);
+const activeMobile = ref(0);
+
+const screenWidth = useWindowResize();
 
 const changeActive = (index: number) => {
   active.value = index;
+  activeMobile.value = index;
+};
+
+const changeActiveMobile = (activeNames: any) => {
+  if (activeNames !== '') {
+    active.value = activeNames;
+  }
 };
 </script>
 
 <template>
   <div class="case-main">
     <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
-    <div class="case-mobile">
-      <div
+    <el-collapse
+      v-if="screenWidth < 1100"
+      v-model="activeMobile"
+      accordion
+      class="case-mobile"
+      @change="changeActiveMobile"
+    >
+      <el-collapse-item
         v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
         :key="index"
         class="case-mobile-list"
+        :name="index"
       >
-        <OCard
-          :style="{ padding: '0px' }"
-          class="case-mobile-card"
-          @click="changeActive(index)"
-        >
+        <template #title>
           <div class="case-mobile-card-content">
             <div class="case-mobile-title">
               <img
                 class="case-mobile-img"
-                :src="commonStore.theme === 'dark' ? item.URL_DARK : item.URL"
+                :src="
+                  commonStore.theme === 'dark'
+                    ? item.URL_DARK
+                    : index === activeMobile
+                    ? item.URL_ACTIVE
+                    : item.URL
+                "
               />
-
-              <div class="case-mobile-word">{{ item.TYPE }}</div>
+              <div class="case-mobile-word">
+                {{ item.TYPE }}
+              </div>
             </div>
-            <IconDown class="case-mobile-icon"></IconDown>
           </div>
-        </OCard>
-        <div v-if="active === index" class="user-mobile">
+        </template>
+        <div class="user-mobile">
           <div
-            v-for="(user, index2) in i18n.home.USER_CASE.CASE_LIST[active]
-              .CONTENT"
+            v-for="(user, index2) in i18n.home.USER_CASE.CASE_LIST[index]
+              ?.CONTENT"
             :key="index2"
             class="user-card"
           >
@@ -53,24 +72,28 @@ const changeActive = (index: number) => {
             <div class="user-word">{{ user.WORD }}</div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="case">
+      </el-collapse-item>
+    </el-collapse>
+    <div v-else class="case">
       <OCard class="case-card">
         <div class="case-tab">
           <div
             v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
             :key="index"
             class="case-tab-item"
+            @click="changeActive(index)"
           >
             <img
               class="case-img"
-              :src="commonStore.theme === 'dark' ? item.URL_DARK : item.URL"
+              :src="
+                commonStore.theme === 'dark'
+                  ? item.URL_DARK
+                  : index === active
+                  ? item.URL_ACTIVE
+                  : item.URL
+              "
             />
-            <div
-              :class="['case-word', active === index ? 'active' : '']"
-              @click="changeActive(index)"
-            >
+            <div :class="['case-word', active === index ? 'active' : '']">
               {{ item.TYPE }}
             </div>
           </div>
@@ -78,7 +101,7 @@ const changeActive = (index: number) => {
         <div class="case-user">
           <div
             v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST[active]
-              .CONTENT"
+              ?.CONTENT"
             :key="index"
             class="user-card"
           >
@@ -87,8 +110,10 @@ const changeActive = (index: number) => {
           </div>
         </div>
         <div class="case-more">
-          {{ i18n.home.USER_CASE.VIEW_MORE }}
-          <IconArrowRight class="case-more-icon"></IconArrowRight>
+          <a :href="i18n.home.USER_CASE.VIEW_MORE_URL">
+            {{ i18n.home.USER_CASE.VIEW_MORE }}
+            <IconArrowRight class="case-more-icon"></IconArrowRight>
+          </a>
         </div>
       </OCard>
     </div>
@@ -111,15 +136,25 @@ h3 {
   }
 }
 .case-mobile {
-  display: none;
   @media (max-width: 1080px) {
-    display: block;
+    border-top: none;
   }
 
   &-list {
     margin-top: var(--o-spacing-h4);
     @media (max-width: 768px) {
-      margin-top: 0;
+      margin-top: var(--o-spacing-h5);
+    }
+    :deep(.el-collapse-item__content) {
+      padding-bottom: 0px;
+    }
+
+    :deep(.el-collapse-item__header) {
+      height: 100%;
+      padding: var(--o-spacing-h5);
+      @media (max-width: 768px) {
+        padding: var(--o-spacing-h8);
+      }
     }
   }
 
@@ -159,13 +194,6 @@ h3 {
       justify-content: space-between;
       align-items: center;
     }
-
-    :deep(.el-card__body) {
-      padding: var(--o-spacing-h5);
-      @media (max-width: 768px) {
-        padding: var(--o-spacing-h8);
-      }
-    }
   }
 
   &-icon {
@@ -182,6 +210,7 @@ h3 {
     }
   }
   &-card {
+    cursor: pointer;
     padding: var(--o-spacing-h5);
     width: 100%;
     background: var(--o-color-bg2);
@@ -233,23 +262,44 @@ h3 {
   &-main {
     max-width: 1504px;
     margin: 0 auto;
-    padding: 0;
-  }
-  display: block;
-  @media (max-width: 1080px) {
-    display: none;
+    padding: 0 var(--o-spacing-h2);
+    @media (max-width: 1100px) {
+      padding: 0 var(--o-spacing-h5);
+    }
   }
   &-more {
     display: flex;
-    flex-flow: row;
+    margin-top: var(--o-line-height-h3);
     justify-content: center;
     align-items: center;
-    margin-top: var(--o-spacing-h2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--o-color-text2);
+    transition: all 0.3s;
+
     &-icon {
+      margin-left: var(--o-spacing-h8);
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
+      transition: all 0.3s;
       color: var(--o-color-brand);
-      margin-left: var(--o-spacing-h8);
+    }
+
+    a {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--o-color-text2);
+      transition: all 0.3s;
+      &:hover {
+        color: var(--o-color-brand);
+        .case-more-icon {
+          transform: translateX(3px);
+        }
+      }
     }
   }
 
@@ -289,6 +339,7 @@ h3 {
     justify-content: center;
     align-items: center;
     &-item {
+      cursor: pointer;
       display: flex;
       flex-flow: column;
       justify-content: center;

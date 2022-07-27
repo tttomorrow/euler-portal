@@ -13,6 +13,8 @@ export default defineComponent({
   setup(props: TimelineProps, { emit }) {
     const { leftArrow, rightArrow, modelValue } = toRefs(props);
 
+    const SPLITEMONTH = 6;
+
     const onClick = (index: number) => {
       activeTab.value = index;
       emit('update:modelValue', timeList.value[activeTab.value]);
@@ -20,15 +22,15 @@ export default defineComponent({
 
     const initDate = (year: number, month: number) => {
       const result = [];
-      if (month > 6) {
-        for (let i = 7; i <= 12; i++) {
+      if (month > SPLITEMONTH) {
+        for (let i = SPLITEMONTH + 1; i <= 12; i++) {
           result?.push(year + '-' + (i < 10 ? '0' + i : i));
           if (month === i) {
-            activeTab.value = i - 7;
+            activeTab.value = i - SPLITEMONTH - 1;
           }
         }
       } else {
-        for (let i = 1; i <= 6; i++) {
+        for (let i = 1; i <= SPLITEMONTH; i++) {
           result?.push(year + '-' + (i < 10 ? '0' + i : i));
           if (month === i) {
             activeTab.value = i - 1;
@@ -44,8 +46,8 @@ export default defineComponent({
         const date = new Date(timeList.value[activeTab.value]);
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
-        if (month > 6) {
-          timeList.value = initDate(year, 6);
+        if (month > SPLITEMONTH) {
+          timeList.value = initDate(year, SPLITEMONTH);
         } else {
           timeList.value = initDate(year - 1, 12);
         }
@@ -56,14 +58,14 @@ export default defineComponent({
     };
 
     const onClickRight = () => {
-      if (activeTab.value === 5) {
+      if (activeTab.value === SPLITEMONTH - 1) {
         const date = new Date(timeList.value[activeTab.value]);
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
-        if (month > 6) {
+        if (month > SPLITEMONTH) {
           timeList.value = initDate(year + 1, 1);
         } else {
-          timeList.value = initDate(year, 7);
+          timeList.value = initDate(year, SPLITEMONTH + 1);
         }
       } else {
         activeTab.value = activeTab.value + 1;
@@ -88,30 +90,30 @@ export default defineComponent({
 
     return () => {
       return (
-        <div class="timeline">
+        <div class="o-timeline">
           {leftArrow && leftArrow.value ? (
             <IconLeft
-              class="left-arrow"
-              onclick={() => onClickLeft()}
+              class="o-timeline-left-arrow"
+              onClick={onClickLeft}
             ></IconLeft>
           ) : (
             ''
           )}
-          <ul class="timeline-list">
+          <ul class="o-timeline-list">
             {timeList.value.map((item, index) => {
               return (
                 <li
                   class={[
-                    'timeline-item',
+                    'o-timeline-item',
                     index === activeTab.value ? 'active' : '',
                   ]}
-                  onclick={() => onClick(index)}
+                  onClick={() => onClick(index)}
                 >
-                  <p class="day">{item}</p>
+                  <p class="o-timeline-day">{item}</p>
                   {index === activeTab.value ? (
-                    <IconChecked class="icon"></IconChecked>
+                    <IconChecked class="o-timeline-icon"></IconChecked>
                   ) : (
-                    <IconUnchecked class="icon"></IconUnchecked>
+                    <IconUnchecked class="o-timeline-icon"></IconUnchecked>
                   )}
                 </li>
               );
@@ -119,8 +121,8 @@ export default defineComponent({
           </ul>
           {rightArrow && rightArrow.value ? (
             <IconRight
-              class="right-arrow"
-              onclick={() => onClickRight()}
+              class="o-timeline-right-arrow"
+              onClick={onClickRight}
             ></IconRight>
           ) : (
             ''

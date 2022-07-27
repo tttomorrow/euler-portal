@@ -12,3 +12,15 @@ export function getAllMirror() {
   const url = '/api/mirrors/?mirrorstats=true';
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
+
+/**
+ * 调用接口获取优选镜像列表
+ * @name getAllMirror
+ * @param {string} version 镜像版本
+ * @return {Array} 镜像列表
+ */
+
+export const selectMirror = (version: string) => {
+  const url = `/api/mirrors/openEuler-${version}/ISO/`;
+  return request.get(url).then((res: AxiosResponse) => res.data);
+};

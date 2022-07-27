@@ -56,6 +56,19 @@ const urlStyle = computed(() => {
     :title="i18n.download.OUTSIDE_TITLE"
   />
   <div class="download">
+    <OCard>
+      <!-- <TagFilter label="全部" :show="true" @toggle-click="toggleClick">
+        <OTag
+          v-for="(item, index) in tagArrLen"
+          :key="'tag' + index"
+          :type="activeIndex === index ? 'primary' : 'text'"
+          @click="tagClick(index)"
+        >
+          {{ 'TagFilter' + index }}
+        </OTag>
+      </TagFilter> -->
+    </OCard>
+
     <div class="download-list">
       <OCard
         v-for="(download, index) in dataList"

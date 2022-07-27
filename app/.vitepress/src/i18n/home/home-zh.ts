@@ -5,19 +5,19 @@ export default {
     LIST: [
       {
         TITLE: '覆盖全场景应用',
-        IMG_URL: '/img/home/carouse/list-img1.png',
+        IMG_URL: '/img/home/carouse/img-list1.png',
       },
       {
         TITLE: '支持多样性计算',
-        IMG_URL: '/img/home/carouse/list-img1.png',
+        IMG_URL: '/img/home/carouse/img-list2.png',
       },
       {
         TITLE: '全产业生态共建',
-        IMG_URL: '/img/home/carouse/list-img1.png',
+        IMG_URL: '/img/home/carouse/img-list3.png',
       },
       {
         TITLE: '开源 开放 创新',
-        IMG_URL: '/img/home/carouse/list-img1.png',
+        IMG_URL: '/img/home/carouse/img-list4.png',
       },
     ],
   },
@@ -69,11 +69,13 @@ export default {
   USER_CASE: {
     TITLE: '用户案例',
     VIEW_MORE: '查看更多',
+    VIEW_MORE_URL: '',
     CASE_LIST: [
       {
         TYPE: '金融',
         URL: '/img/home/case/finance.svg',
         URL_DARK: '/img/home/dark/case/finance.svg',
+        URL_ACTIVE: '/img/home/case/finance-active.svg',
         CONTENT: [
           {
             NAME: '中国建设银行',
@@ -97,6 +99,7 @@ export default {
         TYPE: '运营商',
         URL: '/img/home/case/operator.svg',
         URL_DARK: '/img/home/dark/case/operator.svg',
+        URL_ACTIVE: '/img/home/case/operator-active.svg',
         CONTENT: [
           {
             NAME: '中国建设银行',
@@ -120,6 +123,7 @@ export default {
         TYPE: '政府',
         URL: '/img/home/case/government.svg',
         URL_DARK: '/img/home/dark/case/government.svg',
+        URL_ACTIVE: '/img/home/case/government-active.svg',
         CONTENT: [
           {
             NAME: '中国建设银行',
@@ -143,6 +147,7 @@ export default {
         TYPE: '能源',
         URL: '/img/home/case/energy.svg',
         URL_DARK: '/img/home/dark/case/energy.svg',
+        URL_ACTIVE: '/img/home/case/energy-active.svg',
         CONTENT: [
           {
             NAME: '中国建设银行',
@@ -166,6 +171,7 @@ export default {
         TYPE: '航天',
         URL: '/img/home/case/spaceflight.svg',
         URL_DARK: '/img/home/dark/case/spaceflight.svg',
+        URL_ACTIVE: '/img/home/case/spaceflight-active.svg',
         CONTENT: [
           {
             NAME: '中国建设银行',
@@ -189,6 +195,7 @@ export default {
         TYPE: '物流',
         URL: '/img/home/case/logistics.svg',
         URL_DARK: '/img/home/dark/case/logistics.svg',
+        URL_ACTIVE: '/img/home/case/logistics-active.svg',
         CONTENT: [
           {
             NAME: '中国建设银行',
@@ -212,6 +219,7 @@ export default {
         TYPE: '教育',
         URL: '/img/home/case/education.svg',
         URL_DARK: '/img/home/dark/case/education.svg',
+        URL_ACTIVE: '/img/home/case/education-active.svg',
         CONTENT: [
           {
             NAME: '中国建设银行',

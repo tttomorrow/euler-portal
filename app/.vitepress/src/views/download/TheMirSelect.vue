@@ -1,0 +1,386 @@
+<script setup lang="ts">
+import { onMounted, Ref, ref } from 'vue';
+import { selectMirror } from '@/api/api-mirror';
+import BannerLevel3 from '@/components/BannerLevel3.vue';
+import banner from '@/assets/banner-secondary.png';
+
+import { useData } from 'vitepress';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+const { theme: i18n } = useData();
+
+interface MirrorMsg {
+  icon: string;
+  name: string;
+  url: string;
+  country: string;
+  continent: string;
+  distance: string;
+  lng: string;
+  lat: string;
+}
+
+const screenWidth = useWindowResize();
+
+const tableData: Ref<MirrorMsg[]> = ref([]);
+
+const area: Ref<string> = ref('');
+
+const ipAndAsn: Ref<string[]> = ref([]);
+
+const versionPath: Ref<string[]> = ref([]);
+
+function GetUrlParam(paraName: string) {
+  const url = document.location.toString();
+  const arrObj = url.split('?');
+  if (arrObj.length > 1) {
+    const arrPara = arrObj[1].split('&');
+    let arr;
+    for (let i = 0; i < arrPara.length; i++) {
+      arr = arrPara[i].split('=');
+      if (arr !== null && arr[0] === paraName) {
+        return arr[1];
+      }
+    }
+    return '';
+  } else {
+    return '';
+  }
+}
+
+const compare = (temp: any[]) => {
+  temp.sort(function (a, b) {
+    return a.Distance > b.Distance ? 1 : -1;
+  });
+  return temp;
+};
+
+const initTable = (responeData: any) => {
+  area.value = responeData.ClientInfo.Country;
+  ipAndAsn.value.push(responeData.IP);
+  if (responeData.ClientInfo.ASName) {
+    const asn =
+      responeData.ClientInfo.ASName +
+      ' (ASN' +
+      responeData.ClientInfo.ASNum +
+      ')';
+    ipAndAsn.value.push(asn);
+  } else if (responeData.ClientInfo.ASNum) {
+    const asn = 'ASN' + responeData.ClientInfo.ASNum;
+    ipAndAsn.value.push(asn);
+  } else {
+    return;
+  }
+  let data = [];
+  data = compare(responeData.MirrorList);
+  versionPath.value = responeData.FileInfo.Path.slice(1);
+  data.forEach((item) => {
+    const itemObj = {
+      icon: '',
+      name: '',
+      url: '',
+      country: '',
+      continent: '',
+      distance: '',
+      lng: '',
+      lat: '',
+    };
+    itemObj.icon = item.SponsorLogoURL;
+    itemObj.name = item.Name;
+    itemObj.url = item.HttpURL + versionPath.value;
+    itemObj.country = item.Country ? item.Country : '-';
+    itemObj.continent = item.ContinentCode;
+    itemObj.distance = item.Distance;
+    itemObj.lng = item.Longitude;
+    itemObj.lat = item.Latitude;
+    tableData.value.push(itemObj);
+  });
+};
+
+onMounted(async () => {
+  try {
+    const responeData = await selectMirror(GetUrlParam('version'));
+    initTable(responeData);
+  } catch (e: any) {
+    throw new Error(e);
+  }
+});
+</script>
+
+<template>
+  <BannerLevel3
+    :background-image="banner"
+    background-text="DOWNLOAD"
+    :title="i18n.download.MIRROR_SELECT.TITLE"
+  />
+  <div class="mirror-select">
+    <p>
+      {{ i18n.download.MIRROR_SELECT.CONTENT[0]
+      }}<span class="ip">{{ ipAndAsn.length ? ipAndAsn[0] : '' }}</span
+      >{{ i18n.download.MIRROR_SELECT.CONTENT[1] }}
+      <span class="asn">{{ ipAndAsn.length ? ipAndAsn[1] : '' }}</span
+      >{{ i18n.download.MIRROR_SELECT.CONTENT[2]
+      }}<span class="area">{{ area }}</span
+      >{{ i18n.download.MIRROR_SELECT.CONTENT[3] }}
+    </p>
+    <el-table
+      v-if="screenWidth > 768"
+      :data="tableData"
+      header-cell-class-name="mirror-select-header"
+      cell-class-name="mirror-select-row"
+    >
+      <el-table-column
+        type="index"
+        :label="i18n.download.MIRROR_SELECT.RANK"
+        width="110"
+      />
+      <el-table-column
+        :label="i18n.download.MIRROR_SELECT.NAME"
+        min-width="300"
+      >
+        <template #default="scope">
+          <div class="mirror-select-name">
+            <img :src="scope.row.icon" class="mirror-select-img" /><span>{{
+              scope.row.name
+            }}</span>
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column :label="i18n.download.MIRROR_SELECT.URL" min-width="400">
+        <template #default="scope">
+          <a :href="scope.row.url" target="_blank" class="mirror-select-link">{{
+            scope.row.url
+          }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+        :label="i18n.download.MIRROR_SELECT.COUNTRY"
+        prop="country"
+        min-width="80"
+      />
+      <el-table-column
+        :label="i18n.download.MIRROR_SELECT.CONTINENT"
+        prop="continent"
+        min-width="100"
+      />
+      <el-table-column
+        :label="i18n.download.MIRROR_SELECT.DISTANCE"
+        prop="distance"
+        min-width="160"
+      />
+    </el-table>
+    <div v-else class="mirror-mobile">
+      <OCard
+        v-for="(item, index) in tableData"
+        :key="index"
+        class="mirror-card"
+      >
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_SELECT.RANK }}
+          </div>
+          <div class="mirror-card-word">{{ index + 1 }}</div>
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_SELECT.NAME }}
+          </div>
+          <img :src="item.icon" alt="" />
+          <div class="mirror-card-word">{{ item.name }}</div>
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_SELECT.URL }}
+          </div>
+          <div class="mirror-card-word">
+            <a :href="item.url" target="_blank">{{ item.url }}</a>
+          </div>
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_SELECT.COUNTRY }}
+          </div>
+          <div class="mirror-card-word">{{ item.country }}</div>
+        </div>
+
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_SELECT.CONTINENT }}
+          </div>
+          <div class="mirror-card-word">{{ item.continent }}</div>
+        </div>
+        <div class="mirror-card-content">
+          <div class="mirror-card-title">
+            {{ i18n.download.MIRROR_SELECT.DISTANCE }}
+          </div>
+          <div class="mirror-card-word">{{ item.distance }}</div>
+        </div>
+      </OCard>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
+.mirror-select {
+  &-header {
+    background: var(--o-color-bg3) !important;
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    line-height: 54px;
+    padding: 0 !important;
+    .cell {
+      padding-left: 0px;
+    }
+  }
+  &-header:first-child {
+    .cell {
+      padding-left: var(--o-spacing-h2);
+    }
+  }
+  &-header:last-child {
+    .cell {
+      padding-right: var(--o-spacing-h2);
+    }
+  }
+
+  &-area {
+    .mirror-select-row {
+      font-size: var(--o-font-size-h7) !important;
+      font-weight: 800 !important;
+      height: 72px !important;
+      border: none !important;
+    }
+  }
+
+  &-row {
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    height: 54px;
+    .cell {
+      padding-left: 0px;
+    }
+  }
+  &-row:first-child {
+    .cell {
+      padding-left: var(--o-spacing-h2);
+    }
+  }
+  &-row:last-child {
+    .cell {
+      padding-right: var(--o-spacing-h2);
+    }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.mirror {
+  &-mobile {
+    > :nth-child(odd) {
+      background-color: var(--o-color-bg3);
+    }
+  }
+  &-card {
+    :deep(.el-card__body) {
+      padding: var(--o-spacing-h5);
+      :first-child .mirror-card-title,
+      :first-child .mirror-card-word {
+        margin-top: 0px;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-flow: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      img {
+        margin-top: var(--o-spacing-h8);
+        width: var(--o-line-height-tip);
+        margin-right: var(--o-spacing-h10);
+      }
+    }
+
+    &-title {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      color: var(--o-color-text3);
+      margin-right: var(--o-spacing-h10);
+      margin-top: var(--o-spacing-h8);
+    }
+
+    &-word {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      color: var(--o-color-secondary_active);
+      margin-top: var(--o-spacing-h8);
+      a {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        margin-top: var(--o-spacing-h8);
+        color: var(--o-color-brand);
+      }
+    }
+  }
+}
+.mirror-select {
+  max-width: 1504px;
+  margin: 0 auto;
+  padding: 0 var(--o-spacing-h2);
+  @media (max-width: 1100px) {
+    padding: 0 var(--o-spacing-h5);
+  }
+  > p {
+    font-size: var(--o-font-size-h7);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    line-height: var(--o-line-height-h7);
+    margin: var(--o-spacing-h1) 0 var(--o-spacing-h2) 0;
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      margin: var(--o-spacing-h2) 0 var(--o-spacing-h5) 0;
+    }
+
+    > a {
+      text-decoration: none;
+      color: var(--o-color-brand);
+    }
+  }
+
+  &-name {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      margin-right: var(--o-spacing-h10);
+      width: var(--o-line-height-text);
+      height: var(--o-line-height-text);
+    }
+  }
+  &-rsnc {
+    cursor: pointer;
+    color: var(--o-color-brand);
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+  &-ftp {
+    cursor: pointer;
+    color: var(--o-color-brand);
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  &-link {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+</style>
