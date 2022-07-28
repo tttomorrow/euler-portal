@@ -43,7 +43,7 @@ const handleCurrentChange = (val: number) => {
   <OTabs>
     <OTabPane label="整机">
       <div class="wrapper">
-        <OInput v-model="inputName"></OInput>
+        <OSearch class="o-search" v-model="inputName"></OSearch>
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">
@@ -99,15 +99,15 @@ const handleCurrentChange = (val: number) => {
 }
 .wrapper {
   max-width: 1504px;
-  padding: var(--o-spacing-h2);
+  padding: var(--o-spacing-h1) var(--o-spacing-h2) 0px;
   margin: 0 auto;
   // margin-top: var(--o-spacing-h2);
   //   background-color: var(--o-color-bg);
+  .o-search {
+    height: 48px;
+  }
 }
-.o-input {
-  height: 48px !important;
-  margin-top: 14px;
-}
+
 .filter-card {
   margin: var(--o-spacing-h4) 0;
   .category {
@@ -148,7 +148,7 @@ const handleCurrentChange = (val: number) => {
   margin: var(--o-spacing-h2) 0 var(--o-spacing-h4);
 }
 .about {
-  margin-bottom: var(--o-spacing-h4);
+  // margin-bottom: var(--o-spacing-h4);
   font-size: var(--o-font-size-h8);
   font-weight: 400;
   color: var(--o-color-text2);

@@ -5,13 +5,13 @@ import { useData, useRouter } from 'vitepress';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
-import IconSearch from '~icons/app/icon-search.svg';
 
 import { getSecurityList } from '@/api/api-security';
 import {
   BulletinParams,
   SecurityLists,
 } from '@/shared/@types/type-safety-bulletin';
+import OSearch from 'opendesign/search/OSearch.vue';
 
 const router = useRouter();
 const { theme: i18n } = useData();
@@ -87,11 +87,7 @@ watch(
     />
     <div class="bulletin-main">
       <div class="input-container">
-        <OInput
-          v-model="inputName"
-          :prefix-icon="IconSearch"
-          :placeholder="i18n.security.SEARCH"
-        ></OInput>
+        <OSearch v-model="inputName"></OSearch>
       </div>
       <OCard class="filter-card">
         <template #header>
@@ -166,8 +162,8 @@ watch(
 <style lang="scss" scoped>
 .bulletin-main {
   max-width: 1504px;
-  padding: var(--o-spacing-h2);
-  margin: var(--o-spacing-h1) auto;
+  padding: 0 var(--o-spacing-h2);
+  margin: var(--o-spacing-h1) auto 0;
   margin-top: var(--o-spacing-h2);
   // background-color: var(--o-color-bg);
   .input-container {
@@ -214,7 +210,7 @@ watch(
     }
   }
   .pagination {
-    margin: var(--o-spacing-h2) 0 var(--o-spacing-h1) 0;
+    margin-top: var(--o-spacing-h2);
   }
   .slot-content {
     color: var(--o-color-text2);
