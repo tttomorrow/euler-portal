@@ -5,6 +5,7 @@ import IconRight from '~icons/app/icon-right.svg';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
+import SummitGuests from '@/components/SummitGuests.vue';
 // import AppCalendar from '@/components/AppCalendar.vue';
 import AppAnchor from '@/components/AppAnchor.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -40,6 +41,49 @@ const tableData = [
     date: '2016-05-01',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
+  },
+];
+
+const lecturerList = [
+  {
+    img: 'https://www.openeuler.org/img/summit/devday-2022/lecturer/liguangnan.png',
+    name: '倪光南',
+    position: ['中国工程院院士'],
+  },
+  {
+    img: 'https://www.openeuler.org/img/summit/devday-2022/lecturer/sunwenlong.png',
+    name: '孙文龙',
+    position: ['开放原子开源基金会秘书长'],
+  },
+  {
+    img: 'https://www.openeuler.org/img/summit/devday-2022/lecturer/jiangdayong.png',
+    name: '江大勇',
+    position: ['openEuler社区理事长'],
+  },
+  {
+    img: 'https://www.openeuler.org/img/summit/devday-2022/lecturer/wuyanjun.png',
+    name: '武延军',
+    position: ['openEuler社区副理事长'],
+  },
+  {
+    img: 'https://www.openeuler.org/img/summit/devday-2022/lecturer/hannaiping.png',
+    name: '韩乃平',
+    position: ['openEuler社区副理事长'],
+  },
+  {
+    img: 'https://www.openeuler.org/img/summit/devday-2022/lecturer/huxinwei.png',
+    name: '胡欣蔚',
+    position: ['openEuler社区', '技术委员会主席'],
+  },
+  {
+    img: 'https://www.openeuler.org/img/summit/devday-2022/lecturer/qiuchenfen.png',
+    name: '邱成锋',
+    position: ['openEuler社区秘书长'],
+  },
+  {
+    img: 'https://www.openeuler.org/img/summit/devday-2022/lecturer/guangxiaoming.png',
+    name: '广小明',
+    position: ['天翼云科技有限公司', '副总经理兼首席技术官'],
   },
 ];
 
@@ -237,7 +281,7 @@ onMounted(() => {
     </div>
 
     <div class="demo-box">
-      <h4>OTimelien</h4>
+      <h4>OTimeline</h4>
       <OTimeline
         v-model="date"
         :right-arrow="true"
@@ -293,13 +337,15 @@ onMounted(() => {
         </OCollapseItem>
       </OCollapse>
     </div>
+    <div>
+      <h4 style="margin: 20px 100px 20px 100px">封装峰会组件</h4>
+      <SummitGuests :lecturerList="lecturerList" />
+    </div>
   </div>
 </template>
-
 <style lang="scss" scoped>
 .demo {
   // max-width: 1504px;
-  // padding: 20px 44px;
   min-height: 800px;
   padding-top: 100px;
 }

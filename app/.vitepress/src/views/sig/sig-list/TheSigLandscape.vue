@@ -55,6 +55,10 @@ const { theme: i18n } = useData();
     .sig-category-list {
       column-count: 2;
       column-gap: 20px;
+      @media (max-width: 780px) {
+        column-count: 1;
+        margin: 0 var(--o-spacing-h3);
+      }
       .sig-category-item {
         break-inside: avoid;
         border: 1px solid;
@@ -75,6 +79,7 @@ const { theme: i18n } = useData();
           column-gap: unset;
           display: flex;
           flex-wrap: wrap;
+          justify-content: center;
           @media (max-width: 768px) {
             padding: 10px 10px;
           }
