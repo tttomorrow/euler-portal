@@ -13,6 +13,7 @@ import isula from './projects/isula';
 import secgear from './projects/secgear';
 import stratovirt from './projects/stratovirt';
 import showcase from './showcase';
+import interaction from './interaction';
 
 const i18n = {
   zh: {
@@ -29,6 +30,7 @@ const i18n = {
     secgear: secgear.zh,
     stratovirt: stratovirt.zh,
     showcase: showcase,
+    interaction: interaction.zh,
   },
   en: {
     sig: sig.en,
@@ -42,6 +44,7 @@ const i18n = {
     isula: isula.en,
     secgear: secgear.en,
     stratovirt: stratovirt.en,
+    interaction: interaction.en,
   },
   ru: {
     sig: sig.ru,
@@ -55,6 +58,7 @@ const i18n = {
     isula: isula.ru,
     secgear: secgear.ru,
     stratovirt: stratovirt.ru,
+    interaction: interaction.ru,
   },
 };
 
