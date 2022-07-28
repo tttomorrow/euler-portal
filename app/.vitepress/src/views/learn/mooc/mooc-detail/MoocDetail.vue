@@ -7,7 +7,8 @@ import {
   computed,
   onUnmounted,
 } from 'vue';
-import { useData } from 'vitepress';
+import { useData, useRouter } from 'vitepress';
+import { useCommon } from '@/stores/common';
 
 import VideoCtrl from './controll/VideoCtrl.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
@@ -15,8 +16,15 @@ import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import IconArrowLeft from '~icons/app/icon-arrow-left1.svg';
 import IconArrowRight from '~icons/app/icon-arrow-right1.svg';
 import IconChevronDown from '~icons/app/icon-chevron-down.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
+
+import logo_light from '@/assets/logo.png';
+import logo_dark from '@/assets/logo_dark.png';
 
 const { theme: i18n } = useData();
+const router = useRouter();
+const language = useData().lang;
+const commonStore = useCommon();
 
 const moocData = computed(() => i18n.value.mooc);
 
@@ -43,13 +51,14 @@ const welcome = ref('');
 const courseIndex = ref(0);
 // 控制移动端二级导航展开收起
 const isShowMenu = ref(false);
-const mobileNavIndex = ref(-1);
-const navItemIndex = ref('');
 let refs: any = null;
 // 操作视频控制对象
 const ctrlObj: any = ref();
 // 确定介绍文字中的标题下标
 const listTitleIndex = ref(0);
+const logo = computed(() => {
+  return commonStore.theme === 'light' ? logo_light : logo_dark;
+});
 onMounted(() => {
   const { $refs } = (getCurrentInstance() as any).proxy;
   refs = $refs;
@@ -68,25 +77,6 @@ onMounted(() => {
 onUpdated(() => {
   setCheckedNode();
 });
-// 移动端导航栏二级导航点击事件
-function toCourse(item: any) {
-  setCourseData(item);
-  showMenu('hide');
-  navItemIndex.value = item.key;
-}
-// 移动端导航栏一级导航点击事件
-function showItem(index: number, item: any) {
-  if (index === 0) {
-    setCourseData(item);
-    showMenu('hide');
-  } else {
-    if (mobileNavIndex.value === index) {
-      mobileNavIndex.value = -1;
-    } else {
-      mobileNavIndex.value = index;
-    }
-  }
-}
 // 移动端点击控制目录的显示或隐藏
 function showMenu(option: string) {
   if (option === 'show') {
@@ -121,9 +111,6 @@ function checkStatus(status: boolean) {
 // 导航栏点击事件
 function handleNodeClick(obj: any) {
   setCourseData(obj);
-  if (obj.key) {
-    isShowMenu.value = false;
-  }
 }
 // 读取所有文档节点
 function getCoursePath(menuData: any) {
@@ -174,6 +161,8 @@ function setCourseData(obj: any) {
     setListTitleIndex();
     if (obj.ppt) {
       currentNode.value.ppt = obj.ppt;
+    } else {
+      currentNode.value.ppt = '';
     }
   } else if (obj.desc) {
     introductionText.value = [];
@@ -231,65 +220,82 @@ function next() {
 onUnmounted(() => {
   sessionStorage.setItem('courseIndex', '0');
 });
+// 返回首页
+const goHome = () => {
+  router.go(`/${language.value}/`);
+};
 </script>
 <template>
   <div class="mooc-detail">
     <div class="detail-mobile">
-      <div class="mobile-menu">
-        <div class="prev" @click="previous">
-          <i class="el-icon-arrow-left"></i>
-          <span>{{ moocData.MOOC.PREV_TEXT }}</span>
+      <ODrawer
+        v-model="isShowMenu"
+        direction="ltr"
+        size="268px"
+        show-close="false"
+      >
+        <div class="nav-tree">
+          <div class="nav-top">
+            <img
+              class="logo"
+              :src="logo"
+              alt="openEuler logo"
+              @click="goHome"
+            />
+            <OIcon @click="showMenu('hide')"><IconCancel /></OIcon>
+          </div>
+          <OTree
+            ref="tree"
+            node-key="key"
+            :data="menuData"
+            :props="defaultProps"
+            accordion
+            :highlight-current="true"
+            :icon="IconChevronDown"
+            @node-click="handleNodeClick"
+          >
+          </OTree>
         </div>
-        <div class="menu" @click="showMenu('show')">
-          <span>{{ moocData.MOOC.MOOC_CATALOG }}</span>
-        </div>
-        <div class="next" @click="next">
-          <span>{{ moocData.MOOC.NEXT_TEXT }}</span>
-          <i class="el-icon-arrow-right"></i>
-        </div>
-      </div>
-      <el-collapse-transition>
-        <div v-show="isShowMenu" class="nav-tree">
-          <ul class="course-menu">
-            <li v-for="(items, indexs) in menuData" :key="indexs">
-              <div @click="showItem(indexs, items)">
-                <span>{{ items.label }}</span>
-                <i
-                  v-if="indexs !== 0"
-                  :class="
-                    mobileNavIndex === indexs
-                      ? 'el-icon-arrow-down'
-                      : 'el-icon-arrow-right'
-                  "
-                ></i>
-              </div>
-              <el-collapse-transition>
-                <ul
-                  v-show="items.children && mobileNavIndex === indexs"
-                  class="item"
-                >
-                  <li
-                    v-for="item in items.children"
-                    :key="item"
-                    :class="navItemIndex === item.key ? 'active' : ''"
-                    @click="toCourse(item)"
-                  >
-                    {{ item.label }}
-                  </li>
-                </ul>
-              </el-collapse-transition>
-            </li>
-          </ul>
-          <div class="course-mask" @click="showMenu('hide')"></div>
-        </div>
-      </el-collapse-transition>
+      </ODrawer>
+      <BreadCrumbs
+        :bread1="moocData.MOOC.MOOC"
+        :bread2="moocData.MOOC.MOOC_COURSE[0].TITLE"
+        link1="/zh/learn/mooc/"
+        class="bread"
+      />
       <div class="mobile-content">
-        <p class="title">
-          <span :key="currentNode.title">{{ currentNode.title }}</span>
-        </p>
-        <p class="desc">{{ currentNode.desc }}</p>
+        <h1>{{ courseH1 }}</h1>
+        <p class="entry-welcome">{{ welcome }}</p>
+        <div class="infomation">
+          <p :key="currentNode.title" class="title">
+            {{ currentNode.title }}
+          </p>
+          <p class="desc">{{ currentNode.desc }}</p>
+          <a
+            v-show="currentNode.ppt"
+            :href="currentNode.ppt"
+            :download="currentNode.ppt"
+            class="download"
+          >
+            <OButton type="primary" size="mini">
+              {{ moocData.MOOC.COURSE_DOWNLOAD }}
+              <template #suffixIcon>
+                <OIcon><IconArrowRight /></OIcon>
+              </template>
+            </OButton>
+          </a>
+        </div>
         <div v-show="introductionText.length" class="text">
-          <p v-for="item in introductionText" :key="item">{{ item }}</p>
+          <p
+            v-for="(item, index) in introductionText"
+            :key="item"
+            :class="[
+              courseIndex === 0 && index === 0 ? 'welcome' : '',
+              listTitleIndex !== 0 && listTitleIndex === index ? 'list1' : '',
+            ]"
+          >
+            {{ item }}
+          </p>
           <div v-if="currentNode.key === 'introduction0'" class="teacher">
             <p>{{ moocData.MOOC.TEACHER_TEAM }}</p>
             <div v-for="item in teacherList" :key="item" class="item">
@@ -306,13 +312,26 @@ onUnmounted(() => {
             ref="mobileVideo"
             :src="currentNode.video"
             loop
-            style="width: 315px; height: 200px"
+            style="width: 100%"
           ></video>
           <div
             v-if="!isNowPlay"
             class="play-btn"
             @click="playmoocVideo('mobileBtn')"
           ></div>
+        </div>
+        <div class="mobile-menu">
+          <div class="prev" @click="previous">
+            <OIcon><IconArrowLeft /></OIcon>
+            <span>{{ moocData.MOOC.PREV_TEXT }}</span>
+          </div>
+          <div class="menu" @click="showMenu('show')">
+            <span>{{ moocData.MOOC.MOOC_CATALOG }}</span>
+          </div>
+          <div class="next" @click="next">
+            <span>{{ moocData.MOOC.NEXT_TEXT }}</span>
+            <OIcon><IconArrowRight /></OIcon>
+          </div>
         </div>
       </div>
     </div>
@@ -386,7 +405,7 @@ onUnmounted(() => {
               id="pc-video"
               :src="currentNode.video"
               loop
-              style="max-width: 864px; max-height: 496px"
+              style="width: 100%"
             ></video>
             <VideoCtrl
               ref="playctrlEle"
@@ -487,16 +506,16 @@ onUnmounted(() => {
             > .el-tree-node__expand-icon) {
           display: none;
         }
-        :deep(.el-tree-node__children .el-tree-node__expand-icon) {
-          display: none;
-        }
-        :deep(.el-tree-node__children .is-current .el-tree-node__label) {
-          color: var(--o-color-brand);
-        }
         :deep(.el-tree--highlight-current
             .el-tree-node.is-current
             > .el-tree-node__content) {
           background-color: var(--o-color-bg6);
+        }
+        :deep(.el-tree-node__children .el-tree-node__expand-icon) {
+          display: none;
+        }
+        :deep(.el-tree-node__children) {
+          background-color: var(--o-color-bg2);
         }
         :deep(.el-tree-node__children .is-current .el-tree-node__content) {
           background-color: transparent;
@@ -571,9 +590,14 @@ onUnmounted(() => {
         .video {
           width: 864px;
           height: 552px;
+          min-width: 60%;
           position: relative;
           padding: 30px 0;
           border-bottom: 1px solid var(--o-color-division);
+          @media (max-width: 1400px) {
+            width: 560px;
+            height: 375px;
+          }
           .playControll {
             display: none;
           }
@@ -621,7 +645,9 @@ onUnmounted(() => {
             }
             .techer-img {
               display: flex;
+              flex-wrap: wrap;
               .item {
+                min-width: 197px;
                 display: flex;
                 flex-direction: row;
                 margin-bottom: 20px;
@@ -701,102 +727,169 @@ onUnmounted(() => {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1100px) {
   .mooc-detail {
     padding: 0;
     .detail-mobile {
       display: block;
+      padding: 0 var(--o-spacing-h5);
       .mobile-menu {
         width: 100%;
-        height: 40px;
-        padding: 10px var(--o-spacing-h2);
-        position: fixed;
-        top: 48px;
-        left: 0;
-        background: #fbfbfb;
-        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+        padding: var(--o-spacing-h5) 0 0 0;
         display: flex;
         justify-content: space-between;
-        z-index: 100;
         .prev,
         .menu,
         .next {
           font-size: 14px;
           font-weight: 400;
-          color: #002fa7;
+          color: var(--o-color-brand);
           line-height: 20px;
+        }
+        .prev {
+          span:nth-of-type(2) {
+            color: var(--o-color-text2);
+            margin-left: var(--o-spacing-h8);
+            position: relative;
+            top: -2px;
+          }
+        }
+        .next {
+          span:nth-of-type(1) {
+            color: var(--o-color-text2);
+            margin-right: var(--o-spacing-h8);
+            position: relative;
+            top: -2px;
+          }
         }
       }
       .nav-tree {
         position: fixed;
-        width: 100%;
-        top: 113px;
-        z-index: 200;
-        .course-menu {
-          background-color: #fff;
-          z-index: 100;
-          padding: 10px 30px;
-          height: 400px;
-          overflow: scroll;
-          position: fixed;
+        left: 0;
+        top: 0;
+        width: 268px;
+        height: 100vh;
+        background: var(--o-color-bg);
+        box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 999;
+        .nav-top {
           width: 100%;
-          top: 88px;
-          left: 0;
-          & > li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            font-size: 16px;
-            color: #000000;
-            line-height: 26px;
-            &:last-of-type {
-              border-bottom: 0;
-            }
-            div {
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              align-items: center;
-              .el-icon-arrow-down {
-                color: #002fa7;
-              }
-            }
-            .item {
-              padding-left: 15px;
-              li {
-                font-size: 14px;
-                padding: 6px;
-              }
-              .active {
-                color: #002fa7;
-              }
-            }
+          background: var(--o-color-bg);
+          font-size: 14px;
+          line-height: 22px;
+          color: var(--o-color-text2);
+          padding: var(--o-spacing-h5);
+          font-weight: bold;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .logo {
+            height: 24px;
+            cursor: pointer;
+          }
+          :deep(.o-icon) {
+            padding: 12px;
+            cursor: pointer;
+            font-size: var(--o-font-size-h5);
           }
         }
-        .course-mask {
-          position: fixed;
-          background-color: rgba(0, 0, 0, 0.4);
+        :deep(.el-tree) {
           width: 100%;
-          top: 88px;
-          left: 0;
-          height: 100%;
+          overflow: hidden;
+          background-color: var(--o-color-bg);
+        }
+        :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
+          order: 2;
+          padding: 12px;
+          font-size: var(--o-font-size-h8);
+          color: var(--o-color-text2);
+        }
+        :deep(.el-tree-node__expand-icon.expanded) {
+          transform: rotate(180deg);
+        }
+        :deep(.el-tree--highlight-current
+            .el-tree-node.is-current
+            > .el-tree-node__content) {
+          background-color: var(--o-color-bg6);
+        }
+        :deep(.el-tree-node:nth-of-type(1)
+            > .el-tree-node__content
+            > .el-tree-node__expand-icon) {
+          display: none;
+        }
+        :deep(.el-tree-node__children .el-tree-node__expand-icon) {
+          display: none;
+        }
+        :deep(.el-tree-node__children .is-current .el-tree-node__label) {
+          color: var(--o-color-brand);
+        }
+        :deep(.el-tree--highlight-current
+            .el-tree-node.is-current
+            > .el-tree-node__content) {
+          background-color: transparent;
+        }
+        :deep(.el-tree-node__children) {
+          background-color: var(--o-color-bg2);
+        }
+        :deep(.el-tree .el-tree-node__label) {
+          font-size: 14px;
+          line-height: 16px;
+          color: var(--o-color-text2);
+        }
+        :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
+          font-size: 14px;
+          line-height: 20px;
+          white-space: pre-wrap;
+        }
+        :deep(.el-tree-node .el-tree-node__content) {
+          padding: 19px var(--o-spacing-h5) !important;
+          justify-content: space-between;
         }
       }
       .mobile-content {
-        width: 315px;
+        width: 100%;
         margin: 0 auto;
-        padding: 40px 0 80px 0;
-        .title {
-          font-size: 18px;
-          line-height: 18px;
+        padding: var(--o-spacing-h5);
+        background-color: var(--o-color-bg);
+        h1 {
+          font-size: var(--o-font-size-h8);
+          line-height: var(--o-line-height-h8);
           color: var(--o-color-text2);
-          font-weight: blod;
-          margin-top: 40px;
+          font-weight: 500;
         }
-        .desc {
-          font-size: 12px;
+        .entry-welcome {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
           color: var(--o-color-text2);
-          line-height: 20px;
-          margin-top: 20px;
+          margin-top: var(--o-spacing-h8);
+        }
+        .infomation {
+          margin-top: var(--o-spacing-h5);
+          .title {
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            color: var(--o-color-text2);
+            font-weight: 600;
+          }
+          .desc {
+            font-size: 12px;
+            color: var(--o-color-text2);
+            line-height: 20px;
+            margin-top: var(--o-spacing-h8);
+          }
+          .download {
+            display: block;
+            width: 100px;
+            margin-top: var(--o-spacing-h5);
+            :deep(.o-icon) {
+              position: relative;
+              top: -1px;
+            }
+            :deep(.o-button.o-button-size-mini) {
+              color: #ffffff;
+            }
+          }
         }
         .text {
           p {
@@ -805,19 +898,20 @@ onUnmounted(() => {
             line-height: 24px;
           }
           .teacher {
-            margin-top: 20px;
+            margin-top: 16px;
             & > p {
               color: var(--o-color-text2);
             }
             .item {
               display: flex;
               flex-direction: row;
-              margin: 20px 0;
+              margin: 16px 0 0 0;
               img {
                 display: block;
                 width: 50px;
                 height: 50px;
-                margin-right: 20px;
+                margin-right: 12px;
+                border-radius: 50%;
               }
               div {
                 p {
@@ -832,12 +926,17 @@ onUnmounted(() => {
               }
             }
           }
+          .welcome {
+            color: var(--o-color-brand);
+            margin-bottom: var(--o-spacing-h5);
+          }
         }
         .text,
         .video {
-          border-top: 1px solid rgba(0, 0, 0, 0.1);
-          padding-top: 30px;
-          margin-top: 30px;
+          border-top: 1px solid var(--o-color-division);
+          border-bottom: 1px solid var(--o-color-division);
+          padding: var(--o-spacing-h5) 0;
+          margin-top: var(--o-spacing-h5);
         }
         .video {
           position: relative;
