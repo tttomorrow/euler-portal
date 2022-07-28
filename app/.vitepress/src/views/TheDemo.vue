@@ -339,7 +339,7 @@ onMounted(() => {
     </div>
     <div>
       <h4 style="margin: 20px 100px 20px 100px">封装峰会组件</h4>
-      <SummitGuests :lecturerList="lecturerList" />
+      <SummitGuests :lecturer-list="lecturerList" />
     </div>
   </div>
 </template>

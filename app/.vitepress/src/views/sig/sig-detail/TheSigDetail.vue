@@ -11,25 +11,7 @@ import IconArrowRight from '~icons/app/right.svg';
 
 const { theme: i18n, lang } = useData();
 
-function GetUrlParam(paraName: any) {
-  const url = document.location.toString();
-  const arrObj = url.split('?');
-  if (arrObj.length > 1) {
-    const arrPara = arrObj[1].split('&');
-    let arr;
-    for (let i = 0; i < arrPara.length; i++) {
-      arr = arrPara[i].split('=');
-      if (arr !== null && arr[0] === paraName) {
-        return arr[1];
-      }
-    }
-    return '';
-  } else {
-    return '';
-  }
-}
-
-const sidDetailId: number = parseInt(GetUrlParam('id'));
+let sidDetailId: number;
 
 const sigDetail = computed(() => {
   return i18n.value.sig.SIG_DETAIL;
@@ -63,6 +45,24 @@ function getSigMembers() {
   }
 }
 onMounted(() => {
+  function GetUrlParam(paraName: any) {
+    const url = document.location.toString();
+    const arrObj = url.split('?');
+    if (arrObj.length > 1) {
+      const arrPara = arrObj[1].split('&');
+      let arr;
+      for (let i = 0; i < arrPara.length; i++) {
+        arr = arrPara[i].split('=');
+        if (arr !== null && arr[0] === paraName) {
+          return arr[1];
+        }
+      }
+      return '';
+    } else {
+      return '';
+    }
+  }
+  sidDetailId = parseInt(GetUrlParam('id'));
   getSigDetails();
   getSigMembers();
 });
