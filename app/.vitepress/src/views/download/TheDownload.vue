@@ -1,42 +1,131 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, Ref, ref } from 'vue';
 import IconDownload from '~icons/app/icon-download.svg';
+import IconFilter from '~icons/app/icon-filter.svg';
+import IconX from '~icons/app/x.svg';
 import banner from '@/assets/banner-secondary.png';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import TagFilter from '@/components/TagFilter.vue';
 
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import { useData } from 'vitepress';
 
 const { lang, theme: i18n } = useData();
+const screenWidth = useWindowResize();
+//打开网页
 const downloadUrl = (url: string) => {
   window.open(url);
 };
 
+//分页与数据项目
 const currentPage = ref(1);
-const pageSize = ref(9);
+const pageSize = ref(12);
 const total = ref(i18n.value.download.DOWNLOAD_LIST.length);
-const screenWidth = useWindowResize();
+const filterList: Ref<any[]> = ref([]);
 
 const dataList = computed(() => {
   if (screenWidth.value > 768) {
-    return i18n.value.download.DOWNLOAD_LIST.slice(
+    return filterList.value.slice(
       (currentPage.value - 1) * pageSize.value,
       currentPage.value * pageSize.value
     );
   } else {
-    return i18n.value.download.DOWNLOAD_LIST.slice(
-      0,
-      currentPage.value * pageSize.value
-    );
+    return filterList.value.slice(0, currentPage.value * pageSize.value);
   }
 });
-
 const LoadMore = () => {
   if (currentPage.value * pageSize.value < total.value) {
     currentPage.value = currentPage.value + 1;
   }
 };
 
+//移动端筛选弹框
+const isDrawerOpen = ref(false);
+const toggleDrawer = () => {
+  isDrawerOpen.value = !isDrawerOpen.value;
+};
+const resetDrawer = () => {
+  activeManufacturer.value = [];
+  manufacturerAll.value = true;
+  activePublish.value = [];
+  publishAll.value = true;
+  activeLTS.value = false;
+  ListFilter();
+};
+
+//数据筛选
+const tagManufacturer: Ref<string[]> = ref([]);
+const manufacturerAll = ref(true);
+const activeManufacturer: Ref<string[]> = ref([]);
+const tagPublish: Ref<string[]> = ref([]);
+const publishAll = ref(true);
+const activePublish: Ref<string[]> = ref([]);
+const activeLTS: Ref<boolean> = ref(false);
+const ListFilter = () => {
+  const allList = i18n.value.download.DOWNLOAD_LIST;
+  let result = allList;
+  if (activeLTS.value) {
+    result = result.filter((item: { LTS: boolean }) => {
+      return item.LTS === true;
+    });
+  }
+  if (!manufacturerAll.value) {
+    result = result.filter((item: { MANUFACTURER: string }) => {
+      return activeManufacturer.value.indexOf(item.MANUFACTURER) > -1;
+    });
+  }
+  if (!publishAll.value) {
+    result = result.filter((item: { PUBLISH_DATE: string }) => {
+      return activePublish.value.indexOf(item.PUBLISH_DATE) > -1;
+    });
+  }
+  total.value = result.length;
+  filterList.value = result;
+  currentPage.value = 1;
+};
+const publishClick = (item: string, all: number) => {
+  currentPage.value = 1;
+  if (all === 0) {
+    publishAll.value = true;
+    activePublish.value = [];
+  } else {
+    publishAll.value = false;
+    const index = activePublish.value.indexOf(item);
+    if (index > -1) {
+      activePublish.value.splice(index, 1);
+      if (activePublish.value.length === 0) {
+        publishAll.value = true;
+      }
+    } else {
+      activePublish.value.push(item);
+    }
+  }
+  ListFilter();
+};
+const LSTClick = () => {
+  ListFilter();
+};
+const manufacturerClick = (item: string, all: number) => {
+  currentPage.value = 1;
+  if (all === 0) {
+    manufacturerAll.value = true;
+    activeManufacturer.value = [];
+  } else {
+    manufacturerAll.value = false;
+    const index = activeManufacturer.value.indexOf(item);
+    if (index > -1) {
+      activeManufacturer.value.splice(index, 1);
+      if (activeManufacturer.value.length === 0) {
+        manufacturerAll.value = true;
+      }
+    } else {
+      activeManufacturer.value.push(item);
+    }
+  }
+  ListFilter();
+};
+
+//样式（多语言适配）
 const urlStyle = computed(() => {
   if (lang.value === 'zh') {
     return 'url-list-zh';
@@ -47,6 +136,21 @@ const urlStyle = computed(() => {
   }
   return '';
 });
+
+onMounted(() => {
+  const temp = i18n.value.download.DOWNLOAD_LIST;
+  const manufacturer = temp.map((item: any) => item.MANUFACTURER);
+  tagManufacturer.value = Array.from(new Set(manufacturer));
+  tagManufacturer.value.unshift(i18n.value.download.ALL_DATA);
+  const publishDate = temp
+    .map((item: any) => item.PUBLISH_DATE)
+    .filter((item: any) => {
+      return item;
+    });
+  tagPublish.value = Array.from(new Set(publishDate));
+  tagPublish.value.unshift(i18n.value.download.ALL_DATA);
+  ListFilter();
+});
 </script>
 
 <template>
@@ -55,20 +159,171 @@ const urlStyle = computed(() => {
     background-text="DOWNLOAD"
     :title="i18n.download.OUTSIDE_TITLE"
   />
-  <div class="download">
-    <OCard>
-      <!-- <TagFilter label="全部" :show="true" @toggle-click="toggleClick">
-        <OTag
-          v-for="(item, index) in tagArrLen"
-          :key="'tag' + index"
-          :type="activeIndex === index ? 'primary' : 'text'"
-          @click="tagClick(index)"
-        >
-          {{ 'TagFilter' + index }}
-        </OTag>
-      </TagFilter> -->
-    </OCard>
 
+  <div class="download">
+    <!-- PC筛选 -->
+    <OCard v-if="screenWidth > 768" class="download-filter">
+      <TagFilter
+        :label="i18n.download.MANUFACTURER"
+        class="download-filter-manufacturer"
+      >
+        <OTag
+          v-for="(item, index) in tagManufacturer"
+          :key="index"
+          class="download-filter-item"
+          :type="
+            index === 0
+              ? manufacturerAll
+                ? 'primary'
+                : 'text'
+              : activeManufacturer.indexOf(item) > -1
+              ? 'primary'
+              : 'text'
+          "
+          @click="manufacturerClick(item, index)"
+        >
+          {{ item }}
+        </OTag>
+      </TagFilter>
+      <TagFilter
+        :label="i18n.download.PUBLISH_DATE"
+        class="download-filter-manufacturer"
+      >
+        <OTag
+          v-for="(item, index) in tagPublish"
+          :key="index"
+          class="download-filter-item"
+          :type="
+            index === 0
+              ? publishAll
+                ? 'primary'
+                : 'text'
+              : activePublish.indexOf(item) > -1
+              ? 'primary'
+              : 'text'
+          "
+          @click="publishClick(item, index)"
+        >
+          {{ item }}
+        </OTag>
+      </TagFilter>
+      <TagFilter label="LTS" class="download-filter-manufacturer">
+        <el-switch
+          v-model="activeLTS"
+          active-color="var(--o-color-brand)"
+          inactive-color="var(--o-color-bg3)"
+          @change="LSTClick"
+        >
+        </el-switch>
+      </TagFilter>
+    </OCard>
+    <!-- 移动筛选 -->
+    <div v-else class="download-filter-mobile">
+      <div class="download-filter-mobile-title" @click="toggleDrawer">
+        <div class="download-filter-mobile-word">
+          {{ i18n.download.SELECT }}
+        </div>
+        <IconFilter class="download-filter-mobile-icon"></IconFilter>
+      </div>
+      <div class="download-filter-mobile-list">
+        <div
+          v-for="(item, index) in activeManufacturer"
+          :key="index"
+          class="download-filter-mobile-card"
+          @click="manufacturerClick(item, 1)"
+        >
+          {{ item }} <IconX class="download-filter-mobile-card-icon"></IconX>
+        </div>
+        <div
+          v-for="(item, index) in activePublish"
+          :key="index"
+          class="download-filter-mobile-card"
+          @click="publishClick(item, 1)"
+        >
+          {{ item }}<IconX class="download-filter-mobile-card-icon"></IconX>
+        </div>
+        <div
+          v-if="activeLTS"
+          class="download-filter-mobile-card"
+          @click="
+            activeLTS = !activeLTS;
+            LSTClick();
+          "
+        >
+          LST<IconX class="download-filter-mobile-card-icon"></IconX>
+        </div>
+      </div>
+
+      <ODrawer
+        v-model="isDrawerOpen"
+        :title="i18n.download.MANUFACTURER"
+        direction="btt"
+        :show-close="true"
+        custom-class="filter-drawer"
+        size="75%"
+      >
+        <div class="filter-drawer-title">
+          {{ i18n.download.MANUFACTURER }}
+        </div>
+        <OTag
+          v-for="(item, index) in tagManufacturer"
+          :key="index"
+          class="download-filter-item"
+          :type="
+            index === 0
+              ? manufacturerAll
+                ? 'primary'
+                : 'text'
+              : activeManufacturer.indexOf(item) > -1
+              ? 'primary'
+              : 'text'
+          "
+          @click="manufacturerClick(item, index)"
+        >
+          {{ item }}
+        </OTag>
+        <div class="filter-drawer-title">
+          {{ i18n.download.PUBLISH_DATE }}
+        </div>
+        <OTag
+          v-for="(item, index) in tagPublish"
+          :key="index"
+          class="download-filter-item"
+          :type="
+            index === 0
+              ? publishAll
+                ? 'primary'
+                : 'text'
+              : activePublish.indexOf(item) > -1
+              ? 'primary'
+              : 'text'
+          "
+          @click="publishClick(item, index)"
+        >
+          {{ item }}
+        </OTag>
+        <div class="filter-drawer-title">LTS</div>
+        <el-switch
+          v-model="activeLTS"
+          active-color="var(--o-color-brand)"
+          inactive-color="var(--o-color-bg3)"
+          @change="LSTClick"
+        >
+        </el-switch>
+        <div class="filter-drawer-button">
+          <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
+            i18n.download.BTNRESET
+          }}</OButton>
+          <OButton
+            type="primary"
+            class="filter-drawer-button-item"
+            @click="toggleDrawer"
+            >{{ i18n.download.BTNSURE }}</OButton
+          >
+        </div>
+      </ODrawer>
+    </div>
+    <!-- 表格 -->
     <div class="download-list">
       <OCard
         v-for="(download, index) in dataList"
@@ -76,7 +331,7 @@ const urlStyle = computed(() => {
         :style="{ padding: '0px' }"
         class="download-list-item"
       >
-        <div>
+        <div class="download-list-content">
           <h5 class="download-name">
             {{ download.NAME }}
           </h5>
@@ -123,28 +378,35 @@ const urlStyle = computed(() => {
         </div>
 
         <OButton
-          size="small"
           type="primary"
           class="download-button"
           @click="downloadUrl(download.DOWNLOAD_URL)"
         >
           {{ i18n.download.DOWNLOAD_BTN_NAME }}
-          <IconDownload class="download-button-icon" />
+          <template #suffixIcon>
+            <IconDownload class="download-button-icon" />
+          </template>
         </OButton>
       </OCard>
     </div>
+    <!-- 页码 -->
     <div class="page-box">
       <OPagination
         v-if="screenWidth > 768"
         v-model:currentPage="currentPage"
         v-model:page-size="pageSize"
         class="pagination"
-        :page-sizes="[9, 12, 18, 36]"
+        :page-sizes="[12, 18, 24, 36]"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
         :total="total"
       >
-        <span>{{ pageSize }} / {{ total }}</span>
+        <span
+          >{{
+            pageSize * currentPage < total ? pageSize * currentPage : total
+          }}
+          / {{ total }}</span
+        >
       </OPagination>
       <div v-else class="page-box-mobile">
         <div>
@@ -176,6 +438,33 @@ const urlStyle = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+.filter-drawer {
+  &-title {
+    width: 100%;
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+    color: var(--o-color-text2);
+    margin-top: var(--o-spacing-h4);
+    margin-bottom: var(--o-spacing-h9);
+  }
+
+  &-button {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--o-spacing-h5);
+    &-item {
+      padding: var(--o-spacing-h10) var(--o-spacing-h3);
+      margin: var(--o-spacing-h9);
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+    }
+  }
+}
+.tag-filter :deep(.label) {
+  color: var(--o-color-text2);
+}
 .page-box {
   display: flex;
   flex-flow: row;
@@ -192,7 +481,6 @@ const urlStyle = computed(() => {
   }
 
   &-divide {
-    max-width: 328px;
     width: 100%;
     height: 1px;
     margin-top: var(--o-spacing-h5);
@@ -216,6 +504,88 @@ const urlStyle = computed(() => {
     padding: 0 var(--o-spacing-h5);
   }
 
+  &-filter {
+    margin-top: var(--o-spacing-h2);
+    padding: 0 var(--o-spacing-h5);
+    &-item {
+      margin: var(--o-spacing-h10);
+      @media (max-width: 768px) {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+      }
+    }
+
+    &-mobile {
+      margin-top: var(--o-line-height-h5);
+      &:deep(.el-drawer__header) {
+        color: var(--o-color-text2);
+        margin-bottom: 0px;
+        :first-child {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      &:deep(.el-drawer) {
+        background-color: var(--o-color-bg);
+      }
+
+      &:deep(.o-tag-type-text) {
+        color: var(--o-color-text2);
+      }
+      &-title {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+      }
+      &-icon {
+        color: var(--o-color-text3);
+        height: var(--o-font-size-tip);
+        width: var(--o-font-size-tip);
+      }
+      &-word {
+        color: var(--o-color-text3);
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        margin-right: var(--o-spacing-h10);
+      }
+
+      &-list {
+        margin-top: var(--o-line-height-h8);
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      &-card {
+        cursor: pointer;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        padding: var(--o-spacing-h10) var(--o-spacing-h9);
+        background-color: var(--o-color-secondary);
+        color: var(--o-color-text3);
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        margin-right: var(--o-spacing-h9);
+        margin-top: var(--o-spacing-h9);
+        &-icon {
+          font-size: var(--o-color-text2);
+          width: var(--o-font-size-tip);
+          height: var(--o-font-size-tip);
+          margin-left: var(--o-spacing-h9);
+        }
+      }
+    }
+  }
+
   &-list {
     display: grid;
     margin: var(--o-spacing-h2) auto;
@@ -223,14 +593,17 @@ const urlStyle = computed(() => {
     align-items: center;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: var(--o-spacing-h4);
+
+    @media (max-width: 768px) {
+      margin: var(--o-spacing-h5) auto;
+    }
+
+    &-content {
+      width: 100%;
+    }
     &-item {
       width: 100%;
-      max-width: 456px;
       height: 100%;
-
-      @media (max-width: 768px) {
-        max-width: 328px;
-      }
 
       :deep(.el-card__body) {
         padding: var(--o-spacing-h2);
@@ -248,6 +621,7 @@ const urlStyle = computed(() => {
   }
   &-name {
     font-size: var(--o-font-size-h5);
+    color: var(--o-color-text2);
     line-height: var(--o-line-height-h5);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
@@ -364,6 +738,21 @@ const urlStyle = computed(() => {
 
 @media (max-width: 1080px) {
   .download-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .url-list-zh {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .url-list-en {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .url-list-ru {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .download-list {
     grid-template-columns: repeat(1, 1fr);
   }
   .url-list-zh {
@@ -373,15 +762,6 @@ const urlStyle = computed(() => {
     grid-template-columns: repeat(4, 1fr);
   }
   .url-list-ru {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .url-list-ru {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .url-list-en {
     grid-template-columns: repeat(3, 1fr);
   }
 }

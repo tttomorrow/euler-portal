@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { useRouter,useData } from 'vitepress';
+import { useRouter, useData } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -12,7 +12,7 @@ import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 
 const router = useRouter();
-const { theme: i18n } = useData()
+const { theme: i18n } = useData();
 const userCaseData = computed(() => i18n.value.interaction);
 // console.log(i18n.value.interaction)
 
@@ -49,9 +49,9 @@ const bloglist = computed(() => {
       date: '2021-11-23',
       browsetimes: 100,
       blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author:'liuqi',
-      path:'2021-10-14-unsubscribe-mailing-list',
-      tags:['openEuler','邮件列表','退订']
+      author: 'liuqi',
+      path: '2021-10-14-unsubscribe-mailing-list',
+      tags: ['openEuler', '邮件列表', '退订'],
     },
     {
       blogtitle: '如何在Jenkins上关联Gitee的Webhook',
@@ -59,9 +59,9 @@ const bloglist = computed(() => {
       date: '2021-11-25',
       browsetimes: 100,
       blogcontent: '本博客介绍了如何在Jenkins上关联Gitee的Webhook',
-      author:'liuqi',
-      path:'2021-11-25-jenkins-gitee-webhook',
-      tags:['Jenkins','Gitee','Webhook']
+      author: 'liuqi',
+      path: '2021-11-25-jenkins-gitee-webhook',
+      tags: ['Jenkins', 'Gitee', 'Webhook'],
     },
     {
       blogtitle: 'openEuler 社区门禁工程分享',
@@ -69,19 +69,20 @@ const bloglist = computed(() => {
       date: '2021-11-23',
       browsetimes: 100,
       blogcontent: 'openEuler 社区门禁工程分享',
-      author:'liuqi',
-      path:'2021-10-14-unsubscribe-mailing-list',
-      tags:['openEuler','邮件列表','退订']
+      author: 'liuqi',
+      path: '2021-10-14-unsubscribe-mailing-list',
+      tags: ['openEuler', '邮件列表', '退订'],
     },
     {
       blogtitle: '浅谈openEuler开源社区运营度量及分析',
       blogauthor: 'Ivye',
       date: '2020-05-06',
       browsetimes: 100,
-      blogcontent: '浅谈openEuler开源社区运营度量及分析，属于系列博客的第一篇。',
-      author:'ivye',
-      path:'2020-05-06-os-metrics-1',
-      tags:['社区运营','度量']
+      blogcontent:
+        '浅谈openEuler开源社区运营度量及分析，属于系列博客的第一篇。',
+      author: 'ivye',
+      path: '2020-05-06-os-metrics-1',
+      tags: ['社区运营', '度量'],
     },
     {
       blogtitle: '如何退订openEuler的邮件列表',
@@ -89,9 +90,9 @@ const bloglist = computed(() => {
       date: '2021-11-23',
       browsetimes: 100,
       blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author:'liuqi',
-      path:'2021-10-14-unsubscribe-mailing-list',
-      tags:['openEuler','邮件列表','退订']
+      author: 'liuqi',
+      path: '2021-10-14-unsubscribe-mailing-list',
+      tags: ['openEuler', '邮件列表', '退订'],
     },
     {
       blogtitle: '如何退订openEuler的邮件列表',
@@ -99,9 +100,9 @@ const bloglist = computed(() => {
       date: '2021-11-23',
       browsetimes: 100,
       blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author:'liuqi',
-      path:'2021-10-14-unsubscribe-mailing-list',
-      tags:['openEuler','邮件列表','退订']
+      author: 'liuqi',
+      path: '2021-10-14-unsubscribe-mailing-list',
+      tags: ['openEuler', '邮件列表', '退订'],
     },
     {
       blogtitle: '如何退订openEuler的邮件列表',
@@ -109,9 +110,9 @@ const bloglist = computed(() => {
       date: '2021-11-23',
       browsetimes: 100,
       blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author:'liuqi',
-      path:'2021-10-14-unsubscribe-mailing-list',
-      tags:['openEuler','邮件列表','退订']
+      author: 'liuqi',
+      path: '2021-10-14-unsubscribe-mailing-list',
+      tags: ['openEuler', '邮件列表', '退订'],
     },
     {
       blogtitle: '如何退订openEuler的邮件列表',
@@ -119,9 +120,9 @@ const bloglist = computed(() => {
       date: '2021-11-23',
       browsetimes: 100,
       blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author:'liuqi',
-      path:'2021-10-14-unsubscribe-mailing-list',
-      tags:['openEuler','邮件列表','退订']
+      author: 'liuqi',
+      path: '2021-10-14-unsubscribe-mailing-list',
+      tags: ['openEuler', '邮件列表', '退订'],
     },
     {
       blogtitle: '如何退订openEuler的邮件列表',
@@ -129,14 +130,14 @@ const bloglist = computed(() => {
       date: '2021-11-23',
       browsetimes: 100,
       blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author:'liuqi',
-      path:'2021-10-14-unsubscribe-mailing-list',
-      tags:['openEuler','邮件列表','退订']
+      author: 'liuqi',
+      path: '2021-10-14-unsubscribe-mailing-list',
+      tags: ['openEuler', '邮件列表', '退订'],
     },
   ];
 });
 
-const toNewsContent = (author:string,path: string) => {
+const toNewsContent = (author: string, path: string) => {
   const path1 = router.route.path.substring(0, 15);
   const path2 = 'blog-content';
   router.go(`${path1}/${path2}/${author}/${path}`);
@@ -148,7 +149,7 @@ const toNewsContent = (author:string,path: string) => {
     <BannerLevel2
       :background-image="BannerImg1"
       background-text="CONNECT"
-      :title='userCaseData.blog'
+      :title="userCaseData.blog"
       :illustration="BannerImg2"
     />
     <div class="blog-tag">
@@ -165,7 +166,10 @@ const toNewsContent = (author:string,path: string) => {
     </div>
     <div class="blog-list">
       <OCard v-for="item in bloglist" :key="item" class="blog-list-item">
-        <div class="blog-list-item-title" @click="toNewsContent(item.author,item.path)">
+        <div
+          class="blog-list-item-title"
+          @click="toNewsContent(item.author, item.path)"
+        >
           <p>{{ item.blogtitle }}</p>
         </div>
         <div class="blog-list-item-info">
@@ -190,7 +194,13 @@ const toNewsContent = (author:string,path: string) => {
           <p>{{ item.blogcontent }}</p>
         </div>
         <div class="blog-list-item-tags">
-          <OTag type="secondary" class="tagitem" v-for="tag in item.tags" :key="tag">{{tag}}</OTag>
+          <OTag
+            v-for="tag in item.tags"
+            :key="tag"
+            type="secondary"
+            class="tagitem"
+            >{{ tag }}</OTag
+          >
         </div>
       </OCard>
     </div>
@@ -243,7 +253,7 @@ const toNewsContent = (author:string,path: string) => {
         margin-bottom: var(--o-spacing-h3); // 32px
         color: var(--o-color-text2);
         p {
-					display: inline-block;
+          display: inline-block;
           cursor: pointer;
         }
       }

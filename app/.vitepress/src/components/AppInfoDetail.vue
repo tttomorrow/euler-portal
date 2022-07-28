@@ -8,12 +8,12 @@ const { frontmatter } = useData();
 const isDoc = computed(() => {
   return !!frontmatter.value.doc;
 });
-const title=computed(()=>{
-  return frontmatter.value.title||frontmatter.value.company
-})
-const subtitle=computed(()=>{
-  return frontmatter.value.summary|| frontmatter.value.subtitle
-})
+const title = computed(() => {
+  return frontmatter.value.title || frontmatter.value.company;
+});
+const subtitle = computed(() => {
+  return frontmatter.value.summary || frontmatter.value.subtitle;
+});
 </script>
 
 <template>
