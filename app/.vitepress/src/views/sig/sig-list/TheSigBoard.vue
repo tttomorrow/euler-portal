@@ -74,7 +74,7 @@ const toSigDetail = (value: any) => {
   column-gap: var(--o-spacing-h1);
   max-width: 1340px;
   margin: 0 auto;
-  @media (max-width: 1080px) {
+  @media (max-width: 780px) {
     column-count: 1;
     column-gap: 0;
     padding: 0 var(--o-spacing-h5);
@@ -82,7 +82,6 @@ const toSigDetail = (value: any) => {
   &-item {
     max-width: 530px;
     box-shadow: var(--o-shadow-base);
-    border-radius: var(--o-spacing-h8);
     margin-bottom: var(--o-spacing-h1);
     break-inside: avoid;
     padding: var(--o-spacing-h2);
@@ -128,12 +127,14 @@ const toSigDetail = (value: any) => {
       padding: 0 var(--o-spacing-h7);
       display: flex;
       justify-content: start;
-      flex-wrap: wrap;
+      @media (max-width: 780px) {
+        flex-wrap: wrap;
+      }
       li {
         flex: 0 0 25%;
         text-align: center;
         margin-top: var(--o-spacing-h5);
-        @media (max-width: 1080px) {
+        @media (max-width: 780px) {
           flex: 0 0 50%;
         }
         img {

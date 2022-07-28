@@ -58,15 +58,14 @@ onMounted(() => {
 <style lang="scss" scoped>
 .sig-ul {
   font-size: var(--o-font-size-text);
-  font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   line-height: var(--o-line-height-h8);
   color: var(--o-color-text2);
   max-width: 1380px;
   margin: var(--o-spacing-h1) auto;
   padding: 0 44px;
-  @media (max-width: 768px) {
-    padding: 0 var(--o-spacing-h4);
+  @media (max-width: 780px) {
+    padding: var(--o-spacing-h5) 0px var(--o-spacing-h2) var(--o-spacing-h5);
   }
   ul {
     list-style: disc;
@@ -74,7 +73,7 @@ onMounted(() => {
       margin-top: var(--o-spacing-h8);
     }
   }
-  @media (max-width: 1080px) {
+  @media (max-width: 780px) {
     margin: 0px var(--o-spacing-h4);
   }
 }
@@ -82,7 +81,7 @@ onMounted(() => {
   max-width: 1380px;
   margin: var(--o-spacing-h1) auto;
   padding: 0 44px;
-  @media (max-width: 1080px) {
+  @media (max-width: 780px) {
     margin: 0px var(--o-spacing-h4);
     padding: 0 0;
   }
