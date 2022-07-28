@@ -30,7 +30,9 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
       <IconArrowRight />
     </OIcon>
     <span
-      ><a :href="link2" :class="link2==='#'?'no-click':''">{{ bread2 }}</a></span
+      ><a :href="link2" :class="link2 === '#' ? 'no-click' : ''">{{
+        bread2
+      }}</a></span
     >
     <slot></slot>
   </div>
@@ -57,7 +59,7 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
     a {
       color: var(--o-color-text2);
     }
-    .no-click{
+    .no-click {
       cursor: default;
     }
   }

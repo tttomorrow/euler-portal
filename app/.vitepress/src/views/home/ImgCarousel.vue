@@ -52,14 +52,15 @@ const changeActiveMobile = (activeNames: any) => {
         </div>
       </OCard>
     </div>
-    <el-collapse
+
+    <OCollapse
       v-else
       v-model="activeMobile"
       class="carousel-mobile"
       accordion
       @change="changeActiveMobile"
     >
-      <el-collapse-item
+      <OCollapseItem
         v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
         :key="index"
         :name="index"
@@ -75,8 +76,8 @@ const changeActiveMobile = (activeNames: any) => {
         <div class="carousel-mobile-img">
           <img :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL" />
         </div>
-      </el-collapse-item>
-    </el-collapse>
+      </OCollapseItem>
+    </OCollapse>
   </div>
 </template>
 

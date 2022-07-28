@@ -8,6 +8,8 @@ export default {
   INSTALL_GUIDENCE: '安装指南',
   SEEK_HELP: '提问求助',
   GET_ISO: '获取 ISO',
+  SELECT: '筛选',
+  ALL_DATA: '全部',
   LIFE_CYCLE: '生命周期',
   DOWNLOAD_BTN_NAME: '立即下载',
   OUTSIDE_TITLE: 'ISO',
@@ -16,6 +18,8 @@ export default {
   WHITE_PAPER: '白皮书',
   WEBSITE_SELECT: '站点选择',
   COPY_SUCCESSFULLY: '复制成功！',
+  BTNSURE: '确定',
+  BTNRESET: '重置',
   DOWNLOAD_LIST: data.zh.DOWNLOAD_LIST,
   MIRROR_SELECT: {
     TITLE: '优选镜像',

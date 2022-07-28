@@ -29,14 +29,14 @@ const changeActiveMobile = (activeNames: any) => {
 <template>
   <div class="case-main">
     <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
-    <el-collapse
+    <OCollapse
       v-if="screenWidth < 1100"
       v-model="activeMobile"
       accordion
       class="case-mobile"
       @change="changeActiveMobile"
     >
-      <el-collapse-item
+      <OCollapseItem
         v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
         :key="index"
         class="case-mobile-list"
@@ -72,8 +72,8 @@ const changeActiveMobile = (activeNames: any) => {
             <div class="user-word">{{ user.WORD }}</div>
           </div>
         </div>
-      </el-collapse-item>
-    </el-collapse>
+      </OCollapseItem>
+    </OCollapse>
     <div v-else class="case">
       <OCard class="case-card">
         <div class="case-tab">

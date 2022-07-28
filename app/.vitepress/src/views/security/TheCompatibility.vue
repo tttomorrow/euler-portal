@@ -43,7 +43,7 @@ const handleCurrentChange = (val: number) => {
   <OTabs>
     <OTabPane label="整机">
       <div class="wrapper">
-        <OSearch class="o-search" v-model="inputName"></OSearch>
+        <OSearch v-model="inputName" class="o-search"></OSearch>
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">

@@ -8,6 +8,8 @@ export default {
   INSTALL_GUIDENCE: 'Installation Guide',
   SEEK_HELP: 'Seek Help',
   GET_ISO: 'Get Iso',
+  SELECT: 'Filter',
+  ALL_DATA: 'all',
   LIFE_CYCLE: 'Lifecycle',
   DOWNLOAD_BTN_NAME: 'Download',
   OUTSIDE_TITLE: 'ISO',
@@ -16,6 +18,8 @@ export default {
   PUBLISH_DATE: 'Date of Release',
   WEBSITE_SELECT: 'Select Mirror',
   COPY_SUCCESSFULLY: 'copied successfully.',
+  BTNSURE: 'Confirm',
+  BTNRESET: 'Reset',
   DOWNLOAD_LIST: data.en.DOWNLOAD_LIST,
   MIRROR_SELECT: {
     TITLE: 'Selected Mirrors',

@@ -67,22 +67,20 @@ list.value = initList();
       <p class="brand-word">{{ i18n.brand.WORDS }}</p>
     </div>
     <div class="brand-list">
-      <OCard v-for="(brand, index) in list" :key="index" class="brand-item">
-        <div class="brand-item-title">{{ brand.name }}</div>
+      <OCard v-for="(item, index) in list" :key="index" class="brand-item">
+        <div class="brand-item-title">{{ item.name }}</div>
         <div class="brand-item-img">
-          <img :src="brand.mobile" />
+          <img :src="item.mobile" />
         </div>
         <div class="button">
           <a
-            v-for="(item, index2) in brand.image"
+            v-for="(item2, index2) in item.image"
             :key="index2"
-            :href="item.URL"
+            :href="item2.URL"
             target="_blank"
             download
           >
-            <OButton size="small" class="button-item"
-              >{{ item.STYLE }}
-            </OButton>
+            <OButton class="button-item">{{ item2.STYLE }} </OButton>
           </a>
         </div>
       </OCard>
@@ -129,6 +127,10 @@ list.value = initList();
     font-size: var(--o-font-size-text);
     font-weight: 400;
     line-height: var(--o-line-height-text);
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
     @media (max-width: 768px) {
       max-width: 80px;
     }
@@ -185,7 +187,9 @@ list.value = initList();
   &-item {
     width: 100%;
     padding: 0;
-    max-width: 336px;
+    @media (max-width: 768px) {
+      max-width: 336px;
+    }
     :deep(.el-card__body) {
       padding: var(--o-spacing-h4);
       @media (max-width: 768px) {
@@ -260,7 +264,9 @@ list.value = initList();
   }
   &-item {
     width: 100%;
-    max-width: 336px;
+    @media (max-width: 768px) {
+      max-width: 336px;
+    }
     a {
       width: 100%;
       img {

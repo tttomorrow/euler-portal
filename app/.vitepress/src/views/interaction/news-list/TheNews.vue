@@ -12,7 +12,7 @@ const currentPage1 = ref(5);
 const pageSize4 = ref(10);
 const total = ref(200);
 
-const { theme: i18n } = useData()
+const { theme: i18n } = useData();
 const userCaseData = computed(() => i18n.value.interaction);
 
 const newsData = computed(() => {
