@@ -53,33 +53,64 @@ const { theme: i18n } = useData();
   .banner {
     height: 30px;
   }
-  min-height: 69vh;
   .mooc-content {
     display: flex;
     max-width: 1504px;
     margin: var(--o-spacing-h1) auto;
     padding: 0 var(--o-spacing-h2);
+    @media (max-width: 975px) {
+      display: block;
+      padding: 0 var(--o-spacing-h5);
+      margin: var(--o-spacing-h2) auto 0 auto;
+    }
     .left {
-      width: 456px;
       height: 222px;
+      @media (max-width: 975px) {
+        width: 100%;
+        height: auto;
+      }
+      img {
+        @media (max-width: 975px) {
+          width: 100%;
+        }
+      }
     }
     .right {
-      padding: 40px;
+      // min-width: 420px;
+      padding: var(--o-spacing-h2);
+      position: relative;
       background-color: var(--o-color-bg);
       flex-grow: 1;
+      @media (max-width: 768px) {
+        padding: var(--o-spacing-h5);
+      }
       h3 {
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-height-h5);
         color: var(--o-color-text2);
+        @media (max-width: 768px) {
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
+        }
       }
       p {
         font-size: var(--o-font-size-text);
         line-height: 22px;
         color: var(--o-color-text3);
-        margin-top: 16px;
+        margin-top: var(--o-spacing-h5);
+        @media (max-width: 768px) {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+          margin-top: var(--o-spacing-h8);
+        }
       }
       .botton {
         display: flex;
+        position: absolute;
+        bottom: 40px;
+        @media (max-width: 975px) {
+          position: static;
+        }
         .o-button {
           width: 104px;
           height: 32px;
@@ -90,6 +121,12 @@ const { theme: i18n } = useData();
           text-align: left;
           display: flex;
           align-items: center;
+          @media (max-width: 768px) {
+            height: 28px;
+            margin-right: 16px;
+            padding: 3px 0 3px 16px;
+            margin-top: var(--o-spacing-h8);
+          }
           .o-icon {
             font-size: 12px;
             margin-left: 8px;

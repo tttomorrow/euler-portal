@@ -39,12 +39,15 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
 </template>
 <style lang="scss" scoped>
 .bread-crumbs {
-  width: 1120px;
+  width: 100%;
   padding: var(--o-spacing-h2) 0;
   font-size: var(--o-font-size-tip);
   line-height: var(--o-line-height-tip);
   display: flex;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    padding: var(--o-spacing-h5) 0;
+  }
   span:nth-of-type(1) {
     a {
       color: var(--o-color-text3);
@@ -56,6 +59,7 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
   }
   span:nth-of-type(2),
   span:nth-of-type(3) {
+    color: var(--o-color-text2);
     a {
       color: var(--o-color-text2);
     }
