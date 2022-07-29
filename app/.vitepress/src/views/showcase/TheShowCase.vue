@@ -98,19 +98,23 @@ function goDetail(link: string, item: any) {
 }
 // 设置当前tag的所有案例
 function setCurrentCaseListAll() {
-  getUserCaseData(data.value).then((res: any) => {
-    if (res.status === 200 && res.obj.records) {
-      const CaseListAll = res.obj.records;
-      CaseListAll.forEach((item: any, index: number) => {
-        if (item.summary === '') {
-          CaseListAll.splice(index, 1);
-        }
-      });
-      currentCaseListAll.value = CaseListAll;
-    } else {
-      currentCaseListAll.value = [];
-    }
-  });
+  try {
+    getUserCaseData(data.value).then((res: any) => {
+      if (res.status === 200 && res.obj.records) {
+        const CaseListAll = res.obj.records;
+        CaseListAll.forEach((item: any, index: number) => {
+          if (item.summary === '') {
+            CaseListAll.splice(index, 1);
+          }
+        });
+        currentCaseListAll.value = CaseListAll;
+      } else {
+        currentCaseListAll.value = [];
+      }
+    });
+  } catch (error: any) {
+    throw Error(error);
+  }
 }
 // 搜索功能
 function searchCase() {
@@ -157,28 +161,31 @@ function getUrlParam() {
 onMounted(() => {
   window.addEventListener('scroll', onscroll);
   getUrlParam();
-  // console.log(activeIndex.value);
-
-  getCaseTagData().then((res: any) => {
-    const orderArr: any = [];
-    let countAll = 0;
-    res.obj.totalNum.forEach((item: any) => {
-      countAll = countAll + item.count;
-      if (item.key === '金融') {
-        orderArr[1] = item;
-      } else if (item.key === '运营商') {
-        orderArr[2] = item;
-      } else if (item.key === '能源') {
-        orderArr[3] = item;
-      } else if (item.key === '物流') {
-        orderArr[4] = item;
-      } else if (item.key === '其他') {
-        orderArr[5] = item;
-      }
+  try {
+    getCaseTagData().then((res: any) => {
+      const orderArr: any = [];
+      let countAll = 0;
+      res.obj.totalNum.forEach((item: any) => {
+        countAll = countAll + item.count;
+        if (item.key === '金融') {
+          orderArr[1] = item;
+        } else if (item.key === '运营商') {
+          orderArr[2] = item;
+        } else if (item.key === '能源') {
+          orderArr[3] = item;
+        } else if (item.key === '物流') {
+          orderArr[4] = item;
+        } else if (item.key === '其他') {
+          orderArr[5] = item;
+        }
+      });
+      orderArr[0] = { count: countAll, key: '全部' };
+      tagArr.value = orderArr;
     });
-    orderArr[0] = { count: countAll, key: '全部' };
-    tagArr.value = orderArr;
-  });
+  } catch (error: any) {
+    throw Error(error);
+  }
+
   setCurrentCaseListAll();
 });
 onUnmounted(() => {

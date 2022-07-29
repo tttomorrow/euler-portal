@@ -57,6 +57,7 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
   }
   span:nth-of-type(2),
   span:nth-of-type(3) {
+    color: var(--o-color-text2);
     a {
       color: var(--o-color-text2);
     }

@@ -14,6 +14,7 @@ import secgear from './projects/secgear';
 import stratovirt from './projects/stratovirt';
 import showcase from './showcase';
 import interaction from './interaction';
+import live from './interaction/live';
 
 const i18n = {
   zh: {
@@ -31,6 +32,7 @@ const i18n = {
     stratovirt: stratovirt.zh,
     showcase: showcase,
     interaction: interaction.zh,
+    live: live.zh,
   },
   en: {
     sig: sig.en,
@@ -45,6 +47,7 @@ const i18n = {
     secgear: secgear.en,
     stratovirt: stratovirt.en,
     interaction: interaction.en,
+    live: live.en,
   },
   ru: {
     sig: sig.ru,
@@ -59,6 +62,7 @@ const i18n = {
     secgear: secgear.ru,
     stratovirt: stratovirt.ru,
     interaction: interaction.ru,
+    live: live.ru,
   },
 };
 
