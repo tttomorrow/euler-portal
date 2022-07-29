@@ -1,0 +1,395 @@
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+import { useCommon } from '@/stores/common';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+import BannerBG from '@/assets/banner-secondary.png';
+import BannerIllustration from '@/assets/illustrations/search.png';
+import IconRight from '~icons/app/icon-arrow-right1.svg';
+import IconUser from '~icons/app/icon-user.svg';
+import IconTime from '~icons/app/icon-time.svg';
+import IconPre from '~icons/app/icon-chevron-left.svg';
+import IconNext from '~icons/app/icon-chevron-right.svg';
+
+import { useData } from 'vitepress';
+
+const { theme: i18n } = useData();
+const data = computed(() => i18n.value.live.LIVE_LIST);
+
+const currentPage1 = ref(1);
+const pageSize4 = ref(6);
+const total = ref(data.value.length);
+const screenWidth = useWindowResize();
+
+const changePage = (val: number, pagesize: number) => {
+  const curVal = (val - 1) * pagesize;
+  showLiveList.value = data.value.slice(curVal, curVal + pagesize);
+};
+const changeSize = (val: number, pagesize: number) => {
+  const curVal = (val - 1) * pagesize;
+  showLiveList.value = data.value.slice(curVal, curVal + pagesize);
+};
+const showLiveList = ref(data.value.slice(0, 6));
+const totoBLink = (url: string) => {
+  window.open(url);
+};
+
+const commonStore = useCommon();
+const headGround = computed(() => {
+  if (commonStore.theme === 'light') {
+    if (screenWidth.value > 768) {
+      return '/img/live/live-crad-bg1.png';
+    } else {
+      return '/img/live/live-crad-bg-mobile1.png';
+    }
+  } else {
+    if (screenWidth.value > 768) {
+      return '/img/live/live-crad-bg2.png';
+    } else {
+      return '/img/live/live-crad-bg-mobile2.png';
+    }
+  }
+});
+
+const isMobile = computed(() => {
+  if (screenWidth.value <= 768) {
+    return true;
+  }
+  return false;
+});
+const goPrevious = () => {
+  currentPage1.value < 2 ? '' : (currentPage1.value -= 1);
+  changePage(currentPage1.value, pageSize4.value);
+};
+const goNext = () => {
+  currentPage1.value > Math.ceil(total.value / pageSize4.value) - 1
+    ? ''
+    : (currentPage1.value += 1);
+  changePage(currentPage1.value, pageSize4.value);
+};
+</script>
+
+<template>
+  <BannerLevel2
+    class="app-header"
+    :background-image="BannerBG"
+    background-text="CONNECT"
+    :title="i18n.live.LIVETITLE"
+    :illustration="BannerIllustration"
+  />
+  <div class="live">
+    <div class="live-top-title">{{ i18n.live.REPLAYER }}</div>
+    <div class="live-list">
+      <OCard
+        v-for="(live, index) in showLiveList"
+        :key="index"
+        class="live-list-item"
+        :body-style="{ padding: '0px' }"
+      >
+        <div class="live-detail">
+          <div
+            class="live-background"
+            :style="{ backgroundImage: 'url(' + headGround + ')' }"
+          >
+            <img :src="live.PHOTOPATH" class="live-background-img" />
+          </div>
+          <div class="live-detail-right">
+            <div>
+              <h5 class="live-detail-title">
+                {{ live.LIVETITLE }}
+              </h5>
+              <div class="live-desc">
+                <span>
+                  <OIcon class="smail-icon">
+                    <IconUser />
+                  </OIcon>
+                  <span class="live-desc-text">{{ live.LIVETEACHER }}</span>
+                </span>
+                <span>
+                  <OIcon class="smail-icon">
+                    <IconTime />
+                  </OIcon>
+                  <span class="live-desc-text">{{ live.LIVETIME }}</span>
+                </span>
+              </div>
+            </div>
+            <OButton
+              size="default"
+              class="live-button"
+              @click="totoBLink(live.FORMERLYLINK)"
+              >{{ i18n.live.REPLAYVIEW }}
+              <IconRight class="live-button-icon" />
+            </OButton>
+          </div>
+        </div>
+      </OCard>
+    </div>
+    <div class="live-pagination">
+      <OPagination
+        v-show="!isMobile"
+        v-model:currentPage="currentPage1"
+        v-model:page-size="pageSize4"
+        :page-sizes="[6, 12, 18, 24]"
+        :background="true"
+        layout="sizes, prev, pager, next, slot, jumper"
+        :total="total"
+        @current-change="changePage(currentPage1, pageSize4)"
+        @size-change="changeSize(currentPage1, pageSize4)"
+      >
+        <span>{{ currentPage1 * pageSize4 + '/' + total }}</span>
+      </OPagination>
+      <div v-show="isMobile" class="pagination-mobile">
+        <div class="pagination-options">
+          <OIcon class="pagination-options-icon">
+            <IconPre />
+          </OIcon>
+          <div class="pagination-options-text" @click="goPrevious">上一页</div>
+          <div class="pagination-information">
+            <span class="pagination-information-current">{{
+              currentPage1
+            }}</span
+            >{{ '/' + Math.ceil(total / pageSize4) }}
+          </div>
+          <div class="pagination-options-text" @click="goNext">下一页</div>
+          <OIcon class="pagination-options-icon">
+            <IconNext />
+          </OIcon>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.live {
+  margin: 40px 0 140px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  &-top-title {
+    width: 100%;
+    margin: 0 auto;
+    font-size: var(--o-font-size-h3);
+    text-align: center;
+    color: var(--o-color-text2);
+    @media screen and (max-width: 767px) {
+      font-size: var(--o-font-size-h8);
+      margin-top: var(--o-spacing-h5);
+    }
+  }
+  &-list {
+    display: grid;
+    max-width: 1504px;
+    padding: 0 44px;
+    margin: var(--o-spacing-h2) auto;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--o-spacing-h4);
+    @media screen and (max-width: 767px) {
+      padding: 0 var(--o-spacing-h5);
+      margin: var(--o-spacing-h5);
+    }
+    &-item {
+      width: 100%;
+      max-width: 696px;
+      padding: 0;
+      max-height: 260px;
+      @media screen and (max-width: 767px) {
+        width: 328px;
+        height: 230px;
+      }
+    }
+  }
+  &-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 0;
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+    &-right {
+      margin-top: var(--o-spacing-h4);
+      // padding: 0;
+      width: 70%;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @media screen and (max-width: 767px) {
+        width: 100%;
+        height: 116px;
+        margin-top: 0;
+      }
+    }
+    &-title {
+      width: 90%;
+      max-width: 386px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: var(--o-font-size-h5);
+      margin-left: var(--o-spacing-h4);
+      line-height: var(--o-line-height-h5);
+      text-align: left;
+      color: var(--o-color-text2);
+      @media screen and (max-width: 767px) {
+        font-size: var(--o-font-size-text);
+        margin-left: var(--o-spacing-h6);
+        margin-top: var(--o-spacing-h6);
+        color: var(--o-color-text2);
+      }
+    }
+  }
+  &-background {
+    width: 262px;
+    height: 260px;
+    // background: url('/img/live/live-crad-bg.png');
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      height: 98px;
+      // background: url('/img/live/live-crad-bg-mobile.png');
+    }
+    &-img {
+      margin: 70px 71px;
+      width: 120px;
+      height: 120px;
+      @media screen and (max-width: 767px) {
+        width: 68px;
+        height: 68px;
+        margin-left: 74px;
+        margin-top: 13px;
+      }
+    }
+  }
+  &-desc {
+    margin-top: var(--o-spacing-h4);
+    margin-left: var(--o-spacing-h4);
+    padding: 0;
+    line-height: var(--o-line-height-tip);
+    @media screen and (max-width: 767px) {
+      margin-left: var(--o-spacing-h6);
+      margin-top: var(--o-spacing-h8);
+    }
+    &-text {
+      margin-right: var(--o-spacing-h3);
+      line-height: var(--o-line-height-tip);
+      font-size: var(--o-font-size-text);
+      color: var(--o-color-text3);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @media screen and (max-width: 767px) {
+        font-size: var(--o-font-size-tip);
+        margin-right: var(--o-spacing-h5);
+      }
+    }
+  }
+  &-button {
+    width: 116px;
+    height: 32px;
+    padding: 3px 8px 3px 16px;
+    line-height: var(--o-line-height-h8);
+    font-size: var(--o-font-size-text);
+    position: relative;
+    left: var(--o-spacing-h4);
+    bottom: 0px;
+    @media screen and (max-width: 767px) {
+      width: 116px;
+      height: 28px;
+      line-height: var(--o-line-height-tip);
+      font-size: var(--o-font-size-tip);
+      left: 0px;
+      margin-left: var(--o-font-size-tip);
+    }
+    &-icon {
+      margin-left: var(--o-spacing-h8);
+      width: var(--o-font-size-tip);
+      height: var(--o-font-size-tip);
+      @media screen and (max-width: 767px) {
+        width: var(--o-font-size-tip);
+        height: var(--o-font-size-tip);
+      }
+    }
+  }
+  &-pagination {
+    width: auto;
+    height: auto;
+    margin: auto;
+  }
+  .smail-icon {
+    font-size: var(--o-font-size-h7);
+    vertical-align: text-bottom;
+    color: var(--o-color-text3);
+    margin-right: var(--o-spacing-h8);
+    @media screen and (max-width: 767px) {
+      font-size: var(--o-font-size-h8);
+      color: var(--o-color-text3);
+    }
+  }
+  .pagination {
+    &-mobile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: var(--o-spacing-h5);
+      width: 196px;
+      height: 18px;
+    }
+    &-options {
+      display: flex;
+      flex-direction: row;
+      &-icon {
+        font-size: var(--o-font-size-tip);
+        color: var(--o-color-brand);
+      }
+      &-icon:hover {
+        cursor: pointer;
+      }
+      &-text {
+        font-size: var(--o-font-size-tip);
+        margin-left: var(--o-spacing-h8);
+        margin-right: var(--o-spacing-h8);
+        color: var(--o-color-text2);
+      }
+      &-text:hover {
+        color: var(--o-color-brand);
+        cursor: pointer;
+      }
+    }
+    &-information {
+      margin-left: 20px;
+      margin-right: 20px;
+      font-size: var(--o-font-size-tip);
+      color: var(--o-color-text2);
+      &-current {
+        color: var(--o-color-brand);
+        font-size: var(--o-font-size-tip);
+      }
+    }
+  }
+}
+
+@media (max-width: 1504px) {
+  .live-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1280px) {
+}
+
+@media (max-width: 1080px) {
+  .live-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 880px) {
+  .url-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+</style>
