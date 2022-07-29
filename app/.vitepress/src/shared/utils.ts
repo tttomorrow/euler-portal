@@ -6,10 +6,22 @@ export function formatNumber(num: number) {
     ? `${(num / 1e4).toFixed(1)}W`
     : num;
 }
+
 // TS 对象key合法检查
 export function isValidKey(
   key: string | number | symbol,
   object: object
 ): key is keyof typeof object {
   return Object.prototype.hasOwnProperty.call(object, key);
+}
+
+/**
+ * 首页母大写其他字母小写
+ * @param str 字符串
+ * @returns 首字母大写其他字母小写的字符串
+ */
+export function firstToUpper(str: string): string {
+  return str.replace(/(w)(w*)/g, function ($0, $1, $2) {
+    return $1.toUpperCase() + $2.toLowerCase();
+  });
 }

@@ -1,20 +1,40 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { computed } from 'vue';
+import { Component, computed } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
-import AppFooter from './components/AppFooter.vue';
-import AppInfoDetail from '@/components/AppInfoDetail.vue';
+import AppFooter from '@/components/AppFooter.vue';
+import LayoutBlog from '@/layouts/LayoutBlog.vue';
+import LayoutNews from '@/layouts/LayoutNews.vue';
+import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
+
+import categories from '@/data/category';
 
 const { frontmatter } = useData();
 
-const isCustomLayout = computed(() => !!frontmatter.value.customLayout);
+const compMapping: {
+  [name: string]: Component;
+} = {
+  blog: LayoutBlog,
+  news: LayoutNews,
+  showcase: LayoutShowcase,
+};
+
+const isCustomLayout = computed(() => {
+  return (
+    !!frontmatter.value.category &&
+    categories.indexOf(frontmatter.value.category) !== -1
+  );
+});
+const comp = computed(() => {
+  return compMapping[frontmatter.value.category];
+});
 </script>
 
 <template>
   <AppHeader />
   <main>
-    <AppInfoDetail v-if="isCustomLayout" />
+    <component v-if="isCustomLayout" :is="comp"></component>
     <Content v-else />
   </main>
   <AppFooter />
