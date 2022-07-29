@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { useData } from 'vitepress';
 
 import MiniCards from '../components/MiniCards.vue';
@@ -6,11 +7,18 @@ import MiniDescription from '../components/MiniDescription.vue';
 import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerIllustration from '/img/projects/isula/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const { theme: i18n } = useData();
+const isPC = ref(true);
+if (useWindowResize().value < 767) {
+  isPC.value = false;
+} else {
+  isPC.value = true;
+}
 </script>
 <template>
   <div class="isula-wraper">
@@ -20,12 +28,16 @@ const { theme: i18n } = useData();
       :subtitle="i18n.isula.ISULA_BANNER_TEXT[1]"
       :illustration="BannerIllustration"
       :background-image="BannerBackground"
-      background-text="CONNECT"
+      background-text="SEARCH"
     />
     <MiniCards :cards-link="i18n.isula.ISULA_LINK" />
     <MiniDescription :description-desc="i18n.isula.ISULA_DESC_UP" />
-    <MiniFrame :frame-obj="i18n.isula.ISULA_FRAMEWORK" layout="upAndDown" />
-    <MiniDocs :device="false" :docs-obj="i18n.isula.ISULA_DOCUMENT" />
+    <MiniFrame
+      :device="isPC"
+      :frame-obj="i18n.isula.ISULA_FRAMEWORK"
+      layout="upAndDown"
+    />
+    <MiniDocs :device="isPC" :docs-obj="i18n.isula.ISULA_DOCUMENT" />
   </div>
 </template>
 <style lang="scss" scoped>

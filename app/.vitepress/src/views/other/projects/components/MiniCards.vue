@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { useRouter, useData } from 'vitepress';
+const router = useRouter();
+const { lang } = useData();
 defineProps({
   cardsLink: {
     type: Object,
@@ -8,6 +11,7 @@ defineProps({
     },
   },
 });
+const mailIsShow = ref(false);
 const isMenuIndex = ref(-1);
 const showSub = (index: number) => {
   isMenuIndex.value = index;
@@ -15,8 +19,15 @@ const showSub = (index: number) => {
 const hideSub = () => {
   isMenuIndex.value = -1;
 };
-const goLink = (url: string) => {
-  window.open(url, '_blank');
+const goLink = (path: string) => {
+  if (path.startsWith('https:')) {
+    window.open(path, '_blank');
+  } else {
+    router.go(`/${lang.value}` + path);
+  }
+};
+const showMail = (show: boolean) => {
+  if (show) mailIsShow.value = !mailIsShow.value;
 };
 </script>
 <template>
@@ -32,9 +43,10 @@ const goLink = (url: string) => {
         "
         @mouseenter="showSub(Number(index))"
         @mouseleave="hideSub()"
+        @click="showMail(item.SHOW)"
       >
         <img
-          v-if="item.LINK_LIST.length === 1"
+          v-if="item.LINK_LIST.length === 1 && !item.SHOW"
           class="info-cards-imgs"
           :src="item.IMG"
           alt=""
@@ -42,20 +54,27 @@ const goLink = (url: string) => {
         />
         <img v-else class="info-cards-imgs" :src="item.IMG" alt="" />
         <p class="info-cards-title">{{ item.TITLE }}</p>
-        <div
-          v-if="isMenuIndex === Number(index) && item.LINK_LIST.length > 1"
-          class="menu"
-        >
-          <a
-            v-for="i in item.LINK_LIST"
-            :key="i.TEXT"
-            class="menu-item"
-            :href="i.LINK"
-            target="_blank"
+        <template v-if="!item.SHOW">
+          <div
+            v-if="isMenuIndex === Number(index) && item.LINK_LIST.length > 1"
+            class="menu"
           >
-            {{ i.TEXT }}
-          </a>
-        </div>
+            <a
+              v-for="i in item.LINK_LIST"
+              :key="i.TEXT"
+              class="menu-item"
+              :href="i.LINK"
+              target="_blank"
+            >
+              {{ i.TEXT }}
+            </a>
+          </div>
+        </template>
+        <template v-if="item.SHOW">
+          <div v-if="mailIsShow" class="info-cards-mail">
+            {{ item.LINK_LIST[0] }}
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -76,8 +95,10 @@ const goLink = (url: string) => {
       position: relative;
     }
     &-imgs {
-      width: 100%;
-      height: 141px;
+      display: block;
+      margin: 0 auto;
+      width: 140px;
+      height: 140px;
       box-sizing: border-box;
       cursor: pointer;
     }
@@ -88,6 +109,18 @@ const goLink = (url: string) => {
       line-height: var(--o-line-height-h8);
       margin-top: var(--o-spacing-h5);
       text-align: center;
+    }
+    &-mail {
+      position: absolute;
+      top: 45%;
+      left: -32%;
+      z-index: 1;
+      width: 260px;
+      background-color: var(--o-color-bg);
+      border: 1px solid var(--o-color-brand);
+      padding: var(--o-spacing-h5) 0;
+      text-align: center;
+      color: var(--o-color-text2);
     }
     .menu {
       position: absolute;
@@ -128,7 +161,7 @@ const goLink = (url: string) => {
       &-imgs {
         display: block;
         width: 100px;
-        height: 100px;
+        height: 90px;
         cursor: pointer;
       }
       &-title {
@@ -136,6 +169,15 @@ const goLink = (url: string) => {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-top: var(--o-spacing-h10);
+        text-align: center;
+      }
+      &-mail {
+        position: absolute;
+        top: 40%;
+        left: -42%;
+        width: 180px;
+        font-size: var(--o-font-size-tip);
+        padding: var(--o-spacing-h6) 0;
         text-align: center;
       }
       .menu {

@@ -27,21 +27,25 @@ export default {
       IMG: '/img/projects/share/cards-work.png',
       TITLE: '开启毕昇JDK之旅',
       LINK_LIST: ['https://gitee.com/openeuler/stratovirt'],
+      SHOW: false,
     },
     {
       IMG: '/img/projects/share/cards-letter.png',
       TITLE: '相对stratovirt说',
       LINK_LIST: ['https://gitee.com/openeuler/stratovirt/issues'],
+      SHOW: false,
     },
     {
       IMG: '/img/projects/share/cards-tv.png',
       TITLE: '加入StratoVirt大家庭',
       LINK_LIST: ['https://gitee.com/openeuler/community/tree/master/sig/Virt'],
+      SHOW: false,
     },
     {
       IMG: '/img/projects/stratovirt/stratovirt-logo.png',
-      TITLE: '加入StratoVirt大家庭',
-      LINK_LIST: [],
+      TITLE: 'StratoVirt Logo',
+      LINK_LIST: ['/other/projects/stratovirt/'],
+      SHOW: false,
     },
   ],
   SVIRT_CHARACTER: {
@@ -85,7 +89,8 @@ export default {
   SVIRT_FRAMEWORK: {
     TITLE_OUTSIDE: '架构',
     TITLE_INSIDE: 'ARCHITECTURE',
-    FRAMEWORK_IMG: '/img/projects/stratovirt/framework.png',
+    FRAMEWORK_IMG: '/img/projects/stratovirt/framework-hight-en.png',
+    FRAMEWORK_IMG_DARK: '/img/projects/stratovirt/framework-dark-en.png',
     DESC_LIST: [
       'StratoVirt核心架构自顶向下分为三层：',
       'OCI兼容接口：兼容QMP（QEMU Machine Protocol）协议，具有完备的OCI兼容能力。',
@@ -108,7 +113,7 @@ export default {
           },
         ],
         BACKGROUND: {
-          IMG: '/img/projects/share/grain.png',
+          IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
         },
       },
@@ -122,13 +127,13 @@ export default {
           },
         ],
         BACKGROUND: {
-          IMG: '/img/projects/share/grain.png',
+          IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
         },
       },
       {
         THEME: '准备使用环境',
-        DESC: '阅读准备使用文档',
+        DESC: '阅读准备使用环境文档',
         LINK: [
           {
             TEXT: '了解更多',
@@ -136,7 +141,7 @@ export default {
           },
         ],
         BACKGROUND: {
-          IMG: '/img/projects/share/grain.png',
+          IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
         },
       },
@@ -150,13 +155,13 @@ export default {
           },
         ],
         BACKGROUND: {
-          IMG: '/img/projects/share/grain.png',
+          IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
         },
       },
       {
-        THEME: '虚拟机管理',
-        DESC: '查看虚拟机配置',
+        THEME: '管理虚拟机生命周期',
+        DESC: '学习如何管理虚拟机生命周期',
         LINK: [
           {
             TEXT: '了解更多',
@@ -164,7 +169,21 @@ export default {
           },
         ],
         BACKGROUND: {
-          IMG: '/img/projects/share/grain.png',
+          IMG: '/img/projects/stratovirt/stratovirt-grain.png',
+          TYPE: 1,
+        },
+      },
+      {
+        THEME: '管理虚拟机资源',
+        DESC: '学习如何管理虚拟机资源',
+        LINK: [
+          {
+            TEXT: '了解更多',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E5%AF%B9%E6%8E%A5iSula%E5%AE%89%E5%85%A8%E5%AE%B9%E5%99%A8.md',
+          },
+        ],
+        BACKGROUND: {
+          IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
         },
       },
@@ -178,21 +197,7 @@ export default {
           },
         ],
         BACKGROUND: {
-          IMG: '/img/projects/share/grain.png',
-          TYPE: 1,
-        },
-      },
-      {
-        THEME: '对接iSula安全容器',
-        DESC: '查看对接iSula安全容器文档',
-        LINK: [
-          {
-            TEXT: '了解更多',
-            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E5%AF%B9%E6%8E%A5iSula%E5%AE%89%E5%85%A8%E5%AE%B9%E5%99%A8.md',
-          },
-        ],
-        BACKGROUND: {
-          IMG: '/img/projects/share/grain.png',
+          IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
         },
       },
