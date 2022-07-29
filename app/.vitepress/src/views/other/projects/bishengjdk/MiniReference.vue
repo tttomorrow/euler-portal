@@ -87,7 +87,6 @@ defineProps({
           display: block;
           height: var(--o-height-h8);
           font-size: var(--o-font-size-text);
-          font-family: PingFangSC-Regular, PingFang SC;
           font-weight: 400;
           color: var(--o-color-text2);
           line-height: var(--o-height-h8);

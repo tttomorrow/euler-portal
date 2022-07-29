@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { Component, computed } from 'vue';
+import type { Component } from 'vue';
+import { computed } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
@@ -34,7 +35,7 @@ const comp = computed(() => {
 <template>
   <AppHeader />
   <main>
-    <component v-if="isCustomLayout" :is="comp"></component>
+    <component :is="comp" v-if="isCustomLayout"></component>
     <Content v-else />
   </main>
   <AppFooter />

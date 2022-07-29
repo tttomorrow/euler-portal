@@ -134,12 +134,49 @@
       margin-top: var(--o-font-size-h7);
     }
   }
-  .case-img{
-    img{
+  .case-img {
+    img {
       width: 58%;
       @media screen and (max-width: 768px) {
         width: 100%;
       }
     }
+  }
+  div[class*='language-'] {
+    position: relative;
+    margin: 8px 0;
+    background-color: var(--o-color-bg2);
+    overflow-x: auto;
+  }
+  [class*='language-'] code,
+  [class*='language-'] pre {
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  [class*='language-'] pre {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 24px 64px;
+    background: 0 0;
+    overflow-x: auto;
+  }
+
+  [class*='language-'] code {
+    padding: 0;
+    line-height: var(--o-line-height-text);
+    font-size: var(--o-font-size-text);
+    color: #eee;
   }
 }
