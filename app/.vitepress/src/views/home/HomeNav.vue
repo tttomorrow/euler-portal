@@ -1,0 +1,166 @@
+<script setup lang="ts">
+import { useData } from 'vitepress';
+
+const { lang, theme: i18n } = useData();
+
+const go = (path: string) => {
+  window.open(path, '_blank');
+};
+</script>
+
+<template>
+  <div class="nav-main">
+    <div class="home-nav">
+      <div
+        v-for="item in i18n.home.HOME_NAV"
+        :key="item.LINK"
+        class="nav-item"
+        @click="go(item.LINK)"
+      >
+        <div class="nav-icon">
+          <img :src="item.IMG" alt="" class="nav-item-icon" />
+          <img :src="item.IMG_HOVER" alt="" class="nav-item-icon-hover" />
+        </div>
+        <div class="nav-text">
+          <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">
+            {{ item.TITLE }}
+          </h4>
+          <p class="nav-descriptive">{{ item.DSSCRIPTIVE }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.nav-main {
+  max-width: 1504px;
+  padding: 0 var(--o-spacing-h2);
+  margin: 0 auto;
+  @media screen and (max-width: 1080px) {
+    padding: 0 var(--o-spacing-h5);
+  }
+}
+.home-nav {
+  padding: var(--o-spacing-h4);
+  position: relative;
+  display: grid;
+  margin-top: -57px;
+  grid-template-columns: repeat(4, minmax(82px, 1fr));
+  column-gap: 0;
+  row-gap: 0;
+  background: var(--o-color-bg);
+  box-shadow: var(--o-shadow-base);
+  z-index: 99;
+
+  .nav-item {
+    cursor: pointer;
+    padding-left: var(--o-spacing-h5);
+    display: flex;
+
+    align-items: center;
+    border-left: 1px solid var(--o-color-division);
+    .nav-item-icon-hover {
+      display: none !important;
+    }
+    .nav-item-icon {
+      display: block !important;
+    }
+    .nav-icon {
+      width: 48px;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    .nav-text {
+      margin-left: var(--o-spacing-h5);
+      .nav-title {
+        color: var(--o-color-text2);
+        line-height: var(--o-line-height-text);
+        font-weight: 500;
+        font-size: var(--o-font-size-h7);
+      }
+      .nav-title-en {
+        color: var(--o-color-text2);
+        font-size: var(--o-font-size-h7);
+      }
+      .nav-descriptive {
+        line-height: var(--o-line-height-text);
+        font-size: var(--o-font-size-text);
+        color: var(--o-color-text3);
+        text-align: left;
+      }
+    }
+    &:hover {
+      .nav-item-icon-hover {
+        display: block !important;
+      }
+      .nav-item-icon {
+        display: none !important;
+      }
+      .nav-text {
+        color: var(--o-color-brand);
+        .nav-descriptive {
+          color: var(--o-color-brand);
+        }
+      }
+    }
+  }
+  .nav-item:first-child {
+    padding: 0;
+    border: none;
+  }
+  @media screen and (max-width: 1440px) {
+    margin-top: var(--o-spacing-h2);
+    position: relative;
+    grid-template-columns: repeat(2, minmax(82px, 1fr));
+    column-gap: 60px;
+    &::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 50%;
+      content: '';
+      width: 1px;
+      height: calc(100% - 48px);
+      background-color: var(--o-color-division);
+    }
+    .nav-item {
+      padding: 0;
+      border: none;
+      flex-direction: column;
+      .nav-icon {
+        width: 30px;
+      }
+      .nav-text {
+        margin: 0;
+        .nav-title {
+          font-size: var(--o-font-size-text);
+        }
+        .nav-title-en {
+          text-align: center;
+        }
+        .nav-descriptive {
+          display: none;
+          text-align: left;
+        }
+      }
+    }
+    .nav-item:nth-child(3) {
+      border: 0;
+    }
+    .nav-item:nth-child(-n + 2) {
+      padding-top: 0;
+      padding-bottom: var(--o-spacing-h6);
+      border-bottom: 1px solid var(--o-color-division);
+    }
+    .nav-item:nth-child(2) {
+      position: relative;
+    }
+    .nav-item:nth-child(n + 3) {
+      padding-top: var(--o-spacing-h6);
+    }
+  }
+}
+</style>

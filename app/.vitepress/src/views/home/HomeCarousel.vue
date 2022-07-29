@@ -22,6 +22,10 @@ const changeActiveMobile = (activeNames: any) => {
     active.value = activeNames;
   }
 };
+
+const go = (path: string) => {
+  window.open(path, '_blank');
+};
 </script>
 
 <template>
@@ -45,10 +49,17 @@ const changeActiveMobile = (activeNames: any) => {
           </div>
         </div>
         <div class="carousel-pc-button">
-          <a target="_blank" :href="i18n.home.IMG_CAROUSE.TRY_URL">
+          <OButton
+            animation
+            type="text"
+            class="carousel-pc-button-item"
+            @click="go(i18n.home.IMG_CAROUSE.TRY_URL)"
+          >
             {{ i18n.home.IMG_CAROUSE.BUTTON }}
-            <IconArrowRight class="carousel-pc-button-icon"></IconArrowRight>
-          </a>
+            <template #suffixIcon>
+              <IconArrowRight class="carousel-pc-button-icon"></IconArrowRight>
+            </template>
+          </OButton>
         </div>
       </OCard>
     </div>
@@ -84,9 +95,9 @@ const changeActiveMobile = (activeNames: any) => {
 <style lang="scss" scoped>
 .carousel {
   max-width: 1504px;
-  margin: 0 auto;
   padding: 0 var(--o-spacing-h2);
-  @media (max-width: 1100px) {
+  margin: 0 auto;
+  @media (max-width: 1080px) {
     padding: 0 var(--o-spacing-h5);
   }
   h3 {
@@ -107,6 +118,7 @@ const changeActiveMobile = (activeNames: any) => {
   &-mobile {
     margin-top: var(--o-spacing-h5);
 
+    display: flex;
     flex-flow: column;
 
     &-card {
@@ -130,8 +142,8 @@ const changeActiveMobile = (activeNames: any) => {
     &-content {
       display: flex;
       flex-flow: row;
-      justify-content: space-between;
-      align-items: center;
+      // justify-content: space-between;
+      // align-items: center;
     }
 
     &-img {
@@ -174,8 +186,8 @@ const changeActiveMobile = (activeNames: any) => {
     &-content {
       display: flex;
       flex-flow: row;
-      justify-content: space-between;
-      align-items: center;
+      // justify-content: space-between;
+      // align-items: center;
       padding-bottom: var(--o-spacing-h2);
       border-bottom: 1px solid var(--o-color-division);
     }
@@ -184,16 +196,13 @@ const changeActiveMobile = (activeNames: any) => {
       display: flex;
       flex-flow: column;
       margin-right: var(--o-spacing-h1);
-      justify-content: space-between;
-      height: 400px;
+      // justify-content: space-between;
+      height: 300px;
       align-items: center;
-      :nth-child(4) {
-        border-bottom: 0px;
-        padding-bottom: 0px;
-      }
 
-      @media (max-width: 1280px) {
-        height: 320px;
+      :nth-child(3) {
+        border-bottom: 0px !important;
+        padding-bottom: 0px !important;
       }
     }
 
@@ -208,54 +217,53 @@ const changeActiveMobile = (activeNames: any) => {
 
     &-title {
       cursor: pointer;
-      font-size: var(--o-font-size-h4);
+      font-size: var(--o-font-size-h5);
       font-weight: 400;
       color: var(--o-color-text2);
       line-height: var(--o-line-height-h4);
       text-align: start;
       border-bottom: 1px solid var(--o-color-division);
-      padding-bottom: var(--o-spacing-h2);
-      @media (max-width: 1280px) {
-        padding-bottom: var(--o-spacing-h3);
-      }
+      padding: var(--o-spacing-h4) 0;
     }
-
+    &-title:first-child {
+      padding-top: 0;
+    }
     &-button {
       display: flex;
-      margin-top: var(--o-line-height-h3);
+      padding-top: var(--o-spacing-h2);
       justify-content: center;
       align-items: center;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: var(--o-color-text2);
-      transition: all 0.3s;
+      @media screen and (max-width: 1000px) {
+        padding: 20px 0;
+        font-size: 12px;
+      }
 
-      &-icon {
-        margin-left: var(--o-spacing-h8);
-        width: var(--o-font-size-h8);
-        height: var(--o-font-size-h8);
-        transition: all 0.3s;
+      &-item:hover {
         color: var(--o-color-brand);
       }
 
-      a {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: var(--o-color-text2);
-        transition: all 0.3s;
-        &:hover {
-          color: var(--o-color-brand);
-          .carousel-pc-button-icon {
-            transform: translateX(3px);
-          }
-        }
+      :deep(.o-button) {
+        padding: 0;
+      }
+
+      &-icon {
+        color: var(--o-color-brand);
+        width: var(--o-font-size-h8);
+        height: var(--o-font-size-h8);
       }
     }
   }
+}
+
+:deep(.el-icon-arrow-right) {
+  font-weight: 700;
+  transform: rotate(90deg);
+  &::before {
+    color: #000;
+  }
+}
+:deep(.el-icon-arrow-right.is-active) {
+  transform: rotate(270deg);
 }
 .active {
   color: var(--o-color-brand);
