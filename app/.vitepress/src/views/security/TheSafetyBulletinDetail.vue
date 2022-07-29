@@ -82,7 +82,6 @@ onMounted(() => {
   display: flex;
   .last-page {
     font-size: var(--o-font-size-tip);
-    font-family: FZLTHJW--GB1-0, FZLTHJW--GB1;
     font-weight: normal;
     color: var(--o-color-text3);
     line-height: var(--o-line-height-tip);
@@ -93,7 +92,6 @@ onMounted(() => {
   }
   .current-page {
     font-size: var(--o-font-size-tip);
-    font-family: FZLTHJW--GB1-0, FZLTHJW--GB1;
     font-weight: 600;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-tip);

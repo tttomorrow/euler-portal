@@ -645,7 +645,6 @@ p::after {
         text-align: center;
         color: #555555;
         background-color: var(--o-color-bg3);
-        font-family: FZLTZHJW--GB1-0, FZLTZHJW--GB1;
         @media screen and (max-width: 1000px) {
           padding: 8px 0;
           font-size: 12px;
@@ -765,7 +764,6 @@ p::after {
               width: fit-content;
               height: 24px;
               font-size: 16px;
-              font-family: FZLTHJW--GB1-0, FZLTHJW--GB1;
               line-height: 24px;
               .o-icon {
                 margin: 0 5px;
@@ -792,7 +790,6 @@ p::after {
               flex-direction: column;
               justify-content: space-around;
               padding: 0 24px;
-              font-family: FZLTHJW--GB1-0, FZLTHJW--GB1;
               font-weight: normal;
               text-align: center;
               font-size: 16px;

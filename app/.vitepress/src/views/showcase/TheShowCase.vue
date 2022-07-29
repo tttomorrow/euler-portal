@@ -157,7 +157,7 @@ function getUrlParam() {
 onMounted(() => {
   window.addEventListener('scroll', onscroll);
   getUrlParam();
-  console.log(activeIndex.value);
+  // console.log(activeIndex.value);
 
   getCaseTagData().then((res: any) => {
     const orderArr: any = [];
