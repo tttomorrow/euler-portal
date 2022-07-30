@@ -17,7 +17,8 @@ export default {
       '基础层：提供丰富的 enclave 开发接口或工具，包含代码生成工具和enclave声明周期管理等接口，并且在安全侧支持POSIX APIs 和标准 OpenSSL 接口，用户基于这些接口可以自由开发安全应用程序 。',
     ],
     DESC_BACKGROUND: '/img/projects/share/card-shading.png',
-    FRAMEWORK_IMG: '/img/projects/secgear/framework.png',
+    FRAMEWORK_IMG: '/img/projects/secgear/framework-hight-en.png',
+    FRAMEWORK_IMG_DARK: '/img/projects/secgear/framework-dark-en.png',
   },
   SECGEAR_DOCUMENT: {
     TITLE_OUTSIDE: '文档',

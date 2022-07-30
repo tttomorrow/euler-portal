@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import { computed } from 'vue';
+import { useCommon } from '@/stores/common';
+import MiniTitle from '../components/MiniTitle.vue';
+
 defineProps({
   featuresObj: {
     type: Object,
@@ -6,16 +10,31 @@ defineProps({
       return {};
     },
   },
+  device: {
+    type: Boolean,
+    default: true,
+  },
 });
+const commonStore = useCommon();
+const isDark = computed(() => {
+  return commonStore.theme === 'dark' ? true : false;
+});
+const changeImg = function (url: string) {
+  if (isDark.value) {
+    const getLightImg = url.split('.png');
+    return getLightImg[0] + '-dark.png';
+  }
+};
 </script>
 
 <template>
   <div class="features-box">
     <!-- 标题 -->
-    <div class="title">
-      <div class="title-outside">{{ featuresObj.TITLE_OUTSIDE }}</div>
-      <div class="title-inside">{{ featuresObj.TITLE_INSIDE }}</div>
-    </div>
+    <MiniTitle
+      :device="device"
+      :title-inside="featuresObj.TITLE_INSIDE"
+      :title-outside="featuresObj.TITLE_OUTSIDE"
+    />
     <!-- 内容 -->
     <div class="content">
       <div
@@ -29,7 +48,8 @@ defineProps({
             : 'content-item content-item-bottom'
         "
       >
-        <img :src="item.IMG" alt="" />
+        <img v-if="!isDark" :src="item.IMG" alt="" />
+        <img v-else :src="changeImg(item.IMG)" alt="" />
         <div class="item-info">
           <div class="content-item-title">{{ item.TITLE }}</div>
           <div class="content-item-desc">{{ item.DESC }}</div>
@@ -44,32 +64,6 @@ defineProps({
   width: 100%;
   padding: 0 var(--o-spacing-h5);
   margin-bottom: var(--o-spacing-h2);
-  .title {
-    margin: 0 auto var(--o-spacing-s4);
-    margin-bottom: var(--o-spacing-h1);
-    font-size: var(--o-font-size-h3);
-    color: var(--o-color-text2);
-    line-height: var(--o-line-height-h3);
-    position: relative;
-    text-align: center;
-    &-outside {
-      position: absolute;
-      left: 50%;
-      top: 24px;
-      transform: translateX(-50%);
-      z-index: 1;
-    }
-    &-inside {
-      color: var(--o-color-text3);
-    }
-    @media screen and (max-width: 767px) {
-      margin-bottom: 0;
-      font-size: var(--o-font-size-h8);
-      &-outside {
-        top: 20%;
-      }
-    }
-  }
   .content {
     margin: 0 auto;
     background-color: var(--o-color-bg);
@@ -135,8 +129,10 @@ defineProps({
       }
     }
   }
-  .content :nth-child(5) {
-    border-bottom: 1px solid var(--o-color-division);
+  @media screen and (max-width: 767px) {
+    .content :nth-child(5) {
+      border-bottom: 1px solid var(--o-color-division);
+    }
   }
 }
 </style>
