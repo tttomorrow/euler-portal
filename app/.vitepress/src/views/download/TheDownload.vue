@@ -44,14 +44,14 @@ const isDrawerOpen = ref(false);
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
-const resetDrawer = () => {
-  activeManufacturer.value = [];
-  manufacturerAll.value = true;
-  activePublish.value = [];
-  publishAll.value = true;
-  activeLTS.value = false;
-  ListFilter();
-};
+// const resetDrawer = () => {
+//   activeManufacturer.value = [];
+//   manufacturerAll.value = true;
+//   activePublish.value = [];
+//   publishAll.value = true;
+//   activeLTS.value = false;
+//   ListFilter();
+// };
 
 //数据筛选
 const tagManufacturer: Ref<string[]> = ref([]);
@@ -311,9 +311,9 @@ onMounted(() => {
         >
         </el-switch>
         <div class="filter-drawer-button">
-          <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
+          <!-- <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
             i18n.download.BTNRESET
-          }}</OButton>
+          }}</OButton> -->
           <OButton
             type="primary"
             class="filter-drawer-button-item"
