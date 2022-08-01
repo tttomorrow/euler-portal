@@ -8,14 +8,14 @@ const useWindowSroll = () => {
     top = document.documentElement.scrollTop || document.body.scrollTop;
   }
 
-  const screenWidth = ref(top);
+  const scrollTop = ref(top);
   const onScroll = () => {
-    screenWidth.value =
+    scrollTop.value =
       document.documentElement.scrollTop || document.body.scrollTop;
   };
 
   onMounted(() => {
-    screenWidth.value =
+    scrollTop.value =
       document.documentElement.scrollTop || document.body.scrollTop;
 
     window.addEventListener('scroll', onScroll);
@@ -25,7 +25,7 @@ const useWindowSroll = () => {
     window.removeEventListener('resize', onScroll);
   });
 
-  return screenWidth;
+  return scrollTop;
 };
 
 export default useWindowSroll;
