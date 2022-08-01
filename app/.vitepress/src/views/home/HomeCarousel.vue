@@ -233,9 +233,9 @@ const go = (path: string) => {
       padding-top: var(--o-spacing-h2);
       justify-content: center;
       align-items: center;
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 1080px) {
         padding: 20px 0;
-        font-size: 12px;
+        font-size: var(--o-font-size-tip);
       }
 
       &-item:hover {

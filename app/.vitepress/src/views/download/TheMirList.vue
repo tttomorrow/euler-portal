@@ -115,7 +115,7 @@ onMounted(async () => {
         {{ i18n.download.MIRROR_ALL.CONTENT[1] }}</a
       >.
     </p>
-    <el-table
+    <OTable
       v-if="screenWidth > 768"
       :data="tableData"
       header-cell-class-name="mirror-list-header"
@@ -172,7 +172,7 @@ onMounted(async () => {
         width="260"
       >
       </OTableColumn>
-    </el-table>
+    </OTable>
     <div v-else class="mirror-mobile">
       <OCard v-for="(item, index) in listData" :key="index" class="mirror-card">
         <div class="mirror-card-content">
@@ -252,17 +252,18 @@ onMounted(async () => {
     line-height: 54px;
     padding: 0 !important;
     .cell {
-      padding-left: 0px;
+      padding-left: 0px !important;
+      padding-right: var(--o-spacing-h6) !important;
     }
   }
   &-header:first-child {
     .cell {
-      padding-left: var(--o-spacing-h2);
+      padding-left: var(--o-spacing-h2) !important;
     }
   }
   &-header:last-child {
     .cell {
-      padding-right: var(--o-spacing-h2);
+      padding-right: var(--o-spacing-h2) !important;
     }
   }
 
@@ -272,6 +273,9 @@ onMounted(async () => {
       font-weight: 800 !important;
       height: 72px !important;
       border: none !important;
+      a {
+        color: var(--o-color-text2) !important;
+      }
     }
   }
 
@@ -280,18 +284,20 @@ onMounted(async () => {
     font-weight: 400;
     color: var(--o-color-text2);
     height: 54px;
+    border-bottom: 1px var(--o-color-division) solid !important;
     .cell {
-      padding-left: 0px;
+      padding-left: 0px !important;
+      padding-right: var(--o-spacing-h6) !important;
     }
   }
   &-row:first-child {
     .cell {
-      padding-left: var(--o-spacing-h2);
+      padding-left: var(--o-spacing-h2) !important;
     }
   }
   &-row:last-child {
     .cell {
-      padding-right: var(--o-spacing-h2);
+      padding-right: var(--o-spacing-h2) !important;
     }
   }
 }
@@ -357,7 +363,7 @@ onMounted(async () => {
   @media (max-width: 1100px) {
     padding: 0 var(--o-spacing-h5);
   }
-  > p {
+  p {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
     color: var(--o-color-text2);
@@ -368,11 +374,10 @@ onMounted(async () => {
       line-height: var(--o-line-height-tip);
       margin: var(--o-spacing-h2) 0 var(--o-spacing-h5) 0;
     }
-
-    > a {
-      text-decoration: none;
-      color: var(--o-color-brand);
-    }
+  }
+  a {
+    text-decoration: none;
+    color: var(--o-color-brand);
   }
 
   &-img {
