@@ -25,3 +25,7 @@ export function firstToUpper(str: string): string {
     return $1.toUpperCase() + $2.toLowerCase();
   });
 }
+
+export function isBrowser(): boolean {
+  return typeof window !== 'undefined';
+}
