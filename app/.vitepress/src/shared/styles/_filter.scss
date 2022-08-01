@@ -2,12 +2,16 @@
     box-shadow: none !important;
     --el-popper-border-radius: none;
 
+    .is-light {
+        border: 1px solid red;
+    }
+
     .el-popper__arrow {
         display: none;
     }
 
     .el-select-dropdown__item {
-        color: var(--o-color-base_inverse);
+        color: var(--o-color-text2);
 
         &:hover {
             color: var(--o-color-brand);
@@ -15,7 +19,15 @@
     }
 
     .el-select-dropdown__item.selected {
+        background-color: var(--o-color-bg2);
+    }
+
+    .el-select-dropdown__item.selected {
         font-weight: normal;
         color: var(--o-color-brand);
+    }
+
+    .el-select-dropdown__wrap {
+        background-color: var(--o-color-bg);
     }
 }

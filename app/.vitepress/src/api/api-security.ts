@@ -18,9 +18,9 @@ export function getSecurityList(params: BulletinParams) {
  * 调用接口获取Cve列表
  * @name getCveList
  */
-export function getCveList(params: QueryParams) {
+export function getCveList(pages: QueryParams) {
   const url = '/api-cve/cve-security-notice-server/cvedatabase/findAll';
-  return request.post(url, params).then((res: AxiosResponse) => res.data);
+  return request.post(url, { pages }).then((res: AxiosResponse) => res.data);
 }
 
 /**

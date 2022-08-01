@@ -10,7 +10,7 @@ import { getSecurityList } from '@/api/api-security';
 import {
   BulletinParams,
   SecurityLists,
-} from '@/shared/@types/type-safety-bulletin';
+} from '@/shared/@types/type-support.ts';
 import OSearch from 'opendesign/search/OSearch.vue';
 
 const router = useRouter();
