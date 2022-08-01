@@ -15,10 +15,10 @@ export default {
   Layout,
   NotFound,
   enhanceApp({ app }: { app: App }) {
-    if (typeof global !== 'undefined') {
-      // @ts-ignore
-      global.window = {};
-    }
+    // if (typeof global !== 'undefined') {
+    // @ts-ignore
+    //   global.window = {};
+    // }
     app.use(OpenDesign);
     app.use(ElementPlus);
     app.use(createPinia());
