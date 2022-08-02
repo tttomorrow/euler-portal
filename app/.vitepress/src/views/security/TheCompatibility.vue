@@ -6,7 +6,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
-import { BulletinParams } from '@/shared/@types/type-safety-bulletin';
+import { BulletinParams } from '@/shared/@types/type-support.ts';
 
 const { theme: i18n } = useData();
 const inputName = ref('zhangsan');
