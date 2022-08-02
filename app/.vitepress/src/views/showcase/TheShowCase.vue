@@ -381,7 +381,7 @@ onUnmounted(() => {
     .case-card {
       height: 198px;
       padding: 40px 26px 40px 40px;
-      background-image: url(@/assets/showcase/case-bg.png);
+      background-image: url(@/assets/category/showcase/case-bg.png);
       background-size: cover;
       position: relative;
       display: flex;
@@ -423,9 +423,11 @@ onUnmounted(() => {
           @media (max-width: 768px) {
             bottom: 14px;
           }
-          .button {
+          :deep(.button) {
             width: 96px;
             height: 28px;
+            display: flex;
+            justify-content: center;
             padding: 0;
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
@@ -433,6 +435,9 @@ onUnmounted(() => {
               width: 88px;
               height: 24px;
               font-size: var(--o-font-size-tip);
+            }
+            span {
+              color: #ffffff;
             }
           }
         }

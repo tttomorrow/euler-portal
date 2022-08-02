@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, watch, onMounted } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
 import { useData } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';

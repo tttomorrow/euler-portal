@@ -9,8 +9,9 @@ import {
 } from 'vue';
 import { useData, useRouter } from 'vitepress';
 import { useCommon } from '@/stores/common';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
-import VideoCtrl from './controll/VideoCtrl.vue';
+import VideoCtrl from '@/components/VideoCtrl.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 
 import IconArrowLeft from '~icons/app/icon-arrow-left1.svg';
@@ -65,11 +66,20 @@ onMounted(() => {
   getMenu();
   teacherList.value = menuData.value[0].teacher;
   allNode.value = getCoursePath(menuData.value);
-  ctrlObj.value = {
-    element: document.getElementById('pc-video'),
-    isShow: true,
-    barWidth: 590,
-  };
+  if (useWindowResize().value > 1400) {
+    ctrlObj.value = {
+      element: document.getElementById('pc-video'),
+      isShow: true,
+      barWidth: 700,
+    };
+  } else {
+    ctrlObj.value = {
+      element: document.getElementById('pc-video'),
+      isShow: true,
+      barWidth: 432,
+    };
+  }
+
   courseIndex.value =
     JSON.parse(sessionStorage.getItem('courseIndex') || '0') * 1;
   setCourseData(allNode.value[courseIndex.value]);
@@ -598,8 +608,11 @@ const goHome = () => {
             width: 560px;
             height: 375px;
           }
-          .playControll {
+          :deep(.playControll) {
             display: none;
+            @media (max-width: 1400px) {
+              bottom: 30px !important;
+            }
           }
           .big-controll {
             bottom: 34px;
@@ -612,7 +625,7 @@ const goHome = () => {
             bottom: 50%;
             left: 50%;
             margin: 0 0 -10px -25px;
-            background-image: url('@/assets/video/play.png');
+            background-image: url('@/assets/category/mooc/video-ctrl/play.png');
             cursor: pointer;
             background-size: contain;
             opacity: 0.6;
@@ -948,7 +961,7 @@ const goHome = () => {
             bottom: 50%;
             left: 50%;
             margin: 0 0 -35px -25px;
-            background-image: url('@/assets/video/play.png');
+            background-image: url('@/assets/category/mooc/video-ctrl/play.png');
             cursor: pointer;
             background-size: contain;
             opacity: 0.6;

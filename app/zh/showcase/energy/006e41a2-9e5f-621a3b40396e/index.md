@@ -1,10 +1,9 @@
 ---
 title: 国家电网
-module: showcase
+category: showcase
 industry: 能源
 company: 国家电网
 summary: 智能调度系统 D5000 工程，实现对电力核心调度系统的操作系统迁移改造
-customLayout: true
 banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
