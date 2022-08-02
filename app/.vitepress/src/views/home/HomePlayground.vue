@@ -70,14 +70,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.out-box {
-  max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
-  margin: 0 auto;
-  @media screen and (max-width: 1080px) {
-    padding: 0 var(--o-spacing-h5);
-  }
-}
 h3 {
   margin-top: var(--o-spacing-h1);
   margin-bottom: var(--o-spacing-h2);
@@ -95,6 +87,7 @@ h3 {
     margin-bottom: var(--o-spacing-h5);
   }
 }
+
 .playground {
   margin: 0 auto;
   max-width: 100%;

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { useData } from 'vitepress';
+
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
 import HomeBanner from './HomeBanner.vue';
@@ -7,17 +10,79 @@ import HomePlayground from './HomePlayground.vue';
 import HomeNav from './HomeNav.vue';
 import PublishLink from './PublishLink.vue';
 import SourceLink from './SourceLink.vue';
+import AppCalendar from '@/components/AppCalendar.vue';
+
+import { getMeetingData } from '@/api/api-calendar';
+import { TableData } from '@/shared/@types/type-calendar';
+
+interface MeetingData {
+  tableData: TableData[];
+}
+
+const calendarData = ref<TableData[]>([
+  {
+    date: '',
+    timeData: [
+      {
+        creator: '',
+        duration_time: '',
+        join_url: '',
+        startTime: '',
+        start_date: '',
+        endTiem: '',
+        url: '',
+        id: '',
+      },
+    ],
+  },
+]);
+const { theme: i18n } = useData();
+onMounted(() => {
+  getMeetingData().then((res: MeetingData) => {
+    calendarData.value = res.tableData;
+  });
+});
 </script>
 
 <template>
   <HomeBanner />
-  <HomeNav />
-  <HomeCarousel />
-  <UserCase />
-  <CommunityActivity />
-  <HomePlayground />
-  <PublishLink />
-  <SourceLink />
+  <div class="wraper">
+    <HomeNav />
+    <HomeCarousel />
+    <UserCase />
+    <CommunityActivity />
+    <div class="home-calendar">
+      <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
+      <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
+    </div>
+    <HomePlayground />
+    <PublishLink />
+    <SourceLink />
+  </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wraper {
+  margin: 0 auto;
+  padding: 0 var(--o-spacing-h2);
+  max-width: 1504px;
+  @media screen and (max-width: 1080px) {
+    padding: 0 var(--o-spacing-h5);
+  }
+  h3 {
+    font-size: var(--o-font-size-h3);
+    font-weight: 300;
+    color: var(--o-color-text2);
+    line-height: var(--o-line-height-h3);
+    width: 100%;
+    text-align: center;
+    margin-top: var(--o-spacing-h1);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
+      margin-top: var(--o-spacing-h2);
+      margin-bottom: var(--o-spacing-h5);
+    }
+  }
+}
+</style>

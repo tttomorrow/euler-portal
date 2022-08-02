@@ -28,13 +28,6 @@ const screenWidth = useWindowResize();
 
 <style lang="scss" scoped>
 .source-publish-link {
-  max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
-  margin: 0 auto;
-  @media (max-width: 1080px) {
-    padding: 0 var(--o-spacing-h5);
-  }
-
   .en-h3 {
     line-height: 34px !important;
     font-weight: 400 !important;
