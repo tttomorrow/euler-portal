@@ -29,3 +29,22 @@ export function firstToUpper(str: string): string {
 export function isBrowser(): boolean {
   return typeof window !== 'undefined';
 }
+/**
+ * 获取今日日期 2222-01-09
+ * @returns string
+ */
+export function getNowFormatDate() {
+  const date = new Date();
+  const seperator1 = '-';
+  const year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let strDate = date.getDate();
+  if (month >= 1 && month <= 9) {
+    month = Number('0' + month);
+  }
+  if (strDate >= 0 && strDate <= 9) {
+    strDate = Number('0' + strDate);
+  }
+  const currentDate = year + seperator1 + month + seperator1 + strDate;
+  return currentDate;
+}
