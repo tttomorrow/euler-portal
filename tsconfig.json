@@ -25,7 +25,7 @@
     "app/.vitepress/**/*.d.ts",
     "app/.vitepress/**/*.tsx",
     "app/.vitepress/**/*.vue",
-    "app/.vitepress/config.js",
+    "app/.vitepress/config.ts",
     "app/.vitepress/theme/index.ts"
   ]
 }
