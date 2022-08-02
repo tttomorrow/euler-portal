@@ -10,11 +10,13 @@ import search from '@/assets/illustrations/search.png';
 import cve from '@/assets/illustrations/cve.png';
 
 import { getSecurityList } from '@/api/api-security';
-import { BulletinParams, SecurityLists } from '@/shared/@types/type-support';
+import { SecurityLists, cveQuery } from '@/shared/@types/type-support.ts';
 import OSearch from 'opendesign/search/OSearch.vue';
 
-const router = useRouter();
 const i18n = computed(() => useI18n());
+
+const router = useRouter();
+
 const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
