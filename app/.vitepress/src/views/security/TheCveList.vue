@@ -3,18 +3,23 @@ import { reactive, ref, watch, onMounted } from 'vue';
 import { useData } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
+import TagFilter from '@/components/TagFilter.vue';
 
 import banner from '@/assets/banner-secondary.png';
+import cve from '@/assets/illustrations/cve.png';
 import search from '@/assets/illustrations/search.png';
 
 import { getCveList } from '@/api/api-security';
 import { CveLists, QueryParams } from '@/shared/@types/type-support.ts';
 
-const inputName = ref('');
 const { theme: i18n } = useData();
-const total = ref(0);
+const inputName = ref('');
 const layout = ref('sizes, prev, pager, next, slot, jumper');
+const total = ref(0);
 const activeIndex = ref(0);
+const filterIndex = ref(0);
+
+const categoryLists = ['全部', 'Fixed', 'Unaffected'];
 
 const tableData = ref<CveLists[]>([
   {
@@ -26,11 +31,6 @@ const tableData = ref<CveLists[]>([
     updateTime: '',
   },
 ]);
-
-// const queryData: QueryParams = reactive({
-//   page: 1,
-//   size: 10,
-// });
 
 const pages: QueryParams = reactive({
   page: 1,
@@ -52,33 +52,48 @@ const tagClick = (i: number) => {
   activeIndex.value = i;
 };
 
-// const handleSizeChange = (val: number) => {
-//   queryData.size = val;
-// };
+const handleSizeChange = (val: number) => {
+  pages.size = val;
+};
 
-// const handleCurrentChange = (val: number) => {
-//   queryData.page = val;
-// };
+const handleCurrentChange = (val: number) => {
+  pages.page = val;
+};
+
+function filterClick(i: number) {
+  filterIndex.value = i;
+}
 
 onMounted(() => {
   getCveLists(pages);
 });
-// watch(
-//   queryData,
-//   () => getCveLists(queryData)
-// );
+watch(pages, () => getCveLists(pages));
 </script>
 <template>
   <BannerLevel2
     :background-image="banner"
-    background-text="CONTENT"
+    background-text="SUPPORT"
     :title="i18n.security.CVE"
     subtitle=""
     :illustration="search"
   />
   <div class="wrapper">
     <OSearch v-model="inputName" class="o-search"></OSearch>
-    <OCard class="filter-card">
+
+    <div class="filter-card">
+      <TagFilter label="严重等级" :show="false">
+        <OTag
+          v-for="(item, index) in i18n.security.SEVERITY_LIST"
+          :key="'tag' + index"
+          :type="activeIndex === index ? 'primary' : 'text'"
+          @click="tagClick(index)"
+        >
+          {{ item.NAME }}
+        </OTag>
+      </TagFilter>
+    </div>
+
+    <!-- <OCard class="filter-card">
       <template #header>
         <div class="card-header">
           <span class="category">{{ i18n.security.SEVERITY }}</span>
@@ -94,9 +109,11 @@ onMounted(() => {
           </TagFilter>
         </div>
       </template>
-    </OCard>
-    <OTable :data="tableData" style="width: 100%">
-      <OTableColumn :label="i18n.security.CVE" prop="cveId"> </OTableColumn>
+    </OCard> -->
+
+    <OTable class="pc-list" :data="tableData" style="width: 100%">
+      <OTableColumn :label="i18n.security.CVE" prop="cveId" width="160">
+      </OTableColumn>
       <OTableColumn
         :label="i18n.security.SYNOPSIS"
         prop="summary"
@@ -104,20 +121,58 @@ onMounted(() => {
       <OTableColumn
         :label="i18n.security.CVSS_SCORE"
         prop="cvsssCoreOE"
+        width="120"
       ></OTableColumn>
       <OTableColumn
-        width="210"
+        width="180"
         :label="i18n.security.RELEASE_DATE"
         prop="updateTime"
       ></OTableColumn>
       <OTableColumn
-        width="210"
+        width="180"
         :label="i18n.security.MODIFIED_TIME"
         prop="updateTime"
       ></OTableColumn>
-      <OTableColumn :label="i18n.security.STATUS" prop="status"></OTableColumn>
-      <OTableColumn :label="i18n.security.OPERATION"> </OTableColumn>
+      <OTableColumn
+        :label="i18n.security.STATUS"
+        prop="status"
+        width="90"
+      ></OTableColumn>
+      <!-- <OTableColumn :label="i18n.security.OPERATION"> </OTableColumn> -->
+      <el-table-column :label="i18n.security.OPERATION" width="80">
+        <template #default>
+          <span>详情</span>
+        </template>
+      </el-table-column>
     </OTable>
+    <div class="filter-box">
+      <div class="filter">
+        <div
+          v-for="(item, index) in categoryLists"
+          :key="item"
+          :class="filterIndex === index ? 'selected' : ''"
+          class="filter-item"
+          @click="filterClick(index)"
+        >
+          {{ item }}
+        </div>
+      </div>
+    </div>
+
+    <ul class="mobile-list">
+      <li v-for="(item, index) in tableData" :key="item" class="item">
+        <ul>
+          <li><span>CVE:</span>{{ item.cveId }}</li>
+          <li><span>概要:</span>{{ item.summary }}</li>
+          <li><span>CVSS评分:</span>{{ item.cvsssCoreNVD }}</li>
+          <li><span>发布时间:</span>{{ item.announcementTime }}</li>
+          <li><span>修改时间:</span>{{ item.updateTime }}</li>
+          <li><span>状态:</span>{{ item.status }}</li>
+          <li><span>操作:</span><a>详情</a></li>
+        </ul>
+      </li>
+    </ul>
+
     <OPagination
       v-model:page-size="pages.size"
       v-model:currentPage="pages.page"
@@ -138,41 +193,129 @@ onMounted(() => {
   max-width: 1504px;
   margin: var(--o-spacing-h1) auto 0;
   padding: var(--o-spacing-h1) var(--o-spacing-h2) 0px;
+  @media screen and (max-width: 1080px) {
+    padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
+    margin: 0 auto;
+  }
   .o-search {
     height: 48px;
+    @media screen and (max-width: 1080px) {
+      display: none;
+    }
   }
 }
 .filter-card {
   margin: var(--o-spacing-h4) 0;
-  .category {
-    display: inline-block;
-    width: 56px;
-    font-size: var(--o-font-size-text);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    line-height: var(--o-line-height-text);
-    margin-right: var(--o-spacing-h4);
+  background-color: var(--o-color-bg);
+  padding: var(--o-spacing-h5) var(--o-spacing-h2);
+  @media screen and (max-width: 1080px) {
+    display: none;
   }
-  .card-header {
-    line-height: 54px;
-  }
-  .category-item {
-    width: 28px;
-    font-size: var(--o-font-size-text);
-    font-weight: 400;
-    color: var(--o-color-text3);
-    line-height: var(--o-line-height-text);
-    cursor: pointer;
-  }
-  .active {
-    border: 1px solid #002fa7;
-    color: #002fa7;
-    padding: 3px 12px;
-  }
+  // .category {
+  //   display: inline-block;
+  //   width: 56px;
+  //   font-size: var(--o-font-size-text);
+  //   font-weight: 400;
+  //   color: var(--o-color-text2);
+  //   line-height: var(--o-line-height-text);
+  //   margin-right: var(--o-spacing-h4);
+  // }
+  // .card-header {
+  //   line-height: 54px;
+  // }
+  // .category-item {
+  //   width: 28px;
+  //   font-size: var(--o-font-size-text);
+  //   font-weight: 400;
+  //   color: var(--o-color-text3);
+  //   line-height: var(--o-line-height-text);
+  //   cursor: pointer;
+  // }
+  // .active {
+  //   border: 1px solid #002fa7;
+  //   color: #002fa7;
+  //   padding: 3px 12px;
+  // }
 }
 .pagination {
   margin: var(--o-spacing-h2) 0 var(--o-spacing-h1) 0;
   margin-left: 50%;
   transform: translateX(-50%);
+  @media screen and (max-width: 1080px) {
+    display: none;
+  }
+}
+.filter-box {
+  display: none;
+  @media screen and (max-width: 1080px) {
+    display: block;
+  }
+}
+.filter {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 32px;
+
+  .selected {
+    background-color: #002fa7;
+    color: var(--o-color-text);
+  }
+  &-item {
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    padding: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #002fa7;
+    line-height: 22px;
+    border: 1px solid #002fa7;
+    border-right: 0;
+    &:last-child {
+      border: 1px solid #002fa7;
+    }
+  }
+}
+.mobile-list {
+  display: none;
+  @media screen and (max-width: 1080px) {
+    display: block;
+  }
+  .item {
+    padding: var(--o-spacing-h5);
+    font-size: var(--o-font-size-tip);
+    font-weight: 400;
+    color: #999999;
+    line-height: var(--o-line-height-tip);
+    background-color: var(--o-color-bg);
+    &:nth-child(odd) {
+      background: var(--o-color-bg6);
+    }
+    & li {
+      margin-bottom: 8px;
+    }
+    li:last-child {
+      margin-bottom: 0;
+      a {
+        color: #002fa7;
+      }
+    }
+    li:nth-child(2) {
+      display: flex;
+      span {
+        min-width: 30px;
+      }
+    }
+    span {
+      color: var(--o-color-text2);
+      margin-right: var(--o-spacing-h8);
+    }
+  }
+}
+.pc-list {
+  @media screen and (max-width: 1080px) {
+    display: none;
+  }
 }
 </style>

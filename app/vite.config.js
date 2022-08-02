@@ -53,13 +53,8 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      '/api': {
-        target: 'https://api.openeuler.org',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
       '/api-cve': {
-        target: 'https://www.openeuler.org/api-cve',
+        target: 'https://www.openeuler.org/api-cve/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-cve/, ''),
       },
@@ -72,6 +67,11 @@ export default defineConfig({
         target: 'https://doc-search.test.osinfra.cn/industry',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/industry/, ''),
+      },
+      '/api': {
+        target: 'https://api.openeuler.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
