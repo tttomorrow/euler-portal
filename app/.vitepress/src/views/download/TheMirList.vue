@@ -241,68 +241,6 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
-<style lang="scss">
-.mirror-list {
-  &-header {
-    background: var(--o-color-bg3) !important;
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    line-height: 54px;
-    padding: 0 !important;
-    .cell {
-      padding-left: 0px !important;
-      padding-right: var(--o-spacing-h6) !important;
-    }
-  }
-  &-header:first-child {
-    .cell {
-      padding-left: var(--o-spacing-h2) !important;
-    }
-  }
-  &-header:last-child {
-    .cell {
-      padding-right: var(--o-spacing-h2) !important;
-    }
-  }
-
-  &-area {
-    .mirror-list-row {
-      font-size: var(--o-font-size-h7) !important;
-      font-weight: 800 !important;
-      height: 72px !important;
-      border: none !important;
-      a {
-        color: var(--o-color-text2) !important;
-      }
-    }
-  }
-
-  &-row {
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    height: 54px;
-    border-bottom: 1px var(--o-color-division) solid !important;
-    .cell {
-      padding-left: 0px !important;
-      padding-right: var(--o-spacing-h6) !important;
-    }
-  }
-  &-row:first-child {
-    .cell {
-      padding-left: var(--o-spacing-h2) !important;
-    }
-  }
-  &-row:last-child {
-    .cell {
-      padding-right: var(--o-spacing-h2) !important;
-    }
-  }
-}
-</style>
-
 <style lang="scss" scoped>
 .mirror {
   &-mobile {
@@ -356,7 +294,65 @@ onMounted(async () => {
     }
   }
 }
-.mirror-list {
+:deep.mirror-list {
+  .mirror-list-area {
+    .mirror-list-row {
+      line-height: 72px;
+      border: none;
+      a {
+        font-size: var(--o-font-size-h7);
+        line-height: var(--o-line-height-h7);
+        font-weight: 800;
+        color: var(--o-color-text2);
+      }
+    }
+  }
+  .mirror-list-header {
+    background: var(--o-color-bg3);
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    line-height: 54px;
+    padding: 0 !important;
+    .cell {
+      padding: 0 var(--o-spacing-h6) 0 0;
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
+      }
+    }
+
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
+      }
+    }
+  }
+
+  .mirror-list-row {
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    height: 54px;
+    border-bottom: 1px var(--o-color-division) solid;
+    .cell {
+      padding-left: 0px;
+      padding-right: var(--o-spacing-h6);
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
+      }
+    }
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
+      }
+    }
+  }
   max-width: 1504px;
   margin: 0 auto;
   padding: 0 var(--o-spacing-h2);
@@ -387,15 +383,15 @@ onMounted(async () => {
     cursor: pointer;
     color: var(--o-color-brand);
     display: block;
-    width: 24px;
-    height: 24px;
+    width: var(--o-line-height-h8);
+    height: var(--o-line-height-h8);
   }
   &-ftp {
     cursor: pointer;
     color: var(--o-color-brand);
     display: block;
-    width: 24px;
-    height: 24px;
+    width: var(--o-line-height-h8);
+    height: var(--o-line-height-h8);
   }
 }
 

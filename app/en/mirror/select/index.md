@@ -1,5 +1,5 @@
 ---
-title: '镜像选择'
+title: "Selected Mirrors"
 ---
 
 <script setup>

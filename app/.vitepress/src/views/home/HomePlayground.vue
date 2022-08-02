@@ -12,14 +12,15 @@ const codingData = [
 ];
 const { theme: i18n } = useData();
 const textBlock = ref(false);
-const observe = new IntersectionObserver((res) => {
-  if (res[0].intersectionRatio <= 0) return;
-  textBlock.value = false;
-  nextTick(() => {
-    textBlock.value = true;
-  });
-});
+
 onMounted(() => {
+  const observe = new IntersectionObserver((res) => {
+    if (res[0].intersectionRatio <= 0) return;
+    textBlock.value = false;
+    nextTick(() => {
+      textBlock.value = true;
+    });
+  });
   playground.value && observe.observe(playground.value);
 });
 </script>

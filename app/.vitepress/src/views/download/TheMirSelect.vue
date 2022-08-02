@@ -219,56 +219,6 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
-<style lang="scss">
-.mirror-select {
-  &-header {
-    background: var(--o-color-bg3) !important;
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    line-height: 54px;
-    padding: 0 !important;
-    .cell {
-      padding-left: 0px !important;
-      padding-right: var(--o-spacing-h6) !important;
-    }
-  }
-  &-header:first-child {
-    .cell {
-      padding-left: var(--o-spacing-h2) !important;
-    }
-  }
-  &-header:last-child {
-    .cell {
-      padding-right: var(--o-spacing-h2) !important;
-    }
-  }
-
-  &-row {
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    height: 54px;
-    border-bottom: 1px var(--o-color-division) solid !important;
-    .cell {
-      padding-left: 0px !important;
-      padding-right: var(--o-spacing-h6) !important;
-    }
-  }
-  &-row:first-child {
-    .cell {
-      padding-left: var(--o-spacing-h2) !important;
-    }
-  }
-  &-row:last-child {
-    .cell {
-      padding-right: var(--o-spacing-h2) !important;
-    }
-  }
-}
-</style>
-
 <style lang="scss" scoped>
 .mirror {
   &-mobile {
@@ -320,7 +270,54 @@ onMounted(async () => {
     }
   }
 }
-.mirror-select {
+:deep.mirror-select {
+  .mirror-select-header {
+    background: var(--o-color-bg3);
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    line-height: 54px;
+    padding: 0 !important;
+    .cell {
+      padding: 0 var(--o-spacing-h6) 0 0;
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
+      }
+    }
+
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
+      }
+    }
+  }
+
+  .mirror-select-row {
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    height: 54px;
+    border-bottom: 1px var(--o-color-division) solid;
+    .cell {
+      padding-left: 0px;
+      padding-right: var(--o-spacing-h6);
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
+      }
+    }
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
+      }
+    }
+  }
+
   max-width: 1504px;
   margin: 0 auto;
   padding: 0 var(--o-spacing-h2);
