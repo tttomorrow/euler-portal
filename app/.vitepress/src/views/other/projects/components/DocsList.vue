@@ -37,12 +37,12 @@ const goLink = (path: string) => {
             <div v-if="item.DESC" class="item-desc">{{ item.DESC }}</div>
             <div class="item-link">
               <OButton
+                v-for="(i, key) in item.LINK"
+                :key="key"
                 animation
                 type="text"
                 size="small"
                 class="item-link-button"
-                v-for="(i, key) in item.LINK"
-                :key="key"
                 @click="goLink(i.LINK)"
               >
                 {{ i.TEXT }}
@@ -77,12 +77,12 @@ const goLink = (path: string) => {
           </div>
           <div class="docs-item-link">
             <OButton
+              v-for="(i, key) in item.LINK"
+              :key="key"
               animation
               type="text"
               size="small"
               class="button"
-              v-for="(i, key) in item.LINK"
-              :key="key"
               @click="goLink(i.LINK)"
             >
               {{ i.TEXT }}

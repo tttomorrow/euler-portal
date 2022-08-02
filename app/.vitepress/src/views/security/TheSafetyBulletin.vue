@@ -7,10 +7,7 @@ import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
 import { getSecurityList } from '@/api/api-security';
-import {
-  BulletinParams,
-  SecurityLists,
-} from '@/shared/@types/type-support.ts';
+import { BulletinParams, SecurityLists } from '@/shared/@types/type-support.ts';
 import OSearch from 'opendesign/search/OSearch.vue';
 
 const router = useRouter();

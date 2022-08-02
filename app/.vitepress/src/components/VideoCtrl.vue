@@ -2,6 +2,11 @@
 <script setup lang="ts">
 import { toRefs, watch, ref, onMounted, onUnmounted } from 'vue';
 const props = defineProps({
+  //  ctrlObj.value = {
+  //   element: document.getElementById('pc-video'),要控制的video元素
+  //   isShow: true,控住播放或暂停
+  //   barWidth: 590, 进度条总长度建议根据hooks中的获取屏幕宽度的函数计算后传值
+  // }
   ctrlObj: {
     type: Object,
     default() {
@@ -127,10 +132,10 @@ function fullScreen() {
     background-size: cover;
   }
   .play-icon {
-    background-image: url('@/assets/video/icon-play.svg');
+    background-image: url('@/assets/category/mooc/video-ctrl/icon-play.svg');
   }
   .pause-icon {
-    background-image: url('@/assets/video/icon-pause.svg');
+    background-image: url('@/assets/category/mooc/video-ctrl/icon-pause.svg');
   }
   .timebar {
     position: absolute;
@@ -159,10 +164,10 @@ function fullScreen() {
     background-size: cover;
   }
   .voice-icon {
-    background-image: url('@/assets/video/icon-voice.svg');
+    background-image: url('@/assets/category/mooc/video-ctrl/icon-voice.svg');
   }
   .mute-icon {
-    background-image: url('@/assets/video/icon-mute.svg');
+    background-image: url('@/assets/category/mooc/video-ctrl/icon-mute.svg');
   }
 }
 .big-controll {
@@ -177,7 +182,7 @@ function fullScreen() {
   .full-screen {
     width: 20px;
     height: 20px;
-    background-image: url('@/assets/video/full-screen.svg');
+    background-image: url('@/assets/category/mooc/video-ctrl/full-screen.svg');
     background-size: contain;
     position: absolute;
     right: 15px;

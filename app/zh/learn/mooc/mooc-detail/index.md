@@ -1,4 +1,7 @@
+---
+title: 慕课详情
+---
 <script setup>
-  import MoocDetail from "@/views/learn/mooc/mooc-detail/MoocDetail.vue"
+  import TheMoocDetail from "@/views/learn/mooc/mooc-detail/TheMoocDetail.vue"
 </script>
-<MoocDetail />
+<TheMoocDetail />
