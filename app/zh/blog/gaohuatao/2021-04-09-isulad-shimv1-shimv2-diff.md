@@ -1,6 +1,6 @@
 ---
 title: kata shimV2中监控容器退出机制的实现方案分析
-category: blog
+category: blog 
 date: 2021-04-09
 tags:
   - iSulad
