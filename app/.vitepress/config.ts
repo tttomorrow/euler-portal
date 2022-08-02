@@ -1,6 +1,7 @@
 import i18n from './src/i18n';
+import type { UserConfig } from 'vitepress';
 
-module.exports = {
+const config: UserConfig = {
   base: '/',
   head: [
     [
@@ -56,3 +57,4 @@ module.exports = {
     docsUrl: 'https://docs.openeuler.org',
   },
 };
+export default config;
