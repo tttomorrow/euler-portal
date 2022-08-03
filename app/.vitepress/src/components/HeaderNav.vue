@@ -23,7 +23,7 @@ interface NavItem {
 
 const router = useRouter();
 const { lang, theme } = useData();
-const activeItem = ref(router.route.path.split('/')[2]);
+const activeItem = ref(router.route.path?.split('/')[2]);
 
 watch(
   () => router.route.path,
@@ -61,7 +61,7 @@ const toggleSubDebounced = (item: NavItem | null) => {
         isShow.value = true;
       }
     },
-    300,
+    500,
     {
       trailing: true,
     }

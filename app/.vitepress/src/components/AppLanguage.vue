@@ -1,25 +1,19 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useRouter, useData } from 'vitepress';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 import IconDown from '~icons/app/icon-down.svg';
 
-// device是否是pc、mobile
-defineProps({
-  device: {
-    type: Boolean,
-    default: true,
-  },
-});
-
 const router = useRouter();
 const { lang } = useData();
+const screenWidth = useWindowResize();
 
 // 选择语言;
 const langOptions = [
   { id: 'zh', label: '中文' },
   { id: 'en', label: 'English' },
-  { id: 'ru', label: '俄文' },
+  { id: 'ru', label: 'Русский' },
 ];
 
 // 选择语言
@@ -48,7 +42,7 @@ const hideSub = () => {
 
 <template>
   <div
-    v-if="device"
+    v-if="screenWidth >= 1100"
     class="lang-menu"
     @mouseenter="showSub()"
     @mouseleave="hideSub()"

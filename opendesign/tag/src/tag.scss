@@ -24,6 +24,39 @@
       color: var(--o-color-brand_hover);
       border: var(--o-tag-border-primary_hover);
     }
+    &.o-tag-multiple {
+      position: relative;
+      .multiple-icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 16px;
+        height: 16px;
+        &::after {
+          border: 8px solid transparent;
+          border-right: 8px solid var(--o-color-brand);
+          border-bottom: 8px solid var(--o-color-brand);
+          content: '';
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          bottom: 0;
+          right: -1px;
+          display: block;
+          z-index: 1;
+        }
+        svg {
+          width: 10px;
+          height: 10px;
+          color: #fff;
+          display: block;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: 2;
+        }
+      }
+    }
   }
 
   &.o-tag-type-secondary {
