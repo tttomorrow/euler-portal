@@ -1,14 +1,15 @@
 ---
 title: 'How to Install and Start StratoVirt'
-category: blog 
+category: blog
 date: 2020-12-02
-tags: 
-    - StratoVirt
-    - Virt
+tags:
+  - StratoVirt
+  - Virt
 archives: 2020-12
-author: Xinle Guo, Zhigang Wang
+author:
+  - Xinle Guo
+  - Zhigang Wang
 summary: This article describes how to quickly install StratoVirt and run VMs using StratoVirt and guides how to connect StratoVirt to iSulad and run secure containers.
-
 ---
 
 ## Background
@@ -19,7 +20,7 @@ As a virtualization platform, StratoVirt uses a unified architecture to support 
 
 ### Minimum Hardware Requirements
 
-- Processor architecture: Only AArch64 and x86\_64 processor architectures are supported. AArch64 requires ARMv8 or later and supports virtualization extension. x86\_64 supports VT-x.
+- Processor architecture: Only AArch64 and x86_64 processor architectures are supported. AArch64 requires ARMv8 or later and supports virtualization extension. x86_64 supports VT-x.
 - 2-core CPU
 - 4 GiB memory
 - 16 GiB available disk space
@@ -30,7 +31,7 @@ Operating system: openEuler 20.09 or later
 
 ## Installing StratoVirt
 
-You can install StratoVirt in either of the following ways: 
+You can install StratoVirt in either of the following ways:
 
 If you only want to use StratoVirt to run a VM, you are advised to install the RPM package with Yum. You only need to install [openEuler 20.09][1] or later on a platform that meets the minimum hardware requirements and configure the openEuler Yum repository. Then, you can run the yum command to install the package.
 
@@ -84,7 +85,7 @@ Step 2: Create a PE kernel image.
 
 **/home/kernel/vmlinux.bin** is the created kernel image.
 
-Note: If the x86\_64 processor architecture is used, copy **stratovirt/docs/kernel\_config/config\_openeuler\_4.19\_x86\_64** to the kernel directory and rename it **.config**.
+Note: If the x86_64 processor architecture is used, copy **stratovirt/docs/kernel_config/config_openeuler_4.19_x86_64** to the kernel directory and rename it **.config**.
 
 Step 3: Create a rootfs image in EXT4 format.
 
@@ -111,7 +112,7 @@ EOF
 
 **/home/rootfs** is the created rootfs image.
 
-Note: To obtain the latest alpine-mini rootfs of the x86\_64 processor architecture, run the following commands:
+Note: To obtain the latest alpine-mini rootfs of the x86_64 processor architecture, run the following commands:
 
 ```
 [root@openeuler \~]# wget http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/x86\_64/alpine-minirootfs-3.12.0-x86\_64.tar.gz
@@ -245,7 +246,7 @@ sandbox\_cgroup\_with\_emulator = false
 Step 1: Create a running script.
 
 ```
-[root@openeuler \~]# cat \> /home/stratovirt.sh \<\<EOF 
+[root@openeuler \~]# cat \> /home/stratovirt.sh \<\<EOF
 
 # !/bin/bash
 
@@ -267,11 +268,9 @@ Run the **isula ps** command to check whether the secure container **test** is r
 [root@openeuler \~]# isula exec –ti test sh
 ```
 
-
 So far, the secure container runs successfully. You can operate the secure container in the same way as operating a regular container.
 
-[1]:	https://www.openeuler.org/en/docs/20.09/docs/Installation/Installation.html
-[2]:	https://gitee.com/openeuler/stratovirt
-[3]:	https://www.rust-lang.org/tools/install
-[4]:	https://docs.openeuler.org/en/docs/20.09/docs/Container/isulad-container-engine.html
-
+[1]: https://www.openeuler.org/en/docs/20.09/docs/Installation/Installation.html
+[2]: https://gitee.com/openeuler/stratovirt
+[3]: https://www.rust-lang.org/tools/install
+[4]: https://docs.openeuler.org/en/docs/20.09/docs/Container/isulad-container-engine.html
