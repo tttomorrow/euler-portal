@@ -1,4 +1,4 @@
-// import { createI18n } from 'vue-i18n';
+import { useData } from 'vitepress';
 
 import sig from './sig';
 import download from './download';
@@ -16,8 +16,9 @@ import showcase from './showcase';
 import interaction from './interaction';
 import live from './interaction/live';
 import compatibility from './compatibility';
+import summit from './interaction/summit';
 
-const i18n = {
+const i18n: { [key: string]: any } = {
   zh: {
     sig: sig.zh,
     download: download.zh,
@@ -35,6 +36,7 @@ const i18n = {
     interaction: interaction.zh,
     live: live.zh,
     compatibility: compatibility.zh,
+    summit: summit.zh,
   },
   en: {
     sig: sig.en,
@@ -50,6 +52,7 @@ const i18n = {
     stratovirt: stratovirt.en,
     interaction: interaction.en,
     live: live.en,
+    summit: summit.en,
   },
   ru: {
     sig: sig.ru,
@@ -65,13 +68,13 @@ const i18n = {
     stratovirt: stratovirt.ru,
     interaction: interaction.ru,
     live: live.ru,
+    summit: summit.ru,
   },
 };
 
-// const i18n = createI18n({
-//   locale: 'zh',
-//   allowComposition: true,
-//   messages,
-// });
+export function useI18n() {
+  const { lang } = useData();
+  return i18n[lang.value];
+}
 
 export default i18n;

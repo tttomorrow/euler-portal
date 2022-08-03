@@ -10,6 +10,7 @@ import HomePlayground from './HomePlayground.vue';
 import HomeNav from './HomeNav.vue';
 import PublishLink from './PublishLink.vue';
 import SourceLink from './SourceLink.vue';
+import HomeNews from './HomeNews.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 
 import { getMeetingData } from '@/api/api-calendar';
@@ -51,6 +52,7 @@ onMounted(() => {
     <HomeCarousel />
     <UserCase />
     <CommunityActivity />
+    <HomeNews />
     <div class="home-calendar">
       <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
       <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />

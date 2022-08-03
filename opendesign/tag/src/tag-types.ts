@@ -12,6 +12,10 @@ export const tagProps = {
     type: String as PropType<TagType>,
     default: 'outline',
   },
+  multiple: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 export type TagProps = ExtractDefaultPropTypes<typeof tagProps>;

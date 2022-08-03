@@ -41,6 +41,7 @@ const initList = () => {
 
   for (let i = 0; i < imageList.length; i++) {
     const temp = {
+      id: i,
       name: cndata.PICTURE_TITLE[i],
       url: imageList[i],
       image: cndata[nameList[i]],
@@ -67,15 +68,15 @@ list.value = initList();
       <p class="brand-word">{{ i18n.brand.WORDS }}</p>
     </div>
     <div class="brand-list">
-      <OCard v-for="(item, index) in list" :key="index" class="brand-item">
+      <OCard v-for="item in list" :key="item.id" class="brand-item">
         <div class="brand-item-title">{{ item.name }}</div>
         <div class="brand-item-img">
           <img :src="item.mobile" />
         </div>
         <div class="button">
           <a
-            v-for="(item2, index2) in item.image"
-            :key="index2"
+            v-for="item2 in item.image"
+            :key="item2.STYLE"
             :href="item2.URL"
             target="_blank"
             download
@@ -89,8 +90,8 @@ list.value = initList();
       <h3>{{ i18n.brand.PPT_TEXT }}</h3>
       <div class="ppt-list">
         <OCard
-          v-for="(ppt, index) in i18n.brand.PPT_LIST"
-          :key="index"
+          v-for="ppt in i18n.brand.PPT_LIST"
+          :key="ppt.LINK"
           class="ppt-item"
           :style="{ padding: '0px' }"
         >

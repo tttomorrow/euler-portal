@@ -80,7 +80,7 @@ onMounted(() => {
     >
       <OCollapseItem
         v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
-        :key="index"
+        :key="item.TYPE"
         class="case-mobile-list"
         :name="index"
       >
@@ -105,9 +105,8 @@ onMounted(() => {
         </template>
         <div class="user-mobile">
           <div
-            v-for="(user, index2) in caseData[lang] &&
-            caseData[lang][item.TYPE]"
-            :key="index2"
+            v-for="user in caseData[lang] && caseData[lang][item.TYPE]"
+            :key="user.company"
             class="user-card"
           >
             <div class="user-title">{{ user.company }}</div>
@@ -121,7 +120,7 @@ onMounted(() => {
         <div class="case-tab">
           <div
             v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
-            :key="index"
+            :key="item.TYPE"
             class="case-tab-item"
             @click="changeActive(index)"
           >
@@ -142,9 +141,9 @@ onMounted(() => {
         </div>
         <div class="case-user">
           <a
-            v-for="(item2, index2) in caseData[lang] &&
+            v-for="item2 in caseData[lang] &&
             caseData[lang][i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
-            :key="index2"
+            :key="item2.company"
             class="user-card"
             @click="go(item2.path)"
           >

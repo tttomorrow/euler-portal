@@ -7,9 +7,14 @@ import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
 import { useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import MapContainer from './MapContainer.vue';
 
 const { theme: i18n } = useData();
-
+interface MapMsg {
+  name: string;
+  latitude: number;
+  longitude: number;
+}
 interface MirrorMsg {
   name: string;
   location?: string;
@@ -26,6 +31,8 @@ interface MirrorMsg {
 const screenWidth = useWindowResize();
 
 const tableData: Ref<MirrorMsg[]> = ref([]);
+
+const mapData: Ref<MapMsg[]> = ref([]);
 
 const inputDom: Ref<HTMLElement | null> = ref(null);
 
@@ -69,6 +76,26 @@ const initTable = (data: any[]) => {
   result = [...asData, ...euData];
   return result;
 };
+
+const initMap = (data: any[]) => {
+  const result: MapMsg[] = [];
+  data.forEach((item) => {
+    const itemObj: MapMsg = {
+      name: '',
+      latitude: 0,
+      longitude: 0,
+    };
+
+    itemObj.name = item.Name;
+    itemObj.longitude = item.Longitude;
+    itemObj.latitude = item.Latitude;
+
+    result.push(itemObj);
+  });
+
+  return result;
+};
+
 const tableRowClassName = ({ row }: any) => {
   if (row.area) {
     return 'mirror-list-area';
@@ -87,7 +114,6 @@ const copyText = (value: string | undefined) => {
     type: 'success',
   });
 };
-
 const listData = computed(() => {
   return tableData.value.filter((item) => typeof item.area === 'undefined');
 });
@@ -96,6 +122,7 @@ onMounted(async () => {
   try {
     const responeData = await getAllMirror();
     tableData.value = initTable(responeData);
+    mapData.value = initMap(responeData);
   } catch (e: any) {
     throw new Error(e);
   }
@@ -115,7 +142,7 @@ onMounted(async () => {
         {{ i18n.download.MIRROR_ALL.CONTENT[1] }}</a
       >.
     </p>
-    <el-table
+    <OTable
       v-if="screenWidth > 768"
       :data="tableData"
       header-cell-class-name="mirror-list-header"
@@ -172,9 +199,9 @@ onMounted(async () => {
         width="260"
       >
       </OTableColumn>
-    </el-table>
+    </OTable>
     <div v-else class="mirror-mobile">
-      <OCard v-for="(item, index) in listData" :key="index" class="mirror-card">
+      <OCard v-for="item in listData" :key="item.name" class="mirror-card">
         <div class="mirror-card-content">
           <div class="mirror-card-title">
             {{ i18n.download.MIRROR_ALL.NAME }}
@@ -235,70 +262,23 @@ onMounted(async () => {
         </div>
       </OCard>
     </div>
+    <div class="mirror-map">
+      <MapContainer :map-data="mapData"></MapContainer>
+    </div>
+
     <div class="input-box">
       <!-- 用于复制RSNC的值 -->
       <input id="useCopy" type="text" />
     </div>
   </div>
 </template>
-
-<style lang="scss">
-.mirror-list {
-  &-header {
-    background: var(--o-color-bg3) !important;
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    line-height: 54px;
-    padding: 0 !important;
-    .cell {
-      padding-left: 0px;
-    }
-  }
-  &-header:first-child {
-    .cell {
-      padding-left: var(--o-spacing-h2);
-    }
-  }
-  &-header:last-child {
-    .cell {
-      padding-right: var(--o-spacing-h2);
-    }
-  }
-
-  &-area {
-    .mirror-list-row {
-      font-size: var(--o-font-size-h7) !important;
-      font-weight: 800 !important;
-      height: 72px !important;
-      border: none !important;
-    }
-  }
-
-  &-row {
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    height: 54px;
-    .cell {
-      padding-left: 0px;
-    }
-  }
-  &-row:first-child {
-    .cell {
-      padding-left: var(--o-spacing-h2);
-    }
-  }
-  &-row:last-child {
-    .cell {
-      padding-right: var(--o-spacing-h2);
-    }
-  }
-}
-</style>
-
 <style lang="scss" scoped>
 .mirror {
+  &-map {
+    margin-top: var(--o-spacing-h2);
+    width: 100%;
+    height: 996px;
+  }
   &-mobile {
     > :nth-child(odd) {
       background-color: var(--o-color-bg3);
@@ -351,13 +331,72 @@ onMounted(async () => {
   }
 }
 .mirror-list {
+  :deep(.mirror-list-area) {
+    .mirror-list-row {
+      line-height: 72px;
+      border: none;
+      a {
+        font-size: var(--o-font-size-h7);
+        line-height: var(--o-line-height-h7);
+        font-weight: 800;
+        color: var(--o-color-text2);
+      }
+    }
+  }
+  :deep(.mirror-list-header) {
+    background: var(--o-color-bg3);
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    line-height: 54px;
+    padding: 0 !important;
+    .cell {
+      padding: 0 var(--o-spacing-h6) 0 0;
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
+      }
+    }
+
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
+      }
+    }
+  }
+
+  :deep(.mirror-list-row) {
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    height: 54px;
+    border-bottom: 1px var(--o-color-division) solid;
+    .cell {
+      padding-left: 0px;
+      padding-right: var(--o-spacing-h6);
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
+      }
+    }
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
+      }
+    }
+  }
+
   max-width: 1504px;
   margin: 0 auto;
   padding: 0 var(--o-spacing-h2);
   @media (max-width: 1100px) {
     padding: 0 var(--o-spacing-h5);
   }
-  > p {
+  p {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
     color: var(--o-color-text2);
@@ -368,11 +407,10 @@ onMounted(async () => {
       line-height: var(--o-line-height-tip);
       margin: var(--o-spacing-h2) 0 var(--o-spacing-h5) 0;
     }
-
-    > a {
-      text-decoration: none;
-      color: var(--o-color-brand);
-    }
+  }
+  a {
+    text-decoration: none;
+    color: var(--o-color-brand);
   }
 
   &-img {
@@ -382,15 +420,15 @@ onMounted(async () => {
     cursor: pointer;
     color: var(--o-color-brand);
     display: block;
-    width: 24px;
-    height: 24px;
+    width: var(--o-line-height-h8);
+    height: var(--o-line-height-h8);
   }
   &-ftp {
     cursor: pointer;
     color: var(--o-color-brand);
     display: block;
-    width: 24px;
-    height: 24px;
+    width: var(--o-line-height-h8);
+    height: var(--o-line-height-h8);
   }
 }
 
