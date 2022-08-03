@@ -1,6 +1,6 @@
 export default {
   ATUNE_BANNER_TEXT: ['A-Tune', '一款基于AI开发的智能优化引擎'],
-  ATUNE_BANNER_IMG: '/img/minisite/svirt/mobile-banner.png',
+  ATUNE_BANNER_IMG: '/img/projects/atune/illustration-banner.png',
   ATUNE_DESC: [
     'A-Tune是一款基于openEuler开发的，自动化、智能化性能调优引擎。它利用人工智能技术，对运行在操作系统上的业务建立精准模型，动态感知业务特征并推理出具体应用，根据业务负载情况动态调节并给出最佳的参数配置组合，从而使业务处于最佳运行状态。',
   ],
@@ -62,8 +62,8 @@ export default {
     },
     {
       IMG: '/img/projects/share/cards-letter.png',
-      TITLE: '相对我说',
-      LINK_LIST: ['mail'],
+      TITLE: '想对我说',
+      LINK_LIST: ['mail to:a-tune@openeuler.org'],
       SHOW: true,
     },
     {
@@ -83,7 +83,8 @@ export default {
       '交互系统层：用于各类系统资源的监控和配置，调优策略执行在本层进行。',
       '优化模型库：包含10大类20+款应用场景的优化配置',
     ],
-    FRAMEWORK_IMG: '/img/projects/atune/framework.png',
+    FRAMEWORK_IMG: '/img/projects/atune/framework-hight-zh.png',
+    FRAMEWORK_IMG_DARK: '/img/projects/atune/framework-dark-zh.png',
   },
   ATUNE_DOCUMENT: {
     TITLE_OUTSIDE: '文档',

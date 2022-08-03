@@ -1,4 +1,4 @@
-export interface Item {
+export interface DayData {
   creator: string;
   duration_time: string;
   join_url: string;
@@ -22,5 +22,5 @@ export interface Item {
 export interface TableData {
   date: string;
   start_date?: string;
-  timeData: Item[];
+  timeData: DayData[];
 }

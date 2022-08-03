@@ -2,17 +2,24 @@
 import { useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import { getUserCaseData } from '@/api/api-showcase';
 
-const { theme: i18n } = useData();
+const { lang, theme: i18n } = useData();
 
 const commonStore = useCommon();
+
+const caseData: any = ref({});
 
 const active = ref(0);
 const activeMobile = ref(0);
 
 const screenWidth = useWindowResize();
+
+const go = (path: string) => {
+  window.open(path, '_blank');
+};
 
 const changeActive = (index: number) => {
   active.value = index;
@@ -24,6 +31,41 @@ const changeActiveMobile = (activeNames: any) => {
     active.value = activeNames;
   }
 };
+
+onMounted(() => {
+  const params = {
+    keyword: '',
+    type: '',
+    pageSize: 100,
+  };
+  getUserCaseData(params).then((res: any) => {
+    const result = {
+      zh: {},
+      en: {},
+      ru: {},
+    };
+    res.obj.records.forEach((item: { lang: string; industry: string }) => {
+      if (item.lang === 'zh') {
+        if (typeof (result['zh'] as any)[item.industry] === 'undefined') {
+          (result['zh'] as any)[item.industry] = [];
+        }
+        (result['zh'] as any)[item.industry].push(item);
+      } else if (item.lang === 'en') {
+        if (typeof (result['en'] as any)[item.industry] === 'undefined') {
+          (result['en'] as any)[item.industry] = [];
+        }
+        (result['en'] as any)[item.industry].push(item);
+      } else {
+        if (typeof (result['ru'] as any)[item.industry] === 'undefined') {
+          (result['ru'] as any)[item.industry] = [];
+        }
+        (result['ru'] as any)[item.industry].push(item);
+      }
+    });
+
+    caseData.value = result;
+  });
+});
 </script>
 
 <template>
@@ -51,7 +93,7 @@ const changeActiveMobile = (activeNames: any) => {
                   commonStore.theme === 'dark'
                     ? item.URL_DARK
                     : index === activeMobile
-                    ? item.URL_ACTIVE
+                    ? item.ACTIVE_URL
                     : item.URL
                 "
               />
@@ -63,13 +105,13 @@ const changeActiveMobile = (activeNames: any) => {
         </template>
         <div class="user-mobile">
           <div
-            v-for="(user, index2) in i18n.home.USER_CASE.CASE_LIST[index]
-              ?.CONTENT"
+            v-for="(user, index2) in caseData[lang] &&
+            caseData[lang][item.TYPE]"
             :key="index2"
             class="user-card"
           >
-            <div class="user-title">{{ user.NAME }}</div>
-            <div class="user-word">{{ user.WORD }}</div>
+            <div class="user-title">{{ user.company }}</div>
+            <div class="user-word">{{ user.summary }}</div>
           </div>
         </div>
       </OCollapseItem>
@@ -89,7 +131,7 @@ const changeActiveMobile = (activeNames: any) => {
                 commonStore.theme === 'dark'
                   ? item.URL_DARK
                   : index === active
-                  ? item.URL_ACTIVE
+                  ? item.ACTIVE_URL
                   : item.URL
               "
             />
@@ -99,21 +141,29 @@ const changeActiveMobile = (activeNames: any) => {
           </div>
         </div>
         <div class="case-user">
-          <div
-            v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST[active]
-              ?.CONTENT"
-            :key="index"
+          <a
+            v-for="(item2, index2) in caseData[lang] &&
+            caseData[lang][i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
+            :key="index2"
             class="user-card"
+            @click="go(item2.path)"
           >
-            <div class="user-title">{{ item.NAME }}</div>
-            <div class="user-word">{{ item.WORD }}</div>
-          </div>
+            <div class="user-title">{{ item2.company }}</div>
+            <div class="user-word">{{ item2.summary }}</div>
+          </a>
         </div>
         <div class="case-more">
-          <a :href="i18n.home.USER_CASE.VIEW_MORE_URL">
-            {{ i18n.home.USER_CASE.VIEW_MORE }}
-            <IconArrowRight class="case-more-icon"></IconArrowRight>
-          </a>
+          <OButton
+            animation
+            type="text"
+            class="case-more-item"
+            @click="go(i18n.home.USER_CASE.VIEW_MORE_LINK)"
+          >
+            {{ i18n.home.IMG_CAROUSE.BUTTON }}
+            <template #suffixIcon>
+              <IconArrowRight class="case-more-icon"></IconArrowRight>
+            </template>
+          </OButton>
         </div>
       </OCard>
     </div>
@@ -136,10 +186,9 @@ h3 {
   }
 }
 .case-mobile {
-  @media (max-width: 1080px) {
+  @media (max-width: 1100px) {
     border-top: none;
   }
-
   &-list {
     margin-top: var(--o-spacing-h4);
     @media (max-width: 768px) {
@@ -213,10 +262,12 @@ h3 {
     cursor: pointer;
     padding: var(--o-spacing-h5);
     width: 100%;
+    height: 100%;
     background: var(--o-color-bg2);
     border: 1px solid rgba(0, 0, 0, 0);
     border-left: 2px solid var(--o-color-brand);
-    @media (max-width: 1080px) {
+
+    @media (max-width: 1100px) {
       background: var(--o-color-bg);
       margin-top: var(--o-spacing-h8);
     }
@@ -227,7 +278,7 @@ h3 {
   }
 
   &-card:hover {
-    @media (min-width: 1080px) {
+    @media (min-width: 1100px) {
       background-color: var(--o-color-bg);
       border: 1px solid var(--o-color-brand);
       box-shadow: var(--o-shadow-secondary);
@@ -252,6 +303,11 @@ h3 {
     font-weight: 400;
     color: var(--o-color-text3);
     line-height: var(--o-line-height-text);
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2; // 设置两行文字溢出
+    -webkit-box-orient: vertical;
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
@@ -259,47 +315,28 @@ h3 {
   }
 }
 .case {
-  &-main {
-    max-width: 1504px;
-    margin: 0 auto;
-    padding: 0 var(--o-spacing-h2);
-    @media (max-width: 1100px) {
-      padding: 0 var(--o-spacing-h5);
-    }
-  }
   &-more {
     display: flex;
-    margin-top: var(--o-line-height-h3);
+    padding-top: var(--o-spacing-h2);
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--o-color-text2);
-    transition: all 0.3s;
+    @media screen and (max-width: 1000px) {
+      padding: 20px 0;
+      font-size: 12px;
+    }
 
-    &-icon {
-      margin-left: var(--o-spacing-h8);
-      width: var(--o-font-size-h8);
-      height: var(--o-font-size-h8);
-      transition: all 0.3s;
+    &-item:hover {
       color: var(--o-color-brand);
     }
 
-    a {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: var(--o-color-text2);
-      transition: all 0.3s;
-      &:hover {
-        color: var(--o-color-brand);
-        .case-more-icon {
-          transform: translateX(3px);
-        }
-      }
+    :deep(.o-button) {
+      padding: 0;
+    }
+
+    &-icon {
+      color: var(--o-color-brand);
+      width: var(--o-font-size-h8);
+      height: var(--o-font-size-h8);
     }
   }
 

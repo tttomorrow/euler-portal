@@ -67,7 +67,6 @@ defineProps({
   .more-info {
     p {
       margin: var(--o-spacing-h2) auto var(--o-spacing-h5) 0;
-      width: 90px;
       height: 26px;
       font-size: var(--o-font-size-h7);
       font-weight: 400;

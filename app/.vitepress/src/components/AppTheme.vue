@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { computed, ref, onMounted, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useCommon } from '@/stores/common';
 
 import IconMoonLight from '~icons/app/sun.svg';
 import IconMoonDark from '~icons/app/moon.svg';
+import { isBrowser } from '@/shared/utils';
 
 // device是否是pc、mobile
 defineProps({
@@ -14,16 +15,32 @@ defineProps({
 });
 
 const commonStore = useCommon();
-// const { t } = useI18n();
+
+if (isBrowser()) {
+  const theme = localStorage.getItem('euler-theme');
+  if (theme) {
+    commonStore.theme = theme;
+    document.documentElement.classList.add(theme);
+  } else {
+    const isDark =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const theme = isDark ? 'dark' : 'light';
+    commonStore.theme = theme;
+    document.documentElement.classList.add(theme);
+    localStorage.setItem('euler-theme', theme);
+  }
+}
+
+const isLight = computed(() => (commonStore.theme === 'light' ? true : false));
+const mobileTheme = ref(!isLight.value);
 
 const changeTheme = () => {
   const theme = commonStore.theme === 'dark' ? 'light' : 'dark';
   commonStore.theme = theme;
   localStorage.setItem('euler-theme', theme);
 };
-
-const isLight = computed(() => (commonStore.theme === 'light' ? true : false));
-const mobileTheme = ref(!isLight.value);
 
 watch(
   () => {
@@ -40,25 +57,6 @@ watch(
     localStorage.setItem('euler-theme', val);
   }
 );
-
-onMounted(() => {
-  if (typeof global === 'undefined') {
-    const theme = localStorage.getItem('euler-theme');
-    if (theme) {
-      commonStore.theme = theme;
-      document.documentElement.classList.add(theme);
-    } else {
-      const isDark =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      const theme = isDark ? 'dark' : 'light';
-      commonStore.theme = theme;
-      document.documentElement.classList.add(theme);
-      localStorage.setItem('euler-theme', theme);
-    }
-  }
-});
 </script>
 
 <template>

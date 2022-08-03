@@ -1,10 +1,9 @@
 ---
 title: 华润集团
-module: showcase
+category: showcase
 industry: 其他
 company: 华润集团
 summary: 创新云专区项目
-customLayout: true
 banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---

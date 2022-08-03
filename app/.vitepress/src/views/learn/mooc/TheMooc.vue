@@ -25,7 +25,7 @@ const { theme: i18n } = useData();
       <div class="right">
         <h3>{{ i18n.mooc.MOOC.MOOC_COURSE[0].TITLE }}</h3>
         <p>{{ i18n.mooc.MOOC.MOOC_COURSE[0].DESC }}</p>
-        <div class="botton">
+        <div class="btn">
           <a href="/zh/learn/mooc/mooc-detail/" target="_self">
             <OButton type="primary">
               <span>{{ i18n.mooc.MOOC.BTN_LEARN }}</span>
@@ -104,7 +104,7 @@ const { theme: i18n } = useData();
           margin-top: var(--o-spacing-h8);
         }
       }
-      .botton {
+      .btn {
         display: flex;
         position: absolute;
         bottom: 40px;
