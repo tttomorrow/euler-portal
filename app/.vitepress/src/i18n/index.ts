@@ -16,6 +16,7 @@ import showcase from './showcase';
 import interaction from './interaction';
 import live from './interaction/live';
 import summit from './interaction/summit';
+import screen from './screen';
 
 const i18n: { [key: string]: any } = {
   zh: {
@@ -35,6 +36,7 @@ const i18n: { [key: string]: any } = {
     interaction: interaction.zh,
     live: live.zh,
     summit: summit.zh,
+    screen: screen.zh,
   },
   en: {
     sig: sig.en,
@@ -51,6 +53,7 @@ const i18n: { [key: string]: any } = {
     interaction: interaction.en,
     live: live.en,
     summit: summit.en,
+    screen: screen.en,
   },
   ru: {
     sig: sig.ru,
@@ -67,6 +70,7 @@ const i18n: { [key: string]: any } = {
     interaction: interaction.ru,
     live: live.ru,
     summit: summit.ru,
+    screen: screen.ru,
   },
 };
 

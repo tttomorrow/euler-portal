@@ -7,7 +7,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
-
+import OScreen from '@/components/OScreen.vue';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
@@ -15,21 +15,8 @@ import IconBrowse from '~icons/app/icon-browse.svg';
 const router = useRouter();
 const i18n = computed(() => useI18n());
 const userCaseData = computed(() => i18n.value.interaction);
-// console.log(i18n.value.interaction)
 
 const isAll = ref(false);
-const tagArrLen = computed(() => {
-  return [
-    '全部',
-    '鲲鹏开发套件Kunpeng DevKit',
-    '鲲鹏开发套件Kunpeng DevKit',
-    '开源项目',
-    '峰会',
-    '鲲鹏开发套件Kunpeng DevKit',
-    '开源项目',
-    '其他',
-  ];
-});
 const toggleClick = (flag: boolean) => {
   isAll.value = flag;
 };
@@ -42,106 +29,14 @@ const currentPage1 = ref(5);
 const pageSize4 = ref(10);
 const total = ref(200);
 
-const bloglist = computed(() => {
-  return [
-    {
-      blogtitle: '如何退订openEuler的邮件列表',
-      blogauthor: 'liuqi',
-      date: '2021-11-23',
-      browsetimes: 100,
-      blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author: 'liuqi',
-      path: '2021-10-14-unsubscribe-mailing-list',
-      tags: ['openEuler', '邮件列表', '退订'],
-    },
-    {
-      blogtitle: '如何在Jenkins上关联Gitee的Webhook',
-      blogauthor: 'liuqi',
-      date: '2021-11-25',
-      browsetimes: 100,
-      blogcontent: '本博客介绍了如何在Jenkins上关联Gitee的Webhook',
-      author: 'liuqi',
-      path: '2021-11-25-jenkins-gitee-webhook',
-      tags: ['Jenkins', 'Gitee', 'Webhook'],
-    },
-    {
-      blogtitle: 'openEuler 社区门禁工程分享',
-      blogauthor: 'liuqi',
-      date: '2021-11-23',
-      browsetimes: 100,
-      blogcontent: 'openEuler 社区门禁工程分享',
-      author: 'liuqi',
-      path: '2021-10-14-unsubscribe-mailing-list',
-      tags: ['openEuler', '邮件列表', '退订'],
-    },
-    {
-      blogtitle: '浅谈openEuler开源社区运营度量及分析',
-      blogauthor: 'Ivye',
-      date: '2020-05-06',
-      browsetimes: 100,
-      blogcontent:
-        '浅谈openEuler开源社区运营度量及分析，属于系列博客的第一篇。',
-      author: 'ivye',
-      path: '2020-05-06-os-metrics-1',
-      tags: ['社区运营', '度量'],
-    },
-    {
-      blogtitle: '如何退订openEuler的邮件列表',
-      blogauthor: 'liuqi',
-      date: '2021-11-23',
-      browsetimes: 100,
-      blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author: 'liuqi',
-      path: '2021-10-14-unsubscribe-mailing-list',
-      tags: ['openEuler', '邮件列表', '退订'],
-    },
-    {
-      blogtitle: '如何退订openEuler的邮件列表',
-      blogauthor: 'liuqi',
-      date: '2021-11-23',
-      browsetimes: 100,
-      blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author: 'liuqi',
-      path: '2021-10-14-unsubscribe-mailing-list',
-      tags: ['openEuler', '邮件列表', '退订'],
-    },
-    {
-      blogtitle: '如何退订openEuler的邮件列表',
-      blogauthor: 'liuqi',
-      date: '2021-11-23',
-      browsetimes: 100,
-      blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author: 'liuqi',
-      path: '2021-10-14-unsubscribe-mailing-list',
-      tags: ['openEuler', '邮件列表', '退订'],
-    },
-    {
-      blogtitle: '如何退订openEuler的邮件列表',
-      blogauthor: 'liuqi',
-      date: '2021-11-23',
-      browsetimes: 100,
-      blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author: 'liuqi',
-      path: '2021-10-14-unsubscribe-mailing-list',
-      tags: ['openEuler', '邮件列表', '退订'],
-    },
-    {
-      blogtitle: '如何退订openEuler的邮件列表',
-      blogauthor: 'liuqi',
-      date: '2021-11-23',
-      browsetimes: 100,
-      blogcontent: '本博客介绍了两种退订openEuler邮件列表的方式',
-      author: 'liuqi',
-      path: '2021-10-14-unsubscribe-mailing-list',
-      tags: ['openEuler', '邮件列表', '退订'],
-    },
-  ];
-});
-
-const toNewsContent = (author: string, path: string) => {
-  const path1 = router.route.path.substring(0, 15);
-  const path2 = 'blog-content';
+const toBlogContent = (author: string, path: string) => {
+  const path1 = router.route.path.substring(0, 3);
+  const path2 = 'blog';
   router.go(`${path1}/${path2}/${author}/${path}`);
+};
+// 筛选方法
+const listfilter = (val: string[]) => {
+  return val;
 };
 </script>
 
@@ -150,13 +45,13 @@ const toNewsContent = (author: string, path: string) => {
     <BannerLevel2
       :background-image="BannerImg1"
       background-text="CONNECT"
-      :title="userCaseData.blog"
+      :title="userCaseData.BLOG"
       :illustration="BannerImg2"
     />
     <div class="blog-tag">
-      <TagFilter :label="userCaseData.tag" @toggle-click="toggleClick">
+      <TagFilter :label="userCaseData.TAG" @toggle-click="toggleClick">
         <OTag
-          v-for="(item, index) in tagArrLen"
+          v-for="(item, index) in userCaseData.TAGSDATALIST"
           :key="'tag' + index"
           :type="activeIndex === index ? 'primary' : 'text'"
           @click="tagClick(index)"
@@ -165,11 +60,22 @@ const toNewsContent = (author: string, path: string) => {
         </OTag>
       </TagFilter>
     </div>
+    <div class="blog-tag2">
+      <OScreen
+        :data="userCaseData.SCREENDATALIST"
+        :list="userCaseData.BLOGDATALIST"
+        @filter="listfilter"
+      />
+    </div>
     <div class="blog-list">
-      <OCard v-for="item in bloglist" :key="item" class="blog-list-item">
+      <OCard
+        v-for="item in userCaseData.BLOGDATALIST"
+        :key="item"
+        class="blog-list-item"
+      >
         <div
           class="blog-list-item-title"
-          @click="toNewsContent(item.author, item.path)"
+          @click="toBlogContent(item.author, item.path)"
         >
           <p>{{ item.blogtitle }}</p>
         </div>
@@ -192,7 +98,7 @@ const toNewsContent = (author: string, path: string) => {
           </div>
         </div>
         <div class="blog-list-item-content">
-          <p>{{ item.blogcontent }}</p>
+          <p>{{ item.summary }}</p>
         </div>
         <div class="blog-list-item-tags">
           <OTag
@@ -227,7 +133,7 @@ const toNewsContent = (author: string, path: string) => {
 .blog {
   &-tag {
     max-width: 1416px;
-    height: 82px;
+    min-height: 82px;
     margin: var(--o-spacing-h1) auto var(--o-spacing-h2) auto;
     box-shadow: var(--o-shadow-base);
     display: flex;
@@ -235,7 +141,9 @@ const toNewsContent = (author: string, path: string) => {
     align-items: center;
     padding-left: var(--o-spacing-h2);
     background-color: var(--o-color-bg);
-    // background-image: url();
+  }
+  &-tag2 {
+    display: none;
   }
   &-list {
     max-width: 1448px;
@@ -266,7 +174,6 @@ const toNewsContent = (author: string, path: string) => {
         .icon {
           font-size: var(--o-font-size-h8);
           display: inline-block;
-          border: 1px dashed var(--o-color-text3);
         }
         p {
           font-size: var(--o-font-size-tip);
@@ -309,6 +216,9 @@ const toNewsContent = (author: string, path: string) => {
   .blog-list {
     grid-template-columns: repeat(2, 1fr);
   }
+  .blog-tag2 {
+    display: none;
+  }
 }
 @media (max-width: 768px) {
   .blog-list {
@@ -317,10 +227,16 @@ const toNewsContent = (author: string, path: string) => {
   .blog-tag {
     display: none;
   }
+  .blog-tag2 {
+    display: block;
+  }
 }
 @media (max-width: 415px) {
   .blog-tag {
     display: none;
+  }
+  .blog-list {
+    margin-top: var(--o-spacing-h5);
   }
 }
 </style>

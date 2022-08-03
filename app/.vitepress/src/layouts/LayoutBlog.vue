@@ -8,7 +8,7 @@ import BreadCrumbs from '@/components/BreadCrumbs.vue';
 const { frontmatter, lang } = useData();
 const i18n = computed(() => useI18n());
 const blogInfo = {
-  link: `/${lang.value}/blog/`,
+  link: `/${lang.value}/interaction/blog-list/`,
   name: i18n.value.common.NAV_ROUTER.BLOG,
 };
 </script>
