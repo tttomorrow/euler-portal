@@ -1,12 +1,15 @@
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import { useData } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
+import TagFilter from '@/components/TagFilter.vue';
 import search from '@/assets/illustrations/search.png';
 
-import { BulletinParams } from '@/shared/@types/type-support.ts';
+import { getCompatibilityList } from '@/api/api-security';
+
+import { cveQuery, compatibilityList } from '@/shared/@types/type-support.ts';
 
 const { theme: i18n } = useData();
 const inputName = ref('zhangsan');
@@ -14,10 +17,30 @@ const activeIndex = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 
-const queryData: BulletinParams = reactive({
-  page: 1,
-  size: 10,
+const queryData: cveQuery = reactive({
+  pages: {
+    page: 1,
+    size: 10,
+  },
+  architecture: '',
+  keyword: '',
+  cpu: '',
+  os: '',
+  lang: 'zh',
 });
+
+const tableData = ref<compatibilityList>([]);
+
+const getCompatibilityData = (data: cveQuery) => {
+  try {
+    getCompatibilityList(data).then((res: any) => {
+      // console.log(res);
+      tableData.value = res.result.hardwareCompList;
+    });
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 const tagClick = (i: number) => {
   activeIndex.value = i;
@@ -30,6 +53,10 @@ const handleSizeChange = (val: number) => {
 const handleCurrentChange = (val: number) => {
   queryData.page = val;
 };
+
+onMounted(() => {
+  getCompatibilityData(queryData);
+});
 </script>
 
 <template>
@@ -41,6 +68,7 @@ const handleCurrentChange = (val: number) => {
     :illustration="search"
   />
   <OTabs>
+    <!-- 整机 -->
     <OTabPane label="整机">
       <div class="wrapper">
         <OSearch v-model="inputName" class="o-search"></OSearch>
@@ -65,9 +93,48 @@ const handleCurrentChange = (val: number) => {
             <span class="category-item">2021</span>
           </div>
         </OCard>
-        <OTable>
-          <OTableColumn label="架构" prop=""></OTableColumn>
+
+        <OTable class="pc-list" :data="tableData" style="width: 100%">
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
+            prop="architecture"
+            width="160"
+          >
+          </OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
+            prop="summary"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
+            prop="osVersion"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
+            prop="updateTime"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
+            prop="updateTime"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
+            prop="status"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
+            prop="hardwareFactory"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
+            prop="hardwareModel"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
+            prop="ram"
+          ></OTableColumn>
         </OTable>
+
         <OPagination
           v-model:page-size="queryData.size"
           v-model:currentPage="queryData.page"
@@ -87,8 +154,11 @@ const handleCurrentChange = (val: number) => {
         </p>
       </div>
     </OTabPane>
+    <!-- 板卡 -->
     <OTabPane label="板卡"> </OTabPane>
+    <!-- 开源软件 -->
     <OTabPane label="开源软件"> </OTabPane>
+    <!-- 商业软件 -->
     <OTabPane label="商业软件"> </OTabPane>
   </OTabs>
 </template>

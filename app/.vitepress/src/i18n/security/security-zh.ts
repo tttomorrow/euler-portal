@@ -27,6 +27,20 @@ export default {
       LABEL: 'Critical',
     },
   ],
+  CATEGORY_LIST: [
+    {
+      NAME: '全部',
+      LABEL: '',
+    },
+    {
+      NAME: 'Fixed',
+      LABEL: 'Fixed',
+    },
+    {
+      NAME: 'Unaffected',
+      LABEL: 'Unaffected',
+    },
+  ],
   YEAR: '年份',
   PLACEHOLDER: '请选择',
   ALL: '全部',

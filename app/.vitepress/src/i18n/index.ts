@@ -15,6 +15,7 @@ import stratovirt from './projects/stratovirt';
 import showcase from './showcase';
 import interaction from './interaction';
 import live from './interaction/live';
+import compatibility from './compatibility';
 
 const i18n = {
   zh: {
@@ -33,6 +34,7 @@ const i18n = {
     showcase: showcase,
     interaction: interaction.zh,
     live: live.zh,
+    compatibility: compatibility.zh,
   },
   en: {
     sig: sig.en,
