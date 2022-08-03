@@ -94,12 +94,6 @@ const go = (path: string) => {
 
 <style lang="scss" scoped>
 .carousel {
-  max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
-  margin: 0 auto;
-  @media (max-width: 1080px) {
-    padding: 0 var(--o-spacing-h5);
-  }
   h3 {
     font-size: var(--o-font-size-h3);
     font-weight: 300;

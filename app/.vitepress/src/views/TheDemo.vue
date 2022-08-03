@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, computed } from 'vue';
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import SummitGuests from '@/components/SummitGuests.vue';
-// import AppCalendar from '@/components/AppCalendar.vue';
 import AppAnchor from '@/components/AppAnchor.vue';
 import TagFilter from '@/components/TagFilter.vue';
-
-// import { getMeetingData } from '@/api/api-calendar';
-// import { TableData } from '@/shared/@types/type-calendar';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
@@ -97,27 +93,6 @@ const lecturerList = [
 ];
 
 const inputName = ref('zhangsan');
-// interface MeetingData {
-//   tableData: TableData[];
-// }
-
-// const calendarData = ref<TableData[]>([
-//   {
-//     date: '',
-//     timeData: [
-//       {
-//         creator: '',
-//         duration_time: '',
-//         join_url: '',
-//         startTime: '',
-//         start_date: '',
-//         endTiem: '',
-//         url: '',
-//         id: '',
-//       },
-//     ],
-//   },
-// ]);
 
 const anchorData = ['anchor1', 'anchor2', 'anchor3'];
 const anchorData1 = ['anchor4', 'anchor5', 'anchor6', 'anchor7'];
@@ -141,11 +116,6 @@ const isDrawerOpen = ref(false);
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
-onMounted(() => {
-  // getMeetingData().then((res: MeetingData) => {
-  //   calendarData.value = res.tableData;
-  // });
-});
 </script>
 
 <template>
@@ -243,11 +213,6 @@ onMounted(() => {
       background-text="CONTENT"
       title="下载"
     />
-
-    <!-- <div class="demo-box">
-      <h4>日历</h4>
-      <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
-    </div> -->
 
     <div class="demo-box">
       <h4>TagFilter</h4>

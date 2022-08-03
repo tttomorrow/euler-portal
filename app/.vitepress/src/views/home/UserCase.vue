@@ -188,7 +188,6 @@ h3 {
   @media (max-width: 1100px) {
     border-top: none;
   }
-
   &-list {
     margin-top: var(--o-spacing-h4);
     @media (max-width: 768px) {
@@ -315,14 +314,6 @@ h3 {
   }
 }
 .case {
-  &-main {
-    max-width: 1504px;
-    margin: 0 auto;
-    padding: 0 var(--o-spacing-h2);
-    @media (max-width: 1100px) {
-      padding: 0 var(--o-spacing-h5);
-    }
-  }
   &-more {
     display: flex;
     padding-top: var(--o-spacing-h2);

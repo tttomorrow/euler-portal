@@ -3,7 +3,7 @@ import { reactive, onMounted } from 'vue';
 import { useData } from 'vitepress';
 
 import { getSecurityDetail } from '@/api/api-security';
-import { DetailParams } from '@/shared/@types/type-bulletin-detail';
+import { DetailParams } from '@/shared/@types/type-support.ts';
 import type { AxiosResponse } from '@/shared/axios';
 
 const { theme: i18n } = useData();

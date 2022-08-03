@@ -33,14 +33,6 @@ const go = (path: string) => {
 </template>
 
 <style lang="scss" scoped>
-.nav-main {
-  max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
-  margin: 0 auto;
-  @media screen and (max-width: 1080px) {
-    padding: 0 var(--o-spacing-h5);
-  }
-}
 .home-nav {
   padding: var(--o-spacing-h4);
   position: relative;
@@ -51,7 +43,7 @@ const go = (path: string) => {
   row-gap: 0;
   background: var(--o-color-bg);
   box-shadow: var(--o-shadow-base);
-  z-index: 99;
+  z-index: 10;
 
   .nav-item {
     cursor: pointer;

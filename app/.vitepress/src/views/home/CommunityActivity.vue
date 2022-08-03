@@ -63,9 +63,6 @@ const go = (path: string) => {
 </template>
 
 <style lang="scss" scoped>
-a {
-  text-decoration: none;
-}
 .round {
   &-card {
     display: flex;
@@ -140,17 +137,12 @@ a {
   }
 }
 .community {
-  max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
-  margin: 0 auto;
-  margin-top: var(--o-spacing-h1);
-  @media (max-width: 1100px) {
-    padding: 0 var(--o-spacing-h5);
-  }
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h2);
   }
   h3 {
+    margin-top: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h2);
     font-size: var(--o-font-size-h3);
     font-weight: 300;
     color: var(--o-color-text2);
@@ -160,6 +152,7 @@ a {
     @media (max-width: 768px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
+      margin-top: var(--o-spacing-h2);
     }
   }
 
@@ -195,7 +188,6 @@ a {
   &-list {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    margin-top: var(--o-spacing-h2);
     grid-gap: var(--o-spacing-h2);
 
     @media (max-width: 1080px) {
