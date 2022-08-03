@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
+import { useI18n } from '@/i18n';
 import { getAllMirror } from '@/api/api-mirror';
 import IconCpoy from '~icons/app/icon-copy.svg';
 import { ElMessage } from 'element-plus';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
-import { useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import MapContainer from './MapContainer.vue';
 
-const { theme: i18n } = useData();
 interface MapMsg {
   name: string;
   latitude: number;
   longitude: number;
 }
+const i18n = computed(() => useI18n());
+
 interface MirrorMsg {
   name: string;
   location?: string;

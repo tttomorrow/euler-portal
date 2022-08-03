@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, onUnmounted } from 'vue';
 import { useRouter, useData } from 'vitepress';
+import { useI18n } from '@/i18n';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
@@ -10,7 +11,8 @@ import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
 
 const router = useRouter();
-const { theme: i18n, lang } = useData();
+const { lang } = useData();
+const i18n = computed(() => useI18n());
 
 interface NavItem {
   NAME: string;

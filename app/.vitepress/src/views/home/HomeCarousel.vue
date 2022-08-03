@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useI18n } from '@/i18n';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 const screenWidth = useWindowResize();
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 
 const active = ref(0);
 

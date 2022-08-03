@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
@@ -12,9 +13,7 @@ import IconTime from '~icons/app/icon-time.svg';
 import IconPre from '~icons/app/icon-chevron-left.svg';
 import IconNext from '~icons/app/icon-chevron-right.svg';
 
-import { useData } from 'vitepress';
-
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const data = computed(() => i18n.value.live.LIVE_LIST);
 
 const currentPage1 = ref(1);
