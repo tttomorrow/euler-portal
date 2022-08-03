@@ -1,6 +1,5 @@
 ---
 title: '法律声明'
-tags: legal
 ---
 
 <!--  TODO: BANNER -->
