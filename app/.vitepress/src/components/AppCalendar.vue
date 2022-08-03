@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { ref, nextTick, onMounted, reactive, PropType } from 'vue';
+import { ref, nextTick, onMounted, reactive, PropType, watch } from 'vue';
+import { useRouter } from 'vitepress';
+
+import { isValidKey, getNowFormatDate } from '@/shared/utils';
+import { TableData, DayData } from '@/shared/@types/type-calendar';
+import type { TabsPaneContext } from 'element-plus';
 
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import IconDown from '~icons/app/down.svg';
+import IconCalendar from '~icons/app/icon-calendar.svg';
 
-import { isValidKey } from '@/shared/utils';
-
-import { TableData, Item } from '@/shared/@types/type-calendar';
-
-import { useRouter } from 'vitepress';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 const router = useRouter();
 
@@ -55,12 +57,16 @@ const renderData = ref<TableData>({
   ],
 });
 
-const isMeeting = ref(false);
 const currentDay = ref('');
 const activeName = ref('');
-const monthDate = ref('');
 const activeIndex = ref(0);
 const isCollapse = ref(false);
+const i18n = {
+  SIG_GROUP: 'SIG组:',
+  NEW_DATE: '最新日程：',
+  EMPTY_TEXT: '当日没有活动，敬请期待',
+  LEARN_MORE: '了解更多',
+};
 
 const detailItem = [
   { text: '会议详情', key: 'detail', isLink: false },
@@ -77,29 +83,37 @@ const detailItem = [
   { text: '线上链接', key: 'online_url', isLink: true },
   { text: '报名链接', key: 'register_url', isLink: true },
   { text: '回放链接', key: 'replay_url', isLink: true },
+  { text: '回放链接', key: 'video_url', isLink: true },
 ];
 const activityType = ['线下', '线上', '线上 + 线下'];
 const titleList = ['全部', '会议', '活动', '峰会'];
-
-const calendar = ref(null);
+const tabType = titleList[0];
+const calendar = ref();
 
 const calendarHeight = ref(335);
 
+const windowWidth = ref(useWindowResize());
+
 // 活动会议筛选
-function changeTab(index: number) {
+function changeTab(tab: TabsPaneContext) {
+  const index = Number(tab.index);
   activeIndex.value = index;
   try {
-    // 0、全部 1、会议 其他活动
+    // 0-全部 1-会议 其他-活动
     if (index === 0) {
       renderData.value.timeData = currentMeet.timeData;
     } else if (index === 1) {
-      renderData.value.timeData = currentMeet.timeData.filter((item: Item) => {
-        return item.etherpad;
-      });
+      renderData.value.timeData = currentMeet.timeData.filter(
+        (item: DayData) => {
+          return item.etherpad;
+        }
+      );
     } else {
-      renderData.value.timeData = currentMeet.timeData.filter((item: Item) => {
-        return item.activity_category === index - 1;
-      });
+      renderData.value.timeData = currentMeet.timeData.filter(
+        (item: DayData) => {
+          return item.activity_category === index - 1;
+        }
+      );
     }
   } catch (error: any) {
     throw Error(error);
@@ -113,7 +127,6 @@ function meetClick(day: string) {
     props.tableData.forEach((item: TableData) => {
       isCollapse.value = false;
       if (item.date === day || item.start_date === day) {
-        isMeeting.value = true;
         // 深拷贝
         currentMeet = JSON.parse(JSON.stringify(item));
         renderData.value = JSON.parse(JSON.stringify(item));
@@ -121,21 +134,22 @@ function meetClick(day: string) {
         if (item.timeData.length === 1) {
           activeName.value = '0';
           nextTick(() => {
-            (document.querySelector('.meet-item') as HTMLElement).click();
+            if (document.querySelector('.meet-item')) {
+              (document.querySelector('.meet-item') as HTMLElement).click();
+            }
           });
         } else {
           // 会议时间排序
           activeName.value = '';
-          item.timeData.sort((a: Item, b: Item) => {
+          item.timeData.sort((a: DayData, b: DayData) => {
             return (
               parseInt(a.startTime.replace(':', '')) -
               parseInt(b.startTime.replace(':', ''))
             );
           });
         }
-        throw Error();
+        // throw Error();
       } else {
-        isMeeting.value = false;
       }
     });
   } catch (e) {
@@ -155,23 +169,8 @@ function getMeetTimes(day: string): number {
   return times;
 }
 
-function changeMonth(index: number) {
-  (
-    document.querySelectorAll('.el-button-group button')[index] as HTMLElement
-  ).click();
-}
-
-function watchChange(element: Element) {
-  const observe = new MutationObserver(function () {
-    monthDate.value = element.innerHTML;
-    nextTick(() => {
-      const tbody = document.querySelector('.main-body tbody') as HTMLElement;
-      if (tbody) {
-        calendarHeight.value = tbody.offsetHeight;
-      }
-    });
-  });
-  observe.observe(element, { childList: true });
+function selectDate(val: string) {
+  calendar.value.selectDate(val);
 }
 
 function goDetail(index: number) {
@@ -183,77 +182,131 @@ function changeCollapse() {
 }
 
 onMounted(() => {
-  setTimeout(() => {
-    const activeBoxs = document.querySelectorAll('.be-active')[
-      document.querySelectorAll('.be-active').length - 1
-    ] as HTMLElement;
-    if (activeBoxs) {
-      activeBoxs.click();
-    }
-  }, 300);
   const tbody = document.querySelector('.main-body tbody') as HTMLElement;
   if (tbody) {
     calendarHeight.value = tbody.offsetHeight;
   }
-  const element = document.querySelector('.el-calendar__title') as HTMLElement;
-  monthDate.value = element.innerHTML;
-  watchChange(element);
 });
+const watchData = watch(
+  () => props.tableData.length,
+  () => {
+    nextTick(() => {
+      const activeBoxs = document.querySelectorAll('.be-active')[
+        document.querySelectorAll('.be-active').length - 1
+      ] as HTMLElement;
+      if (activeBoxs) {
+        activeBoxs.click();
+        watchData();
+      }
+    });
+  },
+  { immediate: true }
+);
 </script>
 <template>
   <div class="wrapper">
-    <div class="head-title">
-      <div class="left-title">
-        <o-icon @click="changeMonth(0)"> <icon-left></icon-left> </o-icon>
-        <span class="month-date">{{ monthDate }}</span>
-        <o-icon @click="changeMonth(2)">
-          <icon-right></icon-right>
-        </o-icon>
+    <div class="main-body">
+      <div class="calendar">
+        <el-calendar v-if="windowWidth > 768" ref="calendar" class="calender">
+          <template #header="{ date }">
+            <div class="left-title">
+              <o-icon @click="selectDate('prev-month')">
+                <icon-left></icon-left>
+              </o-icon>
+              <span class="month-date">{{ date }}</span>
+              <o-icon @click="selectDate('next-month')">
+                <icon-right></icon-right>
+              </o-icon>
+            </div>
+          </template>
+          <template #dateCell="{ data }">
+            <div
+              class="out-box"
+              :class="{ 'be-active': getMeetTimes(data.day) }"
+              @click="meetClick(data.day)"
+            >
+              <div class="day-box">
+                <p
+                  :class="data.isSelected ? 'is-selected' : ''"
+                  class="date-calender"
+                >
+                  {{ data.day.split('-').slice(2)[0] }}
+                </p>
+                <!-- TODO: 添加节日提醒 -->
+                <!-- <div class="holiday" v-if="data.day === '2022-04-20'">春节快乐</div>
+                <div class="holiday" v-if="data.day === '2022-05-20'">程序员节</div> -->
+              </div>
+            </div>
+          </template>
+        </el-calendar>
       </div>
-      <div class="right-title">
-        <div class="title-list">
-          <div
-            v-for="(item, index) in titleList"
-            :key="item"
-            :class="{ active: index === activeIndex }"
-            class="title-item"
-            @click="changeTab(index)"
-          >
-            {{ item }}
+      <div class="detailList">
+        <div class="right-title">
+          <div class="title-list">
+            <el-tabs v-model="tabType" @tab-click="changeTab">
+              <el-tab-pane
+                v-for="item in titleList"
+                :key="item"
+                :label="item"
+                :name="item"
+              ></el-tab-pane>
+            </el-tabs>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="main-body">
-      <el-calendar ref="calendar" class="calender">
-        <template #dateCell="{ data }">
-          <div
-            class="out-box"
-            :class="{ 'be-active': getMeetTimes(data.day) }"
-            @click="meetClick(data.day)"
-          >
-            <div class="day-box">
-              <p
-                :class="data.isSelected ? 'is-selected' : ''"
-                class="date-calender"
-              >
-                {{ data.day.split('-').slice(2)[0] }}
-              </p>
-              <!-- TODO: 添加节日提醒 -->
-              <!-- <div class="holiday" v-if="data.day === '2022-04-20'">春节快乐</div>
-              <div class="holiday" v-if="data.day === '2022-05-20'">程序员节</div> -->
-            </div>
+        <el-collapse v-if="windowWidth < 768" class="calendar calendar-mo">
+          <div class="collapse-box-mo">
+            <el-collapse-item>
+              <template #title>
+                <div class="mo-collapse">
+                  <o-icon>
+                    <icon-calendar></icon-calendar>
+                  </o-icon>
+                  <span class="month-date">
+                    {{ getNowFormatDate() }}
+                  </span>
+                </div>
+              </template>
+              <div class="meet-detail">
+                <el-calendar ref="calendar" class="calendar-mo calender">
+                  <template #header="{ date }">
+                    <div class="left-title">
+                      <o-icon @click="selectDate('prev-month')">
+                        <icon-left></icon-left>
+                      </o-icon>
+                      <span class="month-date">{{ date }}</span>
+                      <o-icon @click="selectDate('next-month')">
+                        <icon-right></icon-right>
+                      </o-icon>
+                    </div>
+                  </template>
+                  <template #dateCell="{ data }">
+                    <div
+                      class="out-box"
+                      :class="{ 'be-active': getMeetTimes(data.day) }"
+                      @click="meetClick(data.day)"
+                    >
+                      <div class="day-box">
+                        <p
+                          :class="data.isSelected ? 'is-selected' : ''"
+                          class="date-calender"
+                        >
+                          {{ data.day.split('-').slice(2)[0] }}
+                        </p>
+                      </div>
+                    </div>
+                  </template>
+                </el-calendar>
+              </div>
+            </el-collapse-item>
           </div>
-        </template>
-      </el-calendar>
-      <div class="detailList">
+        </el-collapse>
         <div class="detailHead">
-          最新日程：
+          {{ i18n.NEW_DATE }}
           <span>{{ currentDay }}</span>
         </div>
         <div class="meetList" :style="{ height: calendarHeight - 1 + 'px' }">
-          <div v-if="isMeeting" class="demo-collapse">
-            <el-collapse
+          <div v-if="renderData.timeData.length" class="demo-collapse">
+            <o-collapse
               v-model="activeName"
               accordion
               @change="changeCollapse()"
@@ -263,24 +316,20 @@ onMounted(() => {
                 :key="item.id"
                 class="collapse-box"
               >
-                <el-collapse-item :name="index">
+                <o-collapse-item :name="index">
                   <template #title>
                     <div class="meet-item">
                       <div class="meet-left">
                         <div class="left-top">
                           <p class="meet-name">{{ item.name || item.title }}</p>
-                          <p v-if="item.activity_category" class="introduce">
-                            {{ titleList[item.activity_category + 1] }}
-                          </p>
-                          <p v-else class="introduce">会议</p>
                         </div>
                         <div
                           v-if="item.schedules"
                           class="more-detail"
                           @click.stop="goDetail(index)"
                         >
-                          了解更多
-                          <o-icon @click="changeMonth(2)">
+                          {{ i18n.LEARN_MORE }}
+                          <o-icon>
                             <icon-arrow-right></icon-arrow-right>
                           </o-icon>
                         </div>
@@ -288,7 +337,7 @@ onMounted(() => {
                           v-if="item.group_name"
                           class="group-name more-detail"
                         >
-                          SIG组: {{ item.group_name }}
+                          {{ i18n.SIG_GROUP }} {{ item.group_name }}
                         </div>
                       </div>
                       <div class="item-right">
@@ -296,6 +345,7 @@ onMounted(() => {
                           <span class="start-time">{{
                             item.startTime || item.start_date
                           }}</span>
+                          <span v-if="windowWidth < 768">-</span>
                           <span class="end-time">{{
                             item.endTime || item.end_date
                           }}</span>
@@ -355,94 +405,82 @@ onMounted(() => {
                       </div>
                     </template>
                   </div>
-                </el-collapse-item>
+                </o-collapse-item>
               </div>
-            </el-collapse>
+            </o-collapse>
           </div>
-          <div v-else class="empty">今日暂无日程安排</div>
+          <div v-else class="empty">{{ i18n.EMPTY_TEXT }}</div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
-a {
-  text-decoration: none;
-  color: var(--o-color-brand);
-}
-p::before,
-p::after {
-  display: none;
-}
 .wrapper {
   .calendar-title {
     text-align: center;
-    font-size: 36px;
+    font-size: var(--o-font-size-h3);
     font-weight: 400;
   }
-  .head-title {
+  .left-title {
+    margin-bottom: var(--o-spacing-h2);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 0 23px 0;
-    .left-title {
-      display: flex;
-      align-items: center;
-      font-size: 16px;
-      .o-icon {
-        font-size: 24px;
-        color: rgb(206, 206, 206);
-      }
-    }
-    .month-date {
-      padding: 0 8px;
-    }
-    @media screen and (max-width: 1000px) {
-      .left-title {
-        display: none;
-      }
-    }
-    :deep(.title-list) {
-      display: flex;
-      .el-tabs__nav-scroll {
-        @media screen and (max-width: 1000px) {
-          display: flex;
-          justify-content: center;
-        }
-      }
-      .el-tabs__item {
-        font-size: 16px;
-        @media screen and (max-width: 1000px) {
-          font-size: 14px;
-        }
-      }
-      .el-tabs__nav-wrap::after {
-        display: none;
-      }
-      .title-item {
-        cursor: pointer;
-        padding: 12px;
-        &:hover {
-          color: var(--o-color-brand);
-        }
-      }
-      .active {
-        background-color: var(--o-color-brand);
-        color: #fff !important;
-      }
-    }
+    height: 39px;
+    font-size: var(--o-font-size-h8);
     .o-icon {
+      font-size: var(--o-font-size-h5);
+      color: var(--o-color-text2);
+    }
+  }
+  .month-date {
+    padding: 0 var(--o-spacing-h8);
+  }
+  @media screen and (max-width: 768px) {
+    .left-title {
+      display: none;
+    }
+  }
+  :deep(.title-list) {
+    display: flex;
+    .el-tabs__nav-scroll {
+      @media screen and (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .el-tabs__item {
+      font-size: var(--o-font-size-h8);
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-text);
+      }
+    }
+    .el-tabs__nav-wrap::after {
+      display: none;
+    }
+    .title-item {
       cursor: pointer;
-      font-size: 18px;
-      font-weight: 700;
-      color: #000;
-      transition: color 0.2s;
+      padding: 12px;
       &:hover {
         color: var(--o-color-brand);
-        svg {
-          color: var(--o-color-brand_hover);
-          fill: var(--o-color-brand_hover);
-        }
+      }
+    }
+    .active {
+      background-color: var(--o-color-brand);
+      color: var(--o-color-text) !important;
+    }
+  }
+  .o-icon {
+    cursor: pointer;
+    font-size: var(--o-font-size-h7);
+    font-weight: 700;
+    color: #000;
+    transition: color 0.2s;
+    &:hover {
+      color: var(--o-color-brand);
+      svg {
+        color: var(--o-color-brand_hover);
+        fill: var(--o-color-brand_hover);
       }
     }
   }
@@ -450,17 +488,38 @@ p::after {
     display: flex;
     :deep(.el-collapse-item__content) {
       padding: 0;
+      background-color: transparent;
+    }
+    :deep(.el-calendar__header) {
+      display: block;
+      padding: 0;
+      background-color: var(--o-color-bg2);
+      @media screen and (max-width: 768px) {
+        background-color: var(--o-color-bg);
+        .left-title {
+          margin: 0;
+        }
+      }
     }
     .collapse-box-mo {
       .left-title {
         display: none;
       }
     }
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 768px) {
       .collapse-box-mo {
-        .el-collapse-item {
-          padding: 0 8px;
+        :deep(.el-collapse-item) {
+          padding: 0 var(--o-spacing-h8);
           width: 345px;
+          .el-icon {
+            font-size: var(--o-font-size-text);
+            font-weight: 700;
+            transform: rotate(90deg);
+            color: var(--o-color-text2);
+          }
+          .el-icon.is-active {
+            transform: rotate(270deg);
+          }
           .el-collapse-item__content {
             padding: 0;
           }
@@ -485,56 +544,40 @@ p::after {
           align-items: center;
           width: 100%;
           svg {
-            width: 16px;
+            font-size: var(--o-font-size-h8);
           }
           .month-date {
             padding-left: 8px;
-            font-size: 12px;
+            font-size: var(--o-font-size-tip);
             color: #000;
             line-height: 16px;
           }
         }
       }
-      .el-icon-arrow-right {
-        font-weight: 700;
-        transform: rotate(90deg);
-        &::before {
-          color: #000;
-        }
-      }
-      .el-icon-arrow-right.is-active {
-        transform: rotate(270deg);
-      }
     }
-    :deep(.calender) {
+    :deep(.calendar) {
       max-width: 500px;
       text-align: center;
-      .el-calendar__header {
-        display: none;
-        .el-button-group {
-          display: none;
-        }
-      }
       thead {
         th {
           text-align: center;
         }
         background-color: var(--o-color-bg3);
       }
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 768px) {
         display: none;
       }
 
       .is-today {
         .el-calendar-day {
           .day-box {
-            color: #555555;
+            color: var(--o-color-text3);
             background-color: var(--o-color-bg3);
           }
         }
       }
       .is-selected {
-        color: white;
+        color: var(--o-color-text);
         .el-calendar-day {
           .day-box {
             background-color: var(--o-color-brand);
@@ -549,7 +592,7 @@ p::after {
           -ms-user-select: none; /*IE10*/
           -khtml-user-select: none; /*早期浏览器*/
           user-select: none;
-          font-size: 12px;
+          font-size: var(--o-font-size-tip);
           .el-calendar-day {
             display: flex;
             justify-content: center;
@@ -574,7 +617,7 @@ p::after {
               height: 20px;
               border-radius: 0 0 0 20px;
               background-color: var(--o-color-brand_hover);
-              @media screen and (max-width: 1000px) {
+              @media screen and (max-width: 768px) {
                 width: 12px;
                 height: 12px;
                 top: -4px;
@@ -591,18 +634,17 @@ p::after {
               border-radius: 50%;
               align-items: center;
               .date-calender {
-                line-height: 21px;
-                font-size: 16px;
+                line-height: var(--o-line-height-text);
+                font-size: var(--o-font-size-h8);
               }
             }
           }
-          @media screen and (max-width: 1000px) {
+          @media screen and (max-width: 768px) {
             .el-calendar-day {
-              // width: 32px;
               height: 47px;
               .day-box {
                 .date-calender {
-                  font-size: 12px;
+                  font-size: var(--o-font-size-tip);
                 }
               }
             }
@@ -610,17 +652,14 @@ p::after {
         }
       }
     }
-    .calender-mo {
+    :deep(.calendar-mo) {
       display: none;
-      @media screen and (max-width: 1000px) {
-        display: flex;
-        .calender {
-          display: block;
-        }
+      @media screen and (max-width: 768px) {
+        display: block;
         thead {
           th {
-            padding: 7px 0;
-            font-size: 12px;
+            padding: var(--o-spacing-h8) 0;
+            font-size: var(--o-font-size-tip);
           }
         }
         tbody {
@@ -640,85 +679,98 @@ p::after {
     }
     :deep(.detailList) {
       width: 100%;
+      .right-title {
+        padding-bottom: var(--o-spacing-h2);
+        display: flex;
+        justify-content: flex-end;
+        @media screen and (max-width: 768px) {
+          padding-bottom: var(--o-spacing-h5);
+          justify-content: center;
+          background-color: var(--o-color-bg2);
+        }
+        .el-tabs__header {
+          margin: 0;
+        }
+      }
       .detailHead {
-        padding: 12px 0 13px;
+        line-height: 20px;
+        padding: var(--o-spacing-h6);
         text-align: center;
-        color: #555555;
+        color: var(--o-color-text3);
         background-color: var(--o-color-bg3);
-        @media screen and (max-width: 1000px) {
-          padding: 8px 0;
-          font-size: 12px;
+        @media screen and (max-width: 768px) {
+          padding: var(--o-spacing-h8) 0;
+          font-size: var(--o-font-size-tip);
         }
       }
-      .el-collapse {
-        border: none;
-        --el-collapse-header-height: 96px;
-        .collapse-box:last-child {
-          .el-collapse-item {
-            margin-bottom: 0;
-          }
-        }
-        .el-collapse-item {
-          margin-bottom: 8px;
-          .el-collapse-item__header {
-            display: block;
-            border: none;
-            height: 100%;
-          }
-        }
-        .el-collapse-item__wrap {
-          border: none;
-          padding: 0 24px;
-          background-color: #eef0f4;
-          @media screen and (max-width: 1000px) {
-            background-color: #f5f6f8;
-          }
-        }
-      }
+
       .meetList {
-        padding: 8px 0 0 8px;
+        padding: var(--o-spacing-h8) 0 0 var(--o-spacing-h8);
         height: 402px;
-        background-color: #fff;
-        border-right: 1px solid #e5e8f0;
-        border-bottom: 1px solid #e5e8f0;
+        background-color: var(--o-color-bg);
         overflow-y: scroll;
-        @media screen and (max-width: 1000px) {
-          padding: 8px;
+        .el-collapse {
+          border: none;
+          --el-collapse-header-height: 96px;
+          .collapse-box:last-child {
+            .el-collapse-item {
+              margin-bottom: 0;
+            }
+          }
+          .el-collapse-item {
+            margin-bottom: var(--o-spacing-h8);
+            .el-collapse-item__header {
+              padding-left: 0;
+              border: none;
+              height: 100%;
+            }
+          }
+          .el-collapse-item__wrap {
+            border: none;
+            padding: 0 var(--o-spacing-h4);
+            background-color: #eef0f4;
+            @media screen and (max-width: 768px) {
+              background-color: #f5f6f8;
+            }
+          }
+        }
+        @media screen and (max-width: 768px) {
+          padding: var(--o-spacing-h8);
           height: fit-content;
           overflow: auto;
         }
         &::-webkit-scrollbar-track {
           border-radius: 4px;
-          background-color: #fff;
+          background-color: var(--o-color-bg);
         }
 
         &::-webkit-scrollbar {
           width: 6px;
-          background-color: #fff;
+          background-color: var(--o-color-bg);
         }
 
         &::-webkit-scrollbar-thumb {
           border-radius: 4px;
-          background: #ccc;
+          background: var(--o-color-disabled);
         }
         .el-collapse-item__arrow {
           display: none;
         }
         .el-collapse-item__content {
           padding-bottom: 0;
-          @media screen and (max-width: 1000px) {
-            font-size: 12px;
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-tip);
           }
         }
         .meet-item {
           display: flex;
           justify-content: space-between;
-          padding: 16px 24px;
+          padding: var(--o-spacing-h5) var(--o-spacing-h4);
           width: 100%;
           height: 100%;
           background-color: #f5f6f8ff;
-          border: 1px solid #e5e8f0;
-          border-left: 1px solid #406fe7ff;
+          border: 1px solid var(--o-color-border);
+          border-left: 2px solid #406fe7ff;
           .meet-left {
             display: flex;
             flex-direction: column;
@@ -728,14 +780,14 @@ p::after {
               display: flex;
               align-items: center;
               .meet-name {
-                margin-right: 16px;
+                margin-right: var(--o-spacing-h5);
                 max-width: 400px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
-                font-size: 18px;
+                font-size: var(--o-font-size-h7);
                 color: #000;
-                line-height: 24px;
+                line-height: var(--o-line-height-tip);
               }
               .el-collapse-item__content {
                 padding: 0 20px;
@@ -763,15 +815,15 @@ p::after {
               align-items: center;
               width: fit-content;
               height: 24px;
-              font-size: 16px;
-              line-height: 24px;
+              font-size: var(--o-font-size-h8);
+              line-height: var(--o-line-height-h8);
               .o-icon {
                 margin: 0 5px;
                 color: var(--o-color-brand);
-                font-size: 24px;
+                font-size: var(--o-font-size-h5);
                 transition: all 0.3s;
                 svg {
-                  color: #0d8dff;
+                  color: var(--o-color-brand);
                 }
               }
               &:hover {
@@ -783,7 +835,7 @@ p::after {
           }
           .item-right {
             display: flex;
-            font-size: 14px;
+            font-size: var(--o-font-size-text);
 
             .detail-time {
               display: flex;
@@ -792,9 +844,9 @@ p::after {
               padding: 0 24px;
               font-weight: normal;
               text-align: center;
-              font-size: 16px;
+              font-size: var(--o-font-size-h8);
               span {
-                line-height: 15px;
+                line-height: var(--o-line-height-h8);
               }
             }
             .extend {
@@ -802,8 +854,8 @@ p::after {
               align-items: center;
               width: 24px;
               .o-icon {
-                font-size: 28px;
-                color: #555;
+                font-size: var(--o-font-size-h5);
+                color: var(--o-color-text2);
                 transition: all 0.3s;
               }
               .reversal {
@@ -811,15 +863,15 @@ p::after {
               }
             }
           }
-          @media screen and (max-width: 1000px) {
-            background-color: #fff;
-            padding: 12px;
+          @media screen and (max-width: 768px) {
+            background-color: var(--o-color-bg);
+            padding: var(--o-spacing-h6);
             border-left-width: 2px;
             .meet-left {
-              max-width: 230px;
+              max-width: 200px;
               .left-top {
                 .meet-name {
-                  font-size: 14px;
+                  font-size: var(--o-font-size-text);
                   font-weight: 700;
                 }
               }
@@ -827,41 +879,38 @@ p::after {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                font-size: 12px;
-                color: #555;
+                font-size: var(--o-font-size-tip);
+                color: var(--o-color-text3);
               }
             }
             .item-right {
               .detail-time {
                 flex-direction: row;
                 align-items: flex-end;
-                padding: 0 7px;
-                font-size: 12px;
+                padding: 0 var(--o-spacing-h8);
+                font-size: var(--o-font-size-tip);
               }
               .extend {
                 align-items: flex-end;
                 .o-icon {
-                  font-size: 16px;
+                  font-size: var(--o-font-size-h8);
                 }
               }
             }
           }
         }
         .meet-detail {
-          color: #555555;
+          color: var(--o-color-text3);
           padding-top: 10px;
           .meeting-item {
             display: flex;
-            padding-bottom: 8px;
-            line-height: 18px;
+            padding-bottom: var(--o-spacing-h8);
+            line-height: var(--o-line-height-tip);
             word-break: break-all;
             .item-title {
               flex-shrink: 0;
               width: 90px;
             }
-            // .meet-title {
-            //   width: 90px;
-            // }
             .creator {
               display: flex;
               align-items: center;
@@ -871,8 +920,8 @@ p::after {
                 overflow: hidden;
               }
               .creator-name {
-                padding-left: 15px;
-                font-size: 14px;
+                padding-left: var(--o-spacing-h5);
+                font-size: var(--o-font-size-text);
               }
             }
           }
@@ -894,7 +943,7 @@ p::after {
       }
     }
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 768px) {
     .head-title {
       flex-direction: column;
       padding: 0;
@@ -904,7 +953,7 @@ p::after {
       width: 345px;
       align-items: center;
       flex-direction: column;
-      background-color: #fff;
+      background-color: var(--o-color-bg);
     }
   }
 }

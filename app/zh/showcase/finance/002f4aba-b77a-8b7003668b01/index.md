@@ -1,10 +1,9 @@
 ---
 title: 兴业银行
-module: showcase
+category: showcase
 industry: 金融
 company: 兴业银行
 summary: 某核心业务系统国产化改造项目
-customLayout: true
 banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/finance.png
 ---
