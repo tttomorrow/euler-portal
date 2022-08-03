@@ -34,7 +34,6 @@ const tableData = ref<compatibilityList>([]);
 const getCompatibilityData = (data: cveQuery) => {
   try {
     getCompatibilityList(data).then((res: any) => {
-      // console.log(res);
       tableData.value = res.result.hardwareCompList;
     });
   } catch (e) {
