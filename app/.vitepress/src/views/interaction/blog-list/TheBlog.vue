@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { useRouter, useData } from 'vitepress';
+import { useRouter } from 'vitepress';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -12,7 +13,7 @@ import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 
 const router = useRouter();
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const userCaseData = computed(() => i18n.value.interaction);
 // console.log(i18n.value.interaction)
 

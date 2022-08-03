@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue';
 import { useData } from 'vitepress';
+import { useI18n } from '@/i18n';
 
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
@@ -9,7 +10,8 @@ import { getSigDetail, getSigMember } from '@/api/api-sig';
 
 import IconArrowRight from '~icons/app/right.svg';
 
-const { theme: i18n, lang } = useData();
+const { lang } = useData();
+const i18n = computed(() => useI18n());
 
 let sidDetailId: number;
 

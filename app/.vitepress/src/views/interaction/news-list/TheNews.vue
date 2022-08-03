@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useRouter, useData } from 'vitepress';
+import { useRouter } from 'vitepress';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
@@ -12,7 +13,7 @@ const currentPage1 = ref(5);
 const pageSize4 = ref(10);
 const total = ref(200);
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const userCaseData = computed(() => i18n.value.interaction);
 
 const newsData = computed(() => {

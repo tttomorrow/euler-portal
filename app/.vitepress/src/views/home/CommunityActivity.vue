@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import IconArrowRight from '~icons/app/arrow-right.svg';
-import { useData } from 'vitepress';
+import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
 
 const commonStore = useCommon();
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 
 const go = (path: string) => {
   window.open(path, '_blank');
