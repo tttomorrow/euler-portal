@@ -40,8 +40,8 @@ const go = (path: string) => {
       <OCard class="round-card" :style="{ padding: '0px' }">
         <div class="round-list">
           <div
-            v-for="(item, index) in i18n.home.HOME_ROUND.ROUND_LIST"
-            :key="index"
+            v-for="item in i18n.home.HOME_ROUND.ROUND_LIST"
+            :key="item.ROUND_TEXT"
             class="round-item"
           >
             <img

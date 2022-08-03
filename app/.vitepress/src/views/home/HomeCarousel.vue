@@ -37,7 +37,7 @@ const go = (path: string) => {
           <div class="carousel-pc-list">
             <div
               v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-              :key="index"
+              :key="item.TITLE"
               :class="['carousel-pc-title', active === index ? 'active' : '']"
               @click="changeActive(index)"
             >
@@ -73,7 +73,7 @@ const go = (path: string) => {
     >
       <OCollapseItem
         v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-        :key="index"
+        :key="index.TITLE"
         :name="index"
         class="carousel-mobile-card"
       >

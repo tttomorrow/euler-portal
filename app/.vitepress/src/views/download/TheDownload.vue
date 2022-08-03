@@ -169,7 +169,7 @@ onMounted(() => {
       >
         <OTag
           v-for="(item, index) in tagManufacturer"
-          :key="index"
+          :key="item"
           class="download-filter-item"
           :type="
             index === 0
@@ -191,7 +191,7 @@ onMounted(() => {
       >
         <OTag
           v-for="(item, index) in tagPublish"
-          :key="index"
+          :key="item"
           class="download-filter-item"
           :type="
             index === 0
@@ -227,16 +227,16 @@ onMounted(() => {
       </div>
       <div class="download-filter-mobile-list">
         <div
-          v-for="(item, index) in activeManufacturer"
-          :key="index"
+          v-for="item in activeManufacturer"
+          :key="item"
           class="download-filter-mobile-card"
           @click="manufacturerClick(item, 1)"
         >
           {{ item }} <IconX class="download-filter-mobile-card-icon"></IconX>
         </div>
         <div
-          v-for="(item, index) in activePublish"
-          :key="index"
+          v-for="item in activePublish"
+          :key="item"
           class="download-filter-mobile-card"
           @click="publishClick(item, 1)"
         >
@@ -267,7 +267,7 @@ onMounted(() => {
         </div>
         <OTag
           v-for="(item, index) in tagManufacturer"
-          :key="index"
+          :key="item"
           class="download-filter-item"
           :type="
             index === 0
@@ -287,7 +287,7 @@ onMounted(() => {
         </div>
         <OTag
           v-for="(item, index) in tagPublish"
-          :key="index"
+          :key="item"
           class="download-filter-item"
           :type="
             index === 0
@@ -326,8 +326,8 @@ onMounted(() => {
     <!-- 表格 -->
     <div class="download-list">
       <OCard
-        v-for="(download, index) in dataList"
-        :key="index"
+        v-for="download in dataList"
+        :key="download.NAME"
         :style="{ padding: '0px' }"
         class="download-list-item"
       >

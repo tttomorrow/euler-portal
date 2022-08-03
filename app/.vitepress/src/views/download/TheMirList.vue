@@ -7,9 +7,14 @@ import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
 import { useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import MapContainer from './MapContainer.vue';
 
 const { theme: i18n } = useData();
-
+interface MapMsg {
+  name: string;
+  latitude: number;
+  longitude: number;
+}
 interface MirrorMsg {
   name: string;
   location?: string;
@@ -26,6 +31,8 @@ interface MirrorMsg {
 const screenWidth = useWindowResize();
 
 const tableData: Ref<MirrorMsg[]> = ref([]);
+
+const mapData: Ref<MapMsg[]> = ref([]);
 
 const inputDom: Ref<HTMLElement | null> = ref(null);
 
@@ -69,6 +76,26 @@ const initTable = (data: any[]) => {
   result = [...asData, ...euData];
   return result;
 };
+
+const initMap = (data: any[]) => {
+  const result: MapMsg[] = [];
+  data.forEach((item) => {
+    const itemObj: MapMsg = {
+      name: '',
+      latitude: 0,
+      longitude: 0,
+    };
+
+    itemObj.name = item.Name;
+    itemObj.longitude = item.Longitude;
+    itemObj.latitude = item.Latitude;
+
+    result.push(itemObj);
+  });
+
+  return result;
+};
+
 const tableRowClassName = ({ row }: any) => {
   if (row.area) {
     return 'mirror-list-area';
@@ -87,7 +114,6 @@ const copyText = (value: string | undefined) => {
     type: 'success',
   });
 };
-
 const listData = computed(() => {
   return tableData.value.filter((item) => typeof item.area === 'undefined');
 });
@@ -96,6 +122,7 @@ onMounted(async () => {
   try {
     const responeData = await getAllMirror();
     tableData.value = initTable(responeData);
+    mapData.value = initMap(responeData);
   } catch (e: any) {
     throw new Error(e);
   }
@@ -174,7 +201,7 @@ onMounted(async () => {
       </OTableColumn>
     </OTable>
     <div v-else class="mirror-mobile">
-      <OCard v-for="(item, index) in listData" :key="index" class="mirror-card">
+      <OCard v-for="item in listData" :key="item.name" class="mirror-card">
         <div class="mirror-card-content">
           <div class="mirror-card-title">
             {{ i18n.download.MIRROR_ALL.NAME }}
@@ -235,6 +262,10 @@ onMounted(async () => {
         </div>
       </OCard>
     </div>
+    <div class="mirror-map">
+      <MapContainer :map-data="mapData"></MapContainer>
+    </div>
+
     <div class="input-box">
       <!-- 用于复制RSNC的值 -->
       <input id="useCopy" type="text" />
@@ -243,6 +274,11 @@ onMounted(async () => {
 </template>
 <style lang="scss" scoped>
 .mirror {
+  &-map {
+    margin-top: var(--o-spacing-h2);
+    width: 100%;
+    height: 996px;
+  }
   &-mobile {
     > :nth-child(odd) {
       background-color: var(--o-color-bg3);
@@ -294,8 +330,8 @@ onMounted(async () => {
     }
   }
 }
-:deep.mirror-list {
-  .mirror-list-area {
+.mirror-list {
+  :deep(.mirror-list-area) {
     .mirror-list-row {
       line-height: 72px;
       border: none;
@@ -307,7 +343,7 @@ onMounted(async () => {
       }
     }
   }
-  .mirror-list-header {
+  :deep(.mirror-list-header) {
     background: var(--o-color-bg3);
     font-size: var(--o-font-size-h8);
     font-weight: 400;
@@ -331,7 +367,7 @@ onMounted(async () => {
     }
   }
 
-  .mirror-list-row {
+  :deep(.mirror-list-row) {
     font-size: var(--o-font-size-h8);
     font-weight: 400;
     color: var(--o-color-text2);
@@ -353,6 +389,7 @@ onMounted(async () => {
       }
     }
   }
+
   max-width: 1504px;
   margin: 0 auto;
   padding: 0 var(--o-spacing-h2);
