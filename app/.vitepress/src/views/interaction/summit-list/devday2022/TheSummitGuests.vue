@@ -76,12 +76,10 @@ const summitStyle = computed(() => {
 
 <style scoped lang="scss">
 .lecturer-list {
-  max-width: 1340px;
-  margin: 0 auto;
   margin-top: var(--o-spacing-h2);
   display: grid;
   grid-template-columns: repeat(var(--webColumnsNum), 1fr);
-  width: 100%;
+  justify-content: center;
   @media (max-width: 780px) {
     width: 375px;
     grid-template-columns: repeat(var(--mobileColumnsNum), 1fr);

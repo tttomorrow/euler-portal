@@ -5,21 +5,11 @@ import IconRight from '~icons/app/icon-right.svg';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
-import SummitGuests from '@/components/SummitGuests.vue';
 import AppAnchor from '@/components/AppAnchor.vue';
 import TagFilter from '@/components/TagFilter.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
-
-import NiGuangNan from '@/assets/summit-guests/niguangnan.png';
-import SunWenLong from '@/assets/summit-guests/sunwenlong.png';
-import JiangDaYong from '@/assets/summit-guests/jiangdayong.png';
-import WuYanJun from '@/assets/summit-guests/wuyanjun.png';
-import HanNaiPing from '@/assets/summit-guests/hannaiping.png';
-import HuXinWei from '@/assets/summit-guests/huxinwei.png';
-import QiuChengFeng from '@/assets/summit-guests/qiuchengfeng.png';
-import GuangXiaoMing from '@/assets/summit-guests/guangxiaoming.png';
 
 const currentPage1 = ref(5);
 const pageSize4 = ref(100);
@@ -46,49 +36,6 @@ const tableData = [
     date: '2016-05-01',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
-  },
-];
-
-const lecturerList = [
-  {
-    img: NiGuangNan,
-    name: '倪光南',
-    position: ['中国工程院院士'],
-  },
-  {
-    img: SunWenLong,
-    name: '孙文龙',
-    position: ['开放原子开源基金会秘书长'],
-  },
-  {
-    img: JiangDaYong,
-    name: '江大勇',
-    position: ['openEuler社区理事长'],
-  },
-  {
-    img: WuYanJun,
-    name: '武延军',
-    position: ['openEuler社区副理事长'],
-  },
-  {
-    img: HanNaiPing,
-    name: '韩乃平',
-    position: ['openEuler社区副理事长'],
-  },
-  {
-    img: HuXinWei,
-    name: '胡欣蔚',
-    position: ['openEuler社区', '技术委员会主席'],
-  },
-  {
-    img: QiuChengFeng,
-    name: '邱成锋',
-    position: ['openEuler社区秘书长'],
-  },
-  {
-    img: GuangXiaoMing,
-    name: '广小明',
-    position: ['天翼云科技有限公司', '副总经理兼首席技术官'],
   },
 ];
 
@@ -317,21 +264,6 @@ const toggleDrawer = () => {
           </div>
         </OCollapseItem>
       </OCollapse>
-    </div>
-    <div>
-      <h4 style="margin: 20px 100px 20px 100px">封装峰会组件</h4>
-      <SummitGuests
-        :lecturer-list="lecturerList"
-        shape="circle"
-        :web-columns-num="4"
-        :mobile-columns-num="2"
-      >
-        <template #title>
-          <div class="lecturer-list-title">
-            <p>openEuler社区</p>
-          </div>
-        </template>
-      </SummitGuests>
     </div>
   </div>
 </template>

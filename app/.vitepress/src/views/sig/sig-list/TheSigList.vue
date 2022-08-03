@@ -22,7 +22,11 @@ const toSigDetail = (value: any) => {
   <OTable :data="sigList">
     <el-table-column :label="i18n.sig.SIG_LIST.NAME">
       <template #default="scope">
-        <a target="_blank" @click="toSigDetail(scope.row)">
+        <a
+          target="_blank"
+          style="cursor: pointer"
+          @click="toSigDetail(scope.row)"
+        >
           {{ scope.row.group_name }}
         </a>
       </template>

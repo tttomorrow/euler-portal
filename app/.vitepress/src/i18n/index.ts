@@ -15,6 +15,7 @@ import stratovirt from './projects/stratovirt';
 import showcase from './showcase';
 import interaction from './interaction';
 import live from './interaction/live';
+import summit from './interaction/summit';
 
 const i18n: { [key: string]: any } = {
   zh: {
@@ -33,6 +34,7 @@ const i18n: { [key: string]: any } = {
     showcase: showcase,
     interaction: interaction.zh,
     live: live.zh,
+    summit: summit.zh,
   },
   en: {
     sig: sig.en,
@@ -48,6 +50,7 @@ const i18n: { [key: string]: any } = {
     stratovirt: stratovirt.en,
     interaction: interaction.en,
     live: live.en,
+    summit: summit.en,
   },
   ru: {
     sig: sig.ru,
@@ -63,6 +66,7 @@ const i18n: { [key: string]: any } = {
     stratovirt: stratovirt.ru,
     interaction: interaction.ru,
     live: live.ru,
+    summit: summit.ru,
   },
 };
 
