@@ -324,12 +324,8 @@ onMounted(() => {
   }
 }
 .home-newsroom {
-  max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
+
   margin: var(--o-spacing-h2) auto;
-  @media screen and (max-width: 1080px) {
-    padding: 0 var(--o-spacing-h5);
-  }
   .room-contain-new {
     display: none;
     padding: var(--o-spacing-h2);
