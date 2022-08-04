@@ -21,6 +21,7 @@ function getSecurityDetailInfo(data: any) {
     throw new Error(e);
   }
 }
+
 onMounted(() => {
   const index1 = decodeURIComponent(window.location.href).indexOf('"');
   const index2 = decodeURIComponent(window.location.href).indexOf(

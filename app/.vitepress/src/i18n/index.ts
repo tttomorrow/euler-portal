@@ -15,6 +15,7 @@ import stratovirt from './projects/stratovirt';
 import showcase from './showcase';
 import interaction from './interaction';
 import live from './interaction/live';
+import compatibility from './compatibility';
 import summit from './interaction/summit';
 import screen from './screen';
 
@@ -35,6 +36,7 @@ const i18n: { [key: string]: any } = {
     showcase: showcase,
     interaction: interaction.zh,
     live: live.zh,
+    compatibility: compatibility.zh,
     summit: summit.zh,
     screen: screen.zh,
   },
