@@ -21,7 +21,8 @@
     "opendesign": "./opendesign",
     "pinia": "^2.0.13",
     "swiper": "6.8.1",
-    "vue": "^3.2.33"
+    "vue": "^3.2.33",
+    "dayjs": "^1.8.31"
   },
   "devDependencies": {
     "@types/node": "^18.0.1",
