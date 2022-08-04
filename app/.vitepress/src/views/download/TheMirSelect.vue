@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { onMounted, Ref, ref } from 'vue';
+import { onMounted, Ref, ref, computed } from 'vue';
+import { useI18n } from '@/i18n';
 import { selectMirror } from '@/api/api-mirror';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
 
-import { useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import MapContainer from './MapContainer.vue';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 
 interface MapMsg {
   name: string;

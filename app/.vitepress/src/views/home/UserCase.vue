@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import { onMounted, ref, computed } from 'vue';
 import { useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
-import { onMounted, ref } from 'vue';
+
+import { useI18n } from '@/i18n';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { getUserCaseData } from '@/api/api-showcase';
 
-const { lang, theme: i18n } = useData();
+const { lang } = useData();
+const i18n = computed(() => useI18n());
 
 const commonStore = useCommon();
 

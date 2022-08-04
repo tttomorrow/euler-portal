@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue';
-import { useData } from 'vitepress';
+import { reactive, onMounted, computed } from 'vue';
+import { useI18n } from '@/i18n';
 
 import { getSecurityDetail } from '@/api/api-security';
-import { DetailParams } from '@/shared/@types/type-support.ts';
+import { DetailParams } from '@/shared/@types/type-support';
 import type { AxiosResponse } from '@/shared/axios';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 
 const queryData: DetailParams = reactive({
   securityNoticeNo: '',

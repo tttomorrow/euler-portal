@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
+import { computed } from 'vue';
+import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TheSummitGuests from './TheSummitGuests.vue';
 import TheSummitScheduler from './TheSummitScheduler.vue';
@@ -31,7 +32,7 @@ import tongtech from '@/assets/interaction/tongtech.png';
 import fusion from '@/assets/interaction/fusion.png';
 import yunhe from '@/assets/interaction/yunhe.png';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 
 const lecturerList = [
   {

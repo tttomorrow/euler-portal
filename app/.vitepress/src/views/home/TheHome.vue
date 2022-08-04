@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useData } from 'vitepress';
+import { ref, onMounted, computed } from 'vue';
+import { useI18n } from '@/i18n';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -37,7 +37,7 @@ const calendarData = ref<TableData[]>([
     ],
   },
 ]);
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 onMounted(() => {
   getMeetingData().then((res: MeetingData) => {
     calendarData.value = res.tableData;

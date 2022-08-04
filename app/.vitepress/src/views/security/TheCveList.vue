@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive, watch, ref, onMounted } from 'vue';
-import { useData } from 'vitepress';
+import { reactive, ref, onMounted, computed } from 'vue';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -10,10 +10,11 @@ import cve from '@/assets/illustrations/cve.png';
 import search from '@/assets/illustrations/search.png';
 
 import { getCveList } from '@/api/api-security';
-import { cveLists, baseQuery, cveQuery } from '@/shared/@types/type-support.ts';
+import { CveLists, QueryParams } from '@/shared/@types/type-support';
 
-const { theme: i18n } = useData();
-
+const inputName = ref('');
+const i18n = computed(() => useI18n());
+const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const searchContent = ref('');
 const activeIndex = ref(0);

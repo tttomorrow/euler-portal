@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
+import { useI18n } from '@/i18n';
 import IconDownload from '~icons/app/icon-download.svg';
 import IconFilter from '~icons/app/icon-filter.svg';
 import IconX from '~icons/app/x.svg';
@@ -10,7 +11,8 @@ import TagFilter from '@/components/TagFilter.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import { useData } from 'vitepress';
 
-const { lang, theme: i18n } = useData();
+const { lang } = useData();
+const i18n = computed(() => useI18n());
 const screenWidth = useWindowResize();
 //打开网页
 const downloadUrl = (url: string) => {

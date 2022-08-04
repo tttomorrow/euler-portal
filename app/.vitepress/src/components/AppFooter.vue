@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
+import { useI18n } from '@/i18n';
 
 import LogoFooter from '@/assets/footer/footer-logo2.png';
 import LogoFooter1 from '@/assets/footer-logo1.svg';
@@ -27,7 +28,8 @@ import CodeTitleGzh from '@/assets/footer/img-gzh.png';
 import CodeImgXzs from '@/assets/footer/code-xzs.png';
 import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
-const { theme: i18n, lang } = useData();
+const { lang } = useData();
+const i18n = computed(() => useI18n());
 const router = useRouter();
 
 // 友情链接

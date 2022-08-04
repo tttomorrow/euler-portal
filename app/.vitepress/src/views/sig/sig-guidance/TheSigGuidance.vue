@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
+import { computed } from 'vue';
+import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
@@ -13,7 +14,7 @@ import sig6 from '@/assets/sig-application/sig6.png';
 const LEFT_IMG = [sig1, sig2, sig3];
 const RIGHT_IMG = [sig4, sig5, sig6];
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 </script>
 
 <template>

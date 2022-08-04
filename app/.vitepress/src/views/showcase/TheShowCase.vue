@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { useData } from 'vitepress';
+import { ref, computed, onMounted } from 'vue';
 import { getUserCaseData, getCaseTagData } from '@/api/api-showcase';
+import { useI18n } from '@/i18n';
 
 // import useWindowResize from '@/components/hooks/useWindowResize';
+import useWindowScroll from '@/components/hooks/useWindowScroll';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -17,7 +18,7 @@ import IconChevronRight from '~icons/app/icon-chevron-right.svg';
 
 // import useCaseZh from '@/i18n/showcase/showcase.json';
 const keyWord = ref('');
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const userCaseData = computed(() => i18n.value.showcase);
 
 const activeIndex = ref(0);
@@ -70,20 +71,20 @@ const totalPage = computed(() => {
   return Math.ceil(total.value / pageSize4.value);
 });
 //控制移动端导航栏吸顶
-const isTopNavMo = ref(false);
+// const isTopNavMo = ref(false);
+// 控制分页器显示
 const isShow = computed(() => {
   return totalPage.value > 1 ? true : false;
 });
 // 根据滚动位置移动端tag吸顶
-const onscroll = () => {
-  const scrollTop =
-    document.body.scrollTop || document.documentElement.scrollTop;
-  if (scrollTop > 156) {
-    isTopNavMo.value = true;
+const scrollTop = useWindowScroll();
+const isTopNavMo = computed(() => {
+  if (scrollTop.value > 156) {
+    return true;
   } else {
-    isTopNavMo.value = false;
+    return false;
   }
-};
+});
 // 移动端翻页事件
 function turnPage(option: string) {
   if (option === 'prev' && currentPage1.value > 1) {
@@ -137,7 +138,7 @@ function setImg(type: string) {
     return '/img/showcase/others.png';
   }
 }
-
+// 根据跳转时url携带的参数显示筛选内容
 function getUrlParam() {
   const industry: any = decodeURI(window.location.href.split('=')[1]);
   if (industry === 'undefined') {
@@ -159,7 +160,6 @@ function getUrlParam() {
 }
 // 获取所有案例及设置当前需要显示的案例
 onMounted(() => {
-  window.addEventListener('scroll', onscroll);
   getUrlParam();
   try {
     getCaseTagData().then((res: any) => {
@@ -187,9 +187,6 @@ onMounted(() => {
   }
 
   setCurrentCaseListAll();
-});
-onUnmounted(() => {
-  window.removeEventListener('scroll', onscroll);
 });
 </script>
 
@@ -261,7 +258,10 @@ onUnmounted(() => {
         <span>{{ currentPage1 }}/{{ totalPage }}</span>
       </OPagination>
       <div class="pagination-h5">
-        <OIcon class="icon-prev">
+        <OIcon
+          class="icon-prev"
+          :class="currentPage1 === 1 ? 'disable-button' : ''"
+        >
           <IconChevronLeft />
         </OIcon>
         <span
@@ -280,7 +280,10 @@ onUnmounted(() => {
           @click="turnPage('next')"
           >{{ userCaseData.next }}</span
         >
-        <OIcon class="icon-next">
+        <OIcon
+          class="icon-next"
+          :class="currentPage1 === totalPage ? 'disable-button' : ''"
+        >
           <IconChevronRight />
         </OIcon>
       </div>
@@ -477,9 +480,6 @@ onUnmounted(() => {
           margin-right: 8px;
           color: var(--o-color-brand);
         }
-        .disable-button {
-          color: var(--o-color-disabled);
-        }
         .page-number {
           margin: 0 28px;
           span:nth-of-type(1) {
@@ -489,6 +489,9 @@ onUnmounted(() => {
         .icon-next {
           margin-left: 8px;
           color: var(--o-color-brand);
+        }
+        .disable-button {
+          color: var(--o-color-disabled);
         }
       }
     }

@@ -1,12 +1,13 @@
 /**
  * @file  学习模块国际化配置入口
  * */
+import mooc from '../../assets/category/mooc/mooc.png';
 export default {
   MOOC: '慕课',
   MOOC_COURSE: [
     {
       ID: '1',
-      IMG: '/img/learn/mooc.png',
+      IMG: mooc,
       TITLE: 'HCIA-openEuler 认证培训课程',
       DESC: '欢迎学习HCIA-openEuler华为认证openEuler工程师在线课程。',
       APPLY_LINK:

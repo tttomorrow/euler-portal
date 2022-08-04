@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { reactive, ref, watch, onMounted } from 'vue';
-import { useData, useRouter } from 'vitepress';
+import { reactive, ref, watch, onMounted, computed } from 'vue';
+import { useRouter } from 'vitepress';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
@@ -9,13 +10,11 @@ import search from '@/assets/illustrations/search.png';
 import cve from '@/assets/illustrations/cve.png';
 
 import { getSecurityList } from '@/api/api-security';
-import { SecurityLists, cveQuery } from '@/shared/@types/type-support.ts';
+import { BulletinParams, SecurityLists } from '@/shared/@types/type-support';
 import OSearch from 'opendesign/search/OSearch.vue';
 
-const { theme: i18n } = useData();
-
 const router = useRouter();
-
+const i18n = computed(() => useI18n());
 const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');

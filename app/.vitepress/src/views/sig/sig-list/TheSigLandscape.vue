@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
+import { computed } from 'vue';
+import { useI18n } from '@/i18n';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 </script>
 
 <template>

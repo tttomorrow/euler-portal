@@ -23,6 +23,10 @@ const props = defineProps({
       return {};
     },
   },
+  isHomePage: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 let currentMeet = reactive<TableData>({
@@ -206,7 +210,7 @@ const watchData = watch(
 <template>
   <div class="wrapper">
     <div class="main-body">
-      <div class="calendar">
+      <div class="calendar" :class="{ 'is-home': isHomePage }">
         <el-calendar v-if="windowWidth > 768" ref="calendar" class="calender">
           <template #header="{ date }">
             <div class="left-title">
@@ -240,7 +244,7 @@ const watchData = watch(
           </template>
         </el-calendar>
       </div>
-      <div class="detailList">
+      <div class="detail-list">
         <div class="right-title">
           <div class="title-list">
             <el-tabs v-model="tabType" @tab-click="changeTab">
@@ -300,12 +304,18 @@ const watchData = watch(
             </el-collapse-item>
           </div>
         </el-collapse>
-        <div class="detailHead">
+        <div class="detail-head">
           {{ i18n.NEW_DATE }}
           <span>{{ currentDay }}</span>
         </div>
-        <div class="meetList" :style="{ height: calendarHeight - 1 + 'px' }">
-          <div v-if="renderData.timeData.length" class="demo-collapse">
+        <div
+          class="meeting-list"
+          :style="{ height: calendarHeight - 1 + 'px' }"
+        >
+          <div
+            v-if="renderData.timeData.length && renderData.date"
+            class="demo-collapse"
+          >
             <o-collapse
               v-model="activeName"
               accordion
@@ -409,7 +419,10 @@ const watchData = watch(
               </div>
             </o-collapse>
           </div>
-          <div v-else class="empty">{{ i18n.EMPTY_TEXT }}</div>
+          <div v-else class="empty">
+            <img src="@/assets/common/not-found.png" alt="" />
+            <p>{{ i18n.EMPTY_TEXT }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -423,10 +436,10 @@ const watchData = watch(
     font-weight: 400;
   }
   .left-title {
-    margin-bottom: var(--o-spacing-h2);
     display: flex;
+    margin-bottom: var(--o-spacing-h2);
     align-items: center;
-    height: 39px;
+    height: 40px;
     font-size: var(--o-font-size-h8);
     .o-icon {
       font-size: var(--o-font-size-h5);
@@ -493,12 +506,16 @@ const watchData = watch(
     :deep(.el-calendar__header) {
       display: block;
       padding: 0;
-      background-color: var(--o-color-bg2);
       @media screen and (max-width: 768px) {
         background-color: var(--o-color-bg);
         .left-title {
           margin: 0;
         }
+      }
+    }
+    .is-home {
+      :deep(.el-calendar__header) {
+        background-color: var(--o-color-bg2);
       }
     }
     .collapse-box-mo {
@@ -577,15 +594,23 @@ const watchData = watch(
         }
       }
       .is-selected {
-        color: var(--o-color-text);
         .el-calendar-day {
           .day-box {
             background-color: var(--o-color-brand);
+            .date-calender {
+              color: var(--o-color-text);
+            }
           }
         }
       }
       .el-calendar__body {
         padding: 0;
+        thead {
+          height: 44px;
+        }
+        tbody {
+          box-shadow: var(--o-shadow-base);
+        }
         .el-calendar-table__row {
           -moz-user-select: none; /*火狐*/
           -webkit-user-select: none; /*webkit浏览器*/
@@ -593,6 +618,7 @@ const watchData = watch(
           -khtml-user-select: none; /*早期浏览器*/
           user-select: none;
           font-size: var(--o-font-size-tip);
+
           .el-calendar-day {
             display: flex;
             justify-content: center;
@@ -677,11 +703,12 @@ const watchData = watch(
         }
       }
     }
-    :deep(.detailList) {
+    :deep(.detail-list) {
       width: 100%;
       .right-title {
-        padding-bottom: var(--o-spacing-h2);
         display: flex;
+        height: 40px;
+        margin-bottom: var(--o-spacing-h2);
         justify-content: flex-end;
         @media screen and (max-width: 768px) {
           padding-bottom: var(--o-spacing-h5);
@@ -692,8 +719,8 @@ const watchData = watch(
           margin: 0;
         }
       }
-      .detailHead {
-        line-height: 20px;
+      .detail-head {
+        line-height: 21px;
         padding: var(--o-spacing-h6);
         text-align: center;
         color: var(--o-color-text3);
@@ -704,11 +731,12 @@ const watchData = watch(
         }
       }
 
-      .meetList {
+      .meeting-list {
         padding: var(--o-spacing-h8) 0 0 var(--o-spacing-h8);
         height: 402px;
         background-color: var(--o-color-bg);
         overflow-y: scroll;
+        box-shadow: var(--o-shadow-base);
         .el-collapse {
           border: none;
           --el-collapse-header-height: 96px;
@@ -933,12 +961,21 @@ const watchData = watch(
         align-items: center;
         justify-content: center;
         height: 100%;
+        font-size: var(--o-font-size-h8);
         img {
-          width: 300px;
-          min-height: 300px;
+          width: 346px;
         }
         p {
-          transform: translateY(-200%);
+          margin-top: var(--o-spacing-h5);
+        }
+        @media screen and (max-width: 1000px) {
+          img {
+            width: 100%;
+          }
+          p {
+            padding-bottom: var(--o-spacing-h5);
+            font-size: var(--o-font-size-tip);
+          }
         }
       }
     }

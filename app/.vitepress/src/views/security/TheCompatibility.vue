@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted } from 'vue';
-import { useData } from 'vitepress';
+import { ref, reactive, computed } from 'vue';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
@@ -11,7 +11,7 @@ import { getCompatibilityList } from '@/api/api-security';
 
 import { cveQuery, compatibilityList } from '@/shared/@types/type-support.ts';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const inputName = ref('zhangsan');
 const activeIndex = ref(0);
 const total = ref(0);

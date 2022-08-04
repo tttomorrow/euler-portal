@@ -8,6 +8,7 @@ import {
   onUnmounted,
 } from 'vue';
 import { useData, useRouter } from 'vitepress';
+import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -22,7 +23,7 @@ import IconCancel from '~icons/app/icon-cancel.svg';
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const router = useRouter();
 const language = useData().lang;
 const commonStore = useCommon();

@@ -1,4 +1,4 @@
-import i18n from './src/i18n';
+// import i18n from './src/i18n';
 import type { UserConfig } from 'vitepress';
 
 const config: UserConfig = {
@@ -48,12 +48,12 @@ const config: UserConfig = {
     },
   },
   themeConfig: {
-    locales: {
-      '/': i18n.zh,
-      '/zh/': i18n.zh,
-      '/en/': i18n.en,
-      '/ru/': i18n.ru,
-    },
+    // locales: {
+    //   '/': i18n.zh,
+    //   '/zh/': i18n.zh,
+    //   '/en/': i18n.en,
+    //   '/ru/': i18n.ru,
+    // },
     docsUrl: 'https://docs.openeuler.org',
   },
 };
