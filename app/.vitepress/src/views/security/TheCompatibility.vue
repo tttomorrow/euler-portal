@@ -7,13 +7,16 @@ import banner from '@/assets/banner-secondary.png';
 import TagFilter from '@/components/TagFilter.vue';
 import search from '@/assets/illustrations/search.png';
 
+import type { TabsPaneContext } from 'element-plus';
+
 import {
   getCompatibilityList,
+  getDriverList,
   driverArchitectureOptions,
   driverOSOptions,
 } from '@/api/api-security';
 
-import { cveQuery, compatibilityList } from '@/shared/@types/type-support.ts';
+import { CveQuery, CompatibilityList } from '@/shared/@types/type-support.ts';
 
 const i18n = computed(() => useI18n());
 const searchContent = ref('');
@@ -23,8 +26,9 @@ const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const architectureSelect = ref<string[]>(['全部']);
 const osOptions = ref<string[]>(['全部']);
+const activeName = ref('first');
 
-const queryData: cveQuery = reactive({
+const queryData: CveQuery = reactive({
   pages: {
     page: 1,
     size: 10,
@@ -36,16 +40,50 @@ const queryData: cveQuery = reactive({
   lang: 'zh',
 });
 
-const tableData = ref<compatibilityList>([]);
-
-const getCompatibilityData = (data: cveQuery) => {
+const tableData = ref<CompatibilityList>([]);
+// 整机
+const getCompatibilityData = (data: CveQuery) => {
   try {
     getCompatibilityList(data).then((res: any) => {
+      // console.log(res);
       total.value = res.result.totalCount;
       tableData.value = res.result.hardwareCompList;
     });
   } catch (e: any) {
     throw new Error(e);
+  }
+};
+// 板卡
+const getDriverData = (data: CveQuery) => {
+  try {
+    getDriverList(data).then((res: any) => {
+      // console.log(res);
+      total.value = res.result.totalCount;
+      tableData.value = res.result.driverCompList;
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+};
+// 开源软件
+
+// 商业软件
+
+const handleClick = (tab: TabsPaneContext) => {
+  // console.log(tab.props.label, event);
+  switch (tab.props.label) {
+    case '整机':
+      getCompatibilityData(queryData);
+      break;
+    case '板卡':
+      getDriverData(queryData);
+      break;
+    case '开源软件':
+      // console.log(3);
+      break;
+    case '商业软件':
+      // console.log(4);
+      break;
   }
 };
 
@@ -96,9 +134,9 @@ watch(queryData, () => getCompatibilityData(queryData));
     subtitle=""
     :illustration="search"
   />
-  <OTabs>
+  <OTabs v-model="activeName" @tab-click="handleClick">
     <!-- 整机 -->
-    <OTabPane label="整机">
+    <OTabPane label="整机" name="first">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -176,7 +214,7 @@ watch(queryData, () => getCompatibilityData(queryData));
       </div>
     </OTabPane>
     <!-- 板卡 -->
-    <OTabPane label="板卡">
+    <OTabPane label="板卡" name="second">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -254,9 +292,9 @@ watch(queryData, () => getCompatibilityData(queryData));
       </div>
     </OTabPane>
     <!-- 开源软件 -->
-    <OTabPane label="开源软件"> </OTabPane>
+    <OTabPane label="开源软件" name="third"> </OTabPane>
     <!-- 商业软件 -->
-    <OTabPane label="商业软件"> </OTabPane>
+    <OTabPane label="商业软件" name="fourth"> </OTabPane>
     <div class="bottom-wrapper">
       <OPagination
         v-model:page-size="queryData.pages.size"

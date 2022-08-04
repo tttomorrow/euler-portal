@@ -10,7 +10,7 @@ import cve from '@/assets/illustrations/cve.png';
 import search from '@/assets/illustrations/search.png';
 
 import { getCveList } from '@/api/api-security';
-import { cveLists, cveQuery } from '@/shared/@types/type-support';
+import { CveLists, CveQuery } from '@/shared/@types/type-support';
 
 const i18n = computed(() => useI18n());
 const total = ref(0);
@@ -19,7 +19,7 @@ const searchContent = ref('');
 const activeIndex = ref(0);
 const filterIndex = ref(0);
 
-const tableData = ref<cveLists[]>([
+const tableData = ref<CveLists[]>([
   {
     announcementTime: '',
     cveId: '',
@@ -30,7 +30,7 @@ const tableData = ref<cveLists[]>([
   },
 ]);
 
-const queryData: cveQuery = reactive({
+const queryData: CveQuery = reactive({
   pages: {
     page: 1,
     size: 10,
@@ -39,7 +39,7 @@ const queryData: cveQuery = reactive({
   status: '',
 });
 
-function getCveLists(data: cveQuery) {
+function getCveLists(data: CveQuery) {
   try {
     getCveList(data).then((res: any) => {
       tableData.value = res.result.cveDatabaseList;

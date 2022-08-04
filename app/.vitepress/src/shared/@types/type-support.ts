@@ -1,12 +1,9 @@
-export interface baseQuery {
+export interface BaseQuery {
   page: number;
   size: number;
 }
-export interface cveQuery {
-  pages: {
-    page: number;
-    size: number;
-  };
+export interface CveQuery {
+  pages: BaseQuery;
   keyword?: string;
   status?: string;
   type?: string;
@@ -34,7 +31,7 @@ export interface SecurityLists {
   type: string;
 }
 
-export interface cveLists {
+export interface CveLists {
   announcementTime: string;
   cveId: string;
   cvsssCoreOE: string;
@@ -43,7 +40,7 @@ export interface cveLists {
   updateTime: string;
 }
 
-export interface compatibilityList {
+export interface CompatibilityList {
   architecture: string;
   biosUefi?: string;
   boardCards?: [];
