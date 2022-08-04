@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, onMounted, watch } from 'vue';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -7,15 +7,22 @@ import banner from '@/assets/banner-secondary.png';
 import TagFilter from '@/components/TagFilter.vue';
 import search from '@/assets/illustrations/search.png';
 
-import { getCompatibilityList } from '@/api/api-security';
+import {
+  getCompatibilityList,
+  driverArchitectureOptions,
+  driverOSOptions,
+} from '@/api/api-security';
 
 import { cveQuery, compatibilityList } from '@/shared/@types/type-support.ts';
 
 const i18n = computed(() => useI18n());
-const inputName = ref('zhangsan');
+const searchContent = ref('');
 const activeIndex = ref(0);
+const activeIndex1 = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
+const architectureSelect = ref<string[]>(['全部']);
+const osOptions = ref<string[]>(['全部']);
 
 const queryData: cveQuery = reactive({
   pages: {
@@ -34,28 +41,51 @@ const tableData = ref<compatibilityList>([]);
 const getCompatibilityData = (data: cveQuery) => {
   try {
     getCompatibilityList(data).then((res: any) => {
+      total.value = res.result.totalCount;
       tableData.value = res.result.hardwareCompList;
     });
-  } catch (e) {
-    console.error(e);
+  } catch (e: any) {
+    throw new Error(e);
   }
 };
 
-const tagClick = (i: number) => {
+const tagClick = (i: number, item: string) => {
   activeIndex.value = i;
+  queryData.os = item === '全部' ? '' : item;
+};
+
+const optionTagClick = (i: number, item: string) => {
+  activeIndex1.value = i;
+  queryData.architecture = item === '全部' ? '' : item;
 };
 
 const handleSizeChange = (val: number) => {
-  queryData.size = val;
+  queryData.pages.size = val;
 };
 
 const handleCurrentChange = (val: number) => {
-  queryData.page = val;
+  queryData.pages.page = val;
 };
+
+function searchValchange() {
+  queryData.keyword = searchContent.value;
+}
 
 onMounted(() => {
   getCompatibilityData(queryData);
+  driverArchitectureOptions({ lang: 'zh' }).then((res) => {
+    res.result.forEach((item: string) => {
+      architectureSelect.value.push(item);
+    });
+  });
+  driverOSOptions({ lang: 'zh' }).then((res) => {
+    res.result.forEach((item: string) => {
+      osOptions.value.push(item);
+    });
+  });
 });
+
+watch(queryData, () => getCompatibilityData(queryData));
 </script>
 
 <template>
@@ -70,29 +100,39 @@ onMounted(() => {
     <!-- 整机 -->
     <OTabPane label="整机">
       <div class="wrapper">
-        <OSearch v-model="inputName" class="o-search"></OSearch>
+        <OSearch
+          v-model="searchContent"
+          class="o-search"
+          @change="searchValchange"
+        ></OSearch>
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">
-              <span class="category">{{ i18n.security.SEVERITY }}</span>
-              <TagFilter label="全部" :show="true">
+              <TagFilter :label="i18n.compatibility.ADAPTIVE" :show="false">
                 <OTag
-                  v-for="(item, index) in i18n.security.SEVERITY_LIST"
+                  v-for="(item, index) in osOptions"
                   :key="'tag' + index"
                   :type="activeIndex === index ? 'primary' : 'text'"
-                  @click="tagClick(index)"
+                  @click="tagClick(index, item)"
                 >
-                  {{ item.NAME }}
+                  {{ item }}
                 </OTag>
               </TagFilter>
             </div>
           </template>
           <div class="card-body">
-            <span class="category">{{ i18n.security.YEAR }}</span>
-            <span class="category-item">2021</span>
+            <TagFilter :show="false" :label="i18n.security.YEAR">
+              <OTag
+                v-for="(item, index) in architectureSelect"
+                :key="'tag' + index"
+                :type="activeIndex1 === index ? 'primary' : 'text'"
+                @click="optionTagClick(index, item)"
+              >
+                {{ item }}
+              </OTag>
+            </TagFilter>
           </div>
         </OCard>
-
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
@@ -102,7 +142,7 @@ onMounted(() => {
           </OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
-            prop="summary"
+            prop="hardDiskDrive"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
@@ -110,7 +150,7 @@ onMounted(() => {
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
-            prop="updateTime"
+            prop="biosUefi"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
@@ -118,7 +158,7 @@ onMounted(() => {
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
-            prop="status"
+            prop="date"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
@@ -133,38 +173,122 @@ onMounted(() => {
             prop="ram"
           ></OTableColumn>
         </OTable>
-
-        <OPagination
-          v-model:page-size="queryData.size"
-          v-model:currentPage="queryData.page"
-          class="pagination"
-          :page-sizes="[10, 20, 40, 80]"
-          :layout="layout"
-          :total="total"
-          :background="true"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-        >
-          <span class="slot-content">5/20</span>
-        </OPagination>
-        <p class="about">
-          关于硬件兼容性测试，openEuler提供了完整的测试流程和工具，详见
-          <a href="#">openEuler 硬件兼容性测试整体介绍</a>
-        </p>
       </div>
     </OTabPane>
     <!-- 板卡 -->
-    <OTabPane label="板卡"> </OTabPane>
+    <OTabPane label="板卡">
+      <div class="wrapper">
+        <OSearch
+          v-model="searchContent"
+          class="o-search"
+          @change="searchValchange"
+        ></OSearch>
+        <OCard class="filter-card">
+          <template #header>
+            <div class="card-header">
+              <TagFilter :label="i18n.compatibility.ADAPTIVE" :show="false">
+                <OTag
+                  v-for="(item, index) in osOptions"
+                  :key="'tag' + index"
+                  :type="activeIndex === index ? 'primary' : 'text'"
+                  @click="tagClick(index, item)"
+                >
+                  {{ item }}
+                </OTag>
+              </TagFilter>
+            </div>
+          </template>
+          <div class="card-body">
+            <TagFilter :show="false" :label="i18n.security.YEAR">
+              <OTag
+                v-for="(item, index) in architectureSelect"
+                :key="'tag' + index"
+                :type="activeIndex1 === index ? 'primary' : 'text'"
+                @click="optionTagClick(index, item)"
+              >
+                {{ item }}
+              </OTag>
+            </TagFilter>
+          </div>
+        </OCard>
+        <OTable class="pc-list" :data="tableData" style="width: 100%">
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
+            prop="architecture"
+            width="160"
+          >
+          </OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
+            prop="hardDiskDrive"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
+            prop="osVersion"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
+            prop="biosUefi"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
+            prop="updateTime"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
+            prop="date"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
+            prop="hardwareFactory"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
+            prop="hardwareModel"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
+            prop="ram"
+          ></OTableColumn>
+        </OTable>
+      </div>
+    </OTabPane>
     <!-- 开源软件 -->
     <OTabPane label="开源软件"> </OTabPane>
     <!-- 商业软件 -->
     <OTabPane label="商业软件"> </OTabPane>
+    <div class="bottom-wrapper">
+      <OPagination
+        v-model:page-size="queryData.pages.size"
+        v-model:currentPage="queryData.pages.page"
+        class="pagination"
+        :page-sizes="[10, 20, 40, 80]"
+        :layout="layout"
+        :total="total"
+        :background="true"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      >
+        <span class="slot-content">5/20</span>
+      </OPagination>
+      <p class="about">
+        关于硬件兼容性测试，openEuler提供了完整的测试流程和工具，详见
+        <a href="#">openEuler 硬件兼容性测试整体介绍</a>
+      </p>
+    </div>
   </OTabs>
 </template>
+
 <style lang="scss" scoped>
 :deep(.el-tabs__nav-scroll) {
   display: flex;
   justify-content: center;
+  background-color: #fff;
+}
+.bottom-wrapper {
+  max-width: 1504px;
+  margin: 0 auto;
+  padding: 0 var(--o-spacing-h2);
 }
 .wrapper {
   max-width: 1504px;

@@ -3,12 +3,12 @@ import { reactive, onMounted, computed } from 'vue';
 import { useI18n } from '@/i18n';
 
 import { getSecurityDetail } from '@/api/api-security';
-import { DetailParams } from '@/shared/@types/type-support';
+import { detailParams } from '@/shared/@types/type-support';
 import type { AxiosResponse } from '@/shared/axios';
 
 const i18n = computed(() => useI18n());
 
-const queryData: DetailParams = reactive({
+const queryData: detailParams = reactive({
   securityNoticeNo: '',
 });
 

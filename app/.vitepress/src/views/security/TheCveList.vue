@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, onMounted, computed } from 'vue';
+import { reactive, ref, onMounted, computed, watch } from 'vue';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -10,16 +10,14 @@ import cve from '@/assets/illustrations/cve.png';
 import search from '@/assets/illustrations/search.png';
 
 import { getCveList } from '@/api/api-security';
-import { CveLists, QueryParams } from '@/shared/@types/type-support';
+import { cveLists, cveQuery } from '@/shared/@types/type-support';
 
-const inputName = ref('');
 const i18n = computed(() => useI18n());
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const searchContent = ref('');
 const activeIndex = ref(0);
 const filterIndex = ref(0);
-const total = ref(0);
 
 const tableData = ref<cveLists[]>([
   {
@@ -41,7 +39,7 @@ const queryData: cveQuery = reactive({
   status: '',
 });
 
-function getCveLists(data: baseQuery) {
+function getCveLists(data: cveQuery) {
   try {
     getCveList(data).then((res: any) => {
       tableData.value = res.result.cveDatabaseList;
@@ -101,6 +99,7 @@ watch(queryData, () => getCveLists(queryData));
     <OSearch
       v-model="searchContent"
       class="o-search"
+      :placeholder="i18n.security.INPUT_CVE_ID"
       @change="searchValchange"
     ></OSearch>
 
@@ -176,7 +175,7 @@ watch(queryData, () => getCveLists(queryData));
             <span>{{ i18n.security.SYNOPSIS }}:</span>{{ item.summary }}
           </li>
           <li>
-            <span>{{ i18n.security.CVSS_SCORE }}:</span>{{ item.cvsssCoreNVD }}
+            <span>{{ i18n.security.CVSS_SCORE }}:</span>{{ item.cvsssCoreOE }}
           </li>
           <li>
             <span>{{ i18n.security.RELEASE_DATE }}:</span

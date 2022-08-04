@@ -10,11 +10,13 @@ import search from '@/assets/illustrations/search.png';
 import cve from '@/assets/illustrations/cve.png';
 
 import { getSecurityList } from '@/api/api-security';
-import { BulletinParams, SecurityLists } from '@/shared/@types/type-support';
+import { securityLists, cveQuery } from '@/shared/@types/type-support';
 import OSearch from 'opendesign/search/OSearch.vue';
 
-const router = useRouter();
 const i18n = computed(() => useI18n());
+
+const router = useRouter();
+
 const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
@@ -23,7 +25,7 @@ const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const filterIndex = ref(0);
 
-const tableData = ref<SecurityLists[]>([
+const tableData = ref<securityLists[]>([
   {
     affectedComponent: '',
     affectedProduct: '',
@@ -114,14 +116,18 @@ watch(queryData, () => getSecurityLists(queryData));
 
     <div class="bulletin-main">
       <div class="input-container">
-        <OSearch v-model="inputName" @change="searchValchange"></OSearch>
+        <OSearch
+          v-model="inputName"
+          :placeholder="i18n.security.SEARCH"
+          @change="searchValchange"
+        ></OSearch>
       </div>
 
       <OCard class="filter-card">
         <template #header>
           <div class="card-header">
-            <span class="category">{{ i18n.security.SEVERITY }}</span>
-            <TagFilter label="" :show="true">
+            <!-- <span class="category">{{ i18n.security.SEVERITY }}</span> -->
+            <TagFilter :label="i18n.security.SEVERITY" :show="false">
               <OTag
                 v-for="(item, index) in i18n.security.SEVERITY_LIST"
                 :key="'tag' + index"
@@ -134,8 +140,8 @@ watch(queryData, () => getSecurityLists(queryData));
           </div>
         </template>
         <div class="card-body">
-          <span class="category">{{ i18n.security.YEAR }}</span>
-          <TagFilter :show="true">
+          <!-- <span class="category">{{ i18n.security.YEAR }}</span> -->
+          <TagFilter :show="false" :label="i18n.security.YEAR">
             <OTag
               v-for="(item, index) in years"
               :key="'tag' + index"
@@ -262,7 +268,7 @@ watch(queryData, () => getSecurityLists(queryData));
   margin: var(--o-spacing-h1) auto 0;
   @media screen and (max-width: 768px) {
     margin: 0 auto;
-    padding: 16px 16px 0;
+    padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
   }
   .input-container {
     @media screen and (max-width: 768px) {
@@ -274,7 +280,7 @@ watch(queryData, () => getSecurityLists(queryData));
   }
   .calendar-mobile {
     display: none;
-    margin: 16px 0;
+    margin: var(--o-spacing-h5) 0;
     width: 100%;
     height: 34px;
     background-color: var(--o-color-bg);
@@ -312,15 +318,14 @@ watch(queryData, () => getSecurityLists(queryData));
       display: inline-block;
       border: 1px solid #002fa7;
       color: #002fa7;
-      padding: 0px 12px;
+      padding: 0px var(--o-spacing-h6);
     }
     .card-header {
-      padding-bottom: 14px;
+      padding-bottom: var(--o-spacing-h5);
       border-bottom: 1px solid #ccc;
-      line-height: 54px;
     }
     .card-body {
-      padding-top: 19px;
+      padding-top: var(--o-spacing-h5);
     }
   }
   .filter-mobile {
@@ -340,11 +345,11 @@ watch(queryData, () => getSecurityLists(queryData));
         cursor: pointer;
         flex: 1;
         text-align: center;
-        padding: 6px;
-        font-size: 14px;
+        padding: var(--o-spacing-h9);
+        font-size: var(--o-font-size-text);
         font-weight: 400;
         color: #002fa7;
-        line-height: 22px;
+        line-height: var(--o-line-height-text);
         border: 1px solid #002fa7;
         border-right: 0;
         &:last-child {
