@@ -101,7 +101,10 @@ onMounted(() => {
       <div class="meeting">
         <h5>{{ sigDetail.ORGANIZING_MEETINGS }}</h5>
         <div v-if="sigMeetingData.tableData" class="calender-wrapper">
-          <AppCalendar :is-home-page="false" :table-data="sigMeetingData.tableData" />
+          <AppCalendar
+            :is-home-page="false"
+            :table-data="sigMeetingData.tableData"
+          />
         </div>
         <p v-else class="no-meeting">
           {{ sigDetail.NO_MEETINGS }}

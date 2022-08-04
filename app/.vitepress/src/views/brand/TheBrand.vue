@@ -189,7 +189,6 @@ list.value = initList();
     width: 100%;
     padding: 0;
     @media (max-width: 768px) {
-      max-width: 336px;
     }
     :deep(.el-card__body) {
       padding: var(--o-spacing-h4);
@@ -266,7 +265,6 @@ list.value = initList();
   &-item {
     width: 100%;
     @media (max-width: 768px) {
-      max-width: 336px;
     }
     a {
       width: 100%;
@@ -287,14 +285,14 @@ list.value = initList();
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 880px) {
   .ppt-list,
   .brand-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .ppt-list,
   .brand-list {
     grid-template-columns: repeat(1, 1fr);
