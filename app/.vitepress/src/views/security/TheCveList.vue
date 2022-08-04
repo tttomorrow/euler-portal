@@ -10,9 +10,8 @@ import cve from '@/assets/illustrations/cve.png';
 import search from '@/assets/illustrations/search.png';
 
 import { getCveList } from '@/api/api-security';
-import { cveLists, baseQuery, cveQuery } from '@/shared/@types/type-support';
+import { cveLists, cveQuery } from '@/shared/@types/type-support';
 
-const inputName = ref('');
 const i18n = computed(() => useI18n());
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
@@ -100,6 +99,7 @@ watch(queryData, () => getCveLists(queryData));
     <OSearch
       v-model="searchContent"
       class="o-search"
+      :placeholder="i18n.security.INPUT_CVE_ID"
       @change="searchValchange"
     ></OSearch>
 
