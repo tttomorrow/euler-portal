@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, watch, onMounted } from 'vue';
+import { reactive, ref, onMounted } from 'vue';
 import { useData } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -8,7 +8,7 @@ import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
 import { getCveList } from '@/api/api-security';
-import { CveLists, QueryParams } from '@/shared/@types/type-cvelist';
+import { CveLists, QueryParams } from '@/shared/@types/type-support.ts';
 
 const inputName = ref('');
 const { theme: i18n } = useData();
@@ -27,7 +27,12 @@ const tableData = ref<CveLists[]>([
   },
 ]);
 
-const queryData: QueryParams = reactive({
+// const queryData: QueryParams = reactive({
+//   page: 1,
+//   size: 10,
+// });
+
+const pages: QueryParams = reactive({
   page: 1,
   size: 10,
 });
@@ -47,23 +52,21 @@ const tagClick = (i: number) => {
   activeIndex.value = i;
 };
 
-const handleSizeChange = (val: number) => {
-  queryData.size = val;
-};
+// const handleSizeChange = (val: number) => {
+//   queryData.size = val;
+// };
 
-const handleCurrentChange = (val: number) => {
-  queryData.page = val;
-};
+// const handleCurrentChange = (val: number) => {
+//   queryData.page = val;
+// };
+
 onMounted(() => {
-  getCveLists(queryData);
+  getCveLists(pages);
 });
-watch(
-  queryData,
-  //   {
-  //   pages: { page: queryData.page, size: queryData.size },
-  // }
-  () => getCveLists(queryData)
-);
+// watch(
+//   queryData,
+//   () => getCveLists(queryData)
+// );
 </script>
 <template>
   <BannerLevel2
@@ -116,8 +119,8 @@ watch(
       <OTableColumn :label="i18n.security.OPERATION"> </OTableColumn>
     </OTable>
     <OPagination
-      v-model:page-size="queryData.size"
-      v-model:currentPage="queryData.page"
+      v-model:page-size="pages.size"
+      v-model:currentPage="pages.page"
       class="pagination"
       :page-sizes="[10, 20, 40, 80]"
       :layout="layout"

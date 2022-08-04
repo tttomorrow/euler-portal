@@ -18,8 +18,12 @@ export default {
           TEXT: '毕昇JDK11',
           LINK: 'https://gitee.com/openeuler/bishengjdk-11',
         },
+        {
+          TEXT: '毕昇JDK 17',
+          LINK: 'https://gitee.com/openeuler/bishengjdk-17',
+        },
       ],
-      STATUS: false,
+      SHOW: false,
     },
     {
       IMG: '/img/projects/share/cards-letter.png',
@@ -33,16 +37,27 @@ export default {
           TEXT: '毕昇JDK11',
           LINK: 'https://gitee.com/openeuler/bishengjdk-11/issues',
         },
+        {
+          TEXT: '毕昇JDK 17',
+          LINK: 'https://gitee.com/openeuler/bishengjdk-17/issues',
+        },
       ],
-      STATUS: false,
+      SHOW: false,
     },
     {
       IMG: '/img/projects/bisheng/cards-look.png',
-      TITLE: 'Compiler SIG例会信息',
+      TITLE: 'SIG例会信息',
       LINK_LIST: [
-        'https://gitee.com/openeuler/bishengjdk-8/wikis/Compiler%20SIG%E4%BE%8B%E4%BC%9A?sort_id=4182234',
+        {
+          TEXT: '2021',
+          LINK: 'https://gitee.com/openeuler/bishengjdk-8/wikis/Compiler%20SIG%E4%BE%8B%E4%BC%9A?sort_id=4182234',
+        },
+        {
+          TEXT: '2022',
+          LINK: 'https://etherpad.openeuler.org/p/Compiler-meetings',
+        },
       ],
-      STATUS: false,
+      SHOW: false,
     },
     {
       IMG: '/img/projects/bisheng/cards-upload.png',
@@ -50,7 +65,7 @@ export default {
       LINK_LIST: [
         'https://gitee.com/openeuler/bishengjdk-8/wikis/%E9%A1%B9%E7%9B%AE%E8%B7%AF%E6%A0%87?sort_id=4182245',
       ],
-      STATUS: false,
+      SHOW: false,
     },
   ],
   BISHENG_MORE: '更多信息：',
@@ -78,7 +93,8 @@ export default {
     DESC_LIST: [
       'JDK整体架构如下图所示，其中JRE指的是Java Runtime Environment，包括了Java运行时的虚拟机JVM（Java Virtual Machine）、Libraries等。而JDK是JRE的超集，包括了JRE的所有内容，并包含javac、jdb等开发者必须的编译器和调试器。JRE仅提供运行时库、Java虚拟机和其他一些运行Java应用程序所必须的组件。',
     ],
-    FRAMEWORK_IMG: '/img/projects/bisheng/framework.png',
+    FRAMEWORK_IMG: '/img/projects/bisheng/framework-hight-zh.png',
+    FRAMEWORK_IMG_DARK: '/img/projects/bisheng/framework-dark-zh.png',
   },
   BISHENG_LEARN: {
     TITLE_OUTSIDE: '学习',

@@ -40,6 +40,9 @@ const attrs = useAttrs();
         color: var(--o-pagination-font-color);
       }
     }
+    .el-select-dropdown__wrap {
+      background-color: #000 !important;
+    }
     .el-pager li {
       color: var(--o-pagination-font-color);
       background: var(--o-pagination-bg-color);

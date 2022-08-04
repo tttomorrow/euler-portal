@@ -1,5 +1,12 @@
 <script lang="ts" setup>
-import arrowRightIcon from '@/assets/svg-icons/arrow-right.svg';
+import { useRouter, useData } from 'vitepress';
+
+import MiniTitle from '../components/MiniTitle.vue';
+
+import IconArrowRight from '~icons/app/arrow-right';
+
+const router = useRouter();
+const { lang } = useData();
 
 defineProps({
   referenceObj: {
@@ -8,15 +15,27 @@ defineProps({
       return {};
     },
   },
+  device: {
+    type: Boolean,
+    default: true,
+  },
 });
+const goLink = (path: string) => {
+  if (path.startsWith('https:')) {
+    window.open(path, '_blank');
+  } else {
+    router.go(`/${lang.value}` + path);
+  }
+};
 </script>
 
 <template>
   <div class="reference">
-    <div class="title">
-      <div class="title-outside">{{ referenceObj.TITLE_OUTSIDE }}</div>
-      <div class="title-inside">{{ referenceObj.TITLE_INSIDE }}</div>
-    </div>
+    <MiniTitle
+      :device="device"
+      :title-inside="referenceObj.TITLE_INSIDE"
+      :title-outside="referenceObj.TITLE_OUTSIDE"
+    />
     <div class="reference-list">
       <div
         v-for="(item, index) in referenceObj.LINK_LIST"
@@ -24,10 +43,18 @@ defineProps({
         class="item"
       >
         <div class="link">
-          <a :href="item.LINK" target="_blank"
-            >{{ item.TEXT }}
-            <img :src="arrowRightIcon" alt="" />
-          </a>
+          <OButton
+            animation
+            type="text"
+            size="small"
+            class="link-button"
+            @click="goLink(item.LINK)"
+          >
+            {{ item.TEXT }}
+            <template #suffixIcon>
+              <OIcon><IconArrowRight /></OIcon>
+            </template>
+          </OButton>
         </div>
         <img :src="item.IMG" alt="" />
       </div>
@@ -40,32 +67,8 @@ defineProps({
   width: 100%;
   padding-top: var(--o-spacing-h1);
   padding: 0 var(--o-spacing-h5);
-  .title {
-    margin: 0 auto;
-    margin-bottom: 16px;
-    color: var(--o-color-text2);
-    line-height: var(--o-line-height-h3);
-    position: relative;
-    text-align: center;
-    &-outside {
-      position: absolute;
-      left: 50%;
-      top: 24px;
-      transform: translateX(-50%);
-      z-index: 1;
-    }
-    &-inside {
-      color: var(--o-color-text3);
-    }
-    @media screen and (max-width: 767px) {
-      font-size: 16px;
-      &-outside {
-        top: 10px;
-      }
-    }
-  }
   &-list {
-    margin: var(--o-spacing-h3) auto var(--o-spacing-h2) auto;
+    margin: 0 auto;
     .item {
       width: 100%;
       background-color: var(--o-color-bg);
@@ -83,26 +86,12 @@ defineProps({
       color: var(--o-color-text2);
       line-height: var(--o-height-h6);
       .link {
-        a {
-          display: block;
-          height: var(--o-height-h8);
-          font-size: var(--o-font-size-text);
-          font-weight: 400;
-          color: var(--o-color-text2);
-          line-height: var(--o-height-h8);
-          margin-right: var(--o-spacing-h4);
-          padding-right: var(--o-spacing-h4);
-          position: relative;
-          overflow: hidden;
-        }
-        img {
-          margin-left: var(--o-spacing-h8);
-          position: absolute;
-          top: -2.5px;
-          right: -20px;
-          width: 22px;
-          height: 22px;
-          filter: drop-shadow(var(--o-color-brand) -20px 0);
+        &-button {
+          padding: 0 !important;
+          margin-right: 10px;
+          svg {
+            color: var(--o-color-brand);
+          }
         }
       }
     }
@@ -113,6 +102,11 @@ defineProps({
       display: grid;
       grid-template-columns: 1fr;
       grid-row-gap: var(--o-spacing-h4);
+      .item {
+        height: 58px;
+        padding: 0 0 0 var(--o-spacing-h8);
+        background-size: 160px 150%;
+      }
     }
     @media screen and (min-width: 768px) and (max-width: 1079px) {
       display: grid;

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { useData } from 'vitepress';
 
 import MiniCards from '../components/MiniCards.vue';
@@ -6,12 +7,19 @@ import MiniDescription from '../components/MiniDescription.vue';
 import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 // TODO:该页面是视频先用插画代替
 import BannerIllustration from '/img/projects/atune/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const { theme: i18n } = useData();
+const isPC = ref(true);
+if (useWindowResize().value < 767) {
+  isPC.value = false;
+} else {
+  isPC.value = true;
+}
 </script>
 <template>
   <div class="atune-wraper">
@@ -21,15 +29,19 @@ const { theme: i18n } = useData();
       :subtitle="i18n.atune.ATUNE_BANNER_TEXT[1]"
       :illustration="BannerIllustration"
       :background-image="BannerBackground"
-      background-text="CONNECT"
+      background-text="SEARCH"
     />
     <MiniCards :cards-link="i18n.atune.ATUNE_LINK" />
     <!-- 中间文字介绍部分 -->
     <MiniDescription :description-desc="i18n.atune.ATUNE_DESC" />
     <!-- 架构 -->
-    <MiniFrame :frame-obj="i18n.atune.ATUNE_FRAMEWORK" layout="upAndDown" />
+    <MiniFrame
+      :device="isPC"
+      :frame-obj="i18n.atune.ATUNE_FRAMEWORK"
+      layout="upAndDown"
+    />
     <!-- 文档 -->
-    <MiniDocs :docs-obj="i18n.atune.ATUNE_DOCUMENT" />
+    <MiniDocs :device="isPC" :docs-obj="i18n.atune.ATUNE_DOCUMENT" />
   </div>
 </template>
 

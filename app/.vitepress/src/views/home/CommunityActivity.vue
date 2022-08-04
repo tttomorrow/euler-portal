@@ -6,6 +6,10 @@ import { useCommon } from '@/stores/common';
 const commonStore = useCommon();
 
 const { theme: i18n } = useData();
+
+const go = (path: string) => {
+  window.open(path, '_blank');
+};
 </script>
 
 <template>
@@ -19,16 +23,24 @@ const { theme: i18n } = useData();
         <div class="community-word">
           {{ i18n.home.COMMUNITY_ACTIVITY.CARD.CONTENT }}
         </div>
-        <div class="community-detail">
-          {{ i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS
-          }}<IconArrowRight class="community-detail-icon"></IconArrowRight>
-        </div>
+
+        <OButton
+          animation
+          type="text"
+          class="community-detail"
+          @click="go(i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS)"
+        >
+          {{ i18n.home.IMG_CAROUSE.BUTTON }}
+          <template #suffixIcon>
+            <IconArrowRight class="community-detail-icon"></IconArrowRight>
+          </template>
+        </OButton>
       </OCard>
 
       <OCard class="round-card" :style="{ padding: '0px' }">
         <div class="round-list">
           <div
-            v-for="(item, index) in i18n.home.COMMUNITY_ACTIVITY.ROUND_LIST"
+            v-for="(item, index) in i18n.home.HOME_ROUND.ROUND_LIST"
             :key="index"
             class="round-item"
           >
@@ -80,14 +92,11 @@ const { theme: i18n } = useData();
       justify-content: center;
     }
   }
-
   &-item {
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 90px;
-
     @media (max-width: 768px) {
       width: 32%;
       margin-bottom: var(--o-spacing-h4);
@@ -122,25 +131,18 @@ const { theme: i18n } = useData();
 
   &-img {
     width: 48px;
-    height: 48px;
     @media (max-width: 768px) {
       width: 40px;
-      height: 40px;
     }
   }
 }
 .community {
-  max-width: 1504px;
-  margin: 0 auto;
-  padding: 0 var(--o-spacing-h2);
-  @media (max-width: 1100px) {
-    padding: 0 var(--o-spacing-h5);
-  }
-  margin-top: var(--o-spacing-h1);
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h2);
   }
   h3 {
+    margin-top: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h2);
     font-size: var(--o-font-size-h3);
     font-weight: 300;
     color: var(--o-color-text2);
@@ -150,6 +152,7 @@ const { theme: i18n } = useData();
     @media (max-width: 768px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
+      margin-top: var(--o-spacing-h2);
     }
   }
 
@@ -185,7 +188,6 @@ const { theme: i18n } = useData();
   &-list {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    margin-top: var(--o-spacing-h2);
     grid-gap: var(--o-spacing-h2);
 
     @media (max-width: 1080px) {
@@ -206,12 +208,15 @@ const { theme: i18n } = useData();
     flex-flow: row;
     justify-content: flex-start;
     align-items: center;
+    padding: 0;
+    &:hover {
+      color: var(--o-color-brand);
+    }
 
     &-icon {
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
       color: var(--o-color-brand);
-      margin-left: var(--o-spacing-h8);
     }
 
     @media (max-width: 768px) {
@@ -231,6 +236,9 @@ const { theme: i18n } = useData();
       @media (max-width: 768px) {
         padding: var(--o-spacing-h5) var(--o-spacing-h8);
       }
+    }
+    &:hover {
+      box-shadow: var(--o-shadow-base_hover);
     }
   }
 }

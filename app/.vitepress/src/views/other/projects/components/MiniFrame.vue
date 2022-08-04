@@ -1,38 +1,10 @@
 <script lang="ts" setup>
-import { reactive, Ref, ref } from 'vue';
+import { computed } from 'vue';
 
-interface Info {
-  info: Obj;
-}
-
-interface Obj {
-  TAB?: string;
-  TITLE_OUTSIDE?: string;
-  TITLE_INSIDE?: string;
-  FRAMEWORK_IMG?: string;
-  DATA_LIST?: Data_list_item[];
-  DESC_LIST?: Data_list_item[];
-}
-
-interface Data_list_item {
-  IMG?: string;
-  THEME?: string;
-  DESC?: string;
-  BACKGROUND: Background;
-  LINK?: Link_list[];
-}
-
-interface Link_list {
-  TEXT?: string;
-  LINK?: string;
-}
-
-interface Background {
-  IMG: string;
-  TYPE: number;
-}
-
-const props = defineProps({
+import MiniTitle from './MiniTitle.vue';
+import FrameList from './FrameList.vue';
+import { useCommon } from '@/stores/common';
+defineProps({
   frameObj: {
     type: Object,
     default: function () {
@@ -43,67 +15,80 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  device: {
+    type: Boolean,
+    default: true,
+  },
 });
-/*eslint-disable*/
-let activeTab: Ref = ref('');
-const infoObj = reactive<Info>({ info: {} });
-// init:
-if (props.frameObj.TAB) {
-  activeTab = ref(props.frameObj.TAB[0].KEY);
-  infoObj.info = props.frameObj[props.frameObj.TAB[0].KEY];
-} else {
-  infoObj.info = props.frameObj;
-}
-const changeFrame = function (key: string) {
-  activeTab.value = key;
-  infoObj.info = props.frameObj[key];
-};
+const commonStore = useCommon();
+const isDark = computed(() => {
+  return commonStore.theme === 'dark' ? true : false;
+});
 </script>
 
 <template>
   <div class="framework-box">
-    <div class="title">
-      <div class="title-outside">{{ frameObj.TITLE_OUTSIDE }}</div>
-      <div class="title-inside">{{ frameObj.TITLE_INSIDE }}</div>
-    </div>
+    <MiniTitle
+      :device="device"
+      :title-inside="frameObj.TITLE_INSIDE"
+      :title-outside="frameObj.TITLE_OUTSIDE"
+    />
     <!-- 上下布局 -->
     <div v-if="layout === 'upAndDown'" class="framework-upanddown">
-      <!-- tab 栏 -->
-      <div v-if="frameObj.TAB" class="tab">
-        <div
-          v-for="item in frameObj.TAB"
-          :key="item.KEY"
-          class="tab-item"
-          :class="
-            activeTab === item.KEY ? 'tab-item tab-item-active' : 'tab-item'
-          "
-          @click="changeFrame(item.KEY)"
-        >
-          {{ item.VALUE }}
-        </div>
-      </div>
-      <!-- 有点问题 TODO: -->
-      <!-- <OTabs v-if="frameObj.TAB" class="tab">
-        <OTabPane
-          v-for="item in frameObj.TAB"
-          :key="item.VALUE"
-          :label="item.VALUE"
-          @click.native="changeFrame(item.KEY)"
-        >
-        </OTabPane>
-      </OTabs> -->
-      <div class="info">
-        <div class="desc">
-          <p v-for="(item, index) in infoObj.info.DESC_LIST" :key="index">
-            {{ item }}
-          </p>
-        </div>
-        <img
-          v-if="infoObj.info.FRAMEWORK_IMG"
-          :src="infoObj.info.FRAMEWORK_IMG"
-          alt=""
-        />
-      </div>
+      <!-- PC 端 -->
+      <template v-if="device">
+        <!-- 有选项卡 -->
+        <template v-if="frameObj.TAB">
+          <OTabs v-if="frameObj.TAB">
+            <OTabPane
+              v-for="item in frameObj.TAB"
+              :key="item.VALUE"
+              :label="item.VALUE"
+            >
+              <FrameList
+                :desc-list="frameObj[item.KEY].DESC_LIST"
+                :framework-img="frameObj[item.KEY].FRAMEWORK_IMG"
+                :framework-dark-img="frameObj[item.KEY].FRAMEWORK_IMG_DARK"
+                :framework-title="frameObj[item.KEY].FRAMEWORK_TITLE"
+                :dark-img="isDark"
+              />
+            </OTabPane>
+          </OTabs>
+        </template>
+        <!-- 无选项卡 -->
+        <template v-else>
+          <FrameList
+            :desc-list="frameObj.DESC_LIST"
+            :framework-img="frameObj.FRAMEWORK_IMG"
+            :framework-dark-img="frameObj.FRAMEWORK_IMG_DARK"
+            :framework-title="frameObj.FRAMEWORK_TITLE"
+            :dark-img="isDark"
+          />
+        </template>
+      </template>
+      <!-- 移动端 -->
+      <template v-else>
+        <!-- 有选项卡只渲染第一项 -->
+        <template v-if="frameObj.TAB">
+          <FrameList
+            :desc-list="frameObj[frameObj.TAB[0].KEY].DESC_LIST"
+            :framework-img="frameObj[frameObj.TAB[0].KEY].FRAMEWORK_IMG"
+            :framework-dark-img="frameObj.FRAMEWORK_IMG_DARK"
+            :framework-title="frameObj[frameObj.TAB[0].KEY].FRAMEWORK_TITLE"
+            :dark-img="isDark"
+          />
+        </template>
+        <!-- 无选项卡 -->
+        <template v-else>
+          <FrameList
+            :desc-list="frameObj.DESC_LIST"
+            :framework-img="frameObj.FRAMEWORK_IMG"
+            :framework-dark-img="frameObj.FRAMEWORK_IMG_DARK"
+            :framework-title="frameObj.FRAMEWORK_TITLE"
+            :dark-img="isDark"
+          />
+        </template>
+      </template>
     </div>
     <!-- 左右布局 -->
     <div v-if="layout === 'leftAndRight'" class="framework-leftandright">
@@ -123,7 +108,8 @@ const changeFrame = function (key: string) {
           ></div>
         </div>
         <div class="img">
-          <img :src="frameObj.FRAMEWORK_IMG" alt="" />
+          <img v-if="isDark" :src="frameObj.FRAMEWORK_IMG_DARK" alt="" />
+          <img v-else :src="frameObj.FRAMEWORK_IMG" alt="" />
         </div>
       </div>
     </div>
@@ -134,106 +120,10 @@ const changeFrame = function (key: string) {
 .framework-box {
   width: 100%;
   padding: 0 var(--o-spacing-h5);
-  .title {
-    margin: 0 auto var(--o-spacing-h3);
-    margin-bottom: var(--o-spacing-h1);
-    margin-bottom: 100px;
-    font-size: var(--o-font-size-h3);
-    color: var(--o-color-text2);
-    line-height: var(--o-line-height-h3);
-    position: relative;
-    text-align: center;
-    &-outside {
-      position: absolute;
-      left: 50%;
-      top: 24px;
-      transform: translateX(-50%);
-      z-index: 1;
-    }
-    &-inside {
-      color: var(--o-color-text3);
-    }
-    @media screen and (max-width: 767px) {
-      margin-bottom: var(--o-spacing-h3);
-      font-size: var(--o-font-size-h8);
-      &-outside {
-        top: 20%;
-      }
-    }
-  }
-  .tab {
-    display: flex;
-    margin-left: var(--o-spacing-h3);
-    color: var(--o-color-text2);
-    &-item {
-      padding: var(--o-spacing-h8) 0;
-      margin-right: var(--o-spacing-h4);
-      cursor: pointer;
-      &-active {
-        color: var(--o-color-brand_hover);
-        border-bottom: 1px solid var(--o-color-brand_hover);
-      }
-    }
-    @media screen and (max-width: 767px) {
-      margin-top: var(--o-spacing-h5);
-      font-size: var(--o-font-size-tip);
-    }
-  }
   .framework-upanddown {
     margin: 0 auto;
+    max-width: 1440px;
     position: relative;
-    .tab {
-      position: absolute;
-      top: -52px;
-      left: -24px;
-    }
-    .info {
-      padding: var(--o-spacing-h2) 0;
-      background-color: var(--o-color-bg);
-    }
-    .desc {
-      margin: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
-      p {
-        font-size: var(--o-font-size-h8);
-        color: var(--o-color-text2);
-        line-height: var(--o-line-height-h8);
-      }
-    }
-    img {
-      margin: 0 auto;
-      display: block;
-    }
-    @media screen and (min-width: 1440px) {
-      max-width: 1440px;
-      img {
-        width: 1016px;
-      }
-    }
-    @media screen and (min-width: 1080px) and (max-width: 1439px) {
-      img {
-        width: 762px;
-      }
-    }
-    @media screen and (min-width: 768px) and (max-width: 1079px) {
-      img {
-        width: 542px;
-      }
-    }
-    @media screen and (max-width: 767px) {
-      .info {
-        padding: var(--o-spacing-h5);
-      }
-      .desc {
-        margin: 0;
-        p {
-          font-size: var(--o-font-size-tip);
-        }
-      }
-      img {
-        margin-top: var(--o-spacing-h5);
-        width: 100%;
-      }
-    }
   }
   .framework-leftandright {
     width: 100%;
@@ -256,12 +146,13 @@ const changeFrame = function (key: string) {
         }
         &-title {
           font-size: var(--o-font-size-h5);
-          font-weight: 500px;
+          font-weight: 500;
           color: var(--o-color-text2);
-          line-height: var(--o-line-height-h8);
+          line-height: var(--o-line-height-h5);
           padding-bottom: var(--o-spacing-h4);
         }
         &-background {
+          background-size: 100%;
           position: absolute;
           right: 0;
           bottom: 0;

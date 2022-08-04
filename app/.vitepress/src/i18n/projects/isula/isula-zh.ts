@@ -25,13 +25,14 @@ export default {
     {
       IMG: '/img/projects/share/cards-letter.png',
       TITLE: '相对iSula说',
-      LINK_LIST: ['mail'],
+      LINK_LIST: ['mail to:isulad@openeuler.org'],
       SHOW: true,
     },
     {
       IMG: '/img/projects/isula/isula-logo.png',
       TITLE: 'iSula logo',
-      LINK_LIST: [''],
+      LINK_LIST: ['/other/projects/isula/'],
+      SHOW: false,
     },
   ],
   ISULA_FRAMEWORK: {
@@ -62,8 +63,8 @@ export default {
         '扩展能力：提供插件化架构，可根据用户需要开发定制化插件',
         '以上的特点使得 iSulad 可以不受硬件规格和架构的限制，更小的底噪开销也使得它的可应用领域更为广泛。',
       ],
-      FRAMEWORK_TITLE: 'iSulad 系统架构如下：',
-      FRAMEWORK_IMG: '/img/projects/isula/framework-isulad.png',
+      FRAMEWORK_IMG: '/img/projects/isula/framework-isulad-hight-zh.png',
+      FRAMEWORK_IMG_DARK: '/img/projects/isula/framework-isulad-dark-zh.png',
     },
     ISULAD_BUILD: {
       DESC_LIST: [
@@ -71,13 +72,18 @@ export default {
         '构建时，isula-build读取Dockerfile作为输入，快速构建符合Docker镜像和OCI镜像规范的容器镜像，最后将镜像分发至同节点的iSulad/docker、本地tar包或远端容器镜像仓库。',
       ],
       FRAMEWORK_TITLE: 'isula-build的架构图如下：',
-      FRAMEWORK_IMG: '/img/projects/secgear/framework.png',
+      FRAMEWORK_IMG: '/img/projects/isula/framework-isula-build-hight-en.png',
+      FRAMEWORK_IMG_DARK:
+        '/img/projects/isula/framework-isula-build-dark-en.png',
     },
     ISULAD_TRANSFORM: {
       DESC_LIST: [
         'isula-transform 配合 iSulad 2.0 推出，支持将 Docker 容器引擎管理的容器转换、迁移给 iSulad 引擎进行管理。迁移完成后，就可以通过 iSulad 完成容器的生命周期管理功能。',
       ],
-      FRAMEWORK_IMG: '/img/projects/atune/framework.png',
+      FRAMEWORK_IMG:
+        '/img/projects/isula/framework-isula-transform-hight-en.png',
+      FRAMEWORK_IMG_DARK:
+        '/img/projects/isula/framework-isula-transform-dark-en.png',
     },
   },
   ISULA_DOCUMENT: {
@@ -103,14 +109,9 @@ export default {
           IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
           DESC: '阅读iSula的基础信息',
-          LINK: [
-            {
-              TEXT: 'README',
-              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/README.md',
-            },
-          ],
+          LINK: [],
           BACKGROUND: {
-            IMG: '/img/projects/isula/isula-grain.png',
+            IMG: '/img/projects/share/group.png',
             TYPE: 2,
           },
         },
@@ -118,14 +119,9 @@ export default {
           IMG: '/img/projects/share/illustration-file.png',
           THEME: '架构说明',
           DESC: '了解iSula的架构说明',
-          LINK: [
-            {
-              TEXT: '架构说明',
-              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/architecture_zh.md',
-            },
-          ],
+          LINK: [],
           BACKGROUND: {
-            IMG: '/img/projects/isula/isula-grain.png',
+            IMG: '/img/projects/share/group.png',
             TYPE: 2,
           },
         },
@@ -133,22 +129,9 @@ export default {
           IMG: '/img/projects/share/illustration-book.png',
           THEME: '编译手册',
           DESC: '学习isula编译手册',
-          LINK: [
-            {
-              TEXT: '编译手册',
-              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/build_guide_zh.md',
-            },
-            {
-              TEXT: '在risc-v上面',
-              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/build_guide_riscv.md',
-            },
-            {
-              TEXT: '与k8s/CNI集成',
-              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/integration.md',
-            },
-          ],
+          LINK: [],
           BACKGROUND: {
-            IMG: '/img/projects/isula/isula-grain.png',
+            IMG: '/img/projects/share/group.png',
             TYPE: 2,
           },
         },
@@ -159,30 +142,20 @@ export default {
         {
           IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
-          DESC: 'xxxdx',
-          LINK: [
-            {
-              TEXT: 'README',
-              LINK: 'https://gitee.com/openeuler/isula-build/blob/master/README.zh.md',
-            },
-          ],
+          DESC: '阅读iSula基础信息',
+          LINK: [],
           BACKGROUND: {
-            IMG: '/img/projects/isula/isula-grain.png',
+            IMG: '/img/projects/share/group.png',
             TYPE: 2,
           },
         },
         {
-          IMG: '/img/projects/share/illustration-book.png',
+          IMG: '/img/projects/share/illustration-newspapper.png',
           THEME: '使用手册',
-          DESC: 'aaaaa',
-          LINK: [
-            {
-              TEXT: '使用手册',
-              LINK: 'https://gitee.com/openeuler/isula-build/blob/master/doc/manual_zh.md',
-            },
-          ],
+          DESC: '',
+          LINK: [],
           BACKGROUND: {
-            IMG: '/img/projects/isula/isula-grain.png',
+            IMG: '/img/projects/share/group.png',
             TYPE: 2,
           },
         },
@@ -191,17 +164,12 @@ export default {
     ISULAD_TRANSFORM: {
       DATA_LIST: [
         {
-          IMG: '/img/projects/share/illustration-book.png',
+          IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
-          DESC: 'ccccc',
-          LINK: [
-            {
-              TEXT: 'README',
-              LINK: 'https://gitee.com/openeuler/isula-transform/blob/master/README.md',
-            },
-          ],
+          DESC: '阅读iSula基础信息',
+          LINK: [],
           BACKGROUND: {
-            IMG: '/img/projects/isula/isula-grain.png',
+            IMG: '/img/projects/share/group.png',
             TYPE: 2,
           },
         },
