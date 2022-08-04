@@ -13,6 +13,7 @@ interface MapMsg {
   name: string;
   latitude: number;
   longitude: number;
+  location: string;
 }
 const i18n = computed(() => useI18n());
 
@@ -85,11 +86,12 @@ const initMap = (data: any[]) => {
       name: '',
       latitude: 0,
       longitude: 0,
+      location: '',
     };
-
     itemObj.name = item.Name;
     itemObj.longitude = item.Longitude;
     itemObj.latitude = item.Latitude;
+    itemObj.location = item.Country;
 
     result.push(itemObj);
   });

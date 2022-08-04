@@ -2,10 +2,12 @@
 import { onMounted, ShallowRef, toRefs } from 'vue';
 import AMapLoader from '@amap/amap-jsapi-loader';
 import { shallowRef } from 'vue';
+import { useData } from 'vitepress';
 interface MapMsg {
   name: string;
   latitude: number;
   longitude: number;
+  location: string;
 }
 const props = defineProps({
   mapData: {
@@ -13,6 +15,7 @@ const props = defineProps({
     default: () => [],
   },
 });
+const { lang } = useData();
 const { mapData } = toRefs(props);
 const map: ShallowRef<any> = shallowRef(null);
 const initMap = (lng: number, lat: number) => {
@@ -24,20 +27,83 @@ const initMap = (lng: number, lat: number) => {
       map.value = new AMap.Map('container', {
         zoom: 4, //  初始化地图级别
         center: [lng, lat], //  初始化地图中心点位置
+        lang: lang.value,
       });
       const point: any[] = [];
 
       (mapData.value as MapMsg[])?.forEach((item: MapMsg) => {
-        const marker = new AMap.Marker({
-          position: new AMap.LngLat(item.longitude, item.latitude),
-          size: new AMap.Size(30, 35),
+        point.push({
+          location: item.location,
           title: item.name,
-          anchor: 'bottom-center',
+          lnglat: [item.longitude, item.latitude],
         });
-        point.push(marker);
       });
 
-      map.value.add(point);
+      const _renderClusterMarker = function (context: {
+        clusterData: any[];
+        count: string;
+        marker: {
+          setContent: any;
+          setOffset: any;
+        };
+      }) {
+        let cardList = '';
+        context.clusterData[0]._amapMarker.originData[0].forEach(
+          (item: { title: string }) => {
+            cardList += '<div class="map-card-name">' + item.title + '</div>';
+          }
+        );
+
+        const content =
+          '<div class="map-content">' +
+          '   <div class="map-icon"></div>' +
+          '   <div class="map-word">' +
+          context.count +
+          'mirrors are selected here' +
+          '   <div class="map-card">' +
+          cardList +
+          '<div class="map-card-location">' +
+          context.clusterData[0].location +
+          '</div>';
+        '</div>' + '</div>';
+        const offset = new AMap.Pixel(-9, -9);
+        context.marker.setContent(content);
+        context.marker.setOffset(offset);
+      };
+      const _renderMarker = function (context: {
+        data: { title: string; location: string }[];
+        marker: {
+          setContent: any;
+          setOffset: any;
+        };
+      }) {
+        const content =
+          '<div class="map-content">' +
+          '   <div class="map-icon"></div>' +
+          '   <div class="map-word">' +
+          context.data[0].title +
+          '</div>' +
+          '   <div class="map-card">' +
+          '<div class="map-card-name">' +
+          context.data[0].title +
+          '</div>' +
+          '<div class="map-card-location">' +
+          context.data[0].location +
+          '</div>';
+        ('</div>');
+        ('</div>');
+        const offset = new AMap.Pixel(-9, -9);
+        context.marker.setContent(content);
+        context.marker.setOffset(offset);
+      };
+
+      AMap.plugin(['AMap.MarkerCluster'], function () {
+        new AMap.MarkerCluster(map.value, point, {
+          gridSize: 10, // 设置网格像素大小
+          renderClusterMarker: _renderClusterMarker, // 自定义聚合点样式
+          renderMarker: _renderMarker, // 自定义非聚合点样式
+        });
+      });
 
       AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function () {
         // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
@@ -66,9 +132,77 @@ onMounted(() => {
   <div id="container"></div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #container {
   width: 100%;
   height: 100%;
+}
+
+.map-content {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+
+  &:hover .map-card {
+    transition: all 0.5s;
+    display: block;
+  }
+
+  .map-card {
+    transition: all 0.5s;
+    padding: 20px;
+    background-color: #fff;
+    position: absolute;
+    border: #fff285 1px solid;
+    border-radius: var(--o-spacing-h10);
+    top: var(--o-spacing-h3);
+    display: none;
+    left: var(--o-spacing-h3);
+    box-shadow: var(--o-shadow-base);
+    z-index: 99;
+    &-name {
+      color: var(--o-color-brand);
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+      white-space: nowrap;
+    }
+    &-location {
+      color: var(--o-color-text3);
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+    }
+  }
+  .map-icon {
+    width: var(--o-font-size-h8);
+    height: var(--o-font-size-h8);
+    border-radius: var(--o-font-size-h8);
+    background-color: #fff285;
+    margin-right: var(--o-spacing-h9);
+    box-shadow: #f9762d 0px 0px 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    z-index: 2;
+
+    &:hover {
+      background-color: #ffff92;
+      width: 17px;
+      height: 17px;
+      border-radius: 17px;
+      transition: all 0.5s;
+    }
+  }
+  .map-word {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+    white-space: nowrap;
+    color: #000;
+    font-weight: 600;
+    -webkit-text-stroke: 0.5px #fff;
+    z-index: 2;
+  }
 }
 </style>
