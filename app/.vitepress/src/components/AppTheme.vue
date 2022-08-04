@@ -1,20 +1,14 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 import { useCommon } from '@/stores/common';
+import { isBrowser } from '@/shared/utils';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 import IconMoonLight from '~icons/app/sun.svg';
 import IconMoonDark from '~icons/app/moon.svg';
-import { isBrowser } from '@/shared/utils';
-
-// device是否是pc、mobile
-defineProps({
-  device: {
-    type: Boolean,
-    default: true,
-  },
-});
 
 const commonStore = useCommon();
+const screenWidth = useWindowResize();
 
 if (isBrowser()) {
   const theme = localStorage.getItem('euler-theme');
@@ -61,7 +55,7 @@ watch(
 
 <template>
   <div class="theme-box">
-    <div v-if="device" class="theme-box-pc" @click="changeTheme">
+    <div v-if="screenWidth >= 1100" class="theme-box-pc" @click="changeTheme">
       <OIcon class="icon">
         <IconMoonDark v-if="isLight" />
         <IconMoonLight v-else />

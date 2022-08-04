@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useData } from 'vitepress';
+import { ref, computed } from 'vue';
+import { useI18n } from '@/i18n';
 
 import MiniFrame from '../components/MiniFrame.vue';
 import MiniCards from '../components/MiniCards.vue';
@@ -13,7 +13,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerIllustration from '/img/projects/bisheng/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const isPC = ref(true);
 if (useWindowResize().value < 767) {
   isPC.value = false;

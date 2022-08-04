@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
+import { useI18n } from '@/i18n';
 import { getSigList } from '@/api/api-sig';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TheSigList from './TheSigList.vue';
@@ -9,7 +9,7 @@ import TheSigLandscape from './TheSigLandscape.vue';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const sigList: any = ref([]);
 
 onMounted(() => {

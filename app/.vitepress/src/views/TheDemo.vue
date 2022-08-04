@@ -163,22 +163,28 @@ const toggleDrawer = () => {
 
     <div class="demo-box">
       <h4>TagFilter</h4>
-      <TagFilter label="全部" :show="true" @toggle-click="toggleClick">
-        <OTag
-          v-for="(item, index) in tagArrLen"
-          :key="'tag' + index"
-          :type="activeIndex === index ? 'primary' : 'text'"
-          @click="tagClick(index)"
-        >
-          {{ 'TagFilter' + index }}
-        </OTag>
-      </TagFilter>
-
       <OCard>
-        <TagFilter label="全部">
-          <OButton v-for="(item, index) in 10" :key="'tag' + index">
-            {{ item }}
-          </OButton>
+        <TagFilter label="筛选" :show="true" @toggle-click="toggleClick">
+          <OTag
+            v-for="(item, index) in tagArrLen"
+            :key="'tag' + index"
+            :type="activeIndex === index ? 'primary' : 'text'"
+            @click="tagClick(index)"
+          >
+            {{ 'TagFilter' + index }}
+          </OTag>
+        </TagFilter>
+        <!-- 多选交互没写 -->
+        <TagFilter label="多选">
+          <OTag
+            v-for="(item, index) in tagArrLen"
+            :key="'tag' + index"
+            :type="activeIndex === index ? 'primary' : 'text'"
+            multiple="true"
+            @click="tagClick(index)"
+          >
+            {{ 'multiple' + index }}
+          </OTag>
         </TagFilter>
       </OCard>
     </div>
@@ -189,6 +195,7 @@ const toggleDrawer = () => {
       <OTag type="primary">OTag-0</OTag>
       <OTag type="secondary">特殊tag</OTag>
       <OTag size="small">OTag-1</OTag>
+      <OTag type="primary" multiple="true">多选: multiple</OTag>
     </div>
 
     <div class="demo-box">

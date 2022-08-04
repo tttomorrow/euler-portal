@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useData } from 'vitepress';
+import { ref, onMounted, computed } from 'vue';
+import { useI18n } from '@/i18n';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -10,6 +10,7 @@ import HomePlayground from './HomePlayground.vue';
 import HomeNav from './HomeNav.vue';
 import PublishLink from './PublishLink.vue';
 import SourceLink from './SourceLink.vue';
+import HomeNews from './HomeNews.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 
 import { getMeetingData } from '@/api/api-calendar';
@@ -36,7 +37,7 @@ const calendarData = ref<TableData[]>([
     ],
   },
 ]);
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 onMounted(() => {
   getMeetingData().then((res: MeetingData) => {
     calendarData.value = res.tableData;
@@ -51,6 +52,7 @@ onMounted(() => {
     <HomeCarousel />
     <UserCase />
     <CommunityActivity />
+    <HomeNews />
     <div class="home-calendar">
       <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
       <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />

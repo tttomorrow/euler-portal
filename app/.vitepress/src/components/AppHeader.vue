@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, onUnmounted } from 'vue';
 import { useRouter, useData } from 'vitepress';
+import { useI18n } from '@/i18n';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
@@ -10,9 +11,8 @@ import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
 
 const router = useRouter();
-const configData = useData();
-const { theme: i18n } = useData();
-const language = configData.lang;
+const { lang } = useData();
+const i18n = computed(() => useI18n());
 
 interface NavItem {
   NAME: string;
@@ -24,7 +24,7 @@ interface NavItem {
 }
 
 const navRouter = computed(() => {
-  return i18n.value.common.NAV_ROUTER_CONFIG;
+  return i18n.value?.common.NAV_ROUTER_CONFIG;
 });
 
 const activeNav = ref<string>();
@@ -33,7 +33,6 @@ const handleNavClick = (item: NavItem) => {
 };
 
 // 移动端
-const isPC = ref(true);
 const mobileMenuIcon = ref(false);
 const handleLanguageChange = () => {
   mobileMenuIcon.value = false;
@@ -46,7 +45,6 @@ const mobileMenuPanel = () => {
   mobileMenuIcon.value = !mobileMenuIcon.value;
   mobileChildMenu.value = [];
   activeNav.value = '';
-  isPC.value = false;
 };
 
 const mobileChildMenu = ref<NavItem | any>([]);
@@ -67,7 +65,7 @@ const goMobile = (item: NavItem) => {
     mobileChildMenu.value = [];
     mobileMenuIcon.value = false;
 
-    router.go(language.value + item.PATH);
+    router.go(lang.value + item.PATH);
     document.documentElement.classList.remove('overflow');
   }
   activeNav.value = item.ID;
@@ -86,7 +84,7 @@ const goMobileList = (item: NavItem) => {
     return;
   }
   if (item.PATH) {
-    router.go(language.value + item.PATH);
+    router.go(lang.value + item.PATH);
   }
 };
 
@@ -100,7 +98,7 @@ onUnmounted(() => {
 
 // 返回首页
 const goHome = () => {
-  router.go(`/${language.value}/`);
+  router.go(`/${lang.value}/`);
 };
 </script>
 
@@ -129,8 +127,8 @@ const goHome = () => {
             <OIcon class="icon"><IconSearch /></OIcon>
           </div>
           <!-- 中英文切换 -->
-          <AppLanguage :device="isPC" />
-          <AppTheme :device="isPC" />
+          <AppLanguage />
+          <AppTheme />
         </div>
       </div>
       <!-- 移动端菜单 -->
@@ -152,11 +150,8 @@ const goHome = () => {
               >
             </div>
             <div class="mobile-tools">
-              <AppTheme :device="isPC" />
-              <AppLanguage
-                :device="isPC"
-                @language-click="handleLanguageChange"
-              />
+              <AppTheme />
+              <AppLanguage @language-click="handleLanguageChange" />
             </div>
           </div>
           <div

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useData } from 'vitepress';
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, nextTick, computed } from 'vue';
+import { useI18n } from '@/i18n';
 const playground = ref(null);
 const codingData = [
   'Last metadata expiration check: 0:02:16 ago ',
@@ -10,16 +10,17 @@ const codingData = [
   'Complete!',
   '➜ / ',
 ];
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const textBlock = ref(false);
-const observe = new IntersectionObserver((res) => {
-  if (res[0].intersectionRatio <= 0) return;
-  textBlock.value = false;
-  nextTick(() => {
-    textBlock.value = true;
-  });
-});
+
 onMounted(() => {
+  const observe = new IntersectionObserver((res) => {
+    if (res[0].intersectionRatio <= 0) return;
+    textBlock.value = false;
+    nextTick(() => {
+      textBlock.value = true;
+    });
+  });
   playground.value && observe.observe(playground.value);
 });
 </script>

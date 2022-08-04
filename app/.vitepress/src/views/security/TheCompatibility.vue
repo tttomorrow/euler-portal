@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
-import { useData } from 'vitepress';
+import { ref, reactive, computed } from 'vue';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
-import { BulletinParams } from '@/shared/@types/type-support.ts';
+import { BulletinParams } from '@/shared/@types/type-support';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const inputName = ref('zhangsan');
 const activeIndex = ref(0);
 const total = ref(0);

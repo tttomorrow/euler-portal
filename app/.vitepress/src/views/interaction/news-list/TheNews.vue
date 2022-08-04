@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useRouter, useData } from 'vitepress';
+import { useRouter } from 'vitepress';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
@@ -12,57 +13,13 @@ const currentPage1 = ref(5);
 const pageSize4 = ref(10);
 const total = ref(200);
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 const userCaseData = computed(() => i18n.value.interaction);
 
-const newsData = computed(() => {
-  return [
-    {
-      title: 'HDC.Cloud | openEuler黑客马拉松',
-      time: '2019-12-10',
-      content: 'HDC.Cloud | openEuler黑客马拉松',
-      path: '2020hdc',
-    },
-    {
-      title: '开源软件供应链点亮计划 - 暑期2020 openEuler 社区任务发布',
-      time: '2020-05-07',
-      content:
-        '“开源软件供应链点亮计划-暑期2020” 是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动，旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。openEuler 社区 Maintainer 总共发布了 16 个类别 102 个任务供参与活动的高校学生申请。',
-      path: '20200607',
-    },
-    {
-      title: '【手把手带你玩转openEuler】系列直播进行中',
-      time: '2020-07-07',
-      content: '【手把手带你玩转openEuler】系列直播进行中',
-      path: '20200707-openeluer-live',
-    },
-    {
-      title: 'openEuler 20.09 如约而至',
-      time: '2020-09-30',
-      content: 'openEuler 20.09 如约而至',
-      path: '20200930',
-    },
-    {
-      title: '打造最具活力的操作系统开源社区，全产业链共享多样性算力创新价值',
-      time: '2020-12-25',
-      content:
-        '欢迎更多企业、组织、开发者加入openEuler，共同打造最具活力的操作系统开源社区，共享多样性算力创新价值',
-      path: '20201225',
-    },
-    {
-      title: 'openEuler 20.03 LTS SP1 现已发布',
-      time: '2020-12-28',
-      content:
-        'openEuler 20.03 LTS SP1是openEuler 20.03 LTS 的补丁版本,欢迎体验。',
-      path: '20201228',
-    },
-  ];
-});
-
 const toNewsContent = (path: string) => {
-  const path1 = router.route.path.substring(0, 15);
-  const path2 = 'news-content';
-  router.go(`${path1}/${path2}/${path}/`);
+  const path1 = router.route.path.substring(0, 3);
+  const path2 = 'news';
+  router.go(`${path1}/${path2}/${path}`);
 };
 </script>
 
@@ -71,24 +28,28 @@ const toNewsContent = (path: string) => {
     <BannerLevel2
       :background-image="BannerImg1"
       background-text="CONNECT"
-      :title="userCaseData.news"
+      :title="userCaseData.NEWS"
       :illustration="BannerImg2"
     />
     <div class="news-list">
-      <OCard v-for="item in newsData" :key="item" class="news-list-item">
+      <OCard
+        v-for="item in userCaseData.NEWSDATALIST"
+        :key="item"
+        class="news-list-item"
+      >
         <div class="news-img">
-          <img src="./2206banner.png" alt="banner" />
+          <img :src="item.banner" :alt="item.banner" />
         </div>
         <div class="news-info">
           <div class="news-title" @click="toNewsContent(item.path)">
             <p>{{ item.title }}</p>
           </div>
           <div class="news-time">
-            <p>{{ item.time }}</p>
+            <p>{{ item.date }}</p>
           </div>
           <div class="news-content">
             <p>
-              {{ item.content }}
+              {{ item.summary }}
             </p>
           </div>
         </div>
@@ -134,7 +95,6 @@ const toNewsContent = (path: string) => {
   &-img {
     width: 100%;
     height: 188px;
-    background-color: #000;
     img {
       width: 100%;
       height: 188px;

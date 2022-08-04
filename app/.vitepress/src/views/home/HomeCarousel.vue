@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useI18n } from '@/i18n';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 const screenWidth = useWindowResize();
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
 
 const active = ref(0);
 
@@ -37,7 +37,7 @@ const go = (path: string) => {
           <div class="carousel-pc-list">
             <div
               v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-              :key="index"
+              :key="item.TITLE"
               :class="['carousel-pc-title', active === index ? 'active' : '']"
               @click="changeActive(index)"
             >
@@ -73,7 +73,7 @@ const go = (path: string) => {
     >
       <OCollapseItem
         v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-        :key="index"
+        :key="index.TITLE"
         :name="index"
         class="carousel-mobile-card"
       >
@@ -227,9 +227,9 @@ const go = (path: string) => {
       padding-top: var(--o-spacing-h2);
       justify-content: center;
       align-items: center;
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 1080px) {
         padding: 20px 0;
-        font-size: 12px;
+        font-size: var(--o-font-size-tip);
       }
 
       &-item:hover {

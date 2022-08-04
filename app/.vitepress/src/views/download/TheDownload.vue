@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
+import { useI18n } from '@/i18n';
 import IconDownload from '~icons/app/icon-download.svg';
 import IconFilter from '~icons/app/icon-filter.svg';
 import IconX from '~icons/app/x.svg';
@@ -10,7 +11,8 @@ import TagFilter from '@/components/TagFilter.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import { useData } from 'vitepress';
 
-const { lang, theme: i18n } = useData();
+const { lang } = useData();
+const i18n = computed(() => useI18n());
 const screenWidth = useWindowResize();
 //打开网页
 const downloadUrl = (url: string) => {
@@ -169,7 +171,7 @@ onMounted(() => {
       >
         <OTag
           v-for="(item, index) in tagManufacturer"
-          :key="index"
+          :key="item"
           class="download-filter-item"
           :type="
             index === 0
@@ -191,7 +193,7 @@ onMounted(() => {
       >
         <OTag
           v-for="(item, index) in tagPublish"
-          :key="index"
+          :key="item"
           class="download-filter-item"
           :type="
             index === 0
@@ -227,16 +229,16 @@ onMounted(() => {
       </div>
       <div class="download-filter-mobile-list">
         <div
-          v-for="(item, index) in activeManufacturer"
-          :key="index"
+          v-for="item in activeManufacturer"
+          :key="item"
           class="download-filter-mobile-card"
           @click="manufacturerClick(item, 1)"
         >
           {{ item }} <IconX class="download-filter-mobile-card-icon"></IconX>
         </div>
         <div
-          v-for="(item, index) in activePublish"
-          :key="index"
+          v-for="item in activePublish"
+          :key="item"
           class="download-filter-mobile-card"
           @click="publishClick(item, 1)"
         >
@@ -267,7 +269,7 @@ onMounted(() => {
         </div>
         <OTag
           v-for="(item, index) in tagManufacturer"
-          :key="index"
+          :key="item"
           class="download-filter-item"
           :type="
             index === 0
@@ -287,7 +289,7 @@ onMounted(() => {
         </div>
         <OTag
           v-for="(item, index) in tagPublish"
-          :key="index"
+          :key="item"
           class="download-filter-item"
           :type="
             index === 0
@@ -326,8 +328,8 @@ onMounted(() => {
     <!-- 表格 -->
     <div class="download-list">
       <OCard
-        v-for="(download, index) in dataList"
-        :key="index"
+        v-for="download in dataList"
+        :key="download.NAME"
         :style="{ padding: '0px' }"
         class="download-list-item"
       >

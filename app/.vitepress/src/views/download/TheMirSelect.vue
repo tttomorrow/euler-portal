@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import { onMounted, Ref, ref } from 'vue';
+import { onMounted, Ref, ref, computed } from 'vue';
+import { useI18n } from '@/i18n';
 import { selectMirror } from '@/api/api-mirror';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
 
-import { useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import MapContainer from './MapContainer.vue';
 
-const { theme: i18n } = useData();
+const i18n = computed(() => useI18n());
+
+interface MapMsg {
+  name: string;
+  latitude: number;
+  longitude: number;
+}
 
 interface MirrorMsg {
   icon: string;
@@ -19,6 +26,8 @@ interface MirrorMsg {
   lng: string;
   lat: string;
 }
+
+const mapData: Ref<MapMsg[]> = ref([]);
 
 const screenWidth = useWindowResize();
 
@@ -97,10 +106,30 @@ const initTable = (responeData: any) => {
   });
 };
 
+const initMap = (data: any[]) => {
+  const result: MapMsg[] = [];
+  data.forEach((item) => {
+    const itemObj: MapMsg = {
+      name: '',
+      latitude: 0,
+      longitude: 0,
+    };
+
+    itemObj.name = item.Name;
+    itemObj.longitude = item.Longitude;
+    itemObj.latitude = item.Latitude;
+
+    result.push(itemObj);
+  });
+
+  return result;
+};
+
 onMounted(async () => {
   try {
     const responeData = await selectMirror(GetUrlParam('version'));
     initTable(responeData);
+    mapData.value = initMap(responeData?.MirrorList);
   } catch (e: any) {
     throw new Error(e);
   }
@@ -123,7 +152,7 @@ onMounted(async () => {
       }}<span class="area">{{ area }}</span
       >{{ i18n.download.MIRROR_SELECT.CONTENT[3] }}
     </p>
-    <el-table
+    <OTable
       v-if="screenWidth > 768"
       :data="tableData"
       header-cell-class-name="mirror-select-header"
@@ -168,11 +197,11 @@ onMounted(async () => {
         prop="distance"
         min-width="160"
       />
-    </el-table>
+    </OTable>
     <div v-else class="mirror-mobile">
       <OCard
         v-for="(item, index) in tableData"
-        :key="index"
+        :key="item.name"
         class="mirror-card"
       >
         <div class="mirror-card-content">
@@ -217,66 +246,18 @@ onMounted(async () => {
         </div>
       </OCard>
     </div>
+    <div class="mirror-map">
+      <MapContainer :map-data="mapData"></MapContainer>
+    </div>
   </div>
 </template>
-
-<style lang="scss">
-.mirror-select {
-  &-header {
-    background: var(--o-color-bg3) !important;
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    line-height: 54px;
-    padding: 0 !important;
-    .cell {
-      padding-left: 0px;
-    }
-  }
-  &-header:first-child {
-    .cell {
-      padding-left: var(--o-spacing-h2);
-    }
-  }
-  &-header:last-child {
-    .cell {
-      padding-right: var(--o-spacing-h2);
-    }
-  }
-
-  &-area {
-    .mirror-select-row {
-      font-size: var(--o-font-size-h7) !important;
-      font-weight: 800 !important;
-      height: 72px !important;
-      border: none !important;
-    }
-  }
-
-  &-row {
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    height: 54px;
-    .cell {
-      padding-left: 0px;
-    }
-  }
-  &-row:first-child {
-    .cell {
-      padding-left: var(--o-spacing-h2);
-    }
-  }
-  &-row:last-child {
-    .cell {
-      padding-right: var(--o-spacing-h2);
-    }
-  }
-}
-</style>
-
 <style lang="scss" scoped>
 .mirror {
+  &-map {
+    margin-top: var(--o-spacing-h2);
+    width: 100%;
+    height: 996px;
+  }
   &-mobile {
     > :nth-child(odd) {
       background-color: var(--o-color-bg3);
@@ -327,13 +308,60 @@ onMounted(async () => {
   }
 }
 .mirror-select {
+  :deep(.mirror-select-header) {
+    background: var(--o-color-bg3);
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    line-height: 54px;
+    padding: 0 !important;
+    .cell {
+      padding: 0 var(--o-spacing-h6) 0 0;
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
+      }
+    }
+
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
+      }
+    }
+  }
+
+  :deep(.mirror-select-row) {
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    height: 54px;
+    border-bottom: 1px var(--o-color-division) solid;
+    .cell {
+      padding-left: 0px;
+      padding-right: var(--o-spacing-h6);
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
+      }
+    }
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
+      }
+    }
+  }
+
   max-width: 1504px;
   margin: 0 auto;
   padding: 0 var(--o-spacing-h2);
   @media (max-width: 1100px) {
     padding: 0 var(--o-spacing-h5);
   }
-  > p {
+  p {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
     color: var(--o-color-text2);
@@ -344,14 +372,13 @@ onMounted(async () => {
       line-height: var(--o-line-height-tip);
       margin: var(--o-spacing-h2) 0 var(--o-spacing-h5) 0;
     }
-
-    > a {
-      text-decoration: none;
-      color: var(--o-color-brand);
-    }
+  }
+  a {
+    text-decoration: none;
+    color: var(--o-color-brand);
   }
 
-  &-name {
+  .mirror-select-name {
     display: flex;
     flex-flow: row;
     justify-content: flex-start;
@@ -362,14 +389,14 @@ onMounted(async () => {
       height: var(--o-line-height-text);
     }
   }
-  &-rsnc {
+  .mirror-select-rsnc {
     cursor: pointer;
     color: var(--o-color-brand);
     display: block;
     width: 24px;
     height: 24px;
   }
-  &-ftp {
+  .mirror-select-ftp {
     cursor: pointer;
     color: var(--o-color-brand);
     display: block;
@@ -377,7 +404,7 @@ onMounted(async () => {
     height: 24px;
   }
 
-  &-link {
+  .mirror-select-link {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
+import { computed } from 'vue';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
@@ -7,8 +7,10 @@ import moocBanner from '@/assets/banner-secondary.png';
 import searchBanner from '@/assets/illustrations/search.png';
 
 import IconArrowRight1 from '~icons/app/icon-arrow-right1.svg';
+import { useI18n } from '@/i18n';
 
-const { theme: i18n } = useData();
+// const i18n=computed(()=>useI18n());
+const i18n = computed(() => useI18n());
 </script>
 
 <template>
@@ -26,7 +28,7 @@ const { theme: i18n } = useData();
         <h3>{{ i18n.mooc.MOOC.MOOC_COURSE[0].TITLE }}</h3>
         <p>{{ i18n.mooc.MOOC.MOOC_COURSE[0].DESC }}</p>
         <div class="btn">
-          <a href="/zh/learn/mooc/mooc-detail/" target="_self">
+          <a href="/zh/learn/mooc/detail/" target="_self">
             <OButton type="primary">
               <span>{{ i18n.mooc.MOOC.BTN_LEARN }}</span>
               <OIcon class="icon-more">
@@ -64,15 +66,14 @@ const { theme: i18n } = useData();
       margin: var(--o-spacing-h2) auto 0 auto;
     }
     .left {
-      height: 222px;
+      max-height: 222px;
       @media (max-width: 975px) {
         width: 100%;
-        height: auto;
       }
       img {
-        @media (max-width: 975px) {
-          width: 100%;
-        }
+        width: 100%;
+        max-height: 222px;
+        object-fit: cover;
       }
     }
     .right {
