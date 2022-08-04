@@ -101,7 +101,10 @@ onMounted(() => {
       <div class="meeting">
         <h5>{{ sigDetail.ORGANIZING_MEETINGS }}</h5>
         <div v-if="sigMeetingData.tableData" class="calender-wrapper">
-          <AppCalendar :is-home-page="false" :table-data="sigMeetingData.tableData" />
+          <AppCalendar
+            :is-home-page="false"
+            :table-data="sigMeetingData.tableData"
+          />
         </div>
         <p v-else class="no-meeting">
           {{ sigDetail.NO_MEETINGS }}
@@ -277,6 +280,9 @@ onMounted(() => {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 24px;
         margin-top: var(--o-spacing-h4);
+        @media (max-width: 780px) {
+          grid-template-columns: 1fr;
+        }
         .item {
           max-width: 656px;
           padding: 40px;
