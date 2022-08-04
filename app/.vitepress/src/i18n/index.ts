@@ -18,6 +18,7 @@ import live from './interaction/live';
 import compatibility from './compatibility';
 import summit from './interaction/summit';
 import screen from './screen';
+import contribution from './community/contribution';
 
 const i18n: { [key: string]: any } = {
   zh: {
@@ -39,6 +40,7 @@ const i18n: { [key: string]: any } = {
     compatibility: compatibility.zh,
     summit: summit.zh,
     screen: screen.zh,
+    contribution: contribution.zh,
   },
   en: {
     sig: sig.en,
@@ -56,6 +58,7 @@ const i18n: { [key: string]: any } = {
     live: live.en,
     summit: summit.en,
     screen: screen.en,
+    contribution: contribution.en,
   },
   ru: {
     sig: sig.ru,
@@ -73,6 +76,7 @@ const i18n: { [key: string]: any } = {
     live: live.ru,
     summit: summit.ru,
     screen: screen.ru,
+    contribution: contribution.ru,
   },
 };
 
