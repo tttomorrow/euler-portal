@@ -17,9 +17,15 @@ defineProps({
 const toSigDetail = (value: any) => {
   router.go(`/${language.value}/sig/sig-detail/?id=${value.id}`);
 };
+// function changePage() {
+
+// }
 </script>
 
 <template>
+  <!-- <OSelect :listener-scorll="true" @scorll-bottom="changePage">
+    <OOption v-for="item in 10" :value="item" :lable="item" />
+  </OSelect> -->
   <OTable :data="sigList">
     <el-table-column :label="i18n.sig.SIG_LIST.NAME">
       <template #default="scope">
