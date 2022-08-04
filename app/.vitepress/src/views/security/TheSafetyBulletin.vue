@@ -10,7 +10,7 @@ import search from '@/assets/illustrations/search.png';
 import cve from '@/assets/illustrations/cve.png';
 
 import { getSecurityList } from '@/api/api-security';
-import { securityLists, cveQuery } from '@/shared/@types/type-support';
+import { SecurityLists, CveQuery } from '@/shared/@types/type-support';
 import OSearch from 'opendesign/search/OSearch.vue';
 
 const i18n = computed(() => useI18n());
@@ -25,7 +25,7 @@ const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const filterIndex = ref(0);
 
-const tableData = ref<securityLists[]>([
+const tableData = ref<SecurityLists[]>([
   {
     affectedComponent: '',
     affectedProduct: '',
@@ -36,7 +36,7 @@ const tableData = ref<securityLists[]>([
   },
 ]);
 
-const queryData: cveQuery = reactive({
+const queryData: CveQuery = reactive({
   pages: {
     page: 1,
     size: 10,
@@ -46,7 +46,7 @@ const queryData: cveQuery = reactive({
   year: '',
 });
 
-function getSecurityLists(data: cveQuery) {
+function getSecurityLists(data: CveQuery) {
   try {
     getSecurityList(data).then((res: any) => {
       tableData.value = res.result.securityNoticeList;
@@ -204,7 +204,7 @@ watch(queryData, () => getSecurityLists(queryData));
       </OTable>
 
       <ul class="mobile-list">
-        <li v-for="item in tableData" :key="item" class="item">
+        <li v-for="item in tableData" :key="item.securityNoticeNo" class="item">
           <ul>
             <li>
               <span>{{ i18n.security.ADVISORY }}:</span
