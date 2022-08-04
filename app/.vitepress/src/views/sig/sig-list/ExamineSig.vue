@@ -49,7 +49,7 @@ onMounted(() => {
           <TheSigBoard :sig-list="sigList" />
         </OTabPane>
         <OTabPane label="SIG Landscape">
-          <TheSigLandscape />
+          <TheSigLandscape :sig-list="sigList" />
         </OTabPane>
       </OTabs>
     </div>

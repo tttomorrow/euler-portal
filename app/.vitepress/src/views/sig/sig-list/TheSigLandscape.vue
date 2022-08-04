@@ -1,21 +1,41 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
+import { computed } from 'vue';
+import { useData, useRouter } from 'vitepress';
+import { useI18n } from '@/i18n';
 
-const { theme: i18n } = useData();
+const configData = useData();
+const router = useRouter();
+const language = configData.lang;
+
+const props = defineProps({
+  sigList: {
+    type: Array,
+    default: () => [],
+  },
+});
+
+const i18n = computed(() => useI18n());
+const toSigDetail = (name: string): void => {
+  props.sigList.map((item: any) => {
+    if (item.group_name === name) {
+      router.go(`/${language.value}/sig/sig-detail/?id=${item.id}`);
+    }
+  });
+};
 </script>
 
 <template>
   <div class="landscape">
     <div
-      v-for="(item, fIndex) in i18n.sig.SIG_LANDSCAPE"
-      :key="fIndex"
+      v-for="item in i18n.sig.SIG_LANDSCAPE"
+      :key="item.CATEGORY_NAME"
       class="sig-category-wrapper"
     >
       <h2>{{ item.CATEGORY_NAME }}</h2>
       <ul class="sig-category-list">
         <li
-          v-for="(subItem, index) in item.SUB_LIST"
-          :key="index"
+          v-for="subItem in item.SUB_LIST"
+          :key="subItem.SUB_CATEGORY_NAME"
           class="sig-category-item"
           :style="{ borderColor: subItem.COLOR }"
         >
@@ -24,10 +44,11 @@ const { theme: i18n } = useData();
           </h3>
           <ul class="sig-list">
             <li
-              v-for="(followItem, followIndex) in subItem.LIST"
-              :key="followIndex"
+              v-for="followItem in subItem.LIST"
+              :key="followItem.NAME"
               :style="{ borderColor: subItem.COLOR }"
               :class="followItem.IS_WIDER ? 'wider' : ''"
+              @click="toSigDetail(followItem.NAME)"
             >
               {{ followItem.NAME }}
             </li>
