@@ -1,7 +1,28 @@
 export default {
   BRAND: '品牌',
-  WORDS:
-    'openEuler网站上使用和显示的所有商标、标志皆属openEuler社区所有，但注明属于其他方拥有的商标、标志除外。未经openEuler社区或其他方书面许可，openEuler网站所载的任何内容不应被视作以暗示、不反对或其他形式授予使用前述任何商标、标志的许可或权利。未经事先书面许可，任何人不得以任何方式使用openEuler社区的名称及openEuler社区的商标、标记，除非你使用前述名称、商标和标记是出于个人、教育和非商业目的。任何人不得在未获得第三方同意的情况下使用第三方拥有的商标和标志。',
+  WORDS: [
+    'openEuler是由开放原子开源基金会（OpenAtom Foundation）孵化及运营的开源项目，开放原子开源基金会享有openEuler的商标权益。在使用本页面的所有openEuler商标前，请查阅',
+    '《开放原子开源基金会品牌使用指南》',
+    ',确保在本指南中说明的可使用情形下使用',
+    '如要在上述指南中说明的须经开放原子开源基金会许可的情形下使用，请向',
+    'trademarks@openeuler.sh',
+    '邮箱提交申请，申请通过后方可使用。',
+    '申请方式。',
+    '当您在实际使用openEuler品牌商标时，请注意遵循',
+    '《openEuler项目商标使用规范》 。',
+  ],
+  WORDS_LINK: [
+    'https://openatom.cn/brandguide',
+    'mailto:trademarks@openeuler.sh',
+    '/data/brand/openEuler商标使用申请方式.docx',
+    '/data/brand/openEuler商标使用规范.pdf',
+  ],
+  WORDS_FAQ: [
+    '商标使用FAQ：关于上述商标使用如有疑问',
+    'trademarks@openeuler.sh',
+    '咨询 。',
+  ],
+  FAQ_LINK: 'mailto:trademarks@openeuler.sh',
   MOBILETITLE: '商标',
   PPT_TEXT: 'PPT模板',
   PICTURE_TITLE: [
@@ -104,6 +125,73 @@ export default {
     {
       URL: '/img/other/brand/euler-white-ppt.png',
       LINK: 'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/openEuler_PPT_White.pptx',
+    },
+  ],
+  PROJECT_TITLE: 'openEuler社区开源创新项目商标',
+  PROJECT_LIST: [
+    {
+      TITLE: 'A-Tune',
+      URL: '/img/other/brand/A-Tune-logo png.png',
+      DOWNLOAD_LINK: [
+        {
+          STYLE: 'JPG',
+          URL: '/img/other/brand/A-Tune-logo jpg.jpg',
+        },
+        {
+          STYLE: 'PNG',
+          URL: '/img/other/brand/A-Tune-logo png.png',
+        },
+      ],
+    },
+    {
+      TITLE: 'isula',
+      URL: '/img/other/brand/iSula logo png.png',
+      DOWNLOAD_LINK: [
+        {
+          STYLE: 'JPG',
+          URL: '/img/other/brand/iSula logo jpg.jpg',
+        },
+        {
+          STYLE: 'PNG',
+          URL: '/img/other/brand/iSula logo png.png',
+        },
+        {
+          STYLE: 'SVG',
+          URL: '/img/other/brand/iSula logo svg.svg',
+        },
+      ],
+    },
+    {
+      TITLE: 'stratovirt',
+      URL: '/img/other/brand/stratoVirt logo png.png',
+      DOWNLOAD_LINK: [
+        {
+          STYLE: 'JPG',
+          URL: '/img/other/brand/stratoVirt logo jpg.jpg',
+        },
+        {
+          STYLE: 'PNG',
+          URL: '/img/other/brand/stratoVirt logo png.png',
+        },
+        {
+          STYLE: 'SVG',
+          URL: '/img/other/brand/stratoVirt logo svg.svg',
+        },
+      ],
+    },
+    {
+      TITLE: 'secgear',
+      URL: '/img/other/brand/secGear logo png.png',
+      DOWNLOAD_LINK: [
+        {
+          STYLE: 'JPG',
+          URL: '/img/other/brand/secGear logo jpg.jpg',
+        },
+        {
+          STYLE: 'PNG',
+          URL: '/img/other/brand/secGear logo png.png',
+        },
+      ],
     },
   ],
 };

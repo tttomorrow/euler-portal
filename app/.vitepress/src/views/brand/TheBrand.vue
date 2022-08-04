@@ -65,7 +65,22 @@ list.value = initList();
   <div class="brand">
     <div class="brand-all-word">
       <h3 class="brand-title">{{ i18n.brand.MOBILETITLE }}</h3>
-      <p class="brand-word">{{ i18n.brand.WORDS }}</p>
+      <div class="brand-word">
+        {{ i18n.brand.WORDS[0] }}
+        <a :href="i18n.brand.WORDS_LINK[0]">{{ i18n.brand.WORDS[1] }}</a>
+        {{ i18n.brand.WORDS[2] }}
+        <br />
+        {{ i18n.brand.WORDS[3] }}
+        <a :href="i18n.brand.WORDS_LINK[1]">{{ i18n.brand.WORDS[4] }}</a>
+        {{ i18n.brand.WORDS[5] }}
+        <a :href="i18n.brand.WORDS_LINK[2]" download>{{
+          i18n.brand.WORDS[6]
+        }}</a>
+        {{ i18n.brand.WORDS[7] }}
+        <a :href="i18n.brand.WORDS_LINK[3]" download>{{
+          i18n.brand.WORDS[8]
+        }}</a>
+      </div>
     </div>
     <div class="brand-list">
       <OCard v-for="item in list" :key="item.id" class="brand-item">
@@ -86,6 +101,33 @@ list.value = initList();
         </div>
       </OCard>
     </div>
+    <div class="brand-other-word">
+      <h3 class="brand-title">{{ i18n.brand.PROJECT_TITLE }}</h3>
+    </div>
+    <div class="brand-list">
+      <OCard
+        v-for="item in i18n.brand.PROJECT_LIST"
+        :key="item.TITLE"
+        class="brand-item"
+      >
+        <div class="brand-item-title">{{ item.TITLE }}</div>
+        <div class="brand-item-img">
+          <img :src="item.URL" />
+        </div>
+        <div class="button">
+          <a
+            v-for="item2 in item.DOWNLOAD_LINK"
+            :key="item2.STYLE"
+            :href="item2.URL"
+            target="_blank"
+            download
+          >
+            <OButton class="button-item">{{ item2.STYLE }} </OButton>
+          </a>
+        </div>
+      </OCard>
+    </div>
+
     <div class="brand-ppt">
       <h3>{{ i18n.brand.PPT_TEXT }}</h3>
       <div class="ppt-list">
@@ -99,6 +141,13 @@ list.value = initList();
             <img :src="ppt.URL" alt="" />
           </a>
         </OCard>
+      </div>
+    </div>
+    <div class="brand-other-word">
+      <div class="brand-faq">
+        {{ i18n.brand.WORDS_FAQ[0] }}
+        <a :href="i18n.brand.FAQ_LINK">{{ i18n.brand.WORDS_FAQ[1] }}</a>
+        {{ i18n.brand.WORDS_FAQ[2] }}
       </div>
     </div>
   </div>
@@ -162,12 +211,35 @@ list.value = initList();
     }
   }
 
+  &-faq {
+    font-size: var(--o-font-size-h7);
+    font-weight: 500;
+    color: var(--o-color-text2);
+    line-height: var(--o-line-height-h7);
+    margin-top: var(--o-spacing-h10);
+    a {
+      color: var(--o-color-brand);
+    }
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      margin-top: var(--o-spacing-h5);
+    }
+  }
+
+  &-other-word {
+    margin-top: var(--o-spacing-h2);
+  }
+
   &-word {
     font-size: var(--o-font-size-h7);
     font-weight: 300;
     color: var(--o-color-text2);
     line-height: var(--o-line-height-h7);
     margin-top: var(--o-spacing-h10);
+    a {
+      color: var(--o-color-brand);
+    }
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
