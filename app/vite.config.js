@@ -78,6 +78,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      '/mail': {
+        target: 'https://www.openeuler.org/api/mail',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/mail/, ''),
+      },
     },
   },
 });
