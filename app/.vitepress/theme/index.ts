@@ -15,7 +15,7 @@ export default {
   Layout,
   NotFound,
   enhanceApp({ app }: { app: App }) {
-    if (!isBrowser()) {
+    if (typeof global !== 'undefined') {
       // @ts-ignore
       global.window = {};
     }

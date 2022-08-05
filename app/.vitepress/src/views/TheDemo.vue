@@ -180,7 +180,7 @@ const toggleDrawer = () => {
             v-for="(item, index) in tagArrLen"
             :key="'tag' + index"
             :type="activeIndex === index ? 'primary' : 'text'"
-            multiple="true"
+            :multiple="true"
             @click="tagClick(index)"
           >
             {{ 'multiple' + index }}
@@ -195,7 +195,7 @@ const toggleDrawer = () => {
       <OTag type="primary">OTag-0</OTag>
       <OTag type="secondary">特殊tag</OTag>
       <OTag size="small">OTag-1</OTag>
-      <OTag type="primary" multiple="true">多选: multiple</OTag>
+      <OTag type="primary" :multiple="true">多选: multiple</OTag>
     </div>
 
     <div class="demo-box">
