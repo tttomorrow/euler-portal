@@ -1,4 +1,3 @@
-// import { createI18n } from 'vue-i18n';
 import { useData } from 'vitepress';
 import sig from './sig';
 import download from './download';
@@ -80,14 +79,9 @@ const i18n: { [key: string]: any } = {
   },
 };
 
-// const i18n = createI18n({
-//   locale: 'zh',
-//   allowComposition: true,
-//   messages,
-// });
 export function useI18n() {
   const { lang } = useData();
   return i18n[lang.value];
 }
 
-// export default i18n;
+export default i18n;

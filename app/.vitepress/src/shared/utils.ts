@@ -26,9 +26,14 @@ export function firstToUpper(str: string): string {
   });
 }
 
+/**
+ * 是否是浏览器环境
+ * @returns boolean
+ */
 export function isBrowser(): boolean {
-  return typeof window !== 'undefined';
+  return typeof global === 'undefined';
 }
+
 /**
  * 获取今日日期 2222-01-09
  * @returns string
