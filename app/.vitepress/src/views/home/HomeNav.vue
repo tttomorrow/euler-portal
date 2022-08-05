@@ -5,7 +5,7 @@ import { useI18n } from '@/i18n';
 const { lang } = useData();
 const i18n = useI18n();
 
-const go = (path: string) => {
+const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
 </script>
@@ -17,7 +17,7 @@ const go = (path: string) => {
         v-for="item in i18n.home.HOME_NAV"
         :key="item.LINK"
         class="nav-item"
-        @click="go(item.LINK)"
+        @click="handleGo(item.LINK)"
       >
         <div class="nav-icon">
           <img :src="item.IMG" alt="" class="nav-item-icon" />

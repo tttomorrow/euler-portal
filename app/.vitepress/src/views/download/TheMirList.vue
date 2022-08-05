@@ -105,7 +105,7 @@ const tableRowClassName = ({ row }: any) => {
   }
   return '';
 };
-const copyText = (value: string | undefined) => {
+const handleCopyText = (value: string | undefined) => {
   if (!value) return;
   if (inputDom.value) {
     (inputDom.value as HTMLInputElement).value = value;
@@ -182,7 +182,7 @@ onMounted(async () => {
           <IconCpoy
             v-else-if="scope.row.rsnc && scope.row.rsnc != ''"
             class="mirror-list-rsnc"
-            @click="copyText(scope.row.rsnc)"
+            @click="handleCopyText(scope.row.rsnc)"
           />
         </template>
       </el-table-column>
@@ -192,7 +192,7 @@ onMounted(async () => {
           <IconCpoy
             v-else-if="scope.row.rsnc && scope.row.rsnc != ''"
             class="mirror-list-ftp"
-            @click="copyText(scope.row.ftp)"
+            @click="handleCopyText(scope.row.ftp)"
           />
         </template>
       </el-table-column>
@@ -241,7 +241,7 @@ onMounted(async () => {
           <IconCpoy
             v-else-if="item.rsnc && item.rsnc != ''"
             class="mirror-card-rsnc"
-            @click="copyText(item.rsnc)"
+            @click="handleCopyText(item.rsnc)"
           />
         </div>
         <div class="mirror-card-content">
@@ -254,7 +254,7 @@ onMounted(async () => {
           <IconCpoy
             v-else-if="item.ftp && item.ftp != ''"
             class="mirror-card-rsnc"
-            @click="copyText(item.ftp)"
+            @click="handleCopyText(item.ftp)"
           />
         </div>
         <div class="mirror-card-content">

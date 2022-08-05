@@ -12,18 +12,18 @@ const active = ref(0);
 
 const activeMobile = ref(0);
 
-const changeActive = (index: number) => {
+const handleChangeActive = (index: number) => {
   active.value = index;
   activeMobile.value = index;
 };
 
-const changeActiveMobile = (activeNames: any) => {
+const handleChangeActiveMobile = (activeNames: any) => {
   if (activeNames !== '') {
     active.value = activeNames;
   }
 };
 
-const go = (path: string) => {
+const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
 </script>
@@ -32,14 +32,18 @@ const go = (path: string) => {
   <div class="carousel">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
     <div v-if="screenWidth >= 1100" class="carousel-pc">
-      <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
+      <OCard
+        class="carousel-pc-card"
+        :style="{ padding: '0px' }"
+        shadow="hover"
+      >
         <div class="carousel-pc-content">
           <div class="carousel-pc-list">
             <div
               v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
               :key="item.TITLE"
               :class="['carousel-pc-title', active === index ? 'active' : '']"
-              @click="changeActive(index)"
+              @click="handleChangeActive(index)"
             >
               {{ item.TITLE }}
             </div>
@@ -53,7 +57,7 @@ const go = (path: string) => {
             animation
             type="text"
             class="carousel-pc-button-item"
-            @click="go(i18n.home.IMG_CAROUSE.TRY_URL)"
+            @click="handleGo(i18n.home.IMG_CAROUSE.TRY_URL)"
           >
             {{ i18n.home.IMG_CAROUSE.BUTTON }}
             <template #suffixIcon>
@@ -69,11 +73,11 @@ const go = (path: string) => {
       v-model="activeMobile"
       class="carousel-mobile"
       accordion
-      @change="changeActiveMobile"
+      @change="handleChangeActiveMobile"
     >
       <OCollapseItem
         v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-        :key="index.TITLE"
+        :key="item.TITLE"
         :name="index"
         class="carousel-mobile-card"
       >

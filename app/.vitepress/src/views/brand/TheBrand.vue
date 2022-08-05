@@ -67,7 +67,9 @@ list.value = initList();
       <h3 class="brand-title">{{ i18n.brand.MOBILETITLE }}</h3>
       <div class="brand-word">
         {{ i18n.brand.WORDS[0] }}
-        <a :href="i18n.brand.WORDS_LINK[0]">{{ i18n.brand.WORDS[1] }}</a>
+        <a :href="i18n.brand.WORDS_LINK[0]" target="_blank">{{
+          i18n.brand.WORDS[1]
+        }}</a>
         {{ i18n.brand.WORDS[2] }}
         <br />
         {{ i18n.brand.WORDS[3] }}
@@ -83,7 +85,12 @@ list.value = initList();
       </div>
     </div>
     <div class="brand-list">
-      <OCard v-for="item in list" :key="item.id" class="brand-item">
+      <OCard
+        v-for="item in list"
+        :key="item.id"
+        class="brand-item"
+        shadow="hover"
+      >
         <div class="brand-item-title">{{ item.name }}</div>
         <div class="brand-item-img">
           <img :src="item.mobile" />
@@ -109,6 +116,7 @@ list.value = initList();
         v-for="item in i18n.brand.PROJECT_LIST"
         :key="item.TITLE"
         class="brand-item"
+        shadow="hover"
       >
         <div class="brand-item-title">{{ item.TITLE }}</div>
         <div class="brand-item-img">
@@ -136,6 +144,7 @@ list.value = initList();
           :key="ppt.LINK"
           class="ppt-item"
           :style="{ padding: '0px' }"
+          shadow="hover"
         >
           <a :href="ppt.LINK" target="_blank" download>
             <img :src="ppt.URL" alt="" />
