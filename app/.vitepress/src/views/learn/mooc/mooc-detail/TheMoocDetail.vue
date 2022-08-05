@@ -19,6 +19,7 @@ import IconArrowLeft from '~icons/app/icon-arrow-left1.svg';
 import IconArrowRight from '~icons/app/icon-arrow-right1.svg';
 import IconChevronDown from '~icons/app/icon-chevron-down.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
+import IconCatalog from '~icons/mooc/catalog.svg';
 
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
@@ -239,6 +240,7 @@ const goHome = () => {
 <template>
   <div class="mooc-detail">
     <div class="detail-mobile">
+      <OIcon class="catalog"><IconCatalog /></OIcon>
       <ODrawer
         v-model="isShowMenu"
         direction="ltr"
@@ -747,6 +749,12 @@ const goHome = () => {
     .detail-mobile {
       display: block;
       padding: 0 var(--o-spacing-h5);
+      .catalog {
+        position: fixed;
+        top: 12px;
+        left: 48px;
+        z-index: 99;
+      }
       .mobile-menu {
         width: 100%;
         padding: var(--o-spacing-h5) 0 0 0;

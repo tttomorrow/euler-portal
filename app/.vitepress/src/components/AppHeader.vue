@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, onUnmounted } from 'vue';
 import { useRouter, useData } from 'vitepress';
+import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
+
+import logo_light from '@/assets/logo.png';
+import logo_dark from '@/assets/logo_dark.png';
 
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
@@ -13,6 +17,7 @@ import IconMenu from '~icons/app/menu.svg';
 const router = useRouter();
 const { lang } = useData();
 const i18n = useI18n();
+const commonStore = useCommon();
 
 interface NavItem {
   NAME: string;
@@ -31,7 +36,9 @@ const activeNav = ref<string>();
 const handleNavClick = (item: NavItem) => {
   activeNav.value = item.PATH;
 };
-
+const logo = computed(() => {
+  return commonStore.theme === 'light' ? logo_light : logo_dark;
+});
 // 移动端
 const mobileMenuIcon = ref(false);
 const handleLanguageChange = () => {
@@ -112,12 +119,7 @@ const goHome = () => {
         </OIcon>
         <OIcon v-else class="icon"><IconX /></OIcon>
       </div>
-      <img
-        class="logo"
-        alt="openEuler logo"
-        src="../assets/logo.png"
-        @click="goHome"
-      />
+      <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <div class="header-content">
         <div class="header-nav">
           <HeaderNav :nav-items="navRouter" @nav-click="handleNavClick" />
@@ -201,6 +203,9 @@ const goHome = () => {
   cursor: pointer;
   @media (max-width: 1100px) {
     height: 24px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 .mobile-menu-icon {
