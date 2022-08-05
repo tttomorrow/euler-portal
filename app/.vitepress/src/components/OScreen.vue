@@ -5,7 +5,7 @@ import { useI18n } from '@/i18n';
 import IconFilter from '~icons/app/icon-double_caret_vertical.svg';
 import IconX from '~icons/app/x.svg';
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.screen);
 const props = defineProps({
   data: {

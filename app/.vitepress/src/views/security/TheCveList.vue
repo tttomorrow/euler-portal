@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, onMounted, computed, watch } from 'vue';
+import { reactive, ref, onMounted, watch } from 'vue';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -12,7 +12,7 @@ import search from '@/assets/illustrations/search.png';
 import { getCveList } from '@/api/api-security';
 import { CveLists, CveQuery } from '@/shared/@types/type-support';
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const searchContent = ref('');

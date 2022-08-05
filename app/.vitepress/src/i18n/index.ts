@@ -1,4 +1,7 @@
+// import { createI18n } from 'vue-i18n';
+import { computed } from 'vue';
 import { useData } from 'vitepress';
+
 import sig from './sig';
 import download from './download';
 import brand from './brand';
@@ -81,7 +84,7 @@ const i18n: { [key: string]: any } = {
 
 export function useI18n() {
   const { lang } = useData();
-  return i18n[lang.value];
+  return computed(() => i18n[lang.value]);
 }
 
 export default i18n;

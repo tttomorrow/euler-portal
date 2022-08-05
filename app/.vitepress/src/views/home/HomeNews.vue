@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { onMounted, Ref, ref, computed } from 'vue';
+import { onMounted, Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import dayjs from 'dayjs';
 import IconArrowRight from '~icons/app/arrow-right.svg';
@@ -9,7 +9,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 const screenWidth = useWindowResize();
 
 const { lang } = useData();
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 const roomName = i18n.value.home.HOME_ROOMS.ROOM_NAME;
 

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { Ref, ref, computed } from 'vue';
+import { Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import banner from '@/assets/banner-secondary.png';
 import brand from '@/assets/illustrations/brand.png';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 const list: Ref<any[]> = ref([]);
 

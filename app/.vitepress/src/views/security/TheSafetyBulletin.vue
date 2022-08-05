@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, watch, onMounted, computed } from 'vue';
+import { reactive, ref, watch, onMounted } from 'vue';
 import { useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 
@@ -13,7 +13,7 @@ import { getSecurityList } from '@/api/api-security';
 import { SecurityLists, CveQuery } from '@/shared/@types/type-support';
 import OSearch from 'opendesign/search/OSearch.vue';
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 const router = useRouter();
 

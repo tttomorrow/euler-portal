@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, nextTick, computed } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
 import { useI18n } from '@/i18n';
 const playground = ref(null);
 const codingData = [
@@ -10,7 +10,7 @@ const codingData = [
   'Complete!',
   '➜ / ',
 ];
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const textBlock = ref(false);
 
 onMounted(() => {

@@ -12,7 +12,7 @@ import BannerLevel3 from '@/components/BannerLevel3.vue';
 import { useData } from 'vitepress';
 
 const { lang } = useData();
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const screenWidth = useWindowResize();
 //打开网页
 const downloadUrl = (url: string) => {

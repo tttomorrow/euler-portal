@@ -13,7 +13,7 @@ const currentPage1 = ref(5);
 const pageSize4 = ref(10);
 const total = ref(200);
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
 
 const toNewsContent = (path: string) => {

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import moocBanner from '@/assets/banner-secondary.png';
@@ -10,7 +8,7 @@ import IconArrowRight1 from '~icons/app/icon-arrow-right1.svg';
 import { useI18n } from '@/i18n';
 
 // const i18n=computed(()=>useI18n());
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 </script>
 
 <template>

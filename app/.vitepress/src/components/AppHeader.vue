@@ -12,7 +12,7 @@ import IconMenu from '~icons/app/menu.svg';
 
 const router = useRouter();
 const { lang } = useData();
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 interface NavItem {
   NAME: string;

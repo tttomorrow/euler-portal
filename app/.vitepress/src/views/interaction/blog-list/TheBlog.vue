@@ -13,7 +13,7 @@ import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 
 const router = useRouter();
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
 
 const isAll = ref(false);
