@@ -29,7 +29,7 @@ import CodeImgXzs from '@/assets/footer/code-xzs.png';
 import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
 const { lang } = useData();
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const router = useRouter();
 
 // 友情链接

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useI18n } from '@/i18n';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 const screenWidth = useWindowResize();
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 const active = ref(0);
 

@@ -18,7 +18,7 @@ import IconChevronRight from '~icons/app/icon-chevron-right.svg';
 
 // import useCaseZh from '@/i18n/showcase/showcase.json';
 const keyWord = ref('');
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.showcase);
 
 const activeIndex = ref(0);

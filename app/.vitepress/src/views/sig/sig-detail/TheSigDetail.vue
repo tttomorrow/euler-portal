@@ -11,7 +11,7 @@ import { getSigDetail, getSigMember } from '@/api/api-sig';
 import IconArrowRight from '~icons/app/right.svg';
 
 const { lang } = useData();
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 let sidDetailId: number;
 

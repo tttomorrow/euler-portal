@@ -15,7 +15,7 @@ interface MapMsg {
   longitude: number;
   location: string;
 }
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 interface MirrorMsg {
   name: string;

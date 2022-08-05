@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useI18n } from '@/i18n';
 
 import MiniCards from '../components/MiniCards.vue';
@@ -13,7 +13,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerIllustration from '/img/projects/stratovirt/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const isPC = ref(true);
 if (useWindowResize().value < 767) {
   isPC.value = false;

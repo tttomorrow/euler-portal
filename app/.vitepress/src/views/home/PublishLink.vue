@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import useWindowResize from '@/components/hooks/useWindowResize';
-import { computed } from 'vue';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 const { lang } = useData();
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 const screenWidth = useWindowResize();
 </script>

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
 
 const commonStore = useCommon();
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 
 const go = (path: string) => {
   window.open(path, '_blank');

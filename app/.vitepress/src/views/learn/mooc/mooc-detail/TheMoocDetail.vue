@@ -23,7 +23,7 @@ import IconCancel from '~icons/app/icon-cancel.svg';
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const router = useRouter();
 const language = useData().lang;
 const commonStore = useCommon();

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useI18n } from '@/i18n';
 
 import UserCase from './UserCase.vue';
@@ -37,7 +37,7 @@ const calendarData = ref<TableData[]>([
     ],
   },
 ]);
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 onMounted(() => {
   getMeetingData().then((res: MeetingData) => {
     calendarData.value = res.tableData;

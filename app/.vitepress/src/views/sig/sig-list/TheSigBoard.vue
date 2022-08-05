@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useData, useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 const configData = useData();
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const router = useRouter();
 const language = configData.lang;
 

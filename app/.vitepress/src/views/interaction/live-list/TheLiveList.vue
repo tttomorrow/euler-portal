@@ -13,7 +13,7 @@ import IconTime from '~icons/app/icon-time.svg';
 import IconPre from '~icons/app/icon-chevron-left.svg';
 import IconNext from '~icons/app/icon-chevron-right.svg';
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 const data = computed(() => i18n.value.live.LIVE_LIST);
 
 const currentPage1 = ref(1);

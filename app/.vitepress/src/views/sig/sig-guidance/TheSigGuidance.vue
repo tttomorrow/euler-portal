@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
@@ -14,7 +13,7 @@ import sig6 from '@/assets/sig-application/sig6.png';
 const LEFT_IMG = [sig1, sig2, sig3];
 const RIGHT_IMG = [sig4, sig5, sig6];
 
-const i18n = computed(() => useI18n());
+const i18n = useI18n();
 </script>
 
 <template>
