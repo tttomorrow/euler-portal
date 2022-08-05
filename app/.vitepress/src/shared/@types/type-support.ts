@@ -17,11 +17,6 @@ export interface DetailParams {
   securityNoticeNo: string;
 }
 
-export interface BulletinParams {
-  page: number;
-  size: number;
-}
-
 export interface SecurityLists {
   affectedComponent: string;
   affectedProduct: string;
@@ -65,4 +60,28 @@ export interface CompatibilityList {
   ram?: string;
   updateTime?: string;
   videoAdapter?: string;
+}
+
+export interface SoftWareQuery {
+  page_size: number;
+  page_num: number;
+}
+export interface SoftWareList {
+  arch: string;
+  bin: string;
+  category: string;
+  downloadLink: string;
+  group: string;
+  install: string;
+  libs: string;
+  license: string;
+  os: string;
+  property: string;
+  result_root: string;
+  result_url: string;
+  softwareName: string;
+  src_location: string;
+  type: string;
+  uninstall: string;
+  version: string;
 }

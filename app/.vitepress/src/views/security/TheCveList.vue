@@ -166,7 +166,7 @@ watch(queryData, () => getCveLists(queryData));
     </div>
 
     <ul class="mobile-list">
-      <li v-for="item in tableData" :key="item" class="item">
+      <li v-for="item in tableData" :key="item.cveId" class="item">
         <ul>
           <li>
             <span>{{ i18n.security.CVE }}:</span>{{ item.cveId }}
