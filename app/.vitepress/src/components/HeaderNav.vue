@@ -51,22 +51,21 @@ const goPath = (item: NavItem) => {
 
 const isShow = ref(true);
 const navActive = ref('');
-const toggleSubDebounced = (item: NavItem | null) => {
-  debounce(
-    () => {
-      if (item === null) {
-        navActive.value = '';
-      } else {
-        navActive.value = item.ID;
-        isShow.value = true;
-      }
-    },
-    500,
-    {
-      trailing: true,
+
+const toggleSubDebounced = debounce(
+  function (item: NavItem | null) {
+    if (item === null) {
+      navActive.value = '';
+    } else {
+      navActive.value = item.ID;
+      isShow.value = true;
     }
-  )();
-};
+  },
+  300,
+  {
+    trailing: true,
+  }
+);
 </script>
 
 <template>
