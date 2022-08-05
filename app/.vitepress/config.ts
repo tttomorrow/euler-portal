@@ -1,4 +1,3 @@
-// import i18n from './src/i18n';
 import type { UserConfig } from 'vitepress';
 
 const config: UserConfig = {
@@ -19,7 +18,7 @@ const config: UserConfig = {
       },
     ],
   ],
-  appearance: true, // enable dynamic scripts from dark mode
+  appearance: true, // enable dynamic scripts for dark mode
   titleTemplate: false, //  vitepress supports pageTitileTemplate since 1.0.0
   locales: {
     '/': {

@@ -1,142 +1,142 @@
 <script lang="ts" setup>
-import { ref, reactive, computed, onMounted, watch } from 'vue';
-import { useI18n } from '@/i18n';
+// import { ref, reactive, computed, onMounted, watch } from 'vue';
 
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-import banner from '@/assets/banner-secondary.png';
-import TagFilter from '@/components/TagFilter.vue';
-import search from '@/assets/illustrations/search.png';
+// import BannerLevel2 from '@/components/BannerLevel2.vue';
+// import banner from '@/assets/banner-secondary.png';
+// import TagFilter from '@/components/TagFilter.vue';
+// import search from '@/assets/illustrations/search.png';
 
-import type { TabsPaneContext } from 'element-plus';
+// import type { TabsPaneContext } from 'element-plus';
+// import { useI18n } from '@/i18n';
+// import type { CveQuery, CompatibilityList } from '@/shared/@types/type-support';
 
-import {
-  getCompatibilityList,
-  getDriverList,
-  driverArchitectureOptions,
-  driverOSOptions,
-} from '@/api/api-security';
+// import {
+//   getCompatibilityList,
+//   getDriverList,
+//   driverArchitectureOptions,
+//   driverOSOptions,
+// } from '@/api/api-security';
 
-import { CveQuery, CompatibilityList } from '@/shared/@types/type-support.ts';
+// const i18n = computed(() => useI18n());
+// debugger;
+// const searchContent = ref('');
+// const activeIndex = ref(0);
+// const activeIndex1 = ref(0);
+// const total = ref(0);
+// const layout = ref('sizes, prev, pager, next, slot, jumper');
+// const architectureSelect = ref<string[]>(['全部']);
+// const osOptions = ref<string[]>(['全部']);
+// const activeName = ref('first');
 
-const i18n = computed(() => useI18n());
-const searchContent = ref('');
-const activeIndex = ref(0);
-const activeIndex1 = ref(0);
-const total = ref(0);
-const layout = ref('sizes, prev, pager, next, slot, jumper');
-const architectureSelect = ref<string[]>(['全部']);
-const osOptions = ref<string[]>(['全部']);
-const activeName = ref('first');
+// const queryData: CveQuery = reactive({
+//   pages: {
+//     page: 1,
+//     size: 10,
+//   },
+//   architecture: '',
+//   keyword: '',
+//   cpu: '',
+//   os: '',
+//   lang: 'zh',
+// });
 
-const queryData: CveQuery = reactive({
-  pages: {
-    page: 1,
-    size: 10,
-  },
-  architecture: '',
-  keyword: '',
-  cpu: '',
-  os: '',
-  lang: 'zh',
-});
+// const tableData = ref<CompatibilityList>([]);
+// // 整机
+// const getCompatibilityData = (data: CveQuery) => {
+//   try {
+//     getCompatibilityList(data).then((res: any) => {
+//       // console.log(res);
+//       total.value = res.result.totalCount;
+//       tableData.value = res.result.hardwareCompList;
+//     });
+//   } catch (e: any) {
+//     throw new Error(e);
+//   }
+// };
+// // 板卡
+// const getDriverData = (data: CveQuery) => {
+//   try {
+//     getDriverList(data).then((res: any) => {
+//       // console.log(res);
+//       total.value = res.result.totalCount;
+//       tableData.value = res.result.driverCompList;
+//     });
+//   } catch (e: any) {
+//     throw new Error(e);
+//   }
+// };
+// // 开源软件
 
-const tableData = ref<CompatibilityList>([]);
-// 整机
-const getCompatibilityData = (data: CveQuery) => {
-  try {
-    getCompatibilityList(data).then((res: any) => {
-      // console.log(res);
-      total.value = res.result.totalCount;
-      tableData.value = res.result.hardwareCompList;
-    });
-  } catch (e: any) {
-    throw new Error(e);
-  }
-};
-// 板卡
-const getDriverData = (data: CveQuery) => {
-  try {
-    getDriverList(data).then((res: any) => {
-      // console.log(res);
-      total.value = res.result.totalCount;
-      tableData.value = res.result.driverCompList;
-    });
-  } catch (e: any) {
-    throw new Error(e);
-  }
-};
-// 开源软件
+// // 商业软件
 
-// 商业软件
+// const handleClick = (tab: TabsPaneContext) => {
+//   // console.log(tab.props.label, event);
+//   switch (tab.props.label) {
+//     case '整机':
+//       getCompatibilityData(queryData);
+//       break;
+//     case '板卡':
+//       getDriverData(queryData);
+//       break;
+//     case '开源软件':
+//       // console.log(3);
+//       break;
+//     case '商业软件':
+//       // console.log(4);
+//       break;
+//   }
+// };
 
-const handleClick = (tab: TabsPaneContext) => {
-  // console.log(tab.props.label, event);
-  switch (tab.props.label) {
-    case '整机':
-      getCompatibilityData(queryData);
-      break;
-    case '板卡':
-      getDriverData(queryData);
-      break;
-    case '开源软件':
-      // console.log(3);
-      break;
-    case '商业软件':
-      // console.log(4);
-      break;
-  }
-};
+// const tagClick = (i: number, item: string) => {
+//   activeIndex.value = i;
+//   queryData.os = item === '全部' ? '' : item;
+// };
 
-const tagClick = (i: number, item: string) => {
-  activeIndex.value = i;
-  queryData.os = item === '全部' ? '' : item;
-};
+// const optionTagClick = (i: number, item: string) => {
+//   activeIndex1.value = i;
+//   queryData.architecture = item === '全部' ? '' : item;
+// };
 
-const optionTagClick = (i: number, item: string) => {
-  activeIndex1.value = i;
-  queryData.architecture = item === '全部' ? '' : item;
-};
+// const handleSizeChange = (val: number) => {
+//   queryData.pages.size = val;
+// };
 
-const handleSizeChange = (val: number) => {
-  queryData.pages.size = val;
-};
+// const handleCurrentChange = (val: number) => {
+//   queryData.pages.page = val;
+// };
 
-const handleCurrentChange = (val: number) => {
-  queryData.pages.page = val;
-};
+// function searchValchange() {
+//   queryData.keyword = searchContent.value;
+// }
 
-function searchValchange() {
-  queryData.keyword = searchContent.value;
-}
+// onMounted(() => {
+//   getCompatibilityData(queryData);
+//   driverArchitectureOptions({ lang: 'zh' }).then((res) => {
+//     res.result.forEach((item: string) => {
+//       architectureSelect.value.push(item);
+//     });
+//   });
+//   driverOSOptions({ lang: 'zh' }).then((res) => {
+//     res.result.forEach((item: string) => {
+//       osOptions.value.push(item);
+//     });
+//   });
+// });
 
-onMounted(() => {
-  getCompatibilityData(queryData);
-  driverArchitectureOptions({ lang: 'zh' }).then((res) => {
-    res.result.forEach((item: string) => {
-      architectureSelect.value.push(item);
-    });
-  });
-  driverOSOptions({ lang: 'zh' }).then((res) => {
-    res.result.forEach((item: string) => {
-      osOptions.value.push(item);
-    });
-  });
-});
-
-watch(queryData, () => getCompatibilityData(queryData));
+// watch(queryData, () => getCompatibilityData(queryData));
 </script>
 
 <template>
-  <BannerLevel2
+  <!-- <BannerLevel2
     :background-image="banner"
     background-text="CONTENT"
     title="兼容性列表"
     subtitle=""
     :illustration="search"
-  />
-  <OTabs v-model="activeName" @tab-click="handleClick">
+  /> -->
+  <!-- <OTabs v-model="activeName" @tab-click="handleClick"> -->
     <!-- 整机 -->
-    <OTabPane label="整机" name="first">
+    <!-- <OTabPane label="整机" name="first">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -212,9 +212,9 @@ watch(queryData, () => getCompatibilityData(queryData));
           ></OTableColumn>
         </OTable>
       </div>
-    </OTabPane>
+    </OTabPane> -->
     <!-- 板卡 -->
-    <OTabPane label="板卡" name="second">
+    <!-- <OTabPane label="板卡" name="second">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -290,11 +290,11 @@ watch(queryData, () => getCompatibilityData(queryData));
           ></OTableColumn>
         </OTable>
       </div>
-    </OTabPane>
+    </OTabPane> -->
     <!-- 开源软件 -->
-    <OTabPane label="开源软件" name="third"> </OTabPane>
+    <!-- <OTabPane label="开源软件" name="third"> </OTabPane> -->
     <!-- 商业软件 -->
-    <OTabPane label="商业软件" name="fourth"> </OTabPane>
+    <!-- <OTabPane label="商业软件" name="fourth"> </OTabPane>
     <div class="bottom-wrapper">
       <OPagination
         v-model:page-size="queryData.pages.size"
@@ -314,7 +314,7 @@ watch(queryData, () => getCompatibilityData(queryData));
         <a href="#">openEuler 硬件兼容性测试整体介绍</a>
       </p>
     </div>
-  </OTabs>
+  </OTabs> -->
 </template>
 
 <style lang="scss" scoped>
