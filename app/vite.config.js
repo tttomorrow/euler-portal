@@ -58,6 +58,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-cve/, ''),
       },
+      '/compatibility': {
+        target: 'https://api-proxy.openeuler.isrc.ac.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/compatibility/, ''),
+      },
       '/showcase': {
         target: 'https://doc-search.test.osinfra.cn/showcase',
         changeOrigin: true,

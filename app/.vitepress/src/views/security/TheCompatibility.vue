@@ -1,142 +1,162 @@
 <script lang="ts" setup>
-// import { ref, reactive, computed, onMounted, watch } from 'vue';
+import { ref, reactive, onMounted, watch } from 'vue';
 
-// import BannerLevel2 from '@/components/BannerLevel2.vue';
-// import banner from '@/assets/banner-secondary.png';
-// import TagFilter from '@/components/TagFilter.vue';
-// import search from '@/assets/illustrations/search.png';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+import TagFilter from '@/components/TagFilter.vue';
+import banner from '@/assets/banner-secondary.png';
+import search from '@/assets/illustrations/search.png';
 
-// import type { TabsPaneContext } from 'element-plus';
-// import { useI18n } from '@/i18n';
-// import type { CveQuery, CompatibilityList } from '@/shared/@types/type-support';
+import type { TabsPaneContext } from 'element-plus';
+import { useI18n } from '@/i18n';
+import type {
+  CveQuery,
+  CompatibilityList,
+  SoftWareQuery,
+} from '@/shared/@types/type-support';
 
-// import {
-//   getCompatibilityList,
-//   getDriverList,
-//   driverArchitectureOptions,
-//   driverOSOptions,
-// } from '@/api/api-security';
+import {
+  getCompatibilityList,
+  getDriverList,
+  driverArchitectureOptions,
+  driverOSOptions,
+  getSoftwareList,
+} from '@/api/api-security';
 
-// const i18n = computed(() => useI18n());
+const i18n = useI18n();
 // debugger;
-// const searchContent = ref('');
-// const activeIndex = ref(0);
-// const activeIndex1 = ref(0);
-// const total = ref(0);
-// const layout = ref('sizes, prev, pager, next, slot, jumper');
-// const architectureSelect = ref<string[]>(['全部']);
-// const osOptions = ref<string[]>(['全部']);
-// const activeName = ref('first');
+const searchContent = ref('');
+const activeIndex = ref(0);
+const activeIndex1 = ref(0);
+const total = ref(0);
+const layout = ref('sizes, prev, pager, next, slot, jumper');
+const architectureSelect = ref<string[]>(['全部']);
+const osOptions = ref<string[]>(['全部']);
+const activeName = ref('first');
 
-// const queryData: CveQuery = reactive({
-//   pages: {
-//     page: 1,
-//     size: 10,
-//   },
-//   architecture: '',
-//   keyword: '',
-//   cpu: '',
-//   os: '',
-//   lang: 'zh',
-// });
+const queryData: CveQuery = reactive({
+  pages: {
+    page: 1,
+    size: 10,
+  },
+  architecture: '',
+  keyword: '',
+  cpu: '',
+  os: '',
+  lang: 'zh',
+});
 
-// const tableData = ref<CompatibilityList>([]);
-// // 整机
-// const getCompatibilityData = (data: CveQuery) => {
-//   try {
-//     getCompatibilityList(data).then((res: any) => {
-//       // console.log(res);
-//       total.value = res.result.totalCount;
-//       tableData.value = res.result.hardwareCompList;
-//     });
-//   } catch (e: any) {
-//     throw new Error(e);
-//   }
-// };
-// // 板卡
-// const getDriverData = (data: CveQuery) => {
-//   try {
-//     getDriverList(data).then((res: any) => {
-//       // console.log(res);
-//       total.value = res.result.totalCount;
-//       tableData.value = res.result.driverCompList;
-//     });
-//   } catch (e: any) {
-//     throw new Error(e);
-//   }
-// };
-// // 开源软件
+const softWareQueryData: SoftWareQuery = {
+  page_size: 10,
+  page_num: 1,
+};
 
-// // 商业软件
+const tableData = ref<CompatibilityList[]>([]);
 
-// const handleClick = (tab: TabsPaneContext) => {
-//   // console.log(tab.props.label, event);
-//   switch (tab.props.label) {
-//     case '整机':
-//       getCompatibilityData(queryData);
-//       break;
-//     case '板卡':
-//       getDriverData(queryData);
-//       break;
-//     case '开源软件':
-//       // console.log(3);
-//       break;
-//     case '商业软件':
-//       // console.log(4);
-//       break;
-//   }
-// };
+// 整机
+const getCompatibilityData = (data: CveQuery) => {
+  try {
+    getCompatibilityList(data).then((res: any) => {
+      total.value = res.result.totalCount;
+      tableData.value = res.result.hardwareCompList;
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+};
+// 板卡
+const getDriverData = (data: CveQuery) => {
+  try {
+    getDriverList(data).then((res: any) => {
+      total.value = res.result.totalCount;
+      tableData.value = res.result.driverCompList;
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+};
+// 开源软件
+const getSoftwareData = (data: SoftWareQuery) => {
+  try {
+    getSoftwareList(data).then((res) => {
+      // console.log(res);
+      total.value = res.total;
+      tableData.value = res.info;
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+};
 
-// const tagClick = (i: number, item: string) => {
-//   activeIndex.value = i;
-//   queryData.os = item === '全部' ? '' : item;
-// };
+// 商业软件
 
-// const optionTagClick = (i: number, item: string) => {
-//   activeIndex1.value = i;
-//   queryData.architecture = item === '全部' ? '' : item;
-// };
+const handleClick = (tab: TabsPaneContext) => {
+  // console.log(tab.props.label, event);
+  switch (tab.props.label) {
+    case '整机':
+      getCompatibilityData(queryData);
+      break;
+    case '板卡':
+      getDriverData(queryData);
+      break;
+    case '开源软件':
+      getSoftwareData(softWareQueryData);
+      break;
+    case '商业软件':
+      // console.log(4);
+      break;
+  }
+};
 
-// const handleSizeChange = (val: number) => {
-//   queryData.pages.size = val;
-// };
+const tagClick = (i: number, item: string) => {
+  activeIndex.value = i;
+  queryData.os = item === '全部' ? '' : item;
+};
 
-// const handleCurrentChange = (val: number) => {
-//   queryData.pages.page = val;
-// };
+const optionTagClick = (i: number, item: string) => {
+  activeIndex1.value = i;
+  queryData.architecture = item === '全部' ? '' : item;
+};
 
-// function searchValchange() {
-//   queryData.keyword = searchContent.value;
-// }
+const handleSizeChange = (val: number) => {
+  queryData.pages.size = val;
+};
 
-// onMounted(() => {
-//   getCompatibilityData(queryData);
-//   driverArchitectureOptions({ lang: 'zh' }).then((res) => {
-//     res.result.forEach((item: string) => {
-//       architectureSelect.value.push(item);
-//     });
-//   });
-//   driverOSOptions({ lang: 'zh' }).then((res) => {
-//     res.result.forEach((item: string) => {
-//       osOptions.value.push(item);
-//     });
-//   });
-// });
+const handleCurrentChange = (val: number) => {
+  queryData.pages.page = val;
+};
 
-// watch(queryData, () => getCompatibilityData(queryData));
+function searchValchange() {
+  queryData.keyword = searchContent.value;
+}
+
+onMounted(() => {
+  getCompatibilityData(queryData);
+  driverArchitectureOptions({ lang: 'zh' }).then((res) => {
+    res.result.forEach((item: string) => {
+      architectureSelect.value.push(item);
+    });
+  });
+  driverOSOptions({ lang: 'zh' }).then((res) => {
+    res.result.forEach((item: string) => {
+      osOptions.value.push(item);
+    });
+  });
+});
+
+watch(queryData, () => getCompatibilityData(queryData));
 </script>
 
 <template>
-  <!-- <BannerLevel2
+  <BannerLevel2
     :background-image="banner"
     background-text="CONTENT"
     title="兼容性列表"
     subtitle=""
     :illustration="search"
-  /> -->
-  <!-- <OTabs v-model="activeName" @tab-click="handleClick"> -->
+  />
+  <OTabs v-model="activeName" @tab-click="handleClick">
     <!-- 整机 -->
-    <!-- <OTabPane label="整机" name="first">
+    <OTabPane label="整机" name="first">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -212,9 +232,9 @@
           ></OTableColumn>
         </OTable>
       </div>
-    </OTabPane> -->
+    </OTabPane>
     <!-- 板卡 -->
-    <!-- <OTabPane label="板卡" name="second">
+    <OTabPane label="板卡" name="second">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -290,11 +310,87 @@
           ></OTableColumn>
         </OTable>
       </div>
-    </OTabPane> -->
+    </OTabPane>
     <!-- 开源软件 -->
-    <!-- <OTabPane label="开源软件" name="third"> </OTabPane> -->
+    <OTabPane label="开源软件" name="third">
+      <div class="wrapper">
+        <OSearch
+          v-model="searchContent"
+          class="o-search"
+          @change="searchValchange"
+        ></OSearch>
+        <OCard class="filter-card">
+          <template #header>
+            <div class="card-header">
+              <TagFilter :label="i18n.compatibility.ADAPTIVE" :show="false">
+                <OTag
+                  v-for="(item, index) in osOptions"
+                  :key="'tag' + index"
+                  :type="activeIndex === index ? 'primary' : 'text'"
+                  @click="tagClick(index, item)"
+                >
+                  {{ item }}
+                </OTag>
+              </TagFilter>
+            </div>
+          </template>
+          <div class="card-body">
+            <TagFilter :show="false" :label="i18n.security.YEAR">
+              <OTag
+                v-for="(item, index) in architectureSelect"
+                :key="'tag' + index"
+                :type="activeIndex1 === index ? 'primary' : 'text'"
+                @click="optionTagClick(index, item)"
+              >
+                {{ item }}
+              </OTag>
+            </TagFilter>
+          </div>
+        </OCard>
+        <OTable class="pc-list" :data="tableData" style="width: 100%">
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
+            prop="architecture"
+            width="160"
+          >
+          </OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
+            prop="hardDiskDrive"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
+            prop="osVersion"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
+            prop="biosUefi"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
+            prop="updateTime"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
+            prop="date"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
+            prop="hardwareFactory"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
+            prop="hardwareModel"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
+            prop="ram"
+          ></OTableColumn>
+        </OTable>
+      </div>
+    </OTabPane>
     <!-- 商业软件 -->
-    <!-- <OTabPane label="商业软件" name="fourth"> </OTabPane>
+    <OTabPane label="商业软件" name="fourth"> </OTabPane>
     <div class="bottom-wrapper">
       <OPagination
         v-model:page-size="queryData.pages.size"
@@ -314,7 +410,7 @@
         <a href="#">openEuler 硬件兼容性测试整体介绍</a>
       </p>
     </div>
-  </OTabs> -->
+  </OTabs>
 </template>
 
 <style lang="scss" scoped>
