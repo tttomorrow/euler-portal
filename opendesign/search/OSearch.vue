@@ -20,6 +20,9 @@ const attrs = useAttrs();
         ></path>
       </svg>
     </template>
+    <template #suffix>
+      <slot name="suffix"></slot>
+    </template>
   </ElInput>
 </template>
 

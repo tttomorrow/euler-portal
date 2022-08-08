@@ -13,6 +13,9 @@ import logo_dark from '@/assets/logo_dark.png';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
+import IconRefresh from '~icons/app/icon-refresh.svg';
+import IconDelete from '~icons/app/icon-delete.svg';
+
 
 const router = useRouter();
 const { lang } = useData();
@@ -98,6 +101,8 @@ const goMobileList = (item: NavItem) => {
 const toBody = ref(false);
 onMounted(() => {
   toBody.value = true;
+  getHistoryList();
+  getHotList();
 });
 onUnmounted(() => {
   toBody.value = false;
@@ -107,6 +112,75 @@ onUnmounted(() => {
 const goHome = () => {
   router.go(`/${lang.value}/`);
 };
+
+const searchValue = computed(()=>{
+  return i18n.value.common.SEARCH
+})
+// 显示/移除搜索框
+const isShowBox = ref(false);
+const showSearchBox = () => {
+  isShowBox.value = true;
+};
+const donShowSearchBox = () => {
+  isShowBox.value = false;
+};
+// 搜索内容
+const searchInput = ref<string>('');
+// 显示/隐藏搜索下拉框列表
+const isShowList = ref(false);
+const showSearchList = () => {
+  isShowList.value = true;
+};
+const donshowSearchList = () => {
+  setTimeout(() => {
+    isShowList.value = false;
+  }, 500);
+};
+// 历史内容-本地记录
+const historyList = ref<string[]>([]);
+const getHistoryList = () => {
+  historyList.value = JSON.parse(localStorage.getItem('history') as string);
+  return;
+};
+const clearHistory = () => {
+  localStorage.removeItem('history');
+};
+// 热搜-接口请求
+const hotList = ref<string[]>([]);
+const getHotList = () => {
+  return;
+};
+// 搜索内容-接口请求
+const searchList = ref<string[]>([]);
+const getSearchList = (val: string) => {
+  isShowSearchResult.value = true;
+  if (val === '') isShowSearchResult.value = false;
+};
+// 选择结果
+const selectOption = (val: any) => {
+  const hisdata: string[] = JSON.parse(
+    localStorage.getItem('history') as string
+  );
+  for (let i = 0; i <= hisdata.length; i++) {
+    if (hisdata[i] === val) return;
+  }
+  hisdata.push(val);
+  localStorage.setItem('history', JSON.stringify(hisdata));
+};
+// 显示/隐藏历史记录、热搜
+const isShowSearchResult = ref(false);
+// 防抖
+// const debounce = () => {
+//   let timer:any = null;
+//   return function () {
+//     if(timer) {
+//       clearTimeout(timer)
+//     }
+//     timer = setTimeout(() => {
+//       getSearchList(searchInput.value)
+//     })
+//   }
+// }
 </script>
 
 <template>
@@ -119,14 +193,72 @@ const goHome = () => {
         </OIcon>
         <OIcon v-else class="icon"><IconX /></OIcon>
       </div>
-      <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
-      <div class="header-content">
+      <img
+        class="logo"
+        alt="openEuler logo"
+        :src="logo"
+        @click="goHome"
+      />
+      <div v-if="isShowBox" class="header-search">
+        <div class="header-search-box">
+          <OSearch
+            v-model="searchInput"
+            :placeholder="searchValue.PLEACHOLDER"
+            @focus="showSearchList"
+            @blur="donshowSearchList"
+            @input="getSearchList(searchInput)"
+          >
+            <template v-slot:suffix>
+              <OIcon @click="donShowSearchBox" class="close"><IconX /></OIcon>
+            </template>
+          </OSearch>
+        </div>
+        <div v-show="isShowList" class="header-search-list">
+          <div v-show="!isShowSearchResult" class="header-search-list-history">
+            <div class="header-search-list-history-title">
+              <p>{{searchValue.BROWSEHISTORY}}</p>
+              <div class="rightside" @click="clearHistory">
+                <OIcon class="icon"><IconDelete /></OIcon>
+                <p>{{searchValue.CLEAN}}</p>
+              </div>
+            </div>
+            <div class="header-search-list-history-body">
+              <ul>
+                <li v-for="item in historyList" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+          <div v-show="!isShowSearchResult" class="header-search-list-hot">
+            <div class="header-search-list-hot-title">
+              <p>{{searchValue.TOPSEARCH}}</p>
+              <div class="rightside" @click="getHotList">
+                <OIcon class="icon"><IconRefresh /></OIcon>
+                <p>{{searchValue.CHANGE}}</p>
+              </div>
+            </div>
+            <div class="header-search-list-hot-body">
+              <ul>
+                <li v-for="item in hotList" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+          <div v-show="isShowSearchResult" class="header-search-list-result">
+            <ul>
+              <li v-for="item in searchList" :key="item" @click="selectOption">
+                {{ item }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div v-show="!isShowBox" class="header-content">
         <div class="header-nav">
           <HeaderNav :nav-items="navRouter" @nav-click="handleNavClick" />
         </div>
         <div class="header-tool">
           <div class="header-tool-search">
-            <OIcon class="icon"><IconSearch /></OIcon>
+            <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
           </div>
           <!-- 中英文切换 -->
           <AppLanguage />
@@ -177,6 +309,18 @@ const goHome = () => {
 </template>
 
 <style lang="scss" scoped>
+:deep(.o-search) {
+  --o-search-color-bg: var(--o-color-bg6);
+}
+:deep(.el-input__suffix) {
+  font-size: var(--o-font-size-h7);
+}
+:deep(.el-input__clear) {
+  font-size: var(--o-font-size-h7);
+}
+:deep(.el-icon-circle-inner) {
+  font-size: var(--o-font-size-h1);
+}
 .app-header {
   background-color: var(--o-color-bg);
   position: fixed;
@@ -256,6 +400,100 @@ const goHome = () => {
   .icon {
     font-size: 22px;
     color: var(--o-color-text2);
+  }
+}
+.header-search {
+  animation-duration: 1s;
+  animation-name: searchbox;
+  position: relative;
+  top: 181px;
+  width: 900px;
+  margin-left: var(--o-spacing-h2);
+  height: 400px;
+  &-box {
+    .close{
+      cursor: pointer;
+      color: var(--o-color-text2);
+    }
+  }
+  &-list {
+    height: 360px;
+    margin-top: 22px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 10px 32px 0px rgba(45, 47, 51, 0.18);
+    backdrop-filter: blur(5px);
+    padding: var(--o-spacing-h3);
+    &-history {
+      min-height: 225px;
+      height: auto;
+      &-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        p {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+        }
+        .rightside {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          cursor: pointer;
+          .icon {
+            font-size: var(--o-font-size-h5);
+          }
+        }
+      }
+      &-body {
+        li {
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
+          padding: var(--o-spacing-h8) 0;
+          cursor: pointer;
+        }
+        li:hover {
+          background-color: #f7f8fa;
+        }
+      }
+    }
+    &-hot {
+      height: auto;
+      &-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        p {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+        }
+        .rightside {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          cursor: pointer;
+          .icon {
+            font-size: var(--o-font-size-h5);
+          }
+        }
+      }
+      &-body {
+        display: flex;
+        flex-direction: row;
+        ul {
+          margin-top: var(--o-spacing-h5);
+        }
+        li {
+          float: left;
+          margin-right: var(--o-spacing-h4);
+          cursor: pointer;
+        }
+      }
+    }
+    &-result {
+      height: auto;
+    }
   }
 }
 
@@ -387,6 +625,15 @@ const goHome = () => {
       opacity: 1;
       z-index: 8;
     }
+  }
+}
+
+@keyframes searchbox {
+  from {
+    margin-bottom: 120px;
+  }
+  to {
+    margin-bottom: 0;
   }
 }
 </style>
