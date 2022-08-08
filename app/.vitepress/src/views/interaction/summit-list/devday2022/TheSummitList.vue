@@ -172,7 +172,7 @@ const reviewList = [
       <div class="middle-schedule">
         <p class="headline">ACENDA</p>
         <p class="subtitle">峰会日程</p>
-        <TheSummitScheduler />
+        <TheSummitScheduler :agenda-data="i18n.summit.AGENDA" />
       </div>
       <div class="middle-guests">
         <p class="headline">ACENDA</p>
@@ -322,6 +322,8 @@ const reviewList = [
       }
     }
     &-review {
+      max-width: 1400px;
+      margin: 0 auto;
       &-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

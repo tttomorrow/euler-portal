@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import AOS from 'aos';
+import { onMounted } from 'vue';
 import { useData, useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 
@@ -17,6 +19,13 @@ defineProps({
 const toSigDetail = (value: any) => {
   router.go(`/${language.value}/sig/sig-detail/?id=${value.id}`);
 };
+onMounted(() => {
+  AOS.init({
+    offset: 200,
+    duration: 800,
+    delay: 100,
+  });
+});
 </script>
 
 <template>
@@ -25,6 +34,7 @@ const toSigDetail = (value: any) => {
       <li
         v-for="(item,index) in (sigList as any)"
         :key="index"
+        data-aos="fade-zoom-in"
         class="sig-list-item"
       >
         <h2 @click="toSigDetail(item)">{{ item.group_name }}</h2>

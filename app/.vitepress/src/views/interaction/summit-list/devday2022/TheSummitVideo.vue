@@ -27,7 +27,7 @@ const tabLiveRoom = (src: string, index: number): void => {
 <template>
   <div class="live-room">
     <iframe
-      height="550"
+      height="630"
       allow="camera *;microphone *;"
       border="0"
       scolling="no"
