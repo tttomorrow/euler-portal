@@ -308,4 +308,11 @@ export default {
     BUILDING: 'Building',
     BUILDINGMES: 'Coming soon…',
   },
+  SEARCH: {
+    BROWSEHISTORY: 'History',
+    CLEAN: 'Clean up',
+    TOPSEARCH: 'Top search',
+    CHANGE: 'Change',
+    PLEACHOLDER: 'Please enter the content',
+  },
 };
