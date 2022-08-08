@@ -11,7 +11,9 @@ import { useI18n } from '@/i18n';
 import type {
   CveQuery,
   CompatibilityList,
-  SoftWareQuery,
+  // SoftWareQuery,
+  // BusinessSoftWareQuery,
+  BoardCardList,
 } from '@/shared/@types/type-support';
 
 import {
@@ -19,11 +21,11 @@ import {
   getDriverList,
   driverArchitectureOptions,
   driverOSOptions,
-  getSoftwareList,
+  // getSoftwareList,
+  // getBusinessSoftwareList,
 } from '@/api/api-security';
 
 const i18n = useI18n();
-// debugger;
 const searchContent = ref('');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
@@ -45,12 +47,29 @@ const queryData: CveQuery = reactive({
   lang: 'zh',
 });
 
-const softWareQueryData: SoftWareQuery = {
-  page_size: 10,
-  page_num: 1,
-};
+// const BoardCardqueryData: CveQuery = reactive({
+//   pages: {
+//     page: 1,
+//     size: 10,
+//   },
+//   architecture: '',
+//   keyword: '',
+//   cpu: '',
+//   os: '',
+//   lang: 'zh',
+// });
 
-const tableData = ref<CompatibilityList[]>([]);
+// const softWareQueryData: SoftWareQuery = {
+//   page_size: 10,
+//   page_num: 1,
+// };
+
+// const BusinessSoftWareQueryData: BusinessSoftWareQuery = {
+//   pageSize: 10,
+//   pageNo: 1,
+// };
+
+const tableData = ref<CompatibilityList[] | BoardCardList[]>([]);
 
 // 整机
 const getCompatibilityData = (data: CveQuery) => {
@@ -75,36 +94,51 @@ const getDriverData = (data: CveQuery) => {
   }
 };
 // 开源软件
-const getSoftwareData = (data: SoftWareQuery) => {
-  try {
-    getSoftwareList(data).then((res) => {
-      // console.log(res);
-      total.value = res.total;
-      tableData.value = res.info;
-    });
-  } catch (e: any) {
-    throw new Error(e);
-  }
-};
-
+// const getSoftwareData = (data: SoftWareQuery) => {
+//   try {
+//     getSoftwareList(data).then((res: any) => {
+//       // console.log(res);
+//       total.value = res.total;
+//       tableData.value = res.info;
+//     });
+//   } catch (e: any) {
+//     throw new Error(e);
+//   }
+// };
 // 商业软件
+// const getBusinessSoftwareData = (data: BusinessSoftWareQuery) => {
+//   try {
+//     getBusinessSoftwareList(data).then((res: any) => {
+//       console.log(res);
+//       // total.value = res.total;
+//       tableData.value = res.result;
+//     });
+//   } catch (e: any) {
+//     throw new Error(e);
+//   }
+// };
 
 const handleClick = (tab: TabsPaneContext) => {
-  // console.log(tab.props.label, event);
-  switch (tab.props.label) {
-    case '整机':
-      getCompatibilityData(queryData);
-      break;
-    case '板卡':
-      getDriverData(queryData);
-      break;
-    case '开源软件':
-      getSoftwareData(softWareQueryData);
-      break;
-    case '商业软件':
-      // console.log(4);
-      break;
+  // console.log(tab, event);
+  if (tab.props.label === '整机') {
+    getCompatibilityData(queryData);
+  } else if (tab.props.label === '板卡') {
+    getDriverData(queryData);
   }
+  // switch (tab.props.label) {
+  //   case '整机':
+  //     getCompatibilityData(queryData);
+  //     break;
+  //   case '板卡':
+  //     getDriverData(queryData);
+  //     break;
+  //   case '开源软件':
+  //     getSoftwareData(softWareQueryData);
+  //     break;
+  //   case '商业软件':
+  //     getBusinessSoftwareData(BusinessSoftWareQueryData);
+  //     break;
+  // }
 };
 
 const tagClick = (i: number, item: string) => {
@@ -131,19 +165,22 @@ function searchValchange() {
 
 onMounted(() => {
   getCompatibilityData(queryData);
-  driverArchitectureOptions({ lang: 'zh' }).then((res) => {
+  driverArchitectureOptions({ lang: 'zh' }).then((res: any) => {
     res.result.forEach((item: string) => {
       architectureSelect.value.push(item);
     });
   });
-  driverOSOptions({ lang: 'zh' }).then((res) => {
+  driverOSOptions({ lang: 'zh' }).then((res: any) => {
     res.result.forEach((item: string) => {
       osOptions.value.push(item);
     });
   });
 });
 
-watch(queryData, () => getCompatibilityData(queryData));
+watch(queryData, () => {
+  getCompatibilityData(queryData);
+  getDriverData(queryData);
+});
 </script>
 
 <template>
@@ -278,35 +315,35 @@ watch(queryData, () => getCompatibilityData(queryData));
           </OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
-            prop="hardDiskDrive"
+            prop="driverName"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
-            prop="osVersion"
+            prop="os"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
-            prop="biosUefi"
+            prop="version"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
-            prop="updateTime"
+            prop="type"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
-            prop="date"
+            prop="driverDate"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
-            prop="hardwareFactory"
+            prop="chipVendor"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
-            prop="hardwareModel"
+            prop="boardModel"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
-            prop="ram"
+            prop="chipModel"
           ></OTableColumn>
         </OTable>
       </div>
@@ -390,7 +427,83 @@ watch(queryData, () => getCompatibilityData(queryData));
       </div>
     </OTabPane>
     <!-- 商业软件 -->
-    <OTabPane label="商业软件" name="fourth"> </OTabPane>
+    <OTabPane label="商业软件" name="fourth">
+      <div class="wrapper">
+        <OSearch
+          v-model="searchContent"
+          class="o-search"
+          @change="searchValchange"
+        ></OSearch>
+        <OCard class="filter-card">
+          <template #header>
+            <div class="card-header">
+              <TagFilter :label="i18n.compatibility.ADAPTIVE" :show="false">
+                <OTag
+                  v-for="(item, index) in osOptions"
+                  :key="'tag' + index"
+                  :type="activeIndex === index ? 'primary' : 'text'"
+                  @click="tagClick(index, item)"
+                >
+                  {{ item }}
+                </OTag>
+              </TagFilter>
+            </div>
+          </template>
+          <div class="card-body">
+            <TagFilter :show="false" :label="i18n.security.YEAR">
+              <OTag
+                v-for="(item, index) in architectureSelect"
+                :key="'tag' + index"
+                :type="activeIndex1 === index ? 'primary' : 'text'"
+                @click="optionTagClick(index, item)"
+              >
+                {{ item }}
+              </OTag>
+            </TagFilter>
+          </div>
+        </OCard>
+        <OTable class="pc-list" :data="tableData" style="width: 100%">
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
+            prop="architecture"
+            width="160"
+          >
+          </OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
+            prop="hardDiskDrive"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
+            prop="osVersion"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
+            prop="biosUefi"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
+            prop="updateTime"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
+            prop="date"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
+            prop="hardwareFactory"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
+            prop="hardwareModel"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
+            prop="ram"
+          ></OTableColumn>
+        </OTable>
+      </div>
+    </OTabPane>
     <div class="bottom-wrapper">
       <OPagination
         v-model:page-size="queryData.pages.size"

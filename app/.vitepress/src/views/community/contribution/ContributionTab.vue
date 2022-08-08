@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useRouter } from 'vitepress';
+import { useData } from 'vitepress';
 import type { TabsPaneContext } from 'element-plus';
 
+const { lang } = useData();
 const router = useRouter();
 const activeName = ref('');
 // init:
@@ -14,9 +16,9 @@ if (router.route.path.includes('detail')) {
 const handleClick = (tab: TabsPaneContext) => {
   if (tab.props.name === activeName.value) return;
   if (tab.props.name === 'first') {
-    router.go('/zh/community/contribution/');
+    router.go(`/${lang.value}/community/contribution/`);
   } else {
-    router.go('/zh/community/contribution/detail');
+    router.go(`/${lang.value}/community/contribution/detail`);
   }
 };
 </script>

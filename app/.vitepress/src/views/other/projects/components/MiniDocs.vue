@@ -19,8 +19,8 @@ defineProps({
   <div class="docs">
     <MiniTitle
       :device="device"
-      :title-inside="docsObj.TITLE_INSIDE"
-      :title-outside="docsObj.TITLE_OUTSIDE"
+      :inside-title="docsObj.TITLE_INSIDE"
+      :outside-title="docsObj.TITLE_OUTSIDE"
     />
     <div v-if="device" class="docs-tab">
       <template v-if="docsObj.TAB">

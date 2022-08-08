@@ -38,6 +38,9 @@ export default defineConfig({
         app: FileSystemIconLoader(
           path.resolve(__dirname, './.vitepress/src/assets/svg-icons')
         ),
+        mooc: FileSystemIconLoader(
+          path.resolve(__dirname, './.vitepress/src/assets/category/mooc')
+        ),
       },
     }),
     // AutoImport({
@@ -63,20 +66,30 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/compatibility/, ''),
       },
+      '/certification': {
+        target: 'https://openeuler.shanhaitujian.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/compatibility/, ''),
+      },
       '/showcase': {
         target: 'https://doc-search.test.osinfra.cn/showcase',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/showcase/, ''),
+        rewrite: (path) => path.replace(/^\/api-search-v2/, ''),
       },
-      '/industry': {
-        target: 'https://doc-search.test.osinfra.cn/industry',
+      '/api-search': {
+        target: 'https://doc-search.test.osinfra.cn',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/industry/, ''),
+        rewrite: (path) => path.replace(/^\/api-search/, ''),
       },
-      '/api': {
+      '/api/': {
         target: 'https://api.openeuler.org',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/mail': {
+        target: 'https://www.openeuler.org/api/mail',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/mail/, ''),
       },
     },
   },

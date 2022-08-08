@@ -62,10 +62,34 @@ export interface CompatibilityList {
   videoAdapter?: string;
 }
 
+export interface BoardCardList {
+  architecture: string;
+  boardModel: string;
+  chipModel: string;
+  chipVendor: string;
+  deviceID?: string;
+  downloadLink?: string;
+  driverDate: string;
+  driverName: string;
+  driverSize?: string;
+  id?: number;
+  item?: string;
+  lang?: string;
+  os: string;
+  sha256?: string;
+  ssID?: string;
+  svID?: string;
+  type: string;
+  updateTime?: string;
+  vendorID?: string;
+  version: string;
+}
+
 export interface SoftWareQuery {
   page_size: number;
   page_num: number;
 }
+
 export interface SoftWareList {
   arch: string;
   bin: string;
@@ -84,4 +108,26 @@ export interface SoftWareList {
   type: string;
   uninstall: string;
   version: string;
+}
+
+export interface BusinessSoftWareQuery {
+  pageSize: number;
+  pageNo: number;
+}
+export interface PlatFormAndServerModel {
+  platformName: string;
+  serverProvider: string;
+  serverTypes: string[];
+}
+export interface BusinessSoftWareList {
+  authenticateLink?: null;
+  certId?: number;
+  companyName: string;
+  osName: string;
+  osVersion: string;
+  platformTypeAndServerModel: PlatFormAndServerModel;
+  productName: string;
+  productVersion: string;
+  testOrganization: string;
+  type: string;
 }
