@@ -1,4 +1,3 @@
-// import { createI18n } from 'vue-i18n';
 import { computed } from 'vue';
 import { useData } from 'vitepress';
 
