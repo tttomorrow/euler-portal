@@ -12,8 +12,6 @@ import TagFilter from '@/components/TagFilter.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
-const screenWidth = useWindowResize();
-
 const currentPage1 = ref(5);
 const pageSize4 = ref(100);
 const total = ref(100);
@@ -71,15 +69,9 @@ const radioValue = ref('');
 const handleRadioChange = (val: string) => {
   radioValue.value = val;
 };
-
-onMounted(() => {
-  window.xxx = screenWidth;
-});
 </script>
 
 <template>
-  <h1>{{ screenWidth }}</h1>
-  <h1>{{ screenWidth >= 1100 }}</h1>
   <div class="demo">
     <div class="demo-box">
       <h4>ORadio</h4>
