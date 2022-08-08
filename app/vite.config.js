@@ -73,6 +73,8 @@ export default defineConfig({
       },
       '/showcase': {
         target: 'https://doc-search.test.osinfra.cn/showcase',
+      '/api-search-v2': {
+        target: 'https://doc-search-v2.test.osinfra.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-search-v2/, ''),
       },
