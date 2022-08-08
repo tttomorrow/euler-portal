@@ -20,16 +20,16 @@ const activeMobile = ref(0);
 
 const screenWidth = useWindowResize();
 
-const go = (path: string) => {
+const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
 
-const changeActive = (index: number) => {
+const handleChangeActive = (index: number) => {
   active.value = index;
   activeMobile.value = index;
 };
 
-const changeActiveMobile = (activeNames: any) => {
+const handleChangeActiveMobile = (activeNames: any) => {
   if (activeNames !== '') {
     active.value = activeNames;
   }
@@ -79,7 +79,7 @@ onMounted(() => {
       v-model="activeMobile"
       accordion
       class="case-mobile"
-      @change="changeActiveMobile"
+      @change="handleChangeActiveMobile"
     >
       <OCollapseItem
         v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
@@ -94,7 +94,9 @@ onMounted(() => {
                 class="case-mobile-img"
                 :src="
                   commonStore.theme === 'dark'
-                    ? item.URL_DARK
+                    ? index === activeMobile
+                      ? item.ACTIVE_DARK_URL
+                      : item.URL_DARK
                     : index === activeMobile
                     ? item.ACTIVE_URL
                     : item.URL
@@ -119,20 +121,22 @@ onMounted(() => {
       </OCollapseItem>
     </OCollapse>
     <div v-else class="case">
-      <OCard class="case-card">
+      <OCard class="case-card" shadow="hover">
         <div class="case-tab">
           <div
             v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
             :key="item.TYPE"
             class="case-tab-item"
-            @click="changeActive(index)"
+            @click="handleChangeActive(index)"
           >
             <img
               class="case-img"
               :src="
                 commonStore.theme === 'dark'
-                  ? item.URL_DARK
-                  : index === active
+                  ? index === activeMobile
+                    ? item.ACTIVE_DARK_URL
+                    : item.URL_DARK
+                  : index === activeMobile
                   ? item.ACTIVE_URL
                   : item.URL
               "
@@ -148,7 +152,7 @@ onMounted(() => {
             caseData[lang][i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
             :key="item2.company"
             class="user-card"
-            @click="go(item2.path)"
+            @click="handleGo(item2.path)"
           >
             <div class="user-title">{{ item2.company }}</div>
             <div class="user-word">{{ item2.summary }}</div>
@@ -159,7 +163,7 @@ onMounted(() => {
             animation
             type="text"
             class="case-more-item"
-            @click="go(i18n.home.USER_CASE.VIEW_MORE_LINK)"
+            @click="handleGo(i18n.home.USER_CASE.VIEW_MORE_LINK)"
           >
             {{ i18n.home.IMG_CAROUSE.BUTTON }}
             <template #suffixIcon>

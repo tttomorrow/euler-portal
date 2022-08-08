@@ -15,7 +15,7 @@ const { lang } = useData();
 const i18n = useI18n();
 const screenWidth = useWindowResize();
 //打开网页
-const downloadUrl = (url: string) => {
+const handleDownloadUrl = (url: string) => {
   window.open(url);
 };
 
@@ -35,7 +35,7 @@ const dataList = computed(() => {
     return filterList.value.slice(0, currentPage.value * pageSize.value);
   }
 });
-const LoadMore = () => {
+const handleLoadMore = () => {
   if (currentPage.value * pageSize.value < total.value) {
     currentPage.value = currentPage.value + 1;
   }
@@ -43,7 +43,7 @@ const LoadMore = () => {
 
 //移动端筛选弹框
 const isDrawerOpen = ref(false);
-const toggleDrawer = () => {
+const handleToggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
 // const resetDrawer = () => {
@@ -85,7 +85,7 @@ const ListFilter = () => {
   filterList.value = result;
   currentPage.value = 1;
 };
-const publishClick = (item: string, all: number) => {
+const handlePublishClick = (item: string, all: number) => {
   currentPage.value = 1;
   if (all === 0) {
     publishAll.value = true;
@@ -104,10 +104,10 @@ const publishClick = (item: string, all: number) => {
   }
   ListFilter();
 };
-const LSTClick = () => {
+const handleLSTClick = () => {
   ListFilter();
 };
-const manufacturerClick = (item: string, all: number) => {
+const handleManufacturerClick = (item: string, all: number) => {
   currentPage.value = 1;
   if (all === 0) {
     manufacturerAll.value = true;
@@ -164,7 +164,7 @@ onMounted(() => {
 
   <div class="download">
     <!-- PC筛选 -->
-    <OCard v-if="screenWidth > 768" class="download-filter">
+    <OCard v-if="screenWidth > 768" class="download-filter" shadow="hover">
       <TagFilter
         :label="i18n.download.MANUFACTURER"
         class="download-filter-manufacturer"
@@ -182,7 +182,7 @@ onMounted(() => {
               ? 'primary'
               : 'text'
           "
-          @click="manufacturerClick(item, index)"
+          @click="handleManufacturerClick(item, index)"
         >
           {{ item }}
         </OTag>
@@ -204,7 +204,7 @@ onMounted(() => {
               ? 'primary'
               : 'text'
           "
-          @click="publishClick(item, index)"
+          @click="handlePublishClick(item, index)"
         >
           {{ item }}
         </OTag>
@@ -214,14 +214,14 @@ onMounted(() => {
           v-model="activeLTS"
           active-color="var(--o-color-brand)"
           inactive-color="var(--o-color-bg3)"
-          @change="LSTClick"
+          @change="handleLSTClick"
         >
         </el-switch>
       </TagFilter>
     </OCard>
     <!-- 移动筛选 -->
     <div v-else class="download-filter-mobile">
-      <div class="download-filter-mobile-title" @click="toggleDrawer">
+      <div class="download-filter-mobile-title" @click="handleToggleDrawer">
         <div class="download-filter-mobile-word">
           {{ i18n.download.SELECT }}
         </div>
@@ -232,7 +232,7 @@ onMounted(() => {
           v-for="item in activeManufacturer"
           :key="item"
           class="download-filter-mobile-card"
-          @click="manufacturerClick(item, 1)"
+          @click="handleManufacturerClick(item, 1)"
         >
           {{ item }} <IconX class="download-filter-mobile-card-icon"></IconX>
         </div>
@@ -240,7 +240,7 @@ onMounted(() => {
           v-for="item in activePublish"
           :key="item"
           class="download-filter-mobile-card"
-          @click="publishClick(item, 1)"
+          @click="handlePublishClick(item, 1)"
         >
           {{ item }}<IconX class="download-filter-mobile-card-icon"></IconX>
         </div>
@@ -249,7 +249,7 @@ onMounted(() => {
           class="download-filter-mobile-card"
           @click="
             activeLTS = !activeLTS;
-            LSTClick();
+            handleLSTClick();
           "
         >
           LST<IconX class="download-filter-mobile-card-icon"></IconX>
@@ -280,7 +280,7 @@ onMounted(() => {
               ? 'primary'
               : 'text'
           "
-          @click="manufacturerClick(item, index)"
+          @click="handleManufacturerClick(item, index)"
         >
           {{ item }}
         </OTag>
@@ -300,7 +300,7 @@ onMounted(() => {
               ? 'primary'
               : 'text'
           "
-          @click="publishClick(item, index)"
+          @click="handlePublishClick(item, index)"
         >
           {{ item }}
         </OTag>
@@ -309,7 +309,7 @@ onMounted(() => {
           v-model="activeLTS"
           active-color="var(--o-color-brand)"
           inactive-color="var(--o-color-bg3)"
-          @change="LSTClick"
+          @change="handleLSTClick"
         >
         </el-switch>
         <div class="filter-drawer-button">
@@ -319,7 +319,7 @@ onMounted(() => {
           <OButton
             type="primary"
             class="filter-drawer-button-item"
-            @click="toggleDrawer"
+            @click="handleToggleDrawer"
             >{{ i18n.download.BTNSURE }}</OButton
           >
         </div>
@@ -332,6 +332,7 @@ onMounted(() => {
         :key="download.NAME"
         :style="{ padding: '0px' }"
         class="download-list-item"
+        shadow="hover"
       >
         <div class="download-list-content">
           <h5 class="download-name">
@@ -382,7 +383,7 @@ onMounted(() => {
         <OButton
           type="primary"
           class="download-button"
-          @click="downloadUrl(download.DOWNLOAD_URL)"
+          @click="handleDownloadUrl(download.DOWNLOAD_URL)"
         >
           {{ i18n.download.DOWNLOAD_BTN_NAME }}
           <template #suffixIcon>
@@ -430,7 +431,7 @@ onMounted(() => {
         <OButton
           v-if="currentPage * pageSize < total"
           class="page-box-button"
-          @click="LoadMore"
+          @click="handleLoadMore"
         >
           加载更多
         </OButton>

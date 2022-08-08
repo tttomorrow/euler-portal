@@ -7,7 +7,7 @@ const commonStore = useCommon();
 
 const i18n = useI18n();
 
-const go = (path: string) => {
+const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
 </script>
@@ -16,7 +16,7 @@ const go = (path: string) => {
   <div class="community">
     <h3>{{ i18n.home.COMMUNITY_ACTIVITY.TITLE }}</h3>
     <div class="community-list">
-      <OCard class="community-card" :style="{ padding: '0px' }">
+      <OCard class="community-card" :style="{ padding: '0px' }" shadow="hover">
         <div class="community-title">
           {{ i18n.home.COMMUNITY_ACTIVITY.CARD.TITLE }}
         </div>
@@ -28,7 +28,7 @@ const go = (path: string) => {
           animation
           type="text"
           class="community-detail"
-          @click="go(i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS)"
+          @click="handleGo(i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS)"
         >
           {{ i18n.home.IMG_CAROUSE.BUTTON }}
           <template #suffixIcon>
@@ -37,7 +37,7 @@ const go = (path: string) => {
         </OButton>
       </OCard>
 
-      <OCard class="round-card" :style="{ padding: '0px' }">
+      <OCard class="round-card" :style="{ padding: '0px' }" shadow="hover">
         <div class="round-list">
           <div
             v-for="item in i18n.home.HOME_ROUND.ROUND_LIST"
@@ -226,7 +226,7 @@ const go = (path: string) => {
 
   &-card {
     width: 100%;
-    background-image: url('/img/home/round-bg.png');
+    background-image: url('../../assets/category/home/round-bg.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;

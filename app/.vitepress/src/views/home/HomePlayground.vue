@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, nextTick } from 'vue';
 import { useI18n } from '@/i18n';
+import letsPlay from '../../assets/category/home/letsPlay.png';
 const playground = ref(null);
 const codingData = [
   'Last metadata expiration check: 0:02:16 ago ',
@@ -63,7 +64,7 @@ onMounted(() => {
           href="https://moocstudio.openeuler.sh/"
           target="_blank"
         >
-          <img src="/img/home/letsPlay.png" alt="" />
+          <img :src="letsPlay" alt="" />
         </a>
       </div>
     </div>
@@ -98,7 +99,7 @@ h3 {
   padding: 74px 156px;
   background-repeat: no-repeat;
   background-color: #1e2633;
-  background-image: url(/img/home/bg-code-pc.png);
+  background-image: url('../../assets/category/home/bg-code-pc.png');
   background-size: 100% 100%;
   .left-code {
     padding: 14px 0 31px 30px;
@@ -190,7 +191,7 @@ h3 {
     padding: 42px 18px 55px;
     width: 100%;
     height: 451px;
-    background-image: url(/img/home/bg-code-mo.png);
+    background-image: url('../../assets/category/home/bg-code-mo.png');
     background-size: 100%, 100%;
     background-repeat: no-repeat;
     .left-code {

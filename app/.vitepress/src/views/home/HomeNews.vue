@@ -148,7 +148,7 @@ const getRoomsData = () => {
   newsList.value = newsData;
 };
 
-const go = (path: string) => {
+const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
 
@@ -218,7 +218,7 @@ onMounted(() => {
           animation
           type="text"
           class="statistics-button"
-          @click="go('interaction/blog-list/')"
+          @click="handleGo('interaction/blog-list/')"
         >
           {{ i18n.home.USER_CASE.VIEW_MORE }}
           <template #suffixIcon>
@@ -276,7 +276,7 @@ onMounted(() => {
           animation
           type="text"
           class="statistics-button"
-          @click="go('interaction/news-list/')"
+          @click="handleGo('interaction/news-list/')"
         >
           {{ i18n.home.USER_CASE.VIEW_MORE }}
           <template #suffixIcon>

@@ -67,7 +67,9 @@ list.value = initList();
       <h3 class="brand-title">{{ i18n.brand.MOBILETITLE }}</h3>
       <div class="brand-word">
         {{ i18n.brand.WORDS[0] }}
-        <a :href="i18n.brand.WORDS_LINK[0]">{{ i18n.brand.WORDS[1] }}</a>
+        <a :href="i18n.brand.WORDS_LINK[0]" target="_blank">{{
+          i18n.brand.WORDS[1]
+        }}</a>
         {{ i18n.brand.WORDS[2] }}
         <br />
         {{ i18n.brand.WORDS[3] }}
@@ -76,6 +78,7 @@ list.value = initList();
         <a :href="i18n.brand.WORDS_LINK[2]" download>{{
           i18n.brand.WORDS[6]
         }}</a>
+        <br />
         {{ i18n.brand.WORDS[7] }}
         <a :href="i18n.brand.WORDS_LINK[3]" download>{{
           i18n.brand.WORDS[8]
@@ -83,7 +86,12 @@ list.value = initList();
       </div>
     </div>
     <div class="brand-list">
-      <OCard v-for="item in list" :key="item.id" class="brand-item">
+      <OCard
+        v-for="item in list"
+        :key="item.id"
+        class="brand-item"
+        shadow="hover"
+      >
         <div class="brand-item-title">{{ item.name }}</div>
         <div class="brand-item-img">
           <img :src="item.mobile" />
@@ -108,11 +116,18 @@ list.value = initList();
       <OCard
         v-for="item in i18n.brand.PROJECT_LIST"
         :key="item.TITLE"
+        shadow="hover"
         class="brand-item"
       >
         <div class="brand-item-title">{{ item.TITLE }}</div>
         <div class="brand-item-img">
-          <img :src="item.URL" />
+          <img
+            :src="item.URL"
+            :style="{
+              maxWidth: item.width + 'px',
+              maxHeight: item.height + 'px',
+            }"
+          />
         </div>
         <div class="button">
           <a
@@ -132,13 +147,17 @@ list.value = initList();
       <h3>{{ i18n.brand.PPT_TEXT }}</h3>
       <div class="ppt-list">
         <OCard
-          v-for="ppt in i18n.brand.PPT_LIST"
+          v-for="(ppt, index) in i18n.brand.PPT_LIST"
           :key="ppt.LINK"
+          shadow="hover"
           class="ppt-item"
           :style="{ padding: '0px' }"
         >
           <a :href="ppt.LINK" target="_blank" download>
             <img :src="ppt.URL" alt="" />
+            <div class="ppt-word">
+              模板{{ index + 1 < 10 ? '0' + (index + 1) : index + 1 }}
+            </div>
           </a>
         </OCard>
       </div>
@@ -290,6 +309,7 @@ list.value = initList();
       img {
         object-fit: contain;
         max-width: 220px;
+        width: 100%;
         height: 100%;
         @media (max-width: 768px) {
           max-width: 240px;
@@ -336,8 +356,7 @@ list.value = initList();
   }
   &-item {
     width: 100%;
-    @media (max-width: 768px) {
-    }
+
     a {
       width: 100%;
       img {
@@ -346,6 +365,19 @@ list.value = initList();
     }
     :deep(.el-card__body) {
       padding: 0;
+    }
+  }
+
+  &-word {
+    padding: var(--o-spacing-h4);
+    color: var(--o-color-text2);
+    font-size: var(--o-font-size-h7);
+    line-height: var(--o-line-height-h7);
+    @media (max-width: 768px) {
+      padding: var(--o-spacing-h6);
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+      font-weight: 500;
     }
   }
 }
