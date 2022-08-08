@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted, nextTick } from 'vue';
+import { ref, reactive, onMounted, nextTick, computed } from 'vue';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
+import OScreen from '@/components/OScreen.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
-// import type { TabsPaneContext } from 'element-plus';
 import { useI18n } from '@/i18n';
 import type {
   CveQuery,
-  CompatibilityList,
-  BoardCardList,
-  BusinessSoftWareList,
+  // CompatibilityList,
+  // BoardCardList,
+  // BusinessSoftWareList,
 } from '@/shared/@types/type-support';
 
 import {
@@ -22,9 +22,12 @@ import {
   driverOSOptions,
   getSoftwareList,
   getBusinessSoftwareList,
+  getTestOrganizations,
 } from '@/api/api-security';
 
 const i18n = useI18n();
+const userCaseData = computed(() => i18n.value.interaction);
+
 const searchContent = ref('');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
@@ -33,6 +36,7 @@ const layout = ref('sizes, prev, pager, next, slot, jumper');
 const architectureSelect = ref<string[]>(['全部']);
 const osOptions = ref<string[]>(['全部']);
 const activeName = ref('first');
+const testOrganizationsLists = ref<string[]>(['全部']);
 
 const queryData: CveQuery = reactive({
   pages: {
@@ -43,12 +47,15 @@ const queryData: CveQuery = reactive({
   keyword: '',
   cpu: '',
   os: '',
+  testOrganization: '',
   lang: 'zh',
 });
 
-const tableData = ref<
-  CompatibilityList[] | BoardCardList[] | BusinessSoftWareList[]
->([]);
+// const tableData = ref<
+//   CompatibilityList[] | BoardCardList[] | BusinessSoftWareList[]
+// >([]);
+// TODO:约束多个数据
+const tableData = ref<any>([]);
 
 // 整机
 const getCompatibilityData = (data: CveQuery) => {
@@ -76,7 +83,6 @@ const getDriverData = (data: CveQuery) => {
 const getSoftwareData = (data: CveQuery) => {
   try {
     getSoftwareList(data).then((res: any) => {
-      // console.log(res);
       total.value = res.total;
       tableData.value = res.info;
     });
@@ -97,7 +103,6 @@ const getBusinessSoftwareData = (data: CveQuery) => {
 };
 
 const handleClick = () => {
-  // console.log(tab, event);
   queryData.pages.page = 1;
   queryData.pages.size = 10;
   queryData.architecture = '';
@@ -107,7 +112,6 @@ const handleClick = () => {
   searchContent.value = '';
   activeIndex1.value = 0;
   activeIndex.value = 0;
-
   nextTick(() => {
     initData(queryData);
   });
@@ -133,7 +137,11 @@ const tagClick = (i: number, item: string) => {
 
 const optionTagClick = (i: number, item: string) => {
   activeIndex1.value = i;
-  queryData.architecture = item === '全部' ? '' : item;
+  if (activeName.value === 'fourth') {
+    queryData.testOrganization = item === '全部' ? '' : item;
+  } else {
+    queryData.architecture = item === '全部' ? '' : item;
+  }
   initData(queryData);
 };
 
@@ -152,6 +160,10 @@ function searchValchange() {
   initData(queryData);
 }
 
+const listfilter = (val: string[]) => {
+  return val;
+};
+
 onMounted(() => {
   getCompatibilityData(queryData);
   driverArchitectureOptions({ lang: 'zh' }).then((res: any) => {
@@ -162,6 +174,11 @@ onMounted(() => {
   driverOSOptions({ lang: 'zh' }).then((res: any) => {
     res.result.forEach((item: string) => {
       osOptions.value.push(item);
+    });
+  });
+  getTestOrganizations().then((res: any) => {
+    res.result.testOrganizations.forEach((item: string) => {
+      testOrganizationsLists.value.push(item);
     });
   });
 });
@@ -182,6 +199,7 @@ onMounted(() => {
         <OSearch
           v-model="searchContent"
           class="o-search"
+          :placeholder="i18n.compatibility.HARDWARE_SEARCH_PLACEHOLDER"
           @change="searchValchange"
         ></OSearch>
         <OCard class="filter-card">
@@ -200,7 +218,7 @@ onMounted(() => {
             </div>
           </template>
           <div class="card-body">
-            <TagFilter :show="false" :label="i18n.security.YEAR">
+            <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
               <OTag
                 v-for="(item, index) in architectureSelect"
                 :key="'tag' + index"
@@ -212,6 +230,13 @@ onMounted(() => {
             </TagFilter>
           </div>
         </OCard>
+        <div class="blog-tag">
+          <OScreen
+            :data="userCaseData.SCREENDATALIST"
+            :list="userCaseData.BLOGDATALIST"
+            @filter="listfilter"
+          />
+        </div>
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
@@ -239,14 +264,6 @@ onMounted(() => {
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE"
             prop="certificationTime"
           ></OTableColumn>
-
-          <!-- <OTableColumn
-            :label="
-              i18n.compatibility.HARDWARE_TABLE_COLUMN
-                .COMPATIBILITY_CONFIGURATION
-            "
-            prop="hardwareFactory"
-          ></OTableColumn> -->
           <el-table-column
             :label="
               i18n.compatibility.HARDWARE_TABLE_COLUMN
@@ -260,18 +277,51 @@ onMounted(() => {
               }}</span>
             </template>
           </el-table-column>
-          <!-- <OTableColumn
-            :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.REFERRENCE"
-            prop="hardwareModel"
-          ></OTableColumn> -->
           <el-table-column
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.REFERRENCE"
           >
-            <template #default>
-              <span>Link</span>
+            <template #default="scope">
+              <a :href="scope.row.friendlyLink" target="_blank">link</a>
             </template>
           </el-table-column>
         </OTable>
+
+        <ul class="mobile-list">
+          <li v-for="item in tableData" :key="item.id" class="item">
+            <ul>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
+                  }}:</span
+                >{{ item.architecture }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.VENDOR }}:</span
+                >{{ item.hardwareFactory }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.MODEL }}:</span
+                >{{ item.hardwareModel }}
+              </li>
+              <li>
+                <span>{{ i18n.compatibility.HARDWARE_DETAIL.LABELS.CPU }}:</span
+                >{{ item.cpu }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
+                >{{ item.osVersion }}
+              </li>
+              <li>
+                <span>{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE }}:</span
+                >{{ item.certificationTime }}
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </OTabPane>
     <!-- 板卡 -->
@@ -280,6 +330,7 @@ onMounted(() => {
         <OSearch
           v-model="searchContent"
           class="o-search"
+          :placeholder="i18n.compatibility.DRIVE_SEARCH_PLACEHOLDER"
           @change="searchValchange"
         ></OSearch>
         <OCard class="filter-card">
@@ -298,7 +349,7 @@ onMounted(() => {
             </div>
           </template>
           <div class="card-body">
-            <TagFilter :show="false" :label="i18n.security.YEAR">
+            <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
               <OTag
                 v-for="(item, index) in architectureSelect"
                 :key="'tag' + index"
@@ -350,6 +401,72 @@ onMounted(() => {
             prop="chipModel"
           ></OTableColumn>
         </OTable>
+
+        <ul class="mobile-list">
+          <li v-for="item in tableData" :key="item.id" class="item">
+            <ul>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
+                  }}:</span
+                >{{ item.architecture }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME }}:</span
+                >
+                {{ item.driverName }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
+                >
+                {{ item.os }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION }}:</span
+                >
+                {{ item.version }}
+              </li>
+              <li>
+                <span>{{ i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE }}:</span>
+                {{ item.type }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE
+                  }}:</span
+                >
+                {{ item.driverDate }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR
+                  }}:</span
+                >
+                {{ item.chipVendor }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL
+                  }}:</span
+                >
+                {{ item.boardModel }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL }}:</span
+                >
+                {{ item.chipModel }}
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </OTabPane>
     <!-- 开源软件 -->
@@ -358,6 +475,7 @@ onMounted(() => {
         <OSearch
           v-model="searchContent"
           class="o-search"
+          :placeholder="i18n.compatibility.SOFTWARE_SEARCH_PLACEHOLDER"
           @change="searchValchange"
         ></OSearch>
         <OCard class="filter-card">
@@ -376,25 +494,25 @@ onMounted(() => {
             </div>
           </template>
           <div class="card-body">
-            <TagFilter :show="false" :label="i18n.security.YEAR">
-              <OTag
-                v-for="(item, index) in architectureSelect"
-                :key="'tag' + index"
-                :type="activeIndex1 === index ? 'primary' : 'text'"
-                @click="optionTagClick(index, item)"
-              >
-                {{ item }}
-              </OTag>
-            </TagFilter>
+            <div class="blog-tag">
+              <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
+                <OTag
+                  v-for="(item, index) in architectureSelect"
+                  :key="'tag' + index"
+                  :type="activeIndex1 === index ? 'primary' : 'text'"
+                  @click="optionTagClick(index, item)"
+                >
+                  {{ item }}
+                </OTag>
+              </TagFilter>
+            </div>
           </div>
         </OCard>
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
-            :label="
-              i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARE_TABLE_COLUMN
-            "
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.ARCHITECTURE"
             prop="arch"
-            width="160"
+            width="130"
           >
           </OTableColumn>
           <OTableColumn
@@ -408,6 +526,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.VERSION"
             prop="version"
+            width="140"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES"
@@ -419,9 +538,10 @@ onMounted(() => {
           ></OTableColumn>
           <el-table-column
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK"
+            width="100"
           >
-            <template #default>
-              <a href="#" target="_blank">link</a>
+            <template #default="scope">
+              <a :href="scope.row.downloadLink" target="_blank">link</a>
             </template>
           </el-table-column>
           <OTableColumn
@@ -429,6 +549,77 @@ onMounted(() => {
             prop="license"
           ></OTableColumn>
         </OTable>
+
+        <ul class="mobile-list">
+          <li v-for="item in tableData" :key="item.id" class="item">
+            <ul>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.ARCHITECTURE
+                  }}:</span
+                >{{ item.arch }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARETYPE
+                  }}:</span
+                >
+                {{ item.group }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARENAME
+                  }}:</span
+                >
+                {{ item.softwareName }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.SOFTWARE_TABLE_COLUMN.VERSION }}:</span
+                >
+                {{ item.version }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES
+                  }}:</span
+                >
+                {{ item.property }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM }}:</span
+                >
+                {{ item.os }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK
+                  }}:</span
+                >
+                <a
+                  :href="item.downloadLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >link</a
+                >
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.PUBLICKLICENSE
+                  }}:</span
+                >
+                {{ item.license }}
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </OTabPane>
     <!-- 商业软件 -->
@@ -455,9 +646,12 @@ onMounted(() => {
             </div>
           </template>
           <div class="card-body">
-            <TagFilter :show="false" :label="i18n.security.YEAR">
+            <TagFilter
+              :show="false"
+              :label="i18n.compatibility.BUSINESS_TESTING_ORGANIZATION"
+            >
               <OTag
-                v-for="(item, index) in architectureSelect"
+                v-for="(item, index) in testOrganizationsLists"
                 :key="'tag' + index"
                 :type="activeIndex1 === index ? 'primary' : 'text'"
                 @click="optionTagClick(index, item)"
@@ -473,31 +667,39 @@ onMounted(() => {
               i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SOFTWARENAME
             "
             prop="productName"
-            width="160"
+            width="220"
           >
           </OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VERSION"
             prop="productVersion"
+            width="120"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VENDOR"
             prop="companyName"
           ></OTableColumn>
-          <OTableColumn
+          <el-table-column
             :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SYSTEM"
-            prop="osName"
-          ></OTableColumn>
+          >
+            <template #default="scope">
+              <p>{{ scope.row.osName }} {{ scope.row.osVersion }}</p>
+            </template>
+          </el-table-column>
           <el-table-column
             :label="
               i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SERVER_NAME
             "
           >
-            <!-- <template #default="scope">
-              <p v-if="scope.row.platformTypeAndServerModel.length">
-                {{ scope.row.platformTypeAndServerModel[0].serverTypes[0] }}
-              </p>
-            </template> -->
+            <template #default="scope">
+              <div
+                v-for="item in scope.row.platformTypeAndServerModel"
+                :key="item"
+              >
+                <p>{{ item.serverTypes[0] }}</p>
+                <p>{{ item.serverTypes[1] }}</p>
+              </div>
+            </template>
           </el-table-column>
           <OTableColumn
             :label="
@@ -532,6 +734,9 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-tabs__header) {
+  margin: 0;
+}
 :deep(.el-tabs__nav-scroll) {
   display: flex;
   justify-content: center;
@@ -546,15 +751,27 @@ onMounted(() => {
   max-width: 1504px;
   padding: var(--o-spacing-h1) var(--o-spacing-h2) 0px;
   margin: 0 auto;
-  // margin-top: var(--o-spacing-h2);
-  //   background-color: var(--o-color-bg);
+  @media screen and (max-width: 768px) {
+    padding: var(--o-spacing-h5);
+  }
   .o-search {
     height: 48px;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 }
-
+.blog-tag {
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+}
 .filter-card {
   margin: var(--o-spacing-h4) 0;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   .category {
     display: inline-block;
     width: 56px;
@@ -587,6 +804,47 @@ onMounted(() => {
   }
   .card-body {
     padding-top: 19px;
+  }
+}
+.pc-list {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+.mobile-list {
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+  .item {
+    padding: var(--o-spacing-h5);
+    font-size: var(--o-font-size-tip);
+    font-weight: 400;
+    color: #999999;
+    line-height: var(--o-line-height-tip);
+    background-color: var(--o-color-bg);
+    &:nth-child(odd) {
+      background: var(--o-color-bg6);
+    }
+    & li {
+      margin-bottom: 8px;
+    }
+    li:last-child {
+      margin-bottom: 0;
+      a {
+        color: #002fa7;
+      }
+    }
+    li:nth-child(2) {
+      display: flex;
+      span {
+        min-width: 30px;
+      }
+    }
+    span {
+      color: var(--o-color-text2);
+      margin-right: var(--o-spacing-h8);
+    }
   }
 }
 .pagination {

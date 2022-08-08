@@ -72,7 +72,13 @@ export function getDriverList(params: cveQuery) {
  * @name getSoftwareList
  */
 export function getSoftwareList(params: cveQuery) {
-  const url = ` /compatibility/web_backend/compat_software_info?page_size=${params.pages.size}&page_num=${params.pages.page}`;
+  const os = params.os ? `&os=${params.os}` : '';
+  const architecture = params.architecture
+    ? `&arch=${params.architecture}`
+    : '';
+  // const type = params.type ? `&type=${params.type}` : '';
+  const keyword = params.keyword ? `&keyword=${params.keyword}` : '';
+  const url = ` /compatibility/web_backend/compat_software_info?page_size=${params.pages.size}&page_num=${params.pages.page}${keyword}${architecture}${os}`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 
@@ -81,6 +87,20 @@ export function getSoftwareList(params: cveQuery) {
  * @name businessSoftwareList
  */
 export function getBusinessSoftwareList(params: cveQuery) {
-  const url = ` /certification/software/communityChecklist?pageSize=${params.pages.size}&pageNo=${params.pages.page}`;
+  const osName = params.os ? `&osName=${params.os}` : '';
+  const testOrganization = params.testOrganization
+    ? `&testOrganization=${params.testOrganization}`
+    : '';
+  const keyword = params.keyword ? `&keyword=${params.keyword}` : '';
+  const url = ` /certification/software/communityChecklist?pageSize=${params.pages.size}&pageNo=${params.pages.page}${testOrganization}${osName}${keyword}`;
+  return request.get(url).then((res: AxiosResponse) => res.data);
+}
+
+/**
+ * 调用接口获取兼容性列表-测试机构
+ * @name getTestOrganizations
+ */
+export function getTestOrganizations() {
+  const url = '/certification/software/filterCriteria';
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
