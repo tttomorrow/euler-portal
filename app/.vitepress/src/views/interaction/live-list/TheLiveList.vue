@@ -7,6 +7,12 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerBG from '@/assets/banner-secondary.png';
 import BannerIllustration from '@/assets/illustrations/search.png';
+
+import LightCradBg from '@/assets/live/light-crad-bg.png';
+import LightCradBgMo from '@/assets/live/light-crad-bg-mobile.png';
+import DarkCradBg from '@/assets/live/dark-crad-bg.png';
+import DarkCradBgMo from '@/assets/live/dark-crad-bg-mobile.png';
+
 import IconRight from '~icons/app/icon-arrow-right1.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconTime from '~icons/app/icon-time.svg';
@@ -37,20 +43,11 @@ const totoBLink = (url: string) => {
 const commonStore = useCommon();
 const headGround = computed(() => {
   if (commonStore.theme === 'light') {
-    if (screenWidth.value > 768) {
-      return '/img/live/live-crad-bg1.png';
-    } else {
-      return '/img/live/live-crad-bg-mobile1.png';
-    }
+    return screenWidth.value > 768 ? LightCradBg : LightCradBgMo;
   } else {
-    if (screenWidth.value > 768) {
-      return '/img/live/live-crad-bg2.png';
-    } else {
-      return '/img/live/live-crad-bg-mobile2.png';
-    }
+    return screenWidth.value > 768 ? DarkCradBg : DarkCradBgMo;
   }
 });
-
 const isMobile = computed(() => {
   if (screenWidth.value <= 768) {
     return true;
@@ -103,23 +100,31 @@ const goNext = () => {
                   <OIcon class="smail-icon">
                     <IconUser />
                   </OIcon>
-                  <span class="live-desc-text">{{ live.LIVETEACHER }}</span>
+                  <span class="live-desc-text">
+                    {{ live.LIVETEACHER.trim() }}
+                  </span>
                 </span>
                 <span>
                   <OIcon class="smail-icon">
                     <IconTime />
                   </OIcon>
-                  <span class="live-desc-text">{{ live.LIVETIME }}</span>
+                  <span class="live-desc-text">{{ live.LIVETIME.trim() }}</span>
                 </span>
               </div>
             </div>
-            <OButton
-              size="default"
-              class="live-button"
-              @click="totoBLink(live.FORMERLYLINK)"
-              >{{ i18n.live.REPLAYVIEW }}
-              <IconRight class="live-button-icon" />
-            </OButton>
+            <p>
+              <OButton
+                animation
+                size="mini"
+                class="live-button"
+                @click="totoBLink(live.FORMERLYLINK)"
+                >{{ i18n.live.REPLAYVIEW }}
+
+                <template #suffixIcon>
+                  <OIcon><IconRight /></OIcon>
+                </template>
+              </OButton>
+            </p>
           </div>
         </div>
       </OCard>
@@ -162,11 +167,7 @@ const goNext = () => {
 
 <style lang="scss" scoped>
 .live {
-  margin: 40px 0 140px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-items: center;
+  margin: var(--o-spacing-h1) 0 40px 0;
   &-top-title {
     width: 100%;
     margin: 0 auto;
@@ -175,7 +176,6 @@ const goNext = () => {
     color: var(--o-color-text2);
     @media screen and (max-width: 767px) {
       font-size: var(--o-font-size-h8);
-      margin-top: var(--o-spacing-h5);
     }
   }
   &-list {
@@ -193,12 +193,11 @@ const goNext = () => {
     }
     &-item {
       width: 100%;
-      max-width: 696px;
+      flex: 1;
       padding: 0;
       max-height: 260px;
-      @media screen and (max-width: 767px) {
-        width: 328px;
-        height: 230px;
+      &:hover {
+        box-shadow: var(--o-shadow-base_hover);
       }
     }
   }
@@ -208,37 +207,31 @@ const goNext = () => {
     flex-direction: row;
     justify-content: left;
     margin: 0;
+    height: 260px;
     @media screen and (max-width: 767px) {
       flex-direction: column;
     }
     &-right {
-      margin-top: var(--o-spacing-h4);
-      // padding: 0;
-      width: 70%;
-      height: 200px;
+      padding: var(--o-spacing-h4);
+      height: 100%;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       @media screen and (max-width: 767px) {
         width: 100%;
-        height: 116px;
-        margin-top: 0;
+        padding: var(--o-spacing-h6);
       }
     }
     &-title {
-      width: 90%;
-      max-width: 386px;
       overflow: hidden;
       text-overflow: ellipsis;
       font-size: var(--o-font-size-h5);
-      margin-left: var(--o-spacing-h4);
       line-height: var(--o-line-height-h5);
       text-align: left;
       color: var(--o-color-text2);
       @media screen and (max-width: 767px) {
         font-size: var(--o-font-size-text);
-        margin-left: var(--o-spacing-h6);
-        margin-top: var(--o-spacing-h6);
         color: var(--o-color-text2);
       }
     }
@@ -246,11 +239,11 @@ const goNext = () => {
   &-background {
     width: 262px;
     height: 260px;
-    // background: url('/img/live/live-crad-bg.png');
     @media screen and (max-width: 767px) {
       width: 100%;
       height: 98px;
-      // background: url('/img/live/live-crad-bg-mobile.png');
+      background-repeat: no-repeat;
+      background-color: var(--o-color-bg3);
     }
     &-img {
       margin: 70px 71px;
@@ -266,11 +259,9 @@ const goNext = () => {
   }
   &-desc {
     margin-top: var(--o-spacing-h4);
-    margin-left: var(--o-spacing-h4);
     padding: 0;
     line-height: var(--o-line-height-tip);
     @media screen and (max-width: 767px) {
-      margin-left: var(--o-spacing-h6);
       margin-top: var(--o-spacing-h8);
     }
     &-text {
@@ -287,22 +278,6 @@ const goNext = () => {
     }
   }
   &-button {
-    width: 116px;
-    height: 32px;
-    padding: 3px 8px 3px 16px;
-    line-height: var(--o-line-height-h8);
-    font-size: var(--o-font-size-text);
-    position: relative;
-    left: var(--o-spacing-h4);
-    bottom: 0px;
-    @media screen and (max-width: 767px) {
-      width: 116px;
-      height: 28px;
-      line-height: var(--o-line-height-tip);
-      font-size: var(--o-font-size-tip);
-      left: 0px;
-      margin-left: var(--o-font-size-tip);
-    }
     &-icon {
       margin-left: var(--o-spacing-h8);
       width: var(--o-font-size-tip);

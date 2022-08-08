@@ -9,7 +9,7 @@
   border: var(--o-tag-border);
   outline: none;
   user-select: none;
-  cursor: pointer;
+  cursor: default;
   display: inline-block;
 
   &:active {
@@ -24,9 +24,9 @@
       color: var(--o-color-brand_hover);
       border: var(--o-tag-border-primary_hover);
     }
-    &.o-tag-multiple {
+    &.o-tag-checked {
       position: relative;
-      .multiple-icon {
+      .checked-icon {
         position: absolute;
         bottom: 0;
         right: 0;
@@ -40,14 +40,14 @@
           width: 16px;
           height: 16px;
           position: absolute;
-          bottom: 0;
+          bottom: -1px;
           right: -1px;
           display: block;
           z-index: 1;
         }
         svg {
-          width: 10px;
-          height: 10px;
+          width: 9px;
+          height: 9px;
           color: #fff;
           display: block;
           position: absolute;
@@ -58,7 +58,9 @@
       }
     }
   }
-
+  &.o-tag-checkable {
+    cursor: pointer;
+  }
   &.o-tag-type-secondary {
     color: var(--o-tag-font-color-secondary);
     border: var(--o-tag-border-secondary);
@@ -80,7 +82,7 @@
     padding: var(--o-tag-small-padding);
     font-size: var(--o-tag-small-font-size);
     line-height: var(--o-tag-small-line-height);
-    cursor: default;
+
     &:hover,
     &:active {
       color: var(--o-tag-font-color);

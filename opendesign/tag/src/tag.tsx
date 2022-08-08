@@ -7,14 +7,15 @@ export default defineComponent({
   props: tagProps,
   emits: ['click'],
   setup(props: TagProps, { emit, slots }) {
-    const { size, type, multiple } = toRefs(props);
+    const { size, type, checked, checkable } = toRefs(props);
 
     const classNames = computed(() => {
       return {
         'o-tag': true,
         [`o-tag-size-${size.value}`]: true,
         [`o-tag-type-${type.value}`]: true,
-        'o-tag-multiple': multiple.value,
+        'o-tag-checked': checked.value,
+        'o-tag-checkable': checkable.value,
       };
     });
 
@@ -26,8 +27,8 @@ export default defineComponent({
       return (
         <span class={classNames.value} onClick={onClick}>
           <span>{slots.default?.()}</span>
-          {multiple.value && type.value === 'primary' ? (
-            <span class="multiple-icon">
+          {checked.value && type.value === 'primary' ? (
+            <span class="checked-icon">
               <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"

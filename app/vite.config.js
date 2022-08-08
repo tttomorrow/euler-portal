@@ -73,25 +73,26 @@ export default defineConfig({
       },
       '/showcase': {
         target: 'https://doc-search.test.osinfra.cn/showcase',
-      '/api-search-v2': {
-        target: 'https://doc-search-v2.test.osinfra.cn',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-search-v2/, ''),
-      },
-      '/api-search': {
-        target: 'https://doc-search.test.osinfra.cn',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-search/, ''),
-      },
-      '/api/': {
-        target: 'https://api.openeuler.org',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-      '/mail': {
-        target: 'https://www.openeuler.org/api/mail',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/mail/, ''),
+        '/api-search-v2': {
+          target: 'https://doc-search-v2.test.osinfra.cn',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api-search-v2/, ''),
+        },
+        '/api-search': {
+          target: 'https://doc-search.test.osinfra.cn',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api-search/, ''),
+        },
+        '/api/': {
+          target: 'https://api.openeuler.org',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+        '/mail': {
+          target: 'https://www.openeuler.org/api/mail',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/mail/, ''),
+        },
       },
     },
   },
