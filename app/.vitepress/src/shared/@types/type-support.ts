@@ -125,7 +125,7 @@ export interface BusinessSoftWareList {
   companyName: string;
   osName: string;
   osVersion: string;
-  platformTypeAndServerModel: PlatFormAndServerModel;
+  platformTypeAndServerModel: PlatFormAndServerModel[];
   productName: string;
   productVersion: string;
   testOrganization: string;
