@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 defineProps({
-  titleInside: {
+  insideTitle: {
     type: String,
     default: '',
   },
-  titleOutside: {
+  outsideTitle: {
     type: String,
     default: '',
   },
@@ -17,14 +17,14 @@ defineProps({
 <template>
   <div v-if="device" class="title-wrapper">
     <div class="title">
-      <div class="title-outside">{{ titleOutside }}</div>
-      <div class="title-inside">{{ titleInside }}</div>
+      <div class="title-outside">{{ outsideTitle }}</div>
+      <div class="title-inside">{{ insideTitle }}</div>
     </div>
   </div>
   <div v-else class="mobile-title-wrapper">
     <div class="title">
-      <div class="title-outside">{{ titleOutside }}</div>
-      <div class="title-inside">{{ titleInside }}</div>
+      <div class="title-outside">{{ outsideTitle }}</div>
+      <div class="title-inside">{{ insideTitle }}</div>
     </div>
   </div>
 </template>

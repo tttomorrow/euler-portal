@@ -33,8 +33,8 @@ const goLink = (path: string) => {
   <div class="reference">
     <MiniTitle
       :device="device"
-      :title-inside="referenceObj.TITLE_INSIDE"
-      :title-outside="referenceObj.TITLE_OUTSIDE"
+      :inside-title="referenceObj.TITLE_INSIDE"
+      :outside-title="referenceObj.TITLE_OUTSIDE"
     />
     <div class="reference-list">
       <div
