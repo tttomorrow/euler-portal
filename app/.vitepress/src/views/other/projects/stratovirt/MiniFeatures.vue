@@ -32,8 +32,8 @@ const changeImg = function (url: string) {
     <!-- 标题 -->
     <MiniTitle
       :device="device"
-      :title-inside="featuresObj.TITLE_INSIDE"
-      :title-outside="featuresObj.TITLE_OUTSIDE"
+      :inside-title="featuresObj.TITLE_INSIDE"
+      :outside-title="featuresObj.TITLE_OUTSIDE"
     />
     <!-- 内容 -->
     <div class="content">
