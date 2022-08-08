@@ -30,8 +30,8 @@ const isDark = computed(() => {
   <div class="framework-box">
     <MiniTitle
       :device="device"
-      :title-inside="frameObj.TITLE_INSIDE"
-      :title-outside="frameObj.TITLE_OUTSIDE"
+      :inside-title="frameObj.TITLE_INSIDE"
+      :outside-title="frameObj.TITLE_OUTSIDE"
     />
     <!-- 上下布局 -->
     <div v-if="layout === 'upAndDown'" class="framework-upanddown">

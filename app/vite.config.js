@@ -38,6 +38,9 @@ export default defineConfig({
         app: FileSystemIconLoader(
           path.resolve(__dirname, './.vitepress/src/assets/svg-icons')
         ),
+        mooc: FileSystemIconLoader(
+          path.resolve(__dirname, './.vitepress/src/assets/category/mooc')
+        ),
       },
     }),
     // AutoImport({
@@ -77,6 +80,11 @@ export default defineConfig({
         target: 'https://api.openeuler.org',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/mail': {
+        target: 'https://www.openeuler.org/api/mail',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/mail/, ''),
       },
     },
   },

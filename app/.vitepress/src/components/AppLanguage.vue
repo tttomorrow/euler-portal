@@ -25,7 +25,7 @@ const mobileChaneLanguage = (newlang: string) => {
 
 function chaneLanguage(newlang: string) {
   if (lang.value === newlang) return;
-  const pathname = router.route.path;
+  const pathname = location.href;
   const newHref = pathname.replace(`/${lang.value}/`, `/${newlang}/`);
   isMenu.value = false;
   router.go(newHref);
