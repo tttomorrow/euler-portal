@@ -27,7 +27,7 @@ const i18n = useI18n();
         <p>{{ i18n.mooc.MOOC.MOOC_COURSE[0].DESC }}</p>
         <div class="btn">
           <a href="/zh/learn/mooc/detail/" target="_self">
-            <OButton type="primary">
+            <OButton type="primary" size="mini">
               <span>{{ i18n.mooc.MOOC.BTN_LEARN }}</span>
               <OIcon class="icon-more">
                 <IconArrowRight1 />
@@ -35,7 +35,7 @@ const i18n = useI18n();
             </OButton>
           </a>
           <a :href="i18n.mooc.MOOC.MOOC_COURSE[0].APPLY_LINK" target="_blank">
-            <OButton>
+            <OButton size="mini">
               <span>{{ i18n.mooc.MOOC.BTN_APPLY }}</span>
               <OIcon>
                 <IconArrowRight1 />
@@ -111,26 +111,22 @@ const i18n = useI18n();
           position: static;
         }
         .o-button {
-          width: 104px;
-          height: 32px;
           margin-right: 24px;
           margin-top: var(--o-spacing-h2);
-          padding: 5px 0 5px 16px;
           font-size: var(--o-font-size-text);
           text-align: left;
-          display: flex;
-          align-items: center;
+
           @media (max-width: 768px) {
-            height: 28px;
             margin-right: 16px;
-            padding: 3px 0 3px 16px;
             margin-top: var(--o-spacing-h8);
+          }
+          > :deep(span) {
+            display: flex;
+            align-items: center;
           }
           .o-icon {
             font-size: 12px;
             margin-left: 8px;
-            position: relative;
-            top: 5px;
           }
           &-type-primary {
             color: #ffffff;

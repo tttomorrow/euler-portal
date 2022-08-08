@@ -38,6 +38,9 @@ export default defineConfig({
         app: FileSystemIconLoader(
           path.resolve(__dirname, './.vitepress/src/assets/svg-icons')
         ),
+        mooc: FileSystemIconLoader(
+          path.resolve(__dirname, './.vitepress/src/assets/category/mooc')
+        ),
       },
     }),
     // AutoImport({
