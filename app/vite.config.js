@@ -66,6 +66,13 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/compatibility/, ''),
       },
+      '/certification': {
+        target: 'https://openeuler.shanhaitujian.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/compatibility/, ''),
+      },
+      '/showcase': {
+        target: 'https://doc-search.test.osinfra.cn/showcase',
       '/api-search-v2': {
         target: 'https://doc-search-v2.test.osinfra.cn',
         changeOrigin: true,
