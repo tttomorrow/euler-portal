@@ -171,8 +171,8 @@ function setCourseData(obj: any) {
     currentNode.value.desc = '';
     setCheckedNode();
     setListTitleIndex();
-    if (obj.ppt) {
-      currentNode.value.ppt = obj.ppt;
+    if (obj.ppt_link) {
+      currentNode.value.ppt = obj.ppt_link;
     } else {
       currentNode.value.ppt = '';
     }
@@ -240,7 +240,7 @@ const goHome = () => {
 <template>
   <div class="mooc-detail">
     <div class="detail-mobile">
-      <OIcon class="catalog"><IconCatalog /></OIcon>
+      <OIcon class="catalog" @click="showMenu('show')"><IconCatalog /></OIcon>
       <ODrawer
         v-model="isShowMenu"
         direction="ltr"
@@ -337,9 +337,6 @@ const goHome = () => {
           <div class="prev" @click="previous">
             <OIcon><IconArrowLeft /></OIcon>
             <span>{{ moocData.MOOC.PREV_TEXT }}</span>
-          </div>
-          <div class="menu" @click="showMenu('show')">
-            <span>{{ moocData.MOOC.MOOC_CATALOG }}</span>
           </div>
           <div class="next" @click="next">
             <span>{{ moocData.MOOC.NEXT_TEXT }}</span>
@@ -754,6 +751,8 @@ const goHome = () => {
         top: 12px;
         left: 48px;
         z-index: 99;
+        font-size: 24px;
+        color: var(--o-color-text2);
       }
       .mobile-menu {
         width: 100%;
