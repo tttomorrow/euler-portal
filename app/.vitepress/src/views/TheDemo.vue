@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
@@ -10,6 +11,8 @@ import TagFilter from '@/components/TagFilter.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
+
+const screenWidth = useWindowResize();
 
 const currentPage1 = ref(5);
 const pageSize4 = ref(100);
@@ -68,9 +71,15 @@ const radioValue = ref('');
 const handleRadioChange = (val: string) => {
   radioValue.value = val;
 };
+
+onMounted(() => {
+  window.xxx = screenWidth;
+});
 </script>
 
 <template>
+  <h1>{{ screenWidth }}</h1>
+  <h1>{{ screenWidth >= 1100 }}</h1>
   <div class="demo">
     <div class="demo-box">
       <h4>ORadio</h4>
@@ -98,6 +107,10 @@ const handleRadioChange = (val: string) => {
           </template>
         </ORadio>
       </ORadioGroup>
+    </div>
+    <div class="demo-box">
+      <h4>OCheckBox</h4>
+      <OCheckbox>checb</OCheckbox>
     </div>
     <div class="demo-box">
       <h4>OButton</h4>
