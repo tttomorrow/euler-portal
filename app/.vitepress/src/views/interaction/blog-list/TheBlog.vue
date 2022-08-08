@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, reactive } from 'vue';
 import { useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 
@@ -12,9 +12,18 @@ import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 
+import { getSortData } from '@/api/api-search';
+
 const router = useRouter();
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
+
+const sortParams = reactive({
+  page: 1,
+  pageSize: 10,
+  lang: 'zh',
+  category: 'blog',
+});
 
 const isAll = ref(false);
 const toggleClick = (flag: boolean) => {
@@ -38,6 +47,12 @@ const toBlogContent = (author: string, path: string) => {
 const listfilter = (val: string[]) => {
   return val;
 };
+
+onMounted(() => {
+  getSortData(sortParams).then((res) => {
+    total.value = res.obj.count;
+  });
+});
 </script>
 
 <template>

@@ -7,7 +7,7 @@ Radio.install = function (app: App) {
 };
 
 RadioGroup.install = function (app: App) {
-  app.component(RadioGroup.name, Radio);
+  app.component(RadioGroup.name, RadioGroup);
 };
 
 export { Radio, RadioGroup };

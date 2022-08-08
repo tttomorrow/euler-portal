@@ -18,7 +18,7 @@ const attrs = useAttrs();
   --o-input-color-bg: var(--o-color-bg);
 
   &.el-input {
-    font-size: var(--o-font-size-text);
+    font-size: var(--o-input-font-size);
     line-height: var(--o-input-font-size);
 
     .el-input__wrapper {
