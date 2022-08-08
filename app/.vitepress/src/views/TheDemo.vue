@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
 
@@ -63,10 +63,38 @@ const isDrawerOpen = ref(false);
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
+
+const radioValue = ref('');
+const handleRadioChange = (val: string) => {
+  console.log(val);
+};
 </script>
 
 <template>
   <div class="demo">
+    <div class="demo-box">
+      <h4>ORadio</h4>
+      <ORadioGroup
+        v-model="radioValue"
+        @change="handleRadioChange"
+        :style="{ marginBottom: '30px' }"
+      >
+        <ORadio value="a">radio1</ORadio>
+        <ORadio value="b">radio2</ORadio>
+      </ORadioGroup>
+      <ORadioGroup v-model="radioValue" @change="handleRadioChange">
+        <ORadio value="a">
+          <template #radio="{ checked }">
+            <OTag :type="checked ? 'primary' : 'text'">tag1</OTag>
+          </template>
+        </ORadio>
+        <ORadio value="b">
+          <template #radio="{ checked }">
+            <OTag :type="checked ? 'primary' : 'text'">tag2</OTag>
+          </template>
+        </ORadio>
+      </ORadioGroup>
+    </div>
     <div class="demo-box">
       <h4>OButton</h4>
       <div class="button-box">

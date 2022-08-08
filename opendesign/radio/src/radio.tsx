@@ -8,7 +8,7 @@ export default defineComponent({
   props: radioProps,
   emits: ['update:modelValue', 'change'],
   setup(props: RadioProps, { emit, slots }) {
-    const radioGroupInjection = inject(radioGroupKey);
+    const radioGroupInjection = inject(radioGroupKey, null);
 
     // 是否禁用
     const isDisabled = computed(
@@ -28,25 +28,40 @@ export default defineComponent({
       e.stopPropagation();
     };
 
-    const onChange = (e: Event) => {
+    const onChange = () => {
       const val = props.value;
-      radioGroupInjection?.handleChange(val, e);
+      radioGroupInjection?.onChange(val);
       emit('update:modelValue', val);
-      emit('change', val, e);
+      emit('change', val);
+    };
+
+    const getContent = () => {
+      if (slots.radio) {
+        return slots.radio({
+          checked: isChecked.value,
+          disabled: isDisabled.value,
+        });
+      } else {
+        return (
+          <>
+            <span class="o-radio-icon"></span>
+            <span class="o-radio-label">{slots.default?.()}</span>
+          </>
+        );
+      }
     };
 
     return () => {
       return (
-        <label class="o-radio">
+        <label class={['o-radio', isChecked.value ? 'o-radio-checked' : '']}>
           <input
             type="radio"
-            name={props.name}
             disabled={isDisabled.value}
             checked={isChecked.value}
             onClick={onClick}
             onChange={onChange}
           />
-          <span class="o-radio-label">{slots.default?.()}</span>
+          {getContent()}
         </label>
       );
     };
