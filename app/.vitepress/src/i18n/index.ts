@@ -1,4 +1,3 @@
-// import { createI18n } from 'vue-i18n';
 import { computed } from 'vue';
 import { useData } from 'vitepress';
 
@@ -60,6 +59,7 @@ const i18n: { [key: string]: any } = {
     stratovirt: stratovirt.en,
     interaction: interaction.en,
     live: live.en,
+    compatibility: compatibility.en,
     summit: summit.en,
     screen: screen.en,
     contribution: contribution.en,
@@ -79,6 +79,7 @@ const i18n: { [key: string]: any } = {
     stratovirt: stratovirt.ru,
     interaction: interaction.ru,
     live: live.ru,
+    compatibility: compatibility.ru,
     summit: summit.ru,
     screen: screen.ru,
     contribution: contribution.ru,

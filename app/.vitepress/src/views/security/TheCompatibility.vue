@@ -1,18 +1,16 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted, watch } from 'vue';
+import { ref, reactive, onMounted, nextTick } from 'vue';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
-import type { TabsPaneContext } from 'element-plus';
+// import type { TabsPaneContext } from 'element-plus';
 import { useI18n } from '@/i18n';
 import type {
   CveQuery,
   CompatibilityList,
-  // SoftWareQuery,
-  // BusinessSoftWareQuery,
   BoardCardList,
 } from '@/shared/@types/type-support';
 
@@ -21,8 +19,8 @@ import {
   getDriverList,
   driverArchitectureOptions,
   driverOSOptions,
-  // getSoftwareList,
-  // getBusinessSoftwareList,
+  getSoftwareList,
+  getBusinessSoftwareList,
 } from '@/api/api-security';
 
 const i18n = useI18n();
@@ -46,28 +44,6 @@ const queryData: CveQuery = reactive({
   os: '',
   lang: 'zh',
 });
-
-// const BoardCardqueryData: CveQuery = reactive({
-//   pages: {
-//     page: 1,
-//     size: 10,
-//   },
-//   architecture: '',
-//   keyword: '',
-//   cpu: '',
-//   os: '',
-//   lang: 'zh',
-// });
-
-// const softWareQueryData: SoftWareQuery = {
-//   page_size: 10,
-//   page_num: 1,
-// };
-
-// const BusinessSoftWareQueryData: BusinessSoftWareQuery = {
-//   pageSize: 10,
-//   pageNo: 1,
-// };
 
 const tableData = ref<CompatibilityList[] | BoardCardList[]>([]);
 
@@ -94,37 +70,39 @@ const getDriverData = (data: CveQuery) => {
   }
 };
 // 开源软件
-// const getSoftwareData = (data: SoftWareQuery) => {
-//   try {
-//     getSoftwareList(data).then((res: any) => {
-//       // console.log(res);
-//       total.value = res.total;
-//       tableData.value = res.info;
-//     });
-//   } catch (e: any) {
-//     throw new Error(e);
-//   }
-// };
-// 商业软件
-// const getBusinessSoftwareData = (data: BusinessSoftWareQuery) => {
-//   try {
-//     getBusinessSoftwareList(data).then((res: any) => {
-//       console.log(res);
-//       // total.value = res.total;
-//       tableData.value = res.result;
-//     });
-//   } catch (e: any) {
-//     throw new Error(e);
-//   }
-// };
-
-const handleClick = (tab: TabsPaneContext) => {
-  // console.log(tab, event);
-  if (tab.props.label === '整机') {
-    getCompatibilityData(queryData);
-  } else if (tab.props.label === '板卡') {
-    getDriverData(queryData);
+const getSoftwareData = (data: CveQuery) => {
+  try {
+    getSoftwareList(data).then((res: any) => {
+      // console.log(res);
+      total.value = res.total;
+      tableData.value = res.info;
+    });
+  } catch (e: any) {
+    throw new Error(e);
   }
+};
+// 商业软件
+const getBusinessSoftwareData = (data: CveQuery) => {
+  try {
+    getBusinessSoftwareList(data).then((res: any) => {
+      // console.log(res);
+      // total.value = res.total;
+      tableData.value = res.result;
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+};
+
+const handleClick = () => {
+  // console.log(tab, event);
+  queryData.pages.page = 1;
+  queryData.pages.size = 10;
+
+  nextTick(() => {
+    // console.log(activeName.value);
+    initData(queryData);
+  });
   // switch (tab.props.label) {
   //   case '整机':
   //     getCompatibilityData(queryData);
@@ -141,6 +119,18 @@ const handleClick = (tab: TabsPaneContext) => {
   // }
 };
 
+const initData = (params: CveQuery) => {
+  if (activeName.value === 'first') {
+    getCompatibilityData(params);
+  } else if (activeName.value === 'second') {
+    getDriverData(params);
+  } else if (activeName.value === 'third') {
+    getSoftwareData(params);
+  } else {
+    getBusinessSoftwareData(params);
+  }
+};
+
 const tagClick = (i: number, item: string) => {
   activeIndex.value = i;
   queryData.os = item === '全部' ? '' : item;
@@ -153,10 +143,12 @@ const optionTagClick = (i: number, item: string) => {
 
 const handleSizeChange = (val: number) => {
   queryData.pages.size = val;
+  initData(queryData);
 };
 
 const handleCurrentChange = (val: number) => {
   queryData.pages.page = val;
+  initData(queryData);
 };
 
 function searchValchange() {
@@ -177,10 +169,9 @@ onMounted(() => {
   });
 });
 
-watch(queryData, () => {
-  getCompatibilityData(queryData);
-  getDriverData(queryData);
-});
+// watch(queryData, () => {
+//   getCompatibilityData(queryData);
+// });
 </script>
 
 <template>
@@ -387,7 +378,7 @@ watch(queryData, () => {
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
-            prop="architecture"
+            prop="arch"
             width="160"
           >
           </OTableColumn>

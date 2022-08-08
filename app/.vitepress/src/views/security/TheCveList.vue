@@ -79,134 +79,137 @@ onMounted(() => {
 watch(queryData, () => getCveLists(queryData));
 </script>
 <template>
-  <BannerLevel2
-    class="banner-pc"
-    :background-image="banner"
-    background-text="SUPPORT"
-    :title="i18n.security.CVE"
-    subtitle=""
-    :illustration="search"
-  />
-  <BannerLevel2
-    class="banner-mobile"
-    :background-image="banner"
-    background-text="SUPPORT"
-    :title="i18n.security.CVE"
-    subtitle=""
-    :illustration="cve"
-  />
-  <div class="wrapper">
-    <OSearch
-      v-model="searchContent"
-      class="o-search"
-      :placeholder="i18n.security.INPUT_CVE_ID"
-      @change="searchValchange"
-    ></OSearch>
+  <div>
+    <BannerLevel2
+      class="banner-pc"
+      :background-image="banner"
+      background-text="SUPPORT"
+      :title="i18n.security.CVE"
+      subtitle=""
+      :illustration="search"
+    />
+    <BannerLevel2
+      class="banner-mobile"
+      :background-image="banner"
+      background-text="SUPPORT"
+      :title="i18n.security.CVE"
+      subtitle=""
+      :illustration="cve"
+    />
+    <div class="wrapper">
+      <OSearch
+        v-model="searchContent"
+        class="o-search"
+        :placeholder="i18n.security.INPUT_CVE_ID"
+        @change="searchValchange"
+      ></OSearch>
 
-    <div class="filter-card">
-      <TagFilter label="严重等级" :show="false">
-        <OTag
-          v-for="(item, index) in i18n.security.CATEGORY_LIST"
-          :key="'tag' + index"
-          :type="activeIndex === index ? 'primary' : 'text'"
-          @click="tagClick(index, item.LABEL)"
-        >
-          {{ item.NAME }}
-        </OTag>
-      </TagFilter>
-    </div>
+      <div class="filter-card">
+        <TagFilter label="严重等级" :show="false">
+          <OTag
+            v-for="(item, index) in i18n.security.CATEGORY_LIST"
+            :key="'tag' + index"
+            :type="activeIndex === index ? 'primary' : 'text'"
+            @click="tagClick(index, item.LABEL)"
+          >
+            {{ item.NAME }}
+          </OTag>
+        </TagFilter>
+      </div>
 
-    <OTable class="pc-list" :data="tableData" style="width: 100%">
-      <OTableColumn :label="i18n.security.CVE" prop="cveId" width="160">
-      </OTableColumn>
-      <OTableColumn
-        :label="i18n.security.SYNOPSIS"
-        prop="summary"
-      ></OTableColumn>
-      <OTableColumn
-        :label="i18n.security.CVSS_SCORE"
-        prop="cvsssCoreOE"
-        width="120"
-      ></OTableColumn>
-      <OTableColumn
-        width="180"
-        :label="i18n.security.RELEASE_DATE"
-        prop="updateTime"
-      ></OTableColumn>
-      <OTableColumn
-        width="180"
-        :label="i18n.security.MODIFIED_TIME"
-        prop="updateTime"
-      ></OTableColumn>
-      <OTableColumn
-        :label="i18n.security.STATUS"
-        prop="status"
-        width="120"
-      ></OTableColumn>
-      <!-- <OTableColumn :label="i18n.security.OPERATION"> </OTableColumn> -->
-      <el-table-column :label="i18n.security.OPERATION" width="80">
-        <template #default>
-          <span>详情</span>
-        </template>
-      </el-table-column>
-    </OTable>
+      <OTable class="pc-list" :data="tableData" style="width: 100%">
+        <OTableColumn :label="i18n.security.CVE" prop="cveId" width="160">
+        </OTableColumn>
+        <OTableColumn
+          :label="i18n.security.SYNOPSIS"
+          prop="summary"
+        ></OTableColumn>
+        <OTableColumn
+          :label="i18n.security.CVSS_SCORE"
+          prop="cvsssCoreOE"
+          width="120"
+        ></OTableColumn>
+        <OTableColumn
+          width="180"
+          :label="i18n.security.RELEASE_DATE"
+          prop="updateTime"
+        ></OTableColumn>
+        <OTableColumn
+          width="180"
+          :label="i18n.security.MODIFIED_TIME"
+          prop="updateTime"
+        ></OTableColumn>
+        <OTableColumn
+          :label="i18n.security.STATUS"
+          prop="status"
+          width="120"
+        ></OTableColumn>
+        <!-- <OTableColumn :label="i18n.security.OPERATION"> </OTableColumn> -->
+        <el-table-column :label="i18n.security.OPERATION" width="80">
+          <template #default>
+            <span>详情</span>
+          </template>
+        </el-table-column>
+      </OTable>
 
-    <div class="filter-mobile">
-      <div class="filter">
-        <div
-          v-for="(item, index) in i18n.security.CATEGORY_LIST"
-          :key="item"
-          :class="filterIndex === index ? 'selected' : ''"
-          class="filter-item"
-          @click="filterClick(index, item.LABEL)"
-        >
-          {{ item.NAME }}
+      <div class="filter-mobile">
+        <div class="filter">
+          <div
+            v-for="(item, index) in i18n.security.CATEGORY_LIST"
+            :key="item"
+            :class="filterIndex === index ? 'selected' : ''"
+            class="filter-item"
+            @click="filterClick(index, item.LABEL)"
+          >
+            {{ item.NAME }}
+          </div>
         </div>
       </div>
+
+      <ul class="mobile-list">
+        <li v-for="item in tableData" :key="item.cveId" class="item">
+          <ul>
+            <li>
+              <span>{{ i18n.security.CVE }}:</span>{{ item.cveId }}
+            </li>
+            <li>
+              <span>{{ i18n.security.SYNOPSIS }}:</span>{{ item.summary }}
+            </li>
+            <li>
+              <span>{{ i18n.security.CVSS_SCORE }}:</span>{{ item.cvsssCoreOE }}
+            </li>
+            <li>
+              <span>{{ i18n.security.RELEASE_DATE }}:</span
+              >{{ item.announcementTime }}
+            </li>
+            <li>
+              <span>{{ i18n.security.MODIFIED_TIME }}:</span
+              >{{ item.updateTime }}
+            </li>
+            <li>
+              <span>{{ i18n.security.STATUS }}:</span>{{ item.status }}
+            </li>
+            <li>
+              <span>{{ i18n.security.OPERATION }}:</span><a>详情</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <OPagination
+        v-model:page-size="queryData.pages.size"
+        v-model:currentPage="queryData.pages.page"
+        class="pagination"
+        :page-sizes="[10, 20, 40, 80]"
+        :layout="layout"
+        :total="total"
+        :background="true"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      >
+        <span>5/20</span>
+      </OPagination>
     </div>
-
-    <ul class="mobile-list">
-      <li v-for="item in tableData" :key="item.cveId" class="item">
-        <ul>
-          <li>
-            <span>{{ i18n.security.CVE }}:</span>{{ item.cveId }}
-          </li>
-          <li>
-            <span>{{ i18n.security.SYNOPSIS }}:</span>{{ item.summary }}
-          </li>
-          <li>
-            <span>{{ i18n.security.CVSS_SCORE }}:</span>{{ item.cvsssCoreOE }}
-          </li>
-          <li>
-            <span>{{ i18n.security.RELEASE_DATE }}:</span
-            >{{ item.announcementTime }}
-          </li>
-          <li>
-            <span>{{ i18n.security.MODIFIED_TIME }}:</span>{{ item.updateTime }}
-          </li>
-          <li>
-            <span>{{ i18n.security.STATUS }}:</span>{{ item.status }}
-          </li>
-          <li>
-            <span>{{ i18n.security.OPERATION }}:</span><a>详情</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-
-    <OPagination
-      v-model:page-size="queryData.pages.size"
-      v-model:currentPage="queryData.pages.page"
-      class="pagination"
-      :page-sizes="[10, 20, 40, 80]"
-      :layout="layout"
-      :total="total"
-      :background="true"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    >
-      <span>5/20</span>
-    </OPagination>
   </div>
 </template>
 <style lang="scss" scoped>
