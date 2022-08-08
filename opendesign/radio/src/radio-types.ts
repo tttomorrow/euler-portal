@@ -17,11 +17,6 @@ export const radioProps = {
     type: Boolean,
     default: false,
   },
-  // name
-  name: {
-    type: String,
-    default: '',
-  },
 };
 
 export type RadioProps = ExtractDefaultPropTypes<typeof radioProps>;

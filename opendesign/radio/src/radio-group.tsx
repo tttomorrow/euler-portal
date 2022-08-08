@@ -12,13 +12,13 @@ export default defineComponent({
   setup(props: RadioGroupProps, { emit, slots }) {
     const { modelValue, disabled } = toRefs(props);
 
-    const handleChange = (val: string | number | boolean, e: Event) => {
+    const onChange = (val: string | number | boolean, e: Event) => {
       emit('update:modelValue', val);
       emit('change', val, e);
     };
 
     // 注入
-    provide(radioGroupKey, { modelValue, disabled, handleChange });
+    provide(radioGroupKey, { modelValue, disabled, onChange });
 
     return () => {
       return <div class="o-radio-group">{slots.default?.()}</div>;
