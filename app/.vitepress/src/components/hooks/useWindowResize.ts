@@ -2,7 +2,7 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import { isBrowser } from '@/shared/utils';
 
 const useWindowResize = () => {
-  let width = NaN;
+  let width = Infinity;
 
   if (isBrowser()) {
     width =
