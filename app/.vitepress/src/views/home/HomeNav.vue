@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
 
 const { lang } = useData();
 const i18n = useI18n();
+const commonStore = useCommon();
 
 const handleGo = (path: string) => {
   window.open(path, '_blank');
@@ -20,8 +22,20 @@ const handleGo = (path: string) => {
         @click="handleGo(item.LINK)"
       >
         <div class="nav-icon">
-          <img :src="item.IMG" alt="" class="nav-item-icon" />
-          <img :src="item.IMG_HOVER" alt="" class="nav-item-icon-hover" />
+          <img
+            :src="commonStore.theme === 'dark' ? item.IMG_DARK : item.IMG"
+            alt=""
+            class="nav-item-icon"
+          />
+          <img
+            :src="
+              commonStore.theme === 'dark'
+                ? item.IMG_DARK_HOVER
+                : item.IMG_HOVER
+            "
+            alt=""
+            class="nav-item-icon-hover"
+          />
         </div>
         <div class="nav-text">
           <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">

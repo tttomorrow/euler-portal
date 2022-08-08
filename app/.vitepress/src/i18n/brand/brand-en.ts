@@ -131,65 +131,73 @@ export default {
   PROJECT_LIST: [
     {
       TITLE: 'A-Tune',
-      URL: '/img/other/brand/A-Tune-logo png.png',
+      URL: '/img/other/brand/A-Tune-logo-png.png',
+      width: 216,
+      height: 39,
       DOWNLOAD_LINK: [
         {
           STYLE: 'JPG',
-          URL: '/img/other/brand/A-Tune-logo jpg.jpg',
+          URL: '/img/other/brand/A-Tune-logo-jpg.jpg',
         },
         {
           STYLE: 'PNG',
-          URL: '/img/other/brand/A-Tune-logo png.png',
+          URL: '/img/other/brand/A-Tune-logo-png.png',
         },
       ],
     },
     {
-      TITLE: 'isula',
-      URL: '/img/other/brand/iSula logo png.png',
+      TITLE: 'iSula',
+      URL: '/img/other/brand/iSula-logo-png.png',
+      width: 101,
+      height: 105,
       DOWNLOAD_LINK: [
         {
           STYLE: 'JPG',
-          URL: '/img/other/brand/iSula logo jpg.jpg',
+          URL: '/img/other/brand/iSula-logo-jpg.jpg',
         },
         {
           STYLE: 'PNG',
-          URL: '/img/other/brand/iSula logo png.png',
+          URL: '/img/other/brand/iSula-logo-png.png',
         },
         {
           STYLE: 'SVG',
-          URL: '/img/other/brand/iSula logo svg.svg',
+          URL: '/img/other/brand/iSula-logo-svg.svg',
         },
       ],
     },
     {
-      TITLE: 'stratovirt',
-      URL: '/img/other/brand/stratoVirt logo png.png',
+      TITLE: 'StratoVirt',
+      width: 114,
+      height: 114,
+      URL: '/img/other/brand/StratoVirt-logo-png.png',
       DOWNLOAD_LINK: [
         {
           STYLE: 'JPG',
-          URL: '/img/other/brand/stratoVirt logo jpg.jpg',
+          URL: '/img/other/brand/StratoVirt-logo-jpg.jpg',
         },
         {
           STYLE: 'PNG',
-          URL: '/img/other/brand/stratoVirt logo png.png',
+          URL: '/img/other/brand/StratoVirt-logo-png.png',
         },
         {
           STYLE: 'SVG',
-          URL: '/img/other/brand/stratoVirt logo svg.svg',
+          URL: '/img/other/brand/StratoVirt-logo-svg.svg',
         },
       ],
     },
     {
-      TITLE: 'secgear',
-      URL: '/img/other/brand/secGear logo png.png',
+      TITLE: 'secGear',
+      URL: '/img/other/brand/secGear-logo-png.png',
+      width: 109,
+      height: 85,
       DOWNLOAD_LINK: [
         {
           STYLE: 'JPG',
-          URL: '/img/other/brand/secGear logo jpg.jpg',
+          URL: '/img/other/brand/secGear-logo-jpg.jpg',
         },
         {
           STYLE: 'PNG',
-          URL: '/img/other/brand/secGear logo png.png',
+          URL: '/img/other/brand/secGear-logo-png.png',
         },
       ],
     },

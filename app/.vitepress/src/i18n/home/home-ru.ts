@@ -1,3 +1,98 @@
+import useCase from '../../assets/category/home/new-home/use-case.svg';
+import useCaseHover from '../../assets/category/home/new-home/use-case-hover.svg';
+import useCaseDark from '../../assets/category/home/dark/new-home/user-case.svg';
+import useCaseDarkHover from '../../assets/category/home/dark/new-home/user-case-hover.svg';
+import migrate from '../../assets/category/home/new-home/migrate.svg';
+import migrateHover from '../../assets/category/home/new-home/migrate-hover.svg';
+import migrateDark from '../../assets/category/home/dark/new-home/migrate.svg';
+import migrateDarkHover from '../../assets/category/home/dark/new-home/migrate-hover.svg';
+import internshipSummit from '../../assets/category/home/new-home/internship-summit.svg';
+import internshipSummitHover from '../../assets/category/home/new-home/internship-summit-hover.svg';
+import internshipSummitDark from '../../assets/category/home/dark/new-home/internship-summit.svg';
+import internshipSummitDarkHover from '../../assets/category/home/dark/new-home/internship-summit-hover.svg';
+import summit from '../../assets/category/home/new-home/summit.svg';
+import summitHover from '../../assets/category/home/new-home/summit-hover.svg';
+import summitDark from '../../assets/category/home/dark/new-home/summit.svg';
+import summitDarkHover from '../../assets/category/home/dark/new-home/summit-hover.svg';
+
+import imgList1 from '../../assets/category/home/carouse/img-list1-en.png';
+import imgList2 from '../../assets/category/home/carouse/img-list2-en.png';
+import imgList3 from '../../assets/category/home/carouse/img-list3-en.png';
+
+import contributer from '../../assets/category/home/round/contributer.svg';
+import contributerDark from '../../assets/category/home/round/dark/contributer.svg';
+import software from '../../assets/category/home/round/software.svg';
+import softwareDark from '../../assets/category/home/round/dark/software.svg';
+import sig from '../../assets/category/home/round/sig.svg';
+import sigDark from '../../assets/category/home/round/dark/sig.svg';
+import user from '../../assets/category/home/round/user.svg';
+import userDark from '../../assets/category/home/round/dark/user.svg';
+import osv from '../../assets/category/home/round/osv.svg';
+import osvDark from '../../assets/category/home/round/dark/osv.svg';
+
+import xinan from '../../assets/category//home/link/xinan.png';
+import xinanMobile from '../../assets/category//home/link/mobile-xinan.png';
+import tongxin from '../../assets/category//home/link/tongxin.png';
+import tongxinMobile from '../../assets/category//home/link/mobile-tongxin.png';
+import qiling from '../../assets/category//home/link/qiling.png';
+import qilingMobile from '../../assets/category//home/link/mobile-qiling.png';
+import iscas from '../../assets/category//home/link/iscas.png';
+import iscasMobile from '../../assets/category//home/link/mobile-iscas.png';
+import cetc from '../../assets/category//home/link/cetc.png';
+import cetcMobile from '../../assets/category//home/link/mobile-cetc.png';
+import turbo from '../../assets/category//home/link/turbo.png';
+import turboMobile from '../../assets/category//home/link/mobile-turbo.png';
+import hopeRun from '../../assets/category//home/link/hopeRun.png';
+import hopeRunMobile from '../../assets/category//home/link/mobile-hopeRun.png';
+import tongYuan from '../../assets/category//home/link/tongYuan.png';
+import tongYuanMobile from '../../assets/category//home/link/mobile-tongYuan.png';
+import zhongkehongqi from '../../assets/category//home/link/zhongkehongqi.png';
+import zhongkehongqiMobile from '../../assets/category//home/link/mobile-zhongkehongqi.png';
+import suse from '../../assets/category//home/link/suse.png';
+import suseMobile from '../../assets/category//home/link/mobile-suse.png';
+import zhongkefangde from '../../assets/category//home/link/zhongkefangde.png';
+import zhongkefangdeMobile from '../../assets/category//home/link/mobile-zhongkefangde.png';
+import xfusion from '../../assets/category/home/link/xfusion.png';
+import xfusionMobile from '../../assets/category/home/link/xfusion_mobile.png';
+
+import mulan from '../../assets/category/home/link/mulan.png';
+import mulanMobile from '../../assets/category/home/link/mobile-mulan.png';
+import kunpeng from '../../assets/category/home/link/kunpeng.png';
+import kunpengMobile from '../../assets/category/home/link/mobile-kunpeng.png';
+import xiaozhi from '../../assets/category/home/link/xiaozhi.png';
+import xiaozhiMobile from '../../assets/category/home/link/mobile-xiaozhi.png';
+import pengcheng from '../../assets/category/home/link/pengcheng.png';
+import pengchengMobile from '../../assets/category/home/link/mobile-pengcheng.png';
+import infoQ from '../../assets/category/home/link/infoQ.png';
+import infoQMobile from '../../assets/category/home/link/mobile-infoQ.png';
+import kaiyuanshe from '../../assets/category/home/link/kaiyuanshe-logo.png';
+import kaiyuansheMobile from '../../assets/category/home/link/kaiyuanshe-logo-mobile.png';
+import zhongke from '../../assets/category/home/link/zhongke_pc.png';
+import zhongkeMobile from '../../assets/category/home/link/zhongke_mo.png';
+import authing from '../../assets/category/home/link/Authing_pc.png';
+import authingMobile from '../../assets/category/home/link/Authing_mo.png';
+
+import finance from '../../assets/category/home/case/finance.svg';
+import financeDark from '../../assets/category/home/dark/case/finance.svg';
+import financeActive from '../../assets/category/home/case/finance-active.svg';
+import financeActiveDark from '../../assets/category/home/dark/case/finance-active.svg';
+import operator from '../../assets/category/home/case/operator.svg';
+import operatorDark from '../../assets/category/home/dark/case/operator.svg';
+import operatorActive from '../../assets/category/home/case/operator-active.svg';
+import operatorActiveDark from '../../assets/category/home/dark/case/operator-active.svg';
+import energy from '../../assets/category/home/case/energy.svg';
+import energyDark from '../../assets/category/home/dark/case/energy.svg';
+import energyActive from '../../assets/category/home/case/energy-active.svg';
+import energyActiveDark from '../../assets/category/home/dark/case/energy-active.svg';
+import logistics from '../../assets/category/home/case/logistics.svg';
+import logisticsDark from '../../assets/category/home/dark/case/logistics.svg';
+import logisticsActive from '../../assets/category/home/case/logistics-active.svg';
+import logisticsActiveDark from '../../assets/category/home/dark/case/logistics-active.svg';
+import education from '../../assets/category/home/case/education.svg';
+import educationDark from '../../assets/category/home/dark/case/education.svg';
+import educationActive from '../../assets/category/home/case/education-active.svg';
+import educationActiveDark from '../../assets/category/home/dark/case/education-active.svg';
+
 export default {
   HOME_CAROUSEL_DATA: [
     {
@@ -129,8 +224,8 @@ export default {
       {
         ROUND_VALUE: '',
         ROUND_KEY: 'contributors',
-        ROUND_IMG: '/img/home/round/contributer.svg',
-        ROUND_IMG_DARK: '/img/home/round/dark/contributer.svg',
+        ROUND_IMG: contributer,
+        ROUND_IMG_DARK: contributerDark,
         ROUND_TEXT: 'участников',
         ROUND_STYLE: {
           backcolor: 'blue',
@@ -139,8 +234,8 @@ export default {
       {
         ROUND_VALUE: '',
         ROUND_KEY: 'repos',
-        ROUND_IMG: '/img/home/round/software.svg',
-        ROUND_IMG_DARK: '/img/home/round/dark/software.svg',
+        ROUND_IMG: software,
+        ROUND_IMG_DARK: softwareDark,
         ROUND_TEXT: 'программных продуктов',
         ROUND_STYLE: {
           backcolor: 'pink',
@@ -149,8 +244,8 @@ export default {
       {
         ROUND_VALUE: '',
         ROUND_KEY: 'sigs',
-        ROUND_IMG: '/img/home/round/sig.svg',
-        ROUND_IMG_DARK: '/img/home/round/dark/sig.svg',
+        ROUND_IMG: sig,
+        ROUND_IMG_DARK: sigDark,
         ROUND_TEXT: 'групп SIG',
         ROUND_STYLE: {
           backcolor: 'yellow',
@@ -159,8 +254,8 @@ export default {
       {
         ROUND_VALUE: '',
         ROUND_KEY: 'users',
-        ROUND_IMG: '/img/home/round/user.svg',
-        ROUND_IMG_DARK: '/img/home/round/dark/user.svg',
+        ROUND_IMG: user,
+        ROUND_IMG_DARK: userDark,
         ROUND_TEXT: 'пользователей',
         ROUND_STYLE: {
           backcolor: 'yellow',
@@ -169,8 +264,8 @@ export default {
       {
         ROUND_VALUE: '',
         ROUND_KEY: 'businessosv',
-        ROUND_IMG: '/img/home/round/osv.svg',
-        ROUND_IMG_DARK: '/img/home/round/dark/osv.svg',
+        ROUND_IMG: osv,
+        ROUND_IMG_DARK: osvDark,
         ROUND_TEXT: 'поставщиков ОС',
         ROUND_STYLE: {
           backcolor: 'blue',
@@ -182,29 +277,37 @@ export default {
   HOME_NAV: [
     {
       TITLE: 'Success Stories',
-      IMG: '/img/home/new-home/use-case.svg',
-      IMG_HOVER: '/img/home/new-home/use-case-hover.svg',
+      IMG: useCase,
+      IMG_HOVER: useCaseHover,
+      IMG_DARK: useCaseDark,
+      IMG_DARK_HOVER: useCaseDarkHover,
       DSSCRIPTIVE: 'Learn success stories in various industries.',
       LINK: 'https://new.openeuler.org/zh/showcase/',
     },
     {
       TITLE: 'Porting Guide',
-      IMG: '/img/home/new-home/migrate.svg',
-      IMG_HOVER: '/img/home/new-home/migrate-hover.svg',
+      IMG: migrate,
       DSSCRIPTIVE: 'Learn how to port to openEuler.',
+      IMG_HOVER: migrateHover,
+      IMG_DARK: migrateDark,
+      IMG_DARK_HOVER: migrateDarkHover,
       LINK: '/other/migration/',
     },
     {
       TITLE: 'Open Source Promotion Plan',
-      IMG: '/img/home/new-home/internship-summit.svg',
-      IMG_HOVER: '/img/home/new-home/internship-summit-hover.svg',
+      IMG: internshipSummit,
+      IMG_HOVER: internshipSummitHover,
+      IMG_DARK: internshipSummitDark,
+      IMG_DARK_HOVER: internshipSummitDarkHover,
       DSSCRIPTIVE: 'Participate in open source projects of OSPP.',
       LINK: '/activities/',
     },
     {
       TITLE: 'Summits',
-      IMG: '/img/home/new-home/summit.svg',
-      IMG_HOVER: '/img/home/new-home/summit-hover.svg',
+      IMG: summit,
+      IMG_HOVER: summitHover,
+      IMG_DARK: summitDark,
+      IMG_DARK_HOVER: summitDarkHover,
       DSSCRIPTIVE: '2022 OpenAtom Global Open Source Summit',
       LINK: '/interaction/summit-list/devday2022/',
     },
@@ -216,15 +319,15 @@ export default {
     LIST: [
       {
         TITLE: 'All-Scenario Applications',
-        IMG_URL: '/img/home/carouse/img-list1.jpg',
+        IMG_URL: imgList1,
       },
       {
         TITLE: 'Various Devices',
-        IMG_URL: '/img/home/carouse/img-list2.jpg',
+        IMG_URL: imgList2,
       },
       {
         TITLE: 'Development Tool Chain',
-        IMG_URL: '/img/home/carouse/img-list3.jpg',
+        IMG_URL: imgList3,
       },
     ],
   },
@@ -235,33 +338,38 @@ export default {
     CASE_LIST: [
       {
         TYPE: '金融',
-        URL: '/img/home/case/finance.svg',
-        ACTIVE_URL: '/img/home/case/finance-active.svg',
-        URL_DARK: '/img/home/dark/case/finance.svg',
+        URL: finance,
+        ACTIVE_URL: financeActive,
+        URL_DARK: financeDark,
+        ACTIVE_DARK_URL: financeActiveDark,
       },
       {
         TYPE: '运营商',
-        URL: '/img/home/case/operator.svg',
-        ACTIVE_URL: '/img/home/case/operator-active.svg',
-        URL_DARK: '/img/home/dark/case/operator.svg',
+        URL: operator,
+        ACTIVE_URL: operatorActive,
+        URL_DARK: operatorDark,
+        ACTIVE_DARK_URL: operatorActiveDark,
       },
       {
         TYPE: '能源',
-        URL: '/img/home/case/energy.svg',
-        ACTIVE_URL: '/img/home/case/energy-active.svg',
-        URL_DARK: '/img/home/dark/case/energy.svg',
+        URL: energy,
+        ACTIVE_URL: energyActive,
+        URL_DARK: energyDark,
+        ACTIVE_DARK_URL: energyActiveDark,
       },
       {
         TYPE: '物流',
-        URL: '/img/home/case/logistics.svg',
-        ACTIVE_URL: '/img/home/case/logistics-active.svg',
-        URL_DARK: '/img/home/dark/case/logistics.svg',
+        URL: logistics,
+        ACTIVE_URL: logisticsActive,
+        URL_DARK: logisticsDark,
+        ACTIVE_DARK_URL: logisticsActiveDark,
       },
       {
         TYPE: '其他',
-        URL: '/img/home/case/education.svg',
-        ACTIVE_URL: '/img/home/case/education-active.svg',
-        URL_DARK: '/img/home/dark/case/education.svg',
+        URL: education,
+        ACTIVE_URL: educationActive,
+        URL_DARK: educationDark,
+        ACTIVE_DARK_URL: educationActiveDark,
       },
     ],
   },
@@ -604,105 +712,105 @@ export default {
   HOME_SOURCE_EDITION: [
     {
       LINK: 'http://www.kylinsec.com.cn/',
-      PC: '/img/home/link/xinan.png',
-      MOBILE: '/img/home/link/mobile-xinan.png',
+      PC: xinan,
+      MOBILE: xinanMobile,
     },
     {
       LINK: 'https://www.uniontech.com/',
-      PC: '/img/home/link/tongxin.png',
-      MOBILE: '/img/home/link/mobile-tongxin.png',
+      PC: tongxin,
+      MOBILE: tongxinMobile,
     },
     {
       LINK: 'https://www.kylinos.cn/',
-      PC: '/img/home/link/qiling.png',
-      MOBILE: '/img/home/link/mobile-qiling.png',
+      PC: qiling,
+      MOBILE: qilingMobile,
     },
     {
       LINK: 'http://www.iscas.ac.cn/',
-      PC: '/img/home/link/iscas.png',
-      MOBILE: '/img/home/link/mobile-iscas.png',
+      PC: iscas,
+      MOBILE: iscasMobile,
     },
     {
       LINK: 'http://www.i-soft.com.cn/',
-      PC: '/img/home/link/cetc.png',
-      MOBILE: '/img/home/link/mobile-cetc.png',
+      PC: cetc,
+      MOBILE: cetcMobile,
     },
     {
       LINK: 'https://www.turbolinux.com.cn/',
-      PC: '/img/home/link/turbo.png',
-      MOBILE: '/img/home/link/mobile-turbo.png',
+      PC: turbo,
+      MOBILE: turboMobile,
     },
     {
       LINK: 'http://www.hoperun.com/',
-      PC: '/img/home/link/hopeRun.png',
-      MOBILE: '/img/home/link/mobile-hopeRun.png',
+      PC: hopeRun,
+      MOBILE: hopeRunMobile,
     },
     {
       LINK: 'http://www.tongyuanos.com/',
-      PC: '/img/home/link/tongYuan.png',
-      MOBILE: '/img/home/link/mobile-tongYuan.png',
+      PC: tongYuan,
+      MOBILE: tongYuanMobile,
     },
     {
       LINK: 'http://www.chinaredflag.cn/',
-      PC: '/img/home/link/zhongkehongqi.png',
-      MOBILE: '/img/home/link/mobile-zhongkehongqi.png',
+      PC: zhongkehongqi,
+      MOBILE: zhongkehongqiMobile,
     },
     {
       LINK: 'https://www.suse.com/',
-      PC: '/img/home/link/suse.png',
-      MOBILE: '/img/home/link/mobile-suse.png',
+      PC: suse,
+      MOBILE: suseMobile,
     },
     {
       LINK: 'http://www.nfs-china.com/index.html',
-      PC: '/img/home/link/zhongkefangde.png',
-      MOBILE: '/img/home/link/mobile-zhongkefangde.png',
+      PC: zhongkefangde,
+      MOBILE: zhongkefangdeMobile,
     },
     {
-      LINK: 'https://www.xfusion.com/en/',
-      PC: '/img/home/link/xfusion.png',
-      MOBILE: '/img/home/link/xfusion_mobile.png',
+      LINK: 'https://www.xfusion.com/cn/',
+      PC: xfusion,
+      MOBILE: xfusionMobile,
     },
   ],
   FRIENDSHIP_LINK_LIST: [
     {
       LINK: 'http://www.mulanos.cn/',
-      PC: '/img/home/link/mulan.png',
-      MOBILE: '/img/home/link/mobile-mulan.png',
+      PC: mulan,
+      MOBILE: mulanMobile,
     },
     {
       LINK: 'https://kunpeng.huawei.com/',
-      PC: '/img/home/link/kunpeng.png',
-      MOBILE: '/img/home/link/mobile-kunpeng.png',
+      PC: kunpeng,
+      MOBILE: kunpengMobile,
     },
     {
       LINK: 'http://ic-openlabs.huawei.com/chat/#/',
-      PC: '/img/home/link/xiaozhi.png',
-      MOBILE: '/img/home/link/mobile-xiaozhi.png',
+      PC: xiaozhi,
+      MOBILE: xiaozhiMobile,
     },
     {
       LINK: 'https://dw.pcl.ac.cn/',
-      PC: '/img/home/link/pengcheng.png',
-      MOBILE: '/img/home/link/mobile-pengcheng.png',
+      PC: pengcheng,
+      MOBILE: pengchengMobile,
     },
     {
       LINK: 'https://www.infoq.cn/?utm_source=openeuler&utm_medium=youlian',
-      PC: '/img/home/link/infoQ.png',
-      MOBILE: '/img/home/link/mobile-infoQ.png',
+      PC: infoQ,
+      MOBILE: infoQMobile,
     },
     {
       LINK: 'https://kaiyuanshe.cn/',
-      PC: '/img/home/link/kaiyuanshe-logo.png',
-      MOBILE: '/img/home/link/kaiyuanshe-logo-mobile.png',
+      PC: kaiyuanshe,
+      MOBILE: kaiyuansheMobile,
     },
     {
       LINK: 'http://www.vulab.com.cn/',
-      PC: '/img/home/link/zhongke_pc.png',
-      MOBILE: '/img/home/link/zhongke_mo.png',
+      PC: zhongke,
+      MOBILE: zhongkeMobile,
     },
     {
       LINK: 'https://www.authing.cn/',
-      PC: '/img/home/link/Authing_pc.png',
-      MOBILE: '/img/home/link/Authing_mo.png',
+      PC: authing,
+      MOBILE: authingMobile,
     },
   ],
   MORE: 'Read More',

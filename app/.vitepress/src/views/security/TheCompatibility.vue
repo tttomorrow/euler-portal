@@ -127,6 +127,7 @@
 </script>
 
 <template>
+  <div></div>
   <!-- <BannerLevel2
     :background-image="banner"
     background-text="CONTENT"
@@ -135,8 +136,8 @@
     :illustration="search"
   /> -->
   <!-- <OTabs v-model="activeName" @tab-click="handleClick"> -->
-    <!-- 整机 -->
-    <!-- <OTabPane label="整机" name="first">
+  <!-- 整机 -->
+  <!-- <OTabPane label="整机" name="first">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -213,8 +214,8 @@
         </OTable>
       </div>
     </OTabPane> -->
-    <!-- 板卡 -->
-    <!-- <OTabPane label="板卡" name="second">
+  <!-- 板卡 -->
+  <!-- <OTabPane label="板卡" name="second">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -291,10 +292,10 @@
         </OTable>
       </div>
     </OTabPane> -->
-    <!-- 开源软件 -->
-    <!-- <OTabPane label="开源软件" name="third"> </OTabPane> -->
-    <!-- 商业软件 -->
-    <!-- <OTabPane label="商业软件" name="fourth"> </OTabPane>
+  <!-- 开源软件 -->
+  <!-- <OTabPane label="开源软件" name="third"> </OTabPane> -->
+  <!-- 商业软件 -->
+  <!-- <OTabPane label="商业软件" name="fourth"> </OTabPane>
     <div class="bottom-wrapper">
       <OPagination
         v-model:page-size="queryData.pages.size"

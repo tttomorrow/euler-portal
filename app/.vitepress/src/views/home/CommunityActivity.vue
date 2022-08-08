@@ -226,7 +226,7 @@ const handleGo = (path: string) => {
 
   &-card {
     width: 100%;
-    background-image: url('/img/home/round-bg.png');
+    background-image: url('../../assets/category/home/round-bg.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;

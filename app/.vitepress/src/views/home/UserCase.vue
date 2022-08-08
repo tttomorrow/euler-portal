@@ -94,7 +94,9 @@ onMounted(() => {
                 class="case-mobile-img"
                 :src="
                   commonStore.theme === 'dark'
-                    ? item.URL_DARK
+                    ? index === activeMobile
+                      ? item.ACTIVE_DARK_URL
+                      : item.URL_DARK
                     : index === activeMobile
                     ? item.ACTIVE_URL
                     : item.URL
@@ -131,8 +133,10 @@ onMounted(() => {
               class="case-img"
               :src="
                 commonStore.theme === 'dark'
-                  ? item.URL_DARK
-                  : index === active
+                  ? index === activeMobile
+                    ? item.ACTIVE_DARK_URL
+                    : item.URL_DARK
+                  : index === activeMobile
                   ? item.ACTIVE_URL
                   : item.URL
               "
