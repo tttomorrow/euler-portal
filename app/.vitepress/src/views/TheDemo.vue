@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
 
@@ -76,8 +76,8 @@ const handleRadioChange = (val: string) => {
       <h4>ORadio</h4>
       <ORadioGroup
         v-model="radioValue"
-        @change="handleRadioChange"
         :style="{ marginBottom: '30px' }"
+        @change="handleRadioChange"
       >
         <ORadio value="a">radio1</ORadio>
         <ORadio value="b">radio2</ORadio>
