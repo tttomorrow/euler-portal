@@ -66,7 +66,7 @@ const toggleDrawer = () => {
 
 const radioValue = ref('');
 const handleRadioChange = (val: string) => {
-  console.log(val);
+  radioValue.value = val;
 };
 </script>
 
@@ -85,12 +85,16 @@ const handleRadioChange = (val: string) => {
       <ORadioGroup v-model="radioValue" @change="handleRadioChange">
         <ORadio value="a">
           <template #radio="{ checked }">
-            <OTag :type="checked ? 'primary' : 'text'">tag1</OTag>
+            <OTag checked checkable :type="checked ? 'primary' : 'text'"
+              >tag1</OTag
+            >
           </template>
         </ORadio>
         <ORadio value="b">
           <template #radio="{ checked }">
-            <OTag :type="checked ? 'primary' : 'text'">tag2</OTag>
+            <OTag checked checkable :type="checked ? 'primary' : 'text'"
+              >tag2</OTag
+            >
           </template>
         </ORadio>
       </ORadioGroup>
@@ -196,6 +200,7 @@ const handleRadioChange = (val: string) => {
           <OTag
             v-for="(item, index) in tagArrLen"
             :key="'tag' + index"
+            checkable
             :type="activeIndex === index ? 'primary' : 'text'"
             @click="tagClick(index)"
           >
@@ -208,7 +213,8 @@ const handleRadioChange = (val: string) => {
             v-for="(item, index) in tagArrLen"
             :key="'tag' + index"
             :type="activeIndex === index ? 'primary' : 'text'"
-            :multiple="true"
+            checked
+            checkable
             @click="tagClick(index)"
           >
             {{ 'multiple' + index }}
@@ -223,7 +229,8 @@ const handleRadioChange = (val: string) => {
       <OTag type="primary">OTag-0</OTag>
       <OTag type="secondary">特殊tag</OTag>
       <OTag size="small">OTag-1</OTag>
-      <OTag type="primary" :multiple="true">多选: multiple</OTag>
+      <OTag size="small" checkable>可选中 checkable</OTag>
+      <OTag type="primary" checked checkable>选中: checked</OTag>
     </div>
 
     <div class="demo-box">

@@ -92,7 +92,6 @@ const userSubscribe = (userID: string) => {
         background-text="COMMUNITY"
         :title="i18n.mailing.MAILING_LIST.TITLE"
         :illustration="illustration"
-        :cell-style="cellStyle"
       />
     </header>
     <main>
@@ -142,8 +141,8 @@ const userSubscribe = (userID: string) => {
     </main>
     <main>
       <div class="mail-table">
-        <OTable :data="tableData">
-          <el-table-column label="Mirror Name" min-width="15%">
+        <OTable :data="tableData" style="width: 100%">
+          <el-table-column label="Mirror Name" width="230">
             <template #default="scope">
               <a
                 ref="listName"
@@ -155,13 +154,9 @@ const userSubscribe = (userID: string) => {
               </a>
             </template>
           </el-table-column>
-          <el-table-column
-            label="Location"
-            prop="fqdn_listname"
-            min-width="25%"
-          >
+          <el-table-column label="Location" prop="fqdn_listname" width="360">
           </el-table-column>
-          <el-table-column label="Sponsor" min-width="10%">
+          <el-table-column label="Sponsor" width="150">
             <template #default="scope">
               <a
                 :href="
@@ -180,7 +175,7 @@ const userSubscribe = (userID: string) => {
             label="RSNC"
             prop="description"
             :show-overflow-tooltip="true"
-            min-width="45%"
+            width="620"
           ></OTableColumn>
         </OTable>
       </div>
@@ -194,6 +189,10 @@ const userSubscribe = (userID: string) => {
     max-width: 1504px;
     margin: var(--o-spacing-h1) auto;
     padding: 0 44px;
+    @media (max-width: 1080px) {
+      margin: var(--o-spacing-h2) auto;
+      padding: 0 16px;
+    }
     &-item {
       min-height: 204px;
       display: flex;
@@ -319,6 +318,9 @@ const userSubscribe = (userID: string) => {
     padding-right: 40px;
     @media screen and (max-width: 1508px) {
       padding: 0 40px;
+    }
+    @media (max-width: 1080px) {
+      padding: 0 16px;
     }
   }
 }
