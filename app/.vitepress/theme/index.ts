@@ -1,5 +1,6 @@
 import type { App } from 'vue';
 import { createPinia } from 'pinia';
+import 'aos/dist/aos.css';
 
 import Layout from '@/App.vue';
 import NotFound from '@/NotFound.vue';
