@@ -12,6 +12,7 @@ import type {
   CveQuery,
   CompatibilityList,
   BoardCardList,
+  BusinessSoftWareList,
 } from '@/shared/@types/type-support';
 
 import {
@@ -45,7 +46,9 @@ const queryData: CveQuery = reactive({
   lang: 'zh',
 });
 
-const tableData = ref<CompatibilityList[] | BoardCardList[]>([]);
+const tableData = ref<
+  CompatibilityList[] | BoardCardList[] | BusinessSoftWareList[]
+>([]);
 
 // 整机
 const getCompatibilityData = (data: CveQuery) => {
@@ -85,7 +88,6 @@ const getSoftwareData = (data: CveQuery) => {
 const getBusinessSoftwareData = (data: CveQuery) => {
   try {
     getBusinessSoftwareList(data).then((res: any) => {
-      // console.log(res);
       // total.value = res.total;
       tableData.value = res.result;
     });
@@ -98,25 +100,17 @@ const handleClick = () => {
   // console.log(tab, event);
   queryData.pages.page = 1;
   queryData.pages.size = 10;
+  queryData.architecture = '';
+  queryData.keyword = '';
+  queryData.cpu = '';
+  queryData.os = '';
+  searchContent.value = '';
+  activeIndex1.value = 0;
+  activeIndex.value = 0;
 
   nextTick(() => {
-    // console.log(activeName.value);
     initData(queryData);
   });
-  // switch (tab.props.label) {
-  //   case '整机':
-  //     getCompatibilityData(queryData);
-  //     break;
-  //   case '板卡':
-  //     getDriverData(queryData);
-  //     break;
-  //   case '开源软件':
-  //     getSoftwareData(softWareQueryData);
-  //     break;
-  //   case '商业软件':
-  //     getBusinessSoftwareData(BusinessSoftWareQueryData);
-  //     break;
-  // }
 };
 
 const initData = (params: CveQuery) => {
@@ -134,11 +128,13 @@ const initData = (params: CveQuery) => {
 const tagClick = (i: number, item: string) => {
   activeIndex.value = i;
   queryData.os = item === '全部' ? '' : item;
+  initData(queryData);
 };
 
 const optionTagClick = (i: number, item: string) => {
   activeIndex1.value = i;
   queryData.architecture = item === '全部' ? '' : item;
+  initData(queryData);
 };
 
 const handleSizeChange = (val: number) => {
@@ -153,6 +149,7 @@ const handleCurrentChange = (val: number) => {
 
 function searchValchange() {
   queryData.keyword = searchContent.value;
+  initData(queryData);
 }
 
 onMounted(() => {
@@ -168,10 +165,6 @@ onMounted(() => {
     });
   });
 });
-
-// watch(queryData, () => {
-//   getCompatibilityData(queryData);
-// });
 </script>
 
 <template>
@@ -227,37 +220,57 @@ onMounted(() => {
           >
           </OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
-            prop="hardDiskDrive"
+            :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.VENDOR"
+            prop="hardwareFactory"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.MODEL"
+            prop="hardwareModel"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.HARDWARE_DETAIL.LABELS.CPU"
+            prop="cpu"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
             prop="osVersion"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
-            prop="biosUefi"
+            :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE"
+            prop="certificationTime"
           ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
-            prop="updateTime"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
-            prop="date"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
+
+          <!-- <OTableColumn
+            :label="
+              i18n.compatibility.HARDWARE_TABLE_COLUMN
+                .COMPATIBILITY_CONFIGURATION
+            "
             prop="hardwareFactory"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
+          ></OTableColumn> -->
+          <el-table-column
+            :label="
+              i18n.compatibility.HARDWARE_TABLE_COLUMN
+                .COMPATIBILITY_CONFIGURATION
+            "
+          >
+            <template #default>
+              <span>{{
+                i18n.compatibility.HARDWARE_TABLE_COLUMN
+                  .COMPATIBILITY_CONFIGURATION2
+              }}</span>
+            </template>
+          </el-table-column>
+          <!-- <OTableColumn
+            :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.REFERRENCE"
             prop="hardwareModel"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
-            prop="ram"
-          ></OTableColumn>
+          ></OTableColumn> -->
+          <el-table-column
+            :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.REFERRENCE"
+          >
+            <template #default>
+              <span>Link</span>
+            </template>
+          </el-table-column>
         </OTable>
       </div>
     </OTabPane>
@@ -377,42 +390,43 @@ onMounted(() => {
         </OCard>
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
+            :label="
+              i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARE_TABLE_COLUMN
+            "
             prop="arch"
             width="160"
           >
           </OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
-            prop="hardDiskDrive"
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARETYPE"
+            prop="group"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
-            prop="osVersion"
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARENAME"
+            prop="softwareName"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
-            prop="biosUefi"
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.VERSION"
+            prop="version"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
-            prop="updateTime"
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES"
+            prop="property"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
-            prop="date"
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM"
+            prop="os"
           ></OTableColumn>
+          <el-table-column
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK"
+          >
+            <template #default>
+              <a href="#" target="_blank">link</a>
+            </template>
+          </el-table-column>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
-            prop="hardwareFactory"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
-            prop="hardwareModel"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
-            prop="ram"
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.PUBLICKLICENSE"
+            prop="license"
           ></OTableColumn>
         </OTable>
       </div>
@@ -455,42 +469,42 @@ onMounted(() => {
         </OCard>
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
-            prop="architecture"
+            :label="
+              i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SOFTWARENAME
+            "
+            prop="productName"
             width="160"
           >
           </OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
-            prop="hardDiskDrive"
+            :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VERSION"
+            prop="productVersion"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
-            prop="osVersion"
+            :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VENDOR"
+            prop="companyName"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
-            prop="biosUefi"
+            :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SYSTEM"
+            prop="osName"
           ></OTableColumn>
+          <el-table-column
+            :label="
+              i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SERVER_NAME
+            "
+          >
+            <!-- <template #default="scope">
+              <p v-if="scope.row.platformTypeAndServerModel.length">
+                {{ scope.row.platformTypeAndServerModel[0].serverTypes[0] }}
+              </p>
+            </template> -->
+          </el-table-column>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
-            prop="updateTime"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
-            prop="date"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
-            prop="hardwareFactory"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
-            prop="hardwareModel"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
-            prop="ram"
+            :label="
+              i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN
+                .TESTING_ORGANIZATION
+            "
+            prop="testOrganization"
           ></OTableColumn>
         </OTable>
       </div>
