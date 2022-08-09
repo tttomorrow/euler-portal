@@ -5,8 +5,8 @@ import 'aos/dist/aos.css';
 import Layout from '@/App.vue';
 import NotFound from '@/NotFound.vue';
 
-import OpenDesign from 'opendesign';
 import ElementPlus from 'element-plus';
+import OpenDesign from 'opendesign';
 
 import '@/shared/styles/element-plus/index.scss';
 import '@/shared/styles/index.scss';

@@ -53,7 +53,7 @@ const isShow = ref(true);
 const navActive = ref('');
 
 const toggleSubDebounced = debounce(
-  function (item: NavItem | null) {
+  (item: NavItem | null) => {
     if (item === null) {
       navActive.value = '';
     } else {
@@ -61,7 +61,7 @@ const toggleSubDebounced = debounce(
       isShow.value = true;
     }
   },
-  300,
+  100,
   {
     trailing: true,
   }
@@ -103,6 +103,7 @@ const toggleSubDebounced = debounce(
 <style lang="scss" scoped>
 .o-nav {
   height: 100%;
+  position: relative;
   .o-nav-list {
     height: 100%;
     padding: 0;
@@ -180,6 +181,17 @@ const toggleSubDebounced = debounce(
         }
       }
     }
+  }
+  &-line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    transition: all 0.3s ease-in-out;
+    display: block;
+    z-index: 9;
+    background: var(--o-color-brand);
   }
 }
 </style>
