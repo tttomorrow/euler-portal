@@ -18,8 +18,6 @@ export default defineComponent({
       'with-prefix': slots.prefixIcon,
       'with-suffix': slots.suffix,
       animation: animation.value,
-      light: theme.value === 'light',
-      dark: theme.value === '',
       'is-disabled': disabled.value,
     }));
 

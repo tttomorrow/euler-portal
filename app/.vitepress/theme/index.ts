@@ -6,10 +6,9 @@ import NotFound from '@/NotFound.vue';
 
 import OpenDesign from 'opendesign';
 import ElementPlus from 'element-plus';
-import '@/shared/styles/index.scss';
-import '@/shared/styles/element-plus/index.scss';
 
-import { isBrowser } from '@/shared/utils';
+import '@/shared/styles/element-plus/index.scss';
+import '@/shared/styles/index.scss';
 
 export default {
   Layout,
