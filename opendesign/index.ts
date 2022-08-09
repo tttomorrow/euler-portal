@@ -2,6 +2,7 @@ import type { App } from 'vue';
 
 import { Button } from './button';
 import { Radio, RadioGroup } from './radio';
+import { Checkbox } from './checkbox';
 import { Select, Option } from './select';
 
 import { Icon } from './icon';
@@ -21,6 +22,7 @@ const components = [
   Button,
   Radio,
   RadioGroup,
+  Checkbox,
   Select,
   Option,
   Icon,
