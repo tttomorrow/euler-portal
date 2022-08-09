@@ -7,7 +7,7 @@ export default defineComponent({
   props: buttonProps,
   emits: ['click'],
   setup(props: ButtonProps, { emit, slots }) {
-    const { size, type, status, disabled, animation, theme, nativeType } =
+    const { size, type, status, disabled, animation, nativeType } =
       toRefs(props);
 
     const classNames = computed(() => ({

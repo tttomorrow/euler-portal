@@ -504,7 +504,7 @@ const isShowSearchResult = ref(false);
   background: rgba(0, 0, 0, 0.4);
   top: 48px;
   height: calc(100% - 48px);
-
+  z-index: 9;
   @media screen and (min-width: 1100px) {
     display: none;
   }
@@ -582,15 +582,6 @@ const isShowSearchResult = ref(false);
     .mobile-tools {
       padding: 0 var(--o-spacing-h5);
       margin-bottom: 24px;
-    }
-    .el-switch {
-      &__label {
-        color: var(--o-color-text3) !important;
-      }
-      &__label.is-active {
-        color: var(--o-color-text2) !important;
-        font-weight: 600;
-      }
     }
   }
   &-content {

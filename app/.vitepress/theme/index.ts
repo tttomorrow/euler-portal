@@ -8,6 +8,7 @@ import OpenDesign from 'opendesign';
 import Layout from '@/App.vue';
 import NotFound from '@/NotFound.vue';
 
+
 import '@/shared/styles/element-plus/index.scss';
 import '@/shared/styles/index.scss';
 
