@@ -1,4 +1,4 @@
-import data from './download';
+import data from '../../data/download/download';
 export default {
   RELEASE_DESC: '发行说明',
   SERVER_IMAGE: '服务器镜像',

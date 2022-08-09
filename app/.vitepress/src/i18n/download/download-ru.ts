@@ -1,4 +1,4 @@
-import data from './download';
+import data from '../../data/download/download';
 export default {
   RELEASE_DESC: 'Описание релиза',
   INSTALL_GUIDENCE: 'Руководство по установке',
