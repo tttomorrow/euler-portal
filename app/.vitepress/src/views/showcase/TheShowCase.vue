@@ -124,20 +124,6 @@ function searchCase() {
   activeIndex.value = 0;
   setCurrentCaseListAll();
 }
-// 根据案例类型设置图片
-function setImg(type: string) {
-  if (type === '金融') {
-    return '/img/showcase/others.png';
-  } else if (type === '运营商') {
-    return '/img/showcase/provider.png';
-  } else if (type === '能源') {
-    return '/img/showcase/energy.png';
-  } else if (type === '物流') {
-    return '/img/showcase/logistics.png';
-  } else if (type === '其他') {
-    return '/img/showcase/others.png';
-  }
-}
 // 根据跳转时url携带的参数显示筛选内容
 function getUrlParam() {
   const industry: any = decodeURI(window.location.href.split('=')[1]);
@@ -239,7 +225,7 @@ onMounted(() => {
           </a>
         </div>
         <div class="card-type-img">
-          <img :src="setImg(item.industry)" alt="" />
+          <img :src="item.img" alt="" />
         </div>
       </OCard>
     </div>
