@@ -24,15 +24,13 @@ const i18n = useI18n();
       <OTabPane :label="salonData.DETAIL_NEWS" name="first"></OTabPane>
       <OTabPane :label="salonData.DETAIL_REVIEW" name="second"></OTabPane>
     </OTabs>
-    <div>
-
-    </div>
+    <div></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .salon {
-  &-tabs{
+  &-tabs {
     background-color: var(--o-color-bg);
     text-align: center;
   }

@@ -7,10 +7,10 @@ export default {
     DETAIL_REVIEW: 'Review',
     MORE_VIDEO: 'More video',
     DETAIL_MEET: 'How to attend the event',
-    DETAIL_NEWS:'Latest Activity',
+    DETAIL_NEWS: 'Latest Activity',
     DETAIL_QRCODE_TEXT: 'Scan the QR code',
     INSIDENAME: 'CONNECT',
     DEFAULT_IMG: '/img/meetups/default-address.png',
-    MEETUPS_DATA: salon.en.MEETUPS_LIST
-},
+    MEETUPS_DATA: salon.en.MEETUPS_LIST,
+  },
 };
