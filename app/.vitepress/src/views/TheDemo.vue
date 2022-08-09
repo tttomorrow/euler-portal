@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
-import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
@@ -69,6 +68,8 @@ const radioValue = ref('');
 const handleRadioChange = (val: string) => {
   radioValue.value = val;
 };
+
+const switchVal = ref(false);
 </script>
 
 <template>
@@ -130,7 +131,16 @@ const handleRadioChange = (val: string) => {
         </OButton>
       </div>
     </div>
-
+    <div class="demo-box">
+      <h4>OSwitch</h4>
+      <OSwitch
+        v-model="switchVal"
+        size="large"
+        active-text="是"
+        inactive-text="否"
+        active-color="#002fa7"
+      />
+    </div>
     <div class="demo-box">
       <h4>ODrawer</h4>
       <OButton type="primary" @click="toggleDrawer">toggle drawer</OButton>

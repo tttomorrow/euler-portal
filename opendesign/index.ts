@@ -16,6 +16,7 @@ import { Table, TableColumn } from './table';
 import { Timeline } from './timeline';
 import { Search } from './search';
 import { Drawer } from './drawer';
+import { Switch } from './switch';
 import { Collapse, CollapseItem } from './collapse';
 
 const components = [
@@ -38,6 +39,7 @@ const components = [
   Tree,
   Search,
   Drawer,
+  Switch,
   Collapse,
   CollapseItem,
 ];

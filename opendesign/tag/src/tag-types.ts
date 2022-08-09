@@ -10,7 +10,7 @@ export const tagProps = {
   },
   type: {
     type: String as PropType<TagType>,
-    default: 'text',
+    default: 'outline',
   },
   checked: {
     type: Boolean,

@@ -210,13 +210,12 @@ onMounted(() => {
         </OTag>
       </TagFilter>
       <TagFilter label="LTS" class="download-filter-manufacturer">
-        <el-switch
+        <OSwitch
           v-model="activeLTS"
           active-color="var(--o-color-brand)"
           inactive-color="var(--o-color-bg3)"
           @change="handleLSTClick"
-        >
-        </el-switch>
+        />
       </TagFilter>
     </OCard>
     <!-- 移动筛选 -->
@@ -305,13 +304,12 @@ onMounted(() => {
           {{ item }}
         </OTag>
         <div class="filter-drawer-title">LTS</div>
-        <el-switch
+        <OSwitch
           v-model="activeLTS"
           active-color="var(--o-color-brand)"
           inactive-color="var(--o-color-bg3)"
           @change="handleLSTClick"
-        >
-        </el-switch>
+        />
         <div class="filter-drawer-button">
           <!-- <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
             i18n.download.BTNRESET
