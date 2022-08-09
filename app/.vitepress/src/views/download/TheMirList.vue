@@ -342,61 +342,63 @@ onMounted(async () => {
   }
 }
 .mirror-list {
-  :deep(.mirror-list-area) {
+  :deep(.o-table) {
+    .mirror-list-area {
+      .mirror-list-row {
+        line-height: 72px;
+        border: none;
+        a {
+          font-size: var(--o-font-size-h7);
+          line-height: var(--o-line-height-h7);
+          font-weight: 800;
+          color: var(--o-color-text2);
+        }
+      }
+    }
+    .mirror-list-header {
+      background: var(--o-color-bg3);
+      font-size: var(--o-font-size-h8);
+      font-weight: 400;
+      color: var(--o-color-text2);
+      line-height: 54px;
+      padding: 0 !important;
+      .cell {
+        padding: 0 var(--o-spacing-h6) 0 0;
+      }
+
+      &:first-child {
+        .cell {
+          padding-left: var(--o-spacing-h2);
+        }
+      }
+
+      &:last-child {
+        .cell {
+          padding-right: var(--o-spacing-h2);
+        }
+      }
+    }
+
     .mirror-list-row {
-      line-height: 72px;
-      border: none;
-      a {
-        font-size: var(--o-font-size-h7);
-        line-height: var(--o-line-height-h7);
-        font-weight: 800;
-        color: var(--o-color-text2);
-      }
-    }
-  }
-  :deep(.mirror-list-header) {
-    background: var(--o-color-bg3);
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    line-height: 54px;
-    padding: 0 !important;
-    .cell {
-      padding: 0 var(--o-spacing-h6) 0 0;
-    }
-
-    &:first-child {
+      font-size: var(--o-font-size-h8);
+      font-weight: 400;
+      color: var(--o-color-text2);
+      height: 54px;
+      border-bottom: 1px var(--o-color-division) solid;
       .cell {
-        padding-left: var(--o-spacing-h2);
+        padding-left: 0px;
+        padding-right: var(--o-spacing-h6);
       }
-    }
 
-    &:last-child {
-      .cell {
-        padding-right: var(--o-spacing-h2);
+      &:first-child {
+        .cell {
+          padding-left: var(--o-spacing-h2);
+        }
       }
-    }
-  }
-
-  :deep(.mirror-list-row) {
-    font-size: var(--o-font-size-h8);
-    font-weight: 400;
-    color: var(--o-color-text2);
-    height: 54px;
-    border-bottom: 1px var(--o-color-division) solid;
-    .cell {
-      padding-left: 0px;
-      padding-right: var(--o-spacing-h6);
-    }
-
-    &:first-child {
-      .cell {
-        padding-left: var(--o-spacing-h2);
-      }
-    }
-    &:last-child {
-      .cell {
-        padding-right: var(--o-spacing-h2);
+      &:last-child {
+        .cell {
+          padding-right: var(--o-spacing-h2);
+        }
       }
     }
   }
