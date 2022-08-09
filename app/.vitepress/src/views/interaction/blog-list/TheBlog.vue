@@ -4,7 +4,7 @@ import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import TagFilter from '@/components/TagFilter.vue';
+// import TagFilter from '@/components/TagFilter.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
 import OScreen from '@/components/OScreen.vue';

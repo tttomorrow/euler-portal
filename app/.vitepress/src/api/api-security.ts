@@ -8,7 +8,8 @@ import { cveQuery, selectParams } from '@/shared/@types/type-support.ts';
  */
 export function getSecurityList(params: cveQuery) {
   // const url = '/api-cve/cve-security-notice-server/securitynotice/findAll';
-  const url = '/api-cve/cve-security-notice-server/securitynotice/findAll';
+  const url =
+    '/api-euler/api-cve/cve-security-notice-server/securitynotice/findAll';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
 
@@ -17,7 +18,8 @@ export function getSecurityList(params: cveQuery) {
  * @name getCveList
  */
 export function getCveList(pages: cveQuery) {
-  const url = '/api-cve/cve-security-notice-server/cvedatabase/findAll';
+  const url =
+    '/api-euler/api-cve/cve-security-notice-server/cvedatabase/findAll';
   return request.post(url, pages).then((res: AxiosResponse) => res.data);
 }
 
@@ -26,7 +28,7 @@ export function getCveList(pages: cveQuery) {
  * @name getSecurityDetail
  */
 export function getSecurityDetail(params: any) {
-  const url = `/api-cve/cve-security-notice-server/securitynotice/getBySecurityNoticeNo?securityNoticeNo=${params.securityNoticeNo}`;
+  const url = `/api-euler/api-cve/cve-security-notice-server/securitynotice/getBySecurityNoticeNo?securityNoticeNo=${params.securityNoticeNo}`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 
@@ -35,7 +37,8 @@ export function getSecurityDetail(params: any) {
  * @name getCompatibilityList
  */
 export function getCompatibilityList(params: cveQuery) {
-  const url = '/api-cve/cve-security-notice-server/hardwarecomp/findAll';
+  const url =
+    '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/findAll';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
 
@@ -45,7 +48,7 @@ export function getCompatibilityList(params: cveQuery) {
  */
 export function driverArchitectureOptions(params: selectParams) {
   const url =
-    '/api-cve/cve-security-notice-server/hardwarecomp/getArchitecture';
+    '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getArchitecture';
   return request.get(url, params).then((res: AxiosResponse) => res.data);
 }
 
@@ -54,7 +57,8 @@ export function driverArchitectureOptions(params: selectParams) {
  * @name getCompatibilityList
  */
 export function driverOSOptions(params: selectParams) {
-  const url = '/api-cve/cve-security-notice-server/hardwarecomp/getOS';
+  const url =
+    '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getOS';
   return request.get(url, params).then((res: AxiosResponse) => res.data);
 }
 
@@ -63,7 +67,8 @@ export function driverOSOptions(params: selectParams) {
  * @name getCompatibilityList
  */
 export function getDriverList(params: cveQuery) {
-  const url = '/api-cve/cve-security-notice-server/drivercomp/findAll';
+  const url =
+    '/api-euler/api-cve/cve-security-notice-server/drivercomp/findAll';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
 
