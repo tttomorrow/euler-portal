@@ -305,96 +305,18 @@ const searchInput = ref<string>('');
   }
 }
 .header-search {
-  animation-duration: 1s;
-  animation-name: searchbox;
   position: relative;
-  top: 181px;
   width: 900px;
   margin-left: var(--o-spacing-h2);
-  height: 400px;
+  @media (max-width: 1100px) {
+    :deep(.o-search) {
+      --o-search-height: 28px;
+    }
+  }
   &-box {
     .close {
       cursor: pointer;
       color: var(--o-color-text2);
-    }
-  }
-  &-list {
-    height: 360px;
-    margin-top: 22px;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0px 10px 32px 0px rgba(45, 47, 51, 0.18);
-    backdrop-filter: blur(5px);
-    padding: var(--o-spacing-h3);
-    &-history {
-      min-height: 225px;
-      height: auto;
-      &-title {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        p {
-          font-size: var(--o-font-size-tip);
-          line-height: var(--o-line-height-tip);
-        }
-        .rightside {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          cursor: pointer;
-          .icon {
-            font-size: var(--o-font-size-h5);
-          }
-        }
-      }
-      &-body {
-        li {
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-          padding: var(--o-spacing-h8) 0;
-          cursor: pointer;
-        }
-        li:hover {
-          background-color: #f7f8fa;
-        }
-      }
-    }
-    &-hot {
-      height: auto;
-      &-title {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        p {
-          font-size: var(--o-font-size-tip);
-          line-height: var(--o-line-height-tip);
-        }
-        .rightside {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          cursor: pointer;
-          .icon {
-            font-size: var(--o-font-size-h5);
-          }
-        }
-      }
-      &-body {
-        display: flex;
-        flex-direction: row;
-        ul {
-          margin-top: var(--o-spacing-h5);
-        }
-        li {
-          float: left;
-          margin-right: var(--o-spacing-h4);
-          cursor: pointer;
-        }
-      }
-    }
-    &-result {
-      height: auto;
     }
   }
 }
