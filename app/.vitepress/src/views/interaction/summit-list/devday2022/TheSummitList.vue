@@ -6,30 +6,38 @@ import TheSummitScheduler from './TheSummitScheduler.vue';
 import TheSummitVideo from './TheSummitVideo.vue';
 
 import banner from '@/assets/banner-secondary.png';
-import summit from '@/assets/interaction/summit.png';
-import NiGuangNan from '@/assets/summit-guests/niguangnan.png';
-import SunWenLong from '@/assets/summit-guests/sunwenlong.png';
-import JiangDaYong from '@/assets/summit-guests/jiangdayong.png';
-import WuYanJun from '@/assets/summit-guests/wuyanjun.png';
-import HanNaiPing from '@/assets/summit-guests/hannaiping.png';
-import HuXinWei from '@/assets/summit-guests/huxinwei.png';
-import QiuChengFeng from '@/assets/summit-guests/qiuchengfeng.png';
-import GuangXiaoMing from '@/assets/summit-guests/guangxiaoming.png';
-import huawei from '@/assets/interaction/huawei.png';
-import qilin from '@/assets/interaction/qilin.png';
-import suse from '@/assets/interaction/suse.png';
-import tongxin from '@/assets/interaction/tongxin.png';
-import xinan from '@/assets/interaction/xinan.png';
-import puhua from '@/assets/interaction/puhua.png';
-import intel from '@/assets/interaction/intel.png';
-import isoft from '@/assets/interaction/isoft.png';
-import turbolinux from '@/assets/interaction/turbolinux.png';
-import zhongke from '@/assets/interaction/zhongke.png';
-import iscas from '@/assets/interaction/iscas.png';
-import phytium from '@/assets/interaction/phytium.png';
-import tongtech from '@/assets/interaction/tongtech.png';
-import fusion from '@/assets/interaction/fusion.png';
-import yunhe from '@/assets/interaction/yunhe.png';
+import summit from '@/assets/category/summit/header.png';
+import NiGuangNan from '@/assets/category/summit/guests/niguangnan.png';
+import SunWenLong from '@/assets/category/summit/guests/sunwenlong.png';
+import JiangDaYong from '@/assets/category/summit/guests/jiangdayong.png';
+import WuYanJun from '@/assets/category/summit/guests/wuyanjun.png';
+import HanNaiPing from '@/assets/category/summit/guests/hannaiping.png';
+import HuXinWei from '@/assets/category/summit/guests/huxinwei.png';
+import QiuChengFeng from '@/assets/category/summit/guests/qiuchengfeng.png';
+import GuangXiaoMing from '@/assets/category/summit/guests/guangxiaoming.png';
+import LiKang from '@/assets/category/summit/guests/likang.png';
+import ZhongXin from '@/assets/category/summit/guests/zhongxin.png';
+import ZhouHaiPeng from '@/assets/category/summit/guests/zhouhaipeng.png';
+import LiuKai from '@/assets/category/summit/guests/liukai.png';
+import XiongWei from '@/assets/category/summit/guests/xiongwei.png';
+import CaoWenYuan from '@/assets/category/summit/guests/caowenyuan.png';
+import ChenHui from '@/assets/category/summit/guests/chenhui.png';
+import ChenQiang from '@/assets/category/summit/guests/chenqiang.png';
+import huawei from '@/assets/category/summit/cooperate/huawei.png';
+import qilin from '@/assets/category/summit/cooperate/qilin.png';
+import suse from '@/assets/category/summit/cooperate/suse.png';
+import tongxin from '@/assets/category/summit/cooperate/tongxin.png';
+import xinan from '@/assets/category/summit/cooperate/xinan.png';
+import puhua from '@/assets/category/summit/cooperate/puhua.png';
+import intel from '@/assets/category/summit/cooperate/intel.png';
+import isoft from '@/assets/category/summit/cooperate/isoft.png';
+import turbolinux from '@/assets/category/summit/cooperate/turbolinux.png';
+import zhongke from '@/assets/category/summit/cooperate/zhongke.png';
+import iscas from '@/assets/category/summit/cooperate/iscas.png';
+import phytium from '@/assets/category/summit/cooperate/phytium.png';
+import tongtech from '@/assets/category/summit/cooperate/tongtech.png';
+import fusion from '@/assets/category/summit/cooperate/fusion.png';
+import yunhe from '@/assets/category/summit/cooperate/yunhe.png';
 
 const i18n = useI18n();
 
@@ -73,6 +81,46 @@ const lecturerList = [
     img: GuangXiaoMing,
     name: '广小明',
     position: ['天翼云科技有限公司', '副总经理兼首席技术官'],
+  },
+  {
+    img: LiKang,
+    name: '李康',
+    position: ['中国移动', '在线营销服务中心副总经理'],
+  },
+  {
+    img: ZhongXin,
+    name: '钟忻',
+    position: ['联通云CTO'],
+  },
+  {
+    img: ZhouHaiPeng,
+    name: '周海鹏',
+    position: ['中信IT资深架构师'],
+  },
+  {
+    img: LiuKai,
+    name: '刘凯',
+    position: ['上交所技术公司', '下一代交易研发部副总经理'],
+  },
+  {
+    img: XiongWei,
+    name: '熊伟',
+    position: ['openEuler社区技术委员会委员'],
+  },
+  {
+    img: CaoWenYuan,
+    name: '曹文渊',
+    position: ['统信软件研发工程师'],
+  },
+  {
+    img: ChenHui,
+    name: '陈辉',
+    position: ['华为调度架构师'],
+  },
+  {
+    img: ChenQiang,
+    name: '陈强',
+    position: ['华为大数据技术专家'],
   },
 ];
 const cooperateList = [
@@ -122,20 +170,6 @@ const sponsorList = [
   },
   {
     img: yunhe,
-  },
-];
-const reviewList = [
-  {
-    title: 'openEuler Summit 2021',
-  },
-  {
-    title: 'openEuler Developer Day 2021',
-  },
-  {
-    title: 'openEuler Summit 2020',
-  },
-  {
-    title: 'openEuler Developer Day 2020',
   },
 ];
 </script>
@@ -194,8 +228,10 @@ const reviewList = [
             <p>主办方</p>
           </div>
           <div class="foot-construction-imglist">
-            <a><img src="@/assets/interaction/openatom.png" /></a>
-            <a><img src="@/assets/interaction/openEulerlogo.png" /></a>
+            <a><img src="@/assets/category/summit/cooperate/openatom.png" /></a>
+            <a
+              ><img src="@/assets/category/summit/cooperate/openEulerlogo.png"
+            /></a>
           </div>
           <div class="foot-construction-company">
             <p>联办单位</p>
@@ -217,14 +253,16 @@ const reviewList = [
             <p class="headline">RARTNERS</p>
             <p class="subtitle">精彩回顾</p>
             <div class="foot-construction-review-list">
-              <div
-                v-for="item in reviewList"
-                :key="item.title"
+              <a
+                v-for="item in i18n.summit.REVIEWLIST"
+                :key="item.TITLE"
+                :href="item.ADDRESS"
+                target="_blank"
                 class="foot-construction-review-list-item"
               >
-                <img src="@/assets/interaction/icon-live.png" />
-                <p>{{ item.title }}</p>
-              </div>
+                <img src="@/assets/category/summit/icon-live.png" />
+                <p>{{ item.TITLE }}</p>
+              </a>
             </div>
           </div>
         </div>
@@ -330,8 +368,13 @@ const reviewList = [
         grid-row-gap: var(--o-spacing-h4);
         align-items: center;
         justify-content: center;
+        @media (max-width: 1080px) {
+          grid-template-columns: 1fr 1fr;
+        }
         @media (max-width: 780px) {
           grid-template-columns: 1fr;
+          width: 320px;
+          margin: 0 auto;
         }
         &-item {
           cursor: pointer;
@@ -345,6 +388,9 @@ const reviewList = [
           }
           p {
             margin-top: var(--o-spacing-h4);
+          }
+          @media (max-width: 1280px) {
+            width: 350px;
           }
           @media (max-width: 780px) {
             width: 354px;

@@ -60,7 +60,7 @@ class="app-header"
   <div
     v-for="(item,index) in tableData"
     :key="item.SigName"
-    :class="['mo-card-item', 'mo-card-item' + index ]">
+    :class="['mo-card-item', index === 1 ? 'mo-card-middle' : 'mo-card-sides' ]">
     <div class="mo-card-item-text">
       <p class="text-title">角色：</p>
       <p class="text-content">{{ item.SigName }}</p>
@@ -211,10 +211,7 @@ class="app-header"
         }
       }
     }
-    &-item0 {
-      background-color: var(--o-color-bg2);
-    }
-    &-item2 {
+    &-sides {
       background-color: var(--o-color-bg2);
     }
   }

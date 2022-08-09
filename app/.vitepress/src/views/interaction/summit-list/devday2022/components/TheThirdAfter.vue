@@ -86,12 +86,25 @@ const isMobile = computed(() => {
     &-box {
       width: 100%;
       padding-left: var(--o-spacing-h3);
+      @media (max-width: 780px) {
+        padding: 0;
+      }
       .transform-box {
+        @media (max-width: 780px) {
+          display: flex;
+          align-items: flex-start;
+          width: 100%;
+        }
         .card-list {
           display: flex;
           margin: 0 var(--o-spacing-h7);
           flex-direction: row;
           width: 100%;
+          @media (max-width: 780px) {
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          }
           .section {
             display: flex;
             justify-content: center;
@@ -102,12 +115,19 @@ const isMobile = computed(() => {
             background-color: var(--o-color-brand);
             height: 48px;
             box-shadow: var(--o-shadow-base);
+            @media (max-width: 780px) {
+              font-size: var(--o-font-size-tip);
+              margin-bottom: var(--o-spacing-h5);
+            }
           }
           li {
             margin-right: var(--o-spacing-h5);
+            @media (max-width: 780px) {
+              margin: 0;
+              width: 315px;
+            }
           }
           &-item {
-            display: block;
             width: 218px;
             height: 92px;
             cursor: pointer;
@@ -121,6 +141,12 @@ const isMobile = computed(() => {
             margin-bottom: var(--o-spacing-h4);
             background-color: var(--o-color-bg);
             box-shadow: var(--o-shadow-base);
+            @media (max-width: 780px) {
+              width: 100%;
+              height: fit-content;
+              padding: var(--o-spacing-h6);
+              flex-direction: column;
+            }
             p {
               font-size: var(--o-font-size-h7);
               color: var(--o-color-text2);
@@ -130,6 +156,18 @@ const isMobile = computed(() => {
               -webkit-line-clamp: 3;
               -webkit-box-orient: vertical;
               overflow: hidden;
+              @media (max-width: 780px) {
+                display: block;
+                text-align: left;
+                font-size: var(--o-font-size-tip);
+                line-height: var(--o-line-height-h8);
+              }
+            }
+            &-time {
+              @media (max-width: 780px) {
+                display: block;
+                text-align: left;
+              }
             }
           }
           &-none {
@@ -137,6 +175,9 @@ const isMobile = computed(() => {
             width: 218px;
             height: 92px;
             margin-bottom: var(--o-spacing-h4);
+            @media (max-width: 780px) {
+              display: none;
+            }
           }
         }
       }

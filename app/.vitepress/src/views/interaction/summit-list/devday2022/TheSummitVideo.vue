@@ -83,6 +83,7 @@ const tabLiveRoom = (src: string, index: number): void => {
         cursor: pointer;
         background-color: var(--o-color-bg);
         box-shadow: var(--o-shadow-base);
+        margin-bottom: var(--o-spacing-h7);
         p {
           color: var(--o-color-brand);
           font-size: var(--o-font-size-h7);

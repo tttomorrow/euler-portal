@@ -1293,4 +1293,24 @@ export default {
       },
     },
   },
+  REVIEWLIST: [
+    {
+      TITLE: 'openEuler Summit 2021',
+      ADDRESS:
+        'https://www.openeuler.org/zh/interaction/summit-list/summit2021/',
+    },
+    {
+      TITLE: 'openEuler Developer Day 2021',
+      ADDRESS:
+        'https://www.openeuler.org/zh/interaction/summit-list/devday2021/',
+    },
+    {
+      TITLE: 'openEuler Summit 2020',
+      ADDRESS: 'https://www.openeuler.org/zh/interaction/summit-list/',
+    },
+    {
+      TITLE: 'openEuler Developer Day 2020',
+      ADDRESS: 'https://www.openeuler.org/zh/interaction/summit-list/list/',
+    },
+  ],
 };
