@@ -1,25 +1,105 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { useRouter } from 'vitepress';
+import { computed, ref, onMounted, reactive } from 'vue';
+import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
 
-const router = useRouter();
+import { getSortData } from '@/api/api-search';
 
-const currentPage1 = ref(5);
-const pageSize4 = ref(10);
-const total = ref(200);
+interface NewsData {
+  articleName: string;
+  author: any;
+  banner: string;
+  category: string;
+  date: string;
+  deleteType: string;
+  lang: string;
+  path: string;
+  summary: string;
+  tags: string[];
+  textContent: string;
+  title: string;
+  type: string;
+}
+
+const router = useRouter();
+const { lang } = useData();
+
+const sortParams = reactive({
+  page: 1,
+  pageSize: 9,
+  lang: lang.value,
+  category: 'news',
+});
+// 新闻列表数据
+const newsCardData = ref<NewsData[]>([]);
+// 分页数据
+const paginationData = ref({
+  total: 0,
+  pagesize: 9,
+  currentpage: 0,
+});
 
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
 
 const toNewsContent = (path: string) => {
   const path1 = router.route.path.substring(0, 3);
-  const path2 = 'news';
-  router.go(`${path1}/${path2}/${path}`);
+  router.go(`${path1}/${path}`);
+};
+
+onMounted(() => {
+  getSortData(sortParams).then((res) => {
+    paginationData.value.total = res.obj.count;
+    paginationData.value.currentpage = res.obj.page;
+    paginationData.value.pagesize = res.obj.pageSize;
+    newsCardData.value = res.obj.records;
+    for (let i = 0; i < newsCardData.value.length; i++) {
+      if (typeof newsCardData.value[i].author === 'string') {
+        newsCardData.value[i].author = [newsCardData.value[i].author];
+      }
+      newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
+    }
+  });
+});
+
+const currentChange = (val: number) => {
+  const params = {
+    category: 'blog',
+    lang: lang.value,
+    page: val,
+    pageSize: paginationData.value.pagesize,
+  };
+  getSortData(params).then((res) => {
+    newsCardData.value = res.obj.records;
+    for (let i = 0; i < newsCardData.value.length; i++) {
+      if (typeof newsCardData.value[i].author === 'string') {
+        newsCardData.value[i].author = [newsCardData.value[i].author];
+      }
+      newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
+    }
+  });
+};
+
+const sizeChange = (val: number) => {
+  const params = {
+    category: 'blog',
+    lang: lang.value,
+    page: paginationData.value.currentpage,
+    pageSize: val,
+  };
+  getSortData(params).then((res) => {
+    newsCardData.value = res.obj.records;
+    for (let i = 0; i < newsCardData.value.length; i++) {
+      if (typeof newsCardData.value[i].author === 'string') {
+        newsCardData.value[i].author = [newsCardData.value[i].author];
+      }
+      newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
+    }
+  });
 };
 </script>
 
@@ -32,11 +112,7 @@ const toNewsContent = (path: string) => {
       :illustration="BannerImg2"
     />
     <div class="news-list">
-      <OCard
-        v-for="item in userCaseData.NEWSDATALIST"
-        :key="item"
-        class="news-list-item"
-      >
+      <OCard v-for="item in newsCardData" :key="item" class="news-list-item">
         <div class="news-img">
           <img :src="item.banner" :alt="item.banner" />
         </div>
@@ -57,14 +133,20 @@ const toNewsContent = (path: string) => {
     </div>
     <div class="news-pagination">
       <OPagination
-        v-model:currentPage="currentPage1"
-        v-model:page-size="pageSize4"
-        :page-sizes="[10, 20, 30, 40]"
+        v-model:currentPage="paginationData.currentpage"
+        v-model:page-size="paginationData.pagesize"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
-        :total="total"
+        :total="paginationData.total"
+        :page-sizes="9"
+        @current-change="currentChange"
+        @size-change="sizeChange"
       >
-        <span>5/50</span>
+        <span
+          >{{ paginationData.currentpage }}/{{
+            Math.ceil(paginationData.total / paginationData.pagesize)
+          }}</span
+        >
       </OPagination>
     </div>
   </div>
@@ -109,6 +191,12 @@ const toNewsContent = (path: string) => {
     font-size: var(--o-font-size-h7);
     margin-bottom: var(--o-spacing-h10);
     cursor: pointer;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
   &-time {
     font-size: var(--o-font-size-text);
@@ -117,8 +205,12 @@ const toNewsContent = (path: string) => {
   &-content {
     margin-top: var(--o-spacing-h5);
     margin-bottom: var(--o-spacing-h4);
-    max-height: 80px;
-    overflow-y: scroll;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
   &-pagination {
     margin-bottom: var(--o-spacing-h1);
@@ -138,12 +230,34 @@ const toNewsContent = (path: string) => {
     max-width: 100%;
   }
   .news-img {
-    max-width: 50%;
-    min-width: 50%;
+    max-width: 350px;
+    min-width: 350px;
   }
   :deep(.el-card__body) {
     display: flex;
     flex-direction: row;
+  }
+}
+@media (max-width: 620px) {
+  .news-info {
+    max-width: 350px;
+  }
+  .news-title {
+    line-height: var(--o-line-height-text);
+    font-size: var(--o-font-size-text);
+  }
+  .news-time {
+    line-height: var(--o-line-height-tip);
+    font-size: var(--o-font-size-tip);
+  }
+  .news-content {
+    line-height: var(--o-line-height-tip);
+    font-size: var(--o-font-size-tip);
+  }
+  :deep(.el-card__body) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 @media (max-width: 415px) {
@@ -156,6 +270,7 @@ const toNewsContent = (path: string) => {
   }
   .news-img {
     max-width: 100%;
+    display: block;
   }
   .news-title {
     line-height: var(--o-line-height-text);
