@@ -221,7 +221,13 @@ const changeTabItem = (event: any): void => {
         margin: 0 auto;
       }
       &-body {
+        @media (max-width: 780px) {
+          font-size: var(--o-font-size-tip);
+        }
         .third-morning {
+          @media (max-width: 780px) {
+            margin-top: var(--o-spacing-h5);
+          }
           &-item {
             display: flex;
             align-items: center;
@@ -230,23 +236,63 @@ const changeTabItem = (event: any): void => {
             box-shadow: var(--o-shadow-base);
             margin-bottom: var(--o-spacing-h4);
             padding: var(--o-spacing-h4) var(--o-spacing-h3);
+            @media (max-width: 780px) {
+              padding: 0px;
+              height: initial;
+              flex-direction: column;
+              background-color: var(--o-color-bg2);
+              box-shadow: none;
+            }
+            &-left {
+              @media (max-width: 780px) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 315px;
+                height: 48px;
+                margin: 0 0 var(--o-spacing-h5) 0;
+                background-color: var(--o-color-brand);
+              }
+            }
             &-right {
               margin-left: 400px;
+              @media (max-width: 780px) {
+                width: 315px;
+                padding: var(--o-spacing-h6);
+                margin: 0 0 var(--o-spacing-h4) 0;
+                line-height: var(--o-line-height-h8);
+                color: var(--o-color-text2);
+                background-color: var(--o-color-bg);
+                box-shadow: var(--o-shadow-base);
+              }
               .item-right-text {
                 margin-bottom: var(--o-spacing-h4);
+                @media (max-width: 780px) {
+                  margin: 0;
+                  line-height: var(--o-spacing-h4);
+                  text-align: left;
+                  padding-left: var(--o-spacing-h8);
+                }
               }
               .item-right-speak {
                 display: flex;
                 font-size: var(--o-font-size-h8);
                 .host-guest-item {
                   margin-bottom: var(--o-spacing-h5);
+                  @media (max-width: 780px) {
+                    font-size: var(--o-font-size-tip);
+                  }
                 }
                 .item-box-speak {
                   display: flex;
                   margin-bottom: var(--o-spacing-h5);
+                  @media (max-width: 780px) {
+                    font-size: var(--o-font-size-tip);
+                    margin-bottom: 0;
+                  }
                   &-name {
                     width: 55px;
-                    margin-right: var(--o-spacing-h4);
+                    margin-right: var(--o-spacing-h6);
                   }
                 }
               }

@@ -85,7 +85,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .lecturer-list {
-  margin-top: var(--o-spacing-h2);
+  margin: var(--o-spacing-h2) auto;
   display: grid;
   grid-template-columns: repeat(var(--webColumnsNum), 1fr);
   justify-content: center;

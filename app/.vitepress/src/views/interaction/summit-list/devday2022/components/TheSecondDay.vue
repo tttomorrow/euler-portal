@@ -43,10 +43,13 @@ const changeTabItem = (event: any): void => {
         <p class="second-body-left-item-en">{{ item.EN }}</p>
       </div>
     </div>
-    <div v-show="tabIndex === 0" class="second-body-right">
+    <div class="second-body-right">
       <div class="second-body-right-title">
         <div
-          v-for="item in (secondData as any).TITLE"
+          v-for="item in tabIndex === 0 ?
+          (secondData as any).TITLE : tabIndex === 1 ?
+          (secondData as any).TITLE_AFTERNOON:
+          (secondData as any).TITLE_NIGHT"
           :key="item"
           class="right-title-item"
         >
@@ -55,81 +58,10 @@ const changeTabItem = (event: any): void => {
       </div>
       <div class="second-body-right-box">
         <div
-          v-for="item in (secondData as any).SCHEDULE"
-          :key="item.TITLE.ZH"
-          class="right-box-column"
-        >
-          <div
-            v-for="subItem in item.SCHEDULE_CARD"
-            :key="subItem"
-            class="right-box-column-card"
-          >
-            <div>
-              {{ subItem.TEXT }}
-            </div>
-            <div class="right-box-column-card-right">
-              <div class="dialogue">
-                {{ (secondData as any).RIGHT_TEXT[0] }}
-              </div>
-              <div class="etherpad">
-                {{ (secondData as any).RIGHT_TEXT[1] }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-show="tabIndex === 1" class="second-body-right afternoon">
-      <div class="second-body-right-title">
-        <div
-          v-for="item in (secondData as any)
-                  .TITLE_AFTERNOON"
-          :key="item"
-          class="right-title-item"
-        >
-          {{ item }}
-        </div>
-      </div>
-      <div class="second-body-right-box">
-        <div
-          v-for="item in (secondData as any)
-                  .SCHEDULE_AFTERNOON"
-          :key="item.TITLE.ZH"
-          class="right-box-column"
-        >
-          <div
-            v-for="subItem in item.SCHEDULE_CARD"
-            :key="subItem"
-            class="right-box-column-card"
-          >
-            <div>
-              {{ subItem.TEXT }}
-            </div>
-            <div class="right-box-column-card-right">
-              <div class="dialogue">
-                {{ (secondData as any).RIGHT_TEXT[0] }}
-              </div>
-              <div class="etherpad">
-                {{ (secondData as any).RIGHT_TEXT[1] }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-show="tabIndex === 2" class="second-body-right">
-      <div class="second-body-right-title">
-        <div
-          v-for="item in (secondData as any).TITLE_NIGHT"
-          :key="item"
-          class="right-title-item"
-        >
-          {{ item }}
-        </div>
-      </div>
-      <div class="second-body-right-box">
-        <div
-          v-for="item in (secondData as any).SCHEDULE_NIGHT"
+          v-for="item in tabIndex === 0 ?
+          (secondData as any).SCHEDULE : tabIndex === 1 ?
+          (secondData as any).SCHEDULE_AFTERNOON:
+          (secondData as any).SCHEDULE_NIGHT"
           :key="item"
           class="right-box-column"
         >
@@ -156,77 +88,12 @@ const changeTabItem = (event: any): void => {
   </div>
   <div v-show="isMobile" class="schedule-body-second-body-mo">
     <div class="mo-title">{{ (secondData as any).MO_TITLE }}</div>
-    <div v-show="tabIndex === 0" class="mo-box">
+    <div class="mo-box">
       <div
-        v-for="item in (secondData as any).SCHEDULE"
-        :key="item.TITLE.ZH"
-        class="mo-box-card"
-      >
-        <div class="mo-box-card-title">
-          <h4>{{ item.TITLE.ZH }}</h4>
-          <h4>{{ item.TITLE.EN }}</h4>
-        </div>
-        <div
-          v-for="subItem in item.SCHEDULE_CARD"
-          :key="subItem.TEXT"
-          class="mo-box-card-detail"
-        >
-          <div class="detail-left">
-            <div class="detail-left-text">
-              {{ subItem.TEXT.replace('、', ' ') }}
-            </div>
-            <div class="detail-left-time">
-              {{ subItem.TIME }}
-            </div>
-          </div>
-          <div class="detail-right">
-            <div class="dialogue">
-              {{ (secondData as any).RIGHT_TEXT[0] }}
-            </div>
-            <div class="etherpad">
-              {{ (secondData as any).RIGHT_TEXT[1] }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-show="tabIndex === 1" class="mo-box">
-      <div
-        v-for="item in (secondData as any).SCHEDULE_AFTERNOON"
-        :key="item.TITLE.ZH"
-        class="mo-box-card"
-      >
-        <div class="mo-box-card-title">
-          <h4>{{ item.TITLE.ZH }}</h4>
-          <h4>{{ item.TITLE.EN }}</h4>
-        </div>
-        <div
-          v-for="subItem in item.SCHEDULE_CARD"
-          :key="subItem.TEXT"
-          class="mo-box-card-detail"
-        >
-          <div class="detail-left">
-            <div class="detail-left-text">
-              {{ subItem.TEXT.replace('、', ' ') }}
-            </div>
-            <div class="detail-left-time">
-              {{ subItem.TIME }}
-            </div>
-          </div>
-          <div class="detail-right">
-            <div class="dialogue">
-              {{ (secondData as any).RIGHT_TEXT[0] }}
-            </div>
-            <div class="etherpad">
-              {{ (secondData as any).RIGHT_TEXT[1] }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-show="tabIndex === 2" class="mo-box">
-      <div
-        v-for="item in (secondData as any).SCHEDULE_NIGHT"
+        v-for="item in tabIndex === 0 ?
+          (secondData as any).SCHEDULE : tabIndex === 1 ?
+          (secondData as any).SCHEDULE_AFTERNOON :
+          (secondData as any).SCHEDULE_NIGHT"
         :key="item.TITLE.ZH"
         class="mo-box-card"
       >
