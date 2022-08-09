@@ -2,11 +2,22 @@
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
+import { computed } from 'vue';
 
 const { lang } = useData();
 const i18n = useI18n();
 
 const screenWidth = useWindowResize();
+
+const imgStyle = computed(() => {
+  if (screenWidth.value > 1080) return 'pc-img';
+  else return 'mobile-img';
+});
+
+const imgContent = (item: { PC: any; MOBILE: any }) => {
+  if (screenWidth.value > 1080) return item.PC;
+  else return item.MOBILE;
+};
 </script>
 
 <template>
@@ -21,8 +32,7 @@ const screenWidth = useWindowResize();
         :href="item.LINK"
         target="_blank"
       >
-        <img v-if="screenWidth > 1080" class="pc-img" :src="item.PC" alt="" />
-        <img v-else class="mobile-img" :src="item.MOBILE" alt="" />
+        <img :class="imgStyle" :src="imgContent(item)" alt="" />
       </a>
     </div>
   </div>

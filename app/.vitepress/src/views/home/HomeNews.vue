@@ -4,9 +4,6 @@ import { onMounted, Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import dayjs from 'dayjs';
 import IconArrowRight from '~icons/app/arrow-right.svg';
-import useWindowResize from '@/components/hooks/useWindowResize';
-
-const screenWidth = useWindowResize();
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -169,7 +166,7 @@ onMounted(() => {
       </OTabs>
     </div>
     <div class="room-contain-new" :class="{ isShow: tabType === 'blog' }">
-      <h4 v-if="screenWidth > 1080" class="type-title">
+      <h4 class="type-title">
         {{ i18n.home.HOME_ROOMS.BLOG_NAME }}
       </h4>
       <div class="room-box">
@@ -189,7 +186,7 @@ onMounted(() => {
                 </h4>
                 <p>{{ item.frontmatter.author }}</p>
               </div>
-              <div v-if="screenWidth > 768" class="room-bottom">
+              <div class="room-bottom">
                 <a
                   class="word-hover"
                   :title="item.frontmatter.summary"
@@ -200,7 +197,7 @@ onMounted(() => {
               </div>
             </div>
           </div>
-          <div v-if="screenWidth <= 768" class="room-item-mo">
+          <div class="room-item-mo">
             <span class="author">{{ item.frontmatter.author }}</span>
             <a
               class="word-hover"
@@ -228,7 +225,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="room-contain-new" :class="{ isShow: tabType === 'news' }">
-      <h4 v-if="screenWidth > 1080" class="type-title">
+      <h4 class="type-title">
         {{ i18n.home.HOME_ROOMS.NEWS_NAME }}
       </h4>
       <div class="room-box">
@@ -248,7 +245,7 @@ onMounted(() => {
                 </h4>
                 <p>{{ item.frontmatter.author }}</p>
               </div>
-              <div v-if="screenWidth > 768" class="room-bottom">
+              <div class="room-bottom">
                 <a
                   class="word-hover"
                   :title="item.frontmatter.summary"
@@ -259,7 +256,7 @@ onMounted(() => {
               </div>
             </div>
           </div>
-          <div v-if="screenWidth <= 768" class="room-item-mo">
+          <div class="room-item-mo">
             <span class="author">{{ item.frontmatter.author }}</span>
             <a
               class="word-hover"
@@ -325,6 +322,10 @@ onMounted(() => {
     height: var(--o-font-size-h8);
   }
 }
+
+.room-item-mo {
+  display: none;
+}
 .home-newsroom {
   margin: var(--o-spacing-h2) auto;
   .room-contain-new {
@@ -337,6 +338,10 @@ onMounted(() => {
       line-height: var(--o-font-size-h7);
       font-weight: 500;
       color: var(--o-color-text2);
+      display: block;
+      @media screen and (max-width: 1080px) {
+        display: none;
+      }
     }
     .room-box {
       display: grid;
@@ -405,6 +410,9 @@ onMounted(() => {
             color: var(--o-color-text2);
             a {
               text-decoration: none;
+            }
+            @media screen and (max-width: 768px) {
+              display: none;
             }
           }
         }

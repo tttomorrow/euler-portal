@@ -16,7 +16,6 @@ import IconMenu from '~icons/app/menu.svg';
 import IconRefresh from '~icons/app/icon-refresh.svg';
 import IconDelete from '~icons/app/icon-delete.svg';
 
-
 const router = useRouter();
 const { lang } = useData();
 const i18n = useI18n();
@@ -113,9 +112,9 @@ const goHome = () => {
   router.go(`/${lang.value}/`);
 };
 
-const searchValue = computed(()=>{
-  return i18n.value.common.SEARCH
-})
+const searchValue = computed(() => {
+  return i18n.value.common.SEARCH;
+});
 // 显示/移除搜索框
 const isShowBox = ref(false);
 const showSearchBox = () => {
@@ -193,12 +192,7 @@ const isShowSearchResult = ref(false);
         </OIcon>
         <OIcon v-else class="icon"><IconX /></OIcon>
       </div>
-      <img
-        class="logo"
-        alt="openEuler logo"
-        :src="logo"
-        @click="goHome"
-      />
+      <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <div v-if="isShowBox" class="header-search">
         <div class="header-search-box">
           <OSearch
@@ -208,18 +202,18 @@ const isShowSearchResult = ref(false);
             @blur="donshowSearchList"
             @input="getSearchList(searchInput)"
           >
-            <template v-slot:suffix>
-              <OIcon @click="donShowSearchBox" class="close"><IconX /></OIcon>
+            <template #suffix>
+              <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
             </template>
           </OSearch>
         </div>
         <div v-show="isShowList" class="header-search-list">
           <div v-show="!isShowSearchResult" class="header-search-list-history">
             <div class="header-search-list-history-title">
-              <p>{{searchValue.BROWSEHISTORY}}</p>
+              <p>{{ searchValue.BROWSEHISTORY }}</p>
               <div class="rightside" @click="clearHistory">
                 <OIcon class="icon"><IconDelete /></OIcon>
-                <p>{{searchValue.CLEAN}}</p>
+                <p>{{ searchValue.CLEAN }}</p>
               </div>
             </div>
             <div class="header-search-list-history-body">
@@ -230,10 +224,10 @@ const isShowSearchResult = ref(false);
           </div>
           <div v-show="!isShowSearchResult" class="header-search-list-hot">
             <div class="header-search-list-hot-title">
-              <p>{{searchValue.TOPSEARCH}}</p>
+              <p>{{ searchValue.TOPSEARCH }}</p>
               <div class="rightside" @click="getHotList">
                 <OIcon class="icon"><IconRefresh /></OIcon>
-                <p>{{searchValue.CHANGE}}</p>
+                <p>{{ searchValue.CHANGE }}</p>
               </div>
             </div>
             <div class="header-search-list-hot-body">
@@ -411,7 +405,7 @@ const isShowSearchResult = ref(false);
   margin-left: var(--o-spacing-h2);
   height: 400px;
   &-box {
-    .close{
+    .close {
       cursor: pointer;
       color: var(--o-color-text2);
     }

@@ -5,7 +5,6 @@ import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 
 import { useI18n } from '@/i18n';
-import useWindowResize from '@/components/hooks/useWindowResize';
 import { getUserCaseData } from '@/api/api-showcase';
 
 const { lang } = useData();
@@ -17,8 +16,6 @@ const caseData: any = ref({});
 
 const active = ref(0);
 const activeMobile = ref(0);
-
-const screenWidth = useWindowResize();
 
 const handleGo = (path: string) => {
   window.open(path, '_blank');
@@ -75,7 +72,6 @@ onMounted(() => {
   <div class="case-main">
     <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
     <OCollapse
-      v-if="screenWidth < 1100"
       v-model="activeMobile"
       accordion
       class="case-mobile"
@@ -120,8 +116,8 @@ onMounted(() => {
         </div>
       </OCollapseItem>
     </OCollapse>
-    <div v-else class="case">
-      <OCard class="case-card" shadow="hover">
+    <div class="case">
+      <OCard class="case-card">
         <div class="case-tab">
           <div
             v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
@@ -192,8 +188,10 @@ h3 {
   }
 }
 .case-mobile {
+  display: none;
   @media (max-width: 1100px) {
     border-top: none;
+    display: block;
   }
   &-list {
     margin-top: var(--o-spacing-h4);
@@ -258,7 +256,6 @@ h3 {
 }
 .user {
   &-mobile {
-    padding: var(--o-spacing-h8);
     background-color: var(--o-color-bg3);
     > :nth-child(1) {
       margin-top: 0px;
@@ -321,6 +318,11 @@ h3 {
   }
 }
 .case {
+  display: block;
+  @media (max-width: 1100px) {
+    display: none;
+  }
+
   &-more {
     display: flex;
     padding-top: var(--o-spacing-h2);

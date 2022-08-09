@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
-import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';

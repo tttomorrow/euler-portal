@@ -4,8 +4,6 @@ import { useI18n } from '@/i18n';
 import { selectMirror } from '@/api/api-mirror';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
-
-import useWindowResize from '@/components/hooks/useWindowResize';
 import MapContainer from './MapContainer.vue';
 
 const i18n = useI18n();
@@ -29,8 +27,6 @@ interface MirrorMsg {
 }
 
 const mapData: Ref<MapMsg[]> = ref([]);
-
-const screenWidth = useWindowResize();
 
 const tableData: Ref<MirrorMsg[]> = ref([]);
 
@@ -156,7 +152,7 @@ onMounted(async () => {
       >{{ i18n.download.MIRROR_SELECT.CONTENT[3] }}
     </p>
     <OTable
-      v-if="screenWidth > 768"
+      class="mirror-pc"
       :data="tableData"
       header-cell-class-name="mirror-select-header"
       cell-class-name="mirror-select-row"
@@ -201,7 +197,7 @@ onMounted(async () => {
         min-width="160"
       />
     </OTable>
-    <div v-else class="mirror-mobile">
+    <div class="mirror-mobile">
       <OCard
         v-for="(item, index) in tableData"
         :key="item.name"
@@ -261,9 +257,20 @@ onMounted(async () => {
     width: 100%;
     height: 996px;
   }
+  &-pc {
+    display: block;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
   &-mobile {
     > :nth-child(odd) {
       background-color: var(--o-color-bg3);
+    }
+
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
     }
   }
   &-card {

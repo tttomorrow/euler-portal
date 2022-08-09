@@ -164,7 +164,7 @@ onMounted(() => {
 
   <div class="download">
     <!-- PC筛选 -->
-    <OCard v-if="screenWidth > 768" class="download-filter" shadow="hover">
+    <OCard class="download-filter">
       <TagFilter
         :label="i18n.download.MANUFACTURER"
         class="download-filter-manufacturer"
@@ -220,7 +220,7 @@ onMounted(() => {
       </TagFilter>
     </OCard>
     <!-- 移动筛选 -->
-    <div v-else class="download-filter-mobile">
+    <div class="download-filter-mobile">
       <div class="download-filter-mobile-title" @click="handleToggleDrawer">
         <div class="download-filter-mobile-word">
           {{ i18n.download.SELECT }}
@@ -395,7 +395,6 @@ onMounted(() => {
     <!-- 页码 -->
     <div class="page-box">
       <OPagination
-        v-if="screenWidth > 768"
         v-model:currentPage="currentPage"
         v-model:page-size="pageSize"
         class="pagination"
@@ -411,7 +410,7 @@ onMounted(() => {
           / {{ total }}</span
         >
       </OPagination>
-      <div v-else class="page-box-mobile">
+      <div class="page-box-mobile">
         <div>
           已显示{{
             pageSize * currentPage < total ? pageSize * currentPage : total
@@ -475,12 +474,22 @@ onMounted(() => {
   align-items: center;
   margin-bottom: var(--o-spacing-h1);
 
+  .pagination {
+    display: flex;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
   &-mobile {
     width: 100%;
-    display: flex;
+    display: none;
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    @media (max-width: 768px) {
+      display: flex;
+    }
   }
 
   &-divide {
@@ -510,6 +519,10 @@ onMounted(() => {
   &-filter {
     margin-top: var(--o-spacing-h2);
     padding: 0 var(--o-spacing-h5);
+    display: flex;
+    @media (max-width: 768px) {
+      display: none;
+    }
     &-item {
       margin: var(--o-spacing-h10);
       @media (max-width: 768px) {
@@ -520,6 +533,11 @@ onMounted(() => {
 
     &-mobile {
       margin-top: var(--o-line-height-h5);
+      display: none;
+      @media (max-width: 768px) {
+        display: flex;
+      }
+
       &:deep(.el-drawer__header) {
         color: var(--o-color-text2);
         margin-bottom: 0px;
