@@ -127,6 +127,10 @@ const i18n = useI18n();
           .o-icon {
             font-size: 12px;
             margin-left: 8px;
+            transition: all 0.3s;
+          }
+          &:hover .o-icon {
+            transform: translateX(3px);
           }
           &-type-primary {
             color: #ffffff;

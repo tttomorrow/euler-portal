@@ -32,6 +32,7 @@ const data = ref({
   page: 1,
   pageSize: 10000,
   type: '',
+  lang: 'en',
 });
 // 根据tag筛选需要显示的案例
 function filterCase(type: string) {
@@ -180,7 +181,7 @@ onMounted(() => {
   <BannerLevel2
     :background-image="banner"
     background-text="COMMNUNITY"
-    title="用户案例"
+    :title="userCaseData.bannerTitle"
     :illustration="search"
   />
   <div class="user-case">
@@ -235,7 +236,7 @@ onMounted(() => {
         v-model:currentPage="currentPage1"
         v-model:page-size="pageSize4"
         class="pagination-pc"
-        hide-on-single-page="true"
+        :hide-on-single-page="true"
         :page-sizes="[pageSize4]"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
@@ -304,6 +305,11 @@ onMounted(() => {
       box-shadow: var(--o-shadow-base);
       @media (max-width: 768px) {
         display: none;
+      }
+      :deep(.tag-filter-box) {
+        > span {
+          cursor: pointer;
+        }
       }
     }
     .tag-h5 {

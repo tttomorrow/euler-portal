@@ -78,6 +78,7 @@ const i18n: { [key: string]: any } = {
     isula: isula.ru,
     secgear: secgear.ru,
     stratovirt: stratovirt.ru,
+    showcase: showcase.ru,
     interaction: interaction.ru,
     live: live.ru,
     compatibility: compatibility.ru,
