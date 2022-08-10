@@ -4,7 +4,6 @@ import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-// import TagFilter from '@/components/TagFilter.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
 import OScreen from '@/components/OScreen.vue';
@@ -12,7 +11,7 @@ import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 
-import { getSortData } from '@/api/api-search';
+import { getSortData, getTagsData } from '@/api/api-search';
 
 interface BlogData {
   archives: string;
@@ -34,19 +33,36 @@ const router = useRouter();
 const { lang } = useData();
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
-
+// 新闻列表
 const sortParams = reactive({
   page: 1,
   pageSize: 9,
   lang: lang.value,
   category: 'blog',
 });
+// 标签
+const tagsParams = reactive({
+  lang: lang.value,
+  category: 'blog',
+  tags: 'archives',
+});
+const tagsParams1 = reactive({
+  lang: lang.value,
+  category: 'blog',
+  tags: 'author',
+});
 
-// const tagsParams = reactive({
-//   lang: lang.value,
-//   category: 'blog',
-//   tags: '',
-// });
+const tagsDataToChild = ref<any>([
+  {
+    title: '时间',
+    select: [],
+  },
+  {
+    title: '作者',
+    select: [],
+  },
+]);
+
 // 博客列表数据
 const blogCardData = ref<BlogData[]>([]);
 // 分页数据
@@ -62,6 +78,12 @@ const toBlogContent = (path: string) => {
 };
 // 筛选方法
 const listfilter = (val: string[]) => {
+  // const params = {
+  //   page: 1,
+  //   pageSize: 9,
+  //   lang: lang.value,
+  //   category: 'blog',
+  // };
   return val;
 };
 
@@ -80,6 +102,20 @@ onMounted(() => {
           i
         ].archives.substring(0, 7);
       }
+    });
+  } catch (error: any) {
+    throw new Error(error);
+  }
+  try {
+    getTagsData(tagsParams).then((res) => {
+      for (let i = 0; i < 5; i++) {
+        tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
+      }
+      getTagsData(tagsParams1).then((res) => {
+        for (let i = 0; i < 5; i++) {
+          tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
+        }
+      });
     });
   } catch (error: any) {
     throw new Error(error);
@@ -144,8 +180,7 @@ const sizeChange = (val: number) => {
     />
     <div class="blog-tag2">
       <OScreen
-        :data="userCaseData.SCREENDATALIST"
-        :list="userCaseData.BLOGDATALIST"
+        :data="tagsDataToChild"
         @filter="listfilter"
       />
     </div>
@@ -252,6 +287,12 @@ const sizeChange = (val: number) => {
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
         }
       }
       &-info {
@@ -274,6 +315,12 @@ const sizeChange = (val: number) => {
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 1;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
         }
         .infodetail {
           display: flex;
@@ -288,6 +335,12 @@ const sizeChange = (val: number) => {
         margin-top: var(--o-spacing-h5);
         min-height: 44px;
         color: var(--o-color-text2);
+        word-break: break-all;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         word-break: break-all;
         text-overflow: ellipsis;
         overflow: hidden;

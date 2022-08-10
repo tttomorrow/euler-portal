@@ -1,4 +1,21 @@
 <script setup lang="ts">
+/**
+ *@params [
+  {
+    title:string;
+    select:string[]
+  },
+  ...
+ ]
+ @return [
+  {
+    title:string;
+    sele:string[]
+  },
+  ...
+ ]
+ *选择全部时，对应title的sele返回[]空数组
+ */
 import { useAttrs, ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
 
@@ -16,6 +33,8 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(['filter']);
+const tagitems = ref<string[]>([]); // 标签数组
+const options = ref<any>([]); // 传给父组件
 
 const attrs = useAttrs();
 // 筛选抽屉
@@ -24,49 +43,88 @@ const showscreen = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
 
-const pichoption = ref<string[]>([]); // 抽屉高亮
-const options = ref<string[]>([]);
-const tagitems = ref<string[]>([]); // 标签数组
+const handOptions = computed(() => {
+  const temp = options;
+  for (let i = 0; i < props.data.length; i++) {
+    temp.value.push({ title: '', sele: [] });
+  }
+  return temp;
+});
+options.value = handOptions.value.value;
 
 // 选择标签
-const clickoption = (option: string) => {
-  if (options.value.length > 0) {
-    for (let i = 0; i <= options.value.length; i++) {
-      if (options.value[i] === option) {
-        options.value.splice(i, 1);
-        return;
+const clickOption = (title: string, option: string) => {
+  for (let i = 0; i < props.data.length; i++) {
+    if (title === props.data[i].title) {
+      if (options.value[i].sele.length > 0) {
+        for (let j = 0; j <= options.value[i].sele.length; j++) {
+          if (options.value[i].sele[j] === option) {
+            options.value[i].sele.splice(j, 1);
+            for (let x = 0; x < tagitems.value.length; x++) {
+              if (tagitems.value[x] === option) {
+                tagitems.value.splice(x, 1);
+              }
+            }
+            return;
+          }
+        }
+      }
+      options.value[i].title = title;
+      options.value[i].sele.push(option);
+      tagitems.value.push(option);
+    }
+  }
+};
+// 确定
+const sureClick = () => {
+  isDrawerOpen.value = !isDrawerOpen.value;
+  emit('filter', options.value);
+};
+// 删除标签
+const delTag = (data: string) => {
+  for (let i = 0; i < options.value.length; i++) {
+    for (let j = 0; j < options.value[i].sele.length; j++) {
+      if (options.value[i].sele[j] === data) {
+        options.value[i].sele.splice(j, 1);
+        emit('filter', options.value);
       }
     }
   }
-  options.value.push(option);
-  tagitems.value = options.value;
+  for (let x = 0; x < tagitems.value.length; x++) {
+    if (tagitems.value[x] === data) {
+      tagitems.value.splice(x, 1);
+    }
+  }
 };
-// 确定
-const sureclick = () => {
-  pichoption.value = options.value;
-  isDrawerOpen.value = !isDrawerOpen.value;
-  emit('filter', pichoption.value);
-};
-// 删除标签
-const deltag = (data: string) => {
-  for (let i = 0; i <= pichoption.value.length; i++) {
-    if (pichoption.value[i] === data) {
-      pichoption.value.splice(i, 1);
-      emit('filter', pichoption.value);
-      return;
+// 选择全部(sele数组返回空)
+const allClick = (val: any) => {
+  for (let i = 0; i < options.value.length; i++) {
+    if (options.value[i].title === val.title) {
+      options.value[i].sele.length = 0;
+      emit('filter', options.value);
+    }
+    for (let x = 0; x < tagitems.value.length; x++) {
+      for (let y = 0; y < val.select.length; y++) {
+        if (tagitems.value[x] === val.select[y]) {
+          tagitems.value.splice(x, 1);
+        }
+      }
     }
   }
 };
 // 选中按钮高亮
-const btnhighlight = (data: string) => {
-  for (let i = 0; i <= pichoption.value.length; i++) {
-    if (pichoption.value[i] === data) {
+const btnHighLight = (data: string) => {
+  for (let i = 0; i < tagitems.value.length; i++) {
+    if (tagitems.value[i] === data) {
       return true;
     }
   }
-  if (pichoption.value.length === 0) {
-    for (let i = 0; i <= options.value.length; i++) {
-      if (options.value[i] === data) {
+};
+// 全部
+const allHighLight = (val: any) => {
+  for (let i = 0; i < options.value.length; i++) {
+    if (options.value[i].title === val.title) {
+      if (options.value[i].sele.length === 0) {
         return true;
       }
     }
@@ -91,7 +149,7 @@ const btnhighlight = (data: string) => {
         type="text"
         class="o-screen-tags-tag"
         >{{ item }}
-        <OIcon class="o-screen-tags-tag-icon" @click="deltag(item)"
+        <OIcon class="o-screen-tags-tag-icon" @click="delTag(item)"
           ><IconX
         /></OIcon>
       </OTag>
@@ -118,20 +176,28 @@ const btnhighlight = (data: string) => {
           <p class="o-screen-box-drawer-content-title">{{ item.title }}</p>
           <div class="o-screen-box-drawer-content-options">
             <OTag
+              class="o-screen-box-drawer-content-options-option"
+              :checked="allHighLight(item)"
+              :class="{ active: allHighLight(item) }"
+              type="primary"
+              @click="allClick(item)"
+              >{{ userCaseData.ALL }}</OTag
+            >
+            <OTag
               v-for="sele in item.select"
               :key="sele"
               class="o-screen-box-drawer-content-options-option"
               type="primary"
-              :multiple="btnhighlight(sele)"
-              :class="{ active: btnhighlight(sele) }"
-              @click="clickoption(sele)"
+              :checked="btnHighLight(sele)"
+              :class="{ active: btnHighLight(sele) }"
+              @click="clickOption(item.title, sele)"
               >{{ sele }}</OTag
             >
           </div>
         </div>
         <template #footer>
           <div class="o-screen-box-drawer-footer">
-            <OButton type="primary" @click="sureclick">{{
+            <OButton type="primary" @click="sureClick">{{
               userCaseData.SURE
             }}</OButton>
           </div>
