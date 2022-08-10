@@ -56,11 +56,6 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      '/api-cve': {
-        target: 'https://www.openeuler.org/api-cve/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-cve/, ''),
-      },
       '/compatibility': {
         target: 'https://api-proxy.openeuler.isrc.ac.cn',
         changeOrigin: true,
@@ -83,13 +78,14 @@ export default defineConfig({
       },
       '/api/': {
         target: 'https://api.openeuler.org',
+        // target: 'http://119.8.32.82',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
-      '/mail': {
-        target: 'https://www.openeuler.org/api/mail',
+      '/api-euler': {
+        target: 'https://www.openeuler.org',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/mail/, ''),
+        rewrite: (path) => path.replace(/^\/api-euler/, ''),
       },
     },
   },
