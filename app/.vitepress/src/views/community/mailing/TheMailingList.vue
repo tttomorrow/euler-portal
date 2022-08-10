@@ -107,7 +107,8 @@ const userSubscribe = (userID: string) => {
             </div>
             <div class="middle-item-infoconfig">
               <div class="middle-item-infoconfig-circle">
-                <span>{{ item.LEFT.LEFT_CIRCLE }}</span>
+                {{ item.LEFT.INDEX }}
+                <!-- <span></span> -->
               </div>
               <div>
                 <span>{{ item.LEFT.LEFT_INFO }}</span>
@@ -124,7 +125,8 @@ const userSubscribe = (userID: string) => {
             </div>
             <div class="middle-item-infoconfig">
               <div class="middle-item-infoconfig-circle">
-                <span>{{ item.RIGHT.RIGHT_CIRCLE }}</span>
+                {{ item.RIGHT.INDEX }}
+                <!-- <span>{{ item.RIGHT.INDEX }}</span> -->
               </div>
               <div>
                 <span
@@ -142,7 +144,7 @@ const userSubscribe = (userID: string) => {
     <main>
       <div class="mail-table">
         <OTable :data="tableData" style="width: 100%">
-          <el-table-column label="Mirror Name" width="230">
+          <el-table-column label="Mirror Name">
             <template #default="scope">
               <a
                 ref="listName"
@@ -154,9 +156,9 @@ const userSubscribe = (userID: string) => {
               </a>
             </template>
           </el-table-column>
-          <el-table-column label="Location" prop="fqdn_listname" width="360">
+          <el-table-column label="Location" prop="fqdn_listname">
           </el-table-column>
-          <el-table-column label="Sponsor" width="150">
+          <el-table-column label="Sponsor">
             <template #default="scope">
               <a
                 :href="
@@ -175,7 +177,6 @@ const userSubscribe = (userID: string) => {
             label="RSNC"
             prop="description"
             :show-overflow-tooltip="true"
-            width="620"
           ></OTableColumn>
         </OTable>
       </div>
@@ -251,6 +252,12 @@ const userSubscribe = (userID: string) => {
       &-infoconfig {
         width: 456px;
         background-color: var(--o-color-bg);
+        @media (max-width: 1440px) {
+          width: 400px;
+        }
+        @media (max-width: 1366px) {
+          width: 370px;
+        }
         @media (max-width: 1280px) {
           width: 350px;
         }
@@ -282,6 +289,7 @@ const userSubscribe = (userID: string) => {
           }
         }
         &-circle {
+          white-space: nowrap;
           height: 78px;
           width: 78px;
           border: 4px solid var(--o-color-base);
@@ -290,24 +298,32 @@ const userSubscribe = (userID: string) => {
           position: relative;
           top: 50%;
           transform: translate(-50%, -50%);
+          text-align: center;
+          font-size: var(--o-font-size-h5);
+          padding: 20px 0;
+          color: var(--o-color-text);
           @media (max-width: 780px) {
+            white-space: nowrap;
             height: 60px;
             width: 60px;
+            font-size: var(--o-font-size-h7);
+            padding: 15px 0;
           }
-          span {
-            white-space: nowrap;
-            font-size: var(--o-font-size-h5);
-            color: var(--o-color-text);
-            line-height: var(--o-line-height-h5);
-            position: relative;
-            right: 53px;
-            top: var(--o-spacing-h5);
-            @media (max-width: 780px) {
-              font-size: var(--o-font-size-h7);
-              right: var(--o-spacing-h4);
-              top: var(--o-spacing-h6);
-            }
-          }
+          // span {
+          //   white-space: nowrap;
+          //   font-size: var(--o-font-size-h5);
+          //   color: var(--o-color-text);
+          //   line-height: var(--o-line-height-h5);
+          //   position: relative;
+          //   right: 53px;
+          //   top: var(--o-spacing-h5);
+          //   flex: 1;
+          //   @media (max-width: 780px) {
+          //     font-size: var(--o-font-size-h7);
+          //     right: var(--o-spacing-h4);
+          //     top: var(--o-spacing-h6);
+          //   }
+          // }
         }
       }
     }

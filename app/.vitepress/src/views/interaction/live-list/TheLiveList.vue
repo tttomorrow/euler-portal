@@ -37,7 +37,8 @@ const changeSize = (val: number, pagesize: number) => {
 };
 const showLiveList = ref(data.value.slice(0, 6));
 const totoBLink = (url: string) => {
-  window.open(url);
+  url === '' ? alert(i18n.value.live.LINKTIPS) : window.open(url);
+  // TODO: 弹窗组件样式先使用alert替代
 };
 
 const commonStore = useCommon();
@@ -307,14 +308,15 @@ const goNext = () => {
     &-mobile {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
       margin-top: var(--o-spacing-h5);
-      width: 196px;
+      width: 100%;
       height: 18px;
     }
     &-options {
       display: flex;
       flex-direction: row;
+      margin: auto;
       &-icon {
         font-size: var(--o-font-size-tip);
         color: var(--o-color-brand);
