@@ -7,7 +7,7 @@ export default defineComponent({
   props: buttonProps,
   emits: ['click'],
   setup(props: ButtonProps, { emit, slots }) {
-    const { size, type, status, disabled, animation, theme, nativeType } =
+    const { size, type, status, disabled, animation, nativeType } =
       toRefs(props);
 
     const classNames = computed(() => ({
@@ -18,8 +18,6 @@ export default defineComponent({
       'with-prefix': slots.prefixIcon,
       'with-suffix': slots.suffix,
       animation: animation.value,
-      light: theme.value === 'light',
-      dark: theme.value === '',
       'is-disabled': disabled.value,
     }));
 
@@ -39,7 +37,7 @@ export default defineComponent({
           ) : (
             ''
           )}
-          <span>{slots.default?.()}</span>
+          {slots.default?.()}
           {slots.suffixIcon ? (
             <span class="suffix-icon">{slots.suffixIcon()}</span>
           ) : (

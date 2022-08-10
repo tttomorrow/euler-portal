@@ -107,6 +107,20 @@ onUnmounted(() => {
 const goHome = () => {
   router.go(`/${lang.value}/`);
 };
+
+const searchValue = computed(() => {
+  return i18n.value.common.SEARCH;
+});
+// 显示/移除搜索框
+const isShowBox = ref(false);
+const showSearchBox = () => {
+  isShowBox.value = true;
+};
+const donShowSearchBox = () => {
+  isShowBox.value = false;
+};
+// 搜索内容
+const searchInput = ref<string>('');
 </script>
 
 <template>
@@ -120,13 +134,26 @@ const goHome = () => {
         <OIcon v-else class="icon"><IconX /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
-      <div class="header-content">
+      <div v-if="isShowBox" class="header-search">
+        <div class="header-search-box">
+          <OSearch v-model="searchInput" :placeholder="searchValue.PLEACHOLDER">
+            <template #suffix>
+              <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
+            </template>
+          </OSearch>
+        </div>
+      </div>
+      <!-- 移动端搜索按钮 -->
+      <div class="mobile-search" v-if="!isShowBox">
+        <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
+      </div>
+      <div v-show="!isShowBox" class="header-content">
         <div class="header-nav">
           <HeaderNav :nav-items="navRouter" @nav-click="handleNavClick" />
         </div>
         <div class="header-tool">
           <div class="header-tool-search">
-            <OIcon class="icon"><IconSearch /></OIcon>
+            <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
           </div>
           <!-- 中英文切换 -->
           <AppLanguage />
@@ -177,6 +204,18 @@ const goHome = () => {
 </template>
 
 <style lang="scss" scoped>
+:deep(.o-search) {
+  --o-search-color-bg: var(--o-color-secondary);
+}
+:deep(.el-input__suffix) {
+  font-size: var(--o-font-size-h7);
+}
+:deep(.el-input__clear) {
+  font-size: var(--o-font-size-h7);
+}
+:deep(.el-icon-circle-inner) {
+  font-size: var(--o-font-size-h1);
+}
 .app-header {
   background-color: var(--o-color-bg);
   position: fixed;
@@ -191,10 +230,10 @@ const goHome = () => {
     padding: 0 44px;
     margin: 0 auto;
     height: 80px;
-
     @media (max-width: 1100px) {
       padding: 0 16px;
       height: 48px;
+      justify-content: space-between;
     }
   }
 }
@@ -218,6 +257,13 @@ const goHome = () => {
     font-size: var(--o-font-size-h5);
     color: var(--o-color-text2);
     cursor: pointer;
+  }
+}
+.mobile-search {
+  font-size: var(--o-font-size-h6);
+  display: none;
+  @media (max-width: 1100px) {
+    display: block;
   }
 }
 .header-content {
@@ -258,6 +304,22 @@ const goHome = () => {
     color: var(--o-color-text2);
   }
 }
+.header-search {
+  position: relative;
+  width: 900px;
+  margin-left: var(--o-spacing-h2);
+  @media (max-width: 1100px) {
+    :deep(.o-search) {
+      --o-search-height: 28px;
+    }
+  }
+  &-box {
+    .close {
+      cursor: pointer;
+      color: var(--o-color-text2);
+    }
+  }
+}
 
 .mobile-menu {
   width: 100%;
@@ -272,7 +334,7 @@ const goHome = () => {
   background: rgba(0, 0, 0, 0.4);
   top: 48px;
   height: calc(100% - 48px);
-
+  z-index: 9;
   @media screen and (min-width: 1100px) {
     display: none;
   }
@@ -350,15 +412,6 @@ const goHome = () => {
     .mobile-tools {
       padding: 0 var(--o-spacing-h5);
       margin-bottom: 24px;
-    }
-    .el-switch {
-      &__label {
-        color: var(--o-color-text3) !important;
-      }
-      &__label.is-active {
-        color: var(--o-color-text2) !important;
-        font-weight: 600;
-      }
     }
   }
   &-content {

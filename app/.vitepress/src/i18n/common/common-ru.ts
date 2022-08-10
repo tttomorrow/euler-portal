@@ -283,4 +283,11 @@ export default {
     BUILDING: 'Создание',
     BUILDINGMES: 'Ожидается...',
   },
+  SEARCH: {
+    BROWSEHISTORY: 'история',
+    CLEAN: 'Очистить',
+    TOPSEARCH: 'горячий поиск',
+    CHANGE: 'Другая партия',
+    PLEACHOLDER: 'Введите содержимое',
+  },
 };

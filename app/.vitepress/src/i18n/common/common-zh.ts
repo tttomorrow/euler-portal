@@ -323,4 +323,11 @@ export default {
     BUILDING: '建设中',
     BUILDINGMES: '敬请期待...',
   },
+  SEARCH: {
+    BROWSEHISTORY: '历史记录',
+    CLEAN: '清除',
+    TOPSEARCH: '热搜',
+    CHANGE: '换一批',
+    PLEACHOLDER: '请输入内容',
+  },
 };

@@ -10,9 +10,9 @@ const attrs = useAttrs();
   </ElTable>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .o-table {
-  :deep.el-table {
+  &.el-table {
     --el-table-header-bg-color: var(--o-color-bg3);
     color: var(--o-color-text3);
     --el-table-border-color: none;

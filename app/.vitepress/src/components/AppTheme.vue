@@ -2,13 +2,11 @@
 import { computed, ref, watch } from 'vue';
 import { useCommon } from '@/stores/common';
 import { isBrowser } from '@/shared/utils';
-import useWindowResize from '@/components/hooks/useWindowResize';
 
 import IconMoonLight from '~icons/app/sun.svg';
 import IconMoonDark from '~icons/app/moon.svg';
 
 const commonStore = useCommon();
-const screenWidth = useWindowResize();
 
 if (isBrowser()) {
   const theme = localStorage.getItem('euler-theme');
@@ -55,19 +53,19 @@ watch(
 
 <template>
   <div class="theme-box">
-    <div v-if="screenWidth >= 1100" class="theme-box-pc" @click="changeTheme">
+    <div class="theme-box-pc" @click="changeTheme">
       <OIcon class="icon">
         <IconMoonDark v-if="isLight" />
         <IconMoonLight v-else />
       </OIcon>
     </div>
-    <div v-else class="theme-box-mobile">
-      <el-switch
+    <div class="theme-box-mobile">
+      <OSwitch
         v-model="mobileTheme"
         size="large"
         active-text="dark"
         inactive-text="light"
-        active-color="#00685a"
+        active-color="#002fa7"
         @click.stop="changeTheme"
       />
     </div>
@@ -82,8 +80,12 @@ watch(
       font-size: var(--o-font-size-h5);
       color: var(--o-color-text2);
     }
+    @media screen and (max-width: 1100px) {
+      display: none;
+    }
   }
   &-mobile {
+    display: none;
     :deep(.el-switch) {
       .el-switch__label {
         color: var(--o-color-text3) !important;
@@ -92,6 +94,9 @@ watch(
         color: var(--o-color-brand) !important;
         font-weight: 600;
       }
+    }
+    @media screen and (max-width: 1100px) {
+      display: block;
     }
   }
 }

@@ -32,6 +32,7 @@ const data = ref({
   page: 1,
   pageSize: 10000,
   type: '',
+  lang: 'en',
 });
 // 根据tag筛选需要显示的案例
 function filterCase(type: string) {
@@ -124,20 +125,6 @@ function searchCase() {
   activeIndex.value = 0;
   setCurrentCaseListAll();
 }
-// 根据案例类型设置图片
-function setImg(type: string) {
-  if (type === '金融') {
-    return '/img/showcase/others.png';
-  } else if (type === '运营商') {
-    return '/img/showcase/provider.png';
-  } else if (type === '能源') {
-    return '/img/showcase/energy.png';
-  } else if (type === '物流') {
-    return '/img/showcase/logistics.png';
-  } else if (type === '其他') {
-    return '/img/showcase/others.png';
-  }
-}
 // 根据跳转时url携带的参数显示筛选内容
 function getUrlParam() {
   const industry: any = decodeURI(window.location.href.split('=')[1]);
@@ -194,7 +181,7 @@ onMounted(() => {
   <BannerLevel2
     :background-image="banner"
     background-text="COMMNUNITY"
-    title="用户案例"
+    :title="userCaseData.bannerTitle"
     :illustration="search"
   />
   <div class="user-case">
@@ -239,7 +226,7 @@ onMounted(() => {
           </a>
         </div>
         <div class="card-type-img">
-          <img :src="setImg(item.industry)" alt="" />
+          <img :src="item.img" alt="" />
         </div>
       </OCard>
     </div>
@@ -249,7 +236,7 @@ onMounted(() => {
         v-model:currentPage="currentPage1"
         v-model:page-size="pageSize4"
         class="pagination-pc"
-        hide-on-single-page="true"
+        :hide-on-single-page="true"
         :page-sizes="[pageSize4]"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
@@ -318,6 +305,11 @@ onMounted(() => {
       box-shadow: var(--o-shadow-base);
       @media (max-width: 768px) {
         display: none;
+      }
+      :deep(.tag-filter-box) {
+        > span {
+          cursor: pointer;
+        }
       }
     }
     .tag-h5 {

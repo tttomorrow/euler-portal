@@ -2,6 +2,7 @@ import type { App } from 'vue';
 
 import { Button } from './button';
 import { Radio, RadioGroup } from './radio';
+import { Checkbox } from './checkbox';
 import { Select, Option } from './select';
 
 import { Icon } from './icon';
@@ -15,12 +16,14 @@ import { Table, TableColumn } from './table';
 import { Timeline } from './timeline';
 import { Search } from './search';
 import { Drawer } from './drawer';
+import { Switch } from './switch';
 import { Collapse, CollapseItem } from './collapse';
 
 const components = [
   Button,
   Radio,
   RadioGroup,
+  Checkbox,
   Select,
   Option,
   Icon,
@@ -36,6 +39,7 @@ const components = [
   Tree,
   Search,
   Drawer,
+  Switch,
   Collapse,
   CollapseItem,
 ];

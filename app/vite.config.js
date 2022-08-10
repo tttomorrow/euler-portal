@@ -56,11 +56,6 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      '/api-cve': {
-        target: 'https://www.openeuler.org/api-cve/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-cve/, ''),
-      },
       '/compatibility': {
         target: 'https://api-proxy.openeuler.isrc.ac.cn',
         changeOrigin: true,
@@ -71,28 +66,26 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/compatibility/, ''),
       },
-      '/showcase': {
-        target: 'https://doc-search.test.osinfra.cn/showcase',
-        '/api-search-v2': {
-          target: 'https://doc-search-v2.test.osinfra.cn',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api-search-v2/, ''),
-        },
-        '/api-search': {
-          target: 'https://doc-search.test.osinfra.cn',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api-search/, ''),
-        },
-        '/api/': {
-          target: 'https://api.openeuler.org',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-        '/mail': {
-          target: 'https://www.openeuler.org/api/mail',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/mail/, ''),
-        },
+      '/api-search-v2': {
+        target: 'https://doc-search-v2.test.osinfra.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-search-v2/, ''),
+      },
+      '/api-search': {
+        target: 'https://doc-search.test.osinfra.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-search/, ''),
+      },
+      '/api/': {
+        target: 'https://api.openeuler.org',
+        // target: 'http://119.8.32.82',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/api-euler': {
+        target: 'https://www.openeuler.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-euler/, ''),
       },
     },
   },

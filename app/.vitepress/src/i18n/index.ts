@@ -1,4 +1,3 @@
-// import { createI18n } from 'vue-i18n';
 import { computed } from 'vue';
 import { useData } from 'vitepress';
 
@@ -37,7 +36,7 @@ const i18n: { [key: string]: any } = {
     isula: isula.zh,
     secgear: secgear.zh,
     stratovirt: stratovirt.zh,
-    showcase: showcase,
+    showcase: showcase.zh,
     interaction: interaction.zh,
     live: live.zh,
     compatibility: compatibility.zh,
@@ -58,8 +57,10 @@ const i18n: { [key: string]: any } = {
     isula: isula.en,
     secgear: secgear.en,
     stratovirt: stratovirt.en,
+    showcase: showcase.en,
     interaction: interaction.en,
     live: live.en,
+    compatibility: compatibility.en,
     summit: summit.en,
     screen: screen.en,
     contribution: contribution.en,
@@ -77,8 +78,10 @@ const i18n: { [key: string]: any } = {
     isula: isula.ru,
     secgear: secgear.ru,
     stratovirt: stratovirt.ru,
+    showcase: showcase.ru,
     interaction: interaction.ru,
     live: live.ru,
+    compatibility: compatibility.ru,
     summit: summit.ru,
     screen: screen.ru,
     contribution: contribution.ru,

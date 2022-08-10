@@ -37,7 +37,7 @@ const handleGo = (path: string) => {
         </OButton>
       </OCard>
 
-      <OCard class="round-card" :style="{ padding: '0px' }" shadow="hover">
+      <OCard class="round-card" :style="{ padding: '0px' }">
         <div class="round-list">
           <div
             v-for="item in i18n.home.HOME_ROUND.ROUND_LIST"

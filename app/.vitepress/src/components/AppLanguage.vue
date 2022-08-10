@@ -1,13 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useRouter, useData } from 'vitepress';
-import useWindowResize from '@/components/hooks/useWindowResize';
 
 import IconDown from '~icons/app/icon-down.svg';
 
 const router = useRouter();
 const { lang } = useData();
-const screenWidth = useWindowResize();
 
 // 选择语言;
 const langOptions = [
@@ -41,12 +39,7 @@ const hideSub = () => {
 </script>
 
 <template>
-  <div
-    v-if="screenWidth >= 1100"
-    class="lang-menu"
-    @mouseenter="showSub()"
-    @mouseleave="hideSub()"
-  >
+  <div class="lang-menu" @mouseenter="showSub()" @mouseleave="hideSub()">
     <span class="lang-menu-link">
       {{ lang === 'zh' ? '中文' : lang === 'ru' ? '俄文' : 'English' }}
       <OIcon><icon-down></icon-down></OIcon>
@@ -63,7 +56,7 @@ const hideSub = () => {
       </li>
     </ul>
   </div>
-  <div v-else class="mobile-change-language">
+  <div class="mobile-change-language">
     <span
       v-for="item in langOptions"
       :key="item.id"
@@ -99,19 +92,23 @@ const hideSub = () => {
       text-align: center;
       font-size: var(--o-font-size-text);
       color: var(--o-color-text2);
-      &:first-child {
-        border-bottom: 1px solid var(--o-color-division);
+      border-bottom: 1px solid var(--o-color-division);
+      &:last-child {
+        border-bottom: 0 none;
       }
-      &.active {
+      &.active,
+      &:hover {
         color: var(--o-color-brand);
       }
     }
   }
+  @media screen and (max-width: 1100px) {
+    display: none;
+  }
 }
 .mobile-change-language {
-  display: flex;
+  display: none;
   line-height: var(--o-line-height-h3);
-
   span {
     font-size: var(--o-font-size-tip);
     color: var(--o-color-text3);
@@ -120,13 +117,16 @@ const hideSub = () => {
       color: var(--o-color-brand);
       font-weight: 600;
     }
-    &:first-child {
+    &:not(:last-child) {
       &:after {
         content: '|';
         margin-left: 12px;
         color: var(--o-color-text3);
       }
     }
+  }
+  @media screen and (max-width: 1100px) {
+    display: flex;
   }
 }
 </style>

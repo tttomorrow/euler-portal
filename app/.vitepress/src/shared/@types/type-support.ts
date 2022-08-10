@@ -12,6 +12,7 @@ export interface CveQuery {
   cpu?: string;
   os?: string;
   lang?: string;
+  testOrganization?: string;
 }
 export interface DetailParams {
   securityNoticeNo: string;
@@ -125,7 +126,7 @@ export interface BusinessSoftWareList {
   companyName: string;
   osName: string;
   osVersion: string;
-  platformTypeAndServerModel: PlatFormAndServerModel;
+  platformTypeAndServerModel: PlatFormAndServerModel[];
   productName: string;
   productVersion: string;
   testOrganization: string;

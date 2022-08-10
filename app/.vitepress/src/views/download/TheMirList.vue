@@ -6,7 +6,6 @@ import IconCpoy from '~icons/app/icon-copy.svg';
 import { ElMessage } from 'element-plus';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
-import useWindowResize from '@/components/hooks/useWindowResize';
 import MapContainer from './MapContainer.vue';
 
 interface MapMsg {
@@ -29,8 +28,6 @@ interface MirrorMsg {
   netband?: string;
   area?: boolean;
 }
-
-const screenWidth = useWindowResize();
 
 const tableData: Ref<MirrorMsg[]> = ref([]);
 
@@ -146,7 +143,7 @@ onMounted(async () => {
       >.
     </p>
     <OTable
-      v-if="screenWidth > 768"
+      class="mirror-pc"
       :data="tableData"
       header-cell-class-name="mirror-list-header"
       cell-class-name="mirror-list-row"
@@ -203,7 +200,7 @@ onMounted(async () => {
       >
       </OTableColumn>
     </OTable>
-    <div v-else class="mirror-mobile">
+    <div class="mirror-mobile">
       <OCard v-for="item in listData" :key="item.name" class="mirror-card">
         <div class="mirror-card-content">
           <div class="mirror-card-title">
@@ -282,9 +279,20 @@ onMounted(async () => {
     width: 100%;
     height: 996px;
   }
+  &-pc {
+    display: block;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
   &-mobile {
     > :nth-child(odd) {
       background-color: var(--o-color-bg3);
+    }
+
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
     }
   }
   &-card {
@@ -346,6 +354,7 @@ onMounted(async () => {
       }
     }
   }
+
   :deep(.mirror-list-header) {
     background: var(--o-color-bg3);
     font-size: var(--o-font-size-h8);

@@ -8,7 +8,7 @@ import type { AxiosResponse } from '@/shared/axios';
  */
 
 export function getAllMailing() {
-  const url = `/mail/list`;
+  const url = '/api-euler/api/mail/list';
 
   return request
     .get(url, {

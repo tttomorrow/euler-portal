@@ -68,6 +68,8 @@ const radioValue = ref('');
 const handleRadioChange = (val: string) => {
   radioValue.value = val;
 };
+
+const switchVal = ref(false);
 </script>
 
 <template>
@@ -100,6 +102,10 @@ const handleRadioChange = (val: string) => {
       </ORadioGroup>
     </div>
     <div class="demo-box">
+      <h4>OCheckBox</h4>
+      <OCheckbox>checb</OCheckbox>
+    </div>
+    <div class="demo-box">
       <h4>OButton</h4>
       <div class="button-box">
         <OButton>type=outline</OButton>
@@ -125,7 +131,16 @@ const handleRadioChange = (val: string) => {
         </OButton>
       </div>
     </div>
-
+    <div class="demo-box">
+      <h4>OSwitch</h4>
+      <OSwitch
+        v-model="switchVal"
+        size="large"
+        active-text="是"
+        inactive-text="否"
+        active-color="#002fa7"
+      />
+    </div>
     <div class="demo-box">
       <h4>ODrawer</h4>
       <OButton type="primary" @click="toggleDrawer">toggle drawer</OButton>
