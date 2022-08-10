@@ -91,6 +91,10 @@ export interface SoftWareQuery {
   page_num: number;
 }
 
+export interface SelectParams {
+  lang: string;
+}
+
 export interface SoftWareList {
   arch: string;
   bin: string;
@@ -131,4 +135,15 @@ export interface BusinessSoftWareList {
   productVersion: string;
   testOrganization: string;
   type: string;
+}
+
+// 手机端筛选
+export interface FilterItem {
+  select: string[];
+  title: string;
+}
+export interface FilterData {
+  author: FilterItem;
+  tags: FilterItem;
+  time: FilterItem;
 }

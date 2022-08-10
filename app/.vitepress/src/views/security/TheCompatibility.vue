@@ -10,6 +10,7 @@ import search from '@/assets/illustrations/search.png';
 import { useI18n } from '@/i18n';
 import type {
   CveQuery,
+  FilterData,
   // CompatibilityList,
   // BoardCardList,
   // BusinessSoftWareList,
@@ -23,6 +24,7 @@ import {
   getSoftwareList,
   getBusinessSoftwareList,
   getTestOrganizations,
+  getCpu,
 } from '@/api/api-security';
 
 const i18n = useI18n();
@@ -35,9 +37,23 @@ const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const architectureSelect = ref<string[]>(['全部']);
 const osOptions = ref<string[]>(['全部']);
-const activeName = ref('first');
+const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>(['全部']);
-const collapseActiveNames = ref('1');
+
+const filterData = ref<FilterData>({
+  author: {
+    select: [],
+    title: '操作系统',
+  },
+  tags: {
+    select: [],
+    title: '架构',
+  },
+  time: {
+    select: [],
+    title: 'CPU',
+  },
+});
 
 const queryData: CveQuery = reactive({
   pages: {
@@ -126,11 +142,11 @@ const handleClick = () => {
 };
 
 const initMobileData = (params: CveQuery) => {
-  if (collapseActiveNames.value === '1') {
+  if (activeName.value === '1') {
     getCompatibilityData(params);
-  } else if (collapseActiveNames.value === '2') {
+  } else if (activeName.value === '2') {
     getDriverData(params);
-  } else if (collapseActiveNames.value === '3') {
+  } else if (activeName.value === '3') {
     getSoftwareData(params);
   } else {
     getBusinessSoftwareData(params);
@@ -138,11 +154,11 @@ const initMobileData = (params: CveQuery) => {
 };
 
 const initData = (params: CveQuery) => {
-  if (activeName.value === 'first') {
+  if (activeName.value === '1') {
     getCompatibilityData(params);
-  } else if (activeName.value === 'second') {
+  } else if (activeName.value === '2') {
     getDriverData(params);
-  } else if (activeName.value === 'third') {
+  } else if (activeName.value === '3') {
     getSoftwareData(params);
   } else {
     getBusinessSoftwareData(params);
@@ -189,16 +205,23 @@ onMounted(() => {
   driverArchitectureOptions({ lang: 'zh' }).then((res: any) => {
     res.result.forEach((item: string) => {
       architectureSelect.value.push(item);
+      filterData.value.tags.select.push(item);
     });
   });
   driverOSOptions({ lang: 'zh' }).then((res: any) => {
     res.result.forEach((item: string) => {
       osOptions.value.push(item);
+      filterData.value.author.select.push(item);
     });
   });
   getTestOrganizations().then((res: any) => {
     res.result.testOrganizations.forEach((item: string) => {
       testOrganizationsLists.value.push(item);
+    });
+  });
+  getCpu({ lang: 'zh' }).then((res: any) => {
+    res.result.forEach((item: string) => {
+      filterData.value.time.select.push(item);
     });
   });
 });
@@ -214,7 +237,7 @@ onMounted(() => {
   />
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
     <!-- 整机 -->
-    <OTabPane label="整机" name="first">
+    <OTabPane label="整机" name="1">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -302,7 +325,7 @@ onMounted(() => {
       </div>
     </OTabPane>
     <!-- 板卡 -->
-    <OTabPane label="板卡" name="second">
+    <OTabPane label="板卡" name="2">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -342,7 +365,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
             prop="architecture"
-            width="160"
+            width="130"
           >
           </OTableColumn>
           <OTableColumn
@@ -352,10 +375,12 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
             prop="os"
+            width="200"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
             prop="version"
+            width="160"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
@@ -364,6 +389,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
             prop="driverDate"
+            width="200"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
@@ -372,6 +398,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
             prop="boardModel"
+            width="200"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
@@ -447,7 +474,7 @@ onMounted(() => {
       </div>
     </OTabPane>
     <!-- 开源软件 -->
-    <OTabPane label="开源软件" name="third">
+    <OTabPane label="开源软件" name="3">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -529,7 +556,7 @@ onMounted(() => {
       </div>
     </OTabPane>
     <!-- 商业软件 -->
-    <OTabPane label="商业软件" name="fourth">
+    <OTabPane label="商业软件" name="4">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -629,20 +656,20 @@ onMounted(() => {
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       >
-        <span class="slot-content">5/20</span>
       </OPagination>
       <p class="about">
-        关于硬件兼容性测试，openEuler提供了完整的测试流程和工具，详见
-        <a href="#">openEuler 硬件兼容性测试整体介绍</a>
+        {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+        <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
       </p>
     </div>
   </OTabs>
   <div class="tabs-mobile">
-    <el-collapse v-model="collapseActiveNames" accordion @change="handleChange">
+    <el-collapse v-model="activeName" accordion @change="handleChange">
       <el-collapse-item title="整机" name="1">
         <div class="blog-tag">
           <OScreen
-            :data="userCaseData.SCREENDATALIST"
+            class="filter"
+            :data="filterData"
             :list="userCaseData.BLOGDATALIST"
             @filter="listfilter"
           />
@@ -683,6 +710,10 @@ onMounted(() => {
             </ul>
           </li>
         </ul>
+        <p class="mobile-about">
+          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+          <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+        </p>
       </el-collapse-item>
       <el-collapse-item title="板卡" name="2">
         <ul class="mobile-list">
@@ -750,6 +781,10 @@ onMounted(() => {
             </ul>
           </li>
         </ul>
+        <p class="mobile-about">
+          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+          <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+        </p>
       </el-collapse-item>
       <el-collapse-item title="开源软件" name="3">
         <ul class="mobile-list">
@@ -822,8 +857,66 @@ onMounted(() => {
             </ul>
           </li>
         </ul>
+        <p class="mobile-about">
+          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+          <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+        </p>
       </el-collapse-item>
-      <el-collapse-item title="商业软件" name="4"> </el-collapse-item>
+      <el-collapse-item title="商业软件" name="4">
+        <ul class="mobile-list">
+          <li v-for="item in tableData" :key="item.id" class="item">
+            <ul>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN
+                      .SOFTWARENAME
+                  }}:</span
+                >{{ item.productName }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VERSION
+                  }}:</span
+                >
+                {{ item.productVersion }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VENDOR
+                  }}:</span
+                >
+                {{ item.companyName }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SYSTEM
+                  }}:</span
+                >
+                {{ item.osName }} {{ item.osVersion }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN
+                      .SERVER_NAME
+                  }}:</span
+                >
+                <span v-for="it in item.platformTypeAndServerModel" :key="it">
+                  {{ it.serverTypes[0] }} {{ it.serverTypes[1] }}
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p class="mobile-about">
+          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+          <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+        </p>
+      </el-collapse-item>
     </el-collapse>
   </div>
 </template>
@@ -838,15 +931,21 @@ onMounted(() => {
   background-color: #fff;
 }
 .tabs-pc {
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     display: none;
   }
 }
 .tabs-mobile {
   padding: var(--o-spacing-h5);
   display: none;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     display: block;
+  }
+  :deep(.el-collapse-item__header) {
+    padding-left: 8px;
+  }
+  .filter {
+    background-color: #f5f6f8;
   }
 }
 .bottom-wrapper {
@@ -858,19 +957,19 @@ onMounted(() => {
   max-width: 1504px;
   padding: var(--o-spacing-h1) var(--o-spacing-h2) 0px;
   margin: 0 auto;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     padding: var(--o-spacing-h5);
   }
 }
 .blog-tag {
   display: none;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     display: block;
   }
 }
 .filter-card {
   margin: var(--o-spacing-h4) 0;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     display: none;
   }
   .category {
@@ -908,15 +1007,17 @@ onMounted(() => {
   }
 }
 .pc-list {
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     display: none;
   }
 }
 .mobile-list {
   display: none;
-  @media screen and (max-width: 768px) {
+
+  @media screen and (max-width: 1080px) {
     display: block;
   }
+
   .item {
     padding: var(--o-spacing-h5);
     font-size: var(--o-font-size-tip);
@@ -948,6 +1049,7 @@ onMounted(() => {
     }
   }
 }
+
 .pagination {
   margin: var(--o-spacing-h2) 0 var(--o-spacing-h4);
 }
@@ -957,5 +1059,12 @@ onMounted(() => {
   font-weight: 400;
   color: var(--o-color-text2);
   line-height: var(--o-line-height-h8);
+}
+.mobile-about {
+  padding: 0 var(--o-spacing-h5);
+  font-size: var(--o-font-size-tip);
+  font-weight: 400;
+  color: var(--o-color-text3);
+  line-height: var(--o-line-height-tip);
 }
 </style>
