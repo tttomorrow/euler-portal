@@ -318,51 +318,49 @@ onMounted(async () => {
   }
 }
 .mirror-select {
-  :deep(.o-table) {
-    .mirror-select-header {
-      background: var(--o-color-bg3);
-      font-size: var(--o-font-size-h8);
-      font-weight: 400;
-      color: var(--o-color-text2);
-      line-height: 54px;
-      padding: 0 !important;
+  :deep(.mirror-select-header) {
+    background-color: var(--o-color-bg3);
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    line-height: 54px;
+    padding: 0 !important;
+    .cell {
+      padding: 0 var(--o-spacing-h6) 0 0;
+    }
+
+    &:first-child {
       .cell {
-        padding: 0 var(--o-spacing-h6) 0 0;
-      }
-
-      &:first-child {
-        .cell {
-          padding-left: var(--o-spacing-h2);
-        }
-      }
-
-      &:last-child {
-        .cell {
-          padding-right: var(--o-spacing-h2);
-        }
+        padding-left: var(--o-spacing-h2);
       }
     }
 
-    .mirror-select-row {
-      font-size: var(--o-font-size-h8);
-      font-weight: 400;
-      color: var(--o-color-text2);
-      height: 54px;
-      border-bottom: 1px var(--o-color-division) solid;
+    &:last-child {
       .cell {
-        padding-left: 0px;
-        padding-right: var(--o-spacing-h6);
+        padding-right: var(--o-spacing-h2);
       }
+    }
+  }
 
-      &:first-child {
-        .cell {
-          padding-left: var(--o-spacing-h2);
-        }
+  :deep(.mirror-select-row) {
+    font-size: var(--o-font-size-h8);
+    font-weight: 400;
+    color: var(--o-color-text2);
+    height: 54px;
+    border-bottom: 1px var(--o-color-division) solid;
+    .cell {
+      padding-left: 0px;
+      padding-right: var(--o-spacing-h6);
+    }
+
+    &:first-child {
+      .cell {
+        padding-left: var(--o-spacing-h2);
       }
-      &:last-child {
-        .cell {
-          padding-right: var(--o-spacing-h2);
-        }
+    }
+    &:last-child {
+      .cell {
+        padding-right: var(--o-spacing-h2);
       }
     }
   }
