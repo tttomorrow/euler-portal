@@ -37,7 +37,7 @@ export default defineComponent({
           ) : (
             ''
           )}
-          <span>{slots.default?.()}</span>
+          {slots.default?.()}
           {slots.suffixIcon ? (
             <span class="suffix-icon">{slots.suffixIcon()}</span>
           ) : (
