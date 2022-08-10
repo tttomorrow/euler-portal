@@ -2,9 +2,19 @@
 title: "隐私政策"
 module: privacy
 ---
-<!--  TODO: BANNER -->
 <script setup>
+import banner from '@/assets/banner-secondary.png';
+import search from '@/assets/illustrations/search.png';
+
+import BannerLevel2 from '@/components/BannerLevel2.vue';
 </script>
+  <BannerLevel2
+    :background-image="banner"
+    background-text="PRIVACY POLICY"
+    title="隐私政策"
+    :illustration="search"
+  />
+<!--  TODO: 文字 -->
 
 <div class='markdown'>
 
