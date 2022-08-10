@@ -10,7 +10,7 @@ const attrs = useAttrs();
   </ElPagination>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .o-pagination {
   --o-pagination-font-color: var(--o-color-text2);
   --o-pagination-font-color_active: var(--o-color-brand_active);
@@ -22,7 +22,7 @@ const attrs = useAttrs();
 
   --o-pagination-number-border-color_active: var(--o-color-brand);
 
-  :deep.el-pagination {
+  &.el-pagination {
     --el-pagination-button-bg-color: var(--o-pagination-bg-color_disabled);
     justify-content: center;
     .el-input {
@@ -64,9 +64,6 @@ const attrs = useAttrs();
       color: var(--o-pagination-font-color);
       border-radius: 0px;
       background: var(--o-pagination-bg-color);
-      &:disabled {
-        background: var(--o-pagination-bg-color);
-      }
     }
     .btn-next {
       margin-right: var(--o-spacing-h5);

@@ -37,6 +37,7 @@ const architectureSelect = ref<string[]>(['全部']);
 const osOptions = ref<string[]>(['全部']);
 const activeName = ref('first');
 const testOrganizationsLists = ref<string[]>(['全部']);
+const collapseActiveNames = ref('1');
 
 const queryData: CveQuery = reactive({
   pages: {
@@ -68,6 +69,7 @@ const getCompatibilityData = (data: CveQuery) => {
     throw new Error(e);
   }
 };
+
 // 板卡
 const getDriverData = (data: CveQuery) => {
   try {
@@ -79,6 +81,7 @@ const getDriverData = (data: CveQuery) => {
     throw new Error(e);
   }
 };
+
 // 开源软件
 const getSoftwareData = (data: CveQuery) => {
   try {
@@ -90,6 +93,7 @@ const getSoftwareData = (data: CveQuery) => {
     throw new Error(e);
   }
 };
+
 // 商业软件
 const getBusinessSoftwareData = (data: CveQuery) => {
   try {
@@ -100,6 +104,10 @@ const getBusinessSoftwareData = (data: CveQuery) => {
   } catch (e: any) {
     throw new Error(e);
   }
+};
+
+const handleChange = () => {
+  initMobileData(queryData);
 };
 
 const handleClick = () => {
@@ -115,6 +123,18 @@ const handleClick = () => {
   nextTick(() => {
     initData(queryData);
   });
+};
+
+const initMobileData = (params: CveQuery) => {
+  if (collapseActiveNames.value === '1') {
+    getCompatibilityData(params);
+  } else if (collapseActiveNames.value === '2') {
+    getDriverData(params);
+  } else if (collapseActiveNames.value === '3') {
+    getSoftwareData(params);
+  } else {
+    getBusinessSoftwareData(params);
+  }
 };
 
 const initData = (params: CveQuery) => {
@@ -192,7 +212,7 @@ onMounted(() => {
     subtitle=""
     :illustration="search"
   />
-  <OTabs v-model="activeName" @tab-click="handleClick">
+  <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
     <!-- 整机 -->
     <OTabPane label="整机" name="first">
       <div class="wrapper">
@@ -230,13 +250,7 @@ onMounted(() => {
             </TagFilter>
           </div>
         </OCard>
-        <div class="blog-tag">
-          <OScreen
-            :data="userCaseData.SCREENDATALIST"
-            :list="userCaseData.BLOGDATALIST"
-            @filter="listfilter"
-          />
-        </div>
+
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
@@ -285,43 +299,6 @@ onMounted(() => {
             </template>
           </el-table-column>
         </OTable>
-
-        <ul class="mobile-list">
-          <li v-for="item in tableData" :key="item.id" class="item">
-            <ul>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
-                  }}:</span
-                >{{ item.architecture }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.VENDOR }}:</span
-                >{{ item.hardwareFactory }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.MODEL }}:</span
-                >{{ item.hardwareModel }}
-              </li>
-              <li>
-                <span>{{ i18n.compatibility.HARDWARE_DETAIL.LABELS.CPU }}:</span
-                >{{ item.cpu }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
-                >{{ item.osVersion }}
-              </li>
-              <li>
-                <span>{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE }}:</span
-                >{{ item.certificationTime }}
-              </li>
-            </ul>
-          </li>
-        </ul>
       </div>
     </OTabPane>
     <!-- 板卡 -->
@@ -549,77 +526,6 @@ onMounted(() => {
             prop="license"
           ></OTableColumn>
         </OTable>
-
-        <ul class="mobile-list">
-          <li v-for="item in tableData" :key="item.id" class="item">
-            <ul>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.ARCHITECTURE
-                  }}:</span
-                >{{ item.arch }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARETYPE
-                  }}:</span
-                >
-                {{ item.group }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARENAME
-                  }}:</span
-                >
-                {{ item.softwareName }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.SOFTWARE_TABLE_COLUMN.VERSION }}:</span
-                >
-                {{ item.version }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES
-                  }}:</span
-                >
-                {{ item.property }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM }}:</span
-                >
-                {{ item.os }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK
-                  }}:</span
-                >
-                <a
-                  :href="item.downloadLink"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >link</a
-                >
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.PUBLICKLICENSE
-                  }}:</span
-                >
-                {{ item.license }}
-              </li>
-            </ul>
-          </li>
-        </ul>
       </div>
     </OTabPane>
     <!-- 商业软件 -->
@@ -731,6 +637,195 @@ onMounted(() => {
       </p>
     </div>
   </OTabs>
+  <div class="tabs-mobile">
+    <el-collapse v-model="collapseActiveNames" accordion @change="handleChange">
+      <el-collapse-item title="整机" name="1">
+        <div class="blog-tag">
+          <OScreen
+            :data="userCaseData.SCREENDATALIST"
+            :list="userCaseData.BLOGDATALIST"
+            @filter="listfilter"
+          />
+        </div>
+        <ul class="mobile-list">
+          <li v-for="item in tableData" :key="item.id" class="item">
+            <ul>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
+                  }}:</span
+                >{{ item.architecture }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.VENDOR }}:</span
+                >{{ item.hardwareFactory }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.MODEL }}:</span
+                >{{ item.hardwareModel }}
+              </li>
+              <li>
+                <span>{{ i18n.compatibility.HARDWARE_DETAIL.LABELS.CPU }}:</span
+                >{{ item.cpu }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
+                >{{ item.osVersion }}
+              </li>
+              <li>
+                <span>{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE }}:</span
+                >{{ item.certificationTime }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </el-collapse-item>
+      <el-collapse-item title="板卡" name="2">
+        <ul class="mobile-list">
+          <li v-for="item in tableData" :key="item.id" class="item">
+            <ul>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
+                  }}:</span
+                >{{ item.architecture }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME }}:</span
+                >
+                {{ item.driverName }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
+                >
+                {{ item.os }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION }}:</span
+                >
+                {{ item.version }}
+              </li>
+              <li>
+                <span>{{ i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE }}:</span>
+                {{ item.type }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE
+                  }}:</span
+                >
+                {{ item.driverDate }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR
+                  }}:</span
+                >
+                {{ item.chipVendor }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL
+                  }}:</span
+                >
+                {{ item.boardModel }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL }}:</span
+                >
+                {{ item.chipModel }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </el-collapse-item>
+      <el-collapse-item title="开源软件" name="3">
+        <ul class="mobile-list">
+          <li v-for="item in tableData" :key="item.id" class="item">
+            <ul>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.ARCHITECTURE
+                  }}:</span
+                >{{ item.arch }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARETYPE
+                  }}:</span
+                >
+                {{ item.group }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARENAME
+                  }}:</span
+                >
+                {{ item.softwareName }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.SOFTWARE_TABLE_COLUMN.VERSION }}:</span
+                >
+                {{ item.version }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES
+                  }}:</span
+                >
+                {{ item.property }}
+              </li>
+              <li>
+                <span
+                  >{{ i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM }}:</span
+                >
+                {{ item.os }}
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK
+                  }}:</span
+                >
+                <a
+                  :href="item.downloadLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >link</a
+                >
+              </li>
+              <li>
+                <span
+                  >{{
+                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.PUBLICKLICENSE
+                  }}:</span
+                >
+                {{ item.license }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </el-collapse-item>
+      <el-collapse-item title="商业软件" name="4"> </el-collapse-item>
+    </el-collapse>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -741,6 +836,18 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   background-color: #fff;
+}
+.tabs-pc {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+.tabs-mobile {
+  padding: var(--o-spacing-h5);
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 }
 .bottom-wrapper {
   max-width: 1504px;
@@ -753,12 +860,6 @@ onMounted(() => {
   margin: 0 auto;
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
-  }
-  .o-search {
-    height: 48px;
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
   }
 }
 .blog-tag {
