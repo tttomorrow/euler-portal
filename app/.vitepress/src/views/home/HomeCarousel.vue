@@ -2,9 +2,6 @@
 import { ref } from 'vue';
 import { useI18n } from '@/i18n';
 import IconArrowRight from '~icons/app/arrow-right.svg';
-import useWindowResize from '@/components/hooks/useWindowResize';
-
-const screenWidth = useWindowResize();
 
 const i18n = useI18n();
 
@@ -31,12 +28,8 @@ const handleGo = (path: string) => {
 <template>
   <div class="carousel">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
-    <div v-if="screenWidth >= 1100" class="carousel-pc">
-      <OCard
-        class="carousel-pc-card"
-        :style="{ padding: '0px' }"
-        shadow="hover"
-      >
+    <div class="carousel-pc">
+      <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
         <div class="carousel-pc-content">
           <div class="carousel-pc-list">
             <div
@@ -59,17 +52,16 @@ const handleGo = (path: string) => {
             class="carousel-pc-button-item"
             @click="handleGo(i18n.home.IMG_CAROUSE.TRY_URL)"
           >
-            {{ i18n.home.IMG_CAROUSE.BUTTON }}
             <template #suffixIcon>
               <IconArrowRight class="carousel-pc-button-icon"></IconArrowRight>
             </template>
+            {{ i18n.home.IMG_CAROUSE.BUTTON }}
           </OButton>
         </div>
       </OCard>
     </div>
 
     <OCollapse
-      v-else
       v-model="activeMobile"
       class="carousel-mobile"
       accordion
@@ -115,9 +107,11 @@ const handleGo = (path: string) => {
 
   &-mobile {
     margin-top: var(--o-spacing-h5);
-
-    display: flex;
+    display: none;
     flex-flow: column;
+    @media screen and (max-width: 1100px) {
+      display: flex;
+    }
 
     &-card {
       :deep(.el-collapse-item__content) {
@@ -174,6 +168,10 @@ const handleGo = (path: string) => {
   }
   &-pc {
     margin-top: var(--o-spacing-h2);
+    display: block;
+    @media screen and (max-width: 1100px) {
+      display: none;
+    }
 
     &-card {
       :deep(.el-card__body) {
