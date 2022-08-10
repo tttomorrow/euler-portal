@@ -12,6 +12,7 @@ export interface CveQuery {
   cpu?: string;
   os?: string;
   lang?: string;
+  testOrganization?: string;
 }
 export interface DetailParams {
   securityNoticeNo: string;
