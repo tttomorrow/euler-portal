@@ -9,7 +9,7 @@ const classNames = computed(() => {
 </script>
 
 <template>
-  <ElDrawer v-bind="attrs" :custom-class="classNames">
+  <ElDrawer v-bind="attrs" :custom-class="classNames" append-to-body>
     <template #header>
       <slot name="header"></slot>
     </template>
