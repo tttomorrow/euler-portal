@@ -176,17 +176,15 @@ const sponsorList = [
 
 <template>
   <div class="main">
-    <header>
-      <div class="banner">
-        <BannerLevel2
-          :background-image="banner"
-          background-text="INTERACTION"
-          title="峰会"
-          :illustration="summit"
-        />
-      </div>
-    </header>
-    <main class="middle">
+    <div class="banner">
+      <BannerLevel2
+        :background-image="banner"
+        background-text="INTERACTION"
+        title="峰会"
+        :illustration="summit"
+      />
+    </div>
+    <div class="middle">
       <div class="middle-text">
         <p>
           openEuler Developer Day 2022 （简称 ODD 2022）是开放原子开源基金会的
@@ -218,56 +216,54 @@ const sponsorList = [
           :mobile-columns-num="2"
         />
       </div>
-    </main>
-    <footer>
-      <div class="foot">
-        <div class="foot-construction">
-          <p class="headline">RARTNERS</p>
-          <p class="subtitle">共建单位</p>
-          <div class="foot-construction-guidance">
-            <p>主办方</p>
-          </div>
-          <div class="foot-construction-imglist">
-            <a><img src="@/assets/category/summit/cooperate/openatom.png" /></a>
-            <a
-              ><img src="@/assets/category/summit/cooperate/openEulerlogo.png"
-            /></a>
-          </div>
-          <div class="foot-construction-company">
-            <p>联办单位</p>
-            <div class="foot-construction-company-list">
-              <div v-for="item in cooperateList" :key="item.img">
-                <a><img :src="item.img" /></a>
-              </div>
-            </div>
-          </div>
-          <div class="foot-construction-company">
-            <p>协办单位</p>
-            <div class="foot-construction-company-list">
-              <div v-for="item in sponsorList" :key="item.img">
-                <a><img :src="item.img" /></a>
-              </div>
-            </div>
-          </div>
-          <div class="foot-construction-review">
-            <p class="headline">RARTNERS</p>
-            <p class="subtitle">精彩回顾</p>
-            <div class="foot-construction-review-list">
-              <a
-                v-for="item in i18n.summit.REVIEWLIST"
-                :key="item.TITLE"
-                :href="item.ADDRESS"
-                target="_blank"
-                class="foot-construction-review-list-item"
-              >
-                <img src="@/assets/category/summit/icon-live.png" />
-                <p>{{ item.TITLE }}</p>
-              </a>
+    </div>
+    <div class="foot">
+      <div class="foot-construction">
+        <p class="headline">RARTNERS</p>
+        <p class="subtitle">共建单位</p>
+        <div class="foot-construction-guidance">
+          <p>主办方</p>
+        </div>
+        <div class="foot-construction-imglist">
+          <a><img src="@/assets/category/summit/cooperate/openatom.png" /></a>
+          <a
+            ><img src="@/assets/category/summit/cooperate/openEulerlogo.png"
+          /></a>
+        </div>
+        <div class="foot-construction-company">
+          <p>联办单位</p>
+          <div class="foot-construction-company-list">
+            <div v-for="item in cooperateList" :key="item.img">
+              <a><img :src="item.img" /></a>
             </div>
           </div>
         </div>
+        <div class="foot-construction-company">
+          <p>协办单位</p>
+          <div class="foot-construction-company-list">
+            <div v-for="item in sponsorList" :key="item.img">
+              <a><img :src="item.img" /></a>
+            </div>
+          </div>
+        </div>
+        <div class="foot-construction-review">
+          <p class="headline">RARTNERS</p>
+          <p class="subtitle">精彩回顾</p>
+          <div class="foot-construction-review-list">
+            <a
+              v-for="item in i18n.summit.REVIEWLIST"
+              :key="item.TITLE"
+              :href="item.ADDRESS"
+              target="_blank"
+              class="foot-construction-review-list-item"
+            >
+              <img src="@/assets/category/summit/icon-live.png" />
+              <p>{{ item.TITLE }}</p>
+            </a>
+          </div>
+        </div>
       </div>
-    </footer>
+    </div>
   </div>
 </template>
 
