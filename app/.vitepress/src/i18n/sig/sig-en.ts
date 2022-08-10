@@ -68,6 +68,9 @@ export default {
     MANAGER: 'Administrators',
     NAME: 'SIG',
     GITEE_PAGE: 'Gitee',
+    STORE_NAME: '仓库名称',
+    MAINTAINER: 'MAINTAINER',
+    COMMITTER: 'COMMITTER',
   },
   SIG_DESCRIPTION: {
     MEANING:

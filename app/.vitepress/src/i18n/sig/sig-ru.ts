@@ -66,6 +66,9 @@ export default {
     MAIL: 'Эл. почта',
     IRC: 'Канал IRC',
     MANAGER: 'Администраторы',
+    STORE_NAME: '仓库名称',
+    MAINTAINER: 'MAINTAINER',
+    COMMITTER: 'COMMITTER',
   },
   SIG_DESCRIPTION: {
     MEANING:

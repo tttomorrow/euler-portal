@@ -24,14 +24,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <header>
-    <BannerLevel2
-      :background-image="banner"
-      :illustration="illustration"
-      title="SIG"
-      :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
-    />
-  </header>
+  <BannerLevel2
+    :background-image="banner"
+    :illustration="illustration"
+    title="SIG"
+    :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
+  />
   <div class="sig-ul">
     <ul>
       <li>{{ i18n.sig.SIG_DESCRIPTION.LI1 }}</li>
@@ -39,21 +37,19 @@ onMounted(() => {
       <li>{{ i18n.sig.SIG_DESCRIPTION.LI3 }}</li>
     </ul>
   </div>
-  <main>
-    <div class="sig-list">
-      <OTabs>
-        <OTabPane label="SIG List">
-          <TheSigList :sig-list="sigList" />
-        </OTabPane>
-        <OTabPane label="SIG Board" lazy>
-          <TheSigBoard :sig-list="sigList" />
-        </OTabPane>
-        <OTabPane label="SIG Landscape">
-          <TheSigLandscape :sig-list="sigList" />
-        </OTabPane>
-      </OTabs>
-    </div>
-  </main>
+  <div class="sig-list">
+    <OTabs>
+      <OTabPane label="SIG List">
+        <TheSigList :sig-list="sigList" />
+      </OTabPane>
+      <OTabPane label="SIG Board" lazy>
+        <TheSigBoard :sig-list="sigList" />
+      </OTabPane>
+      <OTabPane label="SIG Landscape">
+        <TheSigLandscape :sig-list="sigList" />
+      </OTabPane>
+    </OTabs>
+  </div>
 </template>
 <style lang="scss" scoped>
 .sig-ul {
@@ -78,7 +74,7 @@ onMounted(() => {
   }
 }
 .sig-list {
-  max-width: 1380px;
+  max-width: 1400px;
   margin: var(--o-spacing-h1) auto;
   padding: 0 44px;
   @media (max-width: 780px) {

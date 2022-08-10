@@ -29,17 +29,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <ul class="sig-list">
+  <div class="middle">
+    <ul class="sig-board">
       <li
         v-for="(item,index) in (sigList as any)"
         :key="index"
         data-aos="fade-zoom-in"
-        class="sig-list-item"
+        class="sig-board-item"
       >
         <h2 @click="toSigDetail(item)">{{ item.group_name }}</h2>
-        <ul class="sig-list-item-info">
-          <li class="sig-list-item-info-page">
+        <ul class="sig-board-item-info">
+          <li class="sig-board-item-info-page">
             <img src="@/assets/svg-icons/icon-home.svg" />
             <span>
               <a target="_black" :href="item.home_page">
@@ -47,7 +47,7 @@ onMounted(() => {
               </a>
             </span>
           </li>
-          <li class="sig-list-item-info-mail">
+          <li class="sig-board-item-info-mail">
             <img src="@/assets/svg-icons/icon-mail.svg" />
             <span
               >{{ i18n.sig.SIG_LIST.MAIL }} :
@@ -56,16 +56,16 @@ onMounted(() => {
               </a>
             </span>
           </li>
-          <li class="sig-list-item-info-video">
+          <li class="sig-board-item-info-video">
             <img src="@/assets/svg-icons/icon-video.svg" />
             <span> {{ i18n.sig.SIG_LIST.IRC }} : {{ item.irc }} </span>
           </li>
-          <li class="sig-list-item-info-user">
+          <li class="sig-board-item-info-user">
             <img src="@/assets/svg-icons/icon-user.svg" />
             <span>{{ i18n.sig.SIG_LIST.MANAGER }} :</span>
           </li>
         </ul>
-        <ul class="sig-list-item-admin">
+        <ul class="sig-board-item-admin">
           <li
             v-for="subItem in JSON.parse(item.owners).slice(0, 4)"
             :key="subItem.gitee_id"
@@ -80,7 +80,10 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-.sig-list {
+.middle {
+  margin-top: var(--o-spacing-h2);
+}
+.sig-board {
   column-count: 2;
   column-gap: var(--o-spacing-h1);
   max-width: 1340px;

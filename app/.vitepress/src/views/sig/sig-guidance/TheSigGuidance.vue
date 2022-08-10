@@ -18,60 +18,56 @@ const i18n = useI18n();
 
 <template>
   <div class="application">
-    <header>
-      <BannerLevel2
-        :background-image="banner"
-        background-text="SIG"
-        :title="i18n.sig.GUIDANCE_LIST.GUIDE.TITLE"
-        :illustration="illustration"
-      />
-    </header>
-    <main>
-      <div class="middle">
-        <div
-          v-for="(item, index) in i18n.sig.GUIDANCE_LIST.GUIDE.LINE_CONTENT"
-          :key="item.LEFT.LEFT_CIRCLE"
-          class="middle-item"
-        >
-          <div class="middle-item-left">
-            <div class="middle-item-bgdconfig">
-              <img :src="LEFT_IMG[index]" />
+    <BannerLevel2
+      :background-image="banner"
+      background-text="SIG"
+      :title="i18n.sig.GUIDANCE_LIST.GUIDE.TITLE"
+      :illustration="illustration"
+    />
+    <div class="middle">
+      <div
+        v-for="(item, index) in i18n.sig.GUIDANCE_LIST.GUIDE.LINE_CONTENT"
+        :key="item.LEFT.LEFT_CIRCLE"
+        class="middle-item"
+      >
+        <div class="middle-item-left">
+          <div class="middle-item-bgdconfig">
+            <img :src="LEFT_IMG[index]" />
+          </div>
+          <div class="middle-item-infoconfig">
+            <div class="middle-item-infoconfig-circle">
+              <span>{{ item.LEFT.LEFT_CIRCLE }}</span>
             </div>
-            <div class="middle-item-infoconfig">
-              <div class="middle-item-infoconfig-circle">
-                <span>{{ item.LEFT.LEFT_CIRCLE }}</span>
-              </div>
-              <div>
-                <span v-if="item.LEFT.LEFT_DESC">
-                  {{ item.LEFT.LEFT_DESC }}
-                </span>
-                <span>{{ item.LEFT.LEFT_INFO }}</span>
-              </div>
+            <div>
+              <span v-if="item.LEFT.LEFT_DESC">
+                {{ item.LEFT.LEFT_DESC }}
+              </span>
+              <span>{{ item.LEFT.LEFT_INFO }}</span>
             </div>
           </div>
-          <div
-            class="middle-item-right"
-            :class="index === 0 ? 'middle-item-right-1' : 'other'"
-          >
-            <div class="middle-item-bgdconfig">
-              <img :src="RIGHT_IMG[index]" />
+        </div>
+        <div
+          class="middle-item-right"
+          :class="index === 0 ? 'middle-item-right-1' : 'other'"
+        >
+          <div class="middle-item-bgdconfig">
+            <img :src="RIGHT_IMG[index]" />
+          </div>
+          <div class="middle-item-infoconfig">
+            <div class="middle-item-infoconfig-circle">
+              <span>{{ item.RIGHT.RIGHT_CIRCLE }}</span>
             </div>
-            <div class="middle-item-infoconfig">
-              <div class="middle-item-infoconfig-circle">
-                <span>{{ item.RIGHT.RIGHT_CIRCLE }}</span>
-              </div>
-              <div>
-                <span v-if="item.RIGHT.RIGHT_DESC">
-                  {{ item.RIGHT.RIGHT_DESC }}
-                </span>
-                <!-- eslint-disable -->
-                <span v-html="item.RIGHT.RIGHT_INFO"></span>
-              </div>
+            <div>
+              <span v-if="item.RIGHT.RIGHT_DESC">
+                {{ item.RIGHT.RIGHT_DESC }}
+              </span>
+              <!-- eslint-disable -->
+              <span v-html="item.RIGHT.RIGHT_INFO"></span>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   </div>
 </template>
 
