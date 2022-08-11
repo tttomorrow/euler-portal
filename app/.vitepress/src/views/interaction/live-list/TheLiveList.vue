@@ -12,6 +12,7 @@ import LightCradBg from '@/assets/live/light-crad-bg.png';
 import LightCradBgMo from '@/assets/live/light-crad-bg-mobile.png';
 import DarkCradBg from '@/assets/live/dark-crad-bg.png';
 import DarkCradBgMo from '@/assets/live/dark-crad-bg-mobile.png';
+import { ElMessage } from 'element-plus';
 
 import IconRight from '~icons/app/icon-arrow-right1.svg';
 import IconUser from '~icons/app/icon-user.svg';
@@ -37,8 +38,11 @@ const changeSize = (val: number, pagesize: number) => {
 };
 const showLiveList = ref(data.value.slice(0, 6));
 const totoBLink = (url: string) => {
-  url === '' ? alert(i18n.value.live.LINKTIPS) : window.open(url);
-  // TODO: 弹窗组件样式先使用alert替代
+  url === ''
+    ? ElMessage({
+        message: i18n.value.live.LINKTIPS,
+      })
+    : window.open(url);
 };
 
 const commonStore = useCommon();
@@ -168,7 +172,10 @@ const goNext = () => {
 
 <style lang="scss" scoped>
 .live {
-  margin: var(--o-spacing-h1) 0 40px 0;
+  margin: var(--o-spacing-h1) 0 0 0;
+  @media screen and (max-width: 767px) {
+    margin: var(--o-spacing-h2) 0 0 0;
+  }
   &-top-title {
     width: 100%;
     margin: 0 auto;
@@ -211,6 +218,7 @@ const goNext = () => {
     height: 260px;
     @media screen and (max-width: 767px) {
       flex-direction: column;
+      height: 230px;
     }
     &-right {
       padding: var(--o-spacing-h4);
@@ -220,15 +228,15 @@ const goNext = () => {
       flex-direction: column;
       justify-content: space-between;
       @media screen and (max-width: 767px) {
+        max-height: 132px;
         width: 100%;
-        padding: var(--o-spacing-h6);
+        padding: 16px var(--o-spacing-h6);
       }
     }
     &-title {
       overflow: hidden;
       text-overflow: ellipsis;
       font-size: var(--o-font-size-h5);
-      line-height: var(--o-line-height-h5);
       text-align: left;
       color: var(--o-color-text2);
       @media screen and (max-width: 767px) {
@@ -263,7 +271,7 @@ const goNext = () => {
     padding: 0;
     line-height: var(--o-line-height-tip);
     @media screen and (max-width: 767px) {
-      margin-top: var(--o-spacing-h8);
+      margin-top: var(--o-spacing-h5);
     }
     &-text {
       margin-right: var(--o-spacing-h3);
