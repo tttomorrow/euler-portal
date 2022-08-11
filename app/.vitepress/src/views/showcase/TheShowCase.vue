@@ -7,14 +7,12 @@ import { useI18n } from '@/i18n';
 import useWindowScroll from '@/components/hooks/useWindowScroll';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import NotFound from '@/NotFound.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
-
-import IconChevronLeft from '~icons/app/icon-chevron-left.svg';
-import IconChevronRight from '~icons/app/icon-chevron-right.svg';
 
 // import useCaseZh from '@/i18n/showcase/showcase.json';
 const keyWord = ref('');
@@ -46,17 +44,18 @@ function filterCase(type: string) {
 // 用户案例类型
 const tagArr: any = ref([]);
 // 当前显示的页码
-const currentPage1 = ref(1);
+const currentPage = ref(1);
+
 // 每页数据
-const pageSize4 = ref(12);
+const pageSize = ref(12);
 // 当前分类的所有案例
 const currentCaseListAll: any = ref([]);
 // 当前显示的案例
 const currentCaseList = computed(() => {
-  if (currentCaseListAll.value.length > pageSize4.value) {
+  if (currentCaseListAll.value.length > pageSize.value) {
     return currentCaseListAll.value.slice(
-      (currentPage1.value - 1) * pageSize4.value,
-      currentPage1.value * pageSize4.value
+      (currentPage.value - 1) * pageSize.value,
+      currentPage.value * pageSize.value
     );
   } else {
     return currentCaseListAll.value;
@@ -69,7 +68,7 @@ const total = computed(() => {
 });
 // 分页器总页数
 const totalPage = computed(() => {
-  return Math.ceil(total.value / pageSize4.value);
+  return Math.ceil(total.value / pageSize.value);
 });
 //控制移动端导航栏吸顶
 // const isTopNavMo = ref(false);
@@ -88,10 +87,10 @@ const isTopNavMo = computed(() => {
 });
 // 移动端翻页事件
 function turnPage(option: string) {
-  if (option === 'prev' && currentPage1.value > 1) {
-    currentPage1.value = currentPage1.value - 1;
-  } else if (option === 'next' && currentPage1.value < totalPage.value) {
-    currentPage1.value = currentPage1.value + 1;
+  if (option === 'prev' && currentPage.value > 1) {
+    currentPage.value = currentPage.value - 1;
+  } else if (option === 'next' && currentPage.value < totalPage.value) {
+    currentPage.value = currentPage.value + 1;
   }
 }
 // 点击跳转案例详情页面
@@ -149,7 +148,7 @@ function getUrlParam() {
 onMounted(() => {
   getUrlParam();
   try {
-    getCaseTagData().then((res: any) => {
+    getCaseTagData({ language: 'en' }).then((res: any) => {
       const orderArr: any = [];
       let countAll = 0;
       res.obj.totalNum.forEach((item: any) => {
@@ -233,47 +232,52 @@ onMounted(() => {
     <NotFound v-if="total === 0" />
     <div v-if="isShow" class="page-box">
       <OPagination
-        v-model:currentPage="currentPage1"
-        v-model:page-size="pageSize4"
+        v-model:currentPage="currentPage"
+        v-model:page-size="pageSize"
         class="pagination-pc"
         :hide-on-single-page="true"
-        :page-sizes="[pageSize4]"
+        :page-sizes="[pageSize]"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
         :total="total"
       >
-        <span>{{ currentPage1 }}/{{ totalPage }}</span>
+        <span>{{ currentPage }}/{{ totalPage }}</span>
       </OPagination>
-      <div class="pagination-h5">
+      <AppPaginationMo
+        :current-page="currentPage"
+        :total-page="totalPage"
+        @turn-page="turnPage"
+      />
+      <!-- <div class="pagination-h5">
         <OIcon
           class="icon-prev"
-          :class="currentPage1 === 1 ? 'disable-button' : ''"
+          :class="currentPage === 1 ? 'disable-button' : ''"
         >
           <IconChevronLeft />
         </OIcon>
         <span
           class="prev"
-          :class="currentPage1 === 1 ? 'disable-button' : ''"
+          :class="currentPage === 1 ? 'disable-button' : ''"
           @click="turnPage('prev')"
           >{{ userCaseData.prev }}</span
         >
         <span class="page-number">
-          <span>{{ currentPage1 }}</span>
+          <span>{{ currentPage }}</span>
           <span>/{{ totalPage }}</span>
         </span>
         <span
           class="next"
-          :class="currentPage1 === totalPage ? 'disable-button' : ''"
+          :class="currentPage === totalPage ? 'disable-button' : ''"
           @click="turnPage('next')"
           >{{ userCaseData.next }}</span
         >
         <OIcon
           class="icon-next"
-          :class="currentPage1 === totalPage ? 'disable-button' : ''"
+          :class="currentPage === totalPage ? 'disable-button' : ''"
         >
           <IconChevronRight />
         </OIcon>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -455,7 +459,6 @@ onMounted(() => {
   }
   .page-box {
     margin-top: var(--o-spacing-h2);
-    padding-bottom: var(--o-spacing-h2);
     .pagination-pc {
       @media (max-width: 768px) {
         display: none;

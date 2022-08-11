@@ -5,6 +5,7 @@ import IconRight from '~icons/app/icon-right.svg';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppAnchor from '@/components/AppAnchor.vue';
 import TagFilter from '@/components/TagFilter.vue';
 
@@ -70,6 +71,17 @@ const handleRadioChange = (val: string) => {
 };
 
 const switchVal = ref(false);
+// 移动端分页器 start
+const currentPage = ref(1);
+const totalPage = ref(3);
+function turnPage(option: string) {
+  if (option === 'prev' && currentPage.value > 1) {
+    currentPage.value = currentPage.value - 1;
+  } else if (option === 'next' && currentPage.value < totalPage.value) {
+    currentPage.value = currentPage.value + 1;
+  }
+}
+// 移动端分页器 end
 </script>
 
 <template>
@@ -315,6 +327,12 @@ const switchVal = ref(false);
         </OCollapseItem>
       </OCollapse>
     </div>
+    <!-- 移动端分页器 -->
+    <AppPaginationMo
+      :current-page="currentPage"
+      :total-page="totalPage"
+      @turn-page="turnPage"
+    />
   </div>
 </template>
 <style lang="scss" scoped>
