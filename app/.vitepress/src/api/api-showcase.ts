@@ -15,7 +15,7 @@ export function getUserCaseData(params: object) {
  * @name getCaseTagData
  *
  */
-export function getCaseTagData() {
+export function getCaseTagData(params: object) {
   const url = '/api-search/industry/';
-  return request.post(url).then((res: AxiosResponse) => res.data);
+  return request.post(url, params).then((res: AxiosResponse) => res.data);
 }

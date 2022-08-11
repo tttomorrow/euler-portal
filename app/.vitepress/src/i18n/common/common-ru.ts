@@ -290,4 +290,6 @@ export default {
     CHANGE: 'Другая партия',
     PLEACHOLDER: 'Введите содержимое',
   },
+  PREV: '上一页',
+  NEXT: '下一页',
 };

@@ -330,4 +330,6 @@ export default {
     CHANGE: '换一批',
     PLEACHOLDER: '请输入内容',
   },
+  PREV: '上一页',
+  NEXT: '下一页',
 };

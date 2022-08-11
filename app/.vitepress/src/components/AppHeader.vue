@@ -144,7 +144,7 @@ const searchInput = ref<string>('');
         </div>
       </div>
       <!-- 移动端搜索按钮 -->
-      <div class="mobile-search" v-if="!isShowBox">
+      <div v-if="!isShowBox" class="mobile-search">
         <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
       </div>
       <div v-show="!isShowBox" class="header-content">
