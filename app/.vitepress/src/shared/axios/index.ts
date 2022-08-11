@@ -137,7 +137,6 @@ const responseInterceptorId = request.interceptors.response.use(
     ElMessage({
       type: 'error',
       message: err.toString(),
-      center: true,
     });
     const { config } = err;
 
