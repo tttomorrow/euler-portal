@@ -52,18 +52,22 @@ const toNewsContent = (path: string) => {
 };
 
 onMounted(() => {
-  getSortData(sortParams).then((res) => {
-    paginationData.value.total = res.obj.count;
-    paginationData.value.currentpage = res.obj.page;
-    paginationData.value.pagesize = res.obj.pageSize;
-    newsCardData.value = res.obj.records;
-    for (let i = 0; i < newsCardData.value.length; i++) {
-      if (typeof newsCardData.value[i].author === 'string') {
-        newsCardData.value[i].author = [newsCardData.value[i].author];
+  try {
+    getSortData(sortParams).then((res) => {
+      paginationData.value.total = res.obj.count;
+      paginationData.value.currentpage = res.obj.page;
+      paginationData.value.pagesize = res.obj.pageSize;
+      newsCardData.value = res.obj.records;
+      for (let i = 0; i < newsCardData.value.length; i++) {
+        if (typeof newsCardData.value[i].author === 'string') {
+          newsCardData.value[i].author = [newsCardData.value[i].author];
+        }
+        newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
       }
-      newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
-    }
-  });
+    });
+  } catch (error: any) {
+    throw Error(error);
+  }
 });
 
 const currentChange = (val: number) => {
@@ -73,15 +77,19 @@ const currentChange = (val: number) => {
     page: val,
     pageSize: paginationData.value.pagesize,
   };
-  getSortData(params).then((res) => {
-    newsCardData.value = res.obj.records;
-    for (let i = 0; i < newsCardData.value.length; i++) {
-      if (typeof newsCardData.value[i].author === 'string') {
-        newsCardData.value[i].author = [newsCardData.value[i].author];
+  try {
+    getSortData(params).then((res) => {
+      newsCardData.value = res.obj.records;
+      for (let i = 0; i < newsCardData.value.length; i++) {
+        if (typeof newsCardData.value[i].author === 'string') {
+          newsCardData.value[i].author = [newsCardData.value[i].author];
+        }
+        newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
       }
-      newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
-    }
-  });
+    });
+  } catch (error: any) {
+    throw Error(error);
+  }
 };
 
 const sizeChange = (val: number) => {
@@ -91,15 +99,19 @@ const sizeChange = (val: number) => {
     page: paginationData.value.currentpage,
     pageSize: val,
   };
-  getSortData(params).then((res) => {
-    newsCardData.value = res.obj.records;
-    for (let i = 0; i < newsCardData.value.length; i++) {
-      if (typeof newsCardData.value[i].author === 'string') {
-        newsCardData.value[i].author = [newsCardData.value[i].author];
+  try {
+    getSortData(params).then((res) => {
+      newsCardData.value = res.obj.records;
+      for (let i = 0; i < newsCardData.value.length; i++) {
+        if (typeof newsCardData.value[i].author === 'string') {
+          newsCardData.value[i].author = [newsCardData.value[i].author];
+        }
+        newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
       }
-      newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
-    }
-  });
+    });
+  } catch (error: any) {
+    throw Error(error);
+  }
 };
 </script>
 
