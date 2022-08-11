@@ -86,65 +86,58 @@ const userSubscribe = (userID: string) => {
 
 <template>
   <div class="application">
-    <header>
-      <BannerLevel2
-        :background-image="banner"
-        background-text="COMMUNITY"
-        :title="i18n.mailing.MAILING_LIST.TITLE"
-        :illustration="illustration"
-      />
-    </header>
-    <main>
-      <div class="middle">
-        <div
-          v-for="(item, index) in i18n.mailing.MAILING_LIST.GUIDE_CONTENT"
-          :key="item.LEFT.LEFT_CIRCLE"
-          class="middle-item"
-        >
-          <div class="middle-item-left">
-            <div class="middle-item-bgdconfig">
-              <img :src="LEFT_IMG[index]" />
+    <BannerLevel2
+      :background-image="banner"
+      background-text="COMMUNITY"
+      :title="i18n.mailing.MAILING_LIST.TITLE"
+      :illustration="illustration"
+    />
+    <div class="middle">
+      <div
+        v-for="(item, index) in i18n.mailing.MAILING_LIST.GUIDE_CONTENT"
+        :key="item.LEFT.LEFT_CIRCLE"
+        class="middle-item"
+      >
+        <div class="middle-item-left">
+          <div class="middle-item-bgdconfig">
+            <img :src="LEFT_IMG[index]" />
+          </div>
+          <div class="middle-item-infoconfig">
+            <div class="middle-item-infoconfig-circle">
+              {{ item.LEFT.INDEX }}
             </div>
-            <div class="middle-item-infoconfig">
-              <div class="middle-item-infoconfig-circle">
-                {{ item.LEFT.INDEX }}
-                <!-- <span></span> -->
-              </div>
-              <div>
-                <span>{{ item.LEFT.LEFT_INFO }}</span>
-                <span v-if="item.LEFT.DO_THIS">{{ item.LEFT.DO_THIS }}</span>
-              </div>
+            <div>
+              <span>{{ item.LEFT.LEFT_INFO }}</span>
+              <span v-if="item.LEFT.DO_THIS">{{ item.LEFT.DO_THIS }}</span>
             </div>
           </div>
-          <div
-            class="middle-item-right"
-            :class="index === 0 ? 'middle-item-right-1' : 'other'"
-          >
-            <div class="middle-item-bgdconfig">
-              <img :src="RIGHT_IMG[index]" />
+        </div>
+        <div
+          class="middle-item-right"
+          :class="index === 0 ? 'middle-item-right-1' : 'other'"
+        >
+          <div class="middle-item-bgdconfig">
+            <img :src="RIGHT_IMG[index]" />
+          </div>
+          <div class="middle-item-infoconfig">
+            <div class="middle-item-infoconfig-circle">
+              {{ item.RIGHT.INDEX }}
+              <!-- <span>{{ item.RIGHT.INDEX }}</span> -->
             </div>
-            <div class="middle-item-infoconfig">
-              <div class="middle-item-infoconfig-circle">
-                {{ item.RIGHT.INDEX }}
-                <!-- <span>{{ item.RIGHT.INDEX }}</span> -->
-              </div>
-              <div>
-                <span
-                  >{{ item.RIGHT.RIGHT_INFO }}
-                  <p v-if="item.RIGHT.DO_THIS" @click="goUnsubscribeBlog()">
-                    {{ item.RIGHT.DO_THIS }}
-                  </p></span
-                >
-              </div>
+            <div>
+              <span
+                >{{ item.RIGHT.RIGHT_INFO }}
+                <p v-if="item.RIGHT.DO_THIS" @click="goUnsubscribeBlog()">
+                  {{ item.RIGHT.DO_THIS }}
+                </p>
+              </span>
             </div>
           </div>
         </div>
       </div>
-    </main>
-    <main>
       <div class="mail-table">
         <OTable :data="tableData" style="width: 100%">
-          <el-table-column label="Mirror Name">
+          <el-table-column :label="i18n.mailing.MAILING_LIST.TABLE.NAME_H5">
             <template #default="scope">
               <a
                 ref="listName"
@@ -156,9 +149,23 @@ const userSubscribe = (userID: string) => {
               </a>
             </template>
           </el-table-column>
-          <el-table-column label="Location" prop="fqdn_listname">
+          <el-table-column
+            :label="i18n.mailing.MAILING_LIST.TABLE.EMAIL_ADDRESS"
+            prop="fqdn_listname"
+          >
+            <template #default="scope">
+              <div>
+                <span class="ellipsis">{{ scope.row.fqdn_listname }}</span>
+              </div>
+              <!-- <el-popover trigger="hover" placement="top"  width="300">
+                <p>{{ scope.row.fqdn_listname }}</p>
+                <div>
+                  <span class="ellipsis">{{ scope.row.fqdn_listname }}</span>
+                </div>
+              </el-popover> -->
+            </template>
           </el-table-column>
-          <el-table-column label="Sponsor">
+          <el-table-column :label="i18n.mailing.MAILING_LIST.TABLE.ARCHIVE_H5">
             <template #default="scope">
               <a
                 :href="
@@ -173,14 +180,19 @@ const userSubscribe = (userID: string) => {
               </a>
             </template>
           </el-table-column>
-          <OTableColumn
-            label="RSNC"
+          <el-table-column
+            :label="i18n.mailing.MAILING_LIST.TABLE.DESCRIPTION"
             prop="description"
-            :show-overflow-tooltip="true"
-          ></OTableColumn>
+          >
+            <template #default="scope">
+              <div>
+                <span class="ellipsis">{{ scope.row.description }}</span>
+              </div>
+            </template>
+          </el-table-column>
         </OTable>
       </div>
-    </main>
+    </div>
   </div>
 </template>
 
@@ -188,32 +200,38 @@ const userSubscribe = (userID: string) => {
 .application {
   .middle {
     max-width: 1504px;
-    margin: var(--o-spacing-h1) auto;
+    margin: var(--o-spacing-h1) auto 0 auto;
     padding: 0 44px;
     @media (max-width: 1080px) {
-      margin: var(--o-spacing-h2) auto;
-      padding: 0 16px;
+      margin: var(--o-spacing-h1) auto 0 auto;
+      padding: 0 var(--o-spacing-h5);
+    }
+    @media (max-width: 780px) {
+      margin: var(--o-spacing-h2) auto 0 auto;
+      padding: 0 var(--o-spacing-h5);
     }
     &-item {
       min-height: 204px;
       display: flex;
       align-items: flex-start;
-      margin-top: var(--o-spacing-h4);
+      margin-top: 0px;
+      justify-content: space-between;
       @media (max-width: 780px) {
         display: block;
+        margin-top: var(--o-spacing-h5);
       }
       &-left {
         display: flex;
-        margin-right: var(--o-spacing-h4);
+        margin-right: 0px;
         @media (max-width: 780px) {
           margin-right: 0px;
-          margin-bottom: var(--o-spacing-h4);
+          margin-bottom: var(--o-spacing-h5);
         }
       }
       &-right {
         margin-top: 80px;
         display: flex;
-        margin-right: var(--o-spacing-h4);
+        margin-right: 0px;
         @media (max-width: 780px) {
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
@@ -253,7 +271,7 @@ const userSubscribe = (userID: string) => {
         width: 456px;
         background-color: var(--o-color-bg);
         @media (max-width: 1440px) {
-          width: 400px;
+          width: 430px;
         }
         @media (max-width: 1366px) {
           width: 370px;
@@ -273,13 +291,14 @@ const userSubscribe = (userID: string) => {
           position: relative;
           bottom: var(--o-spacing-h4);
           @media (max-width: 780px) {
-            margin: 0 var(--o-spacing-h10) 0 var(--o-spacing-h3);
+            margin: 0 var(--o-spacing-h10) 0 var(--o-spacing-h2);
             line-height: var(--o-line-height-text);
           }
         }
         p {
           color: var(--o-color-brand);
           cursor: pointer;
+          display: inline;
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           bottom: var(--o-spacing-h4);
@@ -290,8 +309,8 @@ const userSubscribe = (userID: string) => {
         }
         &-circle {
           white-space: nowrap;
-          height: 78px;
-          width: 78px;
+          height: 70px;
+          width: 70px;
           border: 4px solid var(--o-color-base);
           border-radius: 50%;
           background-color: var(--o-color-brand);
@@ -329,14 +348,20 @@ const userSubscribe = (userID: string) => {
     }
   }
   .mail-table {
-    max-width: 1416px;
-    margin: auto;
-    padding-right: 40px;
-    @media screen and (max-width: 1508px) {
-      padding: 0 40px;
+    margin-top: var(--o-spacing-h1);
+    @media (max-width: 780px) {
+      margin-top: var(--o-spacing-h2);
     }
-    @media (max-width: 1080px) {
-      padding: 0 16px;
+    .ellipsis {
+      display: -webkit-box;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .el-popover {
+      height: 150px;
+      overflow: auto;
     }
   }
 }
