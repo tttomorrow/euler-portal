@@ -1,3 +1,13 @@
+import review1 from '../../assets/category/meetup/1.png';
+import review2 from '../../assets/category/meetup/2.png';
+import review3 from '../../assets/category/meetup/3.png';
+import review4 from '../../assets/category/meetup/4.png';
+import review5 from '../../assets/category/meetup/5.png';
+import review6 from '../../assets/category/meetup/6.png';
+import review7 from '../../assets/category/meetup/7.png';
+import review8 from '../../assets/category/meetup/8.png';
+import review9 from '../../assets/category/meetup/9.png';
+
 export default {
   cn: {
     MEETUPS_LIST: [
@@ -5,10 +15,10 @@ export default {
         ID: 1,
         MEETUPS_VIDEO_LINK:
           'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E5%8D%97%E4%BA%AC%E5%BF%AB%E9%97%AA.mp4',
-        MEETUPS_VIDEO_COVER: '/img/meetups/review1.png',
+        MEETUPS_VIDEO_COVER: review1,
         MEETUPS_TITLE: '开源操作系统 金陵技术论坛',
         TITLE_LIST: ['开源操作系统 金陵技术论坛'],
-        MEETUPS_IMG: '/img/meetups/1.png',
+        MEETUPS_IMG: review1,
         MEETUPS_DATE: '2020-10-24',
         MEETUPS_MONTH: '十月',
         MEETUPS_DESC: [
@@ -81,10 +91,10 @@ export default {
         ID: 2,
         MEETUPS_VIDEO_LINK:
           'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E9%95%BF%E6%B2%99%E5%BF%AB%E9%97%AA.mp4',
-        MEETUPS_VIDEO_COVER: '/img/meetups/review2.png',
+        MEETUPS_VIDEO_COVER: review2,
         MEETUPS_TITLE: '长沙 Meetup',
         TITLE_LIST: ['长沙 Meetup'],
-        MEETUPS_IMG: '/img/meetups/2.png',
+        MEETUPS_IMG: review2,
         MEETUPS_DATE: '2020-10-31',
         MEETUPS_MONTH: '十月',
         MEETUPS_DESC: [
@@ -167,7 +177,7 @@ export default {
         MEETUPS_VIDEO_COVER: '/img/meetups/review3.png',
         MEETUPS_TITLE: '共创·共赢 统信UOS & openEuler开源社区技术研讨论坛',
         TITLE_LIST: ['共创·共赢', '统信UOS & openEuler开源社区技术研讨论坛'],
-        MEETUPS_IMG: '/img/meetups/3.png',
+        MEETUPS_IMG: review3,
         MEETUPS_DATE: '2020-11-28',
         MEETUPS_MONTH: '十一月',
         MEETUPS_DESC: [
@@ -246,7 +256,7 @@ export default {
           '数字中国创新大赛  鲲鹏赛道训练营',
           '第十五期--openEuler专场',
         ],
-        MEETUPS_IMG: '/img/meetups/4.png',
+        MEETUPS_IMG: review4,
         MEETUPS_DATE: '2020-12-18',
         MEETUPS_MONTH: '十二月',
         MEETUPS_DESC: [
@@ -314,7 +324,7 @@ export default {
         ID: 5,
         MEETUPS_TITLE: 'openEuler MIC meetup',
         TITLE_LIST: ['openEuler MIC meetup', '谁说不写代码就不能玩开源？'],
-        MEETUPS_IMG: '/img/meetups/5.png',
+        MEETUPS_IMG: review5,
         MEETUPS_DATE: '2021-03-20',
         MEETUPS_MONTH: '三月',
         MEETUPS_DESC: [
@@ -401,7 +411,7 @@ export default {
         ID: 6,
         MEETUPS_TITLE: 'Rust Meetup 深圳站',
         TITLE_LIST: ['Rust Meetup 深圳站'],
-        MEETUPS_IMG: '/img/meetups/6.png',
+        MEETUPS_IMG: review6,
         MEETUPS_DATE: '2021-03-27',
         MEETUPS_MONTH: '三月',
         MEETUPS_DESC: [
@@ -467,7 +477,7 @@ export default {
         ID: 7,
         MEETUPS_TITLE: 'AI-OPS Meetup',
         TITLE_LIST: ['AI-OPS Meetup'],
-        MEETUPS_IMG: '/img/meetups/7.png',
+        MEETUPS_IMG: review7,
         MEETUPS_DATE: '2021-04-08',
         MEETUPS_MONTH: '四月',
         MEETUPS_DESC: [
@@ -531,7 +541,7 @@ export default {
           'openEuler X OpenStack X Arm Meetup',
           '跨界全栈，技术盛宴',
         ],
-        MEETUPS_IMG: '/img/meetups/8.png',
+        MEETUPS_IMG: review8,
         MEETUPS_DATE: '2021-04-10',
         MEETUPS_MONTH: '四月',
         MEETUPS_DESC: [
@@ -595,7 +605,7 @@ export default {
         ID: 9,
         MEETUPS_TITLE: 'openEuler Cloud Native Meetup',
         TITLE_LIST: ['openEuler Cloud Native Meetup'],
-        MEETUPS_IMG: '/img/meetups/9.png',
+        MEETUPS_IMG: review9,
         MEETUPS_DATE: '2021-04-17',
         MEETUPS_MONTH: '四月',
         MEETUPS_DESC: [
@@ -666,10 +676,10 @@ export default {
         ID: 1,
         MEETUPS_VIDEO_LINK:
           'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E5%8D%97%E4%BA%AC%E5%BF%AB%E9%97%AA.mp4',
-        MEETUPS_VIDEO_COVER: '/img/meetups/review1.png',
+        MEETUPS_VIDEO_COVER: review1,
         MEETUPS_TITLE: '开源操作系统 金陵技术论坛',
         TITLE_LIST: ['开源操作系统 金陵技术论坛'],
-        MEETUPS_IMG: '/img/meetups/1.png',
+        MEETUPS_IMG: review1,
         MEETUPS_DATE: '2020-10-24',
         MEETUPS_MONTH: '十月',
         MEETUPS_DESC: [
@@ -742,10 +752,10 @@ export default {
         ID: 2,
         MEETUPS_VIDEO_LINK:
           'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E9%95%BF%E6%B2%99%E5%BF%AB%E9%97%AA.mp4',
-        MEETUPS_VIDEO_COVER: '/img/meetups/review2.png',
+        MEETUPS_VIDEO_COVER: review2,
         MEETUPS_TITLE: '长沙 Meetup',
         TITLE_LIST: ['长沙 Meetup'],
-        MEETUPS_IMG: '/img/meetups/2.png',
+        MEETUPS_IMG: review2,
         MEETUPS_DATE: '2020-10-31',
         MEETUPS_MONTH: '十月',
         MEETUPS_DESC: [
@@ -828,7 +838,7 @@ export default {
         MEETUPS_VIDEO_COVER: '/img/meetups/review3.png',
         MEETUPS_TITLE: '共创·共赢 统信UOS & openEuler开源社区技术研讨论坛',
         TITLE_LIST: ['共创·共赢', '统信UOS & openEuler开源社区技术研讨论坛'],
-        MEETUPS_IMG: '/img/meetups/3.png',
+        MEETUPS_IMG: review3,
         MEETUPS_DATE: '2020-11-28',
         MEETUPS_MONTH: '十一月',
         MEETUPS_DESC: [
@@ -907,7 +917,7 @@ export default {
           '数字中国创新大赛  鲲鹏赛道训练营',
           '第十五期--openEuler专场',
         ],
-        MEETUPS_IMG: '/img/meetups/4.png',
+        MEETUPS_IMG: review4,
         MEETUPS_DATE: '2020-12-18',
         MEETUPS_MONTH: '十二月',
         MEETUPS_DESC: [
@@ -975,7 +985,7 @@ export default {
         ID: 5,
         MEETUPS_TITLE: 'openEuler MIC meetup',
         TITLE_LIST: ['openEuler MIC meetup', '谁说不写代码就不能玩开源？'],
-        MEETUPS_IMG: '/img/meetups/5.png',
+        MEETUPS_IMG: review5,
         MEETUPS_DATE: '2021-03-20',
         MEETUPS_MONTH: '三月',
         MEETUPS_DESC: [
@@ -1062,7 +1072,7 @@ export default {
         ID: 6,
         MEETUPS_TITLE: 'Rust Meetup 深圳站',
         TITLE_LIST: ['Rust Meetup 深圳站'],
-        MEETUPS_IMG: '/img/meetups/6.png',
+        MEETUPS_IMG: review6,
         MEETUPS_DATE: '2021-03-27',
         MEETUPS_MONTH: '三月',
         MEETUPS_DESC: [
@@ -1128,7 +1138,7 @@ export default {
         ID: 7,
         MEETUPS_TITLE: 'AI-OPS Meetup',
         TITLE_LIST: ['AI-OPS Meetup'],
-        MEETUPS_IMG: '/img/meetups/7.png',
+        MEETUPS_IMG: review7,
         MEETUPS_DATE: '2021-04-08',
         MEETUPS_MONTH: '四月',
         MEETUPS_DESC: [
@@ -1192,7 +1202,7 @@ export default {
           'openEuler X OpenStack X Arm Meetup',
           '跨界全栈，技术盛宴',
         ],
-        MEETUPS_IMG: '/img/meetups/8.png',
+        MEETUPS_IMG: review8,
         MEETUPS_DATE: '2021-04-10',
         MEETUPS_MONTH: '四月',
         MEETUPS_DESC: [
@@ -1256,7 +1266,7 @@ export default {
         ID: 9,
         MEETUPS_TITLE: 'openEuler Cloud Native Meetup',
         TITLE_LIST: ['openEuler Cloud Native Meetup'],
-        MEETUPS_IMG: '/img/meetups/9.png',
+        MEETUPS_IMG: review9,
         MEETUPS_DATE: '2021-04-17',
         MEETUPS_MONTH: '四月',
         MEETUPS_DESC: [

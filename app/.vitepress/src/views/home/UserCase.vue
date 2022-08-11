@@ -5,7 +5,7 @@ import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 
 import { useI18n } from '@/i18n';
-import { getUserCaseData } from '@/api/api-showcase';
+import { getSortData } from '@/api/api-search';
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -34,11 +34,13 @@ const handleChangeActiveMobile = (activeNames: any) => {
 
 onMounted(() => {
   const params = {
-    keyword: '',
-    type: '',
+    category: 'showcase',
+    lang: lang.value,
+    page: 1,
     pageSize: 100,
   };
-  getUserCaseData(params).then((res: any) => {
+  getSortData(params).then((res: any) => {
+    console.log(res);
     const result = {
       zh: {},
       en: {},

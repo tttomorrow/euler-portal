@@ -68,6 +68,10 @@ export function getSigMember(id: number) {
   const url = `${baseUrl}/api-sig/groups/${id}/`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
+export function getSalon() {
+  const url = `${baseUrl}/api-sig/activities/`;
+  return request.get(url).then((res: AxiosResponse) => res.data);
+}
 // export const sigMember = (id) => {
 //     return new Promise((resolve, reject) => {
 //         appAjax.postJson({
