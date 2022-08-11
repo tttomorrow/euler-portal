@@ -10,12 +10,21 @@ const attrs = useAttrs();
 
 <style lang="scss">
 .o-switch {
-  &__label {
-    color: var(--o-color-text3) !important;
-  }
-  &__label.is-active {
-    color: var(--o-color-text2) !important;
-    font-weight: 600;
+  --o-switch-font-color: var(--o-color-text3);
+  --o-switch-font-color-active: var(--o-color-brand);
+  --o-switch-on-color: var(--o-color-brand);
+  &.el-switch {
+    .el-switch__label {
+      color: var(--o-switch-font-color);
+    }
+    .el-switch__label.is-active {
+      color: var(--o-switch-font-color-active);
+      font-weight: 600;
+    }
+    &.is-checked .el-switch__core {
+      background-color: var(--o-switch-on-color);
+      border-color: var(--o-switch-on-color, var(--o-switch-on-color));
+    }
   }
 }
 </style>

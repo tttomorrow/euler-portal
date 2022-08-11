@@ -28,8 +28,23 @@ const props = defineProps({
   },
 });
 
+interface AnchorType {
+  id: string;
+  children?: AnchorType;
+}
+// 数据
+const anchorData = ref();
+
+// 对象扁平化
+function flatten(data: any) {
+  return data.reduce(
+    (pre, { id, children = [] }) => pre.concat([{ id }], flatten(children)),
+    []
+  );
+}
+
 // 当前选中项
-const selectId = ref('');
+const selectId = ref(props.data[0].id || '');
 
 const scroll = () => {
   // 为了保证兼容性，这里取两个值，哪个有值取哪一个
@@ -43,32 +58,34 @@ const scroll = () => {
     : 0;
 
   const targetArr: any = ref([]);
-  targetArr.value = props.data.filter((item: string) => {
-    const div = document.querySelector(`#${item}`) as HTMLElement;
+
+  targetArr.value = anchorData.value.filter((item: AnchorType) => {
+    const element = document.querySelector(`#${item.id}`) as HTMLElement;
+    if (!element) return;
     return (
       (props.id ? targetScrollTop : scrollTop) + props.offsetValue >
-      div.offsetTop
+      element.offsetTop
     );
   });
 
   if (targetArr.value.length) {
     selectId.value =
-      targetArr.value.slice(targetArr.value.length - 1).shift() || '';
+      targetArr.value.slice(targetArr.value.length - 1).shift().id || '';
   }
 };
 
-selectId.value = props.data.slice(0, 1).join('') || '';
-
 // 点击滚动事件
 const selectAnchor = (id: string) => {
-  const doc = document.getElementById(id);
-  props.data.forEach((item: string) => {
-    if (item === id) {
-      const h = doc?.offsetTop;
+  const element = document.getElementById(id);
+  if (!element) return;
+  anchorData.value.forEach((item: AnchorType) => {
+    if (item.id === id || item.children) {
+      const h = element.offsetTop;
 
       const container = props.id
         ? (document.querySelector(`#${props.id}`) as HTMLElement)
         : window;
+
       container.scrollTo({
         left: 0,
         top: h,
@@ -84,6 +101,7 @@ const selectAnchor = (id: string) => {
 // };
 
 onMounted(() => {
+  anchorData.value = flatten(props.data);
   const body = props.id ? document.getElementById(props.id) : window;
   body?.addEventListener('scroll', scroll);
 });
@@ -112,14 +130,27 @@ const rootStyle = computed(() => {
 <template>
   <div class="anchor" :class="id ? 'scroll-target' : ''" :style="rootStyle">
     <ul>
-      <li
-        v-for="item in data"
-        :key="item"
-        class="anchor-item"
-        :class="item === selectId ? 'active' : ''"
-        @click="selectAnchor(item)"
-      >
-        {{ item }}
+      <li v-for="item in data" :key="item.id" class="anchor-item">
+        <span
+          class="anchor-item-label"
+          :class="item.id === selectId ? 'active' : ''"
+          @click="selectAnchor(item.id)"
+          ><i class="anchor-dot"></i>{{ item.id }}</span
+        >
+
+        <template v-if="item.children?.length > 0">
+          <div class="anchor-sublist">
+            <a
+              v-for="subItem in item.children"
+              :key="subItem.id"
+              class="anchor-sublist-item"
+              :class="subItem.id === selectId ? 'active' : ''"
+              @click="selectAnchor(subItem.id)"
+            >
+              {{ subItem.id }}
+            </a>
+          </div>
+        </template>
       </li>
     </ul>
   </div>
@@ -137,28 +168,23 @@ const rootStyle = computed(() => {
     font-size: 34px;
     cursor: pointer;
   }
+
   &-item {
     position: relative;
-    display: flex;
-    align-items: center;
-    height: 30px;
-    font-size: var(--o-font-size-h8);
-    color: var(--o-color-text2);
-    cursor: pointer;
-    &:not(:first-of-type) {
+
+    &:not(:last-of-type) {
       &::after {
         content: '';
         display: block;
         position: absolute;
-        top: -32px;
+        top: 10px;
         left: 5px;
         width: 1px;
-        height: 32px;
+        height: 100%;
         border-left: 2px solid var(--o-color-bg4);
       }
     }
-    &::before {
-      content: '';
+    .anchor-dot {
       display: inline-block;
       width: 12px;
       height: 12px;
@@ -166,17 +192,41 @@ const rootStyle = computed(() => {
       line-height: 26px;
       border-radius: 50%;
       background: var(--o-color-bg);
-      margin-right: 20px;
+      margin-right: 12px;
       border: 2px solid var(--o-color-bg4);
     }
+    &-label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      line-height: 30px;
+      font-size: var(--o-font-size-h8);
+      color: var(--o-color-text2);
+      cursor: pointer;
+      z-index: 2;
 
-    &.active {
-      &::before {
-        border-color: var(--o-color-brand);
+      &.active {
+        color: var(--o-color-brand);
+        .anchor-dot {
+          border-color: var(--o-color-brand);
+        }
+      }
+      &:not(:first-of-type) {
+        margin-top: 32px;
       }
     }
-    &:not(:first-of-type) {
-      margin-top: 32px;
+
+    .anchor-sublist {
+      display: block;
+      &-item {
+        display: block;
+        padding-left: 40px;
+        line-height: 24px;
+        cursor: pointer;
+        &.active {
+          color: var(--o-color-brand);
+        }
+      }
     }
   }
 }

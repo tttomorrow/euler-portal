@@ -42,8 +42,18 @@ const tableData = [
 
 const inputName = ref('zhangsan');
 
-const anchorData = ['anchor1', 'anchor2', 'anchor3'];
-const anchorData1 = ['anchor4', 'anchor5', 'anchor6', 'anchor7'];
+// 锚点只支持二级列表
+const anchorData = [
+  { id: 'anchor1' },
+  { id: 'anchor2', children: [{ id: 'anchor3-1' }, { id: 'anchor3-2' }] },
+  { id: 'anchor3' },
+];
+const anchorData1 = [
+  { id: 'anchor4' },
+  { id: 'anchor5' },
+  { id: 'anchor6' },
+  { id: 'anchor7' },
+];
 
 // tagFiter strart
 const isAll = ref(false);
@@ -279,9 +289,13 @@ function turnPage(option: string) {
       ></OTimeline>
     </div>
     <div class="demo-box">
-      <h4>AppAnchor</h4>
+      <h4>AppAnchor 只支持二级列表</h4>
       <div id="anchor1" class="anchor-item">archor1</div>
-      <div id="anchor2" class="anchor-item">archor2</div>
+      <div id="anchor2" class="anchor-item">
+        archor2
+        <div id="anchor3-1" class="anchor-item">archor2-1</div>
+        <div id="anchor3-2" class="anchor-item">anchor2-2</div>
+      </div>
       <div id="anchor3" class="anchor-item">archor3</div>
       <AppAnchor :data="anchorData" />
       <h4>AppAnchor 更换滚动容器</h4>
@@ -382,10 +396,15 @@ body {
 }
 
 .anchor-item {
-  width: 100%;
-  height: 200px;
+  width: 80%;
+  min-height: 200px;
   background-color: aqua;
-  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 24px;
+  .anchor-item {
+    margin-top: 64px;
+    background: orange;
+  }
 }
 .lecturer-list-title {
   margin: var(--o-spacing-h4) 0;

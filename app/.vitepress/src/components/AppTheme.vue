@@ -72,15 +72,7 @@ watch(
   }
   &-mobile {
     display: none;
-    :deep(.el-switch) {
-      .el-switch__label {
-        color: var(--o-color-text3) !important;
-      }
-      .el-switch__label.is-active {
-        color: var(--o-color-brand) !important;
-        font-weight: 600;
-      }
-    }
+
     @media screen and (max-width: 1100px) {
       display: block;
     }
