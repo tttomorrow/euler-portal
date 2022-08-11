@@ -11,7 +11,7 @@ import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 
-import { getSortData, getTagsData } from '@/api/api-search';
+import { getSortData } from '@/api/api-search';
 
 interface BlogData {
   archives: string;
@@ -41,16 +41,16 @@ const sortParams = reactive({
   category: 'blog',
 });
 // 标签
-const tagsParams = reactive({
-  lang: lang.value,
-  category: 'blog',
-  tags: 'archives',
-});
-const tagsParams1 = reactive({
-  lang: lang.value,
-  category: 'blog',
-  tags: 'author',
-});
+// const tagsParams = reactive({
+//   lang: lang.value,
+//   category: 'blog',
+//   tags: 'archives',
+// });
+// const tagsParams1 = reactive({
+//   lang: lang.value,
+//   category: 'blog',
+//   tags: 'author',
+// });
 
 const tagsDataToChild = ref<any>([
   {
@@ -106,20 +106,20 @@ onMounted(() => {
   } catch (error: any) {
     throw new Error(error);
   }
-  try {
-    getTagsData(tagsParams).then((res) => {
-      for (let i = 0; i < 5; i++) {
-        tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
-      }
-      getTagsData(tagsParams1).then((res) => {
-        for (let i = 0; i < 5; i++) {
-          tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
-        }
-      });
-    });
-  } catch (error: any) {
-    throw new Error(error);
-  }
+  // try {
+  //   getTagsData(tagsParams).then((res) => {
+  //     for (let i = 0; i < 5; i++) {
+  //       tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
+  //     }
+  //     getTagsData(tagsParams1).then((res) => {
+  //       for (let i = 0; i < 5; i++) {
+  //         tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
+  //       }
+  //     });
+  //   });
+  // } catch (error: any) {
+  //   throw new Error(error);
+  // }
 });
 // 页数改变
 const currentChange = (val: number) => {
@@ -179,10 +179,7 @@ const sizeChange = (val: number) => {
       :illustration="BannerImg2"
     />
     <div class="blog-tag2">
-      <OScreen
-        :data="tagsDataToChild"
-        @filter="listfilter"
-      />
+      <OScreen :data="tagsDataToChild" @filter="listfilter" />
     </div>
     <div class="blog-list">
       <OCard v-for="item in blogCardData" :key="item" class="blog-list-item">
