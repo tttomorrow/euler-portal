@@ -85,13 +85,17 @@ const isTopNavMo = computed(() => {
     return false;
   }
 });
-// 移动端翻页事件
+// 移动端上下翻页事件
 function turnPage(option: string) {
   if (option === 'prev' && currentPage.value > 1) {
     currentPage.value = currentPage.value - 1;
   } else if (option === 'next' && currentPage.value < totalPage.value) {
     currentPage.value = currentPage.value + 1;
   }
+}
+// 移动端跳转翻页事件
+function jumpPage(page: number) {
+  currentPage.value = page;
 }
 // 点击跳转案例详情页面
 function goDetail(link: string, item: any) {
@@ -247,6 +251,7 @@ onMounted(() => {
         :current-page="currentPage"
         :total-page="totalPage"
         @turn-page="turnPage"
+        @jump-page="jumpPage"
       />
       <!-- <div class="pagination-h5">
         <OIcon
