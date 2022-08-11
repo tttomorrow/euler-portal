@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { useAttrs } from 'vue';
+import { useAttrs, computed } from 'vue';
 
 const attrs = useAttrs();
+
+const classNames = computed(() => {
+  return `${attrs['popper-class']} o-pagination-popper`;
+});
 </script>
 
 <template>
-  <ElPagination popper-class="filter" class="o-pagination" v-bind="attrs">
+  <ElPagination class="o-pagination" v-bind="attrs" :popper-class="classNames">
     <slot></slot>
   </ElPagination>
 </template>
@@ -76,6 +80,41 @@ const attrs = useAttrs();
       color: var(--o-pagination-font-color);
       border-radius: 0px;
       margin-left: var(--o-spacing-h4);
+    }
+  }
+}
+.o-pagination-popper {
+  &.el-popper {
+    box-shadow: none !important;
+    --el-popper-border-radius: none;
+
+    .is-light {
+      border: 1px solid red;
+    }
+
+    .el-popper__arrow {
+      display: none;
+    }
+
+    .el-select-dropdown__item {
+      color: var(--o-color-text2);
+
+      &:hover {
+        color: var(--o-color-brand);
+      }
+    }
+
+    .el-select-dropdown__item.selected {
+      background-color: var(--o-color-bg2);
+    }
+
+    .el-select-dropdown__item.selected {
+      font-weight: normal;
+      color: var(--o-color-brand);
+    }
+
+    .el-select-dropdown__wrap {
+      background-color: var(--o-color-bg);
     }
   }
 }

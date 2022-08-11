@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted, nextTick, computed } from 'vue';
+import { ref, reactive, onMounted, nextTick } from 'vue';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import OScreen from '@/components/OScreen.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
@@ -28,7 +29,7 @@ import {
 } from '@/api/api-security';
 
 const i18n = useI18n();
-const userCaseData = computed(() => i18n.value.interaction);
+// const userCaseData = computed(() => i18n.value.interaction);
 
 const searchContent = ref('');
 const activeIndex = ref(0);
@@ -39,6 +40,7 @@ const architectureSelect = ref<string[]>(['全部']);
 const osOptions = ref<string[]>(['全部']);
 const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>(['全部']);
+const lastActiveName = ref('1');
 
 const filterData = ref<FilterData>({
   author: {
@@ -79,6 +81,7 @@ const getCompatibilityData = (data: CveQuery) => {
   try {
     getCompatibilityList(data).then((res: any) => {
       total.value = res.result.totalCount;
+      totalPage.value = res.result.totalCount;
       tableData.value = res.result.hardwareCompList;
     });
   } catch (e: any) {
@@ -91,6 +94,7 @@ const getDriverData = (data: CveQuery) => {
   try {
     getDriverList(data).then((res: any) => {
       total.value = res.result.totalCount;
+      totalPage.value = res.result.totalCount;
       tableData.value = res.result.driverCompList;
     });
   } catch (e: any) {
@@ -103,6 +107,7 @@ const getSoftwareData = (data: CveQuery) => {
   try {
     getSoftwareList(data).then((res: any) => {
       total.value = res.total;
+      totalPage.value = res.total;
       tableData.value = res.info;
     });
   } catch (e: any) {
@@ -114,7 +119,6 @@ const getSoftwareData = (data: CveQuery) => {
 const getBusinessSoftwareData = (data: CveQuery) => {
   try {
     getBusinessSoftwareList(data).then((res: any) => {
-      // total.value = res.total;
       tableData.value = res.result;
     });
   } catch (e: any) {
@@ -122,7 +126,27 @@ const getBusinessSoftwareData = (data: CveQuery) => {
   }
 };
 
+const currentPage = ref(1);
+const totalPage = ref(1);
+function turnPage(option: string) {
+  if (option === 'prev' && currentPage.value > 1) {
+    currentPage.value = currentPage.value - 1;
+    queryData.pages.page = currentPage.value;
+    initMobileData(queryData);
+  } else if (option === 'next' && currentPage.value < totalPage.value) {
+    currentPage.value = currentPage.value + 1;
+    queryData.pages.page = currentPage.value;
+    initMobileData(queryData);
+  }
+}
+
 const handleChange = () => {
+  currentPage.value = 1;
+  if (activeName.value) {
+    lastActiveName.value = activeName.value;
+  } else {
+    activeName.value = lastActiveName.value;
+  }
   initMobileData(queryData);
 };
 
@@ -202,28 +226,44 @@ const listfilter = (val: string[]) => {
 
 onMounted(() => {
   getCompatibilityData(queryData);
-  driverArchitectureOptions({ lang: 'zh' }).then((res: any) => {
-    res.result.forEach((item: string) => {
-      architectureSelect.value.push(item);
-      filterData.value.tags.select.push(item);
+  try {
+    driverArchitectureOptions({ lang: 'zh' }).then((res: any) => {
+      res.result.forEach((item: string) => {
+        architectureSelect.value.push(item);
+        filterData.value.tags.select.push(item);
+      });
     });
-  });
-  driverOSOptions({ lang: 'zh' }).then((res: any) => {
-    res.result.forEach((item: string) => {
-      osOptions.value.push(item);
-      filterData.value.author.select.push(item);
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    driverOSOptions({ lang: 'zh' }).then((res: any) => {
+      res.result.forEach((item: string) => {
+        osOptions.value.push(item);
+        filterData.value.author.select.push(item);
+      });
     });
-  });
-  getTestOrganizations().then((res: any) => {
-    res.result.testOrganizations.forEach((item: string) => {
-      testOrganizationsLists.value.push(item);
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    getTestOrganizations().then((res: any) => {
+      res.result.testOrganizations.forEach((item: string) => {
+        testOrganizationsLists.value.push(item);
+      });
     });
-  });
-  getCpu({ lang: 'zh' }).then((res: any) => {
-    res.result.forEach((item: string) => {
-      filterData.value.time.select.push(item);
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    getCpu({ lang: 'zh' }).then((res: any) => {
+      res.result.forEach((item: string) => {
+        filterData.value.time.select.push(item);
+      });
     });
-  });
+  } catch (e: any) {
+    throw new Error(e);
+  }
 });
 </script>
 
@@ -498,18 +538,16 @@ onMounted(() => {
             </div>
           </template>
           <div class="card-body">
-            <div class="blog-tag">
-              <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
-                <OTag
-                  v-for="(item, index) in architectureSelect"
-                  :key="'tag' + index"
-                  :type="activeIndex1 === index ? 'primary' : 'text'"
-                  @click="optionTagClick(index, item)"
-                >
-                  {{ item }}
-                </OTag>
-              </TagFilter>
-            </div>
+            <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
+              <OTag
+                v-for="(item, index) in architectureSelect"
+                :key="'tag' + index"
+                :type="activeIndex1 === index ? 'primary' : 'text'"
+                @click="optionTagClick(index, item)"
+              >
+                {{ item }}
+              </OTag>
+            </TagFilter>
           </div>
         </OCard>
         <OTable class="pc-list" :data="tableData" style="width: 100%">
@@ -667,12 +705,7 @@ onMounted(() => {
     <el-collapse v-model="activeName" accordion @change="handleChange">
       <el-collapse-item title="整机" name="1">
         <div class="blog-tag">
-          <OScreen
-            class="filter"
-            :data="filterData"
-            :list="userCaseData.BLOGDATALIST"
-            @filter="listfilter"
-          />
+          <OScreen class="filter" :data="filterData" @filter="listfilter" />
         </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
@@ -710,6 +743,11 @@ onMounted(() => {
             </ul>
           </li>
         </ul>
+        <AppPaginationMo
+          :current-page="currentPage"
+          :total-page="totalPage"
+          @turn-page="turnPage"
+        />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
           <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
@@ -781,6 +819,11 @@ onMounted(() => {
             </ul>
           </li>
         </ul>
+        <AppPaginationMo
+          :current-page="currentPage"
+          :total-page="totalPage"
+          @turn-page="turnPage"
+        />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
           <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
@@ -857,6 +900,11 @@ onMounted(() => {
             </ul>
           </li>
         </ul>
+        <AppPaginationMo
+          :current-page="currentPage"
+          :total-page="totalPage"
+          @turn-page="turnPage"
+        />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
           <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
@@ -912,6 +960,11 @@ onMounted(() => {
             </ul>
           </li>
         </ul>
+        <AppPaginationMo
+          :current-page="currentPage"
+          :total-page="totalPage"
+          @turn-page="turnPage"
+        />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
           <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
@@ -928,7 +981,7 @@ onMounted(() => {
 :deep(.el-tabs__nav-scroll) {
   display: flex;
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--o-color-bg);
 }
 .tabs-pc {
   @media screen and (max-width: 1080px) {
@@ -941,11 +994,21 @@ onMounted(() => {
   @media screen and (max-width: 1080px) {
     display: block;
   }
-  :deep(.el-collapse-item__header) {
-    padding-left: 8px;
+  :deep(.el-collapse) {
+    --el-collapse-border-color: none;
+    .el-collapse-item__header {
+      padding-left: 8px;
+      background-color: var(--o-color-bg);
+      color: var(--o-color-text2);
+      border-bottom: none;
+      box-shadow: 0px 1px 5px 0px rgba(45, 47, 51, 0.1);
+    }
+    .el-collapse-item__content {
+      background-color: var(--o-color-bg);
+    }
   }
   .filter {
-    background-color: #f5f6f8;
+    background-color: var(--o-color-bg2);
   }
 }
 .bottom-wrapper {
@@ -1061,7 +1124,7 @@ onMounted(() => {
   line-height: var(--o-line-height-h8);
 }
 .mobile-about {
-  padding: 0 var(--o-spacing-h5);
+  padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
   font-size: var(--o-font-size-tip);
   font-weight: 400;
   color: var(--o-color-text3);

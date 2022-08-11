@@ -4,10 +4,13 @@ import { useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import banner from '@/assets/banner-secondary.png';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
+
+import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 import cve from '@/assets/illustrations/cve.png';
+import IconCalendar from '~icons/app/icon-calendar.svg';
 
 import { getSecurityList } from '@/api/api-security';
 import { SecurityLists, CveQuery } from '@/shared/@types/type-support';
@@ -21,6 +24,7 @@ const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const years = ['', '2019', '2020', '2021'];
+const selectedYear = ref('2021');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const filterIndex = ref(0);
@@ -50,7 +54,11 @@ function getSecurityLists(data: CveQuery) {
   try {
     getSecurityList(data).then((res: any) => {
       tableData.value = res.result.securityNoticeList;
-      total.value = res.result.totalCount;
+      if (res.result.totalCount) {
+        total.value = res.result.totalCount;
+      } else {
+        total.value = 1;
+      }
     });
   } catch (e: any) {
     throw new Error(e);
@@ -86,6 +94,19 @@ function searchValchange() {
 
 function jumpBulletinDetail(val: any) {
   router.go(`zh/security/safety-bulletin/detail/?id=${JSON.stringify(val)}`);
+}
+
+const selectYear = (val: string) => {
+  selectedYear.value = val;
+  queryData.year = val;
+};
+
+function turnPage(option: string) {
+  if (option === 'prev' && queryData.pages.page > 1) {
+    queryData.pages.page = queryData.pages.page - 1;
+  } else if (option === 'next' && queryData.pages.page < total.value) {
+    queryData.pages.page = queryData.pages.page + 1;
+  }
 }
 
 onMounted(() => {
@@ -167,8 +188,30 @@ watch(queryData, () => getSecurityLists(queryData));
           </div>
         </div>
       </div>
-      <!-- TODO:日历样式及筛选 -->
-      <div class="calendar-mobile">手机日历</div>
+
+      <div class="calendar-mobile">
+        <el-collapse>
+          <el-collapse-item>
+            <template #title>
+              <o-icon><icon-calendar></icon-calendar></o-icon>
+              <span class="selected-year">{{
+                selectedYear === '' ? '全部' : selectedYear
+              }}</span>
+            </template>
+            <div class="years">
+              <p
+                v-for="item in years"
+                :key="item"
+                class="years-item"
+                :class="selectedYear === item ? 'selected' : ''"
+                @click="selectYear(item)"
+              >
+                {{ item === '' ? '全部' : item }}
+              </p>
+            </div>
+          </el-collapse-item>
+        </el-collapse>
+      </div>
 
       <OTable class="pc-list" :data="tableData" style="width: 100%">
         <el-table-column>
@@ -246,6 +289,11 @@ watch(queryData, () => getSecurityLists(queryData));
       >
         <span class="slot-content">5/20</span>
       </OPagination>
+      <AppPaginationMo
+        :current-page="queryData.pages.page"
+        :total-page="total"
+        @turn-page="turnPage"
+      />
     </div>
   </div>
 </template>
@@ -282,8 +330,25 @@ watch(queryData, () => getSecurityLists(queryData));
     display: none;
     margin: var(--o-spacing-h5) 0;
     width: 100%;
-    height: 34px;
     background-color: var(--o-color-bg);
+    :deep(.el-collapse) {
+      .el-collapse-item__header {
+        padding: 0 8px;
+      }
+      .el-collapse-item__content {
+        padding-bottom: 0;
+      }
+    }
+
+    .selected-year {
+      margin-left: 8px;
+    }
+    .years {
+      padding: 0 8px 8px;
+      .selected {
+        background-color: var(--o-color-bg3);
+      }
+    }
     @media screen and (max-width: 768px) {
       display: block;
     }
@@ -365,6 +430,7 @@ watch(queryData, () => getSecurityLists(queryData));
   }
   .mobile-list {
     display: none;
+    margin-bottom: var(--o-spacing-h5);
     @media screen and (max-width: 768px) {
       display: block;
     }
@@ -406,6 +472,12 @@ watch(queryData, () => getSecurityLists(queryData));
     }
     .slot-content {
       color: var(--o-color-text2);
+    }
+  }
+  .mobile-pagination {
+    display: none;
+    @media screen and (max-width: 768px) {
+      display: block;
     }
   }
 }

@@ -4,6 +4,7 @@ import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import cve from '@/assets/illustrations/cve.png';
@@ -70,6 +71,14 @@ function filterClick(i: number, category: string) {
 
 function searchValchange() {
   queryData.keyword = searchContent.value;
+}
+
+function turnPage(option: string) {
+  if (option === 'prev' && queryData.pages.page > 1) {
+    queryData.pages.page = queryData.pages.page - 1;
+  } else if (option === 'next' && queryData.pages.page < total.value) {
+    queryData.pages.page = queryData.pages.page + 1;
+  }
 }
 
 onMounted(() => {
@@ -209,6 +218,12 @@ watch(queryData, () => getCveLists(queryData));
       >
         <span>5/20</span>
       </OPagination>
+
+      <AppPaginationMo
+        :current-page="queryData.pages.page"
+        :total-page="total"
+        @turn-page="turnPage"
+      />
     </div>
   </div>
 </template>
@@ -280,6 +295,7 @@ watch(queryData, () => getCveLists(queryData));
 }
 .mobile-list {
   display: none;
+  margin-bottom: var(--o-spacing-h5);
   @media screen and (max-width: 768px) {
     display: block;
   }

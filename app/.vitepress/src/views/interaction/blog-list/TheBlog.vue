@@ -179,10 +179,7 @@ const sizeChange = (val: number) => {
       :illustration="BannerImg2"
     />
     <div class="blog-tag2">
-      <OScreen
-        :data="tagsDataToChild"
-        @filter="listfilter"
-      />
+      <OScreen :data="tagsDataToChild" @filter="listfilter" />
     </div>
     <div class="blog-list">
       <OCard v-for="item in blogCardData" :key="item" class="blog-list-item">
