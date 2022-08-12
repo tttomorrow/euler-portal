@@ -96,7 +96,7 @@ const isDark = computed(() => {
           <div class="desc">
             <p class="desc-title">{{ frameObj.DESC_LIST[0] }}</p>
             <template v-for="(item, index) in frameObj.DESC_LIST" :key="index">
-              <p class="desc-item" v-if="index > 0">
+              <p v-if="index > 0" class="desc-item">
                 {{ `${index}、` }}{{ item }}
               </p>
             </template>
