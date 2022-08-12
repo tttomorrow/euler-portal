@@ -50,6 +50,7 @@ defineProps({
       // TODO:
       font-size: 40px;
       font-weight: 300;
+      user-select: none;
     }
   }
   .title-special {
@@ -68,6 +69,7 @@ defineProps({
       &-inside {
         color: var(--o-color-bg4);
         font-size: var(--o-font-size-h8);
+        user-select: none;
       }
     }
   }
