@@ -1,6 +1,6 @@
 import { request } from '@/shared/axios';
 import type { AxiosResponse } from '@/shared/axios';
-import { cveQuery, selectParams } from '@/shared/@types/type-support.ts';
+import { cveQuery, SelectParams } from '@/shared/@types/type-support.ts';
 
 /**
  * 调用接口获取安全公告列表
@@ -46,7 +46,7 @@ export function getCompatibilityList(params: cveQuery) {
  * 调用接口获取驱动--架构的下拉列表
  * @name getCompatibilityList
  */
-export function driverArchitectureOptions(params: selectParams) {
+export function driverArchitectureOptions(params: SelectParams) {
   const url =
     '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getArchitecture';
   return request.get(url, params).then((res: AxiosResponse) => res.data);
@@ -56,7 +56,7 @@ export function driverArchitectureOptions(params: selectParams) {
  * 调用接口获取驱动--操作系统的下拉列表
  * @name getCompatibilityList
  */
-export function driverOSOptions(params: selectParams) {
+export function driverOSOptions(params: SelectParams) {
   const url =
     '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getOS';
   return request.get(url, params).then((res: AxiosResponse) => res.data);
@@ -108,4 +108,14 @@ export function getBusinessSoftwareList(params: cveQuery) {
 export function getTestOrganizations() {
   const url = '/certification/software/filterCriteria';
   return request.get(url).then((res: AxiosResponse) => res.data);
+}
+
+/**
+ * 调用接口获取兼容性列表-CPU
+ * @name getCpu
+ */
+export function getCpu(params: SelectParams) {
+  const url =
+    '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getCpu';
+  return request.get(url, params).then((res: AxiosResponse) => res.data);
 }

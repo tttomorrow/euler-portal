@@ -1,29 +1,14 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue';
+import { computed, onBeforeMount, ref, watch } from 'vue';
 import { useCommon } from '@/stores/common';
-import { isBrowser } from '@/shared/utils';
 
 import IconMoonLight from '~icons/app/sun.svg';
 import IconMoonDark from '~icons/app/moon.svg';
 
+// 风格切换
+const APPEARANCE_KEY = 'vitepress-theme-appearance';
+
 const commonStore = useCommon();
-
-if (isBrowser()) {
-  const theme = localStorage.getItem('euler-theme');
-  if (theme) {
-    commonStore.theme = theme;
-    document.documentElement.classList.add(theme);
-  } else {
-    const isDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const theme = isDark ? 'dark' : 'light';
-    commonStore.theme = theme;
-    document.documentElement.classList.add(theme);
-    localStorage.setItem('euler-theme', theme);
-  }
-}
 
 const isLight = computed(() => (commonStore.theme === 'light' ? true : false));
 const mobileTheme = ref(!isLight.value);
@@ -31,8 +16,13 @@ const mobileTheme = ref(!isLight.value);
 const changeTheme = () => {
   const theme = commonStore.theme === 'dark' ? 'light' : 'dark';
   commonStore.theme = theme;
-  localStorage.setItem('euler-theme', theme);
+  localStorage.setItem(APPEARANCE_KEY, theme);
 };
+
+onBeforeMount(() => {
+  const theme = localStorage.getItem(APPEARANCE_KEY);
+  commonStore.theme = theme === 'dark' ? 'dark' : 'light';
+});
 
 watch(
   () => {
@@ -40,13 +30,9 @@ watch(
   },
   (val) => {
     const documentElement = document.documentElement;
-    if (val === 'dark') {
-      documentElement.classList.remove('light');
-    } else if (val === 'light') {
-      documentElement.classList.remove('dark');
-    }
-    documentElement.classList.add(val);
-    localStorage.setItem('euler-theme', val);
+    val === 'light' && documentElement.classList.remove('dark');
+    val === 'dark' && documentElement.classList.add(val);
+    localStorage.setItem(APPEARANCE_KEY, val);
   }
 );
 </script>

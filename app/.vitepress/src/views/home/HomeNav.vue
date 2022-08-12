@@ -2,6 +2,7 @@
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
+import { computed } from 'vue';
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -10,6 +11,16 @@ const commonStore = useCommon();
 const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
+
+const imgUrl = computed(() => (item: { IMG_DARK: any; IMG: any }) => {
+  return commonStore.theme === 'dark' ? item.IMG_DARK : item.IMG;
+});
+
+const imgUrlHover = computed(
+  () => (item: { IMG_DARK_HOVER: any; IMG_HOVER: any }) => {
+    return commonStore.theme === 'dark' ? item.IMG_DARK_HOVER : item.IMG_HOVER;
+  }
+);
 </script>
 
 <template>
@@ -22,20 +33,8 @@ const handleGo = (path: string) => {
         @click="handleGo(item.LINK)"
       >
         <div class="nav-icon">
-          <img
-            :src="commonStore.theme === 'dark' ? item.IMG_DARK : item.IMG"
-            alt=""
-            class="nav-item-icon"
-          />
-          <img
-            :src="
-              commonStore.theme === 'dark'
-                ? item.IMG_DARK_HOVER
-                : item.IMG_HOVER
-            "
-            alt=""
-            class="nav-item-icon-hover"
-          />
+          <img :src="imgUrl(item)" alt="" class="nav-item-icon" />
+          <img :src="imgUrlHover(item)" alt="" class="nav-item-icon-hover" />
         </div>
         <div class="nav-text">
           <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">

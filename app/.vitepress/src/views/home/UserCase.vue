@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 
 import { useI18n } from '@/i18n';
-import { getSortData } from '@/api/api-search';
 
-const { lang } = useData();
 const i18n = useI18n();
 
 const commonStore = useCommon();
@@ -16,6 +13,13 @@ const caseData: any = ref({});
 
 const active = ref(0);
 const activeMobile = ref(0);
+
+const props = defineProps({
+  caseData: {
+    type: Object,
+    default: undefined,
+  },
+});
 
 const handleGo = (path: string) => {
   window.open(path, '_blank');
@@ -32,41 +36,22 @@ const handleChangeActiveMobile = (activeNames: any) => {
   }
 };
 
-onMounted(() => {
-  const params = {
-    category: 'showcase',
-    lang: lang.value,
-    page: 1,
-    pageSize: 100,
-  };
-  getSortData(params).then((res: any) => {
-    console.log(res);
-    const result = {
-      zh: {},
-      en: {},
-      ru: {},
-    };
-    res.obj.records.forEach((item: { lang: string; industry: string }) => {
-      if (item.lang === 'zh') {
-        if (typeof (result['zh'] as any)[item.industry] === 'undefined') {
-          (result['zh'] as any)[item.industry] = [];
-        }
-        (result['zh'] as any)[item.industry].push(item);
-      } else if (item.lang === 'en') {
-        if (typeof (result['en'] as any)[item.industry] === 'undefined') {
-          (result['en'] as any)[item.industry] = [];
-        }
-        (result['en'] as any)[item.industry].push(item);
-      } else {
-        if (typeof (result['ru'] as any)[item.industry] === 'undefined') {
-          (result['ru'] as any)[item.industry] = [];
-        }
-        (result['ru'] as any)[item.industry].push(item);
-      }
-    });
+const initData = (res: any) => {
+  const result: any = {};
 
-    caseData.value = result;
+  res.obj.records.forEach((item: { lang: string; industry: string }) => {
+    if (typeof result[item.industry] === 'undefined') {
+      result[item.industry] = [];
+    }
+    if (result[item.industry].length < 4) {
+      result[item.industry].push(item);
+    }
   });
+  caseData.value = result;
+};
+
+onMounted(() => {
+  props.caseData && initData(props.caseData);
 });
 </script>
 
@@ -108,7 +93,7 @@ onMounted(() => {
         </template>
         <div class="user-mobile">
           <div
-            v-for="user in caseData[lang] && caseData[lang][item.TYPE]"
+            v-for="user in caseData && caseData[item.TYPE]"
             :key="user.company"
             class="user-card"
           >
@@ -146,8 +131,8 @@ onMounted(() => {
         </div>
         <div class="case-user">
           <a
-            v-for="item2 in caseData[lang] &&
-            caseData[lang][i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
+            v-for="item2 in caseData &&
+            caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
             :key="item2.company"
             class="user-card"
             @click="handleGo(item2.path)"

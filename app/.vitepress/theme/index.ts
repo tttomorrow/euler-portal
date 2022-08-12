@@ -3,14 +3,14 @@ import { createPinia } from 'pinia';
 import 'aos/dist/aos.css';
 
 import ElementPlus from 'element-plus';
-import OpenDesign from 'opendesign';
 
 import Layout from '@/App.vue';
 import NotFound from '@/NotFound.vue';
 
-
 import '@/shared/styles/element-plus/index.scss';
 import '@/shared/styles/index.scss';
+
+import OpenDesign from 'opendesign';
 
 export default {
   Layout,
@@ -20,8 +20,8 @@ export default {
       // @ts-ignore
       global.window = {};
     }
-    app.use(OpenDesign);
-    app.use(ElementPlus);
     app.use(createPinia());
+    app.use(ElementPlus);
+    app.use(OpenDesign);
   },
 };

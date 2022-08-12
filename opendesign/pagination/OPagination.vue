@@ -64,10 +64,14 @@ const attrs = useAttrs();
       color: var(--o-pagination-font-color);
       border-radius: 0px;
       background: var(--o-pagination-bg-color);
+      &:disabled {
+        background-color: var(--o-color-bg6) !important;
+      }
     }
     .btn-next {
       margin-right: var(--o-spacing-h5);
     }
+
     .el-pagination__jump {
       color: var(--o-pagination-font-color);
       border-radius: 0px;

@@ -2,14 +2,34 @@
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
+import { onMounted, Ref, ref } from 'vue';
+import { getStatistic } from '@/api/api-search';
 
 const commonStore = useCommon();
 
 const i18n = useI18n();
 
+const roundList: Ref<any[]> = ref([]);
+
 const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
+
+const addValue = (arr: any) => {
+  const temp = i18n.value.home.HOME_ROUND.ROUND_LIST;
+  temp.forEach((item: { ROUND_VALUE: any; ROUND_KEY: string | number }) => {
+    item.ROUND_VALUE = arr[item.ROUND_KEY];
+  });
+  return temp;
+};
+onMounted(async () => {
+  try {
+    const responeData = await getStatistic();
+    roundList.value = addValue(responeData?.data);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+});
 </script>
 
 <template>
@@ -40,7 +60,7 @@ const handleGo = (path: string) => {
       <OCard class="round-card" :style="{ padding: '0px' }">
         <div class="round-list">
           <div
-            v-for="item in i18n.home.HOME_ROUND.ROUND_LIST"
+            v-for="item in roundList"
             :key="item.ROUND_TEXT"
             class="round-item"
           >

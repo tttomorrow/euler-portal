@@ -98,6 +98,7 @@ const sortMeetsList = (array: any) => {
   temp.sort((a: { number: number }, b: { number: number }) => {
     return b.number - a.number;
   });
+
   return temp;
 };
 
@@ -131,6 +132,11 @@ const initData = (res: any[]) => {
 
   allMeetsList.value = sortMeetsList(allList);
 
+  date.value =
+    allMeetsList.value[0].MEETUPS_DATE.slice(0, 4) +
+    '-' +
+    allMeetsList.value[0].MEETUPS_DATE.slice(5, 7);
+
   const listObj: any = {};
   allMeetsList.value.forEach((item) => {
     if (!listObj[item.fullYear]) {
@@ -141,7 +147,6 @@ const initData = (res: any[]) => {
     }
     listObj[item.fullYear][item.fullMonth].push(item);
   });
-  console.log(listObj);
   return listObj;
 };
 
@@ -164,7 +169,12 @@ const initNews = (res: any[]) => {
       MEETUPS_DESC: [item.synopsis],
       IS_MINI: 1,
       ID: item.id,
-      ADDRESS_UP: item.address ? item.address : '线上',
+      ADDRESS_UP:
+        item.activity_type === 2
+          ? '线上'
+          : item.address
+          ? item.address
+          : '线上',
       MEETUPS_MONTH: mapping[parseInt(item.date.split('-')[1]) - 1],
     });
   });
@@ -172,6 +182,11 @@ const initNews = (res: any[]) => {
   const allList = tempArr;
 
   allNewsList.value = sortMeetsList(allList);
+
+  dateNews.value =
+    allNewsList.value[0].MEETUPS_DATE.slice(0, 4) +
+    '-' +
+    allNewsList.value[0].MEETUPS_DATE.slice(5, 7);
 
   const listObj: any = {};
   allNewsList.value.forEach((item) => {
@@ -183,7 +198,6 @@ const initNews = (res: any[]) => {
     }
     listObj[item.fullYear][item.fullMonth].push(item);
   });
-  console.log(listObj);
   return listObj;
 };
 
@@ -244,11 +258,18 @@ onMounted(async () => {
               <img :src="item.MEETUPS_IMG" alt="" />
               <span v-if="item.IS_MINI">{{ item.MEETUPS_TITLE }}</span>
             </div>
-            <div class="salon-new-card-bottom">
+            <div
+              :class="
+                item.MEETUPS_IMG
+                  ? 'salon-new-card-bottom'
+                  : 'salon-new-card-mobile'
+              "
+            >
               <div class="salon-new-card-left">
                 <div class="salon-new-card-left-title">
                   {{ item.MEETUPS_TITLE }}
                 </div>
+                <div class="salon-new-card-left-logo">openEulur</div>
                 <div
                   class="salon-new-card-left-desc"
                   :title="item.MEETUPS_DESC ? item.MEETUPS_DESC[0] : ''"
@@ -299,6 +320,7 @@ onMounted(async () => {
                   >
                 </div>
               </div>
+              <div class="salon-new-card-left-logo-mobile">openEulur</div>
             </div>
           </OCard>
         </div>
@@ -420,6 +442,36 @@ onMounted(async () => {
             line-height: var(--o-line-height-text);
           }
         }
+
+        &-logo {
+          width: 80px;
+          height: 24px;
+          background: linear-gradient(225deg, #feb32a 0%, #f6d365 100%);
+          display: flex;
+          flex-flow: row;
+          justify-content: center;
+          align-items: center;
+          font-size: var(--o-font-size-tip);
+          margin-top: var(--o-spacing-h5);
+          @media (max-width: 768px) {
+            display: none;
+          }
+
+          &-mobile {
+            width: 80px;
+            height: 24px;
+            background: linear-gradient(225deg, #feb32a 0%, #f6d365 100%);
+            display: none;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+            font-size: var(--o-font-size-tip);
+            margin-top: var(--o-spacing-h5);
+            @media (max-width: 768px) {
+              display: flex;
+            }
+          }
+        }
         &-desc {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
@@ -514,6 +566,59 @@ onMounted(async () => {
           width: 100%;
           @media (max-width: 768px) {
             display: none;
+          }
+        }
+      }
+
+      &-mobile {
+        @media (max-width: 768px) {
+          padding: var(--o-spacing-h5) var(--o-spacing-h6);
+          width: 100%;
+        }
+
+        .home {
+          margin-left: 0px;
+          @media (max-width: 768px) {
+            margin-left: var(--o-spacing-h5);
+          }
+        }
+        .address {
+          flex: 1;
+          overflow: hidden;
+          /* 限制一行显示 */
+          white-space: nowrap;
+          /* 显示不下省略号显示 */
+          text-overflow: ellipsis;
+        }
+
+        span {
+          color: var(--o-color-text3);
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+          white-space: nowrap;
+          @media (max-width: 768px) {
+            color: var(--o-color-secondary_active);
+          }
+        }
+
+        @media (min-width: 768px) {
+          width: 100%;
+          display: flex;
+          flex-flow: row;
+          .salon-new-card-left {
+            width: 67%;
+            padding: var(--o-spacing-h2);
+
+            .salon-new-card-left-desc {
+              overflow: hidden;
+              /* 限制一行显示 */
+              white-space: nowrap;
+              /* 显示不下省略号显示 */
+              text-overflow: ellipsis;
+            }
+          }
+          .salon-new-card-info {
+            width: 33%;
           }
         }
       }
@@ -654,6 +759,7 @@ onMounted(async () => {
         line-height: var(--o-line-height-text);
         color: var(--o-color-text2);
         overflow: hidden;
+        margin-top: var(--o-spacing-h4);
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-box-orient: vertical;

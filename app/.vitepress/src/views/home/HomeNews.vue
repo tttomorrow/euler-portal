@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
 import { onMounted, Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import dayjs from 'dayjs';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 
-const { lang } = useData();
 const i18n = useI18n();
 
 const roomName = i18n.value.home.HOME_ROOMS.ROOM_NAME;
@@ -16,14 +14,23 @@ const blogList: Ref<any[]> = ref([]);
 
 const newsList: Ref<any[]> = ref([]);
 
+const props = defineProps({
+  newsData: {
+    type: Object,
+    default: undefined,
+  },
+  blogData: {
+    type: Object,
+    default: undefined,
+  },
+});
+
 const resolvePostDate = (date: any) => {
   return dayjs(date).format('YYYY-MM-DD');
 };
 
-const filterSiteData = (datas: any[], string: string) => {
-  let newData = datas.filter((data: { path: string | any[] }) =>
-    data.path.includes(string)
-  );
+const filterSiteData = (datas: any[]) => {
+  let newData = datas;
   const englishMonth = [
     'Jan',
     'Feb',
@@ -38,12 +45,9 @@ const filterSiteData = (datas: any[], string: string) => {
     'Nov',
     'Dec',
   ];
-  newData.sort(function (
-    date1: { frontmatter: { date: any } },
-    date2: { frontmatter: { date: any } }
-  ) {
-    const origin1 = date1.frontmatter.date;
-    const origin2 = date2.frontmatter.date;
+  newData.sort(function (date1: { date: any }, date2: { date: any }) {
+    const origin1 = date1.date;
+    const origin2 = date2.date;
 
     const parsed1 = Date.parse(origin1);
     const parsed2 = Date.parse(origin2);
@@ -52,7 +56,7 @@ const filterSiteData = (datas: any[], string: string) => {
   });
   newData = newData.slice(0, 4);
   newData.forEach((item) => {
-    let date = item.frontmatter.date;
+    let date = item.date;
     date = resolvePostDate(date).split('-');
     date.forEach((arrItem: string, index: string | number) => {
       if (arrItem[0] === '0') {
@@ -60,97 +64,34 @@ const filterSiteData = (datas: any[], string: string) => {
       }
     });
     date[1] = englishMonth[date[1] - 1];
-    item.frontmatter.date = date;
+    item.date = date;
   });
   return newData;
 };
 
-const getRoomsData = () => {
-  const datas = [
-    {
-      frontmatter: {
-        archives: '2022-06',
-        author: 'openEuler',
-        date: '2022-06-28T00:00:00.000Z',
-        summary:
-          '以X86硬件兼容性为例，来聊聊怎么将操作系统迁移为openEuler（本篇案例的版本为openEuler 20.03 LTS SP1）。',
-        tags: ['X86', '迁移', '安全性'],
-        title: '聊聊怎么做硬件兼容性检测，快速迁移到openEuler',
-      },
-      key: 'v-0e72a48d',
-      path: '/zh/blog/20220628-x86/20220628.html',
-      regularPath: '/zh/blog/20220628-x86/20220628.html',
-      relativePath: 'zh/blog/20220628-x86/20220628.md',
-      title: '聊聊怎么做硬件兼容性检测，快速迁移到openEuler',
-    },
-    {
-      frontmatter: {
-        archives: '2022-06',
-        author: 'openEuler',
-        date: '2022-06-28T00:00:00.000Z',
-        summary:
-          '以X86硬件兼容性为例，来聊聊怎么将操作系统迁移为openEuler（本篇案例的版本为openEuler 20.03 LTS SP1）。',
-        tags: ['X86', '迁移', '安全性'],
-        title: '聊聊怎么做硬件兼容性检测，快速迁移到openEuler',
-      },
-      key: 'v-0e72a48d',
-      path: '/zh/blog/20220628-x86/20220628.html',
-      regularPath: '/zh/blog/20220628-x86/20220628.html',
-      relativePath: 'zh/blog/20220628-x86/20220628.md',
-      title: '聊聊怎么做硬件兼容性检测，快速迁移到openEuler',
-    },
-    {
-      frontmatter: {
-        archives: '2022-06',
-        author: 'openEuler',
-        date: '2022-06-28T00:00:00.000Z',
-        summary:
-          '以X86硬件兼容性为例，来聊聊怎么将操作系统迁移为openEuler（本篇案例的版本为openEuler 20.03 LTS SP1）。',
-        tags: ['X86', '迁移', '安全性'],
-        title: '聊聊怎么做硬件兼容性检测，快速迁移到openEuler',
-      },
-      key: 'v-0e72a48d',
-      path: '/zh/blog/20220628-x86/20220628.html',
-      regularPath: '/zh/blog/20220628-x86/20220628.html',
-      relativePath: 'zh/blog/20220628-x86/20220628.md',
-      title: '聊聊怎么做硬件兼容性检测，快速迁移到openEuler',
-    },
-    {
-      frontmatter: {
-        archives: '2022-06',
-        author: 'openEuler',
-        date: '2022-06-28T00:00:00.000Z',
-        summary:
-          '以X86硬件兼容性为例，来聊聊怎么将操作系统迁移为openEuler（本篇案例的版本为openEuler 20.03 LTS SP1）。',
-        tags: ['X86', '迁移', '安全性'],
-        title: '聊聊怎么做硬件兼容性检测，快速迁移到openEuler',
-      },
-      key: 'v-0e72a48d',
-      path: '/zh/blog/20220628-x86/20220628.html',
-      regularPath: '/zh/blog/20220628-x86/20220628.html',
-      relativePath: 'zh/blog/20220628-x86/20220628.md',
-      title: '聊聊怎么做硬件兼容性检测，快速迁移到openEuler',
-    },
-  ];
-  let blogData = [];
+const initNewsData = (datas: any) => {
   let newsData = [];
-  if (lang.value === 'zh') {
-    blogData = filterSiteData(datas, '/zh/blog/');
-    newsData = filterSiteData(datas, '/zh/news/');
-  } else {
-    blogData = filterSiteData(datas, '/en/blog/');
-    newsData = filterSiteData(datas, '/en/news/');
-  }
-  blogList.value = blogData;
+
+  newsData = filterSiteData(datas);
+
   newsList.value = newsData;
+};
+
+const initBlogData = (datas: any) => {
+  let blogData = [];
+
+  blogData = filterSiteData(datas);
+
+  blogList.value = blogData;
 };
 
 const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
 
-onMounted(() => {
-  getRoomsData();
+onMounted(async () => {
+  props.blogData?.obj?.records && initBlogData(props.blogData.obj.records);
+  props.newsData?.obj?.records && initNewsData(props.newsData.obj.records);
 });
 </script>
 <template>
@@ -173,38 +114,30 @@ onMounted(() => {
         <div v-for="(item, index) in blogList" :key="index" class="room-item">
           <div class="room-item-pc">
             <div class="room-item-left">
-              <span class="day">{{ item.frontmatter.date[2] }}</span>
+              <span class="day">{{ item.date[2] }}</span>
               <div class="left-bottom">
-                <span class="month">{{ item.frontmatter.date[1] }}</span>
-                <span class="year">{{ item.frontmatter.date[0] }}</span>
+                <span class="month">{{ item.date[1] }}</span>
+                <span class="year">{{ item.date[0] }}</span>
               </div>
             </div>
             <div class="room-item-right">
               <div class="room-top">
-                <h4 :title="item.frontmatter.title">
-                  {{ item.frontmatter.title }}
+                <h4 :title="item.title">
+                  {{ item.title }}
                 </h4>
-                <p>{{ item.frontmatter.author }}</p>
+                <p>{{ item.author }}</p>
               </div>
               <div class="room-bottom">
-                <a
-                  class="word-hover"
-                  :title="item.frontmatter.summary"
-                  :href="item.path"
-                >
-                  {{ item.frontmatter.summary }}
+                <a class="word-hover" :title="item.summary" :href="item.path">
+                  {{ item.summary }}
                 </a>
               </div>
             </div>
           </div>
           <div class="room-item-mo">
-            <span class="author">{{ item.frontmatter.author }}</span>
-            <a
-              class="word-hover"
-              :title="item.frontmatter.summary"
-              :href="item.path"
-            >
-              {{ item.frontmatter.summary }}
+            <span class="author">{{ item.author }}</span>
+            <a class="word-hover" :title="item.summary" :href="item.path">
+              {{ item.summary }}
             </a>
           </div>
         </div>
@@ -232,38 +165,30 @@ onMounted(() => {
         <div v-for="(item, index) in newsList" :key="index" class="room-item">
           <div class="room-item-pc">
             <div class="room-item-left">
-              <span class="day">{{ item.frontmatter.date[2] }}</span>
+              <span class="day">{{ item.date[2] }}</span>
               <div class="left-bottom">
-                <span class="month">{{ item.frontmatter.date[1] }}</span>
-                <span class="year">{{ item.frontmatter.date[0] }}</span>
+                <span class="month">{{ item.date[1] }}</span>
+                <span class="year">{{ item.date[0] }}</span>
               </div>
             </div>
             <div class="room-item-right">
               <div class="room-top">
-                <h4 :title="item.frontmatter.title">
-                  {{ item.frontmatter.title }}
+                <h4 :title="item.title">
+                  {{ item.title }}
                 </h4>
-                <p>{{ item.frontmatter.author }}</p>
+                <p>{{ item.author }}</p>
               </div>
               <div class="room-bottom">
-                <a
-                  class="word-hover"
-                  :title="item.frontmatter.summary"
-                  :href="item.path"
-                >
-                  {{ item.frontmatter.summary }}
+                <a class="word-hover" :title="item.summary" :href="item.path">
+                  {{ item.summary }}
                 </a>
               </div>
             </div>
           </div>
           <div class="room-item-mo">
-            <span class="author">{{ item.frontmatter.author }}</span>
-            <a
-              class="word-hover"
-              :title="item.frontmatter.summary"
-              :href="item.path"
-            >
-              {{ item.frontmatter.summary }}
+            <span class="author">{{ item.author }}</span>
+            <a class="word-hover" :title="item.summary" :href="item.path">
+              {{ item.summary }}
             </a>
           </div>
         </div>

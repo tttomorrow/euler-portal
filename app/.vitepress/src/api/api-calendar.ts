@@ -27,6 +27,6 @@ export function getActivityData() {
  TODO:
  */
 export function getActivityDetail(id: string) {
-  const url = `/api/activity/${id}/`;
+  const url = `/api-euler/api-sig/activity/${id}/`;
   return request.get(url, {}).then((res: AxiosResponse) => res.data);
 }

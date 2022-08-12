@@ -36,7 +36,7 @@ const ipAndAsn: Ref<string[]> = ref([]);
 
 const versionPath: Ref<string[]> = ref([]);
 
-function GetUrlParam(paraName: string) {
+const GetUrlParam = (paraName: string) => {
   const url = document.location.toString();
   const arrObj = url.split('?');
   if (arrObj.length > 1) {
@@ -52,7 +52,7 @@ function GetUrlParam(paraName: string) {
   } else {
     return '';
   }
-}
+};
 
 const compare = (temp: any[]) => {
   temp.sort(function (a, b) {

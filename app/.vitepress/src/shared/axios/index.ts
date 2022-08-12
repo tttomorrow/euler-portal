@@ -134,13 +134,11 @@ const responseInterceptorId = request.interceptors.response.use(
     if (loadingInstance) {
       loadingInstance.close();
     }
-    if (typeof err === 'string') {
-      ElMessage({
-        type: 'error',
-        message: err,
-        center: true,
-      });
-    }
+    ElMessage({
+      type: 'error',
+      message: err.toString(),
+      center: true,
+    });
     const { config } = err;
 
     // 非取消请求发生异常，同样将请求移除请求池

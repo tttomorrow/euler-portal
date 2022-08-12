@@ -2,7 +2,7 @@ import salon from '../../../data/salon/salon';
 export default {
   MEETUPS: {
     MEETUPS: '沙龙',
-    DETAIL_DESC: '简介',
+    DETAIL_DESC: '活动介绍',
     DETAIL_FLOW: '与会流程',
     DETAIL_MEET: '参会信息',
     DETAIL_REVIEW: '精彩回顾',
