@@ -4,7 +4,7 @@ import { ref, reactive, onMounted, nextTick } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
-import OScreen from '@/components/OScreen.vue';
+import MobileFilter from '@/components/MobileFilter.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
@@ -705,7 +705,7 @@ onMounted(() => {
     <el-collapse v-model="activeName" accordion @change="handleChange">
       <el-collapse-item title="整机" name="1">
         <div class="blog-tag">
-          <OScreen class="filter" :data="filterData" @filter="listfilter" />
+          <MobileFilter class="filter" :data="filterData" @filter="listfilter" />
         </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">

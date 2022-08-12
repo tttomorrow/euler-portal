@@ -14,6 +14,8 @@
   },
   ...
  ]
+ *@single = true 单选
+ *
  *选择全部时，对应title的sele返回[]空数组
  */
 import { useAttrs, ref, computed } from 'vue';
@@ -42,36 +44,63 @@ const isDrawerOpen = ref(false);
 const showscreen = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
-
 const handOptions = computed(() => {
   const temp = options;
   for (let i = 0; i < props.data.length; i++) {
-    temp.value.push({ title: '', sele: [] });
+    temp.value.push({ title: props.data[i].title, sele: [] });
   }
   return temp;
 });
 options.value = handOptions.value.value;
-
 // 选择标签
 const clickOption = (title: string, option: string) => {
-  for (let i = 0; i < props.data.length; i++) {
-    if (title === props.data[i].title) {
-      if (options.value[i].sele.length > 0) {
-        for (let j = 0; j <= options.value[i].sele.length; j++) {
-          if (options.value[i].sele[j] === option) {
-            options.value[i].sele.splice(j, 1);
-            for (let x = 0; x < tagitems.value.length; x++) {
-              if (tagitems.value[x] === option) {
-                tagitems.value.splice(x, 1);
+  // 单选
+  if (attrs.single) {
+    for (let i = 0; i < props.data.length; i++) {
+      if (title === props.data[i].title) {
+        if (options.value[i].sele.length > 0) {
+          if (options.value[i].sele[0] === option) {
+            options.value[i].sele.splice(0, 1);
+            for (let j = 0; j < tagitems.value.length; j++) {
+              if (tagitems.value[j] === option) {
+                tagitems.value.splice(j, 1);
               }
             }
-            return;
+          } else {
+            for (let x = 0; x < tagitems.value.length; x++) {
+              if (tagitems.value[x] === options.value[i].sele[0]) {
+                tagitems.value[x] = option;
+              }
+            }
+            options.value[i].sele[0] = option;
+          }
+          return;
+        }
+        options.value[i].sele[0] = option;
+        tagitems.value.push(option);
+      }
+    }
+  } else {
+    // 多选
+    for (let i = 0; i < props.data.length; i++) {
+      if (title === props.data[i].title) {
+        if (options.value[i].sele.length > 0) {
+          for (let j = 0; j <= options.value[i].sele.length; j++) {
+            if (options.value[i].sele[j] === option) {
+              options.value[i].sele.splice(j, 1);
+              for (let x = 0; x < tagitems.value.length; x++) {
+                if (tagitems.value[x] === option) {
+                  tagitems.value.splice(x, 1);
+                }
+              }
+              return;
+            }
           }
         }
+        options.value[i].title = title;
+        options.value[i].sele.push(option);
+        tagitems.value.push(option);
       }
-      options.value[i].title = title;
-      options.value[i].sele.push(option);
-      tagitems.value.push(option);
     }
   }
 };
