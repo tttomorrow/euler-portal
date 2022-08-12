@@ -82,12 +82,16 @@ const showMail = (show: boolean) => {
 
 <style lang="scss" scoped>
 .cards-wraper {
-  margin-top: var(--o-spacing-h2);
+  margin-top: var(--o-spacing-h1);
   padding: 0 var(--o-spacing-h5);
+  @media screen and (max-width: 767px) {
+    margin-top: var(--o-spacing-h2);
+  }
 }
 .info {
   margin: 0 auto;
   &-cards {
+    height: 290px;
     margin: 0 auto;
     background-color: var(--o-color-bg);
     box-shadow: var(--o-shadow-base);
@@ -149,10 +153,10 @@ const showMail = (show: boolean) => {
       box-sizing: border-box;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-row-gap: 16px;
       padding: var(--o-spacing-h5);
       &-item {
         margin: 0 auto;
-        height: 130px;
         padding: 0;
       }
       &-last {
@@ -161,11 +165,10 @@ const showMail = (show: boolean) => {
       &-imgs {
         display: block;
         width: 100px;
-        height: 90px;
+        height: 100px;
         cursor: pointer;
       }
       &-title {
-        width: 100px;
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-top: var(--o-spacing-h10);
@@ -200,26 +203,28 @@ const showMail = (show: boolean) => {
       display: flex;
       justify-content: space-around;
       width: 100%;
-      padding: 40px;
-      &-items {
+      padding: var(--o-spacing-h2) 0;
+      &-item {
         width: 170px;
         height: 170px;
       }
       &-imgs {
-        padding: var(--o-spacing-h5);
+        width: 100%;
+        height: 100%;
       }
     }
     @media screen and (min-width: 1440px) {
       display: flex;
       justify-content: space-around;
-      max-width: 1440px;
-      padding: var(--o-spacing-h2);
-      &-items {
+      max-width: 1416px;
+      padding: var(--o-spacing-h2) 0;
+      &-item {
         width: 170px;
         height: 170px;
       }
       &-imgs {
-        padding: var(--o-spacing-h5);
+        width: 100%;
+        height: 100%;
       }
     }
   }

@@ -52,10 +52,7 @@ if (useWindowResize().value < 767) {
       <!-- 学习模块 -->
       <MiniDocs :device="isPC" :docs-obj="i18n.bishengjdk.BISHENG_LEARN" />
       <!-- 友情链接模块 -->
-      <MiniReference
-        :device="isPC"
-        :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE"
-      />
+      <MiniReference :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE" />
     </div>
   </div>
 </template>
@@ -69,12 +66,12 @@ if (useWindowResize().value < 767) {
     &-backgrain {
       position: absolute;
       z-index: -1;
-      width: 1734px;
+      width: 1735px;
       height: 785px;
       background-image: url(/img/projects/bisheng/background.png);
       background-size: 100%;
       background-repeat: no-repeat;
-      top: 35px;
+      top: 32px;
       left: 0;
       right: 0;
       margin: 0 auto;

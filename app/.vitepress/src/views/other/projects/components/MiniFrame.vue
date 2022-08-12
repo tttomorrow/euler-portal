@@ -29,7 +29,6 @@ const isDark = computed(() => {
 <template>
   <div class="framework-box">
     <MiniTitle
-      :device="device"
       :inside-title="frameObj.TITLE_INSIDE"
       :outside-title="frameObj.TITLE_OUTSIDE"
     />
@@ -93,19 +92,19 @@ const isDark = computed(() => {
     <!-- 左右布局 -->
     <div v-if="layout === 'leftAndRight'" class="framework-leftandright">
       <div class="info">
-        <div class="desc">
-          <p class="desc-title">{{ frameObj.DESC_LIST[0] }}</p>
-          <p
-            v-for="(item, index) in frameObj.DESC_LIST"
-            :key="index"
-            class="desc-item"
-          >
-            <template v-if="index > 0"> {{ `${index}、` }}{{ item }} </template>
-          </p>
-          <div
-            class="desc-background"
-            :style="{ backgroundImage: `url(${frameObj.DESC_BACKGROUND})` }"
-          ></div>
+        <div class="info__desc__wrapper">
+          <div class="desc">
+            <p class="desc-title">{{ frameObj.DESC_LIST[0] }}</p>
+            <template v-for="(item, index) in frameObj.DESC_LIST" :key="index">
+              <p class="desc-item" v-if="index > 0">
+                {{ `${index}、` }}{{ item }}
+              </p>
+            </template>
+            <div
+              class="desc-background"
+              :style="{ backgroundImage: `url(${frameObj.DESC_BACKGROUND})` }"
+            ></div>
+          </div>
         </div>
         <div class="img">
           <img v-if="isDark" :src="frameObj.FRAMEWORK_IMG_DARK" alt="" />
@@ -122,8 +121,18 @@ const isDark = computed(() => {
   padding: 0 var(--o-spacing-h5);
   .framework-upanddown {
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: 1416px;
     position: relative;
+    .el-tabs {
+      :deep(.el-tabs__header) {
+        margin-bottom: 24px;
+      }
+      :deep(.el-tabs__nav) {
+        .is-active {
+          color: var(--o-color-brand);
+        }
+      }
+    }
   }
   .framework-leftandright {
     width: 100%;
@@ -132,17 +141,20 @@ const isDark = computed(() => {
       padding: 0 0 var(--o-spacing-h2) 0;
       display: flex;
       justify-content: space-around;
-      .desc {
+      &__desc__wrapper {
         flex: 1;
+      }
+      .desc {
         background-color: var(--o-color-bg);
-        margin: 0 var(--o-spacing-h5) 0 0;
+        margin: 0 var(--o-spacing-h6) 0 0;
         padding: var(--o-spacing-h2) var(--o-spacing-h2) 0 var(--o-spacing-h2);
         position: relative;
+        height: 100%;
         &-item {
           color: var(--o-color-text2);
           font-size: var(--o-font-size-h7);
-          line-height: var(--o-line-height-h8);
-          padding: var(--o-spacing-h8) 0;
+          line-height: var(--o-line-height-h7);
+          margin-bottom: var(--o-spacing-h4);
         }
         &-title {
           font-size: var(--o-font-size-h5);
@@ -164,7 +176,7 @@ const isDark = computed(() => {
       .img {
         flex: 1;
         background-color: var(--o-color-bg);
-        margin-left: var(--o-spacing-h5);
+        margin-left: var(--o-spacing-h6);
         img {
           margin: 0 auto;
           display: block;
@@ -174,11 +186,11 @@ const isDark = computed(() => {
       }
     }
     @media screen and (min-width: 1440px) {
-      max-width: 1440px;
+      max-width: 1416px;
       .info {
         .img {
           img {
-            width: 467px;
+            width: 364px;
           }
         }
       }
@@ -226,11 +238,18 @@ const isDark = computed(() => {
           width: 100%;
           margin: 0;
           padding: var(--o-spacing-h5);
+          padding-bottom: var(--o-spacing-h2);
           &-title {
             padding-bottom: 0;
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            font-weight: 500;
+            margin-bottom: var(--o-spacing-h5);
           }
-          p {
+          &-item {
             font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-height-tip);
+            margin: var(--o-spacing-h8) 0 0 0;
           }
           &-background {
             width: 202px;

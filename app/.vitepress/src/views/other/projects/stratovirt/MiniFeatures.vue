@@ -10,10 +10,6 @@ defineProps({
       return {};
     },
   },
-  device: {
-    type: Boolean,
-    default: true,
-  },
 });
 const commonStore = useCommon();
 const isDark = computed(() => {
@@ -31,7 +27,6 @@ const changeImg = function (url: string) {
   <div class="features-box">
     <!-- 标题 -->
     <MiniTitle
-      :device="device"
       :inside-title="featuresObj.TITLE_INSIDE"
       :outside-title="featuresObj.TITLE_OUTSIDE"
     />
@@ -81,8 +76,7 @@ const changeImg = function (url: string) {
         display: block;
         width: 80px;
         height: 80px;
-        // 往下调整
-        margin-right: var(--o-spacing-h8);
+        margin-right: var(--o-spacing-h5);
       }
       &-title {
         margin: var(--o-spacing-h5) 0 var(--o-spacing-h8) 0;
@@ -97,7 +91,7 @@ const changeImg = function (url: string) {
       }
     }
     @media screen and (min-width: 1440px) {
-      max-width: 1440px;
+      max-width: 1416px;
     }
     @media screen and (min-width: 1080px) and (max-width: 1439px) {
       padding: 0 auto;
@@ -106,23 +100,24 @@ const changeImg = function (url: string) {
       padding: 0 var(--o-spacing-h2);
     }
     @media screen and (max-width: 767px) {
-      margin-top: var(--o-spacing-h5);
       display: grid;
       grid-template-columns: 1fr;
       padding: 0 var(--o-spacing-h5);
       &-item {
         margin: 0 auto;
         padding: var(--o-spacing-h5) 0;
-        max-width: 296px;
         &-title {
           font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
+          margin: var(--o-spacing-h5) 0 var(--o-spacing-h10) 0;
         }
         &-desc {
           font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
         }
         img {
           margin: auto;
-          margin-right: var(--o-spacing-h8);
+          margin-right: var(--o-spacing-h5);
           width: 40px;
           height: 40px;
         }
