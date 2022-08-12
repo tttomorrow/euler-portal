@@ -874,7 +874,7 @@ const goLink = function (url: string, isBlank: boolean) {
     position: relative;
     display: block;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: var(--o-spacing-h2);
     padding: 0 var(--o-spacing-h5);
     img {
       width: 100%;

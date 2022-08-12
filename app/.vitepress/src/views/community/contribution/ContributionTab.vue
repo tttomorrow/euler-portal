@@ -41,6 +41,17 @@ const handleClick = (tab: TabsPaneContext) => {
     :deep(.el-tabs__nav) {
       left: 50%;
       transform: translate(-50%) !important;
+      .el-tabs__item {
+        height: 48px;
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h3);
+        @media screen and (max-width: 767px) {
+          height: 34px;
+          // TODO:
+          line-height: 34px;
+          font-size: var(--o-font-size-text);
+        }
+      }
       .is-active {
         color: var(--o-color-brand);
       }
