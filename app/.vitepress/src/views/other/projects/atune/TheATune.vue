@@ -8,6 +8,7 @@ import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import AppAnchor from '@/components/AppAnchor.vue';
 
 // TODO:该页面是视频先用插画代替
 import BannerIllustration from '/img/projects/atune/illustration-banner.png';
@@ -20,6 +21,11 @@ if (useWindowResize().value < 767) {
 } else {
   isPC.value = true;
 }
+
+const anchorData = [
+  { id: 'jiagou', name: '架构' },
+  { id: 'docs', name: '文档' },
+];
 </script>
 <template>
   <div class="atune-wraper">
@@ -39,9 +45,12 @@ if (useWindowResize().value < 767) {
       :device="isPC"
       :frame-obj="i18n.atune.ATUNE_FRAMEWORK"
       layout="upAndDown"
+      id="jiagou"
     />
     <!-- 文档 -->
-    <MiniDocs :device="isPC" :docs-obj="i18n.atune.ATUNE_DOCUMENT" />
+    <MiniDocs id="docs" :device="isPC" :docs-obj="i18n.atune.ATUNE_DOCUMENT" />
+
+    <AppAnchor :data="anchorData" />
   </div>
 </template>
 

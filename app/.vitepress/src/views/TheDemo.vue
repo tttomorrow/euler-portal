@@ -44,15 +44,22 @@ const inputName = ref('zhangsan');
 
 // 锚点只支持二级列表
 const anchorData = [
-  { id: 'anchor1' },
-  { id: 'anchor2', children: [{ id: 'anchor3-1' }, { id: 'anchor3-2' }] },
-  { id: 'anchor3' },
+  { id: 'anchor1', name: '锚点1' },
+  {
+    id: 'anchor2',
+    name: '锚点2',
+    children: [
+      { id: 'anchor3-1', name: '锚点3-1' },
+      { id: 'anchor3-2', name: '锚点3-2' },
+    ],
+  },
+  { id: 'anchor3', name: '锚点3' },
 ];
 const anchorData1 = [
-  { id: 'anchor4' },
-  { id: 'anchor5' },
-  { id: 'anchor6' },
-  { id: 'anchor7' },
+  { id: 'anchor4', name: '锚点4' },
+  { id: 'anchor5', name: '锚点5' },
+  { id: 'anchor6', name: '锚点6' },
+  { id: 'anchor7', name: '锚点7' },
 ];
 
 // tagFiter strart

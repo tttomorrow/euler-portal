@@ -38,7 +38,8 @@ const anchorData = ref();
 // 对象扁平化
 function flatten(data: any) {
   return data.reduce(
-    (pre, { id, children = [] }) => pre.concat([{ id }], flatten(children)),
+    (pre, { id, name, children = [] }) =>
+      pre.concat([{ id, name }], flatten(children)),
     []
   );
 }
@@ -135,7 +136,7 @@ const rootStyle = computed(() => {
           class="anchor-item-label"
           :class="item.id === selectId ? 'active' : ''"
           @click="selectAnchor(item.id)"
-          ><i class="anchor-dot"></i>{{ item.id }}</span
+          ><i class="anchor-dot"></i>{{ item.name }}</span
         >
 
         <template v-if="item.children?.length > 0">
@@ -147,7 +148,7 @@ const rootStyle = computed(() => {
               :class="subItem.id === selectId ? 'active' : ''"
               @click="selectAnchor(subItem.id)"
             >
-              {{ subItem.id }}
+              {{ subItem.name }}
             </a>
           </div>
         </template>
