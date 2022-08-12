@@ -51,6 +51,9 @@ defineProps({
 .desc-wraper {
   margin: var(--o-spacing-h2) 0;
   padding: 0 var(--o-spacing-h5);
+  @media screen and (max-width: 767px) {
+    margin-top: var(--o-spacing-h5);
+  }
 }
 .desc {
   margin: 0 auto;
@@ -62,7 +65,15 @@ defineProps({
     width: 100%;
     font-weight: 400;
     color: var(--o-color-text2);
-    line-height: var(--o-line-height-h8);
+    line-height: var(--o-line-height-text);
+    @media screen and (max-width: 767px) {
+      p {
+        margin-bottom: var(--o-spacing-h8);
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        font-weight: 400;
+      }
+    }
   }
   .more-info {
     p {
@@ -72,20 +83,32 @@ defineProps({
       font-weight: 400;
       color: var(--o-color-text2);
       line-height: var(--o-line-height-h7);
+      @media screen and (max-width: 767px) {
+        margin: var(--o-spacing-h4) 0 0 0;
+        font-size: var(--o-font-size-text);
+        font-weight: 500;
+        line-height: var(--o-line-height-text);
+        height: var(--o-line-height-text);
+      }
     }
     ul {
       font-size: var(--o-font-size-text);
       font-weight: 400;
       color: var(--o-color-text2);
-      line-height: var(--o-line-height-h8);
+      line-height: var(--o-line-height-text);
       padding-left: var(--o-spacing-h5);
       list-style: disc;
       li {
         color: var(--o-color-text2);
         font-size: var(--o-font-size-text);
-        padding: var(--o-spacing-h8) 0 var(--o-spacing-h8) 0;
+        margin-top: var(--o-spacing-h8);
         span {
           color: var(--o-color-text2);
+        }
+        @media screen and (max-width: 767px) {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+          font-weight: 400;
         }
       }
     }
@@ -97,7 +120,7 @@ defineProps({
 }
 @media screen and (min-width: 1440px) {
   .desc {
-    max-width: 1440px;
+    max-width: 1416px;
   }
 }
 </style>

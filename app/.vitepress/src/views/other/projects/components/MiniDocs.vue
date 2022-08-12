@@ -18,9 +18,9 @@ defineProps({
 <template>
   <div class="docs">
     <MiniTitle
-      :device="device"
       :inside-title="docsObj.TITLE_INSIDE"
       :outside-title="docsObj.TITLE_OUTSIDE"
+      :special-component="!!docsObj.TAB"
     />
     <div v-if="device" class="docs-tab">
       <template v-if="docsObj.TAB">
@@ -59,12 +59,22 @@ defineProps({
     </div>
   </div>
 </template>
-<style lang="scss" setup>
+<style lang="scss" scoped>
 .docs {
   padding: 0 var(--o-spacing-h5);
   &-tab {
-    max-width: 1440px;
+    max-width: 1416px;
     margin: 0 auto;
+    .el-tabs {
+      :deep(.el-tabs__header) {
+        margin-bottom: var(--o-spacing-h4);
+      }
+      :deep(.el-tabs__nav) {
+        .is-active {
+          color: var(--o-color-brand);
+        }
+      }
+    }
   }
   &-mobile-tab {
     margin-top: 16px;
@@ -73,14 +83,15 @@ defineProps({
       padding: 0;
       &-item {
         padding: 0;
-        .el-collapse-item__header {
+        :deep(.el-collapse-item__header) {
+          height: 34px;
           font-size: var(--o-font-size-tip);
           padding: var(--o-spacing-h8) 0 var(--o-spacing-h8) var(--o-spacing-h8);
         }
-        .el-collapse-item__wrap {
+        :deep(.el-collapse-item__wrap) {
           background-color: var(--o-color-bg2);
           .el-collapse-item__content {
-            padding: 0 !important;
+            padding: 0;
           }
         }
       }

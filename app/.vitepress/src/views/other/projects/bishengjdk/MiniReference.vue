@@ -15,10 +15,6 @@ defineProps({
       return {};
     },
   },
-  device: {
-    type: Boolean,
-    default: true,
-  },
 });
 const goLink = (path: string) => {
   if (path.startsWith('https:')) {
@@ -32,7 +28,6 @@ const goLink = (path: string) => {
 <template>
   <div class="reference">
     <MiniTitle
-      :device="device"
       :inside-title="referenceObj.TITLE_INSIDE"
       :outside-title="referenceObj.TITLE_OUTSIDE"
     />
@@ -56,7 +51,7 @@ const goLink = (path: string) => {
             </template>
           </OButton>
         </div>
-        <img :src="item.IMG" alt="" />
+        <div class="img"></div>
       </div>
     </div>
   </div>
@@ -71,21 +66,19 @@ const goLink = (path: string) => {
     margin: 0 auto;
     .item {
       width: 100%;
+      height: 96px;
       background-color: var(--o-color-bg);
-      background-image: url(/img/projects/bisheng/illustration-grain.png);
-      background-repeat: no-repeat;
-      background-position: right;
-      background-size: 230px 150%;
-      padding: var(--o-spacing-h2) 0 var(--o-spacing-h2) var(--o-spacing-h2);
       box-shadow: var(--o-shadow-base);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: start;
-      align-items: center;
       font-size: var(--o-font-size-h7);
       color: var(--o-color-text2);
       line-height: var(--o-height-h6);
+      position: relative;
       .link {
+        z-index: 2;
+        position: absolute;
+        top: 37px;
+        left: 36px;
+        bottom: 37px;
         &-button {
           padding: 0 !important;
           margin-right: 10px;
@@ -94,6 +87,17 @@ const goLink = (path: string) => {
           }
         }
       }
+      .img {
+        z-index: 1;
+        position: absolute;
+        top: -24px;
+        bottom: -24px;
+        right: 0;
+        width: 232px;
+        height: 144px;
+        background-image: url(/img/projects/bisheng/illustration-grain.png);
+        background-size: 100%;
+      }
     }
     .item:hover {
       box-shadow: var(--o-shadow-base_hover);
@@ -101,11 +105,20 @@ const goLink = (path: string) => {
     @media screen and (max-width: 767px) {
       display: grid;
       grid-template-columns: 1fr;
-      grid-row-gap: var(--o-spacing-h4);
+      grid-row-gap: var(--o-spacing-h5);
       .item {
-        height: 58px;
-        padding: 0 0 0 var(--o-spacing-h8);
-        background-size: 160px 150%;
+        height: 54px;
+        .link {
+          top: 16px;
+          left: 8px;
+          bottom: 16px;
+        }
+        .img {
+          width: 130px;
+          height: 81px;
+          top: -14px;
+          bottom: -19px;
+        }
       }
     }
     @media screen and (min-width: 768px) and (max-width: 1079px) {

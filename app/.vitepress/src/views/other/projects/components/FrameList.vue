@@ -31,7 +31,7 @@ defineProps({
         <p v-for="(item, index) in descList" :key="index">
           {{ item }}
         </p>
-        <p class="desc-title">{{ frameworkTitle }}</p>
+        <p v-if="frameworkTitle" class="desc-title">{{ frameworkTitle }}</p>
       </div>
       <img v-if="darkImg" :src="frameworkDarkImg" alt="" />
       <img v-else :src="frameworkImg" alt="" />
@@ -47,9 +47,9 @@ defineProps({
   .desc {
     margin: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
     p {
-      font-size: var(--o-font-size-h8);
+      font-size: var(--o-font-size-text);
       color: var(--o-color-text2);
-      line-height: var(--o-line-height-h8);
+      line-height: var(--o-line-height-text);
     }
     &-title {
       margin-top: 24px;
@@ -60,7 +60,7 @@ defineProps({
     display: block;
   }
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
+    max-width: 1416px;
     img {
       width: 1016px;
     }
@@ -83,6 +83,8 @@ defineProps({
       margin: 0;
       p {
         font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        margin-bottom: var(--o-spacing-h8);
       }
     }
     img {

@@ -138,7 +138,7 @@ const goLink = (path: string) => {
           font-size: var(--o-font-size-h7);
           color: var(--o-color-text2);
           line-height: var(--o-line-height-h7);
-          font-weight: 600;
+          font-weight: 500;
         }
         &-desc {
           max-width: 256px;
@@ -160,7 +160,7 @@ const goLink = (path: string) => {
           justify-content: flex-start;
           &-button {
             padding: 0 !important;
-            margin-right: 10px;
+            margin-right: var(--o-spacing-h5);
             svg {
               color: var(--o-color-brand);
             }
@@ -207,7 +207,7 @@ const goLink = (path: string) => {
       }
     }
     @media screen and (min-width: 1080px) {
-      max-width: 1440px;
+      max-width: 1416px;
       .docs-list {
         width: 100%;
         display: grid;
@@ -241,18 +241,20 @@ const goLink = (path: string) => {
       &-content {
         position: absolute;
         z-index: 3;
+        height: 112px;
       }
       &-theme {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-        height: 22px;
+        height: var(--o-line-height-text);
         color: var(--o-color-text2);
+        font-weight: 500;
       }
       &-desc {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-top: var(--o-spacing-h8);
-        max-width: 170px;
+        max-width: 190px;
         color: var(--o-color-text3);
         overflow: hidden;
         text-overflow: ellipsis;
@@ -261,14 +263,15 @@ const goLink = (path: string) => {
         -webkit-box-orient: vertical;
       }
       &-link {
-        width: 220px;
-        padding: var(--o-spacing-h3) 0 0 0;
+        position: absolute;
+        bottom: 0;
+        width: 250px;
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
         .button {
           padding: 0 !important;
-          margin-right: 10px;
+          margin-right: var(--o-spacing-h5);
           svg {
             color: var(--o-color-brand);
           }

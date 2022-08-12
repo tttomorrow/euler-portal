@@ -36,10 +36,7 @@ if (useWindowResize().value < 767) {
     <!-- 中间文字介绍部分 -->
     <MiniDescription :description-desc="i18n.stratovirt.SVIRT_DESC" />
     <!-- 特征 -->
-    <MiniFeatures
-      :device="isPC"
-      :features-obj="i18n.stratovirt.SVIRT_CHARACTER"
-    />
+    <MiniFeatures :features-obj="i18n.stratovirt.SVIRT_CHARACTER" />
     <!-- 架构 -->
     <MiniFrame
       :device="isPC"

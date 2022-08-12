@@ -8,21 +8,15 @@ defineProps({
     type: String,
     default: '',
   },
-  device: {
+  specialComponent: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 });
 </script>
 <template>
-  <div v-if="device" class="title-wrapper">
-    <div class="title">
-      <div class="title-outside">{{ outsideTitle }}</div>
-      <div class="title-inside">{{ insideTitle }}</div>
-    </div>
-  </div>
-  <div v-else class="mobile-title-wrapper">
-    <div class="title">
+  <div class="title-wrapper">
+    <div :class="specialComponent ? 'title title-special' : 'title'">
       <div class="title-outside">{{ outsideTitle }}</div>
       <div class="title-inside">{{ insideTitle }}</div>
     </div>
@@ -42,41 +36,39 @@ defineProps({
     line-height: var(--o-line-height-h3);
     position: relative;
     text-align: center;
-    margin-bottom: var(--o-spacing-h2);
+    // TODO:
+    margin-bottom: 56px;
     &-outside {
       position: absolute;
       left: 50%;
-      top: 24px;
+      top: 16px;
       transform: translateX(-50%);
       z-index: 1;
     }
     &-inside {
       color: var(--o-color-bg4);
+      // TODO:
+      font-size: 40px;
+      font-weight: 300;
     }
   }
-}
-.mobile-title-wrapper {
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  margin-top: var(--o-spacing-h2);
-  .title {
-    margin: 0 auto var(--o-spacing-h3);
-    margin-bottom: var(--o-spacing-h4);
-    font-size: var(--o-font-size-h8);
-    color: var(--o-color-text2);
-    line-height: var(--o-line-height-h8);
-    position: relative;
-    text-align: center;
-    &-outside {
-      position: absolute;
-      left: 50%;
-      top: 8px;
-      transform: translateX(-50%);
-      z-index: 1;
-    }
-    &-inside {
-      color: var(--o-color-bg4);
+  .title-special {
+    // TODO:
+    margin-bottom: 44px;
+  }
+  @media screen and (max-width: 767px) {
+    margin-top: var(--o-spacing-h2);
+    .title {
+      margin-bottom: var(--o-spacing-h4);
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
+      &-outside {
+        top: 8px;
+      }
+      &-inside {
+        color: var(--o-color-bg4);
+        font-size: var(--o-font-size-h8);
+      }
     }
   }
 }
