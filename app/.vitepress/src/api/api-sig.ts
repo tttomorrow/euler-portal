@@ -26,3 +26,7 @@ export function getCompleteList(params?: LIST_PARAMS) {
   const url = 'https://omapi.osinfra.cn/query/sig/info?community=openeuler';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
+export function getSalon() {
+  const url = `${baseUrl}/api-sig/activities/`;
+  return request.get(url).then((res: AxiosResponse) => res.data);
+}
