@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted, nextTick } from 'vue';
+import { ref, reactive, onMounted, nextTick, watch } from 'vue';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -11,7 +11,7 @@ import search from '@/assets/illustrations/search.png';
 import { useI18n } from '@/i18n';
 import type {
   CveQuery,
-  FilterData,
+  FilterList,
   // CompatibilityList,
   // BoardCardList,
   // BusinessSoftWareList,
@@ -29,7 +29,6 @@ import {
 } from '@/api/api-security';
 
 const i18n = useI18n();
-// const userCaseData = computed(() => i18n.value.interaction);
 
 const searchContent = ref('');
 const activeIndex = ref(0);
@@ -42,20 +41,30 @@ const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>(['全部']);
 const lastActiveName = ref('1');
 
-const filterData = ref<FilterData>({
-  author: {
+const filterData = ref<FilterList[]>([
+  {
     select: [],
     title: '操作系统',
   },
-  tags: {
+  {
     select: [],
     title: '架构',
   },
-  time: {
+  {
     select: [],
     title: 'CPU',
   },
-});
+]);
+const filterDataTwo = ref<FilterList[]>([
+  {
+    select: [],
+    title: '操作系统',
+  },
+  {
+    select: [],
+    title: '架构',
+  },
+]);
 
 const queryData: CveQuery = reactive({
   pages: {
@@ -150,7 +159,7 @@ const handleChange = () => {
   initMobileData(queryData);
 };
 
-const handleClick = () => {
+const initQueryData = () => {
   queryData.pages.page = 1;
   queryData.pages.size = 10;
   queryData.architecture = '';
@@ -160,6 +169,10 @@ const handleClick = () => {
   searchContent.value = '';
   activeIndex1.value = 0;
   activeIndex.value = 0;
+};
+
+const handleClick = () => {
+  initQueryData();
   nextTick(() => {
     initData(queryData);
   });
@@ -220,9 +233,48 @@ function searchValchange() {
   initData(queryData);
 }
 
-const listfilter = (val: string[]) => {
-  return val;
+const listfilter = (val: any) => {
+  if (activeName.value === '1') {
+    val.forEach((item: any) => {
+      if (item.title === '操作系统') {
+        queryData.os = item.sele[0];
+      } else if (item.title === '架构') {
+        queryData.architecture = item.sele[0];
+      } else if (item.title === 'CPU') {
+        queryData.cpu = item.sele[0];
+      } else {
+        return;
+      }
+    });
+    initData(queryData);
+  } else if (activeName.value === '2') {
+    val.forEach((item: any) => {
+      if (item.title === '操作系统') {
+        queryData.os = item.sele[0];
+      } else if (item.title === '架构') {
+        queryData.architecture = item.sele[0];
+      } else {
+        return;
+      }
+    });
+    initData(queryData);
+  } else if (activeName.value === '3') {
+    val.forEach((item: any) => {
+      if (item.title === '操作系统') {
+        queryData.os = item.sele[0];
+      } else if (item.title === '架构') {
+        queryData.architecture = item.sele[0];
+      } else {
+        return;
+      }
+    });
+    initData(queryData);
+  }
 };
+
+watch(activeName, () => {
+  // initQueryData();
+});
 
 onMounted(() => {
   getCompatibilityData(queryData);
@@ -230,7 +282,16 @@ onMounted(() => {
     driverArchitectureOptions({ lang: 'zh' }).then((res: any) => {
       res.result.forEach((item: string) => {
         architectureSelect.value.push(item);
-        filterData.value.tags.select.push(item);
+        filterData.value.forEach((it) => {
+          if (it.title === '架构') {
+            it.select.push(item);
+          }
+        });
+        filterDataTwo.value.forEach((it) => {
+          if (it.title === '架构') {
+            it.select.push(item);
+          }
+        });
       });
     });
   } catch (e: any) {
@@ -240,7 +301,16 @@ onMounted(() => {
     driverOSOptions({ lang: 'zh' }).then((res: any) => {
       res.result.forEach((item: string) => {
         osOptions.value.push(item);
-        filterData.value.author.select.push(item);
+        filterData.value.forEach((it) => {
+          if (it.title === '操作系统') {
+            it.select.push(item);
+          }
+        });
+        filterDataTwo.value.forEach((it) => {
+          if (it.title === '操作系统') {
+            it.select.push(item);
+          }
+        });
       });
     });
   } catch (e: any) {
@@ -258,7 +328,11 @@ onMounted(() => {
   try {
     getCpu({ lang: 'zh' }).then((res: any) => {
       res.result.forEach((item: string) => {
-        filterData.value.time.select.push(item);
+        filterData.value.forEach((it) => {
+          if (it.title === 'CPU') {
+            it.select.push(item);
+          }
+        });
       });
     });
   } catch (e: any) {
@@ -276,7 +350,6 @@ onMounted(() => {
     :illustration="search"
   />
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
-    <!-- 整机 -->
     <OTabPane label="整机" name="1">
       <div class="wrapper">
         <OSearch
@@ -364,7 +437,7 @@ onMounted(() => {
         </OTable>
       </div>
     </OTabPane>
-    <!-- 板卡 -->
+
     <OTabPane label="板卡" name="2">
       <div class="wrapper">
         <OSearch
@@ -513,7 +586,7 @@ onMounted(() => {
         </ul>
       </div>
     </OTabPane>
-    <!-- 开源软件 -->
+
     <OTabPane label="开源软件" name="3">
       <div class="wrapper">
         <OSearch
@@ -593,7 +666,7 @@ onMounted(() => {
         </OTable>
       </div>
     </OTabPane>
-    <!-- 商业软件 -->
+
     <OTabPane label="商业软件" name="4">
       <div class="wrapper">
         <OSearch
@@ -753,7 +826,11 @@ onMounted(() => {
           <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
         </p>
       </el-collapse-item>
+
       <el-collapse-item title="板卡" name="2">
+        <div class="blog-tag">
+          <OScreen class="filter" :data="filterDataTwo" @filter="listfilter" />
+        </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
             <ul>
@@ -829,7 +906,11 @@ onMounted(() => {
           <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
         </p>
       </el-collapse-item>
+
       <el-collapse-item title="开源软件" name="3">
+        <div class="blog-tag">
+          <OScreen class="filter" :data="filterDataTwo" @filter="listfilter" />
+        </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
             <ul>
@@ -910,6 +991,7 @@ onMounted(() => {
           <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
         </p>
       </el-collapse-item>
+
       <el-collapse-item title="商业软件" name="4">
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">

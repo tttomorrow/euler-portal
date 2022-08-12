@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, ref } from 'vue';
 import { useI18n } from '@/i18n';
 
 import { getSecurityDetail } from '@/api/api-security';
@@ -7,6 +7,18 @@ import { DetailParams } from '@/shared/@types/type-support';
 import type { AxiosResponse } from '@/shared/axios';
 
 const i18n = useI18n();
+const detailData: any = ref({
+  // securityNoticeNo: '',
+  // summary: '',
+  // announcementTime: '',
+  // introduction: '',
+  // type: '',
+  // subject: '',
+  // description: '',
+  // affectedComponent: '',
+  // cveId: '',
+  // referenceList: [],
+});
 
 const queryData: DetailParams = reactive({
   securityNoticeNo: '',
@@ -15,7 +27,7 @@ const queryData: DetailParams = reactive({
 function getSecurityDetailInfo(data: any) {
   try {
     getSecurityDetail(data).then((res: AxiosResponse) => {
-      return res;
+      detailData.value = res;
     });
   } catch (e: any) {
     throw new Error(e);
@@ -41,21 +53,74 @@ onMounted(() => {
       <span class="separtor">></span>
       <p class="current-page">{{ i18n.security.SECURITY_ADVISORIES_DETAIL }}</p>
     </div>
-    <p class="bulletin-name">openEuler-SA-2021-1283</p>
+    <p class="bulletin-name">{{ detailData.securityNoticeNo }}</p>
     <div class="bulletin-intro">
-      <p><span>概要</span>krb5 security update</p>
-      <p><span>发布时间</span>2021-07-27</p>
+      <p>
+        <span>{{ i18n.security.SYNOPSIS }}</span
+        >{{ detailData.summary }}
+      </p>
+      <p>
+        <span>{{ i18n.security.RELEASE_DATE }}</span
+        >{{ detailData.announcementTime }}
+      </p>
     </div>
     <div class="tabs-container">
       <OTabs class="o-tabs">
-        <OTabPane label="概述">
+        <OTabPane :label="i18n.security.OVERVIEW">
           <div class="tab-content">
             <div class="tab-content-item">
-              <h5 class="tab-content-item-title">简介</h5>
+              <h5 class="tab-content-item-title">
+                {{ i18n.security.BRIEF_INTRODUCTION }}
+              </h5>
               <p class="tab-content-item-text">
-                An update for krb5 is now available for openEuler-20.03-LTS-SP1
-                and openEuler-20.03-LTS-SP2.
+                {{ detailData.introduction }}
               </p>
+            </div>
+            <div class="tab-content-item">
+              <h5 class="tab-content-item-title">
+                {{ i18n.security.SEVERITY }}
+              </h5>
+              <p class="tab-content-item-text">
+                {{ detailData.type }}
+              </p>
+            </div>
+            <div class="tab-content-item">
+              <h5 class="tab-content-item-title">{{ i18n.security.THEME }}</h5>
+              <p class="tab-content-item-text">
+                {{ detailData.subject }}
+              </p>
+            </div>
+            <div class="tab-content-item">
+              <h5 class="tab-content-item-title">
+                {{ i18n.security.DESCRIPTION }}
+              </h5>
+              <p class="tab-content-item-text">
+                {{ detailData.description }}
+              </p>
+            </div>
+            <div class="tab-content-item">
+              <h5 class="tab-content-item-title">
+                {{ i18n.security.AFFECTED_COMPONENTS }}
+              </h5>
+              <p class="tab-content-item-text">
+                {{ detailData.affectedComponent }}
+              </p>
+            </div>
+            <div class="tab-content-item">
+              <h5 class="tab-content-item-title">{{ i18n.security.CVE }}</h5>
+              {{ detailData.cveId }}
+            </div>
+            <div class="tab-content-item">
+              <h5 class="tab-content-item-title">
+                {{ i18n.security.REFERENCE_DOCUMENTS }}
+              </h5>
+              <div
+                v-for="item in detailData.referenceList"
+                :key="item"
+                class="tab-content-item-text"
+              >
+                <p>{{ item.url }}</p>
+              </div>
             </div>
           </div>
         </OTabPane>
