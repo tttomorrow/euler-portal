@@ -8,12 +8,11 @@ import BannerIllustration from '/img/community/share/illustration-banner.png';
 </script>
 
 <BannerLevel2
-    title="贡献攻略"
-    subtitle="回到 TRAIL CHESS"
-    :illustration="BannerIllustration"
-    :background-image="BannerBackground"
-    background-text="COMMUNITY"
-  />
+title="贡献攻略"
+:illustration="BannerIllustration"
+:background-image="BannerBackground"
+background-text="COMMUNITY"
+/>
 <ContributionTab />
 
 <div class="markdown word">
@@ -178,7 +177,7 @@ openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社�
   }
   .desc {
     font-size: var(--o-font-size-h7);
-    color: var(--o-color-brand_hover);
+    color: var(--o-color-text2);
   }
   a {
     color: var(--o-color-brand_hover);
@@ -189,7 +188,7 @@ openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社�
   @media screen and (max-width: 769px) {
     padding: var(--o-spacing-h5);
     .desc {
-      color: var(--o-color-brand_hover);
+      color: var(--o-color-text2);
       font-size: var(--o-spacing-tip);
       line-height: var(--o-line-height-tip);
     }
