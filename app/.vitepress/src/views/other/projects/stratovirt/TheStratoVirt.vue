@@ -9,6 +9,7 @@ import MiniDocs from '../components/MiniDocs.vue';
 import MiniFeatures from './MiniFeatures.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import AppAnchor from '@/components/AppAnchor.vue';
 
 import BannerIllustration from '/img/projects/stratovirt/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
@@ -20,6 +21,12 @@ if (useWindowResize().value < 767) {
 } else {
   isPC.value = true;
 }
+
+const anchorData = [
+  { id: 'feature', name: '特征' },
+  { id: 'architecture', name: '架构' },
+  { id: 'docs', name: '文档' },
+];
 </script>
 <template>
   <div class="svirt-wraper">
@@ -36,15 +43,18 @@ if (useWindowResize().value < 767) {
     <!-- 中间文字介绍部分 -->
     <MiniDescription :description-desc="i18n.stratovirt.SVIRT_DESC" />
     <!-- 特征 -->
-    <MiniFeatures :features-obj="i18n.stratovirt.SVIRT_CHARACTER" />
+    <MiniFeatures id="feature" :features-obj="i18n.stratovirt.SVIRT_CHARACTER" />
     <!-- 架构 -->
     <MiniFrame
       :device="isPC"
       :frame-obj="i18n.stratovirt.SVIRT_FRAMEWORK"
       layout="leftAndRight"
+      id="architecture"
     />
     <!-- 文档 -->
-    <MiniDocs :device="isPC" :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT" />
+    <MiniDocs id="docs" :device="isPC" :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT" />
+
+    <AppAnchor :data="anchorData" />
   </div>
 </template>
 

@@ -9,6 +9,7 @@ import MiniDocs from '../components/MiniDocs.vue';
 import MiniReference from './MiniReference.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import AppAnchor from '@/components/AppAnchor.vue';
 
 import BannerIllustration from '/img/projects/bisheng/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
@@ -20,6 +21,12 @@ if (useWindowResize().value < 767) {
 } else {
   isPC.value = true;
 }
+
+const anchorData = [
+  { id: 'architecture', name: '架构' },
+  { id: 'learn', name: '学习' },
+  { id: 'link', name: '友情链接' },
+];
 </script>
 
 <template>
@@ -48,11 +55,14 @@ if (useWindowResize().value < 767) {
         :device="isPC"
         :frame-obj="i18n.bishengjdk.BISHENG_FRAMEWORK"
         layout="upAndDown"
+        id="architecture"
       />
       <!-- 学习模块 -->
-      <MiniDocs :device="isPC" :docs-obj="i18n.bishengjdk.BISHENG_LEARN" />
+      <MiniDocs id="learn" :device="isPC" :docs-obj="i18n.bishengjdk.BISHENG_LEARN" />
       <!-- 友情链接模块 -->
-      <MiniReference :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE" />
+      <MiniReference id="link" :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE" />
+
+      <AppAnchor :data="anchorData" />
     </div>
   </div>
 </template>
@@ -60,9 +70,9 @@ if (useWindowResize().value < 767) {
 <style lang="scss" scoped>
 .bisheng-wraper {
   margin: 0 auto;
+  position: relative;
+  z-index: 0;
   .bisheng-info {
-    position: relative;
-    z-index: 0;
     &-backgrain {
       position: absolute;
       z-index: -1;
@@ -71,7 +81,7 @@ if (useWindowResize().value < 767) {
       background-image: url(/img/projects/bisheng/background.png);
       background-size: 100%;
       background-repeat: no-repeat;
-      top: 32px;
+      top: 376px;
       left: 0;
       right: 0;
       margin: 0 auto;
