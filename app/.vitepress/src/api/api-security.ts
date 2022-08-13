@@ -29,7 +29,7 @@ export function getCveList(pages: cveQuery) {
  */
 export function getSecurityDetail(params: any) {
   const url = `/api-euler/api-cve/cve-security-notice-server/securitynotice/getBySecurityNoticeNo?securityNoticeNo=${params.securityNoticeNo}`;
-  return request.get(url).then((res: AxiosResponse) => res.data);
+  return request.get(url).then((res: AxiosResponse) => res.data.result);
 }
 
 /**
