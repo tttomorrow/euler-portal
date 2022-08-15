@@ -8,6 +8,7 @@ interface MapMsg {
   latitude: number;
   longitude: number;
   location: string;
+  http: string;
 }
 const props = defineProps({
   mapData: {
@@ -35,6 +36,7 @@ const initMap = (lng: number, lat: number) => {
         point.push({
           location: item.location,
           title: item.name,
+          http: item.http,
           lnglat: [item.longitude, item.latitude],
         });
       });
@@ -49,8 +51,13 @@ const initMap = (lng: number, lat: number) => {
       }) {
         let cardList = '';
         context.clusterData[0]._amapMarker.originData[0].forEach(
-          (item: { title: string }) => {
-            cardList += '<div class="map-card-name">' + item.title + '</div>';
+          (item: { title: string; http: string }) => {
+            cardList +=
+              '<a class="map-card-name" href="' +
+              item.http +
+              '" target="_blank">' +
+              item.title +
+              '</a></br>';
           }
         );
 
@@ -60,18 +67,21 @@ const initMap = (lng: number, lat: number) => {
           '   <div class="map-word">' +
           context.count +
           'mirrors are selected here' +
+          '</div>' +
+          '   <div class="wrap">' +
           '   <div class="map-card">' +
           cardList +
           '<div class="map-card-location">' +
           context.clusterData[0].location +
+          '</div>' +
+          '</div>' +
           '</div>';
-        '</div>' + '</div>';
         const offset = new AMap.Pixel(-9, -9);
         context.marker.setContent(content);
         context.marker.setOffset(offset);
       };
       const _renderMarker = function (context: {
-        data: { title: string; location: string }[];
+        data: { title: string; location: string; http: string }[];
         marker: {
           setContent: any;
           setOffset: any;
@@ -83,15 +93,19 @@ const initMap = (lng: number, lat: number) => {
           '   <div class="map-word">' +
           context.data[0].title +
           '</div>' +
+          '   <div class="wrap">' +
           '   <div class="map-card">' +
-          '<div class="map-card-name">' +
+          '<a class="map-card-name":href="' +
+          context.data[0].http +
+          '" target="_blank">' +
           context.data[0].title +
-          '</div>' +
+          '</a>' +
           '<div class="map-card-location">' +
           context.data[0].location +
+          '</div>' +
+          '</div>' +
+          '</div>' +
           '</div>';
-        ('</div>');
-        ('</div>');
         const offset = new AMap.Pixel(-9, -9);
         context.marker.setContent(content);
         context.marker.setOffset(offset);
@@ -138,15 +152,27 @@ onMounted(() => {
   height: 100%;
 }
 
+.amap-marker {
+  z-index: 99 !important;
+}
+
 .map-content {
   display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: center;
 
-  &:hover .map-card {
+  &:hover .wrap {
     transition: all 0.5s;
     display: block;
+  }
+
+  .wrap {
+    top: 0;
+    left: 0;
+    padding: var(--o-spacing-h8);
+    display: none;
+    z-index: 13;
   }
 
   .map-card {
@@ -156,11 +182,8 @@ onMounted(() => {
     position: absolute;
     border: #fff285 1px solid;
     border-radius: var(--o-spacing-h10);
-    top: var(--o-spacing-h3);
-    display: none;
-    left: var(--o-spacing-h3);
     box-shadow: var(--o-shadow-base);
-    z-index: 99;
+    z-index: 13;
     &-name {
       color: var(--o-color-brand);
       font-size: var(--o-font-size-text);
@@ -182,7 +205,6 @@ onMounted(() => {
     box-shadow: #f9762d 0px 0px 10px;
     transition: all 0.5s;
     cursor: pointer;
-    z-index: 2;
 
     &:hover {
       background-color: #ffff92;
@@ -202,7 +224,6 @@ onMounted(() => {
     color: #000;
     font-weight: 600;
     -webkit-text-stroke: 0.5px #fff;
-    z-index: 2;
   }
 }
 </style>

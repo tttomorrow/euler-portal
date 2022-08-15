@@ -202,11 +202,29 @@ onMounted(() => {
 });
 </script>
 <template>
+  <div v-if="detailObj && detailObj.posterImg" class="top-img-mobile">
+    <img :src="detailObj.posterImg" alt="" />
+    <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
+      {{ detailObj.title }}
+    </h2>
+  </div>
+  <div class="tab-box-mobile">
+    <OTabs v-model="tabShow" @tab-click="TabClick">
+      <OTabPane
+        v-for="(item, index) in tabTitle"
+        :key="index"
+        :label="item"
+        :name="index"
+      ></OTabPane>
+    </OTabs>
+  </div>
+
   <div class="calendar-detail">
     <BreadCrumbs
       :bread1="i18n.interaction.MEETUPSLIST.MEETUPS"
       :bread2="detailObj?.title"
       :link1="'/' + lang + '/interaction/salon-list/'"
+      class="bread"
     />
     <div v-if="detailObj" class="warper">
       <div class="top-content">
@@ -265,7 +283,7 @@ onMounted(() => {
         </div>
         <div v-show="tabIndex === 1" class="agenda">
           <h1 class="detail-title">{{ tabTitle[tabIndex] }}</h1>
-          <div v-if="betweenDate.length" class="tab-box">
+          <div v-if="betweenDate.length" class="tab-box-time">
             <OTabs v-model="dayTabShow" @tab-click="dayTabClick">
               <OTabPane
                 v-for="(item, index) in betweenDate"
@@ -304,6 +322,38 @@ onMounted(() => {
               </el-table-column>
             </OTable>
           </div>
+          <div class="time-line">
+            <div
+              v-for="(item, index) in flowPathList[dayTabShow]"
+              :key="item.title"
+              class="time-line-content"
+            >
+              <div class="time-line-left">
+                <div class="ponit"></div>
+                <div
+                  v-if="index !== flowPathList[dayTabShow].length - 1"
+                  class="line"
+                ></div>
+              </div>
+              <div class="time-line-right">
+                <div class="time-line-duration">
+                  {{ item.duration }}
+                </div>
+                <div class="time-line-title">{{ item.title }}</div>
+                <div class="time-line-name">
+                  <div
+                    v-for="(item2, index2) in item.speakerList"
+                    :key="item2.name"
+                  >
+                    {{
+                      item2.name +
+                      (index2 === item.speakerList.length - 1 ? '' : ',')
+                    }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div
           v-show="tabIndex === 2 && detailObj.activity_type !== 2"
@@ -338,6 +388,126 @@ onMounted(() => {
   </div>
 </template>
 <style lang="scss" scoped>
+.time-line {
+  display: none;
+  @media (max-width: 768px) {
+    margin-top: var(--o-spacing-h7);
+    display: flex;
+    flex-flow: column;
+  }
+  &-left {
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    margin-right: var(--o-spacing-h8);
+  }
+  .ponit {
+    background-color: var(--o-color-brand);
+    width: 9px;
+    height: 9px;
+    border-radius: 9px;
+    margin-top: var(--o-spacing-h10);
+  }
+
+  .line {
+    flex: 1;
+    width: 1px;
+    border-left: 2px var(--o-color-brand) dashed;
+  }
+
+  &-content {
+    display: flex;
+    flex-flow: row;
+  }
+
+  &-right {
+    padding-bottom: var(--o-spacing-h5);
+  }
+
+  &-duration {
+    font-size: 10px;
+    color: var(--o-color-brand);
+    line-height: 16px;
+    margin-bottom: var(--o-spacing-h8);
+  }
+
+  &-title {
+    font-size: var(--o-font-size-tip);
+    color: var(--o-color-text2);
+    line-height: var(--o-line-height-tip);
+    margin-bottom: var(--o-spacing-h8);
+  }
+
+  &-name {
+    font-size: 10px;
+    color: var(--o-color-text3);
+    line-height: 16px;
+    display: flex;
+    flex-flow: row;
+  }
+}
+.tab-box-mobile {
+  background-color: var(--o-color-bg);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
+  :deep(.el-tabs__header) {
+    margin: 0px;
+  }
+
+  :deep(.el-tabs) {
+    --el-tabs-header-height: var(--o-line-height-h3);
+    @media (max-width: 768px) {
+      --el-tabs-header-height: 34px;
+    }
+  }
+
+  :deep(.el-tabs__item) {
+    font-size: var(--o-font-size-h8);
+    line-height: var(--o-line-height-h8);
+    padding-bottom: var(--o-spacing-h6);
+    padding-top: var(--o-spacing-h6);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+      padding-bottom: var(--o-spacing-h9);
+      padding-top: var(--o-spacing-h9);
+    }
+  }
+
+  :deep(.is-active) {
+    color: var(--o-color-brand);
+  }
+}
+
+.top-img-mobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+  img {
+    width: 100%;
+  }
+  h2 {
+    position: absolute;
+    text-align: center;
+    color: #ffffff;
+  }
+}
+.bread {
+  display: block;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
 .calendar-detail {
   background-color: var(--o-color-bg2);
   margin: 0 auto;
@@ -352,6 +522,12 @@ onMounted(() => {
       margin: var(--o-spacing-h2) 0;
       padding: 80px;
       background-color: var(--o-color-bg);
+      @media screen and (max-width: 1080px) {
+        padding: var(--o-spacing-h1);
+      }
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
       .top-left {
         display: flex;
         flex-shrink: 0;
@@ -377,16 +553,43 @@ onMounted(() => {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+        flex: 1;
+        .top-right-head {
+          width: 100%;
+        }
         .title {
           margin-bottom: var(--o-spacing-h4);
           font-weight: 400;
           font-size: var(--o-font-size-h3);
           line-height: var(--o-line-height-h3);
           color: var(--o-color-text2);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          word-break: break-all;
         }
 
         .time {
           margin-top: var(--o-spacing-h8);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          word-break: break-all;
+          color: var(--o-color-text2);
+        }
+
+        .category {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          word-break: break-all;
+          color: var(--o-color-text2);
         }
 
         .btn-detail {
@@ -412,12 +615,21 @@ onMounted(() => {
     .detail-body {
       background-color: var(--o-color-bg);
       padding: 0 80px var(--o-spacing-h2);
+      @media screen and (max-width: 768px) {
+        margin-top: var(--o-spacing-h5);
+        padding: var(--o-spacing-h5);
+      }
       .detail-title {
         margin: var(--o-spacing-h2) 0 var(--o-spacing-h4);
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-height-h5);
         color: var(--o-color-text2);
         font-weight: 400;
+        @media screen and (max-width: 768px) {
+          margin: 0;
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
+        }
       }
       .synopsis {
         font-size: var(--o-font-size-text);
@@ -426,6 +638,11 @@ onMounted(() => {
 
         .synopsis-body {
           word-break: break-all;
+          @media screen and (max-width: 768px) {
+            margin-top: var(--o-spacing-h8);
+            font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-height-tip);
+          }
         }
       }
       .tab-box {
@@ -434,6 +651,9 @@ onMounted(() => {
         align-items: flex-end;
         justify-content: center;
         border-bottom: 1px solid var(--o-color-division);
+        @media (max-width: 768px) {
+          display: none;
+        }
         :deep(.el-tabs__header) {
           margin: 0px;
         }
@@ -463,15 +683,46 @@ onMounted(() => {
         }
       }
       .agenda {
-        .tab-box {
-          margin: 50px 0 30px;
+        .tab-box-time {
+          background-color: var(--o-color-bg);
+          display: flex;
+          align-items: flex-end;
+          margin-top: var(--o-spacing-h4);
+          @media (max-width: 768px) {
+            margin: var(--o-spacing-h5) 0;
+          }
+          :deep(.el-tabs__header) {
+            margin: 0px;
+          }
 
-          .el-tabs__nav-scroll {
-            display: flex;
-            justify-content: flex-start;
+          :deep(.el-tabs) {
+            --el-tabs-header-height: var(--o-line-height-h3);
+            @media (max-width: 768px) {
+              --el-tabs-header-height: 34px;
+            }
+          }
+
+          :deep(.el-tabs__item) {
+            font-size: var(--o-font-size-h8);
+            line-height: var(--o-line-height-h8);
+            padding-bottom: var(--o-spacing-h6);
+            padding-top: var(--o-spacing-h6);
+            @media (max-width: 768px) {
+              font-size: var(--o-font-size-text);
+              line-height: var(--o-line-height-text);
+              padding-bottom: var(--o-spacing-h9);
+              padding-top: var(--o-spacing-h9);
+            }
+          }
+
+          :deep(.is-active) {
+            color: var(--o-color-brand);
           }
         }
         .table {
+          @media (max-width: 768px) {
+            display: none;
+          }
           :deep(.el-table) .cell {
             padding: 0px;
           }
@@ -527,6 +778,15 @@ onMounted(() => {
           box-shadow: var(--o-shadow-base);
           border-bottom: 3px solid var(--o-color-brand);
           z-index: 10;
+          @media (max-width: 1080px) {
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: none;
+            box-shadow: none;
+            padding: 0px;
+            margin: 0;
+          }
           .address-message {
             display: flex;
             flex-flow: row;
@@ -534,22 +794,50 @@ onMounted(() => {
             align-items: center;
             img {
               height: 46px;
+              @media (max-width: 768px) {
+                margin-top: var(--o-spacing-h4);
+                height: 32px;
+              }
             }
           }
           .address-text {
             margin-left: 80px;
             position: relative;
+            @media (max-width: 1080px) {
+              margin-top: var(--o-spacing-h4);
+              margin-left: 0px;
+              display: flex;
+              flex-flow: column;
+              justify-content: center;
+              align-items: center;
+            }
             p {
               font-size: var(--o-font-size-h8);
               max-width: 350px;
               color: var(--o-color-text2);
               line-height: var(--o-line-height-h8);
               margin-bottom: var(--o-spacing-h4);
+              @media (max-width: 1080px) {
+                margin-bottom: var(--o-spacing-h5);
+                text-align: center;
+                max-width: 100%;
+              }
+              @media (max-width: 768px) {
+                font-size: var(--o-font-size-text);
+                line-height: var(--o-line-height-text);
+              }
               &:nth-of-type(odd) {
                 color: var(--o-color-brand);
                 font-size: var(--o-font-size-h6);
                 line-height: var(--o-line-height-h6);
                 margin-bottom: var(--o-spacing-h5);
+                @media (max-width: 1080px) {
+                  margin-bottom: var(--o-spacing-h8);
+                }
+                @media (max-width: 768px) {
+                  font-size: var(--o-font-size-h8);
+                  line-height: var(--o-line-height-h8);
+                }
               }
               &:last-of-type {
                 margin-bottom: 0;
@@ -559,7 +847,7 @@ onMounted(() => {
           .scan-qrcode {
             position: relative;
             span {
-              margin-top: 6px;
+              margin-top: var(--o-spacing-h9);
               width: 100px;
               display: flex;
               flex-flow: row;
@@ -568,12 +856,25 @@ onMounted(() => {
               font-size: var(--o-font-size-h6);
               color: var(--o-color-brand);
               line-height: var(--o-line-height-h6);
+              @media (max-width: 1080px) {
+                margin-top: var(--o-spacing-h5);
+              }
+              @media (max-width: 768px) {
+                font-size: var(--o-font-size-h8);
+                line-height: var(--o-line-height-h8);
+              }
             }
             img {
               display: block;
               width: 100px;
               height: 100px;
               margin-top: var(--o-spacing-h5);
+              @media (max-width: 1080px) {
+                margin-bottom: var(--o-spacing-h5);
+              }
+              @media (max-width: 768px) {
+                margin-bottom: 0;
+              }
             }
           }
         }
@@ -581,25 +882,13 @@ onMounted(() => {
           width: 100%;
           margin: -50px auto 0 auto;
           height: 100%;
+          @media (max-width: 768px) {
+            display: none;
+          }
           #container {
             width: 100%;
             height: 500px;
           }
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 1416px) {
-    .warper {
-      .top-content {
-        align-items: center;
-        flex-direction: column;
-        .top-left {
-          margin: 0 0 20px 0;
-        }
-        .top-right {
-          text-align: center;
-          align-items: center;
         }
       }
     }
