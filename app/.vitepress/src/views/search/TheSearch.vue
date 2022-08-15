@@ -294,7 +294,7 @@ onMounted(() => {
           line-height: var(--o-line-height-h5);
           font-weight: 500;
           :deep(span) {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
           }
         }
         .detail {
@@ -303,7 +303,7 @@ onMounted(() => {
           line-height: var(--o-line-height-text);
           color: var(--o-color-text2);
           :deep(span) {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
           }
         }
         .from {

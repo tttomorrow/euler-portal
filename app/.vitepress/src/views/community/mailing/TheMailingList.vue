@@ -248,15 +248,15 @@ const isMobile = computed(() => {
         margin: auto;
         width: 730px;
         min-height: 120px;
-        border-top: 2px dashed var(--o-color-brand);
-        border-right: 2px dashed var(--o-color-brand);
+        border-top: 2px dashed var(--e-color-brand1);
+        border-right: 2px dashed var(--e-color-brand1);
       }
       .small-bg {
         margin: auto;
         width: 730px;
         min-height: 102px;
-        border-top: 2px dashed var(--o-color-brand);
-        border-left: 2px dashed var(--o-color-brand);
+        border-top: 2px dashed var(--e-color-brand1);
+        border-left: 2px dashed var(--e-color-brand1);
       }
     }
     .upper-box {
