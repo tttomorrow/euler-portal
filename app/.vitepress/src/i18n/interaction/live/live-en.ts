@@ -2,7 +2,7 @@ import data from './live';
 export default {
   LIVETITLE: 'Live',
   WILLPLAYER: 'About to Begin',
-  REPLAYER: 'Wonderful Review',
+  REPLAYER: 'Highlights',
   REPLAYVIEW: 'Watch',
   LINKTIPS: 'The video is not uploaded yet',
   LIVENOW: [],

@@ -8,10 +8,10 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerBG from '@/assets/banner-secondary.png';
 import BannerIllustration from '@/assets/illustrations/search.png';
 
-import LightCradBg from '@/assets/live/light-crad-bg.png';
-import LightCradBgMo from '@/assets/live/light-crad-bg-mobile.png';
-import DarkCradBg from '@/assets/live/dark-crad-bg.png';
-import DarkCradBgMo from '@/assets/live/dark-crad-bg-mobile.png';
+import LightCradBg from '@/assets/category/interaction/live/light-crad-bg.png';
+import LightCradBgMo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';
+import DarkCradBg from '@/assets/category/interaction/live/dark-crad-bg.png';
+import DarkCradBgMo from '@/assets/category/interaction/live/dark-crad-bg-mobile.png';
 import { ElMessage } from 'element-plus';
 
 import IconRight from '~icons/app/icon-arrow-right1.svg';
