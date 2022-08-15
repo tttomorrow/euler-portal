@@ -118,9 +118,15 @@ const showSearchBox = () => {
 };
 const donShowSearchBox = () => {
   isShowBox.value = false;
+  searchInput.value = '';
 };
 // 搜索内容
 const searchInput = ref<string>('');
+// 搜索事件
+function search() {
+  router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
+  donShowSearchBox();
+}
 </script>
 
 <template>
@@ -136,7 +142,7 @@ const searchInput = ref<string>('');
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <div v-if="isShowBox" class="header-search">
         <div class="header-search-box">
-          <OSearch v-model="searchInput" :placeholder="searchValue.PLEACHOLDER">
+          <OSearch v-model="searchInput" :placeholder="searchValue.PLEACHOLDER" @change="search">
             <template #suffix>
               <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
             </template>

@@ -11,7 +11,7 @@ import illustration from '@/assets/illustrations/covenant.png';
 class="app-header"
   :background-image="bannerBG"
   background-text="COMMUNITY"
-  title="Code of Covenant"
+  title="Code of Conduct"
   :illustration="illustration"
 />
 

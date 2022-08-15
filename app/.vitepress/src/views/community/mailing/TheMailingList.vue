@@ -1,21 +1,24 @@
 <script setup lang="ts">
-import { onMounted, Ref, ref } from 'vue';
+import { onMounted, Ref, ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
 import { useRouter } from 'vitepress';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import { getAllMailing } from '@/api/api-mailing';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/mailing.png';
-import sig1 from '@/assets/sig-application/sig1.png';
-import sig2 from '@/assets/sig-application/sig4.png';
-import sig4 from '@/assets/sig-application/sig3.png';
-import sig5 from '@/assets/sig-application/sig5.png';
+import sig1 from '@/assets/category/sig/guidance/sig1.png';
+import sig2 from '@/assets/category/sig/guidance/sig4.png';
+import sig4 from '@/assets/category/sig/guidance/sig3.png';
+import sig5 from '@/assets/category/sig/guidance/sig5.png';
 
 const LEFT_IMG = [sig1, sig2];
 const RIGHT_IMG = [sig4, sig5];
 
 const i18n = useI18n();
 const router = useRouter();
+const screenWidth = useWindowResize();
 
 interface MailingMsg {
   description?: string;
@@ -82,6 +85,13 @@ const goUnsubscribeBlog = () => {
 const userSubscribe = (userID: string) => {
   window.open('https://mailweb.openeuler.org/postorius/lists/' + userID + '/');
 };
+
+const isMobile = computed(() => {
+  if (screenWidth.value <= 768) {
+    return true;
+  }
+  return false;
+});
 </script>
 
 <template>
@@ -93,44 +103,55 @@ const userSubscribe = (userID: string) => {
       :illustration="illustration"
     />
     <div class="middle">
-      <div
-        v-for="(item, index) in i18n.mailing.MAILING_LIST.GUIDE_CONTENT"
-        :key="item.LEFT.LEFT_CIRCLE"
-        class="middle-item"
-      >
-        <div class="middle-item-left">
-          <div class="middle-item-bgdconfig">
-            <img :src="LEFT_IMG[index]" />
-          </div>
-          <div class="middle-item-infoconfig">
-            <div class="middle-item-infoconfig-circle">
-              {{ item.LEFT.INDEX }}
-            </div>
-            <div>
-              <span>{{ item.LEFT.LEFT_INFO }}</span>
-              <span v-if="item.LEFT.DO_THIS">{{ item.LEFT.DO_THIS }}</span>
-            </div>
-          </div>
+      <div class="middle-process-box">
+        <div v-show="!isMobile" class="lower-box">
+          <div class="big-bg"></div>
+          <div class="small-bg"></div>
+          <div class="big-bg"></div>
         </div>
-        <div
-          class="middle-item-right"
-          :class="index === 0 ? 'middle-item-right-1' : 'other'"
-        >
-          <div class="middle-item-bgdconfig">
-            <img :src="RIGHT_IMG[index]" />
-          </div>
-          <div class="middle-item-infoconfig">
-            <div class="middle-item-infoconfig-circle">
-              {{ item.RIGHT.INDEX }}
-              <!-- <span>{{ item.RIGHT.INDEX }}</span> -->
+        <div class="upper-box">
+          <div
+            v-for="(item, index) in i18n.mailing.MAILING_LIST.GUIDE_CONTENT"
+            :key="item.LEFT.LEFT_CIRCLE"
+            class="middle-item"
+          >
+            <div class="middle-item-left">
+              <div class="middle-item-bgdconfig">
+                <img :src="LEFT_IMG[index]" />
+              </div>
+              <div class="middle-item-infoconfig">
+                <div class="middle-item-infoconfig-circle">
+                  {{ item.LEFT.INDEX }}
+                </div>
+                <div>
+                  <!-- <div>{{ item.LEFT.LEFT_CIRCLE }}</div> -->
+                  <span>{{ item.LEFT.LEFT_INFO }}</span>
+                  <span v-if="item.LEFT.DO_THIS">{{ item.LEFT.DO_THIS }}</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <span
-                >{{ item.RIGHT.RIGHT_INFO }}
-                <p v-if="item.RIGHT.DO_THIS" @click="goUnsubscribeBlog()">
-                  {{ item.RIGHT.DO_THIS }}
-                </p>
-              </span>
+            <div
+              class="middle-item-right"
+              :class="index === 0 ? 'middle-item-right-1' : 'other'"
+            >
+              <div class="middle-item-bgdconfig">
+                <img :src="RIGHT_IMG[index]" />
+              </div>
+              <div class="middle-item-infoconfig">
+                <div class="middle-item-infoconfig-circle">
+                  {{ item.RIGHT.INDEX }}
+                  <!-- <span>{{ item.RIGHT.INDEX }}</span> -->
+                </div>
+                <div>
+                  <!-- <div>{{ item.RIGHT.RIGHT_CIRCLE}}</div> -->
+                  <span
+                    >{{ item.RIGHT.RIGHT_INFO }}
+                    <p v-if="item.RIGHT.DO_THIS" @click="goUnsubscribeBlog()">
+                      {{ item.RIGHT.DO_THIS }}
+                    </p>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -200,7 +221,7 @@ const userSubscribe = (userID: string) => {
 .application {
   .middle {
     max-width: 1504px;
-    margin: var(--o-spacing-h1) auto 0 auto;
+    margin: 86px auto 0 auto;
     padding: 0 44px;
     @media (max-width: 1080px) {
       margin: var(--o-spacing-h1) auto 0 auto;
@@ -210,12 +231,44 @@ const userSubscribe = (userID: string) => {
       margin: var(--o-spacing-h2) auto 0 auto;
       padding: 0 var(--o-spacing-h5);
     }
+    &-process-box {
+      // position:absolute;
+      position: relative;
+    }
+    .lower-box {
+      max-width: 1504px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      left: 25%;
+      top: 50px;
+      z-index: 3;
+      .big-bg {
+        margin: auto;
+        width: 730px;
+        min-height: 120px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+      }
+      .small-bg {
+        margin: auto;
+        width: 730px;
+        min-height: 102px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-left: 2px dashed var(--o-color-brand);
+      }
+    }
+    .upper-box {
+      background-color: rgba(255, 255, 255, 0);
+    }
     &-item {
       min-height: 204px;
       display: flex;
       align-items: flex-start;
-      margin-top: 0px;
+      margin-top: -22px;
       justify-content: space-between;
+      background-color: rgba(255, 255, 255, 0);
       @media (max-width: 780px) {
         display: block;
         margin-top: var(--o-spacing-h5);
@@ -223,15 +276,17 @@ const userSubscribe = (userID: string) => {
       &-left {
         display: flex;
         margin-right: 0px;
+        z-index: 4;
         @media (max-width: 780px) {
           margin-right: 0px;
           margin-bottom: var(--o-spacing-h5);
         }
       }
       &-right {
-        margin-top: 80px;
+        margin-top: 100px;
         display: flex;
         margin-right: 0px;
+        z-index: 4;
         @media (max-width: 780px) {
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
@@ -239,6 +294,7 @@ const userSubscribe = (userID: string) => {
       }
       &-right-1 {
         margin-top: 102px;
+        z-index: 4;
         @media (max-width: 780px) {
           margin-top: 0px;
         }
@@ -328,21 +384,6 @@ const userSubscribe = (userID: string) => {
             font-size: var(--o-font-size-h7);
             padding: 15px 0;
           }
-          // span {
-          //   white-space: nowrap;
-          //   font-size: var(--o-font-size-h5);
-          //   color: var(--e-color-text2);
-          //   line-height: var(--o-line-height-h5);
-          //   position: relative;
-          //   right: 53px;
-          //   top: var(--o-spacing-h5);
-          //   flex: 1;
-          //   @media (max-width: 780px) {
-          //     font-size: var(--o-font-size-h7);
-          //     right: var(--o-spacing-h4);
-          //     top: var(--o-spacing-h6);
-          //   }
-          // }
         }
       }
     }

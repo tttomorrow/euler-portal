@@ -7,15 +7,6 @@ import type { AxiosResponse } from '@/shared/axios';
  *
  */
 export function getUserCaseData(params: object) {
-  const url = '/api-search/showcase/';
-  return request.post(url, params).then((res: AxiosResponse) => res.data);
-}
-/**
- * 获取用户案例分类
- * @name getCaseTagData
- *
- */
-export function getCaseTagData(params: object) {
-  const url = '/api-search/industry/';
+  const url = '/api-search/search/sort/showcase';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }

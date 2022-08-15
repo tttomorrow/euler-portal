@@ -33,6 +33,13 @@ interface SortParams {
   page: number;
   pageSize: number;
 }
+interface search {
+  keyword: string;
+  page: number;
+  pageSize: number;
+  lang: string;
+  type: string;
+}
 
 interface TagsParams {
   lang: string;
@@ -47,5 +54,13 @@ export function getSortData(params: SortParams) {
 
 export function getTagsData(params: TagsParams) {
   const url = '/api-search/search/tags';
+  return request.post(url, params).then((res: AxiosResponse) => res.data);
+}
+export function getSearchData(params: search) {
+  const url = '/api-search/search/docs';
+  return request.post(url, params).then((res: AxiosResponse) => res.data);
+}
+export function getSearchCount(params: any) {
+  const url = '/api-search/search/count';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
