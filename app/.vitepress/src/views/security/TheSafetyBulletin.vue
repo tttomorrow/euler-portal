@@ -93,7 +93,7 @@ function searchValchange() {
 }
 
 function jumpBulletinDetail(val: any) {
-  router.go(`zh/security/safety-bulletin/detail/?id=${JSON.stringify(val)}`);
+  router.go(`${router.route.path}detail/?id=${JSON.stringify(val)}`);
 }
 
 const selectYear = (val: string) => {
@@ -219,7 +219,10 @@ watch(queryData, () => getSecurityLists(queryData));
             <span>{{ i18n.security.ADVISORY }}</span>
           </template>
           <template #default="scope">
-            <span @click="jumpBulletinDetail(scope.row.securityNoticeNo)">
+            <span
+              class="detail-page"
+              @click="jumpBulletinDetail(scope.row.securityNoticeNo)"
+            >
               {{ scope.row.securityNoticeNo }}
             </span>
           </template>
@@ -231,6 +234,7 @@ watch(queryData, () => getSecurityLists(queryData));
         <OTableColumn
           :label="i18n.security.SEVERITY"
           prop="type"
+          width="120"
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.AFFECTED_PRODUCTS"
@@ -238,10 +242,12 @@ watch(queryData, () => getSecurityLists(queryData));
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.AFFECTED_COMPONENTS"
+          width="220"
           prop="affectedComponent"
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.RELEASE_DATE"
+          width="160"
           prop="announcementTime"
         ></OTableColumn>
       </OTable>
@@ -249,7 +255,7 @@ watch(queryData, () => getSecurityLists(queryData));
       <ul class="mobile-list">
         <li v-for="item in tableData" :key="item.securityNoticeNo" class="item">
           <ul>
-            <li>
+            <li @click="jumpBulletinDetail(item.securityNoticeNo)">
               <span>{{ i18n.security.ADVISORY }}:</span
               >{{ item.securityNoticeNo }}
             </li>
@@ -424,6 +430,10 @@ watch(queryData, () => getSecurityLists(queryData));
     }
   }
   .pc-list {
+    .detail-page {
+      color: var(--o-color-link);
+      cursor: pointer;
+    }
     @media screen and (max-width: 768px) {
       display: none;
     }

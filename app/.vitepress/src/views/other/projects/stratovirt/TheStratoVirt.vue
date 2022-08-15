@@ -43,16 +43,23 @@ const anchorData = [
     <!-- 中间文字介绍部分 -->
     <MiniDescription :description-desc="i18n.stratovirt.SVIRT_DESC" />
     <!-- 特征 -->
-    <MiniFeatures id="feature" :features-obj="i18n.stratovirt.SVIRT_CHARACTER" />
+    <MiniFeatures
+      id="feature"
+      :features-obj="i18n.stratovirt.SVIRT_CHARACTER"
+    />
     <!-- 架构 -->
     <MiniFrame
+      id="architecture"
       :device="isPC"
       :frame-obj="i18n.stratovirt.SVIRT_FRAMEWORK"
       layout="leftAndRight"
-      id="architecture"
     />
     <!-- 文档 -->
-    <MiniDocs id="docs" :device="isPC" :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT" />
+    <MiniDocs
+      id="docs"
+      :device="isPC"
+      :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT"
+    />
 
     <AppAnchor :data="anchorData" />
   </div>

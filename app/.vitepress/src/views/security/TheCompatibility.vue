@@ -646,6 +646,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES"
             prop="property"
+            width="160"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM"
@@ -653,7 +654,7 @@ onMounted(() => {
           ></OTableColumn>
           <el-table-column
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK"
-            width="100"
+            width="130"
           >
             <template #default="scope">
               <a :href="scope.row.downloadLink" target="_blank">link</a>

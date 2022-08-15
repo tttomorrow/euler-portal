@@ -38,13 +38,17 @@ const anchorData = [
     <MiniDescription :description-desc="i18n.secgear.SECGEAR_DESC" />
     <!-- 架构 -->
     <MiniFrame
+      id="architecture"
       :device="isPC"
       :frame-obj="i18n.secgear.SECGEAR_FRAMEWORK"
       layout="leftAndRight"
-      id="architecture"
     />
     <!-- 文档 -->
-    <MiniDocs id="docs" :device="isPC" :docs-obj="i18n.secgear.SECGEAR_DOCUMENT" />
+    <MiniDocs
+      id="docs"
+      :device="isPC"
+      :docs-obj="i18n.secgear.SECGEAR_DOCUMENT"
+    />
 
     <AppAnchor :data="anchorData" />
   </div>
