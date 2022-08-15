@@ -39,7 +39,7 @@ defineProps({
     font-weight: 500;
   }
   .info {
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     font-size: 12px;
     margin-top: 20px;
     .line {

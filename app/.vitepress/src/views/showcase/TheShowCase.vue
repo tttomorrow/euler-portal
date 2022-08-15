@@ -294,7 +294,7 @@ onMounted(() => {
   margin: 0 auto;
   @media (max-width: 768px) {
     padding: 0;
-    background-color: var(--o-color-bg2);
+    background-color: var(--e-color-bg1);
   }
   .tag-box {
     width: 100%;
@@ -478,17 +478,17 @@ onMounted(() => {
         font-size: var(--o-font-size-tip);
         .icon-prev {
           margin-right: 8px;
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
         .page-number {
           margin: 0 28px;
           span:nth-of-type(1) {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
           }
         }
         .icon-next {
           margin-left: 8px;
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
         .disable-button {
           color: var(--o-color-disabled);

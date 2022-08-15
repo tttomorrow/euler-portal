@@ -158,8 +158,8 @@ const changeTabItem = (event: any): void => {
       }
     }
     &-taber-active {
-      background-color: var(--o-color-brand);
-      color: var(--o-color-text);
+      background-color: var(--e-color-brand1);
+      color: var(--e-color-text2);
     }
   }
   &-body {
@@ -177,8 +177,8 @@ const changeTabItem = (event: any): void => {
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
-          background-color: var(--o-color-brand);
-          color: var(--o-color-text);
+          background-color: var(--e-color-brand1);
+          color: var(--e-color-text2);
           width: 252px;
           padding: var(--o-spacing-h4) 0;
           margin-bottom: var(--o-spacing-h4);
@@ -201,8 +201,8 @@ const changeTabItem = (event: any): void => {
             text-align: center;
             margin-left: var(--o-spacing-h4);
             padding: var(--o-spacing-h4) 0;
-            background-color: var(--o-color-bg);
-            color: var(--o-color-text2);
+            background-color: var(--e-color-bg2);
+            color: var(--e-color-text1);
             box-shadow: var(--o-shadow-base);
             &:hover {
               box-shadow: var(--o-shadow-base_hover);
@@ -231,8 +231,8 @@ const changeTabItem = (event: any): void => {
           &-item {
             display: flex;
             align-items: center;
-            color: var(--o-color-text);
-            background-color: var(--o-color-brand);
+            color: var(--e-color-text2);
+            background-color: var(--e-color-brand1);
             box-shadow: var(--o-shadow-base);
             margin-bottom: var(--o-spacing-h4);
             padding: var(--o-spacing-h4) var(--o-spacing-h3);
@@ -240,7 +240,7 @@ const changeTabItem = (event: any): void => {
               padding: 0px;
               height: initial;
               flex-direction: column;
-              background-color: var(--o-color-bg2);
+              background-color: var(--e-color-bg1);
               box-shadow: none;
             }
             &-left {
@@ -251,7 +251,7 @@ const changeTabItem = (event: any): void => {
                 width: 315px;
                 height: 48px;
                 margin: 0 0 var(--o-spacing-h5) 0;
-                background-color: var(--o-color-brand);
+                background-color: var(--e-color-brand1);
               }
             }
             &-right {
@@ -261,8 +261,8 @@ const changeTabItem = (event: any): void => {
                 padding: var(--o-spacing-h6);
                 margin: 0 0 var(--o-spacing-h4) 0;
                 line-height: var(--o-line-height-h8);
-                color: var(--o-color-text2);
-                background-color: var(--o-color-bg);
+                color: var(--e-color-text1);
+                background-color: var(--e-color-bg2);
                 box-shadow: var(--o-shadow-base);
               }
               .item-right-text {

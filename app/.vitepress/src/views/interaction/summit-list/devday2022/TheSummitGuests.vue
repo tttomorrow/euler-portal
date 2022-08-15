@@ -121,14 +121,14 @@ onMounted(() => {
     }
     p {
       font-size: var(--o-spacing-h5);
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
       text-align: center;
       margin-top: 20px;
     }
     &-title {
       margin-bottom: var(--o-spacing-h4);
       p {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         font-size: var(--o-font-size-text);
         font-weight: 400;
         line-height: var(--o-line-height-text);

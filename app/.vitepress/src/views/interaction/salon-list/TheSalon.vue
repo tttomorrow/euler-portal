@@ -430,7 +430,7 @@ onMounted(async () => {
         &-title {
           font-size: var(--o-font-size-h5);
           line-height: var(--o-line-height-h5);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
@@ -475,7 +475,7 @@ onMounted(async () => {
         &-desc {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
           margin-top: var(--o-spacing-h5);
           overflow: hidden;
           text-overflow: ellipsis;
@@ -494,7 +494,7 @@ onMounted(async () => {
       &-icon {
         height: 24px;
         width: 24px;
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         margin-right: var(--o-spacing-h9);
         @media (max-width: 768px) {
           height: 16px;
@@ -592,7 +592,7 @@ onMounted(async () => {
         }
 
         span {
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
           white-space: nowrap;
@@ -647,7 +647,7 @@ onMounted(async () => {
         }
 
         span {
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
           white-space: nowrap;
@@ -702,7 +702,7 @@ onMounted(async () => {
         &-title {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
@@ -713,7 +713,7 @@ onMounted(async () => {
         &-desc {
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
           margin-top: var(--o-spacing-h9);
           overflow: hidden;
           text-overflow: ellipsis;
@@ -727,7 +727,7 @@ onMounted(async () => {
       &-icon {
         height: 24px;
         width: 24px;
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         margin-right: var(--o-spacing-h9);
         @media (max-width: 768px) {
           height: 16px;
@@ -740,7 +740,7 @@ onMounted(async () => {
       &-title {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-h8);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -757,7 +757,7 @@ onMounted(async () => {
         height: 172px;
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         overflow: hidden;
         margin-top: var(--o-spacing-h4);
         text-overflow: ellipsis;
@@ -793,7 +793,7 @@ onMounted(async () => {
           text-align: center;
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
-          color: var(--o-color-text);
+          color: var(--e-color-text2);
           @media (max-width: 768px) {
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
@@ -836,7 +836,7 @@ onMounted(async () => {
         }
 
         span {
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
           white-space: nowrap;
@@ -867,7 +867,7 @@ onMounted(async () => {
   &-title {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -879,7 +879,7 @@ onMounted(async () => {
     }
   }
   &-tabs {
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -908,7 +908,7 @@ onMounted(async () => {
     }
 
     :deep(.is-active) {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
   }
 }

@@ -181,7 +181,7 @@ const goNext = () => {
     margin: 0 auto;
     font-size: var(--o-font-size-h3);
     text-align: center;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     @media screen and (max-width: 767px) {
       font-size: var(--o-font-size-h8);
     }
@@ -238,10 +238,10 @@ const goNext = () => {
       text-overflow: ellipsis;
       font-size: var(--o-font-size-h5);
       text-align: left;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       @media screen and (max-width: 767px) {
         font-size: var(--o-font-size-text);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
       }
     }
   }
@@ -252,7 +252,7 @@ const goNext = () => {
       width: 100%;
       height: 98px;
       background-repeat: no-repeat;
-      background-color: var(--o-color-bg3);
+      background-color: var(--o-color-bg4);
     }
     &-img {
       margin: 70px 71px;
@@ -277,7 +277,7 @@ const goNext = () => {
       margin-right: var(--o-spacing-h3);
       line-height: var(--o-line-height-tip);
       font-size: var(--o-font-size-text);
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       overflow: hidden;
       text-overflow: ellipsis;
       @media screen and (max-width: 767px) {
@@ -305,11 +305,11 @@ const goNext = () => {
   .smail-icon {
     font-size: var(--o-font-size-h7);
     vertical-align: text-bottom;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     margin-right: var(--o-spacing-h8);
     @media screen and (max-width: 767px) {
       font-size: var(--o-font-size-h8);
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
     }
   }
   .pagination {
@@ -327,7 +327,7 @@ const goNext = () => {
       margin: auto;
       &-icon {
         font-size: var(--o-font-size-tip);
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
       &-icon:hover {
         cursor: pointer;
@@ -336,10 +336,10 @@ const goNext = () => {
         font-size: var(--o-font-size-tip);
         margin-left: var(--o-spacing-h8);
         margin-right: var(--o-spacing-h8);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
       }
       &-text:hover {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         cursor: pointer;
       }
     }
@@ -347,9 +347,9 @@ const goNext = () => {
       margin-left: 20px;
       margin-right: 20px;
       font-size: var(--o-font-size-tip);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       &-current {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         font-size: var(--o-font-size-tip);
       }
     }

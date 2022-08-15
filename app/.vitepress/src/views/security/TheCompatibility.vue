@@ -1064,7 +1064,7 @@ onMounted(() => {
 :deep(.el-tabs__nav-scroll) {
   display: flex;
   justify-content: center;
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
 }
 .tabs-pc {
   @media screen and (max-width: 1080px) {
@@ -1081,17 +1081,17 @@ onMounted(() => {
     --el-collapse-border-color: none;
     .el-collapse-item__header {
       padding-left: 8px;
-      background-color: var(--o-color-bg);
-      color: var(--o-color-text2);
+      background-color: var(--e-color-bg2);
+      color: var(--e-color-text1);
       border-bottom: none;
       box-shadow: 0px 1px 5px 0px rgba(45, 47, 51, 0.1);
     }
     .el-collapse-item__content {
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
     }
   }
   .filter {
-    background-color: var(--o-color-bg2);
+    background-color: var(--e-color-bg1);
   }
 }
 .bottom-wrapper {
@@ -1123,7 +1123,7 @@ onMounted(() => {
     width: 56px;
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-text);
     margin-right: var(--o-spacing-h4);
   }
@@ -1133,7 +1133,7 @@ onMounted(() => {
     border: none;
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: var(--o-line-height-text);
     cursor: pointer;
   }
@@ -1170,7 +1170,7 @@ onMounted(() => {
     font-weight: 400;
     color: #999999;
     line-height: var(--o-line-height-tip);
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     &:nth-child(odd) {
       background: var(--o-color-bg6);
     }
@@ -1190,7 +1190,7 @@ onMounted(() => {
       }
     }
     span {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       margin-right: var(--o-spacing-h8);
     }
   }
@@ -1203,14 +1203,14 @@ onMounted(() => {
   // margin-bottom: var(--o-spacing-h4);
   font-size: var(--o-font-size-h8);
   font-weight: 400;
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   line-height: var(--o-line-height-h8);
 }
 .mobile-about {
   padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
   font-size: var(--o-font-size-tip);
   font-weight: 400;
-  color: var(--o-color-text3);
+  color: var(--e-color-text4);
   line-height: var(--o-line-height-tip);
 }
 </style>

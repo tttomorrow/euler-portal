@@ -265,7 +265,7 @@ watch(queryData, () => getCveLists(queryData));
 }
 .filter-card {
   margin: var(--o-spacing-h4) 0;
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
   padding: var(--o-spacing-h5) var(--o-spacing-h2);
   @media screen and (max-width: 768px) {
     display: none;
@@ -283,7 +283,7 @@ watch(queryData, () => getCveLists(queryData));
     margin-bottom: 32px;
     .selected {
       background-color: #002fa7;
-      color: var(--o-color-text);
+      color: var(--e-color-text2);
     }
     &-item {
       cursor: pointer;
@@ -314,7 +314,7 @@ watch(queryData, () => getCveLists(queryData));
     font-weight: 400;
     color: #999999;
     line-height: var(--o-line-height-tip);
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     &:nth-child(odd) {
       background: var(--o-color-bg6);
     }
@@ -334,7 +334,7 @@ watch(queryData, () => getCveLists(queryData));
       }
     }
     span {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       margin-right: var(--o-spacing-h8);
     }
   }

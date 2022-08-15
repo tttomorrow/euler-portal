@@ -245,7 +245,7 @@ const userSubscribe = (userID: string) => {
       }
       &-bgdconfig {
         width: 216px;
-        background-color: var(--o-color-brand_hover);
+        background-color: var(--e-color-brand2);
         @media (max-width: 1280px) {
           width: 180px;
         }
@@ -269,7 +269,7 @@ const userSubscribe = (userID: string) => {
       }
       &-infoconfig {
         width: 456px;
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         @media (max-width: 1440px) {
           width: 430px;
         }
@@ -283,7 +283,7 @@ const userSubscribe = (userID: string) => {
           width: 300px;
         }
         span {
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           float: left;
@@ -296,7 +296,7 @@ const userSubscribe = (userID: string) => {
           }
         }
         p {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
           cursor: pointer;
           display: inline;
           font-size: var(--o-font-size-text);
@@ -313,14 +313,14 @@ const userSubscribe = (userID: string) => {
           width: 70px;
           border: 4px solid var(--o-color-base);
           border-radius: 50%;
-          background-color: var(--o-color-brand);
+          background-color: var(--e-color-brand1);
           position: relative;
           top: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
           font-size: var(--o-font-size-h5);
           padding: 20px 0;
-          color: var(--o-color-text);
+          color: var(--e-color-text2);
           @media (max-width: 780px) {
             white-space: nowrap;
             height: 60px;
@@ -331,7 +331,7 @@ const userSubscribe = (userID: string) => {
           // span {
           //   white-space: nowrap;
           //   font-size: var(--o-font-size-h5);
-          //   color: var(--o-color-text);
+          //   color: var(--e-color-text2);
           //   line-height: var(--o-line-height-h5);
           //   position: relative;
           //   right: 53px;
@@ -366,7 +366,7 @@ const userSubscribe = (userID: string) => {
   }
 }
 .imformation-color {
-  color: var(--o-color-brand);
+  color: var(--e-color-brand1);
   cursor: pointer;
 }
 </style>

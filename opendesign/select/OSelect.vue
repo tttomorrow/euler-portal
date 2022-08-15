@@ -66,7 +66,7 @@ onUnmounted(() => {
     height: 40px;
     .el-icon {
       svg {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
       }
     }
   }

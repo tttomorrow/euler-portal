@@ -58,7 +58,7 @@ const goLink = function (url: string, isBlank: boolean) {
 </template>
 <style lang="scss" scoped>
 .content-map {
-  background-color: var(--o-color-bg2);
+  background-color: var(--e-color-bg1);
   width: 100%;
   &-img {
     width: 1416px;

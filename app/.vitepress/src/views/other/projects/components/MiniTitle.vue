@@ -32,7 +32,7 @@ defineProps({
   .title {
     margin: 0 auto;
     font-size: var(--o-font-size-h3);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     position: relative;
     text-align: center;

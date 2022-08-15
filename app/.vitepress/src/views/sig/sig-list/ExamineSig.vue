@@ -56,7 +56,7 @@ onMounted(() => {
   font-size: var(--o-font-size-text);
   font-weight: 400;
   line-height: var(--o-line-height-h8);
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   max-width: 1380px;
   margin: var(--o-spacing-h1) auto;
   padding: 0 44px;

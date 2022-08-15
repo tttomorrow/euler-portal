@@ -224,7 +224,7 @@ const allHighLight = (val: any) => {
   line-height: var(--o-line-height-tip);
   padding-left: var(--o-spacing-h8);
   padding-right: 0;
-  color: var(--o-color-text3);
+  color: var(--e-color-text4);
 }
 :deep(.o-button) {
   width: 104px;
@@ -242,7 +242,7 @@ const allHighLight = (val: any) => {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
       margin: var(--o-spacing-h5);
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       &-icon {
         display: inline-block;
         .icon {
@@ -290,7 +290,7 @@ const allHighLight = (val: any) => {
             margin: var(--o-spacing-h8);
             border: 1px solid var(--o-color-transparent);
             &.active {
-              border: 1px solid var(--o-color-brand);
+              border: 1px solid var(--e-color-brand1);
             }
           }
         }

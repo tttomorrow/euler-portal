@@ -110,7 +110,7 @@ function inputPage(e: any) {
     font-size: var(--o-font-size-tip);
     .icon-prev {
       margin-right: 8px;
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
     .page-number {
       margin: 0 28px;
@@ -121,14 +121,14 @@ function inputPage(e: any) {
         text-align: right;
         border: none;
         background-color: transparent;
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         &:focus {
           text-align: center;
-          outline: 1px solid var(--o-color-brand);
+          outline: 1px solid var(--e-color-brand1);
         }
       }
       span {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         display: inline-block;
         width: 16px;
         text-align: left;
@@ -136,11 +136,11 @@ function inputPage(e: any) {
     }
     .icon-next {
       margin-left: 8px;
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
     .next,
     .prev {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
     }
     .disable-button {
       color: var(--o-color-disabled);

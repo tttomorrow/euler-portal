@@ -371,7 +371,7 @@ h4 {
   margin-bottom: 20px;
 }
 body {
-  background: var(--o-color-bg2);
+  background: var(--e-color-bg1);
 }
 
 .button-box {
@@ -389,7 +389,7 @@ body {
 .anchor-main {
   display: flex;
   margin-bottom: 100px;
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
   .anchor-side {
     width: 200px;
     position: relative;
@@ -416,7 +416,7 @@ body {
 .lecturer-list-title {
   margin: var(--o-spacing-h4) 0;
   p {
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     font-size: var(--o-font-size-text);
     font-weight: 400;
     line-height: var(--o-line-height-text);

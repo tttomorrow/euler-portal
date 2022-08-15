@@ -523,7 +523,7 @@ onUnmounted(() => {
   .text {
     font-size: 20px;
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: 40px;
     @media (max-width: 1000px) {
       font-size: 14px;
@@ -568,13 +568,13 @@ onUnmounted(() => {
         }
       }
       .active {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         &::after {
           content: '';
           display: block;
           width: 100%;
           height: 1px;
-          background-color: var(--o-color-brand);
+          background-color: var(--e-color-brand1);
         }
       }
     }
@@ -603,7 +603,7 @@ onUnmounted(() => {
       a {
         font-size: 20px;
         line-height: 20px;
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         text-align: center;
         @media (max-width: 1000px) {
           font-size: 16px;
@@ -625,17 +625,17 @@ onUnmounted(() => {
         margin-right: 24px;
         border: none;
         color: #fff;
-        background-color: var(--o-color-brand);
+        background-color: var(--e-color-brand1);
         &:hover {
-          background-color: var(--o-color-brand_hover);
+          background-color: var(--e-color-brand2);
         }
       }
       .detail-btn {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         border: 1px solid transparent;
         &:hover {
-          border: 1px solid var(--o-color-brand_hover);
-          color: var(--o-color-brand_hover);
+          border: 1px solid var(--e-color-brand2);
+          color: var(--e-color-brand2);
           :deep(.o-icon) {
             transform: translateX(5px);
           }
@@ -673,17 +673,17 @@ onUnmounted(() => {
         margin-right: 24px;
         border: none;
         color: #fff;
-        background-color: var(--o-color-brand);
+        background-color: var(--e-color-brand1);
         &:hover {
-          background-color: var(--o-color-brand_hover);
+          background-color: var(--e-color-brand2);
         }
       }
       .detail-btn {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         border: 1px solid transparent;
         &:hover {
-          border: 1px solid var(--o-color-brand_hover);
-          color: var(--o-color-brand_hover);
+          border: 1px solid var(--e-color-brand2);
+          color: var(--e-color-brand2);
           :deep(.o-icon) {
             transform: translateX(5px);
           }
@@ -1007,7 +1007,7 @@ onUnmounted(() => {
       font-size: 14px;
       line-height: 22px;
       display: inline-block;
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       margin-top: 8px;
     }
   }

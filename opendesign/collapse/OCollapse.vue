@@ -12,14 +12,14 @@ const attrs = useAttrs();
 
 <style lang="scss">
 .o-collapse {
-  --o-collapse-color-bg: var(--o-color-bg);
-  --o-collapse-color-border: var(--o-color-brand);
-  --o-collapse-color-text: var(--o-color-text2);
+  --o-collapse-color-bg: var(--e-color-bg2);
+  --o-collapse-color-border: var(--e-color-brand1);
+  --o-collapse-color-text: var(--e-color-text1);
   --o-collapse-padding-left: var(--o-spacing-h6);
   --o-collapse-padding: var(--o-spacing-h8);
   --o-collapse-font-size: var(--o-font-size-h7);
   --o-collapse-line-height: var(--o-line-height-h7);
-  --o-collapse-color-bg2: var(--o-color-bg2);
+  --o-collapse-color-bg2: var(--e-color-bg1);
 
   &.el-collapse {
     border-left: 2px solid var(--o-collapse-color-border);

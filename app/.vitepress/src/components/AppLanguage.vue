@@ -75,7 +75,7 @@ const hideSub = () => {
     display: flex;
     align-items: center;
     font-size: var(--o-font-size-text);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     cursor: pointer;
     height: 100%;
   }
@@ -83,7 +83,7 @@ const hideSub = () => {
     position: absolute;
     top: 60px;
     left: -24px;
-    background: var(--o-color-bg);
+    background: var(--e-color-bg2);
     padding: 0 var(--o-spacing-h5);
     cursor: pointer;
     z-index: 80;
@@ -91,14 +91,14 @@ const hideSub = () => {
       line-height: var(--o-line-height-h3);
       text-align: center;
       font-size: var(--o-font-size-text);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       border-bottom: 1px solid var(--o-color-division);
       &:last-child {
         border-bottom: 0 none;
       }
       &.active,
       &:hover {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
     }
   }
@@ -111,17 +111,17 @@ const hideSub = () => {
   line-height: var(--o-line-height-h3);
   span {
     font-size: var(--o-font-size-tip);
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     margin-right: 12px;
     &.active {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
       font-weight: 600;
     }
     &:not(:last-child) {
       &:after {
         content: '|';
         margin-left: 12px;
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
       }
     }
   }

@@ -126,7 +126,7 @@ onMounted(async () => {
   &-value {
     font-size: var(--o-font-size-h5);
     font-weight: 500;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h5);
     margin-top: var(--o-spacing-h5);
     @media (max-width: 768px) {
@@ -139,7 +139,7 @@ onMounted(async () => {
   &-title {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
     margin-top: var(--o-spacing-h8);
     @media (max-width: 768px) {
@@ -165,7 +165,7 @@ onMounted(async () => {
     margin-bottom: var(--o-spacing-h2);
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -179,7 +179,7 @@ onMounted(async () => {
   &-title {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
@@ -190,7 +190,7 @@ onMounted(async () => {
   &-word {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h5);
     overflow: hidden;
@@ -221,7 +221,7 @@ onMounted(async () => {
   &-detail {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h4);
     display: flex;
@@ -230,13 +230,13 @@ onMounted(async () => {
     align-items: center;
     padding: 0;
     &:hover {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
 
     &-icon {
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
 
     @media (max-width: 768px) {

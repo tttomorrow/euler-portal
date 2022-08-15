@@ -290,7 +290,7 @@ const sizeChange = (val: number) => {
     flex-direction: row;
     align-items: center;
     padding-left: var(--o-spacing-h2);
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
   }
   &-tag2 {
     display: none;
@@ -310,7 +310,7 @@ const sizeChange = (val: number) => {
       &-title {
         font-size: var(--o-font-size-h7);
         margin-bottom: var(--o-spacing-h3); // 32px
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
 
         p {
           display: inline-block;
@@ -330,7 +330,7 @@ const sizeChange = (val: number) => {
         }
       }
       &-info {
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -368,7 +368,7 @@ const sizeChange = (val: number) => {
         line-height: var(--o-line-height-text);
         margin-top: var(--o-spacing-h5);
         min-height: 44px;
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         word-break: break-all;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -386,7 +386,7 @@ const sizeChange = (val: number) => {
         margin-top: var(--o-spacing-h7);
         .tagitem {
           margin-right: var(--o-spacing-h8);
-          color: var(--o-color-text);
+          color: var(--e-color-text2);
         }
       }
     }
