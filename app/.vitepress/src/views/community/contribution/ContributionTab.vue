@@ -34,7 +34,7 @@ const handleClick = (tab: TabsPaneContext) => {
 <style lang="scss" scoped>
 .tab-wrapper {
   .el-tabs {
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     :deep(.el-tabs__header) {
       margin-bottom: 0;
     }
@@ -53,7 +53,7 @@ const handleClick = (tab: TabsPaneContext) => {
         }
       }
       .is-active {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
     }
   }

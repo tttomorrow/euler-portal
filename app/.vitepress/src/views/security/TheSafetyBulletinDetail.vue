@@ -176,7 +176,7 @@ onMounted(() => {
     justify-content: center;
     @media screen and (max-width: 768px) {
       margin: var(--o-spacing-h5) 0 0 0;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
     }
   }
   .el-tabs__content {
@@ -186,7 +186,7 @@ onMounted(() => {
 .wrapper {
   max-width: 1504px;
   margin: 0 auto;
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5) 0;
     background: #f5f6f8;
@@ -194,7 +194,7 @@ onMounted(() => {
 }
 .breadcrumb {
   margin-top: var(--o-spacing-h2);
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   background: #f5f6f8;
   display: flex;
   @media screen and (max-width: 768px) {
@@ -204,7 +204,7 @@ onMounted(() => {
   .last-page {
     font-size: var(--o-font-size-tip);
     font-weight: normal;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: var(--o-line-height-tip);
     cursor: pointer;
   }
@@ -214,7 +214,7 @@ onMounted(() => {
   .current-page {
     font-size: var(--o-font-size-tip);
     font-weight: 600;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-tip);
   }
 }
@@ -224,26 +224,26 @@ onMounted(() => {
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
     margin: 0 var(--o-spacing-h5);
-    background: var(--o-color-bg);
+    background: var(--e-color-bg2);
     box-shadow: 0px 1px 5px 0px rgba(45, 47, 51, 0.1);
   }
   .bulletin-name {
     font-size: var(--o-font-size-h3);
     font-weight: normal;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     @media screen and (max-width: 768px) {
       line-height: var(--o-line-height-h8);
       font-size: var(--o-font-size-h8);
       font-weight: 300;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       margin-bottom: var(--o-spacing-h8);
     }
   }
   .bulletin-intro {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h4);
     span {
@@ -266,7 +266,7 @@ onMounted(() => {
     .tab-content {
       width: 100%;
       padding: var(--o-spacing-h2) var(--o-spacing-h2) 0;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       @media screen and (max-width: 768px) {
         margin: var(--o-spacing-h5 --o-spacing-h5 --o-spacing-h2);
         padding: var(--o-spacing-h5);
@@ -279,14 +279,14 @@ onMounted(() => {
         &-title {
           font-size: var(--o-font-size-h5);
           font-weight: 500;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           line-height: var(--o-line-height-h5);
           margin-bottom: 20px;
         }
         &-text {
           font-size: var(--o-font-size-text);
           font-weight: 400;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           line-height: var(--o-line-height-text);
           a {
             color: var(--o-color-link);
@@ -306,7 +306,7 @@ onMounted(() => {
             margin-bottom: 0;
           }
           &-achitecture {
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             font-size: var(--o-font-size-h8);
             line-height: 64px;
             border-bottom: 1px solid var(--o-color-border);

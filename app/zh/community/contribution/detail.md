@@ -173,14 +173,14 @@ openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社�
   margin-top: var(--o-spacing-h2);
   max-width: 1440px;
   li::marker {
-    color: var(--o-color-text2) !important;
+    color: var(--e-color-text1) !important;
   }
   .desc {
     font-size: var(--o-font-size-h7);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
   }
   a {
-    color: var(--o-color-brand_hover);
+    color: var(--e-color-brand2);
   }
   .care {
     color: #F3524D;
@@ -188,7 +188,7 @@ openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社�
   @media screen and (max-width: 769px) {
     padding: var(--o-spacing-h5);
     .desc {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       font-size: var(--o-spacing-tip);
       line-height: var(--o-line-height-tip);
     }

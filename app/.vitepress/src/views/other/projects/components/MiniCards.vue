@@ -93,7 +93,7 @@ const showMail = (show: boolean) => {
   &-cards {
     height: 290px;
     margin: 0 auto;
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     box-shadow: var(--o-shadow-base);
     &-item {
       position: relative;
@@ -109,7 +109,7 @@ const showMail = (show: boolean) => {
     &-title {
       font-size: var(--o-font-size-h8);
       font-weight: 400;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       line-height: var(--o-line-height-h8);
       margin-top: var(--o-spacing-h5);
       text-align: center;
@@ -120,11 +120,11 @@ const showMail = (show: boolean) => {
       left: -32%;
       z-index: 1;
       width: 260px;
-      background-color: var(--o-color-bg);
-      border: 1px solid var(--o-color-brand);
+      background-color: var(--e-color-bg2);
+      border: 1px solid var(--e-color-brand1);
       padding: var(--o-spacing-h5) 0;
       text-align: center;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
     }
     .menu {
       position: absolute;
@@ -132,8 +132,8 @@ const showMail = (show: boolean) => {
       left: 57%;
       z-index: 1;
       width: 160px;
-      background-color: var(--o-color-bg);
-      border: 1px solid var(--o-color-brand);
+      background-color: var(--e-color-bg2);
+      border: 1px solid var(--e-color-brand1);
       padding: var(--o-spacing-h5) 0;
       &-item {
         display: block;
@@ -141,10 +141,10 @@ const showMail = (show: boolean) => {
         padding: var(--o-spacing-h8) 0;
         line-height: var(--o-line-height-h6);
         cursor: pointer;
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
       }
       &-item:hover {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
     }
 
@@ -195,7 +195,7 @@ const showMail = (show: boolean) => {
           text-align: center;
           padding: 0;
           cursor: pointer;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
       }
     }

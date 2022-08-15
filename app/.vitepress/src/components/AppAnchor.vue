@@ -192,7 +192,7 @@ const rootStyle = computed(() => {
       text-align: center;
       line-height: 26px;
       border-radius: 50%;
-      background: var(--o-color-bg);
+      background: var(--e-color-bg2);
       margin-right: 12px;
       border: 2px solid var(--o-color-bg4);
     }
@@ -202,14 +202,14 @@ const rootStyle = computed(() => {
       align-items: center;
       line-height: 30px;
       font-size: var(--o-font-size-h8);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       cursor: pointer;
       z-index: 2;
 
       &.active {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         .anchor-dot {
-          border-color: var(--o-color-brand);
+          border-color: var(--e-color-brand1);
         }
       }
       &:not(:first-of-type) {
@@ -225,7 +225,7 @@ const rootStyle = computed(() => {
         line-height: 24px;
         cursor: pointer;
         &.active {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
       }
     }

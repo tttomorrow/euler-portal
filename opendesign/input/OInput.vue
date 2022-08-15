@@ -12,10 +12,10 @@ const attrs = useAttrs();
 .o-input {
   --o-input-height: 36px;
   --o-input-border-color: var(--o-color-base_inverse);
-  --o-input-font-color: var(--o-color-text2);
+  --o-input-font-color: var(--e-color-text1);
   --o-input-font-size: var(--o-font-size-text);
   --o-input-line-height: var(--o-line-height-text);
-  --o-input-color-bg: var(--o-color-bg);
+  --o-input-color-bg: var(--e-color-bg2);
 
   &.el-input {
     font-size: var(--o-input-font-size);

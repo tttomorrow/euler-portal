@@ -16,15 +16,15 @@ const classNames = computed(() => {
 
 <style lang="scss">
 .o-pagination {
-  --o-pagination-font-color: var(--o-color-text2);
-  --o-pagination-font-color_active: var(--o-color-brand_active);
+  --o-pagination-font-color: var(--e-color-text1);
+  --o-pagination-font-color_active: var(--e-color-brand3);
 
   --o-pagination-bg-color: var(--o-color-bg4);
-  --o-pagination-bg-color_hover: var(--o-color-brand_disabled);
-  --o-pagination-bg-color_selected: var(--o-color-brand_disabled);
+  --o-pagination-bg-color_hover: var(--e-color-brand5);
+  --o-pagination-bg-color_selected: var(--e-color-brand5);
   --o-pagination-bg-color_disabled: var(--o-color-secondary);
 
-  --o-pagination-number-border-color_active: var(--o-color-brand);
+  --o-pagination-number-border-color_active: var(--e-color-brand1);
 
   &.el-pagination {
     --el-pagination-button-bg-color: var(--o-pagination-bg-color_disabled);
@@ -53,13 +53,13 @@ const classNames = computed(() => {
       border-radius: 0px;
       &:hover {
         color: var(--o-pagination-font-color);
-        background-color: var(--o-color-brand_disabled);
+        background-color: var(--e-color-brand5);
       }
     }
     .el-pager li.is-active.number {
-      background: var(--o-color-brand_disabled);
+      background: var(--e-color-brand5);
       color: var(--o-pagination-font-color);
-      border: 1px solid var(--o-color-brand);
+      border: 1px solid var(--e-color-brand1);
       font-weight: 400;
       font-size: var(--o-font-size-text);
     }
@@ -97,24 +97,24 @@ const classNames = computed(() => {
     }
 
     .el-select-dropdown__item {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
 
       &:hover {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
     }
 
     .el-select-dropdown__item.selected {
-      background-color: var(--o-color-bg2);
+      background-color: var(--e-color-bg1);
     }
 
     .el-select-dropdown__item.selected {
       font-weight: normal;
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
 
     .el-select-dropdown__wrap {
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
     }
   }
 }

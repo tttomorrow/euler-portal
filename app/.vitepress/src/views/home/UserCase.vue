@@ -163,7 +163,7 @@ onMounted(() => {
 h3 {
   font-size: var(--o-font-size-h3);
   font-weight: 300;
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   line-height: var(--o-line-height-h3);
   width: 100%;
   text-align: center;
@@ -210,7 +210,7 @@ h3 {
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
       font-weight: 300;
@@ -221,13 +221,13 @@ h3 {
   &-img {
     width: 40px;
     height: 40px;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
   }
 
   &-card {
     margin-top: var(--o-spacing-h5);
     width: 100%;
-    border-left: 2px solid var(--o-color-brand);
+    border-left: 2px solid var(--e-color-brand1);
     &-content {
       display: flex;
       flex-flow: row;
@@ -238,12 +238,12 @@ h3 {
 
   &-icon {
     font-size: var(--o-font-size-h8);
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
   }
 }
 .user {
   &-mobile {
-    background-color: var(--o-color-bg3);
+    background-color: var(--o-color-bg4);
     > :nth-child(1) {
       margin-top: 0px;
     }
@@ -253,12 +253,12 @@ h3 {
     padding: var(--o-spacing-h5);
     width: 100%;
     height: 100%;
-    background: var(--o-color-bg2);
+    background: var(--e-color-bg1);
     border: 1px solid rgba(0, 0, 0, 0);
-    border-left: 2px solid var(--o-color-brand);
+    border-left: 2px solid var(--e-color-brand1);
 
     @media (max-width: 1100px) {
-      background: var(--o-color-bg);
+      background: var(--e-color-bg2);
       margin-top: var(--o-spacing-h8);
     }
 
@@ -269,10 +269,10 @@ h3 {
 
   &-card:hover {
     @media (min-width: 1100px) {
-      background-color: var(--o-color-bg);
-      border: 1px solid var(--o-color-brand);
+      background-color: var(--e-color-bg2);
+      border: 1px solid var(--e-color-brand1);
       box-shadow: var(--o-shadow-secondary);
-      border-left: 2px solid var(--o-color-brand);
+      border-left: 2px solid var(--e-color-brand1);
       transition: 0.3s all;
     }
   }
@@ -280,7 +280,7 @@ h3 {
   &-title {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
@@ -291,7 +291,7 @@ h3 {
   &-word {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: var(--o-line-height-text);
     display: -webkit-box;
     text-overflow: ellipsis;
@@ -321,7 +321,7 @@ h3 {
     }
 
     &-item:hover {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
 
     :deep(.o-button) {
@@ -329,7 +329,7 @@ h3 {
     }
 
     &-icon {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
     }
@@ -360,7 +360,7 @@ h3 {
   &-word {
     font-size: var(--o-font-size-h5);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h5);
     margin-top: 2px;
   }
@@ -382,6 +382,6 @@ h3 {
 }
 
 .active {
-  color: var(--o-color-brand);
+  color: var(--e-color-brand1);
 }
 </style>

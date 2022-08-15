@@ -114,7 +114,7 @@ $banner-color: #fff;
 
   .banner-panel {
     position: absolute;
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     display: flex;
     background-position: 50%;
     background-repeat: no-repeat;
@@ -133,7 +133,7 @@ $banner-color: #fff;
       .title {
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
-        // color: var(--o-color-text);
+        // color: var(--e-color-text2);
         filter: invert(1);
         font-weight: 600;
         @media screen and (max-width: 1439px) {
@@ -148,7 +148,7 @@ $banner-color: #fff;
       .desc {
         font-size: var(--o-font-size-h5);
         font-weight: normal;
-        // color: var(--o-color-text);
+        // color: var(--e-color-text2);
         line-height: var(--o-line-height-h5);
         margin-top: var(--o-spacing-h6);
         filter: invert(1);
@@ -165,7 +165,7 @@ $banner-color: #fff;
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {
-          color: var(--o-color-text);
+          color: var(--e-color-text2);
         }
         @media screen and (max-width: 824px) {
           margin-top: 0;

@@ -14,9 +14,9 @@ defineExpose({
 <style lang="scss">
 .o-tree {
   &.el-tree-node {
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     border-radius: 0;
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     border: none;
   }
 }

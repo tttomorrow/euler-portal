@@ -93,7 +93,7 @@ const handleGo = (path: string) => {
   h3 {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -153,7 +153,7 @@ const handleGo = (path: string) => {
       cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 500;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       line-height: var(--o-line-height-h5);
       @media (max-width: 768px) {
         font-size: var(--o-font-size-text);
@@ -163,7 +163,7 @@ const handleGo = (path: string) => {
 
     &-icon {
       font-size: var(--o-font-size-h8);
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
     }
   }
   &-pc {
@@ -215,7 +215,7 @@ const handleGo = (path: string) => {
       cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 400;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       line-height: var(--o-line-height-h4);
       text-align: start;
       border-bottom: 1px solid var(--o-color-division);
@@ -235,7 +235,7 @@ const handleGo = (path: string) => {
       }
 
       &-item:hover {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
 
       :deep(.o-button) {
@@ -243,7 +243,7 @@ const handleGo = (path: string) => {
       }
 
       &-icon {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         width: var(--o-font-size-h8);
         height: var(--o-font-size-h8);
       }
@@ -262,6 +262,6 @@ const handleGo = (path: string) => {
   transform: rotate(270deg);
 }
 .active {
-  color: var(--o-color-brand);
+  color: var(--e-color-brand1);
 }
 </style>

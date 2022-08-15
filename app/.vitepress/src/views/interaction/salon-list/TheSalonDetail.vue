@@ -403,7 +403,7 @@ onMounted(() => {
     margin-right: var(--o-spacing-h8);
   }
   .ponit {
-    background-color: var(--o-color-brand);
+    background-color: var(--e-color-brand1);
     width: 9px;
     height: 9px;
     border-radius: 9px;
@@ -413,7 +413,7 @@ onMounted(() => {
   .line {
     flex: 1;
     width: 1px;
-    border-left: 2px var(--o-color-brand) dashed;
+    border-left: 2px var(--e-color-brand1) dashed;
   }
 
   &-content {
@@ -427,28 +427,28 @@ onMounted(() => {
 
   &-duration {
     font-size: 10px;
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     line-height: 16px;
     margin-bottom: var(--o-spacing-h8);
   }
 
   &-title {
     font-size: var(--o-font-size-tip);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-tip);
     margin-bottom: var(--o-spacing-h8);
   }
 
   &-name {
     font-size: 10px;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: 16px;
     display: flex;
     flex-flow: row;
   }
 }
 .tab-box-mobile {
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
   display: none;
   align-items: flex-end;
   justify-content: center;
@@ -481,7 +481,7 @@ onMounted(() => {
   }
 
   :deep(.is-active) {
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
   }
 }
 
@@ -509,7 +509,7 @@ onMounted(() => {
   }
 }
 .calendar-detail {
-  background-color: var(--o-color-bg2);
+  background-color: var(--e-color-bg1);
   margin: 0 auto;
   padding: 0 var(--o-spacing-h2);
   max-width: 1504px;
@@ -521,7 +521,7 @@ onMounted(() => {
       display: flex;
       margin: var(--o-spacing-h2) 0;
       padding: 80px;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       @media screen and (max-width: 1080px) {
         padding: var(--o-spacing-h1);
       }
@@ -562,7 +562,7 @@ onMounted(() => {
           font-weight: 400;
           font-size: var(--o-font-size-h3);
           line-height: var(--o-line-height-h3);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
@@ -579,7 +579,7 @@ onMounted(() => {
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 1;
           word-break: break-all;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
 
         .category {
@@ -589,7 +589,7 @@ onMounted(() => {
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 1;
           word-break: break-all;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
 
         .btn-detail {
@@ -613,7 +613,7 @@ onMounted(() => {
       }
     }
     .detail-body {
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       padding: 0 80px var(--o-spacing-h2);
       @media screen and (max-width: 768px) {
         margin-top: var(--o-spacing-h5);
@@ -623,7 +623,7 @@ onMounted(() => {
         margin: var(--o-spacing-h2) 0 var(--o-spacing-h4);
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-height-h5);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         font-weight: 400;
         @media screen and (max-width: 768px) {
           margin: 0;
@@ -634,7 +634,7 @@ onMounted(() => {
       .synopsis {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
 
         .synopsis-body {
           word-break: break-all;
@@ -646,7 +646,7 @@ onMounted(() => {
         }
       }
       .tab-box {
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         display: flex;
         align-items: flex-end;
         justify-content: center;
@@ -679,12 +679,12 @@ onMounted(() => {
         }
 
         :deep(.is-active) {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
       }
       .agenda {
         .tab-box-time {
-          background-color: var(--o-color-bg);
+          background-color: var(--e-color-bg2);
           display: flex;
           align-items: flex-end;
           margin-top: var(--o-spacing-h4);
@@ -716,7 +716,7 @@ onMounted(() => {
           }
 
           :deep(.is-active) {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
           }
         }
         .table {
@@ -728,7 +728,7 @@ onMounted(() => {
           }
 
           :deep(.el-table_1_column_2) .cell {
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             font-family: 'FZLTHJW--GB1-0, FZLTHJW--GB1';
             font-weight: normal;
           }
@@ -746,7 +746,7 @@ onMounted(() => {
               display: flex;
               padding: var(--o-spacing-h9) 0;
               .name {
-                color: var(--o-color-text2);
+                color: var(--e-color-text1);
                 min-width: 150px;
               }
               .position {
@@ -774,9 +774,9 @@ onMounted(() => {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          background: var(--o-color-bg);
+          background: var(--e-color-bg2);
           box-shadow: var(--o-shadow-base);
-          border-bottom: 3px solid var(--o-color-brand);
+          border-bottom: 3px solid var(--e-color-brand1);
           z-index: 10;
           @media (max-width: 1080px) {
             flex-flow: column;
@@ -814,7 +814,7 @@ onMounted(() => {
             p {
               font-size: var(--o-font-size-h8);
               max-width: 350px;
-              color: var(--o-color-text2);
+              color: var(--e-color-text1);
               line-height: var(--o-line-height-h8);
               margin-bottom: var(--o-spacing-h4);
               @media (max-width: 1080px) {
@@ -827,7 +827,7 @@ onMounted(() => {
                 line-height: var(--o-line-height-text);
               }
               &:nth-of-type(odd) {
-                color: var(--o-color-brand);
+                color: var(--e-color-brand1);
                 font-size: var(--o-font-size-h6);
                 line-height: var(--o-line-height-h6);
                 margin-bottom: var(--o-spacing-h5);
@@ -854,7 +854,7 @@ onMounted(() => {
               justify-content: center;
               align-items: center;
               font-size: var(--o-font-size-h6);
-              color: var(--o-color-brand);
+              color: var(--e-color-brand1);
               line-height: var(--o-line-height-h6);
               @media (max-width: 1080px) {
                 margin-top: var(--o-spacing-h5);

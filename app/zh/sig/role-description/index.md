@@ -195,7 +195,7 @@ class="app-header"
     margin-bottom: var(--o-spacing-h5);
   }
   .link {
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
   }
   .mo-card {
     margin: var(--o-spacing-h4) 0;
@@ -207,12 +207,12 @@ class="app-header"
           white-space:nowrap;
         }
         .text-content {
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
         }
       }
     }
     &-sides {
-      background-color: var(--o-color-bg2);
+      background-color: var(--e-color-bg1);
     }
   }
 </style>

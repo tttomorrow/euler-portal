@@ -290,7 +290,7 @@ onMounted(async () => {
   }
   &-mobile {
     > :nth-child(odd) {
-      background-color: var(--o-color-bg3);
+      background-color: var(--o-color-bg4);
     }
 
     display: none;
@@ -318,7 +318,7 @@ onMounted(async () => {
     &-title {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       margin-right: var(--o-spacing-h10);
       margin-top: var(--o-spacing-h8);
     }
@@ -332,7 +332,7 @@ onMounted(async () => {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-top: var(--o-spacing-h8);
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
     }
 
@@ -340,7 +340,7 @@ onMounted(async () => {
       margin-top: var(--o-spacing-h8);
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
   }
 }
@@ -353,16 +353,16 @@ onMounted(async () => {
         font-size: var(--o-font-size-h7);
         line-height: var(--o-line-height-h7);
         font-weight: 800;
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
       }
     }
   }
 
   :deep(.mirror-list-header) {
-    background: var(--o-color-bg3);
+    background: var(--o-color-bg4);
     font-size: var(--o-font-size-h8);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: 54px;
     padding: 0 !important;
     .cell {
@@ -385,7 +385,7 @@ onMounted(async () => {
   :deep(.mirror-list-row) {
     font-size: var(--o-font-size-h8);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     height: 54px;
     border-bottom: 1px var(--o-color-division) solid;
     .cell {
@@ -414,7 +414,7 @@ onMounted(async () => {
   p {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
     margin: var(--o-spacing-h1) 0 var(--o-spacing-h2) 0;
     @media (max-width: 768px) {
@@ -425,7 +425,7 @@ onMounted(async () => {
   }
   a {
     text-decoration: none;
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
   }
 
   &-img {
@@ -433,14 +433,14 @@ onMounted(async () => {
   }
   &-rsnc {
     cursor: pointer;
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     display: block;
     width: var(--o-line-height-h8);
     height: var(--o-line-height-h8);
   }
   &-ftp {
     cursor: pointer;
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     display: block;
     width: var(--o-line-height-h8);
     height: var(--o-line-height-h8);

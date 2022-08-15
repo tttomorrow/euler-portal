@@ -212,7 +212,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .word-hover {
   cursor: pointer;
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   &:hover {
     color: #002fa7;
   }
@@ -234,7 +234,7 @@ onMounted(async () => {
   }
 
   &-button:hover {
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
   }
 
   :deep(.o-button) {
@@ -242,7 +242,7 @@ onMounted(async () => {
   }
 
   &-icon {
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     width: var(--o-font-size-h8);
     height: var(--o-font-size-h8);
   }
@@ -256,13 +256,13 @@ onMounted(async () => {
   .room-contain-new {
     display: none;
     padding: var(--o-spacing-h2);
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     box-shadow: var(--o-shadow-base);
     .type-title {
       font-size: var(--o-font-size-h7);
       line-height: var(--o-font-size-h7);
       font-weight: 500;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       display: block;
       @media screen and (max-width: 1080px) {
         display: none;
@@ -290,8 +290,8 @@ onMounted(async () => {
           margin-right: var(--o-spacing-h4);
           width: 100px;
           height: 110px;
-          background-color: var(--o-color-bg2);
-          color: var(--o-color-text2);
+          background-color: var(--e-color-bg1);
+          color: var(--e-color-text1);
           .day {
             margin-bottom: var(--o-spacing-h8);
             font-size: var(--o-font-size-h4);
@@ -317,13 +317,13 @@ onMounted(async () => {
               text-overflow: ellipsis;
               font-weight: 500;
               font-size: var(--o-font-size-h7);
-              color: var(--o-color-text2);
+              color: var(--e-color-text1);
             }
             p {
               line-height: var(--o-line-height-text);
               font-size: var(--o-font-size-text);
               margin-top: var(--o-spacing-h9);
-              color: var(--o-color-text2);
+              color: var(--e-color-text1);
             }
           }
           .room-bottom {
@@ -332,7 +332,7 @@ onMounted(async () => {
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 1;
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             a {
               text-decoration: none;
             }
@@ -394,7 +394,7 @@ onMounted(async () => {
             display: flex;
             flex-direction: column;
             font-size: var(--o-font-size-tip);
-            color: var(--o-color-text3);
+            color: var(--e-color-text4);
             .author {
               padding-bottom: var(--o-spacing-h8);
             }
@@ -450,12 +450,12 @@ onMounted(async () => {
     cursor: pointer;
     padding: var(--o-spacing-h6);
     &:hover {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
   }
   .active {
-    background-color: var(--o-color-brand);
-    color: var(--o-color-text) !important;
+    background-color: var(--e-color-brand1);
+    color: var(--e-color-text2) !important;
   }
 }
 </style>

@@ -212,8 +212,8 @@ onMounted(() => {
       <TagFilter label="LTS" class="download-filter-manufacturer">
         <OSwitch
           v-model="activeLTS"
-          active-color="var(--o-color-brand)"
-          inactive-color="var(--o-color-bg3)"
+          active-color="var(--e-color-brand1)"
+          inactive-color="var(--o-color-bg4)"
           @change="handleLSTClick"
         />
       </TagFilter>
@@ -306,8 +306,8 @@ onMounted(() => {
         <div class="filter-drawer-title">LTS</div>
         <OSwitch
           v-model="activeLTS"
-          active-color="var(--o-color-brand)"
-          inactive-color="var(--o-color-bg3)"
+          active-color="var(--e-color-brand1)"
+          inactive-color="var(--o-color-bg4)"
           @change="handleLSTClick"
         />
         <div class="filter-drawer-button">
@@ -443,7 +443,7 @@ onMounted(() => {
     width: 100%;
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     margin-top: var(--o-spacing-h4);
     margin-bottom: var(--o-spacing-h9);
   }
@@ -463,7 +463,7 @@ onMounted(() => {
   }
 }
 .tag-filter :deep(.label) {
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
 }
 .page-box {
   display: flex;
@@ -497,7 +497,7 @@ onMounted(() => {
     background-color: var(--o-color-division);
     &-in {
       height: 100%;
-      background-color: var(--o-color-brand);
+      background-color: var(--e-color-brand1);
     }
   }
 
@@ -537,7 +537,7 @@ onMounted(() => {
       }
 
       &:deep(.el-drawer__header) {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         margin-bottom: 0px;
         :first-child {
           display: flex;
@@ -547,11 +547,11 @@ onMounted(() => {
       }
 
       &:deep(.el-drawer) {
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
       }
 
       &:deep(.o-tag-type-text) {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
       }
       &-title {
         display: flex;
@@ -562,12 +562,12 @@ onMounted(() => {
         cursor: pointer;
       }
       &-icon {
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         height: var(--o-font-size-tip);
         width: var(--o-font-size-tip);
       }
       &-word {
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-right: var(--o-spacing-h10);
@@ -590,13 +590,13 @@ onMounted(() => {
         align-items: center;
         padding: var(--o-spacing-h10) var(--o-spacing-h9);
         background-color: var(--o-color-secondary);
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-right: var(--o-spacing-h9);
         margin-top: var(--o-spacing-h9);
         &-icon {
-          font-size: var(--o-color-text2);
+          font-size: var(--e-color-text1);
           width: var(--o-font-size-tip);
           height: var(--o-font-size-tip);
           margin-left: var(--o-spacing-h9);
@@ -640,7 +640,7 @@ onMounted(() => {
   }
   &-name {
     font-size: var(--o-font-size-h5);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h5);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
@@ -651,7 +651,7 @@ onMounted(() => {
   &-desc {
     margin-top: var(--o-spacing-h5);
     font-size: var(--o-font-size-text);
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: var(--o-line-height-text);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -675,7 +675,7 @@ onMounted(() => {
       margin-left: var(--o-spacing-h8);
       width: var(--o-font-size-tip);
       height: var(--o-font-size-tip);
-      color: var(--o-color-text);
+      color: var(--e-color-text2);
     }
   }
 }
@@ -691,7 +691,7 @@ onMounted(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
@@ -710,7 +710,7 @@ onMounted(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
@@ -729,7 +729,7 @@ onMounted(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);

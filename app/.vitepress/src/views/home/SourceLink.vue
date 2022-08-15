@@ -45,7 +45,7 @@ const imgContent = (item: { PC: any; MOBILE: any }) => {
   h3 {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -71,7 +71,7 @@ const imgContent = (item: { PC: any; MOBILE: any }) => {
     margin: 0px -1px -1px 0px;
     padding: var(--o-spacing-h4);
     border: 1px solid var(--o-color-division);
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     max-height: 120px;
     img {
       display: block;

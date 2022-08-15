@@ -63,7 +63,7 @@ const rootStyle = computed(() => {
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--o-color-brand);
+  background-color: var(--e-color-brand1);
 
   .wrap {
     max-width: 1504px;
@@ -110,7 +110,7 @@ const rootStyle = computed(() => {
       .banner-title {
         position: relative;
         z-index: 1;
-        color: var(--o-color-text);
+        color: var(--e-color-white);
         font-size: var(--o-font-size-h2);
         line-height: var(--o-line-height-h2);
         margin-top: var(--o-spacing-h2);
@@ -130,7 +130,7 @@ const rootStyle = computed(() => {
       .banner-subtitle {
         position: relative;
         z-index: 1;
-        color: var(--o-color-text);
+        color: var(--e-color-white);
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
         margin-top: var(--o-spacing-h9);

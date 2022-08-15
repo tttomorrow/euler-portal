@@ -248,15 +248,15 @@ const isMobile = computed(() => {
         margin: auto;
         width: 730px;
         min-height: 120px;
-        border-top: 2px dashed var(--o-color-brand);
-        border-right: 2px dashed var(--o-color-brand);
+        border-top: 2px dashed var(--e-color-brand1);
+        border-right: 2px dashed var(--e-color-brand1);
       }
       .small-bg {
         margin: auto;
         width: 730px;
         min-height: 102px;
-        border-top: 2px dashed var(--o-color-brand);
-        border-left: 2px dashed var(--o-color-brand);
+        border-top: 2px dashed var(--e-color-brand1);
+        border-left: 2px dashed var(--e-color-brand1);
       }
     }
     .upper-box {
@@ -301,7 +301,7 @@ const isMobile = computed(() => {
       }
       &-bgdconfig {
         width: 216px;
-        background-color: var(--o-color-brand_hover);
+        background-color: var(--e-color-brand2);
         @media (max-width: 1280px) {
           width: 180px;
         }
@@ -325,7 +325,7 @@ const isMobile = computed(() => {
       }
       &-infoconfig {
         width: 456px;
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         @media (max-width: 1440px) {
           width: 430px;
         }
@@ -339,7 +339,7 @@ const isMobile = computed(() => {
           width: 300px;
         }
         span {
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           float: left;
@@ -352,7 +352,7 @@ const isMobile = computed(() => {
           }
         }
         p {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
           cursor: pointer;
           display: inline;
           font-size: var(--o-font-size-text);
@@ -369,14 +369,14 @@ const isMobile = computed(() => {
           width: 70px;
           border: 4px solid var(--o-color-base);
           border-radius: 50%;
-          background-color: var(--o-color-brand);
+          background-color: var(--e-color-brand1);
           position: relative;
           top: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
           font-size: var(--o-font-size-h5);
           padding: 20px 0;
-          color: var(--o-color-text);
+          color: var(--e-color-text2);
           @media (max-width: 780px) {
             white-space: nowrap;
             height: 60px;
@@ -407,7 +407,7 @@ const isMobile = computed(() => {
   }
 }
 .imformation-color {
-  color: var(--o-color-brand);
+  color: var(--e-color-brand1);
   cursor: pointer;
 }
 </style>

@@ -57,14 +57,14 @@ defineProps({
 }
 .desc {
   margin: 0 auto;
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
   padding: var(--o-spacing-h2);
   box-sizing: border-box;
   font-size: var(--o-font-size-text);
   .desc-list {
     width: 100%;
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-text);
     @media screen and (max-width: 767px) {
       p {
@@ -81,7 +81,7 @@ defineProps({
       height: 26px;
       font-size: var(--o-font-size-h7);
       font-weight: 400;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       line-height: var(--o-line-height-h7);
       @media screen and (max-width: 767px) {
         margin: var(--o-spacing-h4) 0 0 0;
@@ -94,16 +94,16 @@ defineProps({
     ul {
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       line-height: var(--o-line-height-text);
       padding-left: var(--o-spacing-h5);
       list-style: disc;
       li {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         font-size: var(--o-font-size-text);
         margin-top: var(--o-spacing-h8);
         span {
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
         @media screen and (max-width: 767px) {
           font-size: var(--o-font-size-tip);
