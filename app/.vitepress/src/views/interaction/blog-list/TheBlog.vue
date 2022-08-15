@@ -6,12 +6,12 @@ import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
-import OScreen from '@/components/OScreen.vue';
+import MobileFilter from '@/components/MobileFilter.vue';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 
-import { getSortData } from '@/api/api-search';
+import { getSortData, getTagsData } from '@/api/api-search';
 
 interface BlogData {
   archives: string;
@@ -41,16 +41,16 @@ const sortParams = reactive({
   category: 'blog',
 });
 // 标签
-// const tagsParams = reactive({
-//   lang: lang.value,
-//   category: 'blog',
-//   tags: 'archives',
-// });
-// const tagsParams1 = reactive({
-//   lang: lang.value,
-//   category: 'blog',
-//   tags: 'author',
-// });
+const tagsParams = reactive({
+  lang: lang.value,
+  category: 'blog',
+  tags: 'archives',
+});
+const tagsParams1 = reactive({
+  lang: lang.value,
+  category: 'blog',
+  tags: 'author',
+});
 
 const tagsDataToChild = ref<any>([
   {
@@ -77,14 +77,47 @@ const toBlogContent = (path: string) => {
   router.go(`${path1}/${path}`);
 };
 // 筛选方法
-const listfilter = (val: string[]) => {
-  // const params = {
-  //   page: 1,
-  //   pageSize: 9,
-  //   lang: lang.value,
-  //   category: 'blog',
-  // };
-  return val;
+const listfilter = (val: any) => {
+  let paramsdate = '';
+  let paramsauthor = '';
+  for (let i = 0; i < val.length; i++) {
+    if (val[i].title === '时间') {
+      paramsdate = val[i].sele[0];
+    }
+    if (val[i].title === '作者') {
+      paramsauthor = val[i].sele[0];
+    }
+  }
+  const params = {
+    page: 1,
+    pageSize: 9,
+    lang: lang.value,
+    category: 'blog',
+    archives: paramsdate,
+    author: paramsauthor,
+  };
+  try {
+    getSortData(params).then((res) => {
+      if (res.obj.count === 0) {
+        router.go('@/NotFound.vue');
+      } else {
+        paginationData.value.total = res.obj.count;
+        paginationData.value.currentpage = res.obj.page;
+        paginationData.value.pagesize = res.obj.pageSize;
+        blogCardData.value = res.obj.records;
+        for (let i = 0; i < blogCardData.value.length; i++) {
+          if (typeof blogCardData.value[i].author === 'string') {
+            blogCardData.value[i].author = [blogCardData.value[i].author];
+          }
+          blogCardData.value[i].archives = blogCardData.value[
+            i
+          ].archives.substring(0, 7);
+        }
+      }
+    });
+  } catch (error: any) {
+    throw new Error(error);
+  }
 };
 
 onMounted(() => {
@@ -106,20 +139,20 @@ onMounted(() => {
   } catch (error: any) {
     throw new Error(error);
   }
-  // try {
-  //   getTagsData(tagsParams).then((res) => {
-  //     for (let i = 0; i < 5; i++) {
-  //       tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
-  //     }
-  //     getTagsData(tagsParams1).then((res) => {
-  //       for (let i = 0; i < 5; i++) {
-  //         tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
-  //       }
-  //     });
-  //   });
-  // } catch (error: any) {
-  //   throw new Error(error);
-  // }
+  try {
+    getTagsData(tagsParams).then((res) => {
+      for (let i = 0; i < 5; i++) {
+        tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
+      }
+      getTagsData(tagsParams1).then((res) => {
+        for (let i = 0; i < 5; i++) {
+          tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
+        }
+      });
+    });
+  } catch (error: any) {
+    throw new Error(error);
+  }
 });
 // 页数改变
 const currentChange = (val: number) => {
@@ -179,7 +212,11 @@ const sizeChange = (val: number) => {
       :illustration="BannerImg2"
     />
     <div class="blog-tag2">
-      <OScreen :data="tagsDataToChild" @filter="listfilter" />
+      <MobileFilter
+        :data="tagsDataToChild"
+        :single="true"
+        @filter="listfilter"
+      />
     </div>
     <div class="blog-list">
       <OCard v-for="item in blogCardData" :key="item" class="blog-list-item">

@@ -34,18 +34,18 @@ interface SortParams {
   pageSize: number;
 }
 
+interface TagsParams {
+  lang: string;
+  category: string;
+  tags: string;
+}
+
 export function getSortData(params: SortParams) {
   const url = '/api-search/search/sort';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
 
-export function getStatistic() {
-  const url = '/api-euler/api/search/statistics?type=openEuler';
-  return request
-    .get(url, {
-      headers: {
-        authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
-      },
-    })
-    .then((res: AxiosResponse) => res.data);
+export function getTagsData(params: TagsParams) {
+  const url = '/api-search/search/tags';
+  return request.post(url, params).then((res: AxiosResponse) => res.data);
 }

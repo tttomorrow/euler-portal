@@ -14,6 +14,8 @@
   },
   ...
  ]
+ *@single = true 单选
+ *
  *选择全部时，对应title的sele返回[]空数组
  */
 import { useAttrs, ref, computed } from 'vue';
@@ -42,36 +44,56 @@ const isDrawerOpen = ref(false);
 const showscreen = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
-
 const handOptions = computed(() => {
   const temp = options;
   for (let i = 0; i < props.data.length; i++) {
-    temp.value.push({ title: '', sele: [] });
+    temp.value.push({ title: props.data[i].title, sele: [] });
   }
   return temp;
 });
 options.value = handOptions.value.value;
-
 // 选择标签
 const clickOption = (title: string, option: string) => {
-  for (let i = 0; i < props.data.length; i++) {
-    if (title === props.data[i].title) {
-      if (options.value[i].sele.length > 0) {
-        for (let j = 0; j <= options.value[i].sele.length; j++) {
-          if (options.value[i].sele[j] === option) {
-            options.value[i].sele.splice(j, 1);
-            for (let x = 0; x < tagitems.value.length; x++) {
-              if (tagitems.value[x] === option) {
-                tagitems.value.splice(x, 1);
+  // 单选
+  if (attrs.single) {
+    options.value.forEach((item: any) => {
+      if (title === item.title) {
+        if (item.sele.length > 0) {
+          if (item.sele[0] === option) {
+            item.sele.splice(0, 1);
+            tagitems.value.forEach((tag: any, index) => {
+              if (tag === option) tagitems.value.splice(index, 1);
+            });
+          } else {
+            tagitems.value.forEach((tag: any, index) => {
+              if (tag === item.sele[0]) tagitems.value[index] = option;
+            });
+            item.sele[0] = option;
+          }
+          return;
+        }
+        item.sele[0] = option;
+        tagitems.value.push(option);
+      }
+    });
+  } else {
+    // 多选
+    for (let i = 0; i < props.data.length; i++) {
+      if (title === props.data[i].title) {
+        if (options.value[i].sele.length > 0) {
+          for (let j = 0; j <= options.value[i].sele.length; j++) {
+            if (options.value[i].sele[j] === option) {
+              options.value[i].sele.splice(j, 1);
+              for (let x = 0; x < tagitems.value.length; x++) {
+                if (tagitems.value[x] === option) tagitems.value.splice(x, 1);
               }
+              return;
             }
-            return;
           }
         }
+        options.value[i].sele.push(option);
+        tagitems.value.push(option);
       }
-      options.value[i].title = title;
-      options.value[i].sele.push(option);
-      tagitems.value.push(option);
     }
   }
 };
@@ -82,32 +104,25 @@ const sureClick = () => {
 };
 // 删除标签
 const delTag = (data: string) => {
-  for (let i = 0; i < options.value.length; i++) {
-    for (let j = 0; j < options.value[i].sele.length; j++) {
-      if (options.value[i].sele[j] === data) {
-        options.value[i].sele.splice(j, 1);
+  options.value.forEach((item: any) => {
+    item.sele.forEach((betrag: any, index: number) => {
+      if (betrag === data) {
+        item.sele.splice(index, 1);
         emit('filter', options.value);
       }
-    }
-  }
-  for (let x = 0; x < tagitems.value.length; x++) {
-    if (tagitems.value[x] === data) {
-      tagitems.value.splice(x, 1);
-    }
-  }
+    });
+  });
+  tagitems.value.forEach((item: string, index: number) => {
+    if (item === data) tagitems.value.splice(index, 1);
+  });
 };
 // 选择全部(sele数组返回空)
 const allClick = (val: any) => {
   for (let i = 0; i < options.value.length; i++) {
-    if (options.value[i].title === val.title) {
-      options.value[i].sele.length = 0;
-      emit('filter', options.value);
-    }
+    if (options.value[i].title === val.title) options.value[i].sele.length = 0;
     for (let x = 0; x < tagitems.value.length; x++) {
       for (let y = 0; y < val.select.length; y++) {
-        if (tagitems.value[x] === val.select[y]) {
-          tagitems.value.splice(x, 1);
-        }
+        if (tagitems.value[x] === val.select[y]) tagitems.value.splice(x, 1);
       }
     }
   }
@@ -115,18 +130,14 @@ const allClick = (val: any) => {
 // 选中按钮高亮
 const btnHighLight = (data: string) => {
   for (let i = 0; i < tagitems.value.length; i++) {
-    if (tagitems.value[i] === data) {
-      return true;
-    }
+    if (tagitems.value[i] === data) return true;
   }
 };
 // 全部
 const allHighLight = (val: any) => {
   for (let i = 0; i < options.value.length; i++) {
     if (options.value[i].title === val.title) {
-      if (options.value[i].sele.length === 0) {
-        return true;
-      }
+      if (options.value[i].sele.length === 0) return true;
     }
   }
 };
