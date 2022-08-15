@@ -182,7 +182,7 @@ const rootStyle = computed(() => {
         left: 5px;
         width: 1px;
         height: 100%;
-        border-left: 2px solid var(--o-color-bg4);
+        border-left: 2px solid var(--e-color-bg4);
       }
     }
     .anchor-dot {
@@ -194,7 +194,7 @@ const rootStyle = computed(() => {
       border-radius: 50%;
       background: var(--e-color-bg2);
       margin-right: 12px;
-      border: 2px solid var(--o-color-bg4);
+      border: 2px solid var(--e-color-bg4);
     }
     &-label {
       position: relative;

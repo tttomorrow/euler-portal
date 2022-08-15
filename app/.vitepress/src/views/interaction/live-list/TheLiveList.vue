@@ -252,7 +252,7 @@ const goNext = () => {
       width: 100%;
       height: 98px;
       background-repeat: no-repeat;
-      background-color: var(--o-color-bg4);
+      background-color: var(--e-color-bg4);
     }
     &-img {
       margin: 70px 71px;

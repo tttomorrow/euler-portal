@@ -352,7 +352,7 @@ watch(queryData, () => getSecurityLists(queryData));
     .years {
       padding: 0 8px 8px;
       .selected {
-        background-color: var(--o-color-bg4);
+        background-color: var(--e-color-bg4);
       }
     }
     @media screen and (max-width: 768px) {

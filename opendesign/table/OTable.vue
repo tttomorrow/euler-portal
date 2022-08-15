@@ -13,7 +13,7 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-table {
   &.el-table {
-    --el-table-header-bg-color: var(--o-color-bg4);
+    --el-table-header-bg-color: var(--e-color-bg4);
     color: var(--e-color-text4);
     --el-table-border-color: none;
     thead {
