@@ -21,6 +21,7 @@ import summit from './interaction/summit';
 import screen from './screen';
 import contribution from './community/contribution';
 import mailing from './community/mailing';
+import search from './search';
 
 const i18n: { [key: string]: any } = {
   zh: {
@@ -44,6 +45,7 @@ const i18n: { [key: string]: any } = {
     screen: screen.zh,
     contribution: contribution.zh,
     mailing: mailing.zh,
+    search: search.zh,
   },
   en: {
     sig: sig.en,
@@ -65,6 +67,7 @@ const i18n: { [key: string]: any } = {
     screen: screen.en,
     contribution: contribution.en,
     mailing: mailing.en,
+    search: search.en,
   },
   ru: {
     sig: sig.ru,
@@ -86,6 +89,7 @@ const i18n: { [key: string]: any } = {
     screen: screen.ru,
     contribution: contribution.ru,
     mailing: mailing.ru,
+    search: search.ru,
   },
 };
 
