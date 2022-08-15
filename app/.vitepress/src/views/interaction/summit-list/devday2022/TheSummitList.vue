@@ -129,18 +129,23 @@ const cooperateList = [
   },
   {
     img: qilin,
+    website: 'https://www.kylinos.cn/',
   },
   {
     img: suse,
+    website: 'https://www.suse.com/',
   },
   {
     img: tongxin,
+    website: 'https://www.uniontech.com/',
   },
   {
     img: xinan,
+    website: 'http://www.kylinsec.com.cn/',
   },
   {
     img: puhua,
+    website: 'http://www.i-soft.com.cn/',
   },
   {
     img: intel,
@@ -234,7 +239,9 @@ const sponsorList = [
           <p>联办单位</p>
           <div class="foot-construction-company-list">
             <div v-for="item in cooperateList" :key="item.img">
-              <a><img :src="item.img" /></a>
+              <a :href="item.website" target="_blank"
+                ><img :src="item.img"
+              /></a>
             </div>
           </div>
         </div>
@@ -284,7 +291,7 @@ const sponsorList = [
   transform: translateY(-24px);
 }
 .middle {
-  max-width: 1440px;
+  max-width: 1504px;
   margin: 0 auto;
   padding: 0 44px;
   @media (max-width: 780px) {
