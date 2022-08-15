@@ -52,15 +52,22 @@ const anchorData = [
       />
       <!-- 架构模块 -->
       <MiniFrame
+        id="architecture"
         :device="isPC"
         :frame-obj="i18n.bishengjdk.BISHENG_FRAMEWORK"
         layout="upAndDown"
-        id="architecture"
       />
       <!-- 学习模块 -->
-      <MiniDocs id="learn" :device="isPC" :docs-obj="i18n.bishengjdk.BISHENG_LEARN" />
+      <MiniDocs
+        id="learn"
+        :device="isPC"
+        :docs-obj="i18n.bishengjdk.BISHENG_LEARN"
+      />
       <!-- 友情链接模块 -->
-      <MiniReference id="link" :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE" />
+      <MiniReference
+        id="link"
+        :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE"
+      />
 
       <AppAnchor :data="anchorData" />
     </div>

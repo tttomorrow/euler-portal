@@ -42,10 +42,10 @@ const anchorData = [
     <MiniDescription :description-desc="i18n.atune.ATUNE_DESC" />
     <!-- 架构 -->
     <MiniFrame
+      id="jiagou"
       :device="isPC"
       :frame-obj="i18n.atune.ATUNE_FRAMEWORK"
       layout="upAndDown"
-      id="jiagou"
     />
     <!-- 文档 -->
     <MiniDocs id="docs" :device="isPC" :docs-obj="i18n.atune.ATUNE_DOCUMENT" />

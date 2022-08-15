@@ -39,10 +39,10 @@ const anchorData = [
     <MiniCards :cards-link="i18n.isula.ISULA_LINK" />
     <MiniDescription :description-desc="i18n.isula.ISULA_DESC_UP" />
     <MiniFrame
+      id="architecture"
       :device="isPC"
       :frame-obj="i18n.isula.ISULA_FRAMEWORK"
       layout="upAndDown"
-      id="architecture"
     />
     <MiniDocs id="docs" :device="isPC" :docs-obj="i18n.isula.ISULA_DOCUMENT" />
 
