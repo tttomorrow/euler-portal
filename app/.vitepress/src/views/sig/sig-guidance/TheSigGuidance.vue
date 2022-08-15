@@ -1,19 +1,22 @@
 <script setup lang="ts">
+import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
-import sig1 from '@/assets/sig-application/sig1.png';
-import sig2 from '@/assets/sig-application/sig2.png';
-import sig3 from '@/assets/sig-application/sig3.png';
-import sig4 from '@/assets/sig-application/sig4.png';
-import sig5 from '@/assets/sig-application/sig5.png';
-import sig6 from '@/assets/sig-application/sig6.png';
+import sig1 from '@/assets/category/sig/guidance/sig1.png';
+import sig2 from '@/assets/category/sig/guidance/sig2.png';
+import sig3 from '@/assets/category/sig/guidance/sig3.png';
+import sig4 from '@/assets/category/sig/guidance/sig4.png';
+import sig5 from '@/assets/category/sig/guidance/sig5.png';
+import sig6 from '@/assets/category/sig/guidance/sig6.png';
 
 const LEFT_IMG = [sig1, sig2, sig3];
 const RIGHT_IMG = [sig4, sig5, sig6];
 
 const i18n = useI18n();
+const configData = useData();
+const language = configData.lang;
 </script>
 
 <template>
@@ -30,7 +33,12 @@ const i18n = useI18n();
         :key="item.LEFT.LEFT_CIRCLE"
         class="middle-item"
       >
-        <div class="middle-item-left">
+        <div
+          :class="[
+            'middle-item-left',
+            index === 0 && language === 'ru' ? 'middle-item-left-ruf' : '',
+          ]"
+        >
           <div class="middle-item-bgdconfig">
             <img :src="LEFT_IMG[index]" />
           </div>
@@ -47,8 +55,11 @@ const i18n = useI18n();
           </div>
         </div>
         <div
-          class="middle-item-right"
-          :class="index === 0 ? 'middle-item-right-1' : 'other'"
+          :class="[
+            'middle-item-right',
+            index === 0 ? 'middle-item-right-f' : '',
+            index === 0 && language === 'ru' ? 'middle-item-right-ruf' : '',
+          ]"
         >
           <div class="middle-item-bgdconfig">
             <img :src="RIGHT_IMG[index]" />
@@ -68,6 +79,21 @@ const i18n = useI18n();
         </div>
       </div>
     </div>
+    <div
+      :class="[
+        language === 'zh'
+          ? 'linebox-zh'
+          : language === 'en'
+          ? 'linebox-en'
+          : 'linebox-ru',
+      ]"
+    >
+      <div class="line-first"></div>
+      <div class="line-second"></div>
+      <div class="line-third"></div>
+      <div class="line-forth"></div>
+      <div class="line-fifth"></div>
+    </div>
   </div>
 </template>
 
@@ -77,34 +103,61 @@ const i18n = useI18n();
     max-width: 1504px;
     margin: var(--o-spacing-h1) auto;
     padding: 0 44px;
+    position: relative;
+    z-index: 90;
+    @media (max-width: 1080px) {
+      padding: 0 var(--o-spacing-h4);
+    }
     &-item {
       min-height: 154px;
       display: flex;
       align-items: flex-start;
       margin-top: var(--o-spacing-h4);
-      @media (max-width: 780px) {
+      justify-content: center;
+      @media (max-width: 1080px) {
         display: block;
+        margin: var(--o-spacing-h5) auto;
+        width: 450px;
+      }
+      @media (max-width: 780px) {
+        width: 100%;
       }
       &-left {
         display: flex;
         margin-right: var(--o-spacing-h4);
-        @media (max-width: 780px) {
+        @media (max-width: 1080px) {
           margin-right: 0px;
-          margin-bottom: var(--o-spacing-h4);
+          margin-bottom: var(--o-spacing-h5);
+        }
+      }
+      &-left-ruf {
+        @media (max-width: 1280px) {
+          margin-bottom: 100px;
+        }
+        @media (max-width: 1080px) {
+          margin-bottom: var(--o-spacing-h5);
         }
       }
       &-right {
         margin-top: 80px;
         display: flex;
         margin-right: var(--o-spacing-h4);
-        @media (max-width: 780px) {
+        @media (max-width: 1080px) {
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
         }
       }
-      &-right-1 {
+      &-right-f {
         margin-top: 102px;
-        @media (max-width: 780px) {
+        @media (max-width: 1080px) {
+          margin-top: 0px;
+        }
+      }
+      &-right-ruf {
+        @media (max-width: 1280px) {
+          margin-top: 180px;
+        }
+        @media (max-width: 1080px) {
           margin-top: 0px;
         }
       }
@@ -128,7 +181,7 @@ const i18n = useI18n();
             height: 80px;
           }
           @media (max-width: 780px) {
-            width: 60px;
+            width: 50px;
           }
         }
       }
@@ -182,6 +235,202 @@ const i18n = useI18n();
             }
           }
         }
+      }
+    }
+  }
+  .linebox {
+    &-zh {
+      .line-first {
+        position: absolute;
+        top: 375px;
+        left: 48%;
+        height: 70px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+      }
+      .line-second {
+        position: absolute;
+        top: 550px;
+        left: 34%;
+        height: 70px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-left: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          top: 570px;
+        }
+      }
+      .line-third {
+        position: absolute;
+        top: 650px;
+        left: 48%;
+        height: 50px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          top: 670px;
+        }
+      }
+      .line-forth {
+        position: absolute;
+        top: 800px;
+        left: 34%;
+        height: 70px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-left: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          top: 850px;
+        }
+      }
+      .line-fifth {
+        position: absolute;
+        top: 900px;
+        left: 48%;
+        height: 50px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          top: 950px;
+        }
+      }
+      @media (max-width: 1080px) {
+        display: none;
+      }
+    }
+    &-en {
+      .line-first {
+        position: absolute;
+        top: 375px;
+        left: 48%;
+        height: 70px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+      }
+      .line-second {
+        position: absolute;
+        top: 640px;
+        left: 34%;
+        height: 70px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-left: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          top: 690px;
+        }
+      }
+      .line-third {
+        position: absolute;
+        top: 740px;
+        left: 48%;
+        height: 50px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          top: 770px;
+        }
+      }
+      .line-forth {
+        position: absolute;
+        top: 995px;
+        left: 34%;
+        height: 70px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-left: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          top: 1050px;
+        }
+      }
+      .line-fifth {
+        position: absolute;
+        top: 1100px;
+        left: 48%;
+        height: 50px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          top: 1150px;
+        }
+      }
+      @media (max-width: 1080px) {
+        display: none;
+      }
+    }
+    &-ru {
+      .line-first {
+        position: absolute;
+        top: 375px;
+        left: 48%;
+        height: 70px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          left: 45%;
+          top: 475px;
+        }
+      }
+      .line-second {
+        position: absolute;
+        top: 670px;
+        left: 34%;
+        height: 90px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-left: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          left: 34%;
+          top: 775px;
+        }
+      }
+      .line-third {
+        position: absolute;
+        top: 740px;
+        left: 48%;
+        height: 50px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          left: 45%;
+          top: 890px;
+        }
+      }
+      .line-forth {
+        position: absolute;
+        top: 995px;
+        left: 34%;
+        height: 94px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-left: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          left: 30%;
+          top: 1200px;
+        }
+      }
+      .line-fifth {
+        position: absolute;
+        top: 1100px;
+        left: 48%;
+        height: 70px;
+        width: 300px;
+        border-top: 2px dashed var(--o-color-brand);
+        border-right: 2px dashed var(--o-color-brand);
+        @media (max-width: 1280px) {
+          left: 45%;
+          top: 1320px;
+        }
+      }
+      @media (max-width: 1080px) {
+        display: none;
       }
     }
   }
