@@ -138,9 +138,9 @@ function turnPage(option: string) {
       <h4>OButton</h4>
       <div class="button-box">
         <OButton>type=outline</OButton>
-        <OButton type="primary" theme="light">type=primary</OButton>
+        <OButton type="primary" disabled>type=primary</OButton>
         <OButton type="secondary">type=secondary</OButton>
-        <OButton type="text">type=text</OButton>
+        <OButton type="text" disabled>type=text</OButton>
       </div>
       <div class="button-box">
         <OButton type="primary">size=medium</OButton>
