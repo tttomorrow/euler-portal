@@ -29,6 +29,7 @@ export default {
   YEAR: 'Год',
   PLACEHOLDER: 'Выбрать',
   ALL: 'ВСЕ',
+  CVE: 'CVE',
   ADVISORY: 'Консультант',
   SEVERITY_PLACEHOLDER: 'Степень серьезности',
   SYNOPSIS: 'Синопсис',

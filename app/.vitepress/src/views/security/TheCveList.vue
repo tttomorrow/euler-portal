@@ -30,6 +30,7 @@ const tableData = ref<CveLists[]>([
     status: '',
     summary: '',
     updateTime: '',
+    packageName: '',
   },
 ]);
 
@@ -120,7 +121,7 @@ watch(queryData, () => getCveLists(queryData));
       ></OSearch>
 
       <div class="filter-card">
-        <TagFilter label="严重等级" :show="false">
+        <TagFilter :label="i18n.security.SEVERITY" :show="false">
           <OTag
             v-for="(item, index) in i18n.security.CATEGORY_LIST"
             :key="'tag' + index"
@@ -164,7 +165,7 @@ watch(queryData, () => getCveLists(queryData));
             <span
               class="detail-page"
               @click="goCveDetail(scope.row.cveId, scope.row.packageName)"
-              >详情</span
+              >{{ i18n.security.DETAIL }}</span
             >
           </template>
         </el-table-column>
@@ -208,7 +209,12 @@ watch(queryData, () => getCveLists(queryData));
               <span>{{ i18n.security.STATUS }}:</span>{{ item.status }}
             </li>
             <li>
-              <span>{{ i18n.security.OPERATION }}:</span><a>详情</a>
+              <span>{{ i18n.security.OPERATION }}:</span
+              ><a
+                class="detail-page"
+                @click="goCveDetail(item.cveId, item.packageName)"
+                >{{ i18n.security.DETAIL }}</a
+              >
             </li>
           </ul>
         </li>
@@ -342,7 +348,7 @@ watch(queryData, () => getCveLists(queryData));
 .pc-list {
   .detail-page {
     cursor: pointer;
-    color: var(--o-color-link);
+    color: var(--e-color-kleinblue5);
   }
   @media screen and (max-width: 768px) {
     display: none;
