@@ -210,7 +210,7 @@ onMounted(() => {
     }
   }
   .mo-item-odd {
-    background-color: var(--o-color-bg4);
+    background-color: var(--e-color-bg4);
   }
 }
 </style>
