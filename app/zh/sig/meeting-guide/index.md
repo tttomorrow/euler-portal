@@ -2,7 +2,7 @@
 title: '会议指南'
 ---
 
-<script setup>
+<script setup lang="ts">
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';

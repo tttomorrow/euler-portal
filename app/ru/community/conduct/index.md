@@ -2,7 +2,7 @@
 title: 'Кодекс поведения'
 ---
 
-<script setup>
+<script setup lang="ts">
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import bannerBG from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/covenant.png';

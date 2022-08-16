@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import ExamineSig from "@/views/sig/sig-list/ExamineSig.vue"
 </script>
 
