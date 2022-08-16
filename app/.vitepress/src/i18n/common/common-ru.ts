@@ -229,25 +229,34 @@ export default {
         'safety-bulletin',
       ],
     },
+    {
+      PATH: '',
+      NAME: 'Код',
+      ID: 'code',
+      CHILDREN: [
+        {
+          NAME: 'Источники кода',
+          PATH: 'https://gitee.com/openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'Источники пакетов',
+          PATH: 'https://gitee.com/src-openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'Зеркало GitHub',
+          PATH: 'https://github.com/openeuler-mirror',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+      ],
+      CLASS: [],
+    },
   ],
   LANG: 'Русский',
   LANG_LIST: ['中文', 'English', 'Русский'],
   GITTE: 'Source code',
   CODE: 'Код',
-  GITTE_RESOURCE_LIST: [
-    {
-      NAME: 'Источники кода',
-      URL: 'https://gitee.com/openeuler',
-    },
-    {
-      NAME: 'Источники пакетов',
-      URL: 'https://gitee.com/src-openeuler',
-    },
-    {
-      NAME: 'Зеркало GitHub',
-      URL: 'https://github.com/openeuler-mirror',
-    },
-  ],
   FOOTER: {
     ATOM_TEXT:
       'openEuler - это проект с открытым исходным кодом, созданный и управляемый фондом OpenAtom.',
