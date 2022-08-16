@@ -375,6 +375,26 @@ onMounted(() => {
                 {{ i18n.download.WEBSITE_SELECT }}
               </a>
             </div>
+            <div v-if="download.SERVER_IMAGE ? true : false">
+              <a target="_blank" :href="download.SERVER_IMAGE">
+                {{ i18n.download.SERVER_IMAGE }}
+              </a>
+            </div>
+            <div v-if="download.CLOUD_IMAGE ? true : false">
+              <a target="_blank" :href="download.CLOUD_IMAGE">
+                {{ i18n.download.CLOUD_IMAGE }}
+              </a>
+            </div>
+            <div v-if="download.EDGE_IMAGE ? true : false">
+              <a target="_blank" :href="download.EDGE_IMAGE">
+                {{ i18n.download.EDGE_IMAGE }}
+              </a>
+            </div>
+            <div v-if="download.EMBEDDEN_IMAGE ? true : false">
+              <a target="_blank" :href="download.EMBEDDEN_IMAGE">
+                {{ i18n.download.EMBEDDEN_IMAGE }}
+              </a>
+            </div>
           </div>
         </div>
 
@@ -470,8 +490,6 @@ onMounted(() => {
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--o-spacing-h1);
-
   .pagination {
     display: flex;
     @media (max-width: 768px) {
@@ -611,7 +629,7 @@ onMounted(() => {
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: var(--o-spacing-h4);
+    grid-gap: var(--o-spacing-h5);
 
     @media (max-width: 768px) {
       margin: var(--o-spacing-h5) auto;
