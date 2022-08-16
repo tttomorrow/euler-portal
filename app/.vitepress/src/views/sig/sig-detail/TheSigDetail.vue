@@ -5,26 +5,40 @@ import { useI18n } from '@/i18n';
 
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
+import MobileRepositoryList from './MobileRepositoryList.vue';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
-import { getSigDetail, getSigMember } from '@/api/api-sig';
+import {
+  getSigDetail,
+  getSigMember,
+  getSigRepositoryList,
+} from '@/api/api-sig';
+// import { testIsPhone } from '@/shared/utils';
 
 import IconArrowRight from '~icons/app/right.svg';
 
 const { lang } = useData();
 const i18n = useI18n();
-
-let sidDetailId: number;
-
+const screenWidth = useWindowResize();
+const isIphone = computed(() => {
+  return screenWidth.value <= 768 ? true : false;
+});
+// const isIphone = computed(() => testIsPhone());
+const paginLayout = computed(() =>
+  isIphone.value
+    ? 'prev, slot, jumper, next'
+    : 'sizes, prev, pager, next, slot, jumper'
+);
+const sigDetailName = ref('');
 const sigDetail = computed(() => {
   return i18n.value.sig.SIG_DETAIL;
 });
 const sigMeetingData: any = ref('');
 const sigMemberData: any = ref('');
 const memberList: any = ref([]);
-const memberCurLen = ref(0);
 function getSigDetails() {
   try {
-    getSigDetail(sidDetailId).then((res: any) => {
+    getSigDetail(sigDetailName.value).then((res: any) => {
       sigMeetingData.value = res;
     });
   } catch (error) {
@@ -33,19 +47,91 @@ function getSigDetails() {
 }
 function getSigMembers() {
   try {
-    getSigMember(sidDetailId).then((res: any) => {
-      sigMemberData.value = res;
-      memberList.value = JSON.parse(res.owners);
-      memberCurLen.value = memberList.value.length;
-      if (memberList.value.length > 4) {
-        memberCurLen.value = 4;
+    const param = {
+      community: 'openeuler',
+      sig: sigDetailName.value,
+    };
+    getSigMember(param).then((res: any) => {
+      if (res?.data[0]) {
+        const data = res.data[0];
+        sigMemberData.value = data;
+        const { maintainer_info } = data || [];
+        const memberCurLen =
+          maintainer_info.length > 4 ? 4 : maintainer_info.length;
+        memberList.value = maintainer_info.slice(0, memberCurLen);
       }
-      memberList.value = memberList.value.slice(0, memberCurLen.value);
     });
   } catch (error) {
     throw Error();
   }
 }
+
+// 仓库列表过滤参数
+const repositoryNameList = ref([]);
+const repositoryNameSelected = ref('');
+const maintainerList = ref([]);
+const maintainerSelected = ref('');
+const committerList = ref([]);
+const committerSelected = ref('');
+
+const filterRepositoryList = () => {
+  totalRepositoryList.value = _totalRepositoryList.value.filter((item) => {
+    return (
+      (!repositoryNameSelected.value ||
+        item.repo === repositoryNameSelected.value) &&
+      (!maintainerSelected.value ||
+        item.maintainers.includes(maintainerSelected.value)) &&
+      (!committerSelected.value ||
+        item.gitee_id.includes(committerSelected.value))
+    );
+  });
+  totalRepositoryList.value;
+};
+
+// 仓库列表参数
+const currentPage = ref(1);
+const pageSize = ref(10);
+const totalPage = computed(() =>
+  Math.ceil(totalRepositoryList.value.length / pageSize.value)
+);
+// 列表过滤后数据
+const totalRepositoryList = ref([] as any[]);
+// 列表原始数据
+const _totalRepositoryList = ref([] as any[]);
+const repositoryList = computed(() => {
+  if (totalRepositoryList.value.length > pageSize.value) {
+    return totalRepositoryList.value.slice(
+      (currentPage.value - 1) * pageSize.value,
+      currentPage.value * pageSize.value
+    );
+  } else {
+    return totalRepositoryList.value;
+  }
+});
+const getRepositoryList = () => {
+  const param = {
+    community: 'openeuler',
+    sig: sigDetailName.value,
+  };
+  getSigRepositoryList(param).then((data) => {
+    if (data.code === 200) {
+      const {
+        committerDetails = [],
+        committers = [],
+        maintainers = [],
+      } = data.data;
+      _totalRepositoryList.value = committerDetails.map((item: any) => ({
+        ...item,
+        maintainers,
+      }));
+      filterRepositoryList();
+      repositoryNameList.value = committerDetails.map((item: any) => item.repo);
+      maintainerList.value = maintainers;
+      committerList.value = committers;
+    }
+  });
+};
+
 onMounted(() => {
   function GetUrlParam(paraName: any) {
     const url = document.location.toString();
@@ -64,20 +150,21 @@ onMounted(() => {
       return '';
     }
   }
-  sidDetailId = parseInt(GetUrlParam('id'));
+  sigDetailName.value = GetUrlParam('name');
   getSigDetails();
   getSigMembers();
+  getRepositoryList();
 });
 </script>
 <template>
   <div class="sig-detail">
     <BreadCrumbs
       bread1="SIG"
-      :bread2="sigMemberData.group_name"
+      :bread2="sigDetailName"
       link1="/zh/sig/sig-list/"
     />
     <div class="content">
-      <h3>{{ sigMemberData.group_name }}</h3>
+      <h3>{{ sigDetailName }}</h3>
       <div class="brief-introduction">
         <h4>{{ sigDetail.INTRODUCTION }}</h4>
         <p v-if="sigMemberData.description" class="no-meeting">
@@ -95,7 +182,9 @@ onMounted(() => {
         </p>
         <p class="email">
           <span>{{ sigDetail.MAIL_LIST }}:</span>
-          <a href="mailto:a-tune@openeuler.org">a-tune@openeuler.org</a>
+          <a :href="`mailto:${sigMemberData.mailing_list}`">{{
+            sigMemberData.mailing_list
+          }}</a>
         </p>
       </div>
       <div class="meeting">
@@ -111,23 +200,126 @@ onMounted(() => {
         </p>
       </div>
       <div class="member">
-        <h5>{{ sigDetail.MEMBERS }}</h5>
+        <h5>{{ sigDetail.MAINTAINER }}</h5>
         <ul>
           <li v-for="item in memberList" :key="item.gitee_id">
             <div class="member-img">
-              <img :src="item.avatar_url" alt="yangdi" />
+              <img
+                src="https://gitee.com/assets/no_portrait.png"
+                :alt="item.name"
+              />
             </div>
             <p class="name">{{ item.gitee_id }}</p>
             <p class="introduction">
-              <span
-                v-for="(itemIntroduction, itemIndex) in item.sigs"
-                :key="itemIndex"
-                >{{ itemIntroduction }}{{ ' ' }}</span
-              >
-              <span>SIG Maintainer</span>
+              <span>Maintainer</span>
             </p>
           </li>
         </ul>
+      </div>
+      <div class="repository">
+        <h5>
+          {{
+            `${sigDetailName} ${sigDetail.REPOSITORY_LIST} (${_totalRepositoryList.length})`
+          }}
+        </h5>
+        <div class="repository-filter">
+          <div :class="isIphone ? 'select-box-phone' : 'select-box'">
+            <div class="select-item">
+              <span class="select-item-name">
+                {{ sigDetail.REPOSITORY_NAME }}
+              </span>
+              <OSelect
+                v-model="repositoryNameSelected"
+                filterable
+                clearable
+                :placeholder="i18n.sig.SIG_ALL"
+                @change="filterRepositoryList()"
+              >
+                <OOption
+                  v-for="item in repositoryNameList"
+                  :key="item"
+                  :label="item"
+                  :value="item"
+                />
+              </OSelect>
+            </div>
+            <div v-if="isIphone" class="split-line"></div>
+            <div class="select-item">
+              <span class="select-item-name"> Maintainer </span>
+              <OSelect
+                v-model="maintainerSelected"
+                filterable
+                clearable
+                :placeholder="i18n.sig.SIG_ALL"
+                @change="filterRepositoryList()"
+              >
+                <OOption
+                  v-for="item in maintainerList"
+                  :key="item"
+                  :value="item"
+                  :lable="item"
+                />
+              </OSelect>
+            </div>
+            <div v-if="isIphone" class="split-line"></div>
+            <div class="select-item">
+              <span class="select-item-name"> Committer </span>
+              <OSelect
+                v-model="committerSelected"
+                filterable
+                clearable
+                :placeholder="i18n.sig.SIG_ALL"
+                @change="filterRepositoryList()"
+              >
+                <OOption
+                  v-for="item in committerList"
+                  :key="item"
+                  :value="item"
+                  :lable="item"
+                />
+              </OSelect>
+            </div>
+          </div>
+        </div>
+        <MobileRepositoryList
+          v-if="isIphone"
+          :data="repositoryList"
+        ></MobileRepositoryList>
+        <OTable v-else :data="repositoryList">
+          <el-table-column :label="sigDetail.REPOSITORY_NAME" width="550px">
+            <template #default="scope">
+              <a target="_blank" :href="`https://gitee.com/${scope.row.repo}`">
+                {{ scope.row.repo }}
+              </a>
+            </template>
+          </el-table-column>
+          <el-table-column label="Maintainer">
+            <template #default="scope">
+              <span>
+                {{ scope.row.maintainers.join(',') }}
+              </span>
+            </template>
+          </el-table-column>
+          <el-table-column label="Committer">
+            <template #default="scope">
+              <span>
+                {{ scope.row.gitee_id.join(',') }}
+              </span>
+            </template>
+          </el-table-column>
+        </OTable>
+        <OPagination
+          v-model:currentPage="currentPage"
+          v-model:page-size="pageSize"
+          class="repository-pagin"
+          :hide-on-single-page="true"
+          :page-sizes="[10]"
+          :background="true"
+          :layout="paginLayout"
+          :total="totalRepositoryList.length"
+        >
+          <span>{{ currentPage }}/{{ totalPage }}</span>
+        </OPagination>
       </div>
       <div class="recent-event">
         <h5>{{ sigDetail.LATEST_DYNAMIC }}</h5>
@@ -186,7 +378,6 @@ onMounted(() => {
   margin: 0 auto var(--o-spacing-h1);
   .content {
     width: 100%;
-    padding: var(--o-spacing-h2);
     background-color: var(--e-color-bg2);
     h3 {
       font-size: var(--o-font-size-h3);
@@ -205,12 +396,19 @@ onMounted(() => {
         margin-top: var(--o-spacing-h5);
         font-size: var(--o-font-size-text);
         line-height: 22px;
-        color: var(--e-color-text4);
+        color: var(--e-color-text3);
       }
     }
     .meeting {
       margin-top: var(--o-spacing-h2);
       color: var(--e-color-text1);
+      .no-meeting {
+        padding: var(--o-spacing-h5) 0;
+        text-align: center;
+      }
+      .calender-wrapper {
+        margin-top: var(--o-spacing-h5);
+      }
       h5 {
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
@@ -222,6 +420,7 @@ onMounted(() => {
         }
       }
     }
+
     .member {
       margin-top: var(--o-spacing-h2);
       color: var(--e-color-text1);
@@ -267,6 +466,57 @@ onMounted(() => {
         }
       }
     }
+    .repository {
+      margin-top: var(--o-spacing-h2);
+      color: var(--e-color-text1);
+      h5 {
+        font-size: var(--o-font-size-h6);
+        line-height: var(--o-line-height-h6);
+      }
+      a {
+        cursor: pointer;
+        color: var(--e-color-brand1);
+      }
+      .repository-filter {
+        margin: var(--o-spacing-h4) 0;
+        .select-box {
+          display: flex;
+          justify-items: center;
+          align-items: center;
+          .select-item {
+            &-name {
+              margin-right: var(--o-spacing-h5);
+            }
+            .o-select {
+              margin-right: var(--o-spacing-h1);
+            }
+          }
+        }
+        .select-box-phone {
+          .select-item {
+            font-size: var(--o-font-size-text);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .split-line {
+            height: 1px;
+            margin: var(--o-spacing-h6) 0;
+            background-color: var(--e-color-border1);
+          }
+        }
+      }
+      @media screen and (min-width: 857px) {
+        .repository-pagin {
+          margin-top: var(--o-spacing-h2);
+        }
+      }
+      @media screen and (max-width: 857px) {
+        .repository-pagin {
+          margin-top: var(--o-spacing-h5);
+        }
+      }
+    }
     .recent-event {
       margin-top: var(--o-spacing-h2);
       color: var(--e-color-text1);
@@ -286,7 +536,7 @@ onMounted(() => {
         .item {
           max-width: 656px;
           padding: 40px;
-          background-color: var(--e-color-bg1);
+          background-color: var(--e-color-bg2);
           border: 1px solid transparent;
           .header {
             display: flex;
@@ -324,11 +574,21 @@ onMounted(() => {
           }
           &:hover {
             background-color: var(--e-color-bg2);
-            border: 1px solid var(--e-color-brand2);
+            border: 1px solid var(--e-color-kleinblue8);
             box-shadow: var(--o-shadow-overlay);
           }
         }
       }
+    }
+  }
+  @media screen and (min-width: 857px) {
+    .content {
+      padding: var(--o-spacing-h2);
+    }
+  }
+  @media screen and (max-width: 857px) {
+    .content {
+      padding: var(--o-spacing-h5);
     }
   }
 }

@@ -62,15 +62,15 @@ export default {
     },
   },
   SIG_LIST: {
+    SIG: 'SIG',
     HOME_PAGE: 'Go to Gitee home page',
     MAIL: 'E-mail',
     IRC: 'IRC Channel',
     MANAGER: 'Administrators',
     NAME: 'SIG',
     GITEE_PAGE: 'Gitee',
-    STORE_NAME: '仓库名称',
-    MAINTAINER: 'MAINTAINER',
-    COMMITTER: 'COMMITTER',
+    REPOSITORY: '仓库名称',
+    MAINTAINER: 'Maintainer',
   },
   SIG_DESCRIPTION: {
     MEANING:
