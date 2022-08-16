@@ -41,7 +41,7 @@ const hideSub = () => {
 <template>
   <div class="lang-menu" @mouseenter="showSub()" @mouseleave="hideSub()">
     <span class="lang-menu-link">
-      {{ lang === 'zh' ? '中文' : lang === 'ru' ? '俄文' : 'English' }}
+      {{ lang === 'zh' ? '中文' : lang === 'ru' ? 'Русский' : 'English' }}
       <OIcon><icon-down></icon-down></OIcon>
     </span>
     <ul v-if="isMenu" class="lang-menu-list">

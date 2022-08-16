@@ -260,25 +260,34 @@ export default {
         'compatibility',
       ],
     },
+    {
+      PATH: '',
+      NAME: 'CODE',
+      ID: 'code',
+      CHILDREN: [
+        {
+          NAME: 'Code Sources',
+          PATH: 'https://gitee.com/openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'Package Sources',
+          PATH: 'https://gitee.com/src-openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'GitHub Mirror',
+          PATH: 'https://github.com/openeuler-mirror',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+      ],
+      CLASS: [],
+    },
   ],
   LANG: 'English',
   LANG_LIST: ['中文', 'English', 'Русский'],
   GITTE: 'Source code',
   CODE: 'CODE',
-  GITTE_RESOURCE_LIST: [
-    {
-      NAME: 'Code Sources',
-      URL: 'https://gitee.com/openeuler',
-    },
-    {
-      NAME: 'Package Sources',
-      URL: 'https://gitee.com/src-openeuler',
-    },
-    {
-      NAME: 'GitHub Mirror',
-      URL: 'https://github.com/openeuler-mirror',
-    },
-  ],
   FOOTER: {
     ATOM_TEXT:
       'openEuler is an open source project incubated and operated by the OpenAtom Foundation.',
