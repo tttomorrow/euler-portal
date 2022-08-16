@@ -82,5 +82,3 @@ export function getStatistic() {
     })
     .then((res: AxiosResponse) => res.data);
 }
-
-

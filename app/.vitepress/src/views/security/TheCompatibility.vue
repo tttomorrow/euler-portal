@@ -779,7 +779,11 @@ onMounted(() => {
     <el-collapse v-model="activeName" accordion @change="handleChange">
       <el-collapse-item title="整机" name="1">
         <div class="blog-tag">
-          <MobileFilter class="filter" :data="filterData" @filter="listfilter" />
+          <MobileFilter
+            class="filter"
+            :data="filterData"
+            @filter="listfilter"
+          />
         </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">

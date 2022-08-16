@@ -1,6 +1,6 @@
 export default {
   zh: {
-    placeHolder:"搜索用户案例",
+    placeHolder: '搜索用户案例',
     bannerTitle: '用户案例',
     type: '案例类别',
     find1: '发现',
@@ -12,7 +12,7 @@ export default {
     tags: ['全部', '金融', '运营商', '能源', '物流', '其他'],
   },
   en: {
-    placeHolder:"input user case",
+    placeHolder: 'input user case',
     bannerTitle: 'USER CASE',
     type: 'Category',
     find1: 'Found',
@@ -23,7 +23,7 @@ export default {
     tags: ['All', 'Finance', 'Carrier', 'Energy', 'Logistics', 'Others'],
   },
   ru: {
-    placeHolder:"input user case",
+    placeHolder: 'input user case',
     bannerTitle: 'Дело пользователя',
     type: 'Категория',
     find1: 'Найди',
