@@ -76,7 +76,7 @@ function inputPage(e: any) {
       <input
         ref="page"
         :value="currentPage"
-        type="number"
+        type="text"
         class="current-page"
         @keypress="jumpPage"
         @input="inputPage"
@@ -143,7 +143,7 @@ function inputPage(e: any) {
       color: var(--e-color-text1);
     }
     .disable-button {
-      color: var(--o-color-disabled);
+      color: var(--e-color-text5);
     }
   }
 }
