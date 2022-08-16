@@ -7,6 +7,10 @@ export default {
     'secGear is a confidential computing development suite used to develop secure applications in the computing industry. It aims to provide a unified development framework for different hardware devices, shielding the differences between underlying confidential computing architectures and APIs. Currently, secGear supports Intel® SGX hardware and Arm TrustZone (iTrustee supported).',
     'secGear provides rich extensibility capabilities at both the middleware layer and service layer, allowing developers to easily call security components and even directly use the confidential computing services.',
   ],
+  SECGEAR_ANCHOR_DATA: [
+    { id: 'architecture', name: 'Architecture' },
+    { id: 'docs', name: 'Documentation' },
+  ],
   SECGEAR_FRAMEWORK: {
     TITLE_OUTSIDE: 'Architecture',
     TITLE_INSIDE: 'ARCHITECTURE',

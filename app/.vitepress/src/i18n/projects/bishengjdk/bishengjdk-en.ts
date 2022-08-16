@@ -5,6 +5,11 @@ export default {
     'As a downstream product of OpenJDK, BiSheng JDK is a high-performance OpenJDK distribution that can be used in production environments. BiSheng JDK fixes some performance and stability issues encountered in Huawei internal applications, optimizes performance and enhances stability on the ARM architecture, and delivers improved performance in big data scenarios.',
     'BiSheng JDK is committed to providing Java developers with a stable, reliable, high-performance, and easy-to-debug JDK. It is also a better choice on the ARM architecture.',
   ],
+  BISHENG_ANCHOR_DATA: [
+    { id: 'architecture', name: 'Architecture' },
+    { id: 'learn', name: 'Learning' },
+    { id: 'link', name: 'Links' },
+  ],
   BISHENG_LINK: [
     {
       IMG: '/img/projects/share/cards-work.png',

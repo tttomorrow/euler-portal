@@ -11,11 +11,6 @@ import BannerIllustration from '/img/projects/secgear/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const i18n = useI18n();
-
-const anchorData = [
-  { id: 'architecture', name: '架构' },
-  { id: 'docs', name: '文档' },
-];
 </script>
 <template>
   <div class="secgear-wraper">
@@ -30,14 +25,17 @@ const anchorData = [
     <MiniDescription :description-desc="i18n.secgear.SECGEAR_DESC" />
     <!-- 架构 -->
     <MiniFrame
-      id="architecture"
+      :id="i18n.secgear.SECGEAR_ANCHOR_DATA[0].id"
       :frame-obj="i18n.secgear.SECGEAR_FRAMEWORK"
       layout="leftAndRight"
     />
     <!-- 文档 -->
-    <MiniDocs id="docs" :docs-obj="i18n.secgear.SECGEAR_DOCUMENT" />
+    <MiniDocs
+      :id="i18n.secgear.SECGEAR_ANCHOR_DATA[1].id"
+      :docs-obj="i18n.secgear.SECGEAR_DOCUMENT"
+    />
 
-    <AppAnchor class="anchor" :data="anchorData" />
+    <AppAnchor class="anchor" :data="i18n.secgear.SECGEAR_ANCHOR_DATA" />
   </div>
 </template>
 

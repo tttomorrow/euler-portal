@@ -13,11 +13,6 @@ import BannerIllustration from '/img/projects/atune/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const i18n = useI18n();
-
-const anchorData = [
-  { id: 'jiagou', name: '架构' },
-  { id: 'docs', name: '文档' },
-];
 </script>
 <template>
   <div class="atune-wraper">
@@ -34,14 +29,17 @@ const anchorData = [
     <MiniDescription :description-desc="i18n.atune.ATUNE_DESC" />
     <!-- 架构 -->
     <MiniFrame
-      id="jiagou"
+      :id="i18n.atune.ATUNE_ANCHOR_DATA[0].id"
       :frame-obj="i18n.atune.ATUNE_FRAMEWORK"
       layout="upAndDown"
     />
     <!-- 文档 -->
-    <MiniDocs id="docs" :docs-obj="i18n.atune.ATUNE_DOCUMENT" />
+    <MiniDocs
+      :id="i18n.atune.ATUNE_ANCHOR_DATA[1].id"
+      :docs-obj="i18n.atune.ATUNE_DOCUMENT"
+    />
 
-    <AppAnchor class="anchor" :data="anchorData" />
+    <AppAnchor class="anchor" :data="i18n.atune.ATUNE_ANCHOR_DATA" />
   </div>
 </template>
 

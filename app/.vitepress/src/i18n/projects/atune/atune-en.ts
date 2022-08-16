@@ -5,53 +5,9 @@ export default {
     'A-Tune is an automatic and intelligent performance tuning engine developed based on openEuler. It adopts AI technologies to ensure the optimal service running. A-Tune builds precise models for services running on the operating system, understands service features dynamically to infer specific applications. And it adjusts the parameters based on service loads to provide the optimal parameter configurations.',
   ],
   ATUNE_MAIL: 'mail to:a-tune@openeuler.org',
-  NAV_TEXT: [
-    {
-      key: '#sourceDownload',
-      name: '资源下载',
-    },
-    {
-      key: '#framework',
-      name: '背景',
-    },
-    {
-      key: '#document',
-      name: '方案介绍',
-      children: [
-        {
-          name: '迁移面临的关键问题',
-          key: '#h2-title-one',
-        },
-        {
-          name: '迁移综合方案概述',
-          key: '#h2-title-two',
-        },
-        {
-          name: 'OS基础兼容性',
-          key: '#h2-title-three',
-        },
-        {
-          name: '兼容性评估',
-          key: '#h2-title-four',
-        },
-        {
-          name: '移植适配',
-          key: '#h2-title-five',
-        },
-        {
-          name: '搬迁实施',
-          key: '#h2-title-six',
-        },
-        {
-          name: '迁移调优',
-          key: '#h2-title-seven',
-        },
-      ],
-    },
-    {
-      key: '#caseGuidance',
-      name: '案例指导',
-    },
+  ATUNE_ANCHOR_DATA: [
+    { id: 'architecture', name: 'Architecture' },
+    { id: 'docs', name: 'Documentation' },
   ],
   ATUNE_LINK: [
     {

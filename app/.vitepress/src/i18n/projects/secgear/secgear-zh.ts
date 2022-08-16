@@ -7,6 +7,10 @@ export default {
     'secGear是面向计算产业的机密计算安全应用开发套件，旨在方便开发者在不同的硬件设备上提供统一开发框架，让用户不感知底层各种机密计算架构和接口的差异，目前secGear支持Intel SGX硬件和ARM Trustzone(安全os支持iTrustee)。',
     'secGear同时在中间件层和服务层提供丰富的扩展能力，让开发者能够方便得调用安全组件，乃至直接使用机密计算安全服务。',
   ],
+  SECGEAR_ANCHOR_DATA: [
+    { id: 'architecture', name: '架构' },
+    { id: 'docs', name: '文档' },
+  ],
   SECGEAR_FRAMEWORK: {
     TITLE_OUTSIDE: '架构',
     TITLE_INSIDE: 'ARCHITECTURE ',
