@@ -181,7 +181,12 @@ onMounted(() => {
     :illustration="search"
   />
   <div class="user-case">
-    <OSearch v-model="keyWord" class="search" @change="searchCase" :placeholder="userCaseData.placeHolder"></OSearch>
+    <OSearch
+      v-model="keyWord"
+      class="search"
+      :placeholder="userCaseData.placeHolder"
+      @change="searchCase"
+    ></OSearch>
     <div class="tag-box" :class="isTopNavMo ? 'tag-top' : ''">
       <TagFilter :label="userCaseData.type" class="tag-pc">
         <OTag

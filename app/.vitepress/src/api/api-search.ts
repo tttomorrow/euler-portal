@@ -64,3 +64,21 @@ export function getSearchCount(params: any) {
   const url = '/api-search/search/count';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
+
+/**
+ * 首页数据卡片筛选
+ * @name getStatistic
+ * @param {}
+ * @return  Array
+ */
+
+export function getStatistic() {
+  const url = '/api-euler/api/search/statistics?type=openEuler';
+  return request
+    .get(url, {
+      headers: {
+        authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
+      },
+    })
+    .then((res: AxiosResponse) => res.data);
+}

@@ -142,7 +142,11 @@ function search() {
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <div v-if="isShowBox" class="header-search">
         <div class="header-search-box">
-          <OSearch v-model="searchInput" :placeholder="searchValue.PLEACHOLDER" @change="search">
+          <OSearch
+            v-model="searchInput"
+            :placeholder="searchValue.PLEACHOLDER"
+            @change="search"
+          >
             <template #suffix>
               <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
             </template>
