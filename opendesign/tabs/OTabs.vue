@@ -11,7 +11,7 @@ const attrs = useAttrs();
 
 <style lang="scss">
 .o-tabs {
-  --o-font-color: var(--o-color-text2);
+  --o-font-color: var(--e-color-text1);
   .el-tabs__nav-wrap {
     &::after {
       display: none;
@@ -19,7 +19,7 @@ const attrs = useAttrs();
     .el-tabs__item {
       color: var(--o-font-color);
       &:hover {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
     }
   }

@@ -99,7 +99,7 @@ onMounted(() => {
     margin-bottom: var(--o-spacing-h1);
     break-inside: avoid;
     padding: var(--o-spacing-h2);
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     @media (max-width: 1080px) {
       width: 100%;
       padding: var(--o-spacing-h3) var(--o-spacing-h3) 0 var(--o-spacing-h3);
@@ -111,13 +111,13 @@ onMounted(() => {
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       &:hover {
-        color: var(--o-color-brand_hover);
+        color: var(--e-color-brand2);
       }
     }
     &-info {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       @media (max-width: 1080px) {
         margin-top: var(--o-spacing-h7);
       }
@@ -164,7 +164,7 @@ onMounted(() => {
         span {
           display: inline-block;
           margin-top: var(--o-spacing-h6);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;

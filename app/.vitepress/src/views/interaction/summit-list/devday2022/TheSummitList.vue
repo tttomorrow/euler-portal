@@ -279,13 +279,13 @@ const sponsorList = [
   margin-bottom: var(--o-spacing-h1);
 }
 .headline {
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   margin-top: var(--o-spacing-h1);
   font-size: 40px;
   opacity: 0.1;
 }
 .subtitle {
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   font-size: var(--o-font-size-h3);
   margin-bottom: var(--o-spacing-h2);
   transform: translateY(-24px);
@@ -299,7 +299,7 @@ const sponsorList = [
     width: 100%;
   }
   &-text {
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     font-size: var(--o-font-size-h8);
     line-height: var(--o-line-height-h8);
     @media (max-width: 780px) {
@@ -323,7 +323,7 @@ const sponsorList = [
   &-construction {
     text-align: center;
     &-guidance {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       font-size: var(--o-font-size-h6);
       line-height: var(--o-line-height-h3);
       margin-bottom: var(--o-spacing-h2);
@@ -346,7 +346,7 @@ const sponsorList = [
       }
     }
     &-company {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       font-size: var(--o-font-size-h6);
       line-height: var(--o-line-height-h3);
       p {
@@ -382,9 +382,9 @@ const sponsorList = [
         &-item {
           cursor: pointer;
           width: 456px;
-          background-color: var(--o-color-bg);
+          background-color: var(--e-color-bg2);
           display: flex;
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
           font-size: var(--o-font-size-h7);
           img {
             margin: var(--o-spacing-h4);

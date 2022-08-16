@@ -257,12 +257,12 @@ const go = (path: string) => {
     }
     .item {
       padding: 40px;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.1s;
       min-height: 180px;
       .item-name {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         font-size: 20px;
         font-weight: 600;
         cursor: pointer;
@@ -281,7 +281,7 @@ const go = (path: string) => {
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
       }
       .more {
         font-size: 20px;
@@ -300,16 +300,16 @@ const go = (path: string) => {
           margin-right: 24px;
         }
         .o-button--text {
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           padding: 8px 12px !important;
           height: auto;
           &:hover {
             .o-icon {
-              color: var(--o-color-brand_hover);
+              color: var(--e-color-brand2);
             }
           }
           .o-icon {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
           }
         }
       }

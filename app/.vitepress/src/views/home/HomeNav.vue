@@ -56,7 +56,7 @@ const imgUrlHover = computed(
   grid-template-columns: repeat(4, minmax(82px, 1fr));
   column-gap: 0;
   row-gap: 0;
-  background: var(--o-color-bg);
+  background: var(--e-color-bg2);
   box-shadow: var(--o-shadow-base);
   z-index: 10;
 
@@ -83,19 +83,19 @@ const imgUrlHover = computed(
     .nav-text {
       margin-left: var(--o-spacing-h5);
       .nav-title {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         line-height: var(--o-line-height-text);
         font-weight: 500;
         font-size: var(--o-font-size-h7);
       }
       .nav-title-en {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         font-size: var(--o-font-size-h7);
       }
       .nav-descriptive {
         line-height: var(--o-line-height-text);
         font-size: var(--o-font-size-text);
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         text-align: left;
       }
     }
@@ -107,9 +107,9 @@ const imgUrlHover = computed(
         display: none !important;
       }
       .nav-text {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         .nav-descriptive {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
       }
     }

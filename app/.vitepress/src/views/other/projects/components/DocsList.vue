@@ -123,10 +123,10 @@ const goLink = (path: string) => {
       .item {
         height: 192px;
         padding: var(--o-spacing-h2) 0 var(--o-spacing-h2) var(--o-spacing-h2);
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         box-shadow: var(--o-shadow-base);
         font-size: var(--o-font-size-h7);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         line-height: var(--o-line-height-h6);
         position: relative;
         &-content {
@@ -136,7 +136,7 @@ const goLink = (path: string) => {
         &-theme {
           height: var(--o-line-height-h7);
           font-size: var(--o-font-size-h7);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           line-height: var(--o-line-height-h7);
           font-weight: 500;
         }
@@ -144,7 +144,7 @@ const goLink = (path: string) => {
           max-width: 256px;
           font-size: var(--o-font-size-text);
           font-weight: 400;
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
           line-height: var(--o-line-height-text);
           overflow: hidden;
           text-overflow: ellipsis;
@@ -162,7 +162,7 @@ const goLink = (path: string) => {
             padding: 0 !important;
             margin-right: var(--o-spacing-h5);
             svg {
-              color: var(--o-color-brand);
+              color: var(--e-color-brand1);
             }
           }
         }
@@ -229,13 +229,13 @@ const goLink = (path: string) => {
 }
 .mobile-docs {
   width: 100%;
-  background-color: var(--o-color-bg2);
+  background-color: var(--e-color-bg1);
   .docs-wrapper {
     .docs-item {
       width: 100%;
       height: 144px;
       margin: var(--o-spacing-h5) 0;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       padding: var(--o-spacing-h5) 0 var(--o-spacing-h5) var(--o-spacing-h6);
       position: relative;
       &-content {
@@ -247,7 +247,7 @@ const goLink = (path: string) => {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
         height: var(--o-line-height-text);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         font-weight: 500;
       }
       &-desc {
@@ -255,7 +255,7 @@ const goLink = (path: string) => {
         line-height: var(--o-line-height-tip);
         margin-top: var(--o-spacing-h8);
         max-width: 190px;
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -273,7 +273,7 @@ const goLink = (path: string) => {
           padding: 0 !important;
           margin-right: var(--o-spacing-h5);
           svg {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
           }
         }
       }

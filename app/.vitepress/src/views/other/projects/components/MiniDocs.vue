@@ -71,7 +71,7 @@ defineProps({
       }
       :deep(.el-tabs__nav) {
         .is-active {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
       }
     }
@@ -89,7 +89,7 @@ defineProps({
           padding: var(--o-spacing-h8) 0 var(--o-spacing-h8) var(--o-spacing-h8);
         }
         :deep(.el-collapse-item__wrap) {
-          background-color: var(--o-color-bg2);
+          background-color: var(--e-color-bg1);
           .el-collapse-item__content {
             padding: 0;
           }

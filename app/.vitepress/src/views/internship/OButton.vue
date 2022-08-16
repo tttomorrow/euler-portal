@@ -70,8 +70,8 @@ const placementSite = computed(() =>
   line-height: 24px;
   font-size: 16px;
   background-color: transparent;
-  border: 1px solid var(--o-color-brand);
-  color: var(--o-color-brand);
+  border: 1px solid var(--e-color-brand1);
+  color: var(--e-color-brand1);
   display: inline-flex;
   align-items: center;
   outline: none;
@@ -81,8 +81,8 @@ const placementSite = computed(() =>
   box-sizing: border-box;
   white-space: nowrap;
   &:hover {
-    border: 1px solid var(--o-color-brand_hover);
-    color: var(--o-color-brand_hover);
+    border: 1px solid var(--e-color-brand2);
+    color: var(--e-color-brand2);
   }
   &--large {
     height: 48px;
@@ -103,13 +103,13 @@ const placementSite = computed(() =>
     :deep(.o-icon) {
       margin-left: 8px;
       transition: all 0.2s linear;
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
     &:hover {
       :deep(.o-icon) {
         -webkit-transform: translateX(4px);
         transform: translateX(4px);
-        color: var(--o-color-brand_hover);
+        color: var(--e-color-brand2);
       }
     }
   }
@@ -127,17 +127,17 @@ const placementSite = computed(() =>
     height: 24px;
     line-height: 24px;
     &:hover {
-      color: var(--o-color-brand) !important;
+      color: var(--e-color-brand1) !important;
     }
   }
   &--primary {
     color: #ffffff;
-    border-color: var(--o-color-brand);
-    background-color: var(--o-color-brand);
+    border-color: var(--e-color-brand1);
+    background-color: var(--e-color-brand1);
     &:hover,
     &:active {
-      border-color: var(--o-color-brand_hover);
-      background-color: var(--o-color-brand_hover);
+      border-color: var(--e-color-brand2);
+      background-color: var(--e-color-brand2);
       color: #ffffff;
       :deep(.o-icon) {
         color: #ffffff;
@@ -145,7 +145,7 @@ const placementSite = computed(() =>
     }
     &.is-disabled,
     &.is-disabled:hover {
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       background-color: var(--o-color-disabled);
       border-color: var(--o-color-disabled);
     }
@@ -157,18 +157,18 @@ const placementSite = computed(() =>
     }
   }
   &--plain {
-    color: var(--o-color-brand);
-    border-color: var(--o-color-brand);
+    color: var(--e-color-brand1);
+    border-color: var(--e-color-brand1);
     &:hover,
     &:active {
-      border-color: var(--o-color-brand_hover);
-      background-color: var(--o-color-brand_hover);
+      border-color: var(--e-color-brand2);
+      background-color: var(--e-color-brand2);
       color: #ffffff;
     }
   }
   &.is-disabled,
   &.is-disabled:hover {
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     background-color: var(--o-color-disabled);
     border-color: var(--o-color-disabled);
     cursor: not-allowed;

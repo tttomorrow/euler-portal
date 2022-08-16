@@ -81,11 +81,11 @@ const tabLiveRoom = (src: string, index: number): void => {
         width: 163px;
         padding: var(--o-spacing-h6) 0;
         cursor: pointer;
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         box-shadow: var(--o-shadow-base);
         margin-bottom: var(--o-spacing-h7);
         p {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
           font-size: var(--o-font-size-h7);
           padding: var(--o-spacing-h8);
         }
@@ -99,9 +99,9 @@ const tabLiveRoom = (src: string, index: number): void => {
         padding-top: var(--o-spacing-h4);
       }
       &-live-active {
-        background-color: var(--o-color-brand);
+        background-color: var(--e-color-brand1);
         p {
-          color: var(--o-color-text);
+          color: var(--e-color-text2);
         }
       }
     }

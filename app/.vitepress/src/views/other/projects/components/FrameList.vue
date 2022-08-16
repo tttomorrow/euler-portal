@@ -42,13 +42,13 @@ defineProps({
 .framelist-wrapper {
   .info {
     padding: var(--o-spacing-h2) 0;
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
   }
   .desc {
     margin: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
     p {
       font-size: var(--o-font-size-text);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       line-height: var(--o-line-height-text);
     }
     &-title {

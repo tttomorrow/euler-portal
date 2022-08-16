@@ -196,7 +196,7 @@ const sizeChange = (val: number) => {
   }
   &-info {
     padding: var(--o-spacing-h4);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
   }
   &-title {
     line-height: var(--o-line-height-h7);

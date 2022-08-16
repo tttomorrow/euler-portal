@@ -173,13 +173,13 @@ onMounted(() => {
   align-items: flex-end;
   span {
     font-size: var(--o-font-size-tip);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
   }
   &-item {
     margin-right: var(--o-spacing-h1);
     span {
       font-size: var(--o-font-size-h7);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       margin-right: var(--o-spacing-h5);
       @media (max-width: 780px) {
         width: 100px;
@@ -205,12 +205,12 @@ onMounted(() => {
     &-text {
       margin-bottom: var(--o-spacing-h8);
       .mo-item-title {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
       }
     }
   }
   .mo-item-odd {
-    background-color: var(--o-color-bg3);
+    background-color: var(--o-color-bg4);
   }
 }
 </style>

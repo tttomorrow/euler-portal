@@ -185,13 +185,13 @@ onMounted(() => {
     box-shadow: var(--o-shadow-base);
     z-index: 13;
     &-name {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
       white-space: nowrap;
     }
     &-location {
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
     }

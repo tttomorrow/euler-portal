@@ -64,7 +64,7 @@ watch(
     cursor: pointer;
     .icon {
       font-size: var(--o-font-size-h5);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
     }
     @media screen and (max-width: 1100px) {
       display: none;
@@ -80,7 +80,7 @@ watch(
 }
 .dark {
   .icon {
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
   }
 }
 </style>

@@ -336,7 +336,7 @@ watch(queryData, () => getSecurityLists(queryData));
     display: none;
     margin: var(--o-spacing-h5) 0;
     width: 100%;
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     :deep(.el-collapse) {
       .el-collapse-item__header {
         padding: 0 8px;
@@ -352,7 +352,7 @@ watch(queryData, () => getSecurityLists(queryData));
     .years {
       padding: 0 8px 8px;
       .selected {
-        background-color: var(--o-color-bg3);
+        background-color: var(--o-color-bg4);
       }
     }
     @media screen and (max-width: 768px) {
@@ -369,7 +369,7 @@ watch(queryData, () => getSecurityLists(queryData));
       width: 56px;
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       line-height: var(--o-line-height-text);
       margin-right: var(--o-spacing-h4);
     }
@@ -380,7 +380,7 @@ watch(queryData, () => getSecurityLists(queryData));
       margin-right: 32px;
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       line-height: var(--o-line-height-text);
 
       cursor: pointer;
@@ -410,7 +410,7 @@ watch(queryData, () => getSecurityLists(queryData));
       width: 100%;
       .selected {
         background-color: #002fa7;
-        color: var(--o-color-text);
+        color: var(--e-color-text2);
       }
       &-item {
         cursor: pointer;
@@ -450,7 +450,7 @@ watch(queryData, () => getSecurityLists(queryData));
       font-weight: 400;
       color: #999999;
       line-height: var(--o-line-height-tip);
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       &:nth-child(odd) {
         background: var(--o-color-bg6);
       }
@@ -470,7 +470,7 @@ watch(queryData, () => getSecurityLists(queryData));
         }
       }
       span {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         margin-right: var(--o-spacing-h8);
       }
     }
@@ -481,7 +481,7 @@ watch(queryData, () => getSecurityLists(queryData));
       display: none;
     }
     .slot-content {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
     }
   }
   .mobile-pagination {

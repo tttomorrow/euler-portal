@@ -460,13 +460,13 @@ const goHome = () => {
       width: 100%;
       font-size: var(--o-font-size-h3);
       line-height: var(--o-line-height-h3);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       margin: 0 auto 8px auto;
     }
     .entry-welcome {
       font-size: var(--o-font-size-text);
       line-height: 22px;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       margin: 0 auto var(--o-spacing-h2) auto;
     }
     .back {
@@ -484,29 +484,29 @@ const goHome = () => {
       align-items: flex-start;
       .article-nav {
         margin-right: 60px;
-        background: var(--o-color-bg);
+        background: var(--e-color-bg2);
         box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         .nav-top {
           width: 360px;
           height: 56px;
-          background: var(--o-color-bg);
+          background: var(--e-color-bg2);
           font-size: 18px;
           line-height: 60px;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           padding-left: var(--o-spacing-h4);
           font-weight: bold;
         }
         :deep(.el-tree) {
           width: 360px;
           overflow: hidden;
-          background-color: var(--o-color-bg);
+          background-color: var(--e-color-bg2);
         }
         :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
           order: 2;
           padding: 12px;
           font-size: var(--o-font-size-h5);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
         :deep(.el-tree-node__expand-icon.expanded) {
           transform: rotate(180deg);
@@ -525,7 +525,7 @@ const goHome = () => {
           display: none;
         }
         :deep(.el-tree-node__children) {
-          background-color: var(--o-color-bg2);
+          background-color: var(--e-color-bg1);
         }
         :deep(.el-tree-node__children .is-current .el-tree-node__content) {
           background-color: transparent;
@@ -537,7 +537,7 @@ const goHome = () => {
             left: 0;
             width: 2px;
             height: 60px;
-            background-color: var(--o-color-brand);
+            background-color: var(--e-color-brand1);
           }
         }
         :deep(.el-tree-node__content:hover) {
@@ -546,7 +546,7 @@ const goHome = () => {
         :deep(.el-tree .el-tree-node__label) {
           font-size: 16px;
           line-height: 16px;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
         :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
           font-size: 14px;
@@ -567,7 +567,7 @@ const goHome = () => {
             &:first-of-type {
               .desc {
                 font-size: var(--o-font-size-text);
-                color: var(--o-color-text2);
+                color: var(--e-color-text1);
                 line-height: 22px;
                 margin-top: 20px;
               }
@@ -575,13 +575,13 @@ const goHome = () => {
                 font-size: var(--o-font-size-h5);
                 line-height: var(--o-line-height-h5);
                 font-weight: 600;
-                color: var(--o-color-text2);
+                color: var(--e-color-text1);
               }
               .download {
                 display: inline-block;
                 width: 104px;
                 height: 28px;
-                background: var(--o-color-brand);
+                background: var(--e-color-brand1);
                 border-radius: 4px;
                 color: #ffffff;
                 font-size: var(--o-font-size-text);
@@ -640,20 +640,20 @@ const goHome = () => {
           font-size: var(--o-font-size-text);
           line-height: 22px;
           padding: var(--o-spacing-h2) 0;
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
           border-bottom: 1px solid var(--o-color-division);
           .teacher {
             margin-top: 20px;
             & > p {
               font-size: 14px;
-              color: var(--o-color-text3);
+              color: var(--e-color-text4);
               margin-bottom: 10px;
               line-height: 36px;
               &:nth-of-type(1) {
                 font-size: var(--o-font-size-h8);
                 line-height: var(--o-line-height-h8);
                 font-weight: 600;
-                color: var(--o-color-text2);
+                color: var(--e-color-text1);
               }
             }
             .techer-img {
@@ -675,20 +675,20 @@ const goHome = () => {
                 .name {
                   font-size: var(--o-font-size-h7);
                   line-height: var(--o-line-height-h7);
-                  color: var(--o-color-text2);
+                  color: var(--e-color-text1);
                   margin-top: 30px;
                 }
                 .position {
                   font-size: 14px;
                   line-height: 22px;
-                  color: var(--o-color-text3);
+                  color: var(--e-color-text4);
                   margin-top: 3px;
                 }
               }
             }
           }
           .welcome {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
             margin-bottom: var(--o-spacing-h5);
           }
           .list1 {
@@ -708,18 +708,18 @@ const goHome = () => {
             line-height: 22px;
             font-weight: 400;
             position: absolute;
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             .o-icon {
               font-size: var(--o-font-size-h8);
-              color: var(--o-color-brand);
+              color: var(--e-color-brand1);
             }
             span:nth-of-type(1) {
               margin-right: 8px;
             }
             &:hover {
-              color: var(--o-color-brand_hover);
+              color: var(--e-color-brand2);
               .o-icon {
-                color: var(--o-color-brand_hover);
+                color: var(--e-color-brand2);
               }
             }
           }
@@ -752,7 +752,7 @@ const goHome = () => {
         left: 48px;
         z-index: 99;
         font-size: 24px;
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
       }
       .mobile-menu {
         width: 100%;
@@ -764,12 +764,12 @@ const goHome = () => {
         .next {
           font-size: 14px;
           font-weight: 400;
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
           line-height: 20px;
         }
         .prev {
           span:nth-of-type(2) {
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             margin-left: var(--o-spacing-h8);
             position: relative;
             top: -2px;
@@ -777,7 +777,7 @@ const goHome = () => {
         }
         .next {
           span:nth-of-type(1) {
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             margin-right: var(--o-spacing-h8);
             position: relative;
             top: -2px;
@@ -790,16 +790,16 @@ const goHome = () => {
         top: 0;
         width: 268px;
         height: 100vh;
-        background: var(--o-color-bg);
+        background: var(--e-color-bg2);
         box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         z-index: 999;
         .nav-top {
           width: 100%;
-          background: var(--o-color-bg);
+          background: var(--e-color-bg2);
           font-size: 14px;
           line-height: 22px;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           padding: var(--o-spacing-h5);
           font-weight: bold;
           display: flex;
@@ -818,13 +818,13 @@ const goHome = () => {
         :deep(.el-tree) {
           width: 100%;
           overflow: hidden;
-          background-color: var(--o-color-bg);
+          background-color: var(--e-color-bg2);
         }
         :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
           order: 2;
           padding: 12px;
           font-size: var(--o-font-size-h8);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
         :deep(.el-tree-node__expand-icon.expanded) {
           transform: rotate(180deg);
@@ -843,7 +843,7 @@ const goHome = () => {
           display: none;
         }
         :deep(.el-tree-node__children .is-current .el-tree-node__label) {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
         :deep(.el-tree--highlight-current
             .el-tree-node.is-current
@@ -851,12 +851,12 @@ const goHome = () => {
           background-color: transparent;
         }
         :deep(.el-tree-node__children) {
-          background-color: var(--o-color-bg2);
+          background-color: var(--e-color-bg1);
         }
         :deep(.el-tree .el-tree-node__label) {
           font-size: 14px;
           line-height: 16px;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
         :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
           font-size: 14px;
@@ -872,17 +872,17 @@ const goHome = () => {
         width: 100%;
         margin: 0 auto;
         padding: var(--o-spacing-h5);
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         h1 {
           font-size: var(--o-font-size-h8);
           line-height: var(--o-line-height-h8);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           font-weight: 500;
         }
         .entry-welcome {
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           margin-top: var(--o-spacing-h8);
         }
         .infomation {
@@ -890,12 +890,12 @@ const goHome = () => {
           .title {
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             font-weight: 600;
           }
           .desc {
             font-size: 12px;
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             line-height: 20px;
             margin-top: var(--o-spacing-h8);
           }
@@ -915,13 +915,13 @@ const goHome = () => {
         .text {
           p {
             font-size: 14px;
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             line-height: 24px;
           }
           .teacher {
             margin-top: 16px;
             & > p {
-              color: var(--o-color-text2);
+              color: var(--e-color-text1);
             }
             .item {
               display: flex;
@@ -937,10 +937,10 @@ const goHome = () => {
               div {
                 p {
                   font-size: 12px;
-                  color: var(--o-color-text2);
+                  color: var(--e-color-text1);
                   line-height: 16px;
                   &:last-of-type {
-                    color: var(--o-color-text2);
+                    color: var(--e-color-text1);
                     margin-top: 10px;
                   }
                 }
@@ -948,7 +948,7 @@ const goHome = () => {
             }
           }
           .welcome {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
             margin-bottom: var(--o-spacing-h5);
           }
         }

@@ -61,7 +61,7 @@ const changeImg = function (url: string) {
   margin-bottom: var(--o-spacing-h2);
   .content {
     margin: 0 auto;
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     padding: 0 150px;
     box-sizing: border-box;
     display: grid;
@@ -71,7 +71,7 @@ const changeImg = function (url: string) {
       max-width: 482px;
       display: flex;
       padding: var(--o-spacing-h2) 0;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       img {
         display: block;
         width: 80px;
@@ -84,7 +84,7 @@ const changeImg = function (url: string) {
       &-desc {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
       }
       &-bottom {
         border-bottom: 1px solid var(--o-color-division);

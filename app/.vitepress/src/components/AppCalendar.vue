@@ -443,7 +443,7 @@ const watchData = watch(
     font-size: var(--o-font-size-h8);
     .o-icon {
       font-size: var(--o-font-size-h5);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
     }
   }
   .month-date {
@@ -475,12 +475,12 @@ const watchData = watch(
       cursor: pointer;
       padding: 12px;
       &:hover {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
     }
     .active {
-      background-color: var(--o-color-brand);
-      color: var(--o-color-text) !important;
+      background-color: var(--e-color-brand1);
+      color: var(--e-color-text2) !important;
     }
   }
   .o-icon {
@@ -490,10 +490,10 @@ const watchData = watch(
     color: #000;
     transition: color 0.2s;
     &:hover {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
       svg {
-        color: var(--o-color-brand_hover);
-        fill: var(--o-color-brand_hover);
+        color: var(--e-color-brand2);
+        fill: var(--e-color-brand2);
       }
     }
   }
@@ -507,7 +507,7 @@ const watchData = watch(
       display: block;
       padding: 0;
       @media screen and (max-width: 768px) {
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         .left-title {
           margin: 0;
         }
@@ -515,7 +515,7 @@ const watchData = watch(
     }
     .is-home {
       :deep(.el-calendar__header) {
-        background-color: var(--o-color-bg2);
+        background-color: var(--e-color-bg1);
       }
     }
     .collapse-box-mo {
@@ -532,7 +532,7 @@ const watchData = watch(
             font-size: var(--o-font-size-text);
             font-weight: 700;
             transform: rotate(90deg);
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
           }
           .el-icon.is-active {
             transform: rotate(270deg);
@@ -579,7 +579,7 @@ const watchData = watch(
         th {
           text-align: center;
         }
-        background-color: var(--o-color-bg3);
+        background-color: var(--o-color-bg4);
       }
       @media screen and (max-width: 768px) {
         display: none;
@@ -588,17 +588,17 @@ const watchData = watch(
       .is-today {
         .el-calendar-day {
           .day-box {
-            color: var(--o-color-text3);
-            background-color: var(--o-color-bg3);
+            color: var(--e-color-text4);
+            background-color: var(--o-color-bg4);
           }
         }
       }
       .is-selected {
         .el-calendar-day {
           .day-box {
-            background-color: var(--o-color-brand);
+            background-color: var(--e-color-brand1);
             .date-calender {
-              color: var(--o-color-text);
+              color: var(--e-color-text2);
             }
           }
         }
@@ -642,7 +642,7 @@ const watchData = watch(
               width: 20px;
               height: 20px;
               border-radius: 0 0 0 20px;
-              background-color: var(--o-color-brand_hover);
+              background-color: var(--e-color-brand2);
               @media screen and (max-width: 768px) {
                 width: 12px;
                 height: 12px;
@@ -713,7 +713,7 @@ const watchData = watch(
         @media screen and (max-width: 768px) {
           padding-bottom: var(--o-spacing-h5);
           justify-content: center;
-          background-color: var(--o-color-bg2);
+          background-color: var(--e-color-bg1);
         }
         .el-tabs__header {
           margin: 0;
@@ -723,8 +723,8 @@ const watchData = watch(
         line-height: 21px;
         padding: var(--o-spacing-h6);
         text-align: center;
-        color: var(--o-color-text3);
-        background-color: var(--o-color-bg3);
+        color: var(--e-color-text4);
+        background-color: var(--o-color-bg4);
         @media screen and (max-width: 768px) {
           padding: var(--o-spacing-h8) 0;
           font-size: var(--o-font-size-tip);
@@ -734,7 +734,7 @@ const watchData = watch(
       .meeting-list {
         padding: var(--o-spacing-h8) 0 0 var(--o-spacing-h8);
         height: 402px;
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         overflow-y: scroll;
         box-shadow: var(--o-shadow-base);
         .el-collapse {
@@ -769,12 +769,12 @@ const watchData = watch(
         }
         &::-webkit-scrollbar-track {
           border-radius: 4px;
-          background-color: var(--o-color-bg);
+          background-color: var(--e-color-bg2);
         }
 
         &::-webkit-scrollbar {
           width: 6px;
-          background-color: var(--o-color-bg);
+          background-color: var(--e-color-bg2);
         }
 
         &::-webkit-scrollbar-thumb {
@@ -847,11 +847,11 @@ const watchData = watch(
               line-height: var(--o-line-height-h8);
               .o-icon {
                 margin: 0 5px;
-                color: var(--o-color-brand);
+                color: var(--e-color-brand1);
                 font-size: var(--o-font-size-h5);
                 transition: all 0.3s;
                 svg {
-                  color: var(--o-color-brand);
+                  color: var(--e-color-brand1);
                 }
               }
               &:hover {
@@ -883,7 +883,7 @@ const watchData = watch(
               width: 24px;
               .o-icon {
                 font-size: var(--o-font-size-h5);
-                color: var(--o-color-text2);
+                color: var(--e-color-text1);
                 transition: all 0.3s;
               }
               .reversal {
@@ -892,7 +892,7 @@ const watchData = watch(
             }
           }
           @media screen and (max-width: 768px) {
-            background-color: var(--o-color-bg);
+            background-color: var(--e-color-bg2);
             padding: var(--o-spacing-h6);
             border-left-width: 2px;
             .meet-left {
@@ -908,7 +908,7 @@ const watchData = watch(
                 overflow: hidden;
                 text-overflow: ellipsis;
                 font-size: var(--o-font-size-tip);
-                color: var(--o-color-text3);
+                color: var(--e-color-text4);
               }
             }
             .item-right {
@@ -928,7 +928,7 @@ const watchData = watch(
           }
         }
         .meet-detail {
-          color: var(--o-color-text3);
+          color: var(--e-color-text4);
           padding-top: 10px;
           .meeting-item {
             display: flex;
@@ -990,7 +990,7 @@ const watchData = watch(
       width: 345px;
       align-items: center;
       flex-direction: column;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
     }
   }
 }

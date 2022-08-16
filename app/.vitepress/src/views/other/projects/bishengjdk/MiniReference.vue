@@ -67,10 +67,10 @@ const goLink = (path: string) => {
     .item {
       width: 100%;
       height: 96px;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       box-shadow: var(--o-shadow-base);
       font-size: var(--o-font-size-h7);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       line-height: var(--o-height-h6);
       position: relative;
       .link {
@@ -83,7 +83,7 @@ const goLink = (path: string) => {
           padding: 0 !important;
           margin-right: 10px;
           svg {
-            color: var(--o-color-brand);
+            color: var(--e-color-brand1);
           }
         }
       }
