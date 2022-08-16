@@ -519,7 +519,7 @@ const goHome = () => {
         :deep(.el-tree--highlight-current
             .el-tree-node.is-current
             > .el-tree-node__content) {
-          background-color: var(--o-color-bg6);
+          background-color: var(--e-color-bg4);
         }
         :deep(.el-tree-node__children .el-tree-node__expand-icon) {
           display: none;
@@ -541,7 +541,7 @@ const goHome = () => {
           }
         }
         :deep(.el-tree-node__content:hover) {
-          background-color: var(--o-color-bg6);
+          background-color: var(--e-color-bg4);
         }
         :deep(.el-tree .el-tree-node__label) {
           font-size: 16px;
@@ -562,7 +562,7 @@ const goHome = () => {
         max-width: 864px;
         .infomation {
           padding-bottom: 30px;
-          border-bottom: 1px solid var(--o-color-division);
+          border-bottom: 1px solid var(--e-color-division1);
           & > div {
             &:first-of-type {
               .desc {
@@ -603,7 +603,7 @@ const goHome = () => {
           min-width: 60%;
           position: relative;
           padding: 30px 0;
-          border-bottom: 1px solid var(--o-color-division);
+          border-bottom: 1px solid var(--e-color-division1);
           @media (max-width: 1400px) {
             width: 560px;
             height: 375px;
@@ -641,7 +641,7 @@ const goHome = () => {
           line-height: 22px;
           padding: var(--o-spacing-h2) 0;
           color: var(--e-color-text4);
-          border-bottom: 1px solid var(--o-color-division);
+          border-bottom: 1px solid var(--e-color-division1);
           .teacher {
             margin-top: 20px;
             & > p {
@@ -832,7 +832,7 @@ const goHome = () => {
         :deep(.el-tree--highlight-current
             .el-tree-node.is-current
             > .el-tree-node__content) {
-          background-color: var(--o-color-bg6);
+          background-color: var(--e-color-bg4);
         }
         :deep(.el-tree-node:nth-of-type(1)
             > .el-tree-node__content
@@ -954,8 +954,8 @@ const goHome = () => {
         }
         .text,
         .video {
-          border-top: 1px solid var(--o-color-division);
-          border-bottom: 1px solid var(--o-color-division);
+          border-top: 1px solid var(--e-color-division1);
+          border-bottom: 1px solid var(--e-color-division1);
           padding: var(--o-spacing-h5) 0;
           margin-top: var(--o-spacing-h5);
         }

@@ -96,6 +96,10 @@ function turnPage(option: string) {
     currentPage.value = currentPage.value + 1;
   }
 }
+// 移动端跳转翻页
+function jumpPage(page: number) {
+  currentPage.value = page;
+}
 // 点击跳转案例详情页面
 function goDetail(link: string, item: any) {
   window.open('/' + item.lang + '/' + link.replace('index', ''));
@@ -249,6 +253,7 @@ onMounted(() => {
         :current-page="currentPage"
         :total-page="totalPage"
         @turn-page="turnPage"
+        @jump-page="jumpPage"
       />
     </div>
   </div>
