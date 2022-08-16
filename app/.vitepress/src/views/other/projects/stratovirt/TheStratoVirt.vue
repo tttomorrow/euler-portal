@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { useI18n } from '@/i18n';
 
 import MiniCards from '../components/MiniCards.vue';
@@ -8,19 +7,12 @@ import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import MiniFeatures from './MiniFeatures.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import useWindowResize from '@/components/hooks/useWindowResize';
 import AppAnchor from '@/components/AppAnchor.vue';
 
 import BannerIllustration from '/img/projects/stratovirt/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const i18n = useI18n();
-const isPC = ref(true);
-if (useWindowResize().value < 767) {
-  isPC.value = false;
-} else {
-  isPC.value = true;
-}
 
 const anchorData = [
   { id: 'feature', name: '特征' },
@@ -50,23 +42,26 @@ const anchorData = [
     <!-- 架构 -->
     <MiniFrame
       id="architecture"
-      :device="isPC"
       :frame-obj="i18n.stratovirt.SVIRT_FRAMEWORK"
       layout="leftAndRight"
     />
     <!-- 文档 -->
-    <MiniDocs
-      id="docs"
-      :device="isPC"
-      :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT"
-    />
+    <MiniDocs id="docs" :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT" />
 
-    <AppAnchor :data="anchorData" />
+    <AppAnchor class="anchor" :data="anchorData" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .svirt-wraper {
   margin: 0 auto;
+  .anchor {
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
 }
 </style>

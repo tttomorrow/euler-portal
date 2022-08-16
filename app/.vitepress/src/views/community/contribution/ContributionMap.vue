@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useRouter } from 'vitepress';
 
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
-import useWindowResize from '@/components/hooks/useWindowResize';
 
 import ContributionMap from '/img/community/contribution/contribution-map.png';
 import ContributionMapDark from '/img/community/contribution/contribution-map-dark.png';
@@ -17,12 +16,6 @@ const router = useRouter();
 const isDark = computed(() => {
   return commonStore.theme === 'dark' ? true : false;
 });
-const isPC = ref(true);
-if (useWindowResize().value < 767) {
-  isPC.value = false;
-} else {
-  isPC.value = true;
-}
 const goLink = function (url: string, isBlank: boolean) {
   if (isBlank) {
     window.open(url);
@@ -33,7 +26,7 @@ const goLink = function (url: string, isBlank: boolean) {
 </script>
 <template>
   <div class="content-map">
-    <div v-if="isPC" class="content-map-img">
+    <div class="content-map-img">
       <img v-show="!isDark" :src="ContributionMap" />
       <img v-show="isDark" :src="ContributionMapDark" />
       <!-- 定位的空标签 -->
@@ -44,7 +37,7 @@ const goLink = function (url: string, isBlank: boolean) {
         @click="goLink(item.URL, item.BLANK)"
       ></div>
     </div>
-    <div v-else class="content-map-mobile-img">
+    <div class="content-map-mobile-img">
       <img v-show="!isDark" :src="ContributionMapMobile" />
       <img v-show="isDark" :src="ContributionMapMobileDark" />
       <div
@@ -65,7 +58,7 @@ const goLink = function (url: string, isBlank: boolean) {
     position: relative;
     display: block;
     margin: 0 auto;
-    background-color: var(--o-color-bg6);
+    background-color: var(--e-color-bg4);
     img {
       width: 1034px;
       display: block;
@@ -85,6 +78,9 @@ const goLink = function (url: string, isBlank: boolean) {
       position: absolute;
       display: block;
       cursor: pointer;
+    }
+    @media screen and (max-width: 767px) {
+      display: none;
     }
     @media screen and (min-width: 1440px) {
       width: 1416px;
@@ -876,6 +872,9 @@ const goLink = function (url: string, isBlank: boolean) {
     margin: 0 auto;
     margin-top: var(--o-spacing-h2);
     padding: 0 var(--o-spacing-h5);
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
     img {
       width: 100%;
     }
