@@ -243,7 +243,7 @@ h3 {
 }
 .user {
   &-mobile {
-    background-color: var(--o-color-bg4);
+    background-color: var(--e-color-bg4);
     > :nth-child(1) {
       margin-top: 0px;
     }

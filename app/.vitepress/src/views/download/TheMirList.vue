@@ -290,7 +290,7 @@ onMounted(async () => {
   }
   &-mobile {
     > :nth-child(odd) {
-      background-color: var(--o-color-bg4);
+      background-color: var(--e-color-bg4);
     }
 
     display: none;
@@ -359,7 +359,7 @@ onMounted(async () => {
   }
 
   :deep(.mirror-list-header) {
-    background: var(--o-color-bg4);
+    background: var(--e-color-bg4);
     font-size: var(--o-font-size-h8);
     font-weight: 400;
     color: var(--e-color-text1);

@@ -19,7 +19,7 @@ const classNames = computed(() => {
   --o-pagination-font-color: var(--e-color-text1);
   --o-pagination-font-color_active: var(--e-color-brand3);
 
-  --o-pagination-bg-color: var(--o-color-bg4);
+  --o-pagination-bg-color: var(--e-color-bg4);
   --o-pagination-bg-color_hover: var(--e-color-brand5);
   --o-pagination-bg-color_selected: var(--e-color-brand5);
   --o-pagination-bg-color_disabled: var(--o-color-secondary);

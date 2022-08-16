@@ -579,7 +579,7 @@ const watchData = watch(
         th {
           text-align: center;
         }
-        background-color: var(--o-color-bg4);
+        background-color: var(--e-color-bg4);
       }
       @media screen and (max-width: 768px) {
         display: none;
@@ -589,7 +589,7 @@ const watchData = watch(
         .el-calendar-day {
           .day-box {
             color: var(--e-color-text4);
-            background-color: var(--o-color-bg4);
+            background-color: var(--e-color-bg4);
           }
         }
       }
@@ -724,7 +724,7 @@ const watchData = watch(
         padding: var(--o-spacing-h6);
         text-align: center;
         color: var(--e-color-text4);
-        background-color: var(--o-color-bg4);
+        background-color: var(--e-color-bg4);
         @media screen and (max-width: 768px) {
           padding: var(--o-spacing-h8) 0;
           font-size: var(--o-font-size-tip);

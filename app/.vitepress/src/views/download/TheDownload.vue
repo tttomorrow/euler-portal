@@ -213,7 +213,7 @@ onMounted(() => {
         <OSwitch
           v-model="activeLTS"
           active-color="var(--e-color-brand1)"
-          inactive-color="var(--o-color-bg4)"
+          inactive-color="var(--e-color-bg4)"
           @change="handleLSTClick"
         />
       </TagFilter>
@@ -307,7 +307,7 @@ onMounted(() => {
         <OSwitch
           v-model="activeLTS"
           active-color="var(--e-color-brand1)"
-          inactive-color="var(--o-color-bg4)"
+          inactive-color="var(--e-color-bg4)"
           @change="handleLSTClick"
         />
         <div class="filter-drawer-button">
