@@ -277,7 +277,7 @@ onMounted(async () => {
       .room-item-pc {
         display: flex;
         padding-bottom: var(--o-spacing-h2);
-        border-bottom: 1px solid var(--o-color-division);
+        border-bottom: 1px solid var(--e-color-neutral11);
         p {
           text-align: left;
         }
@@ -359,7 +359,7 @@ onMounted(async () => {
         margin: 0;
         grid-template-columns: repeat(1, minmax(300px, 1fr));
         .room-item {
-          border-bottom: 1px solid var(--o-color-division);
+          border-bottom: 1px solid var(--e-color-neutral11);
 
           .room-item-pc {
             border-bottom: none;

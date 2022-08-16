@@ -313,7 +313,7 @@ export default {
     },
   ],
   IMG_CAROUSE: {
-    TITLE: '面向数字基础设施的开源操作系统',
+    TITLE: 'Open Source Operating System for Digital Infrastructure',
     BUTTON: 'Try Now',
     TRY_URL: 'community/contribution/detail.html',
     LIST: [
@@ -376,9 +376,10 @@ export default {
   COMMUNITY_ACTIVITY: {
     TITLE: 'community activity',
     CARD: {
-      TITLE: 'openEuler社区活力',
-      CONTENT: 'openEuler也是一个开源的操作系统技术平台，鼓励社区贡献、合作。',
-      VIEW_DETAILS: '查看贡献详情',
+      TITLE: 'openEuler Community Vitality',
+      CONTENT:
+        'openEuler is an open platform for operating system technologies that encourages contributions and cooperation.',
+      VIEW_DETAILS: 'Learn More',
       LINK: 'https://datastat.openeuler.org/en/overview',
     },
   },

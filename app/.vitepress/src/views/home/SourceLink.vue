@@ -70,7 +70,7 @@ const imgContent = (item: { PC: any; MOBILE: any }) => {
     align-items: center;
     margin: 0px -1px -1px 0px;
     padding: var(--o-spacing-h4);
-    border: 1px solid var(--o-color-division);
+    border: 1px solid var(--e-color-neutral11);
     background-color: var(--e-color-bg2);
     max-height: 120px;
     img {

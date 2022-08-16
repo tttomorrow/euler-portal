@@ -66,7 +66,7 @@ const imgUrlHover = computed(
     display: flex;
 
     align-items: center;
-    border-left: 1px solid var(--o-color-division);
+    border-left: 1px solid var(--e-color-neutral11);
     .nav-item-icon-hover {
       display: none !important;
     }
@@ -131,7 +131,7 @@ const imgUrlHover = computed(
       content: '';
       width: 1px;
       height: calc(100% - 48px);
-      background-color: var(--o-color-division);
+      background-color: var(--e-color-neutral11);
     }
     .nav-item {
       padding: 0;
@@ -160,7 +160,7 @@ const imgUrlHover = computed(
     .nav-item:nth-child(-n + 2) {
       padding-top: 0;
       padding-bottom: var(--o-spacing-h6);
-      border-bottom: 1px solid var(--o-color-division);
+      border-bottom: 1px solid var(--e-color-neutral11);
     }
     .nav-item:nth-child(2) {
       position: relative;

@@ -225,7 +225,7 @@ $banner-color: #fff;
     margin: 0 4px;
   }
   .swiper-pagination-bullet-active {
-    background: var(--o-color-auxiliary);
+    background: var(--e-color-yellow5);
     opacity: 1;
   }
   @media screen and (max-width: 1439px) {
