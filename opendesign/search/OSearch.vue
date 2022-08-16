@@ -30,10 +30,10 @@ const attrs = useAttrs();
 .o-search {
   --o-search-height: 36px;
   --o-search-border-color: var(--o-color-base_inverse);
-  --o-search-font-color: var(--o-color-text2);
+  --o-search-font-color: var(--e-color-text1);
   --o-search-font-size: var(--o-font-size-text);
   --o-search-line-height: var(--o-line-height-text);
-  --o-search-color-bg: var(--o-color-bg);
+  --o-search-color-bg: var(--e-color-bg2);
 
   &.el-input {
     font-size: var(--o-font-size-text);
@@ -47,7 +47,7 @@ const attrs = useAttrs();
       .el-input__prefix-inner {
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-heihgt-h5);
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
       }
 
       svg {

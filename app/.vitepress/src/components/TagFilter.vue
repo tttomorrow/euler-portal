@@ -38,7 +38,7 @@ const toggle = () => {
 <style lang="scss" scoped>
 .tag-filter {
   display: grid;
-  background: var(--o-color-bg);
+  background: var(--e-color-bg2);
   padding: var(--o-spacing-h6) 0;
   grid-template-columns: 60px auto 60px;
   gap: var(--o-spacing-h4);
@@ -46,7 +46,7 @@ const toggle = () => {
   align-items: baseline;
   .label {
     font-size: var(--o-font-size-text);
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     width: 60px;
     text-align: left;
     line-height: var(--o-line-height-h6);
@@ -59,7 +59,7 @@ const toggle = () => {
     .icon {
       font-size: var(--o-font-size-h5);
       cursor: pointer;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
     }
     &.active {
       transform: rotate(-180deg);

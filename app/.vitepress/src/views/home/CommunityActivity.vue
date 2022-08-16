@@ -2,14 +2,34 @@
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
+import { onMounted, Ref, ref } from 'vue';
+import { getStatistic } from '@/api/api-search';
 
 const commonStore = useCommon();
 
 const i18n = useI18n();
 
+const roundList: Ref<any[]> = ref([]);
+
 const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
+
+const addValue = (arr: any) => {
+  const temp = i18n.value.home.HOME_ROUND.ROUND_LIST;
+  temp.forEach((item: { ROUND_VALUE: any; ROUND_KEY: string | number }) => {
+    item.ROUND_VALUE = arr[item.ROUND_KEY];
+  });
+  return temp;
+};
+onMounted(async () => {
+  try {
+    const responeData = await getStatistic();
+    roundList.value = addValue(responeData?.data);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+});
 </script>
 
 <template>
@@ -40,7 +60,7 @@ const handleGo = (path: string) => {
       <OCard class="round-card" :style="{ padding: '0px' }">
         <div class="round-list">
           <div
-            v-for="item in i18n.home.HOME_ROUND.ROUND_LIST"
+            v-for="item in roundList"
             :key="item.ROUND_TEXT"
             class="round-item"
           >
@@ -106,7 +126,7 @@ const handleGo = (path: string) => {
   &-value {
     font-size: var(--o-font-size-h5);
     font-weight: 500;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h5);
     margin-top: var(--o-spacing-h5);
     @media (max-width: 768px) {
@@ -119,7 +139,7 @@ const handleGo = (path: string) => {
   &-title {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
     margin-top: var(--o-spacing-h8);
     @media (max-width: 768px) {
@@ -145,7 +165,7 @@ const handleGo = (path: string) => {
     margin-bottom: var(--o-spacing-h2);
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -159,7 +179,7 @@ const handleGo = (path: string) => {
   &-title {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
@@ -170,7 +190,7 @@ const handleGo = (path: string) => {
   &-word {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h5);
     overflow: hidden;
@@ -201,7 +221,7 @@ const handleGo = (path: string) => {
   &-detail {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h4);
     display: flex;
@@ -210,13 +230,13 @@ const handleGo = (path: string) => {
     align-items: center;
     padding: 0;
     &:hover {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
 
     &-icon {
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
 
     @media (max-width: 768px) {

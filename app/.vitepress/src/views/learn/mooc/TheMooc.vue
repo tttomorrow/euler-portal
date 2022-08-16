@@ -78,7 +78,7 @@ const i18n = useI18n();
       // min-width: 420px;
       padding: var(--o-spacing-h2);
       position: relative;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       flex-grow: 1;
       @media (max-width: 768px) {
         padding: var(--o-spacing-h5);
@@ -86,7 +86,7 @@ const i18n = useI18n();
       h3 {
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-height-h5);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         @media (max-width: 768px) {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
@@ -95,7 +95,7 @@ const i18n = useI18n();
       p {
         font-size: var(--o-font-size-text);
         line-height: 22px;
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         margin-top: var(--o-spacing-h5);
         @media (max-width: 768px) {
           font-size: var(--o-font-size-tip);

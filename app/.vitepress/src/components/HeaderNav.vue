@@ -116,22 +116,22 @@ const toggleSubDebounced = debounce(
       padding: 0 var(--o-spacing-h4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-h8);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       cursor: pointer;
 
       &.active {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         &::after {
-          background: var(--o-color-brand);
+          background: var(--e-color-brand1);
         }
       }
       &.hover {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         .sub-menu {
           transform: translate(-50%) scaleY(1);
         }
         &::after {
-          background: var(--o-color-brand);
+          background: var(--e-color-brand1);
         }
       }
 
@@ -151,7 +151,7 @@ const toggleSubDebounced = debounce(
         top: 80px;
         left: 50%;
         right: 0;
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         transform: translate(-50%) scaleY(0);
         transform-origin: top;
         transition: all 0.3s ease-in-out;
@@ -165,18 +165,18 @@ const toggleSubDebounced = debounce(
           line-height: var(--o-line-height-h3);
           text-align: center;
           font-size: var(--o-font-size-text);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           display: block;
           white-space: nowrap;
           padding: 0 var(--o-spacing-h8);
           min-width: 106px;
           &.active {
-            background-color: var(--o-color-brand);
+            background-color: var(--e-color-brand1);
             color: var(--theme-card-bg);
           }
           &:hover {
-            background-color: var(--o-color-brand);
-            color: var(--o-color-text);
+            background-color: var(--e-color-brand1);
+            color: var(--e-color-text2);
           }
         }
       }
@@ -191,7 +191,7 @@ const toggleSubDebounced = debounce(
     transition: all 0.3s ease-in-out;
     display: block;
     z-index: 9;
-    background: var(--o-color-brand);
+    background: var(--e-color-brand1);
   }
 }
 </style>

@@ -24,12 +24,30 @@ export function getCveList(pages: cveQuery) {
 }
 
 /**
+ * 调用接口获取Cve详情信息
+ * @name getCveDetail
+ */
+export function getCveDetail(id: string, name: string) {
+  const url = `/api-euler/api-cve/cve-security-notice-server/cvedatabase/getByCveIdAndPackageName?cveId=${id}&packageName=${name}`;
+  return request.get(url).then((res: AxiosResponse) => res.data);
+}
+
+/**
+ * 调用接口获取Cve详情影响产品信息
+ * @name getAffectedProduct
+ */
+export function getAffectedProduct(id: string, name: string) {
+  const url = `/api-euler/api-cve/cve-security-notice-server/cvedatabase/getCVEProductPackageList?cveId=${id}&packageName=${name}`;
+  return request.get(url).then((res: AxiosResponse) => res.data);
+}
+
+/**
  * 调用接口获取Security详情
  * @name getSecurityDetail
  */
 export function getSecurityDetail(params: any) {
   const url = `/api-euler/api-cve/cve-security-notice-server/securitynotice/getBySecurityNoticeNo?securityNoticeNo=${params.securityNoticeNo}`;
-  return request.get(url).then((res: AxiosResponse) => res.data);
+  return request.get(url).then((res: AxiosResponse) => res.data.result);
 }
 
 /**

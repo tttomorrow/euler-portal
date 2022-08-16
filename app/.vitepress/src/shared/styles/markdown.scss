@@ -4,7 +4,7 @@
   padding: var(--o-spacing-h2);
   margin: 0 auto;
   margin-top: var(--o-spacing-h2);
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
   --o-color-table: #dfe1e8; // 表格边框
   @media (max-width: 1416px) {
     padding: var(--o-spacing-h7);
@@ -20,7 +20,7 @@
   h4,
   h5,
   h6 {
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     font-weight: normal;
 
     a {
@@ -32,7 +32,7 @@
     margin: var(--o-spacing-h1) var(--o-spacing-h1);
     border: none;
     height: 1px;
-    background-color: var(--o-color-bg4);
+    background-color: var(--e-color-bg4);
   }
 
   h1 {
@@ -77,7 +77,7 @@
     margin-top: var(--o-spacing-h8);
     font-size: var(--o-font-size-text);
     font-weight: normal;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: var(--o-line-height-text);
     @media screen and (max-width: 1416px) {
       font-size: var(--o-font-size-tip);
@@ -106,13 +106,13 @@
 
     tr {
       height: 36px;
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       border-bottom: 1px solid var(--o-color-table);
 
       th {
         font-size: var(--o-font-size-h8);
-        background-color: var(--o-color-bg3);
-        color: var(--o-color-text2);
+        background-color: var(--e-color-bg4);
+        color: var(--e-color-text1);
       }
     }
   }
@@ -145,7 +145,7 @@
   div[class*='language-'] {
     position: relative;
     margin: 8px 0;
-    background-color: var(--o-color-bg2);
+    background-color: var(--e-color-bg1);
     overflow-x: auto;
   }
   [class*='language-'] code,

@@ -1,25 +1,53 @@
 :root.dark {
-  --o-color-brand: #406fe7; // 品牌色
+  // 成功色
+  --e-color-success1: var(--e-color-yellowgreen5); // normal
+  --e-color-success2: var(--e-color-yellowgreen7); // hover
+  --e-color-success3: var(--e-color-yellowgreen2); // disabled
 
-  --o-color-text: #000000; // 文字颜色
-  --o-color-text2: #ffffff; // 文字颜色1
-  --o-color-text3: #b2b2b2ff; // 文字颜色3
+  // 告警色
+  --e-color-warning1: var(--e-color-orange5); // normal
+  --e-color-warning2: var(--e-color-orange7); // hover
+  --e-color-warning3: var(--e-color-orange1); // disabled
 
-  --o-color-bg: #1e1e1e; // 背景颜色
-  --o-color-bg2: #121212; // 背景颜色2
-  --o-color-bg3: rgba(64, 111, 231, 0.1); // 背景颜色3
-  --o-color-bg4: #333333ff; // 背景颜色4
-  --o-color-bg5: #1a212bff; // 背景颜色5
-  --o-color-bg6: #333333ff; // 背景颜色6
+  // 错误色
+  --e-color-error1: var(--e-color-red5); // normal
+  --e-color-error2: var(--e-color-red7); // hover
+  --e-color-error3: var(--e-color-red1); // disabled
 
-  --o-color-division: #2d2d2d;
-  --o-color-shadow: rgba(0, 0, 0, 0.42); // 阴影颜色
+  // 品牌色
+  --e-color-brand1: var(--e-color-kleinblue8); // 常规
+  --e-color-brand2: var(--e-color-kleinblue9); // 悬浮
+  --e-color-brand3: var(--e-color-kleinblue5); // 点击确认
+  --e-color-brand4: var(--e-color-kleinblue7); // 特殊场景
+  --e-color-brand5: var(--e-color-kleinblue3); // 普通禁用
+  --e-color-brand6: var(--e-color-kleinblue3); // 文字禁用
 
-  --o-shadow-base: 0px 1px 7px 0px rgba(0, 0, 0, 0.3); // 一级投影，应用场景：默认状态卡片、楼层、导航栏等
-  --o-shadow-base_hover: 0px 6px 18px 0px rgba(0, 0, 0, 0.42); // 一级投影hover态
-  --0-shadow-secondary: 0px 6px 18px 0px rgba(0, 0, 0, 0.42); // 二级投影
-  --o-shadow-secondary_hover: 0px 12px 42px 0px rgba(0, 0, 0, 0.72); // 二级投影hover态
-  --o-shadow-overlay: 0px 10px 32px rbga(0, 0, 0, 0.54); // 覆盖投影，应用场景：信息提示（tips，活动进入按钮等）
-  --o-shadow-overlay_hover: 0px 12px 42px 0px rgba(0, 0, 0, 0.72); // 覆盖投影hover态
-  --o-shadow-pop: 0px 12px 42px rbga(0, 0, 0, 0.72); // 弹出层投影：应用场景：模态框弹窗
+  // 文字颜色
+  --e-color-text1: var(--e-color-white); // 强调/正文标题
+  --e-color-text2: var(--e-color-black); // 强调/正文标题
+  --e-color-text3: var(--e-color-neutral11); // 次强调/正文标题
+  --e-color-text4: var(--e-color-neutral9); // 次要信息/正文
+  --e-color-text5: var(--e-color-neutral5); // 置灰信息
+
+  // 背景色
+  --e-color-bg1: var(--e-color-neutral1); // 整体背景色
+  --e-color-bg2: var(--e-color-greyblack1); // 一级容器背景色
+  --e-color-bg3: var(--e-color-greyblack2); // 二级容器背景色
+  --e-color-bg4: var(--e-color-greyblack3); // 三级容器背景色
+  --e-color-bg5: var(--e-color-greyblack3); // 弹出框、tooltip背景色
+  --e-color-bg6: rgba(0, 0, 0, 0.5); // 蒙层
+
+  // 链接色
+  --e-color-link1: var(--e-color-kleinblue8); // 常规
+  --e-color-link2: var(--e-color-kleinblue9); // 悬浮
+  --e-color-link3: var(--e-color-kleinblue5); // 点击
+  --e-color-link4: var(--e-color-kleinblue7); // 特殊场景
+  --e-color-link5: var(--e-color-kleinblue3); // 一般禁用
+  --e-color-link6: var(--e-color-kleinblue3); // 文字禁用，暂和一般禁用保持一致
+
+  // 边框颜色
+  --e-color-border1: var(--e-color-neutral4);
+
+  // 分割线颜色
+  --e-color-division1: var(--e-color-neutral3);
 }

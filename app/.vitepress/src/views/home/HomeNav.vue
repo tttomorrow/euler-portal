@@ -2,6 +2,7 @@
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
+import { computed } from 'vue';
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -10,6 +11,16 @@ const commonStore = useCommon();
 const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
+
+const imgUrl = computed(() => (item: { IMG_DARK: any; IMG: any }) => {
+  return commonStore.theme === 'dark' ? item.IMG_DARK : item.IMG;
+});
+
+const imgUrlHover = computed(
+  () => (item: { IMG_DARK_HOVER: any; IMG_HOVER: any }) => {
+    return commonStore.theme === 'dark' ? item.IMG_DARK_HOVER : item.IMG_HOVER;
+  }
+);
 </script>
 
 <template>
@@ -22,20 +33,8 @@ const handleGo = (path: string) => {
         @click="handleGo(item.LINK)"
       >
         <div class="nav-icon">
-          <img
-            :src="commonStore.theme === 'dark' ? item.IMG_DARK : item.IMG"
-            alt=""
-            class="nav-item-icon"
-          />
-          <img
-            :src="
-              commonStore.theme === 'dark'
-                ? item.IMG_DARK_HOVER
-                : item.IMG_HOVER
-            "
-            alt=""
-            class="nav-item-icon-hover"
-          />
+          <img :src="imgUrl(item)" alt="" class="nav-item-icon" />
+          <img :src="imgUrlHover(item)" alt="" class="nav-item-icon-hover" />
         </div>
         <div class="nav-text">
           <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">
@@ -57,7 +56,7 @@ const handleGo = (path: string) => {
   grid-template-columns: repeat(4, minmax(82px, 1fr));
   column-gap: 0;
   row-gap: 0;
-  background: var(--o-color-bg);
+  background: var(--e-color-bg2);
   box-shadow: var(--o-shadow-base);
   z-index: 10;
 
@@ -84,19 +83,19 @@ const handleGo = (path: string) => {
     .nav-text {
       margin-left: var(--o-spacing-h5);
       .nav-title {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         line-height: var(--o-line-height-text);
         font-weight: 500;
         font-size: var(--o-font-size-h7);
       }
       .nav-title-en {
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         font-size: var(--o-font-size-h7);
       }
       .nav-descriptive {
         line-height: var(--o-line-height-text);
         font-size: var(--o-font-size-text);
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         text-align: left;
       }
     }
@@ -108,9 +107,9 @@ const handleGo = (path: string) => {
         display: none !important;
       }
       .nav-text {
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
         .nav-descriptive {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
       }
     }

@@ -96,7 +96,7 @@ const isDark = computed(() => {
           <div class="desc">
             <p class="desc-title">{{ frameObj.DESC_LIST[0] }}</p>
             <template v-for="(item, index) in frameObj.DESC_LIST" :key="index">
-              <p class="desc-item" v-if="index > 0">
+              <p v-if="index > 0" class="desc-item">
                 {{ `${index}、` }}{{ item }}
               </p>
             </template>
@@ -129,7 +129,7 @@ const isDark = computed(() => {
       }
       :deep(.el-tabs__nav) {
         .is-active {
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
         }
       }
     }
@@ -145,13 +145,13 @@ const isDark = computed(() => {
         flex: 1;
       }
       .desc {
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         margin: 0 var(--o-spacing-h6) 0 0;
         padding: var(--o-spacing-h2) var(--o-spacing-h2) 0 var(--o-spacing-h2);
         position: relative;
         height: 100%;
         &-item {
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           font-size: var(--o-font-size-h7);
           line-height: var(--o-line-height-h7);
           margin-bottom: var(--o-spacing-h4);
@@ -159,7 +159,7 @@ const isDark = computed(() => {
         &-title {
           font-size: var(--o-font-size-h5);
           font-weight: 500;
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           line-height: var(--o-line-height-h5);
           padding-bottom: var(--o-spacing-h4);
         }
@@ -175,7 +175,7 @@ const isDark = computed(() => {
       }
       .img {
         flex: 1;
-        background-color: var(--o-color-bg);
+        background-color: var(--e-color-bg2);
         margin-left: var(--o-spacing-h6);
         img {
           margin: 0 auto;
@@ -211,12 +211,12 @@ const isDark = computed(() => {
           &-title {
             font-size: var(--o-font-size-text);
             font-weight: 500px;
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             line-height: var(--o-line-height-h8);
             padding-bottom: var(--o-spacing-h6);
           }
           &-item {
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             line-height: var(--o-line-height-tip);
             font-size: var(--o-font-size-tip);
             padding: var(--o-spacing-h8) 0;
@@ -264,7 +264,7 @@ const isDark = computed(() => {
           margin-top: var(--o-spacing-h5);
           margin-left: 0;
           width: 100%;
-          background-color: var(--o-color-bg);
+          background-color: var(--e-color-bg2);
           img {
             margin: 0 auto;
             display: block;

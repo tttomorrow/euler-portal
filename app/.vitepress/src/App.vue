@@ -49,7 +49,7 @@ const comp = computed(() => {
 
 main {
   min-height: calc(100vh - 198px);
-  background-color: var(--o-color-bg2);
+  background-color: var(--e-color-bg1);
   padding-top: 80px;
   padding-bottom: var(--o-spacing-h1);
   @media (max-width: 1100px) {

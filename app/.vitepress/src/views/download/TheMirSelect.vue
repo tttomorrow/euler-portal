@@ -13,6 +13,7 @@ interface MapMsg {
   latitude: number;
   longitude: number;
   location: string;
+  http: string;
 }
 
 interface MirrorMsg {
@@ -36,7 +37,7 @@ const ipAndAsn: Ref<string[]> = ref([]);
 
 const versionPath: Ref<string[]> = ref([]);
 
-function GetUrlParam(paraName: string) {
+const GetUrlParam = (paraName: string) => {
   const url = document.location.toString();
   const arrObj = url.split('?');
   if (arrObj.length > 1) {
@@ -52,7 +53,7 @@ function GetUrlParam(paraName: string) {
   } else {
     return '';
   }
-}
+};
 
 const compare = (temp: any[]) => {
   temp.sort(function (a, b) {
@@ -111,12 +112,14 @@ const initMap = (data: any[]) => {
       latitude: 0,
       longitude: 0,
       location: '',
+      http: '',
     };
 
     itemObj.name = item.Name;
     itemObj.longitude = item.Longitude;
     itemObj.latitude = item.Latitude;
     itemObj.location = item.Country;
+    itemObj.http = item.HttpURL;
 
     result.push(itemObj);
   });
@@ -265,7 +268,7 @@ onMounted(async () => {
   }
   &-mobile {
     > :nth-child(odd) {
-      background-color: var(--o-color-bg3);
+      background-color: var(--e-color-bg4);
     }
 
     display: none;
@@ -298,7 +301,7 @@ onMounted(async () => {
     &-title {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       margin-right: var(--o-spacing-h10);
       margin-top: var(--o-spacing-h8);
     }
@@ -312,17 +315,17 @@ onMounted(async () => {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-top: var(--o-spacing-h8);
-        color: var(--o-color-brand);
+        color: var(--e-color-brand1);
       }
     }
   }
 }
 .mirror-select {
   :deep(.mirror-select-header) {
-    background-color: var(--o-color-bg3);
+    background-color: var(--e-color-bg4);
     font-size: var(--o-font-size-h8);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: 54px;
     padding: 0 !important;
     .cell {
@@ -345,7 +348,7 @@ onMounted(async () => {
   :deep(.mirror-select-row) {
     font-size: var(--o-font-size-h8);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     height: 54px;
     border-bottom: 1px var(--o-color-division) solid;
     .cell {
@@ -374,7 +377,7 @@ onMounted(async () => {
   p {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
     margin: var(--o-spacing-h1) 0 var(--o-spacing-h2) 0;
     @media (max-width: 768px) {
@@ -385,7 +388,7 @@ onMounted(async () => {
   }
   a {
     text-decoration: none;
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
   }
 
   .mirror-select-name {
@@ -401,14 +404,14 @@ onMounted(async () => {
   }
   .mirror-select-rsnc {
     cursor: pointer;
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     display: block;
     width: 24px;
     height: 24px;
   }
   .mirror-select-ftp {
     cursor: pointer;
-    color: var(--o-color-brand);
+    color: var(--e-color-brand1);
     display: block;
     width: 24px;
     height: 24px;

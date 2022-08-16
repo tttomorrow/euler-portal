@@ -56,30 +56,26 @@ options.value = handOptions.value.value;
 const clickOption = (title: string, option: string) => {
   // 单选
   if (attrs.single) {
-    for (let i = 0; i < props.data.length; i++) {
-      if (title === props.data[i].title) {
-        if (options.value[i].sele.length > 0) {
-          if (options.value[i].sele[0] === option) {
-            options.value[i].sele.splice(0, 1);
-            for (let j = 0; j < tagitems.value.length; j++) {
-              if (tagitems.value[j] === option) {
-                tagitems.value.splice(j, 1);
-              }
-            }
+    options.value.forEach((item: any) => {
+      if (title === item.title) {
+        if (item.sele.length > 0) {
+          if (item.sele[0] === option) {
+            item.sele.splice(0, 1);
+            tagitems.value.forEach((tag: any, index) => {
+              if (tag === option) tagitems.value.splice(index, 1);
+            });
           } else {
-            for (let x = 0; x < tagitems.value.length; x++) {
-              if (tagitems.value[x] === options.value[i].sele[0]) {
-                tagitems.value[x] = option;
-              }
-            }
-            options.value[i].sele[0] = option;
+            tagitems.value.forEach((tag: any, index) => {
+              if (tag === item.sele[0]) tagitems.value[index] = option;
+            });
+            item.sele[0] = option;
           }
           return;
         }
-        options.value[i].sele[0] = option;
+        item.sele[0] = option;
         tagitems.value.push(option);
       }
-    }
+    });
   } else {
     // 多选
     for (let i = 0; i < props.data.length; i++) {
@@ -89,15 +85,12 @@ const clickOption = (title: string, option: string) => {
             if (options.value[i].sele[j] === option) {
               options.value[i].sele.splice(j, 1);
               for (let x = 0; x < tagitems.value.length; x++) {
-                if (tagitems.value[x] === option) {
-                  tagitems.value.splice(x, 1);
-                }
+                if (tagitems.value[x] === option) tagitems.value.splice(x, 1);
               }
               return;
             }
           }
         }
-        options.value[i].title = title;
         options.value[i].sele.push(option);
         tagitems.value.push(option);
       }
@@ -111,32 +104,25 @@ const sureClick = () => {
 };
 // 删除标签
 const delTag = (data: string) => {
-  for (let i = 0; i < options.value.length; i++) {
-    for (let j = 0; j < options.value[i].sele.length; j++) {
-      if (options.value[i].sele[j] === data) {
-        options.value[i].sele.splice(j, 1);
+  options.value.forEach((item: any) => {
+    item.sele.forEach((betrag: any, index: number) => {
+      if (betrag === data) {
+        item.sele.splice(index, 1);
         emit('filter', options.value);
       }
-    }
-  }
-  for (let x = 0; x < tagitems.value.length; x++) {
-    if (tagitems.value[x] === data) {
-      tagitems.value.splice(x, 1);
-    }
-  }
+    });
+  });
+  tagitems.value.forEach((item: string, index: number) => {
+    if (item === data) tagitems.value.splice(index, 1);
+  });
 };
 // 选择全部(sele数组返回空)
 const allClick = (val: any) => {
   for (let i = 0; i < options.value.length; i++) {
-    if (options.value[i].title === val.title) {
-      options.value[i].sele.length = 0;
-      emit('filter', options.value);
-    }
+    if (options.value[i].title === val.title) options.value[i].sele.length = 0;
     for (let x = 0; x < tagitems.value.length; x++) {
       for (let y = 0; y < val.select.length; y++) {
-        if (tagitems.value[x] === val.select[y]) {
-          tagitems.value.splice(x, 1);
-        }
+        if (tagitems.value[x] === val.select[y]) tagitems.value.splice(x, 1);
       }
     }
   }
@@ -144,18 +130,14 @@ const allClick = (val: any) => {
 // 选中按钮高亮
 const btnHighLight = (data: string) => {
   for (let i = 0; i < tagitems.value.length; i++) {
-    if (tagitems.value[i] === data) {
-      return true;
-    }
+    if (tagitems.value[i] === data) return true;
   }
 };
 // 全部
 const allHighLight = (val: any) => {
   for (let i = 0; i < options.value.length; i++) {
     if (options.value[i].title === val.title) {
-      if (options.value[i].sele.length === 0) {
-        return true;
-      }
+      if (options.value[i].sele.length === 0) return true;
     }
   }
 };
@@ -242,7 +224,7 @@ const allHighLight = (val: any) => {
   line-height: var(--o-line-height-tip);
   padding-left: var(--o-spacing-h8);
   padding-right: 0;
-  color: var(--o-color-text3);
+  color: var(--e-color-text4);
 }
 :deep(.o-button) {
   width: 104px;
@@ -260,7 +242,7 @@ const allHighLight = (val: any) => {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
       margin: var(--o-spacing-h5);
-      color: var(--o-color-text3);
+      color: var(--e-color-text4);
       &-icon {
         display: inline-block;
         .icon {
@@ -308,7 +290,7 @@ const allHighLight = (val: any) => {
             margin: var(--o-spacing-h8);
             border: 1px solid var(--o-color-transparent);
             &.active {
-              border: 1px solid var(--o-color-brand);
+              border: 1px solid var(--e-color-brand1);
             }
           }
         }

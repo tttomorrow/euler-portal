@@ -67,7 +67,7 @@ const toSigDetail = (name: string): void => {
     h2 {
       font-size: var(--o-font-size-h5);
       line-height: var(--o-line-height-h7);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       font-weight: normal;
       margin-bottom: var(--o-spacing-h4);
       text-align: center;
@@ -87,7 +87,7 @@ const toSigDetail = (name: string): void => {
         h3 {
           font-size: var(--o-font-size-h8);
           line-height: var(--o-line-height-h7);
-          color: var(--o-color-text);
+          color: var(--e-color-text2);
           font-weight: normal;
           text-align: center;
           line-height: var(--o-line-height-h3);
@@ -107,7 +107,7 @@ const toSigDetail = (name: string): void => {
             flex-shrink: 0;
             width: 162px;
             text-align: center;
-            color: var(--o-color-text2);
+            color: var(--e-color-text1);
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-h5);
             height: var(--o-line-height-h5);

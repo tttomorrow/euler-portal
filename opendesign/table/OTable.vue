@@ -13,19 +13,19 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-table {
   &.el-table {
-    --el-table-header-bg-color: var(--o-color-bg3);
-    color: var(--o-color-text3);
+    --el-table-header-bg-color: var(--e-color-bg4);
+    color: var(--e-color-text4);
     --el-table-border-color: none;
     thead {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
     }
     th.el-table__cell.is-leaf {
       border-bottom: none;
     }
     tr {
-      background: var(--o-color-bg);
+      background: var(--e-color-bg2);
       td {
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
       }
     }
     .el-table__header-wrapper {

@@ -65,18 +65,18 @@ const isMobile = computed(() => {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       width: 170px;
       height: 92px;
       font-size: var(--o-font-size-h6);
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       margin-bottom: var(--o-spacing-h4);
       box-shadow: var(--o-shadow-base);
     }
     &-item:first-child {
       height: 48px;
-      color: var(--o-color-text);
-      background-color: var(--o-color-brand);
+      color: var(--e-color-text2);
+      background-color: var(--e-color-brand1);
     }
     @media (max-width: 780px) {
       display: none;
@@ -111,8 +111,8 @@ const isMobile = computed(() => {
             align-items: center;
             margin-bottom: var(--o-spacing-h4);
             font-size: var(--o-font-size-h6);
-            color: var(--o-color-text);
-            background-color: var(--o-color-brand);
+            color: var(--e-color-text2);
+            background-color: var(--e-color-brand1);
             height: 48px;
             box-shadow: var(--o-shadow-base);
             @media (max-width: 780px) {
@@ -139,7 +139,7 @@ const isMobile = computed(() => {
             width: 218px;
             height: 92px;
             margin-bottom: var(--o-spacing-h4);
-            background-color: var(--o-color-bg);
+            background-color: var(--e-color-bg2);
             box-shadow: var(--o-shadow-base);
             @media (max-width: 780px) {
               width: 100%;
@@ -149,7 +149,7 @@ const isMobile = computed(() => {
             }
             p {
               font-size: var(--o-font-size-h7);
-              color: var(--o-color-text2);
+              color: var(--e-color-text1);
               line-height: var(--o-line-height-h5);
               text-overflow: ellipsis;
               display: -webkit-box;

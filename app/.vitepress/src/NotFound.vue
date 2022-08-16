@@ -16,7 +16,7 @@ import Img404 from '@/assets/404.svg';
   align-items: center;
   flex-direction: column;
   font-size: var(--o-font-size-h6);
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   padding: var(--o-spacing-h2) 0;
   height: 100%;
   .img {

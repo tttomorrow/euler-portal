@@ -129,18 +129,23 @@ const cooperateList = [
   },
   {
     img: qilin,
+    website: 'https://www.kylinos.cn/',
   },
   {
     img: suse,
+    website: 'https://www.suse.com/',
   },
   {
     img: tongxin,
+    website: 'https://www.uniontech.com/',
   },
   {
     img: xinan,
+    website: 'http://www.kylinsec.com.cn/',
   },
   {
     img: puhua,
+    website: 'http://www.i-soft.com.cn/',
   },
   {
     img: intel,
@@ -234,7 +239,9 @@ const sponsorList = [
           <p>联办单位</p>
           <div class="foot-construction-company-list">
             <div v-for="item in cooperateList" :key="item.img">
-              <a><img :src="item.img" /></a>
+              <a :href="item.website" target="_blank"
+                ><img :src="item.img"
+              /></a>
             </div>
           </div>
         </div>
@@ -272,19 +279,19 @@ const sponsorList = [
   margin-bottom: var(--o-spacing-h1);
 }
 .headline {
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   margin-top: var(--o-spacing-h1);
   font-size: 40px;
   opacity: 0.1;
 }
 .subtitle {
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   font-size: var(--o-font-size-h3);
   margin-bottom: var(--o-spacing-h2);
   transform: translateY(-24px);
 }
 .middle {
-  max-width: 1440px;
+  max-width: 1504px;
   margin: 0 auto;
   padding: 0 44px;
   @media (max-width: 780px) {
@@ -292,7 +299,7 @@ const sponsorList = [
     width: 100%;
   }
   &-text {
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     font-size: var(--o-font-size-h8);
     line-height: var(--o-line-height-h8);
     @media (max-width: 780px) {
@@ -316,7 +323,7 @@ const sponsorList = [
   &-construction {
     text-align: center;
     &-guidance {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       font-size: var(--o-font-size-h6);
       line-height: var(--o-line-height-h3);
       margin-bottom: var(--o-spacing-h2);
@@ -339,7 +346,7 @@ const sponsorList = [
       }
     }
     &-company {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       font-size: var(--o-font-size-h6);
       line-height: var(--o-line-height-h3);
       p {
@@ -375,9 +382,9 @@ const sponsorList = [
         &-item {
           cursor: pointer;
           width: 456px;
-          background-color: var(--o-color-bg);
+          background-color: var(--e-color-bg2);
           display: flex;
-          color: var(--o-color-brand);
+          color: var(--e-color-brand1);
           font-size: var(--o-font-size-h7);
           img {
             margin: var(--o-spacing-h4);

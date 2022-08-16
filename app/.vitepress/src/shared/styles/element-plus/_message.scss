@@ -3,10 +3,10 @@
   top: 104px !important;
   height: 112px;
   border-radius: 0;
-  background: var(--o-color-bg) !important;
+  background: var(--e-color-bg2) !important;
   box-shadow: var(--o-shadow-base);
   font-size: var(--o-font-h4);
-  --el-message-border-color: var(--o-color-bg);
+  --el-message-border-color: var(--e-color-bg2);
 
   .el-message__icon {
     margin-right: var(--o-spacing-h6);
@@ -20,7 +20,7 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
-    color: var(--o-color-text2) !important;
+    color: var(--e-color-text1) !important;
     font-size: var(--o-font-size-h7);
   }
   @media screen and (max-width: 867px) {

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { reactive, ref, onMounted, watch } from 'vue';
 import { useI18n } from '@/i18n';
+import { useRouter } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -14,6 +15,7 @@ import { getCveList } from '@/api/api-security';
 import { CveLists, CveQuery } from '@/shared/@types/type-support';
 
 const i18n = useI18n();
+const router = useRouter();
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const searchContent = ref('');
@@ -79,6 +81,10 @@ function turnPage(option: string) {
   } else if (option === 'next' && queryData.pages.page < total.value) {
     queryData.pages.page = queryData.pages.page + 1;
   }
+}
+
+function goCveDetail(id: string, name: string) {
+  router.go(`${router.route.path}detail/?cveId=${id}&packageName=${name}`);
 }
 
 onMounted(() => {
@@ -153,10 +159,13 @@ watch(queryData, () => getCveLists(queryData));
           prop="status"
           width="120"
         ></OTableColumn>
-        <!-- <OTableColumn :label="i18n.security.OPERATION"> </OTableColumn> -->
         <el-table-column :label="i18n.security.OPERATION" width="80">
-          <template #default>
-            <span>详情</span>
+          <template #default="scope">
+            <span
+              class="detail-page"
+              @click="goCveDetail(scope.row.cveId, scope.row.packageName)"
+              >详情</span
+            >
           </template>
         </el-table-column>
       </OTable>
@@ -256,7 +265,7 @@ watch(queryData, () => getCveLists(queryData));
 }
 .filter-card {
   margin: var(--o-spacing-h4) 0;
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
   padding: var(--o-spacing-h5) var(--o-spacing-h2);
   @media screen and (max-width: 768px) {
     display: none;
@@ -274,7 +283,7 @@ watch(queryData, () => getCveLists(queryData));
     margin-bottom: 32px;
     .selected {
       background-color: #002fa7;
-      color: var(--o-color-text);
+      color: var(--e-color-text2);
     }
     &-item {
       cursor: pointer;
@@ -305,7 +314,7 @@ watch(queryData, () => getCveLists(queryData));
     font-weight: 400;
     color: #999999;
     line-height: var(--o-line-height-tip);
-    background-color: var(--o-color-bg);
+    background-color: var(--e-color-bg2);
     &:nth-child(odd) {
       background: var(--o-color-bg6);
     }
@@ -325,12 +334,16 @@ watch(queryData, () => getCveLists(queryData));
       }
     }
     span {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       margin-right: var(--o-spacing-h8);
     }
   }
 }
 .pc-list {
+  .detail-page {
+    cursor: pointer;
+    color: var(--o-color-link);
+  }
   @media screen and (max-width: 768px) {
     display: none;
   }

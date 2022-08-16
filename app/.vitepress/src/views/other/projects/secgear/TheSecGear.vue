@@ -7,6 +7,7 @@ import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import AppAnchor from '@/components/AppAnchor.vue';
 
 import BannerIllustration from '/img/projects/secgear/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
@@ -18,6 +19,11 @@ if (useWindowResize().value < 767) {
 } else {
   isPC.value = true;
 }
+
+const anchorData = [
+  { id: 'architecture', name: '架构' },
+  { id: 'docs', name: '文档' },
+];
 </script>
 <template>
   <div class="secgear-wraper">
@@ -32,12 +38,19 @@ if (useWindowResize().value < 767) {
     <MiniDescription :description-desc="i18n.secgear.SECGEAR_DESC" />
     <!-- 架构 -->
     <MiniFrame
+      id="architecture"
       :device="isPC"
       :frame-obj="i18n.secgear.SECGEAR_FRAMEWORK"
       layout="leftAndRight"
     />
     <!-- 文档 -->
-    <MiniDocs :device="isPC" :docs-obj="i18n.secgear.SECGEAR_DOCUMENT" />
+    <MiniDocs
+      id="docs"
+      :device="isPC"
+      :docs-obj="i18n.secgear.SECGEAR_DOCUMENT"
+    />
+
+    <AppAnchor :data="anchorData" />
   </div>
 </template>
 

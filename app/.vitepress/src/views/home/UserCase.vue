@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 
 import { useI18n } from '@/i18n';
-import { getUserCaseData } from '@/api/api-showcase';
 
-const { lang } = useData();
 const i18n = useI18n();
 
 const commonStore = useCommon();
@@ -16,6 +13,13 @@ const caseData: any = ref({});
 
 const active = ref(0);
 const activeMobile = ref(0);
+
+const props = defineProps({
+  caseData: {
+    type: Object,
+    default: undefined,
+  },
+});
 
 const handleGo = (path: string) => {
   window.open(path, '_blank');
@@ -32,39 +36,22 @@ const handleChangeActiveMobile = (activeNames: any) => {
   }
 };
 
-onMounted(() => {
-  const params = {
-    keyword: '',
-    type: '',
-    pageSize: 100,
-  };
-  getUserCaseData(params).then((res: any) => {
-    const result = {
-      zh: {},
-      en: {},
-      ru: {},
-    };
-    res.obj.records.forEach((item: { lang: string; industry: string }) => {
-      if (item.lang === 'zh') {
-        if (typeof (result['zh'] as any)[item.industry] === 'undefined') {
-          (result['zh'] as any)[item.industry] = [];
-        }
-        (result['zh'] as any)[item.industry].push(item);
-      } else if (item.lang === 'en') {
-        if (typeof (result['en'] as any)[item.industry] === 'undefined') {
-          (result['en'] as any)[item.industry] = [];
-        }
-        (result['en'] as any)[item.industry].push(item);
-      } else {
-        if (typeof (result['ru'] as any)[item.industry] === 'undefined') {
-          (result['ru'] as any)[item.industry] = [];
-        }
-        (result['ru'] as any)[item.industry].push(item);
-      }
-    });
+const initData = (res: any) => {
+  const result: any = {};
 
-    caseData.value = result;
+  res.obj.records.forEach((item: { lang: string; industry: string }) => {
+    if (typeof result[item.industry] === 'undefined') {
+      result[item.industry] = [];
+    }
+    if (result[item.industry].length < 4) {
+      result[item.industry].push(item);
+    }
   });
+  caseData.value = result;
+};
+
+onMounted(() => {
+  props.caseData && initData(props.caseData);
 });
 </script>
 
@@ -106,7 +93,7 @@ onMounted(() => {
         </template>
         <div class="user-mobile">
           <div
-            v-for="user in caseData[lang] && caseData[lang][item.TYPE]"
+            v-for="user in caseData && caseData[item.TYPE]"
             :key="user.company"
             class="user-card"
           >
@@ -144,8 +131,8 @@ onMounted(() => {
         </div>
         <div class="case-user">
           <a
-            v-for="item2 in caseData[lang] &&
-            caseData[lang][i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
+            v-for="item2 in caseData &&
+            caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
             :key="item2.company"
             class="user-card"
             @click="handleGo(item2.path)"
@@ -176,7 +163,7 @@ onMounted(() => {
 h3 {
   font-size: var(--o-font-size-h3);
   font-weight: 300;
-  color: var(--o-color-text2);
+  color: var(--e-color-text1);
   line-height: var(--o-line-height-h3);
   width: 100%;
   text-align: center;
@@ -223,7 +210,7 @@ h3 {
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
       font-weight: 300;
@@ -234,13 +221,13 @@ h3 {
   &-img {
     width: 40px;
     height: 40px;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
   }
 
   &-card {
     margin-top: var(--o-spacing-h5);
     width: 100%;
-    border-left: 2px solid var(--o-color-brand);
+    border-left: 2px solid var(--e-color-brand1);
     &-content {
       display: flex;
       flex-flow: row;
@@ -251,12 +238,12 @@ h3 {
 
   &-icon {
     font-size: var(--o-font-size-h8);
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
   }
 }
 .user {
   &-mobile {
-    background-color: var(--o-color-bg3);
+    background-color: var(--e-color-bg4);
     > :nth-child(1) {
       margin-top: 0px;
     }
@@ -266,12 +253,12 @@ h3 {
     padding: var(--o-spacing-h5);
     width: 100%;
     height: 100%;
-    background: var(--o-color-bg2);
+    background: var(--e-color-bg1);
     border: 1px solid rgba(0, 0, 0, 0);
-    border-left: 2px solid var(--o-color-brand);
+    border-left: 2px solid var(--e-color-brand1);
 
     @media (max-width: 1100px) {
-      background: var(--o-color-bg);
+      background: var(--e-color-bg2);
       margin-top: var(--o-spacing-h8);
     }
 
@@ -282,10 +269,10 @@ h3 {
 
   &-card:hover {
     @media (min-width: 1100px) {
-      background-color: var(--o-color-bg);
-      border: 1px solid var(--o-color-brand);
+      background-color: var(--e-color-bg2);
+      border: 1px solid var(--e-color-brand1);
       box-shadow: var(--o-shadow-secondary);
-      border-left: 2px solid var(--o-color-brand);
+      border-left: 2px solid var(--e-color-brand1);
       transition: 0.3s all;
     }
   }
@@ -293,7 +280,7 @@ h3 {
   &-title {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
@@ -304,7 +291,7 @@ h3 {
   &-word {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--o-color-text3);
+    color: var(--e-color-text4);
     line-height: var(--o-line-height-text);
     display: -webkit-box;
     text-overflow: ellipsis;
@@ -334,7 +321,7 @@ h3 {
     }
 
     &-item:hover {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
     }
 
     :deep(.o-button) {
@@ -342,7 +329,7 @@ h3 {
     }
 
     &-icon {
-      color: var(--o-color-brand);
+      color: var(--e-color-brand1);
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
     }
@@ -373,7 +360,7 @@ h3 {
   &-word {
     font-size: var(--o-font-size-h5);
     font-weight: 400;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h5);
     margin-top: 2px;
   }
@@ -395,6 +382,6 @@ h3 {
 }
 
 .active {
-  color: var(--o-color-brand);
+  color: var(--e-color-brand1);
 }
 </style>

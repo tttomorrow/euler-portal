@@ -1,4 +1,4 @@
-import data from './download';
+import data from '../../data/download/download';
 export default {
   RELEASE_DESC: 'Release Description',
   SERVER_IMAGE: 'Server Image',

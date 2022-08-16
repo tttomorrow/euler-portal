@@ -15,6 +15,10 @@ import AppCalendar from '@/components/AppCalendar.vue';
 
 import { getMeetingData } from '@/api/api-calendar';
 import { TableData } from '@/shared/@types/type-calendar';
+import { useData } from 'vitepress';
+import { getSortData } from '@/api/api-search';
+
+const { lang } = useData();
 
 interface MeetingData {
   tableData: TableData[];
@@ -38,10 +42,54 @@ const calendarData = ref<TableData[]>([
   },
 ]);
 const i18n = useI18n();
-onMounted(() => {
-  getMeetingData().then((res: MeetingData) => {
-    calendarData.value = res.tableData;
-  });
+
+const caseData = ref(undefined);
+const newsData = ref(undefined);
+const blogData = ref(undefined);
+onMounted(async () => {
+  const paramsCase = {
+    category: 'showcase',
+    lang: lang.value,
+    page: 1,
+    pageSize: 100,
+  };
+  const paramsNews = {
+    category: 'news',
+    lang: lang.value,
+    page: 1,
+    pageSize: 4,
+  };
+  const paramsBlog = {
+    category: 'blog',
+    lang: lang.value,
+    page: 1,
+    pageSize: 4,
+  };
+  try {
+    const responeData = await getSortData(paramsCase);
+    caseData.value = responeData;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    const responeData = await getSortData(paramsNews);
+    newsData.value = responeData;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    const responeData = await getSortData(paramsBlog);
+    blogData.value = responeData;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    getMeetingData().then((res: MeetingData) => {
+      calendarData.value = res.tableData;
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
 });
 </script>
 
@@ -50,9 +98,13 @@ onMounted(() => {
   <div class="wraper">
     <HomeNav />
     <HomeCarousel />
-    <UserCase />
+    <UserCase v-if="caseData" :case-data="caseData" />
     <CommunityActivity />
-    <HomeNews />
+    <HomeNews
+      v-if="blogData && newsData"
+      :blog-data="blogData"
+      :news-data="newsData"
+    />
     <div class="home-calendar">
       <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
       <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
@@ -74,7 +126,7 @@ onMounted(() => {
   h3 {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;

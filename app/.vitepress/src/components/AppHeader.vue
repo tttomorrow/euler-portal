@@ -118,9 +118,15 @@ const showSearchBox = () => {
 };
 const donShowSearchBox = () => {
   isShowBox.value = false;
+  searchInput.value = '';
 };
 // 搜索内容
 const searchInput = ref<string>('');
+// 搜索事件
+function search() {
+  router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
+  donShowSearchBox();
+}
 </script>
 
 <template>
@@ -136,7 +142,7 @@ const searchInput = ref<string>('');
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <div v-if="isShowBox" class="header-search">
         <div class="header-search-box">
-          <OSearch v-model="searchInput" :placeholder="searchValue.PLEACHOLDER">
+          <OSearch v-model="searchInput" :placeholder="searchValue.PLEACHOLDER" @change="search">
             <template #suffix>
               <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
             </template>
@@ -217,7 +223,7 @@ const searchInput = ref<string>('');
   font-size: var(--o-font-size-h1);
 }
 .app-header {
-  background-color: var(--o-color-bg);
+  background-color: var(--e-color-bg2);
   position: fixed;
   left: 0;
   right: 0;
@@ -255,7 +261,7 @@ const searchInput = ref<string>('');
   }
   .icon {
     font-size: var(--o-font-size-h5);
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     cursor: pointer;
   }
 }
@@ -288,7 +294,7 @@ const searchInput = ref<string>('');
     align-items: center;
     height: 100%;
     .lang {
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
       letter-spacing: 0.08em;
       font-size: 16px;
     }
@@ -301,7 +307,7 @@ const searchInput = ref<string>('');
   }
   .icon {
     font-size: 22px;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
   }
 }
 .header-search {
@@ -316,7 +322,7 @@ const searchInput = ref<string>('');
   &-box {
     .close {
       cursor: pointer;
-      color: var(--o-color-text2);
+      color: var(--e-color-text1);
     }
   }
 }
@@ -356,11 +362,11 @@ const searchInput = ref<string>('');
   }
   &-side {
     left: -100%;
-    background: var(--o-color-bg2);
+    background: var(--e-color-bg1);
     display: inline-flex;
     height: 100%;
     flex-direction: column;
-    color: var(--o-color-text2);
+    color: var(--e-color-text1);
     min-width: 164px;
     opacity: 0;
     position: relative;
@@ -384,7 +390,7 @@ const searchInput = ref<string>('');
         display: block;
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-h3);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         padding: 0 var(--o-spacing-h5);
         position: relative;
         cursor: pointer;
@@ -400,11 +406,11 @@ const searchInput = ref<string>('');
           bottom: 0;
         }
         &.active {
-          background: var(--o-color-bg);
-          color: var(--o-color-brand);
+          background: var(--e-color-bg2);
+          color: var(--e-color-brand1);
           &::after {
             width: 24px;
-            background: var(--o-color-text2);
+            background: var(--e-color-text1);
           }
         }
       }
@@ -416,7 +422,7 @@ const searchInput = ref<string>('');
   }
   &-content {
     flex: 1;
-    background: var(--o-color-bg);
+    background: var(--e-color-bg2);
     left: -100%;
     position: relative;
     transition: all 0.5s ease-in-out;
@@ -428,7 +434,7 @@ const searchInput = ref<string>('');
         line-height: var(--o-line-height-h3);
         font-size: var(--o-font-size-tip);
         font-weight: normal;
-        color: var(--o-color-text3);
+        color: var(--e-color-text4);
         cursor: pointer;
         &:last-child {
           border-bottom: 1px solid var(--o-color-division);
