@@ -72,7 +72,7 @@ onMounted(() => {
 
 const currentChange = (val: number) => {
   const params = {
-    category: 'blog',
+    category: 'news',
     lang: lang.value,
     page: val,
     pageSize: paginationData.value.pagesize,
@@ -125,7 +125,7 @@ const sizeChange = (val: number) => {
     />
     <div class="news-list">
       <OCard v-for="item in newsCardData" :key="item" class="news-list-item">
-        <div class="news-img">
+        <div class="news-img" @click="toNewsContent(item.path)">
           <img :src="item.banner" :alt="item.banner" />
         </div>
         <div class="news-info">
@@ -135,7 +135,7 @@ const sizeChange = (val: number) => {
           <div class="news-time">
             <p>{{ item.date }}</p>
           </div>
-          <div class="news-content">
+          <div class="news-content" @click="toNewsContent(item.path)">
             <p>
               {{ item.summary }}
             </p>
@@ -178,9 +178,17 @@ const sizeChange = (val: number) => {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: var(--o-spacing-h4);
+    // justify-content: center;
+    // align-items: center;
     padding: 0 var(--o-spacing-h5);
     &-item {
-      max-height: 400px;
+      justify-self: center;
+      align-self: center;
+      max-height: 374px;
+      min-height: 374px;
+      min-width: 456px;
+      max-width: 456px;
+      // width:456px;
     }
     &-item:hover {
       box-shadow: var(--o-shadow-base_hover);
@@ -189,6 +197,7 @@ const sizeChange = (val: number) => {
   &-img {
     width: 100%;
     height: 188px;
+    cursor: pointer;
     img {
       width: 100%;
       height: 188px;
@@ -197,8 +206,11 @@ const sizeChange = (val: number) => {
   &-info {
     padding: var(--o-spacing-h4);
     color: var(--e-color-text1);
+    // cursor: pointer;
   }
   &-title {
+    font-weight: 400;
+    height: 52px;
     line-height: var(--o-line-height-h7);
     font-size: var(--o-font-size-h7);
     margin-bottom: var(--o-spacing-h10);
@@ -223,23 +235,28 @@ const sizeChange = (val: number) => {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
   }
   &-pagination {
     margin-bottom: var(--o-spacing-h1);
   }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1450px) {
   .news-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 980px) {
   .news-list {
     grid-template-columns: repeat(1, 1fr);
   }
   .news-list-item {
     max-width: 100%;
+    min-width: 100%;
+    max-height: 188px;
+    min-height: 188px;
   }
   .news-img {
     max-width: 350px;
@@ -251,20 +268,34 @@ const sizeChange = (val: number) => {
   }
 }
 @media (max-width: 620px) {
+  .news-list {
+  }
+  .news-list-item {
+    max-width: 456px;
+    min-width: 456px;
+    max-height: 374px;
+    min-height: 374px;
+  }
   .news-info {
-    max-width: 350px;
+    max-width: 420px;
+    min-width: 420px;
+  }
+  .news-img {
+    min-width: 456px;
   }
   .news-title {
-    line-height: var(--o-line-height-text);
-    font-size: var(--o-font-size-text);
+    // font-weight: bold;
+
+    // line-height: var(--o-line-height-text);
+    // font-size: var(--o-font-size-text);
   }
   .news-time {
-    line-height: var(--o-line-height-tip);
-    font-size: var(--o-font-size-tip);
+    // line-height: var(--o-line-height-tip);
+    // font-size: var(--o-font-size-tip);
   }
   .news-content {
-    line-height: var(--o-line-height-tip);
-    font-size: var(--o-font-size-tip);
+    // line-height: var(--o-line-height-tip);
+    // font-size: var(--o-font-size-tip);
   }
   :deep(.el-card__body) {
     display: flex;
@@ -272,7 +303,7 @@ const sizeChange = (val: number) => {
     align-items: center;
   }
 }
-@media (max-width: 415px) {
+@media (max-width: 500px) {
   .news-list {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -280,13 +311,34 @@ const sizeChange = (val: number) => {
     display: flex;
     flex-direction: column;
   }
+  .news-list-item {
+    max-width: 328px;
+    min-width: 328px;
+    max-height: 312px;
+    min-height: 312px;
+  }
   .news-img {
     max-width: 100%;
-    display: block;
+    min-width: 100%;
+    max-height: 180px;
+    min-height: 180px;
+    // display: block;
+  }
+  .news-info {
+    max-width: 304px;
+    min-width: 304px;
   }
   .news-title {
+    // font-weight: bold;
+    height: auto;
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
   .news-time {
     line-height: var(--o-line-height-tip);
