@@ -8,7 +8,7 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div class="markdown">
+<div >
 
 ## **Сценарий**
 
@@ -34,4 +34,3 @@ img: /img/showcase/others.png
 <div ><img src="./qiling.png"/></div>
 
 </div>
-

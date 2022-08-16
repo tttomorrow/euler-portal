@@ -8,7 +8,7 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div class="markdown">
+<div >
 
 ## 应用场景
 

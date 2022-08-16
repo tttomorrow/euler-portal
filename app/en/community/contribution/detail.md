@@ -15,7 +15,7 @@ background-text="COMMUNITY"
 />
 <ContributionTab />
 
-<div class="markdown word">
+<div class=" word">
 
 <span class="desc">Welcome to openEuler!</span>
 

@@ -8,7 +8,7 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div class="markdown">
+<div >
 
 ## Scenarios
 
@@ -26,7 +26,7 @@ China Southern Power Grid (CSG) is a large enterprise that manages power transmi
 
 ## **Benefits**
 
-- Nearly 2,000 secure and reliable server systems in subsidiaries in five southern provinces in China, EHV power transmission companies, peak-load modulation and frequency modulation power generation companies, the Guangzhou Power Supply Bureau, and the Shenzhen Power Supply Bureau 
+- Nearly 2,000 secure and reliable server systems in subsidiaries in five southern provinces in China, EHV power transmission companies, peak-load modulation and frequency modulation power generation companies, the Guangzhou Power Supply Bureau, and the Shenzhen Power Supply Bureau
 
 - The same performance standard before and after porting
 
