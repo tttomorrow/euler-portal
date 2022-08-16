@@ -156,4 +156,19 @@
   --e-color-division1: var(--e-color-neutral11);
 
   // 填充色，用于阴影容器背景
+  --e-color-fill1: var(
+    --o-color-white
+  ); // SL1 一级投影容器背景，应用于默认状态的卡片、楼层、导航栏、组件里局部投影背景等
+  --e-color-fill2: var(
+    --o-color-white
+  ); //SL1-hover 升起投影容器背景，应用于悬停状态的卡片等，是SL1的激活态
+  --e-color-fill3: var(
+    --o-color-white
+  ); // SL2-normal 二级投影背景，应用与一级投影上的卡片、组件等
+  --e-color-fill4: var(
+    --o-color-white
+  ); // SL3 覆盖阴影容器背景，应用于信息提示【tips、活动进入按钮等】等投影容器
+  --e-color-fill5: var(
+    --o-color-white
+  ); // SL4 弹出阴影容器背景，应用于模态弹窗投影
 }
