@@ -1,21 +1,22 @@
 ---
-title: "Privacy"
-module: privacy
+title: 'Privacy'
 ---
+
 <script setup>
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 </script>
+<ClientOnly>
   <BannerLevel2
     :background-image="banner"
     background-text="PRIVACY POLICY"
     title="Privacy"
     :illustration="search"
   />
-
-<div class='markdown'>
+</ClientOnly>
+<div class='markdown' style="margin-top:var(--o-spacing-h1)">
 
 The openEuler Community ("Community") understands the importance of your privacy and fully respects it. <u>**Please read this openEuler Community Privacy Statement ("Statement") carefully before you submit your personal data to us.**</u> If you have any questions about how we process your personal data, please feel free to contact us. Unless otherwise specified, "we" and "us" in this Statement refers to the Community.
 
@@ -37,9 +38,9 @@ We may also supplement the personal data we collect from you with additional per
 
 (b) We categorize cookies on our websites into two categories:
 
-​     (1) Required cookies: used for login and verification. When you log in to the website with your Huawei ID, cookies improve your Web browsing experience.
+​ (1) Required cookies: used for login and verification. When you log in to the website with your Huawei ID, cookies improve your Web browsing experience.
 
-​     (2) Statistical analysis cookies: We collect information about your use of our services, including your single or multiple visits, which help us understand how you interact with the services. We use the statistical analysis plugin provided by Baidu.
+​ (2) Statistical analysis cookies: We collect information about your use of our services, including your single or multiple visits, which help us understand how you interact with the services. We use the statistical analysis plugin provided by Baidu.
 
 Many services require cookies. If you do not allow cookies related to these services, you may not be able to use these services or specific functions of these services.
 
@@ -59,10 +60,9 @@ Sharing means providing third parties with your personal data. The third parties
 
 (d) **Partners**. We may share your personal data with our partners. However, we will share your personal data only for legitimate, justified, necessary, specified, and explicit purposes, and share only the personal data necessary for providing our services. Our partners may include:
 
-​     (1) **Developers, platforms, and social media networks**. Some products or services may be directly provided to you by third parties. In this case, we need to provide them with the transaction information. If you associate our services or products with third-party platforms or social media networks (for example, direct login through a third-party website, virtual login, or associated login), we may disclose your personal data with your authorization. We do not control the third party's use of your personal data.
+​ (1) **Developers, platforms, and social media networks**. Some products or services may be directly provided to you by third parties. In this case, we need to provide them with the transaction information. If you associate our services or products with third-party platforms or social media networks (for example, direct login through a third-party website, virtual login, or associated login), we may disclose your personal data with your authorization. We do not control the third party's use of your personal data.
 
-
-​     (2) **Service suppliers or professional service providers**. We may share your personal data with third-party companies and individuals that provide services on our behalf or help us operate the websites and services (such as supply, infrastructure support, hosting, customer support, marketing and analytics, and data processing services). We share such data only for purposes consistent with this Statement or under your authorization. We may disclose your personal data to professional advisors, such as auditors, insurers, bankers, and lawyers, where necessary in the course of the professional services that they render to us.
+​ (2) **Service suppliers or professional service providers**. We may share your personal data with third-party companies and individuals that provide services on our behalf or help us operate the websites and services (such as supply, infrastructure support, hosting, customer support, marketing and analytics, and data processing services). We share such data only for purposes consistent with this Statement or under your authorization. We may disclose your personal data to professional advisors, such as auditors, insurers, bankers, and lawyers, where necessary in the course of the professional services that they render to us.
 
 When we share your personal data with affiliates or partners, their responsibilities and obligations will be governed by contracts and we will require them to take appropriate measures to ensure the security of the personal data processed.
 
@@ -76,7 +76,7 @@ Generally, we will store or retain your personal data within the retention perio
 
 We take the security of your personal data seriously. We take appropriate physical, organizational, and technical measures to protect your personal data. For example, we use encryption technologies to ensure the confidentiality of data; we implement protection mechanisms to protect data from attacks; we deploy access control mechanisms to ensure that only authorized personnel can access your personal data; and we hold security and privacy protection training. <u>**In a word, we are committed to protecting your personal data. Nevertheless, no security measure is perfect and no product, service, website, data transfer, computing system, or network connection is absolutely secure.**</u>
 
-##  6. How We Access or Control Your Personal Data
+## 6. How We Access or Control Your Personal Data
 
 In accordance with applicable laws and regulations, you may have the following rights regarding your personal data:
 

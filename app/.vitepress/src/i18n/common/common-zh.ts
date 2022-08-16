@@ -65,7 +65,7 @@ export default {
           PATH: '/mirror/list/',
         },
       ],
-      CLASS: [],
+      CLASS: ['download', 'mirror'],
     },
     {
       NAME: '学习',
@@ -88,7 +88,7 @@ export default {
           PATH: '/internship/',
         },
       ],
-      CLASS: [],
+      CLASS: ['learn', 'internship', 'learning'],
     },
     {
       PATH: '',
@@ -121,15 +121,7 @@ export default {
           PATH: '/interaction/summit-list/devday2022/',
         },
       ],
-      OTHER_CHILDREN: [
-        {
-          PATH: '/news/',
-        },
-        {
-          PATH: '/blog/',
-        },
-      ],
-      CLASS: [],
+      CLASS: ['news', 'blog', 'live', 'salon', 'summit', 'interaction'],
     },
     {
       PATH: '',
@@ -157,7 +149,7 @@ export default {
           PATH: '/community/certification-services/',
         },
       ],
-      CLASS: [],
+      CLASS: ['contribution', 'conduct', 'mailing-list', 'certification'],
     },
     {
       PATH: '',
@@ -185,7 +177,7 @@ export default {
           PATH: '/sig/meeting-guide/',
         },
       ],
-      CLASS: [],
+      CLASS: ['sig-list', 'sig-guidance', 'role-description', 'meeting-guide'],
     },
     {
       PATH: '',
@@ -236,7 +228,7 @@ export default {
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
-      CLASS: [],
+      CLASS: ['atune', 'bishengjdk', 'isula', 'secgear', 'stratovirt'],
     },
     {
       PATH: '',
@@ -269,7 +261,14 @@ export default {
           PATH: '/other/migration/',
         },
       ],
-      CLASS: [],
+      CLASS: [
+        'security',
+        'vulnerability-reporting',
+        'safety-bulletin',
+        'cve',
+        'compatibility',
+        'migration',
+      ],
     },
   ],
   LANG: '中文',

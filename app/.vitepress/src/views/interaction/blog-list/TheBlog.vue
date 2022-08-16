@@ -394,9 +394,6 @@ const sizeChange = (val: number) => {
       box-shadow: var(--o-shadow-base_hover);
     }
   }
-  &-pagination {
-    margin-bottom: var(--o-spacing-h1);
-  }
 }
 
 @media (max-width: 1100px) {
