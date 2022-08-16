@@ -69,7 +69,7 @@ export default {
           PATH: '/mirror/list/',
         },
       ],
-      CLASS: [],
+      CLASS: ['download', 'mirror'],
     },
     {
       NAME: 'Обучение',
@@ -87,7 +87,7 @@ export default {
           PATH: '/learn/mooc/',
         },
       ],
-      CLASS: [],
+      CLASS: ['learn'],
     },
     {
       PATH: '',
@@ -120,15 +120,7 @@ export default {
           PATH: '/interaction/summit-list/devday2022/',
         },
       ],
-      OTHER_CHILDREN: [
-        {
-          PATH: '/news/',
-        },
-        {
-          PATH: '/blog/',
-        },
-      ],
-      CLASS: [],
+      CLASS: ['interaction', 'news', 'blog', 'salon', 'summit'],
     },
     {
       PATH: '',
@@ -146,7 +138,7 @@ export default {
           PATH: '/community/certification-services/',
         },
       ],
-      CLASS: [],
+      CLASS: ['community', 'conduct', 'certification'],
     },
     {
       PATH: '',
@@ -169,7 +161,7 @@ export default {
           PATH: '/sig/role-description/',
         },
       ],
-      CLASS: [],
+      CLASS: ['sig', 'sig-guidance', 'role-description'],
     },
     {
       PATH: '',
@@ -202,7 +194,7 @@ export default {
           PATH: '/other/projects/stratovirt/',
         },
       ],
-      CLASS: [],
+      CLASS: ['stratovirt', 'atune', 'bishengjdk', 'isula', 'secgear'],
     },
     {
       PATH: '',
@@ -230,7 +222,12 @@ export default {
           PATH: '/security/compatibility/',
         },
       ],
-      CLASS: [],
+      CLASS: [
+        'vulnerability-reporting',
+        'compatibility',
+        'cve',
+        'safety-bulletin',
+      ],
     },
   ],
   LANG: 'Русский',

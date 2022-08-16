@@ -201,6 +201,7 @@ const sizeChange = (val: number) => {
     img {
       width: 100%;
       height: 188px;
+      object-fit: cover;
     }
   }
   &-info {
@@ -237,9 +238,6 @@ const sizeChange = (val: number) => {
     -webkit-line-clamp: 2;
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
-  }
-  &-pagination {
-    margin-bottom: var(--o-spacing-h1);
   }
 }
 
@@ -322,6 +320,7 @@ const sizeChange = (val: number) => {
     min-width: 100%;
     max-height: 180px;
     min-height: 180px;
+    object-fit: cover;
     // display: block;
   }
   .news-info {
