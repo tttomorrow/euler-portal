@@ -650,7 +650,7 @@ onMounted(() => {
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        border-bottom: 1px solid var(--o-color-division);
+        border-bottom: 1px solid var(---e-color-neutral11);
         @media (max-width: 768px) {
           display: none;
         }
@@ -734,7 +734,7 @@ onMounted(() => {
           }
 
           :deep(.el-table__cell) {
-            border-bottom: 1px solid var(--o-color-division);
+            border-bottom: 1px solid var(--e-color-neutral11);
           }
 
           :deep(tr) {

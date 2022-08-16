@@ -446,7 +446,11 @@ onMounted(async () => {
         &-logo {
           width: 80px;
           height: 24px;
-          background: linear-gradient(225deg, #feb32a 0%, #f6d365 100%);
+          background: linear-gradient(
+            225deg,
+            var(--e-color-yellow5) 0%,
+            #f6d365 100%
+          );
           display: flex;
           flex-flow: row;
           justify-content: center;
@@ -460,7 +464,11 @@ onMounted(async () => {
           &-mobile {
             width: 80px;
             height: 24px;
-            background: linear-gradient(225deg, #feb32a 0%, #f6d365 100%);
+            background: linear-gradient(
+              225deg,
+              var(--e-color-yellow5) 0%,
+              #f6d365 100%
+            );
             display: none;
             flex-flow: row;
             justify-content: center;
@@ -499,7 +507,7 @@ onMounted(async () => {
         @media (max-width: 768px) {
           height: 16px;
           width: 16px;
-          color: var(--o-color-secondary_active);
+          color: var(--e-color-neutral8);
           margin-right: var(--o-spacing-h10);
         }
       }
@@ -597,7 +605,7 @@ onMounted(async () => {
           line-height: var(--o-line-height-tip);
           white-space: nowrap;
           @media (max-width: 768px) {
-            color: var(--o-color-secondary_active);
+            color: var(--e-color-neutral8);
           }
         }
 
@@ -652,7 +660,7 @@ onMounted(async () => {
           line-height: var(--o-line-height-tip);
           white-space: nowrap;
           @media (max-width: 768px) {
-            color: var(--o-color-secondary_active);
+            color: var(--e-color-neutral8);
           }
         }
       }
@@ -732,7 +740,7 @@ onMounted(async () => {
         @media (max-width: 768px) {
           height: 16px;
           width: 16px;
-          color: var(--o-color-secondary_active);
+          color: var(--e-color-neutral8);
           margin-right: var(--o-spacing-h10);
         }
       }
@@ -841,7 +849,7 @@ onMounted(async () => {
           line-height: var(--o-line-height-tip);
           white-space: nowrap;
           @media (max-width: 768px) {
-            color: var(--o-color-secondary_active);
+            color: var(--e-color-neutral8);
           }
         }
       }

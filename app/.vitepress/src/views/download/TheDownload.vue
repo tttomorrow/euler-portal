@@ -494,7 +494,7 @@ onMounted(() => {
     width: 100%;
     height: 1px;
     margin-top: var(--o-spacing-h5);
-    background-color: var(--o-color-division);
+    background-color: var(--e-color-neutral11);
     &-in {
       height: 100%;
       background-color: var(--e-color-brand1);
@@ -589,7 +589,7 @@ onMounted(() => {
         justify-content: center;
         align-items: center;
         padding: var(--o-spacing-h10) var(--o-spacing-h9);
-        background-color: var(--o-color-secondary);
+        background-color: var(--e-color-neutral11);
         color: var(--e-color-text4);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);

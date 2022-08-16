@@ -185,7 +185,7 @@ const handleGo = (path: string) => {
       // justify-content: space-between;
       // align-items: center;
       padding-bottom: var(--o-spacing-h2);
-      border-bottom: 1px solid var(--o-color-division);
+      border-bottom: 1px solid var(--e-color-neutral11);
     }
 
     &-list {
@@ -218,7 +218,7 @@ const handleGo = (path: string) => {
       color: var(--e-color-text1);
       line-height: var(--o-line-height-h4);
       text-align: start;
-      border-bottom: 1px solid var(--o-color-division);
+      border-bottom: 1px solid var(--e-color-neutral11);
       padding: var(--o-spacing-h4) 0;
     }
     &-title:first-child {

@@ -142,7 +142,7 @@ export default {
   HOME_LAST_BANNER: {},
   HOME_INTRODUCE: {
     INTRO_TITLE: 'The Most Innovative Open Source Community',
-    INTRO_HEAD: 'Start your journey in openEuler',
+    INTRO_HEAD: 'Start Your Journey in openEuler',
     INTRO_DESCRIPTION:
       'As an open community, openEuler works with global developers to build an open, diverse, and architecture-inclusive software ecosystem that supports multiple processor architectures and covers a full range of digital facilities. openEuler is committed to supercharging enterprise digital infrastructure and boosting the application ecosystem.',
     INTRO_IMG_URL: '',
@@ -225,7 +225,7 @@ export default {
         ROUND_KEY: 'contributors',
         ROUND_IMG: contributer,
         ROUND_IMG_DARK: contributerDark,
-        ROUND_TEXT: 'Contributor',
+        ROUND_TEXT: 'Contributors',
         ROUND_STYLE: {
           backcolor: 'blue',
         },
@@ -235,7 +235,7 @@ export default {
         ROUND_KEY: 'repos',
         ROUND_IMG: software,
         ROUND_IMG_DARK: softwareDark,
-        ROUND_TEXT: 'Repository',
+        ROUND_TEXT: 'Repositories',
         ROUND_STYLE: {
           backcolor: 'pink',
         },
@@ -245,7 +245,7 @@ export default {
         ROUND_KEY: 'sigs',
         ROUND_IMG: sig,
         ROUND_IMG_DARK: sigDark,
-        ROUND_TEXT: 'SIG',
+        ROUND_TEXT: 'SIGs',
         ROUND_STYLE: {
           backcolor: 'yellow',
         },
@@ -255,7 +255,7 @@ export default {
         ROUND_KEY: 'users',
         ROUND_IMG: user,
         ROUND_IMG_DARK: userDark,
-        ROUND_TEXT: 'User',
+        ROUND_TEXT: 'Users',
         ROUND_STYLE: {
           backcolor: 'yellow',
         },
@@ -265,7 +265,7 @@ export default {
         ROUND_KEY: 'businessosv',
         ROUND_IMG: osv,
         ROUND_IMG_DARK: osvDark,
-        ROUND_TEXT: 'OS Vendor',
+        ROUND_TEXT: 'OS Vendors',
         ROUND_STYLE: {
           backcolor: 'blue',
         },
@@ -637,7 +637,7 @@ export default {
       MAIL: 'community@openeuler.org',
     },
     SOURCE_PUBLISH_TITLE: 'Vendors with openEuler-based Commercial Editions',
-    SOURCE_LINK_TITLE: 'Reference Links',
+    SOURCE_LINK_TITLE: 'Related Links',
   },
   HOME_SOURCE_EDITION: [
     {
@@ -656,12 +656,12 @@ export default {
       MOBILE: qilingMobile,
     },
     {
-      LINK: 'http://www.iscas.ac.cn/',
+      LINK: 'http://english.is.cas.cn/',
       PC: iscas,
       MOBILE: iscasMobile,
     },
     {
-      LINK: 'http://www.i-soft.com.cn/',
+      LINK: 'http://www.i-soft.com.cn//index.jhtml',
       PC: cetc,
       MOBILE: cetcMobile,
     },
@@ -708,7 +708,7 @@ export default {
       MOBILE: mulanMobile,
     },
     {
-      LINK: 'https://kunpeng.huawei.com/',
+      LINK: 'https://www.hikunpeng.com/en/',
       PC: kunpeng,
       MOBILE: kunpengMobile,
     },
@@ -786,7 +786,7 @@ export default {
     },
   ],
   IMG_CAROUSE: {
-    TITLE: '面向数字基础设施的开源操作系统',
+    TITLE: 'Open Source Operating System for Digital Infrastructure',
     BUTTON: 'Try Now',
     TRY_URL: 'community/contribution/detail.html',
     LIST: [
@@ -807,9 +807,10 @@ export default {
   COMMUNITY_ACTIVITY: {
     TITLE: 'community activity',
     CARD: {
-      TITLE: 'openEuler社区活力',
-      CONTENT: 'openEuler也是一个开源的操作系统技术平台，鼓励社区贡献、合作。',
-      VIEW_DETAILS: '查看贡献详情',
+      TITLE: 'openEuler Community Vitality',
+      CONTENT:
+        'openEuler is an open platform for operating system technologies that encourages contributions and cooperation.',
+      VIEW_DETAILS: 'Learn More',
       LINK: 'https://datastat.openeuler.org/en/overview',
     },
   },

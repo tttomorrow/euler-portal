@@ -105,7 +105,7 @@ onMounted(async () => {
       :blog-data="blogData"
       :news-data="newsData"
     />
-    <div class="home-calendar">
+    <div v-if="lang === 'zh'" class="home-calendar">
       <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
       <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
     </div>

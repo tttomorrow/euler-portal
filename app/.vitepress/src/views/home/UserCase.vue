@@ -341,7 +341,7 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
     padding-bottom: var(--o-spacing-h2);
     grid-gap: var(--o-spacing-h4) var(--o-spacing-h2);
-    border-bottom: 1px solid var(--o-color-division);
+    border-bottom: 1px solid var(--e-color-neutral11);
   }
 
   &-card {

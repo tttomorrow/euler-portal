@@ -309,7 +309,7 @@ onMounted(async () => {
     &-word {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      color: var(--o-color-secondary_active);
+      color: var(--e-color-neutral8);
       margin-top: var(--o-spacing-h8);
       a {
         font-size: var(--o-font-size-tip);
@@ -350,7 +350,7 @@ onMounted(async () => {
     font-weight: 400;
     color: var(--e-color-text1);
     height: 54px;
-    border-bottom: 1px var(--o-color-division) solid;
+    border-bottom: 1px var(--e-color-neutral11) solid;
     .cell {
       padding-left: 0px;
       padding-right: var(--o-spacing-h6);
