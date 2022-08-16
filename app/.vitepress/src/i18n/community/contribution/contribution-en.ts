@@ -4,8 +4,8 @@ export default {
     ' https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E8%B4%A1%E7%8C%AE%E5%9C%B0%E5%9B%BE/webtrailchess_zh_mo.png',
   BACKGROUND_IMG:
     'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E8%B4%A1%E7%8C%AE%E5%9C%B0%E5%9B%BE/webtrailchess_zh.png',
-  LOOK_DESC: '查看文字版攻略',
-  LOOK_MAP: '贡献攻略地图',
+  LOOK_DESC: 'View Details',
+  LOOK_MAP: 'Contribution Map',
   PRINT_MAP: '打印攻略地图',
   LINK_LIST: [
     {
