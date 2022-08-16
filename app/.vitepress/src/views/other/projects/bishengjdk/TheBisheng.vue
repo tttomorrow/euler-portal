@@ -13,12 +13,6 @@ import BannerIllustration from '/img/projects/bisheng/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const i18n = useI18n();
-
-const anchorData = [
-  { id: 'architecture', name: '架构' },
-  { id: 'learn', name: '学习' },
-  { id: 'link', name: '友情链接' },
-];
 </script>
 
 <template>
@@ -44,19 +38,22 @@ const anchorData = [
       />
       <!-- 架构模块 -->
       <MiniFrame
-        id="architecture"
+        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[0].id"
         :frame-obj="i18n.bishengjdk.BISHENG_FRAMEWORK"
         layout="upAndDown"
       />
       <!-- 学习模块 -->
-      <MiniDocs id="learn" :docs-obj="i18n.bishengjdk.BISHENG_LEARN" />
+      <MiniDocs
+        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[1].id"
+        :docs-obj="i18n.bishengjdk.BISHENG_LEARN"
+      />
       <!-- 友情链接模块 -->
       <MiniReference
-        id="link"
+        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[2].id"
         :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE"
       />
 
-      <AppAnchor class="anchor" :data="anchorData" />
+      <AppAnchor class="anchor" :data="i18n.bishengjdk.BISHENG_ANCHOR_DATA" />
     </div>
   </div>
 </template>

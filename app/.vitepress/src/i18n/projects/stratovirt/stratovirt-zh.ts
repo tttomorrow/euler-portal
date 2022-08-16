@@ -7,21 +7,11 @@ export default {
   ],
   SVIRT_IMG: '/img/minisite/svirt/pc-svirt.png',
   SVIRT_MB_IMG: '/img/minisite/svirt/mobile-svirt.png',
-  SVIRT_NAV_TEXT: [
-    {
-      key: '#character',
-      name: '特征',
-    },
-    {
-      key: '#framework',
-      name: '架构',
-    },
-    {
-      key: '#document',
-      name: '文档',
-    },
+  SVIRT_ANCHOR_DATA: [
+    { id: 'feature', name: '特征' },
+    { id: 'architecture', name: '架构' },
+    { id: 'docs', name: '文档' },
   ],
-
   SVIRT_LINK: [
     {
       IMG: '/img/projects/share/cards-work.png',

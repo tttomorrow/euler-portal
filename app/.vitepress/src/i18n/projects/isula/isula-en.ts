@@ -13,6 +13,10 @@ export default {
   ],
   ISULA_DESC_IMG: '/img/minisite/isula/zh-desc.png',
   ISULA_MAIL: 'mail to:isulad@openeuler.org',
+  ISULA_ANCHOR_DATA: [
+    { id: 'architecture', name: 'Architecture' },
+    { id: 'docs', name: 'Documentation' },
+  ],
   ISULA_LINK: [
     {
       IMG: '/img/projects/share/cards-work.png',

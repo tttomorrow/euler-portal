@@ -13,12 +13,6 @@ import BannerIllustration from '/img/projects/stratovirt/illustration-banner.png
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const i18n = useI18n();
-
-const anchorData = [
-  { id: 'feature', name: '特征' },
-  { id: 'architecture', name: '架构' },
-  { id: 'docs', name: '文档' },
-];
 </script>
 <template>
   <div class="svirt-wraper">
@@ -36,19 +30,22 @@ const anchorData = [
     <MiniDescription :description-desc="i18n.stratovirt.SVIRT_DESC" />
     <!-- 特征 -->
     <MiniFeatures
-      id="feature"
+      :id="i18n.stratovirt.SVIRT_ANCHOR_DATA[0].id"
       :features-obj="i18n.stratovirt.SVIRT_CHARACTER"
     />
     <!-- 架构 -->
     <MiniFrame
-      id="architecture"
+      :id="i18n.stratovirt.SVIRT_ANCHOR_DATA[1].id"
       :frame-obj="i18n.stratovirt.SVIRT_FRAMEWORK"
       layout="leftAndRight"
     />
     <!-- 文档 -->
-    <MiniDocs id="docs" :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT" />
+    <MiniDocs
+      :id="i18n.stratovirt.SVIRT_ANCHOR_DATA[2].id"
+      :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT"
+    />
 
-    <AppAnchor class="anchor" :data="anchorData" />
+    <AppAnchor class="anchor" :data="i18n.stratovirt.SVIRT_ANCHOR_DATA" />
   </div>
 </template>
 

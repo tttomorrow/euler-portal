@@ -12,11 +12,6 @@ import BannerIllustration from '/img/projects/isula/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const i18n = useI18n();
-
-const anchorData = [
-  { id: 'architecture', name: '架构' },
-  { id: 'docs', name: '文档' },
-];
 </script>
 <template>
   <div class="isula-wraper">
@@ -31,13 +26,16 @@ const anchorData = [
     <MiniCards :cards-link="i18n.isula.ISULA_LINK" />
     <MiniDescription :description-desc="i18n.isula.ISULA_DESC_UP" />
     <MiniFrame
-      id="architecture"
+      :id="i18n.isula.ISULA_ANCHOR_DATA[0].id"
       :frame-obj="i18n.isula.ISULA_FRAMEWORK"
       layout="upAndDown"
     />
-    <MiniDocs id="docs" :docs-obj="i18n.isula.ISULA_DOCUMENT" />
+    <MiniDocs
+      :id="i18n.isula.ISULA_ANCHOR_DATA[1].id"
+      :docs-obj="i18n.isula.ISULA_DOCUMENT"
+    />
 
-    <AppAnchor class="anchor" :data="anchorData" />
+    <AppAnchor class="anchor" :data="i18n.isula.ISULA_ANCHOR_DATA" />
   </div>
 </template>
 <style lang="scss" scoped>

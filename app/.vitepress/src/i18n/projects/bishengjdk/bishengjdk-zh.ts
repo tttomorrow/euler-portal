@@ -5,6 +5,11 @@ export default {
     '毕昇JDK作为OpenJDK的下游，是一款高性能、可用于生产环境的OpenJDK发行版。毕昇JDK对华为内部应用场景中遇到的一些性能问题和稳定性问题进行了修复，并在ARM架构上进行了性能优化和稳定性增强，在ARM架构上更稳定，在大数据等场景下可以获得更好的性能。',
     '毕昇JDK致力于为JAVA开发者提供一款稳定可靠、高性能、易调测的JDK，也为用户在ARM架构上提供一个更好的选择。',
   ],
+  BISHENG_ANCHOR_DATA: [
+    { id: 'architecture', name: '架构' },
+    { id: 'learn', name: '学习' },
+    { id: 'link', name: '友情链接' },
+  ],
   BISHENG_LINK: [
     {
       IMG: '/img/projects/share/cards-work.png',
