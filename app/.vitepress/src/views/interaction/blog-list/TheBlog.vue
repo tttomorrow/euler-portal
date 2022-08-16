@@ -262,7 +262,7 @@ const sizeChange = (val: number) => {
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
         :total="paginationData.total"
-        :page-sizes="9"
+        :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
         @current-change="currentChange"
         @size-change="sizeChange"
       >
@@ -393,6 +393,9 @@ const sizeChange = (val: number) => {
     &-item:hover {
       box-shadow: var(--o-shadow-base_hover);
     }
+  }
+  &-pagination {
+    margin-bottom: var(--o-spacing-h1);
   }
 }
 

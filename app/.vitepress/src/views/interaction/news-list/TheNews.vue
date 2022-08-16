@@ -150,7 +150,7 @@ const sizeChange = (val: number) => {
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
         :total="paginationData.total"
-        :page-sizes="9"
+        :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
         @current-change="currentChange"
         @size-change="sizeChange"
       >
@@ -178,8 +178,6 @@ const sizeChange = (val: number) => {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: var(--o-spacing-h4);
-    // justify-content: center;
-    // align-items: center;
     padding: 0 var(--o-spacing-h5);
     &-item {
       justify-self: center;
@@ -188,7 +186,7 @@ const sizeChange = (val: number) => {
       min-height: 374px;
       min-width: 456px;
       max-width: 456px;
-      // width:456px;
+      cursor: pointer;
     }
     &-item:hover {
       box-shadow: var(--o-shadow-base_hover);
@@ -197,17 +195,14 @@ const sizeChange = (val: number) => {
   &-img {
     width: 100%;
     height: 188px;
-    cursor: pointer;
     img {
       width: 100%;
       height: 188px;
-      object-fit: cover;
     }
   }
   &-info {
     padding: var(--o-spacing-h4);
     color: var(--e-color-text1);
-    // cursor: pointer;
   }
   &-title {
     font-weight: 400;
@@ -215,7 +210,6 @@ const sizeChange = (val: number) => {
     line-height: var(--o-line-height-h7);
     font-size: var(--o-font-size-h7);
     margin-bottom: var(--o-spacing-h10);
-    cursor: pointer;
     word-break: break-all;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -238,6 +232,9 @@ const sizeChange = (val: number) => {
     -webkit-line-clamp: 2;
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
+  }
+  &-pagination {
+    margin-bottom: var(--o-spacing-h1);
   }
 }
 
@@ -266,8 +263,6 @@ const sizeChange = (val: number) => {
   }
 }
 @media (max-width: 620px) {
-  .news-list {
-  }
   .news-list-item {
     max-width: 456px;
     min-width: 456px;
@@ -280,20 +275,6 @@ const sizeChange = (val: number) => {
   }
   .news-img {
     min-width: 456px;
-  }
-  .news-title {
-    // font-weight: bold;
-
-    // line-height: var(--o-line-height-text);
-    // font-size: var(--o-font-size-text);
-  }
-  .news-time {
-    // line-height: var(--o-line-height-tip);
-    // font-size: var(--o-font-size-tip);
-  }
-  .news-content {
-    // line-height: var(--o-line-height-tip);
-    // font-size: var(--o-font-size-tip);
   }
   :deep(.el-card__body) {
     display: flex;
@@ -320,15 +301,12 @@ const sizeChange = (val: number) => {
     min-width: 100%;
     max-height: 180px;
     min-height: 180px;
-    object-fit: cover;
-    // display: block;
   }
   .news-info {
     max-width: 304px;
     min-width: 304px;
   }
   .news-title {
-    // font-weight: bold;
     height: auto;
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
