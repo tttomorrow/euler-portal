@@ -17,15 +17,15 @@ export function getSigList() {
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 export function getCompleteList(params?: LIST_PARAMS) {
-  const url = `/query/sig/info?community=openeuler&page=${params?.page}&pageSize=${params?.pageSize}`;
+  const url = `/query/sig/info?community=openeuler&page=${params?.page}&pageSize=${params?.pageSize}&search=fuzzy`;
   return request.post(url).then((res: AxiosResponse) => res.data);
 }
 export function getRepoList() {
-  const url = `/query/sig/repo?community=openeuler`;
+  const url = `/query/sig/repo?community=openeuler&search=fuzzy`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 export function getAllList() {
-  const url = '/query/sig/info?community=openeuler';
+  const url = '/query/sig/info?community=openeuler&search=fuzzy';
   return request.post(url).then((res: AxiosResponse) => res.data);
 }
 export function getSigDetail(id: string) {

@@ -65,8 +65,9 @@ const isMobile = computed(() => {
 const getSigList = (params: LIST_PARAMS) => {
   try {
     getCompleteList(params).then((res) => {
-      SigList.value = res[0].data;
-      paginationData.value.total = res[0].total;
+      const { data } = res;
+      SigList.value = data[0].data;
+      paginationData.value.total = data[0].total;
     });
   } catch (error) {
     throw Error;
@@ -86,9 +87,10 @@ const getAllRepo = () => {
 const getRepositoryList = () => {
   try {
     getAllList().then((res) => {
-      if (res.code === 200) {
-        allList.value = res.data;
-        res.data.map((item: SIGLIST) => {
+      const { code, data } = res;
+      if (code === 200) {
+        allList.value = data;
+        data.map((item: SIGLIST) => {
           sigSelectList.value.push(item.sig_name);
           item.maintainers.forEach((subItem: string) => {
             maintainerList.value.push(subItem);
@@ -132,14 +134,26 @@ const currentChange = (val: number) => {
     page: val,
     pageSize: paginationData.value.pageSize,
   };
-  getSigList(params);
+  if (
+    sigSelected.value === '' &&
+    repositiorySelected.value === '' &&
+    maintainerSelected.value === ''
+  ) {
+    getSigList(params);
+  }
 };
 const sizeChange = (val: number) => {
   const params = {
     page: paginationData.value.currentPage,
     pageSize: val,
   };
-  getSigList(params);
+  if (
+    sigSelected.value === '' &&
+    repositiorySelected.value === '' &&
+    maintainerSelected.value === ''
+  ) {
+    getSigList(params);
+  }
 };
 
 const toSigDetail = (value: SIGLIST) => {
