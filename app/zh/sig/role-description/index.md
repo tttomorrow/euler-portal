@@ -34,13 +34,15 @@ import illustration from '@/assets/illustrations/search.png';
   });
 </script>
 
-<BannerLevel2
-class="app-header"
-  :background-image="banner"
-  background-text="SIG"
-  title="角色说明"
-  :illustration="illustration"
-/>
+<ClientOnly>
+  <BannerLevel2
+    class="app-header"
+    :background-image="banner"
+    background-text="SIG"
+    title="角色说明"
+    :illustration="illustration"
+  />
+</ClientOnly>
 
 <div class="markdown">
 
