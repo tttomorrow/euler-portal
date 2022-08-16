@@ -9,8 +9,6 @@ import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
 import { useI18n } from '@/i18n';
-import { useData, useRouter } from 'vitepress';
-
 import type {
   CveQuery,
   FilterList,
@@ -31,8 +29,6 @@ import {
 } from '@/api/api-security';
 
 const i18n = useI18n();
-const { lang } = useData();
-const router = useRouter();
 
 const searchContent = ref('');
 const activeIndex = ref(0);
@@ -80,7 +76,7 @@ const queryData: CveQuery = reactive({
   cpu: '',
   os: '',
   testOrganization: '',
-  lang: `${lang.value === 'ru' ? 'en' : lang.value}`,
+  lang: 'zh',
 });
 
 // const tableData = ref<
@@ -237,18 +233,6 @@ function searchValchange() {
   initData(queryData);
 }
 
-function ToIntroduce() {
-  if (activeName.value === '1' || activeName.value === '2') {
-    router.go(`/${lang.value}/security/compatibility/hardware/`);
-  } else if (activeName.value === '3') {
-    router.go(`/${lang.value}/security/compatibility/software/`);
-  } else {
-    window.open(
-      'https://gitee.com/openeuler/technical-certification',
-      '_blank'
-    );
-  }
-}
 const listfilter = (val: any) => {
   if (activeName.value === '1') {
     val.forEach((item: any) => {
@@ -291,10 +275,6 @@ const listfilter = (val: any) => {
 watch(activeName, () => {
   // initQueryData();
 });
-
-// watch(lang, () => {
-//   queryData.lang = lang.value;
-// });
 
 onMounted(() => {
   getCompatibilityData(queryData);
@@ -370,7 +350,7 @@ onMounted(() => {
     :illustration="search"
   />
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
-    <OTabPane :label="i18n.compatibility.HARDWARE" name="1">
+    <OTabPane label="整机" name="1">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -411,13 +391,12 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
             prop="architecture"
-            width="140"
+            width="160"
           >
           </OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.VENDOR"
             prop="hardwareFactory"
-            width="150"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.MODEL"
@@ -430,14 +409,12 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
             prop="osVersion"
-            width="220"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE"
             prop="certificationTime"
           ></OTableColumn>
           <el-table-column
-            width="220"
             :label="
               i18n.compatibility.HARDWARE_TABLE_COLUMN
                 .COMPATIBILITY_CONFIGURATION
@@ -454,19 +431,14 @@ onMounted(() => {
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.REFERRENCE"
           >
             <template #default="scope">
-              <a
-                class="friendly-link"
-                :href="scope.row.friendlyLink"
-                target="_blank"
-                >link</a
-              >
+              <a :href="scope.row.friendlyLink" target="_blank">link</a>
             </template>
           </el-table-column>
         </OTable>
       </div>
     </OTabPane>
 
-    <OTabPane :label="i18n.compatibility.DRIVE" name="2">
+    <OTabPane label="板卡" name="2">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -512,12 +484,11 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
             prop="driverName"
-            width="140"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
             prop="os"
-            width="230"
+            width="200"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
@@ -531,12 +502,11 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
             prop="driverDate"
-            width="160"
+            width="200"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
             prop="chipVendor"
-            width="160"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
@@ -546,7 +516,6 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
             prop="chipModel"
-            width="200"
           ></OTableColumn>
         </OTable>
 
@@ -618,7 +587,7 @@ onMounted(() => {
       </div>
     </OTabPane>
 
-    <OTabPane :label="i18n.compatibility.SOFTWARE" name="3">
+    <OTabPane label="开源软件" name="3">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -688,12 +657,7 @@ onMounted(() => {
             width="130"
           >
             <template #default="scope">
-              <a
-                class="friendly-link"
-                :href="scope.row.downloadLink"
-                target="_blank"
-                >link</a
-              >
+              <a :href="scope.row.downloadLink" target="_blank">link</a>
             </template>
           </el-table-column>
           <OTableColumn
@@ -704,7 +668,7 @@ onMounted(() => {
       </div>
     </OTabPane>
 
-    <OTabPane :label="i18n.compatibility.BUSINESS_SOFTWARE" name="4">
+    <OTabPane label="商业软件" name="4">
       <div class="wrapper">
         <OSearch
           v-model="searchContent"
@@ -807,15 +771,13 @@ onMounted(() => {
       </OPagination>
       <p class="about">
         {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-        <a href="#" @click="ToIntroduce">{{
-          i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
-        }}</a>
+        <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
       </p>
     </div>
   </OTabs>
   <div class="tabs-mobile">
     <el-collapse v-model="activeName" accordion @change="handleChange">
-      <el-collapse-item :title="i18n.compatibility.HARDWARE" name="1">
+      <el-collapse-item title="整机" name="1">
         <div class="blog-tag">
           <MobileFilter
             class="filter"
@@ -870,9 +832,13 @@ onMounted(() => {
         </p>
       </el-collapse-item>
 
-      <el-collapse-item :title="i18n.compatibility.DRIVE" name="2">
+      <el-collapse-item title="板卡" name="2">
         <div class="blog-tag">
-          <OScreen class="filter" :data="filterDataTwo" @filter="listfilter" />
+          <MobileFilter
+            class="filter"
+            :data="filterDataTwo"
+            @filter="listfilter"
+          />
         </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
@@ -950,9 +916,13 @@ onMounted(() => {
         </p>
       </el-collapse-item>
 
-      <el-collapse-item :title="i18n.compatibility.SOFTWARE" name="3">
+      <el-collapse-item title="开源软件" name="3">
         <div class="blog-tag">
-          <OScreen class="filter" :data="filterDataTwo" @filter="listfilter" />
+          <MobileFilter
+            class="filter"
+            :data="filterDataTwo"
+            @filter="listfilter"
+          />
         </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
@@ -1035,7 +1005,7 @@ onMounted(() => {
         </p>
       </el-collapse-item>
 
-      <el-collapse-item :title="i18n.compatibility.BUSINESS_SOFTWARE" name="4">
+      <el-collapse-item title="商业软件" name="4">
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
             <ul>
@@ -1198,9 +1168,6 @@ onMounted(() => {
   @media screen and (max-width: 1080px) {
     display: none;
   }
-  .friendly-link {
-    color: var(--e-color-kleinblue5);
-  }
 }
 .mobile-list {
   display: none;
@@ -1250,9 +1217,6 @@ onMounted(() => {
   font-weight: 400;
   color: var(--e-color-text1);
   line-height: var(--o-line-height-h8);
-  a {
-    color: var(--e-color-kleinblue5);
-  }
 }
 .mobile-about {
   padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
