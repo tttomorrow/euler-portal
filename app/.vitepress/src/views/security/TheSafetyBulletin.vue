@@ -169,7 +169,7 @@ watch(queryData, () => getSecurityLists(queryData));
               :type="activeIndex1 === index ? 'primary' : 'text'"
               @click="yearTagClick(index, item)"
             >
-              {{ item === '' ? '全部' : item }}
+              {{ item === '' ? i18n.security.ALL : item }}
             </OTag>
           </TagFilter>
         </div>
@@ -195,7 +195,7 @@ watch(queryData, () => getSecurityLists(queryData));
             <template #title>
               <o-icon><icon-calendar></icon-calendar></o-icon>
               <span class="selected-year">{{
-                selectedYear === '' ? '全部' : selectedYear
+                selectedYear === '' ? i18n.security.ALL : selectedYear
               }}</span>
             </template>
             <div class="years">
@@ -206,7 +206,7 @@ watch(queryData, () => getSecurityLists(queryData));
                 :class="selectedYear === item ? 'selected' : ''"
                 @click="selectYear(item)"
               >
-                {{ item === '' ? '全部' : item }}
+                {{ item === '' ? i18n.security.ALL : item }}
               </p>
             </div>
           </el-collapse-item>

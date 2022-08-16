@@ -29,6 +29,7 @@ export default {
   YEAR: 'Year',
   PLACEHOLDER: 'Select',
   ALL: 'ALL',
+  CVE: 'CVE',
   ADVISORY: 'Advisory',
   SYNOPSIS: 'Synopsis',
   SEVERITY: 'Severity',
