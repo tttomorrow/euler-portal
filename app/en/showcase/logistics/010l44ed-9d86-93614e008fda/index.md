@@ -8,7 +8,7 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/logistics.png
 ---
 
-<div class="markdown">
+<div >
 
 ## **Scenarios**
 
@@ -20,7 +20,7 @@ Leveraging existing technologies, China Post Group Corporation (or China Post) s
 
 <div align="center" class="case-img"><img src="./lg1.png"/></div>
 
-UOS supports multiple versions of the mainstream cloud architecture OpenStack, delivers highly available components and solutions which are easy to maintain and feature cloud native, and provides all the migration tools required to completely migrate original service data. 
+UOS supports multiple versions of the mainstream cloud architecture OpenStack, delivers highly available components and solutions which are easy to maintain and feature cloud native, and provides all the migration tools required to completely migrate original service data.
 
 Set up a professional technical service team to ensure availability, compatibility, and stability of the software and hardware involved in the production environment.
 

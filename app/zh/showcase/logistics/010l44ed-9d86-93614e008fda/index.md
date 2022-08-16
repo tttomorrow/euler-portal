@@ -8,7 +8,7 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/logistics.png
 ---
 
-<div class="markdown">
+<div >
 
 ## 应用场景
 
@@ -19,7 +19,6 @@ img: /img/showcase/logistics.png
 <div align="center" class="case-img"><img src="./lg1.jpg"/></div>
 
 统信服务器操作系统，具备同源异构能力，完美支持主流云架构 Openstack 多种版本、提供云原生、高可用、易维护等组件和解决方案，提供迁移工具，完整迁移原业务数据。组建专业的技术服务团队，对生产环境所涉及的软件、硬件予以可用性、兼容性、稳定性等适配。
-
 
 ## 客户价值
 

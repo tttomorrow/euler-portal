@@ -8,7 +8,7 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div class="markdown">
+<div >
 
 ## **Scenarios**
 
