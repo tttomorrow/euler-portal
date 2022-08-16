@@ -9,8 +9,17 @@ import TheSigLandscape from './TheSigLandscape.vue';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
 
+interface SIGLIST {
+  group_name: string;
+  home_page: string;
+  id: number;
+  irc: string;
+  maillist: string;
+  owners: string;
+}
+
 const i18n = useI18n();
-const sigList: any = ref([]);
+const sigList = ref<SIGLIST[]>([]);
 
 onMounted(() => {
   try {
@@ -38,15 +47,16 @@ onMounted(() => {
     </ul>
   </div>
   <div class="sig-list">
+    <p>SIG List</p>
     <OTabs>
       <OTabPane label="SIG List">
-        <TheSigList :sig-list="sigList" />
+        <TheSigList />
       </OTabPane>
       <OTabPane label="SIG Board" lazy>
         <TheSigBoard :sig-list="sigList" />
       </OTabPane>
       <OTabPane label="SIG Landscape">
-        <TheSigLandscape :sig-list="sigList" />
+        <TheSigLandscape />
       </OTabPane>
     </OTabs>
   </div>
@@ -57,11 +67,12 @@ onMounted(() => {
   font-weight: 400;
   line-height: var(--o-line-height-h8);
   color: var(--e-color-text1);
-  max-width: 1380px;
+  max-width: 1504px;
   margin: var(--o-spacing-h1) auto;
   padding: 0 44px;
   @media (max-width: 780px) {
     padding: var(--o-spacing-h5) 0px var(--o-spacing-h2) var(--o-spacing-h5);
+    font-size: var(--o-font-size-tip);
   }
   ul {
     list-style: disc;
@@ -74,12 +85,22 @@ onMounted(() => {
   }
 }
 .sig-list {
-  max-width: 1400px;
+  max-width: 1504px;
   margin: var(--o-spacing-h1) auto;
   padding: 0 44px;
+  p {
+    display: none;
+  }
   @media (max-width: 780px) {
     margin: 0px var(--o-spacing-h4);
     padding: 0 0;
+    :deep(.el-tabs__header) {
+      display: none;
+    }
+    p {
+      display: block;
+      text-align: center;
+    }
   }
 }
 </style>

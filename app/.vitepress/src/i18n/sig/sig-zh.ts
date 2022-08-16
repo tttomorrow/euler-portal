@@ -48,16 +48,18 @@ export default {
       ],
     },
   },
+  SIG_ALL: '全部',
   SIG_LIST: {
     HOME_PAGE: '前往gitee首页',
+    SIG: 'SIG',
+    REPOSITORY: '仓库名称',
+    MAINTAINER: 'Maintainer',
     MAIL: '邮件',
     IRC: 'IRC频道',
     MANAGER: '管理员',
     NAME: 'SIG名称',
     GITEE_PAGE: 'Gitee主页',
-    STORE_NAME: '仓库名称',
-    MAINTAINER: 'MAINTAINER',
-    COMMITTER: 'COMMITTER',
+    TIPS: '注：仓库Committer请点击SIG名称，在仓库列表查询',
   },
   SIG_DESCRIPTION: {
     MEANING:

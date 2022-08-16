@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AOS from 'aos';
 import { onMounted } from 'vue';
 import { useData, useRouter } from 'vitepress';
+import AOS from 'aos';
 import { useI18n } from '@/i18n';
 
 const configData = useData();
@@ -16,8 +16,17 @@ defineProps({
   },
 });
 
-const toSigDetail = (value: any) => {
-  router.go(`/${language.value}/sig/sig-detail/?id=${value.id}`);
+interface SIGLIST {
+  group_name: string;
+  home_page: string;
+  id: number;
+  irc: string;
+  maillist: string;
+  owners: string;
+}
+
+const toSigDetail = (value: SIGLIST) => {
+  router.go(`/${language.value}/sig/sig-detail/?name=${value.group_name}`);
 };
 onMounted(() => {
   AOS.init({
@@ -86,7 +95,7 @@ onMounted(() => {
 .sig-board {
   column-count: 2;
   column-gap: var(--o-spacing-h1);
-  max-width: 1340px;
+  max-width: 1504px;
   margin: 0 auto;
   @media (max-width: 780px) {
     column-count: 1;
@@ -94,7 +103,7 @@ onMounted(() => {
     padding: 0 var(--o-spacing-h5);
   }
   &-item {
-    max-width: 530px;
+    max-width: 630px;
     box-shadow: var(--o-shadow-base);
     margin-bottom: var(--o-spacing-h1);
     break-inside: avoid;
@@ -113,7 +122,7 @@ onMounted(() => {
       cursor: pointer;
       color: var(--e-color-text1);
       &:hover {
-        color: var(--e-color-brand2);
+        color: var(--e-color-kleinblue6);
       }
     }
     &-info {

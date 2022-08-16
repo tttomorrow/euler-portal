@@ -210,7 +210,7 @@ const language = configData.lang;
         &-circle {
           height: 78px;
           width: 78px;
-          border: 4px solid var(--o-color-base);
+          border: 4px solid var(--e-color-brand1);
           border-radius: 50%;
           background-color: var(--e-color-brand1);
           position: relative;
