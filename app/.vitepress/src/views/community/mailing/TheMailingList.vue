@@ -367,7 +367,7 @@ const isMobile = computed(() => {
           white-space: nowrap;
           height: 70px;
           width: 70px;
-          border: 4px solid var(--o-color-base);
+          border: 4px solid var(--e-color-white);
           border-radius: 50%;
           background-color: var(--e-color-brand1);
           position: relative;

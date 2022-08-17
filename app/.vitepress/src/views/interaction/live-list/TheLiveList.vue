@@ -78,8 +78,8 @@ const goNext = () => {
     <div class="live-top-title">{{ i18n.live.REPLAYER }}</div>
     <div class="live-list">
       <OCard
-        v-for="(live, index) in showLiveList"
-        :key="index"
+        v-for="live in showLiveList"
+        :key="live.PHOTOPATH"
         class="live-list-item"
         :body-style="{ padding: '0px' }"
       >
@@ -276,6 +276,9 @@ const goNext = () => {
     margin-top: var(--o-spacing-h4);
     padding: 0;
     line-height: var(--o-line-height-tip);
+    span {
+      display: inline;
+    }
     @media screen and (max-width: 767px) {
       margin-top: var(--o-spacing-h5);
     }
