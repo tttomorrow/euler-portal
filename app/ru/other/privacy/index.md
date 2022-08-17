@@ -9,13 +9,12 @@ import search from '@/assets/illustrations/search.png';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 </script>
 
-<ClientOnly> <BannerLevel2
+<BannerLevel2
     :background-image="banner"
     background-text="PRIVACY POLICY"
     title="Конфиденциальность"
     :illustration="search"
   />
-</ClientOnly>
 
 <div class='markdown' style="margin-top:var(--o-spacing-h1)">
 
