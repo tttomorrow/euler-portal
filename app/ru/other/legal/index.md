@@ -1,11 +1,8 @@
 ---
-title: '法律声明'
+title: 'Legal'
 ---
 
-<!--  TODO: BANNER -->
-<script setup lang="ts">
-import banner from '@/assets/banner-secondary.png';
-import search from '@/assets/illustrations/search.png';
+<div class='markdown' style="margin-top:var(--o-spacing-h1)">
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 </script>
@@ -16,6 +13,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
     title="Правовое уведомление"
     :illustration="search"
   />
+</ClientOnly>
 
 <div  style="margin-top:var(--o-spacing-h1)">
 

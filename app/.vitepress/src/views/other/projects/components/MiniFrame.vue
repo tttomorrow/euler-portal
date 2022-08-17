@@ -31,7 +31,7 @@ const isDark = computed(() => {
     <!-- 上下布局 -->
     <div v-if="layout === 'upAndDown'" class="framework-upanddown">
       <!-- PC 端 -->
-      <template class="pc">
+      <div class="pc">
         <!-- 有选项卡 -->
         <template v-if="frameObj.TAB">
           <OTabs v-if="frameObj.TAB">
@@ -60,9 +60,9 @@ const isDark = computed(() => {
             :dark-img="isDark"
           />
         </template>
-      </template>
+      </div>
       <!-- 移动端 -->
-      <template class="mobile">
+      <div class="mobile">
         <!-- 有选项卡只渲染第一项 -->
         <template v-if="frameObj.TAB">
           <FrameList
@@ -83,7 +83,7 @@ const isDark = computed(() => {
             :dark-img="isDark"
           />
         </template>
-      </template>
+      </div>
     </div>
     <!-- 左右布局 -->
     <div v-if="layout === 'leftAndRight'" class="framework-leftandright">
@@ -91,11 +91,11 @@ const isDark = computed(() => {
         <div class="info__desc__wrapper">
           <div class="desc">
             <p class="desc-title">{{ frameObj.DESC_LIST[0] }}</p>
-            <template v-for="(item, index) in frameObj.DESC_LIST" :key="index">
+            <div v-for="(item, index) in frameObj.DESC_LIST" :key="index">
               <p v-if="index > 0" class="desc-item">
                 {{ `${index}、` }}{{ item }}
               </p>
-            </template>
+            </div>
             <div
               class="desc-background"
               :style="{ backgroundImage: `url(${frameObj.DESC_BACKGROUND})` }"
