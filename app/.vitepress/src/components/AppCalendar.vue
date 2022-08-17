@@ -9,7 +9,7 @@ import type { TabsPaneContext } from 'element-plus';
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
 import IconArrowRight from '~icons/app/arrow-right.svg';
-import IconDown from '~icons/app/down.svg';
+import IconDown from '~icons/app/icon-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
@@ -152,8 +152,9 @@ function meetClick(day: string) {
             );
           });
         }
-        // throw Error();
+        throw Error();
       } else {
+        renderData.value.timeData = [];
       }
     });
   } catch (e) {
@@ -247,17 +248,17 @@ const watchData = watch(
       <div class="detail-list">
         <div class="right-title">
           <div class="title-list">
-            <el-tabs v-model="tabType" @tab-click="changeTab">
-              <el-tab-pane
+            <OTabs v-model="tabType" @tab-click="changeTab">
+              <OTab-pane
                 v-for="item in titleList"
                 :key="item"
                 :label="item"
                 :name="item"
-              ></el-tab-pane>
-            </el-tabs>
+              ></OTab-pane>
+            </OTabs>
           </div>
         </div>
-        <el-collapse v-if="windowWidth < 768" class="calendar calendar-mo">
+        <o-collapse v-if="windowWidth < 768" class="calendar calendar-mo">
           <div class="collapse-box-mo">
             <el-collapse-item>
               <template #title>
@@ -303,14 +304,14 @@ const watchData = watch(
               </div>
             </el-collapse-item>
           </div>
-        </el-collapse>
+        </o-collapse>
         <div class="detail-head">
           {{ i18n.NEW_DATE }}
           <span>{{ currentDay }}</span>
         </div>
         <div
           class="meeting-list"
-          :style="{ height: calendarHeight - 1 + 'px' }"
+          :style="{ height: calendarHeight - 2 + 'px' }"
         >
           <div
             v-if="renderData.timeData.length && renderData.date"
@@ -447,6 +448,7 @@ const watchData = watch(
     }
   }
   .month-date {
+    color: var(--e-color-text1);
     padding: 0 var(--o-spacing-h8);
   }
   @media screen and (max-width: 768px) {
@@ -487,7 +489,7 @@ const watchData = watch(
     cursor: pointer;
     font-size: var(--o-font-size-h7);
     font-weight: 700;
-    color: #000;
+    color: var(--e-color-text1);
     transition: color 0.2s;
     &:hover {
       color: var(--e-color-brand1);
@@ -499,20 +501,35 @@ const watchData = watch(
   }
   .main-body {
     display: flex;
-    :deep(.el-collapse-item__content) {
-      padding: 0;
-      background-color: transparent;
-    }
-    :deep(.el-calendar__header) {
-      display: block;
-      padding: 0;
-      @media screen and (max-width: 768px) {
-        background-color: var(--e-color-bg2);
-        .left-title {
-          margin: 0;
+    :deep(.el-calendar) {
+      background-color: var(--e-color-bg1);
+      .el-collapse-item__content {
+        padding: 0;
+        background-color: transparent;
+      }
+      .el-calendar__header {
+        display: block;
+        padding: 0;
+        border: none;
+        @media screen and (max-width: 768px) {
+          background-color: var(--e-color-bg2);
+          .left-title {
+            margin: 0;
+          }
         }
       }
+      .el-calendar__body {
+        background-color: var(--e-color-bg2);
+        th {
+          color: var(--e-color-text4);
+        }
+        // th,
+        // td {
+        //   border-color: var(--e-color-border1);
+        // }
+      }
     }
+
     .is-home {
       :deep(.el-calendar__header) {
         background-color: var(--e-color-bg1);
@@ -566,14 +583,15 @@ const watchData = watch(
           .month-date {
             padding-left: 8px;
             font-size: var(--o-font-size-tip);
-            color: #000;
             line-height: 16px;
           }
         }
       }
     }
     :deep(.calendar) {
+      width: 500px;
       max-width: 500px;
+      flex-shrink: 0;
       text-align: center;
       thead {
         th {
@@ -593,16 +611,7 @@ const watchData = watch(
           }
         }
       }
-      .is-selected {
-        .el-calendar-day {
-          .day-box {
-            background-color: var(--e-color-brand1);
-            .date-calender {
-              color: var(--e-color-text2);
-            }
-          }
-        }
-      }
+
       .el-calendar__body {
         padding: 0;
         thead {
@@ -618,6 +627,17 @@ const watchData = watch(
           -khtml-user-select: none; /*早期浏览器*/
           user-select: none;
           font-size: var(--o-font-size-tip);
+          .is-selected {
+            background-color: transparent;
+            .el-calendar-day {
+              .day-box {
+                background-color: var(--e-color-brand1);
+                .date-calender {
+                  color: var(--e-color-text2);
+                }
+              }
+            }
+          }
 
           .el-calendar-day {
             display: flex;
@@ -662,6 +682,7 @@ const watchData = watch(
               .date-calender {
                 line-height: var(--o-line-height-text);
                 font-size: var(--o-font-size-h8);
+                color: var(--e-color-text1);
               }
             }
           }
@@ -756,9 +777,9 @@ const watchData = watch(
           .el-collapse-item__wrap {
             border: none;
             padding: 0 var(--o-spacing-h4);
-            background-color: #eef0f4;
+            background-color: var(--o-collapse-color-bg2);
             @media screen and (max-width: 768px) {
-              background-color: #f5f6f8;
+              // background-color: #f5f6f8;
             }
           }
         }
@@ -779,7 +800,7 @@ const watchData = watch(
 
         &::-webkit-scrollbar-thumb {
           border-radius: 4px;
-          background: var(--o-color-disabled);
+          background: var(--e-color-division1);
         }
         .el-collapse-item__arrow {
           display: none;
@@ -796,9 +817,9 @@ const watchData = watch(
           padding: var(--o-spacing-h5) var(--o-spacing-h4);
           width: 100%;
           height: 100%;
-          background-color: #f5f6f8ff;
-          border: 1px solid var(--o-color-border);
-          border-left: 2px solid #406fe7ff;
+          background-color: var(--e-color-bg3);
+          border: 1px solid var(--o-color-border1);
+          border-left: 2px solid var(--e-color-brand2);
           .meet-left {
             display: flex;
             flex-direction: column;
@@ -814,7 +835,7 @@ const watchData = watch(
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 font-size: var(--o-font-size-h7);
-                color: #000;
+                color: var(--e-color-text1);
                 line-height: var(--o-line-height-tip);
               }
               .el-collapse-item__content {
@@ -961,6 +982,7 @@ const watchData = watch(
         align-items: center;
         justify-content: center;
         height: 100%;
+        color: var(--e-color-text1);
         font-size: var(--o-font-size-h8);
         img {
           width: 346px;

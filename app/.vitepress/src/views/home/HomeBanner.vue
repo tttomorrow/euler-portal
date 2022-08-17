@@ -165,7 +165,7 @@ $banner-color: #fff;
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {
-          color: var(--e-color-text2);
+          color: $banner-color;
         }
         @media screen and (max-width: 824px) {
           margin-top: 0;

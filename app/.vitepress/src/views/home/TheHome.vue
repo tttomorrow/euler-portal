@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useI18n } from '@/i18n';
+import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -105,10 +106,15 @@ onMounted(async () => {
       :blog-data="blogData"
       :news-data="newsData"
     />
-    <div v-if="lang === 'zh'" class="home-calendar">
-      <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
-      <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
-    </div>
+    <el-config-provider :locale="zhCn">
+      <div v-if="lang === 'zh'" class="home-calendar">
+        <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
+        <AppCalendar
+          v-if="calendarData.length > 1"
+          :table-data="calendarData"
+        />
+      </div>
+    </el-config-provider>
     <HomePlayground />
     <PublishLink />
     <SourceLink />
