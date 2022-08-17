@@ -34,12 +34,14 @@ import illustration from '@/assets/illustrations/search.png';
   });
 </script>
 
-<BannerLevel2
+<ClientOnly>
+  <BannerLevel2
     :background-image="banner"
     background-text="SIG"
     title="角色说明"
     :illustration="illustration"
   />
+</ClientOnly>
 
 <div class='markdown'>
 
