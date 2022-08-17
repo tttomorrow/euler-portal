@@ -16,7 +16,7 @@ defineProps({
 </script>
 <template>
   <div class="title-wrapper">
-    <div :class="specialComponent ? 'title title-special' : 'title'">
+    <div :class="`${specialComponent ? 'title title-special' : 'title'}`">
       <div class="title-outside">{{ outsideTitle }}</div>
       <div class="title-inside">{{ insideTitle }}</div>
     </div>
