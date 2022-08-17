@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onBeforeMount, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useCommon } from '@/stores/common';
 
 import IconMoonLight from '~icons/app/sun.svg';
@@ -19,7 +19,7 @@ const changeTheme = () => {
   localStorage.setItem(APPEARANCE_KEY, theme);
 };
 
-onBeforeMount(() => {
+onMounted(() => {
   const theme = localStorage.getItem(APPEARANCE_KEY);
   commonStore.theme = theme === 'dark' ? 'dark' : 'light';
 });
