@@ -18,7 +18,7 @@ import illustration from '@/assets/illustrations/search.png';
   />
 </ClientOnly>
 
-<div >
+<div class='markdown'>
 
 # openEuler Developer Day 2022 SIG 组版本工作会议指南
 

@@ -148,6 +148,12 @@ export default {
           ID: 'certification',
           PATH: '/community/certification-services/',
         },
+        {
+          NAME: '贡献看板',
+          ID: 'statistics',
+          PATH: 'https://datastat.openeuler.org/zh/overview',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: ['contribution', 'conduct', 'mailing-list', 'certification'],
     },

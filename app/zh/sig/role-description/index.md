@@ -44,7 +44,7 @@ import illustration from '@/assets/illustrations/search.png';
   />
 </ClientOnly>
 
-<div >
+<div class='markdown'>
 
 ## 社区成员
 

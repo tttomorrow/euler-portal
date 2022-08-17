@@ -16,7 +16,7 @@ class="app-header"
   :illustration="illustration"
 />
 
-<div >
+<div class="markdown">
 
 openEuelr 社区遵守开源社区《贡献者公约》V1.4 中规定的行为守则，请参考 V1.4 版本
 

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import dayjs from 'dayjs';
 defineProps({
   frontmatter: {
     type: Object || String,
@@ -7,19 +8,25 @@ defineProps({
     },
   },
 });
+// 格式化日期
+const resolveDate = (date: any) => {
+  return dayjs(date).format('YYYY-MM-DD');
+};
 </script>
 
 <template>
   <div class="markdown-body-title">
     <h2 class="page-title">{{ frontmatter.title }}</h2>
     <div v-if="frontmatter.author" class="info">
-      <span class="author"
-        >{{ frontmatter.author }} <span class="line">|</span></span
-      >
+      <template v-if="Array.isArray(frontmatter.author)">
+        <span class="author" v-for="item in frontmatter.author" :key="item"
+          >{{ item }}
+        </span>
+      </template>
+      <span class="author" v-else>{{ frontmatter.author }} </span>
       <span v-if="frontmatter.date" class="date"
-        >{{ frontmatter.date }}
-        <span v-if="frontmatter.tags" class="line">|</span></span
-      >
+        >{{ resolveDate(frontmatter.date) }}
+      </span>
       <OTag v-for="item in frontmatter.tags" :key="item" size="small">{{
         item
       }}</OTag>
@@ -47,6 +54,16 @@ defineProps({
     }
     .author {
       margin-left: 0;
+      &:not(:first-child)::before {
+        content: ',';
+        padding-left: 4px;
+      }
+    }
+    .date {
+      margin: 0 12px;
+      padding: 0 12px;
+      border-left: 1px solid var(--e-color-border1);
+      border-right: 1px solid var(--e-color-border1);
     }
     .o-tag {
       margin-right: 4px;

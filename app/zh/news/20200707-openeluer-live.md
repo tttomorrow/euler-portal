@@ -10,8 +10,6 @@ author: 'openEuler'
 summary: '【手把手带你玩转openEuler】系列直播进行中'
 ---
 
-<div >
-
 为了让更多人更深入认识 openEuler 并积极参与进来，社区将通过一系列直播和大家近距离接触，邀请 openEuler 开源的重要参与者、SIG 组 maintainer 等资深专家来进行持续分享，带你深入认识 openEuler，教你使用 openEuler，分享如何参与到 openEuler 社区贡献。
 
 欢迎来 B 站 openEuler 直播间和社区讲师互动！
@@ -71,5 +69,3 @@ summary: '【手把手带你玩转openEuler】系列直播进行中'
 9 月 15 号 20:00（周二） 手把手带你完成 openEuler 环境部署 K8S
 
 **欢迎准时到 B 站 openEuler 直播间收看！直播间地址：http://live.bilibili.com/22290444**
-
-</div>

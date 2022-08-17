@@ -78,11 +78,11 @@ export default {
           PATH: '/en/',
           IS_OPEN_WINDOW: 1,
         },
-        {
-          NAME: 'MOOC',
-          ID: 'mooc',
-          PATH: '/learn/mooc/',
-        },
+        // {
+        //   NAME: 'MOOC',
+        //   ID: 'mooc',
+        //   PATH: '/learn/mooc/',
+        // },
       ],
       CLASS: ['learning', 'learn'],
     },
@@ -143,6 +143,12 @@ export default {
           NAME: 'Certification',
           ID: 'certification',
           PATH: '/community/certification-services/',
+        },
+        {
+          NAME: 'Statistics',
+          ID: 'statistics',
+          PATH: 'https://datastat.openeuler.org/en/overview',
+          IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
       CLASS: [
