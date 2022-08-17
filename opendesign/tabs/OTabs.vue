@@ -11,16 +11,22 @@ const attrs = useAttrs();
 
 <style lang="scss">
 .o-tabs {
-  --o-font-color: var(--e-color-text1);
+  --o-tabs-font: var(--e-color-text1);
+  --o-tabs-color: var(--o-font-color);
+  --o-tabs-color_hover: var(--e-color-brand1);
+  --o-font-color: var(--o-tabs-font);
   .el-tabs__nav-wrap {
     &::after {
       display: none;
     }
     .el-tabs__item {
-      color: var(--o-font-color);
+      color: var(--o-tabs-color);
       &:hover {
-        color: var(--e-color-brand1);
+        color: var(--o-tabs-color_hover);
       }
+    }
+    .el-tabs__item.is-active {
+      color: var(--o-tabs-color_hover);
     }
   }
 }

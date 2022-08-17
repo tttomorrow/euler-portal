@@ -4,7 +4,7 @@ import type { AxiosResponse } from '@/shared/axios';
 /**
  * 获取会议数据
  * @name getMeetingData
- * @return {Array} 镜像列表
+ * @return {Array}
  */
 export function getMeetingData() {
   const url = '/api/meetings/meetingsdata/';

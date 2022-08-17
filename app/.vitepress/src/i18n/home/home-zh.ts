@@ -31,46 +31,26 @@ import osv from '../../assets/category/home/round/osv.svg';
 import osvDark from '../../assets/category/home/round/dark/osv.svg';
 
 import xinan from '../../assets/category//home/link/xinan.png';
-import xinanMobile from '../../assets/category//home/link/mobile-xinan.png';
 import tongxin from '../../assets/category//home/link/tongxin.png';
-import tongxinMobile from '../../assets/category//home/link/mobile-tongxin.png';
 import qiling from '../../assets/category//home/link/qiling.png';
-import qilingMobile from '../../assets/category//home/link/mobile-qiling.png';
 import iscas from '../../assets/category//home/link/iscas.png';
-import iscasMobile from '../../assets/category//home/link/mobile-iscas.png';
 import cetc from '../../assets/category//home/link/cetc.png';
-import cetcMobile from '../../assets/category//home/link/mobile-cetc.png';
 import turbo from '../../assets/category//home/link/turbo.png';
-import turboMobile from '../../assets/category//home/link/mobile-turbo.png';
 import hopeRun from '../../assets/category//home/link/hopeRun.png';
-import hopeRunMobile from '../../assets/category//home/link/mobile-hopeRun.png';
 import tongYuan from '../../assets/category//home/link/tongYuan.png';
-import tongYuanMobile from '../../assets/category//home/link/mobile-tongYuan.png';
 import zhongkehongqi from '../../assets/category//home/link/zhongkehongqi.png';
-import zhongkehongqiMobile from '../../assets/category//home/link/mobile-zhongkehongqi.png';
 import suse from '../../assets/category//home/link/suse.png';
-import suseMobile from '../../assets/category//home/link/mobile-suse.png';
 import zhongkefangde from '../../assets/category//home/link/zhongkefangde.png';
-import zhongkefangdeMobile from '../../assets/category//home/link/mobile-zhongkefangde.png';
 import xfusion from '../../assets/category/home/link/xfusion.png';
-import xfusionMobile from '../../assets/category/home/link/xfusion_mobile.png';
 
 import mulan from '../../assets/category/home/link/mulan.png';
-import mulanMobile from '../../assets/category/home/link/mobile-mulan.png';
 import kunpeng from '../../assets/category/home/link/kunpeng.png';
-import kunpengMobile from '../../assets/category/home/link/mobile-kunpeng.png';
 import xiaozhi from '../../assets/category/home/link/xiaozhi.png';
-import xiaozhiMobile from '../../assets/category/home/link/mobile-xiaozhi.png';
 import pengcheng from '../../assets/category/home/link/pengcheng.png';
-import pengchengMobile from '../../assets/category/home/link/mobile-pengcheng.png';
 import infoQ from '../../assets/category/home/link/infoQ.png';
-import infoQMobile from '../../assets/category/home/link/mobile-infoQ.png';
 import kaiyuanshe from '../../assets/category/home/link/kaiyuanshe-logo.png';
-import kaiyuansheMobile from '../../assets/category/home/link/kaiyuanshe-logo-mobile.png';
-import zhongke from '../../assets/category/home/link/zhongke_pc.png';
-import zhongkeMobile from '../../assets/category/home/link/zhongke_mo.png';
-import authing from '../../assets/category/home/link/Authing_pc.png';
-import authingMobile from '../../assets/category/home/link/Authing_mo.png';
+import zhongke from '../../assets/category/home/link/zhongke.png';
+import authing from '../../assets/category/home/link/authing.png';
 
 import finance from '../../assets/category/home/case/finance.svg';
 import financeDark from '../../assets/category/home/dark/case/finance.svg';
@@ -467,104 +447,84 @@ export default {
     {
       LINK: 'http://www.kylinsec.com.cn/',
       PC: xinan,
-      MOBILE: xinanMobile,
     },
     {
       LINK: 'https://www.uniontech.com/',
       PC: tongxin,
-      MOBILE: tongxinMobile,
     },
     {
       LINK: 'https://www.kylinos.cn/',
       PC: qiling,
-      MOBILE: qilingMobile,
     },
     {
       LINK: 'http://www.iscas.ac.cn/',
       PC: iscas,
-      MOBILE: iscasMobile,
     },
     {
       LINK: 'http://www.i-soft.com.cn/',
       PC: cetc,
-      MOBILE: cetcMobile,
     },
     {
       LINK: 'https://www.turbolinux.com.cn/',
       PC: turbo,
-      MOBILE: turboMobile,
     },
     {
       LINK: 'http://www.hoperun.com/',
       PC: hopeRun,
-      MOBILE: hopeRunMobile,
     },
     {
       LINK: 'http://www.tongyuanos.com/',
       PC: tongYuan,
-      MOBILE: tongYuanMobile,
     },
     {
       LINK: 'http://www.chinaredflag.cn/',
       PC: zhongkehongqi,
-      MOBILE: zhongkehongqiMobile,
     },
     {
       LINK: 'https://www.suse.com/',
       PC: suse,
-      MOBILE: suseMobile,
     },
     {
       LINK: 'http://www.nfs-china.com/index.html',
       PC: zhongkefangde,
-      MOBILE: zhongkefangdeMobile,
     },
     {
       LINK: 'https://www.xfusion.com/cn/',
       PC: xfusion,
-      MOBILE: xfusionMobile,
     },
   ],
   FRIENDSHIP_LINK_LIST: [
     {
       LINK: 'http://www.mulanos.cn/',
       PC: mulan,
-      MOBILE: mulanMobile,
     },
     {
       LINK: 'https://kunpeng.huawei.com/',
       PC: kunpeng,
-      MOBILE: kunpengMobile,
     },
     {
       LINK: 'http://ic-openlabs.huawei.com/chat/#/',
       PC: xiaozhi,
-      MOBILE: xiaozhiMobile,
     },
     {
       LINK: 'https://dw.pcl.ac.cn/',
       PC: pengcheng,
-      MOBILE: pengchengMobile,
     },
     {
       LINK: 'https://www.infoq.cn/?utm_source=openeuler&utm_medium=youlian',
       PC: infoQ,
-      MOBILE: infoQMobile,
     },
     {
       LINK: 'https://kaiyuanshe.cn/',
       PC: kaiyuanshe,
-      MOBILE: kaiyuansheMobile,
     },
     {
       LINK: 'http://www.vulab.com.cn/',
       PC: zhongke,
-      MOBILE: zhongkeMobile,
     },
     {
       LINK: 'https://www.authing.cn/',
       PC: authing,
-      MOBILE: authingMobile,
     },
   ],
   MORE: '更多',
