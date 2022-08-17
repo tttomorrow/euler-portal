@@ -16,7 +16,7 @@ class="app-header"
   :illustration="illustration"
 />
 
-<div >
+<div  class='markdown'>
 
 Сообщество openEuler соблюдает Кодекс поведения разработчиков Contributor Covenant Code of Conduct V1.4, составленный сообществом разработчиков программного обеспечения с открытым исходным кодом.
 

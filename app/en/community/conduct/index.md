@@ -16,7 +16,7 @@ class="app-header"
   :illustration="illustration"
 />
 
-<div >
+<div class='markdown'>
 
 The openEuelr community complies with the code of conduct specified in the open source community V1.4. For details, visit the following website:
 

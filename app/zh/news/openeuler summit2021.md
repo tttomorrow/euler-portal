@@ -10,7 +10,7 @@ author: 'leikeke'
 summary: '11月10日，openEuler Summit 2021在北京如期举行。'
 ---
 
-<div class=" summit-news">
+<div class="summit-news">
 
 关于 11 月 10 日， openEuler Summit 2021 在北京举行。本次峰会是欧拉捐赠之后的首次峰会，也是社区一年一度的盛事。
 

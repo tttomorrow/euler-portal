@@ -16,8 +16,9 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
     title="Правовое уведомление"
     :illustration="search"
   />
+</ClientOnly>
 
-<div class="markdown" >
+<div  style="margin-top:var(--o-spacing-h1)">
 
 В этом правовом уведомлении собраны правовые политики, применимые в отношении сообщества openEuler. Данные политики регулируют размещаемые сообществом openEuler рабочие версии и контент данного веб-сайта.
 
