@@ -16,7 +16,6 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
     title="Правовое уведомление"
     :illustration="search"
   />
-</ClientOnly>
 
 <div  style="margin-top:var(--o-spacing-h1)">
 
