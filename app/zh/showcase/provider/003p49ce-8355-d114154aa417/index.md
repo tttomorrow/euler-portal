@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/provider.png
 ---
 
-<div >
-
 ## 应用场景
 
 作为我国省级移动公司的领先者，浙江移动的业务体量、业务复杂度均在国内名列前茅，因此对支撑系统提出了极为严苛的要求，如何完成业务系统无感知的迁移成为用户最关心的需求。浙江移动在 2021 年 8 月完成客户中心、业务大厅等核心系统的适配测试工作，顺利平滑的完成了操作系统迁移，在电信行业内首次完成基于银河麒麟高级服务器操作系统 V10 在运营商核心系统投产。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./p1.jpg"/></div>
+<div class="case-img"><img src="./p1.jpg"/></div>
 
 - **服务器：** 使用 x86 服务器和华为鲲鹏服务器；
 - **操作系统：** 银河麒麟高级服务器操作系统 V10；
@@ -32,6 +30,4 @@ img: /img/showcase/provider.png
 
 ## 伙伴
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

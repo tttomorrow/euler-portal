@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/provider.png
 ---
 
-<div >
-
 ## **Сценарий**
 
 Внутренней мобильной сервисной системой China Unicom ежедневно пользуются более чем 400 000 сотрудников оператора в самых разных сценариях. Инновационная модернизация операционной системы охватила четыре сервисных модуля: сервис рассылки push-уведомлений, ИИ-помощник, базовые сервисы и магазин приложений.
 
 ## **Решение**
 
-<div align="center" class="case-img"><img src="./p2.png"/></div>
+<div class="case-img"><img src="./p2.png"/></div>
 
 - Сервер: Great Wall (Phytium)
 - ОС: операционная система Galaxy Kylin Advanced Server Operating System V10
@@ -31,6 +29,4 @@ img: /img/showcase/provider.png
 
 ## **Партнер**
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

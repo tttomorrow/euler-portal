@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/provider.png
 ---
 
-<div >
-
 ## 应用场景
 
 随沃行是中国联通内部用户移动端业务系统，用户群体庞大、应用覆盖范围广，系统承载联通超过 40 万员工的日常移动应用。 本次创新升级覆盖范围主要包括随沃行推送服务、AI 助手、基础服务和应用商店四个业务模块。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./p2.jpg"/></div>
+<div class="case-img"><img src="./p2.jpg"/></div>
 
 - **服务器：** 长城服务器（飞腾）；
 - **操作系统：** 银河麒麟高级服务器操作系统 V10 ；
@@ -31,6 +29,4 @@ img: /img/showcase/provider.png
 
 ## 伙伴
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
 ## **Сценарий**
 
 Администрация безопасности здравоохранения провинции Цзянси развернула операционную систему Galaxy Kylin Advanced Server Operating System V10 на облаках Alibaba Cloud и Huawei Cloud для улучшения независимых инновационных возможностей.
 
 ## **Решение**
 
-<div align="center" class="case-img"><img src="./er3.png"/></div>
+<div class="case-img"><img src="./er3.png"/></div>
 
 - **Процессор**: Intel (архитектура x86)
 - **Сервер**: Inspur/H3C
@@ -31,6 +29,4 @@ img: /img/showcase/others.png
 
 ## **Партнер**
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

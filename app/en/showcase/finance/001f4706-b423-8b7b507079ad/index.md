@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/finance.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 As a state-owned banking institution in China, the credit card core banking system of China Construction Bank (CCB) serves many customers and handles credit on a tremendous scale. Given its large customer base, diversified samples, and complex service forms, CCB requires high service consistency, availability, reliability, elastic scalability, and agile delivery for its banking system. In the meantime, it is important to also consider secure and digital development during infrastructure upgrade.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./f1.png"/></div>
+<div class="case-img"><img src="./f1.png"/></div>
 
 - Upgrade the original infrastructure (x86+Red Hat+Oracle) by leveraging the Galaxy Kylin Advanced Server Operating System V10, GaussDB (data foundation), and TaiShan 200 servers (computing power base).
 
@@ -32,6 +30,4 @@ As a state-owned banking institution in China, the credit card core banking syst
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

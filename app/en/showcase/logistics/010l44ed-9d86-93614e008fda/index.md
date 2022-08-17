@@ -8,8 +8,6 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/logistics.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 The original server hardware resources and H3C cloud were used to create 200 sets of VMs running Unity Operating System (UOS) as these created a suitable environment for subsequent system porting. Based on the newly purchased NF2180M hardware and Kunpeng S920X00K servers, 263 sets of VMs running UOS were created on the innovation cloud, providing resources for OA system porting.
@@ -18,7 +16,7 @@ Leveraging existing technologies, China Post Group Corporation (or China Post) s
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./lg1.png"/></div>
+<div class="case-img"><img src="./lg1.png"/></div>
 
 UOS supports multiple versions of the mainstream cloud architecture OpenStack, delivers highly available components and solutions which are easy to maintain and feature cloud native, and provides all the migration tools required to completely migrate original service data.
 
@@ -30,6 +28,4 @@ Set up a professional technical service team to ensure availability, compatibili
 
 ## Partner
 
-<div ><img src="./tongxin.png"/></div>
-
-</div>
+<img src="./tongxin.png"/>

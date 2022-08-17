@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
-## Scenarios
+## **Scenarios**
 
 Software and hardware devices were purchased and the full-stack independent innovation platform was deployed to ensure stable operating of the business systems.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./er1.png"/></div>
+<div class="case-img"><img src="./er1.png"/></div>
 
 - **Processor**: ARM (FT-2000+/64)
 
@@ -36,6 +34,4 @@ Software and hardware devices were purchased and the full-stack independent inno
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

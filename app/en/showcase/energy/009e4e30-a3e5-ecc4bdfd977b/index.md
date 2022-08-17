@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 The Bowei smart construction site has been running stably for more than 6 months at the Hebei smart substation. The smart construction site has a service management platform and an IoT sensing platform. The service management platform runs through the entire lifecycle of the project, covering security, quality, progress, team, material, and BIM. The IoT sensing platform provides up to 23 types of hardware access and related applications, such as access control, temperature monitoring, and positioning.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./e4.png"/></div>
+<div class="case-img"><img src="./e4.png"/></div>
 
 - Kylin and Bowei successfully migrated the smart construction site solution to Galaxy Kylin Advanced Server Operating System V10 in two months. Recently, the solution was upgraded and rolled out in the Hebei smart substation project.
 
@@ -30,6 +28,4 @@ The Bowei smart construction site has been running stably for more than 6 months
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

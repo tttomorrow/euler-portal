@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div >
-
 ## 应用场景
 
 南方电网公司业务覆盖地域广，信息化需求大，信息系统不计其数，维护成本高居不下。同时作为国计民生的重要基础设施，对 IT 设施安全创新有极高的要求。如何在保证信息化建设和运维质量的同时尽可能降低信息化成本，确保安全底线，成为公司必须解决的重大问题。 南方电网计划逐步实施服务器系统的创新建设，开展基于创新的安全服务器操作系统的应用实施，提升业务系统可靠性、安全性和稳定性。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./e2.jpg"/></div>
+<div class="case-img"><img src="./e2.jpg"/></div>
 
 - 客户原有的大部分业务系统运行在 x86 服务器和部分 Power 及安腾小型机上；
 
@@ -30,6 +28,4 @@ img: /img/showcase/energy.png
 
 ## 伙伴
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

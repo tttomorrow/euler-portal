@@ -14,10 +14,18 @@ const { frontmatter } = useData();
       :title="frontmatter.title"
       :subtitle="frontmatter.subtitle"
     />
-    <div class="makdown-wrap">
-      <Content />
-    </div>
+    <Content class="markdown" />
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.case-img {
+  text-align: center;
+  img {
+    width: 58%;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}
+</style>

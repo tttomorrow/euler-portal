@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
 ## 应用场景
 
 为了深入贯彻落实党中央、国务院、国资委有关决策部署，加大自主知识产权的新技术在现有信息技术体系中的创新应用，本项目遵照相关部门的工作要求，完成应用试点项目软硬件设备采购，实现全栈自主创新基础平台部署，保障业务系统稳定运行。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./er1.jpg"/></div>
+<div class="case-img"><img src="./er1.jpg"/></div>
 
 - **芯片：** ARM（FT-2000+/64）
 - **整机：** 紫光恒越服务器
@@ -31,6 +29,4 @@ img: /img/showcase/others.png
 
 ## 伙伴
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

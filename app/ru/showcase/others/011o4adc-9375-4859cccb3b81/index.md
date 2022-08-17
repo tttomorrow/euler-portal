@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
 ## **Сценарий**
 
 Для обеспечения стабильной работы бизнес-систем были закуплены программно-аппаратные устройства и внедрена независимая инновационная платформа полного стека.
 
 ## **Решение**
 
-<div align="center" class="case-img"><img src="./er1.png"/></div>
+<div class="case-img"><img src="./er1.png"/></div>
 
 - **Процессор**: ARM (FT-2000+/64)
 - **Сервер**: UNISYUE
@@ -31,6 +29,4 @@ img: /img/showcase/others.png
 
 ## **Партнер**
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

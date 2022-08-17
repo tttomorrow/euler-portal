@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/provider.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 China Unicom's internal mobile service system is used on a daily basis by more than 400,000 China Unicom employees in a wide range of scenarios. The innovative OS upgrade covers four service modules: push service, AI assistant, basic services, and app store.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./p2.png"/></div>
+<div class="case-img"><img src="./p2.png"/></div>
 
 - Server: Great Wall server (Phytium)
 
@@ -36,6 +34,4 @@ China Unicom's internal mobile service system is used on a daily basis by more t
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 Jiangxi Province Healthcare Security Administration deployed Galaxy Kylin Advanced Server Operating System V10 on Alibaba Cloud and Huawei Cloud to improve independent innovation capabilities.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./er3.png"/></div>
+<div class="case-img"><img src="./er3.png"/></div>
 
 - **Processor**: Intel (x86 architecture)
 
@@ -36,6 +34,4 @@ Jiangxi Province Healthcare Security Administration deployed Galaxy Kylin Advanc
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

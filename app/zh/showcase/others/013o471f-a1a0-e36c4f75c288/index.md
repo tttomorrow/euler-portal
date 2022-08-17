@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
 ## 应用场景
 
 国家医疗保障局在国家发改委总立项，国家局下发全国各省 100 亿的医保信息平台建设资金,加快形成自上而下医疗保障信息化“一盘棋”格局。根据江西省医保局云平台的建设实际需求，在满足业务系统可以正常运行的前提下，在阿里云和华为云上使用银河麒麟高级服务器操作系统 V10 保障基础软件层的国产化要求，提高自主创新能力。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./er3.jpg"/></div>
+<div class="case-img"><img src="./er3.jpg"/></div>
 
 - **芯片：** Intel（X86 架构）
 - **整机：** 浪潮/华三服务器
@@ -31,6 +29,4 @@ img: /img/showcase/others.png
 
 ## 伙伴
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

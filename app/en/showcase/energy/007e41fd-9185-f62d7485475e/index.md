@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div >
-
 ## Scenarios
 
 China Southern Power Grid (CSG) is a large enterprise that manages power transmission, transformation, and distribution across many areas. Its widely distributed information systems make maintenance costly, and put pressure on IT infrastructure security. Minimizing IT costs and maintaining security without compromising IT and O&M quality is a major challenge for the company. CSG plans to gradually implement innovative server systems and deploy an advanced server OS to improve the reliability, security, and stability of the information systems.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./e2.png"/></div>
+<div class="case-img"><img src="./e2.png"/></div>
 
 - Most of the original information systems run on x86 servers and some Power and Itanium midrange computers.
 
@@ -32,6 +30,4 @@ China Southern Power Grid (CSG) is a large enterprise that manages power transmi
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>
