@@ -10,15 +10,14 @@ import search from '@/assets/illustrations/search.png';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 </script>
 
-<ClientOnly>
-  <BannerLevel2
+<BannerLevel2
     :background-image="banner"
     background-text="LEGAL"
     title="Правовое уведомление"
     :illustration="search"
   />
-</ClientOnly>
-<div  style="margin-top:var(--o-spacing-h1)">
+
+<div class="markdown" >
 
 В этом правовом уведомлении собраны правовые политики, применимые в отношении сообщества openEuler. Данные политики регулируют размещаемые сообществом openEuler рабочие версии и контент данного веб-сайта.
 

@@ -2,23 +2,21 @@
 title: '法律声明'
 ---
 
-<!--  TODO: BANNER -->
-<script setup lang="ts">
+<script setup>
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 </script>
 
-<ClientOnly>
-  <BannerLevel2
+<BannerLevel2
     :background-image="banner"
     background-text="LEGAL"
     title="法律声明"
     :illustration="search"
   />
-</ClientOnly>
-<div  style="margin-top:var(--o-spacing-h1)">
+
+<div class="markdown" >
 
 本法律声明包含 openEuler 社区的若干法律政策。这些政策适用于本网站以及 openEuler 社区项目发布。
 
