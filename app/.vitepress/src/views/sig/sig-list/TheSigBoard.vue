@@ -104,7 +104,7 @@ onMounted(() => {
   }
   &-item {
     max-width: 630px;
-    box-shadow: var(--o-shadow-base);
+    box-shadow: var(--e-shadow1);
     margin-bottom: var(--o-spacing-h1);
     break-inside: avoid;
     padding: var(--o-spacing-h2);

@@ -174,10 +174,7 @@ const changeTabItem = (event: any): void => {
           color: var(--e-color-text1);
           background-color: var(--e-color-bg2);
           margin-right: var(--o-spacing-h5);
-          box-shadow: var(--o-shadow-base);
-          &:hover {
-            box-shadow: var(--o-shadow-base_hover);
-          }
+          box-shadow: var(--e-shadow1);
         }
         .right-title-item:last-child {
           margin: 0;
@@ -198,7 +195,7 @@ const changeTabItem = (event: any): void => {
             margin-right: var(--o-spacing-h5);
             color: var(--e-color-text1);
             background-color: var(--e-color-bg2);
-            box-shadow: var(--o-shadow-base);
+            box-shadow: var(--e-shadow1);
             &-right {
               display: flex;
               flex-direction: column;
@@ -270,7 +267,7 @@ const changeTabItem = (event: any): void => {
           width: 100%;
           height: 70px;
           padding: var(--o-spacing-h6) 0 var(--o-spacing-h6) var(--o-spacing-h4);
-          box-shadow: var(--o-shadow-base);
+          box-shadow: var(--e-shadow1);
           margin-bottom: var(--o-spacing-h4);
           .detail-left {
             color: var(--e-color-text1);
