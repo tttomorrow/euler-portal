@@ -2,21 +2,9 @@
 title: 'Privacy'
 ---
 
-<script setup lang="ts">
-import banner from '@/assets/banner-secondary.png';
-import search from '@/assets/illustrations/search.png';
-
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-</script>
-<ClientOnly>
-  <BannerLevel2
-    :background-image="banner"
-    background-text="PRIVACY POLICY"
-    title="Privacy"
-    :illustration="search"
-  />
-</ClientOnly>
 <div class='markdown' style="margin-top:var(--o-spacing-h1)">
+
+<h1 style='text-align:center;margin:24px 0 40px'>Privacy</h1>
 
 The openEuler Community ("Community") understands the importance of your privacy and fully respects it. <u>**Please read this openEuler Community Privacy Statement ("Statement") carefully before you submit your personal data to us.**</u> If you have any questions about how we process your personal data, please feel free to contact us. Unless otherwise specified, "we" and "us" in this Statement refers to the Community.
 

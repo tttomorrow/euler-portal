@@ -26,6 +26,7 @@ const goLink = (path: string) => {
     router.go(`/${lang.value}` + path);
   }
 };
+// TODO:
 const showMail = (show: boolean) => {
   if (show) mailIsShow.value = !mailIsShow.value;
 };

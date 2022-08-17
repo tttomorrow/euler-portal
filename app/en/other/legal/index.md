@@ -1,23 +1,10 @@
 ---
-title: '法律声明'
+title: 'Legal'
 ---
 
-<!--  TODO: BANNER -->
-<script setup lang="ts">
-import banner from '@/assets/banner-secondary.png';
-import search from '@/assets/illustrations/search.png';
+<div class='markdown' style="margin-top:var(--o-spacing-h1)">
 
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-</script>
-
-<BannerLevel2
-    :background-image="banner"
-    background-text="LEGAL"
-    title="LEGAL NOTICE"
-    :illustration="search"
-  />
-
-<div style="margin-top:var(--o-spacing-h1)">
+<h1 style='text-align:center;margin:24px 0 40px'>Legal</h1>
 
 This legal notice contains legal policies for the openEuler community. These policies govern this site and project releases hosted by the openEuler community.
 

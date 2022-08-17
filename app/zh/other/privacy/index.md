@@ -2,23 +2,9 @@
 title: '隐私政策'
 ---
 
-<script setup lang="ts">
-import banner from '@/assets/banner-secondary.png';
-import search from '@/assets/illustrations/search.png';
-
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-</script>
-<ClientOnly>
-  <BannerLevel2
-    :background-image="banner"
-    background-text="PRIVACY POLICY"
-    title="隐私政策"
-    :illustration="search"
-  />
-</ClientOnly>
-<!--  TODO: 文字 -->
-
 <div class='markdown' style="margin-top:var(--o-spacing-h1)">
+
+<h1 style='text-align:center;margin:24px 0 40px'>隐私政策</h1>
 
 我们深知您的隐私对您的重要性，并充分尊重您的隐私。<u>**在向我们提交您的个人信息之前，请您仔细阅读本《隐私政策声明》（以下简称“本声明”）。**</u>如果您对于我们处理您的个人信息的方式有任何疑问，欢迎与我们联系。除非另有约定，本声明中的“我们”是指**openEuler**社区。
 
