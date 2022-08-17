@@ -8,15 +8,12 @@ import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
 </script>
 
-<ClientOnly>
-  <BannerLevel2
-    class="app-header"
+<BannerLevel2
     :background-image="banner"
     background-text="SIG"
     title="会议指南"
     :illustration="illustration"
   />
-</ClientOnly>
 
 <div class='markdown'>
 

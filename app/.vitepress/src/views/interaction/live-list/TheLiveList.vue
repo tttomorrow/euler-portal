@@ -73,7 +73,6 @@ const goNext = () => {
 
 <template>
   <BannerLevel2
-    class="app-header"
     :background-image="BannerBG"
     background-text="CONNECT"
     :title="i18n.live.LIVETITLE"
