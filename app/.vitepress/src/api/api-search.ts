@@ -64,6 +64,17 @@ export function getSearchCount(params: any) {
   const url = '/api-search/search/count';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
+export function getSearchRpm(params: any) {
+  const url = `/api-euler/api/repo/search`;
+  return request
+    .get(url, {
+      headers: {
+        authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
+      },
+      params,
+    })
+    .then((res: AxiosResponse) => res.data);
+}
 
 /**
  * 首页数据卡片筛选

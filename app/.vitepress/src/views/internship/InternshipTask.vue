@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useRouter } from 'vitepress';
-import OButton from './OButton.vue';
 import IconArrowRight from '~icons/app/icon-arrow.svg';
 
 const router = useRouter();
@@ -222,11 +221,10 @@ const go = (path: string) => {
             type="text"
             placement="right"
             @click="go(item.GITEE)"
+            class="sig-detail"
           >
-            {{ TASK.SIG_DETAIL }}
-            <template #right>
-              <OIcon><IconArrowRight /></OIcon>
-            </template>
+            <span>{{ TASK.SIG_DETAIL }}</span>
+            <OIcon><IconArrowRight /></OIcon>
           </OButton>
         </div>
       </div>
@@ -298,6 +296,25 @@ const go = (path: string) => {
           padding: 8px 12px;
           height: auto;
           margin-right: 24px;
+          span {
+            color: var(--e-color-brand1);
+          }
+          .o-icon {
+            color: var(--e-color-brand1);
+            margin-left: 8px;
+            transition: all 0.3s;
+          }
+          &:hover .o-icon {
+            transform: translateX(3px);
+          }
+        }
+        .sig-detail{
+          &:hover{
+            border: 1px solid var(--e-color-brand1);
+            span {
+              color: var(--e-color-brand1);
+            }
+          }
         }
         .o-button--text {
           color: var(--e-color-text1);

@@ -19,6 +19,7 @@ export default {
         type: 'news',
       },
     ],
+    relative:'相关软件包'
   },
   en: {
     form: 'from:',
@@ -36,6 +37,7 @@ export default {
         type: 'blog',
       },
     ],
+    relative:'Related software package'
   },
   ru: {
     form: 'От кого:',
@@ -49,5 +51,6 @@ export default {
         type: 'blog',
       },
     ],
+    relative:'Сопутствующий пакет программного обеспечения'
   },
 };
