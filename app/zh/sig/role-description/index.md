@@ -2,7 +2,7 @@
 title: '角色说明'
 ---
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerLevel2 from '@/components/BannerLevel2.vue'

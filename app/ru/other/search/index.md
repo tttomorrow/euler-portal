@@ -1,7 +1,7 @@
 ---
 title: '搜索'
 ---
-<script setup>
+<script setup lang="ts">
   import TheSearch from "@/views/search/TheSearch.vue"
 </script>
 

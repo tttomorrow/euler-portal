@@ -2,7 +2,7 @@
 title: "Download"
 
 ---
-<script setup>
+<script setup lang="ts">
   import TheDownload from "@/views/download/TheDownload.vue"
 </script>
 

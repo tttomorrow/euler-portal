@@ -2,7 +2,7 @@
 title: '隐私政策'
 ---
 
-<script setup>
+<script setup lang="ts">
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
