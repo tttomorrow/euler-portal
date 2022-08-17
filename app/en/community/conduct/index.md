@@ -9,7 +9,6 @@ import illustration from '@/assets/illustrations/covenant.png';
 </script>
 
 <BannerLevel2
-class="app-header"
   :background-image="bannerBG"
   background-text="COMMUNITY"
   title="Code of Conduct"

@@ -9,14 +9,13 @@ import illustration from '@/assets/illustrations/covenant.png';
 </script>
 
 <BannerLevel2
-class="app-header"
   :background-image="bannerBG"
   background-text="COMMUNITY"
   title="Кодекс поведения"
   :illustration="illustration"
 />
 
-<div  class='markdown'>
+<div class='markdown'>
 
 Сообщество openEuler соблюдает Кодекс поведения разработчиков Contributor Covenant Code of Conduct V1.4, составленный сообществом разработчиков программного обеспечения с открытым исходным кодом.
 
