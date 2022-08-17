@@ -8,10 +8,10 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerBG from '@/assets/banner-secondary.png';
 import BannerIllustration from '@/assets/illustrations/search.png';
 
-import LightCradBg from '@/assets/category/interaction/live/light-crad-bg.png';
-import LightCradBgMo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';
-import DarkCradBg from '@/assets/category/interaction/live/dark-crad-bg.png';
-import DarkCradBgMo from '@/assets/category/interaction/live/dark-crad-bg-mobile.png';
+import cardBg_light from '@/assets/category/interaction/live/light-crad-bg.png';
+import cardBg_light_mo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';
+import cardBg_dark from '@/assets/category/interaction/live/dark-crad-bg.png';
+import cardBg_dark_mo from '@/assets/category/interaction/live/dark-crad-bg-mobile.png';
 import { ElMessage } from 'element-plus';
 
 import IconRight from '~icons/app/icon-arrow-right1.svg';
@@ -22,6 +22,7 @@ import IconNext from '~icons/app/icon-chevron-right.svg';
 
 const i18n = useI18n();
 const data = computed(() => i18n.value.live.LIVE_LIST);
+const commonStore = useCommon();
 
 const currentPage1 = ref(1);
 const pageSize4 = ref(6);
@@ -32,10 +33,7 @@ const changePage = (val: number, pagesize: number) => {
   const curVal = (val - 1) * pagesize;
   showLiveList.value = data.value.slice(curVal, curVal + pagesize);
 };
-const changeSize = (val: number, pagesize: number) => {
-  const curVal = (val - 1) * pagesize;
-  showLiveList.value = data.value.slice(curVal, curVal + pagesize);
-};
+
 const showLiveList = ref(data.value.slice(0, 6));
 const totoBLink = (url: string) => {
   url === ''
@@ -45,20 +43,18 @@ const totoBLink = (url: string) => {
     : window.open(url);
 };
 
-const commonStore = useCommon();
-const headGround = computed(() => {
-  if (commonStore.theme === 'light') {
-    return screenWidth.value > 768 ? LightCradBg : LightCradBgMo;
-  } else {
-    return screenWidth.value > 768 ? DarkCradBg : DarkCradBgMo;
-  }
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+
+const headGround = computed(() =>
+  commonStore.theme === 'dark' ? cardBg_dark : cardBg_light
+);
+
+// css变量 v-bind
+const liveStyleMo = ref({
+  light: `url(${cardBg_light_mo})`,
+  dark: `url(${cardBg_dark_mo})`,
 });
-const isMobile = computed(() => {
-  if (screenWidth.value <= 768) {
-    return true;
-  }
-  return false;
-});
+
 const goPrevious = () => {
   currentPage1.value < 2 ? '' : (currentPage1.value -= 1);
   changePage(currentPage1.value, pageSize4.value);
@@ -90,7 +86,8 @@ const goNext = () => {
         <div class="live-detail">
           <div
             class="live-background"
-            :style="{ backgroundImage: 'url(' + headGround + ')' }"
+            :class="commonStore.theme"
+            :style="{ backgroundImage: `url(${headGround})` }"
           >
             <img :src="live.PHOTOPATH" class="live-background-img" />
           </div>
@@ -143,7 +140,7 @@ const goNext = () => {
         layout="sizes, prev, pager, next, slot, jumper"
         :total="total"
         @current-change="changePage(currentPage1, pageSize4)"
-        @size-change="changeSize(currentPage1, pageSize4)"
+        @size-change="changePage(currentPage1, pageSize4)"
       >
         <span>{{ currentPage1 * pageSize4 + '/' + total }}</span>
       </OPagination>
@@ -196,7 +193,6 @@ const goNext = () => {
     grid-gap: var(--o-spacing-h4);
     @media screen and (max-width: 767px) {
       padding: 0 var(--o-spacing-h5);
-      margin: var(--o-spacing-h5);
     }
     &-item {
       width: 100%;
@@ -218,6 +214,17 @@ const goNext = () => {
     @media screen and (max-width: 767px) {
       flex-direction: column;
       height: 230px;
+    }
+    .live-background {
+      @media screen and (max-width: 767px) {
+        background: v-bind('liveStyleMo.light') !important;
+      }
+
+      &.dark {
+        @media screen and (max-width: 767px) {
+          background: v-bind('liveStyleMo.dark') !important;
+        }
+      }
     }
     &-right {
       padding: var(--o-spacing-h4);
