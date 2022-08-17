@@ -6,8 +6,6 @@ import InternshipStep from './InternshipStep.vue';
 import InternshipTask from './InternshipTask.vue';
 import InternshipRank from './InternshipRank.vue';
 import InternshipTitleNav from './InternshipTitleNav.vue';
-import OButton from './OButton.vue';
-import OIcon from './OIcon.vue';
 
 import StepTitle from '@/assets/category/internship/step-title.png';
 import TaskTitle from '@/assets/category/internship/task-title.png';

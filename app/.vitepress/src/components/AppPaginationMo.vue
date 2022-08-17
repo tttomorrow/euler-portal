@@ -36,7 +36,7 @@ const handleCurrentChange = (option: string) => {
 //   }
 // }
 function jumpPage(e: any) {
-  if (e.keyCode === 13) {
+  if (e.keyCode === 13||e.type==='blur') {
     emit('jump-page', inputNumber.value);
     page.value.blur();
     ctx.$forceUpdate();
@@ -80,6 +80,7 @@ function inputPage(e: any) {
         class="current-page"
         @keypress="jumpPage"
         @input="inputPage"
+        @blur="jumpPage"
       />
       <!-- <span>{{ currentPage }}</span> -->
       <span>/{{ totalPage }}</span>
