@@ -1,3 +1,35 @@
+import NiGuangNan from '@/assets/category/summit/guests/niguangnan.png';
+import SunWenLong from '@/assets/category/summit/guests/sunwenlong.png';
+import JiangDaYong from '@/assets/category/summit/guests/jiangdayong.png';
+import WuYanJun from '@/assets/category/summit/guests/wuyanjun.png';
+import HanNaiPing from '@/assets/category/summit/guests/hannaiping.png';
+import HuXinWei from '@/assets/category/summit/guests/huxinwei.png';
+import QiuChengFeng from '@/assets/category/summit/guests/qiuchengfeng.png';
+import GuangXiaoMing from '@/assets/category/summit/guests/guangxiaoming.png';
+import LiKang from '@/assets/category/summit/guests/likang.png';
+import ZhongXin from '@/assets/category/summit/guests/zhongxin.png';
+import ZhouHaiPeng from '@/assets/category/summit/guests/zhouhaipeng.png';
+import LiuKai from '@/assets/category/summit/guests/liukai.png';
+import XiongWei from '@/assets/category/summit/guests/xiongwei.png';
+import CaoWenYuan from '@/assets/category/summit/guests/caowenyuan.png';
+import ChenHui from '@/assets/category/summit/guests/chenhui.png';
+import ChenQiang from '@/assets/category/summit/guests/chenqiang.png';
+import huawei from '@/assets/category/summit/cooperate/huawei.png';
+import qilin from '@/assets/category/summit/cooperate/qilin.png';
+import suse from '@/assets/category/summit/cooperate/suse.png';
+import tongxin from '@/assets/category/summit/cooperate/tongxin.png';
+import xinan from '@/assets/category/summit/cooperate/xinan.png';
+import puhua from '@/assets/category/summit/cooperate/puhua.png';
+import intel from '@/assets/category/summit/cooperate/intel.png';
+import isoft from '@/assets/category/summit/cooperate/isoft.png';
+import turbolinux from '@/assets/category/summit/cooperate/turbolinux.png';
+import zhongke from '@/assets/category/summit/cooperate/zhongke.png';
+import iscas from '@/assets/category/summit/cooperate/iscas.png';
+import phytium from '@/assets/category/summit/cooperate/phytium.png';
+import tongtech from '@/assets/category/summit/cooperate/tongtech.png';
+import fusion from '@/assets/category/summit/cooperate/fusion.png';
+import yunhe from '@/assets/category/summit/cooperate/yunhe.png';
+
 export default {
   LIVEDATA: {
     RENDERDATA: [
@@ -66,6 +98,143 @@ export default {
     ],
     LIVETITLE: 'openEuler Developer Day 2022直播间',
   },
+  LECTURER_LIST: [
+    {
+      IMG: NiGuangNan,
+      NAME: '倪光南',
+      POSITION: ['中国工程院院士'],
+    },
+
+    {
+      IMG: SunWenLong,
+      NAME: '孙文龙',
+      POSITION: ['开放原子开源基金会秘书长'],
+    },
+    {
+      IMG: JiangDaYong,
+      NAME: '江大勇',
+      POSITION: ['openEuler社区理事长'],
+    },
+    {
+      IMG: WuYanJun,
+      NAME: '武延军',
+      POSITION: ['openEuler社区副理事长'],
+    },
+    {
+      IMG: HanNaiPing,
+      NAME: '韩乃平',
+      POSITION: ['openEuler社区副理事长'],
+    },
+    {
+      IMG: HuXinWei,
+      NAME: '胡欣蔚',
+      POSITION: ['openEuler社区', '技术委员会主席'],
+    },
+    {
+      IMG: QiuChengFeng,
+      NAME: '邱成锋',
+      POSITION: ['openEuler社区秘书长'],
+    },
+    {
+      IMG: GuangXiaoMing,
+      NAME: '广小明',
+      POSITION: ['天翼云科技有限公司', '副总经理兼首席技术官'],
+    },
+    {
+      IMG: LiKang,
+      NAME: '李康',
+      POSITION: ['中国移动', '在线营销服务中心副总经理'],
+    },
+    {
+      IMG: ZhongXin,
+      NAME: '钟忻',
+      POSITION: ['联通云CTO'],
+    },
+    {
+      IMG: ZhouHaiPeng,
+      NAME: '周海鹏',
+      POSITION: ['中信IT资深架构师'],
+    },
+    {
+      IMG: LiuKai,
+      NAME: '刘凯',
+      POSITION: ['上交所技术公司', '下一代交易研发部副总经理'],
+    },
+    {
+      IMG: XiongWei,
+      NAME: '熊伟',
+      POSITION: ['openEuler社区技术委员会委员'],
+    },
+    {
+      IMG: CaoWenYuan,
+      NAME: '曹文渊',
+      POSITION: ['统信软件研发工程师'],
+    },
+    {
+      IMG: ChenHui,
+      NAME: '陈辉',
+      POSITION: ['华为调度架构师'],
+    },
+    {
+      IMG: ChenQiang,
+      NAME: '陈强',
+      POSITION: ['华为大数据技术专家'],
+    },
+  ],
+  COOPERATE_LIST: [
+    {
+      IMG: huawei,
+    },
+    {
+      IMG: qilin,
+      WEBSITE: 'https://www.kylinos.cn/',
+    },
+    {
+      IMG: suse,
+      WEBSITE: 'https://www.suse.com/',
+    },
+    {
+      IMG: tongxin,
+      WEBSITE: 'https://www.uniontech.com/',
+    },
+    {
+      IMG: xinan,
+      WEBSITE: 'http://www.kylinsec.com.cn/',
+    },
+    {
+      IMG: puhua,
+      WEBSITE: 'http://www.i-soft.com.cn/',
+    },
+    {
+      IMG: intel,
+    },
+  ],
+  SPONSOR_LIST: [
+    {
+      IMG: isoft,
+    },
+    {
+      IMG: turbolinux,
+    },
+    {
+      IMG: zhongke,
+    },
+    {
+      IMG: iscas,
+    },
+    {
+      IMG: phytium,
+    },
+    {
+      IMG: tongtech,
+    },
+    {
+      IMG: fusion,
+    },
+    {
+      IMG: yunhe,
+    },
+  ],
   AGENDA: {
     CONFERENCE_LINK: '会议链接',
     TITLE_IMG_PC: '/img/summit/devday-2022/zh-pc-devday2022.png',

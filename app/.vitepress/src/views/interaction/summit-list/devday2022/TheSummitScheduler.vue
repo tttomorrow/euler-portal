@@ -203,9 +203,9 @@ const changeTabItem = (event: any): void => {
             padding: var(--o-spacing-h4) 0;
             background-color: var(--e-color-bg2);
             color: var(--e-color-text1);
-            box-shadow: var(--o-shadow-base);
+            box-shadow: var(--e-shadow1);
             &:hover {
-              box-shadow: var(--o-shadow-base_hover);
+              box-shadow: var(--e-shadow2);
             }
             @media (max-width: 1080px) {
               width: 340px;
@@ -233,7 +233,6 @@ const changeTabItem = (event: any): void => {
             align-items: center;
             color: var(--e-color-text2);
             background-color: var(--e-color-brand1);
-            box-shadow: var(--o-shadow-base);
             margin-bottom: var(--o-spacing-h4);
             padding: var(--o-spacing-h4) var(--o-spacing-h3);
             @media (max-width: 780px) {
@@ -263,7 +262,6 @@ const changeTabItem = (event: any): void => {
                 line-height: var(--o-line-height-h8);
                 color: var(--e-color-text1);
                 background-color: var(--e-color-bg2);
-                box-shadow: var(--o-shadow-base);
               }
               .item-right-text {
                 margin-bottom: var(--o-spacing-h4);

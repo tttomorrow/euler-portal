@@ -11,8 +11,10 @@ interface RENDERDATA {
 const props = defineProps({
   liveData: {
     required: true,
-    type: Array,
-    default: () => [],
+    type: Object,
+    default: () => {
+      return {};
+    },
   },
 });
 const renderData: Array<RENDERDATA> = (props.liveData as any).RENDERDATA;
@@ -82,7 +84,6 @@ const tabLiveRoom = (src: string, index: number): void => {
         padding: var(--o-spacing-h6) 0;
         cursor: pointer;
         background-color: var(--e-color-bg2);
-        box-shadow: var(--o-shadow-base);
         margin-bottom: var(--o-spacing-h7);
         p {
           color: var(--e-color-brand1);
@@ -91,6 +92,9 @@ const tabLiveRoom = (src: string, index: number): void => {
         }
         @media (max-width: 780px) {
           margin-top: var(--o-spacing-h4);
+        }
+        &:hover {
+          box-shadow: var(--e-shadow2);
         }
       }
       &-live-main {

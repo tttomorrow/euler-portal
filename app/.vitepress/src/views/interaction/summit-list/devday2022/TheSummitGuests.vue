@@ -52,7 +52,7 @@ onMounted(() => {
   <div class="lecturer-list" :style="(summitStyle as any)">
     <div
       v-for="item in lecturerList"
-      :key="item.name"
+      :key="item.NAME"
       data-aos="fade-zoom-in"
       class="lecturer-list-item"
     >
@@ -64,15 +64,15 @@ onMounted(() => {
               : 'lecturer-list-item-circle'
           "
         >
-          <img :src="item.img" />
+          <img :src="item.IMG" />
         </div>
       </slot>
       <slot name="name">
-        <p>{{ item.name }}</p>
+        <p>{{ item.NAME }}</p>
       </slot>
       <slot name="title">
         <div
-          v-for="titleItem in item.position"
+          v-for="titleItem in item.POSITION"
           :key="titleItem"
           class="lecturer-list-item-title"
         >

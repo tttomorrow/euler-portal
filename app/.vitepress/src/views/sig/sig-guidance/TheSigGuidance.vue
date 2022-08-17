@@ -186,10 +186,10 @@ const language = configData.lang;
         }
       }
       &-infoconfig {
-        width: 456px;
+        max-width: 456px;
         background-color: var(--e-color-bg2);
         @media (max-width: 1280px) {
-          width: 350px;
+          max-width: 350px;
         }
         @media (max-width: 1080px) {
           width: 300px;

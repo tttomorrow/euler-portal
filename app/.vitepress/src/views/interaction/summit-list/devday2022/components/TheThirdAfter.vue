@@ -71,7 +71,7 @@ const isMobile = computed(() => {
       font-size: var(--o-font-size-h6);
       color: var(--e-color-text1);
       margin-bottom: var(--o-spacing-h4);
-      box-shadow: var(--o-shadow-base);
+      box-shadow: var (--e-shadow1);
     }
     &-item:first-child {
       height: 48px;
@@ -114,7 +114,7 @@ const isMobile = computed(() => {
             color: var(--e-color-text2);
             background-color: var(--e-color-brand1);
             height: 48px;
-            box-shadow: var(--o-shadow-base);
+            box-shadow: var(--e-shadow1);
             @media (max-width: 780px) {
               font-size: var(--o-font-size-tip);
               margin-bottom: var(--o-spacing-h5);
@@ -140,7 +140,7 @@ const isMobile = computed(() => {
             height: 92px;
             margin-bottom: var(--o-spacing-h4);
             background-color: var(--e-color-bg2);
-            box-shadow: var(--o-shadow-base);
+            box-shadow: var(--e-shadow1);
             @media (max-width: 780px) {
               width: 100%;
               height: fit-content;
