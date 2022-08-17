@@ -834,7 +834,11 @@ onMounted(() => {
 
       <el-collapse-item title="板卡" name="2">
         <div class="blog-tag">
-          <OScreen class="filter" :data="filterDataTwo" @filter="listfilter" />
+          <MobileFilter
+            class="filter"
+            :data="filterDataTwo"
+            @filter="listfilter"
+          />
         </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
@@ -914,7 +918,11 @@ onMounted(() => {
 
       <el-collapse-item title="开源软件" name="3">
         <div class="blog-tag">
-          <OScreen class="filter" :data="filterDataTwo" @filter="listfilter" />
+          <MobileFilter
+            class="filter"
+            :data="filterDataTwo"
+            @filter="listfilter"
+          />
         </div>
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">

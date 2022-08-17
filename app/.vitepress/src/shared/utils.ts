@@ -53,3 +53,10 @@ export function getNowFormatDate() {
   const currentDate = year + seperator1 + month + seperator1 + strDate;
   return currentDate;
 }
+/**
+ * 判断是否是移动端
+ * @returns boolean
+ */
+// export const testIsPhone = () => {
+//   return /Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent);
+// };

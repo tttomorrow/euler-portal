@@ -15,10 +15,6 @@ defineProps({
     type: String,
     default: '',
   },
-  device: {
-    type: Boolean,
-    default: true,
-  },
 });
 const commonStore = useCommon();
 const isDark = computed(() => {
@@ -35,7 +31,7 @@ const isDark = computed(() => {
     <!-- 上下布局 -->
     <div v-if="layout === 'upAndDown'" class="framework-upanddown">
       <!-- PC 端 -->
-      <template v-if="device">
+      <template class="pc">
         <!-- 有选项卡 -->
         <template v-if="frameObj.TAB">
           <OTabs v-if="frameObj.TAB">
@@ -66,7 +62,7 @@ const isDark = computed(() => {
         </template>
       </template>
       <!-- 移动端 -->
-      <template v-else>
+      <template class="mobile">
         <!-- 有选项卡只渲染第一项 -->
         <template v-if="frameObj.TAB">
           <FrameList
@@ -123,6 +119,22 @@ const isDark = computed(() => {
     margin: 0 auto;
     max-width: 1416px;
     position: relative;
+    .pc {
+      @media screen and (min-width: 768px) {
+        display: block;
+      }
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+    .mobile {
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+      @media screen and (max-width: 768px) {
+        display: block;
+      }
+    }
     .el-tabs {
       :deep(.el-tabs__header) {
         margin-bottom: 24px;

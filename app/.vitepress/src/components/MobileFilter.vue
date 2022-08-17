@@ -26,15 +26,23 @@ import IconX from '~icons/app/x.svg';
 
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.screen);
-const props = defineProps({
-  data: {
-    type: Object,
-    default: () => {
-      return {};
-    },
-  },
-});
+// const props = defineProps({
+//   // data: {
+//   //   type: Object,
+//   //   default: () => {
+
+//   //   },
+//   // },
+//   // data:Object
+// });
+const props = defineProps<{
+  data: any;
+}>();
+// const emit = defineEmits<{
+//   (e: 'filter', val: any): void
+// }>()
 const emit = defineEmits(['filter']);
+
 const tagitems = ref<string[]>([]); // 标签数组
 const options = ref<any>([]); // 传给父组件
 
@@ -171,7 +179,6 @@ const allHighLight = (val: any) => {
         direction="btt"
         :show-close="true"
         custom-class="o-drawer"
-        class="o-screen-box-drawer"
         size="auto"
       >
         <template #header>

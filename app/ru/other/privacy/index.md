@@ -1,21 +1,23 @@
 ---
-title: "Конфиденциальность"
-module: privacy
+title: 'Конфиденциальность'
 ---
-<script setup>
+
+<script setup lang="ts">
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 </script>
-  <BannerLevel2
+
+<ClientOnly> <BannerLevel2
     :background-image="banner"
     background-text="PRIVACY POLICY"
     title="Конфиденциальность"
     :illustration="search"
   />
+</ClientOnly>
 
-<div class='markdown'>
+<div class='markdown' style="margin-top:var(--o-spacing-h1)">
 
 Сообщество openEuler понимает важность сохранения конфиденциальности ваших данных и соблюдает ее. <u>**Внимательно прочтите настоящее Уведомление о конфиденциальности сообщества openEuler («Уведомление»), прежде чем отправите нам свои персональные данные.**</u>Если у вас возникли вопросы о том, как мы обрабатываем ваши персональные данные, свяжитесь с нами. Если не указано иное, «мы» и «наш» в настоящем Уведомлении относятся к сообществу openEuler.
 

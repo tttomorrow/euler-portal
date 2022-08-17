@@ -2,21 +2,23 @@
 title: '会议指南'
 ---
 
-<script setup>
+<script setup lang="ts">
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
 </script>
 
-<BannerLevel2
-class="app-header"
-  :background-image="banner"
-  background-text="SIG"
-  title="会议指南"
-  :illustration="illustration"
-/>
+<ClientOnly>
+  <BannerLevel2
+    class="app-header"
+    :background-image="banner"
+    background-text="SIG"
+    title="会议指南"
+    :illustration="illustration"
+  />
+</ClientOnly>
 
-<div class="markdown">
+<div >
 
 # openEuler Developer Day 2022 SIG 组版本工作会议指南
 

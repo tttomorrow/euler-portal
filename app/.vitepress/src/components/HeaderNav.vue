@@ -19,12 +19,12 @@ interface NavItem {
   ID: string;
   IS_OPEN_WINDOW?: number;
   IS_OPEN_MINISITE_WINDOW?: string;
+  CHILDREN?: NavItem;
 }
 
 const router = useRouter();
 const { lang, theme } = useData();
 const activeItem = ref(router.route.path?.split('/')[2]);
-
 watch(
   () => router.route.path,
   (val: string) => {
@@ -51,7 +51,6 @@ const goPath = (item: NavItem) => {
 
 const isShow = ref(true);
 const navActive = ref('');
-
 const toggleSubDebounced = debounce(
   (item: NavItem | null) => {
     if (item === null) {
@@ -66,6 +65,10 @@ const toggleSubDebounced = debounce(
     trailing: true,
   }
 );
+
+const menuActiveFn = (item: any) => {
+  return JSON.stringify(item).includes(activeItem.value);
+};
 </script>
 
 <template>
@@ -75,7 +78,7 @@ const toggleSubDebounced = debounce(
         v-for="item in navItems"
         :key="item.ID"
         :class="{
-          active: activeItem === item.ID,
+          active: menuActiveFn(item.CLASS),
           hover: navActive === item.ID,
         }"
         @mouseenter="toggleSubDebounced(item)"
@@ -172,7 +175,7 @@ const toggleSubDebounced = debounce(
           min-width: 106px;
           &.active {
             background-color: var(--e-color-brand1);
-            color: var(--theme-card-bg);
+            color: var(--e-color-text2);
           }
           &:hover {
             background-color: var(--e-color-brand1);

@@ -13,10 +13,6 @@ defineProps({
       return {};
     },
   },
-  device: {
-    type: Boolean,
-    default: true,
-  },
 });
 const goLink = (path: string) => {
   if (path.startsWith('https:')) {
@@ -28,21 +24,62 @@ const goLink = (path: string) => {
 </script>
 
 <template>
-  <div v-if="device" class="docs-wraper">
-    <div class="document">
-      <div class="docs-list">
-        <div v-for="(item, index) in dataList" :key="index" class="item">
-          <div class="item-content">
-            <div v-if="item.THEME" class="item-theme">{{ item.THEME }}</div>
-            <div v-if="item.DESC" class="item-desc">{{ item.DESC }}</div>
-            <div class="item-link">
+  <div>
+    <div class="docs-wraper">
+      <div class="document">
+        <div class="docs-list">
+          <div v-for="(item, index) in dataList" :key="index" class="item">
+            <div class="item-content">
+              <div v-if="item.THEME" class="item-theme">{{ item.THEME }}</div>
+              <div v-if="item.DESC" class="item-desc">{{ item.DESC }}</div>
+              <div class="item-link">
+                <OButton
+                  v-for="(i, key) in item.LINK"
+                  :key="key"
+                  animation
+                  type="text"
+                  size="small"
+                  class="item-link-button"
+                  @click="goLink(i.LINK)"
+                >
+                  {{ i.TEXT }}
+                  <template #suffixIcon>
+                    <OIcon><IconArrowRight /></OIcon>
+                  </template>
+                </OButton>
+              </div>
+            </div>
+            <div
+              :style="{ backgroundImage: `url(${item.BACKGROUND.IMG})` }"
+              :class="
+                item.BACKGROUND.TYPE === 2
+                  ? 'item-backgroundone'
+                  : 'item-backgroundtwo'
+              "
+            ></div>
+            <img v-if="item.IMG" class="item-img" :src="item.IMG" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-docs">
+      <div class="docs-wrapper">
+        <div v-for="(item, index) in dataList" :key="index" class="docs-item">
+          <div class="docs-item-content">
+            <div v-if="item.THEME" class="docs-item-theme">
+              {{ item.THEME }}
+            </div>
+            <div v-if="item.DESC" class="docs-item-desc">
+              {{ item.DESC }}
+            </div>
+            <div class="docs-item-link">
               <OButton
                 v-for="(i, key) in item.LINK"
                 :key="key"
                 animation
                 type="text"
                 size="small"
-                class="item-link-button"
+                class="button"
                 @click="goLink(i.LINK)"
               >
                 {{ i.TEXT }}
@@ -53,59 +90,20 @@ const goLink = (path: string) => {
             </div>
           </div>
           <div
-            :style="{ backgroundImage: `url(${item.BACKGROUND.IMG})` }"
+            :style="{
+              backgroundImage:
+                item.BACKGROUND.TYPE === 2
+                  ? `url(/img/projects/share/mobile-group.png)`
+                  : `url(/img/projects/stratovirt/mobile-grain.png)`,
+            }"
             :class="
               item.BACKGROUND.TYPE === 2
-                ? 'item-backgroundone'
-                : 'item-backgroundtwo'
+                ? 'docs-item-backgroundone'
+                : 'docs-item-backgroundtwo'
             "
           ></div>
-          <img v-if="item.IMG" class="item-img" :src="item.IMG" alt="" />
+          <img v-if="item.IMG" class="docs-item-img" :src="item.IMG" />
         </div>
-      </div>
-    </div>
-  </div>
-  <div v-else class="mobile-docs">
-    <div class="docs-wrapper">
-      <div v-for="(item, index) in dataList" :key="index" class="docs-item">
-        <div class="docs-item-content">
-          <div v-if="item.THEME" class="docs-item-theme">
-            {{ item.THEME }}
-          </div>
-          <div v-if="item.DESC" class="docs-item-desc">
-            {{ item.DESC }}
-          </div>
-          <div class="docs-item-link">
-            <OButton
-              v-for="(i, key) in item.LINK"
-              :key="key"
-              animation
-              type="text"
-              size="small"
-              class="button"
-              @click="goLink(i.LINK)"
-            >
-              {{ i.TEXT }}
-              <template #suffixIcon>
-                <OIcon><IconArrowRight /></OIcon>
-              </template>
-            </OButton>
-          </div>
-        </div>
-        <div
-          :style="{
-            backgroundImage:
-              item.BACKGROUND.TYPE === 2
-                ? `url(/img/projects/share/mobile-group.png)`
-                : `url(/img/projects/stratovirt/mobile-grain.png)`,
-          }"
-          :class="
-            item.BACKGROUND.TYPE === 2
-              ? 'docs-item-backgroundone'
-              : 'docs-item-backgroundtwo'
-          "
-        ></div>
-        <img v-if="item.IMG" class="docs-item-img" :src="item.IMG" />
       </div>
     </div>
   </div>
@@ -114,6 +112,12 @@ const goLink = (path: string) => {
 <style lang="scss" scoped>
 .docs-wraper {
   padding: 0;
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   .document {
     width: 100%;
     margin: 0 auto;
@@ -230,6 +234,12 @@ const goLink = (path: string) => {
 .mobile-docs {
   width: 100%;
   background-color: var(--e-color-bg1);
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
   .docs-wrapper {
     .docs-item {
       width: 100%;

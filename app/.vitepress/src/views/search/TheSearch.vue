@@ -18,26 +18,23 @@ const currentIndex = ref(0);
 const currentPage = ref(1);
 // 每页数据
 const pageSize = ref(12);
-// 每页数据
+// 控制分页器显示的时机
 const pageShow = ref(false);
 // 搜索内容
 const searchInput = ref<string>('');
 const searchValue = computed(() => {
   return i18n.value.common.SEARCH;
 });
-// 接收搜索的数据
-const searchContent: any = ref([]);
 // 接收搜索数量的数据
 const searchNumber: any = ref([]);
-// 总数据数量
-const showCount = ref(12);
+
 // 显示的数据类型
 const searchType = ref('');
 const searchData = computed(() => {
   return {
     keyword: searchInput.value,
-    page: 1,
-    pageSize: showCount.value,
+    page: currentPage.value,
+    pageSize: pageSize.value,
     lang: lang.value,
     type: searchType.value,
   };
@@ -48,19 +45,8 @@ const searchCount = computed(() => {
     lang: lang.value,
   };
 });
-// 当前分类的所有数据
-const showDataType: any = ref([]);
-// 当前显示的数据
-const currentshowDataList = computed(() => {
-  if (showDataType.value.length > pageSize.value) {
-    return showDataType.value.slice(
-      (currentPage.value - 1) * pageSize.value,
-      currentPage.value * pageSize.value
-    );
-  } else {
-    return showDataType.value;
-  }
-});
+// 接收获取的搜索数据
+const searchResultList: any = ref([]);
 const isShow = ref(false);
 // 总数据数量
 const total = computed(() => {
@@ -68,22 +54,11 @@ const total = computed(() => {
     ? searchNumber.value[currentIndex.value].doc_count
     : 0;
 });
+// 分页器总页数
 const totalPage = computed(() => {
   return Math.ceil(total.value / pageSize.value);
 });
-function setShowDataList() {
-  showDataType.value = [];
 
-  if (searchType.value !== '') {
-    searchContent.value.forEach((item: any) => {
-      if (item.type === searchType.value) {
-        showDataType.value.push(item);
-      }
-    });
-  } else {
-    showDataType.value = searchContent.value;
-  }
-}
 // 点击搜索框的删除图标
 function donShowSearchBox() {
   router.go(`/${lang.value}/`);
@@ -93,40 +68,14 @@ function setCurrentType(index: number, type: string) {
   currentIndex.value = index;
   searchType.value = type;
   currentPage.value = 1;
-  setShowDataList();
+  searchDataAll();
 }
-// 获取搜索的所有数据
-function searchDataList() {
-  searchType.value = '';
-  try {
-    getSearchData(searchData.value).then((res) => {
-      if (res.status === 200 && res.obj.records[0]) {
-        searchContent.value = res.obj.records;
-        currentIndex.value = 0;
-        searchType.value = '';
-        currentPage.value = 1;
-        setShowDataList();
-        pageShow.value = true;
-        isShow.value = false;
-      } else {
-        searchContent.value = [];
-        showDataType.value = [];
-        pageShow.value = false;
-        isShow.value = true;
-      }
-    });
-  } catch (error: any) {
-    throw Error(error);
-  }
-}
-// 搜索事件
-function searchAll() {
+// 获取搜索结果各类型的数量
+function searchCountAll() {
   try {
     getSearchCount(searchCount.value).then((res) => {
       if (res.status === 200 && res.obj.total[0]) {
         searchNumber.value = res.obj.total;
-        showCount.value = res.obj.total[0].doc_count;
-        searchDataList();
       } else {
         searchNumber.value = [];
       }
@@ -135,18 +84,46 @@ function searchAll() {
     throw Error(error);
   }
 }
-
+// 获取搜索结果的数据
+function searchDataAll() {
+  try {
+    getSearchData(searchData.value).then((res) => {
+      if (res.status === 200 && res.obj.records[0]) {
+        searchResultList.value = res.obj.records;
+        pageShow.value = true;
+        isShow.value = false;
+      } else {
+        searchResultList.value = [];
+        pageShow.value = false;
+        isShow.value = true;
+      }
+    });
+  } catch (error: any) {
+    throw Error(error);
+  }
+}
+// 获取搜索结果的所有内容
+function searchAll() {
+  currentIndex.value = 0;
+  searchType.value = '';
+  currentPage.value = 1;
+  searchCountAll();
+  searchDataAll();
+}
 // 移动端上下翻页事件
 function turnPage(option: string) {
   if (option === 'prev' && currentPage.value > 1) {
     currentPage.value = currentPage.value - 1;
+    searchDataAll();
   } else if (option === 'next' && currentPage.value < totalPage.value) {
     currentPage.value = currentPage.value + 1;
+    searchDataAll();
   }
 }
 // 移动端跳转翻页事件
 function jumpPage(page: number) {
   currentPage.value = page;
+  searchDataAll();
 }
 // 判断数据分类
 function dataType(type: string) {
@@ -204,8 +181,8 @@ onMounted(() => {
           >
         </li>
       </ul>
-      <ul v-show="currentshowDataList[0]" class="content-list">
-        <li v-for="item in currentshowDataList" :key="item.id">
+      <ul v-show="!isShow" class="content-list">
+        <li v-for="item in searchResultList" :key="item.id">
           <a :href="'/' + lang + '/' + item.path" target="_blank">
             <h3 v-html="item.title"></h3>
           </a>
@@ -226,6 +203,7 @@ onMounted(() => {
           :background="true"
           layout="sizes, prev, pager, next, slot, jumper"
           :total="total"
+          @current-change="searchDataAll"
         >
           <span>{{ currentPage }}/{{ totalPage }}</span>
         </OPagination>
@@ -259,12 +237,12 @@ onMounted(() => {
       width: 100%;
       display: flex;
       padding-left: var(--o-spacing-h2);
-      background-color: var(--o-color-bg);
-      border-bottom: 1px solid var(--o-color-division);
+      background-color: var(--e-color-bg2);
+      border-bottom: 1px solid var(--e-color-division1);
       li {
         height: 55px;
         margin-right: var(--o-spacing-h2);
-        color: var(--o-color-text2);
+        color: var(--e-color-text1);
         font-size: var(--o-font-size-h8);
         line-height: 55px;
         cursor: pointer;
@@ -277,20 +255,20 @@ onMounted(() => {
         }
       }
       .active {
-        color: var(--o-color-brand_active);
+        color: var(--e-color-kleinblue8);
         &::after {
-          background-color: var(--o-color-brand_active);
+          background-color: var(--e-color-kleinblue8);
         }
       }
     }
     .content-list {
       padding: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
-      background-color: var(--o-color-bg);
+      background-color: var(--e-color-bg2);
       li {
         padding-top: var(--o-spacing-h2);
         h3 {
           font-size: var(--o-font-size-h5);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           line-height: var(--o-line-height-h5);
           font-weight: 500;
           :deep(span) {
@@ -301,7 +279,7 @@ onMounted(() => {
           margin-top: 17px;
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
           :deep(span) {
             color: var(--e-color-brand1);
           }
@@ -310,7 +288,7 @@ onMounted(() => {
           margin-top: 15px;
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--o-color-text2);
+          color: var(--e-color-text1);
         }
       }
     }

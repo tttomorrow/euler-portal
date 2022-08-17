@@ -9,10 +9,6 @@ defineProps({
       return {};
     },
   },
-  device: {
-    type: Boolean,
-    default: true,
-  },
 });
 </script>
 <template>
@@ -22,7 +18,7 @@ defineProps({
       :outside-title="docsObj.TITLE_OUTSIDE"
       :special-component="!!docsObj.TAB"
     />
-    <div v-if="device" class="docs-tab">
+    <div class="docs-tab">
       <template v-if="docsObj.TAB">
         <OTabs v-if="docsObj.TAB">
           <OTabPane
@@ -38,7 +34,7 @@ defineProps({
         <DocsList :data-list="docsObj.DATA_LIST" />
       </template>
     </div>
-    <div v-else class="docs-mobile-tab">
+    <div class="docs-mobile-tab">
       <template v-if="docsObj.TAB">
         <OCollapse
           v-for="item in docsObj.TAB"
@@ -46,15 +42,12 @@ defineProps({
           class="collapse"
         >
           <OCollapseItem :title="item.VALUE" class="collapse-item">
-            <DocsList
-              :data-list="docsObj[item.KEY].DATA_LIST"
-              :device="false"
-            />
+            <DocsList :data-list="docsObj[item.KEY].DATA_LIST" />
           </OCollapseItem>
         </OCollapse>
       </template>
       <template v-else>
-        <DocsList :data-list="docsObj.DATA_LIST" :device="false" />
+        <DocsList :data-list="docsObj.DATA_LIST" />
       </template>
     </div>
   </div>
@@ -65,6 +58,12 @@ defineProps({
   &-tab {
     max-width: 1416px;
     margin: 0 auto;
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
     .el-tabs {
       :deep(.el-tabs__header) {
         margin-bottom: var(--o-spacing-h4);
@@ -78,6 +77,12 @@ defineProps({
   }
   &-mobile-tab {
     margin-top: 16px;
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
     .collapse {
       border-left: none;
       padding: 0;

@@ -66,7 +66,7 @@ export default {
           PATH: '/mirror/list/',
         },
       ],
-      CLASS: [],
+      CLASS: ['download', 'mirror'],
     },
     {
       NAME: 'Learning',
@@ -84,7 +84,7 @@ export default {
           PATH: '/learn/mooc/',
         },
       ],
-      CLASS: [],
+      CLASS: ['learning', 'learn'],
     },
     {
       PATH: '',
@@ -117,15 +117,7 @@ export default {
           PATH: '/interaction/summit-list/devday2022/',
         },
       ],
-      OTHER_CHILDREN: [
-        {
-          PATH: '/news/',
-        },
-        {
-          PATH: '/blog/',
-        },
-      ],
-      CLASS: [],
+      CLASS: ['interaction', 'news', 'blog', 'live', 'salon', 'summit'],
     },
     {
       PATH: '',
@@ -153,7 +145,13 @@ export default {
           PATH: '/community/certification-services/',
         },
       ],
-      CLASS: [],
+      CLASS: [
+        'community',
+        'contribution',
+        'conduct',
+        'mailing-list',
+        'certification-services',
+      ],
     },
     {
       PATH: '',
@@ -176,7 +174,7 @@ export default {
           PATH: '/sig/role-description/',
         },
       ],
-      CLASS: [],
+      CLASS: ['sig-list', 'sig-guidance', 'role-description'],
     },
     {
       PATH: '',
@@ -227,7 +225,7 @@ export default {
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
-      CLASS: [],
+      CLASS: ['atune', 'bishengjdk', 'isula', 'secgear', 'stratovirt'],
     },
     {
       PATH: '',
@@ -255,6 +253,34 @@ export default {
           PATH: '/security/compatibility/',
         },
       ],
+      CLASS: [
+        'vulnerability-reporting',
+        'safety-bulletin',
+        'cve',
+        'compatibility',
+      ],
+    },
+    {
+      PATH: '',
+      NAME: 'CODE',
+      ID: 'code',
+      CHILDREN: [
+        {
+          NAME: 'Code Sources',
+          PATH: 'https://gitee.com/openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'Package Sources',
+          PATH: 'https://gitee.com/src-openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'GitHub Mirror',
+          PATH: 'https://github.com/openeuler-mirror',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+      ],
       CLASS: [],
     },
   ],
@@ -262,20 +288,6 @@ export default {
   LANG_LIST: ['中文', 'English', 'Русский'],
   GITTE: 'Source code',
   CODE: 'CODE',
-  GITTE_RESOURCE_LIST: [
-    {
-      NAME: 'Code Sources',
-      URL: 'https://gitee.com/openeuler',
-    },
-    {
-      NAME: 'Package Sources',
-      URL: 'https://gitee.com/src-openeuler',
-    },
-    {
-      NAME: 'GitHub Mirror',
-      URL: 'https://github.com/openeuler-mirror',
-    },
-  ],
   FOOTER: {
     ATOM_TEXT:
       'openEuler is an open source project incubated and operated by the OpenAtom Foundation.',

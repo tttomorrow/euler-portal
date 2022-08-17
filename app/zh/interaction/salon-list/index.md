@@ -1,7 +1,7 @@
 ---
 title: '沙龙'
 ---
-<script setup>
+<script setup lang="ts">
     import TheSalon from '@/views/interaction/salon-list/TheSalon.vue'
 </script>
 

@@ -69,7 +69,7 @@ export default {
           PATH: '/mirror/list/',
         },
       ],
-      CLASS: [],
+      CLASS: ['download', 'mirror'],
     },
     {
       NAME: 'Обучение',
@@ -87,7 +87,7 @@ export default {
           PATH: '/learn/mooc/',
         },
       ],
-      CLASS: [],
+      CLASS: ['learn'],
     },
     {
       PATH: '',
@@ -120,15 +120,7 @@ export default {
           PATH: '/interaction/summit-list/devday2022/',
         },
       ],
-      OTHER_CHILDREN: [
-        {
-          PATH: '/news/',
-        },
-        {
-          PATH: '/blog/',
-        },
-      ],
-      CLASS: [],
+      CLASS: ['interaction', 'news', 'blog', 'salon', 'summit'],
     },
     {
       PATH: '',
@@ -146,7 +138,7 @@ export default {
           PATH: '/community/certification-services/',
         },
       ],
-      CLASS: [],
+      CLASS: ['community', 'conduct', 'certification'],
     },
     {
       PATH: '',
@@ -169,7 +161,7 @@ export default {
           PATH: '/sig/role-description/',
         },
       ],
-      CLASS: [],
+      CLASS: ['sig', 'sig-guidance', 'role-description'],
     },
     {
       PATH: '',
@@ -202,7 +194,7 @@ export default {
           PATH: '/other/projects/stratovirt/',
         },
       ],
-      CLASS: [],
+      CLASS: ['stratovirt', 'atune', 'bishengjdk', 'isula', 'secgear'],
     },
     {
       PATH: '',
@@ -230,6 +222,34 @@ export default {
           PATH: '/security/compatibility/',
         },
       ],
+      CLASS: [
+        'vulnerability-reporting',
+        'compatibility',
+        'cve',
+        'safety-bulletin',
+      ],
+    },
+    {
+      PATH: '',
+      NAME: 'Код',
+      ID: 'code',
+      CHILDREN: [
+        {
+          NAME: 'Источники кода',
+          PATH: 'https://gitee.com/openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'Источники пакетов',
+          PATH: 'https://gitee.com/src-openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'Зеркало GitHub',
+          PATH: 'https://github.com/openeuler-mirror',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+      ],
       CLASS: [],
     },
   ],
@@ -237,20 +257,6 @@ export default {
   LANG_LIST: ['中文', 'English', 'Русский'],
   GITTE: 'Source code',
   CODE: 'Код',
-  GITTE_RESOURCE_LIST: [
-    {
-      NAME: 'Источники кода',
-      URL: 'https://gitee.com/openeuler',
-    },
-    {
-      NAME: 'Источники пакетов',
-      URL: 'https://gitee.com/src-openeuler',
-    },
-    {
-      NAME: 'Зеркало GitHub',
-      URL: 'https://github.com/openeuler-mirror',
-    },
-  ],
   FOOTER: {
     ATOM_TEXT:
       'openEuler - это проект с открытым исходным кодом, созданный и управляемый фондом OpenAtom.',

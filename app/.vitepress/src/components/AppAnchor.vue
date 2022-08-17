@@ -38,7 +38,7 @@ const anchorData = ref();
 // 对象扁平化
 function flatten(data: any) {
   return data.reduce(
-    (pre, { id, name, children = [] }) =>
+    (pre: any, { id, name, children = [] }) =>
       pre.concat([{ id, name }], flatten(children)),
     []
   );

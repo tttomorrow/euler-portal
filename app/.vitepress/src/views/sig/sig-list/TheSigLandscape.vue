@@ -4,22 +4,11 @@ import { useI18n } from '@/i18n';
 
 const configData = useData();
 const router = useRouter();
+const i18n = useI18n();
 const language = configData.lang;
 
-const props = defineProps({
-  sigList: {
-    type: Array,
-    default: () => [],
-  },
-});
-
-const i18n = useI18n();
 const toSigDetail = (name: string): void => {
-  props.sigList.map((item: any) => {
-    if (item.group_name === name) {
-      router.go(`/${language.value}/sig/sig-detail/?id=${item.id}`);
-    }
-  });
+  router.go(`/${language.value}/sig/sig-detail/?name=${name}`);
 };
 </script>
 
@@ -60,7 +49,7 @@ const toSigDetail = (name: string): void => {
 
 <style scoped lang="scss">
 .landscape {
-  max-width: 1340px;
+  max-width: 1120px;
   margin: 0 auto;
   .sig-category-wrapper {
     margin-bottom: var(--o-spacing-h1);

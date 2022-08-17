@@ -87,7 +87,7 @@ const changeImg = function (url: string) {
         color: var(--e-color-text4);
       }
       &-bottom {
-        border-bottom: 1px solid var(--o-color-division);
+        border-bottom: 1px solid var(--e-color-text5);
       }
     }
     @media screen and (min-width: 1440px) {
@@ -126,7 +126,7 @@ const changeImg = function (url: string) {
   }
   @media screen and (max-width: 767px) {
     .content :nth-child(5) {
-      border-bottom: 1px solid var(--o-color-division);
+      border-bottom: 1px solid var(--e-color-text5);
     }
   }
 }

@@ -8,7 +8,7 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div class="markdown">
+<div >
 
 ## Scenarios
 
@@ -39,4 +39,3 @@ Software and hardware devices were purchased and the full-stack independent inno
 <div ><img src="./qiling.png"/></div>
 
 </div>
-

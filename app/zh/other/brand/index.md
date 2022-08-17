@@ -1,7 +1,7 @@
 ---
 title: "品牌"
 ---
-<script setup>
+<script setup lang="ts">
   import TheBrand from "@/views/brand/TheBrand.vue"
 </script>
 

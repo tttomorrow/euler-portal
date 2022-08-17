@@ -5,53 +5,9 @@ export default {
     'A-Tune是一款基于openEuler开发的，自动化、智能化性能调优引擎。它利用人工智能技术，对运行在操作系统上的业务建立精准模型，动态感知业务特征并推理出具体应用，根据业务负载情况动态调节并给出最佳的参数配置组合，从而使业务处于最佳运行状态。',
   ],
   ATUNE_MAIL: 'mail to:a-tune@openeuler.org',
-  NAV_TEXT: [
-    {
-      key: '#sourceDownload',
-      name: '资源下载',
-    },
-    {
-      key: '#framework',
-      name: '背景',
-    },
-    {
-      key: '#document',
-      name: '方案介绍',
-      children: [
-        {
-          name: '迁移面临的关键问题',
-          key: '#h2-title-one',
-        },
-        {
-          name: '迁移综合方案概述',
-          key: '#h2-title-two',
-        },
-        {
-          name: 'OS基础兼容性',
-          key: '#h2-title-three',
-        },
-        {
-          name: '兼容性评估',
-          key: '#h2-title-four',
-        },
-        {
-          name: '移植适配',
-          key: '#h2-title-five',
-        },
-        {
-          name: '搬迁实施',
-          key: '#h2-title-six',
-        },
-        {
-          name: '迁移调优',
-          key: '#h2-title-seven',
-        },
-      ],
-    },
-    {
-      key: '#caseGuidance',
-      name: '案例指导',
-    },
+  ATUNE_ANCHOR_DATA: [
+    { id: 'architecture', name: '架构' },
+    { id: 'docs', name: '文档' },
   ],
   ATUNE_LINK: [
     {

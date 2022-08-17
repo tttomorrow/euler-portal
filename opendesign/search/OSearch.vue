@@ -5,7 +5,7 @@ const attrs = useAttrs();
 </script>
 
 <template>
-  <ElInput class="o-search" v-bind="attrs" placeholder="搜索用户案例">
+  <ElInput class="o-search" v-bind="attrs">
     <template #prefix>
       <svg
         version="1.1"
@@ -29,11 +29,12 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-search {
   --o-search-height: 36px;
-  --o-search-border-color: var(--o-color-base_inverse);
+  --o-search-border-color: var(--e-color-border);
   --o-search-font-color: var(--e-color-text1);
   --o-search-font-size: var(--o-font-size-text);
   --o-search-line-height: var(--o-line-height-text);
   --o-search-color-bg: var(--e-color-bg2);
+  --o-search-shadow: none;
 
   &.el-input {
     font-size: var(--o-font-size-text);
@@ -43,7 +44,7 @@ const attrs = useAttrs();
       border-radius: 0;
       padding: 1px 8px;
       background-color: var(--o-search-color-bg);
-      box-shadow: var(--o-shadow-base);
+      box-shadow: var(--o-search-shadow);
       .el-input__prefix-inner {
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-heihgt-h5);

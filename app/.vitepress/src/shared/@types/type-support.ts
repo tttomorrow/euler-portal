@@ -34,6 +34,7 @@ export interface CveLists {
   status: string;
   summary: string;
   updateTime: string;
+  packageName: string;
 }
 
 export interface CompatibilityList {

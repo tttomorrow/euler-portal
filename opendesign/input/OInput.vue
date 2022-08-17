@@ -5,13 +5,13 @@ const attrs = useAttrs();
 </script>
 
 <template>
-  <ElInput class="o-input" v-bind="attrs"></ElInput>
+  <ElInput class="o-input" v-bind="attrs" disabled></ElInput>
 </template>
 
 <style lang="scss">
 .o-input {
   --o-input-height: 36px;
-  --o-input-border-color: var(--o-color-base_inverse);
+  --o-input-border-color: var(--e-color-border1);
   --o-input-font-color: var(--e-color-text1);
   --o-input-font-size: var(--o-font-size-text);
   --o-input-line-height: var(--o-line-height-text);

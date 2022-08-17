@@ -216,6 +216,7 @@ function search() {
 <style lang="scss" scoped>
 :deep(.o-search) {
   --o-search-color-bg: var(--o-color-secondary);
+  background-color: var(--e-color-bg4);
 }
 :deep(.el-input__suffix) {
   font-size: var(--o-font-size-h7);

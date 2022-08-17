@@ -15,12 +15,13 @@ const attrs = useAttrs();
 .o-card {
   --o-card-font-color: var(--e-color-text1);
   --o-card-bg-color: var(--e-color-bg2);
-  --o-card-border-color: var(--o-color-border);
+  --o-card-division-color: var(--e-color-division1);
 
   &.el-card {
-    color: var(--o-font-color);
+    color: var(--o-card-font-color);
     border-radius: 0;
     background-color: var(--o-card-bg-color);
+    transition: none;
     border: none;
 
     &.is-always-shadow {
@@ -33,12 +34,10 @@ const attrs = useAttrs();
         box-shadow: var(--o-shadow-base_hover);
       }
     }
-  }
-}
 
-:deep(.el-card) {
-  .el-card__header {
-    border-bottom: 1px solid var(--o-card-border-color) !important;
+    .el-card__header {
+      border-bottom: 1px solid var(--o-card-division-color);
+    }
   }
 }
 </style>

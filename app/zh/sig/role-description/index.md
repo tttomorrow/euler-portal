@@ -2,7 +2,7 @@
 title: '角色说明'
 ---
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
@@ -34,15 +34,17 @@ import illustration from '@/assets/illustrations/search.png';
   });
 </script>
 
-<BannerLevel2
-class="app-header"
-  :background-image="banner"
-  background-text="SIG"
-  title="角色说明"
-  :illustration="illustration"
-/>
+<ClientOnly>
+  <BannerLevel2
+    class="app-header"
+    :background-image="banner"
+    background-text="SIG"
+    title="角色说明"
+    :illustration="illustration"
+  />
+</ClientOnly>
 
-<div class="markdown">
+<div >
 
 ## 社区成员
 

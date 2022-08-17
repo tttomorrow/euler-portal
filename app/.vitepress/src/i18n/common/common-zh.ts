@@ -65,7 +65,7 @@ export default {
           PATH: '/mirror/list/',
         },
       ],
-      CLASS: [],
+      CLASS: ['download', 'mirror'],
     },
     {
       NAME: '学习',
@@ -88,7 +88,7 @@ export default {
           PATH: '/internship/',
         },
       ],
-      CLASS: [],
+      CLASS: ['learn', 'internship', 'learning'],
     },
     {
       PATH: '',
@@ -121,15 +121,7 @@ export default {
           PATH: '/interaction/summit-list/devday2022/',
         },
       ],
-      OTHER_CHILDREN: [
-        {
-          PATH: '/news/',
-        },
-        {
-          PATH: '/blog/',
-        },
-      ],
-      CLASS: [],
+      CLASS: ['news', 'blog', 'live', 'salon', 'summit', 'interaction'],
     },
     {
       PATH: '',
@@ -157,7 +149,7 @@ export default {
           PATH: '/community/certification-services/',
         },
       ],
-      CLASS: [],
+      CLASS: ['contribution', 'conduct', 'mailing-list', 'certification'],
     },
     {
       PATH: '',
@@ -185,7 +177,7 @@ export default {
           PATH: '/sig/meeting-guide/',
         },
       ],
-      CLASS: [],
+      CLASS: ['sig-list', 'sig-guidance', 'role-description', 'meeting-guide'],
     },
     {
       PATH: '',
@@ -236,7 +228,7 @@ export default {
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
-      CLASS: [],
+      CLASS: ['atune', 'bishengjdk', 'isula', 'secgear', 'stratovirt'],
     },
     {
       PATH: '',
@@ -269,6 +261,36 @@ export default {
           PATH: '/other/migration/',
         },
       ],
+      CLASS: [
+        'security',
+        'vulnerability-reporting',
+        'safety-bulletin',
+        'cve',
+        'compatibility',
+        'migration',
+      ],
+    },
+    {
+      PATH: '',
+      NAME: '代码',
+      ID: 'code',
+      CHILDREN: [
+        {
+          NAME: '代码仓',
+          PATH: 'https://gitee.com/openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: '软件包仓',
+          PATH: 'https://gitee.com/src-openeuler',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'GitHub镜像仓',
+          PATH: 'https://github.com/openeuler-mirror',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+      ],
       CLASS: [],
     },
   ],
@@ -276,20 +298,6 @@ export default {
   LANG_LIST: ['中文', 'English', 'Русский'],
   GITTE: '源码',
   CODE: '代码',
-  GITTE_RESOURCE_LIST: [
-    {
-      NAME: '代码仓',
-      URL: 'https://gitee.com/openeuler',
-    },
-    {
-      NAME: '软件包仓',
-      URL: 'https://gitee.com/src-openeuler',
-    },
-    {
-      NAME: 'GitHub镜像仓',
-      URL: 'https://github.com/openeuler-mirror',
-    },
-  ],
   FOOTER: {
     ATOM_TEXT:
       'openEuler 是由开放原子开源基金会（OpenAtom Foundation）孵化及运营的开源项目',

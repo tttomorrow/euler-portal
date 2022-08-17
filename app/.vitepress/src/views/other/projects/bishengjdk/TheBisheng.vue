@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { useI18n } from '@/i18n';
 
 import MiniFrame from '../components/MiniFrame.vue';
@@ -8,25 +7,12 @@ import MiniDescription from '../components/MiniDescription.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import MiniReference from './MiniReference.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import useWindowResize from '@/components/hooks/useWindowResize';
 import AppAnchor from '@/components/AppAnchor.vue';
 
 import BannerIllustration from '/img/projects/bisheng/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
 
 const i18n = useI18n();
-const isPC = ref(true);
-if (useWindowResize().value < 767) {
-  isPC.value = false;
-} else {
-  isPC.value = true;
-}
-
-const anchorData = [
-  { id: 'architecture', name: '架构' },
-  { id: 'learn', name: '学习' },
-  { id: 'link', name: '友情链接' },
-];
 </script>
 
 <template>
@@ -52,24 +38,22 @@ const anchorData = [
       />
       <!-- 架构模块 -->
       <MiniFrame
-        id="architecture"
-        :device="isPC"
+        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[0].id"
         :frame-obj="i18n.bishengjdk.BISHENG_FRAMEWORK"
         layout="upAndDown"
       />
       <!-- 学习模块 -->
       <MiniDocs
-        id="learn"
-        :device="isPC"
+        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[1].id"
         :docs-obj="i18n.bishengjdk.BISHENG_LEARN"
       />
       <!-- 友情链接模块 -->
       <MiniReference
-        id="link"
+        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[2].id"
         :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE"
       />
 
-      <AppAnchor :data="anchorData" />
+      <AppAnchor class="anchor" :data="i18n.bishengjdk.BISHENG_ANCHOR_DATA" />
     </div>
   </div>
 </template>
@@ -95,6 +79,14 @@ const anchorData = [
       display: none;
       @media screen and (min-width: 1440px) {
         display: block;
+      }
+    }
+    .anchor {
+      @media screen and (min-width: 768px) {
+        display: block;
+      }
+      @media screen and (max-width: 768px) {
+        display: none;
       }
     }
   }
