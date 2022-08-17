@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/finance.png
 ---
 
-<div >
-
 ## 应用场景
 
 兴业银行作为自主创新金融行业建设单位之一，为响应加强安全创新、实现自主创新的市场需求，进行自主产品应用系统创新建设项目，业务系统向自主创新平台迁移，初步创建网信产业生态。全栈自主创新平台在性能、安全性、功能等方面均需满足某核心业务系统需求。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./img2.jpg"/></div>
+<div class="case-img"><img src="./img2.jpg"/></div>
 
 - **整机：** 华为鲲鹏服务器
 - **操作系统：** 银河麒麟高级服务器操作系统 V10
@@ -32,6 +30,4 @@ img: /img/showcase/finance.png
 
 ## 伙伴
 
-<div><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

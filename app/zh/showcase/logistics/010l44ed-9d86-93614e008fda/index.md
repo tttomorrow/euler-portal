@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/logistics.png
 ---
 
-<div >
-
 ## 应用场景
 
 利用原有服务器硬件资源，使用华三云虚拟创建 200 套统信操作系统虚机，为后期业务系统迁移改造提供有利环境。基于新购买硬件 NF2180M、鲲鹏 S920X00K 服务器，创建信创云 263 套统信操作系统虚机服务器，为 OA 系统迁移改造提供资源。在整个方案设计邮政集团基于现有技术力量，并依托自有技术团队与外包服务商，选取当前流行且稳定的技术架构，规划 CCE 容器云的管控面与业务面分离，基于“1+N”架构，实现单个数据中心一套管理集群集中管理，多套业务集群分别部署在不同网络分区，满足业务安全、合规、隔离等要求。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./lg1.jpg"/></div>
+<div class="case-img"><img src="./lg1.jpg"/></div>
 
 统信服务器操作系统，具备同源异构能力，完美支持主流云架构 Openstack 多种版本、提供云原生、高可用、易维护等组件和解决方案，提供迁移工具，完整迁移原业务数据。组建专业的技术服务团队，对生产环境所涉及的软件、硬件予以可用性、兼容性、稳定性等适配。
 
@@ -26,6 +24,4 @@ img: /img/showcase/logistics.png
 
 ## 伙伴
 
-<div ><img src="./tongxin.png"/></div>
-
-</div>
+<img src="./tongxin.png"/>

@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/provider.png
 ---
 
-<div >
-
 ## **Сценарий**
 
 Ведущий китайский оператор мобильной связи China Mobile (отделение в провинции Чжэцзян) предлагает большое многообразие услуг, тарифов и пакетов. В связи с этим у компании особые жесткие требования к системе поддержки. Серьезную озабоченность вызывала предстоящая миграция сервисной системы — этот процесс должен быть абсолютно незаметен для пользователей. В августе 2021 года в чжэцзянском отделении оператора China Mobile был завершен тест на адаптацию базовой системы, легко и без проблем выполнена миграция операционной системы и в базовых системах запущена в работу ОС Galaxy Kylin Advanced Server Operating System V10 (первый в телекоммуникационной отрасли запуск).
 
 ## **Решение**
 
-<div align="center" class="case-img"><img src="./p1.png"/></div>
+<div class="case-img"><img src="./p1.png"/></div>
 
 - Сервер: x86 и Huawei Kunpeng
 - ОС: операционная система Galaxy Kylin Advanced Server Operating System V10
@@ -32,6 +30,4 @@ img: /img/showcase/provider.png
 
 ## **Партнер**
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

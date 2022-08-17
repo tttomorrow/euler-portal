@@ -8,8 +8,6 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 The power dispatch system is a Classified Protection of Cybersecurity Level 4 system, which cannot bear any loss. (Under Classified Protection, network systems are graded from Level 1 to Level 5. A higher level means that the system has more requirements to comply with.) In 2009, State Grid Corporation of China (SGCC) started the In-depth Defense Demonstration Project for Classified Protection of Power Grid Information Security and proposed the smart grid development plan. The goal was to build a unified, "strong, smart grid."
@@ -18,7 +16,7 @@ Since 2009, SGCC started to migrate the D5000 dispatch system to the Kylinsec OS
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./e1.png"/></div>
+<div class="case-img"><img src="./e1.png"/></div>
 
 - OS: Kylinsec OS (openEuler distribution)
 
@@ -38,6 +36,4 @@ Since 2009, SGCC started to migrate the D5000 dispatch system to the Kylinsec OS
 
 ## Partner
 
-<div ><img src="./xinan.png"/></div>
-
-</div>
+<img src="./xinan.png"/>

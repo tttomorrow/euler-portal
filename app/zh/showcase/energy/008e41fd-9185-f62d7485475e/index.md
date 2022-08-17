@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div >
-
 ## 应用场景
 
 中国华电集团聚焦工控领域核心信息基础设施安全防护，前瞻性谋划并推进发电领域关键核心技术攻关，集中优势科研资源开展新一代 DCS 系统建设工作，成功研制出 DCS——“华电睿蓝”智能分散控制系统，并成功在华电旗下的华电芜湖电厂实现示范应用。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./e3.jpg"/></div>
+<div class="case-img"><img src="./e3.jpg"/></div>
 
 - 项目中使用飞腾处理器、中国长城服务器以及银河麒麟高级服务器操作系统 V10（工作站版）；
 - 搭载达梦数据库+华电睿蓝 DCS 平台软件。
@@ -29,6 +27,4 @@ img: /img/showcase/energy.png
 
 ## 伙伴
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

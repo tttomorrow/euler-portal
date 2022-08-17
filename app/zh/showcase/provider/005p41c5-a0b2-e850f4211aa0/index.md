@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/provider.png
 ---
 
-<div >
-
 ## 应用场景
 
 整体方案主要涉及业务大厅与客户中心等业务系统与国产操作系统、mesos 与 k8s 容器集群、国产芯片服务器的联调适配，基于国产芯片服务器与操作系统构建自主可控集群，并通过标签约束隔离技术，将业务系统到指定自主可控集群。实现了业务代码不变的前提下，完成由芯片到操作系统的国产化替换工作，本次适配成果保证了后续同类架构替换可以实现零改造、规模化推广。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./p3.jpg"/></div>
+<div class="case-img"><img src="./p3.jpg"/></div>
 
 ## 客户价值
 
@@ -28,6 +26,4 @@ img: /img/showcase/provider.png
 
 ## 伙伴
 
-<div ><img src="./tongxin.png"/></div>
-
-</div>
+<img src="./tongxin.png"/>

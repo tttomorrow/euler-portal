@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/provider.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 The solution aims to complete joint commissioning and adaptation between service systems (including the service hall and customer center) and OSs, Mesos and Kubernetes container clusters, and servers. Independent and controllable clusters are built based on OSs and servers, and the label constraint and isolation technology are used to route service systems to the clusters.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./p3.png"/></div>
+<div class="case-img"><img src="./p3.png"/></div>
 
 ## **Benefits**
 
@@ -28,6 +26,4 @@ The solution aims to complete joint commissioning and adaptation between service
 
 ## Partner
 
-<div ><img src="./tongxin.png"/></div>
-
-</div>
+<img src="./tongxin.png"/>

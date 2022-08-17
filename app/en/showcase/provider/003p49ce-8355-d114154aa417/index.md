@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/provider.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 As a leading provincial mobile company in China, China Mobile (Zhejiang) needs to be able to offer many complex services, so it has some seemingly unusual and stringent requirements for the support system. Migrating the service system without affecting user experience is a major concern. In August 2021, China Mobile (Zhejiang) completed a core system adaptation test, smoothly migrated the OS, and pioneered the use of Galaxy Kylin Advanced Server Operating System V10 in core systems in the telecom industry.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./p1.png"/></div>
+<div class="case-img"><img src="./p1.png"/></div>
 
 - Server: x86 and Huawei Kunpeng servers
 - OS: Galaxy Kylin Advanced Server Operating System V10
@@ -34,6 +32,4 @@ As a leading provincial mobile company in China, China Mobile (Zhejiang) needs t
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

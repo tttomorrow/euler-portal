@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
 ## 应用场景
 
 为加强安全防护意识、提高往来邮件的安全性、过滤垃圾邮件、病毒邮件，保障邮件系统的安全性、稳定性。黑龙江省烟草公司在服务器上部署中标麒麟安全增强电子邮件系统 V6.0，通过安全邮件 web 端和客户端传输邮件，满足用户邮件传输及保存需求。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./er2.jpg"/></div>
+<div class="case-img"><img src="./er2.jpg"/></div>
 
 - **芯片：** ARM（FT-2000+/64）
 - **整机：** 浪潮英信服务器
@@ -30,6 +28,4 @@ img: /img/showcase/others.png
 
 ## 伙伴
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

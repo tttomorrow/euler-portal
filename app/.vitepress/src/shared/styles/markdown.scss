@@ -134,14 +134,6 @@
       margin-top: var(--o-font-size-h7);
     }
   }
-  .case-img {
-    img {
-      width: 58%;
-      @media screen and (max-width: 768px) {
-        width: 100%;
-      }
-    }
-  }
   div[class*='language-'] {
     position: relative;
     margin: 8px 0;

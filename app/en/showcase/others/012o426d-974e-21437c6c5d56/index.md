@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 To filter out junk and infected mail and thereby improve the security and stability of the mail system, Heilongjiang Tobacco Industry Co. Ltd. (or Heilongjiang Tobacco) deployed the NeoKylin security-enhanced mail system V6.0 on servers to transmit mail through mail webs and clients, and meet mail transmission and storage requirements.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./er2.png"/></div>
+<div class="case-img"><img src="./er2.png"/></div>
 
 - **Processor**: ARM (FT-2000+/64)
 
@@ -34,6 +32,4 @@ To filter out junk and infected mail and thereby improve the security and stabil
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

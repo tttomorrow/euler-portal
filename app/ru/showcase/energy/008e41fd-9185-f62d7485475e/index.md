@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div >
-
 ## **Сценарий**
 
 China Huadian Corporation (CHD) фокусируется на безопасности основной информационной инфраструктуры в области промышленного управления, и работает в направлении продвижения ключевых технологических прорывов в производстве электроэнергии. Собирая научно-исследовательские ресурсы, компания успешно построила распределенную систему управления (DCS) следующего поколения и применила ее на электростанции CHD Wuhu.
 
 ## **Решение**
 
-<div align="center" class="case-img"><img src="./e3.png"/></div>
+<div class="case-img"><img src="./e3.png"/></div>
 
 - Использование процессора Phytium, китайских серверов Great Wall и Galaxy Kylin Advanced Server Operating System V10 (рабочая станция).
 
@@ -32,6 +30,4 @@ China Huadian Corporation (CHD) фокусируется на безопасно
 
 ## **Партнер**
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

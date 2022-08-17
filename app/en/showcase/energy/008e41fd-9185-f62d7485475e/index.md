@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div >
-
 ## **Scenarios**
 
 China Huadian Corporation (CHD) focuses on the security of core information infrastructure in the industrial control field, and works towards and promotes key technological breakthroughs in power generation. By gathering scientific research resources, it has successfully built a next-generation Distributed Control System (DCS) and applied it at the CHD Wuhu Power Plant.
 
 ## **Solution**
 
-<div align="center" class="case-img"><img src="./e3.png"/></div>
+<div class="case-img"><img src="./e3.png"/></div>
 
 - Use Phytium processors, China Great Wall servers, and Galaxy Kylin Advanced Server Operating System V10 (workstation).
 
@@ -32,6 +30,4 @@ China Huadian Corporation (CHD) focuses on the security of core information infr
 
 ## Partner
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/finance.png
 ---
 
-<div >
-
 ## 应用场景
 
 作为国有大行，建行的信用卡核心业务系统具有“客户数量和信贷规模等四项核心业务指标同业第一”的特点，客户基数庞大，样本多样性强，业务形态复杂，对业务一致性的要求非常高，对系统运行的稳定性要求也很高。除此之外，银行 IT 系统要在高可用、高可靠的前提下，实现弹性扩展、敏捷交付。同时，金融行业面临着关键信息基础设施安全可靠的问题，在基础设施升级的同时需要兼顾安全与数字化发展的问题。
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./f1.jpg"/></div>
+<div class="case-img"><img src="./f1.jpg"/></div>
 
 - 基于银河麒麟高级服务器操作系统 V10 ， GaussDB 作为数据底座，TaiShan 200 服务器作为算力底座，对原有基础设施（x86+Redhat+Oracle）升级；
 
@@ -32,6 +30,4 @@ img: /img/showcase/finance.png
 
 ## 伙伴
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

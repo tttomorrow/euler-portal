@@ -8,15 +8,13 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/others.png
 ---
 
-<div >
-
 ## **Сценарий**
 
 В целях повышения безопасности и стабильности почтовой системы, фильтрации спама и писем с вирусом ООО табачной промышленности провинции Хэйлунцзян (Heilongjiang Tobacco) развернула на серверах почтовую систему с повышенной безопасностью V6.0 на базе ОС NeoKylin, чтобы передать письма через веб-сайты и клиенты электронной почты и удовлетворить потребность пользователей в передаче и хранении писем.
 
 ## **Решение**
 
-<div align="center" class="case-img"><img src="./er2.png"/></div>
+<div class="case-img"><img src="./er2.png"/></div>
 
 - **Процессор**: ARM (FT-2000+/64)
 - **Сервер**: Inspur Yingxin
@@ -30,6 +28,4 @@ img: /img/showcase/others.png
 
 ## **Партнер**
 
-<div ><img src="./qiling.png"/></div>
-
-</div>
+<img src="./qiling.png"/>

@@ -8,8 +8,6 @@ banner: /img/showcase/case-detail-bg.jpg
 img: /img/showcase/energy.png
 ---
 
-<div >
-
 ## 应用场景
 
 电力系统是国家的重要设施，其稳定运行关乎国计民生。电力调度系统属国家信息安全等级保护四级的系统，一旦出现任何闪失将严重威胁国家和人民的生命财产安全，造成无可挽回的巨大损失。国家电网公司 2009 年启动《电网信息安全等级保护纵深防御示范工程》信息安全专项工作，提出智能电网发展规划，目标是全面建成统一的“坚强智能电网”，把握国家“中枢神经系统”。
@@ -17,7 +15,7 @@ img: /img/showcase/energy.png
 
 ## 解决方案
 
-<div align="center" class="case-img"><img src="./e1.jpg"/></div>
+<div class="case-img"><img src="./e1.jpg"/></div>
 
 - 操作系统：麒麟信安操作系统（欧拉版）
 - 硬件平台：TaiShan 200 鲲鹏 920 服务器
@@ -33,6 +31,4 @@ img: /img/showcase/energy.png
 
 ## 伙伴
 
-<div ><img src="./xinan.png"/></div>
-
-</div>
+<img src="./xinan.png"/>
