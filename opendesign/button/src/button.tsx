@@ -32,16 +32,12 @@ export default defineComponent({
           onClick={onClick}
           type={nativeType.value}
         >
-          {slots.prefixIcon ? (
+          {slots.prefixIcon && (
             <span class="prefix-icon">{slots.prefixIcon()}</span>
-          ) : (
-            ''
           )}
           {slots.default?.()}
-          {slots.suffixIcon ? (
+          {slots.suffixIcon && (
             <span class="suffix-icon">{slots.suffixIcon()}</span>
-          ) : (
-            ''
           )}
         </button>
       );
