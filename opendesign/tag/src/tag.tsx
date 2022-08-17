@@ -27,7 +27,7 @@ export default defineComponent({
       return (
         <span class={classNames.value} onClick={onClick}>
           <span>{slots.default?.()}</span>
-          {checked.value && type.value === 'primary' ? (
+          {checked.value && type.value === 'primary' && (
             <span class="checked-icon">
               <svg
                 version="1.1"
@@ -42,8 +42,6 @@ export default defineComponent({
                 ></path>
               </svg>
             </span>
-          ) : (
-            ''
           )}
         </span>
       );

@@ -119,13 +119,11 @@ export default defineComponent({
               );
             })}
           </ul>
-          {rightArrow && rightArrow.value ? (
+          {rightArrow && rightArrow.value && (
             <IconRight
               class="o-timeline-right-arrow"
               onClick={onClickRight}
             ></IconRight>
-          ) : (
-            ''
           )}
         </div>
       );
