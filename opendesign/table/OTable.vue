@@ -13,9 +13,12 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-table {
   &.el-table {
+    box-shadow: var(--e-shadow1);
     --el-table-header-bg-color: var(--e-color-bg4);
     color: var(--e-color-text4);
-    --el-table-border-color: none;
+    --el-table-row-hover-bg-color: var(--e-color-bg3);
+    --el-table-border-color: var(--e-color-division1);
+    // --el-table-border-color: none;
     thead {
       color: var(--e-color-text1);
     }
@@ -29,7 +32,7 @@ const attrs = useAttrs();
       }
     }
     .el-table__header-wrapper {
-      background-color: #e5e8f0;
+      background-color: var(--e-color-greyblue1);
     }
     .el-table__cell {
       padding: var(--o-spacing-h5) 0;

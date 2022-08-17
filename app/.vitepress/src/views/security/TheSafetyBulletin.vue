@@ -15,15 +15,17 @@ import IconCalendar from '~icons/app/icon-calendar.svg';
 import { getSecurityList } from '@/api/api-security';
 import { SecurityLists, CveQuery } from '@/shared/@types/type-support';
 import OSearch from 'opendesign/search/OSearch.vue';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
+const windowWidth = ref(useWindowResize());
 const i18n = useI18n();
-
 const router = useRouter();
+const screenWidth = ref(1080);
 
 const inputName = ref('');
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-const years = ['', '2019', '2020', '2021'];
+const years = ['', '2021', '2020', '2019'];
 const selectedYear = ref('2021');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
@@ -114,27 +116,21 @@ onMounted(() => {
 });
 
 watch(queryData, () => getSecurityLists(queryData));
+watch(windowWidth, () => {
+  screenWidth.value = windowWidth.value;
+});
 </script>
 
 <template>
+  <BannerLevel2
+    class="banner-pc"
+    :background-image="banner"
+    background-text="CONTENT"
+    :title="i18n.security.SECURITY_ADVISORIES"
+    subtitle=""
+    :illustration="screenWidth >= 1000 ? search : cve"
+  />
   <div class="wrapper">
-    <BannerLevel2
-      class="banner-pc"
-      :background-image="banner"
-      background-text="CONTENT"
-      :title="i18n.security.SECURITY_ADVISORIES"
-      subtitle=""
-      :illustration="search"
-    />
-    <BannerLevel2
-      class="banner-mobile"
-      :background-image="banner"
-      background-text="CONTENT"
-      :title="i18n.security.SECURITY_ADVISORIES"
-      subtitle=""
-      :illustration="cve"
-    />
-
     <div class="bulletin-main">
       <div class="input-container">
         <OSearch
@@ -307,30 +303,19 @@ watch(queryData, () => getSecurityLists(queryData));
 </template>
 
 <style lang="scss" scoped>
-.banner-pc {
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-}
-.banner-mobile {
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: block;
-  }
-}
 .bulletin-main {
   max-width: 1504px;
   padding: 0 var(--o-spacing-h2);
   margin: var(--o-spacing-h1) auto 0;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     margin: 0 auto;
     padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
   }
   .input-container {
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: none;
     }
-    .o-input {
+    .o-search {
       height: 48px !important;
     }
   }
@@ -339,9 +324,22 @@ watch(queryData, () => getSecurityLists(queryData));
     margin: var(--o-spacing-h5) 0;
     width: 100%;
     background-color: var(--e-color-bg2);
+    .o-icon {
+      color: var(--e-color-text1);
+    }
+    .selected-year {
+      color: var(--e-color-text1);
+    }
     :deep(.el-collapse) {
+      border: none;
       .el-collapse-item__header {
+        background-color: var(--e-color-bg2);
         padding: 0 8px;
+        border: none;
+        height: 36px;
+      }
+      .el-collapse-item__wrap {
+        border: none;
       }
       .el-collapse-item__content {
         padding-bottom: 0;
@@ -353,18 +351,23 @@ watch(queryData, () => getSecurityLists(queryData));
     }
     .years {
       padding: 0 8px 8px;
+      background-color: var(--e-color-bg2);
+      color: var(--e-color-text1);
       .selected {
         background-color: var(--e-color-bg4);
       }
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: block;
     }
   }
   .filter-card {
     margin: var(--o-spacing-h4) 0;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: none;
+    }
+    :deep(.el-card__body) {
+      padding: var(--o-spacing-h8) var(--o-spacing-h2);
     }
     .category {
       display: inline-block;
@@ -394,16 +397,16 @@ watch(queryData, () => getSecurityLists(queryData));
       padding: 0px var(--o-spacing-h6);
     }
     .card-header {
-      padding-bottom: var(--o-spacing-h5);
+      padding-bottom: var(--o-spacing-h8);
       border-bottom: 1px solid #ccc;
     }
     .card-body {
-      padding-top: var(--o-spacing-h5);
+      padding-top: var(--o-spacing-h8);
     }
   }
   .filter-mobile {
     display: none;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: block;
     }
     .filter {
@@ -433,28 +436,29 @@ watch(queryData, () => getSecurityLists(queryData));
   }
   .pc-list {
     .detail-page {
-      color: var(--o-color-link);
+      color: var(--e-color-kleinblue5);
       cursor: pointer;
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: none;
     }
   }
   .mobile-list {
     display: none;
     margin-bottom: var(--o-spacing-h5);
-    @media screen and (max-width: 768px) {
+    box-shadow: var(--e-shadow1);
+    @media screen and (max-width: 1000px) {
       display: block;
     }
     .item {
-      padding: var(--o-spacing-h5);
+      padding: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h8);
       font-size: var(--o-font-size-tip);
       font-weight: 400;
       color: #999999;
       line-height: var(--o-line-height-tip);
       background-color: var(--e-color-bg2);
       &:nth-child(odd) {
-        background: var(--o-color-bg6);
+        background: var(--e-color-bg4);
       }
       & li {
         margin-bottom: 8px;
@@ -479,7 +483,7 @@ watch(queryData, () => getSecurityLists(queryData));
   }
   .pagination {
     margin-top: var(--o-spacing-h2);
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: none;
     }
     .slot-content {
@@ -488,7 +492,7 @@ watch(queryData, () => getSecurityLists(queryData));
   }
   .mobile-pagination {
     display: none;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: block;
     }
   }
