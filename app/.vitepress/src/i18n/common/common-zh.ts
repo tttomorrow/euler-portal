@@ -297,7 +297,7 @@ export default {
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
-      CLASS: [],
+      CLASS: ['code'],
     },
   ],
   LANG: '中文',

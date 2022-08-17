@@ -152,7 +152,6 @@ export default {
         },
       ],
       CLASS: [
-        'community',
         'contribution',
         'conduct',
         'mailing-list',
@@ -287,7 +286,7 @@ export default {
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
-      CLASS: [],
+      CLASS: ['code'],
     },
   ],
   LANG: 'English',

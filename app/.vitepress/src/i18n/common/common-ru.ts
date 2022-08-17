@@ -120,7 +120,7 @@ export default {
           PATH: '/interaction/summit-list/devday2022/',
         },
       ],
-      CLASS: ['interaction', 'news', 'blog', 'salon', 'summit'],
+      CLASS: ['interaction', 'news', 'blog', 'salon', 'summit', 'live'],
     },
     {
       PATH: '',
@@ -138,7 +138,7 @@ export default {
           PATH: '/community/certification-services/',
         },
       ],
-      CLASS: ['community', 'conduct', 'certification'],
+      CLASS: ['conduct', 'certification-services'],
     },
     {
       PATH: '',
@@ -161,7 +161,7 @@ export default {
           PATH: '/sig/role-description/',
         },
       ],
-      CLASS: ['sig', 'sig-guidance', 'role-description'],
+      CLASS: ['sig-list', 'sig-guidance', 'role-description'],
     },
     {
       PATH: '',
@@ -250,7 +250,7 @@ export default {
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
-      CLASS: [],
+      CLASS: ['code'],
     },
   ],
   LANG: 'Русский',

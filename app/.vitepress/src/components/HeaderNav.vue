@@ -24,12 +24,12 @@ interface NavItem {
 
 const router = useRouter();
 const { lang, theme } = useData();
-const activeItem = ref(router.route.path?.split('/')[2]);
+const activeItem = ref(router.route.path);
+
 watch(
   () => router.route.path,
   (val: string) => {
-    const p = val.split('/')[2];
-    activeItem.value = p;
+    activeItem.value = val;
   }
 );
 // 点击子导航事件
@@ -45,7 +45,9 @@ const goPath = (item: NavItem) => {
 
   if (item.PATH) {
     router.go('/' + lang.value + item.PATH);
+    navActive.value = '';
   }
+
   isShow.value = false;
 };
 
@@ -67,7 +69,7 @@ const toggleSubDebounced = debounce(
 );
 
 const menuActiveFn = (item: any) => {
-  return JSON.stringify(item).includes(activeItem.value);
+  return item.some((el: string) => activeItem.value.includes(el));
 };
 </script>
 
