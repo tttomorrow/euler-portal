@@ -8,12 +8,14 @@ import bannerBG from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/covenant.png';
 </script>
 
-<BannerLevel2
-  :background-image="bannerBG"
-  background-text="COMMUNITY"
-  title="Code of Conduct"
-  :illustration="illustration"
-/>
+<ClientOnly>
+  <BannerLevel2
+    :background-image="bannerBG"
+    background-text="COMMUNITY"
+    title="Code of Conduct"
+    :illustration="illustration"
+  />
+</ClientOnly>
 
 <div class='markdown'>
 
