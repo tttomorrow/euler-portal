@@ -52,13 +52,20 @@ import IconArrowRight from '~icons/app/icon-arrow.svg';
     @media (max-width: 1000px) {
       padding: 0 16px;
     }
-    .o-icon {
-      font-size: 12px;
-      margin-left: 8px;
-      transition: all 0.3s;
-    }
-    &:hover .o-icon {
-      transform: translateX(3px);
+    a {
+      .o-button {
+        > span {
+          color: #fff;
+        }
+      }
+      .o-icon {
+        font-size: 12px;
+        margin-left: 8px;
+        transition: all 0.3s;
+      }
+      &:hover .o-icon {
+        transform: translateX(3px);
+      }
     }
   }
   @media (max-width: 760px) {

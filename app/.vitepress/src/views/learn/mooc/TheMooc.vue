@@ -58,6 +58,7 @@ const i18n = useI18n();
     max-width: 1504px;
     margin: var(--o-spacing-h1) auto;
     padding: 0 var(--o-spacing-h2);
+
     @media (max-width: 975px) {
       display: block;
       padding: 0 var(--o-spacing-h5);
@@ -65,6 +66,7 @@ const i18n = useI18n();
     }
     .left {
       max-height: 222px;
+      box-shadow: var(--e-shadow1);
       @media (max-width: 975px) {
         width: 100%;
       }
@@ -80,6 +82,7 @@ const i18n = useI18n();
       position: relative;
       background-color: var(--e-color-bg2);
       flex-grow: 1;
+      box-shadow: var(--e-shadow1);
       @media (max-width: 768px) {
         padding: var(--o-spacing-h5);
       }

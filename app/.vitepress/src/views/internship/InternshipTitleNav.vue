@@ -1,15 +1,18 @@
 <script lang="ts" setup>
 import { ref, toRefs } from 'vue';
-
 const props = defineProps({
   currentIndex: {
     type: Number,
     default: NaN,
   },
   dataList: {
-    type: Array,
     default() {
-      return [];
+      return [
+        {
+          key: '',
+          name: '',
+        },
+      ];
     },
   },
   internship: {
@@ -139,6 +142,7 @@ const gotop = () => {
     left: 0;
     ul li a > div {
       display: inline-block;
+
       &.dot {
         margin-left: 10px;
         border-radius: 50%;
@@ -161,7 +165,7 @@ const gotop = () => {
       }
       &.name {
         font-size: 16px;
-        color: #000000;
+        color: var(--e-color-text1);
         line-height: 24px;
       }
     }
@@ -172,9 +176,9 @@ const gotop = () => {
     }
     ul .active {
       & a > div {
-        color: #379be6 !important;
+        color: var(--e-color-link2) !important;
         &.dot {
-          border-color: #379be6;
+          border-color: var(--e-color-link2);
         }
       }
     }

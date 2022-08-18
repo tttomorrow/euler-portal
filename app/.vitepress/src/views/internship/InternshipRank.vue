@@ -49,7 +49,7 @@ async function getTokenQuery() {
           item['giteeRoom'] = `https://gitee.com/${item.GiteeId}`;
           index < 9
             ? (item['rank'] = `0${+index + 1}`)
-            : (item['rank'] = +index + 1);
+            : (item['rank'] = +index + 1+'');
         });
 
         rankInfo.value = info;

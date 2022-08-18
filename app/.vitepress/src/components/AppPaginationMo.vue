@@ -37,6 +37,17 @@ const handleCurrentChange = (option: string) => {
 // }
 function jumpPage(e: any) {
   if (e.keyCode === 13 || e.type === 'blur') {
+    // console.log(page.value.value);
+    if (page.value.value) {
+      inputNumber.value = parseInt(page.value.value);
+      if (!inputNumber.value || inputNumber.value < 1) {
+        inputNumber.value = 1;
+      } else if (inputNumber.value > totalPage.value) {
+        inputNumber.value = totalPage.value;
+      }
+    } else {
+      inputNumber.value = 1;
+    }
     emit('jump-page', inputNumber.value);
     page.value.blur();
     ctx.$forceUpdate();
@@ -46,19 +57,6 @@ function jumpPage(e: any) {
 // function jumpPage(page: number) {
 // currentPage.value = page
 // }
-function inputPage(e: any) {
-  if (e.data) {
-    inputNumber.value = parseInt(e.data);
-    if (!inputNumber.value) {
-      inputNumber.value = 1;
-    }
-    if (inputNumber.value < 1) {
-      inputNumber.value = 1;
-    } else if (inputNumber.value > totalPage.value) {
-      inputNumber.value = totalPage.value;
-    }
-  }
-}
 </script>
 
 <template>
@@ -79,7 +77,6 @@ function inputPage(e: any) {
         type="text"
         class="current-page"
         @keypress="jumpPage"
-        @input="inputPage"
         @blur="jumpPage"
       />
       <!-- <span>{{ currentPage }}</span> -->
