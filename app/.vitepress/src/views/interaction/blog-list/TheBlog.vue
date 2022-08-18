@@ -10,6 +10,7 @@ import MobileFilter from '@/components/MobileFilter.vue';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
+import NotFound from '@/NotFound.vue';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 
@@ -33,7 +34,9 @@ const router = useRouter();
 const { lang } = useData();
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
-// 新闻列表
+
+const isShowData = ref(true);
+// 博客列表
 const sortParams = reactive({
   page: 1,
   pageSize: 9,
@@ -96,10 +99,11 @@ const listfilter = (val: any) => {
     archives: paramsdate,
     author: paramsauthor,
   };
-  try {
-    getSortData(params).then((res) => {
+
+  getSortData(params)
+    .then((res) => {
       if (res.obj.count === 0) {
-        router.go('@/NotFound.vue');
+        isShowData.value = false;
       } else {
         paginationData.value.total = res.obj.count;
         paginationData.value.currentpage = res.obj.page;
@@ -114,45 +118,52 @@ const listfilter = (val: any) => {
           ].archives.substring(0, 7);
         }
       }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
     });
-  } catch (error: any) {
-    throw new Error(error);
-  }
 };
 
 onMounted(() => {
-  try {
-    getSortData(sortParams).then((res) => {
-      paginationData.value.total = res.obj.count;
-      paginationData.value.currentpage = res.obj.page;
-      paginationData.value.pagesize = res.obj.pageSize;
-      blogCardData.value = res.obj.records;
-      for (let i = 0; i < blogCardData.value.length; i++) {
-        if (typeof blogCardData.value[i].author === 'string') {
-          blogCardData.value[i].author = [blogCardData.value[i].author];
+  getSortData(sortParams)
+    .then((res) => {
+      if (res.obj.count === 0) {
+        isShowData.value = false;
+      } else {
+        paginationData.value.total = res.obj.count;
+        paginationData.value.currentpage = res.obj.page;
+        paginationData.value.pagesize = res.obj.pageSize;
+        blogCardData.value = res.obj.records;
+        for (let i = 0; i < blogCardData.value.length; i++) {
+          if (typeof blogCardData.value[i].author === 'string') {
+            blogCardData.value[i].author = [blogCardData.value[i].author];
+          }
+          blogCardData.value[i].archives = blogCardData.value[
+            i
+          ].archives.substring(0, 7);
         }
-        blogCardData.value[i].archives = blogCardData.value[
-          i
-        ].archives.substring(0, 7);
       }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
     });
-  } catch (error: any) {
-    throw new Error(error);
-  }
-  try {
-    getTagsData(tagsParams).then((res) => {
-      for (let i = 0; i < 5; i++) {
-        tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
-      }
-      getTagsData(tagsParams1).then((res) => {
+  getTagsData(tagsParams).then((res) => {
+    for (let i = 0; i < 5; i++) {
+      tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
+    }
+    getTagsData(tagsParams1)
+      .then((res) => {
         for (let i = 0; i < 5; i++) {
           tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
         }
+      })
+      .catch((error: any) => {
+        isShowData.value = false;
+        throw new Error(error);
       });
-    });
-  } catch (error: any) {
-    throw new Error(error);
-  }
+  });
 });
 // 页数改变
 const currentChange = (val: number) => {
@@ -162,21 +173,26 @@ const currentChange = (val: number) => {
     page: val,
     pageSize: paginationData.value.pagesize,
   };
-  try {
-    getSortData(params).then((res) => {
-      blogCardData.value = res.obj.records;
-      for (let i = 0; i < blogCardData.value.length; i++) {
-        if (typeof blogCardData.value[i].author === 'string') {
-          blogCardData.value[i].author = [blogCardData.value[i].author];
+  getSortData(params)
+    .then((res) => {
+      if (res.obj.count === 0) {
+        isShowData.value = false;
+      } else {
+        blogCardData.value = res.obj.records;
+        for (let i = 0; i < blogCardData.value.length; i++) {
+          if (typeof blogCardData.value[i].author === 'string') {
+            blogCardData.value[i].author = [blogCardData.value[i].author];
+          }
+          blogCardData.value[i].archives = blogCardData.value[
+            i
+          ].archives.substring(0, 7);
         }
-        blogCardData.value[i].archives = blogCardData.value[
-          i
-        ].archives.substring(0, 7);
       }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
     });
-  } catch (error: any) {
-    throw new Error(error);
-  }
 };
 const sizeChange = (val: number) => {
   const params = {
@@ -185,42 +201,55 @@ const sizeChange = (val: number) => {
     page: paginationData.value.currentpage,
     pageSize: val,
   };
-  try {
-    getSortData(params).then((res) => {
-      blogCardData.value = res.obj.records;
-      for (let i = 0; i < blogCardData.value.length; i++) {
-        if (typeof blogCardData.value[i].author === 'string') {
-          blogCardData.value[i].author = [blogCardData.value[i].author];
+  getSortData(params)
+    .then((res) => {
+      if (res.obj.count === 0) {
+        isShowData.value = false;
+      } else {
+        blogCardData.value = res.obj.records;
+        for (let i = 0; i < blogCardData.value.length; i++) {
+          if (typeof blogCardData.value[i].author === 'string') {
+            blogCardData.value[i].author = [blogCardData.value[i].author];
+          }
+          blogCardData.value[i].archives = blogCardData.value[
+            i
+          ].archives.substring(0, 7);
         }
-        blogCardData.value[i].archives = blogCardData.value[
-          i
-        ].archives.substring(0, 7);
       }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
     });
-  } catch (error: any) {
-    throw new Error(error);
-  }
 };
 </script>
 
 <template>
+  <BannerLevel2
+    :background-image="BannerImg1"
+    background-text="CONNECT"
+    :title="userCaseData.BLOG"
+    :illustration="BannerImg2"
+  />
   <div class="blog">
-    <BannerLevel2
-      :background-image="BannerImg1"
-      background-text="CONNECT"
-      :title="userCaseData.BLOG"
-      :illustration="BannerImg2"
-    />
-    <div class="blog-tag2">
+    <div class="notfound" v-if="!isShowData">
+      <NotFound />
+    </div>
+    <div class="blog-tag2" v-if="isShowData">
       <MobileFilter
         :data="tagsDataToChild"
         :single="true"
         @filter="listfilter"
       />
     </div>
-    <div class="blog-list">
-      <OCard v-for="item in blogCardData" :key="item" class="blog-list-item">
-        <div class="blog-list-item-title" @click="toBlogContent(item.path)">
+    <div class="blog-list" v-if="isShowData">
+      <OCard
+        v-for="item in blogCardData"
+        :key="item"
+        class="blog-list-item"
+        @click="toBlogContent(item.path)"
+      >
+        <div class="blog-list-item-title">
           <p>{{ item.title }}</p>
         </div>
         <div class="blog-list-item-info">
@@ -255,7 +284,7 @@ const sizeChange = (val: number) => {
         </div>
       </OCard>
     </div>
-    <div class="blog-pagination">
+    <div class="blog-pagination" v-if="isShowData">
       <OPagination
         v-model:currentPage="paginationData.currentpage"
         v-model:page-size="paginationData.pagesize"
@@ -307,6 +336,7 @@ const sizeChange = (val: number) => {
       min-height: 248px;
       background-position: right bottom;
       background-repeat: no-repeat;
+      cursor: pointer;
       &-title {
         font-size: var(--o-font-size-h7);
         margin-bottom: var(--o-spacing-h3); // 32px
@@ -314,7 +344,7 @@ const sizeChange = (val: number) => {
 
         p {
           display: inline-block;
-          cursor: pointer;
+
           word-break: break-all;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -391,11 +421,8 @@ const sizeChange = (val: number) => {
       }
     }
     &-item:hover {
-      box-shadow: var(--o-shadow-base_hover);
+      box-shadow: var(--e-shadow-l2_hover);
     }
-  }
-  &-pagination {
-    margin-bottom: var(--o-spacing-h1);
   }
 }
 

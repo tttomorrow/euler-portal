@@ -6,6 +6,7 @@ import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
+import NotFound from '@/NotFound.vue';
 
 import { getSortData } from '@/api/api-search';
 
@@ -36,6 +37,7 @@ const sortParams = reactive({
 });
 // 新闻列表数据
 const newsCardData = ref<NewsData[]>([]);
+const isShowData = ref(true);
 // 分页数据
 const paginationData = ref({
   total: 0,
@@ -52,8 +54,8 @@ const toNewsContent = (path: string) => {
 };
 
 onMounted(() => {
-  try {
-    getSortData(sortParams).then((res) => {
+  getSortData(sortParams)
+    .then((res) => {
       paginationData.value.total = res.obj.count;
       paginationData.value.currentpage = res.obj.page;
       paginationData.value.pagesize = res.obj.pageSize;
@@ -64,10 +66,11 @@ onMounted(() => {
         }
         newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
       }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
     });
-  } catch (error: any) {
-    throw Error(error);
-  }
 });
 
 const currentChange = (val: number) => {
@@ -77,8 +80,9 @@ const currentChange = (val: number) => {
     page: val,
     pageSize: paginationData.value.pagesize,
   };
-  try {
-    getSortData(params).then((res) => {
+
+  getSortData(params)
+    .then((res) => {
       newsCardData.value = res.obj.records;
       for (let i = 0; i < newsCardData.value.length; i++) {
         if (typeof newsCardData.value[i].author === 'string') {
@@ -86,10 +90,11 @@ const currentChange = (val: number) => {
         }
         newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
       }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
     });
-  } catch (error: any) {
-    throw Error(error);
-  }
 };
 
 const sizeChange = (val: number) => {
@@ -99,8 +104,9 @@ const sizeChange = (val: number) => {
     page: paginationData.value.currentpage,
     pageSize: val,
   };
-  try {
-    getSortData(params).then((res) => {
+
+  getSortData(params)
+    .then((res) => {
       newsCardData.value = res.obj.records;
       for (let i = 0; i < newsCardData.value.length; i++) {
         if (typeof newsCardData.value[i].author === 'string') {
@@ -108,22 +114,26 @@ const sizeChange = (val: number) => {
         }
         newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
       }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
     });
-  } catch (error: any) {
-    throw Error(error);
-  }
 };
 </script>
 
 <template>
+  <BannerLevel2
+    :background-image="BannerImg1"
+    background-text="CONNECT"
+    :title="userCaseData.NEWS"
+    :illustration="BannerImg2"
+  />
   <div class="news">
-    <BannerLevel2
-      :background-image="BannerImg1"
-      background-text="CONNECT"
-      :title="userCaseData.NEWS"
-      :illustration="BannerImg2"
-    />
-    <div class="news-list">
+    <div class="notfound" v-if="!isShowData">
+      <NotFound />
+    </div>
+    <div class="news-list" v-if="isShowData">
       <OCard v-for="item in newsCardData" :key="item" class="news-list-item">
         <div class="news-img" @click="toNewsContent(item.path)">
           <img :src="item.banner" :alt="item.banner" />
@@ -143,7 +153,7 @@ const sizeChange = (val: number) => {
         </div>
       </OCard>
     </div>
-    <div class="news-pagination">
+    <div class="news-pagination" v-if="isShowData">
       <OPagination
         v-model:currentPage="paginationData.currentpage"
         v-model:page-size="paginationData.pagesize"
@@ -189,7 +199,7 @@ const sizeChange = (val: number) => {
       cursor: pointer;
     }
     &-item:hover {
-      box-shadow: var(--o-shadow-base_hover);
+      box-shadow: var(--e-shadow-l2_hover);
     }
   }
   &-img {
@@ -232,9 +242,6 @@ const sizeChange = (val: number) => {
     -webkit-line-clamp: 2;
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
-  }
-  &-pagination {
-    margin-bottom: var(--o-spacing-h1);
   }
 }
 

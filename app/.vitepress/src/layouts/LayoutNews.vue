@@ -13,11 +13,13 @@ const newsInfo = {
 </script>
 
 <template>
-  <BreadCrumbs
-    :bread1="newsInfo.name"
-    :bread2="frontmatter.title"
-    :link1="newsInfo.link"
-  />
+  <div class="bread">
+    <BreadCrumbs
+      :bread1="newsInfo.name"
+      :bread2="frontmatter.title"
+      :link1="newsInfo.link"
+    />
+  </div>
   <div class="makdown-wrap markdown">
     <div class="news-markdown-detail">
       <AppMdHead :frontmatter="frontmatter" />
@@ -30,5 +32,8 @@ const newsInfo = {
 .news-markdown-detail {
   max-width: 880px;
   margin: 0 auto;
+}
+.bread {
+  margin: 0 var(--o-spacing-h5);
 }
 </style>
