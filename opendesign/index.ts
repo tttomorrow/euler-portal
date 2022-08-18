@@ -18,6 +18,7 @@ import { Search } from './search';
 import { Drawer } from './drawer';
 import { Switch } from './switch';
 import { Collapse, CollapseItem } from './collapse';
+import { Container } from './container';
 
 const components = [
   Button,
@@ -42,6 +43,7 @@ const components = [
   Switch,
   Collapse,
   CollapseItem,
+  Container,
 ];
 export default {
   install(app: App): void {

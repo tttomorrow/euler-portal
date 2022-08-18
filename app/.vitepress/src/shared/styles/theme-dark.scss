@@ -53,27 +53,31 @@
 
   // 填充色，用于阴影容器背景
   --e-color-fill1: var(
-    --o-color-- greyblack1
+    --e-color-greyblack1
   ); // SL1 一级投影容器背景，应用于默认状态的卡片、楼层、导航栏、组件里局部投影背景等
   --e-color-fill2: var(
-    --o-color-- greyblack2
-  ); //SL1-hover 升起投影容器背景，应用于悬停状态的卡片等，是SL1的激活态
+    --e-color-greyblack1
+  ); // SL2 二级投影容器背景，应用于卡片、组件里局部投影等
+  --e-color-fill2_hover: var(
+    --e-color-greyblack2
+  ); // SL2-hover 升起投影容器背景，应用于悬停状态的卡片等，是SL2的激活态
   --e-color-fill3: var(
-    --o-color-- greyblack2
-  ); // SL2-normal 二级投影背景，应用与一级投影上的卡片、组件等
+    --e-color-greyblack2
+  ); // SL3 三级投影容器背景，应用于一级投影上的卡片、组件等
   --e-color-fill4: var(
-    --o-color-- greyblack3
-  ); // SL3 覆盖阴影容器背景，应用于信息提示【tips、活动进入按钮等】等投影容器
+    --e-color-greyblack3
+  ); // SL4 覆盖阴影容器背景，应用于信息提示【tips、活动进入按钮等】等投影容器
   --e-color-fill5: var(
-    --o-color-- greyblack4
-  ); // SL4 弹出阴影容器背景，应用于模态弹窗投影
+    --e-color-greyblack4
+  ); // SL5 弹出阴影容器背景，应用于模态弹窗投影
 
   /**
    * 阴影
    */
-  --e-shadow1: 0 1px 7px rgba(0, 0, 0, 0.3); // SL1-normal 一级投影，应用于默认状态的卡片、楼层、导航栏、组件里局部投影等
-  --e-shadow2: 0 6px 18px rgba(0, 0, 0, 0.42); // SL1-hover 升起投影，应用于悬停状态的卡片等，是SL1的激活态
-  --e-shadow3: 0 6px 18px rgba(0, 0, 0, 0.42); // SL2-normal 二级投影，应用与一级投影上的卡片、组件等
-  --e-shadow4: 0 10px 32px rgba(0, 0, 0, 0.54); // SL3 覆盖阴影，应用于信息提示【tips、活动进入按钮等】等投影
-  --e-shadow5: 0 12px, 42px rgba(0, 0, 0, 0.72); // SL4 弹出阴影，应用于模态弹窗投影
+  --e-shadow-l1: 0 1px 7px rgba(0, 0, 0, 0.3); // SL1 一级投影，应用于楼层、导航栏、组件里局部投影等，
+  --e-shadow-l2: 0 1px 7px rgba(0, 0, 0, 0.3); // SL2-normal 二级投影，应用于卡片、组件里局部投影等
+  --e-shadow-l2_hover: 0 6px 18px rgba(0, 0, 0, 0.42); // SL2-hover 升起投影，应用于悬停状态的卡片等，是SL2的激活态
+  --e-shadow-l3: 0 6px 18px rgba(0, 0, 0, 0.42); // SL3 三级投影，应用于一级投影上的卡片、组件等
+  --e-shadow-l4: 0 10px 32px rgba(0, 0, 0, 0.54); // SL4 覆盖阴影，应用于信息提示【tips、活动进入按钮等】等投影
+  --e-shadow-l5: 0 12px 42px rgba(0, 0, 0, 0.72); // SL5 弹出阴影，应用于模态弹窗投影
 }

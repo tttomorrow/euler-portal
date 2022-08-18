@@ -171,6 +171,10 @@ function turnPage(option: string) {
       />
     </div>
     <div class="demo-box">
+      <h4>OContainer</h4>
+      <OContainer class="container" :level-index="2"></OContainer>
+    </div>
+    <div class="demo-box">
       <h4>ODrawer</h4>
       <OButton type="primary" @click="toggleDrawer">toggle drawer</OButton>
       <ODrawer
@@ -422,5 +426,10 @@ body {
     line-height: var(--o-line-height-text);
     text-align: center;
   }
+}
+
+.container {
+  width: 100px;
+  height: 100px;
 }
 </style>
