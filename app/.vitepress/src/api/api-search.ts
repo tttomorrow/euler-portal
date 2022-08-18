@@ -58,11 +58,21 @@ export function getTagsData(params: TagsParams) {
 }
 export function getSearchData(params: search) {
   const url = '/api-search/search/docs';
-  return request.post(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .post(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 export function getSearchCount(params: any) {
   const url = '/api-search/search/count';
-  return request.post(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .post(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 export function getSearchRpm(params: any) {
   const url = `/api-euler/api/repo/search`;
@@ -73,7 +83,10 @@ export function getSearchRpm(params: any) {
       },
       params,
     })
-    .then((res: AxiosResponse) => res.data);
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
