@@ -10,7 +10,8 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import IconX from '~icons/app/x.svg';
 
 const router = useRouter();
-const { lang } = useData();
+const { lang, site } = useData();
+
 const i18n = useI18n();
 // 当前选择类型
 const currentIndex = ref(0);
@@ -27,7 +28,6 @@ const searchValue = computed(() => {
 });
 // 接收搜索数量的数据
 const searchNumber: any = ref([]);
-
 // 显示的数据类型
 const searchType = ref('');
 const searchData = computed(() => {
@@ -68,7 +68,11 @@ function donShowSearchBox() {
 // 点击数据的类型导航
 function setCurrentType(index: number, type: string) {
   currentIndex.value = index;
-  searchType.value = type;
+  if (type === 'all') {
+    searchType.value = '';
+  } else {
+    searchType.value = type;
+  }
   currentPage.value = 1;
   searchDataAll();
 }
@@ -119,12 +123,24 @@ function searchDataAll() {
 }
 // 获取搜索结果的所有内容
 function searchAll() {
-  currentIndex.value = 0;
-  searchType.value = '';
-  currentPage.value = 1;
-  searchCountAll();
-  searchDataAll();
-  searRpm();
+  if (searchInput.value) {
+    currentIndex.value = 0;
+    searchType.value = '';
+    currentPage.value = 1;
+    searchCountAll();
+    searchDataAll();
+    searRpm();
+  }
+}
+// 设置搜索结果的跳转路径
+function setLink(type: string, link: string) {
+  if (type === 'docs') {
+    return (
+      site.value.themeConfig.docsUrl + '/' + lang.value + '/' + link + '.html'
+    );
+  } else {
+    return '/' + lang.value + '/' + link;
+  }
 }
 // 移动端上下翻页事件
 function turnPage(option: string) {
@@ -140,28 +156,6 @@ function turnPage(option: string) {
 function jumpPage(page: number) {
   currentPage.value = page;
   searchDataAll();
-}
-// 判断数据分类
-function dataType(type: string) {
-  if (lang.value === 'zh') {
-    if (type === 'docs') {
-      return '文档';
-    } else if (type === 'blog') {
-      return '博客';
-    } else if (type === 'news') {
-      return '新闻';
-    }
-  } else if (lang.value === 'ru') {
-    if (type === 'blog') {
-      return 'Блоги';
-    }
-  } else if (lang.value === 'en') {
-    if (type === 'docs') {
-      return 'Docs';
-    } else if (type === 'blog') {
-      return 'Blog';
-    }
-  }
 }
 onMounted(() => {
   if (decodeURI(location.href.split('=')[1]) !== 'undefined') {
@@ -185,28 +179,24 @@ onMounted(() => {
       <div class="search-content">
         <ul class="type">
           <li
-            v-for="(item, index) in i18n.search.typeList"
+            v-for="(item, index) in searchNumber"
             :key="item"
             :class="currentIndex === index ? 'active' : ''"
-            @click="setCurrentType(index, item.type)"
+            @click="setCurrentType(index, item.key)"
           >
-            {{ item.title }}
-            <span
-              >({{
-                searchNumber[index] ? searchNumber[index].doc_count : 0
-              }})</span
-            >
+            {{ i18n.search.tagList[item.key] }}
+            <span>({{ item.doc_count }})</span>
           </li>
         </ul>
         <ul v-show="!isShow" class="content-list">
           <li v-for="item in searchResultList" :key="item.id">
-            <a :href="'/' + lang + '/' + item.path" target="_blank">
+            <a :href="setLink(item.type, item.path)" target="_blank">
               <h3 v-html="item.title"></h3>
             </a>
             <p class="detail" v-html="item.textContent"></p>
             <p class="from">
               <span>{{ i18n.search.form }}</span>
-              <span>{{ dataType(item.type) }}</span>
+              <span>{{ i18n.search.tagList[item.type] }}</span>
             </p>
           </li>
         </ul>
@@ -241,6 +231,9 @@ onMounted(() => {
           <li v-for="item in searchRpmList" :key="item.filename">
             <a :href="item.path" target="_blank">{{ item.filename }}</a>
             <p>{{ item.version }}</p>
+          </li>
+          <li v-show="!searchRpmList[0]">
+            {{ i18n.search.no }}{{ i18n.search.relative }}
           </li>
         </ul>
       </el-scrollbar>
