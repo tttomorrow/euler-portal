@@ -297,7 +297,7 @@ const go = (path: string) => {
           padding: 8px 12px;
           height: auto;
           margin-right: 24px;
-          span {
+          white-space: nowrap span {
             color: var(--e-color-brand1);
           }
           .o-icon {
