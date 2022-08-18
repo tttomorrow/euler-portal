@@ -423,7 +423,7 @@ onMounted(() => {
           line-height: var(--o-line-height-text);
           color: var(--e-color-brand1);
         }
-        p{
+        p {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
           margin-top: var(--o-spacing-h8);
@@ -431,12 +431,9 @@ onMounted(() => {
         }
       }
     }
-    :deep(.is-horizontal){
+    :deep(.is-horizontal) {
       display: none;
     }
-    // :deep(.is-vertical){
-      
-    // }
   }
 }
 </style>

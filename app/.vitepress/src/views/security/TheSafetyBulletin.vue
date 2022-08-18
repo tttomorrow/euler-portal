@@ -152,6 +152,7 @@ watch(queryData, () => getSecurityLists(queryData));
               <OTag
                 v-for="(item, index) in i18n.security.SEVERITY_LIST"
                 :key="'tag' + index"
+                checkable
                 :type="activeIndex === index ? 'primary' : 'text'"
                 @click="tagClick(index, item.LABEL)"
               >
@@ -166,6 +167,7 @@ watch(queryData, () => getSecurityLists(queryData));
             <OTag
               v-for="(item, index) in years"
               :key="'tag' + index"
+              checkable
               :type="activeIndex1 === index ? 'primary' : 'text'"
               @click="yearTagClick(index, item)"
             >

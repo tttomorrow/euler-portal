@@ -173,6 +173,8 @@ onMounted(() => {
           v-for="(item, index) in tagManufacturer"
           :key="item"
           class="download-filter-item"
+          checkable
+          checked
           :type="
             index === 0
               ? manufacturerAll
@@ -194,6 +196,8 @@ onMounted(() => {
         <OTag
           v-for="(item, index) in tagPublish"
           :key="item"
+          checkable
+          checked
           class="download-filter-item"
           :type="
             index === 0
@@ -270,6 +274,8 @@ onMounted(() => {
           v-for="(item, index) in tagManufacturer"
           :key="item"
           class="download-filter-item"
+          checkable
+          checked
           :type="
             index === 0
               ? manufacturerAll
@@ -290,6 +296,8 @@ onMounted(() => {
           v-for="(item, index) in tagPublish"
           :key="item"
           class="download-filter-item"
+          checkable
+          checked
           :type="
             index === 0
               ? publishAll
