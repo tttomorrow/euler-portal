@@ -365,6 +365,7 @@ onMounted(() => {
                 <OTag
                   v-for="(item, index) in osOptions"
                   :key="'tag' + index"
+                  checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
                   @click="tagClick(index, item)"
                 >
@@ -378,6 +379,7 @@ onMounted(() => {
               <OTag
                 v-for="(item, index) in architectureSelect"
                 :key="'tag' + index"
+                checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
                 @click="optionTagClick(index, item)"
               >

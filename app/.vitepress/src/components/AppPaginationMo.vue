@@ -36,7 +36,7 @@ const handleCurrentChange = (option: string) => {
 //   }
 // }
 function jumpPage(e: any) {
-  if (e.keyCode === 13||e.type==='blur') {
+  if (e.keyCode === 13 || e.type === 'blur') {
     emit('jump-page', inputNumber.value);
     page.value.blur();
     ctx.$forceUpdate();

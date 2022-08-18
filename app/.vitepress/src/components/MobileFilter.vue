@@ -166,6 +166,7 @@ const allHighLight = (val: any) => {
         v-for="item in tagitems"
         :key="item"
         type="text"
+        checkable
         class="o-screen-tags-tag"
         >{{ item }}
         <OIcon class="o-screen-tags-tag-icon" @click="delTag(item)"
@@ -198,6 +199,7 @@ const allHighLight = (val: any) => {
               :checked="allHighLight(item)"
               :class="{ active: allHighLight(item) }"
               type="primary"
+              checkable
               @click="allClick(item)"
               >{{ userCaseData.ALL }}</OTag
             >
@@ -206,6 +208,7 @@ const allHighLight = (val: any) => {
               :key="sele"
               class="o-screen-box-drawer-content-options-option"
               type="primary"
+              checkable
               :checked="btnHighLight(sele)"
               :class="{ active: btnHighLight(sele) }"
               @click="clickOption(item.title, sele)"
@@ -295,7 +298,7 @@ const allHighLight = (val: any) => {
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
             margin: var(--o-spacing-h8);
-            border: 1px solid var(--o-color-transparent);
+            border: 1px solid var(--e-color-transparent);
             &.active {
               border: 1px solid var(--e-color-brand1);
             }

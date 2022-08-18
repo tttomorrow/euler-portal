@@ -125,6 +125,7 @@ watch(queryData, () => getCveLists(queryData));
           <OTag
             v-for="(item, index) in i18n.security.CATEGORY_LIST"
             :key="'tag' + index"
+            checkable
             :type="activeIndex === index ? 'primary' : 'text'"
             @click="tagClick(index, item.LABEL)"
           >

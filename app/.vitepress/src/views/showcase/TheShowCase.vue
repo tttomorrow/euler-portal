@@ -196,6 +196,7 @@ onMounted(() => {
         <OTag
           v-for="(item, index) in userCaseData.tags"
           :key="'tag' + index"
+          checkable
           :type="activeIndex === index ? 'primary' : 'text'"
           @click="tagClick(index, item)"
         >
@@ -206,6 +207,7 @@ onMounted(() => {
         <OTag
           v-for="(item, index) in userCaseData.tags"
           :key="'tag' + index"
+          checkable
           :type="activeIndex === index ? 'primary' : 'text'"
           @click="tagClick(index, item)"
         >
@@ -286,11 +288,6 @@ onMounted(() => {
       box-shadow: var(--o-shadow-base);
       @media (max-width: 768px) {
         display: none;
-      }
-      :deep(.tag-filter-box) {
-        > span {
-          cursor: pointer;
-        }
       }
     }
     .tag-h5 {

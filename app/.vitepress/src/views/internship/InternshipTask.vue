@@ -218,10 +218,10 @@ const go = (path: string) => {
           }}</OButton>
           <OButton
             v-if="item.GITEE"
+            class="sig-detail"
             type="text"
             placement="right"
             @click="go(item.GITEE)"
-            class="sig-detail"
           >
             <span>{{ TASK.SIG_DETAIL }}</span>
             <OIcon><IconArrowRight /></OIcon>
@@ -308,8 +308,8 @@ const go = (path: string) => {
             transform: translateX(3px);
           }
         }
-        .sig-detail{
-          &:hover{
+        .sig-detail {
+          &:hover {
             border: 1px solid var(--e-color-brand1);
             span {
               color: var(--e-color-brand1);
