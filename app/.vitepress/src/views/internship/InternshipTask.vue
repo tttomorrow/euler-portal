@@ -220,8 +220,8 @@ const go = (path: string) => {
             v-if="item.GITEE"
             type="text"
             placement="right"
-            @click="go(item.GITEE)"
             class="sig-detail"
+            @click="go(item.GITEE)"
           >
             <span>{{ TASK.SIG_DETAIL }}</span>
             <OIcon><IconArrowRight /></OIcon>
