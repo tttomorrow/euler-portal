@@ -26,21 +26,11 @@ import IconX from '~icons/app/x.svg';
 
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.screen);
-// const props = defineProps({
-//   // data: {
-//   //   type: Object,
-//   //   default: () => {
 
-//   //   },
-//   // },
-//   // data:Object
-// });
 const props = defineProps<{
   data: any;
 }>();
-// const emit = defineEmits<{
-//   (e: 'filter', val: any): void
-// }>()
+
 const emit = defineEmits(['filter']);
 
 const tagitems = ref<string[]>([]); // 标签数组
@@ -141,6 +131,19 @@ const btnHighLight = (data: string) => {
     if (tagitems.value[i] === data) return true;
   }
 };
+const btnCheck = (data: any,val :string) => {
+  if (attrs.single === true) {
+    return false;
+  } else {
+    for (let i = 0; i < options.value.length; i++) {
+      if (data.title === options.value[i].title && options.value[i].sele.length > 1) {
+        for(let j = 0; j< options.value[i].sele.length;j++){
+          if(options.value[i].sele[j] === val) return true
+        }
+      }
+    }
+  }
+};
 // 全部
 const allHighLight = (val: any) => {
   for (let i = 0; i < options.value.length; i++) {
@@ -209,7 +212,7 @@ const allHighLight = (val: any) => {
               class="o-screen-box-drawer-content-options-option"
               type="primary"
               checkable
-              :checked="btnHighLight(sele)"
+              :checked="btnCheck(item,sele)"
               :class="{ active: btnHighLight(sele) }"
               @click="clickOption(item.title, sele)"
               >{{ sele }}</OTag
@@ -267,7 +270,7 @@ const allHighLight = (val: any) => {
     &-tag {
       margin-right: var(--o-spacing-h8);
       margin-bottom: var(--o-spacing-h8);
-      background-color: var(--o-color-secondary);
+      background-color: var(--e-color-neutral11);
       &-icon {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-tip);
