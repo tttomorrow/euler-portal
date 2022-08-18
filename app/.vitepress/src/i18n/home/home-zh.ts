@@ -31,26 +31,46 @@ import osv from '../../assets/category/home/round/osv.svg';
 import osvDark from '../../assets/category/home/round/dark/osv.svg';
 
 import xinan from '../../assets/category//home/link/xinan.png';
-import tongxin from '../../assets/category//home/link/tongxin.png';
-import qiling from '../../assets/category//home/link/qiling.png';
-import iscas from '../../assets/category//home/link/iscas.png';
-import cetc from '../../assets/category//home/link/cetc.png';
-import turbo from '../../assets/category//home/link/turbo.png';
-import hopeRun from '../../assets/category//home/link/hopeRun.png';
-import tongYuan from '../../assets/category//home/link/tongYuan.png';
+import xinanLogo_dark from '../../assets/category/home/dark/link/xinan_dark.png';
+import tongxin from '../../assets/category/home/link/tongxin.png';
+import tongxinLogo_dark from '../../assets/category/home/dark/link/tongxin_dark.png';
+import qiling from '../../assets/category/home/link/qiling.png';
+import qilingLogo_dark from '../../assets/category/home/dark/link/qiling_dark.png';
+import iscas from '../../assets/category/home/link/iscas.png';
+import iscasLogo_dark from '../../assets/category/home/dark/link/iscas_dark.png';
+import cetc from '../../assets/category/home/link/cetc.png';
+import cetcLogo_dark from '../../assets/category/home/dark/link/cetc_dark.png';
+import turbo from '../../assets/category/home/link/turbo.png';
+import turboLogo_dark from '../../assets/category/home/dark/link/turbo_dark.png';
+import hopeRun from '../../assets/category/home/link/hopeRun.png';
+import hopeRunLogo_dark from '../../assets/category/home//dark/link/hope-run_dark.png';
+import tongYuan from '../../assets/category/home/link/tongYuan.png';
+import tongYuanLogo_dark from '../../assets/category/home//dark/link/tong-yuan_dark.png';
 import zhongkehongqi from '../../assets/category//home/link/zhongkehongqi.png';
+import zhongkehongqiLogo_dark from '../../assets/category/home//dark/link/zhongkehongqi_dark.png';
 import suse from '../../assets/category//home/link/suse.png';
-import zhongkefangde from '../../assets/category//home/link/zhongkefangde.png';
+import suseLogo_dark from '../../assets/category//home/dark/link/suse_dark.png';
+import zhongkefangde from '../../assets/category/home/link/zhongkefangde.png';
+import zhongkefangdeLogo_dark from '../../assets/category/home/dark/link/zhongkefangde_dark.png';
 import xfusion from '../../assets/category/home/link/xfusion.png';
+import xfusionLogo_dark from '../../assets/category/home/dark/link/xfusion_dark.png';
 
 import mulan from '../../assets/category/home/link/mulan.png';
+import mulanLogo_dark from '../../assets/category/home/dark/link/mulan_dark.png';
 import kunpeng from '../../assets/category/home/link/kunpeng.png';
+import kunpengLogo_dark from '../../assets/category/home/dark/link/kunpeng_dark.png';
 import xiaozhi from '../../assets/category/home/link/xiaozhi.png';
+import xiaozhiLogo_dark from '../../assets/category/home/dark/link/xiaozhi_dark.png';
 import pengcheng from '../../assets/category/home/link/pengcheng.png';
+import pengchengLogo_dark from '../../assets/category/home/dark/link/pengcheng_dark.png';
 import infoQ from '../../assets/category/home/link/infoQ.png';
+import infoQLogo_dark from '../../assets/category/home/dark/link/infoQ_dark.png';
 import kaiyuanshe from '../../assets/category/home/link/kaiyuanshe-logo.png';
+import kaiyuansheLogo_dark from '../../assets/category/home/dark/link/kaiyuanshe_dark.png';
 import zhongke from '../../assets/category/home/link/zhongke.png';
+import zhongkeLogo_dark from '../../assets/category/home/dark/link/zhongke_dark.png';
 import authing from '../../assets/category/home/link/authing.png';
+import authingLogo_dark from '../../assets/category/home/dark/link/authing_dark.png';
 
 import finance from '../../assets/category/home/case/finance.svg';
 import financeDark from '../../assets/category/home/dark/case/finance.svg';
@@ -330,57 +350,6 @@ export default {
     EVENT_NAME: '最新活动',
     BLOG_NAME: 'openEuler 博客',
     NEWS_NAME: 'openEuler 新闻',
-    EVENT_LIST: [
-      {
-        TAG: '事件',
-        DATE: '2020-06-07',
-        CONTENT: '吹响开源集结号——”点亮“暑假2020',
-      },
-      {
-        TAG: '事件',
-        DATE: '2020-01-04',
-        CONTENT: '去HDC.Cloud 2020 参加黑客松， 玩儿openEuler，赢取大礼',
-      },
-      {
-        TAG: '事件',
-        DATE: '2020-12-10',
-        CONTENT: 'HDC.Cloud | openEuler黑客马拉松',
-      },
-    ],
-    BLOG_LIST: [
-      {
-        TAG: 'openEuler Blog Maintainer',
-        DATE: '2020-05-08',
-        CONTENT: 'A-Tune让系统更智能',
-      },
-      {
-        TAG: 'zhongjun',
-        DATE: '2020-05-07',
-        CONTENT: '浅谈openEuler开源社区经营度量分析系统选型',
-      },
-      {
-        TAG: 'Ivye',
-        DATE: '2020-05-06',
-        CONTENT: 'HDC.Cloud | openEuler黑客马拉松',
-      },
-    ],
-    NEWS_LIST: [
-      {
-        TAG: '极云IT杂谈',
-        DATE: '2020-05-09',
-        CONTENT: '华为OpenEuler操作系统强势来袭，正式开源时代来了？',
-      },
-      {
-        TAG: '中国网科学频道',
-        DATE: '2020-05-06',
-        CONTENT: '华为联合产业伙伴openEuler2020年峰会成功召开',
-      },
-      {
-        TAG: '新浪',
-        DATE: '2020-04-12',
-        CONTENT: 'openEuler开源路带来多样性计算计算技术与产业生态共荣',
-      },
-    ],
   },
   USER_CASE: {
     TITLE: '用户案例',
@@ -446,85 +415,105 @@ export default {
   HOME_SOURCE_EDITION: [
     {
       LINK: 'http://www.kylinsec.com.cn/',
-      PC: xinan,
+      IMG: xinan,
+      IMG_DARK: xinanLogo_dark,
     },
     {
       LINK: 'https://www.uniontech.com/',
-      PC: tongxin,
+      IMG: tongxin,
+      IMG_DARK: tongxinLogo_dark,
     },
     {
       LINK: 'https://www.kylinos.cn/',
-      PC: qiling,
+      IMG: qiling,
+      IMG_DARK: qilingLogo_dark,
     },
     {
       LINK: 'http://www.iscas.ac.cn/',
-      PC: iscas,
+      IMG: iscas,
+      IMG_DARK: iscasLogo_dark,
     },
     {
       LINK: 'http://www.i-soft.com.cn/',
-      PC: cetc,
+      IMG: cetc,
+      IMG_DARK: cetcLogo_dark,
     },
     {
       LINK: 'https://www.turbolinux.com.cn/',
-      PC: turbo,
+      IMG: turbo,
+      IMG_DARK: turboLogo_dark,
     },
     {
       LINK: 'http://www.hoperun.com/',
-      PC: hopeRun,
+      IMG: hopeRun,
+      IMG_DARK: hopeRunLogo_dark,
     },
     {
       LINK: 'http://www.tongyuanos.com/',
-      PC: tongYuan,
+      IMG: tongYuan,
+      IMG_DARK: tongYuanLogo_dark,
     },
     {
       LINK: 'http://www.chinaredflag.cn/',
-      PC: zhongkehongqi,
+      IMG: zhongkehongqi,
+      IMG_DARK: zhongkehongqiLogo_dark,
     },
     {
       LINK: 'https://www.suse.com/',
-      PC: suse,
+      IMG: suse,
+      IMG_DARK: suseLogo_dark,
     },
     {
       LINK: 'http://www.nfs-china.com/index.html',
-      PC: zhongkefangde,
+      IMG: zhongkefangde,
+      IMG_DARK: zhongkefangdeLogo_dark,
     },
     {
       LINK: 'https://www.xfusion.com/cn/',
-      PC: xfusion,
+      IMG: xfusion,
+      IMG_DARK: xfusionLogo_dark,
     },
   ],
   FRIENDSHIP_LINK_LIST: [
     {
       LINK: 'http://www.mulanos.cn/',
-      PC: mulan,
+      IMG: mulan,
+      IMG_DARK: mulanLogo_dark,
     },
     {
       LINK: 'https://kunpeng.huawei.com/',
-      PC: kunpeng,
+      IMG: kunpeng,
+      IMG_DARK: kunpengLogo_dark,
     },
     {
       LINK: 'http://ic-openlabs.huawei.com/chat/#/',
-      PC: xiaozhi,
+      IMG: xiaozhi,
+      IMG_DARK: xiaozhiLogo_dark,
     },
     {
       LINK: 'https://dw.pcl.ac.cn/',
-      PC: pengcheng,
+      IMG: pengcheng,
+      IMG_DARK: pengchengLogo_dark,
     },
     {
       LINK: 'https://www.infoq.cn/?utm_source=openeuler&utm_medium=youlian',
-      PC: infoQ,
+      IMG: infoQ,
+      IMG_DARK: infoQLogo_dark,
     },
     {
       LINK: 'https://kaiyuanshe.cn/',
-      PC: kaiyuanshe,
+      IMG: kaiyuanshe,
+      IMG_DARK: kaiyuansheLogo_dark,
     },
     {
       LINK: 'http://www.vulab.com.cn/',
-      PC: zhongke,
+      IMG: zhongke,
+      IMG_DARK: zhongkeLogo_dark,
     },
     {
       LINK: 'https://www.authing.cn/',
-      PC: authing,
+      IMG: authing,
+      IMG_DARK: authingLogo_dark,
     },
   ],
   MORE: '更多',

@@ -131,14 +131,17 @@ const btnHighLight = (data: string) => {
     if (tagitems.value[i] === data) return true;
   }
 };
-const btnCheck = (data: any,val :string) => {
+const btnCheck = (data: any, val: string) => {
   if (attrs.single === true) {
     return false;
   } else {
     for (let i = 0; i < options.value.length; i++) {
-      if (data.title === options.value[i].title && options.value[i].sele.length > 1) {
-        for(let j = 0; j< options.value[i].sele.length;j++){
-          if(options.value[i].sele[j] === val) return true
+      if (
+        data.title === options.value[i].title &&
+        options.value[i].sele.length > 1
+      ) {
+        for (let j = 0; j < options.value[i].sele.length; j++) {
+          if (options.value[i].sele[j] === val) return true;
         }
       }
     }
@@ -212,7 +215,7 @@ const allHighLight = (val: any) => {
               class="o-screen-box-drawer-content-options-option"
               type="primary"
               checkable
-              :checked="btnCheck(item,sele)"
+              :checked="btnCheck(item, sele)"
               :class="{ active: btnHighLight(sele) }"
               @click="clickOption(item.title, sele)"
               >{{ sele }}</OTag

@@ -5,8 +5,8 @@
   margin: 0 auto;
   margin-top: var(--o-spacing-h2);
   background-color: var(--e-color-bg2);
-  --o-color-table: #dfe1e8; // 表格边框
-  @media (max-width: 1416px) {
+  --o-color-table: var(--e-color-border1); // 表格边框
+  @media (max-width: 768px) {
     padding: var(--o-spacing-h7);
   }
   ol,
@@ -39,6 +39,11 @@
     margin-top: var(--o-spacing-h1);
     font-size: var(--o-font-size-h3);
     line-height: var(--o-line-height-h3);
+    @media screen and (max-width: 768px) {
+      margin: var(--o-spacing-h4) 0;
+      font-size: var(--o-font-size-h7);
+      line-height: var(--o-line-height-h7);
+    }
   }
 
   h2 {
@@ -46,7 +51,7 @@
     margin-bottom: var(--o-font-size-h5);
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
-    @media screen and (max-width: 1416px) {
+    @media screen and (max-width: 768px) {
       margin: var(--o-spacing-h5) 0;
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-text);
@@ -79,7 +84,7 @@
     font-weight: normal;
     color: var(--e-color-text4);
     line-height: var(--o-line-height-text);
-    @media screen and (max-width: 1416px) {
+    @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-tip);
     }
   }
@@ -130,7 +135,7 @@
   }
   img {
     margin-top: var(--o-spacing-h5);
-    @media screen and (max-width: 1416px) {
+    @media screen and (max-width: 768px) {
       margin-top: var(--o-font-size-h7);
     }
   }

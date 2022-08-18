@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
 
+const commonStore = useCommon();
 const { lang } = useData();
 const i18n = useI18n();
 </script>
@@ -18,7 +20,10 @@ const i18n = useI18n();
         :href="item.LINK"
         target="_blank"
       >
-        <img :src="item.PC" alt="" />
+        <img
+          :src="commonStore.theme === 'light' ? item.IMG : item.IMG_DARK"
+          alt=""
+        />
       </a>
     </div>
   </div>
