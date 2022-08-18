@@ -7,8 +7,12 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
+import cve from '@/assets/illustrations/cve.png';
 
+import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
+import { useData, useRouter } from 'vitepress';
+
 import type {
   CveQuery,
   FilterList,
@@ -28,7 +32,12 @@ import {
   getCpu,
 } from '@/api/api-security';
 
+const windowWidth = ref(useWindowResize());
+
+const screenWidth = ref(1080);
 const i18n = useI18n();
+const router = useRouter();
+const { lang } = useData();
 
 const searchContent = ref('');
 const activeIndex = ref(0);
@@ -40,6 +49,8 @@ const osOptions = ref<string[]>(['全部']);
 const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>(['全部']);
 const lastActiveName = ref('1');
+const currentPage = ref(1);
+const totalPage = ref(1);
 
 const filterData = ref<FilterList[]>([
   {
@@ -76,7 +87,7 @@ const queryData: CveQuery = reactive({
   cpu: '',
   os: '',
   testOrganization: '',
-  lang: 'zh',
+  lang: `${lang.value}`,
 });
 
 // const tableData = ref<
@@ -90,7 +101,7 @@ const getCompatibilityData = (data: CveQuery) => {
   try {
     getCompatibilityList(data).then((res: any) => {
       total.value = res.result.totalCount;
-      totalPage.value = res.result.totalCount;
+      totalPage.value = Math.ceil(total.value / queryData.pages.size);
       tableData.value = res.result.hardwareCompList;
     });
   } catch (e: any) {
@@ -103,7 +114,7 @@ const getDriverData = (data: CveQuery) => {
   try {
     getDriverList(data).then((res: any) => {
       total.value = res.result.totalCount;
-      totalPage.value = res.result.totalCount;
+      totalPage.value = Math.ceil(total.value / queryData.pages.size);
       tableData.value = res.result.driverCompList;
     });
   } catch (e: any) {
@@ -116,7 +127,7 @@ const getSoftwareData = (data: CveQuery) => {
   try {
     getSoftwareList(data).then((res: any) => {
       total.value = res.total;
-      totalPage.value = res.total;
+      totalPage.value = Math.ceil(total.value / queryData.pages.size);
       tableData.value = res.info;
     });
   } catch (e: any) {
@@ -135,8 +146,6 @@ const getBusinessSoftwareData = (data: CveQuery) => {
   }
 };
 
-const currentPage = ref(1);
-const totalPage = ref(1);
 function turnPage(option: string) {
   if (option === 'prev' && currentPage.value > 1) {
     currentPage.value = currentPage.value - 1;
@@ -148,6 +157,12 @@ function turnPage(option: string) {
     initMobileData(queryData);
   }
 }
+
+const jumpPage = (page: number) => {
+  currentPage.value = page;
+  queryData.pages.page = currentPage.value;
+  initMobileData(queryData);
+};
 
 const handleChange = () => {
   currentPage.value = 1;
@@ -272,8 +287,21 @@ const listfilter = (val: any) => {
   }
 };
 
-watch(activeName, () => {
-  // initQueryData();
+const goBackPage = () => {
+  if (activeName.value === '1' || activeName.value === '2') {
+    router.go(`/${lang.value}/security/compatibility/hardware/`);
+  } else if (activeName.value === '3') {
+    router.go(`/${lang.value}/security/compatibility/software/`);
+  } else {
+    window.open(
+      'https://gitee.com/openeuler/technical-certification',
+      '_blank'
+    );
+  }
+};
+
+watch(windowWidth, () => {
+  screenWidth.value = windowWidth.value;
 });
 
 onMounted(() => {
@@ -347,8 +375,9 @@ onMounted(() => {
     background-text="CONTENT"
     title="兼容性列表"
     subtitle=""
-    :illustration="search"
+    :illustration="screenWidth > 1080 ? search : cve"
   />
+
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
     <OTabPane label="整机" name="1">
       <div class="wrapper">
@@ -433,7 +462,12 @@ onMounted(() => {
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.REFERRENCE"
           >
             <template #default="scope">
-              <a :href="scope.row.friendlyLink" target="_blank">link</a>
+              <a
+                class="friendly-link"
+                :href="scope.row.friendlyLink"
+                target="_blank"
+                >link</a
+              >
             </template>
           </el-table-column>
         </OTable>
@@ -659,7 +693,12 @@ onMounted(() => {
             width="130"
           >
             <template #default="scope">
-              <a :href="scope.row.downloadLink" target="_blank">link</a>
+              <a
+                class="friendly-link"
+                :href="scope.row.downloadLink"
+                target="_blank"
+                >link</a
+              >
             </template>
           </el-table-column>
           <OTableColumn
@@ -773,10 +812,14 @@ onMounted(() => {
       </OPagination>
       <p class="about">
         {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-        <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+
+        <a href="#" @click="goBackPage">{{
+          i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+        }}</a>
       </p>
     </div>
   </OTabs>
+
   <div class="tabs-mobile">
     <el-collapse v-model="activeName" accordion @change="handleChange">
       <el-collapse-item title="整机" name="1">
@@ -784,6 +827,7 @@ onMounted(() => {
           <MobileFilter
             class="filter"
             :data="filterData"
+            :single="true"
             @filter="listfilter"
           />
         </div>
@@ -827,6 +871,7 @@ onMounted(() => {
           :current-page="currentPage"
           :total-page="totalPage"
           @turn-page="turnPage"
+          @jump-page="jumpPage"
         />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
@@ -839,6 +884,7 @@ onMounted(() => {
           <MobileFilter
             class="filter"
             :data="filterDataTwo"
+            :single="true"
             @filter="listfilter"
           />
         </div>
@@ -911,6 +957,7 @@ onMounted(() => {
           :current-page="currentPage"
           :total-page="totalPage"
           @turn-page="turnPage"
+          @jump-page="jumpPage"
         />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
@@ -923,6 +970,7 @@ onMounted(() => {
           <MobileFilter
             class="filter"
             :data="filterDataTwo"
+            :single="true"
             @filter="listfilter"
           />
         </div>
@@ -1000,6 +1048,7 @@ onMounted(() => {
           :current-page="currentPage"
           :total-page="totalPage"
           @turn-page="turnPage"
+          @jump-page="jumpPage"
         />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
@@ -1008,6 +1057,14 @@ onMounted(() => {
       </el-collapse-item>
 
       <el-collapse-item title="商业软件" name="4">
+        <!-- <div class="blog-tag">
+          <MobileFilter
+            class="filter"
+            :data="filterData"
+            :single="true"
+            @filter="listfilter"
+          />
+        </div> -->
         <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
             <ul>
@@ -1079,6 +1136,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   background-color: var(--e-color-bg2);
+  height: 48px;
 }
 .tabs-pc {
   @media screen and (max-width: 1080px) {
@@ -1098,10 +1156,11 @@ onMounted(() => {
       background-color: var(--e-color-bg2);
       color: var(--e-color-text1);
       border-bottom: none;
-      box-shadow: 0px 1px 5px 0px rgba(45, 47, 51, 0.1);
+      box-shadow: var(--e-shadow1);
+      height: 34px;
     }
     .el-collapse-item__content {
-      background-color: var(--e-color-bg2);
+      background-color: var(--e-color-bg1);
     }
   }
   .filter {
@@ -1117,6 +1176,9 @@ onMounted(() => {
   max-width: 1504px;
   padding: var(--o-spacing-h1) var(--o-spacing-h2) 0px;
   margin: 0 auto;
+  .o-search {
+    height: 48px;
+  }
   @media screen and (max-width: 1080px) {
     padding: var(--o-spacing-h5);
   }
@@ -1131,6 +1193,9 @@ onMounted(() => {
   margin: var(--o-spacing-h4) 0;
   @media screen and (max-width: 1080px) {
     display: none;
+  }
+  :deep(.el-card__body) {
+    padding: var(--o-spacing-h8) var(--o-spacing-h2);
   }
   .category {
     display: inline-block;
@@ -1158,22 +1223,25 @@ onMounted(() => {
     padding: 0px 12px;
   }
   .card-header {
-    padding-bottom: 14px;
+    padding-bottom: var(--o-spacing-h8);
     border-bottom: 1px solid #ccc;
-    line-height: 54px;
   }
   .card-body {
-    padding-top: 19px;
+    padding-top: var(--o-spacing-h8);
   }
 }
 .pc-list {
   @media screen and (max-width: 1080px) {
     display: none;
   }
+  .friendly-link {
+    color: var(--e-color-kleinblue5);
+  }
 }
 .mobile-list {
   display: none;
-
+  margin-bottom: var(--o-spacing-h5);
+  box-shadow: var(--e-shadow1);
   @media screen and (max-width: 1080px) {
     display: block;
   }
@@ -1186,16 +1254,13 @@ onMounted(() => {
     line-height: var(--o-line-height-tip);
     background-color: var(--e-color-bg2);
     &:nth-child(odd) {
-      background: var(--o-color-bg6);
+      background: var(--e-color-bg4);
     }
     & li {
       margin-bottom: 8px;
     }
     li:last-child {
       margin-bottom: 0;
-      a {
-        color: #002fa7;
-      }
     }
     li:nth-child(2) {
       display: flex;
@@ -1219,6 +1284,9 @@ onMounted(() => {
   font-weight: 400;
   color: var(--e-color-text1);
   line-height: var(--o-line-height-h8);
+  a {
+    color: var(--e-color-kleinblue5);
+  }
 }
 .mobile-about {
   padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
@@ -1226,5 +1294,8 @@ onMounted(() => {
   font-weight: 400;
   color: var(--e-color-text4);
   line-height: var(--o-line-height-tip);
+  a {
+    color: var(--e-color-kleinblue5);
+  }
 }
 </style>

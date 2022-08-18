@@ -10,7 +10,12 @@ export function getSecurityList(params: cveQuery) {
   // const url = '/api-cve/cve-security-notice-server/securitynotice/findAll';
   const url =
     '/api-euler/api-cve/cve-security-notice-server/securitynotice/findAll';
-  return request.post(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .post(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -20,7 +25,12 @@ export function getSecurityList(params: cveQuery) {
 export function getCveList(pages: cveQuery) {
   const url =
     '/api-euler/api-cve/cve-security-notice-server/cvedatabase/findAll';
-  return request.post(url, pages).then((res: AxiosResponse) => res.data);
+  return request
+    .post(url, pages)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -29,7 +39,12 @@ export function getCveList(pages: cveQuery) {
  */
 export function getCveDetail(id: string, name: string) {
   const url = `/api-euler/api-cve/cve-security-notice-server/cvedatabase/getByCveIdAndPackageName?cveId=${id}&packageName=${name}`;
-  return request.get(url).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -38,7 +53,12 @@ export function getCveDetail(id: string, name: string) {
  */
 export function getAffectedProduct(id: string, name: string) {
   const url = `/api-euler/api-cve/cve-security-notice-server/cvedatabase/getCVEProductPackageList?cveId=${id}&packageName=${name}`;
-  return request.get(url).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -47,7 +67,12 @@ export function getAffectedProduct(id: string, name: string) {
  */
 export function getSecurityDetail(params: any) {
   const url = `/api-euler/api-cve/cve-security-notice-server/securitynotice/getBySecurityNoticeNo?securityNoticeNo=${params.securityNoticeNo}`;
-  return request.get(url).then((res: AxiosResponse) => res.data.result);
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data.result)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -57,7 +82,12 @@ export function getSecurityDetail(params: any) {
 export function getCompatibilityList(params: cveQuery) {
   const url =
     '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/findAll';
-  return request.post(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .post(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -67,7 +97,12 @@ export function getCompatibilityList(params: cveQuery) {
 export function driverArchitectureOptions(params: SelectParams) {
   const url =
     '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getArchitecture';
-  return request.get(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -77,7 +112,12 @@ export function driverArchitectureOptions(params: SelectParams) {
 export function driverOSOptions(params: SelectParams) {
   const url =
     '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getOS';
-  return request.get(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -87,7 +127,12 @@ export function driverOSOptions(params: SelectParams) {
 export function getDriverList(params: cveQuery) {
   const url =
     '/api-euler/api-cve/cve-security-notice-server/drivercomp/findAll';
-  return request.post(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .post(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -102,7 +147,12 @@ export function getSoftwareList(params: cveQuery) {
   // const type = params.type ? `&type=${params.type}` : '';
   const keyword = params.keyword ? `&keyword=${params.keyword}` : '';
   const url = ` /compatibility/web_backend/compat_software_info?page_size=${params.pages.size}&page_num=${params.pages.page}${keyword}${architecture}${os}`;
-  return request.get(url).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -116,7 +166,12 @@ export function getBusinessSoftwareList(params: cveQuery) {
     : '';
   const keyword = params.keyword ? `&keyword=${params.keyword}` : '';
   const url = ` /certification/software/communityChecklist?pageSize=${params.pages.size}&pageNo=${params.pages.page}${testOrganization}${osName}${keyword}`;
-  return request.get(url).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -125,7 +180,12 @@ export function getBusinessSoftwareList(params: cveQuery) {
  */
 export function getTestOrganizations() {
   const url = '/certification/software/filterCriteria';
-  return request.get(url).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**
@@ -135,5 +195,10 @@ export function getTestOrganizations() {
 export function getCpu(params: SelectParams) {
   const url =
     '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getCpu';
-  return request.get(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
