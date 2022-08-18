@@ -130,11 +130,9 @@ const HELP = {
     '扫码加入“开源实习”学生QQ群，更多问题群内咨询。',
     '群号：526089131',
   ],
-  ITEM: [
-    {
-      IMG: qrCode,
-    },
-  ],
+  ITEM: {
+    IMG: qrCode,
+  },
 };
 const openLooKengTask = {
   title: 'openLooKeng',
@@ -481,10 +479,7 @@ onUnmounted(() => {
             <p>{{ HELP.INFO[3] }}</p>
           </div>
           <div class="help-right">
-            <p v-for="(item, index) in HELP.ITEM" :key="index">
-              <img :src="item.IMG" alt="" />
-              <span>{{ item.TEXT }}</span>
-            </p>
+            <img :src="HELP.ITEM.IMG" alt="" />
           </div>
         </div>
       </section>
@@ -555,6 +550,7 @@ onUnmounted(() => {
       li {
         cursor: pointer;
         white-space: nowrap;
+        color: var(--e-color-text1);
         &:nth-of-type(1) {
           @media (max-width: 1000px) {
             margin-left: 24px;
@@ -942,7 +938,7 @@ onUnmounted(() => {
   }
 }
 .help-wrap {
-  background: #fff;
+  background: var(--e-color-bg2);
   padding: 40px 0;
   .panel {
     margin-top: 0;
@@ -973,7 +969,7 @@ onUnmounted(() => {
 
     p {
       font-size: 20px;
-      color: #000000;
+      color: var(--e-color-text1);
       line-height: 40px;
       margin-bottom: 10px;
       @media (max-width: 1000px) {
@@ -982,6 +978,7 @@ onUnmounted(() => {
       }
       a {
         font-size: 20px;
+        color: var(--e-color-link1);
         @media (max-width: 1000px) {
           font-size: 16px;
           line-height: 32px;
@@ -990,23 +987,11 @@ onUnmounted(() => {
     }
   }
   .help-right {
-    display: flex;
-    justify-content: center;
-    gap: 38px;
-    p {
-      width: 172px;
-      text-align: center;
-    }
+    width: 172px;
+    text-align: center;
     img {
       width: 100%;
       display: block;
-    }
-    span {
-      font-size: 14px;
-      line-height: 22px;
-      display: inline-block;
-      color: var(--e-color-text4);
-      margin-top: 8px;
     }
   }
 }

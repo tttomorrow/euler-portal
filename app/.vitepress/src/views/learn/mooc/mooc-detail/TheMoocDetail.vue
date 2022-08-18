@@ -485,7 +485,7 @@ const goHome = () => {
       .article-nav {
         margin-right: 60px;
         background: var(--e-color-bg2);
-        box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--e-shadow2);
         border-radius: 8px;
         .nav-top {
           width: 360px;

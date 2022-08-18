@@ -218,10 +218,10 @@ const go = (path: string) => {
           }}</OButton>
           <OButton
             v-if="item.GITEE"
-            class="sig-detail"
             type="text"
             placement="right"
             @click="go(item.GITEE)"
+            class="sig-detail"
           >
             <span>{{ TASK.SIG_DETAIL }}</span>
             <OIcon><IconArrowRight /></OIcon>
@@ -237,6 +237,7 @@ const go = (path: string) => {
   .task-introduce {
     font-size: 20px;
     line-height: 40px;
+    color: var(--e-color-text1);
     @media (max-width: 1000px) {
       font-size: 14px;
       line-height: 22px;
@@ -306,6 +307,9 @@ const go = (path: string) => {
           }
           &:hover .o-icon {
             transform: translateX(3px);
+          }
+          &:nth-of-type(1) {
+            color: #fff;
           }
         }
         .sig-detail {
