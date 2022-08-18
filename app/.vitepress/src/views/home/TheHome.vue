@@ -21,10 +21,6 @@ import { getSortData } from '@/api/api-search';
 
 const { lang } = useData();
 
-interface MeetingData {
-  tableData: TableData[];
-}
-
 const calendarData = ref<TableData[]>([
   {
     date: '',
@@ -85,8 +81,9 @@ onMounted(async () => {
     throw new Error(e);
   }
   try {
-    getMeetingData().then((res: MeetingData) => {
-      calendarData.value = res.tableData;
+    //TODO:添加活动数据
+    Promise.all([getMeetingData()]).then((res) => {
+      calendarData.value = [...res[0].tableData];
     });
   } catch (e: any) {
     throw new Error(e);

@@ -133,7 +133,7 @@ onMounted(() => {
           <a
             v-for="item2 in caseData &&
             caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
-            :key="item2.company"
+            :key="item2.summary"
             class="user-card"
             @click="handleGo(item2.path)"
           >

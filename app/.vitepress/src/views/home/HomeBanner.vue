@@ -130,11 +130,11 @@ $banner-color: #fff;
       flex-direction: column;
       justify-content: center;
       height: 100%;
+      color: #fff;
       .title {
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
-        // color: var(--e-color-text2);
-        filter: invert(1);
+        // filter: invert(1);
         font-weight: 600;
         @media screen and (max-width: 1439px) {
           font-size: var(--o-font-size-h2);
@@ -145,13 +145,15 @@ $banner-color: #fff;
           line-height: var(--o-line-height-h4);
         }
       }
+      .box {
+        color: $banner-color;
+      }
       .desc {
         font-size: var(--o-font-size-h5);
         font-weight: normal;
-        // color: var(--e-color-text2);
         line-height: var(--o-line-height-h5);
         margin-top: var(--o-spacing-h6);
-        filter: invert(1);
+        // filter: invert(1);
         @media screen and (max-width: 1439px) {
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);

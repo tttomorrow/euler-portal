@@ -387,6 +387,9 @@ onMounted(async () => {
                   line-height: var(--o-line-height-text);
                   font-size: var(--o-font-size-text);
                 }
+                p {
+                  display: none;
+                }
               }
             }
           }

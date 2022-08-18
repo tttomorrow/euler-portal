@@ -31,26 +31,46 @@ import osv from '../../assets/category/home/round/osv.svg';
 import osvDark from '../../assets/category/home/round/dark/osv.svg';
 
 import xinan from '../../assets/category//home/link/xinan.png';
-import tongxin from '../../assets/category//home/link/tongxin.png';
-import qiling from '../../assets/category//home/link/qiling.png';
-import iscas from '../../assets/category//home/link/iscas.png';
-import cetc from '../../assets/category//home/link/cetc.png';
-import turbo from '../../assets/category//home/link/turbo.png';
-import hopeRun from '../../assets/category//home/link/hopeRun.png';
-import tongYuan from '../../assets/category//home/link/tongYuan.png';
+import xinanLogo_dark from '../../assets/category/home/dark/link/xinan_dark.png';
+import tongxin from '../../assets/category/home/link/tongxin.png';
+import tongxinLogo_dark from '../../assets/category/home/dark/link/tongxin_dark.png';
+import qiling from '../../assets/category/home/link/qiling.png';
+import qilingLogo_dark from '../../assets/category/home/dark/link/qiling_dark.png';
+import iscas from '../../assets/category/home/link/iscas.png';
+import iscasLogo_dark from '../../assets/category/home/dark/link/iscas_dark.png';
+import cetc from '../../assets/category/home/link/cetc.png';
+import cetcLogo_dark from '../../assets/category/home/dark/link/cetc_dark.png';
+import turbo from '../../assets/category/home/link/turbo.png';
+import turboLogo_dark from '../../assets/category/home/dark/link/turbo_dark.png';
+import hopeRun from '../../assets/category/home/link/hopeRun.png';
+import hopeRunLogo_dark from '../../assets/category/home//dark/link/hope-run_dark.png';
+import tongYuan from '../../assets/category/home/link/tongYuan.png';
+import tongYuanLogo_dark from '../../assets/category/home//dark/link/tong-yuan_dark.png';
 import zhongkehongqi from '../../assets/category//home/link/zhongkehongqi.png';
+import zhongkehongqiLogo_dark from '../../assets/category/home//dark/link/zhongkehongqi_dark.png';
 import suse from '../../assets/category//home/link/suse.png';
-import zhongkefangde from '../../assets/category//home/link/zhongkefangde.png';
+import suseLogo_dark from '../../assets/category//home/dark/link/suse_dark.png';
+import zhongkefangde from '../../assets/category/home/link/zhongkefangde.png';
+import zhongkefangdeLogo_dark from '../../assets/category/home/dark/link/zhongkefangde_dark.png';
 import xfusion from '../../assets/category/home/link/xfusion.png';
+import xfusionLogo_dark from '../../assets/category/home/dark/link/xfusion_dark.png';
 
 import mulan from '../../assets/category/home/link/mulan.png';
+import mulanLogo_dark from '../../assets/category/home/dark/link/mulan_dark.png';
 import kunpeng from '../../assets/category/home/link/kunpeng.png';
+import kunpengLogo_dark from '../../assets/category/home/dark/link/kunpeng_dark.png';
 import xiaozhi from '../../assets/category/home/link/xiaozhi.png';
+import xiaozhiLogo_dark from '../../assets/category/home/dark/link/xiaozhi_dark.png';
 import pengcheng from '../../assets/category/home/link/pengcheng.png';
+import pengchengLogo_dark from '../../assets/category/home/dark/link/pengcheng_dark.png';
 import infoQ from '../../assets/category/home/link/infoQ.png';
+import infoQLogo_dark from '../../assets/category/home/dark/link/infoQ_dark.png';
 import kaiyuanshe from '../../assets/category/home/link/kaiyuanshe-logo.png';
+import kaiyuansheLogo_dark from '../../assets/category/home/dark/link/kaiyuanshe_dark.png';
 import zhongke from '../../assets/category/home/link/zhongke.png';
+import zhongkeLogo_dark from '../../assets/category/home/dark/link/zhongke_dark.png';
 import authing from '../../assets/category/home/link/authing.png';
+import authingLogo_dark from '../../assets/category/home/dark/link/authing_dark.png';
 
 import finance from '../../assets/category/home/case/finance.svg';
 import financeDark from '../../assets/category/home/dark/case/finance.svg';
@@ -294,312 +314,6 @@ export default {
       },
     ],
   },
-  HOME_ROOMS: {
-    ROOM_NAME: [
-      { NAME: 'Blog', ID: 'blog' },
-      { NAME: 'News', ID: 'news' },
-    ],
-    EVENT_NAME: 'Latest Activity',
-    BLOG_NAME: 'openEuler Blog',
-    EVENT_LIST: [
-      {
-        TAG: '事件',
-        DATE: '2020-06-07',
-        CONTENT: '吹响开源集结号——”点亮“暑假2020',
-      },
-      {
-        TAG: '事件',
-        DATE: '2020-01-04',
-        CONTENT: '去HDC.Cloud 2020 参加黑客松， 玩儿openEuler，赢取大礼',
-      },
-      {
-        TAG: '事件',
-        DATE: '2020-12-10',
-        CONTENT: 'HDC.Cloud | openEuler黑客马拉松',
-      },
-    ],
-    NEWS_LIST: [
-      {
-        TAG: '极云IT杂谈',
-        DATE: '2020-05-09',
-        CONTENT: '华为OpenEuler操作系统强势来袭，正式开源时代来了？',
-      },
-      {
-        TAG: '中国网科学频道',
-        DATE: '2020-05-06',
-        CONTENT: '华为联合产业伙伴openEuler2020年峰会成功召开',
-      },
-      {
-        TAG: '新浪',
-        DATE: '2020-04-12',
-        CONTENT: 'openEuler开源路带来多样性计算计算技术与产业生态共荣',
-      },
-    ],
-    NEWS_NAME: 'openEuler News',
-  },
-  HOME_DEV: {
-    DEV_TITLE: 'Like-Minded Developers',
-    DEV_DESCRIPTION:
-      'The brightest minds of the development community gather here. Find the elite developers you are interested in.',
-    DEV_INFO: [
-      {
-        NAME: 'Tao Feng',
-        TITLE: '',
-        RANK: 'sig-OS-Builder-Maintainer',
-        MAIL_LINK: 't.feng94@foxmail.com',
-        GITEE_LINK: 'https://gitee.com/t_feng',
-        IMG: '/img/home/developer/fengtao.png',
-      },
-      {
-        NAME: 'Ge Guo',
-        TITLE: '',
-        RANK: 'Compiler SIG Maintainer',
-        MAIL_LINK: 'nobleprize@foxmail.com',
-        GITEE_LINK: 'https://gitee.com/jdkboy',
-        IMG: '/img/home/developer/guoge.png',
-      },
-      {
-        NAME: 'Li Yang',
-        TITLE: '',
-        RANK: 'Packaging Maintainer',
-        MAIL_LINK: 'rainbow1981@163.com',
-        GITEE_LINK: 'https://gitee.com/yangli69393',
-        IMG: '/img/home/developer/yangli.png',
-      },
-      {
-        NAME: 'Xuzhou Zhang',
-        TITLE: '',
-        RANK: 'Packaging Maintainer',
-        MAIL_LINK: 'whoisxxx@126.com',
-        GITEE_LINK: 'https://gitee.com/whoisxxx',
-        IMG: '/img/home/developer/zhangxuzhou.png',
-      },
-      {
-        NAME: 'Rui Zhang',
-        TITLE: '',
-        RANK: 'sig-OS-Builder-Maintainer',
-        MAIL_LINK: '13851924834@139.com',
-        GITEE_LINK: 'https://gitee.com/anonymous_z',
-        IMG: '/img/home/developer/zhangrui.png',
-      },
-      {
-        NAME: 'Yingliang Yang',
-        TITLE: '',
-        RANK: 'Kernel  Maintainer',
-        MAIL_LINK: 'zjutyyl@163.com',
-        GITEE_LINK: 'https://gitee.com/yangyingliang',
-        IMG: '/img/home/developer/yangyingliang.png',
-      },
-      {
-        NAME: 'Yandong Xu',
-        TITLE: '',
-        RANK: 'Virt-Maintainer',
-        MAIL_LINK: 'gwmxyd@163.com',
-        GITEE_LINK: 'https://gitee.com/xydong',
-        IMG: '/img/home/developer/xuyandong.png',
-      },
-      {
-        NAME: 'Senglin Xia',
-        TITLE: '',
-        RANK: 'Desktop Maintainer',
-        MAIL_LINK: '13813374731@163.com',
-        GITEE_LINK: 'https://gitee.com/small_leek',
-        IMG: '/img/home/developer/xiasenglin.png',
-      },
-      {
-        NAME: 'Bodong Wu',
-        TITLE: '',
-        RANK: 'CICD SIG-Maintainer',
-        MAIL_LINK: 'walkingwalk@163.com',
-        GITEE_LINK: 'https://gitee.com/walkingwalk',
-        IMG: '/img/home/developer/wubodong.png',
-      },
-      {
-        NAME: 'Xiaopeng Wang',
-        TITLE: '',
-        RANK: 'Networking SIG Maintainer',
-        MAIL_LINK: 'wangxp006@163.com',
-        GITEE_LINK: 'https://gitee.com/wangxp006',
-        IMG: '/img/home/developer/wangxiaopeng.png',
-      },
-      {
-        NAME: 'Yiru Wang',
-        TITLE: '',
-        RANK: 'System-Tool Maintainer',
-        MAIL_LINK: 'wangyiruapp@163.com',
-        GITEE_LINK: 'https://gitee.com/ruebb',
-        IMG: '/img/home/developer/wangyiru.png',
-      },
-      {
-        NAME: 'Feilong Lin',
-        TITLE: '',
-        RANK: 'Storage Maintainer',
-        MAIL_LINK: '404544243@qq.com',
-        GITEE_LINK: 'https://gitee.com/volcanodragon',
-        IMG: '/img/home/developer/linfeilong.png',
-      },
-      {
-        NAME: 'Qingqing Li',
-        TITLE: '',
-        RANK: 'sig-RISC-V-Maintainer',
-        MAIL_LINK: 'solar.hu@huawei.com',
-        GITEE_LINK: 'https://gitee.com/solarhu',
-        IMG: '/img/home/developer/liqingqing.png',
-      },
-      {
-        NAME: 'Cihua Li',
-        TITLE: '',
-        RANK: 'Base-Service  Maintainer',
-        MAIL_LINK: 'lilin_0209@163.com',
-        GITEE_LINK: 'https://gitee.com/licihua',
-        IMG: '/img/home/developer/licihua.png',
-      },
-      {
-        NAME: 'Xingke Han',
-        TITLE: '',
-        RANK: 'Base-Service  Maintainer',
-        MAIL_LINK: '1152071778@qq.com',
-        GITEE_LINK: 'https://gitee.com/hanxinke',
-        IMG: '/img/home/developer/hanxingke.png',
-      },
-      {
-        NAME: 'Hanjun Guo',
-        TITLE: '',
-        RANK: 'Kernel  Maintainer',
-        MAIL_LINK: 'dileimao@126.com',
-        GITEE_LINK: 'https://gitee.com/hanjun-guo',
-        IMG: '/img/home/developer/guohanjun.png',
-      },
-      {
-        NAME: 'Feng Hu',
-        TITLE: 'Application, System-tool, ',
-        RANK: 'Packaging SIG Maintainer',
-        MAIL_LINK: 'solar.hu@huawei.com',
-        GITEE_LINK: 'https://gitee.com/solarhu',
-        IMG: '/img/home/developer/hufen.png',
-      },
-      {
-        NAME: 'Kaitian Du',
-        TITLE: 'Application, CICD SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'dukaitian@huawei.com',
-        GITEE_LINK: 'https://gitee.com/jimmy_hero',
-        IMG: '/img/home/developer/dukaitian.png',
-      },
-      {
-        NAME: 'Xiaowen He',
-        TITLE: 'Packaging SIG, Base-',
-        RANK: 'service SIG Maintainer',
-        MAIL_LINK: 'hexiaowen@huawei.com',
-        GITEE_LINK: 'https://gitee.com/jimmy_hero',
-        IMG: '/img/home/developer/hexiaowen.png',
-      },
-      {
-        NAME: 'Chunyi Zhu',
-        TITLE: 'Packaging SIG, Base-',
-        RANK: 'service SIG Maintainer',
-        MAIL_LINK: 'zhuchunyi@huawei.com',
-        GITEE_LINK: 'https://gitee.com/zhuchunyi',
-        IMG: '/img/home/developer/zhuchunyi.png',
-      },
-      {
-        NAME: 'Xiuqi Xie',
-        TITLE: 'Kernel SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'xiexiuqi@huawei.com',
-        GITEE_LINK: 'https://gitee.com/xiexiuqi',
-        IMG: '/img/home/developer/xiexiuqi.png',
-      },
-      {
-        NAME: 'Jian Dong',
-        TITLE: 'Packaging SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'dongjian13@huawei.com',
-        GITEE_LINK: 'https://gitee.com/dogsheng',
-        IMG: '/img/home/developer/dongjian.png',
-      },
-      {
-        NAME: 'Haomin Tsai',
-        TITLE: 'iSulad SIG',
-        RANK: ' Maintainer',
-        MAIL_LINK: 'caihaomin@huawei.com',
-        GITEE_LINK: 'https://gitee.com/caihaomin',
-        IMG: '/img/home/developer/caihaomin.png',
-      },
-      {
-        NAME: 'Feng Li',
-        TITLE: 'Container SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'lifeng68@huawei.com',
-        GITEE_LINK: 'https://gitee.com/lifeng2221dd1',
-        IMG: '/img/home/developer/lifeng.png',
-      },
-      {
-        NAME: 'Hailiang Zhang',
-        TITLE: 'Virt SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'zhang.zhanghailiang@huawei.com',
-        GITEE_LINK: 'https://gitee.com/zhanghailiang_lucky',
-        IMG: '/img/home/developer/zhanghailiang.png',
-      },
-      {
-        NAME: 'Xuan Zheng',
-        TITLE: 'sig-ai-bigdata SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'sinever@126.com',
-        GITEE_LINK: 'gitee.com/sinever',
-        IMG: '/img/home/developer/zhengxian.png',
-      },
-      {
-        NAME: 'Jianwei Zhu',
-        TITLE: 'Base-Service SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'zhujianwei7@huawei.com',
-        GITEE_LINK: 'https://gitee.com/zhujianwei001',
-        IMG: '/img/home/developer/zhujianwei.png',
-      },
-      {
-        NAME: 'Zhipeng Xie',
-        TITLE: 'A-Tune SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'xiezhipeng1@huawei.com',
-        GITEE_LINK: 'https://gitee.com/xiezhipeng1',
-        IMG: '/img/home/developer/xiezhipeng.png',
-      },
-      {
-        NAME: 'Wei Xiong',
-        TITLE: 'sig-perl-modules/ sig-perl-',
-        RANK: 'Modules SIG Maintainer',
-        MAIL_LINK: 'xiongwei888@huawei.com',
-        GITEE_LINK: 'https://gitee.com/myeuler',
-        IMG: '/img/home/developer/xiongwei.png',
-      },
-      {
-        NAME: 'Yanpeng Zhu',
-        TITLE: 'sig-release-management',
-        RANK: 'SIG Maintainer',
-        MAIL_LINK: 'zhuyanpeng@huawei.com',
-        GITEE_LINK: 'https://gitee.com/zyp-rock',
-        IMG: '/img/home/developer/zhuyanpeng.png',
-      },
-      {
-        NAME: 'Zhiqiang Liu',
-        TITLE: 'Storage SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: 'lzhq28@mail.ustc.edu.cn',
-        GITEE_LINK: 'https://gitee.com/liuzhiqiang26',
-        IMG: '/img/home/developer/liuzhiqiang.png',
-      },
-      {
-        NAME: 'Feilong Lin',
-        TITLE: 'Storage SIG',
-        RANK: 'Maintainer',
-        MAIL_LINK: '404544243@qq.com',
-        GITEE_LINK: 'https://gitee.com/volcanodragon',
-        IMG: '/img/home/developer/linfeilong.png',
-      },
-    ],
-  },
   HOME_SOURCE: {
     SOURCE_TITLE: 'More Resources',
     SOURCE_APPLY: {
@@ -619,88 +333,117 @@ export default {
     SOURCE_PUBLISH_TITLE: 'Vendors with openEuler-based Commercial Editions',
     SOURCE_LINK_TITLE: 'Related Links',
   },
+  HOME_ROOMS: {
+    ROOM_NAME: [
+      { NAME: 'Блог', ID: 'blog' },
+      { NAME: 'Новости', ID: 'news' },
+    ],
+    EVENT_NAME: 'Новое мероприятие',
+    BLOG_NAME: 'Блог',
+    NEWS_NAME: 'Новости',
+  },
   HOME_SOURCE_EDITION: [
     {
       LINK: 'http://www.kylinsec.com.cn/',
-      PC: xinan,
+      IMG: xinan,
+      IMG_DARK: xinanLogo_dark,
     },
     {
       LINK: 'https://www.uniontech.com/',
-      PC: tongxin,
+      IMG: tongxin,
+      IMG_DARK: tongxinLogo_dark,
     },
     {
       LINK: 'https://www.kylinos.cn/',
-      PC: qiling,
+      IMG: qiling,
+      IMG_DARK: qilingLogo_dark,
     },
     {
-      LINK: 'http://english.is.cas.cn/',
-      PC: iscas,
+      LINK: 'http://www.iscas.ac.cn/',
+      IMG: iscas,
+      IMG_DARK: iscasLogo_dark,
     },
     {
-      LINK: 'http://www.i-soft.com.cn//index.jhtml',
-      PC: cetc,
+      LINK: 'http://www.i-soft.com.cn/',
+      IMG: cetc,
+      IMG_DARK: cetcLogo_dark,
     },
     {
       LINK: 'https://www.turbolinux.com.cn/',
-      PC: turbo,
+      IMG: turbo,
+      IMG_DARK: turboLogo_dark,
     },
     {
       LINK: 'http://www.hoperun.com/',
-      PC: hopeRun,
+      IMG: hopeRun,
+      IMG_DARK: hopeRunLogo_dark,
     },
     {
       LINK: 'http://www.tongyuanos.com/',
-      PC: tongYuan,
+      IMG: tongYuan,
+      IMG_DARK: tongYuanLogo_dark,
     },
     {
       LINK: 'http://www.chinaredflag.cn/',
-      PC: zhongkehongqi,
+      IMG: zhongkehongqi,
+      IMG_DARK: zhongkehongqiLogo_dark,
     },
     {
       LINK: 'https://www.suse.com/',
-      PC: suse,
+      IMG: suse,
+      IMG_DARK: suseLogo_dark,
     },
     {
       LINK: 'http://www.nfs-china.com/index.html',
-      PC: zhongkefangde,
+      IMG: zhongkefangde,
+      IMG_DARK: zhongkefangdeLogo_dark,
     },
     {
-      LINK: 'https://www.xfusion.com/cn/',
-      PC: xfusion,
+      LINK: 'https://www.xfusion.com/en/',
+      IMG: xfusion,
+      IMG_DARK: xfusionLogo_dark,
     },
   ],
   FRIENDSHIP_LINK_LIST: [
     {
       LINK: 'http://www.mulanos.cn/',
-      PC: mulan,
+      IMG: mulan,
+      IMG_DARK: mulanLogo_dark,
     },
     {
       LINK: 'https://www.hikunpeng.com/en/',
-      PC: kunpeng,
+      IMG: kunpeng,
+      IMG_DARK: kunpengLogo_dark,
     },
     {
       LINK: 'http://ic-openlabs.huawei.com/chat/#/',
-      PC: xiaozhi,
+      IMG: xiaozhi,
+      IMG_DARK: xiaozhiLogo_dark,
     },
     {
       LINK: 'https://dw.pcl.ac.cn/',
-      PC: pengcheng,
+      IMG: pengcheng,
+      IMG_DARK: pengchengLogo_dark,
     },
     {
       LINK: 'https://www.infoq.cn/?utm_source=openeuler&utm_medium=youlian',
-      PC: infoQ,
+      IMG: infoQ,
+      IMG_DARK: infoQLogo_dark,
     },
     {
       LINK: 'https://kaiyuanshe.cn/',
-      PC: kaiyuanshe,
+      IMG: kaiyuanshe,
+      IMG_DARK: kaiyuansheLogo_dark,
     },
     {
       LINK: 'http://www.vulab.com.cn/',
-      PC: zhongke,
+      IMG: zhongke,
+      IMG_DARK: zhongkeLogo_dark,
     },
     {
       LINK: 'https://www.authing.cn/',
-      PC: authing,
+      IMG: authing,
+      IMG_DARK: authingLogo_dark,
     },
   ],
   MORE: 'Read More',

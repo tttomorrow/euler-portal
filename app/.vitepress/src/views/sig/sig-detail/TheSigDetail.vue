@@ -9,11 +9,10 @@ import MobileRepositoryList from './MobileRepositoryList.vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import {
-  getSigDetail,
+  // getSigDetail,
   getSigMember,
   getSigRepositoryList,
 } from '@/api/api-sig';
-// import { testIsPhone } from '@/shared/utils';
 
 import IconArrowRight from '~icons/app/right.svg';
 
@@ -23,7 +22,6 @@ const screenWidth = useWindowResize();
 const isIphone = computed(() => {
   return screenWidth.value <= 768 ? true : false;
 });
-// const isIphone = computed(() => testIsPhone());
 const paginLayout = computed(() =>
   isIphone.value
     ? 'prev, slot, jumper, next'
@@ -36,15 +34,15 @@ const sigDetail = computed(() => {
 const sigMeetingData: any = ref('');
 const sigMemberData: any = ref('');
 const memberList: any = ref([]);
-function getSigDetails() {
-  try {
-    getSigDetail(sigDetailName.value).then((res: any) => {
-      sigMeetingData.value = res;
-    });
-  } catch (error) {
-    throw Error();
-  }
-}
+// function getSigDetails() {
+//   try {
+//     getSigDetail(sigDetailName.value).then((res: any) => {
+//       sigMeetingData.value = res;
+//     });
+//   } catch (error) {
+//     throw Error();
+//   }
+// }
 function getSigMembers() {
   try {
     const param = {
@@ -151,7 +149,7 @@ onMounted(() => {
     }
   }
   sigDetailName.value = GetUrlParam('name');
-  getSigDetails();
+  // getSigDetails();
   getSigMembers();
   getRepositoryList();
 });
@@ -281,11 +279,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <MobileRepositoryList
-          v-if="isIphone"
-          :data="repositoryList"
-        ></MobileRepositoryList>
-        <OTable v-else :data="repositoryList">
+        <OTable v-if="!isIphone" :data="repositoryList">
           <el-table-column :label="sigDetail.REPOSITORY_NAME" width="550px">
             <template #default="scope">
               <a target="_blank" :href="`https://gitee.com/${scope.row.repo}`">
@@ -308,6 +302,11 @@ onMounted(() => {
             </template>
           </el-table-column>
         </OTable>
+        <MobileRepositoryList
+          v-else
+          :data="repositoryList"
+        ></MobileRepositoryList>
+
         <OPagination
           v-model:currentPage="currentPage"
           v-model:page-size="pageSize"
@@ -374,7 +373,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .sig-detail {
   max-width: 1504px;
-  padding: 0 44px;
+  padding: 0 var(--o-spacing-h2);
   margin: 0 auto var(--o-spacing-h1);
   .content {
     width: 100%;
@@ -487,7 +486,7 @@ onMounted(() => {
             &-name {
               margin-right: var(--o-spacing-h5);
             }
-            .o-select {
+            :deep(.o-select) {
               margin-right: var(--o-spacing-h1);
             }
           }
