@@ -173,9 +173,13 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 :deep(.el-tabs) {
+  .el-tabs__nav-wrap {
+    box-shadow: var(--e-shadow-l1);
+  }
   .el-tabs__nav-scroll {
     display: flex;
     justify-content: center;
+    height: 48px;
     @media screen and (max-width: 768px) {
       margin: var(--o-spacing-h5) 0 0 0;
       background-color: var(--e-color-bg2);
@@ -307,7 +311,7 @@ onMounted(() => {
           color: var(--e-color-text1);
         }
         &-class {
-          margin-bottom: var(--o-spacing-h2);
+          margin-bottom: var(--o-spacing-h4);
           &:last-child {
             margin-bottom: 0;
           }
