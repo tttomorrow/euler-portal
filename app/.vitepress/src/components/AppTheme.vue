@@ -48,7 +48,6 @@ watch(
     <div class="theme-box-mobile">
       <OSwitch
         v-model="mobileTheme"
-        size="large"
         active-text="dark"
         inactive-text="light"
         active-color="#002fa7"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, onUnmounted } from 'vue';
+import { computed, onMounted, ref, onUnmounted, watch, nextTick } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
@@ -7,8 +7,8 @@ import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
 
-import logo_light from '@/assets/logo.png';
-import logo_dark from '@/assets/logo_dark.png';
+import logo_light from '@/assets/logo.svg';
+import logo_dark from '@/assets/logo_dark.svg';
 
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
@@ -44,19 +44,19 @@ const mobileMenuIcon = ref(false);
 const handleLanguageChange = () => {
   mobileMenuIcon.value = false;
 };
-
+const documentElement = document.documentElement;
 //移动端菜单事件
 const mobileMenuPanel = () => {
-  const documentElement = document.documentElement;
-  documentElement.classList.toggle('overflow');
-  mobileMenuIcon.value = !mobileMenuIcon.value;
   mobileChildMenu.value = [];
-  activeNav.value = '';
+  setTimeout(() => {
+    mobileMenuIcon.value = !mobileMenuIcon.value;
+    documentElement.classList.toggle('overflow');
+    activeNav.value = '';
+  }, 200);
 };
 
 const mobileChildMenu = ref<NavItem | any>([]);
 const handleMenuLayer = (e: any) => {
-  const documentElement = document.documentElement;
   if (e.target.className !== 'mobile-menu-side') {
     if (mobileChildMenu.value.length === 0) {
       mobileMenuIcon.value = false;
@@ -66,21 +66,19 @@ const handleMenuLayer = (e: any) => {
 };
 
 const goMobile = (item: NavItem) => {
+  mobileChildMenu.value = [];
   if (Object.prototype.hasOwnProperty.call(item, 'CHILDREN')) {
     mobileChildMenu.value = item.CHILDREN;
   } else {
-    mobileChildMenu.value = [];
     mobileMenuIcon.value = false;
-
-    router.go(lang.value + item.PATH);
-    document.documentElement.classList.remove('overflow');
+    router.go('/' + lang.value + item.PATH);
+    documentElement.classList.remove('overflow');
   }
   activeNav.value = item.ID;
 };
 
 const goMobileList = (item: NavItem) => {
-  mobileMenuIcon.value = false;
-  document.documentElement.classList.remove('overflow');
+  mobileChildMenu.value = [];
 
   if (item.IS_OPEN_WINDOW) {
     window.open(i18n.value.docsUrl + item.PATH);
@@ -90,8 +88,15 @@ const goMobileList = (item: NavItem) => {
     window.open(item.PATH);
     return;
   }
+
   if (item.PATH) {
-    router.go(lang.value + item.PATH);
+    setTimeout(() => {
+      mobileMenuIcon.value = false;
+      documentElement.classList.remove('overflow');
+    }, 200);
+    nextTick(() => {
+      router.go('/' + lang.value + item.PATH);
+    });
   }
 };
 
@@ -127,6 +132,18 @@ function search() {
   router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
+
+const activeItem = ref(router.route.path);
+watch(
+  () => router.route.path,
+  (val: string) => {
+    activeItem.value = val;
+  }
+);
+// 导航默认选中
+const menuActiveFn = (item: any) => {
+  return item.some((el: string) => activeItem.value.includes(el));
+};
 </script>
 
 <template>
@@ -183,7 +200,10 @@ function search() {
                 v-for="item in navRouter"
                 :key="item.ID"
                 class="link"
-                :class="[activeNav === item.ID ? 'active' : '']"
+                :class="{
+                  selected: menuActiveFn(item.CLASS),
+                  active: activeNav === item.ID,
+                }"
                 @click.stop="goMobile(item)"
                 >{{ item.NAME }}</a
               >
@@ -193,20 +213,23 @@ function search() {
               <AppLanguage @language-click="handleLanguageChange" />
             </div>
           </div>
-          <div
-            class="mobile-menu-content"
-            :class="{ active: mobileChildMenu.length > 0 }"
-          >
-            <div class="mobile-menu-list">
-              <a
-                v-for="item in mobileChildMenu"
-                :key="item.ID"
-                class="link"
-                @click="goMobileList(item)"
-                >{{ item.NAME }}</a
-              >
+          <transition name="menu">
+            <div
+              class="mobile-menu-content"
+              v-if="mobileChildMenu.length > 0"
+              :class="{ active: mobileChildMenu.length > 0 }"
+            >
+              <div class="mobile-menu-list">
+                <a
+                  v-for="item in mobileChildMenu"
+                  :key="item.ID"
+                  class="link"
+                  @click="goMobileList(item)"
+                  >{{ item.NAME }}</a
+                >
+              </div>
             </div>
-          </div>
+          </transition>
         </div>
       </teleport>
     </div>
@@ -214,6 +237,28 @@ function search() {
 </template>
 
 <style lang="scss" scoped>
+// transition 动画
+.menu-enter-active,
+.menu-leave-active {
+  transition: 0.2s linear;
+}
+.menu-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.menu-enter-to {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.menu-leave {
+  opacity: 1;
+  transform: transslateX(0);
+}
+.menu-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
 :deep(.o-search) {
   --o-search-color-bg: var(--o-color-secondary);
   background-color: var(--e-color-bg4);
@@ -256,6 +301,7 @@ function search() {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    top: 12px;
   }
 }
 .mobile-menu-icon {
@@ -265,7 +311,7 @@ function search() {
     display: block;
   }
   .icon {
-    font-size: var(--o-font-size-h5);
+    font-size: var(--o-font-size-h6);
     color: var(--e-color-text1);
     cursor: pointer;
   }
@@ -273,6 +319,7 @@ function search() {
 .mobile-search {
   font-size: var(--o-font-size-h6);
   display: none;
+  color: var(--e-color-text1);
   @media (max-width: 1100px) {
     display: block;
   }
@@ -345,14 +392,14 @@ function search() {
   background: rgba(0, 0, 0, 0.4);
   top: 48px;
   height: calc(100% - 48px);
-  z-index: 9;
+  z-index: 999;
   @media screen and (min-width: 1100px) {
     display: none;
   }
 
   &.active {
     opacity: 1;
-    z-index: 111;
+    z-index: 1101;
     display: flex;
     visibility: visible;
     @media screen and (min-width: 1100px) {
@@ -410,12 +457,13 @@ function search() {
           transition: all 0.3s;
           bottom: 0;
         }
-        &.active {
+        &.active,
+        &.selected {
           background: var(--e-color-bg2);
           color: var(--e-color-brand1);
           &::after {
             width: 24px;
-            background: var(--e-color-text1);
+            background: var(--e-color-brand1);
           }
         }
       }
@@ -435,6 +483,7 @@ function search() {
     .mobile-menu-list {
       display: grid;
       padding: 0 16px;
+
       .link {
         line-height: var(--o-line-height-h3);
         font-size: var(--o-font-size-tip);

@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { useData } from 'vitepress';
 import Img404 from '@/assets/404.svg';
+const { lang } = useData();
 </script>
 
 <template>
   <div class="nofound">
     <img class="img" :src="Img404" alt="404" />
-    <p>暂无数据！</p>
+    <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
   </div>
 </template>
 
