@@ -227,7 +227,7 @@ const sizeChange = (val: number) => {
 <template>
   <BannerLevel2
     :background-image="BannerImg1"
-    background-text="CONNECT"
+    background-text="INTERACTION"
     :title="userCaseData.BLOG"
     :illustration="BannerImg2"
   />
@@ -267,7 +267,8 @@ const sizeChange = (val: number) => {
           </div>
           <div class="infodetail">
             <OIcon class="icon"><IconBrowse /></OIcon>
-            <!-- <p>浏览{{ item.browsetimes }}次</p> -->
+            <!-- <p>{{userCaseData.BROWSE}}{{ item.browsetimes }}{{userCaseData.TIMES}}</p> -->
+            <p>{{ userCaseData.BROWSE }}10{{ userCaseData.TIMES }}</p>
           </div>
         </div>
         <div class="blog-list-item-content">
@@ -334,6 +335,7 @@ const sizeChange = (val: number) => {
     &-item {
       background-image: url(@/assets/interaction/bg.png);
       min-height: 248px;
+      max-height: 248px;
       background-position: right bottom;
       background-repeat: no-repeat;
       cursor: pointer;
@@ -397,7 +399,7 @@ const sizeChange = (val: number) => {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
         margin-top: var(--o-spacing-h5);
-        min-height: 44px;
+        height: 44px;
         color: var(--e-color-text1);
         word-break: break-all;
         text-overflow: ellipsis;
@@ -416,7 +418,7 @@ const sizeChange = (val: number) => {
         margin-top: var(--o-spacing-h7);
         .tagitem {
           margin-right: var(--o-spacing-h8);
-          color: var(--e-color-text2);
+          color: var(--e-color-text1);
         }
       }
     }
@@ -429,27 +431,73 @@ const sizeChange = (val: number) => {
 @media (max-width: 1100px) {
   .blog-list {
     grid-template-columns: repeat(2, 1fr);
+    margin-top: var(--o-spacing-h5);
   }
   .blog-tag2 {
     display: block;
+    margin-left: var(--o-spacing-h5);
   }
 }
 @media (max-width: 768px) {
   .blog-list {
     grid-template-columns: repeat(1, 1fr);
+    margin-top: var(--o-spacing-h5);
   }
   .blog-tag {
     display: none;
   }
   .blog-tag2 {
     display: block;
+    margin-left: var(--o-spacing-h5);
   }
 }
 @media (max-width: 415px) {
   .blog-tag {
     display: none;
   }
+  :deep(.el-card__body) {
+    padding: var(--o-spacing-h6);
+    min-height: 152px;
+    max-height: 152px;
+  }
+  .blog-list-item {
+    // margin: var(--o-spacing-h5);
+    min-height: 152px;
+    max-height: 152px;
+  }
   .blog-list {
+    margin-top: var(--o-spacing-h5);
+  }
+  .blog-list-item-content {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+    height: auto;
+    word-break: break-all;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        word-break: break-all;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+  }
+  .blog-list-item-title {
+    margin-bottom: var(--o-spacing-h5);
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+    font-weight: 500;
+  }
+  .tagitem {
+    font-size: 0.66rem;
+    line-height: 0.66rem;
+    height: 14px;
+    padding: 2px 3px 1px 5px;
+  }
+  .blog-list-item-tags {
     margin-top: var(--o-spacing-h5);
   }
 }

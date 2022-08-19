@@ -5,6 +5,8 @@ export default {
   BLOG: '博客',
   TAG: 'Tag筛选',
   NEWS: '新闻',
+  BROWSE: '浏览',
+  TIMES: '次',
   NEWSDATALIST: newsdata.zh.NEWSLIST,
   BLOGDATALIST: blogdata.zh.BLOGLIST,
   SCREENDATALIST: blogdata.zh.SCREENBUTTON,

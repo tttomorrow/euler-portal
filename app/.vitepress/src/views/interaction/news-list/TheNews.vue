@@ -125,7 +125,7 @@ const sizeChange = (val: number) => {
 <template>
   <BannerLevel2
     :background-image="BannerImg1"
-    background-text="CONNECT"
+    background-text="INTERACTION"
     :title="userCaseData.NEWS"
     :illustration="BannerImg2"
   />
@@ -253,6 +253,7 @@ const sizeChange = (val: number) => {
 @media (max-width: 980px) {
   .news-list {
     grid-template-columns: repeat(1, 1fr);
+    margin-top: var(--o-spacing-h5);
   }
   .news-list-item {
     max-width: 100%;
@@ -310,8 +311,8 @@ const sizeChange = (val: number) => {
     min-height: 180px;
   }
   .news-info {
-    max-width: 304px;
-    min-width: 304px;
+    max-width: 328px;
+    min-width: 328px;
   }
   .news-title {
     height: auto;

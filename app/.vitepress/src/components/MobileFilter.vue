@@ -184,7 +184,6 @@ const allHighLight = (val: any) => {
       <ODrawer
         v-model="isDrawerOpen"
         direction="btt"
-        :show-close="true"
         custom-class="o-drawer"
         size="auto"
       >
@@ -202,7 +201,7 @@ const allHighLight = (val: any) => {
           <div class="o-screen-box-drawer-content-options">
             <OTag
               class="o-screen-box-drawer-content-options-option"
-              :checked="allHighLight(item)"
+              
               :class="{ active: allHighLight(item) }"
               type="primary"
               checkable
@@ -257,7 +256,7 @@ const allHighLight = (val: any) => {
     &-button {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      margin: var(--o-spacing-h5);
+      margin: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h5) 0;
       color: var(--e-color-text4);
       &-icon {
         display: inline-block;
@@ -269,14 +268,15 @@ const allHighLight = (val: any) => {
     }
   }
   &-tags {
-    padding: 0 var(--o-spacing-h5);
+    // padding: 0 var(--o-spacing-h5);
     &-tag {
       margin-right: var(--o-spacing-h8);
-      margin-bottom: var(--o-spacing-h8);
+      // margin-bottom: var(--o-spacing-h8);
       background-color: var(--e-color-neutral11);
       &-icon {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-tip);
+        color: var(--e-color-text1);
         position: relative;
         top: 1px;
       }
@@ -290,6 +290,9 @@ const allHighLight = (val: any) => {
         text-align: center;
         p {
           display: inline-block;
+          color: var(--e-color-text1);
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
         }
       }
       &-content {
@@ -305,8 +308,10 @@ const allHighLight = (val: any) => {
             line-height: var(--o-line-height-tip);
             margin: var(--o-spacing-h8);
             border: 1px solid var(--e-color-transparent);
+            color: var(--e-color-text1);
             &.active {
               border: 1px solid var(--e-color-brand1);
+              color: var(--e-color-kleinblue5);
             }
           }
         }
