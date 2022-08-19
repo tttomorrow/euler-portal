@@ -240,6 +240,7 @@ const handleSizeChange = (val: number) => {
 
 const handleCurrentChange = (val: number) => {
   queryData.pages.page = val;
+  currentPage.value = val;
   initData(queryData);
 };
 
@@ -809,6 +810,7 @@ onMounted(() => {
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       >
+        <span class="pagination-slot"> {{ currentPage }}/{{ total }}</span>
       </OPagination>
       <p class="about">
         {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
@@ -875,7 +877,9 @@ onMounted(() => {
         />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-          <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+          <a href="#" @click="goBackPage">{{
+            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+          }}</a>
         </p>
       </el-collapse-item>
 
@@ -961,7 +965,9 @@ onMounted(() => {
         />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-          <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+          <a href="#" @click="goBackPage">{{
+            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+          }}</a>
         </p>
       </el-collapse-item>
 
@@ -1029,6 +1035,7 @@ onMounted(() => {
                 <a
                   :href="item.downloadLink"
                   target="_blank"
+                  class="friendly-link"
                   rel="noopener noreferrer"
                   >link</a
                 >
@@ -1052,7 +1059,9 @@ onMounted(() => {
         />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-          <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+          <a href="#" @click="goBackPage">{{
+            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+          }}</a>
         </p>
       </el-collapse-item>
 
@@ -1121,7 +1130,9 @@ onMounted(() => {
         />
         <p class="mobile-about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-          <a href="#">{{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}</a>
+          <a href="#" @click="goBackPage">{{
+            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+          }}</a>
         </p>
       </el-collapse-item>
     </el-collapse>
@@ -1152,7 +1163,7 @@ onMounted(() => {
   :deep(.el-collapse) {
     --el-collapse-border-color: none;
     .el-collapse-item__header {
-      padding-left: 8px;
+      padding-left: var(--o-spacing-h8);
       background-color: var(--e-color-bg2);
       color: var(--e-color-text1);
       border-bottom: none;
@@ -1230,12 +1241,12 @@ onMounted(() => {
     padding-top: var(--o-spacing-h8);
   }
 }
+.friendly-link {
+  color: var(--e-color-link1);
+}
 .pc-list {
   @media screen and (max-width: 1080px) {
     display: none;
-  }
-  .friendly-link {
-    color: var(--e-color-kleinblue5);
   }
 }
 .mobile-list {
@@ -1277,6 +1288,12 @@ onMounted(() => {
 
 .pagination {
   margin: var(--o-spacing-h2) 0 var(--o-spacing-h4);
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
+  }
 }
 .about {
   // margin-bottom: var(--o-spacing-h4);
@@ -1285,7 +1302,7 @@ onMounted(() => {
   color: var(--e-color-text1);
   line-height: var(--o-line-height-h8);
   a {
-    color: var(--e-color-kleinblue5);
+    color: var(--e-color-link1);
   }
 }
 .mobile-about {
@@ -1295,7 +1312,7 @@ onMounted(() => {
   color: var(--e-color-text4);
   line-height: var(--o-line-height-tip);
   a {
-    color: var(--e-color-kleinblue5);
+    color: var(--e-color-link1);
   }
 }
 </style>

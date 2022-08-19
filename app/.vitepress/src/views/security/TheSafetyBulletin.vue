@@ -336,7 +336,7 @@ watch(windowWidth, () => {
         background-color: var(--e-color-bg2);
         padding: 0 8px;
         border: none;
-        height: 36px;
+        height: 34px;
       }
       .el-collapse-item__wrap {
         border: none;
@@ -436,7 +436,7 @@ watch(windowWidth, () => {
   }
   .pc-list {
     .detail-page {
-      color: var(--e-color-kleinblue5);
+      color: var(--e-color-link1);
       cursor: pointer;
     }
     @media screen and (max-width: 1000px) {
