@@ -29,7 +29,7 @@ const tabLiveRoom = (src: string, index: number): void => {
 <template>
   <div class="live-room">
     <iframe
-      height="630"
+      height="740"
       allow="camera *;microphone *;"
       border="0"
       scolling="no"
@@ -94,7 +94,7 @@ const tabLiveRoom = (src: string, index: number): void => {
           margin-top: var(--o-spacing-h4);
         }
         &:hover {
-          box-shadow: var(--e-shadow2);
+          box-shadow: var(--e-shadow-l2_hover);
         }
       }
       &-live-main {
@@ -103,9 +103,9 @@ const tabLiveRoom = (src: string, index: number): void => {
         padding-top: var(--o-spacing-h4);
       }
       &-live-active {
-        background-color: var(--e-color-brand1);
+        background-color: var(--e-color-kleinblue5);
         p {
-          color: var(--e-color-text2);
+          color: var(--e-color-white);
         }
       }
     }

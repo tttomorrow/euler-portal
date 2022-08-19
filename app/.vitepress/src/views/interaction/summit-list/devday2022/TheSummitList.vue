@@ -12,15 +12,13 @@ const i18n = useI18n();
 </script>
 
 <template>
+  <BannerLevel2
+    :background-image="banner"
+    background-text="INTERACTION"
+    title="峰会"
+    :illustration="summit"
+  />
   <div class="main">
-    <div class="banner">
-      <BannerLevel2
-        :background-image="banner"
-        background-text="INTERACTION"
-        title="峰会"
-        :illustration="summit"
-      />
-    </div>
     <div class="middle">
       <div class="middle-text">
         <p>
@@ -107,9 +105,6 @@ const i18n = useI18n();
 </template>
 
 <style scoped lang="scss">
-.banner {
-  margin-bottom: var(--o-spacing-h1);
-}
 .headline {
   color: var(--e-color-text1);
   margin-top: var(--o-spacing-h1);
@@ -125,6 +120,7 @@ const i18n = useI18n();
 .middle {
   max-width: 1504px;
   margin: 0 auto;
+  margin-top: var(--o-spacing-h1);
   padding: 0 44px;
   @media (max-width: 780px) {
     padding: 0 var(--o-spacing-h7);

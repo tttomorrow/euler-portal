@@ -82,7 +82,7 @@ const toSigDetail = (name: string): void => {
           line-height: var(--o-line-height-h3);
         }
         .sig-list {
-          padding: 20px 10px 10px 20px;
+          padding: 20px 10px 20px 20px;
           margin-bottom: unset;
           column-count: unset;
           column-gap: unset;
