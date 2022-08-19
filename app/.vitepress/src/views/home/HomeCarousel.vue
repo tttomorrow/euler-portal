@@ -115,7 +115,7 @@ const handleGo = (path: string) => {
 
     &-card {
       :deep(.el-collapse-item__content) {
-        padding-bottom: 0px;
+        padding: 0px !important;
       }
 
       :deep(.el-collapse-item__header) {
@@ -182,17 +182,14 @@ const handleGo = (path: string) => {
     &-content {
       display: flex;
       flex-flow: row;
-      // justify-content: space-between;
-      // align-items: center;
       padding-bottom: var(--o-spacing-h2);
-      border-bottom: 1px solid var(--e-color-neutral11);
+      border-bottom: 1px solid var(--e-color-division1);
     }
 
     &-list {
       display: flex;
       flex-flow: column;
       margin-right: var(--o-spacing-h1);
-      // justify-content: space-between;
       height: 300px;
       align-items: center;
 
@@ -218,7 +215,7 @@ const handleGo = (path: string) => {
       color: var(--e-color-text1);
       line-height: var(--o-line-height-h4);
       text-align: start;
-      border-bottom: 1px solid var(--e-color-neutral11);
+      border-bottom: 1px solid var(--e-color-division1);
       padding: var(--o-spacing-h4) 0;
     }
     &-title:first-child {
@@ -250,17 +247,35 @@ const handleGo = (path: string) => {
     }
   }
 }
-
-:deep(.el-icon-arrow-right) {
-  font-weight: 700;
-  transform: rotate(90deg);
-  &::before {
-    color: #000;
+:deep(.o-collapse) {
+  .el-icon-arrow-right {
+    font-weight: 700;
+    transform: rotate(90deg);
+    &::before {
+      color: #000;
+    }
+  }
+  .el-icon-arrow-right.is-active {
+    transform: rotate(270deg);
+  }
+  .el-collapse-item__header {
+    position: relative;
+    border-left: none;
+    // z-index: 888;
+    // &::after {
+    //   position: absolute;
+    //   bottom: 1px;
+    //   left: 1px;
+    //   content: '';
+    //   height: 500px;
+    //   width: 100%;
+    //   color: red;
+    //   z-index: 999;
+    // }
+    border-bottom: 1px solid var(--e-color-division1);
   }
 }
-:deep(.el-icon-arrow-right.is-active) {
-  transform: rotate(270deg);
-}
+
 .active {
   color: var(--e-color-brand1);
 }

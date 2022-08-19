@@ -185,9 +185,6 @@ h3 {
     @media (max-width: 768px) {
       margin-top: var(--o-spacing-h5);
     }
-    :deep(.el-collapse-item__content) {
-      padding-bottom: 0px;
-    }
 
     :deep(.el-collapse-item__header) {
       height: 100%;
@@ -341,7 +338,7 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
     padding-bottom: var(--o-spacing-h2);
     grid-gap: var(--o-spacing-h4) var(--o-spacing-h2);
-    border-bottom: 1px solid var(--e-color-neutral11);
+    border-bottom: 1px solid var(--e-color-division1);
   }
 
   &-card {

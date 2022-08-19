@@ -50,7 +50,7 @@ onMounted(async () => {
           class="community-detail"
           @click="handleGo(i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS)"
         >
-          {{ i18n.home.IMG_CAROUSE.BUTTON }}
+          {{ i18n.home.COMMUNITY_ACTIVITY.BUTTON }}
           <template #suffixIcon>
             <IconArrowRight class="community-detail-icon"></IconArrowRight>
           </template>

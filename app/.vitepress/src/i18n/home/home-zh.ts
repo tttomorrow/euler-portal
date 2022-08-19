@@ -188,7 +188,7 @@ export default {
     TRY_URL: 'community/contribution/detail.html',
     LIST: [
       {
-        TITLE: '支持多样性计算',
+        TITLE: '支持多样性设备',
         IMG_URL: imgList1,
       },
       {
@@ -207,7 +207,7 @@ export default {
       TITLE: 'openEuler社区活力',
       CONTENT: 'openEuler也是一个开源的操作系统技术平台，鼓励社区贡献、合作。',
       VIEW_DETAILS: '查看贡献详情',
-      LINK: 'https://datastat.openeuler.org/en/overview',
+      LINK: 'https://datastat.openeuler.org/zh/overview',
     },
   },
   HOME_INTRODUCE: {

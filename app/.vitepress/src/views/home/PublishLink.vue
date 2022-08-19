@@ -54,7 +54,6 @@ const i18n = useI18n();
 .publish-edition {
   display: grid;
   margin-top: var(--o-spacing-h2);
-  margin-top: 21px;
   grid-template-columns: repeat(4, minmax(82px, 1fr));
   column-gap: 0;
   row-gap: 0;
@@ -63,7 +62,7 @@ const i18n = useI18n();
     margin: 0px -1px -1px 0px;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--e-color-neutral11);
+    border: 1px solid var(--e-color-division1);
     background-color: var(--e-color-bg2);
     max-height: 120px;
     overflow: hidden;
