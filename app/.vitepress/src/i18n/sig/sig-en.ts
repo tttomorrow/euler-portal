@@ -62,15 +62,15 @@ export default {
     },
   },
   SIG_LIST: {
-    SIG: 'SIG',
     HOME_PAGE: 'Go to Gitee home page',
     MAIL: 'E-mail',
     IRC: 'IRC Channel',
     MANAGER: 'Administrators',
     NAME: 'SIG',
     GITEE_PAGE: 'Gitee',
-    REPOSITORY: '仓库名称',
+    REPOSITORY: 'Repos name',
     MAINTAINER: 'Maintainer',
+    SIG: 'SIG',
   },
   SIG_DESCRIPTION: {
     MEANING:
@@ -422,6 +422,9 @@ export default {
     NO_MEETINGS: 'Not available now',
     ORGANIZING_MEETINGS: 'SIG Schedule',
     MEMBERS: 'SIG Members',
+    MAINTAINER: '项目maintainer',
+    REPOSITORY_LIST: '仓库列表',
+    REPOSITORY_NAME: '仓库名称',
     CONTACT: 'Contact',
     MAIL_LIST: 'Mailing list',
     EXPAND: 'Expand All',
