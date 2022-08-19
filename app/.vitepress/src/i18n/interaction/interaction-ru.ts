@@ -5,6 +5,8 @@ export default {
   BLOG: 'Блог',
   TAG: 'Tagсито',
   NEWS: 'Новости',
+  BROWSE: 'просматривать',
+  TIMES: 'раза',
   NEWSDATALIST: newsdata.ru.NEWSLIST,
   BLOGDATALIST: blogdata.ru.BLOGLIST,
   SCREENDATALIST: blogdata.ru.SCREENBUTTON,

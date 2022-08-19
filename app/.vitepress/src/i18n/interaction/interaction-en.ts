@@ -5,6 +5,8 @@ export default {
   BLOG: 'Blog',
   TAG: 'Tag filter',
   NEWS: 'News',
+  BROWSE: 'Browse',
+  TIMES: 'times',
   NEWSDATALIST: newsdata.en.NEWSLIST,
   BLOGDATALIST: blogdata.en.BLOGLIST,
   SCREENDATALIST: blogdata.en.SCREENBUTTON,
