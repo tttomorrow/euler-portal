@@ -44,6 +44,7 @@ onMounted(() => {
         v-for="(item,index) in (sigList as any)"
         :key="index"
         data-aos="fade-zoom-in"
+        data-aos-once="true"
         class="sig-board-item"
       >
         <h2 @click="toSigDetail(item)">{{ item.group_name }}</h2>
@@ -94,21 +95,22 @@ onMounted(() => {
 }
 .sig-board {
   column-count: 2;
-  column-gap: var(--o-spacing-h1);
   max-width: 1504px;
   margin: 0 auto;
   @media (max-width: 780px) {
     column-count: 1;
-    column-gap: 0;
     padding: 0 var(--o-spacing-h5);
   }
   &-item {
     max-width: 630px;
-    box-shadow: var(--e-shadow1);
+    box-shadow: var(--e-shadow-l1);
     margin-bottom: var(--o-spacing-h1);
     break-inside: avoid;
     padding: var(--o-spacing-h2);
     background-color: var(--e-color-bg2);
+    &:hover {
+      box-shadow: var(--e-shadow-l2_hover);
+    }
     @media (max-width: 1080px) {
       width: 100%;
       padding: var(--o-spacing-h3) var(--o-spacing-h3) 0 var(--o-spacing-h3);
@@ -130,11 +132,19 @@ onMounted(() => {
       @media (max-width: 1080px) {
         margin-top: var(--o-spacing-h7);
       }
+      &-page {
+        a {
+          color: var(--e-color-kleinblue5);
+        }
+      }
       &-mail {
         word-break: normal;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        a {
+          color: var(--e-color-kleinblue5);
+        }
       }
       li {
         margin-top: var(--o-spacing-h7);
@@ -143,13 +153,14 @@ onMounted(() => {
           height: var(--o-line-height-h8);
           margin-right: var(--o-spacing-h8);
           vertical-align: middle;
+          position: relative;
+          bottom: 2px;
         }
       }
     }
     &-admin {
-      padding: 0 var(--o-spacing-h7);
       display: flex;
-      justify-content: start;
+      justify-content: left;
       @media (max-width: 780px) {
         flex-wrap: wrap;
       }

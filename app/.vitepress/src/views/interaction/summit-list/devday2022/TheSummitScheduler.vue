@@ -158,8 +158,8 @@ const changeTabItem = (event: any): void => {
       }
     }
     &-taber-active {
-      background-color: var(--e-color-brand1);
-      color: var(--e-color-text2);
+      background-color: var(--e-color-kleinblue5);
+      color: var(--e-color-white);
     }
   }
   &-body {
@@ -203,9 +203,9 @@ const changeTabItem = (event: any): void => {
             padding: var(--o-spacing-h4) 0;
             background-color: var(--e-color-bg2);
             color: var(--e-color-text1);
-            box-shadow: var(--e-shadow1);
+            box-shadow: var(--e-shadow-l1);
             &:hover {
-              box-shadow: var(--e-shadow2);
+              box-shadow: var(--e-shadow-l2_hover);
             }
             @media (max-width: 1080px) {
               width: 340px;

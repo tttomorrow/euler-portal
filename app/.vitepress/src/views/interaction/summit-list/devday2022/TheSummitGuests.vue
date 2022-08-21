@@ -54,6 +54,7 @@ onMounted(() => {
       v-for="item in lecturerList"
       :key="item.NAME"
       data-aos="fade-zoom-in"
+      data-aos-once="true"
       class="lecturer-list-item"
     >
       <slot name="img">

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { onMounted, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import { getSigList } from '@/api/api-sig';
@@ -8,6 +9,8 @@ import TheSigBoard from './TheSigBoard.vue';
 import TheSigLandscape from './TheSigLandscape.vue';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
+import moillustration from '@/assets/category/sig/sig-list/sigmo-bg.png';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 interface SIGLIST {
   group_name: string;
@@ -20,6 +23,11 @@ interface SIGLIST {
 
 const i18n = useI18n();
 const sigList = ref<SIGLIST[]>([]);
+
+const screenWidth = useWindowResize();
+const isMobile = computed(() => {
+  return screenWidth.value <= 768 ? true : false;
+});
 
 onMounted(() => {
   try {
@@ -35,9 +43,10 @@ onMounted(() => {
 <template>
   <BannerLevel2
     :background-image="banner"
-    :illustration="illustration"
+    :illustration="isMobile ? moillustration : illustration"
     title="SIG"
     :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
+    :background-text="isMobile ? 'SIG' : ''"
   />
   <div class="sig-ul">
     <ul>

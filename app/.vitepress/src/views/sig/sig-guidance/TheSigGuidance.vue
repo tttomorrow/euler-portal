@@ -20,13 +20,13 @@ const language = configData.lang;
 </script>
 
 <template>
+  <BannerLevel2
+    :background-image="banner"
+    background-text="SIG"
+    :title="i18n.sig.GUIDANCE_LIST.GUIDE.TITLE"
+    :illustration="illustration"
+  />
   <div class="application">
-    <BannerLevel2
-      :background-image="banner"
-      background-text="SIG"
-      :title="i18n.sig.GUIDANCE_LIST.GUIDE.TITLE"
-      :illustration="illustration"
-    />
     <div class="middle">
       <div
         v-for="(item, index) in i18n.sig.GUIDANCE_LIST.GUIDE.LINE_CONTENT"
@@ -47,7 +47,7 @@ const language = configData.lang;
               <span>{{ item.LEFT.LEFT_CIRCLE }}</span>
             </div>
             <div>
-              <span v-if="item.LEFT.LEFT_DESC">
+              <span v-if="item.LEFT.LEFT_DESC" style="font-size: 22px">
                 {{ item.LEFT.LEFT_DESC }}
               </span>
               <span>{{ item.LEFT.LEFT_INFO }}</span>
@@ -69,11 +69,11 @@ const language = configData.lang;
               <span>{{ item.RIGHT.RIGHT_CIRCLE }}</span>
             </div>
             <div>
-              <span v-if="item.RIGHT.RIGHT_DESC">
+              <span v-if="item.RIGHT.RIGHT_DESC" style="font-size: 22px">
                 {{ item.RIGHT.RIGHT_DESC }}
               </span>
               <!-- eslint-disable -->
-              <span v-html="item.RIGHT.RIGHT_INFO"></span>
+              <span v-html="item.RIGHT.RIGHT_INFO" class="right-info"></span>
             </div>
           </div>
         </div>
@@ -162,8 +162,8 @@ const language = configData.lang;
         }
       }
       &-bgdconfig {
-        width: 216px;
-        background-color: var(--e-color-brand2);
+        width: 240px;
+        background-color: var(--e-color-kleinblue8);
         @media (max-width: 1280px) {
           width: 180px;
         }
@@ -175,7 +175,7 @@ const language = configData.lang;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          height: 90px;
+          height: 100px;
           object-fit: contain;
           @media (max-width: 1080px) {
             height: 80px;
@@ -188,6 +188,11 @@ const language = configData.lang;
       &-infoconfig {
         max-width: 456px;
         background-color: var(--e-color-bg2);
+        :deep(.right-info) {
+          a {
+            color: var(--e-color-kleinblue5);
+          }
+        }
         @media (max-width: 1280px) {
           max-width: 350px;
         }
@@ -203,16 +208,17 @@ const language = configData.lang;
           position: relative;
           bottom: var(--o-spacing-h4);
           @media (max-width: 780px) {
-            margin: 0 var(--o-spacing-h10) 0 var(--o-spacing-h3);
+            margin: 0 var(--o-spacing-h10) var(--o-spacing-h10)
+              var(--o-spacing-h3);
             line-height: var(--o-line-height-text);
           }
         }
         &-circle {
           height: 78px;
           width: 78px;
-          border: 4px solid var(--e-color-brand1);
+          border: 4px solid var(--e-color-white);
           border-radius: 50%;
-          background-color: var(--e-color-brand1);
+          background-color: var(--e-color-kleinblue5);
           position: relative;
           top: 50%;
           transform: translate(-50%, -50%);
@@ -226,12 +232,14 @@ const language = configData.lang;
             color: var(--e-color-text2);
             line-height: var(--o-line-height-h5);
             position: relative;
-            right: 53px;
-            top: var(--o-spacing-h5);
+            top: 50%;
+            right: 43%;
+            transform: translate(-50%, -50%);
+            font-weight: 500;
             @media (max-width: 780px) {
               font-size: var(--o-font-size-h7);
-              right: var(--o-spacing-h4);
-              top: var(--o-spacing-h6);
+              right: 14%;
+              transform: translate(-50%, -50%);
             }
           }
         }
@@ -251,7 +259,7 @@ const language = configData.lang;
       }
       .line-second {
         position: absolute;
-        top: 550px;
+        top: 560px;
         left: 34%;
         height: 70px;
         width: 300px;
@@ -275,7 +283,7 @@ const language = configData.lang;
       }
       .line-forth {
         position: absolute;
-        top: 800px;
+        top: 820px;
         left: 34%;
         height: 70px;
         width: 300px;
@@ -287,7 +295,7 @@ const language = configData.lang;
       }
       .line-fifth {
         position: absolute;
-        top: 900px;
+        top: 905px;
         left: 48%;
         height: 50px;
         width: 300px;

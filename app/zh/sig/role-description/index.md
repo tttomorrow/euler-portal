@@ -43,20 +43,19 @@ import illustration from '@/assets/illustrations/search.png';
   />
 </ClientOnly>
 
-<div class='markdown'>
+<div :class="['markdown', isMobile ? 'markdown-mo' : '']">
 
-## 社区成员
+<div class="top">社区成员</div>
 
 本文简要描述了 openEuler 社区中贡献者角色的各种职责。大部分角色的职责限于这些 SIG(Special Interest Group)内：
 
-<div class="duty-table" v-show="!isMobile">
-  <OTable :data="tableData">
-    <OTableColumn prop="SigName" label="SIG名称"/>
-    <OTableColumn prop="Gitee" label="Gitee主页"/>
-    <OTableColumn prop="Email" label="邮件"/>
-    <OTableColumn prop="IRC" label="IRC频道"/>
-  </OTable>
-</div>
+<OTable :data="tableData" v-show="!isMobile" class="duty-table">
+  <OTableColumn prop="SigName" label="SIG名称"/>
+  <OTableColumn prop="Gitee" label="Gitee主页"/>
+  <OTableColumn prop="Email" label="邮件"/>
+  <OTableColumn prop="IRC" label="IRC频道"/>
+</OTable>
+
 <div class="mo-card" v-show="isMobile">
   <div
     v-for="(item,index) in tableData"
@@ -191,9 +190,31 @@ import illustration from '@/assets/illustrations/search.png';
 </div>
 
 <style scoped lang="scss">
+  .markdown {
+    margin-top: var(--o-spacing-h1);
+  }
+  .markdown-mo {
+    margin-top: var(--o-spacing-h2);
+    padding: var(--o-spacing-h5);
+  }
+  .top {
+    font-size: var(--o-font-size-h7);
+    font-weight: 500;
+    color: var(--e-color-text1);
+    line-height: var(--o-line-height-h7);
+  }
   .duty-table {
     margin-top: var(--o-spacing-h4);
     margin-bottom: var(--o-spacing-h5);
+    :deep(.el-table__header) {
+      border: none;
+      tr {
+        border: none;
+      }
+    }
+    :deep(.el-table__body) {
+      border: none;
+    }
   }
   .link {
     color: var(--e-color-brand1);

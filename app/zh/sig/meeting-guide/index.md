@@ -3,9 +3,16 @@ title: '会议指南'
 ---
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+  const screenWidth = useWindowResize();
+  const isMobile = computed(() => {
+    return screenWidth.value <= 768 ? true : false;
+  });
 </script>
 
 <ClientOnly>
@@ -17,7 +24,7 @@ import illustration from '@/assets/illustrations/search.png';
   />
 </ClientOnly>
 
-<div class='markdown'>
+<div :class="['markdown', isMobile ? 'markdown-mo' : '']">
 
 # openEuler Developer Day 2022 SIG 组版本工作会议指南
 
@@ -90,6 +97,9 @@ SIG 版本规划工作会议遵循开源、开放原则，议题收集、技术�
 </div>
 
 <style scoped>
+  .markdown-mo {
+    padding: var(--o-spacing-h5);
+  }
   .link {
     word-break: break-all;
     color: var(--e-color-brand1);
