@@ -5,7 +5,7 @@ import MiniCards from '../components/MiniCards.vue';
 import MiniDescription from '../components/MiniDescription.vue';
 import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
-import BannerLevel2 from '@/components/BannerLevel2.vue';
+import BannerMinisite from '@/components/BannerMinisite.vue';
 import AppAnchor from '@/components/AppAnchor.vue';
 
 // TODO:该页面是视频先用插画代替
@@ -16,7 +16,7 @@ const i18n = useI18n();
 </script>
 <template>
   <div class="atune-wraper">
-    <BannerLevel2
+    <BannerMinisite
       class="banner"
       :title="i18n.atune.ATUNE_BANNER_TEXT[0]"
       :subtitle="i18n.atune.ATUNE_BANNER_TEXT[1]"

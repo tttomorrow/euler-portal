@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { computed, CSSProperties, useSlots } from 'vue';
-
-const slots = useSlots();
+import { computed, CSSProperties } from 'vue';
 
 const props = defineProps({
   backgroundImage: {
@@ -44,19 +42,14 @@ const rootStyle = computed(() => {
 </script>
 
 <template>
-  <div class="banner-level2" :style="rootStyle">
+  <div class="banner-minisite" :style="rootStyle">
     <div class="wrap">
       <div class="banner-text">
         <p v-if="backgroundText" class="banner-text-bg">
           {{ backgroundText }}
         </p>
         <h1 v-if="title" class="banner-title">{{ title }}</h1>
-        <p v-if="subtitle && !slots.default" class="banner-subtitle">
-          {{ subtitle }}
-        </p>
-        <div class="banner-operation" v-if="slots.default">
-          <slot></slot>
-        </div>
+        <p v-if="subtitle" class="banner-subtitle">{{ subtitle }}</p>
       </div>
       <div v-if="illustration" class="banner-illustration">
         <img :src="illustration" />
@@ -66,7 +59,7 @@ const rootStyle = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-.banner-level2 {
+.banner-minisite {
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -154,28 +147,13 @@ const rootStyle = computed(() => {
           line-height: var(--o-line-height-tip);
         }
       }
-
-      .banner-operation {
-        margin-top: var(--o-spacing-h4);
-      }
     }
     .banner-illustration {
       margin-left: var(--o-spacing-h);
-      position: absolute;
-      bottom: 0;
-      right: 44px;
       display: flex;
       flex-direction: column-reverse;
+      justify-content: center;
       object-fit: fill;
-
-      @media screen and (max-width: 1080px) {
-        bottom: 50%;
-        transform: translateY(50%);
-      }
-
-      @media screen and (max-width: 768px) {
-        right: 24px;
-      }
 
       img {
         max-height: 230px;
