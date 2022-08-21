@@ -70,65 +70,126 @@ const goNext = () => {
 <template>
   <BannerLevel2
     :background-image="BannerBG"
-    background-text="CONNECT"
+    background-text="INTERRACTION"
     :title="i18n.live.LIVETITLE"
     :illustration="BannerIllustration"
   />
   <div class="live">
     <div class="live-top-title">{{ i18n.live.REPLAYER }}</div>
     <div class="live-list">
-      <OCard
+      <OContainer
         v-for="live in showLiveList"
         :key="live.PHOTOPATH"
+        :level-index="2"
         class="live-list-item"
-        :body-style="{ padding: '0px' }"
       >
-        <div class="live-detail">
-          <div
-            class="live-background"
-            :class="commonStore.theme"
-            :style="{ backgroundImage: `url(${headGround})` }"
-          >
-            <img :src="live.PHOTOPATH" class="live-background-img" />
-          </div>
-          <div class="live-detail-right">
-            <div>
-              <h5 class="live-detail-title">
-                {{ live.LIVETITLE }}
-              </h5>
-              <div class="live-desc">
-                <span>
-                  <OIcon class="smail-icon">
-                    <IconUser />
-                  </OIcon>
-                  <span class="live-desc-text">
-                    {{ live.LIVETEACHER.trim() }}
-                  </span>
-                </span>
-                <span>
-                  <OIcon class="smail-icon">
-                    <IconTime />
-                  </OIcon>
-                  <span class="live-desc-text">{{ live.LIVETIME.trim() }}</span>
-                </span>
-              </div>
+        <OCard class="live-list-item" :body-style="{ padding: '0px' }">
+          <div class="live-detail">
+            <div
+              class="live-background"
+              :class="commonStore.theme"
+              :style="{ backgroundImage: `url(${headGround})` }"
+            >
+              <img :src="live.PHOTOPATH" class="live-background-img" />
             </div>
-            <p>
-              <OButton
-                animation
-                size="mini"
-                class="live-button"
-                @click="totoBLink(live.FORMERLYLINK)"
-                >{{ i18n.live.REPLAYVIEW }}
-
-                <template #suffixIcon>
-                  <OIcon><IconRight /></OIcon>
-                </template>
-              </OButton>
-            </p>
+            <div class="live-detail-right">
+              <div>
+                <h5 class="live-detail-title">
+                  {{ live.LIVETITLE }}
+                </h5>
+                <div class="live-desc">
+                  <span>
+                    <OIcon class="smail-icon">
+                      <IconUser />
+                    </OIcon>
+                    <span class="live-desc-text">
+                      {{ live.LIVETEACHER.trim() }}
+                    </span>
+                  </span>
+                  <span>
+                    <OIcon class="smail-icon">
+                      <IconTime />
+                    </OIcon>
+                    <span class="live-desc-text">{{
+                      live.LIVETIME.trim()
+                    }}</span>
+                  </span>
+                </div>
+              </div>
+              <p>
+                <OButton
+                  animation
+                  size="mini"
+                  class="live-button"
+                  :style="{
+                    color:
+                      commonStore.theme === 'dark'
+                        ? 'var(--e-color-white)'
+                        : '',
+                  }"
+                  @click="totoBLink(live.FORMERLYLINK)"
+                  >{{ i18n.live.REPLAYVIEW }}
+                  <template #suffixIcon>
+                    <OIcon class="live-button-icon"><IconRight /></OIcon>
+                  </template>
+                </OButton>
+              </p>
+            </div>
           </div>
-        </div>
-      </OCard>
+        </OCard>
+      </OContainer>
+      <!-- <OCard
+          class="live-list-item"
+          :body-style="{ padding: '0px' }"
+          v-for="live in showLiveList"
+          :key="live.PHOTOPATH"
+        >
+          <div class="live-detail">
+            <div
+              class="live-background"
+              :class="commonStore.theme"
+              :style="{ backgroundImage: `url(${headGround})` }"
+            >
+              <img :src="live.PHOTOPATH" class="live-background-img" />
+            </div>
+            <div class="live-detail-right">
+              <div>
+                <h5 class="live-detail-title">
+                  {{ live.LIVETITLE }}
+                </h5>
+                <div class="live-desc">
+                  <span>
+                    <OIcon class="smail-icon">
+                      <IconUser />
+                    </OIcon>
+                    <span class="live-desc-text">
+                      {{ live.LIVETEACHER.trim() }}
+                    </span>
+                  </span>
+                  <span>
+                    <OIcon class="smail-icon">
+                      <IconTime />
+                    </OIcon>
+                    <span class="live-desc-text">{{ live.LIVETIME.trim() }}</span>
+                  </span>
+                </div>
+              </div>
+              <p>
+                <OButton
+                  animation
+                  size="mini"
+                  class="live-button"
+                  :style="{ color: commonStore.theme === 'dark' ? 'var(--e-color-white)' : '' }"
+                  @click="totoBLink(live.FORMERLYLINK)"
+                  >{{ i18n.live.REPLAYVIEW }}
+                  <template #suffixIcon>
+                    <OIcon class="live-button-icon"><IconRight /></OIcon>
+                  </template>
+                </OButton>
+              </p>
+            </div>
+          </div>
+        </OCard> -->
     </div>
     <div class="live-pagination">
       <OPagination
@@ -192,6 +253,7 @@ const goNext = () => {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: var(--o-spacing-h4);
     @media screen and (max-width: 767px) {
+      margin: var(--o-spacing-h5) auto;
       padding: 0 var(--o-spacing-h5);
     }
     &-item {
@@ -199,9 +261,9 @@ const goNext = () => {
       flex: 1;
       padding: 0;
       max-height: 260px;
-      &:hover {
-        box-shadow: var(--o-shadow-base_hover);
-      }
+      // &:hover {
+      //   box-shadow: var(--o-shadow-base_hover);
+      // }
     }
   }
   &-detail {
@@ -286,7 +348,7 @@ const goNext = () => {
       margin-right: var(--o-spacing-h3);
       line-height: var(--o-line-height-tip);
       font-size: var(--o-font-size-text);
-      color: var(--e-color-text4);
+      color: var(--e-color-text1);
       overflow: hidden;
       text-overflow: ellipsis;
       @media screen and (max-width: 767px) {
@@ -297,13 +359,7 @@ const goNext = () => {
   }
   &-button {
     &-icon {
-      margin-left: var(--o-spacing-h8);
-      width: var(--o-font-size-tip);
-      height: var(--o-font-size-tip);
-      @media screen and (max-width: 767px) {
-        width: var(--o-font-size-tip);
-        height: var(--o-font-size-tip);
-      }
+      color: var(--e-color-brand1);
     }
   }
   &-pagination {
