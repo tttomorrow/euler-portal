@@ -48,7 +48,7 @@ onMounted(async () => {
           animation
           type="text"
           class="community-detail"
-          @click="handleGo(i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS)"
+          @click="handleGo(i18n.home.COMMUNITY_ACTIVITY.CARD.LINK)"
         >
           {{ i18n.home.COMMUNITY_ACTIVITY.BUTTON }}
           <template #suffixIcon>
@@ -173,6 +173,7 @@ onMounted(async () => {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
       margin-top: var(--o-spacing-h2);
+      margin-bottom: var(--o-spacing-h5);
     }
   }
 

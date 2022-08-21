@@ -201,7 +201,6 @@ const allHighLight = (val: any) => {
           <div class="o-screen-box-drawer-content-options">
             <OTag
               class="o-screen-box-drawer-content-options-option"
-              
               :class="{ active: allHighLight(item) }"
               type="primary"
               checkable

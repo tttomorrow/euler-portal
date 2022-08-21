@@ -232,17 +232,17 @@ const sizeChange = (val: number) => {
     :illustration="BannerImg2"
   />
   <div class="blog">
-    <div class="notfound" v-if="!isShowData">
+    <div v-if="!isShowData" class="notfound">
       <NotFound />
     </div>
-    <div class="blog-tag2" v-if="isShowData">
+    <div v-if="isShowData" class="blog-tag2">
       <MobileFilter
         :data="tagsDataToChild"
         :single="true"
         @filter="listfilter"
       />
     </div>
-    <div class="blog-list" v-if="isShowData">
+    <div v-if="isShowData" class="blog-list">
       <OCard
         v-for="item in blogCardData"
         :key="item"
@@ -285,7 +285,7 @@ const sizeChange = (val: number) => {
         </div>
       </OCard>
     </div>
-    <div class="blog-pagination" v-if="isShowData">
+    <div v-if="isShowData" class="blog-pagination">
       <OPagination
         v-model:currentPage="paginationData.currentpage"
         v-model:page-size="paginationData.pagesize"
@@ -473,17 +473,17 @@ const sizeChange = (val: number) => {
     line-height: var(--o-line-height-tip);
     height: auto;
     word-break: break-all;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        word-break: break-all;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
   .blog-list-item-title {
     margin-bottom: var(--o-spacing-h5);

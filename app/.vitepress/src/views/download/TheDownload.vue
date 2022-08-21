@@ -344,7 +344,7 @@ onMounted(() => {
           <h5 class="download-name">
             {{ download.NAME }}
           </h5>
-          <div class="download-desc">
+          <div class="download-desc" :title="download.DESC">
             {{ download.DESC }}
           </div>
           <div :class="urlStyle">
@@ -696,12 +696,13 @@ onMounted(() => {
     padding: var(--o-spacing-h10) var(--o-spacing-h5);
     line-height: var(--o-line-height-h8);
     font-size: var(--o-font-size-text);
+    color: #ffffff;
 
     &-icon {
       margin-left: var(--o-spacing-h8);
       width: var(--o-font-size-tip);
       height: var(--o-font-size-tip);
-      color: var(--e-color-text2);
+      color: #ffffff;
     }
   }
 }

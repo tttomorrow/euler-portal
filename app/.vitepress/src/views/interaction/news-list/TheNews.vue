@@ -130,10 +130,10 @@ const sizeChange = (val: number) => {
     :illustration="BannerImg2"
   />
   <div class="news">
-    <div class="notfound" v-if="!isShowData">
+    <div v-if="!isShowData" class="notfound">
       <NotFound />
     </div>
-    <div class="news-list" v-if="isShowData">
+    <div v-if="isShowData" class="news-list">
       <OCard v-for="item in newsCardData" :key="item" class="news-list-item">
         <div class="news-img" @click="toNewsContent(item.path)">
           <img :src="item.banner" :alt="item.banner" />
@@ -153,7 +153,7 @@ const sizeChange = (val: number) => {
         </div>
       </OCard>
     </div>
-    <div class="news-pagination" v-if="isShowData">
+    <div v-if="isShowData" class="news-pagination">
       <OPagination
         v-model:currentPage="paginationData.currentpage"
         v-model:page-size="paginationData.pagesize"

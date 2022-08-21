@@ -215,8 +215,8 @@ const menuActiveFn = (item: any) => {
           </div>
           <transition name="menu">
             <div
-              class="mobile-menu-content"
               v-if="mobileChildMenu.length > 0"
+              class="mobile-menu-content"
               :class="{ active: mobileChildMenu.length > 0 }"
             >
               <div class="mobile-menu-list">

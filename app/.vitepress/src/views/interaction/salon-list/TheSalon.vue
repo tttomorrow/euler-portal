@@ -326,7 +326,7 @@ onMounted(async () => {
         </div>
       </div>
       <div v-else>
-        <h3 class="salon-title">{{ salonData.DETAIL_REVIEW }}</h3>
+        <h3 class="salon-title review-title">{{ salonData.DETAIL_REVIEW }}</h3>
         <OTimeline
           v-model="date"
           class="salon-time"
@@ -418,7 +418,7 @@ onMounted(async () => {
         width: 100%;
         display: flex;
         flex-flow: row;
-        height: 100%;
+
         @media (max-width: 768px) {
           flex-flow: column;
         }
@@ -483,7 +483,7 @@ onMounted(async () => {
         &-desc {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--e-color-text4);
+          color: var(--e-color-text);
           margin-top: var(--o-spacing-h5);
           overflow: hidden;
           text-overflow: ellipsis;
@@ -492,6 +492,7 @@ onMounted(async () => {
           -webkit-line-clamp: 4;
           word-break: break-all;
           @media (max-width: 768px) {
+            color: var(--e-color-text4);
             margin-top: var(--o-spacing-h9);
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
@@ -751,6 +752,7 @@ onMounted(async () => {
         color: var(--e-color-text1);
         overflow: hidden;
         text-overflow: ellipsis;
+        height: 52px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
@@ -865,10 +867,10 @@ onMounted(async () => {
   }
   &-content {
     max-width: 1504px;
-    margin: var(--o-spacing-h1) auto;
+    margin: var(--o-spacing-h1) auto 0;
     padding: 0 var(--o-spacing-h2);
     @media (max-width: 1080px) {
-      margin: var(--o-spacing-h2) auto;
+      margin: var(--o-spacing-h2) auto 0;
       padding: 0 var(--o-spacing-h5);
     }
   }
