@@ -28,63 +28,67 @@ const handleGo = (path: string) => {
 <template>
   <div class="carousel">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
-    <div class="carousel-pc">
-      <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
-        <div class="carousel-pc-content">
-          <div class="carousel-pc-list">
-            <div
-              v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-              :key="item.TITLE"
-              :class="['carousel-pc-title', active === index ? 'active' : '']"
-              @click="handleChangeActive(index)"
+    <OContainer :level-index="2">
+      <div class="carousel-pc">
+        <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
+          <div class="carousel-pc-content">
+            <div class="carousel-pc-list">
+              <div
+                v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
+                :key="item.TITLE"
+                :class="['carousel-pc-title', active === index ? 'active' : '']"
+                @click="handleChangeActive(index)"
+              >
+                {{ item.TITLE }}
+              </div>
+            </div>
+            <div class="carousel-pc-img">
+              <img :src="i18n.home.IMG_CAROUSE.LIST[active]?.IMG_URL" />
+            </div>
+          </div>
+          <div class="carousel-pc-button">
+            <OButton
+              animation
+              type="text"
+              class="carousel-pc-button-item"
+              @click="handleGo(i18n.home.IMG_CAROUSE.TRY_URL)"
             >
-              {{ item.TITLE }}
-            </div>
+              <template #suffixIcon>
+                <IconArrowRight
+                  class="carousel-pc-button-icon"
+                ></IconArrowRight>
+              </template>
+              {{ i18n.home.IMG_CAROUSE.BUTTON }}
+            </OButton>
           </div>
-          <div class="carousel-pc-img">
-            <img :src="i18n.home.IMG_CAROUSE.LIST[active]?.IMG_URL" />
-          </div>
-        </div>
-        <div class="carousel-pc-button">
-          <OButton
-            animation
-            type="text"
-            class="carousel-pc-button-item"
-            @click="handleGo(i18n.home.IMG_CAROUSE.TRY_URL)"
-          >
-            <template #suffixIcon>
-              <IconArrowRight class="carousel-pc-button-icon"></IconArrowRight>
-            </template>
-            {{ i18n.home.IMG_CAROUSE.BUTTON }}
-          </OButton>
-        </div>
-      </OCard>
-    </div>
+        </OCard>
+      </div>
 
-    <OCollapse
-      v-model="activeMobile"
-      class="carousel-mobile"
-      accordion
-      @change="handleChangeActiveMobile"
-    >
-      <OCollapseItem
-        v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-        :key="item.TITLE"
-        :name="index"
-        class="carousel-mobile-card"
+      <OCollapse
+        v-model="activeMobile"
+        class="carousel-mobile"
+        accordion
+        @change="handleChangeActiveMobile"
       >
-        <template #title>
-          <div class="carousel-mobile-content">
-            <div class="carousel-mobile-title">
-              {{ item.TITLE }}
+        <OCollapseItem
+          v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
+          :key="item.TITLE"
+          :name="index"
+          class="carousel-mobile-card"
+        >
+          <template #title>
+            <div class="carousel-mobile-content">
+              <div class="carousel-mobile-title">
+                {{ item.TITLE }}
+              </div>
             </div>
+          </template>
+          <div class="carousel-mobile-img">
+            <img :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL" />
           </div>
-        </template>
-        <div class="carousel-mobile-img">
-          <img :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL" />
-        </div>
-      </OCollapseItem>
-    </OCollapse>
+        </OCollapseItem>
+      </OCollapse>
+    </OContainer>
   </div>
 </template>
 

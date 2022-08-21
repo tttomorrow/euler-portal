@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useI18n } from '@/i18n';
+import AOS from 'aos';
 import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
 import UserCase from './UserCase.vue';
@@ -44,6 +45,11 @@ const caseData = ref(undefined);
 const newsData = ref(undefined);
 const blogData = ref(undefined);
 onMounted(async () => {
+  AOS.init({
+    offset: 200,
+    duration: 800,
+    delay: 100,
+  });
   const paramsCase = {
     category: 'showcase',
     lang: lang.value,
@@ -94,7 +100,7 @@ onMounted(async () => {
 <template>
   <HomeBanner />
   <div class="wraper">
-    <HomeNav />
+    <OContainer :level-index="2"><HomeNav /></OContainer>
     <HomeCarousel />
     <UserCase v-if="caseData" :case-data="caseData" />
     <CommunityActivity />
@@ -109,6 +115,7 @@ onMounted(async () => {
         <AppCalendar
           v-if="calendarData.length > 1"
           :table-data="calendarData"
+          data-aos="fade-zoom-in"
         />
       </div>
     </el-config-provider>

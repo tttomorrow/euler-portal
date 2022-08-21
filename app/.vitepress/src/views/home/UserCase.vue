@@ -58,23 +58,63 @@ onMounted(() => {
 <template>
   <div class="case-main">
     <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
-    <OCollapse
-      v-model="activeMobile"
-      accordion
-      class="case-mobile"
-      @change="handleChangeActiveMobile"
-    >
-      <OCollapseItem
-        v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
-        :key="item.TYPE"
-        class="case-mobile-list"
-        :name="index"
+    <OContainer data-aos="fade-down">
+      <OCollapse
+        v-model="activeMobile"
+        accordion
+        class="case-mobile"
+        @change="handleChangeActiveMobile"
       >
-        <template #title>
-          <div class="case-mobile-card-content">
-            <div class="case-mobile-title">
+        <OCollapseItem
+          v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
+          :key="item.TYPE"
+          class="case-mobile-list"
+          :name="index"
+        >
+          <template #title>
+            <div class="case-mobile-card-content">
+              <div class="case-mobile-title">
+                <img
+                  class="case-mobile-img"
+                  :src="
+                    commonStore.theme === 'dark'
+                      ? index === activeMobile
+                        ? item.ACTIVE_DARK_URL
+                        : item.URL_DARK
+                      : index === activeMobile
+                      ? item.ACTIVE_URL
+                      : item.URL
+                  "
+                />
+                <div class="case-mobile-word">
+                  {{ item.TYPE }}
+                </div>
+              </div>
+            </div>
+          </template>
+          <div class="user-mobile">
+            <div
+              v-for="user in caseData && caseData[item.TYPE]"
+              :key="user.company"
+              class="user-card"
+            >
+              <div class="user-title">{{ user.company }}</div>
+              <div class="user-word">{{ user.summary }}</div>
+            </div>
+          </div>
+        </OCollapseItem>
+      </OCollapse>
+      <div class="case">
+        <OCard class="case-card">
+          <div class="case-tab">
+            <div
+              v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
+              :key="item.TYPE"
+              class="case-tab-item"
+              @click="handleChangeActive(index)"
+            >
               <img
-                class="case-mobile-img"
+                class="case-img"
                 :src="
                   commonStore.theme === 'dark'
                     ? index === activeMobile
@@ -85,77 +125,39 @@ onMounted(() => {
                     : item.URL
                 "
               />
-              <div class="case-mobile-word">
+              <div :class="['case-word', active === index ? 'active' : '']">
                 {{ item.TYPE }}
               </div>
             </div>
           </div>
-        </template>
-        <div class="user-mobile">
-          <div
-            v-for="user in caseData && caseData[item.TYPE]"
-            :key="user.company"
-            class="user-card"
-          >
-            <div class="user-title">{{ user.company }}</div>
-            <div class="user-word">{{ user.summary }}</div>
+          <div class="case-user">
+            <a
+              v-for="item2 in caseData &&
+              caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
+              :key="item2.summary"
+              class="user-card"
+              @click="handleGo(item2.path)"
+            >
+              <div class="user-title">{{ item2.company }}</div>
+              <div class="user-word">{{ item2.summary }}</div>
+            </a>
           </div>
-        </div>
-      </OCollapseItem>
-    </OCollapse>
-    <div class="case">
-      <OCard class="case-card">
-        <div class="case-tab">
-          <div
-            v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
-            :key="item.TYPE"
-            class="case-tab-item"
-            @click="handleChangeActive(index)"
-          >
-            <img
-              class="case-img"
-              :src="
-                commonStore.theme === 'dark'
-                  ? index === activeMobile
-                    ? item.ACTIVE_DARK_URL
-                    : item.URL_DARK
-                  : index === activeMobile
-                  ? item.ACTIVE_URL
-                  : item.URL
-              "
-            />
-            <div :class="['case-word', active === index ? 'active' : '']">
-              {{ item.TYPE }}
-            </div>
+          <div class="case-more">
+            <OButton
+              animation
+              type="text"
+              class="case-more-item"
+              @click="handleGo(i18n.home.USER_CASE.VIEW_MORE_LINK)"
+            >
+              {{ i18n.home.IMG_CAROUSE.BUTTON }}
+              <template #suffixIcon>
+                <IconArrowRight class="case-more-icon"></IconArrowRight>
+              </template>
+            </OButton>
           </div>
-        </div>
-        <div class="case-user">
-          <a
-            v-for="item2 in caseData &&
-            caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
-            :key="item2.summary"
-            class="user-card"
-            @click="handleGo(item2.path)"
-          >
-            <div class="user-title">{{ item2.company }}</div>
-            <div class="user-word">{{ item2.summary }}</div>
-          </a>
-        </div>
-        <div class="case-more">
-          <OButton
-            animation
-            type="text"
-            class="case-more-item"
-            @click="handleGo(i18n.home.USER_CASE.VIEW_MORE_LINK)"
-          >
-            {{ i18n.home.IMG_CAROUSE.BUTTON }}
-            <template #suffixIcon>
-              <IconArrowRight class="case-more-icon"></IconArrowRight>
-            </template>
-          </OButton>
-        </div>
-      </OCard>
-    </div>
+        </OCard>
+      </div>
+    </OContainer>
   </div>
 </template>
 

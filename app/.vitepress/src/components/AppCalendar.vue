@@ -26,7 +26,7 @@ const props = defineProps({
   },
 });
 
-let currentMeet = reactive<TableData>({
+const currentMeet = reactive<TableData>({
   date: '',
   timeData: [
     {
@@ -102,7 +102,7 @@ function changeTab(tab: TabsPaneContext) {
   activeIndex.value = index;
   try {
     // 0-全部 1-会议 其他-活动
-    if (index === 0) {
+    if ((index === 0 && currentMeet.start_date) || currentMeet.date) {
       renderData.value.timeData = currentMeet.timeData;
     } else if (index === 1) {
       renderData.value.timeData = currentMeet.timeData.filter(
@@ -135,8 +135,7 @@ function meetClick(day: string) {
         props.tableData[i].start_date === day
       ) {
         // 深拷贝
-        currentMeet = JSON.parse(JSON.stringify(props.tableData[i]));
-        renderData.value = props.tableData[i];
+        renderData.value = JSON.parse(JSON.stringify(props.tableData[i]));
         // 只有一个会议默认展开
         if (props.tableData[i].timeData.length === 1) {
           activeName.value = '0';
@@ -507,7 +506,7 @@ const watchData = watch(
 .main-body {
   display: flex;
   :deep(.el-calendar) {
-    --el-calendar-border: 1px solid var(--e-color-border1);
+    --el-calendar-border: 1px solid var(--e-color-border2);
     background-color: var(--e-color-bg1);
     .el-collapse-item__content {
       padding: 0;

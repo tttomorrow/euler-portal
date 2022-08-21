@@ -24,24 +24,22 @@ const imgUrlHover = computed(
 </script>
 
 <template>
-  <div class="nav-main">
-    <div class="home-nav">
-      <div
-        v-for="item in i18n.home.HOME_NAV"
-        :key="item.LINK"
-        class="nav-item"
-        @click="handleGo(item.LINK)"
-      >
-        <div class="nav-icon">
-          <img :src="imgUrl(item)" alt="" class="nav-item-icon" />
-          <img :src="imgUrlHover(item)" alt="" class="nav-item-icon-hover" />
-        </div>
-        <div class="nav-text">
-          <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">
-            {{ item.TITLE }}
-          </h4>
-          <p class="nav-descriptive">{{ item.DSSCRIPTIVE }}</p>
-        </div>
+  <div class="home-nav" data-aos="fade-up">
+    <div
+      v-for="item in i18n.home.HOME_NAV"
+      :key="item.LINK"
+      class="nav-item"
+      @click="handleGo(item.LINK)"
+    >
+      <div class="nav-icon">
+        <img :src="imgUrl(item)" alt="" class="nav-item-icon" />
+        <img :src="imgUrlHover(item)" alt="" class="nav-item-icon-hover" />
+      </div>
+      <div class="nav-text">
+        <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">
+          {{ item.TITLE }}
+        </h4>
+        <p class="nav-descriptive">{{ item.DSSCRIPTIVE }}</p>
       </div>
     </div>
   </div>
