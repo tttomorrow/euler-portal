@@ -180,6 +180,7 @@ h3 {
     border-top: none;
     display: block;
   }
+
   &-list {
     margin-top: var(--o-spacing-h4);
     @media (max-width: 768px) {
@@ -213,7 +214,7 @@ h3 {
     color: var(--e-color-text1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
-      font-weight: 300;
+      font-weight: 400;
       line-height: var(--o-line-height-text);
     }
   }
@@ -255,7 +256,6 @@ h3 {
     height: 100%;
     background: var(--e-color-bg1);
     border: 1px solid rgba(0, 0, 0, 0);
-    border-left: 2px solid var(--e-color-brand1);
 
     @media (max-width: 1100px) {
       background: var(--e-color-bg2);
@@ -308,6 +308,16 @@ h3 {
   display: block;
   @media (max-width: 1100px) {
     display: none;
+  }
+
+  &-main {
+    :deep(.el-collapse) {
+      border: none;
+    }
+
+    :deep(.el-collapse-item__header) {
+      border-left: 2px solid var(--e-color-brand1);
+    }
   }
 
   &-more {
