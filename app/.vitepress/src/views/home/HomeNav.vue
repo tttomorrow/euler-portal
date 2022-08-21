@@ -66,7 +66,7 @@ const imgUrlHover = computed(
     display: flex;
 
     align-items: center;
-    border-left: 1px solid var(--e-color-neutral11);
+    border-left: 1px solid var(--e-color-division1);
     .nav-item-icon-hover {
       display: none !important;
     }
@@ -138,7 +138,7 @@ const imgUrlHover = computed(
       border: none;
       flex-direction: column;
       .nav-icon {
-        width: 30px;
+        width: 40px;
       }
       .nav-text {
         margin: 0;

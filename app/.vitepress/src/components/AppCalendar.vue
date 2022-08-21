@@ -452,9 +452,11 @@ const watchData = watch(
 .month-date {
   color: var(--e-color-text1);
   padding: 0 var(--o-spacing-h8);
-  font-size: var(--o-font-size-tip);
 }
 @media screen and (max-width: 768px) {
+  .month-date {
+    font-size: var(--o-font-size-tip);
+  }
   .left-title {
     display: none;
   }
@@ -505,6 +507,7 @@ const watchData = watch(
 .main-body {
   display: flex;
   :deep(.el-calendar) {
+    --el-calendar-border: 1px solid var(--e-color-border1);
     background-color: var(--e-color-bg1);
     .el-collapse-item__content {
       padding: 0;
@@ -657,6 +660,9 @@ const watchData = watch(
           justify-content: center;
           padding: 0;
           height: 66px;
+          &:hover {
+            background-color: var(--e-color-bg1);
+          }
           .out-box {
             display: flex;
             justify-content: center;
@@ -702,9 +708,6 @@ const watchData = watch(
         @media screen and (max-width: 768px) {
           .el-calendar-day {
             height: 47px;
-            &:hover {
-              background-color: var(--e-color-bg2);
-            }
             .day-box {
               .date-calender {
                 font-size: var(--o-font-size-tip);

@@ -277,7 +277,7 @@ onMounted(async () => {
       .room-item-pc {
         display: flex;
         padding-bottom: var(--o-spacing-h2);
-        border-bottom: 1px solid var(--e-color-neutral11);
+        border-bottom: 1px solid var(--e-color-division1);
         p {
           text-align: left;
         }
@@ -290,7 +290,7 @@ onMounted(async () => {
           margin-right: var(--o-spacing-h4);
           width: 100px;
           height: 110px;
-          background-color: var(--e-color-bg1);
+          background-color: var(--e-color-bg3);
           color: var(--e-color-text1);
           .day {
             margin-bottom: var(--o-spacing-h8);
@@ -359,7 +359,7 @@ onMounted(async () => {
         margin: 0;
         grid-template-columns: repeat(1, minmax(300px, 1fr));
         .room-item {
-          border-bottom: 1px solid var(--e-color-neutral11);
+          border-bottom: 1px solid var(--e-color-division1);
 
           .room-item-pc {
             border-bottom: none;

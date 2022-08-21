@@ -32,8 +32,14 @@ img {
 }
 
 a {
-  // color: var(--e-color-brand1);
+  color: var(--e-color-link1);
   text-decoration: none;
+  &:hover {
+    color: var(--e-color-link2);
+  }
+  &:active {
+    color: var(--e-color-link3);
+  }
 }
 
 blockquote,

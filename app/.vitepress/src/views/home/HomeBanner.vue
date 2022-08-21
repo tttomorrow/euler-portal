@@ -168,6 +168,10 @@ $banner-color: #fff;
         margin-top: var(--o-spacing-h3);
         .o-icon {
           color: $banner-color;
+          @media screen and (max-width: 824px) {
+            font-size: 16px;
+            color: var(--e-color-yellow5);
+          }
         }
         @media screen and (max-width: 824px) {
           margin-top: 0;
