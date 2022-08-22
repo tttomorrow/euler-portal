@@ -7,7 +7,7 @@ import { computed } from 'vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner-secondary.png';
-import illustration from '@/assets/illustrations/search.png';
+import illustration from '@/assets/category/sig/role-description/illustration.png';
   const tableData = [
     {
       SigName: 'Contributor',
