@@ -28,7 +28,7 @@ onMounted(() => {
 <template>
   <div class="out-box">
     <h3>{{ i18n.home.HOME_INTRODUCE.INTRO_HEAD }}</h3>
-    <div ref="playground" class="playground" data-aos="flip-down">
+    <div ref="playground" class="playground" data-aos="flip-up">
       <div v-if="textBlock" class="left-code">
         <div class="first">
           ➜ /
@@ -184,6 +184,13 @@ h3 {
       width: 248px;
     }
   }
+  @media screen and (max-width:1416px) {
+    .first-code {
+      p {
+        
+      }
+    }
+  }
   @media screen and (max-width: 1080px) {
     flex-direction: column-reverse;
     justify-content: start;
@@ -208,6 +215,7 @@ h3 {
       .first-code {
         text-align: center;
         p {
+          font-size: var(--o-font-size-h4);
           font-size: var(--o-line-height-h7);
         }
       }

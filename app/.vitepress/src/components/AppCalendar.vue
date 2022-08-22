@@ -125,7 +125,7 @@ function changeTab(tab: TabsPaneContext) {
 }
 
 function meetClick(day: string) {
-  currentDay.value = day;
+  currentDay.value = resolveDate(day);
   activeIndex.value = 0;
   try {
     for (let i = 0; i < props.tableData.length; i++) {
@@ -199,6 +199,16 @@ function watchChange(element: HTMLElement) {
     characterData: true,
   });
 }
+const resolveDate = (date: string) => {
+  const reg = /(\d{4})\-(\d{2})\-(\d{2})/;
+  date = date.replace(reg, '$1年$2月$3日');
+  if (date.charAt(5) === '0') {
+    date = date.substring(6);
+  } else {
+    date = date.substring(5);
+  }
+  return date;
+};
 onMounted(() => {
   const tbody = document.querySelector('.main-body tbody') as HTMLElement;
   if (tbody) {
@@ -578,7 +588,7 @@ const watchData = watch(
           justify-content: center;
           .left-title {
             display: flex;
-            padding: 8px 64px;
+            padding: var(--o-spacing-h8) var(--o-spacing-h1);
             align-items: center;
             justify-content: space-between;
             svg {
@@ -592,7 +602,8 @@ const watchData = watch(
         display: flex;
         align-items: center;
         width: 100%;
-        svg {
+        .o-icon {
+          color: inherit;
           font-size: var(--o-font-size-h8);
         }
         .month-date {
@@ -936,7 +947,7 @@ const watchData = watch(
         @media screen and (max-width: 768px) {
           background-color: var(--e-color-bg2);
           padding: var(--o-spacing-h6);
-          border-left-width: 2px;
+          border-left: 2px solid var(--e-color-brand1);
           .meet-left {
             max-width: 200px;
             .left-top {

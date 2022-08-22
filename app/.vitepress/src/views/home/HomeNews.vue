@@ -220,7 +220,7 @@ onMounted(async () => {
   cursor: pointer;
   color: var(--e-color-text1);
   &:hover {
-    color: #002fa7;
+    color: var(--e-color-brand1);
   }
 }
 .statistics {

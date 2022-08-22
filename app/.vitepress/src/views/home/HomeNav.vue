@@ -129,7 +129,7 @@ const imgUrlHover = computed(
       content: '';
       width: 1px;
       height: calc(100% - 48px);
-      background-color: var(--e-color-neutral11);
+      background-color: var(--e-color-division1);
     }
     .nav-item {
       padding: 0;
@@ -158,7 +158,7 @@ const imgUrlHover = computed(
     .nav-item:nth-child(-n + 2) {
       padding-top: 0;
       padding-bottom: var(--o-spacing-h6);
-      border-bottom: 1px solid var(--e-color-neutral11);
+      border-bottom: 1px solid var(--e-color-division1);
     }
     .nav-item:nth-child(2) {
       position: relative;
