@@ -301,6 +301,11 @@ const goBackPage = () => {
   }
 };
 
+const go = (id: number) => {
+  console.log(router.route.path);
+  router.go(`${router.route.path}software-info/?id=${id}`);
+};
+
 watch(windowWidth, () => {
   screenWidth.value = windowWidth.value;
 });
@@ -441,6 +446,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
             prop="osVersion"
+            width="220"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE"
@@ -451,9 +457,10 @@ onMounted(() => {
               i18n.compatibility.HARDWARE_TABLE_COLUMN
                 .COMPATIBILITY_CONFIGURATION
             "
+            width="220"
           >
-            <template #default>
-              <span>{{
+            <template #default="scope">
+              <span class="hardware-info" @click="go(scope.row.id)">{{
                 i18n.compatibility.HARDWARE_TABLE_COLUMN
                   .COMPATIBILITY_CONFIGURATION2
               }}</span>
@@ -548,7 +555,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
             prop="boardModel"
-            width="200"
+            width="160"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
@@ -1167,7 +1174,7 @@ onMounted(() => {
       background-color: var(--e-color-bg2);
       color: var(--e-color-text1);
       border-bottom: none;
-      box-shadow: var(--e-shadow1);
+      box-shadow: var(--e-shadow-l1);
       height: 34px;
     }
     .el-collapse-item__content {
@@ -1245,6 +1252,10 @@ onMounted(() => {
   color: var(--e-color-link1);
 }
 .pc-list {
+  .hardware-info {
+    cursor: pointer;
+    color: var(--e-color-link1);
+  }
   @media screen and (max-width: 1080px) {
     display: none;
   }
@@ -1252,7 +1263,7 @@ onMounted(() => {
 .mobile-list {
   display: none;
   margin-bottom: var(--o-spacing-h5);
-  box-shadow: var(--e-shadow1);
+  box-shadow: var(--e-shadow-l1);
   @media screen and (max-width: 1080px) {
     display: block;
   }

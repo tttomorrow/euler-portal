@@ -179,3 +179,29 @@ export interface FilterList {
 //   productName: string;
 //   sha256: string;
 // }
+
+export interface ConfigurationInfo {
+  architecture: string;
+  biosUefi: string;
+  certificationAddr: string;
+  certificationTime: string;
+  commitID: string;
+  compatibilityConfiguration: null;
+  computerType: string;
+  cpu: string;
+  date: string;
+  friendlyLink: string;
+  hardDiskDrive: string;
+  hardwareFactory: string;
+  hardwareModel: string;
+  hostBusAdapter: string;
+  id: number;
+  lang: string;
+  mainboardModel: string;
+  osVersion: string;
+  portsBusTypes: string;
+  productInformation: string;
+  ram: string;
+  updateTime: string;
+  videoAdapter: string;
+}

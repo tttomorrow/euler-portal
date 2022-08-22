@@ -121,6 +121,34 @@ export function driverOSOptions(params: SelectParams) {
 }
 
 /**
+ * 调用接口获取兼容性配置信息
+ * @name getConfigurationInfo
+ */
+export function getConfigurationInfo(id: string) {
+  const url = ` /api-euler/api-cve/cve-security-notice-server/hardwarecomp/getOne?id=${id}`;
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
+ * 调用接口获取列表信息
+ * @name getdetailAapterList
+ */
+export function getdetailAapterList(id: string) {
+  const url = ` /api-euler/api-cve/cve-security-notice-server/hardwarecomp/getAdapterList?hardwareId=${id}`;
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
  * 调用接口获取兼容性列表-板卡
  * @name getCompatibilityList
  */

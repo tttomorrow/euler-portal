@@ -19,16 +19,17 @@ const classNames = computed(() => {
   --o-pagination-font-color: var(--e-color-text1);
   --o-pagination-font-color_active: var(--e-color-brand1);
 
-  --o-pagination-bg-color: var(--e-color-bg4);
+  --o-pagination-bg-color: var(--e-color-text5);
   --o-pagination-bg-color_hover: var(--e-color-brand5);
   --o-pagination-bg-color_selected: var(--e-color-brand5);
-  --o-pagination-bg-color_disabled: var(--o-color-secondary);
 
   --o-pagination-number-border-color_active: var(--e-color-brand1);
 
   &.el-pagination {
-    // --el-pagination-button-bg-color: var(--o-pagination-bg-color_disabled);
     justify-content: center;
+    .el-pagination__sizes {
+      margin: 0 var(--o-spacing-h8) 0 0;
+    }
     .el-input {
       --el-input-bg-color: var(--o-pagination-bg-color);
       --el-input-text-color: var(--o-pagination-font-color);
@@ -67,6 +68,7 @@ const classNames = computed(() => {
     }
     .btn-next,
     .btn-prev {
+      width: 36px;
       height: 36px;
       color: var(--o-pagination-font-color);
       border-radius: 0px;
@@ -84,9 +86,15 @@ const classNames = computed(() => {
 
     .el-pagination__jump {
       height: 36px;
-      color: #999;
+      font-size: var(--o-font-size-text);
+      font-weight: 400;
+      line-height: var(--o-line-height-text);
+      color: var(--e-color-neutral8);
       border-radius: 0px;
       margin-left: var(--o-spacing-h4);
+      .el-input__wrapper {
+        flex-grow: 0.273;
+      }
     }
   }
 }

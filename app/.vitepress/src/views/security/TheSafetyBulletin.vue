@@ -24,6 +24,8 @@ const screenWidth = ref(1080);
 
 const inputName = ref('');
 const total = ref(0);
+const currentPage = ref(1);
+const totalPage = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const years = ['', '2021', '2020', '2019'];
 const selectedYear = ref('2021');
@@ -58,6 +60,7 @@ function getSecurityLists(data: CveQuery) {
       tableData.value = res.result.securityNoticeList;
       if (res.result.totalCount) {
         total.value = res.result.totalCount;
+        totalPage.value = Math.ceil(total.value / queryData.pages.size);
       } else {
         total.value = 1;
       }
@@ -84,10 +87,12 @@ const yearTagClick = (i: number, type: string) => {
 
 const handleSizeChange = (val: number) => {
   queryData.pages.size = val;
+  totalPage.value = Math.ceil(total.value / val);
 };
 
 const handleCurrentChange = (val: number) => {
   queryData.pages.page = val;
+  currentPage.value = val;
 };
 
 function searchValchange() {
@@ -291,7 +296,7 @@ watch(windowWidth, () => {
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       >
-        <span class="slot-content">5/20</span>
+        <span class="slot-content">{{ currentPage }}/{{ totalPage }}</span>
       </OPagination>
       <AppPaginationMo
         :current-page="queryData.pages.page"
@@ -487,7 +492,10 @@ watch(windowWidth, () => {
       display: none;
     }
     .slot-content {
+      font-size: var(--o-font-size-text);
+      font-weight: 400;
       color: var(--e-color-text1);
+      line-height: var(--o-spacing-h4);
     }
   }
   .mobile-pagination {

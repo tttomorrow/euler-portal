@@ -139,9 +139,10 @@ function jumpPage(e: any) {
     .next,
     .prev {
       color: var(--e-color-text1);
+      line-height: 100%;
     }
     .disable-button {
-      color: var(--e-color-text5);
+      color: var(--e-color-text4);
     }
   }
 }

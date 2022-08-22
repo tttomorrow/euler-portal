@@ -19,6 +19,8 @@ const windowWidth = ref(useWindowResize());
 const screenWidth = ref(1080);
 const i18n = useI18n();
 const router = useRouter();
+const currentPage = ref(1);
+const totalPage = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const searchContent = ref('');
@@ -51,6 +53,7 @@ function getCveLists(data: CveQuery) {
     getCveList(data).then((res: any) => {
       tableData.value = res.result.cveDatabaseList;
       total.value = res.result.totalCount;
+      totalPage.value = Math.ceil(total.value / queryData.pages.size);
     });
   } catch (e: any) {
     throw new Error(e);
@@ -64,10 +67,12 @@ const tagClick = (i: number, category: string) => {
 
 const handleSizeChange = (val: number) => {
   queryData.pages.size = val;
+  totalPage.value = Math.ceil(total.value / val);
 };
 
 const handleCurrentChange = (val: number) => {
   queryData.pages.page = val;
+  currentPage.value = val;
 };
 
 function filterClick(i: number, category: string) {
@@ -228,7 +233,7 @@ watch(windowWidth, () => {
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     >
-      <span>5/20</span>
+      <span class="pagination-slot"> {{ currentPage }}/{{ totalPage }}</span>
     </OPagination>
 
     <AppPaginationMo
@@ -272,24 +277,24 @@ watch(windowWidth, () => {
     display: flex;
     align-items: center;
     width: 100%;
-    margin-bottom: 32px;
+    margin-bottom: var(--o-spacing-h8);
     .selected {
-      background-color: var(--e-color-kleinblue5);
+      background-color: var(--e-color-brand1);
       color: var(--e-color-text2);
     }
     &-item {
       cursor: pointer;
       flex: 1;
       text-align: center;
-      padding: 6px;
-      font-size: 14px;
+      padding: var(--o-spacing-h9);
+      font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--e-color-kleinblue5);
-      line-height: 22px;
-      border: 1px solid var(--e-color-kleinblue5);
+      color: var(--e-color-brand1);
+      line-height: var(--o-line-height-text);
+      border: 1px solid var(--e-color-brand1);
       border-right: 0;
       &:last-child {
-        border: 1px solid var(--e-color-kleinblue5);
+        border: 1px solid var(--e-color-brand1);
       }
     }
   }
@@ -312,7 +317,7 @@ watch(windowWidth, () => {
       background: var(--e-color-bg4);
     }
     & li {
-      margin-bottom: 8px;
+      margin-bottom: var(--o-spacing-h8);
     }
     li:last-child {
       margin-bottom: 0;
@@ -343,8 +348,12 @@ watch(windowWidth, () => {
 }
 .pagination {
   margin: var(--o-spacing-h2) 0 0 0;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
+  }
   @media screen and (max-width: 1080px) {
     display: none;
   }

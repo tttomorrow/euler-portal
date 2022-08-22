@@ -356,7 +356,8 @@ onMounted(() => {
         align-items: center;
         font-size: 14px;
         color: var(--e-color-text1);
-        margin: 0 30px;
+        margin: 0 8px;
+        border-bottom: 1px solid var(--e-color-division1);
         li:first-child {
           font-size: 14px;
           color: var(--e-color-text1);
@@ -385,6 +386,12 @@ onMounted(() => {
             display: none;
           }
         }
+      }
+      .item:first-child > ul {
+        border: none;
+      }
+      .item:last-child > ul {
+        border: none;
       }
       .item > ul::after {
         content: '';
