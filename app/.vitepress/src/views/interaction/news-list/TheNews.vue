@@ -26,6 +26,13 @@ interface NewsData {
   type: string;
 }
 
+interface ParamsType {
+  page: number;
+  pageSize: number;
+  lang: string;
+  category: string;
+}
+
 const router = useRouter();
 const { lang } = useData();
 
@@ -37,7 +44,7 @@ const sortParams = reactive({
 });
 // 新闻列表数据
 const newsCardData = ref<NewsData[]>([]);
-const isShowData = ref(true);
+const isShowData = ref(false);
 // 分页数据
 const paginationData = ref({
   total: 0,
@@ -53,8 +60,9 @@ const toNewsContent = (path: string) => {
   router.go(`${path1}/${path}`);
 };
 
-onMounted(() => {
-  getSortData(sortParams)
+//获取数据
+const getListData = (params: ParamsType) => {
+  getSortData(params)
     .then((res) => {
       paginationData.value.total = res.obj.count;
       paginationData.value.currentpage = res.obj.page;
@@ -66,11 +74,16 @@ onMounted(() => {
         }
         newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
       }
+      isShowData.value = true;
     })
     .catch((error: any) => {
       isShowData.value = false;
       throw new Error(error);
     });
+};
+
+onMounted(() => {
+  getListData(sortParams);
 });
 
 const currentChange = (val: number) => {
@@ -80,45 +93,7 @@ const currentChange = (val: number) => {
     page: val,
     pageSize: paginationData.value.pagesize,
   };
-
-  getSortData(params)
-    .then((res) => {
-      newsCardData.value = res.obj.records;
-      for (let i = 0; i < newsCardData.value.length; i++) {
-        if (typeof newsCardData.value[i].author === 'string') {
-          newsCardData.value[i].author = [newsCardData.value[i].author];
-        }
-        newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
-      }
-    })
-    .catch((error: any) => {
-      isShowData.value = false;
-      throw new Error(error);
-    });
-};
-
-const sizeChange = (val: number) => {
-  const params = {
-    category: 'blog',
-    lang: lang.value,
-    page: paginationData.value.currentpage,
-    pageSize: val,
-  };
-
-  getSortData(params)
-    .then((res) => {
-      newsCardData.value = res.obj.records;
-      for (let i = 0; i < newsCardData.value.length; i++) {
-        if (typeof newsCardData.value[i].author === 'string') {
-          newsCardData.value[i].author = [newsCardData.value[i].author];
-        }
-        newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
-      }
-    })
-    .catch((error: any) => {
-      isShowData.value = false;
-      throw new Error(error);
-    });
+  getListData(params);
 };
 </script>
 
@@ -130,47 +105,52 @@ const sizeChange = (val: number) => {
     :illustration="BannerImg2"
   />
   <div class="news">
-    <div v-if="!isShowData" class="notfound">
-      <NotFound />
-    </div>
-    <div v-if="isShowData" class="news-list">
-      <OCard v-for="item in newsCardData" :key="item" class="news-list-item">
-        <div class="news-img" @click="toNewsContent(item.path)">
-          <img :src="item.banner" :alt="item.banner" />
-        </div>
-        <div class="news-info">
-          <div class="news-title" @click="toNewsContent(item.path)">
-            <p>{{ item.title }}</p>
-          </div>
-          <div class="news-time">
-            <p>{{ item.date }}</p>
-          </div>
-          <div class="news-content" @click="toNewsContent(item.path)">
-            <p>
-              {{ item.summary }}
-            </p>
-          </div>
-        </div>
-      </OCard>
-    </div>
-    <div v-if="isShowData" class="news-pagination">
-      <OPagination
-        v-model:currentPage="paginationData.currentpage"
-        v-model:page-size="paginationData.pagesize"
-        :background="true"
-        layout="sizes, prev, pager, next, slot, jumper"
-        :total="paginationData.total"
-        :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
-        @current-change="currentChange"
-        @size-change="sizeChange"
-      >
-        <span
-          >{{ paginationData.currentpage }}/{{
-            Math.ceil(paginationData.total / paginationData.pagesize)
-          }}</span
+    <template v-if="isShowData">
+      <div class="news-list">
+        <OCard
+          v-for="item in newsCardData"
+          :key="item"
+          @click="toNewsContent(item.path)"
+          class="news-list-item"
         >
-      </OPagination>
-    </div>
+          <div class="news-img">
+            <img :src="item.banner" :alt="item.banner" />
+          </div>
+          <div class="news-info">
+            <div class="news-title">
+              <p>{{ item.title }}</p>
+            </div>
+            <div class="news-time">
+              <p>{{ item.date }}</p>
+            </div>
+            <div class="news-content">
+              <p>
+                {{ item.summary }}
+              </p>
+            </div>
+          </div>
+        </OCard>
+      </div>
+      <div class="news-pagination">
+        <OPagination
+          v-model:currentPage="paginationData.currentpage"
+          v-model:page-size="paginationData.pagesize"
+          :background="true"
+          layout="sizes, prev, pager, next, slot, jumper"
+          :total="paginationData.total"
+          :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
+          @current-change="currentChange"
+          @size-change="currentChange"
+        >
+          <span
+            >{{ paginationData.currentpage }}/{{
+              Math.ceil(paginationData.total / paginationData.pagesize)
+            }}</span
+          >
+        </OPagination>
+      </div>
+    </template>
+    <NotFound v-else />
   </div>
 </template>
 
@@ -180,6 +160,9 @@ const sizeChange = (val: number) => {
 }
 ::-webkit-scrollbar {
   display: none;
+}
+.dark img {
+  filter: brightness(0.8) grayscale(0.2) contrast(1.2);
 }
 .news {
   &-list {
@@ -192,10 +175,9 @@ const sizeChange = (val: number) => {
     &-item {
       justify-self: center;
       align-self: center;
-      max-height: 374px;
-      min-height: 374px;
-      min-width: 456px;
-      max-width: 456px;
+      flex: 1;
+      width: 100%;
+      height: 100%;
       cursor: pointer;
     }
     &-item:hover {
@@ -205,9 +187,11 @@ const sizeChange = (val: number) => {
   &-img {
     width: 100%;
     height: 188px;
+    object-fit: cover;
     img {
       width: 100%;
-      height: 188px;
+      height: 100%;
+      object-fit: cover;
     }
   }
   &-info {
@@ -233,7 +217,6 @@ const sizeChange = (val: number) => {
   }
   &-content {
     margin-top: var(--o-spacing-h5);
-    margin-bottom: var(--o-spacing-h4);
     word-break: break-all;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -255,35 +238,21 @@ const sizeChange = (val: number) => {
     grid-template-columns: repeat(1, 1fr);
     margin-top: var(--o-spacing-h5);
   }
-  .news-list-item {
-    max-width: 100%;
-    min-width: 100%;
-    max-height: 188px;
-    min-height: 188px;
-  }
-  .news-img {
-    max-width: 350px;
-    min-width: 350px;
-  }
+
   :deep(.el-card__body) {
     display: flex;
     flex-direction: row;
   }
+  .news-img,
+  .news-info {
+    flex: 1;
+  }
 }
 @media (max-width: 620px) {
   .news-list-item {
-    max-width: 456px;
-    min-width: 456px;
-    max-height: 374px;
-    min-height: 374px;
+    height: auto;
   }
-  .news-info {
-    max-width: 420px;
-    min-width: 420px;
-  }
-  .news-img {
-    min-width: 456px;
-  }
+
   :deep(.el-card__body) {
     display: flex;
     flex-direction: column;
@@ -298,40 +267,30 @@ const sizeChange = (val: number) => {
     display: flex;
     flex-direction: column;
   }
-  .news-list-item {
-    max-width: 328px;
-    min-width: 328px;
-    max-height: 312px;
-    min-height: 312px;
-  }
+
   .news-img {
-    max-width: 100%;
-    min-width: 100%;
-    max-height: 180px;
-    min-height: 180px;
+    height: 180px;
   }
   .news-info {
-    max-width: 328px;
-    min-width: 328px;
+    padding: var(--o-spacing-h6);
   }
   .news-title {
     height: auto;
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
-    word-break: break-all;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+    font-weight: 500;
     -webkit-line-clamp: 1;
+    margin-bottom: var(--o-spacing-h8);
   }
   .news-time {
     line-height: var(--o-line-height-tip);
     font-size: var(--o-font-size-tip);
+    color: var(--e-color-neutral5);
   }
   .news-content {
     line-height: var(--o-line-height-tip);
     font-size: var(--o-font-size-tip);
+    color: var(--e-color-neutral5);
   }
 }
 </style>
