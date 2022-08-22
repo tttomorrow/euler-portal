@@ -16,6 +16,7 @@ specifiers:
   element-plus: ^2.2.9
   eslint: ^8.19.0
   eslint-plugin-vue: ^9.1.1
+  gsap: ^3.11.0
   husky: ^8.0.1
   install: ^0.13.0
   lint-staged: ^13.0.3
@@ -37,6 +38,7 @@ dependencies:
   axios: registry.npmmirror.com/axios/0.27.2
   dayjs: 1.11.3
   element-plus: registry.npmmirror.com/element-plus/2.2.9_vue@3.2.33
+  gsap: 3.11.0
   lodash: registry.npmmirror.com/lodash/4.17.21
   opendesign: link:opendesign
   pinia: registry.npmmirror.com/pinia/2.0.13_xjnrgrp243ohupsbqdj4qd3cly
@@ -277,6 +279,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /gsap/3.11.0:
+    resolution: {integrity: sha512-TV5aFGqXht+0o/CelnhCikSe3QGeG+q1XA/fyFFsMzesILHgWgFWIz0NuXIgcMaL5h7MG2l+j0BTupS5YyYkrw==}
+    dev: false
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}

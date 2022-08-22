@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import { useI18n } from '@/i18n';
+import gsap from 'gsap';
 import { useCommon } from '@/stores/common';
 import { onMounted, Ref, ref } from 'vue';
 import { getStatistic } from '@/api/api-search';
@@ -8,24 +9,43 @@ import { getStatistic } from '@/api/api-search';
 const commonStore = useCommon();
 
 const i18n = useI18n();
-
+const community = ref();
 const roundList: Ref<any[]> = ref([]);
-
+const roundNumber = ref([
+  {
+    ROUND_VALUE: 0,
+  },
+]);
 const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
 
 const addValue = (arr: any) => {
-  const temp = i18n.value.home.HOME_ROUND.ROUND_LIST;
-  temp.forEach((item: { ROUND_VALUE: any; ROUND_KEY: string | number }) => {
+  const template = JSON.parse(
+    JSON.stringify(i18n.value.home.HOME_ROUND.ROUND_LIST)
+  );
+  template.forEach((item: { ROUND_VALUE: any; ROUND_KEY: string | number }) => {
     item.ROUND_VALUE = arr[item.ROUND_KEY];
   });
-  return temp;
+  return template;
 };
 onMounted(async () => {
   try {
+    roundNumber.value = JSON.parse(
+      JSON.stringify(i18n.value.home.HOME_ROUND.ROUND_LIST)
+    );
     const responeData = await getStatistic();
     roundList.value = addValue(responeData?.data);
+    const observe = new IntersectionObserver((res) => {
+      if (res[0].intersectionRatio <= 0) return;
+      roundNumber.value.forEach((item: any, index: number) => {
+        gsap.to(item, {
+          duration: 2.5,
+          ROUND_VALUE: roundList.value[index].ROUND_VALUE || 0,
+        });
+      });
+    });
+    community.value && observe.observe(community.value);
   } catch (error: any) {
     throw new Error(error);
   }
@@ -33,32 +53,34 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="community">
+  <div ref="community" class="community">
     <h3>{{ i18n.home.COMMUNITY_ACTIVITY.TITLE }}</h3>
     <div class="community-list">
       <OCard class="community-card" :style="{ padding: '0px' }" shadow="hover">
-        <div class="community-title">
-          {{ i18n.home.COMMUNITY_ACTIVITY.CARD.TITLE }}
-        </div>
-        <div class="community-word">
-          {{ i18n.home.COMMUNITY_ACTIVITY.CARD.CONTENT }}
-        </div>
+        <div data-aos="fade-right">
+          <div class="community-title">
+            {{ i18n.home.COMMUNITY_ACTIVITY.CARD.TITLE }}
+          </div>
+          <div class="community-word">
+            {{ i18n.home.COMMUNITY_ACTIVITY.CARD.CONTENT }}
+          </div>
 
-        <OButton
-          animation
-          type="text"
-          class="community-detail"
-          @click="handleGo(i18n.home.COMMUNITY_ACTIVITY.CARD.LINK)"
-        >
-          {{ i18n.home.COMMUNITY_ACTIVITY.BUTTON }}
-          <template #suffixIcon>
-            <IconArrowRight class="community-detail-icon"></IconArrowRight>
-          </template>
-        </OButton>
+          <OButton
+            animation
+            type="text"
+            class="community-detail"
+            @click="handleGo(i18n.home.COMMUNITY_ACTIVITY.CARD.LINK)"
+          >
+            {{ i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS }}
+            <template #suffixIcon>
+              <IconArrowRight class="community-detail-icon"></IconArrowRight>
+            </template>
+          </OButton>
+        </div>
       </OCard>
 
       <OCard class="round-card" :style="{ padding: '0px' }">
-        <div class="round-list">
+        <div class="round-list" data-aos="fade-left">
           <div
             v-for="item in roundList"
             :key="item.ROUND_TEXT"
@@ -129,6 +151,7 @@ onMounted(async () => {
     color: var(--e-color-text1);
     line-height: var(--o-line-height-h5);
     margin-top: var(--o-spacing-h5);
+    animation: scaleNumber 1s 2.5s;
     @media (max-width: 768px) {
       margin-top: var(--o-spacing-h10);
       font-size: var(--o-font-size-text);
@@ -261,6 +284,18 @@ onMounted(async () => {
     &:hover {
       box-shadow: var(--o-shadow-base_hover);
     }
+  }
+}
+@keyframes scaleNumber {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
   }
 }
 </style>

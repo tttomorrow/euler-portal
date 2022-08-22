@@ -222,7 +222,7 @@ export default {
     VIEW_DETAIL_LINK: 'https://datastat.openeuler.org/en/overview',
     ROUND_LIST: [
       {
-        ROUND_VALUE: '',
+        ROUND_VALUE: 0,
         ROUND_KEY: 'contributors',
         ROUND_IMG: contributer,
         ROUND_IMG_DARK: contributerDark,
@@ -232,7 +232,7 @@ export default {
         },
       },
       {
-        ROUND_VALUE: '',
+        ROUND_VALUE: 0,
         ROUND_KEY: 'repos',
         ROUND_IMG: software,
         ROUND_IMG_DARK: softwareDark,
@@ -242,7 +242,7 @@ export default {
         },
       },
       {
-        ROUND_VALUE: '',
+        ROUND_VALUE: 0,
         ROUND_KEY: 'sigs',
         ROUND_IMG: sig,
         ROUND_IMG_DARK: sigDark,
@@ -252,7 +252,7 @@ export default {
         },
       },
       {
-        ROUND_VALUE: '',
+        ROUND_VALUE: 0,
         ROUND_KEY: 'users',
         ROUND_IMG: user,
         ROUND_IMG_DARK: userDark,
@@ -262,7 +262,7 @@ export default {
         },
       },
       {
-        ROUND_VALUE: '',
+        ROUND_VALUE: 0,
         ROUND_KEY: 'businessosv',
         ROUND_IMG: osv,
         ROUND_IMG_DARK: osvDark,

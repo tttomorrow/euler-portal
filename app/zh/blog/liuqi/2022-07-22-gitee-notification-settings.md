@@ -1,4 +1,4 @@
---- 
+<!-- --- 
 title: Gitee通知设置
 category: blog 
 date: 2022-07-22
@@ -72,4 +72,4 @@ summary: 本博客介绍了如何在Gitee配置邮件通知
 <div align="center"><img src="./2022-07-22-gitee-notification-settings-08.png" width=600 alt="08.png"/></div>
 <div align="center"><font size=2>邮件通知</font></div><br/>
 
-**Tips**：需要注意的是，以上场景均为非本人触发，若本人做如上操作，不会收到对应的通知。而@操作也需要被@用户有访问权限，否则不会通知被@的用户。
+**Tips**：需要注意的是，以上场景均为非本人触发，若本人做如上操作，不会收到对应的通知。而@操作也需要被@用户有访问权限，否则不会通知被@的用户。 -->
