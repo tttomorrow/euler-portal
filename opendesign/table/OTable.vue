@@ -13,12 +13,14 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-table {
   &.el-table {
-    box-shadow: var(--e-shadow1);
+    box-shadow: var(--e-shadow-l1);
     --el-table-header-bg-color: var(--e-color-bg4);
     color: var(--e-color-text4);
     --el-table-row-hover-bg-color: var(--e-color-bg3);
     --el-table-border-color: var(--e-color-division1);
-    // --el-table-border-color: none;
+    .el-table__empty-block {
+      background-color: var(--e-color-bg2);
+    }
     thead {
       color: var(--e-color-text1);
     }
@@ -39,6 +41,9 @@ const attrs = useAttrs();
     }
     .cell {
       padding: 0 var(--o-spacing-h4);
+    }
+    .el-table__inner-wrapper::before {
+      background: var(--e-color-bg1);
     }
   }
 }

@@ -4,7 +4,7 @@
   height: 112px;
   border-radius: 0;
   background: var(--e-color-bg2) !important;
-  box-shadow: var(--o-shadow-base);
+  box-shadow: var(--e-shadow-l4);
   font-size: var(--o-font-h4);
   --el-message-border-color: var(--e-color-bg2);
 
@@ -12,6 +12,7 @@
     margin-right: var(--o-spacing-h6);
     font-size: var(--o-font-size-h5);
   }
+
   .el-message__content {
     text-overflow: -o-ellipsis-lastline;
     overflow: hidden;
@@ -23,13 +24,16 @@
     color: var(--e-color-text1) !important;
     font-size: var(--o-font-size-h7);
   }
+
   @media screen and (max-width: 867px) {
     height: inherit;
     max-width: 280px;
     min-width: 0;
+
     .el-message__icon {
-        font-size: var(--o-font-size-h8);
+      font-size: var(--o-font-size-h8);
     }
+
     .el-message__content {
       font-size: var(--o-font-size-tip);
     }
