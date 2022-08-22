@@ -37,6 +37,7 @@ interface ParamsType {
   category: string;
   archives?: string;
   author?: string;
+  tags?: string;
 }
 
 const router = useRouter();
@@ -63,7 +64,12 @@ const tagsParams1 = reactive({
   category: 'blog',
   tags: 'author',
 });
-
+const tagsParams2 = reactive({
+  lang: lang.value,
+  category: 'blog',
+  tags: 'tags',
+});
+// 移动端数据
 const tagsDataToChild = ref<any>([
   {
     title: '时间',
@@ -74,6 +80,24 @@ const tagsDataToChild = ref<any>([
     select: [],
   },
 ]);
+// pc端筛选数据
+const selectData = ref<any>([
+  {
+    title: '时间',
+    select: [],
+  },
+  {
+    title: '作者',
+    select: [],
+  },
+  {
+    title: '标签',
+    select: [],
+  },
+]);
+const selectTimeVal = ref('');
+const selectAuthorVal = ref('');
+const selectTagsVal = ref('');
 
 // 博客列表数据
 const blogCardData = ref<BlogData[]>([]);
@@ -118,7 +142,7 @@ const getListData = (params: ParamsType) => {
 };
 
 // 筛选方法
-const listfilter = (val: any) => {
+const listFilter = (val: any) => {
   let paramsdate = '';
   let paramsauthor = '';
   for (let i = 0; i < val.length; i++) {
@@ -139,7 +163,19 @@ const listfilter = (val: any) => {
   };
   getListData(params);
 };
-
+// pc筛选
+const selectMethod = () => {
+  const params = {
+    page: 1,
+    pageSize: 9,
+    lang: lang.value,
+    category: 'blog',
+    archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+    author: selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+    tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value
+  };
+  getListData(params)
+};
 onMounted(() => {
   getListData(sortParams);
 
@@ -147,11 +183,22 @@ onMounted(() => {
     for (let i = 0; i < 5; i++) {
       tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
     }
+    res.obj.totalNum.forEach((item: any) => {
+      selectData.value[0].select.push(item.key);
+    });
     getTagsData(tagsParams1)
       .then((res) => {
         for (let i = 0; i < 5; i++) {
           tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
         }
+        res.obj.totalNum.forEach((item: any) => {
+          selectData.value[1].select.push(item.key);
+        });
+        getTagsData(tagsParams2).then((res) => {
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        });
       })
       .catch((error: any) => {
         isShowData.value = false;
@@ -184,8 +231,61 @@ const currentChange = (val: number) => {
         <MobileFilter
           :data="tagsDataToChild"
           :single="true"
-          @filter="listfilter"
+          @filter="listFilter"
         />
+      </div>
+      <div class="blog-select">
+        <div class="blog-select-item">
+          <span class="blog-select-item-title">{{userCaseData.TIME}}</span>
+          <OSelect
+            v-model="selectTimeVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[0].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
+        <div class="blog-select-item">
+          <span class="blog-select-item-title">{{userCaseData.AUTHOR}}</span>
+          <OSelect
+            v-model="selectAuthorVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[1].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
+        <div class="blog-select-item">
+          <span class="blog-select-item-title">{{userCaseData.TAGS}}</span>
+          <OSelect
+            v-model="selectTagsVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[2].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
       </div>
       <div class="blog-list">
         <OCard
@@ -271,6 +371,22 @@ const currentChange = (val: number) => {
   }
   &-tag2 {
     display: none;
+  }
+  &-select {
+    // background-color: aquamarine;
+    display: flex;
+    flex-direction: row;
+    width: 1416px;
+    margin: var(--o-spacing-h1) auto;
+    @media (max-width: 1455px) {
+      margin: var(--o-spacing-h1) var(--o-spacing-h5);
+    }
+    &-item {
+      margin-right: var(--o-spacing-h1);
+      &-title {
+        margin-right: var(--o-spacing-h5);
+      }
+    }
   }
   &-list {
     max-width: 1448px;
@@ -383,6 +499,9 @@ const currentChange = (val: number) => {
   .blog-tag2 {
     display: block;
     margin-left: var(--o-spacing-h5);
+  }
+  .blog-select{
+    display: none;
   }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h4);

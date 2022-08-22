@@ -7,8 +7,9 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
 import NotFound from '@/NotFound.vue';
+import MobileFilter from '@/components/MobileFilter.vue';
 
-import { getSortData } from '@/api/api-search';
+import { getSortData, getTagsData } from '@/api/api-search';
 
 interface NewsData {
   articleName: string;
@@ -51,13 +52,61 @@ const paginationData = ref({
   pagesize: 9,
   currentpage: 0,
 });
-
+// 获取标签数据
+const tagsParams = reactive({
+  lang: lang.value,
+  category: 'news',
+  tags: 'date',
+});
+const tagsParams1 = reactive({
+  lang: lang.value,
+  category: 'news',
+  tags: 'author',
+});
+const tagsParams2 = reactive({
+  lang: lang.value,
+  category: 'news',
+  tags: 'tags',
+});
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
 
 const toNewsContent = (path: string) => {
   const path1 = router.route.path.substring(0, 3);
   router.go(`${path1}/${path}`);
+};
+
+//筛选数据
+const selectData = ref<any>([
+  {
+    title: '时间',
+    select: [],
+  },
+  {
+    title: '作者',
+    select: [],
+  },
+  {
+    title: '标签',
+    select: [],
+  },
+]);
+const selectTimeVal = ref('');
+const selectAuthorVal = ref('');
+const selectTagsVal = ref('');
+
+// pc筛选
+const selectMethod = () => {
+  const params = {
+    page: 1,
+    pageSize: 9,
+    lang: lang.value,
+    category: 'news',
+    archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+    author: selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+    tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+  };
+  getListData(params);
 };
 
 //获取数据
@@ -82,8 +131,50 @@ const getListData = (params: ParamsType) => {
     });
 };
 
+const listFilter = (val: any) => {
+  let paramsdate = '';
+  let paramsauthor = '';
+  for (let i = 0; i < val.length; i++) {
+    if (val[i].title === '时间') {
+      paramsdate = val[i].sele[0];
+    }
+    if (val[i].title === '作者') {
+      paramsauthor = val[i].sele[0];
+    }
+  }
+  const params = {
+    page: 1,
+    pageSize: 9,
+    lang: lang.value,
+    category: 'blog',
+    archives: paramsdate,
+    author: paramsauthor,
+  };
+  getListData(params);
+};
+
 onMounted(() => {
   getListData(sortParams);
+  getTagsData(tagsParams).then((res) => {
+    res.obj.totalNum.forEach((item: any) => {
+      selectData.value[0].select.push(item.key);
+    });
+    getTagsData(tagsParams1)
+      .then((res) => {
+        res.obj.totalNum.forEach((item: any) => {
+          selectData.value[1].select.push(item.key);
+        });
+        getTagsData(tagsParams2).then((res) => {
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        });
+      })
+      .catch((error: any) => {
+        isShowData.value = false;
+        throw new Error(error);
+      });
+  });
 });
 
 const currentChange = (val: number) => {
@@ -106,12 +197,72 @@ const currentChange = (val: number) => {
   />
   <div class="news">
     <template v-if="isShowData">
+      <div class="news-tag">
+        <MobileFilter
+          :data="selectData"
+          :single="true"
+          @filter="listFilter"
+        />
+      </div>
+      <div class="news-select">
+        <div class="news-select-item">
+          <span class="news-select-item-title">{{ userCaseData.TIME }}</span>
+          <OSelect
+            v-model="selectTimeVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[0].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
+        <div class="news-select-item">
+          <span class="news-select-item-title">{{ userCaseData.AUTHOR }}</span>
+          <OSelect
+            v-model="selectAuthorVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[1].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
+        <div class="news-select-item">
+          <span class="news-select-item-title">{{ userCaseData.TAGS }}</span>
+          <OSelect
+            v-model="selectTagsVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[2].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
+      </div>
       <div class="news-list">
         <OCard
           v-for="item in newsCardData"
           :key="item"
-          class="news-list-item"
           @click="toNewsContent(item.path)"
+          class="news-list-item"
         >
           <div class="news-img">
             <img :src="item.banner" :alt="item.banner" />
@@ -165,6 +316,24 @@ const currentChange = (val: number) => {
   filter: brightness(0.8) grayscale(0.2) contrast(1.2);
 }
 .news {
+  &-tag {
+    display: none;
+  }
+  &-select {
+    display: flex;
+    flex-direction: row;
+    width: 1416px;
+    margin: var(--o-spacing-h1) auto;
+    @media (max-width: 1455px) {
+      margin: var(--o-spacing-h1) var(--o-spacing-h5);
+    }
+    &-item {
+      margin-right: var(--o-spacing-h1);
+      &-title {
+        margin-right: var(--o-spacing-h5);
+      }
+    }
+  }
   &-list {
     max-width: 1448px;
     margin: var(--o-spacing-h1) auto var(--o-spacing-h2) auto;
@@ -231,6 +400,15 @@ const currentChange = (val: number) => {
 @media (max-width: 1450px) {
   .news-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 1100px) {
+  .news-tag {
+    display: block;
+    margin-left: var(--o-spacing-h5);
+  }
+  .news-select {
+    display: none;
   }
 }
 @media (max-width: 980px) {
