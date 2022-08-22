@@ -6,6 +6,7 @@ import { useI18n } from '@/i18n';
 import LogoFooter from '@/assets/footer/footer-logo2.png';
 import LogoFooter1 from '@/assets/footer-logo1.svg';
 import LogoAtom from '@/assets/footer/atom-logo.svg';
+import FooterBg from '@/assets/footer/footer-bg.png';
 
 // 中文友情链接
 import LogoBilibili from '@/assets/footer/bilibili.png';
@@ -161,7 +162,10 @@ const handleNavClick = (path: string) => {
       <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}</p>
       <img :src="LogoAtom" class="atom-logo" alt="" />
     </div>
-    <div class="footer-content">
+    <div
+      class="footer-content"
+      :style="{ backgroundImage: `url(${FooterBg})` }"
+    >
       <div class="inner">
         <div class="footer-logo">
           <img class="show-pc" :src="LogoFooter" alt="" />
@@ -224,7 +228,7 @@ const handleNavClick = (path: string) => {
 <style lang="scss" scoped>
 $color: #fff;
 .footer {
-  background: #121212;
+  background: var(--e-color-greyblack1);
   .atom {
     text-align: center;
     max-width: 1416px;
@@ -268,7 +272,7 @@ $color: #fff;
   }
 
   &-content {
-    background: url('/img/footer-bg.png') no-repeat bottom center;
+    background: no-repeat bottom center/cover;
     .inner {
       max-width: 1416px;
       margin: 0 auto;
