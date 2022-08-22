@@ -11,6 +11,7 @@ const commonStore = useCommon();
 const i18n = useI18n();
 const community = ref();
 const roundList: Ref<any[]> = ref([]);
+const isShowCommunity = ref(false);
 const roundNumber = ref([
   {
     ROUND_VALUE: 0,
@@ -31,13 +32,13 @@ const addValue = (arr: any) => {
 };
 onMounted(async () => {
   try {
-    roundNumber.value = JSON.parse(
-      JSON.stringify(i18n.value.home.HOME_ROUND.ROUND_LIST)
-    );
     const responeData = await getStatistic();
     roundList.value = addValue(responeData?.data);
+    roundNumber.value = i18n.value.home.HOME_ROUND.ROUND_LIST;
     const observe = new IntersectionObserver((res) => {
+      isShowCommunity.value = false;
       if (res[0].intersectionRatio <= 0) return;
+      isShowCommunity.value = true;
       roundNumber.value.forEach((item: any, index: number) => {
         gsap.to(item, {
           duration: 2.5,
@@ -55,9 +56,13 @@ onMounted(async () => {
 <template>
   <div ref="community" class="community">
     <h3>{{ i18n.home.COMMUNITY_ACTIVITY.TITLE }}</h3>
-    <div class="community-list">
-      <OCard class="community-card" :style="{ padding: '0px' }" shadow="hover">
-        <div data-aos="fade-right">
+    <div v-if="isShowCommunity" class="community-list">
+      <OContainer data-aos="fade-right">
+        <OCard
+          class="community-card"
+          :style="{ padding: '0px' }"
+          shadow="hover"
+        >
           <div class="community-title">
             {{ i18n.home.COMMUNITY_ACTIVITY.CARD.TITLE }}
           </div>
@@ -76,30 +81,33 @@ onMounted(async () => {
               <IconArrowRight class="community-detail-icon"></IconArrowRight>
             </template>
           </OButton>
-        </div>
-      </OCard>
+        </OCard>
+      </OContainer>
+      <OContainer :level-index="2" data-aos="fade-left">
+        <OCard class="round-card" :style="{ padding: '0px' }">
+          <div class="round-list">
+            <div
+              v-for="(item, index) in roundList"
+              :key="item.ROUND_TEXT"
+              class="round-item"
+            >
+              <img
+                :src="
+                  commonStore.theme === 'dark'
+                    ? item.ROUND_IMG_DARK
+                    : item.ROUND_IMG
+                "
+                class="round-img"
+              />
 
-      <OCard class="round-card" :style="{ padding: '0px' }">
-        <div class="round-list" data-aos="fade-left">
-          <div
-            v-for="item in roundList"
-            :key="item.ROUND_TEXT"
-            class="round-item"
-          >
-            <img
-              :src="
-                commonStore.theme === 'dark'
-                  ? item.ROUND_IMG_DARK
-                  : item.ROUND_IMG
-              "
-              class="round-img"
-            />
-
-            <div class="round-value">{{ item.ROUND_VALUE }}</div>
-            <div class="round-title">{{ item.ROUND_TEXT }}</div>
+              <div class="round-value">
+                {{ roundNumber[index].ROUND_VALUE.toFixed(0) }}
+              </div>
+              <div class="round-title">{{ item.ROUND_TEXT }}</div>
+            </div>
           </div>
-        </div>
-      </OCard>
+        </OCard>
+      </OContainer>
     </div>
   </div>
 </template>

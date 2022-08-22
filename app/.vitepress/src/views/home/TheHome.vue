@@ -115,7 +115,7 @@ onMounted(async () => {
         <AppCalendar
           v-if="calendarData.length > 1"
           :table-data="calendarData"
-          data-aos="fade-zoom-in"
+          data-aos="fade-up"
         />
       </div>
     </el-config-provider>
@@ -141,6 +141,7 @@ onMounted(async () => {
     width: 100%;
     text-align: center;
     margin-top: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h2);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);

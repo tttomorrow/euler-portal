@@ -178,6 +178,7 @@ h3 {
 }
 .case-mobile {
   display: none;
+  background-color: var(--e-color-bg1);
   @media (max-width: 1100px) {
     border-top: none;
     display: block;

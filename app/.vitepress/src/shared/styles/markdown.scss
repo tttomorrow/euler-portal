@@ -30,10 +30,13 @@
   }
 
   hr {
-    margin: var(--o-spacing-h1) var(--o-spacing-h1);
+    margin: var(--o-spacing-h1) 0;
     border: none;
     height: 1px;
-    background-color: var(--e-color-bg4);
+    background-color: var(--e-color-division1);
+    @media screen and (max-width: 768px) {
+      margin: var(--o-spacing-h4) 0;
+    }
   }
 
   h1 {
@@ -176,5 +179,47 @@
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
     color: #eee;
+  }
+  /***
+  法律声明&& 隐私政策
+  **/
+  .legal-privacy {
+    margin: 94px auto var(--o-spacing-h2);
+    padding-top: 0;
+    max-width: 860px;
+    background: var(--e-color-bg1);
+  }
+  @media screen and (max-width: 768px) {
+    .legal-privacy {
+      margin-top: var(--o-spacing-h2);
+    }
+  }
+  .legal-privacy hr {
+    margin: var(--o-spacing-h2) 0;
+  }
+  @media screen and (max-width: 768px) {
+    .legal-privacy hr {
+      margin: var(--o-spacing-h4) 0 var(--o-spacing-h4) 0;
+    }
+  }
+  .legal-privacy h1 {
+    margin-top: 0;
+    text-align: center;
+  }
+  .legal-privacy h2 {
+    font-size: var(--o-font-size-h7);
+    letter-spacing: 0;
+    line-height: var(--o-line-height-h8);
+    font-weight: 700;
+    margin-bottom: var(--o-spacing-h6);
+  }
+  @media screen and (max-width: 768px) {
+    .legal-privacy h2 {
+      font-size: var(--o-font-size-text);
+      letter-spacing: 0;
+      line-height: var(--o-line-height-text);
+      font-weight: 700;
+      margin-bottom: --o-spacing-h8;
+    }
   }
 }

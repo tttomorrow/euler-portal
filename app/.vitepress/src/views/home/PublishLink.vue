@@ -18,6 +18,7 @@ const i18n = useI18n();
         v-for="item in i18n.home.HOME_SOURCE_EDITION"
         :key="item.LINK"
         :href="item.LINK"
+        data-aos="fade-up"
         target="_blank"
       >
         <img
@@ -43,10 +44,12 @@ const i18n = useI18n();
     width: 100%;
     text-align: center;
     margin-top: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h2);
     @media (max-width: 768px) {
+      margin-top: var(--o-spacing-h2);
+      margin-bottom: var(--o-spacing-h5);
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
-      margin-top: var(--o-spacing-h2);
     }
   }
 }

@@ -30,6 +30,11 @@ const attrs = useAttrs();
     }
   }
   @media screen and (max-width: 768px) {
+    .el-tabs__nav-wrap {
+      .el-tabs__item {
+        padding: 0 var(--o-spacing-h8);
+      }
+    }
     // .el-tabs__nav {
     //   height: 35px;
     // }

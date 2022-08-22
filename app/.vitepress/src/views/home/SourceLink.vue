@@ -18,6 +18,7 @@ const i18n = useI18n();
         v-for="item in i18n.home.FRIENDSHIP_LINK_LIST"
         :key="item.LINK"
         :href="item.LINK"
+        data-aos="fade-up"
         target="_blank"
       >
         <img
@@ -43,17 +44,18 @@ const i18n = useI18n();
     width: 100%;
     text-align: center;
     margin-top: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h2);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
       margin-top: var(--o-spacing-h2);
+      margin-bottom: var(--o-spacing-h5);
     }
   }
 }
 
 .publish-edition {
   display: grid;
-  margin-top: var(--o-spacing-h2);
   grid-template-columns: repeat(4, minmax(82px, 1fr));
   column-gap: 0;
   row-gap: 0;
