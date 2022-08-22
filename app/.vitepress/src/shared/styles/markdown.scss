@@ -8,6 +8,7 @@
   --o-color-table: var(--e-color-border1); // 表格边框
   @media (max-width: 768px) {
     padding: var(--o-spacing-h7);
+    margin-top: var(--o-spacing-h7);
   }
   ol,
   ul {

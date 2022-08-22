@@ -65,5 +65,9 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
       cursor: default;
     }
   }
+  @media (max-width: 1100px) {
+    margin: 0 auto var(--o-spacing-h5);
+    padding: var(--o-spacing-h5) 0 0;
+  }
 }
 </style>

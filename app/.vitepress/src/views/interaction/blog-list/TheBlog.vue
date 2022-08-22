@@ -30,12 +30,21 @@ interface BlogData {
   type: string;
 }
 
+interface ParamsType {
+  page: number;
+  pageSize: number;
+  lang: string;
+  category: string;
+  archives?: string;
+  author?: string;
+}
+
 const router = useRouter();
 const { lang } = useData();
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
 
-const isShowData = ref(true);
+const isShowData = ref(false);
 // 博客列表
 const sortParams = reactive({
   page: 1,
@@ -79,6 +88,35 @@ const toBlogContent = (path: string) => {
   const path1 = router.route.path.substring(0, 3);
   router.go(`${path1}/${path}`);
 };
+
+// 获取列表数据
+const getListData = (params: ParamsType) => {
+  getSortData(params)
+    .then((res) => {
+      if (res.obj.count === 0) {
+        isShowData.value = false;
+      } else {
+        paginationData.value.total = res.obj.count;
+        paginationData.value.currentpage = res.obj.page;
+        paginationData.value.pagesize = res.obj.pageSize;
+        blogCardData.value = res.obj.records;
+        for (let i = 0; i < blogCardData.value.length; i++) {
+          if (typeof blogCardData.value[i].author === 'string') {
+            blogCardData.value[i].author = [blogCardData.value[i].author];
+          }
+          blogCardData.value[i].archives = blogCardData.value[
+            i
+          ].archives.substring(0, 7);
+        }
+        isShowData.value = true;
+      }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
+    });
+};
+
 // 筛选方法
 const listfilter = (val: any) => {
   let paramsdate = '';
@@ -99,56 +137,12 @@ const listfilter = (val: any) => {
     archives: paramsdate,
     author: paramsauthor,
   };
-
-  getSortData(params)
-    .then((res) => {
-      if (res.obj.count === 0) {
-        isShowData.value = false;
-      } else {
-        paginationData.value.total = res.obj.count;
-        paginationData.value.currentpage = res.obj.page;
-        paginationData.value.pagesize = res.obj.pageSize;
-        blogCardData.value = res.obj.records;
-        for (let i = 0; i < blogCardData.value.length; i++) {
-          if (typeof blogCardData.value[i].author === 'string') {
-            blogCardData.value[i].author = [blogCardData.value[i].author];
-          }
-          blogCardData.value[i].archives = blogCardData.value[
-            i
-          ].archives.substring(0, 7);
-        }
-      }
-    })
-    .catch((error: any) => {
-      isShowData.value = false;
-      throw new Error(error);
-    });
+  getListData(params);
 };
 
 onMounted(() => {
-  getSortData(sortParams)
-    .then((res) => {
-      if (res.obj.count === 0) {
-        isShowData.value = false;
-      } else {
-        paginationData.value.total = res.obj.count;
-        paginationData.value.currentpage = res.obj.page;
-        paginationData.value.pagesize = res.obj.pageSize;
-        blogCardData.value = res.obj.records;
-        for (let i = 0; i < blogCardData.value.length; i++) {
-          if (typeof blogCardData.value[i].author === 'string') {
-            blogCardData.value[i].author = [blogCardData.value[i].author];
-          }
-          blogCardData.value[i].archives = blogCardData.value[
-            i
-          ].archives.substring(0, 7);
-        }
-      }
-    })
-    .catch((error: any) => {
-      isShowData.value = false;
-      throw new Error(error);
-    });
+  getListData(sortParams);
+
   getTagsData(tagsParams).then((res) => {
     for (let i = 0; i < 5; i++) {
       tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
@@ -173,54 +167,7 @@ const currentChange = (val: number) => {
     page: val,
     pageSize: paginationData.value.pagesize,
   };
-  getSortData(params)
-    .then((res) => {
-      if (res.obj.count === 0) {
-        isShowData.value = false;
-      } else {
-        blogCardData.value = res.obj.records;
-        for (let i = 0; i < blogCardData.value.length; i++) {
-          if (typeof blogCardData.value[i].author === 'string') {
-            blogCardData.value[i].author = [blogCardData.value[i].author];
-          }
-          blogCardData.value[i].archives = blogCardData.value[
-            i
-          ].archives.substring(0, 7);
-        }
-      }
-    })
-    .catch((error: any) => {
-      isShowData.value = false;
-      throw new Error(error);
-    });
-};
-const sizeChange = (val: number) => {
-  const params = {
-    category: 'blog',
-    lang: lang.value,
-    page: paginationData.value.currentpage,
-    pageSize: val,
-  };
-  getSortData(params)
-    .then((res) => {
-      if (res.obj.count === 0) {
-        isShowData.value = false;
-      } else {
-        blogCardData.value = res.obj.records;
-        for (let i = 0; i < blogCardData.value.length; i++) {
-          if (typeof blogCardData.value[i].author === 'string') {
-            blogCardData.value[i].author = [blogCardData.value[i].author];
-          }
-          blogCardData.value[i].archives = blogCardData.value[
-            i
-          ].archives.substring(0, 7);
-        }
-      }
-    })
-    .catch((error: any) => {
-      isShowData.value = false;
-      throw new Error(error);
-    });
+  getListData(params);
 };
 </script>
 
@@ -232,77 +179,77 @@ const sizeChange = (val: number) => {
     :illustration="BannerImg2"
   />
   <div class="blog">
-    <div v-if="!isShowData" class="notfound">
-      <NotFound />
-    </div>
-    <div v-if="isShowData" class="blog-tag2">
-      <MobileFilter
-        :data="tagsDataToChild"
-        :single="true"
-        @filter="listfilter"
-      />
-    </div>
-    <div v-if="isShowData" class="blog-list">
-      <OCard
-        v-for="item in blogCardData"
-        :key="item"
-        class="blog-list-item"
-        @click="toBlogContent(item.path)"
-      >
-        <div class="blog-list-item-title">
-          <p>{{ item.title }}</p>
-        </div>
-        <div class="blog-list-item-info">
-          <div class="infodetail">
-            <OIcon class="icon"><IconUser /></OIcon>
-            <p v-for="aut in item.author" :key="aut">
-              {{ aut }}
-            </p>
-          </div>
-          <div class="infodetail">
-            <OIcon class="icon"><IconCalendar /></OIcon>
-            <p>
-              {{ item.archives }}
-            </p>
-          </div>
-          <div class="infodetail">
-            <OIcon class="icon"><IconBrowse /></OIcon>
-            <!-- <p>{{userCaseData.BROWSE}}{{ item.browsetimes }}{{userCaseData.TIMES}}</p> -->
-            <p>{{ userCaseData.BROWSE }}10{{ userCaseData.TIMES }}</p>
-          </div>
-        </div>
-        <div class="blog-list-item-content">
-          <p>{{ item.summary }}</p>
-        </div>
-        <div class="blog-list-item-tags">
-          <OTag
-            v-for="tag in item.tags"
-            :key="tag"
-            type="secondary"
-            class="tagitem"
-            >{{ tag }}</OTag
-          >
-        </div>
-      </OCard>
-    </div>
-    <div v-if="isShowData" class="blog-pagination">
-      <OPagination
-        v-model:currentPage="paginationData.currentpage"
-        v-model:page-size="paginationData.pagesize"
-        :background="true"
-        layout="sizes, prev, pager, next, slot, jumper"
-        :total="paginationData.total"
-        :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
-        @current-change="currentChange"
-        @size-change="sizeChange"
-      >
-        <span
-          >{{ paginationData.currentpage }}/{{
-            Math.ceil(paginationData.total / paginationData.pagesize)
-          }}</span
+    <template v-if="isShowData">
+      <div class="blog-tag2">
+        <MobileFilter
+          :data="tagsDataToChild"
+          :single="true"
+          @filter="listfilter"
+        />
+      </div>
+      <div class="blog-list">
+        <OCard
+          v-for="item in blogCardData"
+          :key="item"
+          class="blog-list-item"
+          @click="toBlogContent(item.path)"
         >
-      </OPagination>
-    </div>
+          <div class="blog-list-item-title">
+            <p>{{ item.title }}</p>
+          </div>
+          <div class="blog-list-item-info">
+            <div class="infodetail">
+              <OIcon class="icon"><IconUser /></OIcon>
+              <p v-for="aut in item.author" :key="aut">
+                {{ aut }}
+              </p>
+            </div>
+            <div class="infodetail">
+              <OIcon class="icon"><IconCalendar /></OIcon>
+              <p>
+                {{ item.archives }}
+              </p>
+            </div>
+            <div class="infodetail">
+              <OIcon class="icon"><IconBrowse /></OIcon>
+              <!-- <p>{{userCaseData.BROWSE}}{{ item.browsetimes }}{{userCaseData.TIMES}}</p> -->
+              <p>{{ userCaseData.BROWSE }}10{{ userCaseData.TIMES }}</p>
+            </div>
+          </div>
+          <div class="blog-list-item-content">
+            <p>{{ item.summary }}</p>
+          </div>
+          <div class="blog-list-item-tags">
+            <OTag
+              v-for="tag in item.tags"
+              :key="tag"
+              type="secondary"
+              class="tagitem"
+              >{{ tag }}</OTag
+            >
+          </div>
+        </OCard>
+      </div>
+      <div class="blog-pagination">
+        <OPagination
+          v-model:currentPage="paginationData.currentpage"
+          v-model:page-size="paginationData.pagesize"
+          :background="true"
+          layout="sizes, prev, pager, next, slot, jumper"
+          :total="paginationData.total"
+          :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
+          @current-change="currentChange"
+          @size-change="currentChange"
+        >
+          <span
+            >{{ paginationData.currentpage }}/{{
+              Math.ceil(paginationData.total / paginationData.pagesize)
+            }}</span
+          >
+        </OPagination>
+      </div>
+    </template>
+    <NotFound v-else />
   </div>
 </template>
 
@@ -437,6 +384,10 @@ const sizeChange = (val: number) => {
     display: block;
     margin-left: var(--o-spacing-h5);
   }
+  :deep(.el-card__body) {
+    padding: var(--o-spacing-h4);
+    height: 100%;
+  }
 }
 @media (max-width: 768px) {
   .blog-list {
@@ -492,10 +443,8 @@ const sizeChange = (val: number) => {
     font-weight: 500;
   }
   .tagitem {
-    font-size: 0.66rem;
-    line-height: 0.66rem;
-    height: 14px;
-    padding: 2px 3px 1px 5px;
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
   }
   .blog-list-item-tags {
     margin-top: var(--o-spacing-h5);
