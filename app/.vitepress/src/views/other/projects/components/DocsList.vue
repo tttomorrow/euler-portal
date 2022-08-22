@@ -182,7 +182,7 @@ const goLink = (path: string) => {
         }
         &-backgroundone {
           position: absolute;
-          right: -38px;
+          right: -39px;
           top: -37px;
           width: 301px;
           height: 228px;
@@ -198,9 +198,9 @@ const goLink = (path: string) => {
           background-size: 100%;
           z-index: 1;
         }
-      }
-      .item:hover {
-        box-shadow: var(--o-shadow-base_hover);
+        &:hover {
+          box-shadow: var(--e-shadow-l2_hover);
+        }
       }
     }
     @media screen and (max-width: 767px) {

@@ -34,7 +34,7 @@ const isDark = computed(() => {
       <div class="pc">
         <!-- 有选项卡 -->
         <template v-if="frameObj.TAB">
-          <OTabs v-if="frameObj.TAB">
+          <OTabs>
             <OTabPane
               v-for="item in frameObj.TAB"
               :key="item.VALUE"
@@ -46,6 +46,7 @@ const isDark = computed(() => {
                 :framework-dark-img="frameObj[item.KEY].FRAMEWORK_IMG_DARK"
                 :framework-title="frameObj[item.KEY].FRAMEWORK_TITLE"
                 :dark-img="isDark"
+                :frame-type="item.VALUE"
               />
             </OTabPane>
           </OTabs>

@@ -26,7 +26,7 @@ const goLink = (path: string) => {
     router.go(`/${lang.value}` + path);
   }
 };
-// TODO:
+
 const showMail = (show: boolean) => {
   if (show) mailIsShow.value = !mailIsShow.value;
 };
@@ -46,14 +46,16 @@ const showMail = (show: boolean) => {
         @mouseleave="hideSub()"
         @click="showMail(item.SHOW)"
       >
-        <img
-          v-if="item.LINK_LIST.length === 1 && !item.SHOW"
-          class="info-cards-imgs"
-          :src="item.IMG"
-          alt=""
-          @click="goLink(item.LINK_LIST[0])"
-        />
-        <img v-else class="info-cards-imgs" :src="item.IMG" alt="" />
+        <div class="cover">
+          <img
+            v-if="item.LINK_LIST.length === 1 && !item.SHOW"
+            class="info-cards-imgs"
+            :src="item.IMG"
+            alt=""
+            @click="goLink(item.LINK_LIST[0])"
+          />
+          <img v-else class="info-cards-imgs" :src="item.IMG" alt="" />
+        </div>
         <p class="info-cards-title">{{ item.TITLE }}</p>
         <template v-if="!item.SHOW">
           <div
@@ -98,6 +100,11 @@ const showMail = (show: boolean) => {
     box-shadow: var(--o-shadow-base);
     &-item {
       position: relative;
+      .cover {
+        height: 170px;
+        display: flex;
+        align-items: center;
+      }
     }
     &-imgs {
       display: block;
@@ -159,6 +166,9 @@ const showMail = (show: boolean) => {
       &-item {
         margin: 0 auto;
         padding: 0;
+        .cover {
+          height: 100px;
+        }
       }
       &-last {
         grid-column: span 2;
@@ -211,7 +221,7 @@ const showMail = (show: boolean) => {
       }
       &-imgs {
         width: 100%;
-        height: 100%;
+        height: auto;
       }
     }
     @media screen and (min-width: 1440px) {
@@ -225,7 +235,7 @@ const showMail = (show: boolean) => {
       }
       &-imgs {
         width: 100%;
-        height: 100%;
+        height: auto;
       }
     }
   }

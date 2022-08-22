@@ -70,7 +70,7 @@ const goNext = () => {
 <template>
   <BannerLevel2
     :background-image="BannerBG"
-    background-text="INTERRACTION"
+    background-text="INTERACTION"
     :title="i18n.live.LIVETITLE"
     :illustration="BannerIllustration"
   />
@@ -279,12 +279,14 @@ const goNext = () => {
     }
     .live-background {
       @media screen and (max-width: 767px) {
-        background: v-bind('liveStyleMo.light') !important;
+        background: var(--e-color-greyblue1) v-bind('liveStyleMo.light') left
+          top/contain no-repeat !important;
       }
 
       &.dark {
         @media screen and (max-width: 767px) {
-          background: v-bind('liveStyleMo.dark') !important;
+          background: var(--e-color-kleinblue3) v-bind('liveStyleMo.dark') left
+            top/contain no-repeat !important;
         }
       }
     }
