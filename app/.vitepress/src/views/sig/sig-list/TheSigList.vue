@@ -37,17 +37,21 @@ const allList = ref([]);
 const SigList = ref<Array<SIGLIST>>([]);
 // 仓库列表过滤参数
 const sigSelectList = ref<Array<string>>([]);
-const sigSelected = ref('');
 const repositioryList = ref<Array<string>>([]);
 const repoRenderList = ref<Array<string>>([]);
-const repositiorySelected = ref('');
 const maintainerList = ref<Array<string>>([]);
-const maintainerSelected = ref('');
+const slectedInfo = reactive({
+  sigSelected: '',
+  repositiorySelected: '',
+  maintainerSelected: '',
+});
+// 单个仓库或maintainer
+const singleInfo = reactive({
+  trueRepo: '',
+  trueMaintainer: '',
+});
 // 分页条的显示与隐藏
 const paginationShow = ref(true);
-// 仓库名称筛选正确值
-const trueRepo = ref('');
-
 const initialParams = reactive({
   page: 1,
   pageSize: 12,
@@ -105,23 +109,24 @@ const getRepositoryList = () => {
 };
 const filterRepositoryList = () => {
   if (
-    sigSelected.value === '' &&
-    repositiorySelected.value === '' &&
-    maintainerSelected.value === ''
+    !slectedInfo.sigSelected &&
+    !slectedInfo.repositiorySelected &&
+    !slectedInfo.maintainerSelected
   ) {
     repoRenderList.value = repositioryList.value.slice(0, 99);
     getSigList(initialParams);
   } else {
     SigList.value = _.filter(allList.value, (item: any) => {
       return (
-        (!sigSelected.value || item.sig_name === sigSelected.value) &&
-        (!repositiorySelected.value ||
+        (!slectedInfo.sigSelected ||
+          item.sig_name === slectedInfo.sigSelected) &&
+        (!slectedInfo.repositiorySelected ||
           item.repos.find((subItem: string) => {
-            return subItem === repositiorySelected.value;
+            return subItem === slectedInfo.repositiorySelected;
           })) &&
-        (!maintainerSelected.value ||
+        (!slectedInfo.maintainerSelected ||
           item.maintainers.find((subItem: string) => {
-            return subItem === maintainerSelected.value;
+            return subItem === slectedInfo.maintainerSelected;
           }))
       );
     });
@@ -135,9 +140,9 @@ const currentChange = (val: number) => {
     pageSize: paginationData.value.pageSize,
   };
   if (
-    sigSelected.value === '' &&
-    repositiorySelected.value === '' &&
-    maintainerSelected.value === ''
+    !slectedInfo.sigSelected &&
+    !slectedInfo.repositiorySelected &&
+    !slectedInfo.maintainerSelected
   ) {
     getSigList(params);
   }
@@ -148,9 +153,9 @@ const sizeChange = (val: number) => {
     pageSize: val,
   };
   if (
-    sigSelected.value === '' &&
-    repositiorySelected.value === '' &&
-    maintainerSelected.value === ''
+    !slectedInfo.sigSelected &&
+    !slectedInfo.repositiorySelected &&
+    !slectedInfo.maintainerSelected
   ) {
     getSigList(params);
   }
@@ -161,7 +166,7 @@ const toSigDetail = (value: SIGLIST) => {
 };
 // select 滑动到底部翻页
 function getNextPage() {
-  if (!repositiorySelected.value) {
+  if (!slectedInfo.repositiorySelected && !slectedInfo.sigSelected) {
     repoRenderList.value = repositioryList.value.slice(
       0,
       repoRenderList.value.length + 100
@@ -170,7 +175,7 @@ function getNextPage() {
 }
 // 自定义筛选事件
 function filterRope(val: string) {
-  repositiorySelected.value = val;
+  slectedInfo.repositiorySelected = val;
   repoRenderList.value = repositioryList.value.filter((item) => {
     return item.includes(val);
   });
@@ -185,17 +190,38 @@ const debounceEvent = debounce(filterRope, 300, {
 watch(
   () => SigList.value,
   (data) => {
-    if (data.length > 0 && repositiorySelected.value !== '') {
-      trueRepo.value = repositiorySelected.value;
+    if (data.length > 0 && slectedInfo.repositiorySelected) {
+      singleInfo.trueRepo = slectedInfo.repositiorySelected;
+    }
+    if (data.length > 0 && slectedInfo.maintainerSelected) {
+      singleInfo.trueMaintainer = slectedInfo.maintainerSelected;
     }
   }
 );
 watch(
-  () => repositiorySelected.value,
+  () => slectedInfo.repositiorySelected,
   (data) => {
-    if (data === '') {
-      trueRepo.value = repositiorySelected.value;
+    if (!data) {
+      singleInfo.trueRepo = slectedInfo.repositiorySelected;
     }
+  }
+);
+watch(
+  () => slectedInfo.maintainerSelected,
+  (data) => {
+    if (!data) {
+      singleInfo.trueMaintainer = slectedInfo.maintainerSelected;
+    }
+  }
+);
+watch(
+  () => slectedInfo.sigSelected,
+  (data) => {
+    (allList.value as any).forEach((item: SIGLIST) => {
+      if (item.sig_name === data) {
+        repoRenderList.value = item.repos;
+      }
+    });
   }
 );
 onMounted(() => {
@@ -213,7 +239,7 @@ onMounted(() => {
           {{ i18n.sig.SIG_LIST.SIG }}
         </span>
         <OSelect
-          v-model="sigSelected"
+          v-model="slectedInfo.sigSelected"
           filterable
           clearable
           :placeholder="i18n.sig.SIG_ALL"
@@ -232,7 +258,7 @@ onMounted(() => {
           {{ i18n.sig.SIG_LIST.REPOSITORY }}
         </span>
         <OSelect
-          v-model="repositiorySelected"
+          v-model="slectedInfo.repositiorySelected"
           filterable
           clearable
           :placeholder="i18n.sig.SIG_ALL"
@@ -254,7 +280,7 @@ onMounted(() => {
           {{ i18n.sig.SIG_LIST.MAINTAINER }}
         </span>
         <OSelect
-          v-model="maintainerSelected"
+          v-model="slectedInfo.maintainerSelected"
           filterable
           clearable
           :placeholder="i18n.sig.SIG_ALL"
@@ -304,7 +330,7 @@ onMounted(() => {
       </el-table-column>
       <el-table-column :label="i18n.sig.SIG_LIST.REPOSITORY">
         <template #default="scope">
-          <div v-show="trueRepo === ''">
+          <div v-show="!singleInfo.trueRepo">
             <div v-for="(item, index) in scope.row.repos" :key="item">
               <div v-if="index < 3">
                 <a :href="'https://gitee.com/' + item" target="_blank">{{
@@ -314,19 +340,40 @@ onMounted(() => {
             </div>
             <p v-show="scope.row.repos.length > 3" class="ellipsis">……</p>
           </div>
-          <div v-show="trueRepo !== ''">
-            <a :href="'https://gitee.com/' + trueRepo" target="_blank">{{
-              trueRepo
-            }}</a>
+          <div v-show="singleInfo.trueRepo">
+            <a
+              :href="'https://gitee.com/' + singleInfo.trueRepo"
+              target="_blank"
+              >{{ singleInfo.trueRepo }}</a
+            >
           </div>
         </template>
       </el-table-column>
       <el-table-column :label="i18n.sig.SIG_LIST.MAINTAINER">
         <template #default="scope">
-          <div class="sig-maintainer">
-            <div v-for="item in scope.row.maintainers" :key="item">
-              <p>{{ item }}、</p>
+          <div v-show="!singleInfo.trueMaintainer">
+            <div class="sig-maintainer">
+              <div
+                v-for="(item, index) in scope.row.maintainers"
+                :key="item"
+                class="sig-maintainer-item"
+              >
+                <a :href="'https://gitee.com/' + item" target="_blank">{{
+                  item
+                }}</a>
+                <span v-show="index !== scope.row.maintainers.length - 1"
+                  >、</span
+                >
+              </div>
             </div>
+          </div>
+          <div v-show="singleInfo.trueMaintainer">
+            <a
+              :href="'https://gitee.com/' + singleInfo.trueMaintainer"
+              target="_blank"
+            >
+              {{ singleInfo.trueMaintainer }}</a
+            >
           </div>
         </template>
       </el-table-column>
@@ -389,7 +436,7 @@ onMounted(() => {
             <span class="mo-item-title"
               >{{ i18n.sig.SIG_LIST.REPOSITORY }}:</span
             >
-            <div v-show="trueRepo === ''">
+            <div v-show="!singleInfo.trueRepo">
               <div v-for="(subItem, subIndex) in item.repos" :key="subItem">
                 <div v-if="subIndex < 4" class="mo-item-repo">
                   <a :href="'https://gitee.com/' + subItem" target="_blank">{{
@@ -399,20 +446,45 @@ onMounted(() => {
               </div>
               <p v-show="item.repos.length > 4" class="ellipsis">……</p>
             </div>
-            <div v-show="trueRepo !== ''" class="mo-item-repo">
-              <a :href="'https://gitee.com/' + trueRepo" target="_blank">{{
-                trueRepo
-              }}</a>
+            <div v-show="singleInfo.trueRepo" class="mo-item-repo">
+              <a
+                :href="'https://gitee.com/' + singleInfo.trueRepo"
+                target="_blank"
+                >{{ singleInfo.trueRepo }}</a
+              >
             </div>
           </div>
           <div class="mo-item-text mo-item-maintainers">
             <span class="mo-item-title"
               >{{ i18n.sig.SIG_LIST.MAINTAINER }}:</span
             >
-            <div class="mo-item-maintainersbox">
-              <div v-for="nameItem in item.maintainers" :key="nameItem">
-                <p class="mo-item-maintainer">{{ nameItem }}、</p>
+            <div v-show="!singleInfo.trueMaintainer">
+              <div class="mo-item-maintainersbox">
+                <div
+                  v-for="(nameItem, nameIndex) in item.maintainers"
+                  :key="nameItem"
+                >
+                  <a
+                    :href="'https://gitee.com/' + nameItem"
+                    target="_blank"
+                    class="mo-item-maintainer"
+                    >{{ nameItem }}</a
+                  >
+                  <span
+                    v-show="nameIndex !== item.maintainers.length - 1"
+                    class="mo-item-maintainer"
+                    >、</span
+                  >
+                </div>
               </div>
+            </div>
+            <div v-show="singleInfo.trueMaintainer">
+              <a
+                :href="'https://gitee.com/' + singleInfo.trueMaintainer"
+                target="_blank"
+                class="mo-item-maintainer"
+                >{{ singleInfo.trueMaintainer }}</a
+              >
             </div>
           </div>
         </div>
@@ -430,10 +502,12 @@ onMounted(() => {
   .sig-maintainer {
     display: grid;
     grid-template-columns: auto 1fr;
-    p {
-      white-space: nowrap;
-      font-size: var(--o-font-size-text);
-      color: var(--e-color-text1);
+    &-item {
+      span {
+        white-space: nowrap;
+        font-size: var(--o-font-size-text);
+        color: var(--e-color-text1);
+      }
     }
   }
 }

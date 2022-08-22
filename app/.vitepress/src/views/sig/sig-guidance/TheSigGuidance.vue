@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
+import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
+import moillustration from '@/assets/category/sig/guidance/mo-illustration.png';
 import sig1 from '@/assets/category/sig/guidance/sig1.png';
 import sig2 from '@/assets/category/sig/guidance/sig2.png';
 import sig3 from '@/assets/category/sig/guidance/sig3.png';
@@ -17,6 +20,10 @@ const RIGHT_IMG = [sig4, sig5, sig6];
 const i18n = useI18n();
 const configData = useData();
 const language = configData.lang;
+const screenWidth = useWindowResize();
+const isMobile = computed(() => {
+  return screenWidth.value <= 768 ? true : false;
+});
 </script>
 
 <template>
@@ -24,7 +31,7 @@ const language = configData.lang;
     :background-image="banner"
     background-text="SIG"
     :title="i18n.sig.GUIDANCE_LIST.GUIDE.TITLE"
-    :illustration="illustration"
+    :illustration="isMobile ? moillustration : illustration"
   />
   <div class="application">
     <div class="middle">
@@ -37,6 +44,7 @@ const language = configData.lang;
           :class="[
             'middle-item-left',
             index === 0 && language === 'ru' ? 'middle-item-left-ruf' : '',
+            index === 1 && language === 'ru' ? 'middle-item-left-rus' : '',
           ]"
         >
           <div class="middle-item-bgdconfig">
@@ -108,6 +116,9 @@ const language = configData.lang;
     @media (max-width: 1080px) {
       padding: 0 var(--o-spacing-h4);
     }
+    @media (max-width: 780px) {
+      margin: var(--o-spacing-h2) auto;
+    }
     &-item {
       min-height: 154px;
       display: flex;
@@ -138,6 +149,13 @@ const language = configData.lang;
           margin-bottom: var(--o-spacing-h5);
         }
       }
+      &-left-rus {
+        position: relative;
+        top: 35px;
+        @media (max-width: 1280px) {
+          top: 0;
+        }
+      }
       &-right {
         margin-top: 80px;
         display: flex;
@@ -148,12 +166,13 @@ const language = configData.lang;
         }
       }
       &-right-f {
-        margin-top: 102px;
+        margin-top: 100px;
         @media (max-width: 1080px) {
           margin-top: 0px;
         }
       }
       &-right-ruf {
+        margin-top: 120px;
         @media (max-width: 1280px) {
           margin-top: 180px;
         }
@@ -168,7 +187,7 @@ const language = configData.lang;
           width: 180px;
         }
         @media (max-width: 1080px) {
-          width: 150px;
+          width: 98px;
         }
         img {
           position: relative;
@@ -208,9 +227,13 @@ const language = configData.lang;
           position: relative;
           bottom: var(--o-spacing-h4);
           @media (max-width: 780px) {
-            margin: 0 var(--o-spacing-h10) var(--o-spacing-h10)
-              var(--o-spacing-h3);
-            line-height: var(--o-line-height-text);
+            margin: 0 var(--o-spacing-h6) var(--o-spacing-h10)
+              var(--o-spacing-h4);
+            line-height: var(--o-line-height-tip);
+            color: var(--e-color-text4);
+            font-size: var(--o-font-size-tip);
+            position: relative;
+            bottom: 15px;
           }
         }
         &-circle {
@@ -223,13 +246,14 @@ const language = configData.lang;
           top: 50%;
           transform: translate(-50%, -50%);
           @media (max-width: 780px) {
-            height: 60px;
-            width: 60px;
+            height: 36px;
+            width: 36px;
+            border: 2px solid var(--e-color-white);
           }
           span {
             white-space: nowrap;
             font-size: var(--o-font-size-h5);
-            color: var(--e-color-text2);
+            color: var(--e-color-white);
             line-height: var(--o-line-height-h5);
             position: relative;
             top: 50%;
@@ -237,9 +261,9 @@ const language = configData.lang;
             transform: translate(-50%, -50%);
             font-weight: 500;
             @media (max-width: 780px) {
-              font-size: var(--o-font-size-h7);
-              right: 14%;
-              transform: translate(-50%, -50%);
+              font-size: var(--o-font-size-tip);
+              transform: translate(-30%, -50%);
+              line-height: var(--o-line-height-text);
             }
           }
         }
@@ -251,18 +275,18 @@ const language = configData.lang;
       .line-first {
         position: absolute;
         top: 375px;
-        left: 48%;
+        left: 47%;
         height: 70px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
       }
       .line-second {
         position: absolute;
         top: 560px;
-        left: 34%;
+        left: 31%;
         height: 70px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-left: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
@@ -274,7 +298,7 @@ const language = configData.lang;
         top: 650px;
         left: 48%;
         height: 50px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
@@ -284,9 +308,9 @@ const language = configData.lang;
       .line-forth {
         position: absolute;
         top: 820px;
-        left: 34%;
+        left: 31%;
         height: 70px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-left: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
@@ -298,7 +322,7 @@ const language = configData.lang;
         top: 905px;
         left: 48%;
         height: 50px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
@@ -315,28 +339,28 @@ const language = configData.lang;
         top: 375px;
         left: 48%;
         height: 70px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
       }
       .line-second {
         position: absolute;
-        top: 640px;
-        left: 34%;
+        top: 655px;
+        left: 31%;
         height: 70px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-left: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
-          top: 690px;
+          top: 680px;
         }
       }
       .line-third {
         position: absolute;
-        top: 740px;
+        top: 745px;
         left: 48%;
         height: 50px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
@@ -345,10 +369,10 @@ const language = configData.lang;
       }
       .line-forth {
         position: absolute;
-        top: 995px;
-        left: 34%;
+        top: 1010px;
+        left: 31%;
         height: 70px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-left: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
@@ -360,7 +384,7 @@ const language = configData.lang;
         top: 1100px;
         left: 48%;
         height: 50px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
@@ -376,34 +400,34 @@ const language = configData.lang;
         position: absolute;
         top: 375px;
         left: 48%;
-        height: 70px;
-        width: 300px;
+        height: 100px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
           left: 45%;
-          top: 475px;
+          height: 200px;
         }
       }
       .line-second {
         position: absolute;
-        top: 670px;
-        left: 34%;
-        height: 90px;
-        width: 300px;
+        top: 675px;
+        left: 31%;
+        height: 100px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-left: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
           left: 34%;
-          top: 775px;
+          top: 760px;
         }
       }
       .line-third {
         position: absolute;
-        top: 740px;
+        top: 800px;
         left: 48%;
         height: 50px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
@@ -413,28 +437,28 @@ const language = configData.lang;
       }
       .line-forth {
         position: absolute;
-        top: 995px;
-        left: 34%;
+        top: 1050px;
+        left: 31%;
         height: 94px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-left: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
           left: 30%;
-          top: 1200px;
+          top: 1220px;
         }
       }
       .line-fifth {
         position: absolute;
-        top: 1100px;
+        top: 1140px;
         left: 48%;
         height: 70px;
-        width: 300px;
+        width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
           left: 45%;
-          top: 1320px;
+          top: 1315px;
         }
       }
       @media (max-width: 1080px) {

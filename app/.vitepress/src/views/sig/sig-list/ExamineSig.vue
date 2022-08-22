@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import { getSigList } from '@/api/api-sig';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
