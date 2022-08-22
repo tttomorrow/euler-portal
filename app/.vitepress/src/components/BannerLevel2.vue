@@ -54,7 +54,7 @@ const rootStyle = computed(() => {
         <p v-if="subtitle && !slots.default" class="banner-subtitle">
           {{ subtitle }}
         </p>
-        <div class="banner-operation" v-if="slots.default">
+        <div v-if="slots.default" class="banner-operation">
           <slot></slot>
         </div>
       </div>
