@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import MiniTitle from './MiniTitle.vue';
 import DocsList from './DocsList.vue';
 import OCollapseItem from 'opendesign/collapse/OCollapseItem.vue';
-defineProps({
+const props = defineProps({
   docsObj: {
     type: Object,
     default: function () {
@@ -10,6 +11,8 @@ defineProps({
     },
   },
 });
+
+const docsActive = ref(props.docsObj.TAB && props.docsObj.TAB[0]?.VALUE);
 </script>
 <template>
   <div class="docs">
@@ -20,7 +23,7 @@ defineProps({
     />
     <div class="docs-tab">
       <template v-if="docsObj.TAB">
-        <OTabs v-if="docsObj.TAB">
+        <OTabs>
           <OTabPane
             v-for="item in docsObj.TAB"
             :key="item.VALUE"
@@ -39,9 +42,14 @@ defineProps({
         <OCollapse
           v-for="item in docsObj.TAB"
           :key="item.VALUE"
+          v-model="docsActive"
           class="collapse"
         >
-          <OCollapseItem :title="item.VALUE" class="collapse-item">
+          <OCollapseItem
+            :title="item.VALUE"
+            :name="item.VALUE"
+            class="collapse-item"
+          >
             <DocsList :data-list="docsObj[item.KEY].DATA_LIST" />
           </OCollapseItem>
         </OCollapse>
@@ -73,6 +81,9 @@ defineProps({
           color: var(--e-color-brand1);
         }
       }
+      :deep(.el-tabs__content) {
+        overflow: inherit;
+      }
     }
   }
   &-mobile-tab {
@@ -84,7 +95,7 @@ defineProps({
       display: block;
     }
     .collapse {
-      border-left: none;
+      border: 0 none;
       padding: 0;
       &-item {
         --o-collapse-color-border: none;
@@ -93,11 +104,34 @@ defineProps({
           height: 34px;
           font-size: var(--o-font-size-tip);
           padding: var(--o-spacing-h8) 0 var(--o-spacing-h8) var(--o-spacing-h8);
+          position: relative;
+          &:after {
+            content: '';
+            left: var(--o-spacing-h8);
+            right: var(--o-spacing-h8);
+            position: absolute;
+            background: var(--e-color-border2);
+            height: 1px;
+            font-size: 0;
+            bottom: 0;
+          }
+          &.is-active {
+            &:after {
+              display: none;
+            }
+          }
         }
         :deep(.el-collapse-item__wrap) {
           background-color: var(--e-color-bg1);
           .el-collapse-item__content {
             padding: 0;
+          }
+        }
+      }
+      &:last-child {
+        :deep(.el-collapse-item__header) {
+          &:after {
+            display: none;
           }
         }
       }

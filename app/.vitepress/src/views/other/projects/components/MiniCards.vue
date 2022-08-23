@@ -52,7 +52,7 @@ const isDark = computed(() => {
         @mouseleave="hideSub()"
         @click="showMail(item.SHOW)"
       >
-        <div class="cover" v-if="!isDark">
+        <div v-if="!isDark" class="cover">
           <img
             v-if="item.LINK_LIST.length === 1 && !item.SHOW"
             class="info-cards-imgs"
@@ -62,7 +62,7 @@ const isDark = computed(() => {
           />
           <img v-else class="info-cards-imgs" :src="item.IMG" alt="" />
         </div>
-        <div class="cover" v-else>
+        <div v-else class="cover">
           <img
             v-if="item.LINK_LIST.length === 1 && !item.SHOW"
             class="info-cards-imgs"

@@ -27,14 +27,9 @@ const i18n = useI18n();
     <!-- 中间文字介绍部分 -->
     <MiniDescription :description-desc="i18n.atune.ATUNE_DESC" />
     <!-- 架构 -->
-    <MiniFrame
-      :frame-obj="i18n.atune.ATUNE_FRAMEWORK"
-      layout="upAndDown"
-    />
+    <MiniFrame :frame-obj="i18n.atune.ATUNE_FRAMEWORK" layout="upAndDown" />
     <!-- 文档 -->
-    <MiniDocs
-      :docs-obj="i18n.atune.ATUNE_DOCUMENT"
-    />
+    <MiniDocs :docs-obj="i18n.atune.ATUNE_DOCUMENT" />
   </div>
 </template>
 

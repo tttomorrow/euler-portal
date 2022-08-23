@@ -257,7 +257,6 @@ const currentChange = (val: number) => {
         <OCard
           v-for="item in newsCardData"
           :key="item"
-          class="news-list-item"
           @click="toNewsContent(item.path)"
         >
           <div class="news-img">

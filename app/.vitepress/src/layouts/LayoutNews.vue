@@ -40,7 +40,7 @@ const goNext = () => {
 };
 const getNewsData = () => {
   getSortData(sortParams).then((res) => {
-    console.log(res);
+    // console.log(res);
     res.obj.records.forEach((item: any) => {
       newsTitle.value.push(item.title);
     });

@@ -302,7 +302,6 @@ const goBackPage = () => {
 };
 
 const go = (id: number) => {
-  console.log(router.route.path);
   router.go(`${router.route.path}software-info/?id=${id}`);
 };
 

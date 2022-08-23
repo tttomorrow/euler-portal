@@ -69,7 +69,9 @@ const isDark = computed(() => {
           <FrameList
             :desc-list="frameObj[frameObj.TAB[0].KEY].DESC_LIST"
             :framework-img="frameObj[frameObj.TAB[0].KEY].FRAMEWORK_IMG"
-            :framework-dark-img="frameObj[frameObj.TAB[0].KEY].FRAMEWORK_IMG_DARK"
+            :framework-dark-img="
+              frameObj[frameObj.TAB[0].KEY].FRAMEWORK_IMG_DARK
+            "
             :framework-title="frameObj[frameObj.TAB[0].KEY].FRAMEWORK_TITLE"
             :dark-img="isDark"
           />
