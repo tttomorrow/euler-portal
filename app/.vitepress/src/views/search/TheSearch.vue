@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue';
-import { useData, useRouter } from 'vitepress';
+import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import { getSearchData, getSearchCount, getSearchRpm } from '@/api/api-search';
 
@@ -9,7 +9,6 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import IconX from '~icons/app/x.svg';
 
-const router = useRouter();
 const { lang, site } = useData();
 
 const i18n = useI18n();
@@ -63,7 +62,7 @@ const totalPage = computed(() => {
 
 // 点击搜索框的删除图标
 function donShowSearchBox() {
-  router.go(`/${lang.value}/`);
+  searchInput.value = '';
 }
 // 点击数据的类型导航
 function setCurrentType(index: number, type: string) {

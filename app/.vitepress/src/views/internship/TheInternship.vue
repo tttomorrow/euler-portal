@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useCommon } from '@/stores/common';
 
 import InternshipBanner from './InternshipBanner.vue';
 import InternshipStep from './InternshipStep.vue';
@@ -12,19 +13,28 @@ import TaskTitle from '@/assets/category/internship/task-title.png';
 import IntegralTitle from '@/assets/category/internship/integral-title.png';
 import PartnerTitle from '@/assets/category/internship/partner-title.png';
 import HelpTitle from '@/assets/category/internship/help-title.png';
-import iscas from '@/assets/category/internship/iscas.png';
-import qilinsoft from '@/assets/category/internship/qilinsoft.png';
-import tongxin from '@/assets/category/internship/tongxin.png';
-import kylinsec from '@/assets/category/internship/kylinsec.png';
-import gitee from '@/assets/category/internship/gitee.png';
-import mindSpore from '@/assets/category/internship/mindSpore.png';
-import openEuler from '@/assets/category/internship/openEuler.png';
-import openGauss from '@/assets/category/internship/openGauss.png';
-import openLooKeng from '@/assets/category/internship/openLooKeng.png';
 import qrCode from '@/assets/category/internship/qrCode.png';
+import gitee_light from '@/assets/category/internship/logo/gitee_light.png';
+import iscas_light from '@/assets/category/internship/logo/iscas_light.png';
+import mindSpore_light from '@/assets/category/internship/logo/mindspore_light.png';
+import openEuler_light from '@/assets/category/internship/logo/openeuler_light.png';
+import openGauss_light from '@/assets/category/internship/logo/opengauss_light.png';
+import openLookeng_light from '@/assets/category/internship/logo/openlookeng_light.png';
+import qiLin_light from '@/assets/category/internship/logo/qilin_light.png';
+import tongXin_light from '@/assets/category/internship/logo/tongxin_light.png';
+import xinAn_light from '@/assets/category/internship/logo/xinan_light.png';
+import gitee_dark from '@/assets/category/internship/logo/gitee_dark.png';
+import iscas_dark from '@/assets/category/internship/logo/iscas_dark.png';
+import mindSpore_dark from '@/assets/category/internship/logo/mindspore_dark.png';
+import openEuler_dark from '@/assets/category/internship/logo/openeuler_dark.png';
+import openGauss_dark from '@/assets/category/internship/logo/opengauss_dark.png';
+import openLookeng_dark from '@/assets/category/internship/logo/openlookeng_dark.png';
+import qiLin_dark from '@/assets/category/internship/logo/qilin_dark.png';
+import tongXin_dark from '@/assets/category/internship/logo/tongxin_dark.png';
+import xinAn_dark from '@/assets/category/internship/logo/xinan_dark.png';
 
 import IconArrowRight from '~icons/app/arrow-right.svg';
-
+const commonStore = useCommon();
 const INTEGRAL_DATA = [
   {
     HEAD: '1、实习工资、',
@@ -84,44 +94,87 @@ const RULE = {
   MORE: ['更多问题，请移步', '本帖', '评论区提问。'],
 };
 
-const PARTNER_DATA = [
-  {
-    IMG: iscas,
-    LINK: '',
-  },
-  {
-    IMG: qilinsoft,
-    LINK: '',
-  },
-  {
-    IMG: tongxin,
-    LINK: '',
-  },
-  {
-    IMG: kylinsec,
-    LINK: '',
-  },
-  {
-    IMG: gitee,
-    LINK: '',
-  },
-  {
-    IMG: mindSpore,
-    LINK: '',
-  },
-  {
-    IMG: openEuler,
-    LINK: '',
-  },
-  {
-    IMG: openGauss,
-    LINK: '',
-  },
-  {
-    IMG: openLooKeng,
-    LINK: '',
-  },
-];
+const PARTNER_DATA = computed(() => {
+  if (commonStore.theme === 'light') {
+    return [
+      {
+        IMG: iscas_light,
+        LINK: '',
+      },
+      {
+        IMG: qiLin_light,
+        LINK: '',
+      },
+      {
+        IMG: tongXin_light,
+        LINK: '',
+      },
+      {
+        IMG: xinAn_light,
+        LINK: '',
+      },
+      {
+        IMG: gitee_light,
+        LINK: '',
+      },
+      {
+        IMG: mindSpore_light,
+        LINK: '',
+      },
+      {
+        IMG: openEuler_light,
+        LINK: '',
+      },
+      {
+        IMG: openGauss_light,
+        LINK: '',
+      },
+      {
+        IMG: openLookeng_light,
+        LINK: '',
+      },
+    ];
+  } else {
+    return [
+      {
+        IMG: iscas_dark,
+        LINK: '',
+      },
+      {
+        IMG: qiLin_dark,
+        LINK: '',
+      },
+      {
+        IMG: tongXin_dark,
+        LINK: '',
+      },
+      {
+        IMG: xinAn_dark,
+        LINK: '',
+      },
+      {
+        IMG: gitee_dark,
+        LINK: '',
+      },
+      {
+        IMG: mindSpore_dark,
+        LINK: '',
+      },
+      {
+        IMG: openEuler_dark,
+        LINK: '',
+      },
+      {
+        IMG: openGauss_dark,
+        LINK: '',
+      },
+      {
+        IMG: openLookeng_dark,
+        LINK: '',
+      },
+    ];
+  }
+});
 
 const HELP = {
   INFO: [
@@ -490,7 +543,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .intership-wrap {
   max-width: 1504px;
-  padding: 0 44px;
+  padding: 0 40px;
   margin: 0 auto;
   @media (max-width: 1000px) {
     padding: 0 16px;
@@ -906,11 +959,11 @@ onUnmounted(() => {
 #partner {
   .img-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
+    grid-template-columns: repeat(4, minmax(82px, 1fr));
     .img-cover {
       width: 100%;
-      height: 100px;
+      height: 120px;
+      border: 1px solid var(--e-color-division1);
       img {
         width: 100%;
         object-fit: cover;

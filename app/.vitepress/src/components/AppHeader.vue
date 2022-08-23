@@ -132,7 +132,6 @@ function search() {
   router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
-
 const activeItem = ref(router.route.path);
 watch(
   () => router.route.path,
