@@ -5,7 +5,6 @@ import MiniDescription from '../components/MiniDescription.vue';
 import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import BannerMinisite from '@/components/BannerMinisite.vue';
-import AppAnchor from '@/components/AppAnchor.vue';
 
 import BannerIllustration from '/img/projects/secgear/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
@@ -25,30 +24,18 @@ const i18n = useI18n();
     <MiniDescription :description-desc="i18n.secgear.SECGEAR_DESC" />
     <!-- 架构 -->
     <MiniFrame
-      :id="i18n.secgear.SECGEAR_ANCHOR_DATA[0].id"
       :frame-obj="i18n.secgear.SECGEAR_FRAMEWORK"
       layout="leftAndRight"
     />
     <!-- 文档 -->
     <MiniDocs
-      :id="i18n.secgear.SECGEAR_ANCHOR_DATA[1].id"
       :docs-obj="i18n.secgear.SECGEAR_DOCUMENT"
     />
-
-    <AppAnchor class="anchor" :data="i18n.secgear.SECGEAR_ANCHOR_DATA" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .secgear-wraper {
   margin: 0 auto;
-  .anchor {
-    @media screen and (min-width: 768px) {
-      display: block;
-    }
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
 }
 </style>

@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
+
+import { useCommon } from '@/stores/common';
 const router = useRouter();
 const { lang } = useData();
 defineProps({
@@ -30,6 +32,10 @@ const goLink = (path: string) => {
 const showMail = (show: boolean) => {
   if (show) mailIsShow.value = !mailIsShow.value;
 };
+const commonStore = useCommon();
+const isDark = computed(() => {
+  return commonStore.theme === 'dark' ? true : false;
+});
 </script>
 <template>
   <div class="cards-wraper">
@@ -46,7 +52,7 @@ const showMail = (show: boolean) => {
         @mouseleave="hideSub()"
         @click="showMail(item.SHOW)"
       >
-        <div class="cover">
+        <div class="cover" v-if="!isDark">
           <img
             v-if="item.LINK_LIST.length === 1 && !item.SHOW"
             class="info-cards-imgs"
@@ -55,6 +61,16 @@ const showMail = (show: boolean) => {
             @click="goLink(item.LINK_LIST[0])"
           />
           <img v-else class="info-cards-imgs" :src="item.IMG" alt="" />
+        </div>
+        <div class="cover" v-else>
+          <img
+            v-if="item.LINK_LIST.length === 1 && !item.SHOW"
+            class="info-cards-imgs"
+            :src="item.DARK_IMG"
+            alt=""
+            @click="goLink(item.LINK_LIST[0])"
+          />
+          <img v-else class="info-cards-imgs" :src="item.DARK_IMG" alt="" />
         </div>
         <p class="info-cards-title">{{ item.TITLE }}</p>
         <template v-if="!item.SHOW">

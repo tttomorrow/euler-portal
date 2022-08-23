@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, PropType } from 'vue';
+import { PropType } from 'vue';
 
 interface Info {
   THEME: string;
@@ -52,7 +52,7 @@ defineProps({
   margin: var(--o-spacing-h2) 0;
   padding: 0 var(--o-spacing-h5);
   @media screen and (max-width: 767px) {
-    margin-top: var(--o-spacing-h5);
+    margin-top: var(--o-spacing-h2);
   }
 }
 .desc {

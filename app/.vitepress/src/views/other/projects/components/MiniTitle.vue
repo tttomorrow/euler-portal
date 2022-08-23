@@ -46,7 +46,7 @@ defineProps({
       z-index: 1;
     }
     &-inside {
-      color: var(--e-color-bg4);
+      color: var(--e-color-neutral10);
       // TODO:
       font-size: 40px;
       font-weight: 300;

@@ -18,24 +18,28 @@ export default {
   SVIRT_LINK: [
     {
       IMG: '/img/projects/share/cards-work.png',
+      DARK_IMG: '/img/projects/share/cards-work.png',
       TITLE: 'Try Now',
       LINK_LIST: ['https://gitee.com/openeuler/stratovirt'],
       SHOW: false,
     },
     {
       IMG: '/img/projects/share/cards-letter.png',
+      DARK_IMG: '/img/projects/share/cards-letter.png',
       TITLE: 'Feedback',
       LINK_LIST: ['https://gitee.com/openeuler/stratovirt/issues'],
       SHOW: false,
     },
     {
       IMG: '/img/projects/share/cards-tv.png',
+      DARK_IMG: '/img/projects/share/cards-tv.png',
       TITLE: 'Join Us',
       LINK_LIST: ['https://gitee.com/openeuler/community/tree/master/sig/Virt'],
       SHOW: false,
     },
     {
       IMG: '/img/projects/stratovirt/stratovirt-logo.png',
+      DARK_IMG: '/img/projects/stratovirt/stratovirt-logo-dark.png',
       TITLE: 'StratoVirt Logo',
       LINK_LIST: ['/other/projects/stratovirt/'],
       SHOW: false,

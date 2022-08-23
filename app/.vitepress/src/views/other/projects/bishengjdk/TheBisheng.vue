@@ -7,7 +7,6 @@ import MiniDescription from '../components/MiniDescription.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import MiniReference from './MiniReference.vue';
 import BannerMinisite from '@/components/BannerMinisite.vue';
-import AppAnchor from '@/components/AppAnchor.vue';
 
 import BannerIllustration from '/img/projects/bisheng/illustration-banner.png';
 import BannerBackground from '/img/projects/share/banner-background.png';
@@ -38,22 +37,17 @@ const i18n = useI18n();
       />
       <!-- 架构模块 -->
       <MiniFrame
-        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[0].id"
         :frame-obj="i18n.bishengjdk.BISHENG_FRAMEWORK"
         layout="upAndDown"
       />
       <!-- 学习模块 -->
       <MiniDocs
-        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[1].id"
         :docs-obj="i18n.bishengjdk.BISHENG_LEARN"
       />
       <!-- 友情链接模块 -->
       <MiniReference
-        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[2].id"
         :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE"
       />
-
-      <AppAnchor class="anchor" :data="i18n.bishengjdk.BISHENG_ANCHOR_DATA" />
     </div>
   </div>
 </template>
@@ -79,14 +73,6 @@ const i18n = useI18n();
       display: none;
       @media screen and (min-width: 1440px) {
         display: block;
-      }
-    }
-    .anchor {
-      @media screen and (min-width: 768px) {
-        display: block;
-      }
-      @media screen and (max-width: 768px) {
-        display: none;
       }
     }
   }
