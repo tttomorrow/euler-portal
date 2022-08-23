@@ -148,7 +148,6 @@ watch(windowWidth, () => {
       <OCard class="filter-card">
         <template #header>
           <div class="card-header">
-            <!-- <span class="category">{{ i18n.security.SEVERITY }}</span> -->
             <TagFilter :label="i18n.security.SEVERITY" :show="false">
               <OTag
                 v-for="(item, index) in i18n.security.SEVERITY_LIST"
@@ -163,7 +162,6 @@ watch(windowWidth, () => {
           </div>
         </template>
         <div class="card-body">
-          <!-- <span class="category">{{ i18n.security.YEAR }}</span> -->
           <TagFilter :show="false" :label="i18n.security.YEAR">
             <OTag
               v-for="(item, index) in years"
@@ -260,7 +258,7 @@ watch(windowWidth, () => {
           <ul>
             <li @click="jumpBulletinDetail(item.securityNoticeNo)">
               <span>{{ i18n.security.ADVISORY }}:</span
-              >{{ item.securityNoticeNo }}
+              ><span class="notice">{{ item.securityNoticeNo }}</span>
             </li>
             <li>
               <span>{{ i18n.security.OVERVIEW }}:</span>{{ item.summary }}
@@ -314,7 +312,8 @@ watch(windowWidth, () => {
   margin: var(--o-spacing-h1) auto 0;
   @media screen and (max-width: 1000px) {
     margin: 0 auto;
-    padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
+    padding: var(--o-spacing-h5);
+    padding-bottom: 0;
   }
   .input-container {
     @media screen and (max-width: 1000px) {
@@ -387,7 +386,7 @@ watch(windowWidth, () => {
       display: inline-block;
       height: 28px;
       border: none;
-      margin-right: 32px;
+      margin-right: var(--o-spacing-h3);
       font-size: var(--o-font-size-text);
       font-weight: 400;
       color: var(--e-color-text4);
@@ -397,8 +396,8 @@ watch(windowWidth, () => {
     }
     .active {
       display: inline-block;
-      border: 1px solid #002fa7;
-      color: #002fa7;
+      border: 1px solid var(--e-color-link1);
+      color: var(--e-color-link1);
       padding: 0px var(--o-spacing-h6);
     }
     .card-header {
@@ -418,8 +417,9 @@ watch(windowWidth, () => {
       display: flex;
       align-items: center;
       width: 100%;
+      margin-bottom: var(--o-spacing-h8);
       .selected {
-        background-color: #002fa7;
+        background-color: var(--e-color-brand1);
         color: var(--e-color-text2);
       }
       &-item {
@@ -429,12 +429,12 @@ watch(windowWidth, () => {
         padding: var(--o-spacing-h9);
         font-size: var(--o-font-size-text);
         font-weight: 400;
-        color: #002fa7;
+        color: var(--e-color-brand1);
         line-height: var(--o-line-height-text);
-        border: 1px solid #002fa7;
+        border: 1px solid var(--e-color-brand1);
         border-right: 0;
         &:last-child {
-          border: 1px solid #002fa7;
+          border: 1px solid var(--e-color-brand1);
         }
       }
     }
@@ -459,25 +459,25 @@ watch(windowWidth, () => {
       padding: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h8);
       font-size: var(--o-font-size-tip);
       font-weight: 400;
-      color: #999999;
+      color: var(--e-color-neutral8);
       line-height: var(--o-line-height-tip);
       background-color: var(--e-color-bg2);
       &:nth-child(odd) {
         background: var(--e-color-bg4);
       }
       & li {
-        margin-bottom: 8px;
+        margin-bottom: var(--o-spacing-h8);
       }
-      li:last-child {
+      li:first-child {
         margin-bottom: 0;
-        a {
-          color: #002fa7;
+        .notice {
+          color: var(--e-color-link1);
         }
       }
-      li:nth-child(2) {
+      li:nth-child(4) {
         display: flex;
         span {
-          min-width: 30px;
+          min-width: 52px;
         }
       }
       span {

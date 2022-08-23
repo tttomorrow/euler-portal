@@ -285,15 +285,18 @@ onMounted(() => {
 .wrapper {
   max-width: 1504px;
   margin: 0 auto;
-  padding: 0 var(--o-spacing-h2);
+  padding: var(--o-spacing-h2);
+  margin-top: var(--o-spacing-h2);
+  background-color: var(--e-color-bg2);
   @media screen and (max-width: 768px) {
-    padding: 0 var(--o-spacing-h5);
+    padding: var(--o-spacing-h5);
+    margin: 40px 16px 0;
   }
 }
 .banner {
   margin: 0 auto;
   .breadcrumb {
-    margin-top: var(--o-spacing-h3);
+    // margin-top: var(--o-spacing-h3);
     margin-bottom: var(--o-spacing-h5);
     font-size: var(--o-font-size-h6);
     color: var(--e-color-link1);
@@ -326,12 +329,19 @@ onMounted(() => {
   font-size: var(--o-font-size-h8);
   line-height: var(--o-line-height-h8);
   color: var(--e-color-link1);
+  word-break: break-all;
   cursor: pointer;
+  @media screen and (max-width: 768px) {
+    font-size: var(--o-font-size-text);
+  }
 }
 .download {
   font-size: var(--o-font-size-h8);
   line-height: var(--o-line-height-h8);
   color: var(--e-color-text1);
+  @media screen and (max-width: 768px) {
+    font-size: var(--o-font-size-text);
+  }
   a {
     color: var(--e-color-link1);
   }
@@ -349,15 +359,16 @@ onMounted(() => {
     }
     .content-box {
       width: 46%;
-      @media screen and (max-width: 1080px) {
+      @media screen and (max-width: 768px) {
         width: 100%;
-        padding: 16px;
+        padding: 16px 0;
       }
       p {
         display: flex;
         align-items: flex-start;
         justify-content: left;
         padding-bottom: var(--o-spacing-h4);
+        font-size: var(--o-font-size-text);
         color: var(--e-color-text1);
         @media screen and (max-width: 768px) {
           width: 100%;
@@ -367,11 +378,11 @@ onMounted(() => {
           }
         }
         .label {
-          width: 40%;
+          flex: 3;
           color: var(--e-color-text4);
         }
         .content-item {
-          width: 60%;
+          flex: 5;
         }
       }
     }
@@ -380,7 +391,7 @@ onMounted(() => {
 .main-bottom {
   .table-pc {
     margin-bottom: var(--o-spacing-h4);
-    @media screen and (max-width: 1080px) {
+    @media screen and (max-width: 768px) {
       display: none;
     }
   }
@@ -388,7 +399,7 @@ onMounted(() => {
     display: none;
     margin-bottom: var(--o-spacing-h5);
     box-shadow: var(--e-shadow-l1);
-    @media screen and (max-width: 1080px) {
+    @media screen and (max-width: 768px) {
       display: block;
     }
 
@@ -396,14 +407,14 @@ onMounted(() => {
       padding: var(--o-spacing-h5);
       font-size: var(--o-font-size-tip);
       font-weight: 400;
-      color: #999999;
+      color: var(--e-color-neutral8);
       line-height: var(--o-line-height-tip);
       background-color: var(--e-color-bg2);
       &:nth-child(odd) {
         background: var(--e-color-bg4);
       }
       & li {
-        margin-bottom: 8px;
+        margin-bottom: var(--o-spacing-h8);
       }
       li:last-child {
         margin-bottom: 0;

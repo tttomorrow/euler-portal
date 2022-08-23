@@ -205,6 +205,7 @@ onMounted(() => {
   display: flex;
   @media screen and (max-width: 768px) {
     margin-bottom: var(--o-spacing-h5);
+    margin-top: 0;
     padding: 0 var(--o-spacing-h5);
   }
   .last-page {
@@ -234,7 +235,7 @@ onMounted(() => {
     padding: var(--o-spacing-h5);
     margin: 0 var(--o-spacing-h5);
     background: var(--e-color-bg2);
-    box-shadow: 0px 1px 5px 0px rgba(45, 47, 51, 0.1);
+    box-shadow: var(--e-shadow-l1);
   }
   .bulletin-name {
     font-size: var(--o-font-size-h3);
@@ -302,7 +303,7 @@ onMounted(() => {
         }
       }
       .packge-item {
-        margin-bottom: 40px;
+        // margin-bottom: 40px;
         &-title {
           font-size: var(--o-font-size-h5);
           font-weight: 400;

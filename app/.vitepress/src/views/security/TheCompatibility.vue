@@ -427,7 +427,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
             prop="architecture"
-            width="160"
+            width="100"
           >
           </OTableColumn>
           <OTableColumn
@@ -869,6 +869,18 @@ onMounted(() => {
                 >{{ item.osVersion }}
               </li>
               <li>
+                <span
+                  >{{
+                    i18n.compatibility.HARDWARE_TABLE_COLUMN
+                      .COMPATIBILITY_CONFIGURATION
+                  }}:
+                </span>
+                <a class="friendly-link" @click="go(item.id)">{{
+                  i18n.compatibility.HARDWARE_TABLE_COLUMN
+                    .COMPATIBILITY_CONFIGURATION2
+                }}</a>
+              </li>
+              <li>
                 <span>{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE }}:</span
                 >{{ item.certificationTime }}
               </li>
@@ -1161,7 +1173,7 @@ onMounted(() => {
   }
 }
 .tabs-mobile {
-  padding: var(--o-spacing-h5);
+  padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
   display: none;
   @media screen and (max-width: 1080px) {
     display: block;
@@ -1178,6 +1190,9 @@ onMounted(() => {
     }
     .el-collapse-item__content {
       background-color: var(--e-color-bg1);
+    }
+    .el-collapse-item__content:last-child {
+      padding-bottom: 0;
     }
   }
   .filter {
