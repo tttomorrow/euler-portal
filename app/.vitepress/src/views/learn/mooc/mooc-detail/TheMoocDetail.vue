@@ -455,7 +455,6 @@ const goHome = () => {
   .detail-pc {
     display: block;
     overflow: hidden;
-    padding-bottom: 200px;
     h1 {
       width: 100%;
       font-size: var(--o-font-size-h3);

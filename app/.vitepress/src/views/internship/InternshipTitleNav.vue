@@ -6,6 +6,7 @@ const props = defineProps({
     default: NaN,
   },
   dataList: {
+    type:Array,
     default() {
       return [
         {

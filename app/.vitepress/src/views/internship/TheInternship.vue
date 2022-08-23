@@ -8,11 +8,6 @@ import InternshipTask from './InternshipTask.vue';
 import InternshipRank from './InternshipRank.vue';
 import InternshipTitleNav from './InternshipTitleNav.vue';
 
-import StepTitle from '@/assets/category/internship/step-title.png';
-import TaskTitle from '@/assets/category/internship/task-title.png';
-import IntegralTitle from '@/assets/category/internship/integral-title.png';
-import PartnerTitle from '@/assets/category/internship/partner-title.png';
-import HelpTitle from '@/assets/category/internship/help-title.png';
 import qrCode from '@/assets/category/internship/qrCode.png';
 import gitee_light from '@/assets/category/internship/logo/gitee_light.png';
 import iscas_light from '@/assets/category/internship/logo/iscas_light.png';
@@ -303,13 +298,13 @@ onUnmounted(() => {
       </section>
       <section id="step" class="panel">
         <div class="step-title title">
-          <img :src="StepTitle" alt="" />
+          <div class="title-img">申请步骤</div>
         </div>
         <InternshipStep />
       </section>
       <section id="task" class="panel">
         <div class="task-title title">
-          <img :src="TaskTitle" alt="" />
+          <div class="title-img">实习任务</div>
           <ul class="tab-list">
             <li
               v-for="(item, index) in tabList"
@@ -400,7 +395,7 @@ onUnmounted(() => {
       </section>
       <section id="integral" class="panel">
         <div class="integral-title title">
-          <img :src="IntegralTitle" alt="" />
+          <div class="title-img">积分与激励规则</div>
         </div>
         <div class="integral-border">
           <div class="integral-content">
@@ -472,7 +467,7 @@ onUnmounted(() => {
     </div>
     <section id="rule" class="panel">
       <div class="rule-title title">
-        <img src="@/assets/category/internship/rule-title.png" alt="" />
+        <div class="title-img">实习规则</div>
       </div>
       <div class="rule-border">
         <div class="rule-content">
@@ -503,7 +498,7 @@ onUnmounted(() => {
       <section id="partner" class="panel">
         <div class="warper">
           <div class="partner-title title">
-            <img :src="PartnerTitle" alt="" />
+            <div class="title-img">合作伙伴</div>
           </div>
           <div class="img-list">
             <div
@@ -518,7 +513,7 @@ onUnmounted(() => {
       </section>
     </div>
     <div id="help" class="help-title title">
-      <img :src="HelpTitle" alt="" />
+      <div class="title-img">帮助咨询</div>
     </div>
     <div class="help-wrap">
       <section class="panel">
@@ -745,9 +740,44 @@ onUnmounted(() => {
 }
 #task {
   .task-title {
-    img {
+    .title-img {
+      width: 183px;
+      height: 48px;
+      margin: 0 auto;
+      font-size: var(--o-font-size-h3);
+      color: var(--e-color-text1);
+      line-height: 48px;
+      background-image: url(@/assets/category/internship/title.png);
+      background-repeat: no-repeat;
       margin-bottom: 40px;
+      font-weight: 300;
+      @media (max-width: 1000px) {
+        font-size: var(--o-font-size-h8);
+        line-height: 34px;
+        width: 113px;
+        height: 34px;
+        background-size: 100% 100%;
+      }
     }
+  }
+}
+.title .title-img {
+  min-width: 183px;
+  text-align: center;
+  display: inline-block;
+  margin: 0 auto;
+  font-size: var(--o-font-size-h3);
+  color: var(--e-color-text1);
+  font-weight: 300;
+  line-height: 48px;
+  background-image: url(@/assets/category/internship/title.png);
+  background-repeat: no-repeat;
+  @media (max-width: 1000px) {
+    font-size: var(--o-font-size-h8);
+    line-height: 34px;
+    min-width: 113px;
+    height: 34px;
+    background-size: 100%;
   }
 }
 #integral {
