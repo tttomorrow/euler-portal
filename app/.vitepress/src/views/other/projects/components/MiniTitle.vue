@@ -74,4 +74,8 @@ defineProps({
     }
   }
 }
+
+.dark .title-inside {
+  opacity: 0.1;
+}
 </style>

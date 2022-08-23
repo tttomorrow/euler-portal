@@ -7,7 +7,7 @@ import MiniDocs from '../components/MiniDocs.vue';
 import BannerMinisite from '@/components/BannerMinisite.vue';
 
 import BannerIllustration from '/img/projects/secgear/illustration-banner.png';
-import BannerBackground from '/img/projects/share/banner-background.png';
+import banner from '@/assets/banner-secondary.png';
 
 const i18n = useI18n();
 </script>
@@ -18,7 +18,7 @@ const i18n = useI18n();
       :title="i18n.secgear.SECGEAR_BANNER_TEXT[0]"
       :subtitle="i18n.secgear.SECGEAR_BANNER_TEXT[1]"
       :illustration="BannerIllustration"
-      :background-image="BannerBackground"
+      :background-image="banner"
     />
     <!-- 中间文字介绍部分 -->
     <MiniDescription :description-desc="i18n.secgear.SECGEAR_DESC" />
