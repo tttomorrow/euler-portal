@@ -49,6 +49,7 @@ onMounted(async () => {
     offset: 200,
     duration: 800,
     delay: 100,
+    once: true,
   });
   const paramsCase = {
     category: 'showcase',

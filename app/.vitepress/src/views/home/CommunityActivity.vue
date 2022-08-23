@@ -36,7 +36,6 @@ onMounted(async () => {
     roundList.value = addValue(responeData?.data);
     roundNumber.value = i18n.value.home.HOME_ROUND.ROUND_LIST;
     const observe = new IntersectionObserver((res) => {
-      isShowCommunity.value = false;
       if (res[0].intersectionRatio <= 0) return;
       isShowCommunity.value = true;
       roundNumber.value.forEach((item: any, index: number) => {
