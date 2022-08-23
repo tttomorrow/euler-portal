@@ -12,18 +12,21 @@ export default {
   ATUNE_LINK: [
     {
       IMG: '/img/projects/share/cards-work.png',
+      DARK_IMG: '/img/projects/share/cards-work.png',
       TITLE: '开始A-Tune调优之旅',
       LINK_LIST: ['https://gitee.com/openeuler/A-Tune'],
       SHOW: false,
     },
     {
       IMG: '/img/projects/share/cards-letter.png',
+      DARK_IMG: '/img/projects/share/cards-letter.png',
       TITLE: '想对我说',
       LINK_LIST: ['mail to:a-tune@openeuler.org'],
       SHOW: true,
     },
     {
       IMG: '/img/projects/share/cards-tv.png',
+      DARK_IMG: '/img/projects/share/cards-tv.png',
       TITLE: 'Web UI',
       LINK_LIST: ['https://gitee.com/openeuler/A-Tune-UI'],
       SHOW: false,

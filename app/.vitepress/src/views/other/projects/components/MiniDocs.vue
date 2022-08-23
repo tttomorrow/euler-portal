@@ -87,6 +87,7 @@ defineProps({
       border-left: none;
       padding: 0;
       &-item {
+        --o-collapse-color-border: none;
         padding: 0;
         :deep(.el-collapse-item__header) {
           height: 34px;

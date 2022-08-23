@@ -13,6 +13,7 @@ export default {
   BISHENG_LINK: [
     {
       IMG: '/img/projects/share/cards-work.png',
+      DARK_IMG: '/img/projects/share/cards-work.png',
       TITLE: 'Start with BiSheng JDK',
       LINK_LIST: [
         {
@@ -32,6 +33,7 @@ export default {
     },
     {
       IMG: '/img/projects/share/cards-letter.png',
+      DARK_IMG: '/img/projects/share/cards-letter.png',
       TITLE: 'Word to BiSheng JDK',
       LINK_LIST: [
         {
@@ -51,6 +53,7 @@ export default {
     },
     {
       IMG: '/img/projects/bisheng/cards-look.png',
+      DARK_IMG: '/img/projects/bisheng/cards-look.png',
       TITLE: 'Compiler SIG Meetings',
       LINK_LIST: [
         {
@@ -66,6 +69,7 @@ export default {
     },
     {
       IMG: '/img/projects/bisheng/cards-upload.png',
+      DARK_IMG: '/img/projects/bisheng/cards-upload.png',
       TITLE: 'Roadmap',
       LINK_LIST: [
         'https://gitee.com/openeuler/bishengjdk-8/wikis/%E9%A1%B9%E7%9B%AE%E8%B7%AF%E6%A0%87?sort_id=4182245',
