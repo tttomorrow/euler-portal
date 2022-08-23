@@ -9,7 +9,7 @@ import BannerMinisite from '@/components/BannerMinisite.vue';
 
 // TODO:该页面是视频先用插画代替
 import BannerIllustration from '/img/projects/atune/illustration-banner.png';
-import BannerBackground from '/img/projects/share/banner-background.png';
+import banner from '@/assets/banner-secondary.png';
 
 const i18n = useI18n();
 </script>
@@ -20,7 +20,7 @@ const i18n = useI18n();
       :title="i18n.atune.ATUNE_BANNER_TEXT[0]"
       :subtitle="i18n.atune.ATUNE_BANNER_TEXT[1]"
       :illustration="BannerIllustration"
-      :background-image="BannerBackground"
+      :background-image="banner"
       background-text="SEARCH"
     />
     <MiniCards :cards-link="i18n.atune.ATUNE_LINK" />

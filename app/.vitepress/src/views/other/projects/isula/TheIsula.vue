@@ -8,7 +8,7 @@ import MiniDocs from '../components/MiniDocs.vue';
 import BannerMinisite from '@/components/BannerMinisite.vue';
 
 import BannerIllustration from '/img/projects/isula/illustration-banner.png';
-import BannerBackground from '/img/projects/share/banner-background.png';
+import banner from '@/assets/banner-secondary.png';
 
 const i18n = useI18n();
 </script>
@@ -19,7 +19,7 @@ const i18n = useI18n();
       :title="i18n.isula.ISULA_BANNER_TEXT[0]"
       :subtitle="i18n.isula.ISULA_BANNER_TEXT[1]"
       :illustration="BannerIllustration"
-      :background-image="BannerBackground"
+      :background-image="banner"
       background-text="SEARCH"
     />
     <MiniCards :cards-link="i18n.isula.ISULA_LINK" />
