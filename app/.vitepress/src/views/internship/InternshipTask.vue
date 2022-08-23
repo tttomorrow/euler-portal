@@ -257,7 +257,7 @@ const go = (path: string) => {
     .item {
       padding: 40px;
       background-color: var(--e-color-bg2);
-      box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--e-shadow-l2);
       transition: box-shadow 0.1s;
       min-height: 180px;
       .item-name {
@@ -337,7 +337,7 @@ const go = (path: string) => {
     }
 
     .item:hover {
-      box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--e-shadow-l2_hover);
       transform: translateY(-2px);
     }
   }
