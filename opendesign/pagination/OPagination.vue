@@ -27,6 +27,7 @@ const classNames = computed(() => {
 
   &.el-pagination {
     justify-content: center;
+
     .el-pagination__sizes {
       margin: 0 var(--o-spacing-h8) 0 0;
     }
@@ -117,6 +118,10 @@ const classNames = computed(() => {
         color: var(--e-color-brand1);
         background: var(--e-color-bg1);
       }
+    }
+    .hover {
+      color: var(--e-color-brand1);
+      background: var(--e-color-bg1);
     }
 
     .el-select-dropdown__item.selected {

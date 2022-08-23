@@ -17,7 +17,6 @@ export interface CveQuery {
 export interface DetailParams {
   securityNoticeNo: string;
 }
-
 export interface SecurityLists {
   affectedComponent: string;
   affectedProduct: string;
@@ -26,7 +25,6 @@ export interface SecurityLists {
   summary: string;
   type: string;
 }
-
 export interface CveLists {
   announcementTime: string;
   cveId: string;
@@ -36,7 +34,6 @@ export interface CveLists {
   updateTime: string;
   packageName: string;
 }
-
 export interface CompatibilityList {
   architecture: string;
   biosUefi?: string;
@@ -63,7 +60,6 @@ export interface CompatibilityList {
   updateTime?: string;
   videoAdapter?: string;
 }
-
 export interface BoardCardList {
   architecture: string;
   boardModel: string;
@@ -86,16 +82,13 @@ export interface BoardCardList {
   vendorID?: string;
   version: string;
 }
-
 export interface SoftWareQuery {
   page_size: number;
   page_num: number;
 }
-
 export interface SelectParams {
   lang: string;
 }
-
 export interface SoftWareList {
   arch: string;
   bin: string;
@@ -115,7 +108,6 @@ export interface SoftWareList {
   uninstall: string;
   version: string;
 }
-
 export interface BusinessSoftWareQuery {
   pageSize: number;
   pageNo: number;
@@ -137,12 +129,10 @@ export interface BusinessSoftWareList {
   testOrganization: string;
   type: string;
 }
-
 export interface FilterList {
   select: string[];
   title: string;
 }
-
 // export interface SafetyBulletinDatail {
 //   affectedComponent?: string;
 //   affectedProduct?: string;
@@ -179,7 +169,6 @@ export interface FilterList {
 //   productName: string;
 //   sha256: string;
 // }
-
 export interface ConfigurationInfo {
   architecture: string;
   biosUefi: string;
@@ -204,4 +193,47 @@ export interface ConfigurationInfo {
   ram: string;
   updateTime: string;
   videoAdapter: string;
+}
+export interface CveDetailCvss {
+  affectedProduct: string;
+  announcementTime: string;
+  attackComplexityNVD: string;
+  attackComplexityOE: string;
+  attackVectorNVD: string;
+  attackVectorOE: string;
+  availabilityNVD: string;
+  availabilityOE: string;
+  confidentialityNVD: string;
+  confidentialityOE: string;
+  cveId: string;
+  cvrf: null;
+  cvsssCoreNVD: string;
+  cvsssCoreOE: string;
+  id: number;
+  integrityNVD: string;
+  integrityOE: string;
+  nationalCyberAwarenessSystem: string;
+  packageList: null;
+  packageName: string;
+  parserBean: null;
+  privilegesRequiredNVD: string;
+  privilegesRequiredOE: string;
+  scopeNVD: string;
+  scopeOE: string;
+  securityNoticeNo: string;
+  status: string;
+  summary: string;
+  updateTime: string;
+  userInteractionNVD: string;
+  userInteractionOE: string;
+}
+export interface AffectProduct {
+  cveId: string;
+  id: number;
+  packageName: string;
+  productName: string;
+  releaseTime: string;
+  securityNoticeNo: string;
+  status: string;
+  updateTime: string;
 }

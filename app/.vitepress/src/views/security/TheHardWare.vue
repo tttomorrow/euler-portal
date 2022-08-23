@@ -392,6 +392,7 @@ function goBackPage() {
         .item-content {
           font-size: var(--o-font-size-h8);
           line-height: var(--o-line-height-h8);
+          word-break: break-all;
           color: var(--e-color-text4);
           @media screen and (max-width: 768px) {
             font-size: var(--o-font-size-tip);
