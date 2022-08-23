@@ -275,7 +275,8 @@ const allHighLight = (val: any) => {
       &-icon {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-tip);
-        color: var(--e-color-text1);
+        // color: var(--e-color-text1);
+        color: #000000;
         position: relative;
         top: 1px;
       }
@@ -298,6 +299,7 @@ const allHighLight = (val: any) => {
         &-title {
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
+          color: var(--e-color-text1);
         }
         &-options {
           &-option {
