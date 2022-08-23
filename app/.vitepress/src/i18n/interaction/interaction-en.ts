@@ -13,7 +13,7 @@ export default {
   ALL: 'All',
   PREV: 'Previous:',
   NEXT: 'Next:',
-  STRATEGY: '发博攻略',
+  STRATEGY: 'Post Your Blog',
   NEWSDATALIST: newsdata.en.NEWSLIST,
   BLOGDATALIST: blogdata.en.BLOGLIST,
   SCREENDATALIST: blogdata.en.SCREENBUTTON,

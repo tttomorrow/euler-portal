@@ -105,6 +105,7 @@ onMounted(() => {
   span {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
+    color: var(--e-color-text1);
   }
   p {
     font-size: var(--o-font-size-h8);

@@ -13,7 +13,7 @@ export default {
   ALL: 'все',
   PREV: 'Часть первая:',
   NEXT: 'Часть вторая:',
-  STRATEGY: '发博攻略',
+  STRATEGY: 'Ведение блога',
   NEWSDATALIST: newsdata.ru.NEWSLIST,
   BLOGDATALIST: blogdata.ru.BLOGLIST,
   SCREENDATALIST: blogdata.ru.SCREENBUTTON,
