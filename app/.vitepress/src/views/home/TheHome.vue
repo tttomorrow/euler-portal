@@ -46,7 +46,7 @@ const newsData = ref(undefined);
 const blogData = ref(undefined);
 onMounted(async () => {
   AOS.init({
-    offset: 200,
+    offset: 100,
     duration: 800,
     delay: 100,
     once: true,

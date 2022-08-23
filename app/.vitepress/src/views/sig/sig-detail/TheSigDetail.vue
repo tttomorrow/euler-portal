@@ -312,7 +312,7 @@ onMounted(() => {
           v-model:page-size="pageSize"
           class="repository-pagin"
           :hide-on-single-page="true"
-          :page-sizes="[10]"
+          :page-sizes="[10, 20, 30]"
           :background="true"
           :layout="paginLayout"
           :total="totalRepositoryList.length"
@@ -501,7 +501,7 @@ onMounted(() => {
           .split-line {
             height: 1px;
             margin: var(--o-spacing-h6) 0;
-            background-color: var(--e-color-border1);
+            background-color: var(--e-color-border2);
           }
         }
       }

@@ -106,7 +106,8 @@ const imgUrlHover = computed(
       }
       .nav-text {
         color: var(--e-color-brand1);
-        .nav-descriptive {
+        .nav-descriptive,
+        .nav-title {
           color: var(--e-color-brand1);
         }
       }
