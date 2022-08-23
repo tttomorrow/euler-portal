@@ -218,6 +218,10 @@ const currentChange = (val: number) => {
   };
   getListData(params);
 };
+
+const postBlog = () => {
+  router.go(`/${lang.value}/interaction/post-blog/`);
+};
 </script>
 
 <template>
@@ -228,9 +232,17 @@ const currentChange = (val: number) => {
     :illustration="BannerImg2"
   >
     <template #default>
-      <OButton type="outline">
+      <OButton
+        class="post-btn"
+        @click="postBlog"
+        type="outline"
+        animation
+        size="small"
+      >
         {{ userCaseData.STRATEGY }}
-        <OIcon class="bannericon"><IconRight /></OIcon>
+        <template #suffixIcon>
+          <OIcon class="bannericon"><IconRight /></OIcon>
+        </template>
       </OButton>
     </template>
   </BannerLevel2>
@@ -366,18 +378,20 @@ const currentChange = (val: number) => {
 :deep(.el-card__body) {
   padding: var(--o-spacing-h2);
 }
-:deep(.o-button) {
-  --o-button-border: 1px solid var(--e-color-text2);
-  color: var(--e-color-text2);
-  font-size: var(--o-font-size-h7);
-  line-height: var(--o-line-height-h8);
-  --o-button-border_hover: 1px solid var(--e-color-text2);
-  padding: var(--o-spacing-h6) 18px;
-}
+
 .bannericon {
   margin-left: var(--o-spacing-h8);
   color: var(--e-color-brand2);
 }
+
+.post-btn {
+  color: var(--e-color-white);
+  border-color: var(--e-color-white);
+  @media (max-width: 767px) {
+    padding: 4px 12px;
+  }
+}
+
 .blog {
   &-tag {
     max-width: 1416px;
@@ -398,7 +412,7 @@ const currentChange = (val: number) => {
     display: flex;
     flex-direction: row;
     width: 1416px;
-    margin: var(--o-spacing-h1) auto;
+    margin: var(--o-spacing-h1) auto var(--o-spacing-h2);
     @media (max-width: 1455px) {
       margin: var(--o-spacing-h1) var(--o-spacing-h5);
     }
@@ -406,6 +420,8 @@ const currentChange = (val: number) => {
       margin-right: var(--o-spacing-h1);
       &-title {
         margin-right: var(--o-spacing-h5);
+        color: var(--e-color-text1);
+        font-size: var(--o-font-size-text);
       }
     }
   }

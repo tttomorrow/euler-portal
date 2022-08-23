@@ -257,6 +257,7 @@ const currentChange = (val: number) => {
         <OCard
           v-for="item in newsCardData"
           :key="item"
+          class="news-list-item"
           @click="toNewsContent(item.path)"
         >
           <div class="news-img">
@@ -318,7 +319,7 @@ const currentChange = (val: number) => {
     display: flex;
     flex-direction: row;
     width: 1416px;
-    margin: var(--o-spacing-h1) auto;
+    margin: var(--o-spacing-h1) auto var(--o-spacing-h2);
     @media (max-width: 1455px) {
       margin: var(--o-spacing-h1) var(--o-spacing-h5);
     }
@@ -326,12 +327,14 @@ const currentChange = (val: number) => {
       margin-right: var(--o-spacing-h1);
       &-title {
         margin-right: var(--o-spacing-h5);
+        color: var(--e-color-text1);
+        font-size: var(--o-font-size-text);
       }
     }
   }
   &-list {
     max-width: 1448px;
-    margin: var(--o-spacing-h1) auto var(--o-spacing-h2) auto;
+    margin: var(--o-spacing-h2) auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: var(--o-spacing-h4);
