@@ -1,15 +1,67 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
+import { reactive, onMounted, ref, computed } from 'vue';
+import { useData, useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppMdHead from './AppMdHead.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 
+import { getSortData } from '@/api/api-search';
+
 const { frontmatter, lang } = useData();
 const i18n = useI18n();
+const userCaseData = computed(() => i18n.value.interaction);
 const newsInfo = {
   link: `/${lang.value}/interaction/news-list/`,
   name: i18n.value.common.NAV_ROUTER.NEWS,
 };
+
+const router = useRouter();
+
+const sortParams = reactive({
+  page: 1,
+  pageSize: 100,
+  lang: lang.value,
+  category: 'news',
+});
+const newsTitle = ref<any>([]);
+const prev = ref('');
+const prevLint = ref('');
+const nextLint = ref('');
+const next = ref('');
+const goPrve = () => {
+  const path = router.route.path.substring(0, 4);
+  router.go(`${path}${prevLint.value}`);
+  getNewsData();
+};
+const goNext = () => {
+  const path = router.route.path.substring(0, 4);
+  router.go(`${path}${nextLint.value}`);
+  getNewsData();
+};
+const getNewsData = () => {
+  getSortData(sortParams).then((res) => {
+    console.log(res);
+    res.obj.records.forEach((item: any) => {
+      newsTitle.value.push(item.title);
+    });
+    newsTitle.value.forEach((item: any, index: number) => {
+      if (item === frontmatter.value.title && index !== 0) {
+        prev.value = res.obj.records[index - 1].title;
+        prevLint.value = res.obj.records[index - 1].path;
+      }
+      if (
+        item === frontmatter.value.title &&
+        index !== res.obj.records.length - 1
+      ) {
+        next.value = res.obj.records[index + 1].title;
+        nextLint.value = res.obj.records[index + 1].path;
+      }
+    });
+  });
+};
+onMounted(() => {
+  getNewsData();
+});
 </script>
 
 <template>
@@ -25,6 +77,17 @@ const newsInfo = {
       <AppMdHead :frontmatter="frontmatter" />
       <Content />
     </div>
+    <hr style="margin-bottom: 40px" />
+    <div class="news-markdown-detail">
+      <div v-if="prev !== ''" class="skip" @click="goPrve">
+        <span>{{ userCaseData.PREV }}</span>
+        <p>{{ prev }}</p>
+      </div>
+      <div v-if="next !== ''" class="skip" @click="goNext">
+        <span>{{ userCaseData.NEXT }}</span>
+        <p>{{ next }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -35,5 +98,20 @@ const newsInfo = {
 }
 .bread {
   margin: 0 var(--o-spacing-h5);
+}
+.skip {
+  margin-top: var(--o-spacing-h5);
+  cursor: pointer;
+  span {
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+  }
+  p {
+    font-size: var(--o-font-size-h8);
+    line-height: var(--o-line-height-h8);
+    color: var(--e-color-text1);
+    margin: 0;
+    display: inline-block;
+  }
 }
 </style>

@@ -11,8 +11,10 @@ import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 import NotFound from '@/NotFound.vue';
+import IconRight from '~icons/app/arrow-right.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
+import OIcon from 'opendesign/icon/OIcon.vue';
 
 interface BlogData {
   archives: string;
@@ -172,9 +174,9 @@ const selectMethod = () => {
     category: 'blog',
     archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
     author: selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
-    tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value
+    tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
   };
-  getListData(params)
+  getListData(params);
 };
 onMounted(() => {
   getListData(sortParams);
@@ -224,7 +226,13 @@ const currentChange = (val: number) => {
     background-text="INTERACTION"
     :title="userCaseData.BLOG"
     :illustration="BannerImg2"
-  />
+  >
+    <template #default>
+      <OButton type="outline"
+        >{{userCaseData.STRATEGY}}<OIcon class="bannericon"><IconRight /></OIcon
+      ></OButton>
+    </template>
+  </BannerLevel2>
   <div class="blog">
     <template v-if="isShowData">
       <div class="blog-tag2">
@@ -236,7 +244,7 @@ const currentChange = (val: number) => {
       </div>
       <div class="blog-select">
         <div class="blog-select-item">
-          <span class="blog-select-item-title">{{userCaseData.TIME}}</span>
+          <span class="blog-select-item-title">{{ userCaseData.TIME }}</span>
           <OSelect
             v-model="selectTimeVal"
             filterable
@@ -253,7 +261,7 @@ const currentChange = (val: number) => {
           </OSelect>
         </div>
         <div class="blog-select-item">
-          <span class="blog-select-item-title">{{userCaseData.AUTHOR}}</span>
+          <span class="blog-select-item-title">{{ userCaseData.AUTHOR }}</span>
           <OSelect
             v-model="selectAuthorVal"
             filterable
@@ -270,7 +278,7 @@ const currentChange = (val: number) => {
           </OSelect>
         </div>
         <div class="blog-select-item">
-          <span class="blog-select-item-title">{{userCaseData.TAGS}}</span>
+          <span class="blog-select-item-title">{{ userCaseData.TAGS }}</span>
           <OSelect
             v-model="selectTagsVal"
             filterable
@@ -356,6 +364,18 @@ const currentChange = (val: number) => {
 <style lang="scss" scoped>
 :deep(.el-card__body) {
   padding: var(--o-spacing-h2);
+}
+:deep(.o-button) {
+  --o-button-border: 1px solid var(--e-color-text2);
+  color: var(--e-color-text2);
+  font-size: var(--o-font-size-h7);
+  line-height: var(--o-line-height-h8);
+  --o-button-border_hover: 1px solid var(--e-color-text2);
+  padding: var(--o-spacing-h6) 18px;
+}
+.bannericon {
+  margin-left: var(--o-spacing-h8);
+  color: var(--e-color-brand2);
 }
 .blog {
   &-tag {
@@ -500,7 +520,7 @@ const currentChange = (val: number) => {
     display: block;
     margin-left: var(--o-spacing-h5);
   }
-  .blog-select{
+  .blog-select {
     display: none;
   }
   :deep(.el-card__body) {
