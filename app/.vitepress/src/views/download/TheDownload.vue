@@ -8,7 +8,8 @@ import banner from '@/assets/banner-secondary.png';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import TagFilter from '@/components/TagFilter.vue';
 
-import BannerLevel3 from '@/components/BannerLevel3.vue';
+import downloadImg from '@/assets/download/download.png';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
 import { useData } from 'vitepress';
 
 const { lang } = useData();
@@ -156,10 +157,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <BannerLevel3
+  <BannerLevel2
     :background-image="banner"
     background-text="DOWNLOAD"
-    :title="i18n.download.OUTSIDE_TITLE"
+    :title="i18n.download.MIRROR_ALL.TITLE"
+    :illustration="downloadImg"
   />
 
   <div class="download">
@@ -174,7 +176,7 @@ onMounted(() => {
           :key="item"
           class="download-filter-item"
           checkable
-          checked
+          :checked="index !== 0"
           :type="
             index === 0
               ? manufacturerAll
@@ -197,7 +199,7 @@ onMounted(() => {
           v-for="(item, index) in tagPublish"
           :key="item"
           checkable
-          checked
+          :checked="index !== 0"
           class="download-filter-item"
           :type="
             index === 0
@@ -275,7 +277,7 @@ onMounted(() => {
           :key="item"
           class="download-filter-item"
           checkable
-          checked
+          :checked="index !== 0"
           :type="
             index === 0
               ? manufacturerAll
@@ -297,7 +299,7 @@ onMounted(() => {
           :key="item"
           class="download-filter-item"
           checkable
-          checked
+          :checked="index !== 0"
           :type="
             index === 0
               ? publishAll
@@ -560,6 +562,7 @@ onMounted(() => {
       display: none;
       @media (max-width: 768px) {
         display: flex;
+        flex-flow: column;
       }
 
       &:deep(.el-drawer__header) {

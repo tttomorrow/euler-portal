@@ -172,9 +172,9 @@ const selectMethod = () => {
     category: 'blog',
     archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
     author: selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
-    tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value
+    tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
   };
-  getListData(params)
+  getListData(params);
 };
 onMounted(() => {
   getListData(sortParams);
@@ -236,7 +236,7 @@ const currentChange = (val: number) => {
       </div>
       <div class="blog-select">
         <div class="blog-select-item">
-          <span class="blog-select-item-title">{{userCaseData.TIME}}</span>
+          <span class="blog-select-item-title">{{ userCaseData.TIME }}</span>
           <OSelect
             v-model="selectTimeVal"
             filterable
@@ -253,7 +253,7 @@ const currentChange = (val: number) => {
           </OSelect>
         </div>
         <div class="blog-select-item">
-          <span class="blog-select-item-title">{{userCaseData.AUTHOR}}</span>
+          <span class="blog-select-item-title">{{ userCaseData.AUTHOR }}</span>
           <OSelect
             v-model="selectAuthorVal"
             filterable
@@ -270,7 +270,7 @@ const currentChange = (val: number) => {
           </OSelect>
         </div>
         <div class="blog-select-item">
-          <span class="blog-select-item-title">{{userCaseData.TAGS}}</span>
+          <span class="blog-select-item-title">{{ userCaseData.TAGS }}</span>
           <OSelect
             v-model="selectTagsVal"
             filterable
@@ -500,7 +500,7 @@ const currentChange = (val: number) => {
     display: block;
     margin-left: var(--o-spacing-h5);
   }
-  .blog-select{
+  .blog-select {
     display: none;
   }
   :deep(.el-card__body) {

@@ -198,11 +198,7 @@ const currentChange = (val: number) => {
   <div class="news">
     <template v-if="isShowData">
       <div class="news-tag">
-        <MobileFilter
-          :data="selectData"
-          :single="true"
-          @filter="listFilter"
-        />
+        <MobileFilter :data="selectData" :single="true" @filter="listFilter" />
       </div>
       <div class="news-select">
         <div class="news-select-item">
@@ -261,8 +257,8 @@ const currentChange = (val: number) => {
         <OCard
           v-for="item in newsCardData"
           :key="item"
-          @click="toNewsContent(item.path)"
           class="news-list-item"
+          @click="toNewsContent(item.path)"
         >
           <div class="news-img">
             <img :src="item.banner" :alt="item.banner" />
