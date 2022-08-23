@@ -356,7 +356,7 @@ watch(windowWidth, () => {
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="title" width="580"> </el-table-column>
+            <el-table-column prop="title"> </el-table-column>
             <el-table-column width="464">
               <template #default="scope">
                 <div
@@ -732,7 +732,7 @@ watch(windowWidth, () => {
     position: static;
     align-items: flex-end;
     justify-content: center;
-    border-bottom: 1px solid var(--e-color-neutral11);
+    border-bottom: 1px solid var(--e-color-division1);
     @media (max-width: 1100px) {
       top: 48px;
     }
@@ -834,7 +834,6 @@ watch(windowWidth, () => {
         justify-content: flex-start;
         align-items: flex-start;
         color: var(--e-color-text1);
-        font-family: 'FZLTHJW--GB1-0, FZLTHJW--GB1';
         font-weight: normal;
       }
 
@@ -842,14 +841,17 @@ watch(windowWidth, () => {
         height: 76px;
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
-
+        &:hover {
+          background-color: var(--e-color-bg2);
+        }
+        --el-table-row-hover-bg-color: var(--e-color-bg2);
         &:last-child {
           .el-table__cell {
             border-bottom: none;
           }
         }
         .el-table__cell {
-          border-bottom: 1px solid var(--e-color-neutral11);
+          border-bottom: 1px solid var(--e-color-division1);
         }
 
         .speark-item {
@@ -858,16 +860,16 @@ watch(windowWidth, () => {
           justify-content: space-between;
           .name {
             color: var(--e-color-text1);
-            min-width: 150px;
+            min-width: 100px;
           }
           .position {
             font-size: var(--o-font-size-h8);
-            text-align: right;
+            text-align: left;
           }
         }
       }
       .icon-time {
-        margin-right: 8px;
+        margin-right: var(--o-spacing-h8);
         width: 24px;
         height: 24px;
       }

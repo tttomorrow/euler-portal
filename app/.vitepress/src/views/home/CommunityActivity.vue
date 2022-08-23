@@ -144,6 +144,10 @@ onMounted(async () => {
   &-item {
     display: flex;
     flex-flow: column;
+    flex-shrink: 0;
+    max-width: 110px;
+    width: 100%;
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     @media (max-width: 768px) {

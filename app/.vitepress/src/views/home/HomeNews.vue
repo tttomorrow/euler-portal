@@ -326,6 +326,9 @@ onMounted(async () => {
               font-weight: 500;
               font-size: var(--o-font-size-h7);
               color: var(--e-color-text1);
+              &:hover {
+                color: var(--e-color-brand1);
+              }
             }
             p {
               line-height: var(--o-line-height-text);

@@ -46,6 +46,6 @@ const sigDetail = computed(() => {
   }
 }
 .bg-color {
-  background-color: var(--e-color-greyblue1);
+  background-color: var(--e-color-bg4);
 }
 </style>

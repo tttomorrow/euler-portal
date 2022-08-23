@@ -170,7 +170,7 @@ export default {
       IMG_DARK: internshipSummitDark,
       IMG_DARK_HOVER: internshipSummitDarkHover,
       DSSCRIPTIVE: '和小伙伴儿一起畅享开源的夏天',
-      LINK: '/activities/',
+      LINK: 'internship/',
     },
     {
       TITLE: '峰会专区',
@@ -179,7 +179,7 @@ export default {
       IMG_DARK: summitDark,
       IMG_DARK_HOVER: summitDarkHover,
       DSSCRIPTIVE: '2022 开放原子开源峰会',
-      LINK: '/interaction/summit-list/devday2022/',
+      LINK: 'https://openatom.cn/summit',
     },
   ],
   IMG_CAROUSE: {

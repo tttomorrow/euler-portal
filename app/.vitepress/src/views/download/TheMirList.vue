@@ -415,7 +415,7 @@ onMounted(async () => {
       width: 100%;
       height: 1px;
       position: relative;
-      background-color: var(--e-color-neutral11);
+      background-color: var(--e-color-division1);
       margin: 0 auto;
       display: flex;
     }
@@ -436,7 +436,7 @@ onMounted(async () => {
         width: 100%;
         height: 1px;
         position: relative;
-        background-color: var(--e-color-neutral11);
+        background-color: var(--e-color-division1);
         margin: 0 auto;
         display: flex;
         left: var(--o-spacing-h2);
@@ -452,7 +452,7 @@ onMounted(async () => {
         width: 100%;
         height: 1px;
         position: relative;
-        background-color: var(--e-color-neutral11);
+        background-color: var(--e-color-division1);
         margin: 0 auto;
         display: flex;
         right: var(--o-spacing-h2);

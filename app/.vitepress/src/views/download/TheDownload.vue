@@ -8,6 +8,7 @@ import banner from '@/assets/banner-secondary.png';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import TagFilter from '@/components/TagFilter.vue';
 
+import Img404 from '@/assets/404.svg';
 import downloadImg from '@/assets/download/download.png';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import { useData } from 'vitepress';
@@ -334,7 +335,7 @@ onMounted(() => {
       </ODrawer>
     </div>
     <!-- 表格 -->
-    <div class="download-list">
+    <div v-if="dataList.length" class="download-list">
       <OCard
         v-for="download in dataList"
         :key="download.NAME"
@@ -420,12 +421,17 @@ onMounted(() => {
         </OButton>
       </OCard>
     </div>
+    <div v-else class="empty">
+      <img class="img" :src="Img404" alt="404" />
+      <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+    </div>
     <!-- 页码 -->
     <div class="page-box">
       <OPagination
         v-model:currentPage="currentPage"
         v-model:page-size="pageSize"
         class="pagination"
+        hide-on-single-page
         :page-sizes="[12, 18, 24, 36]"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
@@ -438,7 +444,7 @@ onMounted(() => {
           / {{ total }}</span
         >
       </OPagination>
-      <div class="page-box-mobile">
+      <div class="page-box-mobile" v-if="dataList.length">
         <div>
           已显示{{
             pageSize * currentPage < total ? pageSize * currentPage : total
@@ -665,6 +671,22 @@ onMounted(() => {
           padding: var(--o-spacing-h5) var(--o-spacing-h6);
         }
       }
+    }
+  }
+  .empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: var(--o-font-size-h6);
+    color: var(--e-color-text1);
+    height: 100%;
+    @media screen and (max-width: 768px) {
+      font-size: var(--o-font-size-text);
+    }
+    img {
+      max-width: 500px;
+      object-fit: cover;
     }
   }
   &-name {
