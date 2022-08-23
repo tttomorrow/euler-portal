@@ -152,7 +152,7 @@ onMounted(() => {
   height: 100%;
 }
 
-.amap-marker {
+.amap-marker:hover {
   z-index: 99 !important;
 }
 
@@ -161,7 +161,7 @@ onMounted(() => {
   flex-flow: row;
   justify-content: center;
   align-items: center;
-
+  z-index: 13;
   &:hover .wrap {
     transition: all 0.5s;
     display: block;
@@ -176,6 +176,7 @@ onMounted(() => {
   }
 
   .map-card {
+    left: 20px;
     transition: all 0.5s;
     padding: 20px;
     background-color: #fff;
@@ -183,7 +184,7 @@ onMounted(() => {
     border: #fff285 1px solid;
     border-radius: var(--o-spacing-h10);
     box-shadow: var(--o-shadow-base);
-    z-index: 13;
+    z-index: 100;
     &-name {
       color: var(--e-color-brand1);
       font-size: var(--o-font-size-text);
