@@ -184,10 +184,9 @@ h3 {
       width: 248px;
     }
   }
-  @media screen and (max-width:1416px) {
+  @media screen and (max-width: 1416px) {
     .first-code {
       p {
-        
       }
     }
   }

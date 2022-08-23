@@ -5,6 +5,7 @@ import { useData } from 'vitepress';
 import AMapLoader from '@amap/amap-jsapi-loader';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 
+import Img404 from '@/assets/404.svg';
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
 
@@ -252,188 +253,211 @@ watch(windowWidth, () => {
 });
 </script>
 <template>
-  <div v-if="detailObj && detailObj.posterImg" class="top-img-mobile">
-    <img :src="detailObj.posterImg" alt="" />
-    <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
-      {{ detailObj.title }}
-    </h2>
-  </div>
-  <div id="tab2" class="tab-box-mobile">
-    <OTabs v-model="tabShow" @tab-click="TabClick">
-      <OTabPane
-        v-for="(item, index) in tabTitle"
-        :key="index"
-        :label="item"
-        :name="index"
-        @click="handleScroll(index)"
-      ></OTabPane>
-    </OTabs>
-  </div>
-
-  <div class="calendar-detail">
-    <BreadCrumbs
-      :bread1="i18n.interaction.MEETUPSLIST.MEETUPS"
-      :bread2="detailObj?.title"
-      :link1="'/' + lang + '/interaction/salon-list/'"
-      class="bread"
-    />
-
-    <div class="top-content">
-      <div
-        v-if="detailObj?.posterImg"
-        class="top-left"
-        :style="{ backgroundImage: `url(${detailObj.posterImg})` }"
-      >
-        <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
-          {{ detailObj.title }}
-        </h2>
-      </div>
-      <div class="top-right">
-        <div class="top-right-head">
-          <h2 class="title">{{ detailObj?.title }}</h2>
-          <p class="category">{{ detailObj?.enterprise }}</p>
-          <p
-            v-if="
-              (!detailObj?.start && !detailObj?.end) ||
-              detailObj?.start === detailObj?.end
-            "
-            class="time"
-          >
-            {{ detailObj?.date }}
-          </p>
-          <p v-else class="time">{{ detailObj.start }}-{{ detailObj.end }}</p>
-        </div>
-        <OButton
-          type="primary"
-          animation
-          target="_blank"
-          class="btn-detail"
-          @click="handleGo(detailObj && detailObj.detail_address)"
-        >
-          了解详情
-          <template #suffixIcon>
-            <IconArrowRight class="icon"></IconArrowRight>
-          </template>
-        </OButton>
-      </div>
+  <div v-if="detailObj">
+    <div v-if="detailObj && detailObj.posterImg" class="top-img-mobile">
+      <img :src="detailObj.posterImg" alt="" />
+      <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
+        {{ detailObj.title }}
+      </h2>
     </div>
-
-    <div id="tab" class="tab-box">
+    <div id="tab2" class="tab-box-mobile">
       <OTabs v-model="tabShow" @tab-click="TabClick">
         <OTabPane
           v-for="(item, index) in tabTitle"
           :key="index"
           :label="item"
           :name="index"
+          @click="handleScroll(index)"
         ></OTabPane>
       </OTabs>
     </div>
-    <div id="synopsis" class="synopsis detail-card">
-      <h1 class="detail-title">{{ tabTitle[0] }}</h1>
-      <p class="synopsis-body">{{ detailObj?.synopsis }}</p>
-    </div>
-    <div id="agenda" class="agenda detail-card">
-      <h1 class="detail-title">{{ tabTitle[1] }}</h1>
-      <div v-if="betweenDate.length" class="tab-box-time">
-        <OTabs v-model="dayTabShow" @tab-click="dayTabClick">
+
+    <div class="calendar-detail">
+      <BreadCrumbs
+        :bread1="i18n.interaction.MEETUPSLIST.MEETUPS"
+        :bread2="detailObj?.title"
+        :link1="'/' + lang + '/interaction/salon-list/'"
+        class="bread"
+      />
+
+      <div class="top-content">
+        <div
+          v-if="detailObj?.posterImg"
+          class="top-left"
+          :style="{ backgroundImage: `url(${detailObj.posterImg})` }"
+        >
+          <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
+            {{ detailObj.title }}
+          </h2>
+        </div>
+        <div class="top-right">
+          <div class="top-right-head">
+            <h2 class="title">{{ detailObj?.title }}</h2>
+            <p class="category">{{ detailObj?.enterprise }}</p>
+            <p
+              v-if="
+                (!detailObj?.start && !detailObj?.end) ||
+                detailObj?.start === detailObj?.end
+              "
+              class="time"
+            >
+              {{ detailObj?.date }}
+            </p>
+            <p v-else class="time">{{ detailObj.start }}-{{ detailObj.end }}</p>
+          </div>
+          <OButton
+            type="primary"
+            animation
+            target="_blank"
+            class="btn-detail"
+            @click="handleGo(detailObj && detailObj.detail_address)"
+          >
+            了解详情
+            <template #suffixIcon>
+              <IconArrowRight class="icon"></IconArrowRight>
+            </template>
+          </OButton>
+        </div>
+      </div>
+
+      <div id="tab" class="tab-box">
+        <OTabs v-model="tabShow" @tab-click="TabClick">
           <OTabPane
-            v-for="(item, index) in betweenDate"
+            v-for="(item, index) in tabTitle"
             :key="index"
             :label="item"
             :name="index"
           ></OTabPane>
         </OTabs>
       </div>
-      <div class="table">
-        <OTable :data="flowPathList[dayTabShow]" :show-header="false">
-          <el-table-column prop="TIME" width="220">
-            <template #default="scope">
-              <div class="time-box">
-                <icon-time class="icon-time"></icon-time>
-                <span class="agenda-time">{{ scope.row.duration }}</span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="title" width="580"> </el-table-column>
-          <el-table-column width="464">
-            <template #default="scope">
-              <div
-                v-for="item in scope.row.speakerList"
-                :key="item.name"
-                class="speark-item"
-              >
-                <div class="name">{{ item.name }}</div>
-                <div class="position">{{ item.title }}</div>
-              </div>
-            </template>
-          </el-table-column>
-        </OTable>
+      <div id="synopsis" class="synopsis detail-card">
+        <h1 class="detail-title">{{ tabTitle[0] }}</h1>
+        <p class="synopsis-body">{{ detailObj?.synopsis }}</p>
       </div>
-      <div class="time-line">
-        <div
-          v-for="(item, index) in flowPathList[dayTabShow]"
-          :key="item.title"
-          class="time-line-content"
-        >
-          <div class="time-line-left">
-            <div class="ponit"></div>
-            <div
-              v-if="index !== flowPathList[dayTabShow].length - 1"
-              class="line"
-            ></div>
-          </div>
-          <div class="time-line-right">
-            <div class="time-line-duration">
-              {{ item.duration }}
-            </div>
-            <div class="time-line-title">{{ item.title }}</div>
-            <div class="time-line-name">
+      <div id="agenda" class="agenda detail-card">
+        <h1 class="detail-title">{{ tabTitle[1] }}</h1>
+        <div v-if="betweenDate.length" class="tab-box-time">
+          <OTabs v-model="dayTabShow" @tab-click="dayTabClick">
+            <OTabPane
+              v-for="(item, index) in betweenDate"
+              :key="index"
+              :label="item"
+              :name="index"
+            ></OTabPane>
+          </OTabs>
+        </div>
+        <div class="table">
+          <OTable :data="flowPathList[dayTabShow]" :show-header="false">
+            <el-table-column prop="TIME" width="220">
+              <template #default="scope">
+                <div class="time-box">
+                  <icon-time class="icon-time"></icon-time>
+                  <span class="agenda-time">{{ scope.row.duration }}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="title" width="580"> </el-table-column>
+            <el-table-column width="464">
+              <template #default="scope">
+                <div
+                  v-for="item in scope.row.speakerList"
+                  :key="item.name"
+                  class="speark-item"
+                >
+                  <div class="name">{{ item.name }}</div>
+                  <div class="position">{{ item.title }}</div>
+                </div>
+              </template>
+            </el-table-column>
+          </OTable>
+        </div>
+        <div class="time-line">
+          <div
+            v-for="(item, index) in flowPathList[dayTabShow]"
+            :key="item.title"
+            class="time-line-content"
+          >
+            <div class="time-line-left">
+              <div class="ponit"></div>
               <div
-                v-for="(item2, index2) in item.speakerList"
-                :key="item2.name"
-              >
-                {{
-                  item2.name +
-                  (index2 === item.speakerList.length - 1 ? '' : ',')
-                }}
+                v-if="index !== flowPathList[dayTabShow].length - 1"
+                class="line"
+              ></div>
+            </div>
+            <div class="time-line-right">
+              <div class="time-line-duration">
+                {{ item.duration }}
+              </div>
+              <div class="time-line-title">{{ item.title }}</div>
+              <div class="time-line-name">
+                <div
+                  v-for="(item2, index2) in item.speakerList"
+                  :key="item2.name"
+                >
+                  {{
+                    item2.name +
+                    (index2 === item.speakerList.length - 1 ? '' : ',')
+                  }}
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        v-show="detailObj?.activity_type !== 2"
+        id="meet-message"
+        class="meet-message detail-card"
+      >
+        <h1 class="detail-title">{{ tabTitle[2] }}</h1>
+        <div :class="['meet-address']">
+          <div class="address-message">
+            <img :src="logo" />
+          </div>
+          <div class="address-text">
+            <p>地址</p>
+            <p v-if="detailObj?.address">
+              {{ detailObj?.address }}
+            </p>
+            <p>直播链接</p>
+            <p v-if="detailObj?.detail_address">
+              {{ detailObj?.detail_address }}
+            </p>
+          </div>
+          <div class="scan-qrcode">
+            <span>{{ i18n.interaction.MEETUPSLIST.DETAIL_QRCODE_TEXT }}</span>
+            <img v-if="detailObj?.wx_code" :src="detailObj?.wx_code" />
+          </div>
+        </div>
+        <div class="map">
+          <div id="container"></div>
         </div>
       </div>
     </div>
-    <div
-      v-show="detailObj?.activity_type !== 2"
-      id="meet-message"
-      class="meet-message detail-card"
-    >
-      <h1 class="detail-title">{{ tabTitle[2] }}</h1>
-      <div :class="['meet-address']">
-        <div class="address-message">
-          <img :src="logo" />
-        </div>
-        <div class="address-text">
-          <p>地址</p>
-          <p v-if="detailObj?.address">
-            {{ detailObj?.address }}
-          </p>
-          <p>直播链接</p>
-          <p v-if="detailObj?.detail_address">
-            {{ detailObj?.detail_address }}
-          </p>
-        </div>
-        <div class="scan-qrcode">
-          <span>{{ i18n.interaction.MEETUPSLIST.DETAIL_QRCODE_TEXT }}</span>
-          <img v-if="detailObj?.wx_code" :src="detailObj?.wx_code" />
-        </div>
-      </div>
-      <div class="map">
-        <div id="container"></div>
-      </div>
+  </div>
+  <div v-else>
+    <div class="nofound">
+      <img class="img" :src="Img404" alt="404" />
+      <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
+.nofound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: var(--o-font-size-h6);
+  color: var(--e-color-text1);
+  padding: var(--o-spacing-h2) 0;
+  height: 100%;
+  .img {
+    max-width: 500px;
+    object-fit: cover;
+  }
+}
+
 .time-line {
   display: none;
   @media (max-width: 768px) {
@@ -785,12 +809,19 @@ watch(windowWidth, () => {
       @media (max-width: 768px) {
         display: none;
       }
+
+      :deep(.o-table) {
+        box-shadow: none;
+      }
+
       :deep(.el-table) .cell {
         padding: 0px;
       }
 
       :deep(.el-table__cell) {
         border-bottom: 0px;
+        vertical-align: top;
+        padding: var(--o-spacing-h4) 0;
       }
 
       :deep(.el-table__inner-wrapper::before) {
@@ -798,6 +829,10 @@ watch(windowWidth, () => {
       }
 
       :deep(.el-table_1_column_2) .cell {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        align-items: flex-start;
         color: var(--e-color-text1);
         font-family: 'FZLTHJW--GB1-0, FZLTHJW--GB1';
         font-weight: normal;
@@ -820,12 +855,14 @@ watch(windowWidth, () => {
         .speark-item {
           display: flex;
           padding: var(--o-spacing-h9) 0;
+          justify-content: space-between;
           .name {
             color: var(--e-color-text1);
             min-width: 150px;
           }
           .position {
             font-size: var(--o-font-size-h8);
+            text-align: right;
           }
         }
       }
