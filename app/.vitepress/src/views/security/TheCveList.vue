@@ -230,6 +230,7 @@ watch(windowWidth, () => {
       :layout="layout"
       :total="total"
       :background="true"
+      :hide-on-single-page="true"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     >
@@ -238,7 +239,7 @@ watch(windowWidth, () => {
 
     <AppPaginationMo
       :current-page="queryData.pages.page"
-      :total-page="total"
+      :total-page="Math.ceil(total / 10)"
       @turn-page="turnPage"
     />
   </div>

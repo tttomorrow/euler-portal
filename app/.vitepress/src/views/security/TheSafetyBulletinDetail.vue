@@ -274,7 +274,7 @@ onMounted(() => {
   .o-tabs {
     .tab-content {
       width: 100%;
-      padding: var(--o-spacing-h2) var(--o-spacing-h2) 0;
+      padding: var(--o-spacing-h2);
       background-color: var(--e-color-bg2);
       @media screen and (max-width: 768px) {
         margin: var(--o-spacing-h5 --o-spacing-h5 --o-spacing-h2);
@@ -285,6 +285,9 @@ onMounted(() => {
       }
       &-item {
         margin-bottom: var(--o-spacing-h2);
+        &:last-child {
+          margin-bottom: 0;
+        }
         &-title {
           font-size: var(--o-font-size-h5);
           font-weight: 500;

@@ -235,7 +235,7 @@ watch(windowWidth, () => {
         <OTableColumn
           :label="i18n.security.SEVERITY"
           prop="type"
-          width="120"
+          width="160"
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.AFFECTED_PRODUCTS"
@@ -291,14 +291,16 @@ watch(windowWidth, () => {
         :layout="layout"
         :total="total"
         :background="true"
+        :hide-on-single-page="true"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       >
         <span class="slot-content">{{ currentPage }}/{{ totalPage }}</span>
       </OPagination>
+
       <AppPaginationMo
         :current-page="queryData.pages.page"
-        :total-page="total"
+        :total-page="Math.ceil(total / 10)"
         @turn-page="turnPage"
       />
     </div>
