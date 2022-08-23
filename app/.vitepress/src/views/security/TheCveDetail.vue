@@ -7,7 +7,9 @@ import { useRouter } from 'vitepress';
 import { CveDetailCvss, AffectProduct } from '@/shared/type-support';
 
 import IconChevron from '~icons/app/chevron-right.svg';
+import { useData } from 'vitepress';
 
+const { lang } = useData();
 const i18n = useI18n();
 const router = useRouter();
 
@@ -23,6 +25,12 @@ function goBackPage() {
 function toDetail(id: string) {
   const url = router.route.path.replace('cve', 'safety-bulletin');
   router.go(url + `?id="${id}"`);
+}
+
+function jumpBulletinDetail(val: any) {
+  router.go(
+    `/${lang.value}/security/safety-bulletin/detail/?id=${JSON.stringify(val)}`
+  );
 }
 
 onMounted(() => {
@@ -151,6 +159,18 @@ onMounted(() => {
             prop="securityNoticeNo"
           >
           </OTableColumn>
+
+          <el-table-column>
+            <template #default="scope">
+              <span
+                class="detail-page"
+                @click="jumpBulletinDetail(scope.row.securityNoticeNo)"
+              >
+                {{ scope.row.securityNoticeNo }}
+              </span>
+            </template>
+          </el-table-column>
+
           <OTableColumn :label="i18n.security.RELEASE_DATE" prop="releaseTime">
           </OTableColumn>
         </OTable>
@@ -197,13 +217,13 @@ onMounted(() => {
 .wrapper {
   max-width: 1504px;
   margin: 0 auto;
-  padding: 0 44px;
+  padding: var(--o-spacing-h2) var(--o-spacing-h2) 0;
   @media screen and (max-width: 768px) {
     padding: 0 var(--o-spacing-h5);
   }
 }
 .breadcrumb {
-  margin-top: var(--o-spacing-h2);
+  // margin-top: var(--o-spacing-h2);
   color: var(--e-color-text1);
   background: var(--e-color-bg1);
   display: flex;
@@ -302,6 +322,10 @@ onMounted(() => {
     .metrics-list,
     .affect-list {
       margin-bottom: var(--o-spacing-h2);
+      .detail-page {
+        color: var(--e-color-link1);
+        cursor: pointer;
+      }
       @media screen and (max-width: 768px) {
         display: none;
       }

@@ -813,6 +813,7 @@ onMounted(() => {
         :layout="layout"
         :total="total"
         :background="true"
+        :hide-on-single-page="true"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       >

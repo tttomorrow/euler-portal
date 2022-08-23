@@ -271,7 +271,7 @@ function goBackPage() {
 .wrapper {
   max-width: 1504px;
   margin: 0 auto;
-  padding: 0 var(--o-spacing-h2);
+  padding: var(--o-spacing-h2) var(--o-spacing-h2) 0;
   @media screen and (max-width: 768px) {
     padding: 0 var(--o-spacing-h5);
   }
@@ -279,7 +279,7 @@ function goBackPage() {
 .banner {
   margin: 0 auto;
   .breadcrumb {
-    margin-top: var(--o-spacing-h3);
+    // margin-top: var(--o-spacing-h3);
     margin-bottom: var(--o-spacing-h5);
     font-size: var(--o-font-size-h6);
     color: var(--e-color-link1);
