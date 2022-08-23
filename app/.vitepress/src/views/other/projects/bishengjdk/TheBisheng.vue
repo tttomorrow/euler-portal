@@ -41,13 +41,9 @@ const i18n = useI18n();
         layout="upAndDown"
       />
       <!-- 学习模块 -->
-      <MiniDocs
-        :docs-obj="i18n.bishengjdk.BISHENG_LEARN"
-      />
+      <MiniDocs :docs-obj="i18n.bishengjdk.BISHENG_LEARN" />
       <!-- 友情链接模块 -->
-      <MiniReference
-        :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE"
-      />
+      <MiniReference :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE" />
     </div>
   </div>
 </template>

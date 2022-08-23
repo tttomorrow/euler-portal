@@ -228,9 +228,10 @@ const currentChange = (val: number) => {
     :illustration="BannerImg2"
   >
     <template #default>
-      <OButton type="outline"
-        >{{userCaseData.STRATEGY}}<OIcon class="bannericon"><IconRight /></OIcon
-      ></OButton>
+      <OButton type="outline">
+        {{ userCaseData.STRATEGY }}
+        <OIcon class="bannericon"><IconRight /></OIcon>
+      </OButton>
     </template>
   </BannerLevel2>
   <div class="blog">

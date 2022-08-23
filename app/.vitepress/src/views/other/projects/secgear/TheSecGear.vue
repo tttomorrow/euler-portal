@@ -28,9 +28,7 @@ const i18n = useI18n();
       layout="leftAndRight"
     />
     <!-- 文档 -->
-    <MiniDocs
-      :docs-obj="i18n.secgear.SECGEAR_DOCUMENT"
-    />
+    <MiniDocs :docs-obj="i18n.secgear.SECGEAR_DOCUMENT" />
   </div>
 </template>
 

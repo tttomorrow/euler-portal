@@ -24,13 +24,8 @@ const i18n = useI18n();
     />
     <MiniCards :cards-link="i18n.isula.ISULA_LINK" />
     <MiniDescription :description-desc="i18n.isula.ISULA_DESC_UP" />
-    <MiniFrame
-      :frame-obj="i18n.isula.ISULA_FRAMEWORK"
-      layout="upAndDown"
-    />
-    <MiniDocs
-      :docs-obj="i18n.isula.ISULA_DOCUMENT"
-    />
+    <MiniFrame :frame-obj="i18n.isula.ISULA_FRAMEWORK" layout="upAndDown" />
+    <MiniDocs :docs-obj="i18n.isula.ISULA_DOCUMENT" />
   </div>
 </template>
 <style lang="scss" scoped>

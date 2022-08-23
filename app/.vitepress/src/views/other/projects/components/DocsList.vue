@@ -134,6 +134,7 @@ const goLink = (path: string) => {
         color: var(--e-color-text1);
         line-height: var(--o-line-height-h6);
         position: relative;
+        overflow: hidden;
         &-content {
           position: absolute;
           z-index: 3;
@@ -182,7 +183,7 @@ const goLink = (path: string) => {
         }
         &-backgroundone {
           position: absolute;
-          right: -39px;
+          right: -41px;
           top: -37px;
           width: 301px;
           height: 228px;
