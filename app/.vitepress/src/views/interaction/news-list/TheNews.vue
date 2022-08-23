@@ -52,21 +52,12 @@ const paginationData = ref({
   pagesize: 9,
   currentpage: 0,
 });
+
 // 获取标签数据
 const tagsParams = reactive({
   lang: lang.value,
   category: 'news',
   tags: 'date',
-});
-const tagsParams1 = reactive({
-  lang: lang.value,
-  category: 'news',
-  tags: 'author',
-});
-const tagsParams2 = reactive({
-  lang: lang.value,
-  category: 'news',
-  tags: 'tags',
 });
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
@@ -159,12 +150,14 @@ onMounted(() => {
     res.obj.totalNum.forEach((item: any) => {
       selectData.value[0].select.push(item.key);
     });
-    getTagsData(tagsParams1)
+    tagsParams.tags = 'author';
+    getTagsData(tagsParams)
       .then((res) => {
         res.obj.totalNum.forEach((item: any) => {
           selectData.value[1].select.push(item.key);
         });
-        getTagsData(tagsParams2).then((res) => {
+        tagsParams.tags = 'tags';
+        getTagsData(tagsParams).then((res) => {
           res.obj.totalNum.forEach((item: any) => {
             selectData.value[2].select.push(item.key);
           });

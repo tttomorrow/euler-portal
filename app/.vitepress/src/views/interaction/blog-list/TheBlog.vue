@@ -61,16 +61,6 @@ const tagsParams = reactive({
   category: 'blog',
   tags: 'archives',
 });
-const tagsParams1 = reactive({
-  lang: lang.value,
-  category: 'blog',
-  tags: 'author',
-});
-const tagsParams2 = reactive({
-  lang: lang.value,
-  category: 'blog',
-  tags: 'tags',
-});
 // 移动端数据
 const tagsDataToChild = ref<any>([
   {
@@ -188,7 +178,8 @@ onMounted(() => {
     res.obj.totalNum.forEach((item: any) => {
       selectData.value[0].select.push(item.key);
     });
-    getTagsData(tagsParams1)
+    tagsParams.tags = 'author'
+    getTagsData(tagsParams)
       .then((res) => {
         for (let i = 0; i < 5; i++) {
           tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
@@ -196,7 +187,8 @@ onMounted(() => {
         res.obj.totalNum.forEach((item: any) => {
           selectData.value[1].select.push(item.key);
         });
-        getTagsData(tagsParams2).then((res) => {
+        tagsParams.tags = 'tags'
+        getTagsData(tagsParams).then((res) => {
           res.obj.totalNum.forEach((item: any) => {
             selectData.value[2].select.push(item.key);
           });
