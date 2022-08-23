@@ -18,7 +18,7 @@ category: news
 ## 理解新闻格式
 
 openEuler 是用 markdown 格式写新闻的。
-请阅读该文章 <https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/en/interaction/post-news/README.md>来理解 openEuler 新闻是如何设计的。
+请阅读该文章 <https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/en/interaction/post-news/index.md>来理解 openEuler 新闻是如何设计的。
 
 文件头需要包含如下信息：
 

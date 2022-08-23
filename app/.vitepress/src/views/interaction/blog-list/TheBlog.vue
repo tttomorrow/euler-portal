@@ -234,10 +234,10 @@ const postBlog = () => {
     <template #default>
       <OButton
         class="post-btn"
-        @click="postBlog"
         type="outline"
         animation
         size="small"
+        @click="postBlog"
       >
         {{ userCaseData.STRATEGY }}
         <template #suffixIcon>
