@@ -581,7 +581,6 @@ const goHome = () => {
                 width: 104px;
                 height: 28px;
                 background: var(--e-color-brand1);
-                border-radius: 4px;
                 color: #ffffff;
                 font-size: var(--o-font-size-text);
                 line-height: 28px;
@@ -594,6 +593,7 @@ const goHome = () => {
             max-width: 864px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
           }
         }
         .video {

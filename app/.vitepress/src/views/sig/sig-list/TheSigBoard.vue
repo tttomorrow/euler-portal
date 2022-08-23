@@ -4,6 +4,11 @@ import { useData, useRouter } from 'vitepress';
 import AOS from 'aos';
 import { useI18n } from '@/i18n';
 
+import IconHome from '~icons/app/icon-home.svg';
+import IconMail from '~icons/app/icon-mail.svg';
+import IconVideo from '~icons/app/icon-video.svg';
+import IconUser from '~icons/app/icon-user.svg';
+
 const configData = useData();
 const i18n = useI18n();
 const router = useRouter();
@@ -16,7 +21,7 @@ defineProps({
   },
 });
 
-interface SIGLIST {
+interface SIG_LIST {
   group_name: string;
   home_page: string;
   id: number;
@@ -25,7 +30,7 @@ interface SIGLIST {
   owners: string;
 }
 
-const toSigDetail = (value: SIGLIST) => {
+const toSigDetail = (value: SIG_LIST) => {
   router.go(`/${language.value}/sig/sig-detail/?name=${value.group_name}`);
 };
 onMounted(() => {
@@ -50,7 +55,7 @@ onMounted(() => {
         <h2 @click="toSigDetail(item)">{{ item.group_name }}</h2>
         <ul class="sig-board-item-info">
           <li class="sig-board-item-info-page">
-            <img src="@/assets/svg-icons/icon-home.svg" />
+            <IconHome class="sig-board-icon" />
             <span>
               <a target="_black" :href="item.home_page">
                 {{ i18n.sig.SIG_LIST.HOME_PAGE }}
@@ -58,7 +63,7 @@ onMounted(() => {
             </span>
           </li>
           <li class="sig-board-item-info-mail">
-            <img src="@/assets/svg-icons/icon-mail.svg" />
+            <IconMail class="sig-board-icon" />
             <span
               >{{ i18n.sig.SIG_LIST.MAIL }} :
               <a :href="'mailto:' + item.maillist">
@@ -67,11 +72,11 @@ onMounted(() => {
             </span>
           </li>
           <li class="sig-board-item-info-video">
-            <img src="@/assets/svg-icons/icon-video.svg" />
+            <IconVideo class="sig-board-icon" />
             <span> {{ i18n.sig.SIG_LIST.IRC }} : {{ item.irc }} </span>
           </li>
           <li class="sig-board-item-info-user">
-            <img src="@/assets/svg-icons/icon-user.svg" />
+            <IconUser class="sig-board-icon" />
             <span>{{ i18n.sig.SIG_LIST.MANAGER }} :</span>
           </li>
         </ul>
@@ -113,7 +118,7 @@ onMounted(() => {
     }
     @media (max-width: 1080px) {
       width: 100%;
-      padding: var(--o-spacing-h3) var(--o-spacing-h3) 0 var(--o-spacing-h3);
+      padding: var(--o-spacing-h3) var(--o-spacing-h3);
     }
     h2 {
       padding-bottom: var(--o-spacing-h7);
@@ -146,8 +151,17 @@ onMounted(() => {
           color: var(--e-color-kleinblue5);
         }
       }
+
+      .sig-board-icon {
+        width: var(--o-line-height-h8);
+        height: var(--o-line-height-h8);
+        margin-right: var(--o-spacing-h8);
+      }
       li {
         margin-top: var(--o-spacing-h7);
+        display: flex;
+        align-items: center;
+
         img {
           width: var(--o-line-height-h8);
           height: var(--o-line-height-h8);
