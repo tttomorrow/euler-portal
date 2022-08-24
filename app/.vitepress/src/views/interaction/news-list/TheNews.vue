@@ -282,7 +282,7 @@ const currentChange = (val: number) => {
           @current-change="currentChange"
           @size-change="currentChange"
         >
-          <span
+          <span class="pagination-slot"
             >{{ paginationData.currentpage }}/{{
               Math.ceil(paginationData.total / paginationData.pagesize)
             }}</span
@@ -303,6 +303,14 @@ const currentChange = (val: number) => {
 }
 .dark img {
   filter: brightness(0.8) grayscale(0.2) contrast(1.2);
+}
+.news-pagination {
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
+  }
 }
 .news {
   &-tag {

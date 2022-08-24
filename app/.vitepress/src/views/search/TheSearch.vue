@@ -211,7 +211,9 @@ onMounted(() => {
             :total="total"
             @current-change="searchDataAll"
           >
-            <span>{{ currentPage }}/{{ totalPage }}</span>
+            <span class="pagination-slot"
+              >{{ currentPage }}/{{ totalPage }}</span
+            >
           </OPagination>
           <AppPaginationMo
             :current-page="currentPage"
@@ -247,6 +249,12 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr minmax(150px, 320px);
   grid-gap: 32px;
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
+  }
   @media (max-width: 1100px) {
     padding: 0 16px;
     padding-top: var(--o-spacing-h2);

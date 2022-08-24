@@ -203,7 +203,9 @@ const goNext = () => {
         @current-change="changePage(currentPage1, pageSize4)"
         @size-change="changePage(currentPage1, pageSize4)"
       >
-        <span>{{ currentPage1 * pageSize4 + '/' + total }}</span>
+        <span class="pagination-slot">{{
+          currentPage1 * pageSize4 + '/' + total
+        }}</span>
       </OPagination>
       <div v-show="isMobile" class="pagination-mobile">
         <div class="pagination-options">
@@ -232,6 +234,12 @@ const goNext = () => {
   margin: var(--o-spacing-h1) 0 0 0;
   @media screen and (max-width: 767px) {
     margin: var(--o-spacing-h2) 0 0 0;
+  }
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
   }
   &-top-title {
     width: 100%;

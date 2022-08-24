@@ -178,7 +178,7 @@ onMounted(() => {
     res.obj.totalNum.forEach((item: any) => {
       selectData.value[0].select.push(item.key);
     });
-    tagsParams.tags = 'author'
+    tagsParams.tags = 'author';
     getTagsData(tagsParams)
       .then((res) => {
         for (let i = 0; i < 5; i++) {
@@ -187,7 +187,7 @@ onMounted(() => {
         res.obj.totalNum.forEach((item: any) => {
           selectData.value[1].select.push(item.key);
         });
-        tagsParams.tags = 'tags'
+        tagsParams.tags = 'tags';
         getTagsData(tagsParams).then((res) => {
           res.obj.totalNum.forEach((item: any) => {
             selectData.value[2].select.push(item.key);
@@ -354,7 +354,7 @@ const postBlog = () => {
           @current-change="currentChange"
           @size-change="currentChange"
         >
-          <span
+          <span class="pagination-slot"
             >{{ paginationData.currentpage }}/{{
               Math.ceil(paginationData.total / paginationData.pagesize)
             }}</span
@@ -382,6 +382,13 @@ const postBlog = () => {
   @media (max-width: 767px) {
     padding: 4px 12px;
   }
+}
+
+.pagination-slot {
+  font-size: var(--o-font-size-text);
+  font-weight: 400;
+  color: var(--e-color-text1);
+  line-height: var(--o-spacing-h4);
 }
 
 .blog {
@@ -567,6 +574,7 @@ const postBlog = () => {
   .blog-list {
     margin-top: var(--o-spacing-h5);
   }
+
   .blog-list-item-content {
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
