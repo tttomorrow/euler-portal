@@ -51,8 +51,10 @@ main {
   min-height: calc(100vh - 198px);
   background-color: var(--e-color-bg1);
   margin-top: 80px;
+  padding-bottom: 62px;
   @media (max-width: 1100px) {
     margin-top: 48px;
+    padding-bottom: 40px;
   }
 }
 </style>
