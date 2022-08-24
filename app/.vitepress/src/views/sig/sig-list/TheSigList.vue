@@ -508,6 +508,9 @@ onMounted(() => {
   .sig-maintainer {
     display: grid;
     grid-template-columns: auto 1fr;
+    @media (max-width: 1100px) {
+      display: block;
+    }
     &-item {
       span {
         white-space: nowrap;
@@ -532,7 +535,7 @@ onMounted(() => {
       font-size: var(--o-font-size-h7);
       color: var(--e-color-text1);
       margin-right: var(--o-spacing-h5);
-      @media (max-width: 780px) {
+      @media (max-width: 1000px) {
         font-size: var(--o-font-size-text);
         width: 100px;
       }
@@ -543,7 +546,7 @@ onMounted(() => {
         width: 150px;
       }
     }
-    @media (max-width: 780px) {
+    @media (max-width: 1000px) {
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -559,7 +562,7 @@ onMounted(() => {
       max-width: 150px;
     }
   }
-  @media (max-width: 780px) {
+  @media (max-width: 1000px) {
     display: block;
   }
 }
