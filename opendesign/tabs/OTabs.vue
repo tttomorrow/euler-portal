@@ -35,9 +35,6 @@ const attrs = useAttrs();
         padding: 0 var(--o-spacing-h8);
       }
     }
-    // .el-tabs__nav {
-    //   height: 35px;
-    // }
   }
 }
 </style>

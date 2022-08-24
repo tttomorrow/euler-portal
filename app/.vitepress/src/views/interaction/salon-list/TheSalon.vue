@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
+import { useData, useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
+
 import { getSalon } from '@/api/api-sig';
+
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconHome from '~icons/app/icon-home.svg';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
 import Img404 from '@/assets/404.svg';
-import { useData, useRouter } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
+
+import AppContent from '@/components/AppContent.vue';
 
 const salonData = computed(() => i18n.value.interaction.MEETUPSLIST);
 
@@ -237,7 +241,7 @@ onMounted(async () => {
         <OTabPane :label="salonData.DETAIL_REVIEW" name="second"></OTabPane>
       </OTabs>
     </div>
-    <div class="salon-content">
+    <AppContent class="salon-content">
       <div v-if="activeName === 'first'">
         <h3 class="salon-title">{{ salonData.DETAIL_NEWS }}</h3>
         <OTimeline
@@ -333,7 +337,9 @@ onMounted(async () => {
         </div>
       </div>
       <div v-else>
-        <h3 class="salon-title review-title">{{ salonData.DETAIL_REVIEW }}</h3>
+        <h3 class="salon-title review-title">
+          {{ salonData.DETAIL_REVIEW }}
+        </h3>
         <OTimeline
           v-model="date"
           class="salon-time"
@@ -404,7 +410,7 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-    </div>
+    </AppContent>
   </div>
 </template>
 
@@ -895,15 +901,6 @@ onMounted(async () => {
       display: none;
     }
   }
-  &-content {
-    max-width: 1504px;
-    margin: var(--o-spacing-h1) auto 0;
-    padding: 0 var(--o-spacing-h2);
-    @media (max-width: 1080px) {
-      margin: var(--o-spacing-h2) auto 0;
-      padding: 0 var(--o-spacing-h5);
-    }
-  }
   &-title {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
@@ -911,11 +908,9 @@ onMounted(async () => {
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
-    margin-top: var(--o-spacing-h1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
-      margin-top: var(--o-spacing-h2);
     }
   }
   &-tabs {
