@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from '@/i18n';
 import { useRouter } from 'vitepress';
+import AppContent from '@/components/AppContent.vue';
 
 const i18n = useI18n();
 const router = useRouter();
@@ -11,7 +12,7 @@ function goBackPage() {
 }
 </script>
 <template>
-  <div class="wrapper">
+  <AppContent :mobileTop="16">
     <div class="banner">
       <div class="breadcrumb" @click="goBackPage">
         {{ i18n.compatibility.COMPATIBILITY }} \
@@ -146,17 +147,17 @@ function goBackPage() {
         </div>
       </div>
     </div>
-  </div>
+  </AppContent>
 </template>
 <style lang="scss" scope>
-.wrapper {
-  max-width: 1504px;
-  margin: 0 auto;
-  padding: var(--o-spacing-h2) var(--o-spacing-h2) 0;
-  @media screen and (max-width: 768px) {
-    padding: 0 var(--o-spacing-h5);
-  }
-}
+// .wrapper {
+//   // max-width: 1504px;
+//   // margin: 0 auto;
+//   // padding: var(--o-spacing-h2) var(--o-spacing-h2) 0;
+//   // @media screen and (max-width: 768px) {
+//   //   padding: 0 var(--o-spacing-h5);
+//   // }
+// }
 
 .banner {
   margin: 0 auto;

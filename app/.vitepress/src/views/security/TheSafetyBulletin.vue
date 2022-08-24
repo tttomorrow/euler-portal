@@ -6,6 +6,7 @@ import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
+import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
@@ -135,7 +136,7 @@ watch(windowWidth, () => {
     subtitle=""
     :illustration="screenWidth >= 1000 ? search : cve"
   />
-  <div class="wrapper">
+  <AppContent :mobileTop="16">
     <div class="bulletin-main">
       <div class="input-container">
         <OSearch
@@ -304,19 +305,13 @@ watch(windowWidth, () => {
         @turn-page="turnPage"
       />
     </div>
-  </div>
+  </AppContent>
 </template>
 
 <style lang="scss" scoped>
 .bulletin-main {
   max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
-  margin: var(--o-spacing-h1) auto 0;
-  @media screen and (max-width: 1000px) {
-    margin: 0 auto;
-    padding: var(--o-spacing-h5);
-    padding-bottom: 0;
-  }
+  margin: 0 auto;
   .input-container {
     @media screen and (max-width: 1000px) {
       display: none;

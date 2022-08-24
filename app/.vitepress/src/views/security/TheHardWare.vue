@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from '@/i18n';
 import { useRouter } from 'vitepress';
+import AppContent from '@/components/AppContent.vue';
 
 const i18n = useI18n();
 const router = useRouter();
@@ -11,7 +12,7 @@ function goBackPage() {
 }
 </script>
 <template>
-  <div class="wrapper">
+  <AppContent>
     <div class="banner">
       <div class="breadcrumb" @click="goBackPage">
         {{ i18n.compatibility.COMPATIBILITY }} \
@@ -265,7 +266,7 @@ function goBackPage() {
         </div>
       </div>
     </div>
-  </div>
+  </AppContent>
 </template>
 <style lang="scss" scope>
 .wrapper {

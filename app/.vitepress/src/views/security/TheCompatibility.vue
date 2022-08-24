@@ -5,6 +5,8 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
+import AppContent from '@/components/AppContent.vue';
+
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 import cve from '@/assets/illustrations/cve.png';
@@ -383,9 +385,10 @@ onMounted(() => {
     :illustration="screenWidth > 1080 ? search : cve"
   />
 
+  <!-- <AppContent :mobileTop="16"> -->
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
-    <OTabPane label="整机" name="1">
-      <div class="wrapper">
+    <AppContent>
+      <OTabPane label="整机" name="1">
         <OSearch
           v-model="searchContent"
           class="o-search"
@@ -478,11 +481,9 @@ onMounted(() => {
             </template>
           </el-table-column>
         </OTable>
-      </div>
-    </OTabPane>
+      </OTabPane>
 
-    <OTabPane label="板卡" name="2">
-      <div class="wrapper">
+      <OTabPane label="板卡" name="2">
         <OSearch
           v-model="searchContent"
           class="o-search"
@@ -627,11 +628,9 @@ onMounted(() => {
             </ul>
           </li>
         </ul>
-      </div>
-    </OTabPane>
+      </OTabPane>
 
-    <OTabPane label="开源软件" name="3">
-      <div class="wrapper">
+      <OTabPane label="开源软件" name="3">
         <OSearch
           v-model="searchContent"
           class="o-search"
@@ -713,11 +712,9 @@ onMounted(() => {
             prop="license"
           ></OTableColumn>
         </OTable>
-      </div>
-    </OTabPane>
+      </OTabPane>
 
-    <OTabPane label="商业软件" name="4">
-      <div class="wrapper">
+      <OTabPane label="商业软件" name="4">
         <OSearch
           v-model="searchContent"
           class="o-search"
@@ -802,290 +799,302 @@ onMounted(() => {
             prop="testOrganization"
           ></OTableColumn>
         </OTable>
+      </OTabPane>
+      <div class="bottom-wrapper">
+        <OPagination
+          v-model:page-size="queryData.pages.size"
+          v-model:currentPage="queryData.pages.page"
+          class="pagination"
+          :page-sizes="[10, 20, 40, 80]"
+          :layout="layout"
+          :total="total"
+          :background="true"
+          :hide-on-single-page="true"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        >
+          <span class="pagination-slot"> {{ currentPage }}/{{ total }}</span>
+        </OPagination>
+        <p class="about">
+          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+
+          <a href="#" @click="goBackPage">{{
+            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+          }}</a>
+        </p>
       </div>
-    </OTabPane>
-    <div class="bottom-wrapper">
-      <OPagination
-        v-model:page-size="queryData.pages.size"
-        v-model:currentPage="queryData.pages.page"
-        class="pagination"
-        :page-sizes="[10, 20, 40, 80]"
-        :layout="layout"
-        :total="total"
-        :background="true"
-        :hide-on-single-page="true"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      >
-        <span class="pagination-slot"> {{ currentPage }}/{{ total }}</span>
-      </OPagination>
-      <p class="about">
-        {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-
-        <a href="#" @click="goBackPage">{{
-          i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
-        }}</a>
-      </p>
-    </div>
+    </AppContent>
   </OTabs>
-
-  <div class="tabs-mobile">
-    <el-collapse v-model="activeName" accordion @change="handleChange">
-      <el-collapse-item title="整机" name="1">
-        <div class="blog-tag">
-          <MobileFilter
-            class="filter"
-            :data="filterData"
-            :single="true"
-            @filter="listfilter"
-          />
-        </div>
-        <ul class="mobile-list">
-          <li v-for="item in tableData" :key="item.id" class="item">
-            <ul>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
-                  }}:</span
-                >{{ item.architecture }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.VENDOR }}:</span
-                >{{ item.hardwareFactory }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.MODEL }}:</span
-                >{{ item.hardwareModel }}
-              </li>
-              <li>
-                <span>{{ i18n.compatibility.HARDWARE_DETAIL.LABELS.CPU }}:</span
-                >{{ item.cpu }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
-                >{{ item.osVersion }}
-              </li>
-              <li>
-                <span
-                  >{{
+  <AppContent :mobileTop="16">
+    <div class="tabs-mobile">
+      <el-collapse v-model="activeName" accordion @change="handleChange">
+        <el-collapse-item title="整机" name="1">
+          <div class="blog-tag">
+            <MobileFilter
+              class="filter"
+              :data="filterData"
+              :single="true"
+              @filter="listfilter"
+            />
+          </div>
+          <ul class="mobile-list">
+            <li v-for="item in tableData" :key="item.id" class="item">
+              <ul>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
+                    }}:</span
+                  >{{ item.architecture }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.HARDWARE_TABLE_COLUMN.VENDOR
+                    }}:</span
+                  >{{ item.hardwareFactory }}
+                </li>
+                <li>
+                  <span
+                    >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.MODEL }}:</span
+                  >{{ item.hardwareModel }}
+                </li>
+                <li>
+                  <span
+                    >{{ i18n.compatibility.HARDWARE_DETAIL.LABELS.CPU }}:</span
+                  >{{ item.cpu }}
+                </li>
+                <li>
+                  <span
+                    >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
+                  >{{ item.osVersion }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.HARDWARE_TABLE_COLUMN
+                        .COMPATIBILITY_CONFIGURATION
+                    }}:
+                  </span>
+                  <a class="friendly-link" @click="go(item.id)">{{
                     i18n.compatibility.HARDWARE_TABLE_COLUMN
-                      .COMPATIBILITY_CONFIGURATION
-                  }}:
-                </span>
-                <a class="friendly-link" @click="go(item.id)">{{
-                  i18n.compatibility.HARDWARE_TABLE_COLUMN
-                    .COMPATIBILITY_CONFIGURATION2
-                }}</a>
-              </li>
-              <li>
-                <span>{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE }}:</span
-                >{{ item.certificationTime }}
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <AppPaginationMo
-          :current-page="currentPage"
-          :total-page="totalPage"
-          @turn-page="turnPage"
-          @jump-page="jumpPage"
-        />
-        <p class="mobile-about">
-          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-          <a href="#" @click="goBackPage">{{
-            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
-          }}</a>
-        </p>
-      </el-collapse-item>
-
-      <el-collapse-item title="板卡" name="2">
-        <div class="blog-tag">
-          <MobileFilter
-            class="filter"
-            :data="filterDataTwo"
-            :single="true"
-            @filter="listfilter"
+                      .COMPATIBILITY_CONFIGURATION2
+                  }}</a>
+                </li>
+                <li>
+                  <span
+                    >{{ i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE }}:</span
+                  >{{ item.certificationTime }}
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <AppPaginationMo
+            :current-page="currentPage"
+            :total-page="totalPage"
+            @turn-page="turnPage"
+            @jump-page="jumpPage"
           />
-        </div>
-        <ul class="mobile-list">
-          <li v-for="item in tableData" :key="item.id" class="item">
-            <ul>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
-                  }}:</span
-                >{{ item.architecture }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME }}:</span
-                >
-                {{ item.driverName }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
-                >
-                {{ item.os }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION }}:</span
-                >
-                {{ item.version }}
-              </li>
-              <li>
-                <span>{{ i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE }}:</span>
-                {{ item.type }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE
-                  }}:</span
-                >
-                {{ item.driverDate }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR
-                  }}:</span
-                >
-                {{ item.chipVendor }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL
-                  }}:</span
-                >
-                {{ item.boardModel }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL }}:</span
-                >
-                {{ item.chipModel }}
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <AppPaginationMo
-          :current-page="currentPage"
-          :total-page="totalPage"
-          @turn-page="turnPage"
-          @jump-page="jumpPage"
-        />
-        <p class="mobile-about">
-          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-          <a href="#" @click="goBackPage">{{
-            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
-          }}</a>
-        </p>
-      </el-collapse-item>
+          <p class="mobile-about">
+            {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+            <a href="#" @click="goBackPage">{{
+              i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+            }}</a>
+          </p>
+        </el-collapse-item>
 
-      <el-collapse-item title="开源软件" name="3">
-        <div class="blog-tag">
-          <MobileFilter
-            class="filter"
-            :data="filterDataTwo"
-            :single="true"
-            @filter="listfilter"
+        <el-collapse-item title="板卡" name="2">
+          <div class="blog-tag">
+            <MobileFilter
+              class="filter"
+              :data="filterDataTwo"
+              :single="true"
+              @filter="listfilter"
+            />
+          </div>
+          <ul class="mobile-list">
+            <li v-for="item in tableData" :key="item.id" class="item">
+              <ul>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
+                    }}:</span
+                  >{{ item.architecture }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME
+                    }}:</span
+                  >
+                  {{ item.driverName }}
+                </li>
+                <li>
+                  <span
+                    >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
+                  >
+                  {{ item.os }}
+                </li>
+                <li>
+                  <span
+                    >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION }}:</span
+                  >
+                  {{ item.version }}
+                </li>
+                <li>
+                  <span>{{ i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE }}:</span>
+                  {{ item.type }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE
+                    }}:</span
+                  >
+                  {{ item.driverDate }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR
+                    }}:</span
+                  >
+                  {{ item.chipVendor }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL
+                    }}:</span
+                  >
+                  {{ item.boardModel }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL
+                    }}:</span
+                  >
+                  {{ item.chipModel }}
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <AppPaginationMo
+            :current-page="currentPage"
+            :total-page="totalPage"
+            @turn-page="turnPage"
+            @jump-page="jumpPage"
           />
-        </div>
-        <ul class="mobile-list">
-          <li v-for="item in tableData" :key="item.id" class="item">
-            <ul>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.ARCHITECTURE
-                  }}:</span
-                >{{ item.arch }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARETYPE
-                  }}:</span
-                >
-                {{ item.group }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARENAME
-                  }}:</span
-                >
-                {{ item.softwareName }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.SOFTWARE_TABLE_COLUMN.VERSION }}:</span
-                >
-                {{ item.version }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES
-                  }}:</span
-                >
-                {{ item.property }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM }}:</span
-                >
-                {{ item.os }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK
-                  }}:</span
-                >
-                <a
-                  :href="item.downloadLink"
-                  target="_blank"
-                  class="friendly-link"
-                  rel="noopener noreferrer"
-                  >link</a
-                >
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.SOFTWARE_TABLE_COLUMN.PUBLICKLICENSE
-                  }}:</span
-                >
-                {{ item.license }}
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <AppPaginationMo
-          :current-page="currentPage"
-          :total-page="totalPage"
-          @turn-page="turnPage"
-          @jump-page="jumpPage"
-        />
-        <p class="mobile-about">
-          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-          <a href="#" @click="goBackPage">{{
-            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
-          }}</a>
-        </p>
-      </el-collapse-item>
+          <p class="mobile-about">
+            {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+            <a href="#" @click="goBackPage">{{
+              i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+            }}</a>
+          </p>
+        </el-collapse-item>
 
-      <el-collapse-item title="商业软件" name="4">
-        <!-- <div class="blog-tag">
+        <el-collapse-item title="开源软件" name="3">
+          <div class="blog-tag">
+            <MobileFilter
+              class="filter"
+              :data="filterDataTwo"
+              :single="true"
+              @filter="listfilter"
+            />
+          </div>
+          <ul class="mobile-list">
+            <li v-for="item in tableData" :key="item.id" class="item">
+              <ul>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.SOFTWARE_TABLE_COLUMN.ARCHITECTURE
+                    }}:</span
+                  >{{ item.arch }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARETYPE
+                    }}:</span
+                  >
+                  {{ item.group }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARENAME
+                    }}:</span
+                  >
+                  {{ item.softwareName }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.SOFTWARE_TABLE_COLUMN.VERSION
+                    }}:</span
+                  >
+                  {{ item.version }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES
+                    }}:</span
+                  >
+                  {{ item.property }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM
+                    }}:</span
+                  >
+                  {{ item.os }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK
+                    }}:</span
+                  >
+                  <a
+                    :href="item.downloadLink"
+                    target="_blank"
+                    class="friendly-link"
+                    rel="noopener noreferrer"
+                    >link</a
+                  >
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.SOFTWARE_TABLE_COLUMN.PUBLICKLICENSE
+                    }}:</span
+                  >
+                  {{ item.license }}
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <AppPaginationMo
+            :current-page="currentPage"
+            :total-page="totalPage"
+            @turn-page="turnPage"
+            @jump-page="jumpPage"
+          />
+          <p class="mobile-about">
+            {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+            <a href="#" @click="goBackPage">{{
+              i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+            }}</a>
+          </p>
+        </el-collapse-item>
+
+        <el-collapse-item title="商业软件" name="4">
+          <!-- <div class="blog-tag">
           <MobileFilter
             class="filter"
             :data="filterData"
@@ -1093,69 +1102,71 @@ onMounted(() => {
             @filter="listfilter"
           />
         </div> -->
-        <ul class="mobile-list">
-          <li v-for="item in tableData" :key="item.id" class="item">
-            <ul>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN
-                      .SOFTWARENAME
-                  }}:</span
-                >{{ item.productName }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VERSION
-                  }}:</span
-                >
-                {{ item.productVersion }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VENDOR
-                  }}:</span
-                >
-                {{ item.companyName }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SYSTEM
-                  }}:</span
-                >
-                {{ item.osName }} {{ item.osVersion }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN
-                      .SERVER_NAME
-                  }}:</span
-                >
-                <span v-for="it in item.platformTypeAndServerModel" :key="it">
-                  {{ it.serverTypes[0] }} {{ it.serverTypes[1] }}
-                </span>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <AppPaginationMo
-          :current-page="currentPage"
-          :total-page="totalPage"
-          @turn-page="turnPage"
-        />
-        <p class="mobile-about">
-          {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
-          <a href="#" @click="goBackPage">{{
-            i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
-          }}</a>
-        </p>
-      </el-collapse-item>
-    </el-collapse>
-  </div>
+          <ul class="mobile-list">
+            <li v-for="item in tableData" :key="item.id" class="item">
+              <ul>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN
+                        .SOFTWARENAME
+                    }}:</span
+                  >{{ item.productName }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VERSION
+                    }}:</span
+                  >
+                  {{ item.productVersion }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VENDOR
+                    }}:</span
+                  >
+                  {{ item.companyName }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SYSTEM
+                    }}:</span
+                  >
+                  {{ item.osName }} {{ item.osVersion }}
+                </li>
+                <li>
+                  <span
+                    >{{
+                      i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN
+                        .SERVER_NAME
+                    }}:</span
+                  >
+                  <span v-for="it in item.platformTypeAndServerModel" :key="it">
+                    {{ it.serverTypes[0] }} {{ it.serverTypes[1] }}
+                  </span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <AppPaginationMo
+            :current-page="currentPage"
+            :total-page="totalPage"
+            @turn-page="turnPage"
+          />
+          <p class="mobile-about">
+            {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+            <a href="#" @click="goBackPage">{{
+              i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+            }}</a>
+          </p>
+        </el-collapse-item>
+      </el-collapse>
+    </div>
+  </AppContent>
+  <!-- </AppContent> -->
 </template>
 
 <style lang="scss" scoped>
@@ -1174,7 +1185,6 @@ onMounted(() => {
   }
 }
 .tabs-mobile {
-  padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
   display: none;
   @media screen and (max-width: 1080px) {
     display: block;
@@ -1205,17 +1215,11 @@ onMounted(() => {
   margin: 0 auto;
   padding: 0 var(--o-spacing-h2);
 }
-.wrapper {
-  max-width: 1504px;
-  padding: var(--o-spacing-h1) var(--o-spacing-h2) 0px;
-  margin: 0 auto;
-  .o-search {
-    height: 48px;
-  }
-  @media screen and (max-width: 1080px) {
-    padding: var(--o-spacing-h5);
-  }
+.o-search {
+  height: 48px;
+  // margin-top: 64px;
 }
+
 .blog-tag {
   display: none;
   @media screen and (max-width: 1080px) {

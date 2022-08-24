@@ -5,7 +5,7 @@ import { getCveDetail, getAffectedProduct } from '@/api/api-security';
 import { useRouter } from 'vitepress';
 
 import { CveDetailCvss, AffectProduct } from '@/shared/type-support';
-
+import AppContent from '@/components/AppContent.vue';
 import IconChevron from '~icons/app/chevron-right.svg';
 import { useData } from 'vitepress';
 
@@ -107,7 +107,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="wrapper">
+  <AppContent :mobileTop="16">
     <div class="breadcrumb">
       <p class="last-page" @click="goBackPage">
         {{ i18n.security.CVE }}
@@ -146,7 +146,9 @@ onMounted(() => {
         </OTable>
       </div>
       <div class="detail-item">
-        <h2 class="detail-item-title">{{ i18n.security.AFFECTED_PRODUCTS }}</h2>
+        <h2 class="detail-item-title">
+          {{ i18n.security.AFFECTED_PRODUCTS }}
+        </h2>
         <OTable class="affect-list" :data="affectedProductList">
           <OTableColumn :label="i18n.security.PRODUCT" prop="productName">
           </OTableColumn>
@@ -207,7 +209,7 @@ onMounted(() => {
         </ul>
       </div>
     </div>
-  </div>
+  </AppContent>
 </template>
 <style lang="scss" scoped>
 .detail-link {
