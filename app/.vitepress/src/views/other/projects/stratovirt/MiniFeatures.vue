@@ -57,7 +57,6 @@ const changeImg = function (url: string) {
 <style lang="scss" scoped>
 .features-box {
   width: 100%;
-  padding: 0 var(--o-spacing-h5);
   margin-bottom: var(--o-spacing-h2);
   .content {
     margin: 0 auto;

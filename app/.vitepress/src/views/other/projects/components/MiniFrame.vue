@@ -27,6 +27,7 @@ const isDark = computed(() => {
     <MiniTitle
       :inside-title="frameObj.TITLE_INSIDE"
       :outside-title="frameObj.TITLE_OUTSIDE"
+      :special-component="!!frameObj.TAB"
     />
     <!-- 上下布局 -->
     <div v-if="layout === 'upAndDown'" class="framework-upanddown">
@@ -117,7 +118,6 @@ const isDark = computed(() => {
 <style lang="scss" scoped>
 .framework-box {
   width: 100%;
-  padding: 0 var(--o-spacing-h5);
   .framework-upanddown {
     margin: 0 auto;
     max-width: 1416px;
@@ -156,7 +156,6 @@ const isDark = computed(() => {
     width: 100%;
     margin: 0 auto;
     .info {
-      padding: 0 0 var(--o-spacing-h2) 0;
       display: flex;
       justify-content: space-around;
       &__desc__wrapper {

@@ -1,3 +1,7 @@
+---
+title: '贡献攻略'
+---
+
 <script lang="ts" setup>
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import ContributionTab from "@/views/community/contribution/ContributionTab.vue";
@@ -7,12 +11,14 @@ import BannerIllustration from '/img/community/share/illustration-banner.png';
 
 </script>
 
-<BannerLevel2
-title="贡献攻略"
-:illustration="BannerIllustration"
-:background-image="BannerBackground"
-background-text="COMMUNITY"
-/>
+<ClientOnly>
+  <BannerLevel2
+  title="贡献攻略"
+  :illustration="BannerIllustration"
+  :background-image="BannerBackground"
+  background-text="COMMUNITY"
+  />
+</ClientOnly>
 <ContributionTab />
 
 <div class="markdown word">

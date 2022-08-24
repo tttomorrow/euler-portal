@@ -321,6 +321,9 @@ const goLink = (path: string) => {
         height: 100px;
       }
     }
+    .docs-item:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 </style>
