@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, onMounted, ref, computed, watch } from 'vue';
+import { reactive, onMounted, ref, computed } from 'vue';
 import { useData, useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppMdHead from './AppMdHead.vue';
