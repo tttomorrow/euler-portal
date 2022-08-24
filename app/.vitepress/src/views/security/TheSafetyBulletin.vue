@@ -234,17 +234,18 @@ watch(windowWidth, () => {
           prop="summary"
         ></OTableColumn>
         <OTableColumn
+          width="160"
           :label="i18n.security.SEVERITY"
           prop="type"
-          width="160"
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.AFFECTED_PRODUCTS"
           prop="affectedProduct"
+          width="400"
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.AFFECTED_COMPONENTS"
-          width="220"
+          width="160"
           prop="affectedComponent"
         ></OTableColumn>
         <OTableColumn
@@ -300,6 +301,7 @@ watch(windowWidth, () => {
       </OPagination>
 
       <AppPaginationMo
+        v-if="total !== 1"
         :current-page="queryData.pages.page"
         :total-page="Math.ceil(total / 10)"
         @turn-page="turnPage"

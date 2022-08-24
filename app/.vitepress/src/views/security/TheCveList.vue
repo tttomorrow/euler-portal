@@ -117,8 +117,8 @@ watch(windowWidth, () => {
   />
   <AppContent :mobileTop="16">
     <OSearch
-      v-model="searchContent"
       class="o-search"
+      v-model="searchContent"
       :placeholder="i18n.security.INPUT_CVE_ID"
       @change="searchValchange"
     ></OSearch>
@@ -246,20 +246,10 @@ watch(windowWidth, () => {
   </AppContent>
 </template>
 <style lang="scss" scoped>
-.wrapper {
-  max-width: 1504px;
-  margin: var(--o-spacing-h1) auto 0;
-  padding: 0 var(--o-spacing-h2);
-  background-color: var(--e-color-bg1);
-  @media screen and (max-width: 1080px) {
-    padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
-    margin: 0 auto;
-  }
-  .o-search {
-    height: 48px;
-    @media screen and (max-width: 1080px) {
-      display: none;
-    }
+.o-search {
+  height: 48px;
+  @media screen and (max-width: 1000px) {
+    display: none;
   }
 }
 .filter-card {
@@ -356,7 +346,7 @@ watch(windowWidth, () => {
     color: var(--e-color-text1);
     line-height: var(--o-spacing-h4);
   }
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 1000px) {
     display: none;
   }
 }
