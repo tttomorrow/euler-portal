@@ -255,7 +255,7 @@ const allHighLight = (val: any) => {
     &-button {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      margin: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h5) 0;
+      margin-bottom: var(--o-spacing-h5);
       color: var(--e-color-text4);
       &-icon {
         display: inline-block;

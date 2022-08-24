@@ -15,6 +15,7 @@ import IconRight from '~icons/app/arrow-right.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 import OIcon from 'opendesign/icon/OIcon.vue';
+import AppContent from '@/components/AppContent.vue';
 
 interface BlogData {
   archives: string;
@@ -238,7 +239,7 @@ const postBlog = () => {
       </OButton>
     </template>
   </BannerLevel2>
-  <div class="blog">
+  <AppContent :mobile-top="16">
     <template v-if="isShowData">
       <div class="blog-tag2">
         <MobileFilter
@@ -363,10 +364,17 @@ const postBlog = () => {
       </div>
     </template>
     <NotFound v-else />
-  </div>
+  </AppContent>
 </template>
 
 <style lang="scss" scoped>
+@mixin showline {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
 :deep(.el-card__body) {
   padding: var(--o-spacing-h2);
 }
@@ -392,29 +400,13 @@ const postBlog = () => {
 }
 
 .blog {
-  &-tag {
-    max-width: 1416px;
-    min-height: 82px;
-    margin: var(--o-spacing-h1) auto var(--o-spacing-h2) auto;
-    box-shadow: var(--o-shadow-base);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: var(--o-spacing-h2);
-    background-color: var(--e-color-bg2);
-  }
   &-tag2 {
     display: none;
   }
   &-select {
-    // background-color: aquamarine;
     display: flex;
     flex-direction: row;
     width: 1416px;
-    margin: var(--o-spacing-h1) auto var(--o-spacing-h2);
-    @media (max-width: 1455px) {
-      margin: var(--o-spacing-h1) var(--o-spacing-h5);
-    }
     &-item {
       margin-right: var(--o-spacing-h1);
       &-title {
@@ -430,7 +422,6 @@ const postBlog = () => {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: var(--o-spacing-h4);
-    padding: 0 var(--o-spacing-h5);
     &-item {
       background-image: url(@/assets/interaction/bg.png);
       min-height: 248px;
@@ -445,18 +436,7 @@ const postBlog = () => {
 
         p {
           display: inline-block;
-
-          word-break: break-all;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          word-break: break-all;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
+          @include showline();
           -webkit-line-clamp: 2;
         }
       }
@@ -474,17 +454,7 @@ const postBlog = () => {
           display: inline-block;
           margin-left: var(--o-spacing-h9);
           line-height: var(--o-line-height-tip);
-          word-break: break-all;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 1;
-          word-break: break-all;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
+          @include showline();
           -webkit-line-clamp: 1;
         }
         .infodetail {
@@ -500,17 +470,7 @@ const postBlog = () => {
         margin-top: var(--o-spacing-h5);
         height: 44px;
         color: var(--e-color-text1);
-        word-break: break-all;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        word-break: break-all;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
+        @include showline();
         -webkit-line-clamp: 2;
       }
       &-tags {
@@ -526,7 +486,6 @@ const postBlog = () => {
     }
   }
 }
-
 @media (max-width: 1100px) {
   .blog-list {
     grid-template-columns: repeat(2, 1fr);
@@ -534,7 +493,6 @@ const postBlog = () => {
   }
   .blog-tag2 {
     display: block;
-    margin-left: var(--o-spacing-h5);
   }
   .blog-select {
     display: none;
@@ -547,27 +505,15 @@ const postBlog = () => {
 @media (max-width: 768px) {
   .blog-list {
     grid-template-columns: repeat(1, 1fr);
-    margin-top: var(--o-spacing-h5);
-  }
-  .blog-tag {
-    display: none;
-  }
-  .blog-tag2 {
-    display: block;
-    margin-left: var(--o-spacing-h5);
   }
 }
 @media (max-width: 415px) {
-  .blog-tag {
-    display: none;
-  }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h6);
     min-height: 152px;
     max-height: 152px;
   }
   .blog-list-item {
-    // margin: var(--o-spacing-h5);
     min-height: 152px;
     max-height: 152px;
   }
@@ -579,17 +525,7 @@ const postBlog = () => {
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
     height: auto;
-    word-break: break-all;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    word-break: break-all;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+    @include showline();
     -webkit-line-clamp: 1;
   }
   .blog-list-item-title {
