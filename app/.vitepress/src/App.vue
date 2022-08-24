@@ -50,11 +50,9 @@ const comp = computed(() => {
 main {
   min-height: calc(100vh - 198px);
   background-color: var(--e-color-bg1);
-  padding-top: 80px;
-  padding-bottom: var(--o-spacing-h1);
+  margin-top: 80px;
   @media (max-width: 1100px) {
-    padding-top: 48px;
-    padding-bottom: var(--o-spacing-h2);
+    margin-top: 48px;
   }
 }
 </style>
