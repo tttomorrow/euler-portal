@@ -317,7 +317,7 @@ onMounted(() => {
           :layout="paginLayout"
           :total="totalRepositoryList.length"
         >
-          <span>{{ currentPage }}/{{ totalPage }}</span>
+          <span class="pagination-slot">{{ currentPage }}/{{ totalPage }}</span>
         </OPagination>
       </div>
       <div class="recent-event">
@@ -378,6 +378,12 @@ onMounted(() => {
   .content {
     width: 100%;
     background-color: var(--e-color-bg2);
+    .pagination-slot {
+      font-size: var(--o-font-size-text);
+      font-weight: 400;
+      color: var(--e-color-text1);
+      line-height: var(--o-spacing-h4);
+    }
     h3 {
       font-size: var(--o-font-size-h3);
       line-height: var(--o-line-height-h3);

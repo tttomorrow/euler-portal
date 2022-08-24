@@ -2,8 +2,6 @@
 import { useI18n } from '@/i18n';
 import { useRouter } from 'vitepress';
 
-// import IconChevron from '~icons/app/chevron-right.svg';
-
 const i18n = useI18n();
 const router = useRouter();
 

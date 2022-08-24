@@ -437,7 +437,7 @@ onMounted(() => {
         layout="sizes, prev, pager, next, slot, jumper"
         :total="total"
       >
-        <span
+        <span class="pagination-slot"
           >{{
             pageSize * currentPage < total ? pageSize * currentPage : total
           }}
@@ -506,6 +506,12 @@ onMounted(() => {
   flex-flow: row;
   justify-content: center;
   align-items: center;
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
+  }
   .pagination {
     display: flex;
     @media (max-width: 768px) {

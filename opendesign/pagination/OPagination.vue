@@ -27,7 +27,6 @@ const classNames = computed(() => {
 
   &.el-pagination {
     justify-content: center;
-
     .el-pagination__sizes {
       margin: 0 var(--o-spacing-h8) 0 0;
     }
