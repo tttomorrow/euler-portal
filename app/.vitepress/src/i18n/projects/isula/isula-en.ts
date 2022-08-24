@@ -20,6 +20,7 @@ export default {
   ISULA_LINK: [
     {
       IMG: '/img/projects/share/cards-work.png',
+      DARK_IMG: '/img/projects/share/cards-work.png',
       TITLE: 'Try Now',
       LINK_LIST: [
         'https://gitee.com/openeuler/community/tree/master/sig/iSulad',
@@ -28,12 +29,14 @@ export default {
     },
     {
       IMG: '/img/projects/share/cards-letter.png',
+      DARK_IMG: '/img/projects/share/cards-letter.png',
       TITLE: 'Feedback',
       LINK_LIST: ['mail to:isulad@openeuler.org'],
       SHOW: true,
     },
     {
       IMG: '/img/projects/isula/isula-logo.png',
+      DARK_IMG: '/img/projects/isula/isula-logo.png',
       TITLE: 'iSula logo',
       LINK_LIST: ['/other/projects/isula/'],
       SHOW: false,

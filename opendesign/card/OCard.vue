@@ -14,7 +14,7 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-card {
   --o-card-font-color: var(--e-color-text1);
-  --o-card-bg-color: var(--e-color-bg2);
+  --o-card-bg-color: var(--e-color-fill2);
   --o-card-division-color: var(--e-color-division1);
 
   &.el-card {
@@ -25,13 +25,13 @@ const attrs = useAttrs();
     border: none;
 
     &.is-always-shadow {
-      box-shadow: var(--o-shadow-base);
+      box-shadow: var(--o-shadow-l2);
     }
 
     &.is-hover-shadow {
       &:hover,
       &:focus {
-        box-shadow: var(--o-shadow-base_hover);
+        box-shadow: var(--e-shadow-l2_hover);
       }
     }
 

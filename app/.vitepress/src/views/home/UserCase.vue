@@ -58,23 +58,63 @@ onMounted(() => {
 <template>
   <div class="case-main">
     <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
-    <OCollapse
-      v-model="activeMobile"
-      accordion
-      class="case-mobile"
-      @change="handleChangeActiveMobile"
-    >
-      <OCollapseItem
-        v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
-        :key="item.TYPE"
-        class="case-mobile-list"
-        :name="index"
+    <OContainer data-aos="fade-down">
+      <OCollapse
+        v-model="activeMobile"
+        accordion
+        class="case-mobile"
+        @change="handleChangeActiveMobile"
       >
-        <template #title>
-          <div class="case-mobile-card-content">
-            <div class="case-mobile-title">
+        <OCollapseItem
+          v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
+          :key="item.TYPE"
+          class="case-mobile-list"
+          :name="index"
+        >
+          <template #title>
+            <div class="case-mobile-card-content">
+              <div class="case-mobile-title">
+                <img
+                  class="case-mobile-img"
+                  :src="
+                    commonStore.theme === 'dark'
+                      ? index === activeMobile
+                        ? item.ACTIVE_DARK_URL
+                        : item.URL_DARK
+                      : index === activeMobile
+                      ? item.ACTIVE_URL
+                      : item.URL
+                  "
+                />
+                <div class="case-mobile-word">
+                  {{ item.TYPE }}
+                </div>
+              </div>
+            </div>
+          </template>
+          <div class="user-mobile">
+            <div
+              v-for="user in caseData && caseData[item.TYPE]"
+              :key="user.company"
+              class="user-card"
+            >
+              <div class="user-title">{{ user.company }}</div>
+              <div class="user-word">{{ user.summary }}</div>
+            </div>
+          </div>
+        </OCollapseItem>
+      </OCollapse>
+      <div class="case">
+        <OCard class="case-card">
+          <div class="case-tab">
+            <div
+              v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
+              :key="item.TYPE"
+              class="case-tab-item"
+              @click="handleChangeActive(index)"
+            >
               <img
-                class="case-mobile-img"
+                class="case-img"
                 :src="
                   commonStore.theme === 'dark'
                     ? index === activeMobile
@@ -85,77 +125,39 @@ onMounted(() => {
                     : item.URL
                 "
               />
-              <div class="case-mobile-word">
+              <div :class="['case-word', active === index ? 'active' : '']">
                 {{ item.TYPE }}
               </div>
             </div>
           </div>
-        </template>
-        <div class="user-mobile">
-          <div
-            v-for="user in caseData && caseData[item.TYPE]"
-            :key="user.company"
-            class="user-card"
-          >
-            <div class="user-title">{{ user.company }}</div>
-            <div class="user-word">{{ user.summary }}</div>
+          <div class="case-user">
+            <a
+              v-for="item2 in caseData &&
+              caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
+              :key="item2.summary"
+              class="user-card"
+              @click="handleGo(item2.path)"
+            >
+              <div class="user-title">{{ item2.company }}</div>
+              <div class="user-word">{{ item2.summary }}</div>
+            </a>
           </div>
-        </div>
-      </OCollapseItem>
-    </OCollapse>
-    <div class="case">
-      <OCard class="case-card">
-        <div class="case-tab">
-          <div
-            v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
-            :key="item.TYPE"
-            class="case-tab-item"
-            @click="handleChangeActive(index)"
-          >
-            <img
-              class="case-img"
-              :src="
-                commonStore.theme === 'dark'
-                  ? index === activeMobile
-                    ? item.ACTIVE_DARK_URL
-                    : item.URL_DARK
-                  : index === activeMobile
-                  ? item.ACTIVE_URL
-                  : item.URL
-              "
-            />
-            <div :class="['case-word', active === index ? 'active' : '']">
-              {{ item.TYPE }}
-            </div>
+          <div class="case-more">
+            <OButton
+              animation
+              type="text"
+              class="case-more-item"
+              @click="handleGo(i18n.home.USER_CASE.VIEW_MORE_LINK)"
+            >
+              {{ i18n.home.IMG_CAROUSE.BUTTON }}
+              <template #suffixIcon>
+                <IconArrowRight class="case-more-icon"></IconArrowRight>
+              </template>
+            </OButton>
           </div>
-        </div>
-        <div class="case-user">
-          <a
-            v-for="item2 in caseData &&
-            caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
-            :key="item2.company"
-            class="user-card"
-            @click="handleGo(item2.path)"
-          >
-            <div class="user-title">{{ item2.company }}</div>
-            <div class="user-word">{{ item2.summary }}</div>
-          </a>
-        </div>
-        <div class="case-more">
-          <OButton
-            animation
-            type="text"
-            class="case-more-item"
-            @click="handleGo(i18n.home.USER_CASE.VIEW_MORE_LINK)"
-          >
-            {{ i18n.home.IMG_CAROUSE.BUTTON }}
-            <template #suffixIcon>
-              <IconArrowRight class="case-more-icon"></IconArrowRight>
-            </template>
-          </OButton>
-        </div>
-      </OCard>
-    </div>
+        </OCard>
+      </div>
+    </OContainer>
   </div>
 </template>
 
@@ -176,17 +178,16 @@ h3 {
 }
 .case-mobile {
   display: none;
+  background-color: var(--e-color-bg1);
   @media (max-width: 1100px) {
     border-top: none;
     display: block;
   }
+
   &-list {
     margin-top: var(--o-spacing-h4);
     @media (max-width: 768px) {
       margin-top: var(--o-spacing-h5);
-    }
-    :deep(.el-collapse-item__content) {
-      padding-bottom: 0px;
     }
 
     :deep(.el-collapse-item__header) {
@@ -213,7 +214,7 @@ h3 {
     color: var(--e-color-text1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
-      font-weight: 300;
+      font-weight: 400;
       line-height: var(--o-line-height-text);
     }
   }
@@ -255,7 +256,6 @@ h3 {
     height: 100%;
     background: var(--e-color-bg1);
     border: 1px solid rgba(0, 0, 0, 0);
-    border-left: 2px solid var(--e-color-brand1);
 
     @media (max-width: 1100px) {
       background: var(--e-color-bg2);
@@ -310,6 +310,16 @@ h3 {
     display: none;
   }
 
+  &-main {
+    :deep(.el-collapse) {
+      border: none;
+    }
+
+    :deep(.el-collapse-item__header) {
+      border-left: 2px solid var(--e-color-brand1);
+    }
+  }
+
   &-more {
     display: flex;
     padding-top: var(--o-spacing-h2);
@@ -341,7 +351,7 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
     padding-bottom: var(--o-spacing-h2);
     grid-gap: var(--o-spacing-h4) var(--o-spacing-h2);
-    border-bottom: 1px solid var(--e-color-neutral11);
+    border-bottom: 1px solid var(--e-color-division1);
   }
 
   &-card {

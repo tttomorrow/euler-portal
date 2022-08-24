@@ -15,6 +15,10 @@ body {
     sans-serif;
 }
 
+:root.dark {
+  --el-color-primary: var(--e-color-kleinblue8);
+}
+
 *,
 :after,
 :before {
@@ -32,7 +36,14 @@ img {
 }
 
 a {
+  color: var(--e-color-link1);
   text-decoration: none;
+  &:hover {
+    color: var(--e-color-link2);
+  }
+  &:active {
+    color: var(--e-color-link3);
+  }
 }
 
 blockquote,
@@ -59,4 +70,7 @@ ul {
 ol,
 ul {
   list-style: none outside none;
+}
+.overflow {
+  overflow: hidden;
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useData } from 'vitepress';
+import { useI18n } from '@/i18n';
 
 defineProps({
   data: {
@@ -9,7 +9,8 @@ defineProps({
   },
 });
 
-const { theme: i18n } = useData();
+const i18n = useI18n();
+
 const sigDetail = computed(() => {
   return i18n.value.sig.SIG_DETAIL;
 });
@@ -45,6 +46,6 @@ const sigDetail = computed(() => {
   }
 }
 .bg-color {
-  background-color: var(--e-color-greyblue1);
+  background-color: var(--e-color-bg4);
 }
 </style>

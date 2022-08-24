@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import OButton from './OButton.vue';
-
 import IconArrowRight from '~icons/app/icon-arrow.svg';
 </script>
 
@@ -10,10 +8,9 @@ import IconArrowRight from '~icons/app/icon-arrow.svg';
       <h2 class="title">openEuler开源实习</h2>
       <div class="action">
         <a href="#task">
-          <OButton size="large" type="primary" placement="right">
-            领取任务
-            <template #right
-              ><OIcon><IconArrowRight /></OIcon></template
+          <OButton size="large" type="primary">
+            <span>领取任务</span>
+            <OIcon><IconArrowRight /></OIcon
           ></OButton>
         </a>
       </div>
@@ -54,6 +51,21 @@ import IconArrowRight from '~icons/app/icon-arrow.svg';
     gap: 22px;
     @media (max-width: 1000px) {
       padding: 0 16px;
+    }
+    a {
+      .o-button {
+        > span {
+          color: #fff;
+        }
+      }
+      .o-icon {
+        font-size: 12px;
+        margin-left: 8px;
+        transition: all 0.3s;
+      }
+      &:hover .o-icon {
+        transform: translateX(3px);
+      }
     }
   }
   @media (max-width: 760px) {

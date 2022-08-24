@@ -196,6 +196,7 @@ onMounted(() => {
         <OTag
           v-for="(item, index) in userCaseData.tags"
           :key="'tag' + index"
+          checkable
           :type="activeIndex === index ? 'primary' : 'text'"
           @click="tagClick(index, item)"
         >
@@ -206,6 +207,7 @@ onMounted(() => {
         <OTag
           v-for="(item, index) in userCaseData.tags"
           :key="'tag' + index"
+          checkable
           :type="activeIndex === index ? 'primary' : 'text'"
           @click="tagClick(index, item)"
         >
@@ -247,7 +249,7 @@ onMounted(() => {
         layout="sizes, prev, pager, next, slot, jumper"
         :total="total"
       >
-        <span>{{ currentPage }}/{{ totalPage }}</span>
+        <span class="pagination-slot">{{ currentPage }}/{{ totalPage }}</span>
       </OPagination>
       <AppPaginationMo
         :current-page="currentPage"
@@ -264,6 +266,12 @@ onMounted(() => {
   max-width: 1504px;
   padding: 0 44px;
   margin: 0 auto;
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
+  }
   @media (max-width: 768px) {
     padding: 0;
     background-color: var(--e-color-bg1);
@@ -286,11 +294,6 @@ onMounted(() => {
       box-shadow: var(--o-shadow-base);
       @media (max-width: 768px) {
         display: none;
-      }
-      :deep(.tag-filter-box) {
-        > span {
-          cursor: pointer;
-        }
       }
     }
     .tag-h5 {

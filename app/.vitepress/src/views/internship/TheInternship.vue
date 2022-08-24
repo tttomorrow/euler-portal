@@ -1,32 +1,35 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useCommon } from '@/stores/common';
 
 import InternshipBanner from './InternshipBanner.vue';
 import InternshipStep from './InternshipStep.vue';
 import InternshipTask from './InternshipTask.vue';
 import InternshipRank from './InternshipRank.vue';
 import InternshipTitleNav from './InternshipTitleNav.vue';
-import OButton from './OButton.vue';
-import OIcon from './OIcon.vue';
 
-import StepTitle from '@/assets/category/internship/step-title.png';
-import TaskTitle from '@/assets/category/internship/task-title.png';
-import IntegralTitle from '@/assets/category/internship/integral-title.png';
-import PartnerTitle from '@/assets/category/internship/partner-title.png';
-import HelpTitle from '@/assets/category/internship/help-title.png';
-import iscas from '@/assets/category/internship/iscas.png';
-import qilinsoft from '@/assets/category/internship/qilinsoft.png';
-import tongxin from '@/assets/category/internship/tongxin.png';
-import kylinsec from '@/assets/category/internship/kylinsec.png';
-import gitee from '@/assets/category/internship/gitee.png';
-import mindSpore from '@/assets/category/internship/mindSpore.png';
-import openEuler from '@/assets/category/internship/openEuler.png';
-import openGauss from '@/assets/category/internship/openGauss.png';
-import openLooKeng from '@/assets/category/internship/openLooKeng.png';
 import qrCode from '@/assets/category/internship/qrCode.png';
+import gitee_light from '@/assets/category/internship/logo/gitee_light.png';
+import iscas_light from '@/assets/category/internship/logo/iscas_light.png';
+import mindSpore_light from '@/assets/category/internship/logo/mindspore_light.png';
+import openEuler_light from '@/assets/category/internship/logo/openeuler_light.png';
+import openGauss_light from '@/assets/category/internship/logo/opengauss_light.png';
+import openLookeng_light from '@/assets/category/internship/logo/openlookeng_light.png';
+import qiLin_light from '@/assets/category/internship/logo/qilin_light.png';
+import tongXin_light from '@/assets/category/internship/logo/tongxin_light.png';
+import xinAn_light from '@/assets/category/internship/logo/xinan_light.png';
+import gitee_dark from '@/assets/category/internship/logo/gitee_dark.png';
+import iscas_dark from '@/assets/category/internship/logo/iscas_dark.png';
+import mindSpore_dark from '@/assets/category/internship/logo/mindspore_dark.png';
+import openEuler_dark from '@/assets/category/internship/logo/openeuler_dark.png';
+import openGauss_dark from '@/assets/category/internship/logo/opengauss_dark.png';
+import openLookeng_dark from '@/assets/category/internship/logo/openlookeng_dark.png';
+import qiLin_dark from '@/assets/category/internship/logo/qilin_dark.png';
+import tongXin_dark from '@/assets/category/internship/logo/tongxin_dark.png';
+import xinAn_dark from '@/assets/category/internship/logo/xinan_dark.png';
 
 import IconArrowRight from '~icons/app/arrow-right.svg';
-
+const commonStore = useCommon();
 const INTEGRAL_DATA = [
   {
     HEAD: '1、实习工资、',
@@ -86,44 +89,87 @@ const RULE = {
   MORE: ['更多问题，请移步', '本帖', '评论区提问。'],
 };
 
-const PARTNER_DATA = [
-  {
-    IMG: iscas,
-    LINK: '',
-  },
-  {
-    IMG: qilinsoft,
-    LINK: '',
-  },
-  {
-    IMG: tongxin,
-    LINK: '',
-  },
-  {
-    IMG: kylinsec,
-    LINK: '',
-  },
-  {
-    IMG: gitee,
-    LINK: '',
-  },
-  {
-    IMG: mindSpore,
-    LINK: '',
-  },
-  {
-    IMG: openEuler,
-    LINK: '',
-  },
-  {
-    IMG: openGauss,
-    LINK: '',
-  },
-  {
-    IMG: openLooKeng,
-    LINK: '',
-  },
-];
+const PARTNER_DATA = computed(() => {
+  if (commonStore.theme === 'light') {
+    return [
+      {
+        IMG: iscas_light,
+        LINK: '',
+      },
+      {
+        IMG: qiLin_light,
+        LINK: '',
+      },
+      {
+        IMG: tongXin_light,
+        LINK: '',
+      },
+      {
+        IMG: xinAn_light,
+        LINK: '',
+      },
+      {
+        IMG: gitee_light,
+        LINK: '',
+      },
+      {
+        IMG: mindSpore_light,
+        LINK: '',
+      },
+      {
+        IMG: openEuler_light,
+        LINK: '',
+      },
+      {
+        IMG: openGauss_light,
+        LINK: '',
+      },
+      {
+        IMG: openLookeng_light,
+        LINK: '',
+      },
+    ];
+  } else {
+    return [
+      {
+        IMG: iscas_dark,
+        LINK: '',
+      },
+      {
+        IMG: qiLin_dark,
+        LINK: '',
+      },
+      {
+        IMG: tongXin_dark,
+        LINK: '',
+      },
+      {
+        IMG: xinAn_dark,
+        LINK: '',
+      },
+      {
+        IMG: gitee_dark,
+        LINK: '',
+      },
+      {
+        IMG: mindSpore_dark,
+        LINK: '',
+      },
+      {
+        IMG: openEuler_dark,
+        LINK: '',
+      },
+      {
+        IMG: openGauss_dark,
+        LINK: '',
+      },
+      {
+        IMG: openLookeng_dark,
+        LINK: '',
+      },
+    ];
+  }
+});
 
 const HELP = {
   INFO: [
@@ -132,11 +178,9 @@ const HELP = {
     '扫码加入“开源实习”学生QQ群，更多问题群内咨询。',
     '群号：526089131',
   ],
-  ITEM: [
-    {
-      IMG: qrCode,
-    },
-  ],
+  ITEM: {
+    IMG: qrCode,
+  },
 };
 const openLooKengTask = {
   title: 'openLooKeng',
@@ -254,13 +298,13 @@ onUnmounted(() => {
       </section>
       <section id="step" class="panel">
         <div class="step-title title">
-          <img :src="StepTitle" alt="" />
+          <div class="title-img">申请步骤</div>
         </div>
         <InternshipStep />
       </section>
       <section id="task" class="panel">
         <div class="task-title title">
-          <img :src="TaskTitle" alt="" />
+          <div class="title-img">实习任务</div>
           <ul class="tab-list">
             <li
               v-for="(item, index) in tabList"
@@ -351,7 +395,7 @@ onUnmounted(() => {
       </section>
       <section id="integral" class="panel">
         <div class="integral-title title">
-          <img :src="IntegralTitle" alt="" />
+          <div class="title-img">积分与激励规则</div>
         </div>
         <div class="integral-border">
           <div class="integral-content">
@@ -423,7 +467,7 @@ onUnmounted(() => {
     </div>
     <section id="rule" class="panel">
       <div class="rule-title title">
-        <img src="@/assets/category/internship/rule-title.png" alt="" />
+        <div class="title-img">实习规则</div>
       </div>
       <div class="rule-border">
         <div class="rule-content">
@@ -454,7 +498,7 @@ onUnmounted(() => {
       <section id="partner" class="panel">
         <div class="warper">
           <div class="partner-title title">
-            <img :src="PartnerTitle" alt="" />
+            <div class="title-img">合作伙伴</div>
           </div>
           <div class="img-list">
             <div
@@ -469,7 +513,7 @@ onUnmounted(() => {
       </section>
     </div>
     <div id="help" class="help-title title">
-      <img :src="HelpTitle" alt="" />
+      <div class="title-img">帮助咨询</div>
     </div>
     <div class="help-wrap">
       <section class="panel">
@@ -483,10 +527,7 @@ onUnmounted(() => {
             <p>{{ HELP.INFO[3] }}</p>
           </div>
           <div class="help-right">
-            <p v-for="(item, index) in HELP.ITEM" :key="index">
-              <img :src="item.IMG" alt="" />
-              <span>{{ item.TEXT }}</span>
-            </p>
+            <img :src="HELP.ITEM.IMG" alt="" />
           </div>
         </div>
       </section>
@@ -497,7 +538,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .intership-wrap {
   max-width: 1504px;
-  padding: 0 44px;
+  padding: 0 40px;
   margin: 0 auto;
   @media (max-width: 1000px) {
     padding: 0 16px;
@@ -557,6 +598,7 @@ onUnmounted(() => {
       li {
         cursor: pointer;
         white-space: nowrap;
+        color: var(--e-color-text1);
         &:nth-of-type(1) {
           @media (max-width: 1000px) {
             margin-left: 24px;
@@ -698,9 +740,44 @@ onUnmounted(() => {
 }
 #task {
   .task-title {
-    img {
+    .title-img {
+      width: 183px;
+      height: 48px;
+      margin: 0 auto;
+      font-size: var(--o-font-size-h3);
+      color: var(--e-color-text1);
+      line-height: 48px;
+      background-image: url(@/assets/category/internship/title.png);
+      background-repeat: no-repeat;
       margin-bottom: 40px;
+      font-weight: 300;
+      @media (max-width: 1000px) {
+        font-size: var(--o-font-size-h8);
+        line-height: 34px;
+        width: 113px;
+        height: 34px;
+        background-size: 100% 100%;
+      }
     }
+  }
+}
+.title .title-img {
+  min-width: 183px;
+  text-align: center;
+  display: inline-block;
+  margin: 0 auto;
+  font-size: var(--o-font-size-h3);
+  color: var(--e-color-text1);
+  font-weight: 300;
+  line-height: 48px;
+  background-image: url(@/assets/category/internship/title.png);
+  background-repeat: no-repeat;
+  @media (max-width: 1000px) {
+    font-size: var(--o-font-size-h8);
+    line-height: 34px;
+    min-width: 113px;
+    height: 34px;
+    background-size: 100%;
   }
 }
 #integral {
@@ -912,11 +989,11 @@ onUnmounted(() => {
 #partner {
   .img-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
+    grid-template-columns: repeat(4, minmax(82px, 1fr));
     .img-cover {
       width: 100%;
-      height: 100px;
+      height: 120px;
+      border: 1px solid var(--e-color-division1);
       img {
         width: 100%;
         object-fit: cover;
@@ -944,7 +1021,7 @@ onUnmounted(() => {
   }
 }
 .help-wrap {
-  background: #fff;
+  background: var(--e-color-bg2);
   padding: 40px 0;
   .panel {
     margin-top: 0;
@@ -975,7 +1052,7 @@ onUnmounted(() => {
 
     p {
       font-size: 20px;
-      color: #000000;
+      color: var(--e-color-text1);
       line-height: 40px;
       margin-bottom: 10px;
       @media (max-width: 1000px) {
@@ -984,6 +1061,7 @@ onUnmounted(() => {
       }
       a {
         font-size: 20px;
+        color: var(--e-color-link1);
         @media (max-width: 1000px) {
           font-size: 16px;
           line-height: 32px;
@@ -992,23 +1070,11 @@ onUnmounted(() => {
     }
   }
   .help-right {
-    display: flex;
-    justify-content: center;
-    gap: 38px;
-    p {
-      width: 172px;
-      text-align: center;
-    }
+    width: 172px;
+    text-align: center;
     img {
       width: 100%;
       display: block;
-    }
-    span {
-      font-size: 14px;
-      line-height: 22px;
-      display: inline-block;
-      color: var(--e-color-text4);
-      margin-top: 8px;
     }
   }
 }

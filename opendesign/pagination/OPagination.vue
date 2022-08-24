@@ -17,18 +17,19 @@ const classNames = computed(() => {
 <style lang="scss">
 .o-pagination {
   --o-pagination-font-color: var(--e-color-text1);
-  --o-pagination-font-color_active: var(--e-color-brand3);
+  --o-pagination-font-color_active: var(--e-color-brand1);
 
-  --o-pagination-bg-color: var(--e-color-bg4);
+  --o-pagination-bg-color: var(--e-color-text5);
   --o-pagination-bg-color_hover: var(--e-color-brand5);
   --o-pagination-bg-color_selected: var(--e-color-brand5);
-  --o-pagination-bg-color_disabled: var(--o-color-secondary);
 
   --o-pagination-number-border-color_active: var(--e-color-brand1);
 
   &.el-pagination {
-    --el-pagination-button-bg-color: var(--o-pagination-bg-color_disabled);
     justify-content: center;
+    .el-pagination__sizes {
+      margin: 0 var(--o-spacing-h8) 0 0;
+    }
     .el-input {
       --el-input-bg-color: var(--o-pagination-bg-color);
       --el-input-text-color: var(--o-pagination-font-color);
@@ -36,6 +37,7 @@ const classNames = computed(() => {
     .el-input__wrapper {
       border-radius: 0px;
       box-shadow: none;
+      height: 36px;
     }
     .el-select {
       --el-select-border-color-hover: none;
@@ -51,35 +53,48 @@ const classNames = computed(() => {
       color: var(--o-pagination-font-color);
       background: var(--o-pagination-bg-color);
       border-radius: 0px;
+      height: 36px;
+      width: 36px;
       &:hover {
-        color: var(--o-pagination-font-color);
-        background-color: var(--e-color-brand5);
+        color: var(--e-color-text2) !important;
+        background-color: var(--o-pagination-font-color_active);
       }
     }
     .el-pager li.is-active.number {
-      background: var(--e-color-brand5);
-      color: var(--o-pagination-font-color);
-      border: 1px solid var(--e-color-brand1);
+      background: var(--o-pagination-font-color_active);
+      color: var(--e-color-text2);
       font-weight: 400;
       font-size: var(--o-font-size-text);
     }
     .btn-next,
     .btn-prev {
+      width: 36px;
+      height: 36px;
       color: var(--o-pagination-font-color);
       border-radius: 0px;
       background: var(--o-pagination-bg-color);
-      &:disabled {
-        background-color: var(--o-color-bg6) !important;
-      }
+    }
+    .btn-prev:disabled {
+      background: var(--e-color-text5);
     }
     .btn-next {
-      margin-right: var(--o-spacing-h5);
+      margin-right: var(--o-spacing-h5) !important;
+    }
+    .btn-next:disabled {
+      background: var(--e-color-text5);
     }
 
     .el-pagination__jump {
-      color: var(--o-pagination-font-color);
+      height: 36px;
+      font-size: var(--o-font-size-text);
+      font-weight: 400;
+      line-height: var(--o-line-height-text);
+      color: var(--e-color-neutral8);
       border-radius: 0px;
       margin-left: var(--o-spacing-h4);
+      .el-input__wrapper {
+        flex-grow: 0.273;
+      }
     }
   }
 }
@@ -87,11 +102,10 @@ const classNames = computed(() => {
   &.el-popper {
     box-shadow: none !important;
     --el-popper-border-radius: none;
-
-    .is-light {
-      border: 1px solid red;
-    }
-
+    border: none;
+    // .is-light {
+    //   // border: 1px solid red;
+    // }
     .el-popper__arrow {
       display: none;
     }
@@ -101,7 +115,12 @@ const classNames = computed(() => {
 
       &:hover {
         color: var(--e-color-brand1);
+        background: var(--e-color-bg1);
       }
+    }
+    .hover {
+      color: var(--e-color-brand1);
+      background: var(--e-color-bg1);
     }
 
     .el-select-dropdown__item.selected {

@@ -40,7 +40,7 @@ export function isBrowser(): boolean {
  */
 export function getNowFormatDate() {
   const date = new Date();
-  const seperator1 = '-';
+  const seperator1 = '/';
   const year = date.getFullYear();
   let month = date.getMonth() + 1;
   let strDate = date.getDate();

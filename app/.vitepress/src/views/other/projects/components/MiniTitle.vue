@@ -16,7 +16,7 @@ defineProps({
 </script>
 <template>
   <div class="title-wrapper">
-    <div :class="specialComponent ? 'title title-special' : 'title'">
+    <div :class="`${specialComponent ? 'title title-special' : 'title'}`">
       <div class="title-outside">{{ outsideTitle }}</div>
       <div class="title-inside">{{ insideTitle }}</div>
     </div>
@@ -46,7 +46,7 @@ defineProps({
       z-index: 1;
     }
     &-inside {
-      color: var(--e-color-bg4);
+      color: var(--e-color-neutral10);
       // TODO:
       font-size: 40px;
       font-weight: 300;
@@ -73,5 +73,9 @@ defineProps({
       }
     }
   }
+}
+
+.dark .title-inside {
+  opacity: 0.1;
 }
 </style>

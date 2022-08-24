@@ -95,7 +95,11 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="home-newsroom">
+  <div
+    data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom"
+    class="home-newsroom"
+  >
     <div class="title-list">
       <OTabs v-model="tabType">
         <OTabPane
@@ -106,107 +110,109 @@ onMounted(async () => {
         ></OTabPane>
       </OTabs>
     </div>
-    <div class="room-contain-new" :class="{ isShow: tabType === 'blog' }">
-      <h4 class="type-title">
-        {{ i18n.home.HOME_ROOMS.BLOG_NAME }}
-      </h4>
-      <div class="room-box">
-        <div v-for="(item, index) in blogList" :key="index" class="room-item">
-          <div class="room-item-pc">
-            <div class="room-item-left">
-              <span class="day">{{ item.date[2] }}</span>
-              <div class="left-bottom">
-                <span class="month">{{ item.date[1] }}</span>
-                <span class="year">{{ item.date[0] }}</span>
+    <OContainer>
+      <div class="room-contain-new" :class="{ isShow: tabType === 'blog' }">
+        <h4 class="type-title">
+          {{ i18n.home.HOME_ROOMS.BLOG_NAME }}
+        </h4>
+        <div class="room-box">
+          <div v-for="(item, index) in blogList" :key="index" class="room-item">
+            <div class="room-item-pc">
+              <div class="room-item-left">
+                <span class="day">{{ item.date[2] }}</span>
+                <div class="left-bottom">
+                  <span class="month">{{ item.date[1] }}</span>
+                  <span class="year">{{ item.date[0] }}</span>
+                </div>
+              </div>
+              <div class="room-item-right">
+                <div class="room-top">
+                  <a :href="item.path" :title="item.title">
+                    {{ item.title }}
+                  </a>
+                  <p>{{ item.author }}</p>
+                </div>
+                <div class="room-bottom">
+                  <a class="word-hover" :title="item.summary" :href="item.path">
+                    {{ item.summary }}
+                  </a>
+                </div>
               </div>
             </div>
-            <div class="room-item-right">
-              <div class="room-top">
-                <h4 :title="item.title">
-                  {{ item.title }}
-                </h4>
-                <p>{{ item.author }}</p>
-              </div>
-              <div class="room-bottom">
-                <a class="word-hover" :title="item.summary" :href="item.path">
-                  {{ item.summary }}
-                </a>
-              </div>
+            <div class="room-item-mo">
+              <span class="author">{{ item.author }}</span>
+              <a class="word-hover" :title="item.summary" :href="item.path">
+                {{ item.summary }}
+              </a>
             </div>
-          </div>
-          <div class="room-item-mo">
-            <span class="author">{{ item.author }}</span>
-            <a class="word-hover" :title="item.summary" :href="item.path">
-              {{ item.summary }}
-            </a>
           </div>
         </div>
-      </div>
 
-      <div class="statistics">
-        <OButton
-          animation
-          type="text"
-          class="statistics-button"
-          @click="handleGo('interaction/blog-list/')"
-        >
-          {{ i18n.home.USER_CASE.VIEW_MORE }}
-          <template #suffixIcon>
-            <IconArrowRight class="statistics-icon"></IconArrowRight>
-          </template>
-        </OButton>
-      </div>
-    </div>
-    <div class="room-contain-new" :class="{ isShow: tabType === 'news' }">
-      <h4 class="type-title">
-        {{ i18n.home.HOME_ROOMS.NEWS_NAME }}
-      </h4>
-      <div class="room-box">
-        <div v-for="(item, index) in newsList" :key="index" class="room-item">
-          <div class="room-item-pc">
-            <div class="room-item-left">
-              <span class="day">{{ item.date[2] }}</span>
-              <div class="left-bottom">
-                <span class="month">{{ item.date[1] }}</span>
-                <span class="year">{{ item.date[0] }}</span>
-              </div>
-            </div>
-            <div class="room-item-right">
-              <div class="room-top">
-                <h4 :title="item.title">
-                  {{ item.title }}
-                </h4>
-                <p>{{ item.author }}</p>
-              </div>
-              <div class="room-bottom">
-                <a class="word-hover" :title="item.summary" :href="item.path">
-                  {{ item.summary }}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="room-item-mo">
-            <span class="author">{{ item.author }}</span>
-            <a class="word-hover" :title="item.summary" :href="item.path">
-              {{ item.summary }}
-            </a>
-          </div>
+        <div class="statistics">
+          <OButton
+            animation
+            type="text"
+            class="statistics-button"
+            @click="handleGo('interaction/blog-list/')"
+          >
+            {{ i18n.home.USER_CASE.VIEW_MORE }}
+            <template #suffixIcon>
+              <IconArrowRight class="statistics-icon"></IconArrowRight>
+            </template>
+          </OButton>
         </div>
       </div>
-      <div class="statistics">
-        <OButton
-          animation
-          type="text"
-          class="statistics-button"
-          @click="handleGo('interaction/news-list/')"
-        >
-          {{ i18n.home.USER_CASE.VIEW_MORE }}
-          <template #suffixIcon>
-            <IconArrowRight class="statistics-icon"></IconArrowRight>
-          </template>
-        </OButton>
+      <div class="room-contain-new" :class="{ isShow: tabType === 'news' }">
+        <h4 class="type-title">
+          {{ i18n.home.HOME_ROOMS.NEWS_NAME }}
+        </h4>
+        <div class="room-box">
+          <div v-for="(item, index) in newsList" :key="index" class="room-item">
+            <div class="room-item-pc">
+              <div class="room-item-left">
+                <span class="day">{{ item.date[2] }}</span>
+                <div class="left-bottom">
+                  <span class="month">{{ item.date[1] }}</span>
+                  <span class="year">{{ item.date[0] }}</span>
+                </div>
+              </div>
+              <div class="room-item-right">
+                <div class="room-top">
+                  <a :href="item.path" :title="item.title">
+                    {{ item.title }}
+                  </a>
+                  <p>{{ item.author }}</p>
+                </div>
+                <div class="room-bottom">
+                  <a class="word-hover" :title="item.summary" :href="item.path">
+                    {{ item.summary }}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="room-item-mo">
+              <span class="author">{{ item.author }}</span>
+              <a class="word-hover" :title="item.summary" :href="item.path">
+                {{ item.summary }}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="statistics">
+          <OButton
+            animation
+            type="text"
+            class="statistics-button"
+            @click="handleGo('interaction/news-list/')"
+          >
+            {{ i18n.home.USER_CASE.VIEW_MORE }}
+            <template #suffixIcon>
+              <IconArrowRight class="statistics-icon"></IconArrowRight>
+            </template>
+          </OButton>
+        </div>
       </div>
-    </div>
+    </OContainer>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -214,7 +220,7 @@ onMounted(async () => {
   cursor: pointer;
   color: var(--e-color-text1);
   &:hover {
-    color: #002fa7;
+    color: var(--e-color-brand1);
   }
 }
 .statistics {
@@ -277,7 +283,7 @@ onMounted(async () => {
       .room-item-pc {
         display: flex;
         padding-bottom: var(--o-spacing-h2);
-        border-bottom: 1px solid var(--e-color-neutral11);
+        border-bottom: 1px solid var(--e-color-division1);
         p {
           text-align: left;
         }
@@ -290,7 +296,7 @@ onMounted(async () => {
           margin-right: var(--o-spacing-h4);
           width: 100px;
           height: 110px;
-          background-color: var(--e-color-bg1);
+          background-color: var(--e-color-bg3);
           color: var(--e-color-text1);
           .day {
             margin-bottom: var(--o-spacing-h8);
@@ -311,19 +317,29 @@ onMounted(async () => {
           justify-content: space-between;
           flex-direction: column;
           .room-top {
-            h4 {
+            min-width: 0;
+            a {
+              display: block;
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
               font-weight: 500;
               font-size: var(--o-font-size-h7);
               color: var(--e-color-text1);
+              &:hover {
+                color: var(--e-color-brand1);
+              }
             }
             p {
               line-height: var(--o-line-height-text);
               font-size: var(--o-font-size-text);
               margin-top: var(--o-spacing-h9);
               color: var(--e-color-text1);
+            }
+            @media screen and (max-width: 768px) {
+              a {
+                font-size: var(--o-font-size-text);
+              }
             }
           }
           .room-bottom {
@@ -359,7 +375,7 @@ onMounted(async () => {
         margin: 0;
         grid-template-columns: repeat(1, minmax(300px, 1fr));
         .room-item {
-          border-bottom: 1px solid var(--e-color-neutral11);
+          border-bottom: 1px solid var(--e-color-division1);
 
           .room-item-pc {
             border-bottom: none;
@@ -379,13 +395,16 @@ onMounted(async () => {
             }
             .room-item-right {
               .room-top {
-                h4 {
+                a {
                   display: -webkit-box;
                   white-space: inherit;
                   -webkit-box-orient: vertical;
                   -webkit-line-clamp: 2;
                   line-height: var(--o-line-height-text);
                   font-size: var(--o-font-size-text);
+                }
+                p {
+                  display: none;
                 }
               }
             }

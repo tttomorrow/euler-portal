@@ -4,8 +4,8 @@
 
 import { request } from '@/shared/axios';
 import type { AxiosResponse } from '@/shared/axios';
-// const baseUrl = 'https://www.openeuler.org';
-const baseUrl = 'http://119.8.32.82';
+const baseUrl = 'https://www.openeuler.org';
+// const baseUrl = 'http://119.8.32.82';
 
 interface LIST_PARAMS {
   page: number;

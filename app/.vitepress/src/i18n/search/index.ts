@@ -1,53 +1,39 @@
 export default {
   zh: {
     form: '来自：',
-    typeList: [
-      {
-        title: '全部',
-        type: '',
-      },
-      {
-        title: '文档',
-        type: 'docs',
-      },
-      {
-        title: '博客',
-        type: 'blog',
-      },
-      {
-        title: '新闻',
-        type: 'news',
-      },
-    ],
+    tagList: {
+      all: '全部',
+      blog: '博客',
+      news: '新闻',
+      docs: '文档',
+      showcase: '案例',
+      other: '其他',
+    },
+    no: '未有',
+    relative: '相关软件包',
   },
   en: {
     form: 'from:',
-    typeList: [
-      {
-        title: 'All',
-        type: '',
-      },
-      {
-        title: 'Docs',
-        type: 'docs',
-      },
-      {
-        title: 'Blog',
-        type: 'blog',
-      },
-    ],
+    tagList: {
+      all: 'All',
+      blog: 'Blog',
+      news: 'News',
+      docs: 'Docs',
+      showcase: 'Showcase',
+      other: 'other',
+    },
+    no: 'No',
+    relative: 'Related software package',
   },
   ru: {
     form: 'От кого:',
-    typeList: [
-      {
-        title: 'Все',
-        type: '',
-      },
-      {
-        title: 'Блоги',
-        type: 'blog',
-      },
-    ],
+    tagList: {
+      all: 'Все',
+      blog: 'Блоги',
+      news: 'Новости',
+      docs: 'Документы',
+    },
+    no: 'нет',
+    relative: 'Сопутствующий пакет программного обеспечения',
   },
 };

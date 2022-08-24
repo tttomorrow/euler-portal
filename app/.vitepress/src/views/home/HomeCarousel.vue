@@ -28,68 +28,80 @@ const handleGo = (path: string) => {
 <template>
   <div class="carousel">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
-    <div class="carousel-pc">
-      <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
-        <div class="carousel-pc-content">
-          <div class="carousel-pc-list">
-            <div
-              v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-              :key="item.TITLE"
-              :class="['carousel-pc-title', active === index ? 'active' : '']"
-              @click="handleChangeActive(index)"
+    <OContainer :level-index="2">
+      <div class="carousel-pc">
+        <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
+          <div class="carousel-pc-content">
+            <div class="carousel-pc-list">
+              <div
+                v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
+                :key="item.TITLE"
+                :class="['carousel-pc-title', active === index ? 'active' : '']"
+                @click="handleChangeActive(index)"
+              >
+                {{ item.TITLE }}
+              </div>
+            </div>
+            <div class="carousel-pc-img">
+              <img :src="i18n.home.IMG_CAROUSE.LIST[active]?.IMG_URL" />
+            </div>
+          </div>
+          <div class="carousel-pc-button">
+            <OButton
+              animation
+              type="text"
+              class="carousel-pc-button-item"
+              @click="handleGo(i18n.home.IMG_CAROUSE.TRY_URL)"
             >
-              {{ item.TITLE }}
-            </div>
+              <template #suffixIcon>
+                <IconArrowRight
+                  class="carousel-pc-button-icon"
+                ></IconArrowRight>
+              </template>
+              {{ i18n.home.IMG_CAROUSE.BUTTON }}
+            </OButton>
           </div>
-          <div class="carousel-pc-img">
-            <img :src="i18n.home.IMG_CAROUSE.LIST[active]?.IMG_URL" />
-          </div>
-        </div>
-        <div class="carousel-pc-button">
-          <OButton
-            animation
-            type="text"
-            class="carousel-pc-button-item"
-            @click="handleGo(i18n.home.IMG_CAROUSE.TRY_URL)"
-          >
-            <template #suffixIcon>
-              <IconArrowRight class="carousel-pc-button-icon"></IconArrowRight>
-            </template>
-            {{ i18n.home.IMG_CAROUSE.BUTTON }}
-          </OButton>
-        </div>
-      </OCard>
-    </div>
+        </OCard>
+      </div>
 
-    <OCollapse
-      v-model="activeMobile"
-      class="carousel-mobile"
-      accordion
-      @change="handleChangeActiveMobile"
-    >
-      <OCollapseItem
-        v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
-        :key="item.TITLE"
-        :name="index"
-        class="carousel-mobile-card"
+      <OCollapse
+        v-model="activeMobile"
+        class="carousel-mobile"
+        accordion
+        @change="handleChangeActiveMobile"
       >
-        <template #title>
-          <div class="carousel-mobile-content">
-            <div class="carousel-mobile-title">
-              {{ item.TITLE }}
+        <OCollapseItem
+          v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
+          :key="item.TITLE"
+          :name="index"
+          class="carousel-mobile-card"
+        >
+          <template #title>
+            <div class="carousel-mobile-content">
+              <div class="carousel-mobile-title">
+                {{ item.TITLE }}
+              </div>
             </div>
+          </template>
+          <div class="carousel-mobile-img">
+            <img :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL" />
           </div>
-        </template>
-        <div class="carousel-mobile-img">
-          <img :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL" />
-        </div>
-      </OCollapseItem>
-    </OCollapse>
+        </OCollapseItem>
+      </OCollapse>
+    </OContainer>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .carousel {
+  :deep(.el-collapse) {
+    border: none;
+  }
+
+  :deep(.el-collapse-item__content) {
+    padding: 0;
+  }
+
   h3 {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
@@ -115,7 +127,7 @@ const handleGo = (path: string) => {
 
     &-card {
       :deep(.el-collapse-item__content) {
-        padding-bottom: 0px;
+        padding: 0px !important;
       }
 
       :deep(.el-collapse-item__header) {
@@ -182,17 +194,14 @@ const handleGo = (path: string) => {
     &-content {
       display: flex;
       flex-flow: row;
-      // justify-content: space-between;
-      // align-items: center;
       padding-bottom: var(--o-spacing-h2);
-      border-bottom: 1px solid var(--e-color-neutral11);
+      border-bottom: 1px solid var(--e-color-division1);
     }
 
     &-list {
       display: flex;
       flex-flow: column;
       margin-right: var(--o-spacing-h1);
-      // justify-content: space-between;
       height: 300px;
       align-items: center;
 
@@ -218,7 +227,7 @@ const handleGo = (path: string) => {
       color: var(--e-color-text1);
       line-height: var(--o-line-height-h4);
       text-align: start;
-      border-bottom: 1px solid var(--e-color-neutral11);
+      border-bottom: 1px solid var(--e-color-division1);
       padding: var(--o-spacing-h4) 0;
     }
     &-title:first-child {
@@ -250,17 +259,35 @@ const handleGo = (path: string) => {
     }
   }
 }
-
-:deep(.el-icon-arrow-right) {
-  font-weight: 700;
-  transform: rotate(90deg);
-  &::before {
-    color: #000;
+:deep(.o-collapse) {
+  .el-icon-arrow-right {
+    font-weight: 700;
+    transform: rotate(90deg);
+    &::before {
+      color: #000;
+    }
+  }
+  .el-icon-arrow-right.is-active {
+    transform: rotate(270deg);
+  }
+  .el-collapse-item__header {
+    position: relative;
+    border-left: none;
+    // z-index: 888;
+    // &::after {
+    //   position: absolute;
+    //   bottom: 1px;
+    //   left: 1px;
+    //   content: '';
+    //   height: 500px;
+    //   width: 100%;
+    //   color: red;
+    //   z-index: 999;
+    // }
+    border-bottom: 1px solid var(--e-color-division1);
   }
 }
-:deep(.el-icon-arrow-right.is-active) {
-  transform: rotate(270deg);
-}
+
 .active {
   color: var(--e-color-brand1);
 }

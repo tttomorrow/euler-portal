@@ -390,7 +390,7 @@ onMounted(() => {
         @current-change="currentChange"
         @size-change="sizeChange"
       >
-        <span
+        <span class="pagination-slot"
           >{{ paginationData.currentPage }}/{{
             Math.ceil(paginationData.total / paginationData.pageSize)
           }}</span
@@ -498,6 +498,12 @@ onMounted(() => {
   margin-top: var(--o-spacing-h2);
   .ellipsis {
     color: var(--e-color-kleinblue5);
+  }
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
   }
   .sig-maintainer {
     display: grid;

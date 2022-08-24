@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useI18n } from '@/i18n';
+import AOS from 'aos';
+import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -19,10 +21,6 @@ import { useData } from 'vitepress';
 import { getSortData } from '@/api/api-search';
 
 const { lang } = useData();
-
-interface MeetingData {
-  tableData: TableData[];
-}
 
 const calendarData = ref<TableData[]>([
   {
@@ -47,6 +45,12 @@ const caseData = ref(undefined);
 const newsData = ref(undefined);
 const blogData = ref(undefined);
 onMounted(async () => {
+  AOS.init({
+    offset: 100,
+    duration: 800,
+    delay: 100,
+    once: true,
+  });
   const paramsCase = {
     category: 'showcase',
     lang: lang.value,
@@ -84,8 +88,9 @@ onMounted(async () => {
     throw new Error(e);
   }
   try {
-    getMeetingData().then((res: MeetingData) => {
-      calendarData.value = res.tableData;
+    //TODO:添加活动数据
+    Promise.all([getMeetingData()]).then((res) => {
+      calendarData.value = [...res[0].tableData];
     });
   } catch (e: any) {
     throw new Error(e);
@@ -96,7 +101,7 @@ onMounted(async () => {
 <template>
   <HomeBanner />
   <div class="wraper">
-    <HomeNav />
+    <OContainer :level-index="2"><HomeNav /></OContainer>
     <HomeCarousel />
     <UserCase v-if="caseData" :case-data="caseData" />
     <CommunityActivity />
@@ -105,10 +110,16 @@ onMounted(async () => {
       :blog-data="blogData"
       :news-data="newsData"
     />
-    <div v-if="lang === 'zh'" class="home-calendar">
-      <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
-      <AppCalendar v-if="calendarData.length > 1" :table-data="calendarData" />
-    </div>
+    <el-config-provider :locale="zhCn">
+      <div v-if="lang === 'zh'" class="home-calendar">
+        <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
+        <AppCalendar
+          v-if="calendarData.length > 1"
+          :table-data="calendarData"
+          data-aos="fade-up"
+        />
+      </div>
+    </el-config-provider>
     <HomePlayground />
     <PublishLink />
     <SourceLink />
@@ -131,6 +142,7 @@ onMounted(async () => {
     width: 100%;
     text-align: center;
     margin-top: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h2);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);

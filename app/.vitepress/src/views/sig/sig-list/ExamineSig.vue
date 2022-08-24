@@ -94,7 +94,7 @@ onMounted(() => {
 }
 .sig-list {
   max-width: 1504px;
-  margin: var(--o-spacing-h1) auto;
+  margin: var(--o-spacing-h1) auto 0;
   padding: 0 44px;
   p {
     display: none;
@@ -107,6 +107,7 @@ onMounted(() => {
     }
     p {
       display: block;
+      color: var(--e-color-text1);
       text-align: center;
     }
   }

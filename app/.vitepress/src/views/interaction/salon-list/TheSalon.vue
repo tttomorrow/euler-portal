@@ -7,6 +7,7 @@ import IconHome from '~icons/app/icon-home.svg';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
+import Img404 from '@/assets/404.svg';
 import { useData, useRouter } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -245,7 +246,7 @@ onMounted(async () => {
           :right-arrow="true"
           :left-arrow="true"
         ></OTimeline>
-        <div class="salon-new">
+        <div v-if="newsList && newsList.length != 0" class="salon-new">
           <OCard
             v-for="item in newsList"
             :key="item.ID"
@@ -324,16 +325,22 @@ onMounted(async () => {
             </div>
           </OCard>
         </div>
+        <div v-else>
+          <div class="nofound">
+            <img class="img" :src="Img404" alt="404" />
+            <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+          </div>
+        </div>
       </div>
       <div v-else>
-        <h3 class="salon-title">{{ salonData.DETAIL_REVIEW }}</h3>
+        <h3 class="salon-title review-title">{{ salonData.DETAIL_REVIEW }}</h3>
         <OTimeline
           v-model="date"
           class="salon-time"
           :right-arrow="true"
           :left-arrow="true"
         ></OTimeline>
-        <div class="salon-review">
+        <div v-if="meetsList && meetsList.length != 0" class="salon-review">
           <OCard
             v-for="item in meetsList"
             :key="item.ID"
@@ -390,12 +397,32 @@ onMounted(async () => {
             </div>
           </OCard>
         </div>
+        <div v-else>
+          <div class="nofound">
+            <img class="img" :src="Img404" alt="404" />
+            <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.nofound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: var(--o-font-size-h6);
+  color: var(--e-color-text1);
+  padding: var(--o-spacing-h2) 0;
+  height: 100%;
+  .img {
+    max-width: 500px;
+    object-fit: cover;
+  }
+}
 .salon {
   &-new {
     display: grid;
@@ -418,7 +445,10 @@ onMounted(async () => {
         width: 100%;
         display: flex;
         flex-flow: row;
-        height: 100%;
+        @media (min-width: 768px) {
+          height: 584px;
+        }
+
         @media (max-width: 768px) {
           flex-flow: column;
         }
@@ -483,7 +513,7 @@ onMounted(async () => {
         &-desc {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--e-color-text4);
+          color: var(--e-color-text);
           margin-top: var(--o-spacing-h5);
           overflow: hidden;
           text-overflow: ellipsis;
@@ -492,6 +522,7 @@ onMounted(async () => {
           -webkit-line-clamp: 4;
           word-break: break-all;
           @media (max-width: 768px) {
+            color: var(--e-color-text4);
             margin-top: var(--o-spacing-h9);
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
@@ -751,6 +782,7 @@ onMounted(async () => {
         color: var(--e-color-text1);
         overflow: hidden;
         text-overflow: ellipsis;
+        height: 52px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
@@ -865,10 +897,10 @@ onMounted(async () => {
   }
   &-content {
     max-width: 1504px;
-    margin: var(--o-spacing-h1) auto;
+    margin: var(--o-spacing-h1) auto 0;
     padding: 0 var(--o-spacing-h2);
     @media (max-width: 1080px) {
-      margin: var(--o-spacing-h2) auto;
+      margin: var(--o-spacing-h2) auto 0;
       padding: 0 var(--o-spacing-h5);
     }
   }

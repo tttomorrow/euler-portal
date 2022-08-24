@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { computed, CSSProperties } from 'vue';
+import { computed, CSSProperties, useSlots } from 'vue';
+
+const slots = useSlots();
 
 const props = defineProps({
   backgroundImage: {
@@ -49,7 +51,12 @@ const rootStyle = computed(() => {
           {{ backgroundText }}
         </p>
         <h1 v-if="title" class="banner-title">{{ title }}</h1>
-        <p v-if="subtitle" class="banner-subtitle">{{ subtitle }}</p>
+        <p v-if="subtitle && !slots.default" class="banner-subtitle">
+          {{ subtitle }}
+        </p>
+        <div v-if="slots.default" class="banner-operation">
+          <slot></slot>
+        </div>
       </div>
       <div v-if="illustration" class="banner-illustration">
         <img :src="illustration" />
@@ -72,6 +79,7 @@ const rootStyle = computed(() => {
     display: flex;
     justify-content: space-between;
     min-height: 280px;
+    position: relative;
     @media screen and (max-width: 768px) {
       min-height: 126px;
       padding: 0 24px;
@@ -80,6 +88,7 @@ const rootStyle = computed(() => {
       position: relative;
       padding-top: 50px;
       padding-bottom: 32px;
+      max-width: 54%;
 
       @media screen and (max-width: 768px) {
         padding-top: 32px;
@@ -114,7 +123,7 @@ const rootStyle = computed(() => {
         font-size: var(--o-font-size-h2);
         line-height: var(--o-line-height-h2);
         margin-top: var(--o-spacing-h2);
-
+        margin-bottom: 0;
         @media screen and (max-width: 1080px) {
           font-size: var(--o-font-size-h3);
           line-height: var(--o-line-height-h3);
@@ -145,22 +154,33 @@ const rootStyle = computed(() => {
           line-height: var(--o-line-height-tip);
         }
       }
+
+      .banner-operation {
+        margin-top: var(--o-spacing-h4);
+      }
     }
     .banner-illustration {
       margin-left: var(--o-spacing-h);
+      position: absolute;
+      bottom: 0;
+      right: 44px;
       display: flex;
       flex-direction: column-reverse;
       object-fit: fill;
 
       @media screen and (max-width: 1080px) {
-        justify-content: center;
+        bottom: 50%;
+        transform: translateY(50%);
+      }
+
+      @media screen and (max-width: 768px) {
+        right: 24px;
       }
 
       img {
         max-height: 230px;
 
         @media screen and (max-width: 1080px) {
-          justify-content: center;
           max-height: 160px;
         }
 

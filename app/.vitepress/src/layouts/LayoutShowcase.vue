@@ -18,8 +18,8 @@ const { frontmatter } = useData();
   </div>
 </template>
 
-<style lang="scss">
-.case-img {
+<style lang="scss" scoped>
+:deep(.case-img) {
   text-align: center;
   img {
     width: 58%;

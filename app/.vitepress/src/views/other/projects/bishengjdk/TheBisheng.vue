@@ -6,24 +6,22 @@ import MiniCards from '../components/MiniCards.vue';
 import MiniDescription from '../components/MiniDescription.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import MiniReference from './MiniReference.vue';
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-import AppAnchor from '@/components/AppAnchor.vue';
+import BannerMinisite from '@/components/BannerMinisite.vue';
 
 import BannerIllustration from '/img/projects/bisheng/illustration-banner.png';
-import BannerBackground from '/img/projects/share/banner-background.png';
-
+import banner from '@/assets/banner-secondary.png';
 const i18n = useI18n();
 </script>
 
 <template>
   <div class="bisheng-wraper">
     <!-- 下面放 banner 组件 -->
-    <BannerLevel2
+    <BannerMinisite
       class="banner"
       :title="i18n.bishengjdk.BISHENG_BANNER_TEXT[0]"
       :subtitle="i18n.bishengjdk.BISHENG_BANNER_TEXT[1]"
       :illustration="BannerIllustration"
-      :background-image="BannerBackground"
+      :background-image="banner"
       background-text="SEARCH"
     />
     <!-- banner 下面详情页面 -->
@@ -38,22 +36,13 @@ const i18n = useI18n();
       />
       <!-- 架构模块 -->
       <MiniFrame
-        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[0].id"
         :frame-obj="i18n.bishengjdk.BISHENG_FRAMEWORK"
         layout="upAndDown"
       />
       <!-- 学习模块 -->
-      <MiniDocs
-        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[1].id"
-        :docs-obj="i18n.bishengjdk.BISHENG_LEARN"
-      />
+      <MiniDocs :docs-obj="i18n.bishengjdk.BISHENG_LEARN" />
       <!-- 友情链接模块 -->
-      <MiniReference
-        :id="i18n.bishengjdk.BISHENG_ANCHOR_DATA[2].id"
-        :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE"
-      />
-
-      <AppAnchor class="anchor" :data="i18n.bishengjdk.BISHENG_ANCHOR_DATA" />
+      <MiniReference :reference-obj="i18n.bishengjdk.BISHENG_REFERENCE" />
     </div>
   </div>
 </template>
@@ -79,14 +68,6 @@ const i18n = useI18n();
       display: none;
       @media screen and (min-width: 1440px) {
         display: block;
-      }
-    }
-    .anchor {
-      @media screen and (min-width: 768px) {
-        display: block;
-      }
-      @media screen and (max-width: 768px) {
-        display: none;
       }
     }
   }

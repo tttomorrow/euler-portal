@@ -8,6 +8,8 @@ import 'swiper/components/pagination/pagination.min.css';
 import { useData } from 'vitepress';
 import HomeConfig from './config';
 
+import useWindowResize from '@/components/hooks/useWindowResize';
+
 import IconArrowRight from '~icons/app/icon-arrow-right1.svg';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -25,6 +27,7 @@ const onSwiper = (swiper: any) => {
   };
   flag.value = computed(() => swiper.animating);
 };
+const windowWidth = ref(useWindowResize());
 
 // 判断语言 banner
 const homeBanner = computed(() => {
@@ -63,22 +66,31 @@ const jump = (item: any) => {
     :navigation="true"
     @swiper="onSwiper"
   >
-    <swiper-slide v-for="item in homeBanner" :key="item.link">
+    <swiper-slide v-for="(item, index) in homeBanner" :key="item.link">
       <a class="banner-panel" @click="jump(item)">
         <div
           class="banner-panel-cover"
-          :style="{ backgroundImage: 'url(' + item.pcBanner + ')' }"
+          :style="{
+            backgroundImage: `url(${
+              windowWidth < 767 ? item.moBanner : item.pcBanner
+            })`,
+          }"
         >
           <div
             v-if="item.title !== ''"
+            :class="[{ 'flex-start': index === 0 }]"
             class="banner-panel-content flex-column"
           >
             <div class="box">
-              <p class="title">{{ item.title }}</p>
-              <p class="desc">{{ item.desc }}</p>
+              <p class="title" :class="{ experts: index === 0 }">
+                {{ item.title }}
+              </p>
+              <p class="desc" :class="{ experts: index === 0 }">
+                {{ item.desc }}
+              </p>
             </div>
-            <div class="action">
-              <OButton class="home-banner-btn">
+            <div v-if="item.btn" class="action">
+              <OButton animation class="home-banner-btn">
                 {{ item.btn }}
                 <template #suffixIcon
                   ><OIcon><IconArrowRight /></OIcon
@@ -111,6 +123,24 @@ $banner-color: #fff;
 .home-banner {
   height: 480px;
   position: relative;
+  .flex-start {
+    margin-top: 120px;
+    justify-content: flex-start;
+    p {
+      margin: 0;
+      max-width: 600px;
+      line-height: var(--o-line-height-h2);
+      font-size: var(--o-spacing-h3);
+      @media screen and (max-width: 824px) {
+        line-height: var(--o-line-height-h6);
+        font-size: var(--o-font-size-h6);
+      }
+    }
+    @media screen and (max-width: 824px) {
+      padding: 0;
+      margin-top: var(--o-spacing-h3);
+    }
+  }
 
   .banner-panel {
     position: absolute;
@@ -130,11 +160,11 @@ $banner-color: #fff;
       flex-direction: column;
       justify-content: center;
       height: 100%;
+      color: #fff;
       .title {
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
-        // color: var(--e-color-text2);
-        filter: invert(1);
+        // filter: invert(1);
         font-weight: 600;
         @media screen and (max-width: 1439px) {
           font-size: var(--o-font-size-h2);
@@ -145,13 +175,15 @@ $banner-color: #fff;
           line-height: var(--o-line-height-h4);
         }
       }
+      .box {
+        color: $banner-color;
+      }
       .desc {
         font-size: var(--o-font-size-h5);
         font-weight: normal;
-        // color: var(--e-color-text2);
         line-height: var(--o-line-height-h5);
         margin-top: var(--o-spacing-h6);
-        filter: invert(1);
+        // filter: invert(1);
         @media screen and (max-width: 1439px) {
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
@@ -162,10 +194,27 @@ $banner-color: #fff;
           line-height: var(--o-line-height-text);
         }
       }
+      .experts {
+        line-height: 84px;
+        font-weight: 400;
+        font-size: 56px;
+        @media screen and (max-width: 1416px) {
+          line-height: var(--o-line-height-h3);
+          font-size: var(--o-font-size-h3);
+        }
+        @media screen and (max-width: 824px) {
+          font-size: 20px;
+          line-height: 28px;
+        }
+      }
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {
-          color: var(--e-color-text2);
+          color: $banner-color;
+          @media screen and (max-width: 824px) {
+            font-size: 16px;
+            color: var(--e-color-yellow5);
+          }
         }
         @media screen and (max-width: 824px) {
           margin-top: 0;
@@ -179,6 +228,14 @@ $banner-color: #fff;
         justify-content: space-between;
         box-sizing: border-box;
         text-align: center;
+      }
+    }
+    .flex-start {
+      margin-top: 120px;
+      justify-content: flex-start;
+      @media screen and (max-width: 824px) {
+        padding: 0;
+        margin-top: var(--o-spacing-h3);
       }
     }
     &-cover {

@@ -24,24 +24,22 @@ const imgUrlHover = computed(
 </script>
 
 <template>
-  <div class="nav-main">
-    <div class="home-nav">
-      <div
-        v-for="item in i18n.home.HOME_NAV"
-        :key="item.LINK"
-        class="nav-item"
-        @click="handleGo(item.LINK)"
-      >
-        <div class="nav-icon">
-          <img :src="imgUrl(item)" alt="" class="nav-item-icon" />
-          <img :src="imgUrlHover(item)" alt="" class="nav-item-icon-hover" />
-        </div>
-        <div class="nav-text">
-          <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">
-            {{ item.TITLE }}
-          </h4>
-          <p class="nav-descriptive">{{ item.DSSCRIPTIVE }}</p>
-        </div>
+  <div class="home-nav" data-aos="fade-up">
+    <div
+      v-for="item in i18n.home.HOME_NAV"
+      :key="item.LINK"
+      class="nav-item"
+      @click="handleGo(item.LINK)"
+    >
+      <div class="nav-icon">
+        <img :src="imgUrl(item)" alt="" class="nav-item-icon" />
+        <img :src="imgUrlHover(item)" alt="" class="nav-item-icon-hover" />
+      </div>
+      <div class="nav-text">
+        <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">
+          {{ item.TITLE }}
+        </h4>
+        <p class="nav-descriptive">{{ item.DSSCRIPTIVE }}</p>
       </div>
     </div>
   </div>
@@ -66,7 +64,7 @@ const imgUrlHover = computed(
     display: flex;
 
     align-items: center;
-    border-left: 1px solid var(--e-color-neutral11);
+    border-left: 1px solid var(--e-color-division1);
     .nav-item-icon-hover {
       display: none !important;
     }
@@ -108,7 +106,8 @@ const imgUrlHover = computed(
       }
       .nav-text {
         color: var(--e-color-brand1);
-        .nav-descriptive {
+        .nav-descriptive,
+        .nav-title {
           color: var(--e-color-brand1);
         }
       }
@@ -131,14 +130,14 @@ const imgUrlHover = computed(
       content: '';
       width: 1px;
       height: calc(100% - 48px);
-      background-color: var(--e-color-neutral11);
+      background-color: var(--e-color-division1);
     }
     .nav-item {
       padding: 0;
       border: none;
       flex-direction: column;
       .nav-icon {
-        width: 30px;
+        width: 40px;
       }
       .nav-text {
         margin: 0;
@@ -160,7 +159,7 @@ const imgUrlHover = computed(
     .nav-item:nth-child(-n + 2) {
       padding-top: 0;
       padding-bottom: var(--o-spacing-h6);
-      border-bottom: 1px solid var(--e-color-neutral11);
+      border-bottom: 1px solid var(--e-color-division1);
     }
     .nav-item:nth-child(2) {
       position: relative;

@@ -34,7 +34,7 @@ const isDark = computed(() => {
       <div class="pc">
         <!-- 有选项卡 -->
         <template v-if="frameObj.TAB">
-          <OTabs v-if="frameObj.TAB">
+          <OTabs>
             <OTabPane
               v-for="item in frameObj.TAB"
               :key="item.VALUE"
@@ -46,6 +46,7 @@ const isDark = computed(() => {
                 :framework-dark-img="frameObj[item.KEY].FRAMEWORK_IMG_DARK"
                 :framework-title="frameObj[item.KEY].FRAMEWORK_TITLE"
                 :dark-img="isDark"
+                :frame-type="item.VALUE"
               />
             </OTabPane>
           </OTabs>
@@ -68,7 +69,9 @@ const isDark = computed(() => {
           <FrameList
             :desc-list="frameObj[frameObj.TAB[0].KEY].DESC_LIST"
             :framework-img="frameObj[frameObj.TAB[0].KEY].FRAMEWORK_IMG"
-            :framework-dark-img="frameObj.FRAMEWORK_IMG_DARK"
+            :framework-dark-img="
+              frameObj[frameObj.TAB[0].KEY].FRAMEWORK_IMG_DARK
+            "
             :framework-title="frameObj[frameObj.TAB[0].KEY].FRAMEWORK_TITLE"
             :dark-img="isDark"
           />
@@ -135,11 +138,14 @@ const isDark = computed(() => {
         display: block;
       }
     }
-    .el-tabs {
-      :deep(.el-tabs__header) {
-        margin-bottom: 24px;
+    :deep(.el-tabs) {
+      .el-tabs__header {
+        margin-bottom: var(--o-spacing-h4);
       }
-      :deep(.el-tabs__nav) {
+      .el-tabs__nav {
+        .el-tabs__active-bar {
+          background-color: var(--e-color-brand1);
+        }
         .is-active {
           color: var(--e-color-brand1);
         }

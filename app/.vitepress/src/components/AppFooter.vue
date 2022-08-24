@@ -6,6 +6,8 @@ import { useI18n } from '@/i18n';
 import LogoFooter from '@/assets/footer/footer-logo2.png';
 import LogoFooter1 from '@/assets/footer-logo1.svg';
 import LogoAtom from '@/assets/footer/atom-logo.svg';
+import FooterBg from '@/assets/footer/footer-bg.png';
+import FooterBgMo from '@/assets/footer/footer-bg-mo.png';
 
 // 中文友情链接
 import LogoBilibili from '@/assets/footer/bilibili.png';
@@ -153,6 +155,12 @@ const handleNavClick = (path: string) => {
     router.go(`/${lang.value}` + path);
   }
 };
+
+// 背景
+const footBg = {
+  pc: `url(${FooterBg})`,
+  mo: `url(${FooterBgMo})`,
+};
 </script>
 
 <template>
@@ -224,7 +232,7 @@ const handleNavClick = (path: string) => {
 <style lang="scss" scoped>
 $color: #fff;
 .footer {
-  background: #121212;
+  background: var(--e-color-greyblack1);
   .atom {
     text-align: center;
     max-width: 1416px;
@@ -268,7 +276,10 @@ $color: #fff;
   }
 
   &-content {
-    background: url('/img/footer-bg.png') no-repeat bottom center;
+    background: v-bind('footBg.pc') no-repeat bottom center;
+    @media (max-width: 767px) {
+      background: v-bind('footBg.mo') no-repeat bottom center;
+    }
     .inner {
       max-width: 1416px;
       margin: 0 auto;

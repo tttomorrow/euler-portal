@@ -8,7 +8,9 @@ import banner from '@/assets/banner-secondary.png';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import TagFilter from '@/components/TagFilter.vue';
 
-import BannerLevel3 from '@/components/BannerLevel3.vue';
+import Img404 from '@/assets/404.svg';
+import downloadImg from '@/assets/download/download.png';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
 import { useData } from 'vitepress';
 
 const { lang } = useData();
@@ -156,10 +158,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <BannerLevel3
+  <BannerLevel2
     :background-image="banner"
     background-text="DOWNLOAD"
-    :title="i18n.download.OUTSIDE_TITLE"
+    :title="i18n.download.MIRROR_ALL.TITLE"
+    :illustration="downloadImg"
   />
 
   <div class="download">
@@ -173,6 +176,8 @@ onMounted(() => {
           v-for="(item, index) in tagManufacturer"
           :key="item"
           class="download-filter-item"
+          checkable
+          :checked="index !== 0"
           :type="
             index === 0
               ? manufacturerAll
@@ -194,6 +199,8 @@ onMounted(() => {
         <OTag
           v-for="(item, index) in tagPublish"
           :key="item"
+          checkable
+          :checked="index !== 0"
           class="download-filter-item"
           :type="
             index === 0
@@ -270,6 +277,8 @@ onMounted(() => {
           v-for="(item, index) in tagManufacturer"
           :key="item"
           class="download-filter-item"
+          checkable
+          :checked="index !== 0"
           :type="
             index === 0
               ? manufacturerAll
@@ -290,6 +299,8 @@ onMounted(() => {
           v-for="(item, index) in tagPublish"
           :key="item"
           class="download-filter-item"
+          checkable
+          :checked="index !== 0"
           :type="
             index === 0
               ? publishAll
@@ -324,7 +335,7 @@ onMounted(() => {
       </ODrawer>
     </div>
     <!-- 表格 -->
-    <div class="download-list">
+    <div v-if="dataList.length" class="download-list">
       <OCard
         v-for="download in dataList"
         :key="download.NAME"
@@ -336,7 +347,7 @@ onMounted(() => {
           <h5 class="download-name">
             {{ download.NAME }}
           </h5>
-          <div class="download-desc">
+          <div class="download-desc" :title="download.DESC">
             {{ download.DESC }}
           </div>
           <div :class="urlStyle">
@@ -410,25 +421,30 @@ onMounted(() => {
         </OButton>
       </OCard>
     </div>
+    <div v-else class="empty">
+      <img class="img" :src="Img404" alt="404" />
+      <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+    </div>
     <!-- 页码 -->
     <div class="page-box">
       <OPagination
         v-model:currentPage="currentPage"
         v-model:page-size="pageSize"
         class="pagination"
+        hide-on-single-page
         :page-sizes="[12, 18, 24, 36]"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
         :total="total"
       >
-        <span
+        <span class="pagination-slot"
           >{{
             pageSize * currentPage < total ? pageSize * currentPage : total
           }}
           / {{ total }}</span
         >
       </OPagination>
-      <div class="page-box-mobile">
+      <div class="page-box-mobile" v-if="dataList.length">
         <div>
           已显示{{
             pageSize * currentPage < total ? pageSize * currentPage : total
@@ -490,6 +506,12 @@ onMounted(() => {
   flex-flow: row;
   justify-content: center;
   align-items: center;
+  .pagination-slot {
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-spacing-h4);
+  }
   .pagination {
     display: flex;
     @media (max-width: 768px) {
@@ -552,6 +574,7 @@ onMounted(() => {
       display: none;
       @media (max-width: 768px) {
         display: flex;
+        flex-flow: column;
       }
 
       &:deep(.el-drawer__header) {
@@ -656,6 +679,22 @@ onMounted(() => {
       }
     }
   }
+  .empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: var(--o-font-size-h6);
+    color: var(--e-color-text1);
+    height: 100%;
+    @media screen and (max-width: 768px) {
+      font-size: var(--o-font-size-text);
+    }
+    img {
+      max-width: 500px;
+      object-fit: cover;
+    }
+  }
   &-name {
     font-size: var(--o-font-size-h5);
     color: var(--e-color-text1);
@@ -688,12 +727,13 @@ onMounted(() => {
     padding: var(--o-spacing-h10) var(--o-spacing-h5);
     line-height: var(--o-line-height-h8);
     font-size: var(--o-font-size-text);
+    color: #ffffff;
 
     &-icon {
       margin-left: var(--o-spacing-h8);
       width: var(--o-font-size-tip);
       height: var(--o-font-size-tip);
-      color: var(--e-color-text2);
+      color: #ffffff;
     }
   }
 }

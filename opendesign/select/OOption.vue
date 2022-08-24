@@ -12,7 +12,15 @@ const attrs = useAttrs();
 .el-popper__arrow {
   display: none;
 }
-.el-popper {
+.el-popper.o-select-dropdown {
+  border: none;
   border-radius: 0 !important;
+  background-color: var(--e-color-bg2);
+  .o-option.hover {
+    background-color: var(--e-color-bg4);
+  }
+  .o-option:hover {
+    background-color: var(--e-color-bg4);
+  }
 }
 </style>

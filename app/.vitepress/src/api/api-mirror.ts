@@ -21,6 +21,11 @@ export function getAllMirror() {
  */
 
 export const selectMirror = (version: string) => {
-  const url = `/api/mirrors/openEuler-${version}/ISO/`;
+  // 本地使用代理解决跨域问题
+  // 线上环境不使用代理，使用代理会导致 ip地址不准确
+  let url = `https://api.openeuler.org/mirrors/openEuler-${version}/ISO/`;
+  process.env.NODE_ENV === 'development'
+    ? (url = `/api/mirrors/openEuler-${version}/ISO/`)
+    : `https://api.openeuler.org/mirrors/openEuler-${version}/ISO/`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 };

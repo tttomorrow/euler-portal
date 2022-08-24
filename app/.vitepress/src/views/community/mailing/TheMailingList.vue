@@ -5,6 +5,7 @@ import { useRouter } from 'vitepress';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import { getAllMailing } from '@/api/api-mailing';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import { useCommon } from '@/stores/common';
 
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/mailing.png';
@@ -19,6 +20,7 @@ const RIGHT_IMG = [sig4, sig5];
 const i18n = useI18n();
 const router = useRouter();
 const screenWidth = useWindowResize();
+const commonStore = useCommon();
 
 interface MailingMsg {
   description?: string;
@@ -140,13 +142,20 @@ const isMobile = computed(() => {
               <div class="middle-item-infoconfig">
                 <div class="middle-item-infoconfig-circle">
                   {{ item.RIGHT.INDEX }}
-                  <!-- <span>{{ item.RIGHT.INDEX }}</span> -->
                 </div>
                 <div>
-                  <!-- <div>{{ item.RIGHT.RIGHT_CIRCLE}}</div> -->
                   <span
                     >{{ item.RIGHT.RIGHT_INFO }}
-                    <p v-if="item.RIGHT.DO_THIS" @click="goUnsubscribeBlog()">
+                    <p
+                      v-if="item.RIGHT.DO_THIS"
+                      :style="{
+                        color:
+                          commonStore.theme === 'dark'
+                            ? 'var(--e-color-link2)'
+                            : '',
+                      }"
+                      @click="goUnsubscribeBlog()"
+                    >
                       {{ item.RIGHT.DO_THIS }}
                     </p>
                   </span>
@@ -352,7 +361,7 @@ const isMobile = computed(() => {
           }
         }
         p {
-          color: var(--e-color-brand1);
+          color: var(--e-color-link3);
           cursor: pointer;
           display: inline;
           font-size: var(--o-font-size-text);
@@ -367,7 +376,7 @@ const isMobile = computed(() => {
           white-space: nowrap;
           height: 70px;
           width: 70px;
-          border: 4px solid var(--o-color-base);
+          border: 4px solid var(--e-color-white);
           border-radius: 50%;
           background-color: var(--e-color-brand1);
           position: relative;

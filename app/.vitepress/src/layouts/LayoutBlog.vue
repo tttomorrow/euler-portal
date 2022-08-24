@@ -13,15 +13,22 @@ const blogInfo = {
 </script>
 
 <template>
-  <BreadCrumbs
-    :bread1="blogInfo.name"
-    :bread2="frontmatter.title"
-    :link1="blogInfo.link"
-  />
+  <div class="bread">
+    <BreadCrumbs
+      :bread1="blogInfo.name"
+      :bread2="frontmatter.title"
+      :link1="blogInfo.link"
+    />
+  </div>
+
   <div class="makdown-wrap markdown">
     <AppMdHead :frontmatter="frontmatter" />
     <Content />
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.bread {
+  margin: 0 var(--o-spacing-h5);
+}
+</style>

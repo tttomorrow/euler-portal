@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useRouter } from 'vitepress';
-import OButton from './OButton.vue';
 import IconArrowRight from '~icons/app/icon-arrow.svg';
 
 const router = useRouter();
@@ -221,12 +220,11 @@ const go = (path: string) => {
             v-if="item.GITEE"
             type="text"
             placement="right"
+            class="sig-detail"
             @click="go(item.GITEE)"
           >
-            {{ TASK.SIG_DETAIL }}
-            <template #right>
-              <OIcon><IconArrowRight /></OIcon>
-            </template>
+            <span>{{ TASK.SIG_DETAIL }}</span>
+            <OIcon><IconArrowRight /></OIcon>
           </OButton>
         </div>
       </div>
@@ -239,6 +237,7 @@ const go = (path: string) => {
   .task-introduce {
     font-size: 20px;
     line-height: 40px;
+    color: var(--e-color-text1);
     @media (max-width: 1000px) {
       font-size: 14px;
       line-height: 22px;
@@ -258,7 +257,7 @@ const go = (path: string) => {
     .item {
       padding: 40px;
       background-color: var(--e-color-bg2);
-      box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--e-shadow-l2);
       transition: box-shadow 0.1s;
       min-height: 180px;
       .item-name {
@@ -298,6 +297,28 @@ const go = (path: string) => {
           padding: 8px 12px;
           height: auto;
           margin-right: 24px;
+          white-space: nowrap span {
+            color: var(--e-color-brand1);
+          }
+          .o-icon {
+            color: var(--e-color-brand1);
+            margin-left: 8px;
+            transition: all 0.3s;
+          }
+          &:hover .o-icon {
+            transform: translateX(3px);
+          }
+          &:nth-of-type(1) {
+            color: #fff;
+          }
+        }
+        .sig-detail {
+          &:hover {
+            border: 1px solid var(--e-color-brand1);
+            span {
+              color: var(--e-color-brand1);
+            }
+          }
         }
         .o-button--text {
           color: var(--e-color-text1);
@@ -316,7 +337,7 @@ const go = (path: string) => {
     }
 
     .item:hover {
-      box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--e-shadow-l2_hover);
       transform: translateY(-2px);
     }
   }

@@ -2,9 +2,11 @@
 title: '法律声明'
 ---
 
-<div class='markdown'  style="margin-top:var(--o-spacing-h1)">
+<div class='markdown legal-privacy'>
 
-<h1 style='text-align:center;margin:24px 0 40px'>法律声明</h1>
+<h1>法律声明</h1>
+
+<hr>
 
 本法律声明包含 openEuler 社区的若干法律政策。这些政策适用于本网站以及 openEuler 社区项目发布。
 
@@ -61,3 +63,7 @@ openEuler 网站提供的本网站上的内容仅为方便您获取信息，open
 您同意，与您访问或使用本网站相关的所有事项，应根据中华人民共和国法律解释、理解和管辖。您同意，中国广东省深圳市有管辖权的法院具有相关的管辖权。
 
 </div>
+
+<style>
+  
+</style>

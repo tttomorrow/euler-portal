@@ -162,6 +162,7 @@ const menuActiveFn = (item: any) => {
         transition: all 0.3s ease-in-out;
         display: table;
         z-index: 99;
+        box-shadow: var(--e-shadow-l1);
         &-content {
           margin: 0;
           padding: 0;

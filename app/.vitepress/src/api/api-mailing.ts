@@ -16,5 +16,8 @@ export function getAllMailing() {
         authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
       },
     })
-    .then((res: AxiosResponse) => res.data);
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }

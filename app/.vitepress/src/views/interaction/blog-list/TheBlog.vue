@@ -10,8 +10,11 @@ import MobileFilter from '@/components/MobileFilter.vue';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
+import NotFound from '@/NotFound.vue';
+import IconRight from '~icons/app/arrow-right.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
+import OIcon from 'opendesign/icon/OIcon.vue';
 
 interface BlogData {
   archives: string;
@@ -29,11 +32,23 @@ interface BlogData {
   type: string;
 }
 
+interface ParamsType {
+  page: number;
+  pageSize: number;
+  lang: string;
+  category: string;
+  archives?: string;
+  author?: string;
+  tags?: string;
+}
+
 const router = useRouter();
 const { lang } = useData();
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
-// 新闻列表
+
+const isShowData = ref(false);
+// 博客列表
 const sortParams = reactive({
   page: 1,
   pageSize: 9,
@@ -46,12 +61,7 @@ const tagsParams = reactive({
   category: 'blog',
   tags: 'archives',
 });
-const tagsParams1 = reactive({
-  lang: lang.value,
-  category: 'blog',
-  tags: 'author',
-});
-
+// 移动端数据
 const tagsDataToChild = ref<any>([
   {
     title: '时间',
@@ -62,6 +72,24 @@ const tagsDataToChild = ref<any>([
     select: [],
   },
 ]);
+// pc端筛选数据
+const selectData = ref<any>([
+  {
+    title: '时间',
+    select: [],
+  },
+  {
+    title: '作者',
+    select: [],
+  },
+  {
+    title: '标签',
+    select: [],
+  },
+]);
+const selectTimeVal = ref('');
+const selectAuthorVal = ref('');
+const selectTagsVal = ref('');
 
 // 博客列表数据
 const blogCardData = ref<BlogData[]>([]);
@@ -76,8 +104,37 @@ const toBlogContent = (path: string) => {
   const path1 = router.route.path.substring(0, 3);
   router.go(`${path1}/${path}`);
 };
+
+// 获取列表数据
+const getListData = (params: ParamsType) => {
+  getSortData(params)
+    .then((res) => {
+      if (res.obj.count === 0) {
+        isShowData.value = false;
+      } else {
+        paginationData.value.total = res.obj.count;
+        paginationData.value.currentpage = res.obj.page;
+        paginationData.value.pagesize = res.obj.pageSize;
+        blogCardData.value = res.obj.records;
+        for (let i = 0; i < blogCardData.value.length; i++) {
+          if (typeof blogCardData.value[i].author === 'string') {
+            blogCardData.value[i].author = [blogCardData.value[i].author];
+          }
+          blogCardData.value[i].archives = blogCardData.value[
+            i
+          ].archives.substring(0, 7);
+        }
+        isShowData.value = true;
+      }
+    })
+    .catch((error: any) => {
+      isShowData.value = false;
+      throw new Error(error);
+    });
+};
+
 // 筛选方法
-const listfilter = (val: any) => {
+const listFilter = (val: any) => {
   let paramsdate = '';
   let paramsauthor = '';
   for (let i = 0; i < val.length; i++) {
@@ -96,63 +153,52 @@ const listfilter = (val: any) => {
     archives: paramsdate,
     author: paramsauthor,
   };
-  try {
-    getSortData(params).then((res) => {
-      if (res.obj.count === 0) {
-        router.go('@/NotFound.vue');
-      } else {
-        paginationData.value.total = res.obj.count;
-        paginationData.value.currentpage = res.obj.page;
-        paginationData.value.pagesize = res.obj.pageSize;
-        blogCardData.value = res.obj.records;
-        for (let i = 0; i < blogCardData.value.length; i++) {
-          if (typeof blogCardData.value[i].author === 'string') {
-            blogCardData.value[i].author = [blogCardData.value[i].author];
-          }
-          blogCardData.value[i].archives = blogCardData.value[
-            i
-          ].archives.substring(0, 7);
-        }
-      }
-    });
-  } catch (error: any) {
-    throw new Error(error);
-  }
+  getListData(params);
 };
-
+// pc筛选
+const selectMethod = () => {
+  const params = {
+    page: 1,
+    pageSize: 9,
+    lang: lang.value,
+    category: 'blog',
+    archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+    author: selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+    tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+  };
+  getListData(params);
+};
 onMounted(() => {
-  try {
-    getSortData(sortParams).then((res) => {
-      paginationData.value.total = res.obj.count;
-      paginationData.value.currentpage = res.obj.page;
-      paginationData.value.pagesize = res.obj.pageSize;
-      blogCardData.value = res.obj.records;
-      for (let i = 0; i < blogCardData.value.length; i++) {
-        if (typeof blogCardData.value[i].author === 'string') {
-          blogCardData.value[i].author = [blogCardData.value[i].author];
-        }
-        blogCardData.value[i].archives = blogCardData.value[
-          i
-        ].archives.substring(0, 7);
-      }
+  getListData(sortParams);
+
+  getTagsData(tagsParams).then((res) => {
+    for (let i = 0; i < 5; i++) {
+      tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
+    }
+    res.obj.totalNum.forEach((item: any) => {
+      selectData.value[0].select.push(item.key);
     });
-  } catch (error: any) {
-    throw new Error(error);
-  }
-  try {
-    getTagsData(tagsParams).then((res) => {
-      for (let i = 0; i < 5; i++) {
-        tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
-      }
-      getTagsData(tagsParams1).then((res) => {
+    tagsParams.tags = 'author';
+    getTagsData(tagsParams)
+      .then((res) => {
         for (let i = 0; i < 5; i++) {
           tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
         }
+        res.obj.totalNum.forEach((item: any) => {
+          selectData.value[1].select.push(item.key);
+        });
+        tagsParams.tags = 'tags';
+        getTagsData(tagsParams).then((res) => {
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        });
+      })
+      .catch((error: any) => {
+        isShowData.value = false;
+        throw new Error(error);
       });
-    });
-  } catch (error: any) {
-    throw new Error(error);
-  }
+  });
 });
 // 页数改变
 const currentChange = (val: number) => {
@@ -162,117 +208,161 @@ const currentChange = (val: number) => {
     page: val,
     pageSize: paginationData.value.pagesize,
   };
-  try {
-    getSortData(params).then((res) => {
-      blogCardData.value = res.obj.records;
-      for (let i = 0; i < blogCardData.value.length; i++) {
-        if (typeof blogCardData.value[i].author === 'string') {
-          blogCardData.value[i].author = [blogCardData.value[i].author];
-        }
-        blogCardData.value[i].archives = blogCardData.value[
-          i
-        ].archives.substring(0, 7);
-      }
-    });
-  } catch (error: any) {
-    throw new Error(error);
-  }
+  getListData(params);
 };
-const sizeChange = (val: number) => {
-  const params = {
-    category: 'blog',
-    lang: lang.value,
-    page: paginationData.value.currentpage,
-    pageSize: val,
-  };
-  try {
-    getSortData(params).then((res) => {
-      blogCardData.value = res.obj.records;
-      for (let i = 0; i < blogCardData.value.length; i++) {
-        if (typeof blogCardData.value[i].author === 'string') {
-          blogCardData.value[i].author = [blogCardData.value[i].author];
-        }
-        blogCardData.value[i].archives = blogCardData.value[
-          i
-        ].archives.substring(0, 7);
-      }
-    });
-  } catch (error: any) {
-    throw new Error(error);
-  }
+
+const postBlog = () => {
+  router.go(`/${lang.value}/interaction/post-blog/`);
 };
 </script>
 
 <template>
-  <div class="blog">
-    <BannerLevel2
-      :background-image="BannerImg1"
-      background-text="CONNECT"
-      :title="userCaseData.BLOG"
-      :illustration="BannerImg2"
-    />
-    <div class="blog-tag2">
-      <MobileFilter
-        :data="tagsDataToChild"
-        :single="true"
-        @filter="listfilter"
-      />
-    </div>
-    <div class="blog-list">
-      <OCard v-for="item in blogCardData" :key="item" class="blog-list-item">
-        <div class="blog-list-item-title" @click="toBlogContent(item.path)">
-          <p>{{ item.title }}</p>
-        </div>
-        <div class="blog-list-item-info">
-          <div class="infodetail">
-            <OIcon class="icon"><IconUser /></OIcon>
-            <p v-for="aut in item.author" :key="aut">
-              {{ aut }}
-            </p>
-          </div>
-          <div class="infodetail">
-            <OIcon class="icon"><IconCalendar /></OIcon>
-            <p>
-              {{ item.archives }}
-            </p>
-          </div>
-          <div class="infodetail">
-            <OIcon class="icon"><IconBrowse /></OIcon>
-            <!-- <p>浏览{{ item.browsetimes }}次</p> -->
-          </div>
-        </div>
-        <div class="blog-list-item-content">
-          <p>{{ item.summary }}</p>
-        </div>
-        <div class="blog-list-item-tags">
-          <OTag
-            v-for="tag in item.tags"
-            :key="tag"
-            type="secondary"
-            class="tagitem"
-            >{{ tag }}</OTag
-          >
-        </div>
-      </OCard>
-    </div>
-    <div class="blog-pagination">
-      <OPagination
-        v-model:currentPage="paginationData.currentpage"
-        v-model:page-size="paginationData.pagesize"
-        :background="true"
-        layout="sizes, prev, pager, next, slot, jumper"
-        :total="paginationData.total"
-        :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
-        @current-change="currentChange"
-        @size-change="sizeChange"
+  <BannerLevel2
+    :background-image="BannerImg1"
+    background-text="INTERACTION"
+    :title="userCaseData.BLOG"
+    :illustration="BannerImg2"
+  >
+    <template #default>
+      <OButton
+        class="post-btn"
+        type="outline"
+        animation
+        size="small"
+        @click="postBlog"
       >
-        <span
-          >{{ paginationData.currentpage }}/{{
-            Math.ceil(paginationData.total / paginationData.pagesize)
-          }}</span
+        {{ userCaseData.STRATEGY }}
+        <template #suffixIcon>
+          <OIcon class="bannericon"><IconRight /></OIcon>
+        </template>
+      </OButton>
+    </template>
+  </BannerLevel2>
+  <div class="blog">
+    <template v-if="isShowData">
+      <div class="blog-tag2">
+        <MobileFilter
+          :data="tagsDataToChild"
+          :single="true"
+          @filter="listFilter"
+        />
+      </div>
+      <div class="blog-select">
+        <div class="blog-select-item">
+          <span class="blog-select-item-title">{{ userCaseData.TIME }}</span>
+          <OSelect
+            v-model="selectTimeVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[0].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
+        <div class="blog-select-item">
+          <span class="blog-select-item-title">{{ userCaseData.AUTHOR }}</span>
+          <OSelect
+            v-model="selectAuthorVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[1].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
+        <div class="blog-select-item">
+          <span class="blog-select-item-title">{{ userCaseData.TAGS }}</span>
+          <OSelect
+            v-model="selectTagsVal"
+            filterable
+            clearable
+            :placeholder="userCaseData.ALL"
+            @change="selectMethod"
+          >
+            <OOption
+              v-for="item in selectData[2].select"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </div>
+      </div>
+      <div class="blog-list">
+        <OCard
+          v-for="item in blogCardData"
+          :key="item"
+          class="blog-list-item"
+          @click="toBlogContent(item.path)"
         >
-      </OPagination>
-    </div>
+          <div class="blog-list-item-title">
+            <p>{{ item.title }}</p>
+          </div>
+          <div class="blog-list-item-info">
+            <div class="infodetail">
+              <OIcon class="icon"><IconUser /></OIcon>
+              <p v-for="aut in item.author" :key="aut">
+                {{ aut }}
+              </p>
+            </div>
+            <div class="infodetail">
+              <OIcon class="icon"><IconCalendar /></OIcon>
+              <p>
+                {{ item.archives }}
+              </p>
+            </div>
+            <div class="infodetail">
+              <OIcon class="icon"><IconBrowse /></OIcon>
+              <!-- <p>{{userCaseData.BROWSE}}{{ item.browsetimes }}{{userCaseData.TIMES}}</p> -->
+              <p>{{ userCaseData.BROWSE }}10{{ userCaseData.TIMES }}</p>
+            </div>
+          </div>
+          <div class="blog-list-item-content">
+            <p>{{ item.summary }}</p>
+          </div>
+          <div class="blog-list-item-tags">
+            <OTag
+              v-for="tag in item.tags"
+              :key="tag"
+              type="secondary"
+              class="tagitem"
+              >{{ tag }}</OTag
+            >
+          </div>
+        </OCard>
+      </div>
+      <div class="blog-pagination">
+        <OPagination
+          v-model:currentPage="paginationData.currentpage"
+          v-model:page-size="paginationData.pagesize"
+          :background="true"
+          layout="sizes, prev, pager, next, slot, jumper"
+          :total="paginationData.total"
+          :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
+          @current-change="currentChange"
+          @size-change="currentChange"
+        >
+          <span class="pagination-slot"
+            >{{ paginationData.currentpage }}/{{
+              Math.ceil(paginationData.total / paginationData.pagesize)
+            }}</span
+          >
+        </OPagination>
+      </div>
+    </template>
+    <NotFound v-else />
   </div>
 </template>
 
@@ -280,6 +370,27 @@ const sizeChange = (val: number) => {
 :deep(.el-card__body) {
   padding: var(--o-spacing-h2);
 }
+
+.bannericon {
+  margin-left: var(--o-spacing-h8);
+  color: var(--e-color-brand2);
+}
+
+.post-btn {
+  color: var(--e-color-white);
+  border-color: var(--e-color-white);
+  @media (max-width: 767px) {
+    padding: 4px 12px;
+  }
+}
+
+.pagination-slot {
+  font-size: var(--o-font-size-text);
+  font-weight: 400;
+  color: var(--e-color-text1);
+  line-height: var(--o-spacing-h4);
+}
+
 .blog {
   &-tag {
     max-width: 1416px;
@@ -295,6 +406,24 @@ const sizeChange = (val: number) => {
   &-tag2 {
     display: none;
   }
+  &-select {
+    // background-color: aquamarine;
+    display: flex;
+    flex-direction: row;
+    width: 1416px;
+    margin: var(--o-spacing-h1) auto var(--o-spacing-h2);
+    @media (max-width: 1455px) {
+      margin: var(--o-spacing-h1) var(--o-spacing-h5);
+    }
+    &-item {
+      margin-right: var(--o-spacing-h1);
+      &-title {
+        margin-right: var(--o-spacing-h5);
+        color: var(--e-color-text1);
+        font-size: var(--o-font-size-text);
+      }
+    }
+  }
   &-list {
     max-width: 1448px;
     margin: var(--o-spacing-h2) auto;
@@ -305,8 +434,10 @@ const sizeChange = (val: number) => {
     &-item {
       background-image: url(@/assets/interaction/bg.png);
       min-height: 248px;
+      max-height: 248px;
       background-position: right bottom;
       background-repeat: no-repeat;
+      cursor: pointer;
       &-title {
         font-size: var(--o-font-size-h7);
         margin-bottom: var(--o-spacing-h3); // 32px
@@ -314,7 +445,7 @@ const sizeChange = (val: number) => {
 
         p {
           display: inline-block;
-          cursor: pointer;
+
           word-break: break-all;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -367,7 +498,7 @@ const sizeChange = (val: number) => {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
         margin-top: var(--o-spacing-h5);
-        min-height: 44px;
+        height: 44px;
         color: var(--e-color-text1);
         word-break: break-all;
         text-overflow: ellipsis;
@@ -386,43 +517,92 @@ const sizeChange = (val: number) => {
         margin-top: var(--o-spacing-h7);
         .tagitem {
           margin-right: var(--o-spacing-h8);
-          color: var(--e-color-text2);
+          color: var(--e-color-text1);
         }
       }
     }
     &-item:hover {
-      box-shadow: var(--o-shadow-base_hover);
+      box-shadow: var(--e-shadow-l2_hover);
     }
-  }
-  &-pagination {
-    margin-bottom: var(--o-spacing-h1);
   }
 }
 
 @media (max-width: 1100px) {
   .blog-list {
     grid-template-columns: repeat(2, 1fr);
+    margin-top: var(--o-spacing-h5);
   }
   .blog-tag2 {
     display: block;
+    margin-left: var(--o-spacing-h5);
+  }
+  .blog-select {
+    display: none;
+  }
+  :deep(.el-card__body) {
+    padding: var(--o-spacing-h4);
+    height: 100%;
   }
 }
 @media (max-width: 768px) {
   .blog-list {
     grid-template-columns: repeat(1, 1fr);
+    margin-top: var(--o-spacing-h5);
   }
   .blog-tag {
     display: none;
   }
   .blog-tag2 {
     display: block;
+    margin-left: var(--o-spacing-h5);
   }
 }
 @media (max-width: 415px) {
   .blog-tag {
     display: none;
   }
+  :deep(.el-card__body) {
+    padding: var(--o-spacing-h6);
+    min-height: 152px;
+    max-height: 152px;
+  }
+  .blog-list-item {
+    // margin: var(--o-spacing-h5);
+    min-height: 152px;
+    max-height: 152px;
+  }
   .blog-list {
+    margin-top: var(--o-spacing-h5);
+  }
+
+  .blog-list-item-content {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+    height: auto;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  .blog-list-item-title {
+    margin-bottom: var(--o-spacing-h5);
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+    font-weight: 500;
+  }
+  .tagitem {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+  }
+  .blog-list-item-tags {
     margin-top: var(--o-spacing-h5);
   }
 }

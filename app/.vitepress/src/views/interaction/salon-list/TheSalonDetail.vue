@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { ref, shallowRef, onMounted, computed } from 'vue';
+import { ref, shallowRef, onMounted, computed, onUnmounted, watch } from 'vue';
 import { useData } from 'vitepress';
 
 import AMapLoader from '@amap/amap-jsapi-loader';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 
+import Img404 from '@/assets/404.svg';
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
 
@@ -15,6 +16,11 @@ import IconTime from '~icons/app/icon-time.svg';
 import { getActivityDetail } from '@/api/api-calendar';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+const windowWidth = ref(useWindowResize());
+
+const screenWidth = ref(1080);
 
 const map: any = shallowRef(null);
 const { lang } = useData();
@@ -53,12 +59,22 @@ const tabTitle = ref([
   i18n.value.interaction.MEETUPSLIST.DETAIL_FLOW,
   i18n.value.interaction.MEETUPSLIST.DETAIL_MEET,
 ]);
+
+const anchor = ref(['synopsis', 'agenda', 'meet-message']);
 const dayTabIndex = ref(0);
 const tabShow = ref(0);
 const dayTabShow = ref(0);
 const tabIndex = ref(0);
 const betweenDate = ref<any>([]);
 const commonStore = useCommon();
+
+const handleScroll = (index: number) => {
+  const element = document.getElementById(anchor.value[index]) as HTMLElement;
+
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 
 const logo = computed(() => {
   return commonStore.theme === 'light' ? logo_light : logo_dark;
@@ -191,45 +207,82 @@ function dayTabClick(e: any) {
 
 function TabClick(e: any) {
   tabIndex.value = e.index - 0;
+  handleScroll(e.index - 0);
 }
 
 const handleGo = (path: string | undefined) => {
   if (path) window.open(path, '_blank');
 };
 
+const scroll = () => {
+  const targetScrollTop =
+    screenWidth.value > 768
+      ? (document.getElementById('tab') as HTMLElement).getBoundingClientRect()
+          .top
+      : (document.getElementById('tab2') as HTMLElement).getBoundingClientRect()
+          .top;
+
+  const synopsisScrollTop = (
+    document.getElementById('synopsis') as HTMLElement
+  ).getBoundingClientRect().top;
+
+  if (targetScrollTop < 0) {
+    (document.getElementById('tab') as HTMLElement).style.position = 'fixed';
+    (document.getElementById('tab2') as HTMLElement).style.position = 'fixed';
+  }
+
+  if (synopsisScrollTop >= 0) {
+    (document.getElementById('tab') as HTMLElement).style.position = 'static';
+    (document.getElementById('tab2') as HTMLElement).style.position = 'static';
+  }
+};
+
 onMounted(() => {
   getActivitiesData();
+  const body = window;
+  body?.addEventListener('scroll', scroll);
+});
+
+onUnmounted(() => {
+  const body = window;
+  body?.removeEventListener('scroll', scroll);
+});
+
+watch(windowWidth, () => {
+  screenWidth.value = windowWidth.value;
 });
 </script>
 <template>
-  <div v-if="detailObj && detailObj.posterImg" class="top-img-mobile">
-    <img :src="detailObj.posterImg" alt="" />
-    <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
-      {{ detailObj.title }}
-    </h2>
-  </div>
-  <div class="tab-box-mobile">
-    <OTabs v-model="tabShow" @tab-click="TabClick">
-      <OTabPane
-        v-for="(item, index) in tabTitle"
-        :key="index"
-        :label="item"
-        :name="index"
-      ></OTabPane>
-    </OTabs>
-  </div>
+  <div v-if="detailObj">
+    <div v-if="detailObj && detailObj.posterImg" class="top-img-mobile">
+      <img :src="detailObj.posterImg" alt="" />
+      <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
+        {{ detailObj.title }}
+      </h2>
+    </div>
+    <div id="tab2" class="tab-box-mobile">
+      <OTabs v-model="tabShow" @tab-click="TabClick">
+        <OTabPane
+          v-for="(item, index) in tabTitle"
+          :key="index"
+          :label="item"
+          :name="index"
+          @click="handleScroll(index)"
+        ></OTabPane>
+      </OTabs>
+    </div>
 
-  <div class="calendar-detail">
-    <BreadCrumbs
-      :bread1="i18n.interaction.MEETUPSLIST.MEETUPS"
-      :bread2="detailObj?.title"
-      :link1="'/' + lang + '/interaction/salon-list/'"
-      class="bread"
-    />
-    <div v-if="detailObj" class="warper">
+    <div class="calendar-detail">
+      <BreadCrumbs
+        :bread1="i18n.interaction.MEETUPSLIST.MEETUPS"
+        :bread2="detailObj?.title"
+        :link1="'/' + lang + '/interaction/salon-list/'"
+        class="bread"
+      />
+
       <div class="top-content">
         <div
-          v-if="detailObj.posterImg"
+          v-if="detailObj?.posterImg"
           class="top-left"
           :style="{ backgroundImage: `url(${detailObj.posterImg})` }"
         >
@@ -239,16 +292,16 @@ onMounted(() => {
         </div>
         <div class="top-right">
           <div class="top-right-head">
-            <h2 class="title">{{ detailObj.title }}</h2>
-            <p class="category">{{ detailObj.enterprise }}</p>
+            <h2 class="title">{{ detailObj?.title }}</h2>
+            <p class="category">{{ detailObj?.enterprise }}</p>
             <p
               v-if="
-                (!detailObj.start && !detailObj.end) ||
-                detailObj.start === detailObj.end
+                (!detailObj?.start && !detailObj?.end) ||
+                detailObj?.start === detailObj?.end
               "
               class="time"
             >
-              {{ detailObj.date }}
+              {{ detailObj?.date }}
             </p>
             <p v-else class="time">{{ detailObj.start }}-{{ detailObj.end }}</p>
           </div>
@@ -266,128 +319,145 @@ onMounted(() => {
           </OButton>
         </div>
       </div>
-      <div class="detail-body">
-        <div class="tab-box">
-          <OTabs v-model="tabShow" @tab-click="TabClick">
+
+      <div id="tab" class="tab-box">
+        <OTabs v-model="tabShow" @tab-click="TabClick">
+          <OTabPane
+            v-for="(item, index) in tabTitle"
+            :key="index"
+            :label="item"
+            :name="index"
+          ></OTabPane>
+        </OTabs>
+      </div>
+      <div id="synopsis" class="synopsis detail-card">
+        <h1 class="detail-title">{{ tabTitle[0] }}</h1>
+        <p class="synopsis-body">{{ detailObj?.synopsis }}</p>
+      </div>
+      <div id="agenda" class="agenda detail-card">
+        <h1 class="detail-title">{{ tabTitle[1] }}</h1>
+        <div v-if="betweenDate.length" class="tab-box-time">
+          <OTabs v-model="dayTabShow" @tab-click="dayTabClick">
             <OTabPane
-              v-for="(item, index) in tabTitle"
+              v-for="(item, index) in betweenDate"
               :key="index"
               :label="item"
               :name="index"
             ></OTabPane>
           </OTabs>
         </div>
-        <div v-show="tabIndex === 0" class="synopsis">
-          <h1 class="detail-title">{{ tabTitle[tabIndex] }}</h1>
-          <p class="synopsis-body">{{ detailObj.synopsis }}</p>
-        </div>
-        <div v-show="tabIndex === 1" class="agenda">
-          <h1 class="detail-title">{{ tabTitle[tabIndex] }}</h1>
-          <div v-if="betweenDate.length" class="tab-box-time">
-            <OTabs v-model="dayTabShow" @tab-click="dayTabClick">
-              <OTabPane
-                v-for="(item, index) in betweenDate"
-                :key="index"
-                :label="item"
-                :name="index"
-              ></OTabPane>
-            </OTabs>
-          </div>
-          <div class="table">
-            <OTable
-              :data="flowPathList[dayTabShow]"
-              :show-header="false"
-              style="width: 100%"
-            >
-              <el-table-column prop="TIME" width="200">
-                <template #default="scope">
-                  <div class="time-box">
-                    <icon-time class="icon-time"></icon-time>
-                    <span class="agenda-time">{{ scope.row.duration }}</span>
-                  </div>
-                </template>
-              </el-table-column>
-              <el-table-column prop="title" width="540"> </el-table-column>
-              <el-table-column width="500">
-                <template #default="scope">
-                  <div
-                    v-for="item in scope.row.speakerList"
-                    :key="item.name"
-                    class="speark-item"
-                  >
-                    <div class="name">{{ item.name }}</div>
-                    <div class="position">{{ item.title }}</div>
-                  </div>
-                </template>
-              </el-table-column>
-            </OTable>
-          </div>
-          <div class="time-line">
-            <div
-              v-for="(item, index) in flowPathList[dayTabShow]"
-              :key="item.title"
-              class="time-line-content"
-            >
-              <div class="time-line-left">
-                <div class="ponit"></div>
+        <div class="table">
+          <OTable :data="flowPathList[dayTabShow]" :show-header="false">
+            <el-table-column prop="TIME" width="220">
+              <template #default="scope">
+                <div class="time-box">
+                  <icon-time class="icon-time"></icon-time>
+                  <span class="agenda-time">{{ scope.row.duration }}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="title"> </el-table-column>
+            <el-table-column width="464">
+              <template #default="scope">
                 <div
-                  v-if="index !== flowPathList[dayTabShow].length - 1"
-                  class="line"
-                ></div>
-              </div>
-              <div class="time-line-right">
-                <div class="time-line-duration">
-                  {{ item.duration }}
+                  v-for="item in scope.row.speakerList"
+                  :key="item.name"
+                  class="speark-item"
+                >
+                  <div class="name">{{ item.name }}</div>
+                  <div class="position">{{ item.title }}</div>
                 </div>
-                <div class="time-line-title">{{ item.title }}</div>
-                <div class="time-line-name">
-                  <div
-                    v-for="(item2, index2) in item.speakerList"
-                    :key="item2.name"
-                  >
-                    {{
-                      item2.name +
-                      (index2 === item.speakerList.length - 1 ? '' : ',')
-                    }}
-                  </div>
+              </template>
+            </el-table-column>
+          </OTable>
+        </div>
+        <div class="time-line">
+          <div
+            v-for="(item, index) in flowPathList[dayTabShow]"
+            :key="item.title"
+            class="time-line-content"
+          >
+            <div class="time-line-left">
+              <div class="ponit"></div>
+              <div
+                v-if="index !== flowPathList[dayTabShow].length - 1"
+                class="line"
+              ></div>
+            </div>
+            <div class="time-line-right">
+              <div class="time-line-duration">
+                {{ item.duration }}
+              </div>
+              <div class="time-line-title">{{ item.title }}</div>
+              <div class="time-line-name">
+                <div
+                  v-for="(item2, index2) in item.speakerList"
+                  :key="item2.name"
+                >
+                  {{
+                    item2.name +
+                    (index2 === item.speakerList.length - 1 ? '' : ',')
+                  }}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          v-show="tabIndex === 2 && detailObj.activity_type !== 2"
-          class="meet-message"
-        >
-          <h1 class="detail-title">{{ tabTitle[tabIndex] }}</h1>
-          <div :class="['meet-address']">
-            <div class="address-message">
-              <img :src="logo" />
-            </div>
-            <div class="address-text">
-              <p>地址</p>
-              <p v-if="detailObj.address">
-                {{ detailObj.address }}
-              </p>
-              <p>直播链接</p>
-              <p v-if="detailObj.detail_address">
-                {{ detailObj.detail_address }}
-              </p>
-            </div>
-            <div class="scan-qrcode">
-              <span>{{ i18n.interaction.MEETUPSLIST.DETAIL_QRCODE_TEXT }}</span>
-              <img v-if="detailObj.wx_code" :src="detailObj.wx_code" />
-            </div>
+      </div>
+      <div
+        v-show="detailObj?.activity_type !== 2"
+        id="meet-message"
+        class="meet-message detail-card"
+      >
+        <h1 class="detail-title">{{ tabTitle[2] }}</h1>
+        <div :class="['meet-address']">
+          <div class="address-message">
+            <img :src="logo" />
           </div>
-          <div class="map">
-            <div id="container"></div>
+          <div class="address-text">
+            <p>地址</p>
+            <p v-if="detailObj?.address">
+              {{ detailObj?.address }}
+            </p>
+            <p>直播链接</p>
+            <p v-if="detailObj?.detail_address">
+              {{ detailObj?.detail_address }}
+            </p>
           </div>
+          <div class="scan-qrcode">
+            <span>{{ i18n.interaction.MEETUPSLIST.DETAIL_QRCODE_TEXT }}</span>
+            <img v-if="detailObj?.wx_code" :src="detailObj?.wx_code" />
+          </div>
+        </div>
+        <div class="map">
+          <div id="container"></div>
         </div>
       </div>
     </div>
   </div>
+  <div v-else>
+    <div class="nofound">
+      <img class="img" :src="Img404" alt="404" />
+      <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+    </div>
+  </div>
 </template>
 <style lang="scss" scoped>
+.nofound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: var(--o-font-size-h6);
+  color: var(--e-color-text1);
+  padding: var(--o-spacing-h2) 0;
+  height: 100%;
+  .img {
+    max-width: 500px;
+    object-fit: cover;
+  }
+}
+
 .time-line {
   display: none;
   @media (max-width: 768px) {
@@ -450,8 +520,12 @@ onMounted(() => {
 .tab-box-mobile {
   background-color: var(--e-color-bg2);
   display: none;
+  z-index: 99;
+  width: 100%;
   align-items: flex-end;
   justify-content: center;
+  position: static;
+  top: 48px;
   @media (max-width: 768px) {
     display: flex;
   }
@@ -516,380 +590,418 @@ onMounted(() => {
   @media screen and (max-width: 1100px) {
     padding: 0 var(--o-spacing-h5);
   }
-  .warper {
-    .top-content {
+  .top-content {
+    display: flex;
+    margin: var(--o-spacing-h2) 0;
+    padding: 80px;
+    background-color: var(--e-color-bg2);
+    @media screen and (max-width: 1080px) {
+      padding: var(--o-spacing-h1);
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+    .top-left {
       display: flex;
-      margin: var(--o-spacing-h2) 0;
-      padding: 80px;
-      background-color: var(--e-color-bg2);
-      @media screen and (max-width: 1080px) {
-        padding: var(--o-spacing-h1);
-      }
-      @media screen and (max-width: 768px) {
-        display: none;
-      }
-      .top-left {
-        display: flex;
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: center;
-        margin-right: var(--o-spacing-h2);
-        text-align: center;
-        width: 415px;
-        height: 210px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        h2 {
-          color: #ffffff;
-          font-size: var(--o-font-size-h5);
-          line-height: var(--o-line-height-h5);
-          font-weight: normal;
-        }
-        .poster-3 {
-          color: #000000;
-        }
-      }
-      .top-right {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        flex: 1;
-        .top-right-head {
-          width: 100%;
-        }
-        .title {
-          margin-bottom: var(--o-spacing-h4);
-          font-weight: 400;
-          font-size: var(--o-font-size-h3);
-          line-height: var(--o-line-height-h3);
-          color: var(--e-color-text1);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          word-break: break-all;
-        }
-
-        .time {
-          margin-top: var(--o-spacing-h8);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 1;
-          word-break: break-all;
-          color: var(--e-color-text1);
-        }
-
-        .category {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 1;
-          word-break: break-all;
-          color: var(--e-color-text1);
-        }
-
-        .btn-detail {
-          cursor: pointer;
-          display: flex;
-          padding: var(--o-spacing-h10) var(--o-spacing-h5);
-          justify-content: center;
-          align-items: center;
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-          width: fit-content;
-          .icon {
-            margin-left: var(--o-spacing-h8);
-            width: 12px;
-            height: 12px;
-          }
-        }
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      margin-right: var(--o-spacing-h2);
+      text-align: center;
+      width: 415px;
+      height: 210px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      h2 {
+        color: #ffffff;
+        font-size: var(--o-font-size-h5);
+        line-height: var(--o-line-height-h5);
+        font-weight: normal;
       }
       .poster-3 {
         color: #000000;
       }
     }
-    .detail-body {
-      background-color: var(--e-color-bg2);
-      padding: 0 80px var(--o-spacing-h2);
-      @media screen and (max-width: 768px) {
-        margin-top: var(--o-spacing-h5);
-        padding: var(--o-spacing-h5);
+    .top-right {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      flex: 1;
+      .top-right-head {
+        width: 100%;
       }
-      .detail-title {
-        margin: var(--o-spacing-h2) 0 var(--o-spacing-h4);
-        font-size: var(--o-font-size-h5);
-        line-height: var(--o-line-height-h5);
-        color: var(--e-color-text1);
+      .title {
+        margin-bottom: var(--o-spacing-h4);
         font-weight: 400;
-        @media screen and (max-width: 768px) {
-          margin: 0;
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-        }
+        font-size: var(--o-font-size-h3);
+        line-height: var(--o-line-height-h3);
+        color: var(--e-color-text1);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        word-break: break-all;
       }
-      .synopsis {
+
+      .time {
+        margin-top: var(--o-spacing-h8);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        word-break: break-all;
+        color: var(--e-color-text1);
+      }
+
+      .category {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        word-break: break-all;
+        color: var(--e-color-text1);
+      }
+
+      .btn-detail {
+        cursor: pointer;
+        display: flex;
+        padding: var(--o-spacing-h10) var(--o-spacing-h5);
+        justify-content: center;
+        align-items: center;
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-        color: var(--e-color-text4);
+        width: fit-content;
+        color: #ffffff;
+        .icon {
+          margin-left: var(--o-spacing-h8);
+          width: 12px;
+          height: 12px;
+          color: #ffffff;
+        }
+      }
+    }
+    .poster-3 {
+      color: #000000;
+    }
+  }
 
-        .synopsis-body {
-          word-break: break-all;
-          @media screen and (max-width: 768px) {
-            margin-top: var(--o-spacing-h8);
-            font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-height-tip);
+  .detail-card {
+    background-color: var(--e-color-bg2);
+    padding: var(--o-spacing-h2) 80px;
+    @media screen and (max-width: 768px) {
+      margin-top: var(--o-spacing-h5);
+      padding: var(--o-spacing-h5);
+    }
+  }
+  .detail-title {
+    margin-bottom: var(--o-spacing-h4);
+    font-size: var(--o-font-size-h5);
+    line-height: var(--o-line-height-h5);
+    color: var(--e-color-text1);
+    font-weight: 400;
+    @media screen and (max-width: 768px) {
+      margin: 0;
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+    }
+  }
+  .synopsis {
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+    color: var(--e-color-text4);
+    margin-bottom: var(--o-spacing-h2);
+
+    .synopsis-body {
+      word-break: break-all;
+      @media screen and (max-width: 768px) {
+        margin-top: var(--o-spacing-h8);
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+      }
+    }
+  }
+  .tab-box {
+    background-color: var(--e-color-bg2);
+    display: flex;
+    top: 80px;
+    width: 100%;
+    z-index: 99;
+    position: static;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom: 1px solid var(--e-color-division1);
+    @media (max-width: 1100px) {
+      top: 48px;
+    }
+    @media (max-width: 768px) {
+      display: none;
+    }
+    :deep(.el-tabs__header) {
+      margin: 0px;
+    }
+
+    :deep(.el-tabs) {
+      --el-tabs-header-height: var(--o-line-height-h3);
+      @media (max-width: 768px) {
+        --el-tabs-header-height: 34px;
+      }
+    }
+
+    :deep(.el-tabs__item) {
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
+      padding-bottom: var(--o-spacing-h6);
+      padding-top: var(--o-spacing-h6);
+      @media (max-width: 768px) {
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+        padding-bottom: var(--o-spacing-h10);
+        padding-top: var(--o-spacing-h10);
+      }
+    }
+
+    :deep(.is-active) {
+      color: var(--e-color-brand1);
+    }
+  }
+  .agenda {
+    margin-bottom: var(--o-spacing-h2);
+    .tab-box-time {
+      background-color: var(--e-color-bg2);
+      display: flex;
+      align-items: flex-end;
+      margin-top: var(--o-spacing-h4);
+      @media (max-width: 768px) {
+        margin: var(--o-spacing-h5) 0;
+      }
+      :deep(.el-tabs__header) {
+        margin: 0px;
+      }
+
+      :deep(.el-tabs) {
+        --el-tabs-header-height: var(--o-line-height-h3);
+        @media (max-width: 768px) {
+          --el-tabs-header-height: 34px;
+        }
+      }
+
+      :deep(.el-tabs__item) {
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
+        padding-bottom: var(--o-spacing-h6);
+        padding-top: var(--o-spacing-h6);
+        @media (max-width: 768px) {
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
+          padding-bottom: var(--o-spacing-h9);
+          padding-top: var(--o-spacing-h9);
+        }
+      }
+
+      :deep(.is-active) {
+        color: var(--e-color-brand1);
+      }
+    }
+    .table {
+      @media (max-width: 768px) {
+        display: none;
+      }
+
+      :deep(.o-table) {
+        box-shadow: none;
+      }
+
+      :deep(.el-table) .cell {
+        padding: 0px;
+      }
+
+      :deep(.el-table__cell) {
+        border-bottom: 0px;
+        vertical-align: top;
+        padding: var(--o-spacing-h4) 0;
+      }
+
+      :deep(.el-table__inner-wrapper::before) {
+        height: 0px;
+      }
+
+      :deep(.el-table_1_column_2) .cell {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: var(--e-color-text1);
+        font-weight: normal;
+      }
+
+      :deep(tr) {
+        height: 76px;
+        font-size: var(--o-font-size-h6);
+        line-height: var(--o-line-height-h6);
+        &:hover {
+          background-color: var(--e-color-bg2);
+        }
+        --el-table-row-hover-bg-color: var(--e-color-bg2);
+        &:last-child {
+          .el-table__cell {
+            border-bottom: none;
+          }
+        }
+        .el-table__cell {
+          border-bottom: 1px solid var(--e-color-division1);
+        }
+
+        .speark-item {
+          display: flex;
+          padding: var(--o-spacing-h9) 0;
+          justify-content: space-between;
+          .name {
+            color: var(--e-color-text1);
+            min-width: 100px;
+          }
+          .position {
+            font-size: var(--o-font-size-h8);
+            text-align: left;
           }
         }
       }
-      .tab-box {
-        background-color: var(--e-color-bg2);
+      .icon-time {
+        margin-right: var(--o-spacing-h8);
+        width: 24px;
+        height: 24px;
+      }
+      .time-box {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
+      }
+    }
+  }
+  .meet-message {
+    .meet-address {
+      position: relative;
+      padding: var(--o-spacing-h2) 80px;
+      margin: 0 auto;
+      max-width: 920px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background: var(--e-color-bg2);
+      box-shadow: var(--o-shadow-base);
+      border-bottom: 3px solid var(--e-color-brand1);
+      z-index: 10;
+      @media (max-width: 1080px) {
+        flex-flow: column;
         justify-content: center;
-        border-bottom: 1px solid var(---e-color-neutral11);
-        @media (max-width: 768px) {
-          display: none;
-        }
-        :deep(.el-tabs__header) {
-          margin: 0px;
-        }
-
-        :deep(.el-tabs) {
-          --el-tabs-header-height: var(--o-line-height-h3);
+        align-items: center;
+        border-bottom: none;
+        box-shadow: none;
+        padding: 0px;
+        margin: 0;
+      }
+      .address-message {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 46px;
           @media (max-width: 768px) {
-            --el-tabs-header-height: 34px;
+            margin-top: var(--o-spacing-h4);
+            height: 32px;
           }
         }
-
-        :deep(.el-tabs__item) {
+      }
+      .address-text {
+        margin-left: 80px;
+        position: relative;
+        @media (max-width: 1080px) {
+          margin-top: var(--o-spacing-h4);
+          margin-left: 0px;
+          display: flex;
+          flex-flow: column;
+          justify-content: center;
+          align-items: center;
+        }
+        p {
           font-size: var(--o-font-size-h8);
+          max-width: 350px;
+          color: var(--e-color-text1);
           line-height: var(--o-line-height-h8);
-          padding-bottom: var(--o-spacing-h6);
-          padding-top: var(--o-spacing-h6);
+          margin-bottom: var(--o-spacing-h4);
+          @media (max-width: 1080px) {
+            margin-bottom: var(--o-spacing-h5);
+            text-align: center;
+            max-width: 100%;
+          }
           @media (max-width: 768px) {
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
-            padding-bottom: var(--o-spacing-h10);
-            padding-top: var(--o-spacing-h10);
           }
-        }
-
-        :deep(.is-active) {
-          color: var(--e-color-brand1);
-        }
-      }
-      .agenda {
-        .tab-box-time {
-          background-color: var(--e-color-bg2);
-          display: flex;
-          align-items: flex-end;
-          margin-top: var(--o-spacing-h4);
-          @media (max-width: 768px) {
-            margin: var(--o-spacing-h5) 0;
-          }
-          :deep(.el-tabs__header) {
-            margin: 0px;
-          }
-
-          :deep(.el-tabs) {
-            --el-tabs-header-height: var(--o-line-height-h3);
-            @media (max-width: 768px) {
-              --el-tabs-header-height: 34px;
-            }
-          }
-
-          :deep(.el-tabs__item) {
-            font-size: var(--o-font-size-h8);
-            line-height: var(--o-line-height-h8);
-            padding-bottom: var(--o-spacing-h6);
-            padding-top: var(--o-spacing-h6);
-            @media (max-width: 768px) {
-              font-size: var(--o-font-size-text);
-              line-height: var(--o-line-height-text);
-              padding-bottom: var(--o-spacing-h9);
-              padding-top: var(--o-spacing-h9);
-            }
-          }
-
-          :deep(.is-active) {
+          &:nth-of-type(odd) {
             color: var(--e-color-brand1);
-          }
-        }
-        .table {
-          @media (max-width: 768px) {
-            display: none;
-          }
-          :deep(.el-table) .cell {
-            padding: 0px;
-          }
-
-          :deep(.el-table_1_column_2) .cell {
-            color: var(--e-color-text1);
-            font-family: 'FZLTHJW--GB1-0, FZLTHJW--GB1';
-            font-weight: normal;
-          }
-
-          :deep(.el-table__cell) {
-            border-bottom: 1px solid var(--e-color-neutral11);
-          }
-
-          :deep(tr) {
-            height: 76px;
             font-size: var(--o-font-size-h6);
             line-height: var(--o-line-height-h6);
-
-            .speark-item {
-              display: flex;
-              padding: var(--o-spacing-h9) 0;
-              .name {
-                color: var(--e-color-text1);
-                min-width: 150px;
-              }
-              .position {
-                font-size: var(--o-font-size-h8);
-              }
+            margin-bottom: var(--o-spacing-h5);
+            @media (max-width: 1080px) {
+              margin-bottom: var(--o-spacing-h8);
+            }
+            @media (max-width: 768px) {
+              font-size: var(--o-font-size-h8);
+              line-height: var(--o-line-height-h8);
             }
           }
-          .icon-time {
-            margin-right: 8px;
-            width: 24px;
-            height: 24px;
-          }
-          .time-box {
-            display: flex;
-            align-items: center;
+          &:last-of-type {
+            margin-bottom: 0;
           }
         }
       }
-      .meet-message {
-        .meet-address {
-          position: relative;
-          padding: var(--o-spacing-h2) 80px;
-          margin: 0 auto;
-          max-width: 920px;
+      .scan-qrcode {
+        position: relative;
+        span {
+          margin-top: var(--o-spacing-h9);
+          width: 100px;
           display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          background: var(--e-color-bg2);
-          box-shadow: var(--o-shadow-base);
-          border-bottom: 3px solid var(--e-color-brand1);
-          z-index: 10;
+          flex-flow: row;
+          justify-content: center;
+          align-items: center;
+          font-size: var(--o-font-size-h6);
+          color: var(--e-color-brand1);
+          line-height: var(--o-line-height-h6);
           @media (max-width: 1080px) {
-            flex-flow: column;
-            justify-content: center;
-            align-items: center;
-            border-bottom: none;
-            box-shadow: none;
-            padding: 0px;
-            margin: 0;
+            margin-top: var(--o-spacing-h5);
           }
-          .address-message {
-            display: flex;
-            flex-flow: row;
-            justify-content: center;
-            align-items: center;
-            img {
-              height: 46px;
-              @media (max-width: 768px) {
-                margin-top: var(--o-spacing-h4);
-                height: 32px;
-              }
-            }
-          }
-          .address-text {
-            margin-left: 80px;
-            position: relative;
-            @media (max-width: 1080px) {
-              margin-top: var(--o-spacing-h4);
-              margin-left: 0px;
-              display: flex;
-              flex-flow: column;
-              justify-content: center;
-              align-items: center;
-            }
-            p {
-              font-size: var(--o-font-size-h8);
-              max-width: 350px;
-              color: var(--e-color-text1);
-              line-height: var(--o-line-height-h8);
-              margin-bottom: var(--o-spacing-h4);
-              @media (max-width: 1080px) {
-                margin-bottom: var(--o-spacing-h5);
-                text-align: center;
-                max-width: 100%;
-              }
-              @media (max-width: 768px) {
-                font-size: var(--o-font-size-text);
-                line-height: var(--o-line-height-text);
-              }
-              &:nth-of-type(odd) {
-                color: var(--e-color-brand1);
-                font-size: var(--o-font-size-h6);
-                line-height: var(--o-line-height-h6);
-                margin-bottom: var(--o-spacing-h5);
-                @media (max-width: 1080px) {
-                  margin-bottom: var(--o-spacing-h8);
-                }
-                @media (max-width: 768px) {
-                  font-size: var(--o-font-size-h8);
-                  line-height: var(--o-line-height-h8);
-                }
-              }
-              &:last-of-type {
-                margin-bottom: 0;
-              }
-            }
-          }
-          .scan-qrcode {
-            position: relative;
-            span {
-              margin-top: var(--o-spacing-h9);
-              width: 100px;
-              display: flex;
-              flex-flow: row;
-              justify-content: center;
-              align-items: center;
-              font-size: var(--o-font-size-h6);
-              color: var(--e-color-brand1);
-              line-height: var(--o-line-height-h6);
-              @media (max-width: 1080px) {
-                margin-top: var(--o-spacing-h5);
-              }
-              @media (max-width: 768px) {
-                font-size: var(--o-font-size-h8);
-                line-height: var(--o-line-height-h8);
-              }
-            }
-            img {
-              display: block;
-              width: 100px;
-              height: 100px;
-              margin-top: var(--o-spacing-h5);
-              @media (max-width: 1080px) {
-                margin-bottom: var(--o-spacing-h5);
-              }
-              @media (max-width: 768px) {
-                margin-bottom: 0;
-              }
-            }
-          }
-        }
-        .map {
-          width: 100%;
-          margin: -50px auto 0 auto;
-          height: 100%;
           @media (max-width: 768px) {
-            display: none;
-          }
-          #container {
-            width: 100%;
-            height: 500px;
+            font-size: var(--o-font-size-h8);
+            line-height: var(--o-line-height-h8);
           }
         }
+        img {
+          display: block;
+          width: 100px;
+          height: 100px;
+          margin-top: var(--o-spacing-h5);
+          @media (max-width: 1080px) {
+            margin-bottom: var(--o-spacing-h5);
+          }
+          @media (max-width: 768px) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    .map {
+      width: 100%;
+      margin: -50px auto 0 auto;
+      height: 100%;
+      @media (max-width: 768px) {
+        display: none;
+      }
+      #container {
+        width: 100%;
+        height: 500px;
       }
     }
   }

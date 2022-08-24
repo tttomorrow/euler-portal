@@ -63,8 +63,8 @@ onMounted(() => {
       <p class="last-page" @click="goBackPage">
         {{ i18n.security.SECURITY_ADVISORIES }}
       </p>
-      <span class="separtor"
-        ><o-icon><icon-chevron></icon-chevron></o-icon
+      <span class="separtor">
+        <o-icon><icon-chevron></icon-chevron></o-icon
       ></span>
       <p class="current-page">{{ i18n.security.SECURITY_ADVISORIES_DETAIL }}</p>
     </div>
@@ -126,7 +126,9 @@ onMounted(() => {
             </div>
             <div class="tab-content-item">
               <h5 class="tab-content-item-title">{{ i18n.security.CVE }}</h5>
-              {{ detailData.cveId }}
+              <p class="tab-content-item-text">
+                {{ detailData.cveId }}
+              </p>
             </div>
             <div class="tab-content-item">
               <h5 class="tab-content-item-title">
@@ -171,9 +173,13 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 :deep(.el-tabs) {
+  .el-tabs__nav-wrap {
+    box-shadow: var(--e-shadow-l1);
+  }
   .el-tabs__nav-scroll {
     display: flex;
     justify-content: center;
+    height: 48px;
     @media screen and (max-width: 768px) {
       margin: var(--o-spacing-h5) 0 0 0;
       background-color: var(--e-color-bg2);
@@ -189,16 +195,17 @@ onMounted(() => {
   background-color: var(--e-color-bg2);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5) 0;
-    background: #f5f6f8;
+    background-color: var(--e-color-bg1);
   }
 }
 .breadcrumb {
   margin-top: var(--o-spacing-h2);
   color: var(--e-color-text1);
-  background: #f5f6f8;
+  background: var(--e-color-bg1);
   display: flex;
   @media screen and (max-width: 768px) {
     margin-bottom: var(--o-spacing-h5);
+    margin-top: 0;
     padding: 0 var(--o-spacing-h5);
   }
   .last-page {
@@ -210,6 +217,9 @@ onMounted(() => {
   }
   .separtor {
     margin: 0 var(--o-spacing-h10);
+    .o-icon {
+      color: var(--e-color-text1);
+    }
   }
   .current-page {
     font-size: var(--o-font-size-tip);
@@ -220,12 +230,12 @@ onMounted(() => {
 }
 .bulletin-head {
   padding: var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2) 0;
-  background: #f5f6f8;
+  background: var(--e-color-bg1);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
     margin: 0 var(--o-spacing-h5);
     background: var(--e-color-bg2);
-    box-shadow: 0px 1px 5px 0px rgba(45, 47, 51, 0.1);
+    box-shadow: var(--e-shadow-l1);
   }
   .bulletin-name {
     font-size: var(--o-font-size-h3);
@@ -252,20 +262,19 @@ onMounted(() => {
     }
     @media screen and (max-width: 768px) {
       margin: 0;
-      font-size: 12px;
+      font-size: var(--o-font-size-tip);
       font-weight: 400;
-      color: #000000;
-      line-height: 18px;
+      color: var(--e-color-text1);
+      line-height: var(--o-line-height-tip);
     }
   }
 }
 
 .tabs-container {
-  // border-bottom: 1px solid var(--o-color-border);
   .o-tabs {
     .tab-content {
       width: 100%;
-      padding: var(--o-spacing-h2) var(--o-spacing-h2) 0;
+      padding: var(--o-spacing-h2);
       background-color: var(--e-color-bg2);
       @media screen and (max-width: 768px) {
         margin: var(--o-spacing-h5 --o-spacing-h5 --o-spacing-h2);
@@ -276,6 +285,9 @@ onMounted(() => {
       }
       &-item {
         margin-bottom: var(--o-spacing-h2);
+        &:last-child {
+          margin-bottom: 0;
+        }
         &-title {
           font-size: var(--o-font-size-h5);
           font-weight: 500;
@@ -289,19 +301,21 @@ onMounted(() => {
           color: var(--e-color-text1);
           line-height: var(--o-line-height-text);
           a {
-            color: var(--o-color-link);
+            color: var(--e-color-link1);
           }
         }
       }
       .packge-item {
+        // margin-bottom: 40px;
         &-title {
           font-size: var(--o-font-size-h5);
           font-weight: 400;
           line-height: var(--o-line-height-h8);
           margin-bottom: var(--o-spacing-h3);
+          color: var(--e-color-text1);
         }
         &-class {
-          margin-bottom: var(--o-spacing-h2);
+          margin-bottom: var(--o-spacing-h4);
           &:last-child {
             margin-bottom: 0;
           }
@@ -309,13 +323,13 @@ onMounted(() => {
             color: var(--e-color-text1);
             font-size: var(--o-font-size-h8);
             line-height: 64px;
-            border-bottom: 1px solid var(--o-color-border);
+            border-bottom: 1px solid var(--e-color-border1);
           }
           &-rpm {
             line-height: var(--o-line-height-h3);
             font-size: var(--o-font-size-text);
-            color: rgba(0, 0, 0, 0.5);
-            border-bottom: 1px solid var(--o-color-border);
+            color: var(--e-color-text4);
+            border-bottom: 1px solid var(--e-color-border1);
             &:last-child {
               border: none;
             }

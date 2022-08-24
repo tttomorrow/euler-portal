@@ -22,11 +22,15 @@ defineProps({
     type: String,
     default: '',
   },
+  frameType: {
+    type: String,
+    default: '',
+  },
 });
 </script>
 <template>
   <div class="framelist-wrapper">
-    <div class="info">
+    <div class="info" :class="frameType">
       <div class="desc">
         <p v-for="(item, index) in descList" :key="index">
           {{ item }}
@@ -59,6 +63,7 @@ defineProps({
     margin: 0 auto;
     display: block;
   }
+
   @media screen and (min-width: 1440px) {
     max-width: 1416px;
     img {
@@ -75,6 +80,21 @@ defineProps({
       width: 542px;
     }
   }
+  .iSulad {
+    img {
+      width: 710px;
+    }
+  }
+  .isula-build {
+    img {
+      width: 550px;
+    }
+  }
+  .isula-transform {
+    img {
+      width: 1030px;
+    }
+  }
   @media screen and (max-width: 767px) {
     .info {
       padding: var(--o-spacing-h5);
@@ -89,7 +109,7 @@ defineProps({
     }
     img {
       margin-top: var(--o-spacing-h5);
-      width: 100%;
+      width: 100% !important;
     }
   }
 }

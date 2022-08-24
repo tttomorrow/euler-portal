@@ -455,7 +455,6 @@ const goHome = () => {
   .detail-pc {
     display: block;
     overflow: hidden;
-    padding-bottom: 200px;
     h1 {
       width: 100%;
       font-size: var(--o-font-size-h3);
@@ -485,7 +484,7 @@ const goHome = () => {
       .article-nav {
         margin-right: 60px;
         background: var(--e-color-bg2);
-        box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--e-shadow2);
         border-radius: 8px;
         .nav-top {
           width: 360px;
@@ -582,7 +581,6 @@ const goHome = () => {
                 width: 104px;
                 height: 28px;
                 background: var(--e-color-brand1);
-                border-radius: 4px;
                 color: #ffffff;
                 font-size: var(--o-font-size-text);
                 line-height: 28px;
@@ -595,6 +593,7 @@ const goHome = () => {
             max-width: 864px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
           }
         }
         .video {
@@ -784,90 +783,7 @@ const goHome = () => {
           }
         }
       }
-      .nav-tree {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 268px;
-        height: 100vh;
-        background: var(--e-color-bg2);
-        box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        z-index: 999;
-        .nav-top {
-          width: 100%;
-          background: var(--e-color-bg2);
-          font-size: 14px;
-          line-height: 22px;
-          color: var(--e-color-text1);
-          padding: var(--o-spacing-h5);
-          font-weight: bold;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          .logo {
-            height: 24px;
-            cursor: pointer;
-          }
-          :deep(.o-icon) {
-            padding: 12px;
-            cursor: pointer;
-            font-size: var(--o-font-size-h5);
-          }
-        }
-        :deep(.el-tree) {
-          width: 100%;
-          overflow: hidden;
-          background-color: var(--e-color-bg2);
-        }
-        :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
-          order: 2;
-          padding: 12px;
-          font-size: var(--o-font-size-h8);
-          color: var(--e-color-text1);
-        }
-        :deep(.el-tree-node__expand-icon.expanded) {
-          transform: rotate(180deg);
-        }
-        :deep(.el-tree--highlight-current
-            .el-tree-node.is-current
-            > .el-tree-node__content) {
-          background-color: var(--e-color-bg4);
-        }
-        :deep(.el-tree-node:nth-of-type(1)
-            > .el-tree-node__content
-            > .el-tree-node__expand-icon) {
-          display: none;
-        }
-        :deep(.el-tree-node__children .el-tree-node__expand-icon) {
-          display: none;
-        }
-        :deep(.el-tree-node__children .is-current .el-tree-node__label) {
-          color: var(--e-color-brand1);
-        }
-        :deep(.el-tree--highlight-current
-            .el-tree-node.is-current
-            > .el-tree-node__content) {
-          background-color: transparent;
-        }
-        :deep(.el-tree-node__children) {
-          background-color: var(--e-color-bg1);
-        }
-        :deep(.el-tree .el-tree-node__label) {
-          font-size: 14px;
-          line-height: 16px;
-          color: var(--e-color-text1);
-        }
-        :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
-          font-size: 14px;
-          line-height: 20px;
-          white-space: pre-wrap;
-        }
-        :deep(.el-tree-node .el-tree-node__content) {
-          padding: 19px var(--o-spacing-h5) !important;
-          justify-content: space-between;
-        }
-      }
+
       .mobile-content {
         width: 100%;
         margin: 0 auto;
@@ -981,5 +897,89 @@ const goHome = () => {
       display: none;
     }
   }
+  .nav-tree {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 268px;
+        height: 100vh;
+        background: var(--e-color-bg2);
+        box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 999;
+        .nav-top {
+          width: 100%;
+          background: var(--e-color-bg2);
+          font-size: 14px;
+          line-height: 22px;
+          color: var(--e-color-text1);
+          padding: var(--o-spacing-h5);
+          font-weight: bold;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .logo {
+            height: 24px;
+            cursor: pointer;
+          }
+          :deep(.o-icon) {
+            padding: 12px;
+            cursor: pointer;
+            font-size: var(--o-font-size-h5);
+          }
+        }
+        :deep(.el-tree) {
+          width: 100%;
+          overflow: hidden;
+          background-color: var(--e-color-bg2);
+        }
+        :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
+          order: 2;
+          padding: 12px;
+          font-size: var(--o-font-size-h8);
+          color: var(--e-color-text1);
+        }
+        :deep(.el-tree-node__expand-icon.expanded) {
+          transform: rotate(180deg);
+        }
+        :deep(.el-tree--highlight-current
+            .el-tree-node.is-current
+            > .el-tree-node__content) {
+          background-color: var(--e-color-bg4);
+        }
+        :deep(.el-tree-node:nth-of-type(1)
+            > .el-tree-node__content
+            > .el-tree-node__expand-icon) {
+          display: none;
+        }
+        :deep(.el-tree-node__children .el-tree-node__expand-icon) {
+          display: none;
+        }
+        :deep(.el-tree-node__children .is-current .el-tree-node__label) {
+          color: var(--e-color-brand1);
+        }
+        :deep(.el-tree--highlight-current
+            .el-tree-node.is-current
+            > .el-tree-node__content) {
+          background-color: transparent;
+        }
+        :deep(.el-tree-node__children) {
+          background-color: var(--e-color-bg1);
+        }
+        :deep(.el-tree .el-tree-node__label) {
+          font-size: 14px;
+          line-height: 16px;
+          color: var(--e-color-text1);
+        }
+        :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
+          font-size: 14px;
+          line-height: 20px;
+          white-space: pre-wrap;
+        }
+        :deep(.el-tree-node .el-tree-node__content) {
+          padding: 19px var(--o-spacing-h5) !important;
+          justify-content: space-between;
+        }
+      }
 }
 </style>

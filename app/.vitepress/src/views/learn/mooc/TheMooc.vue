@@ -19,29 +19,31 @@ const i18n = useI18n();
       :illustration="searchBanner"
     />
     <div class="mooc-content">
-      <div class="left">
-        <img :src="i18n.mooc.MOOC.MOOC_COURSE[0].IMG" alt="" />
-      </div>
-      <div class="right">
-        <h3>{{ i18n.mooc.MOOC.MOOC_COURSE[0].TITLE }}</h3>
-        <p>{{ i18n.mooc.MOOC.MOOC_COURSE[0].DESC }}</p>
-        <div class="btn">
-          <a href="/zh/learn/mooc/detail/" target="_self">
-            <OButton type="primary" size="mini">
-              <span>{{ i18n.mooc.MOOC.BTN_LEARN }}</span>
-              <OIcon class="icon-more">
-                <IconArrowRight1 />
-              </OIcon>
-            </OButton>
-          </a>
-          <a :href="i18n.mooc.MOOC.MOOC_COURSE[0].APPLY_LINK" target="_blank">
-            <OButton size="mini">
-              <span>{{ i18n.mooc.MOOC.BTN_APPLY }}</span>
-              <OIcon>
-                <IconArrowRight1 />
-              </OIcon>
-            </OButton>
-          </a>
+      <div class="hover-box">
+        <div class="left">
+          <img :src="i18n.mooc.MOOC.MOOC_COURSE[0].IMG" alt="" />
+        </div>
+        <div class="right">
+          <h3>{{ i18n.mooc.MOOC.MOOC_COURSE[0].TITLE }}</h3>
+          <p>{{ i18n.mooc.MOOC.MOOC_COURSE[0].DESC }}</p>
+          <div class="btn">
+            <a href="/zh/learn/mooc/detail/" target="_self">
+              <OButton type="primary" size="mini">
+                <span>{{ i18n.mooc.MOOC.BTN_LEARN }}</span>
+                <OIcon class="icon-more">
+                  <IconArrowRight1 />
+                </OIcon>
+              </OButton>
+            </a>
+            <a :href="i18n.mooc.MOOC.MOOC_COURSE[0].APPLY_LINK" target="_blank">
+              <OButton size="mini">
+                <span>{{ i18n.mooc.MOOC.BTN_APPLY }}</span>
+                <OIcon>
+                  <IconArrowRight1 />
+                </OIcon>
+              </OButton>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -54,86 +56,96 @@ const i18n = useI18n();
     height: 30px;
   }
   .mooc-content {
-    display: flex;
     max-width: 1504px;
     margin: var(--o-spacing-h1) auto;
     padding: 0 var(--o-spacing-h2);
+
     @media (max-width: 975px) {
-      display: block;
       padding: 0 var(--o-spacing-h5);
       margin: var(--o-spacing-h2) auto 0 auto;
     }
-    .left {
-      max-height: 222px;
+    .hover-box {
+      display: flex;
+      &:hover {
+        box-shadow: var(--e-shadow-l2_hover);
+      }
       @media (max-width: 975px) {
-        width: 100%;
+        display: block;
       }
-      img {
-        width: 100%;
+      .left {
         max-height: 222px;
-        object-fit: cover;
-      }
-    }
-    .right {
-      // min-width: 420px;
-      padding: var(--o-spacing-h2);
-      position: relative;
-      background-color: var(--e-color-bg2);
-      flex-grow: 1;
-      @media (max-width: 768px) {
-        padding: var(--o-spacing-h5);
-      }
-      h3 {
-        font-size: var(--o-font-size-h5);
-        line-height: var(--o-line-height-h5);
-        color: var(--e-color-text1);
-        @media (max-width: 768px) {
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-        }
-      }
-      p {
-        font-size: var(--o-font-size-text);
-        line-height: 22px;
-        color: var(--e-color-text4);
-        margin-top: var(--o-spacing-h5);
-        @media (max-width: 768px) {
-          font-size: var(--o-font-size-tip);
-          line-height: var(--o-line-height-tip);
-          margin-top: var(--o-spacing-h8);
-        }
-      }
-      .btn {
-        display: flex;
-        position: absolute;
-        bottom: 40px;
+        box-shadow: var(--e-shadow1);
         @media (max-width: 975px) {
-          position: static;
+          width: 100%;
         }
-        .o-button {
-          margin-right: 24px;
-          margin-top: var(--o-spacing-h2);
-          font-size: var(--o-font-size-text);
-          text-align: left;
-
+        img {
+          width: 100%;
+          max-height: 222px;
+          object-fit: cover;
+        }
+      }
+      .right {
+        // min-width: 420px;
+        padding: var(--o-spacing-h2);
+        position: relative;
+        background-color: var(--e-color-bg2);
+        flex-grow: 1;
+        box-shadow: var(--e-shadow1);
+        @media (max-width: 768px) {
+          padding: var(--o-spacing-h5);
+        }
+        h3 {
+          font-size: var(--o-font-size-h5);
+          line-height: var(--o-line-height-h5);
+          color: var(--e-color-text1);
           @media (max-width: 768px) {
-            margin-right: 16px;
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+          }
+        }
+        p {
+          font-size: var(--o-font-size-text);
+          line-height: 22px;
+          color: var(--e-color-text4);
+          margin-top: var(--o-spacing-h5);
+          @media (max-width: 768px) {
+            font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-height-tip);
             margin-top: var(--o-spacing-h8);
           }
-          > :deep(span) {
-            display: flex;
-            align-items: center;
+        }
+        .btn {
+          display: flex;
+          position: absolute;
+          bottom: 40px;
+          @media (max-width: 975px) {
+            position: static;
           }
-          .o-icon {
-            font-size: 12px;
-            margin-left: 8px;
-            transition: all 0.3s;
-          }
-          &:hover .o-icon {
-            transform: translateX(3px);
-          }
-          &-type-primary {
-            color: #ffffff;
+          .o-button {
+            margin-right: 24px;
+            margin-top: var(--o-spacing-h2);
+            font-size: var(--o-font-size-text);
+            text-align: left;
+
+            @media (max-width: 768px) {
+              margin-right: 16px;
+              margin-top: var(--o-spacing-h8);
+            }
+            > :deep(span) {
+              display: flex;
+              align-items: center;
+            }
+            .o-icon {
+              font-size: 12px;
+              margin-left: 8px;
+              transition: all 0.3s;
+            }
+            &:hover .o-icon {
+              transform: translateX(3px);
+            }
+            &-type-primary {
+              color: #ffffff;
+            }
           }
         }
       }

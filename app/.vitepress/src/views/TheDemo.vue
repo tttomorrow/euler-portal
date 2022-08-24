@@ -75,7 +75,7 @@ const activeIndex = ref(0);
 const tagClick = (i: number) => {
   activeIndex.value = i;
 };
-// tagFiter end
+// tagFiter end-
 
 const isDrawerOpen = ref(false);
 const toggleDrawer = () => {
@@ -169,6 +169,10 @@ function turnPage(option: string) {
         inactive-text="否"
         active-color="#002fa7"
       />
+    </div>
+    <div class="demo-box">
+      <h4>OContainer</h4>
+      <OContainer class="container" :level-index="2"></OContainer>
     </div>
     <div class="demo-box">
       <h4>ODrawer</h4>
@@ -422,5 +426,10 @@ body {
     line-height: var(--o-line-height-text);
     text-align: center;
   }
+}
+
+.container {
+  width: 100px;
+  height: 100px;
 }
 </style>

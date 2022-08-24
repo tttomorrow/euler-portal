@@ -15,15 +15,19 @@ import IconCalendar from '~icons/app/icon-calendar.svg';
 import { getSecurityList } from '@/api/api-security';
 import { SecurityLists, CveQuery } from '@/shared/@types/type-support';
 import OSearch from 'opendesign/search/OSearch.vue';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
+const windowWidth = ref(useWindowResize());
 const i18n = useI18n();
-
 const router = useRouter();
+const screenWidth = ref(1080);
 
 const inputName = ref('');
 const total = ref(0);
+const currentPage = ref(1);
+const totalPage = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-const years = ['', '2019', '2020', '2021'];
+const years = ['', '2021', '2020', '2019'];
 const selectedYear = ref('2021');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
@@ -56,6 +60,7 @@ function getSecurityLists(data: CveQuery) {
       tableData.value = res.result.securityNoticeList;
       if (res.result.totalCount) {
         total.value = res.result.totalCount;
+        totalPage.value = Math.ceil(total.value / queryData.pages.size);
       } else {
         total.value = 1;
       }
@@ -82,10 +87,12 @@ const yearTagClick = (i: number, type: string) => {
 
 const handleSizeChange = (val: number) => {
   queryData.pages.size = val;
+  totalPage.value = Math.ceil(total.value / val);
 };
 
 const handleCurrentChange = (val: number) => {
   queryData.pages.page = val;
+  currentPage.value = val;
 };
 
 function searchValchange() {
@@ -114,27 +121,21 @@ onMounted(() => {
 });
 
 watch(queryData, () => getSecurityLists(queryData));
+watch(windowWidth, () => {
+  screenWidth.value = windowWidth.value;
+});
 </script>
 
 <template>
+  <BannerLevel2
+    class="banner-pc"
+    :background-image="banner"
+    background-text="CONTENT"
+    :title="i18n.security.SECURITY_ADVISORIES"
+    subtitle=""
+    :illustration="screenWidth >= 1000 ? search : cve"
+  />
   <div class="wrapper">
-    <BannerLevel2
-      class="banner-pc"
-      :background-image="banner"
-      background-text="CONTENT"
-      :title="i18n.security.SECURITY_ADVISORIES"
-      subtitle=""
-      :illustration="search"
-    />
-    <BannerLevel2
-      class="banner-mobile"
-      :background-image="banner"
-      background-text="CONTENT"
-      :title="i18n.security.SECURITY_ADVISORIES"
-      subtitle=""
-      :illustration="cve"
-    />
-
     <div class="bulletin-main">
       <div class="input-container">
         <OSearch
@@ -147,11 +148,11 @@ watch(queryData, () => getSecurityLists(queryData));
       <OCard class="filter-card">
         <template #header>
           <div class="card-header">
-            <!-- <span class="category">{{ i18n.security.SEVERITY }}</span> -->
             <TagFilter :label="i18n.security.SEVERITY" :show="false">
               <OTag
                 v-for="(item, index) in i18n.security.SEVERITY_LIST"
                 :key="'tag' + index"
+                checkable
                 :type="activeIndex === index ? 'primary' : 'text'"
                 @click="tagClick(index, item.LABEL)"
               >
@@ -161,11 +162,11 @@ watch(queryData, () => getSecurityLists(queryData));
           </div>
         </template>
         <div class="card-body">
-          <!-- <span class="category">{{ i18n.security.YEAR }}</span> -->
           <TagFilter :show="false" :label="i18n.security.YEAR">
             <OTag
               v-for="(item, index) in years"
               :key="'tag' + index"
+              checkable
               :type="activeIndex1 === index ? 'primary' : 'text'"
               @click="yearTagClick(index, item)"
             >
@@ -234,7 +235,7 @@ watch(queryData, () => getSecurityLists(queryData));
         <OTableColumn
           :label="i18n.security.SEVERITY"
           prop="type"
-          width="120"
+          width="160"
         ></OTableColumn>
         <OTableColumn
           :label="i18n.security.AFFECTED_PRODUCTS"
@@ -257,7 +258,7 @@ watch(queryData, () => getSecurityLists(queryData));
           <ul>
             <li @click="jumpBulletinDetail(item.securityNoticeNo)">
               <span>{{ i18n.security.ADVISORY }}:</span
-              >{{ item.securityNoticeNo }}
+              ><span class="notice">{{ item.securityNoticeNo }}</span>
             </li>
             <li>
               <span>{{ i18n.security.OVERVIEW }}:</span>{{ item.summary }}
@@ -290,14 +291,16 @@ watch(queryData, () => getSecurityLists(queryData));
         :layout="layout"
         :total="total"
         :background="true"
+        :hide-on-single-page="true"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       >
-        <span class="slot-content">5/20</span>
+        <span class="slot-content">{{ currentPage }}/{{ totalPage }}</span>
       </OPagination>
+
       <AppPaginationMo
         :current-page="queryData.pages.page"
-        :total-page="total"
+        :total-page="Math.ceil(total / 10)"
         @turn-page="turnPage"
       />
     </div>
@@ -305,30 +308,20 @@ watch(queryData, () => getSecurityLists(queryData));
 </template>
 
 <style lang="scss" scoped>
-.banner-pc {
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-}
-.banner-mobile {
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: block;
-  }
-}
 .bulletin-main {
   max-width: 1504px;
   padding: 0 var(--o-spacing-h2);
   margin: var(--o-spacing-h1) auto 0;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     margin: 0 auto;
-    padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
+    padding: var(--o-spacing-h5);
+    padding-bottom: 0;
   }
   .input-container {
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: none;
     }
-    .o-input {
+    .o-search {
       height: 48px !important;
     }
   }
@@ -337,9 +330,22 @@ watch(queryData, () => getSecurityLists(queryData));
     margin: var(--o-spacing-h5) 0;
     width: 100%;
     background-color: var(--e-color-bg2);
+    .o-icon {
+      color: var(--e-color-text1);
+    }
+    .selected-year {
+      color: var(--e-color-text1);
+    }
     :deep(.el-collapse) {
+      border: none;
       .el-collapse-item__header {
+        background-color: var(--e-color-bg2);
         padding: 0 8px;
+        border: none;
+        height: 34px;
+      }
+      .el-collapse-item__wrap {
+        border: none;
       }
       .el-collapse-item__content {
         padding-bottom: 0;
@@ -351,18 +357,23 @@ watch(queryData, () => getSecurityLists(queryData));
     }
     .years {
       padding: 0 8px 8px;
+      background-color: var(--e-color-bg2);
+      color: var(--e-color-text1);
       .selected {
         background-color: var(--e-color-bg4);
       }
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: block;
     }
   }
   .filter-card {
     margin: var(--o-spacing-h4) 0;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: none;
+    }
+    :deep(.el-card__body) {
+      padding: var(--o-spacing-h8) var(--o-spacing-h2);
     }
     .category {
       display: inline-block;
@@ -377,7 +388,7 @@ watch(queryData, () => getSecurityLists(queryData));
       display: inline-block;
       height: 28px;
       border: none;
-      margin-right: 32px;
+      margin-right: var(--o-spacing-h3);
       font-size: var(--o-font-size-text);
       font-weight: 400;
       color: var(--e-color-text4);
@@ -387,29 +398,30 @@ watch(queryData, () => getSecurityLists(queryData));
     }
     .active {
       display: inline-block;
-      border: 1px solid #002fa7;
-      color: #002fa7;
+      border: 1px solid var(--e-color-link1);
+      color: var(--e-color-link1);
       padding: 0px var(--o-spacing-h6);
     }
     .card-header {
-      padding-bottom: var(--o-spacing-h5);
+      padding-bottom: var(--o-spacing-h8);
       border-bottom: 1px solid #ccc;
     }
     .card-body {
-      padding-top: var(--o-spacing-h5);
+      padding-top: var(--o-spacing-h8);
     }
   }
   .filter-mobile {
     display: none;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: block;
     }
     .filter {
       display: flex;
       align-items: center;
       width: 100%;
+      margin-bottom: var(--o-spacing-h8);
       .selected {
-        background-color: #002fa7;
+        background-color: var(--e-color-brand1);
         color: var(--e-color-text2);
       }
       &-item {
@@ -419,54 +431,55 @@ watch(queryData, () => getSecurityLists(queryData));
         padding: var(--o-spacing-h9);
         font-size: var(--o-font-size-text);
         font-weight: 400;
-        color: #002fa7;
+        color: var(--e-color-brand1);
         line-height: var(--o-line-height-text);
-        border: 1px solid #002fa7;
+        border: 1px solid var(--e-color-brand1);
         border-right: 0;
         &:last-child {
-          border: 1px solid #002fa7;
+          border: 1px solid var(--e-color-brand1);
         }
       }
     }
   }
   .pc-list {
     .detail-page {
-      color: var(--o-color-link);
+      color: var(--e-color-link1);
       cursor: pointer;
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: none;
     }
   }
   .mobile-list {
     display: none;
     margin-bottom: var(--o-spacing-h5);
-    @media screen and (max-width: 768px) {
+    box-shadow: var(--e-shadow1);
+    @media screen and (max-width: 1000px) {
       display: block;
     }
     .item {
-      padding: var(--o-spacing-h5);
+      padding: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h8);
       font-size: var(--o-font-size-tip);
       font-weight: 400;
-      color: #999999;
+      color: var(--e-color-neutral8);
       line-height: var(--o-line-height-tip);
       background-color: var(--e-color-bg2);
       &:nth-child(odd) {
-        background: var(--o-color-bg6);
+        background: var(--e-color-bg4);
       }
       & li {
-        margin-bottom: 8px;
+        margin-bottom: var(--o-spacing-h8);
       }
-      li:last-child {
+      li:first-child {
         margin-bottom: 0;
-        a {
-          color: #002fa7;
+        .notice {
+          color: var(--e-color-link1);
         }
       }
-      li:nth-child(2) {
+      li:nth-child(4) {
         display: flex;
         span {
-          min-width: 30px;
+          min-width: 52px;
         }
       }
       span {
@@ -477,16 +490,19 @@ watch(queryData, () => getSecurityLists(queryData));
   }
   .pagination {
     margin-top: var(--o-spacing-h2);
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: none;
     }
     .slot-content {
+      font-size: var(--o-font-size-text);
+      font-weight: 400;
       color: var(--e-color-text1);
+      line-height: var(--o-spacing-h4);
     }
   }
   .mobile-pagination {
     display: none;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       display: block;
     }
   }

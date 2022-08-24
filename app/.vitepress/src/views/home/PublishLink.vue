@@ -1,23 +1,11 @@
 <script setup lang="ts">
-import useWindowResize from '@/components/hooks/useWindowResize';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
-import { computed } from 'vue';
+import { useCommon } from '@/stores/common';
 
+const commonStore = useCommon();
 const { lang } = useData();
 const i18n = useI18n();
-
-const screenWidth = useWindowResize();
-
-const imgStyle = computed(() => {
-  if (screenWidth.value > 1080) return 'pc-img';
-  else return 'mobile-img';
-});
-
-const imgContent = (item: { PC: any; MOBILE: any }) => {
-  if (screenWidth.value > 1080) return item.PC;
-  else return item.MOBILE;
-};
 </script>
 
 <template>
@@ -30,9 +18,13 @@ const imgContent = (item: { PC: any; MOBILE: any }) => {
         v-for="item in i18n.home.HOME_SOURCE_EDITION"
         :key="item.LINK"
         :href="item.LINK"
+        data-aos="fade-up"
         target="_blank"
       >
-        <img :class="imgStyle" :src="imgContent(item)" alt="" />
+        <img
+          :src="commonStore.theme === 'light' ? item.IMG : item.IMG_DARK"
+          alt=""
+        />
       </a>
     </div>
   </div>
@@ -52,10 +44,12 @@ const imgContent = (item: { PC: any; MOBILE: any }) => {
     width: 100%;
     text-align: center;
     margin-top: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h2);
     @media (max-width: 768px) {
+      margin-top: var(--o-spacing-h2);
+      margin-bottom: var(--o-spacing-h5);
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
-      margin-top: var(--o-spacing-h2);
     }
   }
 }
@@ -68,25 +62,25 @@ const imgContent = (item: { PC: any; MOBILE: any }) => {
   row-gap: 0;
   a {
     display: flex;
+    margin: 0px -1px -1px 0px;
     justify-content: center;
     align-items: center;
-    margin: 0px -1px -1px 0px;
-    padding: var(--o-spacing-h4);
-    border: 1px solid var(--e-color-neutral11);
+    border: 1px solid var(--e-color-division1);
     background-color: var(--e-color-bg2);
     max-height: 120px;
+    overflow: hidden;
     img {
       display: block;
       width: 100%;
-      object-fit: fill;
+      height: 100%;
+      object-fit: cover;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1416px) {
     margin-top: var(--o-spacing-h5);
     grid-template-columns: repeat(2, minmax(82px, 270px));
     justify-content: center;
     a {
-      padding: 10px 0;
       min-height: 40px;
       img {
         width: 100%;
