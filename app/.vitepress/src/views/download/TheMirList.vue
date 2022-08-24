@@ -5,6 +5,8 @@ import { getAllMirror } from '@/api/api-mirror';
 import IconCpoy from '~icons/app/icon-copy.svg';
 import { ElMessage } from 'element-plus';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
+import AppContent from '@/components/AppContent.vue';
+
 import banner from '@/assets/banner-secondary.png';
 import MapContainer from './MapContainer.vue';
 
@@ -138,7 +140,7 @@ onMounted(async () => {
     background-text="DOWNLOAD"
     :title="i18n.download.MIRROR_ALL.TITLE"
   />
-  <div class="mirror-list">
+  <AppContent class="mirror-list">
     <p>
       {{ i18n.download.MIRROR_ALL.CONTENT[0] }}
       <a href="mailto:admin@openeuler.io">
@@ -264,16 +266,15 @@ onMounted(async () => {
           <div class="mirror-card-word">{{ item.netband }}</div>
         </div>
       </OCard>
-    </div>
-    <div class="mirror-map">
-      <MapContainer :map-data="mapData"></MapContainer>
-    </div>
+      <div class="mirror-map">
+        <MapContainer :map-data="mapData"></MapContainer>
+      </div>
 
-    <div class="input-box">
-      <!-- 用于复制RSNC的值 -->
-      <input id="useCopy" type="text" />
-    </div>
-  </div>
+      <div class="input-box">
+        <!-- 用于复制RSNC的值 -->
+        <input id="useCopy" type="text" />
+      </div></div
+  ></AppContent>
 </template>
 <style lang="scss" scoped>
 .mirror {
@@ -462,23 +463,16 @@ onMounted(async () => {
       }
     }
   }
-
-  max-width: 1504px;
-  margin: 0 auto;
-  padding: 0 var(--o-spacing-h2);
-  @media (max-width: 1100px) {
-    padding: 0 var(--o-spacing-h5);
-  }
   p {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
     color: var(--e-color-text1);
+    margin-bottom: var(--o-spacing-h2);
     line-height: var(--o-line-height-h7);
-    margin: var(--o-spacing-h1) 0 var(--o-spacing-h2) 0;
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      margin: var(--o-spacing-h2) 0 var(--o-spacing-h5) 0;
+      margin-bottom: var(--o-spacing-h5);
     }
   }
   a {

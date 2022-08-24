@@ -5,6 +5,7 @@ import { selectMirror } from '@/api/api-mirror';
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 import banner from '@/assets/banner-secondary.png';
 import MapContainer from './MapContainer.vue';
+import AppContent from '@/components/AppContent.vue';
 
 const i18n = useI18n();
 
@@ -144,7 +145,7 @@ onMounted(async () => {
     background-text="DOWNLOAD"
     :title="i18n.download.MIRROR_SELECT.TITLE"
   />
-  <div class="mirror-select">
+  <AppContent class="mirror-select">
     <p>
       {{ i18n.download.MIRROR_SELECT.CONTENT[0]
       }}<span class="ip">{{ ipAndAsn.length ? ipAndAsn[0] : '' }}</span
@@ -251,7 +252,7 @@ onMounted(async () => {
     <div class="mirror-map">
       <MapContainer :map-data="mapData"></MapContainer>
     </div>
-  </div>
+  </AppContent>
 </template>
 <style lang="scss" scoped>
 .mirror {
@@ -361,7 +362,7 @@ onMounted(async () => {
       width: 100%;
       height: 1px;
       position: relative;
-      background-color: var( --e-color-division1);
+      background-color: var(--e-color-division1);
       margin: 0 auto;
       display: flex;
     }
@@ -382,7 +383,7 @@ onMounted(async () => {
         width: 100%;
         height: 1px;
         position: relative;
-        background-color: var( --e-color-division1);
+        background-color: var(--e-color-division1);
         margin: 0 auto;
         display: flex;
         left: var(--o-spacing-h2);
@@ -398,7 +399,7 @@ onMounted(async () => {
         width: 100%;
         height: 1px;
         position: relative;
-        background-color: var( --e-color-division1);
+        background-color: var(--e-color-division1);
         margin: 0 auto;
         display: flex;
         right: var(--o-spacing-h2);
@@ -408,10 +409,6 @@ onMounted(async () => {
       }
     }
   }
-
-  max-width: 1504px;
-  margin: 0 auto;
-  padding: 0 var(--o-spacing-h2);
   @media (max-width: 1100px) {
     padding: 0 var(--o-spacing-h5);
   }
@@ -420,11 +417,11 @@ onMounted(async () => {
     font-weight: 400;
     color: var(--e-color-text1);
     line-height: var(--o-line-height-h7);
-    margin: var(--o-spacing-h1) 0 var(--o-spacing-h2) 0;
+    margin-bottom: var(--o-spacing-h2);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      margin: var(--o-spacing-h2) 0 var(--o-spacing-h5) 0;
+      margin-bottom: var(--o-spacing-h5);
     }
   }
   a {

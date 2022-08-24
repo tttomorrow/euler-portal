@@ -3,13 +3,17 @@ import { computed, ref, onMounted } from 'vue';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
+import useWindowResize from '@/components/hooks/useWindowResize';
+
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import MobileRepositoryList from './MobileRepositoryList.vue';
-import useWindowResize from '@/components/hooks/useWindowResize';
+
+import IconEmail from '~icons/app/icon-mail.svg';
+import IconGitee from '~icons/app/icon-gitee.svg';
 
 import {
-  // getSigDetail,
+  getSigDetail,
   getSigMember,
   getSigRepositoryList,
 } from '@/api/api-sig';
@@ -34,15 +38,15 @@ const sigDetail = computed(() => {
 const sigMeetingData: any = ref('');
 const sigMemberData: any = ref('');
 const memberList: any = ref([]);
-// function getSigDetails() {
-//   try {
-//     getSigDetail(sigDetailName.value).then((res: any) => {
-//       sigMeetingData.value = res;
-//     });
-//   } catch (error) {
-//     throw Error();
-//   }
-// }
+function getSigDetails() {
+  try {
+    getSigDetail(sigDetailName.value).then((res: any) => {
+      sigMeetingData.value = res;
+    });
+  } catch (error) {
+    throw Error();
+  }
+}
 function getSigMembers() {
   try {
     const param = {
@@ -149,7 +153,7 @@ onMounted(() => {
     }
   }
   sigDetailName.value = GetUrlParam('name');
-  // getSigDetails();
+  getSigDetails();
   getSigMembers();
   getRepositoryList();
 });
@@ -211,6 +215,14 @@ onMounted(() => {
             <p class="introduction">
               <span>Maintainer</span>
             </p>
+            <div class="icon-link">
+              <a :href="`https://gitee.com/${item.gitee_id}`" target="_blank">
+                <OIcon class="icon"> <IconGitee /> </OIcon
+              ></a>
+              <a :href="`mailto:${item.email}`">
+                <OIcon class="icon"> <IconEmail /> </OIcon
+              ></a>
+            </div>
           </li>
         </ul>
       </div>
@@ -279,6 +291,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
+
         <OTable v-if="!isIphone" :data="repositoryList">
           <el-table-column :label="sigDetail.REPOSITORY_NAME" width="550px">
             <template #default="scope">
@@ -289,16 +302,30 @@ onMounted(() => {
           </el-table-column>
           <el-table-column label="Maintainer">
             <template #default="scope">
-              <span>
-                {{ scope.row.maintainers.join(',') }}
-              </span>
+              <a
+                v-for="(item, index) in scope.row.maintainers"
+                :key="item"
+                target="_blank"
+                :href="`https://gitee.com/${item}`"
+              >
+                {{ item }}
+                <span v-show="index !== scope.row.maintainers.length - 1"
+                  >、</span
+                >
+              </a>
             </template>
           </el-table-column>
           <el-table-column label="Committer">
             <template #default="scope">
-              <span>
-                {{ scope.row.gitee_id.join(',') }}
-              </span>
+              <a
+                v-for="(item, index) in scope.row.gitee_id"
+                :key="item"
+                target="_blank"
+                :href="`https://gitee.com/${item}`"
+              >
+                {{ item }}
+                <span v-show="index !== scope.row.gitee_id.length - 1">、</span>
+              </a>
             </template>
           </el-table-column>
         </OTable>
@@ -306,13 +333,12 @@ onMounted(() => {
           v-else
           :data="repositoryList"
         ></MobileRepositoryList>
-
         <OPagination
           v-model:currentPage="currentPage"
           v-model:page-size="pageSize"
           class="repository-pagin"
           :hide-on-single-page="true"
-          :page-sizes="[10, 20, 30]"
+          :page-sizes="[10, 20, 30, 40]"
           :background="true"
           :layout="paginLayout"
           :total="totalRepositoryList.length"
@@ -444,8 +470,23 @@ onMounted(() => {
           flex: 0 0 25%;
           text-align: center;
           margin-top: var(--o-spacing-h5);
+          .icon-link {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--o-spacing-h8);
+            font-size: var(--o-font-size-h5);
+            a {
+              margin: 0 var(--o-spacing-h8);
+            }
+          }
           @media (max-width: 1080px) {
             flex: 0 0 50%;
+            .icon-link {
+              font-size: var(--o-font-size-h7);
+              a {
+                margin: 0 var(--o-spacing-h9);
+              }
+            }
           }
           .member-img {
             width: 120px;

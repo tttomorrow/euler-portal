@@ -8,6 +8,8 @@ import banner from '@/assets/banner-secondary.png';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import TagFilter from '@/components/TagFilter.vue';
 
+import AppContent from '@/components/AppContent.vue';
+
 import Img404 from '@/assets/404.svg';
 import downloadImg from '@/assets/download/download.png';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -164,8 +166,7 @@ onMounted(() => {
     :title="i18n.download.MIRROR_ALL.TITLE"
     :illustration="downloadImg"
   />
-
-  <div class="download">
+  <AppContent class="download">
     <!-- PC筛选 -->
     <OCard class="download-filter">
       <TagFilter
@@ -470,7 +471,7 @@ onMounted(() => {
         </OButton>
       </div>
     </div>
-  </div>
+  </AppContent>
 </template>
 
 <style lang="scss" scoped>
@@ -547,15 +548,7 @@ onMounted(() => {
   }
 }
 .download {
-  margin: 0 auto;
-  max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
-  @media (max-width: 1100px) {
-    padding: 0 var(--o-spacing-h5);
-  }
-
   &-filter {
-    margin-top: var(--o-spacing-h2);
     padding: 0 var(--o-spacing-h5);
     display: flex;
     @media (max-width: 768px) {
@@ -570,7 +563,6 @@ onMounted(() => {
     }
 
     &-mobile {
-      margin-top: var(--o-line-height-h5);
       display: none;
       @media (max-width: 768px) {
         display: flex;

@@ -7,6 +7,8 @@ import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
 
+import IconGitee from '~icons/app/icon-gitee.svg';
+
 interface LIST_PARAMS {
   page: number;
   pageSize: number;
@@ -299,33 +301,27 @@ onMounted(() => {
     <OTable v-show="!isMobile" :data="SigList">
       <el-table-column :label="i18n.sig.SIG_LIST.NAME">
         <template #default="scope">
-          <a
-            target="_blank"
-            style="cursor: pointer"
-            @click="toSigDetail(scope.row)"
-          >
-            {{ scope.row.sig_name }}
-          </a>
-        </template>
-      </el-table-column>
-      <el-table-column :label="i18n.sig.SIG_LIST.HOME_PAGE">
-        <template #default="scope">
-          <a
-            :href="
-              'https://gitee.com/openeuler/community/tree/master/sig/' +
-              scope.row.sig_name
-            "
-            target="_blank"
-          >
-            <img src="@/assets/category/sig/sig-list/icon-home.png" />
-          </a>
-        </template>
-      </el-table-column>
-      <el-table-column :label="i18n.sig.SIG_LIST.MAIL">
-        <template #default="scope">
-          <a :href="'mailto:' + scope.row.mailing_list" target="_blank">
-            {{ scope.row.mailing_list }}
-          </a>
+          <div class="sig-name">
+            <a
+              target="_blank"
+              style="cursor: pointer"
+              @click="toSigDetail(scope.row)"
+            >
+              {{ scope.row.sig_name }}
+            </a>
+            <a
+              :href="
+                'https://gitee.com/openeuler/community/tree/master/sig/' +
+                scope.row.sig_name
+              "
+              target="_blank"
+              class="gitee-icon"
+            >
+              <OIcon class="icon">
+                <IconGitee />
+              </OIcon>
+            </a>
+          </div>
         </template>
       </el-table-column>
       <el-table-column :label="i18n.sig.SIG_LIST.REPOSITORY">
@@ -358,11 +354,11 @@ onMounted(() => {
                 :key="item"
                 class="sig-maintainer-item"
               >
-                <a :href="'https://gitee.com/' + item" target="_blank">{{
-                  item
-                }}</a>
-                <span v-show="index !== scope.row.maintainers.length - 1"
-                  >、</span
+                <a :href="'https://gitee.com/' + item" target="_blank"
+                  >{{ item }}
+                  <i v-show="index !== scope.row.maintainers.length - 1"
+                    >、</i
+                  ></a
                 >
               </div>
             </div>
@@ -375,6 +371,13 @@ onMounted(() => {
               {{ singleInfo.trueMaintainer }}</a
             >
           </div>
+        </template>
+      </el-table-column>
+      <el-table-column :label="i18n.sig.SIG_LIST.MAIL">
+        <template #default="scope">
+          <a :href="'mailto:' + scope.row.mailing_list" target="_blank">
+            {{ scope.row.mailing_list }}
+          </a>
         </template>
       </el-table-column>
     </OTable>
@@ -390,7 +393,7 @@ onMounted(() => {
         @current-change="currentChange"
         @size-change="sizeChange"
       >
-        <span class="pagination-slot"
+        <span
           >{{ paginationData.currentPage }}/{{
             Math.ceil(paginationData.total / paginationData.pageSize)
           }}</span
@@ -496,6 +499,18 @@ onMounted(() => {
 <style scoped lang="scss">
 .sig-table {
   margin-top: var(--o-spacing-h2);
+  a {
+    line-height: var(--o-line-height-h9);
+  }
+  .sig-name {
+    display: flex;
+    align-items: center;
+    .gitee-icon {
+      display: flex;
+      margin-left: var(--o-spacing-h8);
+      align-items: center;
+    }
+  }
   .ellipsis {
     color: var(--e-color-kleinblue5);
   }
