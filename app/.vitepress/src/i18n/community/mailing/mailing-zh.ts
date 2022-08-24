@@ -5,13 +5,13 @@ export default {
       {
         LEFT: {
           LEFT_INFO: '在邮件列表页面选择要订阅的邮件列表',
-          LEFT_CIRCLE: '选择',
+          // LEFT_CIRCLE: '选择',
           LEFT_IMG: '/img/community/maillist/mail1.png',
           INDEX: '选择',
         },
         RIGHT: {
           RIGHT_INFO: '填入邮件地址和名字，名字可选，点击订阅',
-          RIGHT_CIRCLE: '订阅',
+          // RIGHT_CIRCLE: '订阅',
           LEFT_IMG: '/img/community/maillist/mail2.png',
           INDEX: '订阅',
         },
@@ -20,7 +20,7 @@ export default {
         LEFT: {
           LEFT_INFO:
             '您的邮箱将收到一封来自邮件列表的电子邮件，要求您确认订阅了邮件列表，回复该电子邮件确认订阅',
-          LEFT_CIRCLE: '确认',
+          // LEFT_CIRCLE: '确认',
           LEFT_IMG: '/img/community/maillist/mail3.png',
           INDEX: '确认',
         },
@@ -29,7 +29,7 @@ export default {
             '您的邮箱收到来自一封来自邮件列表的欢迎邮件，即成功订阅该邮件列表。如需退订，请参考',
           DO_THIS: '此操作',
           LINK: 'blog/liuqi/2021-10-14-unsubscribe-mailing-list.html',
-          RIGHT_CIRCLE: '成功',
+          // RIGHT_CIRCLE: '成功',
           LEFT_IMG: '/img/community/maillist/mail4.png',
           INDEX: '成功',
         },
