@@ -103,6 +103,7 @@ const rootStyle = computed(() => {
         font-size: var(--o-font-size-h3);
         line-height: var(--o-line-height-h3);
         margin-top: var(--o-spacing-h5);
+        margin-bottom: 0;
         font-weight: bold;
 
         &.margin-top-0 {
