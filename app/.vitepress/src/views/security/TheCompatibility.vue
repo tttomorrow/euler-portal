@@ -382,10 +382,9 @@ onMounted(() => {
     background-text="CONTENT"
     title="兼容性列表"
     subtitle=""
-    :illustration="screenWidth > 1080 ? search : cve"
+    :illustration="screenWidth > 768 ? search : cve"
   />
 
-  <!-- <AppContent :mobileTop="16"> -->
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
     <AppContent>
       <OTabPane label="整机" name="1">
@@ -430,7 +429,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE"
             prop="architecture"
-            width="100"
+            width="140"
           >
           </OTableColumn>
           <OTableColumn
@@ -470,6 +469,7 @@ onMounted(() => {
           </el-table-column>
           <el-table-column
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.REFERRENCE"
+            width="100"
           >
             <template #default="scope">
               <a
@@ -528,6 +528,7 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME"
             prop="driverName"
+            width="160"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS"
@@ -537,7 +538,6 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION"
             prop="version"
-            width="160"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE"
@@ -546,16 +546,17 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
             prop="driverDate"
-            width="200"
+            width="150"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR"
             prop="chipVendor"
+            width="140"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL"
             prop="boardModel"
-            width="160"
+            width="180"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL"
@@ -825,7 +826,7 @@ onMounted(() => {
       </div>
     </AppContent>
   </OTabs>
-  <AppContent :mobileTop="16">
+  <AppContent class="mobile-content" :mobileTop="16">
     <div class="tabs-mobile">
       <el-collapse v-model="activeName" accordion @change="handleChange">
         <el-collapse-item title="整机" name="1">
@@ -1166,7 +1167,6 @@ onMounted(() => {
       </el-collapse>
     </div>
   </AppContent>
-  <!-- </AppContent> -->
 </template>
 
 <style lang="scss" scoped>
@@ -1179,14 +1179,20 @@ onMounted(() => {
   background-color: var(--e-color-bg2);
   height: 48px;
 }
+.mobile-content {
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+}
 .tabs-pc {
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 }
 .tabs-mobile {
   display: none;
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 768px) {
     display: block;
   }
   :deep(.el-collapse) {
@@ -1222,13 +1228,13 @@ onMounted(() => {
 
 .blog-tag {
   display: none;
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 768px) {
     display: block;
   }
 }
 .filter-card {
   margin: var(--o-spacing-h4) 0;
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
   :deep(.el-card__body) {
@@ -1275,7 +1281,7 @@ onMounted(() => {
     cursor: pointer;
     color: var(--e-color-link1);
   }
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 }
@@ -1283,7 +1289,7 @@ onMounted(() => {
   display: none;
   margin-bottom: var(--o-spacing-h5);
   box-shadow: var(--e-shadow-l1);
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: 768px) {
     display: block;
   }
 
