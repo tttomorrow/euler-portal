@@ -62,7 +62,6 @@ const docsActive = ref(props.docsObj.TAB && props.docsObj.TAB[0]?.VALUE);
 </template>
 <style lang="scss" scoped>
 .docs {
-  padding: 0 var(--o-spacing-h5);
   &-tab {
     max-width: 1416px;
     margin: 0 auto;
