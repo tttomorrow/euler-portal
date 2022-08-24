@@ -116,6 +116,7 @@ const rootStyle = computed(() => {
         font-size: var(--o-font-size-h2);
         line-height: var(--o-line-height-h2);
         margin-top: var(--o-spacing-h2);
+        margin-bottom: 0;
 
         @media screen and (max-width: 1080px) {
           font-size: var(--o-font-size-h3);
