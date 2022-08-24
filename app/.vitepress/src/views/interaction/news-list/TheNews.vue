@@ -10,6 +10,7 @@ import NotFound from '@/NotFound.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
 
 import { getSortData, getTagsData } from '@/api/api-search';
+import AppContent from '@/components/AppContent.vue';
 
 interface NewsData {
   articleName: string;
@@ -57,7 +58,7 @@ const paginationData = ref({
 const tagsParams = reactive({
   lang: lang.value,
   category: 'news',
-  tags: 'date',
+  tags: 'archives',
 });
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
@@ -125,6 +126,7 @@ const getListData = (params: ParamsType) => {
 const listFilter = (val: any) => {
   let paramsdate = '';
   let paramsauthor = '';
+  let paramstag = '';
   for (let i = 0; i < val.length; i++) {
     if (val[i].title === '时间') {
       paramsdate = val[i].sele[0];
@@ -132,14 +134,18 @@ const listFilter = (val: any) => {
     if (val[i].title === '作者') {
       paramsauthor = val[i].sele[0];
     }
+    if (val[i].title === '标签') {
+      paramstag = val[i].sele[0];
+    }
   }
   const params = {
     page: 1,
     pageSize: 9,
     lang: lang.value,
-    category: 'blog',
+    category: 'news',
     archives: paramsdate,
     author: paramsauthor,
+    tags: paramstag,
   };
   getListData(params);
 };
@@ -188,7 +194,7 @@ const currentChange = (val: number) => {
     :title="userCaseData.NEWS"
     :illustration="BannerImg2"
   />
-  <div class="news">
+  <AppContent :mobile-top="16">
     <template v-if="isShowData">
       <div class="news-tag">
         <MobileFilter :data="selectData" :single="true" @filter="listFilter" />
@@ -291,10 +297,17 @@ const currentChange = (val: number) => {
       </div>
     </template>
     <NotFound v-else />
-  </div>
+  </AppContent>
 </template>
 
 <style lang="scss" scoped>
+@mixin showline {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
 :deep(.el-card__body) {
   padding: 0;
 }
@@ -320,10 +333,6 @@ const currentChange = (val: number) => {
     display: flex;
     flex-direction: row;
     width: 1416px;
-    margin: var(--o-spacing-h1) auto var(--o-spacing-h2);
-    @media (max-width: 1455px) {
-      margin: var(--o-spacing-h1) var(--o-spacing-h5);
-    }
     &-item {
       margin-right: var(--o-spacing-h1);
       &-title {
@@ -339,7 +348,6 @@ const currentChange = (val: number) => {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: var(--o-spacing-h4);
-    padding: 0 var(--o-spacing-h5);
     &-item {
       justify-self: center;
       align-self: center;
@@ -372,11 +380,7 @@ const currentChange = (val: number) => {
     line-height: var(--o-line-height-h7);
     font-size: var(--o-font-size-h7);
     margin-bottom: var(--o-spacing-h10);
-    word-break: break-all;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+    @include showline();
     -webkit-line-clamp: 2;
   }
   &-time {
@@ -385,11 +389,7 @@ const currentChange = (val: number) => {
   }
   &-content {
     margin-top: var(--o-spacing-h5);
-    word-break: break-all;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+    @include showline();
     -webkit-line-clamp: 2;
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
@@ -404,7 +404,6 @@ const currentChange = (val: number) => {
 @media (max-width: 1100px) {
   .news-tag {
     display: block;
-    margin-left: var(--o-spacing-h5);
   }
   .news-select {
     display: none;
@@ -456,6 +455,7 @@ const currentChange = (val: number) => {
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
     font-weight: 500;
+    @include showline();
     -webkit-line-clamp: 1;
     margin-bottom: var(--o-spacing-h8);
   }
