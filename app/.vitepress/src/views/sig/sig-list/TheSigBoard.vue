@@ -102,7 +102,7 @@ onMounted(() => {
   column-count: 2;
   max-width: 1504px;
   margin: 0 auto;
-  @media (max-width: 780px) {
+  @media (max-width: 900px) {
     column-count: 1;
     padding: 0 var(--o-spacing-h5);
   }
