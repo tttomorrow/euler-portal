@@ -30,40 +30,25 @@ const attrs = useAttrs();
     }
     tr {
       background: var(--e-color-bg2);
+      position: relative;
+      &::after {
+        width: calc(100% - 32px);
+        background: var(--e-color-division1);
+        content: ' ';
+        display: inline-block;
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        z-index: 1000;
+      }
+      &:last-child::after {
+        height: 0;
+      }
       td {
         color: var(--e-color-text4);
-        &::after {
-          width: 100%;
-          background: var(--e-color-division1);
-          content: ' ';
-          display: inline-block;
-          height: 1px;
-          position: absolute;
-          bottom: 0;
-          z-index: 10000;
-        }
-        &:first-child::after {
-          width: 100%;
-          background: var(--e-color-division1);
-          content: ' ';
-          display: inline-block;
-          height: 1px;
-          position: absolute;
-          bottom: 0;
-          left: 16px;
-          z-index: 10000;
-        }
-        &:last-child::after {
-          width: 100%;
-          background: var(--e-color-division1);
-          content: ' ';
-          display: inline-block;
-          height: 1px;
-          position: absolute;
-          bottom: 0;
-          right: 16px;
-          z-index: 10000;
-        }
       }
     }
 

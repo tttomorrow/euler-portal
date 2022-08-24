@@ -6,6 +6,8 @@ import { useRouter } from 'vitepress';
 import { getSecurityDetail } from '@/api/api-security';
 import { DetailParams } from '@/shared/@types/type-support';
 
+import AppContent from '@/components/AppContent.vue';
+
 import IconChevron from '~icons/app/chevron-right.svg';
 
 import type { AxiosResponse } from '@/shared/axios';
@@ -13,18 +15,7 @@ import type { AxiosResponse } from '@/shared/axios';
 const i18n = useI18n();
 const router = useRouter();
 
-const detailData: any = ref({
-  // securityNoticeNo: '',
-  // summary: '',
-  // announcementTime: '',
-  // introduction: '',
-  // type: '',
-  // subject: '',
-  // description: '',
-  // affectedComponent: '',
-  // cveId: '',
-  // referenceList: [],
-});
+const detailData: any = ref({});
 
 const queryData: DetailParams = reactive({
   securityNoticeNo: '',
@@ -58,118 +49,128 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="wrapper">
-    <div class="breadcrumb">
-      <p class="last-page" @click="goBackPage">
-        {{ i18n.security.SECURITY_ADVISORIES }}
-      </p>
-      <span class="separtor">
-        <o-icon><icon-chevron></icon-chevron></o-icon
-      ></span>
-      <p class="current-page">{{ i18n.security.SECURITY_ADVISORIES_DETAIL }}</p>
-    </div>
-    <div class="bulletin-head">
-      <p class="bulletin-name">{{ detailData.securityNoticeNo }}</p>
-      <div class="bulletin-intro">
-        <p>
-          <span>{{ i18n.security.SYNOPSIS }}</span
-          >{{ detailData.summary }}
+  <AppContent :mobileTop="16">
+    <div class="wrapper">
+      <div class="breadcrumb">
+        <p class="last-page" @click="goBackPage">
+          {{ i18n.security.SECURITY_ADVISORIES }}
         </p>
-        <p>
-          <span>{{ i18n.security.RELEASE_DATE }}</span
-          >{{ detailData.announcementTime }}
+        <span class="separtor">
+          <o-icon><icon-chevron></icon-chevron></o-icon
+        ></span>
+        <p class="current-page">
+          {{ i18n.security.SECURITY_ADVISORIES_DETAIL }}
         </p>
       </div>
-    </div>
+      <div class="bulletin-head">
+        <p class="bulletin-name">{{ detailData.securityNoticeNo }}</p>
+        <div class="bulletin-intro">
+          <p>
+            <span>{{ i18n.security.SYNOPSIS }}</span
+            >{{ detailData.summary }}
+          </p>
+          <p>
+            <span>{{ i18n.security.RELEASE_DATE }}</span
+            >{{ detailData.announcementTime }}
+          </p>
+        </div>
+      </div>
 
-    <div class="tabs-container">
-      <OTabs class="o-tabs">
-        <OTabPane :label="i18n.security.OVERVIEW">
-          <div class="tab-content">
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.BRIEF_INTRODUCTION }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.introduction }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.SEVERITY }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.type }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">{{ i18n.security.THEME }}</h5>
-              <p class="tab-content-item-text">
-                {{ detailData.subject }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.DESCRIPTION }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.description }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.AFFECTED_COMPONENTS }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.affectedComponent }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">{{ i18n.security.CVE }}</h5>
-              <p class="tab-content-item-text">
-                {{ detailData.cveId }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.REFERENCE_DOCUMENTS }}
-              </h5>
-              <div
-                v-for="item in detailData.referenceList"
-                :key="item"
-                class="tab-content-item-text"
-              >
-                <a :href="item.url" target="_blank">{{ item.url }}</a>
-              </div>
-            </div>
-          </div>
-        </OTabPane>
-        <OTabPane label="更新的软件包">
-          <div class="tab-content">
-            <div
-              v-for="item in detailData.packageHelperList"
-              :key="item"
-              class="packge-item"
-            >
-              <h1 class="packge-item-title">{{ item.productName }}</h1>
-              <div v-for="it in item.child" :key="it" class="packge-item-class">
-                <p class="packge-item-class-achitecture">
-                  {{ it.productName }}
+      <div class="tabs-container">
+        <OTabs class="o-tabs">
+          <OTabPane :label="i18n.security.OVERVIEW">
+            <div class="tab-content">
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.BRIEF_INTRODUCTION }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.introduction }}
                 </p>
-                <p
-                  v-for="single in it.child"
-                  :key="single"
-                  class="packge-item-class-rpm"
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.SEVERITY }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.type }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.THEME }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.subject }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.DESCRIPTION }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.description }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.AFFECTED_COMPONENTS }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.affectedComponent }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">{{ i18n.security.CVE }}</h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.cveId }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.REFERENCE_DOCUMENTS }}
+                </h5>
+                <div
+                  v-for="item in detailData.referenceList"
+                  :key="item"
+                  class="tab-content-item-text"
                 >
-                  {{ single.packageName }}
-                </p>
+                  <a :href="item.url" target="_blank">{{ item.url }}</a>
+                </div>
               </div>
             </div>
-          </div>
-        </OTabPane>
-      </OTabs>
+          </OTabPane>
+          <OTabPane label="更新的软件包">
+            <div class="tab-content">
+              <div
+                v-for="item in detailData.packageHelperList"
+                :key="item"
+                class="packge-item"
+              >
+                <h1 class="packge-item-title">{{ item.productName }}</h1>
+                <div
+                  v-for="it in item.child"
+                  :key="it"
+                  class="packge-item-class"
+                >
+                  <p class="packge-item-class-achitecture">
+                    {{ it.productName }}
+                  </p>
+                  <p
+                    v-for="single in it.child"
+                    :key="single"
+                    class="packge-item-class-rpm"
+                  >
+                    {{ single.packageName }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </OTabPane>
+        </OTabs>
+      </div>
     </div>
-  </div>
+  </AppContent>
 </template>
 <style lang="scss" scoped>
 :deep(.el-tabs) {
@@ -185,21 +186,20 @@ onMounted(() => {
       background-color: var(--e-color-bg2);
     }
   }
-  .el-tabs__content {
-    margin: 0 var(--o-spacing-h5);
-  }
+  // .el-tabs__content {
+  // margin: 0 var(--o-spacing-h5);
+  // }
 }
 .wrapper {
   max-width: 1504px;
   margin: 0 auto;
   background-color: var(--e-color-bg2);
   @media screen and (max-width: 768px) {
-    padding: var(--o-spacing-h5) 0;
+    padding-bottom: var(--o-spacing-h5);
     background-color: var(--e-color-bg1);
   }
 }
 .breadcrumb {
-  margin-top: var(--o-spacing-h2);
   color: var(--e-color-text1);
   background: var(--e-color-bg1);
   display: flex;
@@ -233,7 +233,7 @@ onMounted(() => {
   background: var(--e-color-bg1);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
-    margin: 0 var(--o-spacing-h5);
+    // margin: 0 var(--o-spacing-h5);
     background: var(--e-color-bg2);
     box-shadow: var(--e-shadow-l1);
   }

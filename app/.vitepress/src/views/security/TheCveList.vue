@@ -6,6 +6,7 @@ import { useRouter } from 'vitepress';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
+import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import cve from '@/assets/illustrations/cve.png';
@@ -114,7 +115,7 @@ watch(windowWidth, () => {
     subtitle=""
     :illustration="screenWidth >= 1000 ? search : cve"
   />
-  <div class="wrapper">
+  <AppContent :mobileTop="16">
     <OSearch
       v-model="searchContent"
       class="o-search"
@@ -242,7 +243,7 @@ watch(windowWidth, () => {
       :total-page="Math.ceil(total / 10)"
       @turn-page="turnPage"
     />
-  </div>
+  </AppContent>
 </template>
 <style lang="scss" scoped>
 .wrapper {
