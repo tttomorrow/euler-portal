@@ -88,6 +88,10 @@ export function getSearchRpm(params: any) {
       throw new Error(e);
     });
 }
+export function getPop(params: any) {
+  const url = `/api-search/search/pop?${params}`;
+  return request.post(url).then((res: AxiosResponse) => res.data);
+}
 
 /**
  * 首页数据卡片筛选
