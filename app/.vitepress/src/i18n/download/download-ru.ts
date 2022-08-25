@@ -17,6 +17,7 @@ export default {
   BTNSURE: 'Подтвердить',
   BTNRESET: 'сбросить',
   DOWNLOAD_LIST: data.ru.DOWNLOAD_LIST,
+  PAGINATION: ['已显示', '条记录/共', '条', '加载更多'],
   MIRROR_SELECT: {
     TITLE: 'Selected Mirrors',
     RANK: 'Rank：',

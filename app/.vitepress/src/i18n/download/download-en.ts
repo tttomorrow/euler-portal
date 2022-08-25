@@ -19,6 +19,7 @@ export default {
   WEBSITE_SELECT: 'Selected Mirrors',
   COPY_SUCCESSFULLY: 'copied successfully.',
   BTNSURE: 'Confirm',
+  PAGINATION: ['已显示', '条记录/共', '条', '加载更多'],
   BTNRESET: 'Reset',
   DOWNLOAD_LIST: data.en.DOWNLOAD_LIST,
   MIRROR_SELECT: {

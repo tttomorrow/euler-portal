@@ -315,7 +315,7 @@ watch(windowWidth, () => {
               class="btn-detail"
               @click="handleGo(detailObj && detailObj.detail_address)"
             >
-              了解详情
+              {{ i18n.interaction.MEETUPSLIST.LEARN_MORE }}
               <template #suffixIcon>
                 <IconArrowRight class="icon"></IconArrowRight>
               </template>
@@ -418,11 +418,11 @@ watch(windowWidth, () => {
               <img :src="logo" />
             </div>
             <div class="address-text">
-              <p>地址</p>
+              <p>{{ i18n.interaction.MEETUPSLIST.ADDRESS }}</p>
               <p v-if="detailObj?.address">
                 {{ detailObj?.address }}
               </p>
-              <p>直播链接</p>
+              <p>{{ i18n.interaction.MEETUPSLIST.LIVE_ADDRESS }}</p>
               <p v-if="detailObj?.detail_address">
                 {{ detailObj?.detail_address }}
               </p>

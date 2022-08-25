@@ -107,7 +107,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <AppContent :mobileTop="16">
+  <AppContent :mobile-top="16">
     <div class="breadcrumb">
       <p class="last-page" @click="goBackPage">
         {{ i18n.security.CVE }}

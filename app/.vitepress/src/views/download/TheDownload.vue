@@ -445,11 +445,12 @@ onMounted(() => {
           / {{ total }}</span
         >
       </OPagination>
-      <div class="page-box-mobile" v-if="dataList.length">
+      <div v-if="dataList.length" class="page-box-mobile">
         <div>
-          已显示{{
-            pageSize * currentPage < total ? pageSize * currentPage : total
-          }}条记录/共{{ total }}条
+          {{ i18n.download.PAGINATION[0]
+          }}{{ pageSize * currentPage < total ? pageSize * currentPage : total
+          }}{{ i18n.download.PAGINATION[1] }}{{ total
+          }}{{ i18n.download.PAGINATION[2] }}
         </div>
         <div class="page-box-divide">
           <div
@@ -467,7 +468,7 @@ onMounted(() => {
           class="page-box-button"
           @click="handleLoadMore"
         >
-          加载更多
+          {{ i18n.download.PAGINATION[3] }}
         </OButton>
       </div>
     </div>

@@ -826,7 +826,7 @@ onMounted(() => {
       </div>
     </AppContent>
   </OTabs>
-  <AppContent class="mobile-content" :mobileTop="16">
+  <AppContent class="mobile-content" :mobile-top="16">
     <div class="tabs-mobile">
       <el-collapse v-model="activeName" accordion @change="handleChange">
         <el-collapse-item title="整机" name="1">
