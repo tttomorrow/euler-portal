@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
+import AppContent from '@/components/AppContent.vue';
 import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -12,6 +13,8 @@ import cardBg_light from '@/assets/category/interaction/live/light-crad-bg.png';
 import cardBg_light_mo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';
 import cardBg_dark from '@/assets/category/interaction/live/dark-crad-bg.png';
 import cardBg_dark_mo from '@/assets/category/interaction/live/dark-crad-bg-mobile.png';
+import cardBg_light_mo_extension from '@/assets/category/interaction/live/bg-extension-light.png';
+import cardBg_dark_mo_extension from '@/assets/category/interaction/live/bg-extension-dark.png';
 import { ElMessage } from 'element-plus';
 
 import IconRight from '~icons/app/icon-arrow-right1.svg';
@@ -53,6 +56,8 @@ const headGround = computed(() =>
 const liveStyleMo = ref({
   light: `url(${cardBg_light_mo})`,
   dark: `url(${cardBg_dark_mo})`,
+  lightExtension: `url(${cardBg_light_mo_extension})`,
+  darkExtension: `url(${cardBg_dark_mo_extension})`,
 });
 
 const goPrevious = () => {
@@ -74,167 +79,119 @@ const goNext = () => {
     :title="i18n.live.LIVETITLE"
     :illustration="BannerIllustration"
   />
-  <div class="live">
-    <div class="live-top-title">{{ i18n.live.REPLAYER }}</div>
-    <div class="live-list">
-      <OContainer
-        v-for="live in showLiveList"
-        :key="live.PHOTOPATH"
-        :level-index="2"
-        class="live-list-item"
-      >
-        <OCard class="live-list-item" :body-style="{ padding: '0px' }">
-          <div class="live-detail">
-            <div
-              class="live-background"
-              :class="commonStore.theme"
-              :style="{ backgroundImage: `url(${headGround})` }"
-            >
-              <img :src="live.PHOTOPATH" class="live-background-img" />
-            </div>
-            <div class="live-detail-right">
-              <div>
-                <h5 class="live-detail-title">
-                  {{ live.LIVETITLE }}
-                </h5>
-                <div class="live-desc">
-                  <span>
-                    <OIcon class="smail-icon">
-                      <IconUser />
-                    </OIcon>
-                    <span class="live-desc-text">
-                      {{ live.LIVETEACHER.trim() }}
-                    </span>
-                  </span>
-                  <span>
-                    <OIcon class="smail-icon">
-                      <IconTime />
-                    </OIcon>
-                    <span class="live-desc-text">{{
-                      live.LIVETIME.trim()
-                    }}</span>
-                  </span>
-                </div>
-              </div>
-              <p>
-                <OButton
-                  animation
-                  size="mini"
-                  class="live-button"
-                  :style="{
-                    color:
-                      commonStore.theme === 'dark'
-                        ? 'var(--e-color-white)'
-                        : '',
-                  }"
-                  @click="totoBLink(live.FORMERLYLINK)"
-                  >{{ i18n.live.REPLAYVIEW }}
-                  <template #suffixIcon>
-                    <OIcon class="live-button-icon"><IconRight /></OIcon>
-                  </template>
-                </OButton>
-              </p>
-            </div>
-          </div>
-        </OCard>
-      </OContainer>
-      <!-- <OCard
-          class="live-list-item"
-          :body-style="{ padding: '0px' }"
+  <AppContent>
+    <div class="live">
+      <div class="live-top-title">{{ i18n.live.REPLAYER }}</div>
+      <div class="live-list">
+        <OContainer
           v-for="live in showLiveList"
           :key="live.PHOTOPATH"
+          :level-index="2"
+          class="live-list-item"
         >
-          <div class="live-detail">
-            <div
-              class="live-background"
-              :class="commonStore.theme"
-              :style="{ backgroundImage: `url(${headGround})` }"
-            >
-              <img :src="live.PHOTOPATH" class="live-background-img" />
-            </div>
-            <div class="live-detail-right">
-              <div>
-                <h5 class="live-detail-title">
-                  {{ live.LIVETITLE }}
-                </h5>
-                <div class="live-desc">
-                  <span>
-                    <OIcon class="smail-icon">
-                      <IconUser />
-                    </OIcon>
-                    <span class="live-desc-text">
-                      {{ live.LIVETEACHER.trim() }}
-                    </span>
-                  </span>
-                  <span>
-                    <OIcon class="smail-icon">
-                      <IconTime />
-                    </OIcon>
-                    <span class="live-desc-text">{{ live.LIVETIME.trim() }}</span>
-                  </span>
-                </div>
+          <OCard class="live-list-item" :body-style="{ padding: '0px' }">
+            <div class="live-detail">
+              <div
+                class="live-background"
+                :class="commonStore.theme"
+                :style="{ backgroundImage: `url(${headGround})` }"
+              >
+                <img :src="live.PHOTOPATH" class="live-background-img" />
               </div>
-              <p>
-                <OButton
-                  animation
-                  size="mini"
-                  class="live-button"
-                  :style="{ color: commonStore.theme === 'dark' ? 'var(--e-color-white)' : '' }"
-                  @click="totoBLink(live.FORMERLYLINK)"
-                  >{{ i18n.live.REPLAYVIEW }}
-                  <template #suffixIcon>
-                    <OIcon class="live-button-icon"><IconRight /></OIcon>
-                  </template>
-                </OButton>
-              </p>
+              <div class="live-detail-right">
+                <div>
+                  <h5 class="live-detail-title">
+                    {{ live.LIVETITLE }}
+                  </h5>
+                  <div class="live-desc">
+                    <span>
+                      <OIcon class="smail-icon">
+                        <IconUser />
+                      </OIcon>
+                      <span class="live-desc-text">
+                        {{ live.LIVETEACHER.trim() }}
+                      </span>
+                    </span>
+                    <span>
+                      <OIcon class="smail-icon">
+                        <IconTime />
+                      </OIcon>
+                      <span class="live-desc-text">{{
+                        live.LIVETIME.trim()
+                      }}</span>
+                    </span>
+                  </div>
+                </div>
+                <p>
+                  <OButton
+                    animation
+                    size="mini"
+                    class="live-button"
+                    :style="{
+                      color:
+                        commonStore.theme === 'dark'
+                          ? 'var(--e-color-white)'
+                          : '',
+                    }"
+                    @click="totoBLink(live.FORMERLYLINK)"
+                    >{{ i18n.live.REPLAYVIEW }}
+                    <template #suffixIcon>
+                      <OIcon class="live-button-icon"><IconRight /></OIcon>
+                    </template>
+                  </OButton>
+                </p>
+              </div>
             </div>
+          </OCard>
+        </OContainer>
+      </div>
+      <div class="live-pagination">
+        <OPagination
+          v-show="!isMobile"
+          v-model:currentPage="currentPage1"
+          v-model:page-size="pageSize4"
+          :page-sizes="[6, 12, 18, 24]"
+          :background="true"
+          layout="sizes, prev, pager, next, slot, jumper"
+          :total="total"
+          @current-change="changePage(currentPage1, pageSize4)"
+          @size-change="changePage(currentPage1, pageSize4)"
+        >
+          <span class="pagination-slot">{{
+            currentPage1 * pageSize4 + '/' + total
+          }}</span>
+        </OPagination>
+        <div v-show="isMobile" class="pagination-mobile">
+          <div class="pagination-options">
+            <OIcon class="pagination-options-icon">
+              <IconPre />
+            </OIcon>
+            <div class="pagination-options-text" @click="goPrevious">
+              上一页
+            </div>
+            <div class="pagination-information">
+              <span class="pagination-information-current">{{
+                currentPage1
+              }}</span
+              >{{ '/' + Math.ceil(total / pageSize4) }}
+            </div>
+            <div class="pagination-options-text" @click="goNext">下一页</div>
+            <OIcon class="pagination-options-icon">
+              <IconNext />
+            </OIcon>
           </div>
-        </OCard> -->
-    </div>
-    <div class="live-pagination">
-      <OPagination
-        v-show="!isMobile"
-        v-model:currentPage="currentPage1"
-        v-model:page-size="pageSize4"
-        :page-sizes="[6, 12, 18, 24]"
-        :background="true"
-        layout="sizes, prev, pager, next, slot, jumper"
-        :total="total"
-        @current-change="changePage(currentPage1, pageSize4)"
-        @size-change="changePage(currentPage1, pageSize4)"
-      >
-        <span class="pagination-slot">{{
-          currentPage1 * pageSize4 + '/' + total
-        }}</span>
-      </OPagination>
-      <div v-show="isMobile" class="pagination-mobile">
-        <div class="pagination-options">
-          <OIcon class="pagination-options-icon">
-            <IconPre />
-          </OIcon>
-          <div class="pagination-options-text" @click="goPrevious">上一页</div>
-          <div class="pagination-information">
-            <span class="pagination-information-current">{{
-              currentPage1
-            }}</span
-            >{{ '/' + Math.ceil(total / pageSize4) }}
-          </div>
-          <div class="pagination-options-text" @click="goNext">下一页</div>
-          <OIcon class="pagination-options-icon">
-            <IconNext />
-          </OIcon>
         </div>
       </div>
     </div>
-  </div>
+  </AppContent>
 </template>
 
 <style lang="scss" scoped>
 .live {
-  margin: var(--o-spacing-h1) 0 0 0;
-  @media screen and (max-width: 767px) {
-    margin: var(--o-spacing-h2) 0 0 0;
-  }
+  // margin: var(--o-spacing-h1) 0 0 0;
+  // @media screen and (max-width: 767px) {
+  //   margin: var(--o-spacing-h2) 0 0 0;
+  // }
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
@@ -244,7 +201,8 @@ const goNext = () => {
   &-top-title {
     width: 100%;
     margin: 0 auto;
-    font-size: var(--o-font-size-h3);
+    font-weight: 300;
+    font-size: var(--o-font-size-h5);
     text-align: center;
     color: var(--e-color-text1);
     @media screen and (max-width: 767px) {
@@ -254,7 +212,6 @@ const goNext = () => {
   &-list {
     display: grid;
     max-width: 1504px;
-    padding: 0 44px;
     margin: var(--o-spacing-h2) auto;
     justify-items: center;
     align-items: center;
@@ -287,8 +244,11 @@ const goNext = () => {
     }
     .live-background {
       @media screen and (max-width: 767px) {
-        background: var(--e-color-greyblue1) v-bind('liveStyleMo.light') left
-          top/contain no-repeat !important;
+        background: v-bind('liveStyleMo.light') left/contain no-repeat,
+          v-bind('liveStyleMo.lightExtension') left no-repeat !important;
+        // background-image:  v-bind('liveStyleMo.light'),v-bind('liveStyleMo.lightExtension') !important;
+        // background-repeat: no-repeat,no-repeat;
+        // background-position: left;
       }
 
       &.dark {
@@ -316,6 +276,7 @@ const goNext = () => {
       text-overflow: ellipsis;
       font-size: var(--o-font-size-h5);
       text-align: left;
+      font-weight: 500;
       color: var(--e-color-text1);
       @media screen and (max-width: 767px) {
         font-size: var(--o-font-size-text);
@@ -350,6 +311,7 @@ const goNext = () => {
     line-height: var(--o-line-height-tip);
     span {
       display: inline;
+      font-weight: 400;
     }
     @media screen and (max-width: 767px) {
       margin-top: var(--o-spacing-h5);

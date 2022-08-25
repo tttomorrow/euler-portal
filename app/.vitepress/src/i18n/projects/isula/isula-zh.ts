@@ -116,7 +116,12 @@ export default {
           IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
           DESC: '阅读iSula的基础信息',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: '了解更多',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/README.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -126,7 +131,12 @@ export default {
           IMG: '/img/projects/share/illustration-file.png',
           THEME: '架构说明',
           DESC: '了解iSula的架构说明',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: '了解更多',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/architecture_zh.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -136,7 +146,12 @@ export default {
           IMG: '/img/projects/share/illustration-book.png',
           THEME: '编译手册',
           DESC: '学习isula编译手册',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: '了解更多',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/build_guide_zh.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -150,7 +165,12 @@ export default {
           IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
           DESC: '阅读iSula基础信息',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: '了解更多',
+              LINK: 'https://gitee.com/openeuler/isula-build/blob/master/README.zh.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -160,7 +180,12 @@ export default {
           IMG: '/img/projects/share/illustration-newspapper.png',
           THEME: '使用手册',
           DESC: '',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: '了解更多',
+              LINK: 'https://gitee.com/openeuler/isula-build/blob/master/doc/manual_zh.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -174,7 +199,12 @@ export default {
           IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
           DESC: '阅读iSula基础信息',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: '了解更多',
+              LINK: 'https://gitee.com/openeuler/isula-transform/blob/master/README.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,

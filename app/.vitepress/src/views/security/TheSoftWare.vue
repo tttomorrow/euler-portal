@@ -12,7 +12,7 @@ function goBackPage() {
 }
 </script>
 <template>
-  <AppContent :mobileTop="16">
+  <AppContent :mobile-top="16">
     <div class="banner">
       <div class="breadcrumb" @click="goBackPage">
         {{ i18n.compatibility.COMPATIBILITY }} \

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted, Ref, ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
-import { useRouter } from 'vitepress';
+import { useRouter, useData } from 'vitepress';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
+import AppContent from '@/components/AppContent.vue';
 import { getAllMailing } from '@/api/api-mailing';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useCommon } from '@/stores/common';
@@ -10,9 +11,9 @@ import { useCommon } from '@/stores/common';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/mailing.png';
 import sig1 from '@/assets/category/sig/guidance/sig1.png';
-import sig2 from '@/assets/category/sig/guidance/sig4.png';
-import sig4 from '@/assets/category/sig/guidance/sig3.png';
-import sig5 from '@/assets/category/sig/guidance/sig5.png';
+import sig2 from '@/assets/category/sig/guidance/sig5.png';
+import sig4 from '@/assets/category/sig/guidance/sig2.png';
+import sig5 from '@/assets/category/sig/guidance/sig3.png';
 
 const LEFT_IMG = [sig1, sig2];
 const RIGHT_IMG = [sig4, sig5];
@@ -21,6 +22,7 @@ const i18n = useI18n();
 const router = useRouter();
 const screenWidth = useWindowResize();
 const commonStore = useCommon();
+const { lang } = useData();
 
 interface MailingMsg {
   description?: string;
@@ -104,144 +106,171 @@ const isMobile = computed(() => {
       :title="i18n.mailing.MAILING_LIST.TITLE"
       :illustration="illustration"
     />
-    <div class="middle">
-      <div class="middle-process-box">
-        <div v-show="!isMobile" class="lower-box">
-          <div class="big-bg"></div>
-          <div class="small-bg"></div>
-          <div class="big-bg"></div>
-        </div>
-        <div class="upper-box">
+    <AppContent>
+      <div class="middle">
+        <div class="middle-process-box">
           <div
-            v-for="(item, index) in i18n.mailing.MAILING_LIST.GUIDE_CONTENT"
-            :key="item.LEFT.LEFT_CIRCLE"
-            class="middle-item"
+            v-show="!isMobile"
+            class="lower-box"
+            :style="{ top: lang === 'zh' ? '50px' : '61px' }"
           >
-            <div class="middle-item-left">
-              <div class="middle-item-bgdconfig">
-                <img :src="LEFT_IMG[index]" />
-              </div>
-              <div class="middle-item-infoconfig">
-                <div class="middle-item-infoconfig-circle">
-                  {{ item.LEFT.INDEX }}
-                </div>
-                <div>
-                  <!-- <div>{{ item.LEFT.LEFT_CIRCLE }}</div> -->
-                  <span>{{ item.LEFT.LEFT_INFO }}</span>
-                  <span v-if="item.LEFT.DO_THIS">{{ item.LEFT.DO_THIS }}</span>
-                </div>
-              </div>
-            </div>
             <div
-              class="middle-item-right"
-              :class="index === 0 ? 'middle-item-right-1' : 'other'"
+              class="big-bg"
+              :style="{
+                height: lang === 'zh' ? '120px' : '',
+                'border-color':
+                  commonStore.theme === 'dark' ? 'var(--e-color-neutral5)' : '',
+              }"
+            ></div>
+            <div
+              class="small-bg"
+              :style="{
+                'border-color':
+                  commonStore.theme === 'dark' ? 'var(--e-color-neutral5)' : '',
+              }"
+            ></div>
+            <div
+              class="big-bg"
+              :style="{
+                height: lang === 'zh' ? '120px' : '',
+                'border-color':
+                  commonStore.theme === 'dark' ? 'var(--e-color-neutral5)' : '',
+              }"
+            ></div>
+          </div>
+          <div class="upper-box">
+            <div
+              v-for="(item, index) in i18n.mailing.MAILING_LIST.GUIDE_CONTENT"
+              :key="item.LEFT.LEFT_CIRCLE"
+              class="middle-item"
             >
-              <div class="middle-item-bgdconfig">
-                <img :src="RIGHT_IMG[index]" />
-              </div>
-              <div class="middle-item-infoconfig">
-                <div class="middle-item-infoconfig-circle">
-                  {{ item.RIGHT.INDEX }}
+              <div class="middle-item-left">
+                <div class="middle-item-bgdconfig">
+                  <img :src="LEFT_IMG[index]" />
                 </div>
-                <div>
-                  <span
-                    >{{ item.RIGHT.RIGHT_INFO }}
-                    <p
-                      v-if="item.RIGHT.DO_THIS"
-                      :style="{
-                        color:
-                          commonStore.theme === 'dark'
-                            ? 'var(--e-color-link2)'
-                            : '',
-                      }"
-                      @click="goUnsubscribeBlog()"
+                <div class="middle-item-infoconfig">
+                  <div class="middle-item-infoconfig-circle">
+                    {{ item.LEFT.INDEX }}
+                  </div>
+                  <div>
+                    <span v-if="item.LEFT.LEFT_CIRCLE" style="font-size: 22px">
+                      {{ item.LEFT.LEFT_CIRCLE }}
+                    </span>
+                    <span>{{ item.LEFT.LEFT_INFO }}</span>
+                    <span v-if="item.LEFT.DO_THIS">{{
+                      item.LEFT.DO_THIS
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="middle-item-right"
+                :class="index === 0 ? 'middle-item-right-1' : 'other'"
+              >
+                <div class="middle-item-bgdconfig">
+                  <img :src="RIGHT_IMG[index]" />
+                </div>
+                <div class="middle-item-infoconfig">
+                  <div class="middle-item-infoconfig-circle">
+                    {{ item.RIGHT.INDEX }}
+                  </div>
+                  <div>
+                    <span
+                      v-if="item.RIGHT.RIGHT_CIRCLE"
+                      style="font-size: 22px"
                     >
-                      {{ item.RIGHT.DO_THIS }}
-                    </p>
-                  </span>
+                      {{ item.RIGHT.RIGHT_CIRCLE }}
+                    </span>
+                    <span
+                      >{{ item.RIGHT.RIGHT_INFO }}
+                      <p
+                        v-if="item.RIGHT.DO_THIS"
+                        :style="{
+                          color:
+                            commonStore.theme === 'dark'
+                              ? 'var(--e-color-link2)'
+                              : '',
+                        }"
+                        @click="goUnsubscribeBlog()"
+                      >
+                        {{ item.RIGHT.DO_THIS }}
+                      </p>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="mail-table">
-        <OTable :data="tableData" style="width: 100%">
-          <el-table-column :label="i18n.mailing.MAILING_LIST.TABLE.NAME_H5">
-            <template #default="scope">
-              <a
-                ref="listName"
-                class="imformation-color"
-                target="_blank"
-                @click="userSubscribe(scope.row.list_id)"
-              >
-                {{ scope.row.display_name }}
-              </a>
-            </template>
-          </el-table-column>
-          <el-table-column
-            :label="i18n.mailing.MAILING_LIST.TABLE.EMAIL_ADDRESS"
-            prop="fqdn_listname"
-          >
-            <template #default="scope">
-              <div>
-                <span class="ellipsis">{{ scope.row.fqdn_listname }}</span>
-              </div>
-              <!-- <el-popover trigger="hover" placement="top"  width="300">
+        <div class="mail-table">
+          <OTable :data="tableData" style="width: 100%">
+            <el-table-column :label="i18n.mailing.MAILING_LIST.TABLE.NAME_H5">
+              <template #default="scope">
+                <a
+                  ref="listName"
+                  class="imformation-color"
+                  target="_blank"
+                  @click="userSubscribe(scope.row.list_id)"
+                >
+                  {{ scope.row.display_name }}
+                </a>
+              </template>
+            </el-table-column>
+            <el-table-column
+              :label="i18n.mailing.MAILING_LIST.TABLE.EMAIL_ADDRESS"
+              prop="fqdn_listname"
+            >
+              <template #default="scope">
+                <div>
+                  <span class="ellipsis">{{ scope.row.fqdn_listname }}</span>
+                </div>
+                <!-- <el-popover trigger="hover" placement="top"  width="300">
                 <p>{{ scope.row.fqdn_listname }}</p>
                 <div>
                   <span class="ellipsis">{{ scope.row.fqdn_listname }}</span>
                 </div>
               </el-popover> -->
-            </template>
-          </el-table-column>
-          <el-table-column :label="i18n.mailing.MAILING_LIST.TABLE.ARCHIVE_H5">
-            <template #default="scope">
-              <a
-                :href="
-                  'https://mailweb.openeuler.org/hyperkitty/list/' +
-                  scope.row.display_name.toLowerCase() +
-                  '@openeuler.org/'
-                "
-                class="imformation-color"
-                target="_blank"
-              >
-                archive
-              </a>
-            </template>
-          </el-table-column>
-          <el-table-column
-            :label="i18n.mailing.MAILING_LIST.TABLE.DESCRIPTION"
-            prop="description"
-          >
-            <template #default="scope">
-              <div>
-                <span class="ellipsis">{{ scope.row.description }}</span>
-              </div>
-            </template>
-          </el-table-column>
-        </OTable>
+              </template>
+            </el-table-column>
+            <el-table-column
+              :label="i18n.mailing.MAILING_LIST.TABLE.ARCHIVE_H5"
+            >
+              <template #default="scope">
+                <a
+                  :href="
+                    'https://mailweb.openeuler.org/hyperkitty/list/' +
+                    scope.row.display_name.toLowerCase() +
+                    '@openeuler.org/'
+                  "
+                  class="imformation-color"
+                  target="_blank"
+                >
+                  archive
+                </a>
+              </template>
+            </el-table-column>
+            <el-table-column
+              :label="i18n.mailing.MAILING_LIST.TABLE.DESCRIPTION"
+              prop="description"
+            >
+              <template #default="scope">
+                <div>
+                  <span class="ellipsis">{{ scope.row.description }}</span>
+                </div>
+              </template>
+            </el-table-column>
+          </OTable>
+        </div>
       </div>
-    </div>
+    </AppContent>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .application {
   .middle {
-    max-width: 1504px;
-    margin: 86px auto 0 auto;
-    padding: 0 44px;
-    @media (max-width: 1080px) {
-      margin: var(--o-spacing-h1) auto 0 auto;
-      padding: 0 var(--o-spacing-h5);
-    }
-    @media (max-width: 780px) {
-      margin: var(--o-spacing-h2) auto 0 auto;
-      padding: 0 var(--o-spacing-h5);
-    }
+    margin-top: 22px;
     &-process-box {
-      // position:absolute;
       position: relative;
     }
     .lower-box {
@@ -251,21 +280,26 @@ const isMobile = computed(() => {
       justify-content: center;
       position: absolute;
       left: 25%;
-      top: 50px;
       z-index: 3;
       .big-bg {
         margin: auto;
         width: 730px;
-        min-height: 120px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        height: 170px;
+        border-width: 2px;
+        border-style: dashed;
+        border-color: var(--e-color-brand1);
+        border-bottom: none;
+        border-left: none;
       }
       .small-bg {
         margin: auto;
         width: 730px;
         min-height: 102px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-left: 2px dashed var(--e-color-brand1);
+        border-width: 2px;
+        border-style: dashed;
+        border-color: var(--e-color-brand1);
+        border-bottom: none;
+        border-right: none;
       }
     }
     .upper-box {
@@ -378,13 +412,14 @@ const isMobile = computed(() => {
           width: 70px;
           border: 4px solid var(--e-color-white);
           border-radius: 50%;
-          background-color: var(--e-color-brand1);
+          background-color: var(--e-color-kleinblue5);
           position: relative;
           top: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
           font-size: var(--o-font-size-h5);
           padding: 20px 0;
+          font-weight: 500;
           color: var(--e-color-text2);
           @media (max-width: 780px) {
             white-space: nowrap;

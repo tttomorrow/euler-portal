@@ -24,6 +24,7 @@ const sortParams = reactive({
   category: 'news',
 });
 const newsTitle = ref<any>([]);
+const newsLint = ref<any>([]);
 const prev = ref('');
 const prevLint = ref('');
 const nextLint = ref('');
@@ -38,23 +39,23 @@ const goNext = () => {
   router.go(`${path}${nextLint.value}`);
   getNewsData();
 };
-const getNewsData = () => {
-  getSortData(sortParams).then((res) => {
-    // console.log(res);
+const getNewsData = async () => {
+  await getSortData(sortParams).then((res) => {
     res.obj.records.forEach((item: any) => {
       newsTitle.value.push(item.title);
+      newsLint.value.push(item.path);
     });
     newsTitle.value.forEach((item: any, index: number) => {
       if (item === frontmatter.value.title && index !== 0) {
-        prev.value = res.obj.records[index - 1].title;
-        prevLint.value = res.obj.records[index - 1].path;
+        prev.value = newsTitle.value[index - 1];
+        prevLint.value = newsLint.value[index - 1];
       }
       if (
         item === frontmatter.value.title &&
         index !== res.obj.records.length - 1
       ) {
-        next.value = res.obj.records[index + 1].title;
-        nextLint.value = res.obj.records[index + 1].path;
+        next.value = newsTitle.value[index + 1];
+        nextLint.value = newsLint.value[index + 1];
       }
     });
   });

@@ -101,11 +101,7 @@ const isDark = computed(() => {
 
 <style lang="scss" scoped>
 .cards-wraper {
-  margin-top: var(--o-spacing-h1);
-  padding: 0 var(--o-spacing-h5);
-  @media screen and (max-width: 767px) {
-    margin-top: var(--o-spacing-h2);
-  }
+  margin-bottom: var(--o-spacing-h2);
 }
 .info {
   margin: 0 auto;

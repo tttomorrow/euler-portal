@@ -105,17 +105,21 @@ const selectMethod = () => {
 const getListData = (params: ParamsType) => {
   getSortData(params)
     .then((res) => {
-      paginationData.value.total = res.obj.count;
-      paginationData.value.currentpage = res.obj.page;
-      paginationData.value.pagesize = res.obj.pageSize;
-      newsCardData.value = res.obj.records;
-      for (let i = 0; i < newsCardData.value.length; i++) {
-        if (typeof newsCardData.value[i].author === 'string') {
-          newsCardData.value[i].author = [newsCardData.value[i].author];
+      if (res.obj.count === 0) {
+        isShowData.value = false;
+      } else {
+        paginationData.value.total = res.obj.count;
+        paginationData.value.currentpage = res.obj.page;
+        paginationData.value.pagesize = res.obj.pageSize;
+        newsCardData.value = res.obj.records;
+        for (let i = 0; i < newsCardData.value.length; i++) {
+          if (typeof newsCardData.value[i].author === 'string') {
+            newsCardData.value[i].author = [newsCardData.value[i].author];
+          }
+          newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
         }
-        newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
+        isShowData.value = true;
       }
-      isShowData.value = true;
     })
     .catch((error: any) => {
       isShowData.value = false;
@@ -195,7 +199,7 @@ const currentChange = (val: number) => {
     :illustration="BannerImg2"
   />
   <AppContent :mobile-top="16">
-    <template v-if="isShowData">
+    <template v-if="true">
       <div class="news-tag">
         <MobileFilter :data="selectData" :single="true" @filter="listFilter" />
       </div>
@@ -252,6 +256,8 @@ const currentChange = (val: number) => {
           </OSelect>
         </div>
       </div>
+    </template>
+    <template v-if="isShowData">
       <div class="news-list">
         <OCard
           v-for="item in newsCardData"
@@ -358,16 +364,22 @@ const currentChange = (val: number) => {
     }
     &-item:hover {
       box-shadow: var(--e-shadow-l2_hover);
+      .news-img img {
+        transform: scale(1.05);
+      }
     }
   }
   &-img {
     width: 100%;
     height: 188px;
+    max-height: 188px;
     object-fit: cover;
+    overflow: hidden;
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
     }
   }
   &-info {
@@ -402,9 +414,9 @@ const currentChange = (val: number) => {
   }
 }
 @media (max-width: 1100px) {
-  .news-tag {
-    display: block;
-  }
+  // .news-tag {
+  // display: block; // 暂时干掉移动筛选
+  // }
   .news-select {
     display: none;
   }

@@ -14,6 +14,7 @@ import PublishLink from './PublishLink.vue';
 import SourceLink from './SourceLink.vue';
 import HomeNews from './HomeNews.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
+import AppContent from '@/components/AppContent.vue';
 
 import { getMeetingData } from '@/api/api-calendar';
 import { TableData } from '@/shared/@types/type-calendar';
@@ -100,7 +101,7 @@ onMounted(async () => {
 
 <template>
   <HomeBanner />
-  <div class="wraper">
+  <AppContent>
     <OContainer :level-index="2"><HomeNav /></OContainer>
     <HomeCarousel />
     <UserCase v-if="caseData" :case-data="caseData" />
@@ -123,32 +124,24 @@ onMounted(async () => {
     <HomePlayground />
     <PublishLink />
     <SourceLink />
-  </div>
+  </AppContent>
 </template>
 
 <style lang="scss" scoped>
-.wraper {
-  margin: 0 auto;
-  padding: 0 var(--o-spacing-h2);
-  max-width: 1504px;
-  @media screen and (max-width: 1080px) {
-    padding: 0 var(--o-spacing-h5);
-  }
-  h3 {
-    font-size: var(--o-font-size-h3);
-    font-weight: 300;
-    color: var(--e-color-text1);
-    line-height: var(--o-line-height-h3);
-    width: 100%;
-    text-align: center;
-    margin-top: var(--o-spacing-h1);
-    margin-bottom: var(--o-spacing-h2);
-    @media (max-width: 768px) {
-      font-size: var(--o-font-size-h8);
-      line-height: var(--o-line-height-h8);
-      margin-top: var(--o-spacing-h2);
-      margin-bottom: var(--o-spacing-h5);
-    }
+h3 {
+  font-size: var(--o-font-size-h3);
+  font-weight: 300;
+  color: var(--e-color-text1);
+  line-height: var(--o-line-height-h3);
+  width: 100%;
+  text-align: center;
+  margin-top: var(--o-spacing-h1);
+  margin-bottom: var(--o-spacing-h2);
+  @media (max-width: 768px) {
+    font-size: var(--o-font-size-h8);
+    line-height: var(--o-line-height-h8);
+    margin-top: var(--o-spacing-h2);
+    margin-bottom: var(--o-spacing-h5);
   }
 }
 </style>

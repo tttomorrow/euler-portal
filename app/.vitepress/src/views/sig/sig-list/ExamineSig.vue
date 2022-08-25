@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import { getSigList } from '@/api/api-sig';
+import AppContext from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TheSigList from './TheSigList.vue';
 import TheSigBoard from './TheSigBoard.vue';
@@ -47,27 +48,29 @@ onMounted(() => {
     :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
     :background-text="isMobile ? 'SIG' : ''"
   />
-  <div class="sig-ul">
-    <ul>
-      <li>{{ i18n.sig.SIG_DESCRIPTION.LI1 }}</li>
-      <li>{{ i18n.sig.SIG_DESCRIPTION.LI2 }}</li>
-      <li>{{ i18n.sig.SIG_DESCRIPTION.LI3 }}</li>
-    </ul>
-  </div>
-  <div class="sig-list">
-    <p>SIG List</p>
-    <OTabs>
-      <OTabPane label="SIG List">
-        <TheSigList />
-      </OTabPane>
-      <OTabPane label="SIG Board" lazy>
-        <TheSigBoard :sig-list="sigList" />
-      </OTabPane>
-      <OTabPane label="SIG Landscape">
-        <TheSigLandscape />
-      </OTabPane>
-    </OTabs>
-  </div>
+  <AppContext :mobile-top="16">
+    <div class="sig-ul">
+      <ul>
+        <li>{{ i18n.sig.SIG_DESCRIPTION.LI1 }}</li>
+        <li>{{ i18n.sig.SIG_DESCRIPTION.LI2 }}</li>
+        <li>{{ i18n.sig.SIG_DESCRIPTION.LI3 }}</li>
+      </ul>
+    </div>
+    <div class="sig-list">
+      <p>SIG List</p>
+      <OTabs>
+        <OTabPane label="SIG List">
+          <TheSigList />
+        </OTabPane>
+        <OTabPane label="SIG Board" lazy>
+          <TheSigBoard :sig-list="sigList" />
+        </OTabPane>
+        <OTabPane label="SIG Landscape">
+          <TheSigLandscape />
+        </OTabPane>
+      </OTabs>
+    </div>
+  </AppContext>
 </template>
 <style lang="scss" scoped>
 .sig-ul {
@@ -75,27 +78,19 @@ onMounted(() => {
   font-weight: 400;
   line-height: var(--o-line-height-h8);
   color: var(--e-color-text1);
-  max-width: 1504px;
-  margin: var(--o-spacing-h1) auto;
-  padding: 0 44px;
-  @media (max-width: 780px) {
-    padding: var(--o-spacing-h5) 0px var(--o-spacing-h2) var(--o-spacing-h5);
+  @media (max-width: 1100px) {
+    padding: 0px 0px var(--o-spacing-h2) var(--o-spacing-h5);
     font-size: var(--o-font-size-tip);
   }
-  ul {
+  li {
     list-style: disc;
-    li {
+    + li {
       margin-top: var(--o-spacing-h8);
     }
   }
-  @media (max-width: 780px) {
-    margin: 0px var(--o-spacing-h4);
-  }
 }
 .sig-list {
-  max-width: 1504px;
   margin: var(--o-spacing-h1) auto 0;
-  padding: 0 44px;
   p {
     display: none;
   }

@@ -154,8 +154,10 @@ $banner-color: #fff;
     opacity: 1;
     transition: all 0.33s;
     &-content {
-      max-width: 1416px;
+      box-sizing: border-box;
+      max-width: 1504px;
       margin: 0 auto;
+      padding: 0 var(--o-spacing-h2);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -220,7 +222,7 @@ $banner-color: #fff;
           margin-top: 0;
         }
       }
-      @media screen and (max-width: 1439px) {
+      @media screen and (max-width: 1100px) {
         padding: 0 16px;
       }
       @media screen and (max-width: 824px) {

@@ -49,7 +49,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <AppContent :mobileTop="16">
+  <AppContent :mobile-top="16">
     <div class="wrapper">
       <div class="breadcrumb">
         <p class="last-page" @click="goBackPage">

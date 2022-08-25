@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import AppContext from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/search.png';
@@ -33,92 +34,85 @@ const isMobile = computed(() => {
     :title="i18n.sig.GUIDANCE_LIST.GUIDE.TITLE"
     :illustration="isMobile ? moillustration : illustration"
   />
-  <div class="application">
-    <div class="middle">
-      <div
-        v-for="(item, index) in i18n.sig.GUIDANCE_LIST.GUIDE.LINE_CONTENT"
-        :key="item.LEFT.LEFT_CIRCLE"
-        class="middle-item"
-      >
+  <AppContext :pc-top="40">
+    <div class="application">
+      <div class="middle">
         <div
-          :class="[
-            'middle-item-left',
-            index === 0 && language === 'ru' ? 'middle-item-left-ruf' : '',
-            index === 1 && language === 'ru' ? 'middle-item-left-rus' : '',
-          ]"
+          v-for="(item, index) in i18n.sig.GUIDANCE_LIST.GUIDE.LINE_CONTENT"
+          :key="item.LEFT.LEFT_CIRCLE"
+          class="middle-item"
         >
-          <div class="middle-item-bgdconfig">
-            <img :src="LEFT_IMG[index]" />
-          </div>
-          <div class="middle-item-infoconfig">
-            <div class="middle-item-infoconfig-circle">
-              <span>{{ item.LEFT.LEFT_CIRCLE }}</span>
+          <div
+            :class="[
+              'middle-item-left',
+              index === 0 && language === 'ru' ? 'middle-item-left-ruf' : '',
+              index === 1 && language === 'ru' ? 'middle-item-left-rus' : '',
+            ]"
+          >
+            <div class="middle-item-bgdconfig">
+              <img :src="LEFT_IMG[index]" />
             </div>
-            <div>
-              <span v-if="item.LEFT.LEFT_DESC" style="font-size: 22px">
-                {{ item.LEFT.LEFT_DESC }}
-              </span>
-              <span>{{ item.LEFT.LEFT_INFO }}</span>
+            <div class="middle-item-infoconfig">
+              <div class="middle-item-infoconfig-circle">
+                <span>{{ item.LEFT.LEFT_CIRCLE }}</span>
+              </div>
+              <div>
+                <span v-if="item.LEFT.LEFT_DESC" style="font-size: 22px">
+                  {{ item.LEFT.LEFT_DESC }}
+                </span>
+                <span>{{ item.LEFT.LEFT_INFO }}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          :class="[
-            'middle-item-right',
-            index === 0 ? 'middle-item-right-f' : '',
-            index === 0 && language === 'ru' ? 'middle-item-right-ruf' : '',
-          ]"
-        >
-          <div class="middle-item-bgdconfig">
-            <img :src="RIGHT_IMG[index]" />
-          </div>
-          <div class="middle-item-infoconfig">
-            <div class="middle-item-infoconfig-circle">
-              <span>{{ item.RIGHT.RIGHT_CIRCLE }}</span>
+          <div
+            :class="[
+              'middle-item-right',
+              index === 0 ? 'middle-item-right-f' : '',
+              index === 0 && language === 'ru' ? 'middle-item-right-ruf' : '',
+            ]"
+          >
+            <div class="middle-item-bgdconfig">
+              <img :src="RIGHT_IMG[index]" />
             </div>
-            <div>
-              <span v-if="item.RIGHT.RIGHT_DESC" style="font-size: 22px">
-                {{ item.RIGHT.RIGHT_DESC }}
-              </span>
-              <!-- eslint-disable -->
-              <span v-html="item.RIGHT.RIGHT_INFO" class="right-info"></span>
+            <div class="middle-item-infoconfig">
+              <div class="middle-item-infoconfig-circle">
+                <span>{{ item.RIGHT.RIGHT_CIRCLE }}</span>
+              </div>
+              <div>
+                <span v-if="item.RIGHT.RIGHT_DESC" style="font-size: 22px">
+                  {{ item.RIGHT.RIGHT_DESC }}
+                </span>
+                <!-- eslint-disable -->
+                <span v-html="item.RIGHT.RIGHT_INFO" class="right-info"></span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div
+        :class="[
+          language === 'zh'
+            ? 'linebox-zh'
+            : language === 'en'
+            ? 'linebox-en'
+            : 'linebox-ru',
+        ]"
+      >
+        <div class="line-first"></div>
+        <div class="line-second"></div>
+        <div class="line-third"></div>
+        <div class="line-forth"></div>
+        <div class="line-fifth"></div>
+      </div>
     </div>
-    <div
-      :class="[
-        language === 'zh'
-          ? 'linebox-zh'
-          : language === 'en'
-          ? 'linebox-en'
-          : 'linebox-ru',
-      ]"
-    >
-      <div class="line-first"></div>
-      <div class="line-second"></div>
-      <div class="line-third"></div>
-      <div class="line-forth"></div>
-      <div class="line-fifth"></div>
-    </div>
-  </div>
+  </AppContext>
 </template>
 
 <style lang="scss" scoped>
 .application {
   .middle {
-    max-width: 1504px;
-    margin: var(--o-spacing-h1) auto;
-    padding: 0 44px;
     position: relative;
     z-index: 90;
-    @media (max-width: 1080px) {
-      padding: 0 var(--o-spacing-h4);
-    }
-    @media (max-width: 780px) {
-      margin: var(--o-spacing-h2) auto;
-    }
     &-item {
       min-height: 154px;
       display: flex;

@@ -4,9 +4,6 @@
 
 import { request } from '@/shared/axios';
 import type { AxiosResponse } from '@/shared/axios';
-const baseUrl = 'https://www.openeuler.org';
-// const baseUrl = 'http://119.8.32.82';
-
 interface LIST_PARAMS {
   page: number;
   pageSize: number;
@@ -29,7 +26,7 @@ export function getAllList() {
   return request.post(url).then((res: AxiosResponse) => res.data);
 }
 export function getSigDetail(id: string) {
-  const url = `${baseUrl}/sigmeetingsdata/${id}/`;
+  const url = `/api/meetings/sigmeetingsdata/${id}/`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 export function getSigMember(params: object) {

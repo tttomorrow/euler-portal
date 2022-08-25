@@ -32,7 +32,12 @@ export default {
         IMG: '/img/projects/share/illustration-arrow.png',
         THEME: 'Overview',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read me',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/secGear/%E8%AE%A4%E8%AF%86secGear.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,
@@ -42,7 +47,12 @@ export default {
         IMG: '/img/projects/share/illustration-file.png',
         THEME: 'Installation',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read me',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/secGear/%E5%AE%89%E8%A3%85secGear.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,
@@ -52,7 +62,12 @@ export default {
         IMG: '/img/projects/share/illustration-book.png',
         THEME: 'Developer Guide',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read me',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/secGear/%E5%BC%80%E5%8F%91secGear%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,
@@ -62,7 +77,12 @@ export default {
         IMG: '/img/projects/share/illustration-glass.png',
         THEME: '工具Tool Usage用文档',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read me',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/secGear/%E4%BD%BF%E7%94%A8secGear%E5%B7%A5%E5%85%B7.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,
@@ -72,7 +92,12 @@ export default {
         IMG: '/img/projects/share/illustration-newspapper.png',
         THEME: 'API Reference',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read me',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/secGear/%E6%8E%A5%E5%8F%A3%E5%8F%82%E8%80%83.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,

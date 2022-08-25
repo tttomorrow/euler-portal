@@ -240,14 +240,7 @@ const postBlog = () => {
     </template>
   </BannerLevel2>
   <AppContent :mobile-top="16">
-    <template v-if="isShowData">
-      <div class="blog-tag2">
-        <MobileFilter
-          :data="tagsDataToChild"
-          :single="true"
-          @filter="listFilter"
-        />
-      </div>
+    <template v-if="true">
       <div class="blog-select">
         <div class="blog-select-item">
           <span class="blog-select-item-title">{{ userCaseData.TIME }}</span>
@@ -301,6 +294,15 @@ const postBlog = () => {
           </OSelect>
         </div>
       </div>
+      <div class="blog-tag2">
+        <MobileFilter
+          :data="tagsDataToChild"
+          :single="true"
+          @filter="listFilter"
+        />
+      </div>
+    </template>
+    <template v-if="isShowData">
       <div class="blog-list">
         <OCard
           v-for="item in blogCardData"
@@ -497,9 +499,9 @@ const postBlog = () => {
     grid-template-columns: repeat(2, 1fr);
     margin-top: var(--o-spacing-h5);
   }
-  .blog-tag2 {
-    display: block;
-  }
+  // .blog-tag2 {
+  // display: block; // 暂时干掉移动端筛选
+  // }
   .blog-select {
     display: none;
   }

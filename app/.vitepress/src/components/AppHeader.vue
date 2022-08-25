@@ -13,6 +13,7 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
+import { getPop } from '@/api/api-search';
 
 interface NavItem {
   NAME: string;
@@ -29,6 +30,7 @@ const i18n = useI18n();
 const commonStore = useCommon();
 const documentElement = document.documentElement;
 
+// 导航数据
 const navRouter = computed(() => i18n.value.common.NAV_ROUTER_CONFIG);
 
 const activeNav = ref<string>();
@@ -40,9 +42,6 @@ const roterPath = ref<string>(router.route.path);
 // 移动菜单事件
 const mobileMenuIcon = ref(false);
 const mobileChildMenu = ref<NavItem | any>([]);
-const handleLanguageChange = () => {
-  mobileMenuIcon.value = false;
-};
 
 const mobileMenuPanel = () => {
   mobileChildMenu.value = [];
@@ -64,6 +63,7 @@ const handleMenuLayer = (e: any) => {
   }
 };
 
+// 移动端一级导航事件
 const goMobile = (item: NavItem) => {
   mobileChildMenu.value = [];
   if (Object.prototype.hasOwnProperty.call(item, 'CHILDREN')) {
@@ -76,6 +76,7 @@ const goMobile = (item: NavItem) => {
   activeNav.value = item.ID;
 };
 
+// 移动端二级导航事件
 const goMobileSubList = (item: NavItem) => {
   if (item.IS_OPEN_WINDOW) {
     window.open(i18n.value.docsUrl + item.PATH);
@@ -103,7 +104,7 @@ watch(
     roterPath.value = val;
   }
 );
-// 设置默认选中、二级菜单
+// 移动端默认选中、二级菜单
 const moudleItem = () => {
   navRouter.value.forEach((item: any) => {
     item.CLASS.forEach((el: any) => {
@@ -137,9 +138,31 @@ const isShowBox = ref(false);
 const showSearchBox = () => {
   isShowBox.value = true;
 };
+
+// 搜索抽屉
+const popList = ref<string[]>([]);
+const isShowDrawer = ref(false);
+const showDrawer = () => {
+  isShowDrawer.value = true;
+  //热搜
+  const params = `lang=${lang.value}`;
+  getPop(params).then((res) => {
+    if (popList.value.length === 0) {
+      res.obj.forEach((item: string) => {
+        popList.value.push(item);
+      });
+    }
+  });
+};
+const topSearchClick = (val: string) => {
+  searchInput.value = val;
+  search();
+};
 const donShowSearchBox = () => {
   isShowBox.value = false;
+  isShowDrawer.value = false;
   searchInput.value = '';
+  popList.value = [];
 };
 // 搜索内容
 const searchInput = ref<string>('');
@@ -148,6 +171,7 @@ function search() {
   router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
+
 </script>
 
 <template>
@@ -167,11 +191,29 @@ function search() {
             v-model="searchInput"
             :placeholder="searchValue.PLEACHOLDER"
             @change="search"
+            @focus="showDrawer"
           >
             <template #suffix>
               <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
             </template>
           </OSearch>
+        </div>
+        <div v-show="isShowDrawer" class="drawer">
+          <div class="hots">
+            <div class="hots-title">
+              <p class="hots-text">{{ searchValue.TOPSEARCH }}</p>
+            </div>
+            <div class="hots-list">
+              <OTag
+                v-for="item in popList"
+                :key="item"
+                type="text"
+                class="hots-list-item"
+                @click="topSearchClick(item)"
+                >{{ item }}</OTag
+              >
+            </div>
+          </div>
         </div>
       </div>
       <!-- 移动端搜索按钮 -->
@@ -213,7 +255,7 @@ function search() {
             </div>
             <div class="mobile-tools">
               <AppTheme />
-              <AppLanguage @language-click="handleLanguageChange" />
+              <AppLanguage @language-click="mobileMenuIcon = false" />
             </div>
           </div>
           <transition name="menu-sub">
@@ -353,6 +395,39 @@ function search() {
     .close {
       cursor: pointer;
       color: var(--e-color-text1);
+    }
+  }
+  .drawer {
+    position: absolute;
+    height: auto;
+    width: 100%;
+    margin-top: 21px;
+    // background: rgba(255, 255, 255, 0.9);
+    background: hsla(0, 0%, 100%, 0.97);
+    backdrop-filter: blur(5px);
+    padding: var(--o-spacing-h3);
+    @media (max-width: 1100px) {
+      margin-top: 8px;
+    }
+    .hots {
+      &-title {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-heigh-tip);
+        color: var(--e-color-black);
+      }
+      &-list {
+        &-item {
+          margin-top: var(--o-spacing-h8);
+          margin-right: var(--o-spacing-h5);
+          background-color: var(--e-color-greyblue1);
+          color: var(--e-color-neutral5);
+          cursor: pointer;
+          @media (max-width: 1100px) {
+            font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-heigh-tip);
+          }
+        }
+      }
     }
   }
 }

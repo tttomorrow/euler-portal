@@ -340,7 +340,7 @@ export default {
   SEARCH: {
     BROWSEHISTORY: '历史记录',
     CLEAN: '清除',
-    TOPSEARCH: '热搜',
+    TOPSEARCH: '热门搜索',
     CHANGE: '换一批',
     PLEACHOLDER: '请输入内容',
   },

@@ -107,7 +107,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <AppContent :mobileTop="16">
+  <AppContent :mobile-top="16">
     <div class="breadcrumb">
       <p class="last-page" @click="goBackPage">
         {{ i18n.security.CVE }}
@@ -156,13 +156,8 @@ onMounted(() => {
           </OTableColumn>
           <OTableColumn :label="i18n.security.STATUS" prop="status">
           </OTableColumn>
-          <OTableColumn
-            :label="i18n.security.SECURITY_ADVISORIES"
-            prop="securityNoticeNo"
-          >
-          </OTableColumn>
 
-          <el-table-column>
+          <el-table-column :label="i18n.security.SECURITY_ADVISORIES">
             <template #default="scope">
               <span
                 class="detail-page"

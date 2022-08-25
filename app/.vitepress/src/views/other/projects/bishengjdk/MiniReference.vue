@@ -60,8 +60,6 @@ const goLink = (path: string) => {
 <style lang="scss" scoped>
 .reference {
   width: 100%;
-  padding-top: var(--o-spacing-h1);
-  padding: 0 var(--o-spacing-h5);
   &-list {
     margin: 0 auto;
     .item {

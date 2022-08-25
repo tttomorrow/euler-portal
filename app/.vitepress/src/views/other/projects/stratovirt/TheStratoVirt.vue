@@ -7,6 +7,7 @@ import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import MiniFeatures from './MiniFeatures.vue';
 import BannerMinisite from '@/components/BannerMinisite.vue';
+import AppContent from '@/components/AppContent.vue';
 
 import BannerIllustration from '/img/projects/stratovirt/illustration-banner.png';
 import banner from '@/assets/banner-secondary.png';
@@ -14,15 +15,15 @@ import banner from '@/assets/banner-secondary.png';
 const i18n = useI18n();
 </script>
 <template>
-  <div class="svirt-wraper">
-    <BannerMinisite
-      class="banner"
-      :title="i18n.stratovirt.SVIRT_BANNER_TEXT[0]"
-      :subtitle="i18n.stratovirt.SVIRT_BANNER_TEXT[1]"
-      :illustration="BannerIllustration"
-      :background-image="banner"
-      background-text="SEARCH"
-    />
+  <BannerMinisite
+    class="banner"
+    :title="i18n.stratovirt.SVIRT_BANNER_TEXT[0]"
+    :subtitle="i18n.stratovirt.SVIRT_BANNER_TEXT[1]"
+    :illustration="BannerIllustration"
+    :background-image="banner"
+    background-text="SEARCH"
+  />
+  <AppContent>
     <!-- 卡片 -->
     <MiniCards :cards-link="i18n.stratovirt.SVIRT_LINK" />
     <!-- 中间文字介绍部分 -->
@@ -36,11 +37,5 @@ const i18n = useI18n();
     />
     <!-- 文档 -->
     <MiniDocs :docs-obj="i18n.stratovirt.SVIRT_DOCUMENT" />
-  </div>
+  </AppContent>
 </template>
-
-<style lang="scss" scoped>
-.svirt-wraper {
-  margin: 0 auto;
-}
-</style>

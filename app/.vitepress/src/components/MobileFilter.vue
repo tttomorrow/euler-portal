@@ -248,6 +248,8 @@ const allHighLight = (val: any) => {
   justify-content: center;
 }
 .o-screen {
+  padding: var(--o-spacing-h5) 0;
+
   &-header {
     display: flex;
     flex-direction: row;
@@ -255,13 +257,13 @@ const allHighLight = (val: any) => {
     &-button {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      margin-bottom: var(--o-spacing-h5);
       color: var(--e-color-text4);
       &-icon {
         display: inline-block;
         .icon {
           position: relative;
           bottom: -2px;
+          color: var(--e-color-text1);
         }
       }
     }
@@ -270,13 +272,13 @@ const allHighLight = (val: any) => {
     // padding: 0 var(--o-spacing-h5);
     &-tag {
       margin-right: var(--o-spacing-h8);
-      // margin-bottom: var(--o-spacing-h8);
-      background-color: var(--e-color-neutral11);
+      margin-top: var(--o-spacing-h8);
+      background-color: var(--e-color-bg4);
       &-icon {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-tip);
         // color: var(--e-color-text1);
-        color: #000000;
+        color: var(--e-color-text3);
         position: relative;
         top: 1px;
       }

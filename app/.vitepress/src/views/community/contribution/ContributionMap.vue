@@ -36,6 +36,12 @@ const goLink = function (url: string, isBlank: boolean) {
         class="link"
         @click="goLink(item.URL, item.BLANK)"
       ></div>
+      <a
+        class="content-map-print"
+        download="trail-chess.pdf"
+        :href="i18n.contribution.DOWLOAD_PDF_URL"
+        >{{ i18n.contribution.PRINT_MAP }}</a
+      >
     </div>
     <div class="content-map-mobile-img">
       <img v-show="!isDark" :src="ContributionMapMobile" />
@@ -94,6 +100,22 @@ const goLink = function (url: string, isBlank: boolean) {
     @media screen and (min-width: 1280px) and (max-width: 1439px) {
       width: 1254px;
     }
+  }
+  &-print {
+    position: absolute;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    top: 22px;
+    right: 22px;
+    background-color: var(--e-color-bg2);
+    color: var(--e-color-brand1);
+    border: 1px solid var(--e-color-brand1);
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-h6);
+    text-align: center;
+    border-radius: 1px;
+    text-decoration: none;
   }
   .link:nth-of-type(1) {
     width: 40px;

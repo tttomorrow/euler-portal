@@ -50,7 +50,7 @@ const imgUrlHover = computed(
   padding: var(--o-spacing-h4);
   position: relative;
   display: grid;
-  margin-top: -57px;
+  margin-top: -102px;
   grid-template-columns: repeat(4, minmax(82px, 1fr));
   column-gap: 0;
   row-gap: 0;
@@ -118,7 +118,7 @@ const imgUrlHover = computed(
     border: none;
   }
   @media screen and (max-width: 1440px) {
-    margin-top: var(--o-spacing-h2);
+    margin-top: 0;
     position: relative;
     grid-template-columns: repeat(2, minmax(82px, 1fr));
     column-gap: 60px;
