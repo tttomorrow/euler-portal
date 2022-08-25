@@ -115,5 +115,8 @@ onMounted(() => {
     margin: 0;
     display: inline-block;
   }
+  p:hover {
+    color: var(--e-color-link2);
+  }
 }
 </style>

@@ -25,7 +25,7 @@ const attrs = useAttrs();
     border: none;
 
     &.is-always-shadow {
-      box-shadow: var(--o-shadow-l2);
+      box-shadow: var(--e-shadow-l2);
     }
 
     &.is-hover-shadow {

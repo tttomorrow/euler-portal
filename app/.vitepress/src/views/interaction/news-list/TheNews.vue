@@ -11,6 +11,7 @@ import MobileFilter from '@/components/MobileFilter.vue';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 import AppContent from '@/components/AppContent.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 interface NewsData {
   articleName: string;
@@ -189,6 +190,18 @@ const currentChange = (val: number) => {
   };
   getListData(params);
 };
+const moblieCurrentChange = (val: string) => {
+  if (val === 'prev' && paginationData.value.currentpage > 1) {
+    paginationData.value.currentpage = paginationData.value.currentpage - 1;
+    currentChange(paginationData.value.currentpage);
+  } else if (
+    val === 'next' &&
+    paginationData.value.currentpage < Math.ceil(paginationData.value.total / paginationData.value.pagesize)
+  ) {
+    paginationData.value.currentpage = paginationData.value.currentpage + 1;
+    currentChange(paginationData.value.currentpage);
+  }
+};
 </script>
 
 <template>
@@ -285,12 +298,13 @@ const currentChange = (val: number) => {
       </div>
       <div class="news-pagination">
         <OPagination
+          class="pcpagination"
           v-model:currentPage="paginationData.currentpage"
           v-model:page-size="paginationData.pagesize"
           :background="true"
           layout="sizes, prev, pager, next, slot, jumper"
           :total="paginationData.total"
-          :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
+          :page-sizes="[3, 6, 9]"
           @current-change="currentChange"
           @size-change="currentChange"
         >
@@ -300,6 +314,12 @@ const currentChange = (val: number) => {
             }}</span
           >
         </OPagination>
+        <AppPaginationMo
+          :current-page="paginationData.currentpage"
+          :total-page="Math.ceil(paginationData.total / paginationData.pagesize)"
+          @turn-page="moblieCurrentChange"
+        >
+        </AppPaginationMo>
       </div>
     </template>
     <NotFound v-else />
@@ -344,7 +364,7 @@ const currentChange = (val: number) => {
       &-title {
         margin-right: var(--o-spacing-h5);
         color: var(--e-color-text1);
-        font-size: var(--o-font-size-text);
+        font-size: var(--o-font-size-h7);
       }
     }
   }
@@ -434,6 +454,11 @@ const currentChange = (val: number) => {
   .news-img,
   .news-info {
     flex: 1;
+  }
+}
+@media (max-width:768px) {
+  .pcpagination {
+    display: none;
   }
 }
 @media (max-width: 620px) {
