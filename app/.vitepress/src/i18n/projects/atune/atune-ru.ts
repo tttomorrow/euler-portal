@@ -42,8 +42,8 @@ export default {
       'На уровне системы взаимодействия осуществляется контроль и настройка различных системных ресурсов. На этом уровне применяются политики настройки.',
       'Библиотека моделей настройки содержит конфигурации для настройки приложений 10 категорий в более чем 20 сценариях.',
     ],
-    FRAMEWORK_IMG: '/img/projects/atune/framework-hight-zh.png',
-    FRAMEWORK_IMG_DARK: '/img/projects/atune/framework-dark-zh.png',
+    FRAMEWORK_IMG: '/img/projects/atune/framework-hight-en.png',
+    FRAMEWORK_IMG_DARK: '/img/projects/atune/framework-dark-en.png',
   },
   ATUNE_DOCUMENT: {
     TITLE_OUTSIDE: 'Документы',

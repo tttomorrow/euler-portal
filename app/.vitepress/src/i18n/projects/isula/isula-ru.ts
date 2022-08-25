@@ -71,8 +71,8 @@ export default {
         'Функциональность iSulad не ограничивается спецификациями оборудования и архитектурами. Решение отличается минимальным влиянием со стороны фоновых процессов, что делает его идеальным вариантом применения во многих областях.',
       ],
       FRAMEWORK_TITLE: 'Архитектура iSulad:',
-      FRAMEWORK_IMG: '/img/projects/isula/framework-isulad-hight-zh.png',
-      FRAMEWORK_IMG_DARK: '/img/projects/isula/framework-isulad-dark-zh.png',
+      FRAMEWORK_IMG: '/img/projects/isula/framework-isulad-hight-en.png',
+      FRAMEWORK_IMG_DARK: '/img/projects/isula/framework-isulad-dark-en.png',
     },
     ISULAD_BUILD: {
       DESC_LIST: [

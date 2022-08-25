@@ -186,10 +186,10 @@ openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社�
     color: var(--e-color-text1);
   }
   a {
-    color: var(--e-color-brand2);
+    color: var(--e-color-link1);
   }
   .care {
-    color: #F3524D;
+    color: var(--e-color-red5);
   }
   @media screen and (max-width: 769px) {
     padding: var(--o-spacing-h5);

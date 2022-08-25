@@ -50,9 +50,7 @@ defineProps({
 <style lang="scss" scoped>
 .desc-wraper {
   margin-bottom: var(--o-spacing-h2);
-  @media screen and (max-width: 767px) {
-    margin-top: var(--o-spacing-h2);
-  }
+  box-shadow: var(--e-shadow-l1);
 }
 .desc {
   margin: 0 auto;

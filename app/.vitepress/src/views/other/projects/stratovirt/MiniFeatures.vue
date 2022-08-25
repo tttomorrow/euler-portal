@@ -66,6 +66,7 @@ const changeImg = function (url: string) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 24px;
+    box-shadow: var(--e-shadow-l1);
     &-item {
       max-width: 482px;
       display: flex;

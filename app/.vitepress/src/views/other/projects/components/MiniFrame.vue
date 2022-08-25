@@ -150,6 +150,9 @@ const isDark = computed(() => {
           color: var(--e-color-brand1);
         }
       }
+      .el-tabs__content {
+        box-shadow: var(--e-shadow-l1);
+      }
     }
   }
   .framework-leftandright {
@@ -167,6 +170,7 @@ const isDark = computed(() => {
         padding: var(--o-spacing-h2) var(--o-spacing-h2) 0 var(--o-spacing-h2);
         position: relative;
         height: 100%;
+        box-shadow: var(--e-shadow-l1);
         &-item {
           color: var(--e-color-text1);
           font-size: var(--o-font-size-h7);
@@ -183,7 +187,7 @@ const isDark = computed(() => {
         &-background {
           background-size: 100%;
           position: absolute;
-          right: 0;
+          right: -1px;
           bottom: 0;
           z-index: 11;
           width: 456px;
@@ -194,6 +198,7 @@ const isDark = computed(() => {
         flex: 1;
         background-color: var(--e-color-bg2);
         margin-left: var(--o-spacing-h6);
+        box-shadow: var(--e-shadow-l1);
         img {
           margin: 0 auto;
           display: block;

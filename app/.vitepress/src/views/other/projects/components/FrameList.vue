@@ -45,6 +45,7 @@ defineProps({
 <style lang="scss" scoped>
 .framelist-wrapper {
   .info {
+    box-shadow: var(--e-shadow-l1);
     padding: var(--o-spacing-h2) 0;
     background-color: var(--e-color-bg2);
   }

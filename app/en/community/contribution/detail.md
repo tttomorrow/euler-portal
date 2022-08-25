@@ -189,10 +189,10 @@ For details, see the introduction to the [openEuler Technical Committee](https:/
     color: var(--e-color-text1);
   }
   a {
-    color: var(--e-color-brand2);
+    color: var(--e-color-link1);
   }
   .care {
-    color: #F3524D;
+    color: var(--e-color-red5);
   }
   @media screen and (max-width: 769px) {
     padding: var(--o-spacing-h5);

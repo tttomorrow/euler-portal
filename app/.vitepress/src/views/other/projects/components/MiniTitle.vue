@@ -31,8 +31,7 @@ defineProps({
   position: relative;
   text-align: center;
   margin-bottom: var(--o-spacing-h2);
-  // TODO:
-  margin-top: 48px;
+  margin-top: var(--o-spacing-h1);
   &-outside {
     position: absolute;
     left: 50%;
