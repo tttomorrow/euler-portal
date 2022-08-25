@@ -401,7 +401,7 @@ watch(windowWidth, () => {
     }
     .card-header {
       padding-bottom: var(--o-spacing-h8);
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid var(--e-color-division1);
     }
     .card-body {
       padding-top: var(--o-spacing-h8);

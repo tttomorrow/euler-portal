@@ -52,7 +52,7 @@ const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>(['全部']);
 const lastActiveName = ref('1');
 const currentPage = ref(1);
-const totalPage = ref(1);
+const totalPage = ref(0);
 
 const filterData = ref<FilterList[]>([
   {
@@ -716,7 +716,7 @@ onMounted(() => {
       </OTabPane>
 
       <OTabPane label="商业软件" name="4">
-        <OSearch
+        <!-- <OSearch
           v-model="searchContent"
           class="o-search"
           @change="searchValchange"
@@ -751,7 +751,7 @@ onMounted(() => {
               </OTag>
             </TagFilter>
           </div>
-        </OCard>
+        </OCard> -->
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
             :label="
@@ -816,16 +816,31 @@ onMounted(() => {
         >
           <span class="pagination-slot"> {{ currentPage }}/{{ total }}</span>
         </OPagination>
-        <p class="about">
+        <p v-if="activeName === '1' || activeName === '2'" class="about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
 
           <a href="#" @click="goBackPage">{{
             i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
           }}</a>
         </p>
+        <p v-if="activeName === '3'" class="about">
+          {{ i18n.compatibility.SOFTWARE_OEC_DETAIL.TEXT }}
+
+          <a href="#" @click="goBackPage">{{
+            i18n.compatibility.SOFTWARE_OEC_DETAIL.TITLE
+          }}</a>
+        </p>
+        <p v-if="activeName === '4'" class="about">
+          {{ i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TEXT }}
+
+          <a href="#" @click="goBackPage">{{
+            i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TITLE
+          }}</a>
+        </p>
       </div>
     </AppContent>
   </OTabs>
+
   <AppContent class="mobile-content" :mobile-top="16">
     <div class="tabs-mobile">
       <el-collapse v-model="activeName" accordion @change="handleChange">
@@ -838,7 +853,7 @@ onMounted(() => {
               @filter="listfilter"
             />
           </div>
-          <ul class="mobile-list">
+          <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>
                 <li>
@@ -891,6 +906,7 @@ onMounted(() => {
             </li>
           </ul>
           <AppPaginationMo
+            v-if="totalPage !== 0"
             :current-page="currentPage"
             :total-page="totalPage"
             @turn-page="turnPage"
@@ -913,7 +929,7 @@ onMounted(() => {
               @filter="listfilter"
             />
           </div>
-          <ul class="mobile-list">
+          <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>
                 <li>
@@ -983,6 +999,7 @@ onMounted(() => {
             </li>
           </ul>
           <AppPaginationMo
+            v-if="totalPage !== 0"
             :current-page="currentPage"
             :total-page="totalPage"
             @turn-page="turnPage"
@@ -1005,7 +1022,7 @@ onMounted(() => {
               @filter="listfilter"
             />
           </div>
-          <ul class="mobile-list">
+          <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>
                 <li>
@@ -1081,15 +1098,16 @@ onMounted(() => {
             </li>
           </ul>
           <AppPaginationMo
+            v-if="totalPage !== 0"
             :current-page="currentPage"
             :total-page="totalPage"
             @turn-page="turnPage"
             @jump-page="jumpPage"
           />
           <p class="mobile-about">
-            {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+            {{ i18n.compatibility.SOFTWARE_OEC_DETAIL.TEXT }}
             <a href="#" @click="goBackPage">{{
-              i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+              i18n.compatibility.SOFTWARE_OEC_DETAIL.TITLE
             }}</a>
           </p>
         </el-collapse-item>
@@ -1103,7 +1121,7 @@ onMounted(() => {
             @filter="listfilter"
           />
         </div> -->
-          <ul class="mobile-list">
+          <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>
                 <li>
@@ -1153,14 +1171,15 @@ onMounted(() => {
             </li>
           </ul>
           <AppPaginationMo
+            v-if="totalPage !== 0"
             :current-page="currentPage"
             :total-page="totalPage"
             @turn-page="turnPage"
           />
-          <p class="mobile-about">
-            {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
+          <p class="mobile-about last-mobile-about">
+            {{ i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TEXT }}
             <a href="#" @click="goBackPage">{{
-              i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE
+              i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TITLE
             }}</a>
           </p>
         </el-collapse-item>
@@ -1240,34 +1259,34 @@ onMounted(() => {
   :deep(.el-card__body) {
     padding: var(--o-spacing-h8) var(--o-spacing-h2);
   }
-  .category {
-    display: inline-block;
-    width: 56px;
-    font-size: var(--o-font-size-text);
-    font-weight: 400;
-    color: var(--e-color-text1);
-    line-height: var(--o-line-height-text);
-    margin-right: var(--o-spacing-h4);
-  }
-  .category-item {
-    display: inline-block;
-    height: 28px;
-    border: none;
-    font-size: var(--o-font-size-text);
-    font-weight: 400;
-    color: var(--e-color-text4);
-    line-height: var(--o-line-height-text);
-    cursor: pointer;
-  }
-  .active {
-    display: inline-block;
-    border: 1px solid #002fa7;
-    color: #002fa7;
-    padding: 0px 12px;
-  }
+  // .category {
+  //   display: inline-block;
+  //   width: 56px;
+  //   font-size: var(--o-font-size-text);
+  //   font-weight: 400;
+  //   color: var(--e-color-text1);
+  //   line-height: var(--o-line-height-text);
+  //   margin-right: var(--o-spacing-h4);
+  // }
+  // .category-item {
+  //   display: inline-block;
+  //   height: 28px;
+  //   border: none;
+  //   font-size: var(--o-font-size-text);
+  //   font-weight: 400;
+  //   color: var(--e-color-text4);
+  //   line-height: var(--o-line-height-text);
+  //   cursor: pointer;
+  // }
+  // .active {
+  //   display: inline-block;
+  //   border: 1px solid #002fa7;
+  //   color: #002fa7;
+  //   padding: 0px 12px;
+  // }
   .card-header {
     padding-bottom: var(--o-spacing-h8);
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--e-color-division1);
   }
   .card-body {
     padding-top: var(--o-spacing-h8);
@@ -1297,7 +1316,7 @@ onMounted(() => {
     padding: var(--o-spacing-h5);
     font-size: var(--o-font-size-tip);
     font-weight: 400;
-    color: #999999;
+    color: var(--e-color-neutral8);
     line-height: var(--o-line-height-tip);
     background-color: var(--e-color-bg2);
     &:nth-child(odd) {
@@ -1323,7 +1342,7 @@ onMounted(() => {
 }
 
 .pagination {
-  margin: var(--o-spacing-h2) 0 var(--o-spacing-h4);
+  margin-top: var(--o-spacing-h2);
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
@@ -1332,7 +1351,7 @@ onMounted(() => {
   }
 }
 .about {
-  // margin-bottom: var(--o-spacing-h4);
+  margin-top: var(--o-spacing-h4);
   font-size: var(--o-font-size-h8);
   font-weight: 400;
   color: var(--e-color-text1);
@@ -1342,7 +1361,7 @@ onMounted(() => {
   }
 }
 .mobile-about {
-  padding: var(--o-spacing-h5) var(--o-spacing-h5) 0;
+  padding: var(--o-spacing-h5);
   font-size: var(--o-font-size-tip);
   font-weight: 400;
   color: var(--e-color-text4);
@@ -1350,5 +1369,8 @@ onMounted(() => {
   a {
     color: var(--e-color-link1);
   }
+}
+.last-mobile-about {
+  padding-bottom: 0;
 }
 </style>

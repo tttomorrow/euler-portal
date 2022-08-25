@@ -18,7 +18,7 @@ function goBackPage() {
         {{ i18n.compatibility.COMPATIBILITY }} \
       </div>
       <div class="banner-title">
-        {{ i18n.compatibility.SOFTWARE_OEC_DETAIL.TITLE }}
+        {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TITLE }}
       </div>
     </div>
     <div class="hardware-content">
