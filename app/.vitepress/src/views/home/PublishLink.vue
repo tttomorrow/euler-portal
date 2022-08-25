@@ -13,6 +13,7 @@ const i18n = useI18n();
     <h3 :class="lang === 'en' ? 'en-h3' : ''">
       {{ i18n.home.HOME_SOURCE.SOURCE_PUBLISH_TITLE }}
     </h3>
+    <span>{{ i18n.home.HOME_SOURCE.RANK_TIP }}</span>
     <div class="publish-edition">
       <a
         v-for="item in i18n.home.HOME_SOURCE_EDITION"
@@ -78,7 +79,7 @@ const i18n = useI18n();
   }
   @media screen and (max-width: 1416px) {
     margin-top: var(--o-spacing-h5);
-    grid-template-columns: repeat(2, minmax(82px, 270px));
+    grid-template-columns: repeat(3, minmax(82px, 270px));
     justify-content: center;
     a {
       min-height: 40px;
@@ -86,6 +87,9 @@ const i18n = useI18n();
         width: 100%;
       }
     }
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, minmax(82px, 270px));
   }
 }
 </style>

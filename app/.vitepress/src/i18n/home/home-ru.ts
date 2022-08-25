@@ -52,6 +52,14 @@ import suse from '../../assets/category//home/link/suse.png';
 import suseLogo_dark from '../../assets/category//home/dark/link/suse_dark.png';
 import zhongkefangde from '../../assets/category/home/link/zhongkefangde.png';
 import zhongkefangdeLogo_dark from '../../assets/category/home/dark/link/zhongkefangde_dark.png';
+import h3cLogo from '../../assets/category/home/link/h3cLogo.png';
+import h3cLogo_dark from '../../assets/category/home/dark/link/h3cLogo_dark.png';
+import intewellLogo from '../../assets/category/home/link/intewellLogo.png';
+import intewellLogo_dark from '../../assets/category/home/dark/link/intewellLogo_dark.png';
+import linsiLogo from '../../assets/category/home/link/linsiLogo.png';
+import linsiLogo_dark from '../../assets/category/home/dark/link/linsiLogo_dark.png';
+import zhongkechuangdaLogo from '../../assets/category/home/link/zhongkeLogo.png';
+import zhongkechuangdaLogo_dark from '../../assets/category/home/dark/link/zhongkeLogo_dark.png';
 import xfusion from '../../assets/category/home/link/xfusion.png';
 import xfusionLogo_dark from '../../assets/category/home/dark/link/xfusion_dark.png';
 
@@ -415,24 +423,25 @@ export default {
   },
   HOME_SOURCE_EDITION: [
     {
-      LINK: 'http://www.kylinsec.com.cn/',
-      IMG: xinan,
-      IMG_DARK: xinanLogo_dark,
+      LINK: 'https://www.xfusion.com/en/',
+      IMG: xfusion,
+      IMG_DARK: xfusionLogo_dark,
     },
     {
-      LINK: 'https://www.uniontech.com/',
-      IMG: tongxin,
-      IMG_DARK: tongxinLogo_dark,
+      LINK: 'http://www.chinaredflag.cn/',
+      IMG: zhongkehongqi,
+      IMG_DARK: zhongkehongqiLogo_dark,
+    },
+
+    {
+      LINK: 'https://www.kyland.com.cn/',
+      IMG: intewellLogo,
+      IMG_DARK: intewellLogo_dark,
     },
     {
-      LINK: 'https://www.kylinos.cn/',
-      IMG: qiling,
-      IMG_DARK: qilingLogo_dark,
-    },
-    {
-      LINK: 'http://www.iscas.ac.cn/',
-      IMG: iscas,
-      IMG_DARK: iscasLogo_dark,
+      LINK: 'http://www.linx-info.com/#/',
+      IMG: linsiLogo,
+      IMG_DARK: linsiLogo_dark,
     },
     {
       LINK: 'http://www.i-soft.com.cn/',
@@ -440,9 +449,14 @@ export default {
       IMG_DARK: cetcLogo_dark,
     },
     {
-      LINK: 'https://www.turbolinux.com.cn/',
-      IMG: turbo,
-      IMG_DARK: turboLogo_dark,
+      LINK: 'https://www.kylinos.cn/',
+      IMG: qiling,
+      IMG_DARK: qilingLogo_dark,
+    },
+    {
+      LINK: 'http://www.kylinsec.com.cn/',
+      IMG: xinan,
+      IMG_DARK: xinanLogo_dark,
     },
     {
       LINK: 'http://www.hoperun.com/',
@@ -450,29 +464,45 @@ export default {
       IMG_DARK: hopeRunLogo_dark,
     },
     {
-      LINK: 'http://www.tongyuanos.com/',
-      IMG: tongYuan,
-      IMG_DARK: tongYuanLogo_dark,
-    },
-    {
-      LINK: 'http://www.chinaredflag.cn/',
-      IMG: zhongkehongqi,
-      IMG_DARK: zhongkehongqiLogo_dark,
-    },
-    {
       LINK: 'https://www.suse.com/',
       IMG: suse,
       IMG_DARK: suseLogo_dark,
     },
     {
+      LINK: 'https://www.turbolinux.com.cn/',
+      IMG: turbo,
+      IMG_DARK: turboLogo_dark,
+    },
+    {
+      LINK: 'http://www.tongyuanos.com/',
+      IMG: tongYuan,
+      IMG_DARK: tongYuanLogo_dark,
+    },
+    {
+      LINK: 'https://www.uniontech.com/',
+      IMG: tongxin,
+      IMG_DARK: tongxinLogo_dark,
+    },
+    {
+      LINK: 'https://www.h3c.com/cn/',
+      IMG: h3cLogo,
+      IMG_DARK: h3cLogo_dark,
+    },
+    {
+      LINK: 'http://www.iscas.ac.cn/',
+      IMG: iscas,
+      IMG_DARK: iscasLogo_dark,
+    },
+
+    {
+      LINK: 'https://www.thundersoft.com/',
+      IMG: zhongkechuangdaLogo,
+      IMG_DARK: zhongkechuangdaLogo_dark,
+    },
+    {
       LINK: 'http://www.nfs-china.com/index.html',
       IMG: zhongkefangde,
       IMG_DARK: zhongkefangdeLogo_dark,
-    },
-    {
-      LINK: 'https://www.xfusion.com/en/',
-      IMG: xfusion,
-      IMG_DARK: xfusionLogo_dark,
     },
   ],
   FRIENDSHIP_LINK_LIST: [

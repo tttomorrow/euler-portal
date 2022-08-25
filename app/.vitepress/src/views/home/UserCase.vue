@@ -58,7 +58,7 @@ onMounted(() => {
 <template>
   <div class="case-main">
     <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
-    <OContainer data-aos="fade-down">
+    <OContainer :level-index="1" data-aos="fade-down" class="container">
       <OCollapse
         v-model="activeMobile"
         accordion
@@ -176,12 +176,21 @@ h3 {
     margin-top: var(--o-spacing-h2);
   }
 }
+.container {
+  @media screen and (max-width: 1100px) {
+    box-shadow: none;
+    .o-collapse-item {
+      box-shadow: var(--e-shadow-l1);
+    }
+  }
+}
 .case-mobile {
   display: none;
   background-color: var(--e-color-bg1);
   @media (max-width: 1100px) {
     border-top: none;
     display: block;
+    box-shadow: none;
   }
 
   &-list {

@@ -13,6 +13,7 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-collapse {
   --o-collapse-color-bg: var(--e-color-bg2);
+  --o-collapse-color-bg1: var(--e-color-bg1);
   --o-collapse-color-border: var(--e-color-brand1);
   --o-collapse-color-text: var(--e-color-text1);
   --o-collapse-padding-left: var(--o-spacing-h6);

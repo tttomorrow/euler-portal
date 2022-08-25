@@ -76,7 +76,7 @@ const i18n = useI18n();
   }
   @media screen and (max-width: 1416px) {
     margin-top: var(--o-spacing-h5);
-    grid-template-columns: repeat(2, minmax(82px, 270px));
+    grid-template-columns: repeat(3, minmax(82px, 270px));
     justify-content: center;
     a {
       min-height: 40px;
@@ -84,6 +84,9 @@ const i18n = useI18n();
         width: 100%;
       }
     }
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, minmax(82px, 270px));
   }
 }
 </style>
