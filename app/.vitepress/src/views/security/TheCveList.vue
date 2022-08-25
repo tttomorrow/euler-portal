@@ -115,10 +115,10 @@ watch(windowWidth, () => {
     subtitle=""
     :illustration="screenWidth >= 1000 ? search : cve"
   />
-  <AppContent :mobileTop="16">
+  <AppContent :mobile-top="16">
     <OSearch
-      class="o-search"
       v-model="searchContent"
+      class="o-search"
       :placeholder="i18n.security.INPUT_CVE_ID"
       @change="searchValchange"
     ></OSearch>

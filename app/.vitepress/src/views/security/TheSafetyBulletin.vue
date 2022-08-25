@@ -136,7 +136,7 @@ watch(windowWidth, () => {
     subtitle=""
     :illustration="screenWidth >= 1000 ? search : cve"
   />
-  <AppContent :mobileTop="16">
+  <AppContent :mobile-top="16">
     <div class="bulletin-main">
       <div class="input-container">
         <OSearch

@@ -18,6 +18,7 @@ export default {
   WHITE_PAPER: '白皮书',
   WEBSITE_SELECT: '站点选择',
   COPY_SUCCESSFULLY: '复制成功！',
+  PAGINATION: ['已显示', '条记录/共', '条', '加载更多'],
   BTNSURE: '确定',
   BTNRESET: '重置',
   DOWNLOAD_LIST: data.zh.DOWNLOAD_LIST,
