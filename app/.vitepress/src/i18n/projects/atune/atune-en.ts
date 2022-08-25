@@ -53,7 +53,12 @@ export default {
         IMG: '/img/projects/share/illustration-arrow.png',
         THEME: 'About A-Tune',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/A-Tune/%E8%AE%A4%E8%AF%86A-Tune.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,
@@ -63,7 +68,12 @@ export default {
         IMG: '/img/projects/share/illustration-file.png',
         THEME: 'Installation and Deployment',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/A-Tune/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,
@@ -73,7 +83,12 @@ export default {
         IMG: '/img/projects/share/illustration-book.png',
         THEME: 'How to Use',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/A-Tune/%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,
@@ -83,7 +98,12 @@ export default {
         IMG: '/img/projects/share/illustration-glass.png',
         THEME: 'FAQs',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/A-Tune/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
           TYPE: 2,

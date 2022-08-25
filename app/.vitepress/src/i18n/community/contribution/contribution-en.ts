@@ -1,12 +1,12 @@
 export default {
-  DOWLOAD_PDF_URL: '/openeuler-trail-chess.pdf',
+  DOWLOAD_PDF_URL: '/openeuler-trail-chess-en.pdf',
   BACKGROUND_IMG_H5:
     ' https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E8%B4%A1%E7%8C%AE%E5%9C%B0%E5%9B%BE/webtrailchess_zh_mo.png',
   BACKGROUND_IMG:
     'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E8%B4%A1%E7%8C%AE%E5%9C%B0%E5%9B%BE/webtrailchess_zh.png',
   LOOK_DESC: 'View Details',
   LOOK_MAP: 'Contribution Map',
-  PRINT_MAP: '打印攻略地图',
+  PRINT_MAP: 'Download',
   LINK_LIST: [
     {
       URL: 'https://huaweicloud.com/product/ecs.html',
