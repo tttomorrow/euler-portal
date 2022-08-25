@@ -77,7 +77,11 @@ function goBackPage() {
                   i18n.compatibility.SOFTWARE_OEC_DETAIL.ITEM_ARR[1]
                     .DESCRIPTION_1
                 }}
-                <a href="https://gitee.com/openeuler/compass-ci">
+                <a
+                  :href="
+                    i18n.compatibility.SOFTWARE_OEC_DETAIL.ITEM_ARR[1].A_HREF
+                  "
+                >
                   {{
                     i18n.compatibility.SOFTWARE_OEC_DETAIL.ITEM_ARR[1].A_TEXT
                   }}

@@ -177,6 +177,12 @@ onMounted(() => {
   .el-tabs__nav-wrap {
     box-shadow: var(--e-shadow-l1);
   }
+  .el-tabs__header {
+    margin-bottom: 0;
+    background-color: var(--e-color-bg2);
+    box-shadow: var(--e-shadow-l1);
+    z-index: 100;
+  }
   .el-tabs__nav-scroll {
     display: flex;
     justify-content: center;
@@ -193,7 +199,7 @@ onMounted(() => {
 .wrapper {
   max-width: 1504px;
   margin: 0 auto;
-  background-color: var(--e-color-bg2);
+  background-color: var(--e-color-bg1);
   @media screen and (max-width: 768px) {
     padding-bottom: var(--o-spacing-h5);
     background-color: var(--e-color-bg1);

@@ -439,6 +439,7 @@ watch(windowWidth, () => {
     }
   }
   .pc-list {
+    margin-bottom: var(--o-spacing-h2);
     .detail-page {
       color: var(--e-color-link1);
       cursor: pointer;

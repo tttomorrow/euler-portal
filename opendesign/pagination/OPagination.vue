@@ -9,9 +9,15 @@ const classNames = computed(() => {
 </script>
 
 <template>
-  <ElPagination class="o-pagination" v-bind="attrs" :popper-class="classNames">
-    <slot></slot>
-  </ElPagination>
+  <ClientOnly>
+    <ElPagination
+      class="o-pagination"
+      v-bind="attrs"
+      :popper-class="classNames"
+    >
+      <slot></slot>
+    </ElPagination>
+  </ClientOnly>
 </template>
 
 <style lang="scss">

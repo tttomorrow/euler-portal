@@ -147,7 +147,7 @@ watch(windowWidth, () => {
       <OTableColumn
         :label="i18n.security.CVSS_SCORE"
         prop="cvsssCoreOE"
-        width="120"
+        width="150"
       ></OTableColumn>
       <OTableColumn
         width="180"
@@ -162,9 +162,9 @@ watch(windowWidth, () => {
       <OTableColumn
         :label="i18n.security.STATUS"
         prop="status"
-        width="120"
+        width="100"
       ></OTableColumn>
-      <el-table-column :label="i18n.security.OPERATION" width="80">
+      <el-table-column :label="i18n.security.OPERATION" width="100">
         <template #default="scope">
           <span
             class="detail-page"
@@ -330,6 +330,7 @@ watch(windowWidth, () => {
   }
 }
 .pc-list {
+  margin-bottom: var(--o-spacing-h2);
   .detail-page {
     cursor: pointer;
     color: var(--e-color-link1);

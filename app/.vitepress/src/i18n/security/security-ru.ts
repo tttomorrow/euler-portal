@@ -26,6 +26,20 @@ export default {
       LABEL: 'Critical',
     },
   ],
+  CATEGORY_LIST: [
+    {
+      NAME: 'ВСЕ',
+      LABEL: '',
+    },
+    {
+      NAME: 'Fixed',
+      LABEL: 'Fixed',
+    },
+    {
+      NAME: 'Unaffected',
+      LABEL: 'Unaffected',
+    },
+  ],
   YEAR: 'Год',
   PLACEHOLDER: 'Выбрать',
   ALL: 'ВСЕ',
