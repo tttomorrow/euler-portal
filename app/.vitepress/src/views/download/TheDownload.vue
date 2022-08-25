@@ -147,6 +147,9 @@ onMounted(() => {
   const temp = i18n.value.download.DOWNLOAD_LIST;
   const manufacturer = temp.map((item: any) => item.MANUFACTURER);
   tagManufacturer.value = Array.from(new Set(manufacturer));
+  tagManufacturer.value.sort((a, b) => {
+    return a.localeCompare(b);
+  });
   tagManufacturer.value.unshift(i18n.value.download.ALL_DATA);
   const publishDate = temp
     .map((item: any) => item.PUBLISH_DATE)
@@ -163,7 +166,7 @@ onMounted(() => {
   <BannerLevel2
     :background-image="banner"
     background-text="DOWNLOAD"
-    :title="i18n.download.MIRROR_ALL.TITLE"
+    :title="i18n.download.OUTSIDE_TITLE"
     :illustration="downloadImg"
   />
   <AppContent class="download">
@@ -234,7 +237,14 @@ onMounted(() => {
         </div>
         <IconFilter class="download-filter-mobile-icon"></IconFilter>
       </div>
-      <div class="download-filter-mobile-list">
+      <div
+        v-if="
+          activeManufacturer.length != 0 ||
+          activePublish.length != 0 ||
+          activeLTS
+        "
+        class="download-filter-mobile-list"
+      >
         <div
           v-for="item in activeManufacturer"
           :key="item"
@@ -429,10 +439,10 @@ onMounted(() => {
     <!-- 页码 -->
     <div class="page-box">
       <OPagination
+        v-if="dataList.length"
         v-model:currentPage="currentPage"
         v-model:page-size="pageSize"
         class="pagination"
-        hide-on-single-page
         :page-sizes="[12, 18, 24, 36]"
         :background="true"
         layout="sizes, prev, pager, next, slot, jumper"
@@ -457,9 +467,9 @@ onMounted(() => {
             class="page-box-divide-in"
             :style="{
               width:
-                (pageSize * currentPage * 100) / total > 100
+                ((pageSize * currentPage * 100) / total < 100
                   ? (pageSize * currentPage * 100) / total
-                  : '100' + '%',
+                  : '100') + '%',
             }"
           ></div>
         </div>
@@ -526,6 +536,7 @@ onMounted(() => {
     display: none;
     flex-flow: column;
     justify-content: center;
+    color: var(--e-color-text1);
     align-items: center;
     @media (max-width: 768px) {
       display: flex;
@@ -608,7 +619,7 @@ onMounted(() => {
       }
 
       &-list {
-        margin-top: var(--o-line-height-h8);
+        margin-top: var(--o-spacing-h6);
         display: flex;
         flex-flow: row;
         justify-content: flex-start;
@@ -624,11 +635,11 @@ onMounted(() => {
         align-items: center;
         padding: var(--o-spacing-h10) var(--o-spacing-h9);
         background-color: var(--e-color-neutral11);
-        color: var(--e-color-text4);
+        color: var(--e-color-neutral5);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-right: var(--o-spacing-h9);
-        margin-top: var(--o-spacing-h9);
+        margin-top: var(--o-spacing-h10);
         &-icon {
           font-size: var(--e-color-text1);
           width: var(--o-font-size-tip);
