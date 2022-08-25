@@ -103,7 +103,12 @@ export default {
       {
         THEME: 'Introduction to StratoVirt',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/StratoVirt%E4%BB%8B%E7%BB%8D.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
@@ -112,7 +117,12 @@ export default {
       {
         THEME: 'Installing StratoVirt',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https:/gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E5%AE%89%E8%A3%85StratoVirt.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
@@ -121,7 +131,12 @@ export default {
       {
         THEME: 'Preparing the Environment',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E5%87%86%E5%A4%87%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
@@ -130,7 +145,12 @@ export default {
       {
         THEME: 'Configuring VMs',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
@@ -139,7 +159,12 @@ export default {
       {
         THEME: 'Managing VM Lifecycle',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AE%A1%E7%90%86.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,
@@ -148,7 +173,12 @@ export default {
       {
         THEME: 'Connecting to iSula Security Containers',
         DESC: '',
-        LINK: [],
+        LINK: [
+          {
+            TEXT: 'Read more',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E5%AF%B9%E6%8E%A5iSula%E5%AE%89%E5%85%A8%E5%AE%B9%E5%99%A8.md',
+          },
+        ],
         BACKGROUND: {
           IMG: '/img/projects/stratovirt/stratovirt-grain.png',
           TYPE: 1,

@@ -117,7 +117,12 @@ export default {
           IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
           DESC: '',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: 'Read more',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/README.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -127,7 +132,12 @@ export default {
           IMG: '/img/projects/share/illustration-file.png',
           THEME: 'Architecture',
           DESC: '',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: 'Read more',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/architecture_zh.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -137,7 +147,12 @@ export default {
           IMG: '/img/projects/share/illustration-book.png',
           THEME: 'Build Guide for RISC-V Integration',
           DESC: '',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: 'Read more',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/build_guide_zh.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -151,7 +166,12 @@ export default {
           IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
           DESC: '',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: 'Read more',
+              LINK: 'https://gitee.com/openeuler/isula-build/blob/master/README.zh.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -161,7 +181,12 @@ export default {
           IMG: '/img/projects/share/illustration-newspapper.png',
           THEME: 'Manual',
           DESC: '',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: 'Read more',
+              LINK: 'https://gitee.com/openeuler/isula-build/blob/master/doc/manual_zh.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
@@ -175,7 +200,12 @@ export default {
           IMG: '/img/projects/share/illustration-arrow.png',
           THEME: 'README',
           DESC: '',
-          LINK: [],
+          LINK: [
+            {
+              TEXT: 'Read more',
+              LINK: 'https://gitee.com/openeuler/isula-transform/blob/master/README.md',
+            },
+          ],
           BACKGROUND: {
             IMG: '/img/projects/share/group.png',
             TYPE: 2,
