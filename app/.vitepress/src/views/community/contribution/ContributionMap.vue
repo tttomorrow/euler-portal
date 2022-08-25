@@ -36,7 +36,12 @@ const goLink = function (url: string, isBlank: boolean) {
         class="link"
         @click="goLink(item.URL, item.BLANK)"
       ></div>
-      <a class="content-map-print" download="trail-chess.pdf" :href="i18n.contribution.DOWLOAD_PDF_URL">{{i18n.contribution.PRINT_MAP}}</a>
+      <a
+        class="content-map-print"
+        download="trail-chess.pdf"
+        :href="i18n.contribution.DOWLOAD_PDF_URL"
+        >{{ i18n.contribution.PRINT_MAP }}</a
+      >
     </div>
     <div class="content-map-mobile-img">
       <img v-show="!isDark" :src="ContributionMapMobile" />

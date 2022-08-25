@@ -106,6 +106,22 @@ const menuActiveFn = (item: any) => {
 </template>
 
 <style lang="scss" scoped>
+@media (max-width: 1366px) {
+  html[lang='ru'] .o-nav .o-nav-list > li {
+    padding: 0 var(--o-spacing-h6);
+    &::after {
+      left: var(--o-spacing-h6);
+      width: calc(100% - var(--o-spacing-h6) * 2);
+    }
+  }
+  html[lang='en'] .o-nav .o-nav-list > li {
+    padding: 0 var(--o-spacing-h5);
+    &::after {
+      left: var(--o-spacing-h5);
+      width: calc(100% - var(--o-spacing-h5) * 2);
+    }
+  }
+}
 .o-nav {
   height: 100%;
   position: relative;

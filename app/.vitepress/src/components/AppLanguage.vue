@@ -87,6 +87,7 @@ const hideSub = () => {
     padding: 0 var(--o-spacing-h5);
     cursor: pointer;
     z-index: 80;
+    box-shadow: var(--e-shadow-l1);
     .lang-item {
       line-height: var(--o-line-height-h3);
       text-align: center;

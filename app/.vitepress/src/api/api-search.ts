@@ -90,7 +90,12 @@ export function getSearchRpm(params: any) {
 }
 export function getPop(params: any) {
   const url = `/api-search/search/pop?${params}`;
-  return request.post(url).then((res: AxiosResponse) => res.data);
+  return request
+    .post(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }
 
 /**

@@ -15,11 +15,6 @@ import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
 import { getPop } from '@/api/api-search';
 
-const router = useRouter();
-const { lang } = useData();
-const i18n = useI18n();
-const commonStore = useCommon();
-
 interface NavItem {
   NAME: string;
   PATH: string;
@@ -29,34 +24,36 @@ interface NavItem {
   IS_OPEN_MINISITE_WINDOW?: string;
 }
 
-const navRouter = computed(() => {
-  return i18n.value?.common.NAV_ROUTER_CONFIG;
-});
+const router = useRouter();
+const { lang } = useData();
+const i18n = useI18n();
+const commonStore = useCommon();
+const documentElement = document.documentElement;
+
+// 导航数据
+const navRouter = computed(() => i18n.value.common.NAV_ROUTER_CONFIG);
 
 const activeNav = ref<string>();
-const handleNavClick = (item: NavItem) => {
-  activeNav.value = item.PATH;
-};
-const logo = computed(() => {
-  return commonStore.theme === 'light' ? logo_light : logo_dark;
-});
-// 移动端
+const logo = computed(() =>
+  commonStore.theme === 'light' ? logo_light : logo_dark
+);
+const roterPath = ref<string>(router.route.path);
+
+// 移动菜单事件
 const mobileMenuIcon = ref(false);
-const handleLanguageChange = () => {
-  mobileMenuIcon.value = false;
-};
-const documentElement = document.documentElement;
-//移动端菜单事件
+const mobileChildMenu = ref<NavItem | any>([]);
+
 const mobileMenuPanel = () => {
   mobileChildMenu.value = [];
+  toBody.value = true;
   setTimeout(() => {
     mobileMenuIcon.value = !mobileMenuIcon.value;
     documentElement.classList.toggle('overflow');
     activeNav.value = '';
+    moudleItem();
   }, 200);
 };
 
-const mobileChildMenu = ref<NavItem | any>([]);
 const handleMenuLayer = (e: any) => {
   if (e.target.className !== 'mobile-menu-side') {
     if (mobileChildMenu.value.length === 0) {
@@ -66,6 +63,7 @@ const handleMenuLayer = (e: any) => {
   }
 };
 
+// 移动端一级导航事件
 const goMobile = (item: NavItem) => {
   mobileChildMenu.value = [];
   if (Object.prototype.hasOwnProperty.call(item, 'CHILDREN')) {
@@ -78,9 +76,8 @@ const goMobile = (item: NavItem) => {
   activeNav.value = item.ID;
 };
 
-const goMobileList = (item: NavItem) => {
-  mobileChildMenu.value = [];
-
+// 移动端二级导航事件
+const goMobileSubList = (item: NavItem) => {
   if (item.IS_OPEN_WINDOW) {
     window.open(i18n.value.docsUrl + item.PATH);
     return;
@@ -101,9 +98,28 @@ const goMobileList = (item: NavItem) => {
   }
 };
 
+watch(
+  () => router.route.path,
+  (val: string) => {
+    roterPath.value = val;
+  }
+);
+// 移动端默认选中、二级菜单
+const moudleItem = () => {
+  navRouter.value.forEach((item: any) => {
+    item.CLASS.forEach((el: any) => {
+      if (roterPath.value.includes(el)) {
+        mobileChildMenu.value = item.CHILDREN;
+        activeNav.value = item.ID;
+      }
+    });
+  });
+};
+
 const toBody = ref(false);
 onMounted(() => {
   toBody.value = true;
+  moudleItem();
 });
 onUnmounted(() => {
   toBody.value = false;
@@ -111,40 +127,16 @@ onUnmounted(() => {
 
 // 返回首页
 const goHome = () => {
+  toBody.value = false;
+  mobileMenuIcon.value = false;
   router.go(`/${lang.value}/`);
 };
 
-const searchValue = computed(() => {
-  return i18n.value.common.SEARCH;
-});
+const searchValue = computed(() => i18n.value.common.SEARCH);
 // 显示/移除搜索框
 const isShowBox = ref(false);
 const showSearchBox = () => {
   isShowBox.value = true;
-};
-const donShowSearchBox = () => {
-  isShowBox.value = false;
-  isShowDrawer.value = false;
-  searchInput.value = '';
-  popList.value = [];
-};
-// 搜索内容
-const searchInput = ref<string>('');
-// 搜索事件
-function search() {
-  router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
-  donShowSearchBox();
-}
-const activeItem = ref(router.route.path);
-watch(
-  () => router.route.path,
-  (val: string) => {
-    activeItem.value = val;
-  }
-);
-// 导航默认选中
-const menuActiveFn = (item: any) => {
-  return item.some((el: string) => activeItem.value.includes(el));
 };
 
 // 搜索抽屉
@@ -166,6 +158,20 @@ const topSearchClick = (val: string) => {
   searchInput.value = val;
   search();
 };
+const donShowSearchBox = () => {
+  isShowBox.value = false;
+  isShowDrawer.value = false;
+  searchInput.value = '';
+  popList.value = [];
+};
+// 搜索内容
+const searchInput = ref<string>('');
+// 搜索事件
+function search() {
+  router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
+  donShowSearchBox();
+}
+
 </script>
 
 <template>
@@ -216,7 +222,7 @@ const topSearchClick = (val: string) => {
       </div>
       <div v-show="!isShowBox" class="header-content">
         <div class="header-nav">
-          <HeaderNav :nav-items="navRouter" @nav-click="handleNavClick" />
+          <HeaderNav :nav-items="navRouter" />
         </div>
         <div class="header-tool">
           <div class="header-tool-search">
@@ -241,7 +247,6 @@ const topSearchClick = (val: string) => {
                 :key="item.ID"
                 class="link"
                 :class="{
-                  selected: menuActiveFn(item.CLASS),
                   active: activeNav === item.ID,
                 }"
                 @click.stop="goMobile(item)"
@@ -250,21 +255,17 @@ const topSearchClick = (val: string) => {
             </div>
             <div class="mobile-tools">
               <AppTheme />
-              <AppLanguage @language-click="handleLanguageChange" />
+              <AppLanguage @language-click="mobileMenuIcon = false" />
             </div>
           </div>
-          <transition name="menu">
-            <div
-              v-if="mobileChildMenu.length > 0"
-              class="mobile-menu-content"
-              :class="{ active: mobileChildMenu.length > 0 }"
-            >
+          <transition name="menu-sub">
+            <div v-if="mobileChildMenu.length > 0" class="mobile-menu-content">
               <div class="mobile-menu-list">
                 <a
                   v-for="item in mobileChildMenu"
                   :key="item.ID"
                   class="link"
-                  @click="goMobileList(item)"
+                  @click="goMobileSubList(item)"
                   >{{ item.NAME }}</a
                 >
               </div>
@@ -277,28 +278,6 @@ const topSearchClick = (val: string) => {
 </template>
 
 <style lang="scss" scoped>
-// transition 动画
-.menu-enter-active,
-.menu-leave-active {
-  transition: 0.2s linear;
-}
-.menu-enter {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-.menu-enter-to {
-  opacity: 1;
-  transform: translateX(0px);
-}
-.menu-leave {
-  opacity: 1;
-  transform: transslateX(0);
-}
-.menu-leave-to {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-
 :deep(.o-search) {
   --o-search-color-bg: var(--o-color-secondary);
   background-color: var(--e-color-bg4);
@@ -319,6 +298,7 @@ const topSearchClick = (val: string) => {
   right: 0;
   top: 0;
   z-index: 99;
+  box-shadow: var(--e-shadow-l1);
   &-body {
     display: flex;
     align-items: center;
@@ -456,7 +436,7 @@ const topSearchClick = (val: string) => {
   width: 100%;
   position: fixed;
   left: 0;
-  transition: all 0.3s ease-in-out;
+  // transition: all 0.3s linear;
   overflow: hidden;
   display: flex;
   opacity: 0;
@@ -495,7 +475,7 @@ const topSearchClick = (val: string) => {
     min-width: 164px;
     opacity: 0;
     position: relative;
-    transition: all 0.4s linear;
+    transition: all 0.3s linear;
     overflow-y: auto;
     justify-content: space-between;
     &::-webkit-scrollbar-track {
@@ -530,8 +510,7 @@ const topSearchClick = (val: string) => {
           transition: all 0.3s;
           bottom: 0;
         }
-        &.active,
-        &.selected {
+        &.active {
           background: var(--e-color-bg2);
           color: var(--e-color-brand1);
           &::after {
@@ -549,10 +528,11 @@ const topSearchClick = (val: string) => {
   &-content {
     flex: 1;
     background: var(--e-color-bg2);
-    left: -100%;
     position: relative;
-    transition: all 0.5s ease-in-out;
-    opacity: 0;
+
+    left: 0;
+    opacity: 1;
+    z-index: 8;
     .mobile-menu-list {
       display: grid;
       padding: 0 16px;
@@ -574,5 +554,27 @@ const topSearchClick = (val: string) => {
       z-index: 8;
     }
   }
+}
+
+// transition 动画
+.menu-sub-enter-active,
+.menu-sub-leave-active {
+  transition: 0.5s linear;
+  left: -100%;
+}
+.menu-sub-leave-active {
+  transition: 0.3s linear;
+}
+.menu-sub-enter,
+.menu-sub-leave-to {
+  opacity: 0;
+}
+.menu-sub-enter-to {
+  opacity: 1;
+  left: 0%;
+}
+.menu-sub-leave {
+  opacity: 1;
+  left: -100%;
 }
 </style>

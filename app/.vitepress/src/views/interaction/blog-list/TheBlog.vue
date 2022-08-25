@@ -340,6 +340,7 @@ const postBlog = () => {
               v-for="tag in item.tags"
               :key="tag"
               type="secondary"
+              :title="tag"
               class="tagitem"
               >{{ tag }}</OTag
             >
@@ -426,8 +427,7 @@ const postBlog = () => {
     grid-gap: var(--o-spacing-h4);
     &-item {
       background-image: url(@/assets/interaction/bg.png);
-      min-height: 248px;
-      max-height: 248px;
+
       background-position: right bottom;
       background-repeat: no-repeat;
       cursor: pointer;
@@ -464,6 +464,12 @@ const postBlog = () => {
           flex-direction: row;
           align-items: center;
           margin-right: var(--o-spacing-h3);
+          @media (max-width: 1100px) {
+            margin-right: var(--o-spacing-h5);
+          }
+          @media (max-width: 768px) {
+            margin-right: var(--o-spacing-h6);
+          }
         }
       }
       &-content {
@@ -512,12 +518,10 @@ const postBlog = () => {
 @media (max-width: 415px) {
   :deep(.el-card__body) {
     padding: var(--o-spacing-h6);
-    min-height: 152px;
-    max-height: 152px;
+    height: auto;
   }
   .blog-list-item {
-    min-height: 152px;
-    max-height: 152px;
+    height: auto;
   }
   .blog-list {
     margin-top: var(--o-spacing-h5);

@@ -121,7 +121,7 @@ export default {
           PATH: '/interaction/summit-list/devday2022/',
         },
       ],
-      CLASS: ['news', 'blog', 'live', 'salon', 'summit', 'interaction'],
+      CLASS: ['news', 'blog', 'live', 'salon', 'summit'],
     },
     {
       PATH: '',
