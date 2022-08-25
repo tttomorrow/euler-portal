@@ -322,6 +322,30 @@ onMounted(async () => {
   }
 }
 .mirror-select {
+  :deep(.el-table__row) {
+    &:last-child {
+      .mirror-list-row {
+        &::after {
+          content: '';
+          height: 0px;
+        }
+
+        &:first-child {
+          &::after {
+            content: '';
+            height: 0px;
+          }
+        }
+        &:last-child {
+          &::after {
+            content: '';
+            height: 0px;
+          }
+        }
+      }
+    }
+  }
+
   :deep(.mirror-select-header) {
     background-color: var(--e-color-bg4);
     font-size: var(--o-font-size-h8);

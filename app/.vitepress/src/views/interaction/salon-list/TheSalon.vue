@@ -252,29 +252,29 @@ onMounted(async () => {
         ></OTimeline>
         <div v-if="newsList && newsList.length != 0" class="salon-new">
           <OCard
-            v-for="item in newsList"
+            v-for="(item, index) in newsList"
             :key="item.ID"
             class="salon-new-card"
             :style="{ padding: '0px' }"
             shadow="hover"
             @click="goDetail(item)"
           >
-            <div v-if="item.MEETUPS_IMG" class="salon-new-card-img">
+            <div v-if="index === 0" class="salon-new-card-img">
               <img :src="item.MEETUPS_IMG" alt="" />
               <span v-if="item.IS_MINI">{{ item.MEETUPS_TITLE }}</span>
             </div>
             <div
               :class="
-                item.MEETUPS_IMG
-                  ? 'salon-new-card-bottom'
-                  : 'salon-new-card-mobile'
+                index === 0 ? 'salon-new-card-bottom' : 'salon-new-card-mobile'
               "
             >
               <div class="salon-new-card-left">
                 <div class="salon-new-card-left-title">
                   {{ item.MEETUPS_TITLE }}
                 </div>
-                <div class="salon-new-card-left-logo">openEulur</div>
+                <div v-if="index === 0" class="salon-new-card-left-logo">
+                  openEulur
+                </div>
                 <div
                   class="salon-new-card-left-desc"
                   :title="item.MEETUPS_DESC ? item.MEETUPS_DESC[0] : ''"
@@ -332,7 +332,7 @@ onMounted(async () => {
         <div v-else>
           <div class="nofound">
             <img class="img" :src="Img404" alt="404" />
-            <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+            <p>{{ lang === 'zh' ? '暂无活动！' : 'NotFound !' }}</p>
           </div>
         </div>
       </div>
@@ -451,9 +451,6 @@ onMounted(async () => {
         width: 100%;
         display: flex;
         flex-flow: row;
-        @media (min-width: 768px) {
-          height: 584px;
-        }
 
         @media (max-width: 768px) {
           flex-flow: column;
@@ -489,6 +486,7 @@ onMounted(async () => {
           );
           display: flex;
           flex-flow: row;
+          color: #000000;
           justify-content: center;
           align-items: center;
           font-size: var(--o-font-size-tip);
@@ -509,6 +507,7 @@ onMounted(async () => {
             flex-flow: row;
             justify-content: center;
             align-items: center;
+            color: #000000;
             font-size: var(--o-font-size-tip);
             margin-top: var(--o-spacing-h5);
             @media (max-width: 768px) {
@@ -651,7 +650,7 @@ onMounted(async () => {
           display: flex;
           flex-flow: row;
           .salon-new-card-left {
-            width: 67%;
+            width: 85%;
             padding: var(--o-spacing-h2);
 
             .salon-new-card-left-desc {
@@ -663,12 +662,15 @@ onMounted(async () => {
             }
           }
           .salon-new-card-info {
-            width: 33%;
+            width: 13%;
           }
         }
       }
 
       &-bottom {
+        @media (min-width: 768px) {
+          height: 584px;
+        }
         padding: var(--o-spacing-h2);
         width: 33%;
         @media (max-width: 768px) {
@@ -911,6 +913,7 @@ onMounted(async () => {
     @media (max-width: 768px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
+      display: none;
     }
   }
   &-tabs {

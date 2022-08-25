@@ -345,7 +345,13 @@ onMounted(async () => {
     }
   }
 }
+
 .mirror-list {
+  :deep(.o-table) {
+    .el-table__cell {
+      padding: 0 0;
+    }
+  }
   :deep(.mirror-list-area) {
     .mirror-list-row {
       height: 72px;
@@ -402,6 +408,30 @@ onMounted(async () => {
 
   :deep(.el-table__cell) {
     padding: 0 0;
+  }
+
+  :deep(.el-table__row) {
+    &:last-child {
+      .mirror-list-row {
+        &::after {
+          content: '';
+          height: 0px;
+        }
+
+        &:first-child {
+          &::after {
+            content: '';
+            height: 0px;
+          }
+        }
+        &:last-child {
+          &::after {
+            content: '';
+            height: 0px;
+          }
+        }
+      }
+    }
   }
 
   :deep(.mirror-list-row) {

@@ -171,7 +171,6 @@ function search() {
   router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
-
 </script>
 
 <template>

@@ -229,11 +229,14 @@ const scroll = () => {
 
   if (targetScrollTop < 0) {
     (document.getElementById('tab') as HTMLElement).style.position = 'fixed';
+    (document.getElementById('tab') as HTMLElement).style.width =
+      'calc(100% - 88px)';
     (document.getElementById('tab2') as HTMLElement).style.position = 'fixed';
   }
 
   if (synopsisScrollTop >= 0) {
     (document.getElementById('tab') as HTMLElement).style.position = 'static';
+    (document.getElementById('tab') as HTMLElement).style.width = '100%';
     (document.getElementById('tab2') as HTMLElement).style.position = 'static';
   }
 };
@@ -985,7 +988,7 @@ watch(windowWidth, () => {
             margin-bottom: var(--o-spacing-h5);
           }
           @media (max-width: 768px) {
-            margin-bottom: 0;
+            margin-bottom: var(--o-spacing-h8);
           }
         }
       }
