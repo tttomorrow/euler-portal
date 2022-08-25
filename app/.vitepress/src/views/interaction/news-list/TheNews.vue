@@ -364,16 +364,22 @@ const currentChange = (val: number) => {
     }
     &-item:hover {
       box-shadow: var(--e-shadow-l2_hover);
+      .news-img img {
+        transform: scale(1.05);
+      }
     }
   }
   &-img {
     width: 100%;
     height: 188px;
+    max-height: 188px;
     object-fit: cover;
+    overflow: hidden;
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
     }
   }
   &-info {
