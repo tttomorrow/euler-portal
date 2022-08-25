@@ -486,6 +486,10 @@ const postBlog = () => {
         .tagitem {
           margin-right: var(--o-spacing-h8);
           color: var(--e-color-text1);
+          max-width: 120px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
       }
     }

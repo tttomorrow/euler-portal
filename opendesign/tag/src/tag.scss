@@ -11,10 +11,7 @@
   user-select: none;
   cursor: default;
   display: inline-block;
-  max-width: 120px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+
   &:active {
     color: var(--o-tag-font-color_active);
     border: var(--o-tag-font-color_active);
