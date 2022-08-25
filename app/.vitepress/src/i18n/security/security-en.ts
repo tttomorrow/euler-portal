@@ -26,6 +26,20 @@ export default {
       LABEL: 'Critical',
     },
   ],
+  CATEGORY_LIST: [
+    {
+      NAME: 'ALL',
+      LABEL: '',
+    },
+    {
+      NAME: 'Fixed',
+      LABEL: 'Fixed',
+    },
+    {
+      NAME: 'Unaffected',
+      LABEL: 'Unaffected',
+    },
+  ],
   YEAR: 'Year',
   PLACEHOLDER: 'Select',
   ALL: 'ALL',

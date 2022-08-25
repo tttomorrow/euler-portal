@@ -125,8 +125,13 @@ function goBackPage() {
                     .DESCRIPTION_1
                 }}
                 <a
-                  href="/openEuler-compatibility.pdf"
-                  download="openEuler兼容性策略介绍.pdf"
+                  :href="
+                    i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[2].A_HREF
+                  "
+                  :download="
+                    i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[2]
+                      .DOWNLOAD_NAME
+                  "
                 >
                   {{
                     i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[2].A_TEXT
@@ -180,7 +185,9 @@ function goBackPage() {
                 }}
                 <a
                   target="_blank"
-                  href="https://gitee.com/src-openeuler/oec-hardware/releases"
+                  :href="
+                    i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_HREF_1
+                  "
                 >
                   {{
                     i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_TEXT
@@ -191,8 +198,13 @@ function goBackPage() {
                     .DESCRIPTION_2
                 }}
                 <a
-                  href="/openEuler硬件兼容性测试工具使用指南.pdf"
-                  download="openEuler硬件兼容性测试工具使用指南.pdf"
+                  :href="
+                    i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_HREF_2
+                  "
+                  :download="
+                    i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4]
+                      .DOWNLOAD_NAME
+                  "
                 >
                   {{
                     i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_TEXT_2
@@ -280,7 +292,6 @@ function goBackPage() {
 .banner {
   margin: 0 auto;
   .breadcrumb {
-    // margin-top: var(--o-spacing-h3);
     margin-bottom: var(--o-spacing-h5);
     font-size: var(--o-font-size-h6);
     color: var(--e-color-link1);

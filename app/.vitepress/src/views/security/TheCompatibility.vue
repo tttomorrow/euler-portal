@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted, nextTick, watch } from 'vue';
+import { ref, reactive, onMounted, nextTick, watch, computed } from 'vue';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -41,13 +41,23 @@ const i18n = useI18n();
 const router = useRouter();
 const { lang } = useData();
 
+const a = computed(() => {
+  if (lang.value === 'en') {
+    return 'ALL';
+  } else if (lang.value === 'ru') {
+    return 'ВСЕ';
+  } else {
+    return '全部';
+  }
+});
+
 const searchContent = ref('');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-const architectureSelect = ref<string[]>(['全部']);
-const osOptions = ref<string[]>(['全部']);
+const architectureSelect = ref<string[]>([`${a.value}`]);
+const osOptions = ref<string[]>([`${a.value}`]);
 const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>(['全部']);
 const lastActiveName = ref('1');
@@ -380,14 +390,14 @@ onMounted(() => {
   <BannerLevel2
     :background-image="banner"
     background-text="CONTENT"
-    title="兼容性列表"
+    :title="i18n.compatibility.COMPATIBILITY"
     subtitle=""
     :illustration="screenWidth > 768 ? search : cve"
   />
 
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
     <AppContent>
-      <OTabPane label="整机" name="1">
+      <OTabPane :label="i18n.compatibility.HARDWARE" name="1">
         <OSearch
           v-model="searchContent"
           class="o-search"
@@ -397,7 +407,7 @@ onMounted(() => {
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">
-              <TagFilter :label="i18n.compatibility.ADAPTIVE" :show="false">
+              <TagFilter :label="i18n.compatibility.OS" :show="false">
                 <OTag
                   v-for="(item, index) in osOptions"
                   :key="'tag' + index"
@@ -483,7 +493,7 @@ onMounted(() => {
         </OTable>
       </OTabPane>
 
-      <OTabPane label="板卡" name="2">
+      <OTabPane :label="i18n.compatibility.DRIVE" name="2">
         <OSearch
           v-model="searchContent"
           class="o-search"
@@ -493,7 +503,7 @@ onMounted(() => {
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">
-              <TagFilter :label="i18n.compatibility.ADAPTIVE" :show="false">
+              <TagFilter :label="i18n.compatibility.OS" :show="false">
                 <OTag
                   v-for="(item, index) in osOptions"
                   :key="'tag' + index"
@@ -631,7 +641,7 @@ onMounted(() => {
         </ul>
       </OTabPane>
 
-      <OTabPane label="开源软件" name="3">
+      <OTabPane :label="i18n.compatibility.SOFTWARE" name="3">
         <OSearch
           v-model="searchContent"
           class="o-search"
@@ -641,7 +651,7 @@ onMounted(() => {
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">
-              <TagFilter :label="i18n.compatibility.ADAPTIVE" :show="false">
+              <TagFilter :label="i18n.compatibility.OS" :show="false">
                 <OTag
                   v-for="(item, index) in osOptions"
                   :key="'tag' + index"
@@ -715,7 +725,7 @@ onMounted(() => {
         </OTable>
       </OTabPane>
 
-      <OTabPane label="商业软件" name="4">
+      <OTabPane :label="i18n.compatibility.BUSINESS_SOFTWARE" name="4">
         <!-- <OSearch
           v-model="searchContent"
           class="o-search"
@@ -1296,6 +1306,7 @@ onMounted(() => {
   color: var(--e-color-link1);
 }
 .pc-list {
+  margin-bottom: var(--o-spacing-h2);
   .hardware-info {
     cursor: pointer;
     color: var(--e-color-link1);

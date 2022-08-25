@@ -39,16 +39,6 @@ export default {
     BOARD_MODEL: '板卡型号',
     CHIP_MODEL: '芯片型号',
   },
-  SOFTWARE_TABLE_COLUMN: {
-    ARCHITECTURE: '架构',
-    SOFTWARETYPE: '软件类型',
-    SOFTWARENAME: '软件名称',
-    VERSION: '版本',
-    PROPERTIES: '软件属性',
-    DOWNLOADLINK: '下载地址',
-    SYSTEM: '操作系统',
-    PUBLICKLICENSE: '开源协议',
-  },
   BUSINESS_SOFTWARE_TABLE_COLUMN: {
     ARCHITECTURE: '架构',
     SOFTWARENAME: '软件名称',
@@ -58,6 +48,16 @@ export default {
     SERVER_NAME: '服务器型号',
     TESTING_ORGANIZATION: '测试机构',
     CERTIFICATE: '证书',
+  },
+  SOFTWARE_TABLE_COLUMN: {
+    ARCHITECTURE: '架构',
+    SOFTWARETYPE: '软件类型',
+    SOFTWARENAME: '软件名称',
+    VERSION: '版本',
+    PROPERTIES: '软件属性',
+    DOWNLOADLINK: '下载地址',
+    SYSTEM: '操作系统',
+    PUBLICKLICENSE: '开源协议',
   },
   HARDWARE_DETAIL: {
     TITLE_1: 'Product Information',
@@ -123,6 +123,8 @@ export default {
         DESCRIPTION_1:
           '在开展兼容性测试前，您需要了解openEuler硬件兼容性策略，',
         A_TEXT: '点击此处获取文档。',
+        A_HREF: '/openEuler-compatibility.pdf',
+        DOWNLOAD_NAME: 'openEuler兼容性策略介绍.pdf',
       },
       {
         ID: '04',
@@ -139,6 +141,9 @@ export default {
           '完成issue创建后，即可开展兼容性测试。openEuler团队提供了兼容性测试框架以及使用指南，您可以根据使用指南自助完成兼容性测试。点击下载',
         A_TEXT: '兼容性测试工具套件',
         A_TEXT_2: '使用指南',
+        A_HREF_1: 'https://gitee.com/src-openeuler/oec-hardware/releases',
+        A_HREF_2: '/openEuler硬件兼容性测试工具使用指南.pdf',
+        DOWNLOAD_NAME: 'openEuler硬件兼容性测试工具使用指南.pdf',
         DESCRIPTION_2: '|',
       },
       {
@@ -184,6 +189,7 @@ export default {
         DESCRIPTION_1:
           '完成issue创建后，即可开展兼容性测试。openEuler团队提供了',
         A_TEXT: '自动化测试平台 compass-ci',
+        A_HREF: 'https://gitee.com/openeuler/compass-ci',
         DESCRIPTION_2: '以及使用指南，根据使用指南自助完成兼容性测试。',
       },
       {
