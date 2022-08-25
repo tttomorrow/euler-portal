@@ -53,6 +53,7 @@ const classNames = computed(() => {
       color: var(--o-pagination-font-color);
       background: var(--o-pagination-bg-color);
       border-radius: 0px;
+      line-height: 36px;
       height: 36px;
       width: 36px;
       &:hover {
