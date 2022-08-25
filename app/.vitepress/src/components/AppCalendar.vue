@@ -366,13 +366,17 @@ const watchData = watch(
                     </div>
                     <div class="item-right">
                       <div class="detail-time">
-                        <span class="start-time">{{
-                          item.startTime || item.start_date
-                        }}</span>
+                        <span class="start-time"
+                          ><i v-if="!item.schedules">{{ item.startTime }}</i>
+                          <i v-else>{{ item.schedules[0].start }}</i></span
+                        >
                         <span v-if="windowWidth < 768">-</span>
-                        <span class="end-time">{{
-                          item.endTime || item.end_date
-                        }}</span>
+                        <span class="end-time">
+                          <i v-if="!item.schedules">{{ item.endTime }}</i>
+                          <i v-else>{{
+                            item.schedules[item.schedules.length - 1].end
+                          }}</i>
+                        </span>
                       </div>
                       <div class="extend">
                         <OIcon
@@ -538,10 +542,6 @@ const watchData = watch(
       th {
         color: var(--e-color-text4);
       }
-      // th,
-      // td {
-      //   border-color: var(--e-color-border1);
-      // }
     }
   }
 
@@ -615,7 +615,7 @@ const watchData = watch(
     }
   }
   :deep(.calendar) {
-    width: 500px;
+    width: 100%;
     max-width: 500px;
     flex-shrink: 0;
     text-align: center;
@@ -624,6 +624,9 @@ const watchData = watch(
         text-align: center;
       }
       background-color: var(--e-color-bg4);
+    }
+    @media screen and (max-width: 1100px) {
+      max-width: 400px;
     }
     @media screen and (max-width: 768px) {
       display: none;
@@ -644,7 +647,7 @@ const watchData = watch(
         height: 44px;
       }
       tbody {
-        box-shadow: var(--o-shadow-base);
+        box-shadow: 0 1px 5px rgba(45, 47, 51, 0.1);
       }
       .el-calendar-table__row {
         -moz-user-select: none; /*火狐*/
@@ -789,7 +792,7 @@ const watchData = watch(
       height: v-bind('calendarHeight');
       background-color: var(--e-color-bg2);
       overflow-y: scroll;
-      box-shadow: var(--o-shadow-base);
+      box-shadow: 0 1px 5px rgba(45, 47, 51, 0.1);
       .el-collapse {
         border: none;
         --el-collapse-header-height: 96px;
@@ -928,6 +931,9 @@ const watchData = watch(
             font-size: var(--o-font-size-h8);
             span {
               line-height: var(--o-line-height-h8);
+              i {
+                font-style: normal;
+              }
             }
           }
           .extend {

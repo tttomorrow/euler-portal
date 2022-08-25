@@ -52,6 +52,14 @@ import suse from '../../assets/category//home/link/suse.png';
 import suseLogo_dark from '../../assets/category//home/dark/link/suse_dark.png';
 import zhongkefangde from '../../assets/category/home/link/zhongkefangde.png';
 import zhongkefangdeLogo_dark from '../../assets/category/home/dark/link/zhongkefangde_dark.png';
+import h3cLogo from '../../assets/category/home/link/h3cLogo.png';
+import h3cLogo_dark from '../../assets/category/home/dark/link/h3cLogo_dark.png';
+import intewellLogo from '../../assets/category/home/link/intewellLogo.png';
+import intewellLogo_dark from '../../assets/category/home/dark/link/intewellLogo_dark.png';
+import linsiLogo from '../../assets/category/home/link/linsiLogo.png';
+import linsiLogo_dark from '../../assets/category/home/dark/link/linsiLogo_dark.png';
+import zhongkechuangdaLogo from '../../assets/category/home/link/zhongkeLogo.png';
+import zhongkechuangdaLogo_dark from '../../assets/category/home/dark/link/zhongkeLogo_dark.png';
 import xfusion from '../../assets/category/home/link/xfusion.png';
 import xfusionLogo_dark from '../../assets/category/home/dark/link/xfusion_dark.png';
 
@@ -94,55 +102,6 @@ import educationActive from '../../assets/category/home/case/education-active.sv
 import educationActiveDark from '../../assets/category/home/dark/case/education-active.svg';
 
 export default {
-  HOME_CAROUSEL_DATA: [
-    {
-      TITLE: 'iSula',
-      LINK: '/other/projects/isula',
-      DES: '小个头 大能量',
-      IMG: '/img/minisite/isula/mobile-banner.png',
-      VIDEO_URL:
-        'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/iSula.mp4',
-    },
-    {
-      TITLE: 'A-Tune',
-      LINK: '/other/projects/atune',
-      DES: '一款基于AI开发的智能优化引擎',
-      IMG: '/img/minisite/atune/mobile-banner.png',
-      VIDEO_URL:
-        'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/A-Tune.mp4',
-    },
-    {
-      TITLE: 'StratoVirt',
-      LINK: '/other/projects/stratovirt',
-      DES: '面向云数据中心的企业级虚拟化平台',
-      IMG: '/img/minisite/svirt/mobile-banner.png',
-      VIDEO_URL:
-        'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/StratoVirt-minisite.mp4',
-    },
-  ],
-  ROOM_LEFT_IMG: [
-    {
-      IMG: '/img/activities/internship.png',
-      LINK: '/internship/',
-    },
-    {
-      IMG: '/img/activities/devday2022.png',
-      LINK: '/interaction/summit-list/devday2022/',
-    },
-    {
-      IMG: '/img/activities/pc_home_bottom_banner.png',
-      LINK: '/activities/',
-    },
-  ],
-  HOME_NEWRELEASE: [
-    {
-      MOBILE_IMG:
-        "url('https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/openEuler-devday-2022/images/home_devday_mo.png')",
-      PC_IMG:
-        "url('https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/openEuler-devday-2022/images/home_devday_pc.png')",
-      LINK: '/interaction/summit-list/devday2022/',
-    },
-  ],
   HOME_CALENDAR: 'openEuler 开发者日历',
   HOME_NAV: [
     {
@@ -215,70 +174,6 @@ export default {
     INTRO_HEAD: '开启openEuler编码之旅',
     INTRO_DESCRIPTION:
       'openEuler通过开放的社区形式与全球开发者共同构建一个开放、多元和架构包容的软件生态体系，孵化支持多种处理器架构、覆盖数字设施全场景，推动企业数字基础设施软硬件、应用生态繁荣发展。',
-    INTRO_IMG_URL: '',
-    INTRO_MAP: [
-      {
-        NAME: '下载',
-        TITLE: 'openEuler ISO',
-        IMG: '/img/home/step1.png',
-        GIF: '/img/home/step-move-1.gif',
-        LINK: '/download/',
-      },
-      {
-        NAME: '体验',
-        TITLE: 'openEuler系统',
-        IMG: '/img/home/step2.png',
-        GIF: '/img/home/step-move-2.gif',
-        LINK: '',
-      },
-      {
-        NAME: '查阅',
-        TITLE: 'openEuler文档',
-        IMG: '/img/home/step3.png',
-        GIF: '/img/home/step-move-3.gif',
-        LINK: '/docs/',
-        OTHER_LINK: '/zh/',
-      },
-      {
-        NAME: '贡献',
-        TITLE: 'openEuler社区',
-        IMG: '/img/home/step4.png',
-        GIF: '/img/home/step-move-4.gif',
-        LINK: '/community/contribution/',
-      },
-    ],
-    INTRO_MAP_SND: {
-      NAME: '体验',
-      TITLE: 'openEuler系统',
-      IMG: '/img/home/step2.png',
-      LINK: 'javascript:;',
-      GIF: '/img/home/step-move-2.gif',
-    },
-    INTRO_GUIDE: {
-      INFO: '选择您喜欢的体验方式',
-      GUIDE_WAY: [
-        {
-          TITLE: '树莓派',
-          IMG: '/img/home/areaPai.png',
-          LINK: 'https://gitee.com/openeuler/raspberrypi',
-        },
-        {
-          TITLE: '硬件',
-          IMG: '/img/home/areaHardware.svg',
-          LINK: '/zh/docs/20.03_LTS/docs/Installation/installation.html',
-        },
-        {
-          TITLE: '虚拟机',
-          IMG: '/img/home/areaVirtual.svg',
-          LINK: '/zh/docs/20.03_LTS/docs/Virtualization/virtualization.html',
-        },
-        {
-          TITLE: 'ECS',
-          IMG: '/img/home/areaECS.svg',
-          LINK: 'https://huaweicloud.com/product/ecs.html',
-        },
-      ],
-    },
   },
   HOME_ACTIVE: {
     ACTIVE_TITLE: '好玩的活动停不下来',
@@ -316,9 +211,6 @@ export default {
         ROUND_IMG: sig,
         ROUND_IMG_DARK: sigDark,
         ROUND_TEXT: '特别兴趣小组',
-        ROUND_STYLE: {
-          backcolor: 'yellow',
-        },
       },
       {
         ROUND_VALUE: 0,
@@ -326,9 +218,6 @@ export default {
         ROUND_IMG: user,
         ROUND_IMG_DARK: userDark,
         ROUND_TEXT: '社区用户',
-        ROUND_STYLE: {
-          backcolor: 'yellow',
-        },
       },
       {
         ROUND_VALUE: 0,
@@ -336,9 +225,6 @@ export default {
         ROUND_IMG: osv,
         ROUND_IMG_DARK: osvDark,
         ROUND_TEXT: '商用OSV',
-        ROUND_STYLE: {
-          backcolor: 'blue',
-        },
       },
     ],
   },
@@ -395,13 +281,6 @@ export default {
   },
   HOME_SOURCE: {
     SOURCE_TITLE: '获取更多资源',
-    SOURCE_APPLY: {
-      TITLE: '测试资源申请',
-      DES: '如果缺乏测试设备，可以尝试',
-      APPLY: '在此申请。',
-      SPONSOR: '感谢鹏城实验室赞助!',
-      SPONSORLINK: 'https://dw.pcl.ac.cn/',
-    },
     SOURCE_MAIL: {
       TITLE: '邮件订阅',
       DES: '任何社区话题都可以在这里讨论。',
@@ -412,26 +291,28 @@ export default {
     SOURCE_PUBLISH_TITLE: '发布 openEuler 商业发行版的厂商',
     SOURCE_LINK_TITLE: '友情链接',
   },
+  RANK_TIP: '注：按公司名拼音首字母顺序排序',
   HOME_SOURCE_EDITION: [
     {
-      LINK: 'http://www.kylinsec.com.cn/',
-      IMG: xinan,
-      IMG_DARK: xinanLogo_dark,
+      LINK: 'https://www.xfusion.com/cn/',
+      IMG: xfusion,
+      IMG_DARK: xfusionLogo_dark,
     },
     {
-      LINK: 'https://www.uniontech.com/',
-      IMG: tongxin,
-      IMG_DARK: tongxinLogo_dark,
+      LINK: 'http://www.chinaredflag.cn/',
+      IMG: zhongkehongqi,
+      IMG_DARK: zhongkehongqiLogo_dark,
+    },
+
+    {
+      LINK: 'https://www.kyland.com.cn/',
+      IMG: intewellLogo,
+      IMG_DARK: intewellLogo_dark,
     },
     {
-      LINK: 'https://www.kylinos.cn/',
-      IMG: qiling,
-      IMG_DARK: qilingLogo_dark,
-    },
-    {
-      LINK: 'http://www.iscas.ac.cn/',
-      IMG: iscas,
-      IMG_DARK: iscasLogo_dark,
+      LINK: 'http://www.linx-info.com/#/',
+      IMG: linsiLogo,
+      IMG_DARK: linsiLogo_dark,
     },
     {
       LINK: 'http://www.i-soft.com.cn/',
@@ -439,9 +320,14 @@ export default {
       IMG_DARK: cetcLogo_dark,
     },
     {
-      LINK: 'https://www.turbolinux.com.cn/',
-      IMG: turbo,
-      IMG_DARK: turboLogo_dark,
+      LINK: 'https://www.kylinos.cn/',
+      IMG: qiling,
+      IMG_DARK: qilingLogo_dark,
+    },
+    {
+      LINK: 'http://www.kylinsec.com.cn/',
+      IMG: xinan,
+      IMG_DARK: xinanLogo_dark,
     },
     {
       LINK: 'http://www.hoperun.com/',
@@ -449,29 +335,45 @@ export default {
       IMG_DARK: hopeRunLogo_dark,
     },
     {
-      LINK: 'http://www.tongyuanos.com/',
-      IMG: tongYuan,
-      IMG_DARK: tongYuanLogo_dark,
-    },
-    {
-      LINK: 'http://www.chinaredflag.cn/',
-      IMG: zhongkehongqi,
-      IMG_DARK: zhongkehongqiLogo_dark,
-    },
-    {
       LINK: 'https://www.suse.com/',
       IMG: suse,
       IMG_DARK: suseLogo_dark,
     },
     {
+      LINK: 'https://www.turbolinux.com.cn/',
+      IMG: turbo,
+      IMG_DARK: turboLogo_dark,
+    },
+    {
+      LINK: 'http://www.tongyuanos.com/',
+      IMG: tongYuan,
+      IMG_DARK: tongYuanLogo_dark,
+    },
+    {
+      LINK: 'https://www.uniontech.com/',
+      IMG: tongxin,
+      IMG_DARK: tongxinLogo_dark,
+    },
+    {
+      LINK: 'https://www.h3c.com/cn/',
+      IMG: h3cLogo,
+      IMG_DARK: h3cLogo_dark,
+    },
+    {
+      LINK: 'http://www.iscas.ac.cn/',
+      IMG: iscas,
+      IMG_DARK: iscasLogo_dark,
+    },
+
+    {
+      LINK: 'https://www.thundersoft.com/',
+      IMG: zhongkechuangdaLogo,
+      IMG_DARK: zhongkechuangdaLogo_dark,
+    },
+    {
       LINK: 'http://www.nfs-china.com/index.html',
       IMG: zhongkefangde,
       IMG_DARK: zhongkefangdeLogo_dark,
-    },
-    {
-      LINK: 'https://www.xfusion.com/cn/',
-      IMG: xfusion,
-      IMG_DARK: xfusionLogo_dark,
     },
   ],
   FRIENDSHIP_LINK_LIST: [

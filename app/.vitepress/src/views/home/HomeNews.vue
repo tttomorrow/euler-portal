@@ -110,7 +110,7 @@ onMounted(async () => {
         ></OTabPane>
       </OTabs>
     </div>
-    <OContainer>
+    <OContainer :level-index="1">
       <div class="room-contain-new" :class="{ isShow: tabType === 'blog' }">
         <h4 class="type-title">
           {{ i18n.home.HOME_ROOMS.BLOG_NAME }}
@@ -130,7 +130,14 @@ onMounted(async () => {
                   <a :href="item.path" :title="item.title">
                     {{ item.title }}
                   </a>
-                  <p>{{ item.author }}</p>
+                  <p v-if="typeof item.author === 'string'">
+                    {{ item.author }}
+                  </p>
+                  <p v-else>
+                    <span v-for="author in item.author" :key="author"
+                      >{{ author }}、</span
+                    >
+                  </p>
                 </div>
                 <div class="room-bottom">
                   <a class="word-hover" :title="item.summary" :href="item.path">
@@ -181,7 +188,9 @@ onMounted(async () => {
                   <a :href="item.path" :title="item.title">
                     {{ item.title }}
                   </a>
-                  <p>{{ item.author }}</p>
+                  <p v-if="typeof item.author === 'string'">
+                    {{ item.author }}
+                  </p>
                 </div>
                 <div class="room-bottom">
                   <a class="word-hover" :title="item.summary" :href="item.path">

@@ -28,7 +28,7 @@ const handleGo = (path: string) => {
 <template>
   <div class="carousel">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
-    <OContainer :level-index="2">
+    <OContainer class="carousel-container" :level-index="1">
       <div class="carousel-pc">
         <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
           <div class="carousel-pc-content">
@@ -96,8 +96,13 @@ const handleGo = (path: string) => {
 .carousel {
   :deep(.el-collapse) {
     border: none;
+    background-color: var(--e-color-bg1);
   }
-
+  &-container {
+    @media screen and (max-width: 1100px) {
+      box-shadow: none;
+    }
+  }
   :deep(.el-collapse-item__content) {
     padding: 0;
   }
@@ -126,15 +131,39 @@ const handleGo = (path: string) => {
     }
 
     &-card {
+      &:last-child :deep(.el-collapse-item__header)::after {
+        display: none;
+      }
       :deep(.el-collapse-item__content) {
         padding: 0px !important;
       }
 
       :deep(.el-collapse-item__header) {
+        position: relative;
         height: 100%;
         padding: var(--o-spacing-h4);
+        border-bottom: none !important;
+        &.is-active {
+          &::after {
+            opacity: 0;
+          }
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          height: 1px;
+          width: calc((100% - 48px));
+          transition: all 0.3s;
+          background-color: var(--e-color-border2);
+        }
         @media (max-width: 768px) {
           padding: var(--o-spacing-h8);
+          &::after {
+            width: calc((100% - 16px));
+          }
         }
       }
 
@@ -273,17 +302,6 @@ const handleGo = (path: string) => {
   .el-collapse-item__header {
     position: relative;
     border-left: none;
-    // z-index: 888;
-    // &::after {
-    //   position: absolute;
-    //   bottom: 1px;
-    //   left: 1px;
-    //   content: '';
-    //   height: 500px;
-    //   width: 100%;
-    //   color: red;
-    //   z-index: 999;
-    // }
     border-bottom: 1px solid var(--e-color-division1);
   }
 }

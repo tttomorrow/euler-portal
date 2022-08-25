@@ -17,7 +17,7 @@ export function getMeetingData() {
  TODO:
  */
 export function getActivityData() {
-  const url = '/api/activitiesdata/';
+  const url = '/api/meetings/activitiesdata/';
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 

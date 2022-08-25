@@ -16,7 +16,7 @@ import HomeNews from './HomeNews.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import { getMeetingData } from '@/api/api-calendar';
+import { getMeetingData, getActivityData } from '@/api/api-calendar';
 import { TableData } from '@/shared/@types/type-calendar';
 import { useData } from 'vitepress';
 import { getSortData } from '@/api/api-search';
@@ -89,9 +89,8 @@ onMounted(async () => {
     throw new Error(e);
   }
   try {
-    //TODO:添加活动数据
-    Promise.all([getMeetingData()]).then((res) => {
-      calendarData.value = [...res[0].tableData];
+    Promise.all([getActivityData(), getMeetingData()]).then((res) => {
+      calendarData.value = [...res[0].tableData, ...res[1].tableData];
     });
   } catch (e: any) {
     throw new Error(e);
@@ -102,7 +101,7 @@ onMounted(async () => {
 <template>
   <HomeBanner />
   <AppContent>
-    <OContainer :level-index="2"><HomeNav /></OContainer>
+    <OContainer :level-index="1"><HomeNav /></OContainer>
     <HomeCarousel />
     <UserCase v-if="caseData" :case-data="caseData" />
     <CommunityActivity />
