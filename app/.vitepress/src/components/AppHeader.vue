@@ -13,6 +13,7 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
+import { getPop } from '@/api/api-search';
 
 const router = useRouter();
 const { lang } = useData();
@@ -123,7 +124,9 @@ const showSearchBox = () => {
 };
 const donShowSearchBox = () => {
   isShowBox.value = false;
+  isShowDrawer.value = false;
   searchInput.value = '';
+  popList.value = [];
 };
 // 搜索内容
 const searchInput = ref<string>('');
@@ -142,6 +145,26 @@ watch(
 // 导航默认选中
 const menuActiveFn = (item: any) => {
   return item.some((el: string) => activeItem.value.includes(el));
+};
+
+// 搜索抽屉
+const popList = ref<string[]>([]);
+const isShowDrawer = ref(false);
+const showDrawer = () => {
+  isShowDrawer.value = true;
+  //热搜
+  const params = `lang=${lang.value}`;
+  getPop(params).then((res) => {
+    if (popList.value.length === 0) {
+      res.obj.forEach((item: string) => {
+        popList.value.push(item);
+      });
+    }
+  });
+};
+const topSearchClick = (val: string) => {
+  searchInput.value = val;
+  search();
 };
 </script>
 
@@ -162,11 +185,29 @@ const menuActiveFn = (item: any) => {
             v-model="searchInput"
             :placeholder="searchValue.PLEACHOLDER"
             @change="search"
+            @focus="showDrawer"
           >
             <template #suffix>
               <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
             </template>
           </OSearch>
+        </div>
+        <div v-show="isShowDrawer" class="drawer">
+          <div class="hots">
+            <div class="hots-title">
+              <p class="hots-text">{{ searchValue.TOPSEARCH }}</p>
+            </div>
+            <div class="hots-list">
+              <OTag
+                v-for="item in popList"
+                :key="item"
+                type="text"
+                class="hots-list-item"
+                @click="topSearchClick(item)"
+                >{{ item }}</OTag
+              >
+            </div>
+          </div>
         </div>
       </div>
       <!-- 移动端搜索按钮 -->
@@ -374,6 +415,39 @@ const menuActiveFn = (item: any) => {
     .close {
       cursor: pointer;
       color: var(--e-color-text1);
+    }
+  }
+  .drawer {
+    position: absolute;
+    height: auto;
+    width: 100%;
+    margin-top: 21px;
+    // background: rgba(255, 255, 255, 0.9);
+    background: hsla(0, 0%, 100%, 0.97);
+    backdrop-filter: blur(5px);
+    padding: var(--o-spacing-h3);
+    @media (max-width: 1100px) {
+      margin-top: 8px;
+    }
+    .hots {
+      &-title {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-heigh-tip);
+        color: var(--e-color-black);
+      }
+      &-list {
+        &-item {
+          margin-top: var(--o-spacing-h8);
+          margin-right: var(--o-spacing-h5);
+          background-color: var(--e-color-greyblue1);
+          color: var(--e-color-neutral5);
+          cursor: pointer;
+          @media (max-width: 1100px) {
+            font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-heigh-tip);
+          }
+        }
+      }
     }
   }
 }
