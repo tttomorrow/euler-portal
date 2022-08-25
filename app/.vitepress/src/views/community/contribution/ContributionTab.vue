@@ -28,8 +28,8 @@ const handleClick = (tab: TabsPaneContext) => {
 <template>
   <div class="tab-wrapper">
     <OTabs v-model="activeName" @tab-click="handleClick">
-      <OTabPane :label="i18n.contribution.LOOK_DESC" name="first"></OTabPane>
-      <OTabPane :label="i18n.contribution.LOOK_MAP" name="second"></OTabPane>
+      <OTabPane :label="i18n.contribution.LOOK_MAP" name="first"></OTabPane>
+      <OTabPane :label="i18n.contribution.LOOK_DESC" name="second"></OTabPane>
     </OTabs>
   </div>
 </template>

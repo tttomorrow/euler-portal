@@ -71,6 +71,7 @@ const goLink = (path: string) => {
       color: var(--e-color-text1);
       line-height: var(--o-height-h6);
       position: relative;
+      box-shadow: var(--e-shadow-l2);
       .link {
         z-index: 2;
         position: absolute;
@@ -98,7 +99,7 @@ const goLink = (path: string) => {
       }
     }
     .item:hover {
-      box-shadow: var(--o-shadow-base_hover);
+      box-shadow: var(--e-shadow-l2_hover);
     }
     @media screen and (max-width: 767px) {
       display: grid;

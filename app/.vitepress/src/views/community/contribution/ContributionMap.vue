@@ -54,6 +54,7 @@ const goLink = function (url: string, isBlank: boolean) {
 .content-map {
   background-color: var(--e-color-bg1);
   width: 100%;
+  padding-bottom: var(--o-spacing-h1);
   &-img {
     width: 1416px;
     position: relative;

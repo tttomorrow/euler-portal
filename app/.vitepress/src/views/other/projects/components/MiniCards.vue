@@ -102,6 +102,10 @@ const isDark = computed(() => {
 <style lang="scss" scoped>
 .cards-wraper {
   margin-bottom: var(--o-spacing-h2);
+  box-shadow: var(--e-shadow-l1);
+  @media screen and (max-width: 767px) {
+    margin-bottom: var(--o-spacing-h5);
+  }
 }
 .info {
   margin: 0 auto;
@@ -116,6 +120,8 @@ const isDark = computed(() => {
         height: 170px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        margin: 0 auto;
       }
     }
     &-imgs {
@@ -170,6 +176,7 @@ const isDark = computed(() => {
 
     @media screen and (max-width: 767px) {
       width: 100%;
+      box-shadow: var(--e-shadow-l1);
       box-sizing: border-box;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -180,6 +187,7 @@ const isDark = computed(() => {
         padding: 0;
         .cover {
           height: 100px;
+          width: 100px;
         }
       }
       &-last {
@@ -187,8 +195,8 @@ const isDark = computed(() => {
       }
       &-imgs {
         display: block;
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        height: auto;
         cursor: pointer;
       }
       &-title {

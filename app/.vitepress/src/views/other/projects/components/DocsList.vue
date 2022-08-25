@@ -129,7 +129,7 @@ const goLink = (path: string) => {
         height: 192px;
         padding: var(--o-spacing-h2) 0 var(--o-spacing-h2) var(--o-spacing-h2);
         background-color: var(--e-color-bg2);
-        box-shadow: var(--o-shadow-base);
+        box-shadow: var(--e-shadow-l2);
         font-size: var(--o-font-size-h7);
         color: var(--e-color-text1);
         line-height: var(--o-line-height-h6);
@@ -250,6 +250,7 @@ const goLink = (path: string) => {
       background-color: var(--e-color-bg2);
       padding: var(--o-spacing-h5) 0 var(--o-spacing-h5) var(--o-spacing-h6);
       position: relative;
+      box-shadow: var(--e-shadow-l2);
       &-content {
         position: absolute;
         z-index: 3;

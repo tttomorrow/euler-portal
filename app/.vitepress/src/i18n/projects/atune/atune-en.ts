@@ -42,8 +42,8 @@ export default {
       'The interaction system layer monitors and configures various system resources. The tuning policies are executed at this layer.',
       'The tuning model library contains the tuning configurations for 20+ application scenarios of 10 categories.',
     ],
-    FRAMEWORK_IMG: '/img/projects/atune/framework-hight-zh.png',
-    FRAMEWORK_IMG_DARK: '/img/projects/atune/framework-dark-zh.png',
+    FRAMEWORK_IMG: '/img/projects/atune/framework-hight-en.png',
+    FRAMEWORK_IMG_DARK: '/img/projects/atune/framework-dark-en.png',
   },
   ATUNE_DOCUMENT: {
     TITLE_OUTSIDE: 'Documentation',

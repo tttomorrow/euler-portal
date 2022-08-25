@@ -102,8 +102,8 @@ export default {
     DESC_LIST: [
       'The following figure shows the overall architecture of the JDK. JRE is short for Java Runtime Environment, including the Java Virtual Machine (JVM) and libraries. JDK is a superset of JRE, and therefore includes all JRE content as well as the compilers and debuggers such as javac and JDB required by developers. JRE provides only runtime libraries, JVMs, and other components required to run Java applications.',
     ],
-    FRAMEWORK_IMG: '/img/projects/bisheng/framework-hight-zh.png',
-    FRAMEWORK_IMG_DARK: '/img/projects/bisheng/framework-dark-zh.png',
+    FRAMEWORK_IMG: '/img/projects/bisheng/framework-hight-en.png',
+    FRAMEWORK_IMG_DARK: '/img/projects/bisheng/framework-dark-en.png',
   },
   BISHENG_LEARN: {
     TITLE_OUTSIDE: 'Learning',

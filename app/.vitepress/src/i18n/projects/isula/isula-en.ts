@@ -71,8 +71,8 @@ export default {
         'iSulad is not restricted by hardware specifications and architectures. It features minimal background noise, making it a perfect option for many fields.',
       ],
       FRAMEWORK_TITLE: 'The architecture of iSulad is as follows:',
-      FRAMEWORK_IMG: '/img/projects/isula/framework-isulad-hight-zh.png',
-      FRAMEWORK_IMG_DARK: '/img/projects/isula/framework-isulad-dark-zh.png',
+      FRAMEWORK_IMG: '/img/projects/isula/framework-isulad-hight-en.png',
+      FRAMEWORK_IMG_DARK: '/img/projects/isula/framework-isulad-dark-en.png',
     },
     ISULAD_BUILD: {
       DESC_LIST: [
