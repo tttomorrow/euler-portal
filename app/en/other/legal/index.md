@@ -6,7 +6,7 @@ title: 'Legal'
 
 <h1>Legal</h1>
 
-<hr>
+---------
 
 This legal notice contains legal policies for the openEuler community. These policies govern this site and project releases hosted by the openEuler community.
 

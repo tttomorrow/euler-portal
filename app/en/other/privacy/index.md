@@ -6,11 +6,10 @@ title: 'Privacy'
 
 <h1>Privacy</h1>
 
-<hr>
+---------
 
 The openEuler Community ("Community") understands the importance of your privacy and fully respects it. <u>**Please read this openEuler Community Privacy Statement ("Statement") carefully before you submit your personal data to us.**</u> If you have any questions about how we process your personal data, please feel free to contact us. Unless otherwise specified, "we" and "us" in this Statement refers to the Community.
 
- 
 
 ## 1. How We Collect and Process Your Personal Data
 
@@ -26,7 +25,6 @@ We generally do not require your personal data if you only browse the general co
 
 We may also supplement the personal data we collect from you with additional personal data we receive from third parties, including other platforms, communities, or legal and public channels within the scope of your authorization and consent. We promise to process your personal data in strict accordance with applicable laws and regulations. Please read the privacy statements and user agreements of the third parties carefully. If your personal data provided by a third party is required for using related services of the Community, but you refuse to allow the third party to collect, use, transfer, or share your personal data when the third party provides services, you may not be able to use related services of the Community. For example, when you use an authorized third-party account to log in to the Community, we will obtain your personal data from the third party with your consent.
 
- 
 
 ## 2. How We Use Cookies and Similar Technologies
 

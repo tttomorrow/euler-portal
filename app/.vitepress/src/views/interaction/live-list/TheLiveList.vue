@@ -219,7 +219,6 @@ const goNext = () => {
     grid-gap: var(--o-spacing-h4);
     @media screen and (max-width: 767px) {
       margin: var(--o-spacing-h5) auto;
-      padding: 0 var(--o-spacing-h5);
     }
     &-item {
       width: 100%;

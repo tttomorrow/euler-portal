@@ -440,7 +440,7 @@ onMounted(async () => {
     grid-gap: var(--o-spacing-h4);
     @media (max-width: 768px) {
       grid-gap: var(--o-spacing-h5);
-      margin-top: var(--o-spacing-h5);
+      margin-top: 0;
     }
 
     &-card {
@@ -720,7 +720,7 @@ onMounted(async () => {
     @media (max-width: 768px) {
       grid-template-columns: repeat(1, 1fr);
       grid-gap: var(--o-spacing-h5);
-      margin-top: var(--o-spacing-h5);
+      margin-top: 0;
     }
 
     &-card {

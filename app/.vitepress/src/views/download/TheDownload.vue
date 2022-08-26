@@ -169,7 +169,7 @@ onMounted(() => {
     :title="i18n.download.OUTSIDE_TITLE"
     :illustration="downloadImg"
   />
-  <AppContent class="download">
+  <AppContent :mobile-top="16" class="download">
     <!-- PC筛选 -->
     <OCard class="download-filter">
       <TagFilter
