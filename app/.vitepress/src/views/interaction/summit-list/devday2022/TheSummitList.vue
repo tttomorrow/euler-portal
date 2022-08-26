@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
+
 import AppContext from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TheSummitGuests from './TheSummitGuests.vue';
@@ -8,8 +10,13 @@ import TheSummitVideo from './TheSummitVideo.vue';
 
 import banner from '@/assets/banner-secondary.png';
 import summit from '@/assets/category/summit/header.png';
+import eulerLight from '@/assets/category/summit/cooperate/openEulerlogo.png';
+import eulerDark from '@/assets/category/summit/cooperate/openeuler_dark.png';
+import atomLight from '@/assets/category/summit/cooperate/openatom.png';
+import atomDark from '@/assets/category/summit/cooperate/openatom_dark.png';
 
 const i18n = useI18n();
+const commonStore = useCommon();
 </script>
 
 <template>
@@ -62,9 +69,12 @@ const i18n = useI18n();
             <p>主办方</p>
           </div>
           <div class="foot-construction-imglist">
-            <a><img src="@/assets/category/summit/cooperate/openatom.png" /></a>
             <a
-              ><img src="@/assets/category/summit/cooperate/openEulerlogo.png"
+              ><img :src="commonStore.theme === 'light' ? atomLight : atomDark"
+            /></a>
+            <a
+              ><img
+                :src="commonStore.theme === 'light' ? eulerLight : eulerDark"
             /></a>
           </div>
           <div class="foot-construction-company">
@@ -72,7 +82,10 @@ const i18n = useI18n();
             <div class="foot-construction-company-list">
               <div v-for="item in i18n.summit.COOPERATE_LIST" :key="item.IMG">
                 <a :href="item.WEBSITE" target="_blank"
-                  ><img :src="item.IMG"
+                  ><img
+                    :src="
+                      commonStore.theme === 'light' ? item.IMG : item.DARK_IMG
+                    "
                 /></a>
               </div>
             </div>
@@ -81,7 +94,12 @@ const i18n = useI18n();
             <p>协办单位</p>
             <div class="foot-construction-company-list">
               <div v-for="item in i18n.summit.SPONSOR_LIST" :key="item.IMG">
-                <a><img :src="item.IMG" /></a>
+                <a
+                  ><img
+                    :src="
+                      commonStore.theme === 'light' ? item.IMG : item.DARK_IMG
+                    "
+                /></a>
               </div>
             </div>
           </div>
@@ -183,14 +201,17 @@ const i18n = useI18n();
         @media (max-width: 780px) {
           grid-template-columns: 1fr;
         }
+        img {
+          width: 354px;
+        }
       }
     }
     &-review {
-      max-width: 1400px;
       margin: 0 auto;
       &-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 10px;
         grid-row-gap: var(--o-spacing-h4);
         align-items: center;
         justify-content: center;

@@ -4,8 +4,10 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 defineProps({
   thirdData: {
     required: true,
-    type: Array,
-    default: () => [],
+    type: Object,
+    default: () => {
+      return {};
+    },
   },
 });
 const screenWidth = useWindowResize();

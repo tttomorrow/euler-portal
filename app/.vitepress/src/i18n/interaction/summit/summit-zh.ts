@@ -14,21 +14,37 @@ import XiongWei from '@/assets/category/summit/guests/xiongwei.png';
 import CaoWenYuan from '@/assets/category/summit/guests/caowenyuan.png';
 import ChenHui from '@/assets/category/summit/guests/chenhui.png';
 import ChenQiang from '@/assets/category/summit/guests/chenqiang.png';
+
 import huawei from '@/assets/category/summit/cooperate/huawei.png';
+import huaweiDark from '@/assets/category/home/dark/link/huawei_dark.png';
 import qilin from '@/assets/category/summit/cooperate/qilin.png';
+import qilinDark from '@/assets/category/home/dark/link/qiling_dark.png';
 import suse from '@/assets/category/summit/cooperate/suse.png';
+import suseDark from '@/assets/category/home/dark/link/suse_dark.png';
 import tongxin from '@/assets/category/summit/cooperate/tongxin.png';
+import tongxinDark from '@/assets/category/home/dark/link/tongxin_dark.png';
 import xinan from '@/assets/category/summit/cooperate/xinan.png';
+import xinanDark from '@/assets/category/home/dark/link/xinan_dark.png';
 import puhua from '@/assets/category/summit/cooperate/puhua.png';
+import puhuaDark from '@/assets/category/home/dark/link/cetc_dark.png';
 import intel from '@/assets/category/summit/cooperate/intel.png';
+import intelDark from '@/assets/category/home/dark/link/intel_dark.png';
 import isoft from '@/assets/category/summit/cooperate/isoft.png';
+import isoftDark from '@/assets/category/home/dark/link/isoft_dark.png';
 import turbolinux from '@/assets/category/summit/cooperate/turbolinux.png';
+import turbolinuxDark from '@/assets/category/home/dark/link/turbo_dark.png';
 import zhongke from '@/assets/category/summit/cooperate/zhongke.png';
+import zhongkeDark from '@/assets/category/home/dark/link/zhongkechuangda_dark.png';
 import iscas from '@/assets/category/summit/cooperate/iscas.png';
+import iscasDark from '@/assets/category/home/dark/link/iscas_dark.png';
 import phytium from '@/assets/category/summit/cooperate/phytium.png';
+import phytiumDark from '@/assets/category/home/dark/link/phytium_dark.png';
 import tongtech from '@/assets/category/summit/cooperate/tongtech.png';
+import tongtechDark from '@/assets/category/home/dark/link/tongtech_dark.png';
 import fusion from '@/assets/category/summit/cooperate/fusion.png';
+import fusionDark from '@/assets/category/home/dark/link/Xfusion_dark.png';
 import yunhe from '@/assets/category/summit/cooperate/yunhe.png';
+import yunheDark from '@/assets/category/home/dark/link/yunhe_dark.png';
 
 export default {
   LIVEDATA: {
@@ -184,55 +200,70 @@ export default {
   COOPERATE_LIST: [
     {
       IMG: huawei,
+      DARK_IMG: huaweiDark,
     },
     {
       IMG: qilin,
+      DARK_IMG: qilinDark,
       WEBSITE: 'https://www.kylinos.cn/',
     },
     {
       IMG: suse,
+      DARK_IMG: suseDark,
       WEBSITE: 'https://www.suse.com/',
     },
     {
       IMG: tongxin,
+      DARK_IMG: tongxinDark,
       WEBSITE: 'https://www.uniontech.com/',
     },
     {
       IMG: xinan,
+      DARK_IMG: xinanDark,
       WEBSITE: 'http://www.kylinsec.com.cn/',
     },
     {
       IMG: puhua,
+      DARK_IMG: puhuaDark,
       WEBSITE: 'http://www.i-soft.com.cn/',
     },
     {
       IMG: intel,
+      DARK_IMG: intelDark,
     },
   ],
   SPONSOR_LIST: [
     {
       IMG: isoft,
+      DARK_IMG: isoftDark,
     },
     {
       IMG: turbolinux,
+      DARK_IMG: turbolinuxDark,
     },
     {
       IMG: zhongke,
+      DARK_IMG: zhongkeDark,
     },
     {
       IMG: iscas,
+      DARK_IMG: iscasDark,
     },
     {
       IMG: phytium,
+      DARK_IMG: phytiumDark,
     },
     {
       IMG: tongtech,
+      DARK_IMG: tongtechDark,
     },
     {
       IMG: fusion,
+      DARK_IMG: fusionDark,
     },
     {
       IMG: yunhe,
+      DARK_IMG: yunheDark,
     },
   ],
   AGENDA: {

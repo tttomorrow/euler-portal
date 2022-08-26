@@ -6,8 +6,10 @@ import TheSecondDay from './components/TheSecondDay.vue';
 defineProps({
   agendaData: {
     required: true,
-    type: Array,
-    default: () => [],
+    type: Object,
+    default: () => {
+      return {};
+    },
   },
 });
 
