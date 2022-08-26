@@ -98,7 +98,8 @@ onMounted(() => {
   margin: 0 auto;
 }
 .bread {
-  margin: 0 var(--o-spacing-h5);
+  width: 1416px;
+  margin: var(--o-spacing-h2) auto;
 }
 .skip {
   margin-top: var(--o-spacing-h5);
@@ -117,6 +118,17 @@ onMounted(() => {
   }
   p:hover {
     color: var(--e-color-link2);
+  }
+}
+@media (max-width: 1465px) {
+  .bread {
+    margin-left: var(--o-spacing-h5);
+  }
+}
+@media (max-width: 768px) {
+  .bread {
+    margin-bottom: var(--o-spacing-h5);
+    margin-top: var(--o-spacing-h5);
   }
 }
 </style>

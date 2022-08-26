@@ -50,7 +50,8 @@ const sortParams = reactive({
 // 新闻列表数据
 const newsCardData = ref<NewsData[]>([]);
 const isShowData = ref(false);
-const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+const isPad = computed(() => (screenWidth.value <= 768 ? true : false));
+// const isMobile = computed(() => (screenWidth.value <= 500? true : false));
 
 // 分页数据
 const paginationData = ref({
@@ -63,7 +64,7 @@ const paginationData = ref({
 const tagsParams = reactive({
   lang: lang.value,
   category: 'news',
-  tags: 'archives',
+  want: '',
 });
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
@@ -104,6 +105,223 @@ const selectMethod = () => {
     tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
   };
   getListData(params);
+};
+const timeChange = () => {
+  selectMethod();
+  if (selectTimeVal.value !== '') {
+    const wantauthor = {
+      lang: lang.value,
+      category: 'news',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    const wanttags = {
+      lang: lang.value,
+      category: 'news',
+      want: 'tags',
+      condition: {
+        archives: selectTimeVal.value,
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+      },
+    };
+    getTagsData(wantauthor).then((res) => {
+      selectData.value[1].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[1].select.push(item.key);
+      });
+      getTagsData(wanttags)
+        .then((res) => {
+          selectData.value[2].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'news',
+      want: 'archives',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
+      });
+    });
+  }
+};
+const authorChange = () => {
+  selectMethod();
+  if (selectAuthorVal.value !== '') {
+    const wantarchive = {
+      lang: lang.value,
+      category: 'news',
+      want: 'archives',
+      condition: {
+        author: selectAuthorVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    const wanttags = {
+      lang: lang.value,
+      category: 'news',
+      want: 'tags',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        author: selectAuthorVal.value,
+      },
+    };
+    getTagsData(wantarchive).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
+      });
+      getTagsData(wanttags)
+        .then((res) => {
+          selectData.value[2].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'news',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[1].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[1].select.push(item.key);
+      });
+    });
+  }
+};
+const tagsChange = () => {
+  selectMethod();
+  if (selectTagsVal.value !== '') {
+    const wantarchive = {
+      lang: lang.value,
+      category: 'news',
+      want: 'archives',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        tags: selectTagsVal.value,
+      },
+    };
+    const wantauthor = {
+      lang: lang.value,
+      category: 'news',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        tags: selectTagsVal.value,
+      },
+    };
+    getTagsData(wantarchive).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
+      });
+      getTagsData(wantauthor)
+        .then((res) => {
+          selectData.value[1].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[1].select.push(item.key);
+          });
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'news',
+      want: 'tags',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[2].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[2].select.push(item.key);
+      });
+    });
+  }
+};
+
+// 获取标签数据
+const getTagsList = () => {
+  tagsParams.want = 'archives';
+  getTagsData(tagsParams).then((res) => {
+    selectData.value[0].select = [];
+    res.obj.totalNum.forEach((item: any) => {
+      selectData.value[0].select.push(item.key);
+    });
+    tagsParams.want = 'author';
+    getTagsData(tagsParams)
+      .then((res) => {
+        selectData.value[1].select = [];
+        res.obj.totalNum.forEach((item: any) => {
+          selectData.value[1].select.push(item.key);
+        });
+        tagsParams.want = 'tags';
+        getTagsData(tagsParams).then((res) => {
+          selectData.value[2].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        });
+      })
+      .catch((error: any) => {
+        isShowData.value = false;
+        throw new Error(error);
+      });
+  });
 };
 
 //获取数据
@@ -161,28 +379,7 @@ const listFilter = (val: any) => {
 
 onMounted(() => {
   getListData(sortParams);
-  getTagsData(tagsParams).then((res) => {
-    res.obj.totalNum.forEach((item: any) => {
-      selectData.value[0].select.push(item.key);
-    });
-    tagsParams.tags = 'author';
-    getTagsData(tagsParams)
-      .then((res) => {
-        res.obj.totalNum.forEach((item: any) => {
-          selectData.value[1].select.push(item.key);
-        });
-        tagsParams.tags = 'tags';
-        getTagsData(tagsParams).then((res) => {
-          res.obj.totalNum.forEach((item: any) => {
-            selectData.value[2].select.push(item.key);
-          });
-        });
-      })
-      .catch((error: any) => {
-        isShowData.value = false;
-        throw new Error(error);
-      });
-  });
+  getTagsList();
 });
 
 const currentChange = (val: number) => {
@@ -193,6 +390,22 @@ const currentChange = (val: number) => {
     pageSize: paginationData.value.pagesize,
   };
   getListData(params);
+};
+
+const pageTotal = computed(() =>
+  Math.ceil(paginationData.value.total / paginationData.value.pagesize)
+);
+const moblieCurrentChange = (val: string) => {
+  if (val === 'prev' && paginationData.value.currentpage > 1) {
+    paginationData.value.currentpage = paginationData.value.currentpage - 1;
+    currentChange(paginationData.value.currentpage);
+  } else if (
+    val === 'next' &&
+    paginationData.value.currentpage < pageTotal.value
+  ) {
+    paginationData.value.currentpage = paginationData.value.currentpage + 1;
+    currentChange(paginationData.value.currentpage);
+  }
 };
 </script>
 
@@ -216,7 +429,7 @@ const currentChange = (val: number) => {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="timeChange"
           >
             <OOption
               v-for="item in selectData[0].select"
@@ -233,7 +446,7 @@ const currentChange = (val: number) => {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="authorChange"
           >
             <OOption
               v-for="item in selectData[1].select"
@@ -250,7 +463,7 @@ const currentChange = (val: number) => {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="tagsChange"
           >
             <OOption
               v-for="item in selectData[2].select"
@@ -290,13 +503,13 @@ const currentChange = (val: number) => {
       </div>
       <div class="news-pagination">
         <OPagination
+          v-if="!isPad"
           v-model:currentPage="paginationData.currentpage"
           v-model:page-size="paginationData.pagesize"
           :background="true"
           layout="sizes, prev, pager, next, slot, jumper"
           :total="paginationData.total"
           :page-sizes="[3, 6, 9]"
-          v-if="!isMobile"
           @current-change="currentChange"
           @size-change="currentChange(1)"
         >
@@ -314,7 +527,7 @@ const currentChange = (val: number) => {
       <AppPaginationMo
         :current-page="paginationData.currentpage"
         :total-page="Math.ceil(paginationData.total / 10)"
-        @turn-page="turnPage"
+        @turn-page="moblieCurrentChange"
       />
     </template>
     <NotFound v-else />
@@ -526,6 +739,9 @@ const currentChange = (val: number) => {
     line-height: var(--o-line-height-tip);
     font-size: var(--o-font-size-tip);
     color: var(--e-color-neutral5);
+  }
+  .news-select {
+    display: none;
   }
 }
 </style>
