@@ -177,13 +177,19 @@ const downloadInfo = [
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
           color: var(--e-color-text4);
-          .migration-summary {
-            margin-top: var(--o-spacing-h8);
-          }
 
           @media screen and (max-width: 768px) {
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
+            margin-top: var(--o-spacing-h10);
+          }
+
+          .migration-summary {
+            margin-top: var(--o-spacing-h8);
+
+            @media screen and (max-width: 768px) {
+              margin-top: var(--o-spacing-h10);
+            }
           }
         }
       }
