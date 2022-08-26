@@ -2,7 +2,6 @@
 import { useData, useRouter } from 'vitepress';
 import { computed, onMounted, ref, reactive, watch } from 'vue';
 import _ from 'lodash';
-import { debounce } from 'lodash';
 import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
@@ -186,7 +185,7 @@ function filterRope(val: string) {
   }
 }
 // 输入框防抖
-const debounceEvent = debounce(filterRope, 300, {
+const debounceEvent = _.debounce(filterRope, 300, {
   trailing: true,
 });
 watch(

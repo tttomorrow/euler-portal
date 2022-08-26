@@ -1,0 +1,177 @@
+<script lang="ts" setup>
+import { computed, ref } from 'vue';
+import IconChevronRight from '~icons/app/icon-chevron-right.svg';
+
+const props = defineProps({
+  info: {
+    type: Object,
+    default: () => {
+      return {};
+    },
+  },
+  activeId: {
+    type: String,
+    default: '',
+  },
+});
+const isOpen = ref(true);
+
+const isActive = computed(() => {
+  return props.info.children.some((item: any) => {
+    return item.link === props.activeId;
+  });
+});
+
+const emit = defineEmits(['item-click']);
+
+const toggleVisible = (flag: boolean | undefined) => {
+  if (flag === undefined) {
+    isOpen.value = !isOpen.value;
+  } else {
+    isOpen.value = flag;
+  }
+};
+
+const onClick = (id: string) => {
+  emit('item-click', id);
+};
+
+const beforeEnter = (el: HTMLUListElement) => {
+  el.style.height = '0px';
+};
+const enter = (el: HTMLUListElement) => {
+  const height = el.scrollHeight;
+  el.style.height = `${height}px`;
+};
+const beforeLeave = (el: HTMLUListElement) => {
+  el.style.height = `${el.offsetHeight}px`;
+};
+const leave = (el: HTMLUListElement) => {
+  el.style.height = '0px';
+};
+</script>
+
+<template>
+  <div class="sidebar-menu">
+    <div
+      class="menu-title"
+      :class="{ open: isOpen, active: isActive }"
+      @click="toggleVisible(!isOpen)"
+    >
+      {{ info.label }}
+      <OIcon class="menu-title-icon"> <IconChevronRight /></OIcon>
+    </div>
+    <transition
+      name="menu"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @before-leave="beforeLeave"
+      @leave="leave"
+    >
+      <ul v-show="isOpen" class="menu-list">
+        <li
+          v-for="item in info.children"
+          class="menu-item"
+          :class="{ active: activeId === item.link }"
+          @click="onClick(item.link)"
+        >
+          {{ item.label }}
+        </li>
+      </ul>
+    </transition>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.sidebar-menu {
+  position: relative;
+
+  .menu-title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    font-size: var(--o-font-size-text);
+    height: 70px;
+    line-height: 70px;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      width: calc(100% - 80px);
+      height: 1px;
+      background-color: #e5e5e5;
+      content: '';
+    }
+
+    &-icon {
+      font-size: var(--o-font-size-h5);
+      transform: rotate(0);
+      transition: 0.3s transform cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    &:hover {
+      color: var(--o-color-brand);
+    }
+
+    &.active {
+      color: #feb32a;
+    }
+
+    &.open {
+      .menu-title-icon {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .menu-list {
+    overflow-y: hidden;
+    transition: 0.3s height cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-color: var(--e-color-brand3);
+    padding: 0 40px;
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+      cursor: pointer;
+
+      &:first-child {
+        margin-top: 32px;
+      }
+
+      &:last-child {
+        margin-bottom: 32px;
+      }
+
+      & + .menu-item {
+        margin-top: var(--o-spacing-h4);
+      }
+
+      &:hover {
+        color: #feb32a;
+      }
+
+      &.active {
+        color: #feb32a;
+      }
+    }
+  }
+
+  & + .sidebar-menu {
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      right: -12px;
+      width: 100%;
+      height: 1px;
+      background-color: var(--o-color-division);
+    }
+  }
+}
+</style>
