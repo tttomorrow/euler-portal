@@ -205,6 +205,7 @@ onMounted(async () => {
       >
       </OTableColumn>
     </OTable>
+
     <div class="mirror-mobile">
       <OCard v-for="item in listData" :key="item.name" class="mirror-card">
         <div class="mirror-card-content">
@@ -266,15 +267,16 @@ onMounted(async () => {
           <div class="mirror-card-word">{{ item.netband }}</div>
         </div>
       </OCard>
-      <div class="mirror-map">
-        <MapContainer :map-data="mapData"></MapContainer>
-      </div>
 
       <div class="input-box">
         <!-- 用于复制RSNC的值 -->
         <input id="useCopy" type="text" />
-      </div></div
-  ></AppContent>
+      </div>
+    </div>
+    <div class="mirror-map">
+      <MapContainer :map-data="mapData"></MapContainer>
+    </div>
+  </AppContent>
 </template>
 <style lang="scss" scoped>
 .mirror {
@@ -282,6 +284,10 @@ onMounted(async () => {
     margin-top: var(--o-spacing-h2);
     width: 100%;
     height: 996px;
+    box-shadow: var(--e-shadow-l1);
+    @media (max-width: 768px) {
+      height: 50vh;
+    }
   }
   &-pc {
     display: block;

@@ -473,7 +473,7 @@ const moblieCurrentChange = (val: string) => {
 @media (max-width: 980px) {
   .news-list {
     grid-template-columns: repeat(1, 1fr);
-    margin-top: var(--o-spacing-h5);
+    margin-top: 0;
   }
 
   :deep(.el-card__body) {
@@ -514,6 +514,7 @@ const moblieCurrentChange = (val: string) => {
     height: 180px;
   }
   .news-info {
+    width: 100%;
     padding: var(--o-spacing-h6);
   }
   .news-title {

@@ -559,6 +559,7 @@ const moblieCurrentChange = (val: string) => {
 }
 @media (max-width: 768px) {
   .blog-list {
+    margin-top: 0;
     grid-template-columns: repeat(1, 1fr);
   }
 }
