@@ -2,16 +2,17 @@
   width: calc(100% - 32px);
   max-width: 1416px;
   padding: var(--o-spacing-h2);
-  margin: 0 auto;
-  margin-top: var(--o-spacing-h2);
+  margin: var(--o-spacing-h2) auto;
+  margin-bottom: var(--o-spacing-h1);
   background-color: var(--e-color-bg2);
   & > *:first-child {
     margin-top: 0 !important;
   }
-  --o-color-table: var(--e-color-border2); // 表格边框
+  --e-color-table: var(--e-color-border2); // 表格边框
   @media (max-width: 768px) {
     padding: var(--o-spacing-h7);
     margin-top: var(--o-spacing-h7);
+    margin-bottom: var(--o-spacing-h2);
   }
   ol,
   ul {
@@ -55,26 +56,34 @@
 
   h2 {
     margin-top: var(--o-spacing-h2);
-    margin-bottom: var(--o-font-size-h5);
+    margin-bottom: var(--o-spacing-h3);
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
     @media screen and (max-width: 768px) {
-      margin: var(--o-spacing-h5) 0;
+      margin: var(--o-spacing-h4) 0 var(--o-spacing-h5);
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-text);
     }
   }
 
   h3 {
-    margin-top: var(--o-spacing-h2);
+    margin-top: var(--o-spacing-h3);
     font-size: var(--o-font-size-h7);
     line-height: var(--o-line-height-h8);
+    @media screen and (max-width: 768px) {
+      margin-top: var(--o-spacing-h5);
+      font-size: var(--o-font-size-text);
+    }
   }
 
   h4 {
     margin-top: var(--o-spacing-h5);
     font-size: var(--o-font-size-h8);
     line-height: var(--o-font-size-h6);
+    @media screen and (max-width: 768px) {
+      margin-top: var(--o-spacing-h7);
+      font-size: var(--o-font-size-tip);
+    }
   }
 
   h5 {
@@ -118,7 +127,7 @@
     tr {
       height: 36px;
       color: var(--e-color-text4);
-      border-bottom: 1px solid var(--o-color-table);
+      border-bottom: 1px solid var(--e-color-table);
 
       th {
         font-size: var(--o-font-size-h8);
@@ -190,12 +199,14 @@
 .legal-privacy {
   margin: 0 auto;
   padding-top: 94px;
+  padding-bottom: var(--o-spacing-h1);
   max-width: 860px;
   background: var(--e-color-bg1);
 }
 @media screen and (max-width: 768px) {
   .legal-privacy {
     margin-top: var(--o-spacing-h2);
+    padding-bottom: var(--o-spacing-h2);
   }
 }
 .legal-privacy hr {
@@ -246,7 +257,7 @@
   & > *:first-child {
     margin-top: 0 !important;
   }
-  --o-color-table: var(--e-color-border2); // 表格边框
+  --e-color-table: var(--e-color-border2); // 表格边框
   ol,
   ul {
     list-style: inherit;
@@ -352,7 +363,7 @@
     tr {
       height: 36px;
       color: var(--e-color-text4);
-      border-bottom: 1px solid var(--o-color-table);
+      border-bottom: 1px solid var(--e-color-table);
 
       th {
         font-size: var(--o-font-size-h8);

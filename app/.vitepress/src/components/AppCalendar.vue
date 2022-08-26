@@ -7,7 +7,7 @@ import type { TabsPaneContext } from 'element-plus';
 
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
-import IconArrowRight from '~icons/app/arrow-right.svg';
+// import IconArrowRight from '~icons/app/arrow-right.svg';
 import IconDown from '~icons/app/icon-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 
@@ -26,7 +26,7 @@ const props = defineProps({
   },
 });
 
-const currentMeet = reactive<TableData>({
+let currentMeet = reactive<TableData>({
   date: '',
   timeData: [
     {
@@ -100,9 +100,10 @@ const windowWidth = ref(useWindowResize());
 function changeTab(tab: TabsPaneContext) {
   const index = Number(tab.index);
   activeIndex.value = index;
+  renderData.value.timeData = [];
   try {
     // 0-全部 1-会议 其他-活动
-    if ((index === 0 && currentMeet.start_date) || currentMeet.date) {
+    if (index === 0) {
       renderData.value.timeData = currentMeet.timeData;
     } else if (index === 1) {
       renderData.value.timeData = currentMeet.timeData.filter(
@@ -116,8 +117,6 @@ function changeTab(tab: TabsPaneContext) {
           return item.activity_type;
         }
       );
-    } else {
-      renderData.value.timeData = [];
     }
   } catch (error: any) {
     throw Error(error);
@@ -135,6 +134,7 @@ function meetClick(day: string) {
         props.tableData[i].start_date === day
       ) {
         // 深拷贝
+        currentMeet = JSON.parse(JSON.stringify(props.tableData[i]));
         renderData.value = JSON.parse(JSON.stringify(props.tableData[i]));
         // 只有一个会议默认展开
         if (props.tableData[i].timeData.length === 1) {
@@ -153,9 +153,13 @@ function meetClick(day: string) {
               parseInt(b.startTime.replace(':', ''))
             );
           });
+          renderData.value.timeData.map((item2) => {
+            item2['duration_time'] = `${item2.startTime}-${item2.endTime}`;
+          });
         }
         return;
       } else {
+        currentMeet.timeData = [];
         renderData.value.timeData = [];
       }
     }
@@ -333,7 +337,13 @@ const watchData = watch(
         <span>{{ currentDay }}</span>
       </div>
       <div class="meeting-list">
-        <div v-if="renderData.timeData.length" class="demo-collapse">
+        <div
+          v-if="
+            (renderData.timeData.length && renderData.date) ||
+            (renderData.timeData.length && renderData.start_date)
+          "
+          class="demo-collapse"
+        >
           <o-collapse v-model="activeName" accordion @change="changeCollapse()">
             <div
               v-for="(item, index) in renderData.timeData"
