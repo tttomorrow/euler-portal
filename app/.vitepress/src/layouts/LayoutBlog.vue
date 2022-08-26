@@ -28,6 +28,21 @@ const blogInfo = {
 </template>
 
 <style lang="scss" scoped>
+:deep(.markdown-body-title) {
+  .page-title{
+    font-weight: 300;
+  }
+}
+@media (max-width: 768px) {
+  .makdown-wrap,
+  .markdown {
+    margin-top: 0px;
+  }
+  :deep(.bread-crumbs) {
+  margin-bottom: 0px;
+}
+}
+
 .bread {
   margin: 0 var(--o-spacing-h5);
 }

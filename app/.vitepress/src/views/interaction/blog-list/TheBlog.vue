@@ -16,6 +16,7 @@ import IconRight from '~icons/app/arrow-right.svg';
 import { getSortData, getTagsData } from '@/api/api-search';
 import OIcon from 'opendesign/icon/OIcon.vue';
 import AppContent from '@/components/AppContent.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 interface BlogData {
   archives: string;
@@ -215,6 +216,19 @@ const currentChange = (val: number) => {
 const postBlog = () => {
   router.go(`/${lang.value}/interaction/post-blog/`);
 };
+
+const moblieCurrentChange = (val:string) => {
+if (val === 'prev' && paginationData.value.currentpage > 1) {
+    paginationData.value.currentpage = paginationData.value.currentpage - 1;
+    currentChange(paginationData.value.currentpage);
+  } else if (
+    val === 'next' &&
+    paginationData.value.currentpage < Math.ceil(paginationData.value.total / paginationData.value.pagesize)
+  ) {
+    paginationData.value.currentpage = paginationData.value.currentpage + 1;
+    currentChange(paginationData.value.currentpage);
+  }
+}
 </script>
 
 <template>
@@ -340,7 +354,6 @@ const postBlog = () => {
               v-for="tag in item.tags"
               :key="tag"
               type="secondary"
-              :title="tag"
               class="tagitem"
               >{{ tag }}</OTag
             >
@@ -349,12 +362,13 @@ const postBlog = () => {
       </div>
       <div class="blog-pagination">
         <OPagination
+          class="pcpagination"
           v-model:currentPage="paginationData.currentpage"
           v-model:page-size="paginationData.pagesize"
           :background="true"
           layout="sizes, prev, pager, next, slot, jumper"
           :total="paginationData.total"
-          :page-sizes="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
+          :page-sizes="[3, 6, 9]"
           @current-change="currentChange"
           @size-change="currentChange"
         >
@@ -364,6 +378,12 @@ const postBlog = () => {
             }}</span
           >
         </OPagination>
+        <AppPaginationMo
+          :current-page="paginationData.currentpage"
+          :total-page="Math.ceil(paginationData.total / paginationData.pagesize)"
+          @turn-page="moblieCurrentChange"
+        >
+        </AppPaginationMo>
       </div>
     </template>
     <NotFound v-else />
@@ -383,15 +403,21 @@ const postBlog = () => {
 }
 
 .bannericon {
-  margin-left: var(--o-spacing-h8);
+  // margin-left: var(--o-spacing-h8);
   color: var(--e-color-brand2);
+  font-size: var(--o-font-size-tip);
+  // transform: scale(.5);
 }
 
 .post-btn {
   color: var(--e-color-white);
   border-color: var(--e-color-white);
   @media (max-width: 767px) {
-    padding: 4px 12px;
+    padding: 3px 14px;
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+    width: 106px;
+    height: 30px;
   }
 }
 
@@ -415,7 +441,7 @@ const postBlog = () => {
       &-title {
         margin-right: var(--o-spacing-h5);
         color: var(--e-color-text1);
-        font-size: var(--o-font-size-text);
+        font-size: var(--o-font-size-h7);
       }
     }
   }
@@ -427,7 +453,8 @@ const postBlog = () => {
     grid-gap: var(--o-spacing-h4);
     &-item {
       background-image: url(@/assets/interaction/bg.png);
-
+      min-height: 248px;
+      max-height: 248px;
       background-position: right bottom;
       background-repeat: no-repeat;
       cursor: pointer;
@@ -464,12 +491,6 @@ const postBlog = () => {
           flex-direction: row;
           align-items: center;
           margin-right: var(--o-spacing-h3);
-          @media (max-width: 1100px) {
-            margin-right: var(--o-spacing-h5);
-          }
-          @media (max-width: 768px) {
-            margin-right: var(--o-spacing-h6);
-          }
         }
       }
       &-content {
@@ -484,12 +505,10 @@ const postBlog = () => {
       &-tags {
         margin-top: var(--o-spacing-h7);
         .tagitem {
+          font-size: var(--o-spacing-h6);
           margin-right: var(--o-spacing-h8);
-          color: var(--e-color-text1);
-          max-width: 120px;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
+          color: var(--e-color-black);
+          margin-bottom: var(--o-spacing-h10);
         }
       }
     }
@@ -518,14 +537,19 @@ const postBlog = () => {
   .blog-list {
     grid-template-columns: repeat(1, 1fr);
   }
+  .pcpagination {
+    display: none;
+  }
 }
 @media (max-width: 415px) {
   :deep(.el-card__body) {
     padding: var(--o-spacing-h6);
-    height: auto;
+    min-height: 152px;
+    max-height: 152px;
   }
   .blog-list-item {
-    height: auto;
+    min-height: 152px;
+    max-height: 152px;
   }
   .blog-list {
     margin-top: var(--o-spacing-h5);
