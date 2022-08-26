@@ -2,15 +2,20 @@
 
 <template>
   <aside class="sidebar">
-    <slot></slot>
+    <div class="m">
+      <slot></slot>
+    </div>
   </aside>
 </template>
 
 <style lang="scss" scoped>
+.m {
+  position: sticky;
+}
 .sidebar {
-  position: absolute;
+  position: fixed;
   left: 0;
-  top: 0;
+  top: 80px;
   bottom: 0;
   padding: 40px 0;
   min-height: calc(100vh - 258px);
@@ -20,6 +25,10 @@
   background-color: var(--e-color-brand1);
   border-right: 1px solid var(--o-color-division);
   font-weight: normal;
+
+  @media screen and (max-width: 1100px) {
+    top: 48px;
+  }
 
   &::-webkit-scrollbar {
     width: 4px;

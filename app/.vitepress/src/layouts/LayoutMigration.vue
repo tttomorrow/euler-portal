@@ -163,7 +163,7 @@ const goHome = () => {
     </ODrawer>
   </div>
   <div class="migration-wrapper migration-markdown">
-    <Content />
+    <Content class="migration-content" />
   </div>
 </template>
 
@@ -172,6 +172,11 @@ const goHome = () => {
   padding: 8px 16px;
   display: flex;
   justify-content: space-between;
+}
+
+.migration-content {
+  max-width: 1380px;
+  margin: 0 auto;
 }
 
 .migration-title {
