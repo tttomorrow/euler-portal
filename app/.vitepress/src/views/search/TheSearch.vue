@@ -9,6 +9,11 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import IconX from '~icons/app/x.svg';
 
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+const screenWidth = useWindowResize();
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+
 const { lang, site } = useData();
 
 const i18n = useI18n();
@@ -201,6 +206,7 @@ onMounted(() => {
         </ul>
         <div v-if="totalPage > 1 && pageShow" class="page-box">
           <OPagination
+            v-if="!isMobile"
             v-model:currentPage="currentPage"
             v-model:page-size="pageSize"
             class="pagination-pc"

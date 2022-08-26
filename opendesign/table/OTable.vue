@@ -42,7 +42,7 @@ const attrs = useAttrs();
         left: 50%;
         transform: translateX(-50%);
 
-        z-index: 1000;
+        z-index: 1;
       }
       &:last-child::after {
         height: 0;
