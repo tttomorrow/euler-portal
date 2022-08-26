@@ -149,17 +149,49 @@ const isMobile = computed(() => {
                   <img :src="LEFT_IMG[index]" />
                 </div>
                 <div class="middle-item-infoconfig">
-                  <div class="middle-item-infoconfig-circle">
-                    {{ item.LEFT.INDEX }}
+                  <div
+                    class="middle-item-infoconfig-circle"
+                    :style="{
+                      color:
+                        commonStore.theme === 'dark'
+                          ? 'var(--e-color-white)'
+                          : '',
+                    }"
+                  >
+                    <span>{{ item.LEFT.INDEX }}</span>
                   </div>
                   <div>
-                    <span v-if="item.LEFT.LEFT_CIRCLE" style="font-size: 22px">
+                    <span
+                      v-if="item.LEFT.LEFT_CIRCLE"
+                      style="font-size: 22px"
+                      :style="{
+                        color:
+                          commonStore.theme === 'dark'
+                            ? 'var(--e-color-white)'
+                            : '',
+                      }"
+                    >
                       {{ item.LEFT.LEFT_CIRCLE }}
                     </span>
-                    <span>{{ item.LEFT.LEFT_INFO }}</span>
-                    <span v-if="item.LEFT.DO_THIS">{{
-                      item.LEFT.DO_THIS
-                    }}</span>
+                    <span
+                      :style="{
+                        color:
+                          commonStore.theme === 'dark'
+                            ? 'var(--e-color-white)'
+                            : '',
+                      }"
+                      >{{ item.LEFT.LEFT_INFO }}</span
+                    >
+                    <span
+                      v-if="item.LEFT.DO_THIS"
+                      :style="{
+                        color:
+                          commonStore.theme === 'dark'
+                            ? 'var(--e-color-white)'
+                            : '',
+                      }"
+                      >{{ item.LEFT.DO_THIS }}</span
+                    >
                   </div>
                 </div>
               </div>
@@ -171,17 +203,37 @@ const isMobile = computed(() => {
                   <img :src="RIGHT_IMG[index]" />
                 </div>
                 <div class="middle-item-infoconfig">
-                  <div class="middle-item-infoconfig-circle">
-                    {{ item.RIGHT.INDEX }}
+                  <div
+                    class="middle-item-infoconfig-circle"
+                    :style="{
+                      color:
+                        commonStore.theme === 'dark'
+                          ? 'var(--e-color-white)'
+                          : '',
+                    }"
+                  >
+                    <span>{{ item.RIGHT.INDEX }}</span>
                   </div>
                   <div>
                     <span
                       v-if="item.RIGHT.RIGHT_CIRCLE"
                       style="font-size: 22px"
+                      :style="{
+                        color:
+                          commonStore.theme === 'dark'
+                            ? 'var(--e-color-white)'
+                            : '',
+                      }"
                     >
                       {{ item.RIGHT.RIGHT_CIRCLE }}
                     </span>
                     <span
+                      :style="{
+                        color:
+                          commonStore.theme === 'dark'
+                            ? 'var(--e-color-white)'
+                            : '',
+                      }"
                       >{{ item.RIGHT.RIGHT_INFO }}
                       <p
                         v-if="item.RIGHT.DO_THIS"
@@ -203,13 +255,31 @@ const isMobile = computed(() => {
           </div>
         </div>
         <div class="mail-table">
-          <OTable :data="tableData" style="width: 100%">
-            <el-table-column :label="i18n.mailing.MAILING_LIST.TABLE.NAME_H5">
+          <OTable
+            :data="tableData"
+            header-cell-class-name="mirror-list-header"
+            cell-class-name="mirror-list-row"
+            style="width: 100%"
+          >
+            <el-table-column
+              :width="isMobile ? '' : '180'"
+              :label="
+                isMobile
+                  ? i18n.mailing.MAILING_LIST.TABLE.NAME_H5_MO
+                  : i18n.mailing.MAILING_LIST.TABLE.NAME_H5
+              "
+            >
               <template #default="scope">
                 <a
                   ref="listName"
                   class="imformation-color"
                   target="_blank"
+                  :style="{
+                    color:
+                      commonStore.theme === 'dark'
+                        ? 'var(--e-color-link2)'
+                        : '',
+                  }"
                   @click="userSubscribe(scope.row.list_id)"
                 >
                   {{ scope.row.display_name }}
@@ -217,12 +287,26 @@ const isMobile = computed(() => {
               </template>
             </el-table-column>
             <el-table-column
-              :label="i18n.mailing.MAILING_LIST.TABLE.EMAIL_ADDRESS"
+              :width="isMobile ? '' : '230'"
+              :label="
+                isMobile
+                  ? i18n.mailing.MAILING_LIST.TABLE.EMAIL_ADDRESS_MO
+                  : i18n.mailing.MAILING_LIST.TABLE.EMAIL_ADDRESS
+              "
               prop="fqdn_listname"
             >
               <template #default="scope">
                 <div>
-                  <span class="ellipsis">{{ scope.row.fqdn_listname }}</span>
+                  <span
+                    class="ellipsis"
+                    :style="{
+                      color:
+                        commonStore.theme === 'dark'
+                          ? 'var(--e-color-white)'
+                          : '',
+                    }"
+                    >{{ scope.row.fqdn_listname }}</span
+                  >
                 </div>
                 <!-- <el-popover trigger="hover" placement="top"  width="300">
                 <p>{{ scope.row.fqdn_listname }}</p>
@@ -233,7 +317,12 @@ const isMobile = computed(() => {
               </template>
             </el-table-column>
             <el-table-column
-              :label="i18n.mailing.MAILING_LIST.TABLE.ARCHIVE_H5"
+              :width="isMobile ? '' : '130'"
+              :label="
+                isMobile
+                  ? i18n.mailing.MAILING_LIST.TABLE.ARCHIVE_H5_MO
+                  : i18n.mailing.MAILING_LIST.TABLE.ARCHIVE_H5
+              "
             >
               <template #default="scope">
                 <a
@@ -244,18 +333,37 @@ const isMobile = computed(() => {
                   "
                   class="imformation-color"
                   target="_blank"
+                  :style="{
+                    color:
+                      commonStore.theme === 'dark'
+                        ? 'var(--e-color-link2)'
+                        : '',
+                  }"
                 >
                   archive
                 </a>
               </template>
             </el-table-column>
             <el-table-column
-              :label="i18n.mailing.MAILING_LIST.TABLE.DESCRIPTION"
+              :label="
+                isMobile
+                  ? i18n.mailing.MAILING_LIST.TABLE.DESCRIPTION_MO
+                  : i18n.mailing.MAILING_LIST.TABLE.DESCRIPTION
+              "
               prop="description"
             >
               <template #default="scope">
                 <div>
-                  <span class="ellipsis">{{ scope.row.description }}</span>
+                  <span
+                    class="ellipsis"
+                    :style="{
+                      color:
+                        commonStore.theme === 'dark'
+                          ? 'var(--e-color-white)'
+                          : '',
+                    }"
+                    >{{ scope.row.description }}</span
+                  >
                 </div>
               </template>
             </el-table-column>
@@ -304,6 +412,9 @@ const isMobile = computed(() => {
     }
     .upper-box {
       background-color: rgba(255, 255, 255, 0);
+      @media (max-width: 780px) {
+        margin-top: -22px;
+      }
     }
     &-item {
       min-height: 204px;
@@ -313,6 +424,7 @@ const isMobile = computed(() => {
       justify-content: space-between;
       background-color: rgba(255, 255, 255, 0);
       @media (max-width: 780px) {
+        min-height: 0px;
         display: block;
         margin-top: var(--o-spacing-h5);
       }
@@ -382,16 +494,18 @@ const isMobile = computed(() => {
           width: 300px;
         }
         span {
-          color: var(--e-color-text1);
+          color: var(--e-color-black);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           float: left;
-          margin: 0 var(--o-spacing-h4) var(--o-spacing-h4) var(--o-spacing-h1);
+          margin: 0 var(--o-spacing-h4) var(--o-spacing-h4) 59px;
           position: relative;
           bottom: var(--o-spacing-h4);
           @media (max-width: 780px) {
-            margin: 0 var(--o-spacing-h10) 0 var(--o-spacing-h2);
-            line-height: var(--o-line-height-text);
+            font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-height-tip);
+            margin: 0 var(--o-spacing-h6) var(--o-spacing-h10) 30px;
+            bottom: var(--o-spacing-h5);
           }
         }
         p {
@@ -407,26 +521,36 @@ const isMobile = computed(() => {
           }
         }
         &-circle {
-          white-space: nowrap;
-          height: 70px;
-          width: 70px;
+          height: 78px;
+          width: 78px;
           border: 4px solid var(--e-color-white);
           border-radius: 50%;
           background-color: var(--e-color-kleinblue5);
           position: relative;
           top: 50%;
           transform: translate(-50%, -50%);
-          text-align: center;
-          font-size: var(--o-font-size-h5);
-          padding: 20px 0;
-          font-weight: 500;
-          color: var(--e-color-text2);
           @media (max-width: 780px) {
+            height: 38px;
+            width: 38px;
+            border: 2px solid var(--e-color-white);
+            justify-content: center;
+          }
+          span {
             white-space: nowrap;
-            height: 60px;
-            width: 60px;
-            font-size: var(--o-font-size-h7);
-            padding: 15px 0;
+            font-size: var(--o-font-size-h5);
+            color: var(--e-color-white);
+            line-height: var(--o-line-height-h5);
+            position: relative;
+            top: 50%;
+            right: 36%;
+            transform: translate(-50%, -50%);
+            font-weight: 500;
+            @media (max-width: 780px) {
+              font-size: var(--o-font-size-text);
+              margin: auto;
+              left: 50%;
+              line-height: var(--o-line-height-text);
+            }
           }
         }
       }
@@ -436,6 +560,65 @@ const isMobile = computed(() => {
     margin-top: var(--o-spacing-h1);
     @media (max-width: 780px) {
       margin-top: var(--o-spacing-h2);
+    }
+    :deep(.mirror-list-header) {
+      font-size: var(--o-font-size-h8);
+      font-weight: 400;
+      color: var(--e-color-text1);
+      line-height: 54px;
+      padding: 0 !important;
+      @media (max-width: 780px) {
+        font-size: var(--o-font-size-text);
+      }
+      .cell {
+        padding: 0 var(--o-spacing-h6) 0 0;
+      }
+
+      &:first-child {
+        .cell {
+          padding-left: var(--o-spacing-h2);
+          @media (max-width: 780px) {
+            padding-left: var(--o-spacing-h6);
+          }
+        }
+      }
+
+      &:last-child {
+        .cell {
+          padding-right: var(--o-spacing-h2);
+          @media (max-width: 780px) {
+            padding-right: var(--o-spacing-h6);
+          }
+        }
+      }
+    }
+    :deep(.mirror-list-row) {
+      padding: 0 !important;
+      line-height: 22px;
+      @media (max-width: 780px) {
+        font-size: var(--o-font-size-tip);
+      }
+      .cell {
+        padding: var(--o-spacing-h5) var(--o-spacing-h6) var(--o-spacing-h5) 0;
+      }
+
+      &:first-child {
+        .cell {
+          padding-left: var(--o-spacing-h2);
+          @media (max-width: 780px) {
+            padding-left: var(--o-spacing-h6);
+          }
+        }
+      }
+
+      &:last-child {
+        .cell {
+          padding-right: var(--o-spacing-h2);
+          @media (max-width: 780px) {
+            padding-right: var(--o-spacing-h6);
+          }
+        }
+      }
     }
     .ellipsis {
       display: -webkit-box;

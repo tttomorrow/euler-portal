@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -20,14 +21,12 @@ import { ElMessage } from 'element-plus';
 import IconRight from '~icons/app/icon-arrow-right1.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconTime from '~icons/app/icon-time.svg';
-import IconPre from '~icons/app/icon-chevron-left.svg';
-import IconNext from '~icons/app/icon-chevron-right.svg';
 
 const i18n = useI18n();
 const data = computed(() => i18n.value.live.LIVE_LIST);
 const commonStore = useCommon();
 
-const currentPage1 = ref(1);
+const currentPage = ref(1);
 const pageSize4 = ref(6);
 const total = ref(data.value.length);
 const screenWidth = useWindowResize();
@@ -60,16 +59,18 @@ const liveStyleMo = ref({
   darkExtension: `url(${cardBg_dark_mo_extension})`,
 });
 
-const goPrevious = () => {
-  currentPage1.value < 2 ? '' : (currentPage1.value -= 1);
-  changePage(currentPage1.value, pageSize4.value);
-};
-const goNext = () => {
-  currentPage1.value > Math.ceil(total.value / pageSize4.value) - 1
-    ? ''
-    : (currentPage1.value += 1);
-  changePage(currentPage1.value, pageSize4.value);
-};
+function turnPage(option: string) {
+  if (option === 'prev' && currentPage.value > 1) {
+    currentPage.value = currentPage.value - 1;
+    changePage(currentPage.value, pageSize4.value);
+  } else if (
+    option === 'next' &&
+    currentPage.value < Math.ceil(total.value / pageSize4.value)
+  ) {
+    currentPage.value = currentPage.value + 1;
+    changePage(currentPage.value, pageSize4.value);
+  }
+}
 </script>
 
 <template>
@@ -148,39 +149,25 @@ const goNext = () => {
       <div class="live-pagination">
         <OPagination
           v-show="!isMobile"
-          v-model:currentPage="currentPage1"
+          v-model:currentPage="currentPage"
           v-model:page-size="pageSize4"
           :page-sizes="[6, 12, 18, 24]"
           :background="true"
           layout="sizes, prev, pager, next, slot, jumper"
           :total="total"
-          @current-change="changePage(currentPage1, pageSize4)"
-          @size-change="changePage(currentPage1, pageSize4)"
+          @current-change="changePage(currentPage, pageSize4)"
+          @size-change="changePage(currentPage, pageSize4)"
         >
           <span class="pagination-slot">{{
-            currentPage1 * pageSize4 + '/' + total
+            currentPage * pageSize4 + '/' + total
           }}</span>
         </OPagination>
-        <div v-show="isMobile" class="pagination-mobile">
-          <div class="pagination-options">
-            <OIcon class="pagination-options-icon">
-              <IconPre />
-            </OIcon>
-            <div class="pagination-options-text" @click="goPrevious">
-              上一页
-            </div>
-            <div class="pagination-information">
-              <span class="pagination-information-current">{{
-                currentPage1
-              }}</span
-              >{{ '/' + Math.ceil(total / pageSize4) }}
-            </div>
-            <div class="pagination-options-text" @click="goNext">下一页</div>
-            <OIcon class="pagination-options-icon">
-              <IconNext />
-            </OIcon>
-          </div>
-        </div>
+        <AppPaginationMo
+          :current-page="currentPage"
+          :total-page="Math.ceil(total / pageSize4)"
+          @turn-page="turnPage"
+        >
+        </AppPaginationMo>
       </div>
     </div>
   </AppContent>
@@ -188,10 +175,6 @@ const goNext = () => {
 
 <style lang="scss" scoped>
 .live {
-  // margin: var(--o-spacing-h1) 0 0 0;
-  // @media screen and (max-width: 767px) {
-  //   margin: var(--o-spacing-h2) 0 0 0;
-  // }
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
@@ -202,7 +185,7 @@ const goNext = () => {
     width: 100%;
     margin: 0 auto;
     font-weight: 300;
-    font-size: var(--o-font-size-h5);
+    font-size: var(--o-font-size-h3);
     text-align: center;
     color: var(--e-color-text1);
     @media screen and (max-width: 767px) {
@@ -226,9 +209,6 @@ const goNext = () => {
       flex: 1;
       padding: 0;
       max-height: 260px;
-      // &:hover {
-      //   box-shadow: var(--o-shadow-base_hover);
-      // }
     }
   }
   &-detail {
@@ -246,15 +226,12 @@ const goNext = () => {
       @media screen and (max-width: 767px) {
         background: v-bind('liveStyleMo.light') left/contain no-repeat,
           v-bind('liveStyleMo.lightExtension') left no-repeat !important;
-        // background-image:  v-bind('liveStyleMo.light'),v-bind('liveStyleMo.lightExtension') !important;
-        // background-repeat: no-repeat,no-repeat;
-        // background-position: left;
       }
 
       &.dark {
         @media screen and (max-width: 767px) {
-          background: var(--e-color-kleinblue3) v-bind('liveStyleMo.dark') left
-            top/contain no-repeat !important;
+          background: v-bind('liveStyleMo.dart') left/contain no-repeat,
+            v-bind('liveStyleMo.dartExtension') left no-repeat !important;
         }
       }
     }
