@@ -41,10 +41,16 @@ interface search {
   type: string;
 }
 
+interface Condition {
+  archives?: string;
+  tags?: string;
+  author?: string;
+}
 interface TagsParams {
   lang: string;
   category: string;
-  tags: string;
+  want: string;
+  condition?: Condition;
 }
 
 export function getSortData(params: SortParams) {

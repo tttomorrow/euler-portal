@@ -33,6 +33,16 @@ const blogInfo = {
     font-weight: 300;
   }
 }
+.bread {
+  width: 1416px;
+  margin: var(--o-spacing-h2) auto;
+}
+
+@media (max-width: 1465px) {
+  .bread {
+    margin-left: var(--o-spacing-h5);
+  }
+}
 @media (max-width: 768px) {
   .makdown-wrap,
   .markdown {
@@ -41,9 +51,9 @@ const blogInfo = {
   :deep(.bread-crumbs) {
     margin-bottom: 0px;
   }
-}
-
-.bread {
-  margin: 0 var(--o-spacing-h5);
+  .bread {
+    margin-top: var(--o-spacing-h5);
+    margin-bottom: 0px;
+  }
 }
 </style>

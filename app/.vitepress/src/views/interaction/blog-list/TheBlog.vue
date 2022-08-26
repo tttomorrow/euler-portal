@@ -65,7 +65,7 @@ const sortParams = reactive({
 const tagsParams = reactive({
   lang: lang.value,
   category: 'blog',
-  tags: 'archives',
+  want: '',
 });
 // 移动端数据
 const tagsDataToChild = ref<any>([
@@ -110,7 +110,35 @@ const toBlogContent = (path: string) => {
   const path1 = router.route.path.substring(0, 3);
   router.go(`${path1}/${path}`);
 };
-
+// 获取标签数据
+const getTagsList = () => {
+  tagsParams.want = 'archives';
+  getTagsData(tagsParams).then((res) => {
+    selectData.value[0].select = [];
+    res.obj.totalNum.forEach((item: any) => {
+      selectData.value[0].select.push(item.key);
+    });
+    tagsParams.want = 'author';
+    getTagsData(tagsParams)
+      .then((res) => {
+        selectData.value[1].select = [];
+        res.obj.totalNum.forEach((item: any) => {
+          selectData.value[1].select.push(item.key);
+        });
+        tagsParams.want = 'tags';
+        getTagsData(tagsParams).then((res) => {
+          selectData.value[2].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        });
+      })
+      .catch((error: any) => {
+        isShowData.value = false;
+        throw new Error(error);
+      });
+  });
+};
 // 获取列表数据
 const getListData = (params: ParamsType) => {
   getSortData(params)
@@ -174,37 +202,198 @@ const selectMethod = () => {
   };
   getListData(params);
 };
-onMounted(() => {
-  getListData(sortParams);
 
-  getTagsData(tagsParams).then((res) => {
-    for (let i = 0; i < 5; i++) {
-      tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
-    }
-    res.obj.totalNum.forEach((item: any) => {
-      selectData.value[0].select.push(item.key);
-    });
-    tagsParams.tags = 'author';
-    getTagsData(tagsParams)
-      .then((res) => {
-        for (let i = 0; i < 5; i++) {
-          tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
-        }
-        res.obj.totalNum.forEach((item: any) => {
-          selectData.value[1].select.push(item.key);
-        });
-        tagsParams.tags = 'tags';
-        getTagsData(tagsParams).then((res) => {
+const timeChange = () => {
+  selectMethod();
+  if (selectTimeVal.value !== '') {
+    const wantauthor = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    const wanttags = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'tags',
+      condition: {
+        archives: selectTimeVal.value,
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+      },
+    };
+    getTagsData(wantauthor).then((res) => {
+      selectData.value[1].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[1].select.push(item.key);
+      });
+      getTagsData(wanttags)
+        .then((res) => {
+          selectData.value[2].select = [];
           res.obj.totalNum.forEach((item: any) => {
             selectData.value[2].select.push(item.key);
           });
+        })
+        .catch((error) => {
+          throw new Error(error);
         });
-      })
-      .catch((error: any) => {
-        isShowData.value = false;
-        throw new Error(error);
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'archives',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
       });
-  });
+    });
+  }
+};
+const authorChange = () => {
+  selectMethod();
+  if (selectAuthorVal.value !== '') {
+    const wantarchive = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'archives',
+      condition: {
+        author: selectAuthorVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    const wanttags = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'tags',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        author: selectAuthorVal.value,
+      },
+    };
+    getTagsData(wantarchive).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
+      });
+      getTagsData(wanttags)
+        .then((res) => {
+          selectData.value[2].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[1].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[1].select.push(item.key);
+      });
+    });
+  }
+};
+const tagsChange = () => {
+  selectMethod();
+  if (selectTagsVal.value !== '') {
+    const wantarchive = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'archives',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        tags: selectTagsVal.value,
+      },
+    };
+    const wantauthor = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        tags: selectTagsVal.value,
+      },
+    };
+    getTagsData(wantarchive).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
+      });
+      getTagsData(wantauthor)
+        .then((res) => {
+          selectData.value[1].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[1].select.push(item.key);
+          });
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'tags',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[2].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[2].select.push(item.key);
+      });
+    });
+  }
+};
+
+onMounted(() => {
+  getListData(sortParams);
+  getTagsList();
 });
 // 页数改变
 const currentChange = (val: number) => {
@@ -270,7 +459,7 @@ const moblieCurrentChange = (val: string) => {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="timeChange"
           >
             <OOption
               v-for="item in selectData[0].select"
@@ -287,7 +476,7 @@ const moblieCurrentChange = (val: string) => {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="authorChange"
           >
             <OOption
               v-for="item in selectData[1].select"
@@ -304,7 +493,7 @@ const moblieCurrentChange = (val: string) => {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="tagsChange"
           >
             <OOption
               v-for="item in selectData[2].select"
@@ -369,13 +558,13 @@ const moblieCurrentChange = (val: string) => {
       </div>
       <div class="blog-pagination">
         <OPagination
+          v-if="!isMobile"
           v-model:currentPage="paginationData.currentpage"
           v-model:page-size="paginationData.pagesize"
           :background="true"
           layout="sizes, prev, pager, next, slot, jumper"
           :total="paginationData.total"
           :page-sizes="[3, 6, 9]"
-          v-if="!isMobile"
           @current-change="currentChange"
           @size-change="currentChange(1)"
         >
@@ -597,6 +786,8 @@ const moblieCurrentChange = (val: string) => {
   .blog-list-item-tags {
     margin-top: var(--o-spacing-h5);
   }
+}
+@media (max-width: 500px) {
   .blog-select {
     display: none;
   }
