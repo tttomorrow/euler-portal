@@ -8,6 +8,7 @@ import BannerImg1 from '@/assets/banner-secondary.png';
 import BannerImg2 from '@/assets/illustrations/search.png';
 import NotFound from '@/NotFound.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 import AppContent from '@/components/AppContent.vue';
@@ -38,6 +39,7 @@ interface ParamsType {
 
 const router = useRouter();
 const { lang } = useData();
+const screenWidth = useWindowResize();
 
 const sortParams = reactive({
   page: 1,
@@ -48,6 +50,8 @@ const sortParams = reactive({
 // 新闻列表数据
 const newsCardData = ref<NewsData[]>([]);
 const isShowData = ref(false);
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+
 // 分页数据
 const paginationData = ref({
   total: 0,
@@ -309,7 +313,7 @@ const moblieCurrentChange = (val: string) => {
           layout="sizes, prev, pager, next, slot, jumper"
           :total="paginationData.total"
           :page-sizes="[3, 6, 9]"
-          class="pcpagination"
+          v-if="!isMobile"
           @current-change="currentChange"
           @size-change="currentChange(1)"
         >
@@ -440,8 +444,30 @@ const moblieCurrentChange = (val: string) => {
   // .news-tag {
   // display: block; // 暂时干掉移动筛选
   // }
+  // .news-select {
+  //   display: none;
+  // }
+  .news-list {
+    margin-top: var(--o-spacing-h5);
+  }
   .news-select {
-    display: none;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    &-item {
+      &-title {
+        width: 50px;
+      }
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--o-spacing-h5);
+      :deep(.o-select) {
+        width: 100%;
+      }
+    }
   }
 }
 @media (max-width: 980px) {
