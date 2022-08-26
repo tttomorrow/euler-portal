@@ -36,7 +36,7 @@ import {
 
 const windowWidth = ref(useWindowResize());
 
-const screenWidth = ref(1080);
+const screenWidth = ref(769);
 const i18n = useI18n();
 const router = useRouter();
 const { lang } = useData();
@@ -813,6 +813,7 @@ onMounted(() => {
       </OTabPane>
       <div class="bottom-wrapper">
         <OPagination
+          v-if="screenWidth > 768"
           v-model:page-size="queryData.pages.size"
           v-model:currentPage="queryData.pages.page"
           class="pagination"
@@ -1026,6 +1027,7 @@ onMounted(() => {
         <el-collapse-item title="开源软件" name="3">
           <div class="blog-tag">
             <MobileFilter
+              v-if="total > 0 || screenWidth < 768"
               class="filter"
               :data="filterDataTwo"
               :single="true"

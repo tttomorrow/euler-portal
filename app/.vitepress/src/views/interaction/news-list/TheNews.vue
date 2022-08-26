@@ -190,23 +190,6 @@ const currentChange = (val: number) => {
   };
   getListData(params);
 };
-// 计算总页数
-const pageTotal = computed(() =>
-  Math.ceil(paginationData.value.total / paginationData.value.pagesize)
-);
-
-const moblieCurrentChange = (val: string) => {
-  if (val === 'prev' && paginationData.value.currentpage > 1) {
-    paginationData.value.currentpage = paginationData.value.currentpage - 1;
-    currentChange(paginationData.value.currentpage);
-  } else if (
-    val === 'next' &&
-    paginationData.value.currentpage < pageTotal.value
-  ) {
-    paginationData.value.currentpage = paginationData.value.currentpage + 1;
-    currentChange(paginationData.value.currentpage);
-  }
-};
 </script>
 
 <template>
@@ -324,6 +307,11 @@ const moblieCurrentChange = (val: string) => {
         >
         </AppPaginationMo>
       </div>
+      <AppPaginationMo
+        :current-page="paginationData.currentpage"
+        :total-page="Math.ceil(paginationData.total / 10)"
+        @turn-page="turnPage"
+      />
     </template>
     <NotFound v-else />
   </AppContent>
@@ -347,6 +335,9 @@ const moblieCurrentChange = (val: string) => {
   filter: brightness(0.8) grayscale(0.2) contrast(1.2);
 }
 .news-pagination {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
