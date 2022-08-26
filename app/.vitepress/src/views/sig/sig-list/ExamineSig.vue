@@ -95,7 +95,7 @@ onMounted(() => {
     display: none;
   }
   @media (max-width: 780px) {
-    margin: 0px var(--o-spacing-h4);
+    margin: 0px;
     padding: 0 0;
     :deep(.el-tabs__header) {
       display: none;

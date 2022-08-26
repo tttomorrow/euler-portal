@@ -201,11 +201,6 @@ const isMobile = computed(() => {
       &-infoconfig {
         max-width: 456px;
         background-color: var(--e-color-bg2);
-        :deep(.right-info) {
-          a {
-            color: var(--e-color-kleinblue5);
-          }
-        }
         @media (max-width: 1280px) {
           max-width: 350px;
         }

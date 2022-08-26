@@ -206,14 +206,14 @@ import illustration from '@/assets/category/sig/role-description/illustration.pn
   .duty-table {
     margin-top: var(--o-spacing-h4);
     margin-bottom: var(--o-spacing-h5);
+    box-shadow: none;
     :deep(.el-table__header) {
-      border: none;
       tr {
         border: none;
       }
     }
     :deep(.el-table__body) {
-      border: none;
+      border-collapse: separate;
     }
   }
   .link {

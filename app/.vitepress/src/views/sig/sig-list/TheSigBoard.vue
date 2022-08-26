@@ -107,7 +107,7 @@ onMounted(() => {
     padding: 0 var(--o-spacing-h5);
   }
   &-item {
-    max-width: 630px;
+    max-width: 660px;
     box-shadow: var(--e-shadow-l1);
     margin-bottom: var(--o-spacing-h1);
     break-inside: avoid;
@@ -186,8 +186,8 @@ onMounted(() => {
           flex: 0 0 50%;
         }
         img {
-          width: 70px;
-          height: 70px;
+          width: 80px;
+          height: 80px;
           display: block;
           margin: 0 auto;
           border-radius: 50%;
