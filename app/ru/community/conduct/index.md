@@ -3,9 +3,16 @@ title: 'Кодекс поведения'
 ---
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import bannerBG from '@/assets/banner-secondary.png';
 import illustration from '@/assets/illustrations/covenant.png';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+const screenWidth = useWindowResize();
+const isMobile = computed(() => {
+  return screenWidth.value <= 768 ? true : false;
+});
 </script>
 
 <ClientOnly>
@@ -17,10 +24,9 @@ import illustration from '@/assets/illustrations/covenant.png';
   />
 </ClientOnly>
 
-<div class='markdown'>
+<div class='markdown' :style="['margin-top:var(--o-spacing-h1)', isMobile ? 'margin-top:var(--o-spacing-h2)' : '']">
 
 Сообщество openEuler соблюдает Кодекс поведения разработчиков Contributor Covenant Code of Conduct V1.4, составленный сообществом разработчиков программного обеспечения с открытым исходным кодом.
-
 Если вы хотите сообщить о случаях оскорбления, домогательства или другом недопустимом поведении, свяжитесь с Техническим комитетом openEuler, отправив электронное письмо по адресу tc@openeuler.org.
 
 ## Обязательства разработчиков
