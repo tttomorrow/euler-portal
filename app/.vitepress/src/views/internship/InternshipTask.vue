@@ -289,10 +289,12 @@ const go = (path: string) => {
         margin: 0;
         display: flex;
         align-items: center;
+        justify-content: center;
       }
       .button-box {
         display: flex;
         align-items: center;
+        white-space: nowrap;
         .o-button {
           padding: 8px 12px;
           height: auto;

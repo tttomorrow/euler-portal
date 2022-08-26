@@ -14,6 +14,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 
 import VideoCtrl from '@/components/VideoCtrl.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
+import AppContent from '@/components/AppContent.vue';
 
 import IconArrowLeft from '~icons/app/icon-arrow-left1.svg';
 import IconArrowRight from '~icons/app/icon-arrow-right1.svg';
@@ -238,153 +239,66 @@ const goHome = () => {
 };
 </script>
 <template>
-  <div class="mooc-detail">
-    <div class="detail-mobile">
-      <OIcon class="catalog" @click="showMenu('show')"><IconCatalog /></OIcon>
-      <ODrawer
-        v-model="isShowMenu"
-        direction="ltr"
-        size="268px"
-        show-close="false"
-      >
-        <div class="nav-tree">
-          <div class="nav-top">
-            <img
-              class="logo"
-              :src="logo"
-              alt="openEuler logo"
-              @click="goHome"
-            />
-            <OIcon @click="showMenu('hide')"><IconCancel /></OIcon>
-          </div>
-          <OTree
-            ref="tree"
-            node-key="key"
-            :data="menuData"
-            :props="defaultProps"
-            accordion
-            :highlight-current="true"
-            :icon="IconChevronDown"
-            @node-click="handleNodeClick"
-          >
-          </OTree>
-        </div>
-      </ODrawer>
-      <BreadCrumbs
-        :bread1="moocData.MOOC.MOOC"
-        :bread2="moocData.MOOC.MOOC_COURSE[0].TITLE"
-        link1="/zh/learn/mooc/"
-        class="bread"
-      />
-      <div class="mobile-content">
-        <h1>{{ courseH1 }}</h1>
-        <p class="entry-welcome">{{ welcome }}</p>
-        <div class="infomation">
-          <p :key="currentNode.title" class="title">
-            {{ currentNode.title }}
-          </p>
-          <p class="desc">{{ currentNode.desc }}</p>
-          <a
-            v-show="currentNode.ppt"
-            :href="currentNode.ppt"
-            :download="currentNode.ppt"
-            class="download"
-          >
-            <OButton type="primary" size="mini">
-              {{ moocData.MOOC.COURSE_DOWNLOAD }}
-              <template #suffixIcon>
-                <OIcon><IconArrowRight /></OIcon>
-              </template>
-            </OButton>
-          </a>
-        </div>
-        <div v-show="introductionText.length" class="text">
-          <p
-            v-for="(item, index) in introductionText"
-            :key="item"
-            :class="[
-              courseIndex === 0 && index === 0 ? 'welcome' : '',
-              listTitleIndex !== 0 && listTitleIndex === index ? 'list1' : '',
-            ]"
-          >
-            {{ item }}
-          </p>
-          <div v-if="currentNode.key === 'introduction0'" class="teacher">
-            <p>{{ moocData.MOOC.TEACHER_TEAM }}</p>
-            <div v-for="item in teacherList" :key="item" class="item">
-              <img :src="item.img" alt="" />
-              <div>
-                <p>{{ item.position }}</p>
-                <p>{{ item.name }}</p>
-              </div>
+  <AppContent :pc-top="40" :mobile-top="16">
+    <div class="mooc-detail">
+      <div class="detail-mobile">
+        <OIcon class="catalog" @click="showMenu('show')"><IconCatalog /></OIcon>
+        <ODrawer
+          v-model="isShowMenu"
+          direction="ltr"
+          size="268px"
+          show-close="false"
+        >
+          <div class="nav-tree">
+            <div class="nav-top">
+              <img
+                class="logo"
+                :src="logo"
+                alt="openEuler logo"
+                @click="goHome"
+              />
+              <OIcon @click="showMenu('hide')"><IconCancel /></OIcon>
             </div>
+            <OTree
+              ref="tree"
+              node-key="key"
+              :data="menuData"
+              :props="defaultProps"
+              accordion
+              :highlight-current="true"
+              :icon="IconChevronDown"
+              @node-click="handleNodeClick"
+            >
+            </OTree>
           </div>
-        </div>
-        <div v-show="!introductionText.length" class="video">
-          <video
-            ref="mobileVideo"
-            :src="currentNode.video"
-            loop
-            style="width: 100%"
-          ></video>
-          <div
-            v-if="!isNowPlay"
-            class="play-btn"
-            @click="playmoocVideo('mobileBtn')"
-          ></div>
-        </div>
-        <div class="mobile-menu">
-          <div class="prev" @click="previous">
-            <OIcon><IconArrowLeft /></OIcon>
-            <span>{{ moocData.MOOC.PREV_TEXT }}</span>
-          </div>
-          <div class="next" @click="next">
-            <span>{{ moocData.MOOC.NEXT_TEXT }}</span>
-            <OIcon><IconArrowRight /></OIcon>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="detail-pc">
-      <BreadCrumbs
-        :bread1="moocData.MOOC.MOOC"
-        :bread2="moocData.MOOC.MOOC_COURSE[0].TITLE"
-        link1="/zh/learn/mooc/"
-      />
-      <h1>{{ courseH1 }}</h1>
-      <p class="entry-welcome">{{ welcome }}</p>
-      <div class="content">
-        <div class="article-nav fl">
-          <div class="nav-top">{{ moocData.MOOC.MOOC_CATALOG }}</div>
-          <OTree
-            ref="tree"
-            node-key="key"
-            :data="menuData"
-            :props="defaultProps"
-            accordion
-            :highlight-current="true"
-            :icon="IconChevronDown"
-            @node-click="handleNodeClick"
-          >
-          </OTree>
-        </div>
-        <div class="article-detail fl">
+        </ODrawer>
+        <BreadCrumbs
+          :bread1="moocData.MOOC.MOOC"
+          :bread2="moocData.MOOC.MOOC_COURSE[0].TITLE"
+          link1="/zh/learn/mooc/"
+          class="bread"
+        />
+        <div class="mobile-content">
+          <h1>{{ courseH1 }}</h1>
+          <p class="entry-welcome">{{ welcome }}</p>
           <div class="infomation">
-            <div>
-              <p class="infomation-title">
-                <span :key="currentNode.title" class="title">{{
-                  currentNode.title
-                }}</span>
-                <a
-                  v-show="currentNode.ppt"
-                  :href="currentNode.ppt"
-                  :download="currentNode.ppt"
-                  class="download"
-                  >{{ moocData.MOOC.COURSE_DOWNLOAD }}</a
-                >
-              </p>
-              <p class="desc">{{ currentNode.desc }}</p>
-            </div>
+            <p :key="currentNode.title" class="title">
+              {{ currentNode.title }}
+            </p>
+            <p class="desc">{{ currentNode.desc }}</p>
+            <a
+              v-show="currentNode.ppt"
+              :href="currentNode.ppt"
+              :download="currentNode.ppt"
+              class="download"
+            >
+              <OButton type="primary" size="mini">
+                {{ moocData.MOOC.COURSE_DOWNLOAD }}
+                <template #suffixIcon>
+                  <OIcon><IconArrowRight /></OIcon>
+                </template>
+              </OButton>
+            </a>
           </div>
           <div v-show="introductionText.length" class="text">
             <p
@@ -399,59 +313,155 @@ const goHome = () => {
             </p>
             <div v-if="currentNode.key === 'introduction0'" class="teacher">
               <p>{{ moocData.MOOC.TEACHER_TEAM }}</p>
-              <div class="techer-img">
-                <div v-for="item in teacherList" :key="item.name" class="item">
-                  <img :src="item.img" alt="" />
-                  <div>
-                    <p class="name">{{ item.name }}</p>
-                    <p class="position">{{ item.position }}</p>
-                  </div>
+              <div v-for="item in teacherList" :key="item" class="item">
+                <img :src="item.img" alt="" />
+                <div>
+                  <p>{{ item.position }}</p>
+                  <p>{{ item.name }}</p>
                 </div>
               </div>
             </div>
           </div>
           <div v-show="!introductionText.length" class="video">
             <video
-              id="pc-video"
+              ref="mobileVideo"
               :src="currentNode.video"
               loop
               style="width: 100%"
             ></video>
-            <VideoCtrl
-              ref="playctrlEle"
-              :ctrl-obj="ctrlObj"
-              @play-status="checkStatus"
-            ></VideoCtrl>
             <div
               v-if="!isNowPlay"
               class="play-btn"
-              @click="playmoocVideo('webBtn')"
+              @click="playmoocVideo('mobileBtn')"
             ></div>
           </div>
-          <div class="crtl-btn">
+          <div class="mobile-menu">
             <div class="prev" @click="previous">
-              <OIcon>
-                <IconArrowLeft />
-              </OIcon>
+              <OIcon><IconArrowLeft /></OIcon>
               <span>{{ moocData.MOOC.PREV_TEXT }}</span>
             </div>
             <div class="next" @click="next">
               <span>{{ moocData.MOOC.NEXT_TEXT }}</span>
-              <OIcon>
-                <IconArrowRight />
-              </OIcon>
+              <OIcon><IconArrowRight /></OIcon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-pc">
+        <BreadCrumbs
+          :bread1="moocData.MOOC.MOOC"
+          :bread2="moocData.MOOC.MOOC_COURSE[0].TITLE"
+          link1="/zh/learn/mooc/"
+        />
+        <h1>{{ courseH1 }}</h1>
+        <p class="entry-welcome">{{ welcome }}</p>
+        <div class="content">
+          <div class="article-nav fl">
+            <div class="nav-top">{{ moocData.MOOC.MOOC_CATALOG }}</div>
+            <OTree
+              ref="tree"
+              node-key="key"
+              :data="menuData"
+              :props="defaultProps"
+              accordion
+              :highlight-current="true"
+              :icon="IconChevronDown"
+              @node-click="handleNodeClick"
+            >
+            </OTree>
+          </div>
+          <div class="article-detail fl">
+            <div class="infomation">
+              <div>
+                <p class="infomation-title">
+                  <span :key="currentNode.title" class="title">{{
+                    currentNode.title
+                  }}</span>
+                  <a
+                    v-show="currentNode.ppt"
+                    :href="currentNode.ppt"
+                    :download="currentNode.ppt"
+                    class="download"
+                  >
+                    <OButton type="primary" size="mini">
+                      {{ moocData.MOOC.COURSE_DOWNLOAD }}
+                    </OButton></a
+                  >
+                </p>
+                <p class="desc">{{ currentNode.desc }}</p>
+              </div>
+            </div>
+            <div v-show="introductionText.length" class="text">
+              <p
+                v-for="(item, index) in introductionText"
+                :key="item"
+                :class="[
+                  courseIndex === 0 && index === 0 ? 'welcome' : '',
+                  listTitleIndex !== 0 && listTitleIndex === index
+                    ? 'list1'
+                    : '',
+                ]"
+              >
+                {{ item }}
+              </p>
+              <div v-if="currentNode.key === 'introduction0'" class="teacher">
+                <p>{{ moocData.MOOC.TEACHER_TEAM }}</p>
+                <div class="techer-img">
+                  <div
+                    v-for="item in teacherList"
+                    :key="item.name"
+                    class="item"
+                  >
+                    <img :src="item.img" alt="" />
+                    <div>
+                      <p class="name">{{ item.name }}</p>
+                      <p class="position">{{ item.position }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-show="!introductionText.length" class="video">
+              <video
+                id="pc-video"
+                :src="currentNode.video"
+                loop
+                style="width: 100%"
+              ></video>
+              <VideoCtrl
+                ref="playctrlEle"
+                :ctrl-obj="ctrlObj"
+                @play-status="checkStatus"
+              ></VideoCtrl>
+              <div
+                v-if="!isNowPlay"
+                class="play-btn"
+                @click="playmoocVideo('webBtn')"
+              ></div>
+            </div>
+            <div class="crtl-btn">
+              <div class="prev" @click="previous">
+                <OIcon>
+                  <IconArrowLeft />
+                </OIcon>
+                <span>{{ moocData.MOOC.PREV_TEXT }}</span>
+              </div>
+              <div class="next" @click="next">
+                <span>{{ moocData.MOOC.NEXT_TEXT }}</span>
+                <OIcon>
+                  <IconArrowRight />
+                </OIcon>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </AppContent>
 </template>
 <style lang="scss" scoped>
 .mooc-detail {
-  max-width: 1504px;
-  padding: 0 44px;
-  margin: 0 auto;
+  width: 100%;
   .detail-pc {
     display: block;
     overflow: hidden;
@@ -460,13 +470,13 @@ const goHome = () => {
       font-size: var(--o-font-size-h3);
       line-height: var(--o-line-height-h3);
       color: var(--e-color-text1);
-      margin: 0 auto 8px auto;
+      margin-top: var(--o-spacing-h2);
     }
     .entry-welcome {
       font-size: var(--o-font-size-text);
       line-height: 22px;
       color: var(--e-color-text1);
-      margin: 0 auto var(--o-spacing-h2) auto;
+      margin-top: var(--o-spacing-h8);
     }
     .back {
       cursor: pointer;
@@ -478,13 +488,13 @@ const goHome = () => {
     }
     .content {
       width: 100%;
-      margin: 0 auto;
+      margin-top: var(--o-spacing-h2);
       display: flex;
       align-items: flex-start;
       .article-nav {
         margin-right: 60px;
         background: var(--e-color-bg2);
-        box-shadow: var(--e-shadow2);
+        box-shadow: var(--e-shadow-l1);
         border-radius: 8px;
         .nav-top {
           width: 360px;
@@ -577,15 +587,12 @@ const goHome = () => {
                 color: var(--e-color-text1);
               }
               .download {
-                display: inline-block;
-                width: 104px;
-                height: 28px;
-                background: var(--e-color-brand1);
-                color: #ffffff;
-                font-size: var(--o-font-size-text);
-                line-height: 28px;
-                text-align: center;
-                text-decoration: none;
+                :deep(.o-button) {
+                  padding: 3px 24px;
+                }
+                :deep(.o-button.o-button-type-primary) {
+                  color: #ffffff;
+                }
               }
             }
           }
@@ -744,7 +751,6 @@ const goHome = () => {
     padding: 0;
     .detail-mobile {
       display: block;
-      padding: 0 var(--o-spacing-h5);
       .catalog {
         position: fixed;
         top: 12px;
@@ -786,7 +792,7 @@ const goHome = () => {
 
       .mobile-content {
         width: 100%;
-        margin: 0 auto;
+        margin-top: var(--o-spacing-h5);
         padding: var(--o-spacing-h5);
         background-color: var(--e-color-bg2);
         h1 {
