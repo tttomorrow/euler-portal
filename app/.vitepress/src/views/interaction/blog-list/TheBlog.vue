@@ -12,6 +12,7 @@ import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
 import NotFound from '@/NotFound.vue';
 import IconRight from '~icons/app/arrow-right.svg';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 import OIcon from 'opendesign/icon/OIcon.vue';
@@ -48,6 +49,9 @@ const router = useRouter();
 const { lang } = useData();
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
+const screenWidth = useWindowResize();
+
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
 
 const isShowData = ref(false);
 // 博客列表
@@ -371,7 +375,7 @@ const moblieCurrentChange = (val: string) => {
           layout="sizes, prev, pager, next, slot, jumper"
           :total="paginationData.total"
           :page-sizes="[3, 6, 9]"
-          class="pcpagination"
+          v-if="!isMobile"
           @current-change="currentChange"
           @size-change="currentChange(1)"
         >
@@ -526,8 +530,27 @@ const moblieCurrentChange = (val: string) => {
   // .blog-tag2 {
   // display: block; // 暂时干掉移动端筛选
   // }
+  // .blog-select {
+  //   display: none;
+  // }
   .blog-select {
-    display: none;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    &-item {
+      &-title {
+        width: 50px;
+      }
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--o-spacing-h5);
+      :deep(.o-select) {
+        width: 100%;
+      }
+    }
   }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h4);
@@ -537,9 +560,6 @@ const moblieCurrentChange = (val: string) => {
 @media (max-width: 768px) {
   .blog-list {
     grid-template-columns: repeat(1, 1fr);
-  }
-  .pcpagination {
-    display: none;
   }
 }
 @media (max-width: 415px) {
@@ -575,6 +595,9 @@ const moblieCurrentChange = (val: string) => {
   }
   .blog-list-item-tags {
     margin-top: var(--o-spacing-h5);
+  }
+  .blog-select {
+    display: none;
   }
 }
 </style>
