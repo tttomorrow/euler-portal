@@ -216,19 +216,22 @@ const currentChange = (val: number) => {
 const postBlog = () => {
   router.go(`/${lang.value}/interaction/post-blog/`);
 };
-
-const moblieCurrentChange = (val:string) => {
-if (val === 'prev' && paginationData.value.currentpage > 1) {
+// 计算总页数
+const pageTotal = computed(() =>
+  Math.ceil(paginationData.value.total / paginationData.value.pagesize)
+);
+const moblieCurrentChange = (val: string) => {
+  if (val === 'prev' && paginationData.value.currentpage > 1) {
     paginationData.value.currentpage = paginationData.value.currentpage - 1;
     currentChange(paginationData.value.currentpage);
   } else if (
     val === 'next' &&
-    paginationData.value.currentpage < Math.ceil(paginationData.value.total / paginationData.value.pagesize)
+    paginationData.value.currentpage < pageTotal.value
   ) {
     paginationData.value.currentpage = paginationData.value.currentpage + 1;
     currentChange(paginationData.value.currentpage);
   }
-}
+};
 </script>
 
 <template>
@@ -362,25 +365,23 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
       </div>
       <div class="blog-pagination">
         <OPagination
-          class="pcpagination"
           v-model:currentPage="paginationData.currentpage"
           v-model:page-size="paginationData.pagesize"
           :background="true"
           layout="sizes, prev, pager, next, slot, jumper"
           :total="paginationData.total"
           :page-sizes="[3, 6, 9]"
+          class="pcpagination"
           @current-change="currentChange"
-          @size-change="currentChange"
+          @size-change="currentChange(1)"
         >
           <span class="pagination-slot"
-            >{{ paginationData.currentpage }}/{{
-              Math.ceil(paginationData.total / paginationData.pagesize)
-            }}</span
+            >{{ paginationData.currentpage }}/{{ pageTotal }}</span
           >
         </OPagination>
         <AppPaginationMo
           :current-page="paginationData.currentpage"
-          :total-page="Math.ceil(paginationData.total / paginationData.pagesize)"
+          :total-page="pageTotal"
           @turn-page="moblieCurrentChange"
         >
         </AppPaginationMo>

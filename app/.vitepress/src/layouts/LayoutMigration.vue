@@ -7,7 +7,7 @@ import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import IconChevronDown from '~icons/app/icon-chevron-down.svg';
 
-const { lang, frontmatter } = useData();
+const { lang } = useData();
 import IconCancel from '~icons/app/icon-cancel.svg';
 const commonStore = useCommon();
 

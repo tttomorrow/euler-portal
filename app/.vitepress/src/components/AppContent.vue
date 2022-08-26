@@ -33,6 +33,10 @@ const pcPaddingTop = computed(() => {
   padding-right: 44px;
   max-width: 1504px;
   margin: 0 auto;
+  @media (max-width: 1439px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
   @media (max-width: 1100px) {
     padding-left: 16px;
     padding-right: 16px;
