@@ -143,7 +143,7 @@ function turnPage(option: string) {
         <OButton type="text" disabled>type=text</OButton>
       </div>
       <div class="button-box">
-        <OButton type="primary">size=medium</OButton>
+        <OButton type="primary" class="test">size=medium</OButton>
         <OButton type="primary" size="small">size=small</OButton>
         <OButton type="primary" size="mini">size=mini</OButton>
       </div>
@@ -431,5 +431,9 @@ body {
 .container {
   width: 100px;
   height: 100px;
+}
+
+.test {
+  color: red;
 }
 </style>

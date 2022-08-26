@@ -8,6 +8,7 @@ import AppFooter from '@/components/AppFooter.vue';
 import LayoutBlog from '@/layouts/LayoutBlog.vue';
 import LayoutNews from '@/layouts/LayoutNews.vue';
 import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
+import LayoutMigration from '@/layouts/LayoutMigration.vue';
 
 import categories from '@/data/category';
 
@@ -19,6 +20,7 @@ const compMapping: {
   blog: LayoutBlog,
   news: LayoutNews,
   showcase: LayoutShowcase,
+  migration: LayoutMigration,
 };
 
 const isCustomLayout = computed(() => {
@@ -48,7 +50,8 @@ const comp = computed(() => {
 }
 
 main {
-  min-height: calc(100vh - 198px);
+  position: relative;
+  min-height: calc(100vh - 258px);
   background-color: var(--e-color-bg1);
   margin-top: 80px;
   @media (max-width: 1100px) {
