@@ -286,6 +286,9 @@ onMounted(() => {
     }
     .tag-filter {
       padding-left: 0;
+      :deep(.label) {
+        color: var(--e-color-text1);
+      }
     }
     .tag-pc {
       width: 100%;
@@ -340,6 +343,7 @@ onMounted(() => {
     margin-top: var(--o-spacing-h4);
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
+    color: var(--e-color-text1);
     @media (max-width: 768px) {
       display: none;
     }
@@ -412,15 +416,13 @@ onMounted(() => {
             display: flex;
             justify-content: center;
             padding: 0;
+            color: #ffffff;
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
             @media (max-width: 768px) {
               width: 88px;
               height: 24px;
               font-size: var(--o-font-size-tip);
-            }
-            span {
-              color: #ffffff;
             }
           }
         }

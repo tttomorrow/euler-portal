@@ -35,10 +35,10 @@ import IconArrowRight from '~icons/app/icon-arrow.svg';
     max-width: 1504px;
     padding: 70px 44px 24px;
     margin: 0 auto;
-    font-size: 54px;
+    font-size: 56px;
     font-weight: 400;
     color: #000000;
-    line-height: 76px;
+    line-height: 84px;
     @media (max-width: 1000px) {
       padding: 70px 16px 24px;
     }

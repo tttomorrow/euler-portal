@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppContent from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import moocBanner from '@/assets/banner-secondary.png';
@@ -14,39 +15,45 @@ const i18n = useI18n();
 <template>
   <div class="mooc">
     <BannerLevel2
+      background-text="MOOC"
       :title="i18n.mooc.MOOC.MOOC"
       :background-image="moocBanner"
       :illustration="searchBanner"
     />
-    <div class="mooc-content">
-      <div class="hover-box">
-        <div class="left">
-          <img :src="i18n.mooc.MOOC.MOOC_COURSE[0].IMG" alt="" />
-        </div>
-        <div class="right">
-          <h3>{{ i18n.mooc.MOOC.MOOC_COURSE[0].TITLE }}</h3>
-          <p>{{ i18n.mooc.MOOC.MOOC_COURSE[0].DESC }}</p>
-          <div class="btn">
-            <a href="/zh/learn/mooc/detail/" target="_self">
-              <OButton type="primary" size="mini">
-                <span>{{ i18n.mooc.MOOC.BTN_LEARN }}</span>
-                <OIcon class="icon-more">
-                  <IconArrowRight1 />
-                </OIcon>
-              </OButton>
-            </a>
-            <a :href="i18n.mooc.MOOC.MOOC_COURSE[0].APPLY_LINK" target="_blank">
-              <OButton size="mini">
-                <span>{{ i18n.mooc.MOOC.BTN_APPLY }}</span>
-                <OIcon>
-                  <IconArrowRight1 />
-                </OIcon>
-              </OButton>
-            </a>
+    <AppContent>
+      <div class="mooc-content">
+        <div class="hover-box">
+          <div class="left">
+            <img :src="i18n.mooc.MOOC.MOOC_COURSE[0].IMG" alt="" />
+          </div>
+          <div class="right">
+            <h3>{{ i18n.mooc.MOOC.MOOC_COURSE[0].TITLE }}</h3>
+            <p>{{ i18n.mooc.MOOC.MOOC_COURSE[0].DESC }}</p>
+            <div class="btn">
+              <a href="/zh/learn/mooc/detail/" target="_self">
+                <OButton type="primary" size="mini">
+                  <span>{{ i18n.mooc.MOOC.BTN_LEARN }}</span>
+                  <OIcon class="icon-more">
+                    <IconArrowRight1 />
+                  </OIcon>
+                </OButton>
+              </a>
+              <a
+                :href="i18n.mooc.MOOC.MOOC_COURSE[0].APPLY_LINK"
+                target="_blank"
+              >
+                <OButton size="mini">
+                  <span>{{ i18n.mooc.MOOC.BTN_APPLY }}</span>
+                  <OIcon>
+                    <IconArrowRight1 />
+                  </OIcon>
+                </OButton>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </AppContent>
   </div>
 </template>
 
@@ -56,16 +63,9 @@ const i18n = useI18n();
     height: 30px;
   }
   .mooc-content {
-    max-width: 1504px;
-    margin: var(--o-spacing-h1) auto;
-    padding: 0 var(--o-spacing-h2);
-
-    @media (max-width: 975px) {
-      padding: 0 var(--o-spacing-h5);
-      margin: var(--o-spacing-h2) auto 0 auto;
-    }
     .hover-box {
       display: flex;
+      box-shadow: var(--e-shadow-l1);
       &:hover {
         box-shadow: var(--e-shadow-l2_hover);
       }

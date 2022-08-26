@@ -399,11 +399,15 @@ onMounted(() => {
 <style lang="scss" scoped>
 .sig-detail {
   max-width: 1504px;
-  padding: 0 var(--o-spacing-h2);
-  margin: 0 auto var(--o-spacing-h1);
+  padding: var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h1);
+  margin: 0 auto;
   .content {
     width: 100%;
+    margin-top: var(--o-spacing-h2);
     background-color: var(--e-color-bg2);
+    @media (max-width: 1100px) {
+      margin-top: var(--o-spacing-h5);
+    }
     .pagination-slot {
       font-size: var(--o-font-size-text);
       font-weight: 400;
@@ -640,7 +644,7 @@ onMounted(() => {
 }
 @media (max-width: 1100px) {
   .sig-detail {
-    padding: 0 16px;
+    padding: 16px 16px var(--o-spacing-h2);
   }
 }
 </style>

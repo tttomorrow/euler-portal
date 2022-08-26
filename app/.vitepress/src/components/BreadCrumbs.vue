@@ -39,13 +39,11 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
 </template>
 <style lang="scss" scoped>
 .bread-crumbs {
-  max-width: 1416px;
-  padding: var(--o-spacing-h2) 0 0;
+  width: 100%;
   font-size: var(--o-font-size-tip);
   line-height: var(--o-line-height-text);
   display: flex;
   align-items: center;
-  margin: 0 auto var(--o-spacing-h2);
   span:nth-of-type(1) {
     a {
       color: var(--e-color-text4);
@@ -64,10 +62,6 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
     .no-click {
       cursor: default;
     }
-  }
-  @media (max-width: 1100px) {
-    margin: 0 auto var(--o-spacing-h5);
-    padding: var(--o-spacing-h5) 0 0;
   }
 }
 </style>

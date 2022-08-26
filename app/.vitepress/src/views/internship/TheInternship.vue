@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useCommon } from '@/stores/common';
 
+import AppContent from '@/components/AppContent.vue';
 import InternshipBanner from './InternshipBanner.vue';
 import InternshipStep from './InternshipStep.vue';
 import InternshipTask from './InternshipTask.vue';
@@ -244,7 +245,6 @@ function changeTabIndex(index: number) {
 const scroTop = () => {
   const scrollTop =
     document.body.scrollTop || document.documentElement.scrollTop;
-
   if (scrollTop < 270 || scrollTop > 7200) {
     isShowNav.value = false;
   } else {
@@ -253,23 +253,21 @@ const scroTop = () => {
 
   if (scrollTop > 200 && scrollTop < 520) {
     activeIndex.value = 0;
-  } else if (scrollTop > 550 && scrollTop < 1300) {
+  } else if (scrollTop > 520 && scrollTop < 1350) {
     activeIndex.value = 1;
-  } else if (scrollTop > 1350 && scrollTop < 2800) {
+  } else if (scrollTop > 1350 && scrollTop < 3000) {
     activeIndex.value = 2;
-  } else if (scrollTop > 2800 && scrollTop < 3500) {
+  } else if (scrollTop > 3000 && scrollTop < 4640) {
     activeIndex.value = 3;
-  } else if (scrollTop > 3500 && scrollTop < 4500) {
+  } else if (scrollTop > 4640 && scrollTop < 5090) {
     activeIndex.value = 4;
-  } else if (scrollTop > 4500 && scrollTop < 4900) {
-    //4170
+  } else if (scrollTop > 5090 && scrollTop < 5440) {
     activeIndex.value = 5;
-  } else if (scrollTop > 4600) {
+  } else if (scrollTop > 5440) {
     activeIndex.value = 6;
   } else {
     return false;
   }
-  // console.log('object :>> ', activeIndex.value);
 };
 
 onMounted(() => {
@@ -289,250 +287,252 @@ onUnmounted(() => {
     :internship="true"
   ></InternshipTitleNav>
   <InternshipBanner />
-  <div class="intership-wrap">
-    <div class="wrapper">
-      <section id="introduce" class="panel introduce-card">
-        <p class="text">
-          openEuler开源实习是openEuler社区和社区合作单位共同发起的线上实习项目，旨在鼓励在校学生积极参与开源社区，在实际的开源环境中提升实践能力。由openEuler社区提供实习任务，并提供导师辅导，学生通过实习申请后，可在社区领取任务，每完成一个任务可获得相应积分，积分累计达规定量后，可获得实习证明和实习工资。
-        </p>
-      </section>
-      <section id="step" class="panel">
-        <div class="step-title title">
-          <div class="title-img">申请步骤</div>
-        </div>
-        <InternshipStep />
-      </section>
-      <section id="task" class="panel">
-        <div class="task-title title">
-          <div class="title-img">实习任务</div>
-          <ul class="tab-list">
-            <li
-              v-for="(item, index) in tabList"
-              :key="item"
-              :class="{ active: tabIndex === index }"
-              @click="changeTabIndex(index)"
-            >
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-        <InternshipTask v-show="tabIndex === 0" />
-        <div v-show="tabIndex === 1" class="openlookeng-task task-wrap">
-          <p class="title">
-            <a href="https://openlookeng.io/" target="_blank">{{
-              openLooKengTask.title
-            }}</a>
+  <AppContent>
+    <div class="intership-wrap">
+      <div class="wrapper">
+        <section id="introduce" class="panel introduce-card">
+          <p class="text">
+            openEuler开源实习是openEuler社区和社区合作单位共同发起的线上实习项目，旨在鼓励在校学生积极参与开源社区，在实际的开源环境中提升实践能力。由openEuler社区提供实习任务，并提供导师辅导，学生通过实习申请后，可在社区领取任务，每完成一个任务可获得相应积分，积分累计达规定量后，可获得实习证明和实习工资。
           </p>
-          <p class="intriduce">{{ openLooKengTask.intriduce }}</p>
-          <div class="btn">
-            <a
-              href="https://gitee.com/openlookeng-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
-              target="_blank"
-            >
-              <OButton class="task-bth"> 实习任务 </OButton>
-            </a>
-            <a href="https://openlookeng.io/" target="_blank">
-              <OButton class="detail-btn">
-                <span>官网详情</span>
-                <OIcon><IconArrowRight /></OIcon>
-              </OButton>
-            </a>
+        </section>
+        <section id="step" class="panel">
+          <div class="step-title title">
+            <div class="title-img">申请步骤</div>
           </div>
-        </div>
-        <div v-show="tabIndex === 2" class="opengauss-task task-wrap">
-          <p class="title">
-            <a href="https://opengauss.org/" target="_blank">{{
-              openGaussTask.title
-            }}</a>
-          </p>
-          <p class="intriduce">{{ openGaussTask.intriduce }}</p>
-          <div class="btn">
-            <a
-              href="https://gitee.com/opengauss/opensource-intership/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
-              target="_blank"
-            >
-              <OButton class="task-bth"> 实习任务 </OButton>
-            </a>
-            <a href="https://opengauss.org" target="_blank">
-              <OButton class="detail-btn">
-                <span>官网详情</span>
-                <OIcon><IconArrowRight /></OIcon>
-              </OButton>
-            </a>
+          <InternshipStep />
+        </section>
+        <section id="task" class="panel">
+          <div class="task-title title">
+            <div class="title-img">实习任务</div>
+            <ul class="tab-list">
+              <li
+                v-for="(item, index) in tabList"
+                :key="item"
+                :class="{ active: tabIndex === index }"
+                @click="changeTabIndex(index)"
+              >
+                {{ item }}
+              </li>
+            </ul>
           </div>
-        </div>
-        <div v-show="tabIndex === 3" class="mindspore-task task-wrap">
-          <p class="title">
-            <a href="https://www.mindspore.cn/" target="_blank">{{
-              mindSporeTask.title
-            }}</a>
-          </p>
-          <div>
-            <p
-              v-for="item in mindSporeTask.intriduce"
-              :key="item"
-              class="intriduce"
-            >
-              {{ item }}
+          <InternshipTask v-show="tabIndex === 0" />
+          <div v-show="tabIndex === 1" class="openlookeng-task task-wrap">
+            <p class="title">
+              <a href="https://openlookeng.io/" target="_blank">{{
+                openLooKengTask.title
+              }}</a>
             </p>
+            <p class="intriduce">{{ openLooKengTask.intriduce }}</p>
+            <div class="btn">
+              <a
+                href="https://gitee.com/openlookeng-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
+                target="_blank"
+              >
+                <OButton class="task-bth"> 实习任务 </OButton>
+              </a>
+              <a href="https://openlookeng.io/" target="_blank">
+                <OButton class="detail-btn">
+                  <span>官网详情</span>
+                  <OIcon><IconArrowRight /></OIcon>
+                </OButton>
+              </a>
+            </div>
           </div>
+          <div v-show="tabIndex === 2" class="opengauss-task task-wrap">
+            <p class="title">
+              <a href="https://opengauss.org/" target="_blank">{{
+                openGaussTask.title
+              }}</a>
+            </p>
+            <p class="intriduce">{{ openGaussTask.intriduce }}</p>
+            <div class="btn">
+              <a
+                href="https://gitee.com/opengauss/opensource-intership/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
+                target="_blank"
+              >
+                <OButton class="task-bth"> 实习任务 </OButton>
+              </a>
+              <a href="https://opengauss.org" target="_blank">
+                <OButton class="detail-btn">
+                  <span>官网详情</span>
+                  <OIcon><IconArrowRight /></OIcon>
+                </OButton>
+              </a>
+            </div>
+          </div>
+          <div v-show="tabIndex === 3" class="mindspore-task task-wrap">
+            <p class="title">
+              <a href="https://www.mindspore.cn/" target="_blank">{{
+                mindSporeTask.title
+              }}</a>
+            </p>
+            <div>
+              <p
+                v-for="item in mindSporeTask.intriduce"
+                :key="item"
+                class="intriduce"
+              >
+                {{ item }}
+              </p>
+            </div>
 
-          <div class="btn">
-            <a
-              href="https://gitee.com/mindspore/community/issues/I55QGD?from=project-issue&skip_mobile=true"
-              target="_blank"
-            >
-              <OButton class="task-bth"> 实习任务 </OButton>
-            </a>
-            <a href="https://www.mindspore.cn/" target="_blank">
-              <OButton class="detail-btn">
-                <span>官网详情</span>
-                <OIcon><IconArrowRight /></OIcon>
-              </OButton>
-            </a>
+            <div class="btn">
+              <a
+                href="https://gitee.com/mindspore/community/issues/I55QGD?from=project-issue&skip_mobile=true"
+                target="_blank"
+              >
+                <OButton class="task-bth"> 实习任务 </OButton>
+              </a>
+              <a href="https://www.mindspore.cn/" target="_blank">
+                <OButton class="detail-btn">
+                  <span>官网详情</span>
+                  <OIcon><IconArrowRight /></OIcon>
+                </OButton>
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
-      <section id="integral" class="panel">
-        <div class="integral-title title">
-          <div class="title-img">积分与激励规则</div>
-        </div>
-        <div class="integral-border">
-          <div class="integral-content">
-            <div
-              v-for="(item, index) in INTEGRAL_DATA"
-              :key="item.HEAD"
-              class="integral-item circular"
-            >
-              <h3>{{ item.HEAD }}</h3>
-              <div v-if="index === 1">
-                <p>
-                  <span>{{ item.TEXT[0] }}</span>
-                </p>
-                <p>
-                  <span>{{ item.TEXT[1] }}</span>
-                  <a
-                    href="/doc/导师实习评语.txt"
-                    download
-                    title="下载实习评语"
-                    >{{ item.TEXT[2] }}</a
-                  >
-                </p>
-                <p>
-                  <a
-                    href="/doc/实习报告模板.docx"
-                    download
-                    title="下载报告模板"
-                    >{{ item.TEXT[3] }}</a
-                  >
-                </p>
-              </div>
-              <div v-else>
-                <p
-                  v-for="(item1, index1) in item.TEXT"
-                  :key="item1"
-                  class="star"
-                >
-                  <slot v-if="index === 1 && index1 === 3">
+        </section>
+        <section id="integral" class="panel">
+          <div class="integral-title title">
+            <div class="title-img">积分与激励规则</div>
+          </div>
+          <div class="integral-border">
+            <div class="integral-content">
+              <div
+                v-for="(item, index) in INTEGRAL_DATA"
+                :key="item.HEAD"
+                class="integral-item circular"
+              >
+                <h3>{{ item.HEAD }}</h3>
+                <div v-if="index === 1">
+                  <p>
+                    <span>{{ item.TEXT[0] }}</span>
+                  </p>
+                  <p>
+                    <span>{{ item.TEXT[1] }}</span>
+                    <a
+                      href="/doc/导师实习评语.txt"
+                      download
+                      title="下载实习评语"
+                      >{{ item.TEXT[2] }}</a
+                    >
+                  </p>
+                  <p>
                     <a
                       href="/doc/实习报告模板.docx"
                       download
                       title="下载报告模板"
-                      >{{ item1 }}</a
+                      >{{ item.TEXT[3] }}</a
                     >
-                  </slot>
-                  <span v-else>{{ item1 }}</span>
-                </p>
+                  </p>
+                </div>
+                <div v-else>
+                  <p
+                    v-for="(item1, index1) in item.TEXT"
+                    :key="item1"
+                    class="star"
+                  >
+                    <slot v-if="index === 1 && index1 === 3">
+                      <a
+                        href="/doc/实习报告模板.docx"
+                        download
+                        title="下载报告模板"
+                        >{{ item1 }}</a
+                      >
+                    </slot>
+                    <span v-else>{{ item1 }}</span>
+                  </p>
+                </div>
+                <div class="supplement">{{ item.SUPPLEMENT }}</div>
               </div>
-              <div class="supplement">{{ item.SUPPLEMENT }}</div>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="rank" class="panel">
-        <div class="rank-title">
-          <img
-            class="web"
-            src="@/assets/category/internship/rank-title.png"
-            alt=""
-          />
-          <img
-            class="mobile"
-            src="@/assets/category/internship/rank-title-mo.png"
-            alt=""
-          />
-        </div>
-        <InternshipRank />
-      </section>
-    </div>
-    <section id="rule" class="panel">
-      <div class="rule-title title">
-        <div class="title-img">实习规则</div>
+        </section>
+        <section id="rank" class="panel">
+          <div class="rank-title">
+            <img
+              class="web"
+              src="@/assets/category/internship/rank-title.png"
+              alt=""
+            />
+            <img
+              class="mobile"
+              src="@/assets/category/internship/rank-title-mo.png"
+              alt=""
+            />
+          </div>
+          <InternshipRank />
+        </section>
       </div>
-      <div class="rule-border">
-        <div class="rule-content">
-          <div class="wrapper">
-            <div
-              v-for="(item, index) in RULE.RULE_DATA"
-              :key="index"
-              class="rule-item"
-            >
-              <div class="question">{{ item.QUESTION }}</div>
-              <div class="answer">{{ item.ANSWER }}</div>
-            </div>
-            <div class="more-question orange">
-              {{ RULE.MORE[0] }}
-              <a
-                class="this-post"
-                href="https://gitee.com/openeuler-competition/opensource-internship/issues/I4AJIR?from=project-issue"
-                target="_blank"
-                >{{ RULE.MORE[1] }}</a
+      <section id="rule" class="panel">
+        <div class="rule-title title">
+          <div class="title-img">实习规则</div>
+        </div>
+        <div class="rule-border">
+          <div class="rule-content">
+            <div class="wrapper">
+              <div
+                v-for="(item, index) in RULE.RULE_DATA"
+                :key="index"
+                class="rule-item"
               >
-              {{ RULE.MORE[2] }}
+                <div class="question">{{ item.QUESTION }}</div>
+                <div class="answer">{{ item.ANSWER }}</div>
+              </div>
+              <div class="more-question orange">
+                {{ RULE.MORE[0] }}
+                <a
+                  class="this-post"
+                  href="https://gitee.com/openeuler-competition/opensource-internship/issues/I4AJIR?from=project-issue"
+                  target="_blank"
+                  >{{ RULE.MORE[1] }}</a
+                >
+                {{ RULE.MORE[2] }}
+              </div>
             </div>
           </div>
         </div>
+      </section>
+      <div class="wrapper">
+        <section id="partner" class="panel">
+          <div class="warper">
+            <div class="partner-title title">
+              <div class="title-img">合作伙伴</div>
+            </div>
+            <div class="img-list">
+              <div
+                v-for="(item, index) in PARTNER_DATA"
+                :key="index"
+                class="img-cover"
+              >
+                <img alt="" :src="item.IMG" />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
-    <div class="wrapper">
-      <section id="partner" class="panel">
-        <div class="warper">
-          <div class="partner-title title">
-            <div class="title-img">合作伙伴</div>
-          </div>
-          <div class="img-list">
-            <div
-              v-for="(item, index) in PARTNER_DATA"
-              :key="index"
-              class="img-cover"
-            >
-              <img alt="" :src="item.IMG" />
+      <div id="help" class="help-title title">
+        <div class="title-img">帮助咨询</div>
+      </div>
+      <div class="help-wrap">
+        <section class="panel">
+          <div class="wrapper help-content">
+            <div class="help-left">
+              <p>
+                {{ HELP.INFO[0] }}
+                <a href="mailto:intern@openeuler.sh">{{ HELP.INFO[1] }}</a>
+              </p>
+              <p>{{ HELP.INFO[2] }}</p>
+              <p>{{ HELP.INFO[3] }}</p>
+            </div>
+            <div class="help-right">
+              <img :src="HELP.ITEM.IMG" alt="" />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
-    <div id="help" class="help-title title">
-      <div class="title-img">帮助咨询</div>
-    </div>
-    <div class="help-wrap">
-      <section class="panel">
-        <div class="wrapper help-content">
-          <div class="help-left">
-            <p>
-              {{ HELP.INFO[0] }}
-              <a href="mailto:intern@openeuler.sh">{{ HELP.INFO[1] }}</a>
-            </p>
-            <p>{{ HELP.INFO[2] }}</p>
-            <p>{{ HELP.INFO[3] }}</p>
-          </div>
-          <div class="help-right">
-            <img :src="HELP.ITEM.IMG" alt="" />
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+  </AppContent>
 </template>
 
 <style lang="scss" scoped>
@@ -546,8 +546,14 @@ onUnmounted(() => {
 }
 .panel {
   margin-top: 64px;
+  &:nth-of-type(1) {
+    margin-top: 0;
+  }
   @media (max-width: 1000px) {
     margin-top: 40px;
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
     .text {
       font-size: 14px;
       line-height: 22px;
@@ -599,6 +605,8 @@ onUnmounted(() => {
         cursor: pointer;
         white-space: nowrap;
         color: var(--e-color-text1);
+        position: relative;
+        font-size: var(--o-font-size-h5);
         &:nth-of-type(1) {
           @media (max-width: 1000px) {
             margin-left: 24px;
@@ -617,6 +625,9 @@ onUnmounted(() => {
           width: 100%;
           height: 1px;
           background-color: var(--e-color-brand1);
+          position: absolute;
+          left: 0;
+          bottom: 0;
         }
       }
     }
@@ -795,7 +806,7 @@ onUnmounted(() => {
     border-top: 16px solid #5877ff;
     background-color: #5877ff;
     .integral-content {
-      padding: 5px 15px 10px;
+      padding: 32px 30px;
       font-size: 14px;
       color: rgba(0, 0, 0, 0.5);
       border-radius: 8px;
@@ -990,10 +1001,17 @@ onUnmounted(() => {
   .img-list {
     display: grid;
     grid-template-columns: repeat(4, minmax(82px, 1fr));
+    column-gap: 0;
+    row-gap: 0;
     .img-cover {
-      width: 100%;
-      height: 120px;
+      display: flex;
+      margin: 0px -1px -1px 0px;
+      justify-content: center;
+      align-items: center;
       border: 1px solid var(--e-color-division1);
+      background-color: var(--e-color-bg2);
+      max-height: 120px;
+      overflow: hidden;
       img {
         width: 100%;
         object-fit: cover;
@@ -1054,7 +1072,6 @@ onUnmounted(() => {
       font-size: 20px;
       color: var(--e-color-text1);
       line-height: 40px;
-      margin-bottom: 10px;
       @media (max-width: 1000px) {
         font-size: 16px;
         line-height: 32px;
