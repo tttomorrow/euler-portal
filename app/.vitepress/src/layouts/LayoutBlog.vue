@@ -29,7 +29,7 @@ const blogInfo = {
 
 <style lang="scss" scoped>
 :deep(.markdown-body-title) {
-  .page-title{
+  .page-title {
     font-weight: 300;
   }
 }
@@ -39,8 +39,8 @@ const blogInfo = {
     margin-top: 0px;
   }
   :deep(.bread-crumbs) {
-  margin-bottom: 0px;
-}
+    margin-bottom: 0px;
+  }
 }
 
 .bread {

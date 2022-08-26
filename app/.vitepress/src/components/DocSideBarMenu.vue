@@ -71,6 +71,7 @@ const leave = (el: HTMLUListElement) => {
       <ul v-show="isOpen" class="menu-list">
         <li
           v-for="item in info.children"
+          :key="item.link"
           class="menu-item"
           :class="{ active: activeId === item.link }"
           @click="onClick(item.link)"

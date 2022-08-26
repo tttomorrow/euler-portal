@@ -289,7 +289,10 @@ $color: #fff;
       padding: 18px 0 32px;
       position: relative;
       min-height: 118px;
-      @media (max-width: 1439px) {
+      @media (max-width: 1440px) {
+        padding: 18px 24px 32px;
+      }
+      @media (max-width: 1100px) {
         padding: var(--o-spacing-h4) var(--o-spacing-h5);
         flex-direction: column;
         justify-content: space-between;
@@ -308,7 +311,7 @@ $color: #fff;
     .show-mo {
       display: none;
     }
-    @media (max-width: 1439px) {
+    @media (max-width: 1100px) {
       text-align: center;
       margin: 16px 0;
       .show-pc {
@@ -325,7 +328,7 @@ $color: #fff;
     font-size: var(--o-font-size-text);
     color: $color;
     margin-top: var(--o-spacing-h5);
-    @media (max-width: 1439px) {
+    @media (max-width: 1400px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
       margin-top: var(--o-spacing-h8);
@@ -343,13 +346,13 @@ $color: #fff;
       &:last-child {
         border-right: 0;
       }
-      @media (max-width: 1439px) {
+      @media (max-width: 1400px) {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         padding: 0 var(--o-spacing-h9);
       }
     }
-    @media (max-width: 1439px) {
+    @media (max-width: 1100px) {
       order: -1;
     }
   }
@@ -422,7 +425,7 @@ $color: #fff;
           }
         }
       }
-      @media (max-width: 1439px) {
+      @media (max-width: 1100px) {
         justify-content: center;
         margin-top: 24px;
       }
@@ -439,7 +442,7 @@ $color: #fff;
           object-fit: cover;
         }
       }
-      @media (max-width: 1439px) {
+      @media (max-width: 1100px) {
         justify-content: center;
       }
       @media (max-width: 800px) {
@@ -450,12 +453,12 @@ $color: #fff;
         }
       }
       &.iszh {
-        gap: 12px;
+        gap: 10px;
         .links-logo {
           height: 14px;
 
           &:first-child {
-            height: 20px;
+            height: 18px;
           }
         }
         @media (max-width: 800px) {
@@ -479,9 +482,9 @@ $color: #fff;
 
   .email {
     color: $color;
-    font-size: 14px;
-    @media (max-width: 1439px) {
-      font-size: 12px;
+    font-size: var(--o-font-size-text);
+    @media (max-width: 1400px) {
+      font-size: var(--o-font-size-tip);
     }
   }
 }

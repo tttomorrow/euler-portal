@@ -305,6 +305,9 @@ function search() {
     padding: 0 44px;
     margin: 0 auto;
     height: 80px;
+    @media (max-width: 1439px) {
+      padding: 0 24px;
+    }
     @media (max-width: 1100px) {
       padding: 0 16px;
       height: 48px;
