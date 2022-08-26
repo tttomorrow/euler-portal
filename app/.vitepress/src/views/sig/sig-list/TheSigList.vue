@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
+import IconHome from '~icons/app/icon-home.svg';
 
 import IconGitee from '~icons/app/icon-gitee.svg';
 
@@ -421,7 +422,7 @@ onMounted(() => {
                 'https://gitee.com/openeuler/community/tree/master/sig/' +
                 item.sig_name
               "
-              ><img src="@/assets/category/sig/sig-list/icon-home.png"
+              ><IconHome class="sig-board-icon"
             /></a>
           </div>
           <div class="mo-item-text">
@@ -593,10 +594,13 @@ onMounted(() => {
         color: var(--e-color-text1);
         margin-right: var(--o-spacing-h7);
       }
-      img {
+      .sig-board-icon {
         height: var(--o-font-size-text);
         width: var(--o-font-size-text);
         margin-top: var(--o-spacing-h10);
+        position: relative;
+        top: 4px;
+        right: 10px;
       }
       .mo-item-name,
       .mo-item-mail,
