@@ -98,7 +98,7 @@ const logo = computed(() => {
 });
 
 // 控制移动端二级导航展开收起
-const isShowMenu = ref(true);
+const isShowMenu = ref(false);
 // 移动端点击控制目录的显示或隐藏
 function showMenu(option: string) {
   if (option === 'show') {
@@ -135,9 +135,7 @@ const goHome = () => {
       </p>
     </template>
   </DocSideBar>
-  <div v-if="screenWidth < 1100" class="migration-head">
-    <div class="migration-head">下载</div>
-  </div>
+
   <div class="detail-mobile">
     <OIcon class="catalog" @click="showMenu('show')"><IconCatalog /></OIcon>
     <ODrawer
@@ -155,7 +153,6 @@ const goHome = () => {
           ref="tree"
           node-key="key"
           :data="a"
-          :props="defaultProps"
           accordion
           :highlight-current="true"
           :icon="IconChevronDown"
