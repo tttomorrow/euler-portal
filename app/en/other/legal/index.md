@@ -2,9 +2,11 @@
 title: 'Legal'
 ---
 
-<div class='markdown' style="margin-top:var(--o-spacing-h1)">
+<div class='markdown legal-privacy' >
 
-<h1 style='text-align:center;margin:24px 0 40px'>Legal</h1>
+<h1>Legal</h1>
+
+<hr>
 
 This legal notice contains legal policies for the openEuler community. These policies govern this site and project releases hosted by the openEuler community.
 

@@ -82,30 +82,28 @@ onMounted(async () => {
           </OButton>
         </OCard>
       </OContainer>
-      <OContainer :level-index="2" data-aos="fade-left">
-        <OCard class="round-card" :style="{ padding: '0px' }">
-          <div class="round-list">
-            <div
-              v-for="(item, index) in roundList"
-              :key="item.ROUND_TEXT"
-              class="round-item"
-            >
-              <img
-                :src="
-                  commonStore.theme === 'dark'
-                    ? item.ROUND_IMG_DARK
-                    : item.ROUND_IMG
-                "
-                class="round-img"
-              />
+      <OContainer :level-index="2" data-aos="fade-left" class="round-card">
+        <div class="round-list">
+          <div
+            v-for="(item, index) in roundList"
+            :key="item.ROUND_TEXT"
+            class="round-item"
+          >
+            <img
+              :src="
+                commonStore.theme === 'dark'
+                  ? item.ROUND_IMG_DARK
+                  : item.ROUND_IMG
+              "
+              class="round-img"
+            />
 
-              <div class="round-value">
-                {{ roundNumber[index].ROUND_VALUE.toFixed(0) }}
-              </div>
-              <div class="round-title">{{ item.ROUND_TEXT }}</div>
+            <div class="round-value">
+              {{ roundNumber[index].ROUND_VALUE.toFixed(0) }}
             </div>
+            <div class="round-title">{{ item.ROUND_TEXT }}</div>
           </div>
-        </OCard>
+        </div>
       </OContainer>
     </div>
   </div>

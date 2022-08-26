@@ -90,7 +90,20 @@ onMounted(async () => {
   }
   try {
     Promise.all([getActivityData(), getMeetingData()]).then((res) => {
+      res[0].tableData.forEach((item: any) => {
+        item.timeData.map((item2: any) => {
+          item2['startTime'] = item2.start_date;
+        });
+      });
       calendarData.value = [...res[0].tableData, ...res[1].tableData];
+
+      calendarData.value.reduce((re: any, obj: any) => {
+        const item: any = re.find((o: any) => o.start_date === obj.date);
+        item
+          ? (item.timeData = item.timeData.concat(obj.timeData))
+          : re.push(obj);
+        return re;
+      }, []);
     });
   } catch (e: any) {
     throw new Error(e);
