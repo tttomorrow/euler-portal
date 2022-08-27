@@ -6,6 +6,7 @@ import { useI18n } from '@/i18n';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
+import NavLangFilter from '@/i18n/common/navLangFilter';
 
 import logo_light from '@/assets/logo.svg';
 import logo_dark from '@/assets/logo_dark.svg';
@@ -98,11 +99,19 @@ const goMobileSubList = (item: NavItem) => {
   }
 };
 
+const langShow = ref([] as any);
 watch(
   () => router.route.path,
   (val: string) => {
     roterPath.value = val;
-  }
+    // 语言过滤
+    NavLangFilter.forEach((item) => {
+      if (val.includes(item.name)) {
+        langShow.value = item.lang;
+      }
+    });
+  },
+  { immediate: true }
 );
 // 移动端默认选中、二级菜单
 const moudleItem = () => {
@@ -228,7 +237,7 @@ function search() {
             <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
           </div>
           <!-- 中英文切换 -->
-          <AppLanguage />
+          <AppLanguage :show="langShow" />
           <AppTheme />
         </div>
       </div>
@@ -254,7 +263,10 @@ function search() {
             </div>
             <div class="mobile-tools">
               <AppTheme />
-              <AppLanguage @language-click="mobileMenuIcon = false" />
+              <AppLanguage
+                :show="langShow"
+                @language-click="mobileMenuIcon = false"
+              />
             </div>
           </div>
           <transition name="menu-sub">

@@ -1,8 +1,17 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, Ref, watch } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import IconDown from '~icons/app/icon-down.svg';
+
+const props = defineProps({
+  show: {
+    type: Object,
+    default() {
+      return [];
+    },
+  },
+});
 
 const router = useRouter();
 const { lang } = useData();
@@ -36,6 +45,30 @@ const showSub = () => {
 const hideSub = () => {
   isMenu.value = false;
 };
+
+interface LangType {
+  id: string;
+  label: string;
+}
+const langList: Ref<LangType[]> = ref([]);
+const filterLang = () => {
+  langList.value = [];
+  props.show.forEach((item: string) => {
+    langOptions.filter((el: LangType) => {
+      if (el.id === item) {
+        langList.value.push(el);
+      }
+    });
+  });
+};
+
+watch(
+  () => props.show,
+  () => {
+    filterLang();
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
@@ -46,7 +79,7 @@ const hideSub = () => {
     </span>
     <ul v-if="isMenu" class="lang-menu-list">
       <li
-        v-for="item in langOptions"
+        v-for="item in langList"
         :key="item.id"
         class="lang-item"
         :class="{ active: lang === item.id }"
@@ -58,7 +91,7 @@ const hideSub = () => {
   </div>
   <div class="mobile-change-language">
     <span
-      v-for="item in langOptions"
+      v-for="item in langList"
       :key="item.id"
       :class="{ active: lang === item.id }"
       @click.stop="mobileChaneLanguage(item.id)"
