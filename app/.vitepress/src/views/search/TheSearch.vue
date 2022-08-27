@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue';
-import { useData } from 'vitepress';
+import { useData, useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 import { getSearchData, getSearchCount, getSearchRpm } from '@/api/api-search';
 
@@ -15,7 +15,7 @@ const screenWidth = useWindowResize();
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
 
 const { lang, site } = useData();
-
+const router = useRouter();
 const i18n = useI18n();
 // 当前选择类型
 const currentIndex = ref(0);
@@ -137,13 +137,14 @@ function searchAll() {
   }
 }
 // 设置搜索结果的跳转路径
-function setLink(type: string, link: string) {
+function goLink(type: string, link: string) {
   if (type === 'docs') {
-    return (
-      site.value.themeConfig.docsUrl + '/' + lang.value + '/' + link + '.html'
+    window.open(
+      site.value.themeConfig.docsUrl + '/' + lang.value + '/' + link + '.html',
+      '_blank'
     );
   } else {
-    return '/' + lang.value + '/' + link;
+    router.go('/' + lang.value + '/' + link);
   }
 }
 // 移动端上下翻页事件
@@ -194,10 +195,8 @@ onMounted(() => {
         </ul>
         <ul v-show="!isShow" class="content-list">
           <li v-for="item in searchResultList" :key="item.id">
-            <a :href="setLink(item.type, item.path)" target="_blank">
-              <!-- eslint-disable-next-line -->
-              <h3 v-html="item.title"></h3>
-            </a>
+            <!-- eslint-disable-next-line -->
+              <h3 v-html="item.title" @click="goLink(item.type, item.path)"></h3>
             <!-- eslint-disable-next-line -->
             <p class="detail" v-html="item.textContent"></p>
             <p class="from">
@@ -276,7 +275,7 @@ onMounted(() => {
     max-width: 1072px;
     .o-search {
       @media (max-width: 768px) {
-        height: 24px;
+        height: 28px;
         font-size: 14px;
         padding: 0 16px;
 
@@ -339,9 +338,9 @@ onMounted(() => {
           }
         }
         .active {
-          color: var(--e-color-kleinblue8);
+          color: var(--e-color-brand1);
           &::after {
-            background-color: var(--e-color-kleinblue8);
+            background-color: var(--e-color-brand1);
           }
         }
       }
