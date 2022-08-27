@@ -453,6 +453,9 @@ const goHome = () => {
   </AppContent>
 </template>
 <style lang="scss" scoped>
+:deep(.el-tree-node__content:hover) {
+  background-color: var(--e-color-bg4);
+}
 .mooc-detail {
   width: 100%;
   .detail-pc {
@@ -504,6 +507,7 @@ const goHome = () => {
           overflow: hidden;
           background-color: var(--e-color-bg2);
         }
+
         :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
           order: 2;
           padding: 12px;
