@@ -128,6 +128,9 @@ html[lang='ru'] {
         margin-top: 32px;
       }
     }
+    .experts {
+      font-size: 30px !important;
+    }
   }
 }
 .dark .banner-panel-cover {
@@ -220,9 +223,10 @@ html[lang='ru'] {
         }
       }
       .experts {
+        margin-top: 0;
         line-height: 84px;
         font-weight: 400;
-        font-size: 56px;
+        font-size: 54px;
         @media screen and (max-width: 1416px) {
           line-height: var(--o-line-height-h3);
           font-size: var(--o-font-size-h3);
@@ -232,6 +236,7 @@ html[lang='ru'] {
           line-height: 28px;
         }
       }
+
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {

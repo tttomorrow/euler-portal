@@ -95,6 +95,7 @@ onMounted(() => {
           <div class="user-mobile">
             <div
               v-for="user in caseData && caseData[item.TYPE]"
+              @click="handleGo(user.path)"
               :key="user.company"
               class="user-card"
             >

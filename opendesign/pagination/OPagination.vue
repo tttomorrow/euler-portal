@@ -33,6 +33,9 @@ const classNames = computed(() => {
 
   &.el-pagination {
     justify-content: center;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
     .el-pagination__sizes {
       margin: 0 var(--o-spacing-h8) 0 0;
     }
