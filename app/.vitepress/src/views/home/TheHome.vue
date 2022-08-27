@@ -96,7 +96,6 @@ onMounted(async () => {
         });
       });
       calendarData.value = [...res[0].tableData, ...res[1].tableData];
-
       calendarData.value.reduce((re: any, obj: any) => {
         const item: any = re.find((o: any) => o.start_date === obj.date);
         item

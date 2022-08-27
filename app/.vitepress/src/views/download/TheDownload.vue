@@ -732,7 +732,7 @@ onMounted(() => {
     padding: var(--o-spacing-h10) var(--o-spacing-h5);
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
-    color: #ffffff;
+    color: #ffffff !important;
 
     &-icon {
       margin-left: var(--o-spacing-h8);
