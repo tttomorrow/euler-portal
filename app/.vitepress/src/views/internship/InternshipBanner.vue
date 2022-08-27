@@ -15,7 +15,9 @@ import IconArrowRight from '~icons/app/icon-arrow.svg';
         </a>
       </div>
     </div>
-    <img src="@/assets/category/internship/banner_mo.png" class="mo" />
+    <div class="mo">
+      <h2 class="title">openEuler 开源实习</h2>
+    </div>
   </div>
 </template>
 
@@ -73,7 +75,20 @@ import IconArrowRight from '~icons/app/icon-arrow.svg';
     background: none;
     .mo {
       display: block;
+      position: relative;
       width: 100%;
+      height: 300px;
+      background: url(@/assets/category/internship/banner-mo.png) no-repeat;
+      background-size: 100% 100%;
+      h2 {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 400;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        bottom: 84px;
+      }
     }
     .wrapper {
       display: none;

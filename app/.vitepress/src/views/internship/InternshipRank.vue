@@ -286,11 +286,14 @@ onMounted(() => {
   .view-all {
     padding-top: 15px;
     font-size: 14px;
-    color: #002fa7;
+    @media (max-width: 1000px) {
+      font-size: var(--o-font-size-tip);
+    }
     a {
       cursor: pointer;
       display: flex;
       justify-content: center;
+      color: var(--e-color-text1);
       div {
         display: flex;
         justify-content: center;
@@ -298,6 +301,10 @@ onMounted(() => {
         img {
           transform: rotate(90deg);
           transition: 0.3s;
+          @media (max-width: 1000px) {
+            width: 12px;
+            height: 12px;
+          }
         }
         .arrow {
           transform: rotate(-90deg);

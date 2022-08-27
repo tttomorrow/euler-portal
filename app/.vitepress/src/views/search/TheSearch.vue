@@ -250,7 +250,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .search {
   max-width: 1504px;
-  padding: var(--o-spacing-h2) 44px 0;
+  padding: var(--o-spacing-h2) 44px var(--o-spacing-h1);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr minmax(150px, 320px);
@@ -262,12 +262,12 @@ onMounted(() => {
     line-height: var(--o-spacing-h4);
   }
   @media (max-width: 1100px) {
-    padding: 0 16px;
+    padding: 0 16px var(--o-spacing-h2);
     padding-top: var(--o-spacing-h2);
     grid-template-columns: 1fr;
   }
   @media (max-width: 768px) {
-    padding: 0;
+    padding: 0 0 var(--o-spacing-h2) 0;
     padding-top: var(--o-spacing-h5);
   }
   .search-left {

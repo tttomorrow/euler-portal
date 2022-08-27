@@ -250,7 +250,6 @@ const scroTop = () => {
   } else {
     isShowNav.value = true;
   }
-
   if (scrollTop > 200 && scrollTop < 520) {
     activeIndex.value = 0;
   } else if (scrollTop > 520 && scrollTop < 1350) {
@@ -259,11 +258,11 @@ const scroTop = () => {
     activeIndex.value = 2;
   } else if (scrollTop > 3000 && scrollTop < 4640) {
     activeIndex.value = 3;
-  } else if (scrollTop > 4640 && scrollTop < 5090) {
+  } else if (scrollTop > 4640 && scrollTop < 5065) {
     activeIndex.value = 4;
-  } else if (scrollTop > 5090 && scrollTop < 5440) {
+  } else if (scrollTop > 5065 && scrollTop < 5430) {
     activeIndex.value = 5;
-  } else if (scrollTop > 5440) {
+  } else if (scrollTop > 5430) {
     activeIndex.value = 6;
   } else {
     return false;
@@ -523,10 +522,11 @@ onUnmounted(() => {
                 <a href="mailto:intern@openeuler.sh">{{ HELP.INFO[1] }}</a>
               </p>
               <p>{{ HELP.INFO[2] }}</p>
-              <p>{{ HELP.INFO[3] }}</p>
+              <p class="pc-number">{{ HELP.INFO[3] }}</p>
             </div>
             <div class="help-right">
               <img :src="HELP.ITEM.IMG" alt="" />
+              <p class="mo-number">{{ HELP.INFO[3] }}</p>
             </div>
           </div>
         </section>
@@ -537,27 +537,17 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .intership-wrap {
-  max-width: 1504px;
-  padding: 0 40px;
+  width: 100%;
   margin: 0 auto;
-  @media (max-width: 1000px) {
-    padding: 0 16px;
-  }
 }
 .panel {
   margin-top: 64px;
-  &:nth-of-type(1) {
-    margin-top: 0;
-  }
   @media (max-width: 1000px) {
     margin-top: 40px;
-    &:nth-of-type(1) {
-      margin-top: 0;
-    }
     .text {
       font-size: 14px;
       line-height: 22px;
-      margin-top: 16px;
+      color: var(--e-color-text4) !important;
     }
     .title {
       margin-bottom: 16px;
@@ -573,15 +563,15 @@ onUnmounted(() => {
     color: var(--e-color-text1);
     line-height: 40px;
     @media (max-width: 1000px) {
-      font-size: 14px;
-      line-height: 22px;
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
     }
   }
   .title {
     text-align: center;
     margin-bottom: 60px;
     @media (max-width: 1000px) {
-      margin-bottom: 40px;
+      margin-bottom: 15px;
     }
     img {
       width: 180px;
@@ -607,6 +597,10 @@ onUnmounted(() => {
         color: var(--e-color-text1);
         position: relative;
         font-size: var(--o-font-size-h5);
+        @media (max-width: 1000px) {
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
+        }
         &:nth-of-type(1) {
           @media (max-width: 1000px) {
             margin-left: 24px;
@@ -749,6 +743,13 @@ onUnmounted(() => {
     }
   }
 }
+.introduce-card {
+  @media (max-width: 1000px) {
+    margin-top: 0;
+    background-color: var(--e-color-bg2);
+    padding: var(--o-font-size-h5);
+  }
+}
 #task {
   .task-title {
     .title-img {
@@ -768,6 +769,7 @@ onUnmounted(() => {
         width: 113px;
         height: 34px;
         background-size: 100% 100%;
+        margin-bottom: var(--o-spacing-h5);
       }
     }
   }
@@ -804,20 +806,28 @@ onUnmounted(() => {
   .integral-border {
     border: 5px solid #5877ff;
     border-top: 16px solid #5877ff;
-    background-color: #5877ff;
+    // background-color: #5877ff;
     .integral-content {
       padding: 32px 30px;
       font-size: 14px;
       color: rgba(0, 0, 0, 0.5);
       border-radius: 8px;
-      background: #eef1ff url(@/assets/category/internship/integral-bg.png)
-        no-repeat right bottom;
       line-height: 24px;
+      @media (max-width: 1000px) {
+        padding: 6px 12px 12px;
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+      }
       h3,
       h4 {
         margin: 10px 0;
         font-size: 18px;
         color: #000000;
+        @media (max-width: 1000px) {
+          margin: 6px 0;
+          font-size: 16px;
+          line-height: 22px;
+        }
       }
       h4 {
         margin-top: 10px;
@@ -937,7 +947,7 @@ onUnmounted(() => {
     background-color: #5dc8ff;
   }
   .rule-content {
-    padding: 32px 0 20px 0;
+    padding: 32px 30px;
     background: rgba(255, 255, 255, 0.9);
     .question {
       margin-bottom: 10px;
@@ -969,7 +979,7 @@ onUnmounted(() => {
 
     .rule-content {
       border-radius: 8px;
-      padding: 16px 0;
+      padding: 12px;
       height: 100%;
       background: none;
       background-color: #eff9ff;
@@ -1028,8 +1038,8 @@ onUnmounted(() => {
   @media (max-width: 1000px) {
     .img-list {
       margin-bottom: 0;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
       .img-cover {
         width: auto;
         flex: 1;
@@ -1072,6 +1082,7 @@ onUnmounted(() => {
       font-size: 20px;
       color: var(--e-color-text1);
       line-height: 40px;
+      display: block;
       @media (max-width: 1000px) {
         font-size: 16px;
         line-height: 32px;
@@ -1093,26 +1104,45 @@ onUnmounted(() => {
       width: 100%;
       display: block;
     }
+    .mo-number {
+      display: none;
+    }
   }
 }
 @media (max-width: 1000px) {
-  .help-content {
-    padding: 0 16px;
-    flex-direction: column;
-    .help-left {
-      padding-right: 0;
-      p {
-        line-height: 30px;
-        margin-bottom: 10px;
-        a {
-          font-size: 20px;
+  .help-wrap {
+    padding: 24px 16px;
+    .help-content {
+      flex-direction: column;
+      .help-left {
+        padding-right: 0;
+        p {
+          font-size: 14px;
+          line-height: 24px;
+          margin-bottom: 16px;
+          text-align: center;
+        }
+        .pc-number {
+          display: none;
         }
       }
-    }
-    .help-right {
-      display: block;
-      p {
-        margin: 24px auto 0;
+      .help-right {
+        display: block;
+        width: 100%;
+        text-align: center;
+        p {
+          margin: 24px auto 0;
+        }
+        img {
+          width: 172px;
+          margin: 0 auto;
+        }
+        .mo-number {
+          display: block;
+          color: var(--e-color-text4);
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-font-size-text);
+        }
       }
     }
   }
