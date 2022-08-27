@@ -132,7 +132,7 @@ const leave = (el: HTMLUListElement) => {
   .menu-list {
     overflow-y: hidden;
     transition: 0.3s height cubic-bezier(0.645, 0.045, 0.355, 1);
-    background-color: var(--e-color-brand3);
+    background-color: var(--e-color-kleinblue4);
     padding: 0 40px;
 
     .menu-item {

@@ -22,7 +22,7 @@
   width: 300px;
   overflow-y: auto;
   color: var(--e-color-text2);
-  background-color: var(--e-color-brand1);
+  background-color: var(--e-color-kleinblue5);
 
   @media screen and (max-width: 1100px) {
     top: 48px;
