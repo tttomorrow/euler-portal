@@ -290,7 +290,7 @@ function search() {
 
 <style lang="scss" scoped>
 :deep(.o-search) {
-  --o-search-color-bg: var(--o-color-secondary);
+  --o-search-color-bg: var(--e-color-bg4);
   background-color: var(--e-color-bg4);
 }
 :deep(.el-input__suffix) {
@@ -463,7 +463,7 @@ function search() {
   display: flex;
   opacity: 0;
   visibility: hidden;
-  border-top: 1px solid var(--o-color-division);
+  border-top: 1px solid var(--e-color-division);
   background: rgba(0, 0, 0, 0.4);
   top: 48px;
   height: calc(100% - 48px);
@@ -566,7 +566,7 @@ function search() {
         color: var(--e-color-text4);
         cursor: pointer;
         &:last-child {
-          border-bottom: 1px solid var(--o-color-division);
+          border-bottom: 1px solid var(--e-color-division1);
         }
       }
     }

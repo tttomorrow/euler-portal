@@ -359,7 +359,7 @@ onMounted(() => {
                 </OIcon>
               </a>
             </div>
-            <ul class="body">
+            <ul class="item-body">
               <li class="empty">
                 {{ sigDetail.BLOG_EMPTY1
                 }}<a
@@ -380,7 +380,7 @@ onMounted(() => {
                 </OIcon>
               </a>
             </div>
-            <ul class="body">
+            <ul class="item-body">
               <li class="empty">
                 {{ sigDetail.NEWS_EMPTY
                 }}<a
@@ -617,7 +617,7 @@ onMounted(() => {
               }
             }
           }
-          .body {
+          .item-body {
             margin-top: var(--o-spacing-h4);
             font-size: var(--o-font-size-text);
             line-height: 22px;
@@ -625,7 +625,7 @@ onMounted(() => {
           &:hover {
             background-color: var(--e-color-bg2);
             border: 1px solid var(--e-color-kleinblue8);
-            box-shadow: var(--o-shadow-overlay);
+            box-shadow: var(--e-shadow-l4);
           }
         }
       }

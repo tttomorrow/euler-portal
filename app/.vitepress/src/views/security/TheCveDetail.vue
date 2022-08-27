@@ -208,7 +208,7 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .detail-link {
-  color: var(--o-color-link);
+  color: var(--e-color-link1);
   cursor: pointer;
 }
 .wrapper {
@@ -341,7 +341,7 @@ onMounted(() => {
         line-height: var(--o-line-height-tip);
         background-color: var(--e-color-bg4);
         &:nth-child(2n) {
-          background: var(--o-color-bg6);
+          background: var(--e-color-bg1);
         }
         & li {
           margin-bottom: var(--o-spacing-h8);

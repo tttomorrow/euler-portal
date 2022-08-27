@@ -117,7 +117,7 @@ const leave = (el: HTMLUListElement) => {
     }
 
     &:hover {
-      color: var(--o-color-brand);
+      color: var(--e-color-yellow5);
     }
 
     &.active {
