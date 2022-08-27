@@ -84,67 +84,66 @@ function turnPage(option: string) {
     <div class="live">
       <div class="live-top-title">{{ i18n.live.REPLAYER }}</div>
       <div class="live-list">
-        <OContainer
-          v-for="live in showLiveList"
-          :key="live.PHOTOPATH"
-          :level-index="2"
+        <OCard
           class="live-list-item"
+          :body-style="{ padding: '0px' }"
+          :key="live.PHOTOPATH"
+          shadow="hover"
+          v-for="live in showLiveList"
         >
-          <OCard class="live-list-item" :body-style="{ padding: '0px' }">
-            <div class="live-detail">
-              <div
-                class="live-background"
-                :class="commonStore.theme"
-                :style="{ backgroundImage: `url(${headGround})` }"
-              >
-                <img :src="live.PHOTOPATH" class="live-background-img" />
-              </div>
-              <div class="live-detail-right">
-                <div>
-                  <h5 class="live-detail-title">
-                    {{ live.LIVETITLE }}
-                  </h5>
-                  <div class="live-desc">
-                    <span>
-                      <OIcon class="smail-icon">
-                        <IconUser />
-                      </OIcon>
-                      <span class="live-desc-text">
-                        {{ live.LIVETEACHER.trim() }}
-                      </span>
-                    </span>
-                    <span>
-                      <OIcon class="smail-icon">
-                        <IconTime />
-                      </OIcon>
-                      <span class="live-desc-text">{{
-                        live.LIVETIME.trim()
-                      }}</span>
-                    </span>
-                  </div>
-                </div>
-                <p>
-                  <OButton
-                    animation
-                    size="mini"
-                    class="live-button"
-                    :style="{
-                      color:
-                        commonStore.theme === 'dark'
-                          ? 'var(--e-color-white)'
-                          : '',
-                    }"
-                    @click="totoBLink(live.FORMERLYLINK)"
-                    >{{ i18n.live.REPLAYVIEW }}
-                    <template #suffixIcon>
-                      <OIcon class="live-button-icon"><IconRight /></OIcon>
-                    </template>
-                  </OButton>
-                </p>
-              </div>
+          <div class="live-detail">
+            <div
+              class="live-background"
+              :class="commonStore.theme"
+              :style="{ backgroundImage: `url(${headGround})` }"
+            >
+              <img :src="live.PHOTOPATH" class="live-background-img" />
             </div>
-          </OCard>
-        </OContainer>
+            <div class="live-detail-right">
+              <div>
+                <h5 class="live-detail-title">
+                  {{ live.LIVETITLE }}
+                </h5>
+                <div class="live-desc">
+                  <span>
+                    <OIcon class="smail-icon">
+                      <IconUser />
+                    </OIcon>
+                    <span class="live-desc-text">
+                      {{ live.LIVETEACHER.trim() }}
+                    </span>
+                  </span>
+                  <span>
+                    <OIcon class="smail-icon">
+                      <IconTime />
+                    </OIcon>
+                    <span class="live-desc-text">{{
+                      live.LIVETIME.trim()
+                    }}</span>
+                  </span>
+                </div>
+              </div>
+              <p>
+                <OButton
+                  animation
+                  size="mini"
+                  class="live-button"
+                  :style="{
+                    color:
+                      commonStore.theme === 'dark'
+                        ? 'var(--e-color-white)'
+                        : '',
+                  }"
+                  @click="totoBLink(live.FORMERLYLINK)"
+                  >{{ i18n.live.REPLAYVIEW }}
+                  <template #suffixIcon>
+                    <OIcon class="live-button-icon"><IconRight /></OIcon>
+                  </template>
+                </OButton>
+              </p>
+            </div>
+          </div>
+        </OCard>
       </div>
       <div class="live-pagination">
         <OPagination
