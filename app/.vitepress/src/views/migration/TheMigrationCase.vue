@@ -83,7 +83,12 @@ const { frontmatter } = useData();
       作为一款面向数字基础设施的开源操作系统，最优支持多样性计算，满足服务器、云、边缘和嵌入式全场景。针对企业在升级操作系统时的需求，推出这份升级指南，助力企业简单、平稳、高效进行操作系统升级。
     </p>
     <div class="migration-transplantation-content">
-      <a v-for="item in info" :href="item.link" target="_blank">
+      <a
+        v-for="item in info"
+        :key="item.label"
+        :href="item.link"
+        target="_blank"
+      >
         <div class="migration-transplantation-card">{{ item.label }}</div>
       </a>
     </div>

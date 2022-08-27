@@ -195,8 +195,10 @@ onMounted(() => {
         <ul v-show="!isShow" class="content-list">
           <li v-for="item in searchResultList" :key="item.id">
             <a :href="setLink(item.type, item.path)" target="_blank">
+              <!-- eslint-disable-next-line -->
               <h3 v-html="item.title"></h3>
             </a>
+            <!-- eslint-disable-next-line -->
             <p class="detail" v-html="item.textContent"></p>
             <p class="from">
               <span>{{ i18n.search.form }}</span>
@@ -424,6 +426,7 @@ onMounted(() => {
       padding: 0 var(--o-spacing-h2);
       li {
         padding-top: var(--o-spacing-h4);
+        color: var(--e-color-text1);
         a {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);

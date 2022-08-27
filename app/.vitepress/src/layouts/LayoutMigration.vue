@@ -73,8 +73,8 @@ const handleNodeClick = (node: any) => {
     return;
   } else if (
     node.link.indexOf('-') !== -1 &&
-    node.link.indexOf('-cases') == -1 &&
-    node.link.indexOf('-guide') == -1
+    node.link.indexOf('-cases') === -1 &&
+    node.link.indexOf('-guide') === -1
   ) {
     router.go(`/${lang.value}/migration/guidance/${node.link}/`);
   } else {
