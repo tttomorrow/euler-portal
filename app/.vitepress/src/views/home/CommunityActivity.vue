@@ -193,6 +193,9 @@ onMounted(async () => {
 .community {
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h2);
+    .o-container {
+      padding-bottom: 0;
+    }
   }
   h3 {
     margin-top: var(--o-spacing-h1);

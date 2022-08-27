@@ -7,6 +7,8 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
 import IconHome from '~icons/app/icon-home.svg';
 
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
+
 import IconGitee from '~icons/app/icon-gitee.svg';
 
 interface LIST_PARAMS {
@@ -184,6 +186,17 @@ function filterRope(val: string) {
   if (repoRenderList.value.length > 300) {
     repoRenderList.value = repoRenderList.value.slice(0, 300);
   }
+}
+function turnPage(option: string) {
+  if (option === 'prev' && paginationData.value.currentPage > 1) {
+    paginationData.value.currentPage = paginationData.value.currentPage - 1;
+  } else if (
+    option === 'next' &&
+    paginationData.value.currentPage < paginationData.value.total
+  ) {
+    paginationData.value.currentPage = paginationData.value.currentPage + 1;
+  }
+  currentChange(paginationData.value.currentPage);
 }
 // 输入框防抖
 const debounceEvent = _.debounce(filterRope, 300, {
@@ -492,6 +505,12 @@ onMounted(() => {
           </div>
         </div>
       </div>
+      <AppPaginationMo
+        :current-page="paginationData.currentPage"
+        :total-page="paginationData.total"
+        @turn-page="turnPage"
+      >
+      </AppPaginationMo>
     </div>
   </div>
 </template>
@@ -620,7 +639,11 @@ onMounted(() => {
     }
     &-maintainers {
       display: flex;
+      margin-bottom: 0;
     }
+  }
+  .pagination-h5 {
+    margin-top: var(--o-spacing-h2);
   }
   .mo-item-odd {
     background-color: var(--e-color-bg4);

@@ -4,12 +4,15 @@ import { ref, nextTick, onMounted, reactive, PropType, watch } from 'vue';
 import { isValidKey, getNowFormatDate } from '@/shared/utils';
 import { TableData, DayData } from '@/shared/@types/type-calendar';
 import type { TabsPaneContext } from 'element-plus';
+import { useCommon } from '@/stores/common';
 
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import IconDown from '~icons/app/icon-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
+import notFoundImg_light from '@/assets/common/not-found.png';
+import notFoundImg_dark from '@/assets/404.svg';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -25,7 +28,7 @@ const props = defineProps({
     default: true,
   },
 });
-
+const commonStore = useCommon();
 let currentMeet = reactive<TableData>({
   date: '',
   timeData: [
@@ -448,7 +451,14 @@ const watchData = watch(
           </o-collapse>
         </div>
         <div v-else class="empty">
-          <img src="@/assets/common/not-found.png" alt="" />
+          <img
+            :src="
+              commonStore.theme === 'light'
+                ? notFoundImg_light
+                : notFoundImg_dark
+            "
+            alt=""
+          />
           <p>{{ i18n.EMPTY_TEXT }}</p>
         </div>
       </div>
@@ -1039,8 +1049,9 @@ const watchData = watch(
       p {
         margin-top: var(--o-spacing-h5);
       }
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 768px) {
         img {
+          margin-top: var(--o-spacing-h5);
           width: 100%;
         }
         p {

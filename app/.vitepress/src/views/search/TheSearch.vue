@@ -363,6 +363,7 @@ onMounted(() => {
             color: var(--e-color-text1);
             line-height: var(--o-line-height-h5);
             font-weight: 500;
+            cursor: pointer;
             :deep(span) {
               color: var(--e-color-brand1);
             }
