@@ -6,7 +6,7 @@ tags:
   - CVE
   - CNA
   - Security
-archives: 2020-06-24
+archives: 2020-06
 author:
   - liujingang09
   - openEuler Security Committee
