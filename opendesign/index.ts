@@ -1,5 +1,7 @@
 import type { App } from 'vue';
 
+import './style/variable.scss';
+
 import { Button } from './button';
 import { Radio, RadioGroup } from './radio';
 import { Checkbox } from './checkbox';
