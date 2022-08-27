@@ -31,6 +31,7 @@ category: migration
 以[硬件兼容性评估](#硬件兼容性评估)的内容为例。
 
 1. 在界面的“是否在兼容清单”查看是否存在状态为“待确认”的硬件类型。
+
    ![兼容性清单](./CompatibilityChecklist.png)
 2. 引导硬件厂家或社区开展适配，具体操作请参见[硬件兼容性测试服务](https://www.openeuler.org/zh/compatibility/hardware/)。
 3. 适配完成后，将适配驱动发布至[软件所仓库](https://repo.oepkgs.net/openEuler/rpm/)，并同步刷新兼容性清单。
