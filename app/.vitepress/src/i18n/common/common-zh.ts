@@ -264,7 +264,7 @@ export default {
         {
           NAME: '迁移指南',
           ID: 'migration',
-          PATH: '/other/migration/',
+          PATH: '/migration/download/',
         },
       ],
       CLASS: [
