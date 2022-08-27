@@ -66,7 +66,7 @@ onUnmounted(() => {
 <style lang="scss">
 .o-select {
   --o-select-font-tip: var(--o-font-size-tip);
-  --o-select-font-text2: var(--e-color-text2);
+  --o-select-font-text: var(--e-color-text4);
   --o-select-color-bg: var(--e-color-bg2);
   --o-select-shadow: var(--e-shadow-l1);
   --o-select-shadow_hover: var(--e-shadow-l2);
@@ -87,7 +87,7 @@ onUnmounted(() => {
     height: 40px;
     .el-icon {
       svg {
-        color: var(--o-select-font-text2);
+        color: var(--o-select-font-text);
       }
     }
   }
