@@ -1,6 +1,7 @@
 ---
 title: 迁移下载
 category: migration
+custom-layout: true
 ---
 
 <script setup lang="ts">

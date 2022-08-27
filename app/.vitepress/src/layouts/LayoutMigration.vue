@@ -17,7 +17,7 @@ import IconCatalog from '~icons/mooc/catalog.svg';
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
 
-const { lang } = useData();
+const { lang, frontmatter } = useData();
 const commonStore = useCommon();
 
 const router = useRouter();
@@ -29,6 +29,10 @@ const screenWidth = useWindowResize();
 const defaultProps = ref({
   children: 'children',
   label: 'label',
+});
+
+const isCustomLayout = computed(() => {
+  return frontmatter.value['custom-layout'];
 });
 
 watch(
@@ -79,22 +83,24 @@ const handleNodeClick = (node: any) => {
 <template>
   <DocSideBar v-if="screenWidth > 1100">
     <p class="migration-title">迁移专区</p>
-    <template v-for="item in categoyInfo" :key="item.label">
-      <DocSideBarMenu
-        v-if="item.children && item.children.length"
-        :info="item"
-        :active-id="activeId"
-        @item-click="handleItemClick"
-      ></DocSideBarMenu>
-      <p
-        v-else
-        class="menu-title"
-        :class="{ active: item.link === activeId }"
-        @click="handleTitleClick(item.link)"
-      >
-        {{ item.label }}
-      </p>
-    </template>
+    <div class="migration-sidebar-toc">
+      <template v-for="item in categoyInfo" :key="item.label">
+        <DocSideBarMenu
+          v-if="item.children && item.children.length"
+          :info="item"
+          :active-id="activeId"
+          @item-click="handleItemClick"
+        ></DocSideBarMenu>
+        <p
+          v-else
+          class="sidebar-title"
+          :class="{ active: item.link === activeId }"
+          @click="handleTitleClick(item.link)"
+        >
+          {{ item.label }}
+        </p>
+      </template>
+    </div>
   </DocSideBar>
 
   <div v-else class="detail-mobile">
@@ -126,7 +132,10 @@ const handleNodeClick = (node: any) => {
     </ODrawer>
   </div>
   <div class="migration-wrapper migration-markdown">
-    <Content class="migration-content" />
+    <Content
+      class="migration-content"
+      :class="{ 'custom-layout': isCustomLayout }"
+    />
   </div>
 </template>
 
@@ -134,39 +143,65 @@ const handleNodeClick = (node: any) => {
 :deep(.el-tree-node__content:hover) {
   background-color: var(--e-color-bg4);
 }
-.migration-head {
-  padding: 8px 16px;
-  display: flex;
-  justify-content: space-between;
-}
 
 .migration-content {
   max-width: 1380px;
   margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    background-color: var(--e-color-bg2);
+    padding: 24px 16px 16px 16px;
+    box-shadow: var(--e-shadow-l1);
+  }
+}
+
+.custom-layout {
+  @media screen and (max-width: 768px) {
+    background-color: var(--e-color-bg1);
+    padding: 0;
+    box-shadow: none;
+  }
 }
 
 .migration-title {
   font-size: var(--o-font-size-h5);
   line-height: var(--o-line-height-h5);
-  padding: 0 40px;
+  position: fixed;
+  left: 40px;
   margin-bottom: var(--o-spacing-h8);
   margin-top: 0;
   color: var(--e-color-white);
+}
 
-  & + .menu-title {
-    &::before {
-      display: none;
-    }
+.migration-sidebar-toc {
+  height: 100%;
+  margin-top: 40px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
   }
 
-  & + .sidebar-menu {
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: var(--e-color-division);
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--e-color-bg1);
+  }
+
+  .sidebar-title:first-child {
     &::before {
       display: none;
     }
   }
 }
 
-.menu-title {
+.sidebar-title {
   position: relative;
   padding: 0 40px;
   font-size: var(--o-font-size-text);
@@ -182,6 +217,8 @@ const handleNodeClick = (node: any) => {
     height: 1px;
     background-color: var(--e-color-neutral11);
     content: '';
+    background-color: #ffffff;
+    opacity: 0.1;
   }
 
   &:hover {
