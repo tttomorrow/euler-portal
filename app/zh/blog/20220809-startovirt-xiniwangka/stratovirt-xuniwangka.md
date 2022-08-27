@@ -3,11 +3,11 @@ title: StratoVirt 中的虚拟网卡是如何实现的？
 date: 2022-08-09
 category: blog
 tags:
-    - StratoVirt
-    - 虚拟网卡
+  - StratoVirt
+  - 虚拟网卡
 archives: 2022-08
-author: 
-    - openEuler
+author:
+  - openEuler
 summary: StratoVirt 当前支持 Virtio-net/Vhost-net/Vhost-user-net 三种虚拟网卡，这三种虚拟网卡都基于 virtio 协议实现数据面。
 ---
 
@@ -127,7 +127,8 @@ fn handle_rx(&mut self) -> Result<()> {
     Ok(())
 }
 ```
-##  Vhost-net
+
+## Vhost-net
 
 Vhost-net 将 Vritio-net 中的数据面卸载到了内核中，内核中会启动一个线程来处理 I/O 请求，绕过了 StratoVirt，可以减少用户态和内核态之间的切换，提高网络性能。整体框架如下图所示：
 
