@@ -229,6 +229,12 @@ export default {
           PATH: 'https://pkgmanage.openeuler.org/',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
+        {
+          NAME: 'radiaTest',
+          ID: 'radiaTest',
+          PATH: 'https://radiatest.openeuler.org',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: ['atune', 'bishengjdk', 'isula', 'secgear', 'stratovirt'],
     },
