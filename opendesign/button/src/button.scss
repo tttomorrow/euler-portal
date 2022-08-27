@@ -29,6 +29,11 @@
     color: var(--o-button-font-color_hover);
     border: var(--o-button-border_hover);
     background-color: var(--o-button-bg-color_hover);
+    @media (max-width: 1100px) {
+      color: var(--o-button-font-color);
+      background-color: var(--o-button-bg-color);
+      border: var(--o-button-border);
+    }
   }
   &:active {
     color: var(--o-button-font-color_active);
@@ -44,11 +49,6 @@
     color: var(--o-button-font-color_disabled);
     border: var(--o-button-border_disabled);
     background-color: var(--o-button-bg-color_disabled);
-    @media (max-width: 1100px) {
-      color: var(--o-button-font-color);
-      background-color: var(--o-button-bg-color);
-      border: var(--o-button-border);
-    }
   }
 
   //primary
