@@ -85,11 +85,11 @@ function turnPage(option: string) {
       <div class="live-top-title">{{ i18n.live.REPLAYER }}</div>
       <div class="live-list">
         <OCard
+          v-for="live in showLiveList"
+          :key="live.PHOTOPATH"
           class="live-list-item"
           :body-style="{ padding: '0px' }"
-          :key="live.PHOTOPATH"
           shadow="hover"
-          v-for="live in showLiveList"
         >
           <div class="live-detail">
             <div
