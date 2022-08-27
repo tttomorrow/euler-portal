@@ -73,7 +73,7 @@ onMounted(() => {
       :link1="newsInfo.link"
     />
   </div>
-  <div class="makdown-wrap markdown">
+  <div class="markdown">
     <div class="news-markdown-detail">
       <AppMdHead :frontmatter="frontmatter" />
       <Content />
@@ -98,8 +98,20 @@ onMounted(() => {
   margin: 0 auto;
 }
 .bread {
-  width: 1416px;
-  margin: var(--o-spacing-h2) auto;
+  padding-top: 40px;
+  padding-left: 44px;
+  padding-right: 44px;
+  @media (max-width: 1439px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @media (max-width: 1100px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (max-width: 768px) {
+    padding-top: 16px;
+  }
 }
 .skip {
   margin-top: var(--o-spacing-h5);
@@ -108,6 +120,10 @@ onMounted(() => {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
     color: var(--e-color-text1);
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+    }
   }
   p {
     font-size: var(--o-font-size-h8);
@@ -115,20 +131,14 @@ onMounted(() => {
     color: var(--e-color-text1);
     margin: 0;
     display: inline-block;
+
+    @media (max-width: 768px) {
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+    }
   }
   p:hover {
     color: var(--e-color-link2);
-  }
-}
-@media (max-width: 1465px) {
-  .bread {
-    margin-left: var(--o-spacing-h5);
-  }
-}
-@media (max-width: 768px) {
-  .bread {
-    margin-bottom: var(--o-spacing-h5);
-    margin-top: var(--o-spacing-h5);
   }
 }
 </style>

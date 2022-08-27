@@ -21,7 +21,7 @@ const blogInfo = {
     />
   </div>
 
-  <div class="makdown-wrap markdown">
+  <div class="markdown">
     <AppMdHead :frontmatter="frontmatter" />
     <Content />
   </div>
@@ -34,26 +34,19 @@ const blogInfo = {
   }
 }
 .bread {
-  width: 1416px;
-  margin: var(--o-spacing-h2) auto;
-}
-
-@media (max-width: 1465px) {
-  .bread {
-    margin-left: var(--o-spacing-h5);
+  padding-top: 40px;
+  padding-left: 44px;
+  padding-right: 44px;
+  @media (max-width: 1439px) {
+    padding-left: 24px;
+    padding-right: 24px;
   }
-}
-@media (max-width: 768px) {
-  .makdown-wrap,
-  .markdown {
-    margin-top: 0px;
+  @media (max-width: 1100px) {
+    padding-left: 16px;
+    padding-right: 16px;
   }
-  :deep(.bread-crumbs) {
-    margin-bottom: 0px;
-  }
-  .bread {
-    margin-top: var(--o-spacing-h5);
-    margin-bottom: 0px;
+  @media (max-width: 768px) {
+    padding-top: 16px;
   }
 }
 </style>

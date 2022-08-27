@@ -277,6 +277,11 @@
     }
   }
 
+  h1 {
+    margin-top: 0;
+    text-align: center;
+  }
+
   hr {
     margin: var(--o-spacing-h1) 0;
     border: none;
@@ -288,11 +293,13 @@
   }
 
   h1 {
-    margin-top: var(--o-spacing-h1);
+    text-align: center;
+
+    margin-bottom: 2px;
+    font-weight: 300;
     font-size: var(--o-font-size-h3);
     line-height: var(--o-line-height-h3);
     @media screen and (max-width: 768px) {
-      margin: var(--o-spacing-h4) 0;
       font-size: var(--o-font-size-h7);
       line-height: var(--o-line-height-h7);
     }

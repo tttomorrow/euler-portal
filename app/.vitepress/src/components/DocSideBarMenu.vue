@@ -86,6 +86,7 @@ const leave = (el: HTMLUListElement) => {
 <style lang="scss" scoped>
 .sidebar-menu {
   position: relative;
+  color: var(--e-color-white);
 
   .menu-title {
     position: relative;
@@ -118,7 +119,7 @@ const leave = (el: HTMLUListElement) => {
     }
 
     &.active {
-      color: #feb32a;
+      color: var(--e-color-yellow5);
     }
 
     &.open {
@@ -154,11 +155,11 @@ const leave = (el: HTMLUListElement) => {
       }
 
       &:hover {
-        color: #feb32a;
+        color: var(--e-color-yellow5);
       }
 
       &.active {
-        color: #feb32a;
+        color: var(--e-color-yellow5);
       }
     }
   }
@@ -171,7 +172,7 @@ const leave = (el: HTMLUListElement) => {
       right: -12px;
       width: 100%;
       height: 1px;
-      background-color: var(--o-color-division);
+      background-color: var(--e-color-neutral11);
     }
   }
 }

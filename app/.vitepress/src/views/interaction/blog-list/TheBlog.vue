@@ -636,6 +636,7 @@ const moblieCurrentChange = (val: string) => {
         margin-right: var(--o-spacing-h5);
         color: var(--e-color-text1);
         font-size: var(--o-font-size-h7);
+        line-height: var(--o-line-height-h7);
       }
     }
   }
@@ -729,6 +730,8 @@ const moblieCurrentChange = (val: string) => {
     &-item {
       &-title {
         width: 50px;
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
       }
       margin: 0;
       display: flex;

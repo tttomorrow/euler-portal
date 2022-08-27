@@ -661,6 +661,8 @@ const moblieCurrentChange = (val: string) => {
     &-item {
       &-title {
         width: 50px;
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
       }
       margin: 0;
       display: flex;

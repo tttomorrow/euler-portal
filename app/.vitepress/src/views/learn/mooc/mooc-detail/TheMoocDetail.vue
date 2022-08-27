@@ -90,15 +90,8 @@ onMounted(() => {
 onUpdated(() => {
   setCheckedNode();
 });
-// 移动端点击控制目录的显示或隐藏
-function showMenu(option: string) {
-  if (option === 'show') {
-    isShowMenu.value = true;
-  } else if (option === 'hide') {
-    isShowMenu.value = false;
-  } else {
-    return false;
-  }
+function toggleMenu(flag: boolean) {
+  isShowMenu.value = flag;
 }
 // 设置选中节点
 function setCheckedNode() {
@@ -242,12 +235,12 @@ const goHome = () => {
   <AppContent :pc-top="40" :mobile-top="16">
     <div class="mooc-detail">
       <div class="detail-mobile">
-        <OIcon class="catalog" @click="showMenu('show')"><IconCatalog /></OIcon>
+        <OIcon class="catalog" @click="toggleMenu(true)"><IconCatalog /></OIcon>
         <ODrawer
           v-model="isShowMenu"
           direction="ltr"
           size="268px"
-          show-close="false"
+          :show-close="false"
         >
           <div class="nav-tree">
             <div class="nav-top">
@@ -257,7 +250,7 @@ const goHome = () => {
                 alt="openEuler logo"
                 @click="goHome"
               />
-              <OIcon @click="showMenu('hide')"><IconCancel /></OIcon>
+              <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
             </div>
             <OTree
               ref="tree"
