@@ -46,7 +46,7 @@ export default [
       },
       {
         label: '跟踪迁移',
-        link: '10-followup',
+        link: '9-followup',
       },
     ],
   },

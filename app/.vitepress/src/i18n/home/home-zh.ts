@@ -111,7 +111,7 @@ export default {
       IMG_DARK: useCaseDark,
       IMG_DARK_HOVER: useCaseDarkHover,
       DSSCRIPTIVE: '汇聚各大行业用户案例',
-      LINK: 'https://new.openeuler.org/zh/showcase/',
+      LINK: 'showcase/',
     },
     {
       TITLE: '迁移专区',
@@ -120,7 +120,7 @@ export default {
       IMG_HOVER: migrateHover,
       IMG_DARK: migrateDark,
       IMG_DARK_HOVER: migrateDarkHover,
-      LINK: '/other/migration/',
+      LINK: 'migration/download/',
     },
     {
       TITLE: '开源之夏',

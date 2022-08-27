@@ -7,7 +7,7 @@ import type { TabsPaneContext } from 'element-plus';
 
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
-// import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/arrow-right.svg';
 import IconDown from '~icons/app/icon-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 

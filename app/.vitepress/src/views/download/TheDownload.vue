@@ -426,7 +426,7 @@ onMounted(() => {
           class="download-button"
           @click="handleDownloadUrl(download.DOWNLOAD_URL)"
         >
-          {{ i18n.download.DOWNLOAD_BTN_NAME }}
+          <span>{{ i18n.download.DOWNLOAD_BTN_NAME }}</span>
           <template #suffixIcon>
             <IconDownload class="download-button-icon" />
           </template>
@@ -525,7 +525,7 @@ onMounted(() => {
     color: var(--e-color-text1);
     line-height: var(--o-spacing-h4);
   }
-  .pagination {
+  :deep(.o-pagination) {
     display: flex;
     @media (max-width: 768px) {
       display: none;
@@ -730,7 +730,7 @@ onMounted(() => {
   &-button {
     margin-top: var(--o-spacing-h4);
     padding: var(--o-spacing-h10) var(--o-spacing-h5);
-    line-height: var(--o-line-height-h8);
+    line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
     color: #ffffff;
 

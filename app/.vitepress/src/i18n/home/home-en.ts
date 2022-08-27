@@ -487,7 +487,7 @@ export default {
       IMG_DARK: useCaseDark,
       IMG_DARK_HOVER: useCaseDarkHover,
       DSSCRIPTIVE: 'Learn success stories in various industries.',
-      LINK: 'https://new.openeuler.org/zh/showcase/',
+      LINK: 'showcase/',
     },
     {
       TITLE: 'Porting Guide',
@@ -496,7 +496,7 @@ export default {
       IMG_HOVER: migrateHover,
       IMG_DARK: migrateDark,
       IMG_DARK_HOVER: migrateDarkHover,
-      LINK: '/other/migration/',
+      LINK: '/zh/migration/download/',
     },
     {
       TITLE: 'Open Source Promotion Plan',
@@ -505,7 +505,7 @@ export default {
       IMG_DARK: internshipSummitDark,
       IMG_DARK_HOVER: internshipSummitDarkHover,
       DSSCRIPTIVE: 'Participate in open source projects of OSPP.',
-      LINK: '/activities/',
+      LINK: '/zh/internship/',
     },
     {
       TITLE: 'Summits',
@@ -514,7 +514,7 @@ export default {
       IMG_DARK: summitDark,
       IMG_DARK_HOVER: summitDarkHover,
       DSSCRIPTIVE: '2022 OpenAtom Global Open Source Summit',
-      LINK: '/interaction/summit-list/devday2022/',
+      LINK: 'https://openatom.cn/summit',
     },
   ],
   IMG_CAROUSE: {
@@ -537,7 +537,7 @@ export default {
     ],
   },
   COMMUNITY_ACTIVITY: {
-    TITLE: 'community activity',
+    TITLE: 'We Are Thriving',
     CARD: {
       TITLE: 'openEuler Community Vitality',
       CONTENT:
