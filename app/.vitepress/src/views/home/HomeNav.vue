@@ -87,6 +87,7 @@ const imgUrlHover = computed(
         font-size: var(--o-font-size-h7);
       }
       .nav-title-en {
+        font-weight: 400;
         color: var(--e-color-text1);
         font-size: var(--o-font-size-h7);
       }

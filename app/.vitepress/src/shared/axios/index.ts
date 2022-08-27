@@ -82,7 +82,7 @@ const requestInterceptorId = request.interceptors.request.use(
     if (loadingCount === 0) {
       loadingInstance = ElLoading.service({
         fullscreen: true,
-        target: '#app',
+        target: 'body',
         text: 'Loading',
         background: 'transparent',
       });

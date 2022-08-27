@@ -107,6 +107,29 @@ const jump = (item: any) => {
 
 <style lang="scss" scoped>
 $banner-color: #fff;
+html[lang='en'],
+html[lang='ru'] {
+  .home-banner {
+    .flex-start {
+      margin-top: 120px;
+      justify-content: flex-start;
+      p {
+        margin: 0;
+        max-width: 600px;
+        line-height: var(--o-line-height-h2);
+        font-size: var(--o-spacing-h3);
+        @media screen and (max-width: 824px) {
+          line-height: 28px;
+          font-size: 20px;
+        }
+      }
+      @media screen and (max-width: 824px) {
+        padding: 0;
+        margin-top: 32px;
+      }
+    }
+  }
+}
 .dark .banner-panel-cover {
   filter: brightness(80%) grayscale(20%) contrast(1.2);
 }

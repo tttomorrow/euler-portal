@@ -143,12 +143,15 @@ sh centos2openEuler.sh
 ```
 
 ![执行升级脚本](./execshell.png)
+
 脚本会自动安装 SUT 升级工具，并开始对操作系统进行升级。
 升级完成后界面如下所示：
+
 ![升级完成](./UpgradeFinish.png)
 
 ## 升级后检查
 
 1. 执行**cat /etc/os-release** 命令，检查操作系统版本是否已经升级到 openEuler。
+
    ![检查版本](./CheckVersion.png)
 2. 当前操作系统内核依旧为原内核，需将内核切换至 openEuler 内核。执行**reboot**命令，然后需要重启后，内核完成切换。 3.检查业务状态是否正常

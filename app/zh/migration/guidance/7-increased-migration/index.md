@@ -14,16 +14,24 @@ category: migration
   使用 pxe 服务器，同步配置文件后可快速完成 OS 安装，具体的操作如下。
 
 1. 配置 pxe 服务器信息。
+   
    **图 6** 配置 pxe 服务器信息
+
    ![配置PXE服务器信息](./ConfiguringPXEServerInformation.png)
 2. 导入配置的模板，点击安装，自动配置 pxe 服务器。
+   
    **图 7** 自动部署
+
    ![自动部署](./Autodeploy.png)
 3. 确认“pxe 服务器状态”为绿色时，表示 pxe 服务器搭建完成。
+   
    **图 8** pxe 服务器状态
+
    ![PXE服务器状态](./Pxeserverstatus.png)
 4. 进入服务器 KVM，设置服务器从 pxe 启动并重启。
+   
    **图 9** 设置服务器
+   
    ![设置服务器](./Settinguptheserver.png)
 5. 待其他步骤自动完成后，同步配置 IP，OS 安装完成（此步骤自动完成）。
 
