@@ -264,7 +264,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .user-case {
   max-width: 1504px;
-  padding: 0 44px;
+  padding: 40px 44px 64px;
   margin: 0 auto;
   .pagination-slot {
     font-size: var(--o-font-size-text);
@@ -273,7 +273,7 @@ onMounted(() => {
     line-height: var(--o-spacing-h4);
   }
   @media (max-width: 768px) {
-    padding: 0;
+    padding: 0 0 40px 0;
     background-color: var(--e-color-bg1);
   }
   .tag-box {
@@ -325,7 +325,6 @@ onMounted(() => {
   }
   :deep(.search) {
     height: 48px;
-    margin-top: var(--o-spacing-h2);
     margin-bottom: 0;
     @media (max-width: 768px) {
       display: none;
@@ -334,7 +333,7 @@ onMounted(() => {
   .tag-top {
     @media (max-width: 768px) {
       position: fixed;
-      top: 48px;
+      top: 47px;
       left: 0;
       z-index: 9;
     }
@@ -445,7 +444,7 @@ onMounted(() => {
   }
   .page-box {
     margin-top: var(--o-spacing-h2);
-    .pagination-pc {
+    :deep(.pagination-pc) {
       @media (max-width: 768px) {
         display: none;
       }
