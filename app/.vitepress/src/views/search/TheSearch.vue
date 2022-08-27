@@ -195,8 +195,10 @@ onMounted(() => {
         <ul v-show="!isShow" class="content-list">
           <li v-for="item in searchResultList" :key="item.id">
             <a :href="setLink(item.type, item.path)" target="_blank">
+              <!-- eslint-disable-next-line -->
               <h3 v-html="item.title"></h3>
             </a>
+            <!-- eslint-disable-next-line -->
             <p class="detail" v-html="item.textContent"></p>
             <p class="from">
               <span>{{ i18n.search.form }}</span>
