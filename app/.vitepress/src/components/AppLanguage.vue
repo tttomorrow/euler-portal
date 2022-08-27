@@ -93,7 +93,7 @@ const hideSub = () => {
       text-align: center;
       font-size: var(--o-font-size-text);
       color: var(--e-color-text1);
-      border-bottom: 1px solid var(--o-color-division);
+      border-bottom: 1px solid var(--e-color-division1);
       &:last-child {
         border-bottom: 0 none;
       }

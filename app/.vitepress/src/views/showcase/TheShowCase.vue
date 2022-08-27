@@ -294,7 +294,7 @@ onMounted(() => {
       width: 100%;
       margin-top: 24px;
       padding: var(--o-spacing-h5) var(--o-spacing-h2);
-      box-shadow: var(--o-shadow-base);
+      box-shadow: var(--e-shadow-l1);
       @media (max-width: 768px) {
         display: none;
       }
@@ -302,7 +302,7 @@ onMounted(() => {
     .tag-h5 {
       display: none;
       width: 100%;
-      box-shadow: var(--o-shadow-base);
+      box-shadow: var(--e-shadow-l1);
       padding: 0 16px;
       @media (max-width: 768px) {
         display: block;
@@ -471,7 +471,7 @@ onMounted(() => {
           color: var(--e-color-brand1);
         }
         .disable-button {
-          color: var(--o-color-disabled);
+          color: var(--e-color-text5);
         }
       }
     }

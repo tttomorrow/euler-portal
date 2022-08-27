@@ -292,9 +292,6 @@ onMounted(async () => {
         padding: var(--o-spacing-h5) var(--o-spacing-h8);
       }
     }
-    &:hover {
-      box-shadow: var(--o-shadow-base_hover);
-    }
   }
 }
 @keyframes scaleNumber {

@@ -288,7 +288,7 @@ function turnPage(option: string) {
 
     <div class="demo-box">
       <h4>封装elementplus OCard</h4>
-      <OCard header="OCard" shadow="hover"></OCard>
+      <OCard header="OCard"></OCard>
     </div>
 
     <div class="demo-box">

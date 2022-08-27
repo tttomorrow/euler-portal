@@ -121,7 +121,7 @@
 
     li {
       &::marker {
-        color: var(--o-color-base_inverse);
+        color: var(--e-color-text1);
       }
     }
   }
@@ -376,7 +376,7 @@
     li {
       margin-top: 0.25em;
       &::marker {
-        color: var(--o-color-base_inverse);
+        color: var(--e-color-text1);
       }
     }
   }
