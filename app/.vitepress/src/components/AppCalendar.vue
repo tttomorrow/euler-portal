@@ -237,8 +237,8 @@ const watchData = watch(
 );
 </script>
 <template>
-  <div class="main-body">
-    <div class="calendar" :class="{ 'is-home': isHomePage }">
+  <div class="main-body" :class="{ 'is-home': !isHomePage }">
+    <div class="calendar">
       <el-calendar v-if="windowWidth > 768" ref="calendar" class="calender">
         <template #header="{ date }">
           <div class="left-title">
@@ -555,11 +555,6 @@ const watchData = watch(
     }
   }
 
-  .is-home {
-    :deep(.el-calendar__header) {
-      background-color: var(--e-color-bg1);
-    }
-  }
   .collapse-box-mo {
     .left-title {
       display: none;
@@ -1053,6 +1048,17 @@ const watchData = watch(
           font-size: var(--o-font-size-tip);
         }
       }
+    }
+  }
+}
+.is-home {
+  .el-calendar {
+    background-color: var(--e-color-bg2);
+  }
+  .detail-list {
+    background-color: var(--e-color-bg2);
+    .right-title {
+      visibility: hidden;
     }
   }
 }

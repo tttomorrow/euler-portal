@@ -34,7 +34,9 @@ onMounted(async () => {
   try {
     const responeData = await getStatistic();
     roundList.value = addValue(responeData?.data);
-    roundNumber.value = i18n.value.home.HOME_ROUND.ROUND_LIST;
+    roundNumber.value = JSON.parse(
+      JSON.stringify(i18n.value.home.HOME_ROUND.ROUND_LIST)
+    );
     const observe = new IntersectionObserver((res) => {
       if (res[0].intersectionRatio <= 0) return;
       isShowCommunity.value = true;

@@ -41,8 +41,8 @@ import phytium from '@/assets/category/summit/cooperate/phytium.png';
 import phytiumDark from '@/assets/category/home/dark/link/phytium_dark.png';
 import tongtech from '@/assets/category/summit/cooperate/tongtech.png';
 import tongtechDark from '@/assets/category/home/dark/link/tongtech_dark.png';
-import fusion from '@/assets/category/summit/cooperate/fusion.png';
-import fusionDark from '@/assets/category/home/dark/link/Xfusion_dark.png';
+import fusion from '@/assets/category/home/link/xfusion.png';
+import fusionDark from '@/assets/category/home/dark/link/xfusion_dark.png';
 import yunhe from '@/assets/category/summit/cooperate/yunhe.png';
 import yunheDark from '@/assets/category/home/dark/link/yunhe_dark.png';
 
