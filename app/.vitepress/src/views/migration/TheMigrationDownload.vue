@@ -61,20 +61,32 @@ import downloadInfo from '@/data/migration/migration-download';
   font-size: var(--o-font-size-h7);
   line-height: var(--o-line-height-h7);
   font-weight: 300;
+  @media screen and (max-width: 768px) {
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+  }
 }
 
 .migration-download {
   color: var(--e-color-text1);
-  margin-top: 64px;
+  margin-top: var(--o-spacing-h1);
+  @media screen and (max-width: 768px) {
+    margin-top: var(--o-spacing-h4);
+  }
   h1 {
+    font-weight: 300;
     text-align: center;
+    margin-bottom: var(--o-spacing-h2);
     font-size: var(--o-font-size-h3);
     line-height: var(--o-line-height-h3);
-    font-weight: 300;
+    @media screen and (max-width: 768px) {
+      margin: 0 0 var(--o-spacing-h4);
+      font-size: var(--o-font-size-h7);
+      line-height: var(--o-line-height-h7);
+    }
   }
 
   .migration-download-content {
-    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     row-gap: var(--o-spacing-h4);

@@ -152,16 +152,12 @@
   a[href^='#'] {
     display: none;
   }
-  img {
-    // margin-top: var(--o-spacing-h5);
-    // @media screen and (max-width: 768px) {
-    //   margin-top: var(--o-font-size-h7);
-    // }
-  }
+
   div[class*='language-'] {
     position: relative;
     margin: 8px 0;
     background-color: var(--e-color-bg1);
+    box-shadow: var(--e-shadow-sl1);
     overflow-x: auto;
   }
   [class*='language-'] code,
@@ -245,6 +241,7 @@
 /**
  * 迁移专区
  **/
+
 .migration-markdown {
   height: 100%;
   padding: 64px 120px;
@@ -262,6 +259,11 @@
     margin-top: 0 !important;
   }
   --e-color-table: var(--e-color-border2); // 表格边框
+  @media (max-width: 768px) {
+    padding: var(--o-spacing-h7);
+    margin-top: var(--o-spacing-h7);
+    margin-bottom: var(--o-spacing-h2);
+  }
   ol,
   ul {
     list-style: inherit;
@@ -281,11 +283,6 @@
     }
   }
 
-  h1 {
-    margin-top: 0;
-    text-align: center;
-  }
-
   hr {
     margin: var(--o-spacing-h1) 0;
     border: none;
@@ -297,13 +294,13 @@
   }
 
   h1 {
-    margin-top: var(--o-spacing-h1);
+    font-weight: 300;
+    text-align: center;
     margin-bottom: var(--o-spacing-h2);
     font-size: var(--o-font-size-h3);
     line-height: var(--o-line-height-h3);
-    font-weight: 300;
     @media screen and (max-width: 768px) {
-      margin: var(--o-spacing-h3) 0 var(--o-spacing-h4);
+      margin: 0 0 var(--o-spacing-h4);
       font-size: var(--o-font-size-h7);
       line-height: var(--o-line-height-h7);
     }
@@ -311,22 +308,22 @@
 
   h2 {
     margin-top: var(--o-spacing-h2);
-    margin-bottom: var(--o-font-size-h5);
+    margin-bottom: var(--o-spacing-h3);
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
     @media screen and (max-width: 768px) {
-      margin: var(--o-spacing-h5) 0;
+      margin: var(--o-spacing-h4) 0 var(--o-spacing-h5);
       font-size: var(--o-font-size-h8);
-      line-height: var(--o-line-height-text);
+      line-height: var(--o-line-height-h8);
     }
   }
 
   h3 {
     margin-top: var(--o-spacing-h3);
     font-size: var(--o-font-size-h7);
-    line-height: var(--o-line-height-h7);
+    line-height: var(--o-line-height-h8);
     @media screen and (max-width: 768px) {
-      margin: var(--o-spacing-h6) 0;
+      margin-top: var(--o-spacing-h5);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
     }
@@ -336,6 +333,11 @@
     margin-top: var(--o-spacing-h4);
     font-size: var(--o-font-size-h8);
     line-height: var(--o-font-size-h8);
+    @media screen and (max-width: 768px) {
+      margin-top: var(--o-spacing-h6);
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+    }
   }
 
   h5 {
@@ -355,7 +357,6 @@
     line-height: var(--o-line-height-text);
     @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-tip);
-      line-height: var(--o-line-height-tip);
     }
   }
 
@@ -364,7 +365,6 @@
     padding-left: 1em;
 
     li {
-      margin-top: 0.25em;
       &::marker {
         color: var(--o-color-base_inverse);
       }
@@ -397,39 +397,25 @@
   }
 
   img {
-    display: inline-block;
     max-width: 100%;
   }
 
   a[href^='#'] {
     display: none;
   }
-  // img {
-  //   margin-top: var(--o-spacing-h5);
-  //   @media screen and (max-width: 768px) {
-  //     margin-top: var(--o-font-size-h7);
-  //   }
-  // }
+
   div[class*='language-'] {
     position: relative;
     margin: 8px 0;
-    background-color: var(--e-color-bg4);
+    background-color: var(--e-color-bg2);
+    box-shadow: var(--e-shadow-sl1);
     overflow-x: auto;
-    &::-webkit-scrollbar-track {
-      border-radius: 4px;
-      background-color: var(--e-color-bg2);
-    }
 
-    &::-webkit-scrollbar {
-      width: 6px;
-      background-color: var(--e-color-bg2);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background: var(--e-color-division1);
+    @media screen and (max-width: 768px) {
+      background-color: var(--e-color-bg1);
     }
   }
+
   [class*='language-'] code,
   [class*='language-'] pre {
     text-align: left;
@@ -444,20 +430,6 @@
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
-    &::-webkit-scrollbar-track {
-      border-radius: 4px;
-      background-color: var(--e-color-bg2);
-    }
-
-    &::-webkit-scrollbar {
-      height: 6px;
-      background-color: var(--e-color-bg2);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background: var(--e-color-division1);
-    }
   }
 
   [class*='language-'] pre {

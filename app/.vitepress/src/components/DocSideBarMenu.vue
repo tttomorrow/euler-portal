@@ -104,7 +104,9 @@ const leave = (el: HTMLUListElement) => {
       top: 0;
       width: calc(100% - 80px);
       height: 1px;
-      background-color: #e5e5e5;
+      // background-color: #e5e5e5;
+      background-color: #ffffff;
+      opacity: 0.1;
       content: '';
     }
 
@@ -161,18 +163,6 @@ const leave = (el: HTMLUListElement) => {
       &.active {
         color: var(--e-color-yellow5);
       }
-    }
-  }
-
-  & + .sidebar-menu {
-    &::before {
-      position: absolute;
-      content: '';
-      top: 0;
-      right: -12px;
-      width: 100%;
-      height: 1px;
-      background-color: var(--e-color-neutral11);
     }
   }
 }
