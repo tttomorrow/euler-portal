@@ -56,4 +56,5 @@ x2openEuler conf-analyse
 ```
 
 ![配置兼容性报告](./ConfigurationCompatibilityAssessmentReport.png)
+
 根据报告提示，存在有变化的配置需要检查，请参考[配置适配](#配置适配) 配置适配完成配置适配。

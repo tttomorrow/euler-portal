@@ -71,7 +71,11 @@ const handleTitleClick = (link: string) => {
 const handleNodeClick = (node: any) => {
   if (node.link === 'guidance') {
     return;
-  } else if (node.link.indexOf('-') !== -1) {
+  } else if (
+    node.link.indexOf('-') !== -1 &&
+    node.link.indexOf('-cases') == -1 &&
+    node.link.indexOf('-guide') == -1
+  ) {
     router.go(`/${lang.value}/migration/guidance/${node.link}/`);
   } else {
     router.go(`/${lang.value}/migration/${node.link}/`);
