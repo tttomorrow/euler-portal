@@ -2,13 +2,13 @@
 title: 'Introduction to IOMMU and ARM SMMU'
 date: 2020-11-21
 category: blog
-tags: 
-    - IOMMU
-    - SMMU
-    - DMA
+tags:
+  - IOMMU
+  - SMMU
+  - DMA
 archives: 2020-11
-author: 
-    - Wang Xingang
+author:
+  - Wang Xingang
 summary: This article describes the IOMMU principle and ARM SMMU initialization process.
 ---
 
@@ -17,6 +17,7 @@ summary: This article describes the IOMMU principle and ARM SMMU initialization 
 In computing, an input–output memory management unit (IOMMU) is a memory management unit (MMU) that connects a direct-memory-access–capable (DMA-capable) I/O bus to the physical memory. Like a traditional MMU, the IOMMU maps device-visible virtual addresses (also called I/O virtual address, IOVA) to physical addresses (PAs). Different platforms have different IOMMUs, such as the Intel IOMMU—graphics address remapping table (GART) used by PCI Express graphics cards, and System Memory Management Unit (SMMU) used by the ARM platform.
 
 The CPU and devices access the physical memory in the following way:
+
 ```
     +---------------------+
     |      Main Memory    |
@@ -38,20 +39,22 @@ The CPU and devices access the physical memory in the following way:
 ```
 
 Compared with DMA, IOMMU has the following advantages:
-* Large regions of memory can be allocated without the need to be contiguous in physical memory. The IOMMU maps contiguous virtual addresses (VAs) to the fragmented PAs.
-* Devices that do not support memory addresses long enough to address the entire physical memory can still address the entire memory through the IOMMU. For example, x86 computers can address more than 4 GB of memory with the Physical Address Extension (PAE) feature. But an ordinary 32-bit PCI device cannot address the memory above 4 GB. With IOMMU, the device can address the entire physical memory.
-* Memory is protected from malicious devices that are attempting DMA attacks and faulty devices that are attempting errant memory transfers because a device cannot read or write to the mapped physical memory.
-* In virtualization, a guest OS can use hardware that is not specifically made for virtualization. Higher performance hardware such as graphics cards uses DMA to access memory directly. In a virtual environment, all memory addresses are re-mapped by the virtualization software (such as QEMU), which causes the guest OS fails to access memory using DMA. The IOMMU handles this re-mapping, allowing the drivers to use DMA to access memory in the guest OS.
-* In some architectures IOMMU also performs interrupt re-mapping, in a manner similar to address re-mapping.
-* Peripheral memory paging can be supported by an IOMMU. A peripheral using the PCI-SIG PCIe Address Translation Services (ATS) Page Request Interface (PRI) extension can detect and signal the need for memory manager services.
+
+- Large regions of memory can be allocated without the need to be contiguous in physical memory. The IOMMU maps contiguous virtual addresses (VAs) to the fragmented PAs.
+- Devices that do not support memory addresses long enough to address the entire physical memory can still address the entire memory through the IOMMU. For example, x86 computers can address more than 4 GB of memory with the Physical Address Extension (PAE) feature. But an ordinary 32-bit PCI device cannot address the memory above 4 GB. With IOMMU, the device can address the entire physical memory.
+- Memory is protected from malicious devices that are attempting DMA attacks and faulty devices that are attempting errant memory transfers because a device cannot read or write to the mapped physical memory.
+- In virtualization, a guest OS can use hardware that is not specifically made for virtualization. Higher performance hardware such as graphics cards uses DMA to access memory directly. In a virtual environment, all memory addresses are re-mapped by the virtualization software (such as QEMU), which causes the guest OS fails to access memory using DMA. The IOMMU handles this re-mapping, allowing the drivers to use DMA to access memory in the guest OS.
+- In some architectures IOMMU also performs interrupt re-mapping, in a manner similar to address re-mapping.
+- Peripheral memory paging can be supported by an IOMMU. A peripheral using the PCI-SIG PCIe Address Translation Services (ATS) Page Request Interface (PRI) extension can detect and signal the need for memory manager services.
 
 Compared with DMA, the disadvantages of using the IOMMU include extra performance and memory overhead. Address translation and page fault processing increase performance overhead. In addition, the IOMMU needs to allocate space for the I/O page table in the memory. In some cases, the IOMMU and CPU share the page table to avoid this memory overhead. For example, the device and CPU share the virtual address.
 
 ## ARM SMMU Data Structure
 
-The SMMU provides the capability of accessing the physical memory by using the IOVA visible to the device. In the system architecture, multiple devices may use the IOVA to access the physical memory through the IOMMU. The IOMMU needs to distinguish different devices, so each device is assigned with a stream ID  (SID), which points to the corresponding stream table entry (STE). All STEs exist in the memory as arrays. The SMMU records the start addresses of the STE arrays. When scanning a device, the OS allocates a unique SID to the device. All configurations for the device to access the memory through the IOMMU are written into the STE corresponding to the SID .
+The SMMU provides the capability of accessing the physical memory by using the IOVA visible to the device. In the system architecture, multiple devices may use the IOVA to access the physical memory through the IOMMU. The IOMMU needs to distinguish different devices, so each device is assigned with a stream ID (SID), which points to the corresponding stream table entry (STE). All STEs exist in the memory as arrays. The SMMU records the start addresses of the STE arrays. When scanning a device, the OS allocates a unique SID to the device. All configurations for the device to access the memory through the IOMMU are written into the STE corresponding to the SID .
 
 Stream table:
+
 ```
                   +-------+
 strtab_base ----- | STE 0 |
@@ -64,9 +67,10 @@ StreamID[n:0] ->  | STE 2 |
 The STE stores the address translation process from the IOVA to the PA. To adapt to the memory access requirement in the virtualization scenario, the SMMU supports two stages of address translation in a similar way to extended page tables (EPTs). Stage 1 translates the VA into an intermediate physical address (IPA), and stage 2 translates the IPA into a PA.
 
 STE:
+
 ```
 Stream Table Entry (STE)
-+-----------------------+ 
++-----------------------+
 | Config | S1ContextPtr | -> CD -> Stage 1 translation tables
 +-----------------------+
 |  VMID  | S2TTB        | -> Stage 2 translation tables
@@ -79,6 +83,7 @@ Stream Table Entry (STE)
 In non-virtualization scenarios, if a device uses the IOVA to perform DMA through the IOMMU, only stage 1 address translation is required. Because multiple devices may use one device, the STE of each device also records information about the context descriptor (CD) table, S1ContextPtr points to the base address of the CD table in the memory. The CD table is also an array and uses SubstreamID (SSID or PASID) for memory access. PASID, an ID associated with the process, is used to distinguish the VA space of different processes. After the CD entry is found by using PASID, the I/O page table for stage 1 address translation is found and stored in TTB0 and TTB1.
 
 CD:
+
 ```
                   +-------+
 S1ContextPtr ---- |  CD 0 |
@@ -88,8 +93,8 @@ SubStreamID   ->  |  CD 2 |
                   +-------+
 
 Context Desctriptor (CD)
-+-----------------------+ 
-| Configuration | TTB0  | 
++-----------------------+
+| Configuration | TTB0  |
 +-----------------------+
 |      ASID     | TTB1  |
 +-----------------------+
@@ -100,6 +105,7 @@ It should be noted that, generally, the process enables, by using the device dri
 It is a complex process for the device to translate the address through the SMMU. The first step is to locate the STE by using the device SID. The STE records whether the stage 1 address translation needs to be bypassed. Bypass means to use a PA or IPA directly. If no bypass is done, the SID is used to locate the associated CD, which records the page table for stage 1 address translation to translate a VA into an IPA. If stage 2 page table translation is configured in the STE, the IPA will be translated into a PA. If stage 2 address translation is not configured, the previously obtained IPA is the PA.
 
 The SMMU address translation process is as follows:
+
 ```
                          VA
                           |
@@ -170,17 +176,18 @@ struct arm_smmu_device {
 
 The entry for loading the driver is the `arm_smmu_device_probe` function, which performs the following operations:
 
- 1. Reads attributes such as the SMMU interrupt from the SMMU node of the DTS or the SMMU configuration table of the ACPI.
- 2. Uses `struct resource` to obtain resource information from the device and remaps I/Os.
- 3. Probes hardware features of the SMMU.
- 4. Initializes interrupt and event queues.
- 5. Creates an STE table.
- 6. Resets the device.
- 7. Registers the SMMU with the IOMMU.
+1.  Reads attributes such as the SMMU interrupt from the SMMU node of the DTS or the SMMU configuration table of the ACPI.
+2.  Uses `struct resource` to obtain resource information from the device and remaps I/Os.
+3.  Probes hardware features of the SMMU.
+4.  Initializes interrupt and event queues.
+5.  Creates an STE table.
+6.  Resets the device.
+7.  Registers the SMMU with the IOMMU.
 
 ### 1. Reading the SMMU Node Information of the DTS
 
 The `arm_smmu_device_dt_probe` function reads the attributes from `smmu->dev->of_node` and records the attributes in `smmu->options`. In addition, the function checks whether the DMA supports coherency. If the DMA supports coherency, the function sets the coherency feature.
+
 ```c
 if (of_dma_is_coherent(dev->of_node))
       smmu->features |= ARM_SMMU_FEAT_COHERENCY;
@@ -202,25 +209,31 @@ smmu->base = devm_ioremap_resource(dev, res);
 The `arm_smmu_device_hw_probe` function obtains the hardware features of the SMMU by reading the SMMU register.
 
 IDR0 register:
+
 ```
 reg = readl_relaxed(smmu->base + ARM_SMMU_IDR0);
 ```
-* Records whether the two-level STE table and two-level CD table are supported.
-* Records whether PRI, ATS, SEV, MSI, HYP, STALL, Stage 1, and Stage 2 are supported.
-* Obtains the ias length, asid_bits, and vmid_bits.
+
+- Records whether the two-level STE table and two-level CD table are supported.
+- Records whether PRI, ATS, SEV, MSI, HYP, STALL, Stage 1, and Stage 2 are supported.
+- Obtains the ias length, asid_bits, and vmid_bits.
 
 IDR1 register:
+
 ```c
 reg = readl_relaxed(smmu->base + ARM_SMMU_IDR1);
 ```
-* Obtains the length of the evtq and priq queues, ssid_bits, and sid_bits.
+
+- Obtains the length of the evtq and priq queues, ssid_bits, and sid_bits.
 
 IDR5 register:
+
 ```c
 reg = readl_relaxed(smmu->base + ARM_SMMU_IDR5);
 ```
-* Obtains the maximum number of evtq stalls.
-* Records whether VAX, oas length, and pgsize_bitmap are supported.
+
+- Obtains the maximum number of evtq stalls.
+- Records whether VAX, oas length, and pgsize_bitmap are supported.
 
 ### 4. Initializing Interrupt and Event Queues
 
@@ -278,6 +291,7 @@ static int arm_smmu_init_strtab_linear(struct arm_smmu_device *smmu)
 	return 0;
 }
 ```
+
 ### 6. Resetting the Device
 
 The `arm_smmu_device_reset` function resets the device. Based on the obtained device registers, the function writes information such as queue memory attributes to the control registers CR1 and CR2, writes the base addresses and configuration information of the STE tables to the STRTAB_BASE register, and writes the base addresses, queue heads, and queue tails of the three queues in the memory to the corresponding registers. Then, the reset function registers the interrupt event processing by calling `arm_smmu_setup_irqs`.
@@ -320,6 +334,7 @@ The IOMMU can be bypassed in multiple ways. Linux provides the iommu.passthrough
 The main function of the IOMMU is to provide the mapping from the IOVA to the PA for the device to access the physical memory. In this way, the device does not directly use the PA to access the memory, which is secure. As a specific implementation of the IOMMU, the ARM SMMUv3 provides an interface for the IOMMU. IOMMU-related operations include DMA operations performed by devices and device hardware capabilities exposed securely to the user mode through the VFIO passthrough are used to establish the mapping between IOVAs that can be identified by devices and actual PAs.
 
 ## References
-* https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit
-* https://developer.arm.com/documentation/ihi0070/latest
-* https://kernel.taobao.org/2020/06/ARM-SMMU-and-IOMMU/
+
+- https://en.wikipedia.org/wiki/Input%E2%80%93output_memory_management_unit
+- https://developer.arm.com/documentation/ihi0070/latest
+- https://kernel.taobao.org/2020/06/ARM-SMMU-and-IOMMU/

@@ -2,29 +2,29 @@
 title: 'VFIO Device Passthrough Principles (2)'
 date: 2020-11-21
 category: blog
-tags: 
-    - IOMMU
-    - SMMU
-    - DMA
+tags:
+  - IOMMU
+  - SMMU
+  - DMA
 archives: 2020-11
-author: 
-    - Wang Xingang
+author:
+  - Wang Xingang
 summary: This article describes the principles of VFIO device passthrough, including DMA remapping, interrupt remapping, and configuration space simulation.
 ---
 
-Device passthrough to VMs can greatly improve the VM access performance to physical devices. This article uses the VFIO kernel module and user-mode QEMU implementation to describe key procedures of VFIO device passthrough, including device I/O address space access in user mode, direct memory access (DMA) remapping, and interrupt remapping.  
+Device passthrough to VMs can greatly improve the VM access performance to physical devices. This article uses the VFIO kernel module and user-mode QEMU implementation to describe key procedures of VFIO device passthrough, including device I/O address space access in user mode, direct memory access (DMA) remapping, and interrupt remapping.
 
 ## VFIO Access to I/O Address Space of Passthrough Devices
 
 1. PMIO and MMIO
 
-The I/O address space of a device can be accessed in port-mapped I/O (PMIO) or memory-mapped I/O (MMIO). In PMIO mode, the device is accessed through an independent I/O port. In MMIO mode, the device memory is mapped to a segment of physical memory, and the configuration space of the device can be accessed by directly accessing the physical memory segment. In virtualization scenarios, when a VM process accesses a passthrough device through PMIO, a VM-exit event occurs, and the control is given back to QEMU. QEMU forwards the PMIO operation based on a conversion table. The base address register (BAR) space address of a PCI device is set in PMIO mode. If the PMIO access to the device is completely exposed to the VM, the VM modifies the base address configuration of the PCI BAR space of the physical device. As a result, the configuration is inconsistent with that on the host, and serious problems may occur. Therefore, a conversion table needs to be created so that QEMU can forward PMIO access to the device as configured when the VM-exit event occurs.  
+The I/O address space of a device can be accessed in port-mapped I/O (PMIO) or memory-mapped I/O (MMIO). In PMIO mode, the device is accessed through an independent I/O port. In MMIO mode, the device memory is mapped to a segment of physical memory, and the configuration space of the device can be accessed by directly accessing the physical memory segment. In virtualization scenarios, when a VM process accesses a passthrough device through PMIO, a VM-exit event occurs, and the control is given back to QEMU. QEMU forwards the PMIO operation based on a conversion table. The base address register (BAR) space address of a PCI device is set in PMIO mode. If the PMIO access to the device is completely exposed to the VM, the VM modifies the base address configuration of the PCI BAR space of the physical device. As a result, the configuration is inconsistent with that on the host, and serious problems may occur. Therefore, a conversion table needs to be created so that QEMU can forward PMIO access to the device as configured when the VM-exit event occurs.
 
-When accessing the MMIO space of a device, you can create an extended page table (EPT) to map the physical MMIO memory of the device to the virtual MMIO address space. In this way, the VM can directly access the BAR space of the PCI device through MMIO, improving the I/O performance.  
+When accessing the MMIO space of a device, you can create an extended page table (EPT) to map the physical MMIO memory of the device to the virtual MMIO address space. In this way, the VM can directly access the BAR space of the PCI device through MMIO, improving the I/O performance.
 
 2. Obtaining Passthrough Device Information
 
-You can use the APIs provided by VFIO to obtain basic device information, including the device descriptor and number of regions.  
+You can use the APIs provided by VFIO to obtain basic device information, including the device descriptor and number of regions.
 
 ```c
 vfio_get_device:
@@ -51,7 +51,7 @@ typedef struct VFIOPCIDevice {
     VFIODevice vbasedev;
 ```
 
-The VFIO device is a part of the QEMU device model. QEMU initializes the passthrough device  simulation using **vfio_realize**. After the basic information about the passthrough device is obtained through **vfio_get_device**, **pread** is used to read the file descriptor (FD) of the device and obtain a copy of its configuration space information, to which QEMU may write some customized configurations.
+The VFIO device is a part of the QEMU device model. QEMU initializes the passthrough device simulation using **vfio_realize**. After the basic information about the passthrough device is obtained through **vfio_get_device**, **pread** is used to read the file descriptor (FD) of the device and obtain a copy of its configuration space information, to which QEMU may write some customized configurations.
 
 ```c
 vfio_realize:
@@ -147,9 +147,9 @@ Simply speaking, MMIO memory mapping is to map the MMIO space in the physical me
 A device can directly use the I/O virtual address (IOVA) to access the physical memory through DMA. The mapping from the IOVA to the physical address is completed in the IOMMU. Generally, when **dma_alloc** allocates the memory that can be accessed by the device, the IOVA and physical address space are allocated, and the mapping is established in the IOMMU.
 Therefore, the following is required for a device to perform DMA:
 
-* Address that can be identified by the device: an IOVA
-* A segment of physical memory
-* Mapping from an IOVA to the physical memory in IOMMU
+- Address that can be identified by the device: an IOVA
+- A segment of physical memory
+- Mapping from an IOVA to the physical memory in IOMMU
 
 With these requirements met, DMA remapping of VFIO is clear. First, VFIO devices are initialized. Before obtaining device information, the groups and containers to which the devices belong are obtained. Then, **VFIO_SET_IOMMU** is called to bind the containers to the IOMMU, and all devices managed by VFIO are attached. The following **pci_device_iommu_address_space** function indicates that QEMU registers a dedicated address space for DMA to the device. This memory segment exists as a physical memory segment of a VM. After **VFIO_SET_IOMMU** is performed, the address space is registered. The function for adding regions is **vfio_listener_region_add**, which is called when memory needs to be increased.
 
@@ -209,7 +209,7 @@ vfio_dma_do_map:
 		}
 ```
 
-Before creating a mapping from an IOVA to the physical memory, the kernel pins the allocated DMA memory chunk. The **vfio_pin_pages_remote** function is used to obtain the physical address corresponding to the virtual address and the number of pinned pages. Then **vfio_iommu_map** calls the **map** functions of the IOMMU and SMMU. Finally, the IOVA, physical address information (**pfn**), and the number of pages to be mapped (**npage**) are used to establish a mapping relationship in the device I/O page table.  
+Before creating a mapping from an IOVA to the physical memory, the kernel pins the allocated DMA memory chunk. The **vfio_pin_pages_remote** function is used to obtain the physical address corresponding to the virtual address and the number of pinned pages. Then **vfio_iommu_map** calls the **map** functions of the IOMMU and SMMU. Finally, the IOVA, physical address information (**pfn**), and the number of pages to be mapped (**npage**) are used to establish a mapping relationship in the device I/O page table.
 
 ```
 +--------+  iova  +--------+  gpa  +----+
@@ -269,7 +269,7 @@ vfio_msix_setup:
                     vdev->msix->table_bar, vdev->msix->table_offset,
                     vdev->bars[vdev->msix->pba_bar].region.mem,
                     vdev->msix->pba_bar, vdev->msix->pba_offset, pos);
-		
+
 		memory_region_init_io(&dev->msix_table_mmio, OBJECT(dev), &msix_table_mmio_ops, dev,
                           "msix-table", table_size);
 		memory_region_add_subregion(table_bar, table_offset, &dev->msix_table_mmio);
@@ -320,4 +320,4 @@ To enable a VM to directly access a device, the DMA capability, interrupt respon
 
 ## Reference
 
-* [https://kernelgo.org/vfio-insight.html](https://kernelgo.org/vfio-insight.html)
+- [https://kernelgo.org/vfio-insight.html](https://kernelgo.org/vfio-insight.html)

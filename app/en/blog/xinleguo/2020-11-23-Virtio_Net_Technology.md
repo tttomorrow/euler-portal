@@ -2,12 +2,12 @@
 title: 'Analysis of the virtio-net Technology'
 date: 2020-11-23
 category: blog
-tags: 
-    - Virtualization
-    - virtio net
+tags:
+  - Virtualization
+  - virtio net
 archives: 2020-11
 author:
-    - Xinle Guo
+  - Xinle Guo
 summary: This blog describes the technical details of virtio-net, including its frontend driver and backend device.
 ---
 
@@ -41,13 +41,13 @@ virtio_net_receive_rcu {
     virtio_net_can_receive         // Determine whether virtio-net can receive packets based on the VM running status, as well as the queue and device status.
     virtio_net_has_buffers          // Check the buffer to avoid competition.
     receive_filter 		    // Filter network packets.
-    
+
     while (offset < size) {
         elem = virtqueue_pop 	// Obtain a request from vring and transfer the information to the lem domain.
         len = iov_from_buf                // Copy packets to the buffer and write data to the guest physical address.
         virtqueue_fill                    // Update fields related to VRingAvail.ring[] after the data is written and the mapping is canceled.
     }
-    
+
     virtqueue_flush           // Update idx of VRingUsed.ring to indicate that it can be reclaimed.
     virtio_notify                            // Inject an interrupt and notify the frontend VM.
 }
@@ -83,13 +83,13 @@ In the driver of the kernel character device, **tun_chr_write_iter** is called t
 
 ### Device Creation
 
-````c
+```c
 virtio_net_class_init
 	virtio_net_device_realize
 	virtio_net_get_config
 	virtio_net_get_features
 	...
-````
+```
 
 **virtio_net_device_realize** is called to initialize the virtio-net device.
 
@@ -110,7 +110,7 @@ This function creates a **VirtIODevice**. **virtio_init** is used to initialize 
 QEMU uses TAP as the network backend. A TAP device needs to be created on the host and added to bridge **br0**.
 
 ```shell
-# brctl addbr br0 
+# brctl addbr br0
 # ip tuntap add dev tap0 mode tap
 # brctl addif br0 tap0
 # ip link set dev tap0 up

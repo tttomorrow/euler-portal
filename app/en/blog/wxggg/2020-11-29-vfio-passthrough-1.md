@@ -2,13 +2,13 @@
 title: 'VFIO Device Passthrough Principles (1)'
 date: 2020-11-29
 category: blog
-tags: 
-    - IOMMU
-    - SMMU
-    - DMA
+tags:
+  - IOMMU
+  - SMMU
+  - DMA
 archives: 2020-11
 author:
-    - Wang Xingang
+  - Wang Xingang
 summary: This article describes the principles of VFIO device passthrough, including some basic concepts and user-mode interfaces.
 ---
 
@@ -20,11 +20,11 @@ The key for implementing user-mode drivers is how to expose the DMA capability t
 
 The following lists main VFIO kernel components, which provide a unified access interface layer (the VFIO interface layer) for userspace through device files.
 
-* VFIO container
-* VFIO group
-* VFIO device
+- VFIO container
+- VFIO group
+- VFIO device
 
-``` 
+```
 +-----------------------------------------+
 |            vfio interface               |
 +-----------------------------------------+
@@ -38,7 +38,7 @@ The VFIO interface layer encapsulates the **vfio_iommu_driver** and **vfio_pci**
 
 The following shows the relationship between the container, group, and device. A container can be regarded as a physical resource set, and each container can have multiple groups. A group is the minimum hardware granularity for the IOMMU to implement DMA isolation. A group may contain one or more devices, depending on the IOMMU topology of hardware.
 
-``` 
+```
 container
 +------------------------+
 |    group0    group1    |
@@ -67,12 +67,12 @@ struct vfio_container {
 
 A container manages memory resources and is related to the IOMMU, DMA, and address space. You can open the device file **/dev/vfio/vfio** to obtain the file descriptor corresponding to the container, and specific implementations of the VFIO device file operations are included in the kernel file **vfio/vfio.c**. **ioctl** is used to obtain IOMMU information. VFIO sends IOMMU-related operations in userspace to the underlying **vfio_iommu** driver. The following lists the interfaces provided by VFIO **ioctl**.
 
-* Obtaining the API version
-* Setting the IOMMU type, for example, **VFIO_TYPE1_IOMMU**
-* Obtaining IOMMU information
-* Allocating space and performing DMA mapping
+- Obtaining the API version
+- Setting the IOMMU type, for example, **VFIO_TYPE1_IOMMU**
+- Obtaining IOMMU information
+- Allocating space and performing DMA mapping
 
-``` c
+```c
 int container, group, device, i;
 struct vfio_iommu_type1_info iommu_info = { .argsz = sizeof(iommu_info) };
 struct vfio_iommu_type1_dma_map dma_map = { .argsz = sizeof(dma_map) };
@@ -132,14 +132,14 @@ A group is the minimum hardware granularity for the IOMMU to implement DMA isola
 
 For a PCI device (for example, 0000:06:0d.0::), you can obtain its **iommu_group** in the **sys** directory through **readlink**. In the following example, the PCI device is in the IOMMU group whose ID is 26.
 
-``` shell
+```shell
 $ readlink /sys/bus/pci/devices/0000:06:0d.0/iommu_group
 ../../../../kernel/iommu_groups/26
 ```
 
 The device is mounted to the PCI bus. You can use vfio-pci to manage the group by unbinding the PCI device from the original driver and writing the ID to the new **vfio-pci** path. A character device for the group will be created.
 
-``` shell
+```shell
 $ lspci -n -s 0000:06:0d.0
 06:0d.0 0401: 1102:0002 (rev 08)
 $ echo 0000:06:0d.0 > /sys/bus/pci/devices/0000:06:0d.0/driver/unbind
@@ -148,11 +148,11 @@ $ echo 1102 0002 > /sys/bus/pci/drivers/vfio-pci/new_id
 
 After the device is bound to VFIO, a new group ID is generated in the **/dev/vfio/** directory. You can use the ID to obtain group information and perform the following operations:
 
-* Querying the group status and checking whether all devices are bound to the VFIO driver
-* Setting the container of the group
-* Allocating a file descriptor to the device based on the BDF (Bus:Device.Function) of the device
+- Querying the group status and checking whether all devices are bound to the VFIO driver
+- Setting the container of the group
+- Allocating a file descriptor to the device based on the BDF (Bus:Device.Function) of the device
 
-``` c
+```c
 struct vfio_group_status group_status =
                 { .argsz = sizeof(group_status) };
 /* Open the group */
@@ -188,18 +188,18 @@ To support both the platform and PCI devices, VFIO provides **struct vfio_device
 
 After the device descriptor is obtained through the BDF of the device and the **ioctl** operation on the group, the kernel operation structure **vfio_pci_ops** of **vfio_pci** corresponding to the descriptor can be used. This **ops** structure is registered with the PCI device when the **vfio_pci_probe** function of the **vfio_pci** device driver is invoked. During the probe, the device is added to the corresponding group. The **vfio_pci_ioctl** function is an important device operation in **vfio_pci**. It provides the following interfaces:
 
-* **VFIO_DEVICE_GET_INFO**: Obtains device information, including the number of regions and IRQs.
-* **VFIO_DEVICE_GET_REGION_INFO**: Obtains the **vfio_region** information, including the regions of the configuration space and BAR space.
-* **VFIO_DEVICE_GET_IRQ_INFO**: Obtains device interrupt information.
-* **VFIO_DEVICE_SET_IRQS**: Completes interrupt-related settings.
-* **VFIO_DEVICE_RESET**: Resets the device.
-* **VFIO_DEVICE_GET_PCI_HOT_RESET_INFO**: Obtains the hot reset information of the PCI device.
-* **VFIO_DEVICE_PCI_HOT_RESET**: Sets hot reset for the PCI device.
-* **VFIO_DEVICE_IOEVENTFD**: Sets ioeventfd.
+- **VFIO_DEVICE_GET_INFO**: Obtains device information, including the number of regions and IRQs.
+- **VFIO_DEVICE_GET_REGION_INFO**: Obtains the **vfio_region** information, including the regions of the configuration space and BAR space.
+- **VFIO_DEVICE_GET_IRQ_INFO**: Obtains device interrupt information.
+- **VFIO_DEVICE_SET_IRQS**: Completes interrupt-related settings.
+- **VFIO_DEVICE_RESET**: Resets the device.
+- **VFIO_DEVICE_GET_PCI_HOT_RESET_INFO**: Obtains the hot reset information of the PCI device.
+- **VFIO_DEVICE_PCI_HOT_RESET**: Sets hot reset for the PCI device.
+- **VFIO_DEVICE_IOEVENTFD**: Sets ioeventfd.
 
 To expose device capabilities to userspace, ensure the device configuration space can be directly accessed and device interrupts can be processed by user-mode programs. For a PCI device, the configuration space is a VFIO region, which corresponds to a block of MMIO memory. DMA remapping enables the device configuration space to be directly accessed from userspace, and interrupt remapping enables user-mode drivers to process device interrupts.
 
-``` c
+```c
 struct vfio_device_info device_info = { .argsz = sizeof(device_info) };
 
 /* Get a file descriptor for the device */
@@ -279,14 +279,14 @@ VFIO_GROUP_SET_CONTAINER:
 
 The implementation of VFIO kernel components is closely related to the IOMMU and device model of the Linux kernel. Three VFIO concepts (container, group, and device) are abstracted to encapsulate the Linux kernel components. This article describes the basic VFIO concepts using user-mode interfaces of VFIO. To expose a physical device to userspace through the VFIO driver, the following steps re required:
 
-* Unbind the device from the original driver and then bind the device to the VFIO driver. The VFIO driver specifies a group for the device depending on the physical topology of the device and IOMMU.
-* After the binding is complete, user-mode drivers can obtain the VFIO container through **/dev/vfio/vfio**, set the **vfio_iommu_driver** type, and indirectly access the IOMMU through the container to complete DMA mapping.
-* Then, you can use **/dev/vfio/%group_id** to obtain the group to which the device belongs and use **ioctl** to add all devices in the group to the container.
-* Then, the file descriptor of the VFIO device can be obtained by using the group ID and device BDF, and the configuration space and IRQ information of the device can be accessed by using the interface provided by VFIO. In this way, physical devices can be accessed from userspace.
+- Unbind the device from the original driver and then bind the device to the VFIO driver. The VFIO driver specifies a group for the device depending on the physical topology of the device and IOMMU.
+- After the binding is complete, user-mode drivers can obtain the VFIO container through **/dev/vfio/vfio**, set the **vfio_iommu_driver** type, and indirectly access the IOMMU through the container to complete DMA mapping.
+- Then, you can use **/dev/vfio/%group_id** to obtain the group to which the device belongs and use **ioctl** to add all devices in the group to the container.
+- Then, the file descriptor of the VFIO device can be obtained by using the group ID and device BDF, and the configuration space and IRQ information of the device can be accessed by using the interface provided by VFIO. In this way, physical devices can be accessed from userspace.
 
 VFIO device passthrough has several key issues. For example, how to access the I/O address space of a passthrough device, and how to complete interrupt remapping and DMA remapping to enable user-mode drivers to access physical devices.
 
 ## References
 
-* [https://www.kernel.org/doc/Documentation/vfio.txt](https://www.kernel.org/doc/Documentation/vfio.txt)
-* [https://kernelgo.org/vfio-introduction.html](https://kernelgo.org/vfio-introduction.html)
+- [https://www.kernel.org/doc/Documentation/vfio.txt](https://www.kernel.org/doc/Documentation/vfio.txt)
+- [https://kernelgo.org/vfio-introduction.html](https://kernelgo.org/vfio-introduction.html)
