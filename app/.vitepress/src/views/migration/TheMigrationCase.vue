@@ -131,7 +131,7 @@ const { frontmatter } = useData();
     grid-template-columns: repeat(3, 1fr);
     row-gap: var(--o-spacing-h4);
     column-gap: var(--o-spacing-h4);
-    margin-top: 64px;
+
     @media screen and (max-width: 1280px) {
       grid-template-columns: repeat(2, 1fr);
     }
