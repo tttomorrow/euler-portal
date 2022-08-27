@@ -439,7 +439,7 @@ const moblieCurrentChange = (val: string) => {
         class="post-btn"
         type="outline"
         animation
-        size="small"
+        size="nomral"
         @click="postBlog"
       >
         {{ userCaseData.STRATEGY }}
@@ -597,9 +597,11 @@ const moblieCurrentChange = (val: string) => {
 }
 
 .bannericon {
-  // margin-left: var(--o-spacing-h8);
   color: var(--e-color-brand2);
-  font-size: var(--o-font-size-tip);
+  @media (max-width: 767px) {
+    font-size: var(--o-font-size-text);
+  }
+  // font-size: var(--o-font-size-tip);
   // transform: scale(.5);
 }
 
@@ -607,11 +609,9 @@ const moblieCurrentChange = (val: string) => {
   color: var(--e-color-white);
   border-color: var(--e-color-white);
   @media (max-width: 767px) {
-    padding: 3px 14px;
+    padding: 3px 16px;
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
-    width: 106px;
-    height: 30px;
   }
 }
 
@@ -698,7 +698,11 @@ const moblieCurrentChange = (val: string) => {
         -webkit-line-clamp: 2;
       }
       &-tags {
+        display: flex;
         margin-top: var(--o-spacing-h7);
+        height: 24px;
+        flex-wrap: wrap;
+        overflow: hidden;
         .tagitem {
           font-size: var(--o-spacing-h6);
           margin-right: var(--o-spacing-h8);
@@ -781,6 +785,10 @@ const moblieCurrentChange = (val: string) => {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
     font-weight: 500;
+    p {
+      @include showline();
+      -webkit-line-clamp: 1;
+    }
   }
   .tagitem {
     font-size: var(--o-font-size-tip);

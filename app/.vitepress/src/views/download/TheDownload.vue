@@ -276,7 +276,7 @@ onMounted(() => {
 
       <ODrawer
         v-model="isDrawerOpen"
-        :title="i18n.download.MANUFACTURER"
+        :title="i18n.download.SELECT"
         direction="btt"
         :show-close="true"
         custom-class="filter-drawer"
@@ -635,8 +635,8 @@ onMounted(() => {
         justify-content: center;
         align-items: center;
         padding: var(--o-spacing-h10) var(--o-spacing-h9);
-        background-color: var(--e-color-neutral11);
-        color: var(--e-color-neutral5);
+        background-color: var(--e-color-bg-secondry);
+        color: var(--e-color-text-secondry);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-right: var(--o-spacing-h9);
