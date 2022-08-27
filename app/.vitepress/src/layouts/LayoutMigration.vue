@@ -131,6 +131,9 @@ const handleNodeClick = (node: any) => {
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-tree-node__content:hover) {
+  background-color: var(--e-color-bg4);
+}
 .migration-head {
   padding: 8px 16px;
   display: flex;
