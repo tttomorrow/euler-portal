@@ -463,14 +463,12 @@ onMounted(async () => {
       justify-content: center;
     }
   }
-  .el-tabs__item {
-    font-size: var(--o-font-size-h8);
-    line-height: var(--o-line-height-h8);
-    @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-    }
-  }
+  // .el-tabs__item {
+  //   @media screen and (max-width: 768px) {
+  //     font-size: var(--o-font-size-text);
+  //     line-height: var(--o-line-height-text);
+  //   }
+  // }
   .el-tabs__nav-wrap::after {
     display: none;
   }

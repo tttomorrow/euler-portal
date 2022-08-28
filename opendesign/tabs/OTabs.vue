@@ -16,14 +16,20 @@ const attrs = useAttrs();
   --o-tabs-color_hover: var(--e-color-brand1);
   --o-font-color: var(--o-tabs-font);
   &.el-tabs {
-    --el-tabs-header-height: 48px;
+    .el-tabs__header {
+      margin-bottom: 0;
+    }
     .el-tabs__nav-wrap {
       &::after {
         display: none;
       }
       .el-tabs__item {
-        line-height: 48px !important;
         color: var(--o-tabs-color);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
+        height: auto;
         &:hover {
           color: var(--o-tabs-color_hover);
         }
@@ -35,7 +41,10 @@ const attrs = useAttrs();
     @media screen and (max-width: 768px) {
       .el-tabs__nav-wrap {
         .el-tabs__item {
-          padding: 0 var(--o-spacing-h8);
+          padding-top: 6px;
+          padding-bottom: 6px;
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
         }
       }
     }
