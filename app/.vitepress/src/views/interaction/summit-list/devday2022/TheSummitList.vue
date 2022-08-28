@@ -9,7 +9,7 @@ import TheSummitScheduler from './TheSummitScheduler.vue';
 import TheSummitVideo from './TheSummitVideo.vue';
 
 import banner from '@/assets/banner-secondary.png';
-import summit from '@/assets/category/summit/header.png';
+import summitIllustration from '@/assets/illustrations/summit.png';
 import eulerLight from '@/assets/category/summit/cooperate/openEulerlogo.png';
 import eulerDark from '@/assets/category/summit/cooperate/openeuler_dark.png';
 import atomLight from '@/assets/category/summit/cooperate/openatom.png';
@@ -22,102 +22,99 @@ const commonStore = useCommon();
 <template>
   <BannerLevel2
     :background-image="banner"
-    background-text="INTERACTION"
+    background-text="CONNECT"
     title="峰会"
-    :illustration="summit"
+    :illustration="summitIllustration"
   />
   <AppContext>
-    <div class="main">
-      <div class="middle">
-        <div class="middle-text">
-          <p>
-            openEuler Developer Day 2022 （简称 ODD 2022）是开放原子开源基金会的
-            openEuler 社区发起的开发者大会。旨在推动 openEuler
-            在服务器、云计算、边缘计算和嵌入式四大场景的技术探索和创新。本次 ODD
-            2022 正式发布 openEuler 22.03
-            全场景长周期版本，展示社区伙伴联合创新成果，分享多行业使用 openEuler
-            规模部署的商业案例，举办社区治理机构的线上工作会议。openEuler
-            始终与开发者在一起，开创新境，共创未来。
-          </p>
-        </div>
-        <div class="middle-review">
-          <p class="headline">REVIEW</p>
-          <p class="subtitle">精彩回顾</p>
-          <TheSummitVideo :live-data="i18n.summit.LIVEDATA" />
-        </div>
-        <div class="middle-schedule">
-          <p class="headline">ACENDA</p>
-          <p class="subtitle">峰会日程</p>
-          <TheSummitScheduler :agenda-data="i18n.summit.AGENDA" />
-        </div>
-        <div class="middle-guests">
-          <p class="headline">ACENDA</p>
-          <p class="subtitle">演讲嘉宾</p>
-          <TheSummitGuests
-            :lecturer-list="i18n.summit.LECTURER_LIST"
-            shape="circle"
-            :web-columns-num="4"
-            :mobile-columns-num="2"
-          />
-        </div>
+    <div class="summit-middle">
+      <div class="summit-middle-text">
+        <p>
+          openEuler Developer Day 2022 （简称 ODD 2022）是开放原子开源基金会的
+          openEuler 社区发起的开发者大会。旨在推动 openEuler
+          在服务器、云计算、边缘计算和嵌入式四大场景的技术探索和创新。本次 ODD
+          2022 正式发布 openEuler 22.03
+          全场景长周期版本，展示社区伙伴联合创新成果，分享多行业使用 openEuler
+          规模部署的商业案例，举办社区治理机构的线上工作会议。openEuler
+          始终与开发者在一起，开创新境，共创未来。
+        </p>
       </div>
-      <div class="foot">
-        <div class="foot-construction">
-          <p class="headline">RARTNERS</p>
-          <p class="subtitle">共建单位</p>
-          <div class="foot-construction-guidance">
-            <p>主办方</p>
-          </div>
-          <div class="foot-construction-imglist">
-            <a
-              ><img :src="commonStore.theme === 'light' ? atomLight : atomDark"
-            /></a>
-            <a
-              ><img
-                :src="commonStore.theme === 'light' ? eulerLight : eulerDark"
-            /></a>
-          </div>
-          <div class="foot-construction-company">
-            <p>联办单位</p>
-            <div class="foot-construction-company-list">
-              <div v-for="item in i18n.summit.COOPERATE_LIST" :key="item.IMG">
-                <a :href="item.WEBSITE" target="_blank"
-                  ><img
-                    :src="
-                      commonStore.theme === 'light' ? item.IMG : item.DARK_IMG
-                    "
-                /></a>
-              </div>
+      <div class="summit-middle-review">
+        <p class="headline">REVIEW</p>
+        <p class="subtitle">精彩回顾</p>
+        <TheSummitVideo :live-data="i18n.summit.LIVEDATA" />
+      </div>
+      <div class="summit-middle-schedule">
+        <p class="headline">ACENDA</p>
+        <p class="subtitle">峰会日程</p>
+        <TheSummitScheduler :agenda-data="i18n.summit.AGENDA" />
+      </div>
+      <div class="summit-middle-guests">
+        <p class="headline">ACENDA</p>
+        <p class="subtitle">演讲嘉宾</p>
+        <TheSummitGuests
+          :lecturer-list="i18n.summit.LECTURER_LIST"
+          shape="circle"
+          :web-columns-num="4"
+          :mobile-columns-num="2"
+        />
+      </div>
+    </div>
+    <div class="summit-foot">
+      <div class="summit-foot-construction">
+        <p class="headline">RARTNERS</p>
+        <p class="subtitle">共建单位</p>
+        <div class="foot-construction-guidance">
+          <p>主办方</p>
+        </div>
+        <div class="summit-foot-construction-imglist">
+          <a
+            ><img :src="commonStore.theme === 'light' ? atomLight : atomDark"
+          /></a>
+          <a
+            ><img :src="commonStore.theme === 'light' ? eulerLight : eulerDark"
+          /></a>
+        </div>
+        <div class="summit-foot-construction-company">
+          <p>联办单位</p>
+          <div class="foot-construction-company-list">
+            <div v-for="item in i18n.summit.COOPERATE_LIST" :key="item.IMG">
+              <a :href="item.WEBSITE" target="_blank"
+                ><img
+                  :src="
+                    commonStore.theme === 'light' ? item.IMG : item.DARK_IMG
+                  "
+              /></a>
             </div>
           </div>
-          <div class="foot-construction-company">
-            <p>协办单位</p>
-            <div class="foot-construction-company-list">
-              <div v-for="item in i18n.summit.SPONSOR_LIST" :key="item.IMG">
-                <a
-                  ><img
-                    :src="
-                      commonStore.theme === 'light' ? item.IMG : item.DARK_IMG
-                    "
-                /></a>
-              </div>
-            </div>
-          </div>
-          <div class="foot-construction-review">
-            <p class="headline">RARTNERS</p>
-            <p class="subtitle">精彩回顾</p>
-            <div class="foot-construction-review-list">
+        </div>
+        <div class="summit-foot-construction-company">
+          <p>协办单位</p>
+          <div class="foot-construction-company-list">
+            <div v-for="item in i18n.summit.SPONSOR_LIST" :key="item.IMG">
               <a
-                v-for="item in i18n.summit.REVIEWLIST"
-                :key="item.TITLE"
-                :href="item.ADDRESS"
-                target="_blank"
-                class="foot-construction-review-list-item"
-              >
-                <img src="@/assets/category/summit/icon-live.png" />
-                <p>{{ item.TITLE }}</p>
-              </a>
+                ><img
+                  :src="
+                    commonStore.theme === 'light' ? item.IMG : item.DARK_IMG
+                  "
+              /></a>
             </div>
+          </div>
+        </div>
+        <div class="summit-foot-construction-review">
+          <p class="headline">RARTNERS</p>
+          <p class="subtitle">精彩回顾</p>
+          <div class="foot-construction-review-list">
+            <a
+              v-for="item in i18n.summit.REVIEWLIST"
+              :key="item.TITLE"
+              :href="item.ADDRESS"
+              target="_blank"
+              class="foot-construction-review-list-item"
+            >
+              <img src="@/assets/category/summit/icon-live.png" />
+              <p>{{ item.TITLE }}</p>
+            </a>
           </div>
         </div>
       </div>
@@ -138,7 +135,7 @@ const commonStore = useCommon();
   margin-bottom: var(--o-spacing-h2);
   transform: translateY(-24px);
 }
-.middle {
+.summit-middle {
   &-text {
     color: var(--e-color-text1);
     font-size: var(--o-font-size-h8);
@@ -159,7 +156,7 @@ const commonStore = useCommon();
     text-align: center;
   }
 }
-.foot {
+.summit-foot {
   padding: 0 44px;
   &-construction {
     text-align: center;

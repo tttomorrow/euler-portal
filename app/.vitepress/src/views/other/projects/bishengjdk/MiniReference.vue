@@ -33,9 +33,9 @@ const goLink = (path: string) => {
     />
     <div class="reference-list">
       <OContainer
-        :level-index="2"
         v-for="(item, index) in referenceObj.LINK_LIST"
         :key="index"
+        :level-index="2"
         class="item"
       >
         <div class="link">

@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { computed, ref, onMounted, reactive } from 'vue';
 import { useRouter, useData } from 'vitepress';
-import { useI18n } from '@/i18n';
 
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-import BannerImg1 from '@/assets/banner-secondary.png';
-import BannerImg2 from '@/assets/illustrations/search.png';
-import NotFound from '@/NotFound.vue';
-import MobileFilter from '@/components/MobileFilter.vue';
+import { useI18n } from '@/i18n';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-import { getSortData, getTagsData } from '@/api/api-search';
+import MobileFilter from '@/components/MobileFilter.vue';
+import NotFound from '@/NotFound.vue';
 import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+
+import banner from '@/assets/banner-secondary.png';
+import newsIllustration from '@/assets/illustrations/news.png';
+
+import { getSortData, getTagsData } from '@/api/api-search';
 
 interface NewsData {
   articleName: string;
@@ -411,10 +413,10 @@ const moblieCurrentChange = (val: string) => {
 
 <template>
   <BannerLevel2
-    :background-image="BannerImg1"
+    :background-image="banner"
     background-text="INTERACTION"
     :title="userCaseData.NEWS"
-    :illustration="BannerImg2"
+    :illustration="newsIllustration"
   />
   <AppContent :mobile-top="16">
     <template v-if="true">

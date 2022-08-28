@@ -6,16 +6,16 @@ title: '贡献攻略'
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import ContributionTab from "@/views/community/contribution/ContributionTab.vue";
 
-import BannerBackground from '@/assets/banner-secondary.png';
-import BannerIllustration from '/img/community/share/illustration-banner.png';
+import banner from '@/assets/banner-secondary.png';
+import contributionIllustration from '@/assets/illustrations/contribution.png';
 
 </script>
 
 <ClientOnly>
   <BannerLevel2
   title="贡献攻略"
-  :illustration="BannerIllustration"
-  :background-image="BannerBackground"
+  :illustration="banner"
+  :background-image="contributionIllustration"
   background-text="COMMUNITY"
   />
 </ClientOnly>

@@ -2,14 +2,16 @@
 import { useData, useRouter } from 'vitepress';
 import { computed, onMounted, ref, reactive, watch } from 'vue';
 import _ from 'lodash';
-import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
+
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
-import IconHome from '~icons/app/icon-home.svg';
 
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
+import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
+
 import IconGitee from '~icons/app/icon-gitee.svg';
+import IconHome from '~icons/app/icon-home.svg';
 
 interface LIST_PARAMS {
   page: number;

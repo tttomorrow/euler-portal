@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
 import { useData, useRouter } from 'vitepress';
+
 import { useI18n } from '@/i18n';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+import AppContent from '@/components/AppContent.vue';
 
 import { getSalon } from '@/api/api-sig';
 
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconHome from '~icons/app/icon-home.svg';
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-import BannerImg1 from '@/assets/banner-secondary.png';
-import BannerImg2 from '@/assets/illustrations/search.png';
-import Img404 from '@/assets/404.svg';
-import useWindowResize from '@/components/hooks/useWindowResize';
-
-import AppContent from '@/components/AppContent.vue';
+import banner from '@/assets/banner-secondary.png';
+import salonIllustration from '@/assets/illustrations/salon.png';
+import emptyImg from '@/assets/404.svg';
 
 const salonData = computed(() => i18n.value.interaction.MEETUPSLIST);
 
@@ -230,10 +231,10 @@ onMounted(async () => {
 <template>
   <div class="salon">
     <BannerLevel2
-      :background-image="BannerImg1"
+      :background-image="banner"
       background-text="CONNECT"
       :title="salonData.MEETUPS"
-      :illustration="BannerImg2"
+      :illustration="salonIllustration"
     />
     <div class="salon-tabs">
       <OTabs v-model="activeName">
@@ -331,7 +332,7 @@ onMounted(async () => {
         </div>
         <div v-else>
           <div class="nofound">
-            <img class="img" :src="Img404" alt="404" />
+            <img class="img" :src="emptyImg" alt="404" />
             <p>{{ lang === 'zh' ? '暂无活动！' : 'NotFound !' }}</p>
           </div>
         </div>
@@ -405,7 +406,7 @@ onMounted(async () => {
         </div>
         <div v-else>
           <div class="nofound">
-            <img class="img" :src="Img404" alt="404" />
+            <img class="img" :src="emptyImg" alt="404" />
             <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
           </div>
         </div>

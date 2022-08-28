@@ -1,6 +1,6 @@
 
 <script setup lang="ts">
-  import TheLiveList from "@/views/interaction/live-list/TheLiveList.vue"
+  import TheLive from "@/views/interaction/live-list/TheLive.vue"
 </script>
 
-<TheLiveList />
+<TheLive />

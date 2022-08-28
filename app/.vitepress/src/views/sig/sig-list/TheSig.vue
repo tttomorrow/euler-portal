@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useI18n } from '@/i18n';
-import { getSigList } from '@/api/api-sig';
+
 import AppContext from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import TheSigList from './TheSigList.vue';
-import TheSigBoard from './TheSigBoard.vue';
-import TheSigLandscape from './TheSigLandscape.vue';
+import SigList from './SigList.vue';
+import SigBoard from './SigBoard.vue';
+import SigLandscape from './SigLandscape.vue';
+
+import { getSigList } from '@/api/api-sig';
+
 import banner from '@/assets/banner-secondary.png';
-import illustration from '@/assets/illustrations/search.png';
-import moillustration from '@/assets/category/sig/sig-list/sigmo-bg.png';
-import useWindowResize from '@/components/hooks/useWindowResize';
+import sigIllustration from '@/assets/illustrations/sig.png';
 
 interface SIGLIST {
   group_name: string;
@@ -23,11 +24,6 @@ interface SIGLIST {
 
 const i18n = useI18n();
 const sigList = ref<SIGLIST[]>([]);
-
-const screenWidth = useWindowResize();
-const isMobile = computed(() => {
-  return screenWidth.value <= 768 ? true : false;
-});
 
 onMounted(() => {
   try {
@@ -43,10 +39,10 @@ onMounted(() => {
 <template>
   <BannerLevel2
     :background-image="banner"
-    :illustration="isMobile ? moillustration : illustration"
+    :illustration="sigIllustration"
     title="SIG"
     :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
-    :background-text="isMobile ? 'SIG' : ''"
+    background-text="SIG"
   />
   <AppContext :mobile-top="16">
     <div class="sig-ul">
@@ -60,13 +56,13 @@ onMounted(() => {
       <p>SIG List</p>
       <OTabs>
         <OTabPane label="SIG List">
-          <TheSigList />
+          <SigList />
         </OTabPane>
         <OTabPane label="SIG Board" lazy>
-          <TheSigBoard :sig-list="sigList" />
+          <SigBoard :sig-list="sigList" />
         </OTabPane>
         <OTabPane label="SIG Landscape">
-          <TheSigLandscape />
+          <SigLandscape />
         </OTabPane>
       </OTabs>
     </div>

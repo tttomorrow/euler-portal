@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, CSSProperties } from 'vue';
+import { computed, CSSProperties, onMounted } from 'vue';
+import AOS from 'aos';
 
 const props = defineProps({
   backgroundImage: {
@@ -39,19 +40,34 @@ const rootStyle = computed(() => {
   }
   return result;
 });
+
+onMounted(() => {
+  AOS.init();
+});
 </script>
 
 <template>
   <div class="banner-minisite" :style="rootStyle">
     <div class="wrap">
-      <div class="banner-text">
+      <div
+        class="banner-text"
+        data-aos="fade-up"
+        data-aos-once="true"
+        data-aos-duration="800"
+      >
         <p v-if="backgroundText" class="banner-text-bg">
           {{ backgroundText }}
         </p>
         <h1 v-if="title" class="banner-title">{{ title }}</h1>
         <p v-if="subtitle" class="banner-subtitle">{{ subtitle }}</p>
       </div>
-      <div v-if="illustration" class="banner-illustration">
+      <div
+        v-if="illustration"
+        class="banner-illustration"
+        data-aos="fade-down"
+        data-aos-once="true"
+        data-aos-duration="800"
+      >
         <img :src="illustration" />
       </div>
     </div>
@@ -73,14 +89,16 @@ const rootStyle = computed(() => {
     justify-content: space-between;
     min-height: 280px;
     position: relative;
+    @media screen and (max-width: 1439px) {
+      padding: 0 24px;
+    }
     @media screen and (max-width: 768px) {
       min-height: 126px;
-      padding: 0 24px;
     }
     .banner-text {
       position: relative;
-      padding-top: 50px;
-      padding-bottom: 32px;
+      padding-top: 86px;
+      padding-bottom: 86px;
       max-width: 54%;
 
       @media screen and (max-width: 768px) {
@@ -90,8 +108,8 @@ const rootStyle = computed(() => {
 
       .banner-text-bg {
         position: absolute;
-        top: 60px;
-        color: #2e4fb0;
+        top: 86px;
+        color: #0d3cb4;
         opacity: 0.8;
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
@@ -116,6 +134,7 @@ const rootStyle = computed(() => {
         font-size: var(--o-font-size-h2);
         line-height: var(--o-line-height-h2);
         margin-top: var(--o-spacing-h2);
+        font-weight: 500;
         margin-bottom: 0;
 
         @media screen and (max-width: 1080px) {
@@ -155,9 +174,10 @@ const rootStyle = computed(() => {
       flex-direction: column-reverse;
       justify-content: center;
       object-fit: fill;
+      right: 44px;
 
       img {
-        max-height: 230px;
+        max-height: 232px;
 
         @media screen and (max-width: 1080px) {
           max-height: 160px;
