@@ -5,6 +5,7 @@
   margin: var(--o-spacing-h2) auto;
   margin-bottom: var(--o-spacing-h1);
   background-color: var(--e-color-bg2);
+  box-shadow: var(--e-shadow-sl1);
   & > *:first-child {
     margin-top: 0 !important;
   }
