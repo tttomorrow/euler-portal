@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { reactive, ref, onMounted, watch, computed } from 'vue';
-import { useI18n } from '@/i18n';
 import { useRouter } from 'vitepress';
+
+import useWindowResize from '@/components/hooks/useWindowResize';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -9,12 +11,11 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner-secondary.png';
-import cve from '@/assets/illustrations/cve.png';
-import search from '@/assets/illustrations/search.png';
+import supportIllustration from '@/assets/illustrations/support.png';
+import cveIllstration from '@/assets/illustrations/cve.png';
 
 import { getCveList } from '@/api/api-security';
 import { CveLists, CveQuery } from '@/shared/@types/type-support';
-import useWindowResize from '@/components/hooks/useWindowResize';
 // const windowWidth = ref(useWindowResize());
 const screenWidth = useWindowResize();
 
@@ -115,7 +116,7 @@ watch(queryData, () => getCveLists(queryData));
     background-text="SUPPORT"
     :title="i18n.security.CVE"
     subtitle=""
-    :illustration="screenWidth >= 768 ? search : cve"
+    :illustration="screenWidth >= 768 ? supportIllustration : cveIllstration"
   />
   <AppContent :mobile-top="16">
     <OSearch

@@ -1,22 +1,23 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-import AppContent from '@/components/AppContent.vue';
-import AppPaginationMo from '@/components/AppPaginationMo.vue';
+import { ElMessage } from 'element-plus';
+
 import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-import BannerBG from '@/assets/banner-secondary.png';
-import BannerIllustration from '@/assets/illustrations/search.png';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+import AppContent from '@/components/AppContent.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
+import banner from '@/assets/banner-secondary.png';
+import liveIllustration from '@/assets/illustrations/live.png';
 import cardBg_light from '@/assets/category/interaction/live/light-crad-bg.png';
 import cardBg_light_mo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';
 import cardBg_dark from '@/assets/category/interaction/live/dark-crad-bg.png';
 import cardBg_dark_mo from '@/assets/category/interaction/live/dark-crad-bg-mobile.png';
 import cardBg_light_mo_extension from '@/assets/category/interaction/live/bg-extension-light.png';
 import cardBg_dark_mo_extension from '@/assets/category/interaction/live/bg-extension-dark.png';
-import { ElMessage } from 'element-plus';
 
 import IconRight from '~icons/app/icon-arrow-right1.svg';
 import IconUser from '~icons/app/icon-user.svg';
@@ -75,10 +76,10 @@ function turnPage(option: string) {
 
 <template>
   <BannerLevel2
-    :background-image="BannerBG"
-    background-text="INTERACTION"
+    :background-image="banner"
+    background-text="CONNECT"
     :title="i18n.live.LIVETITLE"
-    :illustration="BannerIllustration"
+    :illustration="liveIllustration"
   />
   <AppContent>
     <div class="live">

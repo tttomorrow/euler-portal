@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, reactive } from 'vue';
 import { useRouter, useData } from 'vitepress';
-import { useI18n } from '@/i18n';
 
+import { useI18n } from '@/i18n';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+import AppContent from '@/components/AppContent.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import BannerImg1 from '@/assets/banner-secondary.png';
-import BannerImg2 from '@/assets/illustrations/search.png';
+import NotFound from '@/NotFound.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
+
+import banner from '@/assets/banner-secondary.png';
+import blogIllustration from '@/assets/illustrations/blog.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
-import NotFound from '@/NotFound.vue';
 import IconRight from '~icons/app/arrow-right.svg';
-import useWindowResize from '@/components/hooks/useWindowResize';
 
 import { getSortData, getTagsData } from '@/api/api-search';
-import OIcon from 'opendesign/icon/OIcon.vue';
-import AppContent from '@/components/AppContent.vue';
-import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 interface BlogData {
   archives: string;
@@ -429,10 +430,10 @@ const moblieCurrentChange = (val: string) => {
 
 <template>
   <BannerLevel2
-    :background-image="BannerImg1"
-    background-text="INTERACTION"
+    :background-image="banner"
+    background-text="CONNECT"
     :title="userCaseData.BLOG"
-    :illustration="BannerImg2"
+    :illustration="blogIllustration"
   >
     <template #default>
       <OButton

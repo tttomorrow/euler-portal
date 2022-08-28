@@ -8,8 +8,8 @@ import MobileFilter from '@/components/MobileFilter.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner-secondary.png';
-import search from '@/assets/illustrations/search.png';
-import cve from '@/assets/illustrations/cve.png';
+import supportIllustration from '@/assets/illustrations/support.png';
+import cveIllstration from '@/assets/illustrations/cve.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
@@ -392,7 +392,7 @@ onMounted(() => {
     background-text="CONTENT"
     :title="i18n.compatibility.COMPATIBILITY"
     subtitle=""
-    :illustration="screenWidth > 768 ? search : cve"
+    :illustration="screenWidth > 768 ? supportIllustration : cveIllstration"
   />
 
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">

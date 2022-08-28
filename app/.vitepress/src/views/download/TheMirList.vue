@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
-import { useI18n } from '@/i18n';
-import { getAllMirror } from '@/api/api-mirror';
-import IconCpoy from '~icons/app/icon-copy.svg';
 import { ElMessage } from 'element-plus';
-import BannerLevel3 from '@/components/BannerLevel3.vue';
-import AppContent from '@/components/AppContent.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import { useI18n } from '@/i18n';
+
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+import AppContent from '@/components/AppContent.vue';
 import MapContainer from './MapContainer.vue';
+
+import IconCpoy from '~icons/app/icon-copy.svg';
+import banner from '@/assets/banner-secondary.png';
+import downloadIllustration from '@/assets/illustrations/download.png';
+
+import { getAllMirror } from '@/api/api-mirror';
 
 interface MapMsg {
   name: string;
@@ -135,10 +139,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <BannerLevel3
+  <BannerLevel2
     :background-image="banner"
     background-text="DOWNLOAD"
     :title="i18n.download.MIRROR_ALL.TITLE"
+    :illustration="downloadIllustration"
   />
   <AppContent class="mirror-list">
     <p>

@@ -5,9 +5,10 @@ title: '行为守则'
 <script setup lang="ts">
 import { computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
-import bannerBG from '@/assets/banner-secondary.png';
-import illustration from '@/assets/illustrations/covenant.png';
 import useWindowResize from '@/components/hooks/useWindowResize';
+
+import banner from '@/assets/banner-secondary.png';
+import contributionIllustration from '@/assets/illustrations/contribution.png';
 
 const screenWidth = useWindowResize();
 const isMobile = computed(() => {
@@ -17,10 +18,10 @@ const isMobile = computed(() => {
 
 <ClientOnly>
   <BannerLevel2
-    :background-image="bannerBG"
+    :background-image="banner"
     background-text="COMMUNITY"
     title="行为守则"
-    :illustration="illustration"
+    :illustration="contributionIllustration"
   />
 </ClientOnly>
 

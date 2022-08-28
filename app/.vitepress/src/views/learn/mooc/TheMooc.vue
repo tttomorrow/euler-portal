@@ -3,12 +3,11 @@ import AppContent from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import moocBanner from '@/assets/banner-secondary.png';
-import searchBanner from '@/assets/illustrations/search.png';
+import moocIllustration from '@/assets/illustrations/mooc.png';
 
 import IconArrowRight1 from '~icons/app/icon-arrow-right1.svg';
 import { useI18n } from '@/i18n';
 
-// const i18n=computed(()=>useI18n());
 const i18n = useI18n();
 </script>
 
@@ -18,7 +17,7 @@ const i18n = useI18n();
       background-text="MOOC"
       :title="i18n.mooc.MOOC.MOOC"
       :background-image="moocBanner"
-      :illustration="searchBanner"
+      :illustration="moocIllustration"
     />
     <AppContent>
       <div class="mooc-content">
