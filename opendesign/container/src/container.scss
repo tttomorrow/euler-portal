@@ -10,11 +10,9 @@
     box-shadow: var(--o-container-shadow-level2);
 
     &:hover {
-      background-color: var(--o-container-bg-color-level2_hover);
-      box-shadow: var(--o-container-shadow-level2_hover);
-      @media screen and (max-width: 1100px) {
-        background-color: var(--o-container-bg-color-level2);
-        box-shadow: var(--o-container-shadow-level2);
+      @media screen and (min-width: 1100px) {
+        background-color: var(--o-container-bg-color-level2_hover);
+        box-shadow: var(--o-container-shadow-level2_hover);
       }
     }
   }

@@ -97,20 +97,7 @@ const imgUrlHover = computed(
       }
     }
     &:hover {
-      .nav-item-icon-hover {
-        display: block;
-      }
-      .nav-item-icon {
-        display: none;
-      }
-      .nav-text {
-        color: var(--e-color-brand1);
-        .nav-descriptive,
-        .nav-title {
-          color: var(--e-color-brand1);
-        }
-      }
-      @media screen and (max-width: 1416px) {
+      @media screen and (max-width: 1100px) {
         .nav-item-icon-hover {
           display: none;
         }

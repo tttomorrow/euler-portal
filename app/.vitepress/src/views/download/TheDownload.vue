@@ -480,6 +480,7 @@ onMounted(() => {
           v-if="currentPage * pageSize < total"
           class="page-box-button"
           @click="handleLoadMore"
+          size="small"
         >
           {{ i18n.download.PAGINATION[3] }}
         </OButton>
@@ -541,6 +542,8 @@ onMounted(() => {
     justify-content: center;
     color: var(--e-color-text1);
     align-items: center;
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
     @media (max-width: 768px) {
       display: flex;
     }
@@ -550,7 +553,7 @@ onMounted(() => {
     width: 100%;
     height: 1px;
     margin-top: var(--o-spacing-h5);
-    background-color: var(--e-color-neutral11);
+    background-color: var(--e-color-bg-secondary);
     &-in {
       height: 100%;
       background-color: var(--e-color-brand1);
