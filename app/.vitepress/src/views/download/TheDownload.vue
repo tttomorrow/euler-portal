@@ -635,8 +635,8 @@ onMounted(() => {
         justify-content: center;
         align-items: center;
         padding: var(--o-spacing-h10) var(--o-spacing-h9);
-        background-color: var(--e-color-bg-secondry);
-        color: var(--e-color-text-secondry);
+        background-color: var(--e-color-bg-secondary);
+        color: var(--e-color-text-secondary);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-right: var(--o-spacing-h9);

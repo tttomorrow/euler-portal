@@ -518,6 +518,9 @@ onMounted(() => {
 <style scoped lang="scss">
 .sig-table {
   margin-top: var(--o-spacing-h2);
+  @media (max-width: 768px) {
+    margin-top: var(--o-spacing-h3);
+  }
   a {
     line-height: var(--o-line-height-h9);
   }
@@ -558,6 +561,7 @@ onMounted(() => {
   margin-bottom: var(--o-spacing-h4);
   display: flex;
   align-items: flex-end;
+  align-items: center;
   span {
     font-size: var(--o-font-size-tip);
     color: var(--e-color-text1);
@@ -567,6 +571,7 @@ onMounted(() => {
     flex-wrap: nowrap;
     span {
       font-size: var(--o-font-size-h7);
+      line-height: var(--o-line-height-h7);
       color: var(--e-color-text1);
       margin-right: var(--o-spacing-h5);
       @media (max-width: 1000px) {
@@ -574,7 +579,7 @@ onMounted(() => {
         width: 100px;
       }
     }
-    @media (max-width: 1416px) {
+    @media (max-width: 1280px) {
       margin-right: var(--o-spacing-h5);
       :deep(.el-select) {
         width: 150px;

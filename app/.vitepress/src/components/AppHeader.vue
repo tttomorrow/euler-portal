@@ -289,9 +289,8 @@ function search() {
 </template>
 
 <style lang="scss" scoped>
-:deep(.o-search) {
-  --o-search-color-bg: var(--e-color-bg4);
-  background-color: var(--e-color-bg4);
+:deep(.el-input__wrapper) {
+  background-color: var(--e-color-bg-secondary) !important;
 }
 :deep(.el-input__suffix) {
   font-size: var(--o-font-size-h7);
@@ -423,9 +422,8 @@ function search() {
     height: auto;
     width: 100%;
     margin-top: 21px;
-    background-color: var(--e-color-bg5);
     box-shadow: var(--e-shadow-l4);
-    opacity: 0.97;
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     padding: var(--o-spacing-h3);
     @media (max-width: 1100px) {
@@ -440,7 +438,7 @@ function search() {
     .hots {
       &-title {
         font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-heigh-tip);
+        line-height: var(--o-line-height-tip);
         color: var(--e-color-text1);
       }
       &-list {
@@ -448,11 +446,11 @@ function search() {
           margin-top: var(--o-spacing-h5);
           margin-right: var(--o-spacing-h5);
           background-color: var(--e-color-bg4);
-          color: var(--e-color-neutral5);
+          color: var(--e-color-text-secondary);
           cursor: pointer;
           @media (max-width: 1100px) {
             font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-heigh-tip);
+            line-height: var(--o-line-height-tip);
           }
         }
       }
@@ -463,8 +461,11 @@ function search() {
       }
     }
   }
-  .dark .drawer {
-    opacity: 0.97;
+}
+
+.dark {
+  .drawer {
+    background: rgba($color: #2e2e2e, $alpha: 0.9);
   }
 }
 

@@ -140,6 +140,7 @@ function jumpPage(e: any) {
     .prev {
       color: var(--e-color-text1);
       line-height: 100%;
+      cursor: pointer;
     }
     .disable-button {
       color: var(--e-color-text4);

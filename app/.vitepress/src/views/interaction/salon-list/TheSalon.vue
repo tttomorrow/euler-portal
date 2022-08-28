@@ -924,30 +924,6 @@ onMounted(async () => {
     :deep(.el-tabs__header) {
       margin: 0px;
     }
-
-    :deep(.el-tabs) {
-      --el-tabs-header-height: var(--o-line-height-h3);
-      @media (max-width: 768px) {
-        --el-tabs-header-height: 34px;
-      }
-    }
-
-    :deep(.el-tabs__item) {
-      font-size: var(--o-font-size-h8);
-      line-height: var(--o-line-height-h8);
-      padding-bottom: var(--o-spacing-h6);
-      padding-top: var(--o-spacing-h6);
-      @media (max-width: 768px) {
-        font-size: var(--o-font-size-text);
-        line-height: var(--o-line-height-text);
-        padding-bottom: var(--o-spacing-h10);
-        padding-top: var(--o-spacing-h10);
-      }
-    }
-
-    :deep(.is-active) {
-      color: var(--e-color-brand1);
-    }
   }
 }
 </style>

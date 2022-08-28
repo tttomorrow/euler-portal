@@ -502,12 +502,12 @@ const watchData = watch(
       justify-content: center;
     }
   }
-  .el-tabs__item {
-    font-size: var(--o-font-size-h8);
-    @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-text);
-    }
-  }
+  // .el-tabs__item {
+  //   font-size: var(--o-font-size-h8);
+  //   @media screen and (max-width: 768px) {
+  //     font-size: var(--o-font-size-text);
+  //   }
+  // }
   .el-tabs__nav-wrap::after {
     display: none;
   }
