@@ -17,7 +17,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: 'other/migration/download/',
+        link: 'migration/download/',
         targetTap: 1,
         title: '一起迁移吧',
         desc: '手把手教你把操作系统替换成openEuler',
@@ -37,7 +37,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: `/zh/other/migration/download/`,
+        link: `/zh/migration/download/`,
         targetTap: 0,
         title: 'Start Porting Now!',
         desc: 'Learn how to port to openEuler.',
@@ -57,7 +57,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: `/zh/other/migration/download/`,
+        link: `/zh/migration/download/`,
         targetTap: 0,
         title: 'Start Porting Now!',
         desc: 'Learn how to port to openEuler.',

@@ -142,7 +142,7 @@ const handleGo = (path: string) => {
         position: relative;
         height: 100%;
         padding: var(--o-spacing-h4);
-        border-bottom: none !important;
+        border: none !important;
         &.is-active {
           &::after {
             opacity: 0;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useI18n } from '@/i18n';
 import AOS from 'aos';
 import zhCn from 'element-plus/lib/locale/lang/zh-cn';
@@ -46,6 +46,10 @@ const caseData = ref(undefined);
 const newsData = ref(undefined);
 const blogData = ref(undefined);
 onMounted(async () => {
+  const body = document.querySelector('body');
+  if (body) {
+    body.classList.add('home-loading');
+  }
   AOS.init({
     offset: 100,
     duration: 800,
@@ -108,6 +112,12 @@ onMounted(async () => {
     throw new Error(e);
   }
 });
+onUnmounted(() => {
+  const body = document.querySelector('body');
+  if (body) {
+    body.classList.remove('home-loading');
+  }
+});
 </script>
 
 <template>
@@ -125,11 +135,7 @@ onMounted(async () => {
     <el-config-provider :locale="zhCn">
       <div v-if="lang === 'zh'" class="home-calendar">
         <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
-        <AppCalendar
-          v-if="calendarData.length > 1"
-          :table-data="calendarData"
-          data-aos="fade-up"
-        />
+        <AppCalendar :table-data="calendarData" data-aos="fade-up" />
       </div>
     </el-config-provider>
     <HomePlayground />
