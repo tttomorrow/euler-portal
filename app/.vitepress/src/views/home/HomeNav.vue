@@ -62,19 +62,17 @@ const imgUrlHover = computed(
     cursor: pointer;
     padding-left: var(--o-spacing-h5);
     display: flex;
-
     align-items: center;
     border-left: 1px solid var(--e-color-division1);
     .nav-item-icon-hover {
-      display: none !important;
+      display: none;
     }
     .nav-item-icon {
-      display: block !important;
+      display: block;
     }
     .nav-icon {
       width: 48px;
       img {
-        display: block;
         width: 100%;
       }
     }
@@ -100,16 +98,29 @@ const imgUrlHover = computed(
     }
     &:hover {
       .nav-item-icon-hover {
-        display: block !important;
+        display: block;
       }
       .nav-item-icon {
-        display: none !important;
+        display: none;
       }
       .nav-text {
         color: var(--e-color-brand1);
         .nav-descriptive,
         .nav-title {
           color: var(--e-color-brand1);
+        }
+      }
+      @media screen and (max-width: 1416px) {
+        .nav-item-icon-hover {
+          display: none;
+        }
+        .nav-item-icon {
+          display: block;
+        }
+        .nav-text {
+          .nav-title {
+            color: var(--e-color-text1);
+          }
         }
       }
     }

@@ -269,6 +269,9 @@ onMounted(async () => {
     padding: 0;
     &:hover {
       color: var(--e-color-brand1);
+      @media screen and (max-width: 1416px) {
+        color: var(--e-color-text1);
+      }
     }
 
     &-icon {

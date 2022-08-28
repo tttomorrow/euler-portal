@@ -157,7 +157,9 @@ function meetClick(day: string) {
             );
           });
           renderData.value.timeData.map((item2) => {
-            item2['duration_time'] = `${item2.startTime}-${item2.endTime}`;
+            if (item2.etherpad) {
+              item2['duration_time'] = `${item2.startTime}-${item2.endTime}`;
+            }
           });
         }
         return;
@@ -361,16 +363,6 @@ const watchData = watch(
                         <p class="meet-name">{{ item.name || item.title }}</p>
                       </div>
                       <div
-                        v-if="item.schedules"
-                        class="more-detail"
-                        @click.stop="goDetail(index)"
-                      >
-                        {{ i18n.LEARN_MORE }}
-                        <OIcon>
-                          <icon-arrow-right></icon-arrow-right>
-                        </OIcon>
-                      </div>
-                      <div
                         v-if="item.group_name"
                         class="group-name more-detail"
                       >
@@ -378,6 +370,17 @@ const watchData = watch(
                       </div>
                     </div>
                     <div class="item-right">
+                      <OButton
+                        v-if="item.schedules"
+                        animation
+                        type="text"
+                        @click.stop="goDetail(index)"
+                      >
+                        {{ i18n.LEARN_MORE }}
+                        <template #suffixIcon>
+                          <OIcon><icon-arrow-right></icon-arrow-right></OIcon>
+                        </template>
+                      </OButton>
                       <div class="detail-time">
                         <span class="start-time"
                           ><i v-if="!item.schedules">{{ item.startTime }}</i>
@@ -445,6 +448,19 @@ const watchData = watch(
                       <p v-else>{{ currentDay }}</p>
                     </div>
                   </template>
+                  <div v-if="item.schedules" class="mo-learn-more">
+                    <OButton
+                      animation
+                      size="mini"
+                      type="outline"
+                      @click.stop="goDetail(index)"
+                    >
+                      {{ i18n.LEARN_MORE }}
+                      <template #suffixIcon>
+                        <OIcon><icon-arrow-right></icon-arrow-right></OIcon>
+                      </template>
+                    </OButton>
+                  </div>
                 </div>
               </o-collapse-item>
             </div>
@@ -526,8 +542,6 @@ const watchData = watch(
 .o-icon {
   cursor: pointer;
   font-size: var(--o-font-size-h7);
-  font-weight: 700;
-  color: var(--e-color-text1);
   transition: color 0.2s;
   &:hover {
     color: var(--e-color-brand1);
@@ -826,8 +840,15 @@ const watchData = watch(
         }
         .el-collapse-item__wrap {
           border: none;
-          padding: 0 var(--o-spacing-h4);
+          padding: var(--o-spacing-h6) var(--o-spacing-h5);
           background-color: var(--o-collapse-color-bg2);
+          @media screen and (max-width: 768px) {
+            padding: var(--o-spacing-h6);
+            background-color: var(--e-color-bg1);
+            .el-collapse-item__content {
+              background-color: var(--e-color-bg1);
+            }
+          }
         }
       }
       @media screen and (max-width: 768px) {
@@ -853,7 +874,7 @@ const watchData = watch(
         display: none;
       }
       .el-collapse-item__content {
-        padding-bottom: 0;
+        padding: 0;
         @media screen and (max-width: 768px) {
           font-size: var(--o-font-size-tip);
         }
@@ -861,7 +882,7 @@ const watchData = watch(
       .meet-item {
         display: flex;
         justify-content: space-between;
-        padding: var(--o-spacing-h5) var(--o-spacing-h4);
+        padding: var(--o-spacing-h5);
         width: 100%;
         height: 100%;
         background-color: var(--e-color-bg3);
@@ -935,12 +956,25 @@ const watchData = watch(
         .item-right {
           display: flex;
           font-size: var(--o-font-size-text);
+          .o-button {
+            padding: 0;
+            .o-icon {
+              color: var(--e-color-brand1);
+              font-size: var(--o-font-size-h5);
+            }
+            &:hover {
+              color: var(--e-color-brand1);
+            }
+            @media screen and (max-width: 768px) {
+              display: none;
+            }
+          }
 
           .detail-time {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            padding: 0 24px;
+            padding: 0 var(--o-spacing-h5);
             font-weight: normal;
             text-align: center;
             font-size: var(--o-font-size-h8);
@@ -1009,7 +1043,6 @@ const watchData = watch(
       }
       .meet-detail {
         color: var(--e-color-text4);
-        padding-top: 10px;
         .meeting-item {
           display: flex;
           padding-bottom: var(--o-spacing-h8);
@@ -1030,6 +1063,22 @@ const watchData = watch(
             .creator-name {
               padding-left: var(--o-spacing-h5);
               font-size: var(--o-font-size-text);
+            }
+          }
+        }
+        .mo-learn-more {
+          display: none;
+          @media screen and (max-width: 768px) {
+            display: flex;
+            justify-content: center;
+            padding-top: var(--o-spacing-h8);
+            border-top: 1px solid var(--e-color-division1);
+            padding: var(--o-spacing-h5) 0 var(--o-spacing-h10);
+            .o-button {
+              padding: 3px var(--o-spacing-h6);
+              .o-icon {
+                font-size: var(--o-font-size-tip);
+              }
             }
           }
         }
