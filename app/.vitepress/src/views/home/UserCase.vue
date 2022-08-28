@@ -22,7 +22,7 @@ const props = defineProps({
 });
 
 const handleGo = (path: string) => {
-  window.open(path, '_blank');
+  window.open(path.replace(/(index)$/g, ''), '_blank');
 };
 
 const handleChangeActive = (index: number) => {
@@ -95,9 +95,9 @@ onMounted(() => {
           <div class="user-mobile">
             <div
               v-for="user in caseData && caseData[item.TYPE]"
+              @click="handleGo(user.path)"
               :key="user.company"
               class="user-card"
-              @click="handleGo(user.path)"
             >
               <div class="user-title">{{ user.company }}</div>
               <div class="user-word">{{ user.summary }}</div>
