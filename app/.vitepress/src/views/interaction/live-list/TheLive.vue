@@ -4,7 +4,6 @@ import { useI18n } from '@/i18n';
 import { ElMessage } from 'element-plus';
 
 import { useCommon } from '@/stores/common';
-import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
@@ -30,7 +29,6 @@ const commonStore = useCommon();
 const currentPage = ref(1);
 const pageSize4 = ref(6);
 const total = ref(data.value.length);
-const screenWidth = useWindowResize();
 
 const changePage = (val: number, pagesize: number) => {
   const curVal = (val - 1) * pagesize;
@@ -46,7 +44,6 @@ const totoBLink = (url: string) => {
     : window.open(url);
 };
 
-const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
 
 const headGround = computed(() =>
   commonStore.theme === 'dark' ? cardBg_dark : cardBg_light
@@ -147,21 +144,22 @@ function turnPage(option: string) {
         </OCard>
       </div>
       <div class="live-pagination">
-        <OPagination
-          v-show="!isMobile"
-          v-model:currentPage="currentPage"
-          v-model:page-size="pageSize4"
-          :page-sizes="[6, 12, 18, 24]"
-          :background="true"
-          layout="sizes, prev, pager, next, slot, jumper"
-          :total="total"
-          @current-change="changePage(currentPage, pageSize4)"
-          @size-change="changePage(currentPage, pageSize4)"
-        >
-          <span class="pagination-slot">{{
-            currentPage * pageSize4 + '/' + total
-          }}</span>
-        </OPagination>
+        <div class="live-pagination-pc">
+          <OPagination
+            v-model:currentPage="currentPage"
+            v-model:page-size="pageSize4"
+            :page-sizes="[6, 12, 18, 24]"
+            :background="true"
+            layout="sizes, prev, pager, next, slot, jumper"
+            :total="total"
+            @current-change="changePage(currentPage, pageSize4)"
+            @size-change="changePage(currentPage, pageSize4)"
+          >
+            <span class="pagination-slot">{{
+              currentPage * pageSize4 + '/' + total
+            }}</span>
+          </OPagination>
+        </div>
         <AppPaginationMo
           :current-page="currentPage"
           :total-page="Math.ceil(total / pageSize4)"
@@ -314,6 +312,11 @@ function turnPage(option: string) {
     width: auto;
     height: auto;
     margin: auto;
+    &-pc {
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
   }
   .smail-icon {
     font-size: var(--o-font-size-h7);
