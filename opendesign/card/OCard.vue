@@ -32,9 +32,8 @@ const attrs = useAttrs();
       box-shadow: var(--e-shadow-l2);
       &:hover,
       &:focus {
-        box-shadow: var(--e-shadow-l2_hover);
-        @media screen and (max-width: 1100px) {
-          box-shadow: var(--e-shadow-l2);
+        @media screen and (min-width: 1100px) {
+          box-shadow: var(--e-shadow-l2_hover);
         }
       }
     }
