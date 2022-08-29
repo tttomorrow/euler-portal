@@ -473,13 +473,11 @@ const watchData = watch(
         </div>
         <div v-else class="empty">
           <img
-            :src="
-              commonStore.theme === 'light'
-                ? notFoundImg_light
-                : notFoundImg_dark
-            "
+            v-if="commonStore.theme === 'light'"
+            :src="notFoundImg_light"
             alt=""
           />
+          <img v-else :src="notFoundImg_dark" alt="" />
           <p>{{ i18n.EMPTY_TEXT }}</p>
         </div>
       </div>
@@ -637,6 +635,7 @@ const watchData = watch(
         width: 100%;
         .o-icon {
           color: inherit;
+          color: var(--e-color-text1);
           font-size: var(--o-font-size-h8);
         }
         .month-date {
@@ -709,6 +708,9 @@ const watchData = watch(
           height: 66px;
           &:hover {
             background-color: var(--e-color-bg1);
+          }
+          @media screen and (max-width: 768px) {
+            background-color: inherit !important;
           }
           .out-box {
             display: flex;
