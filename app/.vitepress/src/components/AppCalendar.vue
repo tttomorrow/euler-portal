@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, nextTick, onMounted, reactive, PropType, watch } from 'vue';
 
-import { isValidKey, getNowFormatDate } from '@/shared/utils';
+import { isValidKey, getNowFormatDate, isBrowser } from '@/shared/utils';
 import { TableData, DayData } from '@/shared/@types/type-calendar';
 import type { TabsPaneContext } from 'element-plus';
 import { useCommon } from '@/stores/common';
@@ -228,15 +228,20 @@ onMounted(() => {
 const watchData = watch(
   () => props.tableData.length,
   () => {
-    nextTick(() => {
-      const activeBoxs = document.querySelector(
-        '.is-today .out-box'
-      ) as HTMLElement;
-      if (activeBoxs) {
-        activeBoxs.click();
-        watchData();
-      }
-    });
+    if (isBrowser()) {
+      nextTick(() => {
+        if (props.isHomePage) {
+        }
+        // console.log(document.querySelectorAll('.out-box.be-active'));
+        const activeBoxs = document.querySelector(
+          '.is-today .out-box'
+        ) as HTMLElement;
+        if (activeBoxs) {
+          activeBoxs.click();
+          watchData();
+        }
+      });
+    }
   },
   { immediate: true }
 );

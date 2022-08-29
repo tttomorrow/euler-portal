@@ -123,7 +123,9 @@ onUnmounted(() => {
 <template>
   <HomeBanner />
   <AppContent>
-    <OContainer :level-index="1"><HomeNav /></OContainer>
+    <OContainer data-aos="fade-up" class="home-nav" :level-index="1"
+      ><HomeNav
+    /></OContainer>
     <HomeCarousel />
     <UserCase v-if="caseData" :case-data="caseData" />
     <CommunityActivity />
@@ -135,11 +137,7 @@ onUnmounted(() => {
     <el-config-provider :locale="zhCn">
       <div v-if="lang === 'zh'" class="home-calendar">
         <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
-        <AppCalendar
-          v-if="calendarData.length > 1"
-          :table-data="calendarData"
-          data-aos="fade-up"
-        />
+        <AppCalendar :table-data="calendarData" data-aos="fade-up" />
       </div>
     </el-config-provider>
     <HomePlayground />
@@ -149,6 +147,10 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
+.home-nav {
+  position: relative;
+  z-index: 10;
+}
 h3 {
   font-size: var(--o-font-size-h3);
   font-weight: 300;

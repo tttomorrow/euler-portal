@@ -13,7 +13,7 @@ export default {
   },
   en: {
     placeHolder: 'input user case',
-    bannerTitle: 'USER CASE',
+    bannerTitle: 'Success Stories',
     type: 'Category',
     find1: 'Found',
     find2: 'Cases',
