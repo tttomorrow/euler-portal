@@ -1,8 +1,17 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, onUnmounted, watch, nextTick } from 'vue';
+import {
+  computed,
+  onMounted,
+  ref,
+  onUnmounted,
+  watch,
+  nextTick,
+  toRefs,
+} from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
+import { getPop } from '@/api/api-search';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
@@ -14,7 +23,14 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
-import { getPop } from '@/api/api-search';
+import IconClose from '~icons/app/x.svg';
+
+const props = defineProps({
+  isShowTip: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 interface NavItem {
   NAME: string;
@@ -30,6 +46,7 @@ const { lang } = useData();
 const i18n = useI18n();
 const commonStore = useCommon();
 const documentElement = document.documentElement;
+const { isShowTip } = toRefs(props);
 
 // 导航数据
 const navRouter = computed(() => i18n.value.common.NAV_ROUTER_CONFIG);
@@ -183,10 +200,36 @@ function search() {
   router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
+
+// 点击关闭cookies使用提示
+const emit2 = defineEmits(['click-close']);
+function clickClose() {
+  emit2('click-close');
+}
 </script>
 
 <template>
   <header class="app-header">
+    <!-- 隐私政策 -->
+    <div v-if="isShowTip" class="cookie-privacy" :class="{ ru: lang === 'ru' }">
+      <template v-if="lang !== 'ru'">
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT
+        }}</a>
+      </template>
+      <template v-else>
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT
+        }}</a>
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT_OTHER }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT_OTHER
+        }}</a>
+      </template>
+      <OIcon class="icon" @click="clickClose"><IconClose /></OIcon>
+    </div>
     <div class="app-header-body">
       <!-- 移动端菜单图标 -->
       <div class="mobile-menu-icon" @click="mobileMenuPanel">
@@ -248,7 +291,7 @@ function search() {
       <teleport v-if="toBody" to="body">
         <div
           class="mobile-menu"
-          :class="{ active: mobileMenuIcon }"
+          :class="{ active: mobileMenuIcon, cookie: isShowTip }"
           @click="handleMenuLayer($event)"
         >
           <div class="mobile-menu-side">
@@ -327,6 +370,57 @@ function search() {
       padding: 0 16px;
       height: 48px;
       justify-content: space-between;
+      position: relative;
+    }
+  }
+  .cookie-privacy {
+    line-height: 60px;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    background-color: var(--e-color-bg1);
+    color: var(--e-color-text3);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.ru {
+      line-height: 30px;
+      display: inline-block;
+    }
+    @media screen and (max-width: 1000px) {
+      font-size: 12px;
+      line-height: 30px;
+      display: inline-block;
+      &.ru {
+        line-height: 10px;
+      }
+    }
+    a {
+      cursor: pointer;
+      text-decoration: solid;
+      white-space: pre;
+    }
+    .icon {
+      cursor: pointer;
+      vertical-align: middle;
+      margin-left: 16px;
+      width: 24px;
+      height: 24px;
+      background: var(--e-color-greyblack3);
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        font-size: 20px;
+        color: var(--el-color-white);
+      }
+      @media screen and (max-width: 1000px) {
+        width: 20px;
+        height: 20px;
+        margin-left: 12px;
+      }
     }
   }
 }
@@ -505,6 +599,10 @@ function search() {
       opacity: 1;
       z-index: 9;
     }
+  }
+  &.cookie {
+    height: calc(100% - 108px);
+    top: 108px;
   }
   &-side {
     left: -100%;

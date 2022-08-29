@@ -26,6 +26,7 @@ const i18n = useI18n();
       :frame-obj="i18n.secgear.SECGEAR_FRAMEWORK"
       layout="leftAndRight"
     />
+    <!-- 文档 -->
     <MiniDocs :docs-obj="i18n.secgear.SECGEAR_DOCUMENT" />
   </AppContent>
 </template>
