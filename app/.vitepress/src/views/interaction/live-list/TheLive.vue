@@ -226,8 +226,8 @@ function turnPage(option: string) {
 
       &.dark {
         @media screen and (max-width: 767px) {
-          background: v-bind('liveStyleMo.dart') left/contain no-repeat,
-            v-bind('liveStyleMo.dartExtension') left no-repeat !important;
+          background: v-bind('liveStyleMo.dark') left/contain no-repeat,
+            v-bind('liveStyleMo.darkExtension') left no-repeat !important;
         }
       }
     }
