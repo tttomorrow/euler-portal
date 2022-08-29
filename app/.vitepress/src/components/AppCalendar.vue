@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { ref, nextTick, onMounted, reactive, PropType, watch } from 'vue';
+import {
+  ref,
+  nextTick,
+  onMounted,
+  reactive,
+  PropType,
+  watch,
+  computed,
+} from 'vue';
 
 import { isValidKey, getNowFormatDate, isBrowser } from '@/shared/utils';
 import { TableData, DayData } from '@/shared/@types/type-calendar';
@@ -245,6 +253,10 @@ const watchData = watch(
   },
   { immediate: true }
 );
+
+const notFoundImg = computed(() =>
+  commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
+);
 </script>
 <template>
   <div class="main-body" :class="{ 'is-home': !isHomePage }">
@@ -472,14 +484,7 @@ const watchData = watch(
           </o-collapse>
         </div>
         <div v-else class="empty">
-          <img
-            :src="
-              commonStore.theme === 'light'
-                ? notFoundImg_light
-                : notFoundImg_dark
-            "
-            alt=""
-          />
+          <img :src="notFoundImg" alt="" />
           <p>{{ i18n.EMPTY_TEXT }}</p>
         </div>
       </div>
