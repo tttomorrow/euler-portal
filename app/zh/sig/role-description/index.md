@@ -125,7 +125,8 @@ const isMobile = computed(() => {
 - 可以分配问题或 PR，可以通过 /cc @username 要求成员进行评论
 - 可以针对 PR 自动运行测试。/ok-to-test 不是必要的
 - 可以使用/ok-to-test 为具有 needs-ok-to-test 标签的 PR 进行操作，并使用诸如/close 对 PR 进行关闭。
-  注意：经常贡献代码的成员应积极的参与代码审查，并努力成为 SIG 的审核者 Committer。
+
+注意：经常贡献代码的成员应积极的参与代码审查，并努力成为 SIG 的审核者 Committer。
 
 ## 审核者 Committer
 
@@ -178,6 +179,7 @@ const isMobile = computed(() => {
 - 作为主要审阅者至少参与了 12 次 PR 的审阅
 - 审阅或合并至少 30 个基本 PR 到代码库
 - 熟悉代码库
+- 可以自我提名，也可以由子项目Maintainer提名，并且没有其他子项目Maintainer的反对
 
 ### 责任与权力
 
