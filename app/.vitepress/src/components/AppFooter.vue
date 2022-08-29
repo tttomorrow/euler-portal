@@ -5,8 +5,8 @@ import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
 
 import LogoFooter from '@/assets/footer/footer-logo2.png';
-import LogoFooter1 from '@/assets/footer-logo1.svg';
-import LogoAtom from '@/assets/footer/atom-logo.svg';
+import LogoFooter1 from '@/assets/footer-logo1.png';
+import LogoAtom from '@/assets/footer/atom-logo.png';
 import FooterBg from '@/assets/footer/footer-bg.png';
 import FooterBgMo from '@/assets/footer/footer-bg-mo.png';
 
