@@ -224,21 +224,23 @@ watch(queryData, () => getCveLists(queryData));
       </li>
     </ul>
 
-    <OPagination
-      v-if="!isMobile"
-      v-model:page-size="queryData.pages.size"
-      v-model:currentPage="queryData.pages.page"
-      class="pagination"
-      :page-sizes="[10, 20, 40, 80]"
-      :layout="layout"
-      :total="total"
-      :background="true"
-      :hide-on-single-page="true"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    >
-      <span class="pagination-slot"> {{ currentPage }}/{{ totalPage }}</span>
-    </OPagination>
+    <ClientOnly>
+      <OPagination
+        v-if="!isMobile"
+        v-model:page-size="queryData.pages.size"
+        v-model:currentPage="queryData.pages.page"
+        class="pagination"
+        :page-sizes="[10, 20, 40, 80]"
+        :layout="layout"
+        :total="total"
+        :background="true"
+        :hide-on-single-page="true"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      >
+        <span class="pagination-slot"> {{ currentPage }}/{{ totalPage }}</span>
+      </OPagination>
+    </ClientOnly>
 
     <AppPaginationMo
       v-if="total > 0 || isMobile"

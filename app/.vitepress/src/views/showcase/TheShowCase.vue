@@ -239,18 +239,20 @@ onMounted(() => {
     </div>
     <NotFound v-if="total === 0" />
     <div v-if="isShow" class="page-box">
-      <OPagination
-        v-model:currentPage="currentPage"
-        v-model:page-size="pageSize"
-        class="pagination-pc"
-        :hide-on-single-page="true"
-        :page-sizes="[pageSize]"
-        :background="true"
-        layout="sizes, prev, pager, next, slot, jumper"
-        :total="total"
-      >
-        <span class="pagination-slot">{{ currentPage }}/{{ totalPage }}</span>
-      </OPagination>
+      <ClientOnly>
+        <OPagination
+          v-model:currentPage="currentPage"
+          v-model:page-size="pageSize"
+          class="pagination-pc"
+          :hide-on-single-page="true"
+          :page-sizes="[pageSize]"
+          :background="true"
+          layout="sizes, prev, pager, next, slot, jumper"
+          :total="total"
+        >
+          <span class="pagination-slot">{{ currentPage }}/{{ totalPage }}</span>
+        </OPagination>
+      </ClientOnly>
       <AppPaginationMo
         :current-page="currentPage"
         :total-page="totalPage"

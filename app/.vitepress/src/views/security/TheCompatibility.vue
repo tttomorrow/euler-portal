@@ -811,21 +811,23 @@ onMounted(() => {
         </OTable>
       </OTabPane>
       <div class="bottom-wrapper">
-        <OPagination
-          v-if="screenWidth > 768"
-          v-model:page-size="queryData.pages.size"
-          v-model:currentPage="queryData.pages.page"
-          class="pagination"
-          :page-sizes="[10, 20, 40, 80]"
-          :layout="layout"
-          :total="total"
-          :background="true"
-          :hide-on-single-page="true"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-        >
-          <span class="pagination-slot"> {{ currentPage }}/{{ total }}</span>
-        </OPagination>
+        <ClientOnly>
+          <OPagination
+            v-if="screenWidth > 768"
+            v-model:page-size="queryData.pages.size"
+            v-model:currentPage="queryData.pages.page"
+            class="pagination"
+            :page-sizes="[10, 20, 40, 80]"
+            :layout="layout"
+            :total="total"
+            :background="true"
+            :hide-on-single-page="true"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+          >
+            <span class="pagination-slot"> {{ currentPage }}/{{ total }}</span>
+          </OPagination>
+        </ClientOnly>
         <p v-if="activeName === '1' || activeName === '2'" class="about">
           {{ i18n.compatibility.HARDWARE_OEC_DETAIL.TEXT }}
 

@@ -403,23 +403,25 @@ onMounted(() => {
       </el-table-column>
     </OTable>
     <div v-show="!isMobile" class="sig-pagination">
-      <OPagination
-        v-model:currentPage="paginationData.currentPage"
-        v-model:page-size="paginationData.pageSize"
-        :page-sizes="[12, 24, 36, 48]"
-        :total="paginationData.total"
-        :background="true"
-        :hide-on-single-page="paginationShow"
-        layout="sizes, prev, pager, next, slot, jumper"
-        @current-change="currentChange"
-        @size-change="sizeChange"
-      >
-        <span
-          >{{ paginationData.currentPage }}/{{
-            Math.ceil(paginationData.total / paginationData.pageSize)
-          }}</span
+      <ClientOnly>
+        <OPagination
+          v-model:currentPage="paginationData.currentPage"
+          v-model:page-size="paginationData.pageSize"
+          :page-sizes="[12, 24, 36, 48]"
+          :total="paginationData.total"
+          :background="true"
+          :hide-on-single-page="paginationShow"
+          layout="sizes, prev, pager, next, slot, jumper"
+          @current-change="currentChange"
+          @size-change="sizeChange"
         >
-      </OPagination>
+          <span
+            >{{ paginationData.currentPage }}/{{
+              Math.ceil(paginationData.total / paginationData.pageSize)
+            }}</span
+          >
+        </OPagination>
+      </ClientOnly>
     </div>
     <div v-show="isMobile" class="sig-table-mo">
       <div class="sig-table-card">

@@ -349,20 +349,22 @@ onMounted(() => {
           :data="repositoryList"
         ></MobileRepositoryList>
         <div class="sig-pagination">
-          <OPagination
-            v-model:currentPage="currentPage"
-            v-model:page-size="pageSize"
-            class="repository-pagin"
-            :hide-on-single-page="true"
-            :page-sizes="[10, 20, 30, 40]"
-            :background="true"
-            :layout="paginLayout"
-            :total="totalRepositoryList.length"
-          >
-            <span class="pagination-slot"
-              >{{ currentPage }}/{{ totalPage }}</span
+          <ClientOnly>
+            <OPagination
+              v-model:currentPage="currentPage"
+              v-model:page-size="pageSize"
+              class="repository-pagin"
+              :hide-on-single-page="true"
+              :page-sizes="[10, 20, 30, 40]"
+              :background="true"
+              :layout="paginLayout"
+              :total="totalRepositoryList.length"
             >
-          </OPagination>
+              <span class="pagination-slot"
+                >{{ currentPage }}/{{ totalPage }}</span
+              >
+            </OPagination>
+          </ClientOnly>
           <AppPaginationMo
             :current-page="currentPage"
             :total-page="totalRepositoryList.length"

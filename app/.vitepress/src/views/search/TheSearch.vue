@@ -197,9 +197,12 @@ onMounted(() => {
           <ul v-show="!isShow" class="content-list">
             <li v-for="item in searchResultList" :key="item.id">
               <!-- eslint-disable-next-line -->
-            <h3 v-html="item.title" @click="goLink(item.type, item.path)"></h3>
+              <h3
+                v-html="item.title"
+                @click="goLink(item.type, item.path)"
+              ></h3>
               <!-- eslint-disable-next-line -->
-            <p class="detail" v-html="item.textContent"></p>
+              <p class="detail" v-html="item.textContent"></p>
               <p class="from">
                 <span>{{ i18n.search.form }}</span>
                 <span>{{ i18n.search.tagList[item.type] }}</span>
@@ -209,22 +212,24 @@ onMounted(() => {
           <NotFound v-if="isShow" />
         </div>
         <div v-if="totalPage > 1 && pageShow" class="page-box">
-          <OPagination
-            v-if="!isMobile"
-            v-model:currentPage="currentPage"
-            v-model:page-size="pageSize"
-            class="pagination-pc"
-            :hide-on-single-page="true"
-            :page-sizes="[pageSize]"
-            :background="true"
-            layout="sizes, prev, pager, next, slot, jumper"
-            :total="total"
-            @current-change="searchDataAll"
-          >
-            <span class="pagination-slot"
-              >{{ currentPage }}/{{ totalPage }}</span
+          <ClientOnly>
+            <OPagination
+              v-if="!isMobile"
+              v-model:currentPage="currentPage"
+              v-model:page-size="pageSize"
+              class="pagination-pc"
+              :hide-on-single-page="true"
+              :page-sizes="[pageSize]"
+              :background="true"
+              layout="sizes, prev, pager, next, slot, jumper"
+              :total="total"
+              @current-change="searchDataAll"
             >
-          </OPagination>
+              <span class="pagination-slot"
+                >{{ currentPage }}/{{ totalPage }}</span
+              >
+            </OPagination>
+          </ClientOnly>
           <AppPaginationMo
             :current-page="currentPage"
             :total-page="totalPage"
