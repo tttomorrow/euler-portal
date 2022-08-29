@@ -490,7 +490,7 @@ onMounted(() => {
         <OButton
           v-if="currentPage * pageSize < total"
           class="page-box-button"
-          size="small"
+          size="mini"
           @click="handleLoadMore"
         >
           {{ i18n.download.PAGINATION[3] }}
@@ -573,7 +573,6 @@ onMounted(() => {
 
   &-button {
     margin-top: var(--o-spacing-h5);
-    padding: var(--o-spacing-h10) var(--o-spacing-h4);
   }
 }
 .download {
