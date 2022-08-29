@@ -3,9 +3,11 @@ import { useAttrs } from 'vue';
 const attrs = useAttrs();
 </script>
 <template>
-  <ElOption v-bind="attrs" class="o-option">
-    <slot> </slot>
-  </ElOption>
+  <ClientOnly>
+    <ElOption v-bind="attrs" class="o-option">
+      <slot> </slot>
+    </ElOption>
+  </ClientOnly>
 </template>
 
 <style lang="scss">

@@ -4,7 +4,9 @@ import { useAttrs, computed } from 'vue';
 const attrs = useAttrs();
 
 const classNames = computed(() => {
-  return `${attrs['popper-class']} o-pagination-popper`;
+  return `${attrs['poper-class']}`
+    ? `${attrs['poper-class']} o-pagination-popper`
+    : 'o-pagination-popper';
 });
 </script>
 
@@ -24,11 +26,9 @@ const classNames = computed(() => {
 .o-pagination {
   --o-pagination-font-color: var(--e-color-text1);
   --o-pagination-font-color_active: var(--e-color-brand1);
-
   --o-pagination-bg-color: var(--e-color-text5);
   --o-pagination-bg-color_hover: var(--e-color-brand5);
   --o-pagination-bg-color_selected: var(--e-color-brand5);
-
   --o-pagination-number-border-color_active: var(--e-color-brand1);
 
   &.el-pagination {
@@ -109,13 +109,11 @@ const classNames = computed(() => {
   }
 }
 .o-pagination-popper {
+  box-shadow: var(--e-shadow-l3);
   &.el-popper {
     box-shadow: none !important;
     --el-popper-border-radius: none;
     border: none;
-    // .is-light {
-    //   // border: 1px solid red;
-    // }
     .el-popper__arrow {
       display: none;
     }
