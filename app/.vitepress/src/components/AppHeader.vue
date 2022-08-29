@@ -34,7 +34,7 @@ interface NavItem {
 }
 
 const router = useRouter();
-const { lang } = useData();
+const { lang, theme } = useData();
 const i18n = useI18n();
 const commonStore = useCommon();
 const documentElement = document.documentElement;
@@ -88,7 +88,7 @@ const goMobile = (item: NavItem) => {
 // 移动端二级导航事件
 const goMobileSubList = (item: NavItem) => {
   if (item.IS_OPEN_WINDOW) {
-    window.open(i18n.value.docsUrl + item.PATH);
+    window.open(theme.value.docsUrl + item.PATH);
     return;
   }
   if (item.IS_OPEN_MINISITE_WINDOW) {
