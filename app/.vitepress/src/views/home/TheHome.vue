@@ -6,7 +6,7 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
-import HomeBanner from './HomeBanner.vue';
+// import HomeBanner from './HomeBanner.vue';
 import HomeCarousel from './HomeCarousel.vue';
 import HomePlayground from './HomePlayground.vue';
 import HomeNav from './HomeNav.vue';
@@ -121,7 +121,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <HomeBanner />
+  <!-- <HomeBanner /> -->
   <AppContent>
     <OContainer data-aos="fade-up" class="home-nav" :level-index="1"
       ><HomeNav
