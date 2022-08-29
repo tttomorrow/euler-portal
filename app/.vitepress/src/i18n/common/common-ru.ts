@@ -114,13 +114,8 @@ export default {
           ID: 'salon',
           PATH: '/interaction/salon-list/',
         },
-        {
-          NAME: 'Саммит',
-          ID: 'summit',
-          PATH: '/interaction/summit-list/devday2022/',
-        },
       ],
-      CLASS: ['news', 'blog', 'live', 'salon', 'summit'],
+      CLASS: ['news', 'blog', 'live', 'salon'],
     },
     {
       PATH: '',
