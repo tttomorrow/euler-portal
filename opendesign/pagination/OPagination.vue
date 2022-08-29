@@ -42,6 +42,9 @@ const classNames = computed(() => {
       box-shadow: none;
       height: 36px;
     }
+    .el-pagination__editor {
+      justify-content: center !important;
+    }
     .el-select {
       --el-select-border-color-hover: none;
       --el-select-input-focus-border-color: none;
