@@ -6,7 +6,7 @@ import { useI18n } from '@/i18n';
 import AppContext from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-sig.png';
 import applicationIllustration from '@/assets/illustrations/application.png';
 
 import sig1 from '@/assets/category/sig/guidance/sig1.png';

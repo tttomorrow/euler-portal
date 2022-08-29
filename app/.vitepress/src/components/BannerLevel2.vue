@@ -33,9 +33,9 @@ const props = defineProps({
 
 const rootStyle = computed(() => {
   const result: CSSProperties = {};
-  if (props.backgroundImage) {
-    result.backgroundImage = `url(${props.backgroundImage})`;
-  }
+  // if (props.backgroundImage) {
+  //   result.backgroundImage = `url(${props.backgroundImage})`;
+  // }
 
   if (props.backgroundColor) {
     result.backgroundColor = props.backgroundColor;
@@ -50,6 +50,7 @@ onMounted(() => {
 
 <template>
   <div class="banner-level2" :style="rootStyle">
+    <img :src="props.backgroundImage" class="banner-bg" />
     <div class="wrap">
       <div
         class="banner-text"
@@ -82,42 +83,68 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+.dark {
+  .banner-bg,
+  .banner-illustration {
+    filter: brightness(0.8) grayscale(0.2) contrast(1.2);
+  }
+}
 .banner-level2 {
+  position: relative;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: var(--e-color-brand1);
 
+  .banner-bg {
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    object-fit: fill;
+    user-select: none;
+  }
+
   .wrap {
+    position: relative;
     max-width: 1504px;
     margin: 0 auto;
     padding: 0 44px;
     display: flex;
     justify-content: space-between;
     min-height: 280px;
-    position: relative;
     @media screen and (max-width: 1439px) {
       padding: 0 24px;
+    }
+
+    @media screen and (max-width: 1080px) {
+      min-height: 200px;
     }
 
     @media screen and (max-width: 768px) {
       min-height: 126px;
     }
     .banner-text {
+      display: flex;
+      flex-direction: column;
       position: relative;
-      padding-top: 86px;
-      padding-bottom: 86px;
+      margin-top: 86px;
+      margin-bottom: 86px;
       max-width: 54%;
 
+      @media screen and (max-width: 1080px) {
+        margin-top: 64px;
+        margin-bottom: 64px;
+      }
+
       @media screen and (max-width: 768px) {
-        padding-top: 32px;
-        padding-bottom: 32px;
+        margin-top: 32px;
+        margin-bottom: 32px;
       }
 
       .banner-text-bg {
         position: absolute;
-        top: 86px;
-        color: #0d3cb4;
+        top: 0;
+        color: var(--e-color-brand1);
         opacity: 0.4;
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
@@ -125,14 +152,15 @@ onMounted(() => {
         user-select: none;
 
         @media screen and (max-width: 1080px) {
+          // top: 64px;
           font-size: var(--o-font-size-h2);
           line-height: var(--o-line-height-h2);
         }
 
         @media screen and (max-width: 768px) {
+          // top: 32px;
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
-          top: 32px;
         }
       }
       .banner-title {
@@ -187,10 +215,14 @@ onMounted(() => {
       object-fit: fill;
 
       @media screen and (max-width: 1439px) {
-        padding: 0 24px;
+        right: 24px;
+      }
+      @media screen and (max-width: 1439px) {
+        right: 16px;
       }
 
       img {
+        user-select: none;
         max-height: 232px;
         @media screen and (max-width: 1080px) {
           max-height: 160px;

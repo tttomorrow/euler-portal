@@ -2,10 +2,12 @@
 import { onMounted, Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import { selectMirror } from '@/api/api-mirror';
+
 import BannerLevel3 from '@/components/BannerLevel3.vue';
-import banner from '@/assets/banner-secondary.png';
 import MapContainer from './MapContainer.vue';
 import AppContent from '@/components/AppContent.vue';
+
+import banner from '@/assets/banner/banner-download.png';
 
 const i18n = useI18n();
 

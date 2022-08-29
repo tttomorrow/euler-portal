@@ -6,7 +6,7 @@ title: 'Code of Covenant'
 import { computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import useWindowResize from '@/components/hooks/useWindowResize';
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-community.png';
 import contributionIllustration from '@/assets/illustrations/contribution.png';
 
 const screenWidth = useWindowResize();

@@ -2,7 +2,7 @@
 import AppContent from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
-import moocBanner from '@/assets/banner-secondary.png';
+import moocBanner from '@/assets/banner/banner-learning.png';
 import moocIllustration from '@/assets/illustrations/mooc.png';
 
 import IconArrowRight1 from '~icons/app/icon-arrow-right1.svg';

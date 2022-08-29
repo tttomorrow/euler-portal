@@ -9,7 +9,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-interaction.png';
 import liveIllustration from '@/assets/illustrations/live.png';
 import cardBg_light from '@/assets/category/interaction/live/light-crad-bg.png';
 import cardBg_light_mo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';

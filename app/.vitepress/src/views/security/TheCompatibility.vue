@@ -7,7 +7,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-security.png';
 import supportIllustration from '@/assets/illustrations/support.png';
 import cveIllstration from '@/assets/illustrations/cve.png';
 

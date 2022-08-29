@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import banner from '@/assets/banner-secondary.png';
-import expertsIll from '@/assets/illustrations/contribution.png';
+import banner from '@/assets/banner/banner-community.png';
+import expertsIllustration from '@/assets/illustrations/contribution.png';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
@@ -13,7 +13,7 @@ import experts from '@/data/experts';
     :background-image="banner"
     background-text="COMMUNITY"
     title="社区顾问专家"
-    :illustration="expertsIll"
+    :illustration="expertsIllustration"
   />
   <AppContent class="experts">
     <p class="experts-tip">注：按姓氏拼音首字母顺序排序</p>

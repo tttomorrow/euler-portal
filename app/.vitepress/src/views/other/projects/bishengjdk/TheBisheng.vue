@@ -6,16 +6,16 @@ import MiniCards from '../components/MiniCards.vue';
 import MiniDescription from '../components/MiniDescription.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import MiniReference from './MiniReference.vue';
-import BannerMinisite from '@/components/BannerMinisite.vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import BannerIllustration from '/img/projects/bisheng/illustration-banner.png';
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-minisite.png';
 const i18n = useI18n();
 </script>
 
 <template>
-  <BannerMinisite
+  <BannerLevel2
     class="banner"
     :title="i18n.bishengjdk.BISHENG_BANNER_TEXT[0]"
     :subtitle="i18n.bishengjdk.BISHENG_BANNER_TEXT[1]"

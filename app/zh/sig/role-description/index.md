@@ -6,7 +6,7 @@ title: '角色说明'
 import { computed } from 'vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-sig.png';
 import roleIllustration from '@/assets/illustrations/role.png';
 const tableData = [
   {

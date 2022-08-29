@@ -9,7 +9,7 @@ import AppContent from '@/components/AppContent.vue';
 import MapContainer from './MapContainer.vue';
 
 import IconCpoy from '~icons/app/icon-copy.svg';
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-download.png';
 import downloadIllustration from '@/assets/illustrations/download.png';
 
 import { getAllMirror } from '@/api/api-mirror';

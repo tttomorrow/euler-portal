@@ -5,17 +5,17 @@ import MiniCards from '../components/MiniCards.vue';
 import MiniDescription from '../components/MiniDescription.vue';
 import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
-import BannerMinisite from '@/components/BannerMinisite.vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
 
 // TODO:该页面是视频先用插画代替
+import banner from '@/assets/banner/banner-minisite.png';
 import BannerIllustration from '/img/projects/atune/illustration-banner.png';
-import banner from '@/assets/banner-secondary.png';
 
 const i18n = useI18n();
 </script>
 <template>
-  <BannerMinisite
+  <BannerLevel2
     class="banner"
     :title="i18n.atune.ATUNE_BANNER_TEXT[0]"
     :subtitle="i18n.atune.ATUNE_BANNER_TEXT[1]"

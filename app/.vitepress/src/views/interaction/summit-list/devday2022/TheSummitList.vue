@@ -8,7 +8,7 @@ import TheSummitGuests from './TheSummitGuests.vue';
 import TheSummitScheduler from './TheSummitScheduler.vue';
 import TheSummitVideo from './TheSummitVideo.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-interaction.png';
 import summitIllustration from '@/assets/illustrations/summit.png';
 import eulerLight from '@/assets/category/summit/cooperate/openEulerlogo.png';
 import eulerDark from '@/assets/category/summit/cooperate/openeuler_dark.png';

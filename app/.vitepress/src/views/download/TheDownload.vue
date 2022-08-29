@@ -13,7 +13,7 @@ import IconDownload from '~icons/app/icon-download.svg';
 import IconFilter from '~icons/app/icon-filter.svg';
 import IconX from '~icons/app/x.svg';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-download.png';
 import emptyImg from '@/assets/404.svg';
 import downloadIllustration from '@/assets/illustrations/download.png';
 
