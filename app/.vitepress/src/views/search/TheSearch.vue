@@ -193,18 +193,21 @@ onMounted(() => {
             <span>({{ item.doc_count }})</span>
           </li>
         </ul>
-        <ul v-show="!isShow" class="content-list">
-          <li v-for="item in searchResultList" :key="item.id">
-            <!-- eslint-disable-next-line -->
+        <div class="content-box">
+          <ul v-show="!isShow" class="content-list">
+            <li v-for="item in searchResultList" :key="item.id">
+              <!-- eslint-disable-next-line -->
             <h3 v-html="item.title" @click="goLink(item.type, item.path)"></h3>
-            <!-- eslint-disable-next-line -->
+              <!-- eslint-disable-next-line -->
             <p class="detail" v-html="item.textContent"></p>
-            <p class="from">
-              <span>{{ i18n.search.form }}</span>
-              <span>{{ i18n.search.tagList[item.type] }}</span>
-            </p>
-          </li>
-        </ul>
+              <p class="from">
+                <span>{{ i18n.search.form }}</span>
+                <span>{{ i18n.search.tagList[item.type] }}</span>
+              </p>
+            </li>
+          </ul>
+          <NotFound v-if="isShow" />
+        </div>
         <div v-if="totalPage > 1 && pageShow" class="page-box">
           <OPagination
             v-if="!isMobile"
@@ -229,7 +232,6 @@ onMounted(() => {
             @jump-page="jumpPage"
           />
         </div>
-        <NotFound v-if="isShow" />
       </div>
     </div>
     <div class="search-right">
@@ -297,7 +299,7 @@ onMounted(() => {
     .search-content {
       width: 100%;
       margin-top: var(--o-spacing-h2);
-      box-shadow: var(--e-shadow-l1);
+
       @media (max-width: 768px) {
         margin-top: var(--o-spacing-h5);
       }
@@ -345,59 +347,65 @@ onMounted(() => {
           }
         }
       }
-      .content-list {
-        padding: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
-        background-color: var(--e-color-bg2);
+      .content-box {
         min-height: 1948px;
-        @media (max-width: 768px) {
-          padding: 0 var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h5);
-          margin: var(--o-spacing-h5) var(--o-spacing-h5) 0 var(--o-spacing-h5);
-          min-height: 0;
-        }
-        li {
-          padding-top: var(--o-spacing-h2);
+        box-shadow: var(--e-shadow-l1);
+        background-color: var(--e-color-bg2);
+        .content-list {
+          padding: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
           @media (max-width: 768px) {
-            padding-top: var(--o-spacing-h5);
+            padding: 0 var(--o-spacing-h5) var(--o-spacing-h5)
+              var(--o-spacing-h5);
+            margin: var(--o-spacing-h5) var(--o-spacing-h5) 0
+              var(--o-spacing-h5);
+            min-height: 0;
           }
-          h3 {
-            font-size: var(--o-font-size-h5);
-            color: var(--e-color-text1);
-            line-height: var(--o-line-height-h5);
-            font-weight: 500;
-            cursor: pointer;
-            :deep(span) {
-              color: var(--e-color-brand1);
-            }
+          li {
+            padding-top: var(--o-spacing-h2);
             @media (max-width: 768px) {
+              padding-top: var(--o-spacing-h5);
+            }
+            h3 {
+              font-size: var(--o-font-size-h5);
+              color: var(--e-color-text1);
+              line-height: var(--o-line-height-h5);
+              font-weight: 500;
+              cursor: pointer;
+              :deep(span) {
+                color: var(--e-color-brand1);
+              }
+              @media (max-width: 768px) {
+                font-size: var(--o-font-size-text);
+                line-height: var(--o-line-height-text);
+              }
+            }
+            .detail {
+              margin-top: 17px;
               font-size: var(--o-font-size-text);
               line-height: var(--o-line-height-text);
+              color: var(--e-color-text1);
+              :deep(span) {
+                color: var(--e-color-brand1);
+              }
+              @media (max-width: 768px) {
+                font-size: var(--o-font-size-tip);
+                line-height: var(--o-line-height-tip);
+              }
             }
-          }
-          .detail {
-            margin-top: 17px;
-            font-size: var(--o-font-size-text);
-            line-height: var(--o-line-height-text);
-            color: var(--e-color-text1);
-            :deep(span) {
-              color: var(--e-color-brand1);
-            }
-            @media (max-width: 768px) {
-              font-size: var(--o-font-size-tip);
-              line-height: var(--o-line-height-tip);
-            }
-          }
-          .from {
-            margin-top: 15px;
-            font-size: var(--o-font-size-text);
-            line-height: var(--o-line-height-text);
-            color: var(--e-color-text1);
-            @media (max-width: 768px) {
-              font-size: var(--o-font-size-tip);
-              line-height: var(--o-line-height-tip);
+            .from {
+              margin-top: 15px;
+              font-size: var(--o-font-size-text);
+              line-height: var(--o-line-height-text);
+              color: var(--e-color-text1);
+              @media (max-width: 768px) {
+                font-size: var(--o-font-size-tip);
+                line-height: var(--o-line-height-tip);
+              }
             }
           }
         }
       }
+
       .page-box {
         margin-top: var(--o-spacing-h4);
         .pagination-pc {
