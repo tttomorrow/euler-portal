@@ -41,9 +41,15 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
 .bread-crumbs {
   width: 100%;
   font-size: var(--o-font-size-tip);
-  line-height: var(--o-line-height-text);
+  line-height: var(--o-line-height-tip);
   display: flex;
   align-items: center;
+  // @media (max-width: 768px) {
+  //   height: var(--o-spacing-h4);
+  // }
+  span {
+    display: inline-block;
+  }
   span:nth-of-type(1) {
     a {
       color: var(--e-color-text4);
@@ -62,6 +68,13 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
     .no-click {
       cursor: default;
     }
+  }
+
+  span:nth-of-type(3) {
+    max-width: calc(100% - 50px);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 </style>

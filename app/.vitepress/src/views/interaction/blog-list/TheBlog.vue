@@ -9,7 +9,7 @@ import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import NotFound from '@/NotFound.vue';
-import MobileFilter from '@/components/MobileFilter.vue';
+// import MobileFilter from '@/components/MobileFilter.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
 import blogIllustration from '@/assets/illustrations/blog.png';
@@ -69,16 +69,16 @@ const tagsParams = reactive({
   want: '',
 });
 // 移动端数据
-const tagsDataToChild = ref<any>([
-  {
-    title: '时间',
-    select: [],
-  },
-  {
-    title: '作者',
-    select: [],
-  },
-]);
+// const tagsDataToChild = ref<any>([
+//   {
+//     title: '时间',
+//     select: [],
+//   },
+//   {
+//     title: '作者',
+//     select: [],
+//   },
+// ]);
 // pc端筛选数据
 const selectData = ref<any>([
   {
@@ -169,27 +169,27 @@ const getListData = (params: ParamsType) => {
 };
 
 // 筛选方法
-const listFilter = (val: any) => {
-  let paramsdate = '';
-  let paramsauthor = '';
-  for (let i = 0; i < val.length; i++) {
-    if (val[i].title === '时间') {
-      paramsdate = val[i].sele[0];
-    }
-    if (val[i].title === '作者') {
-      paramsauthor = val[i].sele[0];
-    }
-  }
-  const params = {
-    page: 1,
-    pageSize: 9,
-    lang: lang.value,
-    category: 'blog',
-    archives: paramsdate,
-    author: paramsauthor,
-  };
-  getListData(params);
-};
+// const listFilter = (val: any) => {
+//   let paramsdate = '';
+//   let paramsauthor = '';
+//   for (let i = 0; i < val.length; i++) {
+//     if (val[i].title === '时间') {
+//       paramsdate = val[i].sele[0];
+//     }
+//     if (val[i].title === '作者') {
+//       paramsauthor = val[i].sele[0];
+//     }
+//   }
+//   const params = {
+//     page: 1,
+//     pageSize: 9,
+//     lang: lang.value,
+//     category: 'blog',
+//     archives: paramsdate,
+//     author: paramsauthor,
+//   };
+//   getListData(params);
+// };
 // pc筛选
 const selectMethod = () => {
   const params = {
@@ -511,13 +511,13 @@ const moblieCurrentChange = (val: string) => {
           </ClientOnly>
         </div>
       </div>
-      <div class="blog-tag2">
+      <!-- <div class="blog-tag2">
         <MobileFilter
           :data="tagsDataToChild"
           :single="true"
           @filter="listFilter"
         />
-      </div>
+      </div> -->
     </template>
     <template v-if="isShowData">
       <div class="blog-list">
@@ -650,7 +650,6 @@ const moblieCurrentChange = (val: string) => {
     }
   }
   &-list {
-    max-width: 1448px;
     margin: var(--o-spacing-h2) auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -745,6 +744,7 @@ const moblieCurrentChange = (val: string) => {
 @media (max-width: 768px) {
   .blog-list {
     margin-top: 0;
+    margin-bottom: var(--o-spacing-h5);
     grid-template-columns: repeat(1, 1fr);
   }
 }
@@ -757,9 +757,6 @@ const moblieCurrentChange = (val: string) => {
   .blog-list-item {
     min-height: 152px;
     max-height: 152px;
-  }
-  .blog-list {
-    margin-top: var(--o-spacing-h5);
   }
 
   .blog-list-item-content {

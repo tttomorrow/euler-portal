@@ -702,6 +702,9 @@ const moblieCurrentChange = (val: string) => {
   }
 }
 @media (max-width: 768px) {
+  .news-list {
+    margin-bottom: var(--o-spacing-h5);
+  }
   .pcpagination {
     display: none;
   }

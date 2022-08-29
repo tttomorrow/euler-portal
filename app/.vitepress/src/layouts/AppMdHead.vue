@@ -47,32 +47,42 @@ const resolveDate = (date: any) => {
   }
   .info {
     color: var(--e-color-text4);
-    font-size: 12px;
-    margin-top: 20px;
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
     .line {
       margin: 0 16px;
     }
     .author {
+      display: inline-block;
       margin-left: 0;
+      margin-top: 20px;
+      @media screen and (max-width: 1280px) {
+        margin-top: 8px;
+      }
+
       &:not(:first-child)::before {
         content: ',';
         padding-left: 4px;
       }
     }
     .date {
+      display: inline-block;
       margin: 0 12px;
       padding: 0 12px;
+      margin-top: 8px;
       border-left: 1px solid var(--e-color-border1);
       border-right: 1px solid var(--e-color-border1);
     }
     .o-tag {
+      margin-top: 8px;
       margin-right: 4px;
     }
   }
 }
 @media (max-width: 1100px) {
   .markdown-body-title {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
     .page-title {
       font-size: 16px;
       line-height: 24px;
