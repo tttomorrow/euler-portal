@@ -43,65 +43,64 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="middle">
-    <ul class="sig-board">
-      <li
-        v-for="(item,index) in (sigList as any)"
-        :key="index"
-        data-aos="fade-zoom-in"
-        data-aos-once="true"
-        class="sig-board-item"
-      >
-        <h2 @click="toSigDetail(item)">{{ item.group_name }}</h2>
-        <ul class="sig-board-item-info">
-          <li class="sig-board-item-info-page">
-            <IconHome class="sig-board-icon" />
-            <span>
-              <a target="_black" :href="item.home_page">
-                {{ i18n.sig.SIG_LIST.HOME_PAGE }}
-              </a>
-            </span>
-          </li>
-          <li class="sig-board-item-info-mail">
-            <IconMail class="sig-board-icon" />
-            <span
-              >{{ i18n.sig.SIG_LIST.MAIL }} :
-              <a :href="'mailto:' + item.maillist">
-                {{ item.maillist }}
-              </a>
-            </span>
-          </li>
-          <li class="sig-board-item-info-video">
-            <IconVideo class="sig-board-icon" />
-            <span> {{ i18n.sig.SIG_LIST.IRC }} : {{ item.irc }} </span>
-          </li>
-          <li class="sig-board-item-info-user">
-            <IconUser class="sig-board-icon" />
-            <span>{{ i18n.sig.SIG_LIST.MANAGER }} :</span>
-          </li>
-        </ul>
-        <ul class="sig-board-item-admin">
-          <li
-            v-for="subItem in JSON.parse(item.owners).slice(0, 4)"
-            :key="subItem.gitee_id"
-          >
-            <img :src="subItem.avatar_url" />
-            <span>{{ subItem.gitee_id }}</span>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+  <ul class="sig-board">
+    <li
+      v-for="(item,index) in (sigList as any)"
+      :key="index"
+      data-aos="fade-zoom-in"
+      data-aos-once="true"
+      class="sig-board-item"
+    >
+      <h2 @click="toSigDetail(item)">{{ item.group_name }}</h2>
+      <ul class="sig-board-item-info">
+        <li class="sig-board-item-info-page">
+          <IconHome class="sig-board-icon" />
+          <span>
+            <a target="_black" :href="item.home_page">
+              {{ i18n.sig.SIG_LIST.HOME_PAGE }}
+            </a>
+          </span>
+        </li>
+        <li class="sig-board-item-info-mail">
+          <IconMail class="sig-board-icon" />
+          <span
+            >{{ i18n.sig.SIG_LIST.MAIL }} :
+            <a :href="'mailto:' + item.maillist">
+              {{ item.maillist }}
+            </a>
+          </span>
+        </li>
+        <li class="sig-board-item-info-video">
+          <IconVideo class="sig-board-icon" />
+          <span> {{ i18n.sig.SIG_LIST.IRC }} : {{ item.irc }} </span>
+        </li>
+        <li class="sig-board-item-info-user">
+          <IconUser class="sig-board-icon" />
+          <span>{{ i18n.sig.SIG_LIST.MANAGER }} :</span>
+        </li>
+      </ul>
+      <ul class="sig-board-item-admin">
+        <li
+          v-for="subItem in JSON.parse(item.owners).slice(0, 4)"
+          :key="subItem.gitee_id"
+        >
+          <img :src="subItem.avatar_url" />
+          <span>{{ subItem.gitee_id }}</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </template>
 
 <style scoped lang="scss">
-.middle {
-  margin-top: var(--o-spacing-h2);
-}
 .sig-board {
   column-count: 2;
   max-width: 1504px;
   margin: 0 auto;
+  margin-top: var(--o-spacing-h2);
+  @media (max-width: 768px) {
+    margin-top: var(--o-spacing-h4);
+  }
   @media (max-width: 900px) {
     column-count: 1;
     padding: 0 var(--o-spacing-h5);
@@ -126,10 +125,17 @@ onMounted(() => {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-size: var(--o-font-size-h4);
+      line-height: var(--o-line-height-h4);
       cursor: pointer;
       color: var(--e-color-text1);
       &:hover {
         color: var(--e-color-kleinblue6);
+      }
+
+      @media (max-width: 768px) {
+        font-size: var(--o-font-size-h6);
+        line-height: var(--o-line-height-h6);
       }
     }
     &-info {

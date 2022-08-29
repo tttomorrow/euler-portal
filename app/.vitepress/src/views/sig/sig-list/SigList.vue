@@ -521,7 +521,7 @@ onMounted(() => {
 .sig-table {
   margin-top: var(--o-spacing-h2);
   @media (max-width: 768px) {
-    margin-top: var(--o-spacing-h3);
+    margin-top: var(--o-spacing-h4);
   }
   a {
     line-height: var(--o-line-height-h9);

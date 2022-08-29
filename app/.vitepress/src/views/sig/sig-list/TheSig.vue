@@ -75,7 +75,7 @@ onMounted(() => {
   line-height: var(--o-line-height-h8);
   color: var(--e-color-text1);
   @media (max-width: 1100px) {
-    padding: 0px 0px var(--o-spacing-h2) var(--o-spacing-h5);
+    padding-left: var(--o-spacing-h5);
     font-size: var(--o-font-size-tip);
   }
   li {
@@ -87,11 +87,15 @@ onMounted(() => {
 }
 .sig-list {
   margin: var(--o-spacing-h1) auto 0;
+
   p {
     display: none;
   }
-  @media (max-width: 780px) {
-    margin: 0px;
+  @media (max-width: 1100px) {
+    margin: var(--o-spacing-h2) auto 0;
+  }
+
+  @media (max-width: 768px) {
     padding: 0 0;
     :deep(.el-tabs__header) {
       display: none;
