@@ -121,6 +121,7 @@ watch(
     cursor: pointer;
     z-index: 80;
     box-shadow: var(--e-shadow-l1);
+    min-width: 78px;
     .lang-item {
       line-height: var(--o-line-height-h3);
       text-align: center;
