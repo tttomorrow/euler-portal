@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, CSSProperties, useSlots } from 'vue';
+import { computed, CSSProperties, onMounted, useSlots } from 'vue';
+import AOS from 'aos';
 
 const slots = useSlots();
 
@@ -32,21 +33,31 @@ const props = defineProps({
 
 const rootStyle = computed(() => {
   const result: CSSProperties = {};
-  if (props.backgroundImage) {
-    result.backgroundImage = `url(${props.backgroundImage})`;
-  }
+  // if (props.backgroundImage) {
+  //   result.backgroundImage = `url(${props.backgroundImage})`;
+  // }
 
   if (props.backgroundColor) {
     result.backgroundColor = props.backgroundColor;
   }
   return result;
 });
+
+onMounted(() => {
+  AOS.init();
+});
 </script>
 
 <template>
   <div class="banner-level2" :style="rootStyle">
+    <img :src="props.backgroundImage" class="banner-bg" />
     <div class="wrap">
-      <div class="banner-text">
+      <div
+        class="banner-text"
+        data-aos="fade-up"
+        data-aos-once="true"
+        data-aos-duration="800"
+      >
         <p v-if="backgroundText" class="banner-text-bg">
           {{ backgroundText }}
         </p>
@@ -58,7 +69,13 @@ const rootStyle = computed(() => {
           <slot></slot>
         </div>
       </div>
-      <div v-if="illustration" class="banner-illustration">
+      <div
+        v-if="illustration"
+        class="banner-illustration"
+        data-aos="fade-down"
+        data-aos-once="true"
+        data-aos-duration="800"
+      >
         <img :src="illustration" />
       </div>
     </div>
@@ -66,54 +83,84 @@ const rootStyle = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+.dark {
+  .banner-bg,
+  .banner-illustration {
+    filter: brightness(0.8) grayscale(0.2) contrast(1.2);
+  }
+}
 .banner-level2 {
+  position: relative;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: var(--e-color-brand1);
 
+  .banner-bg {
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    object-fit: fill;
+    user-select: none;
+  }
+
   .wrap {
+    position: relative;
     max-width: 1504px;
     margin: 0 auto;
     padding: 0 44px;
     display: flex;
     justify-content: space-between;
     min-height: 280px;
-    position: relative;
-    @media screen and (max-width: 768px) {
-      min-height: 126px;
+    @media screen and (max-width: 1439px) {
       padding: 0 24px;
     }
+
+    @media screen and (max-width: 1080px) {
+      min-height: 200px;
+    }
+
+    @media screen and (max-width: 768px) {
+      min-height: 126px;
+    }
     .banner-text {
+      display: flex;
+      flex-direction: column;
       position: relative;
-      padding-top: 50px;
-      padding-bottom: 32px;
+      margin-top: 86px;
+      margin-bottom: 86px;
       max-width: 54%;
 
+      @media screen and (max-width: 1080px) {
+        margin-top: 64px;
+        margin-bottom: 64px;
+      }
+
       @media screen and (max-width: 768px) {
-        padding-top: 32px;
-        padding-bottom: 32px;
+        margin-top: 32px;
+        margin-bottom: 32px;
       }
 
       .banner-text-bg {
         position: absolute;
-        top: 60px;
-        color: #2e4fb0;
-        opacity: 0.8;
+        top: 0;
+        color: var(--e-color-brand1);
+        opacity: 0.4;
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
         font-weight: bold;
         user-select: none;
 
         @media screen and (max-width: 1080px) {
+          // top: 64px;
           font-size: var(--o-font-size-h2);
           line-height: var(--o-line-height-h2);
         }
 
         @media screen and (max-width: 768px) {
+          // top: 32px;
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
-          top: 32px;
         }
       }
       .banner-title {
@@ -122,8 +169,9 @@ const rootStyle = computed(() => {
         color: var(--e-color-white);
         font-size: var(--o-font-size-h2);
         line-height: var(--o-line-height-h2);
-        margin-top: var(--o-spacing-h2);
+        margin-top: 32px;
         margin-bottom: 0;
+        font-weight: 500;
         @media screen and (max-width: 1080px) {
           font-size: var(--o-font-size-h3);
           line-height: var(--o-line-height-h3);
@@ -160,26 +208,22 @@ const rootStyle = computed(() => {
       }
     }
     .banner-illustration {
-      margin-left: var(--o-spacing-h);
       position: absolute;
-      bottom: 0;
+      top: 50%;
+      transform: translateY(-50%);
       right: 44px;
-      display: flex;
-      flex-direction: column-reverse;
       object-fit: fill;
 
-      @media screen and (max-width: 1080px) {
-        bottom: 50%;
-        transform: translateY(50%);
-      }
-
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 1439px) {
         right: 24px;
+      }
+      @media screen and (max-width: 1439px) {
+        right: 16px;
       }
 
       img {
-        max-height: 230px;
-
+        user-select: none;
+        max-height: 232px;
         @media screen and (max-width: 1080px) {
           max-height: 160px;
         }

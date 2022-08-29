@@ -1,5 +1,5 @@
 export default {
-  FILTER: 'screen',
+  FILTER: 'filter',
   SURE: 'OK',
   ALL: 'All',
 };

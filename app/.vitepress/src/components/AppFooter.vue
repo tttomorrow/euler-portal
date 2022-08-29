@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
+import AppContent from '@/components/AppContent.vue';
 
 import LogoFooter from '@/assets/footer/footer-logo2.png';
 import LogoFooter1 from '@/assets/footer-logo1.svg';
@@ -30,7 +31,7 @@ import CodeTitleGzh from '@/assets/footer/img-gzh.png';
 import CodeImgXzs from '@/assets/footer/code-xzs.png';
 import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
-const { lang } = useData();
+const { lang, frontmatter } = useData();
 const i18n = useI18n();
 const router = useRouter();
 
@@ -161,70 +162,82 @@ const footBg = {
   pc: `url(${FooterBg})`,
   mo: `url(${FooterBgMo})`,
 };
+
+// 迁移专区
+const isMigration = computed(() => {
+  return (
+    frontmatter.value.category === 'migration' ||
+    router.route.path.split('/')[2] === 'migration'
+  );
+});
 </script>
 
 <template>
-  <div class="footer">
-    <div class="atom">
-      <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}</p>
-      <img :src="LogoAtom" class="atom-logo" alt="" />
-    </div>
-    <div class="footer-content">
-      <div class="inner">
-        <div class="footer-logo">
-          <img class="show-pc" :src="LogoFooter" alt="" />
-          <img class="show-mo" :src="LogoFooter1" alt="" />
-          <p>
-            <a
-              class="email"
-              :href="'mailto:' + i18n.common.FOOTER.MAIL"
-              target="_blank"
-            >
-              {{ i18n.common.FOOTER.MAIL }}
-            </a>
-          </p>
-        </div>
-        <div class="footer-option">
-          <div class="footer-option-item">
-            <a
-              v-for="link in i18n.common.FOOTER.RIGHT_LIST"
-              :key="link.URL"
-              href="javascript:;"
-              class="link"
-              @click="handleNavClick(link.URL)"
-              >{{ link.NAME }}</a
-            >
-          </div>
-          <p class="copyright">{{ i18n.common.FOOTER.COPY_RIGHT }}</p>
-        </div>
-        <div class="footer-right">
-          <div v-if="lang === 'zh'" class="code-box">
-            <a
-              v-for="(item, index) in footerCodeList"
-              :key="index"
-              class="code-pop"
-              href="javascript:;"
-            >
-              <img :src="item.img" class="code-img" alt="" />
-              <div class="code-layer">
-                <img :src="item.code" alt="" />
-                <p class="txt">{{ item.label }}</p>
-              </div>
-            </a>
-          </div>
-          <div class="footer-links" :class="{ iszh: lang === 'zh' }">
-            <a
-              v-for="item in footerLinks"
-              :key="item.id"
-              :href="item.path"
-              class="links-logo"
-              target="_blank"
-            >
-              <img :src="item.logo" alt="" />
-            </a>
-          </div>
-        </div>
+  <div class="footer" :class="{ migration: isMigration }">
+    <AppContent :pc-top="0" :mobile-top="0">
+      <div class="atom">
+        <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}</p>
+        <img :src="LogoAtom" class="atom-logo" alt="" />
       </div>
+    </AppContent>
+    <div class="footer-content">
+      <AppContent :pc-top="0" :mobile-top="0">
+        <div class="inner">
+          <div class="footer-logo">
+            <img class="show-pc" :src="LogoFooter" alt="" />
+            <img class="show-mo" :src="LogoFooter1" alt="" />
+            <p>
+              <a
+                class="email"
+                :href="'mailto:' + i18n.common.FOOTER.MAIL"
+                target="_blank"
+              >
+                {{ i18n.common.FOOTER.MAIL }}
+              </a>
+            </p>
+          </div>
+          <div class="footer-option">
+            <div class="footer-option-item">
+              <a
+                v-for="link in i18n.common.FOOTER.RIGHT_LIST"
+                :key="link.URL"
+                href="javascript:;"
+                class="link"
+                @click="handleNavClick(link.URL)"
+                >{{ link.NAME }}</a
+              >
+            </div>
+            <p class="copyright">{{ i18n.common.FOOTER.COPY_RIGHT }}</p>
+          </div>
+          <div class="footer-right">
+            <div v-if="lang === 'zh'" class="code-box">
+              <a
+                v-for="(item, index) in footerCodeList"
+                :key="index"
+                class="code-pop"
+                href="javascript:;"
+              >
+                <img :src="item.img" class="code-img" alt="" />
+                <div class="code-layer">
+                  <img :src="item.code" alt="" />
+                  <p class="txt">{{ item.label }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="footer-links" :class="{ iszh: lang === 'zh' }">
+              <a
+                v-for="item in footerLinks"
+                :key="item.id"
+                :href="item.path"
+                class="links-logo"
+                target="_blank"
+              >
+                <img :src="item.logo" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </AppContent>
     </div>
   </div>
 </template>
@@ -233,15 +246,22 @@ const footBg = {
 $color: #fff;
 .footer {
   background: var(--e-color-greyblack1);
+  &.migration {
+    margin-left: 300px;
+    @media (max-width: 1100px) {
+      margin-left: 0;
+    }
+  }
+  :deep(.app-content) {
+    padding-bottom: 0;
+  }
   .atom {
     text-align: center;
-    max-width: 1416px;
     padding: var(--o-spacing-h3) 0 var(--o-spacing-h4);
     position: relative;
-    margin: 0 auto;
+    border-bottom: 1px solid rgba(229, 229, 229, 0.12);
     @media (max-width: 1440px) {
       padding: var(--o-spacing-h4) 0;
-      margin: 0 var(--o-spacing-h4);
     }
 
     &-text {
@@ -261,18 +281,6 @@ $color: #fff;
         height: 30px;
       }
     }
-    &::after {
-      background: rgba(229, 229, 229, 0.12);
-      position: absolute;
-      bottom: 0px;
-      left: 0;
-      width: 1416px;
-      content: '';
-      height: 2px;
-      @media (max-width: 1440px) {
-        width: 100%;
-      }
-    }
   }
 
   &-content {
@@ -281,16 +289,14 @@ $color: #fff;
       background: v-bind('footBg.mo') no-repeat bottom center;
     }
     .inner {
-      max-width: 1416px;
-      margin: 0 auto;
       display: flex;
       align-items: end;
       justify-content: space-between;
       padding: 18px 0 32px;
       position: relative;
       min-height: 118px;
-      @media (max-width: 1439px) {
-        padding: var(--o-spacing-h4) var(--o-spacing-h5);
+      @media (max-width: 1400px) {
+        padding: var(--o-spacing-h4) 0;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
@@ -308,7 +314,7 @@ $color: #fff;
     .show-mo {
       display: none;
     }
-    @media (max-width: 1439px) {
+    @media (max-width: 1400px) {
       text-align: center;
       margin: 16px 0;
       .show-pc {
@@ -325,7 +331,7 @@ $color: #fff;
     font-size: var(--o-font-size-text);
     color: $color;
     margin-top: var(--o-spacing-h5);
-    @media (max-width: 1439px) {
+    @media (max-width: 1400px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
       margin-top: var(--o-spacing-h8);
@@ -343,13 +349,13 @@ $color: #fff;
       &:last-child {
         border-right: 0;
       }
-      @media (max-width: 1439px) {
+      @media (max-width: 1400px) {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         padding: 0 var(--o-spacing-h9);
       }
     }
-    @media (max-width: 1439px) {
+    @media (max-width: 1400px) {
       order: -1;
     }
   }
@@ -422,7 +428,7 @@ $color: #fff;
           }
         }
       }
-      @media (max-width: 1439px) {
+      @media (max-width: 1100px) {
         justify-content: center;
         margin-top: 24px;
       }
@@ -439,7 +445,7 @@ $color: #fff;
           object-fit: cover;
         }
       }
-      @media (max-width: 1439px) {
+      @media (max-width: 1100px) {
         justify-content: center;
       }
       @media (max-width: 800px) {
@@ -450,12 +456,12 @@ $color: #fff;
         }
       }
       &.iszh {
-        gap: 12px;
+        gap: 10px;
         .links-logo {
           height: 14px;
 
           &:first-child {
-            height: 20px;
+            height: 18px;
           }
         }
         @media (max-width: 800px) {
@@ -479,9 +485,9 @@ $color: #fff;
 
   .email {
     color: $color;
-    font-size: 14px;
-    @media (max-width: 1439px) {
-      font-size: 12px;
+    font-size: var(--o-font-size-text);
+    @media (max-width: 1400px) {
+      font-size: var(--o-font-size-tip);
     }
   }
 }

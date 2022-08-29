@@ -71,6 +71,7 @@ const leave = (el: HTMLUListElement) => {
       <ul v-show="isOpen" class="menu-list">
         <li
           v-for="item in info.children"
+          :key="item.link"
           class="menu-item"
           :class="{ active: activeId === item.link }"
           @click="onClick(item.link)"
@@ -85,6 +86,7 @@ const leave = (el: HTMLUListElement) => {
 <style lang="scss" scoped>
 .sidebar-menu {
   position: relative;
+  color: var(--e-color-white);
 
   .menu-title {
     position: relative;
@@ -102,7 +104,9 @@ const leave = (el: HTMLUListElement) => {
       top: 0;
       width: calc(100% - 80px);
       height: 1px;
-      background-color: #e5e5e5;
+      // background-color: #e5e5e5;
+      background-color: #ffffff;
+      opacity: 0.1;
       content: '';
     }
 
@@ -113,11 +117,11 @@ const leave = (el: HTMLUListElement) => {
     }
 
     &:hover {
-      color: var(--o-color-brand);
+      color: var(--e-color-yellow5);
     }
 
     &.active {
-      color: #feb32a;
+      color: var(--e-color-yellow5);
     }
 
     &.open {
@@ -130,7 +134,7 @@ const leave = (el: HTMLUListElement) => {
   .menu-list {
     overflow-y: hidden;
     transition: 0.3s height cubic-bezier(0.645, 0.045, 0.355, 1);
-    background-color: var(--e-color-brand3);
+    background-color: var(--e-color-kleinblue4);
     padding: 0 40px;
 
     .menu-item {
@@ -153,24 +157,12 @@ const leave = (el: HTMLUListElement) => {
       }
 
       &:hover {
-        color: #feb32a;
+        color: var(--e-color-yellow5);
       }
 
       &.active {
-        color: #feb32a;
+        color: var(--e-color-yellow5);
       }
-    }
-  }
-
-  & + .sidebar-menu {
-    &::before {
-      position: absolute;
-      content: '';
-      top: 0;
-      right: -12px;
-      width: 100%;
-      height: 1px;
-      background-color: var(--o-color-division);
     }
   }
 }

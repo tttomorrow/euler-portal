@@ -183,7 +183,7 @@ onMounted(() => {
     position: absolute;
     border: #fff285 1px solid;
     border-radius: var(--o-spacing-h10);
-    box-shadow: var(--o-shadow-base);
+    box-shadow: var(--e-shadow-l1);
     z-index: 100;
     &-name {
       color: var(--e-color-brand1);

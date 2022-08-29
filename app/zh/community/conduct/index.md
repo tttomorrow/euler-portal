@@ -3,21 +3,29 @@ title: '行为守则'
 ---
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
-import bannerBG from '@/assets/banner-secondary.png';
-import illustration from '@/assets/illustrations/covenant.png';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+import banner from '@/assets/banner/banner-community.png';
+import contributionIllustration from '@/assets/illustrations/contribution.png';
+
+const screenWidth = useWindowResize();
+const isMobile = computed(() => {
+  return screenWidth.value <= 768 ? true : false;
+});
 </script>
 
 <ClientOnly>
   <BannerLevel2
-    :background-image="bannerBG"
+    :background-image="banner"
     background-text="COMMUNITY"
     title="行为守则"
-    :illustration="illustration"
+    :illustration="contributionIllustration"
   />
 </ClientOnly>
 
-<div class="markdown">
+<div class="markdown" :style="['margin-top:var(--o-spacing-h1)', isMobile ? 'margin-top:var(--o-spacing-h2)' : '']">
 
 openEuelr 社区遵守开源社区《贡献者公约》V1.4 中规定的行为守则，请参考 V1.4 版本
 

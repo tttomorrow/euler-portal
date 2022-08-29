@@ -113,7 +113,6 @@ const isDark = computed(() => {
     height: 290px;
     margin: 0 auto;
     background-color: var(--e-color-bg2);
-    box-shadow: var(--o-shadow-base);
     &-item {
       position: relative;
       .cover {

@@ -1,14 +1,23 @@
 <script setup lang="ts">
 import { useData, useRouter } from 'vitepress';
-import DocSideBar from '@/components/DocSideBar.vue';
-import DocSideBarMenu from '@/components/DocSideBarMenu.vue';
 import { ref, watch, computed } from 'vue';
+
 import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
+
+import tocInfo from '@/data/migration/migration-toc';
+
+import DocSideBar from '@/components/DocSideBar.vue';
+import DocSideBarMenu from '@/components/DocSideBarMenu.vue';
+
 import IconChevronDown from '~icons/app/icon-chevron-down.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
+import IconCatalog from '~icons/mooc/catalog.svg';
+
+import logo_light from '@/assets/logo.png';
+import logo_dark from '@/assets/logo_dark.png';
 
 const { lang, frontmatter } = useData();
-import IconCancel from '~icons/app/icon-cancel.svg';
 const commonStore = useCommon();
 
 const router = useRouter();
@@ -17,68 +26,14 @@ const activeId = ref(routeList[routeList.length - 2]);
 
 const screenWidth = useWindowResize();
 
-const handleNodeClick = () => {};
+const defaultProps = ref({
+  children: 'children',
+  label: 'label',
+});
 
-const a = [
-  {
-    label: '下载',
-    link: 'download',
-  },
-  {
-    label: '背景',
-    link: 'background',
-  },
-  {
-    label: '方案介绍',
-    link: 'guidance',
-    children: [
-      {
-        label: '迁移概述',
-        link: '1-summary',
-      },
-      {
-        label: '迁移注意事项',
-        link: '2-attention',
-      },
-      {
-        label: '迁移流程',
-        link: '3-process',
-      },
-      {
-        label: '迁移评估',
-        link: '4-assessment',
-      },
-      {
-        label: '迁移适配',
-        link: '5-adaptive',
-      },
-      {
-        label: '迁移实施（存量替换）',
-        link: '6-stock-migration',
-      },
-      {
-        label: '迁移实施（新增/扩容）',
-        link: '7-increased-migration',
-      },
-      {
-        label: '使用SUT进行升级（原地升级）',
-        link: '8-updated',
-      },
-    ],
-  },
-  {
-    label: '案例指导',
-    link: 'background',
-  },
-];
-
-const handleItemClick = (link: string) => {
-  router.go(`/${lang.value}/migration/guidance/${link}/`);
-};
-
-const handleTitleClick = (link: string) => {
-  router.go(`/${lang.value}/migration/${link}/`);
-};
+const isCustomLayout = computed(() => {
+  return frontmatter.value['custom-layout'];
+});
 
 watch(
   () => {
@@ -90,75 +45,90 @@ watch(
   }
 );
 
-import logo_light from '@/assets/logo.png';
-import logo_dark from '@/assets/logo_dark.png';
-
 const logo = computed(() => {
   return commonStore.theme === 'light' ? logo_light : logo_dark;
 });
 
 // 控制移动端二级导航展开收起
-const isShowMenu = ref(true);
+const isShowMenu = ref(false);
 // 移动端点击控制目录的显示或隐藏
-function showMenu(option: string) {
-  if (option === 'show') {
-    isShowMenu.value = true;
-  } else if (option === 'hide') {
-    isShowMenu.value = false;
-  } else {
-    return false;
-  }
-}
+const toggleMenu = (flag: boolean) => {
+  isShowMenu.value = flag;
+};
 // 返回首页
 const goHome = () => {
   router.go(`/${lang.value}/`);
+};
+
+const handleItemClick = (link: string) => {
+  router.go(`/${lang.value}/migration/guidance/${link}/`);
+};
+
+const handleTitleClick = (link: string) => {
+  router.go(`/${lang.value}/migration/${link}/`);
+};
+
+const handleNodeClick = (node: any) => {
+  if (node.link === 'guidance') {
+    return;
+  } else if (
+    node.link.indexOf('-') !== -1 &&
+    node.link.indexOf('-cases') === -1 &&
+    node.link.indexOf('-guide') === -1
+  ) {
+    router.go(`/${lang.value}/migration/guidance/${node.link}/`);
+  } else {
+    router.go(`/${lang.value}/migration/${node.link}/`);
+  }
+  toggleMenu(false);
 };
 </script>
 
 <template>
   <DocSideBar v-if="screenWidth > 1100">
     <p class="migration-title">迁移专区</p>
-    <template v-for="item in a" :key="item.label">
-      <DocSideBarMenu
-        v-if="item.children && item.children.length"
-        :info="item"
-        :active-id="activeId"
-        @item-click="handleItemClick"
-      ></DocSideBarMenu>
-      <p
-        v-else
-        class="menu-title"
-        :class="{ active: item.link === activeId }"
-        @click="handleTitleClick(item.link)"
-      >
-        {{ item.label }}
-      </p>
-    </template>
+    <div class="migration-sidebar-toc">
+      <template v-for="item in tocInfo" :key="item.label">
+        <DocSideBarMenu
+          v-if="item.children && item.children.length"
+          :info="item"
+          :active-id="activeId"
+          @item-click="handleItemClick"
+        ></DocSideBarMenu>
+        <p
+          v-else
+          class="sidebar-title"
+          :class="{ active: item.link === activeId }"
+          @click="handleTitleClick(item.link)"
+        >
+          {{ item.label }}
+        </p>
+      </template>
+    </div>
   </DocSideBar>
-  <div v-if="screenWidth < 1100" class="migration-head">
-    <div class="migration-head">下载</div>
-  </div>
-  <div class="detail-mobile">
-    <OIcon class="catalog" @click="showMenu('show')"><IconCatalog /></OIcon>
+
+  <div v-else class="detail-mobile">
+    <OIcon class="catalog" @click="toggleMenu(true)"><IconCatalog /></OIcon>
     <ODrawer
       v-model="isShowMenu"
       direction="ltr"
       size="268px"
-      show-close="false"
+      :show-close="false"
     >
       <div class="nav-tree">
         <div class="nav-top">
           <img class="logo" :src="logo" alt="openEuler logo" @click="goHome" />
-          <OIcon @click="showMenu('hide')"><IconCancel /></OIcon>
+          <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
         </div>
         <OTree
           ref="tree"
-          node-key="key"
-          :data="a"
-          :props="defaultProps"
+          node-key="migration"
+          :data="tocInfo"
           accordion
+          :props="defaultProps"
           :highlight-current="true"
           :icon="IconChevronDown"
+          :current-node-key="activeId"
           @node-click="handleNodeClick"
         >
         </OTree>
@@ -166,43 +136,83 @@ const goHome = () => {
     </ODrawer>
   </div>
   <div class="migration-wrapper migration-markdown">
-    <Content />
+    <Content
+      class="migration-content"
+      :class="{ 'custom-layout': isCustomLayout }"
+    />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.migration-head {
-  padding: 8px 16px;
-  display: flex;
-  justify-content: space-between;
+:deep(.el-tree-node__content:hover) {
+  background-color: var(--e-color-bg4);
+}
+
+.migration-content {
+  max-width: 1380px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    background-color: var(--e-color-bg2);
+    padding: 24px 16px 16px 16px;
+    box-shadow: var(--e-shadow-l1);
+  }
+}
+
+.custom-layout {
+  @media screen and (max-width: 768px) {
+    background-color: var(--e-color-bg1);
+    box-shadow: var(--e-shadow-sl1);
+    padding: 0;
+    box-shadow: none;
+  }
 }
 
 .migration-title {
   font-size: var(--o-font-size-h5);
   line-height: var(--o-line-height-h5);
-  padding: 0 40px;
+  position: fixed;
+  left: 40px;
   margin-bottom: var(--o-spacing-h8);
   margin-top: 0;
+  color: var(--e-color-white);
+}
 
-  & + .menu-title {
-    &::before {
-      display: none;
-    }
+.migration-sidebar-toc {
+  height: 100%;
+  margin-top: 40px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
   }
 
-  & + .sidebar-menu {
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: var(--e-color-division);
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--e-color-bg1);
+  }
+
+  .sidebar-title:first-child {
     &::before {
       display: none;
     }
   }
 }
 
-.menu-title {
+.sidebar-title {
   position: relative;
   padding: 0 40px;
   font-size: var(--o-font-size-text);
   height: 70px;
   line-height: 70px;
+  color: var(--e-color-white);
   cursor: pointer;
 
   &::before {
@@ -210,8 +220,10 @@ const goHome = () => {
     top: 0;
     width: calc(100% - 80px);
     height: 1px;
-    background-color: #e5e5e5;
+    background-color: var(--e-color-neutral11);
     content: '';
+    background-color: #ffffff;
+    opacity: 0.1;
   }
 
   &:hover {
@@ -233,7 +245,14 @@ const goHome = () => {
     margin: 0;
   }
 }
-
+.catalog {
+  position: fixed;
+  top: 12px;
+  left: 48px;
+  z-index: 99;
+  font-size: 24px;
+  color: var(--e-color-text1);
+}
 .nav-tree {
   position: fixed;
   left: 0;
@@ -270,6 +289,10 @@ const goHome = () => {
     overflow: hidden;
     background-color: var(--e-color-bg2);
   }
+
+  :deep(.el-icon.el-tree-node__expand-icon.is-leaf) {
+    display: none;
+  }
   :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
     order: 2;
     padding: 12px;
@@ -284,11 +307,11 @@ const goHome = () => {
       > .el-tree-node__content) {
     background-color: var(--e-color-bg4);
   }
-  :deep(.el-tree-node:nth-of-type(1)
-      > .el-tree-node__content
-      > .el-tree-node__expand-icon) {
-    display: none;
-  }
+  // :deep(.el-tree-node:nth-of-type(1)
+  //     > .el-tree-node__content
+  //     > .el-tree-node__expand-icon) {
+  //   display: none;
+  // }
   :deep(.el-tree-node__children .el-tree-node__expand-icon) {
     display: none;
   }

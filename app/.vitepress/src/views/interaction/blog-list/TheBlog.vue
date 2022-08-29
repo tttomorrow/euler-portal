@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, reactive } from 'vue';
 import { useRouter, useData } from 'vitepress';
-import { useI18n } from '@/i18n';
 
+import { useI18n } from '@/i18n';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+import AppContent from '@/components/AppContent.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import BannerImg1 from '@/assets/banner-secondary.png';
-import BannerImg2 from '@/assets/illustrations/search.png';
+import NotFound from '@/NotFound.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
+
+import banner from '@/assets/banner/banner-interaction.png';
+import blogIllustration from '@/assets/illustrations/blog.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconBrowse from '~icons/app/icon-browse.svg';
-import NotFound from '@/NotFound.vue';
 import IconRight from '~icons/app/arrow-right.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
-import OIcon from 'opendesign/icon/OIcon.vue';
-import AppContent from '@/components/AppContent.vue';
-import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 interface BlogData {
   archives: string;
@@ -48,6 +50,9 @@ const router = useRouter();
 const { lang } = useData();
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
+const screenWidth = useWindowResize();
+
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
 
 const isShowData = ref(false);
 // 博客列表
@@ -61,7 +66,7 @@ const sortParams = reactive({
 const tagsParams = reactive({
   lang: lang.value,
   category: 'blog',
-  tags: 'archives',
+  want: '',
 });
 // 移动端数据
 const tagsDataToChild = ref<any>([
@@ -106,7 +111,35 @@ const toBlogContent = (path: string) => {
   const path1 = router.route.path.substring(0, 3);
   router.go(`${path1}/${path}`);
 };
-
+// 获取标签数据
+const getTagsList = () => {
+  tagsParams.want = 'archives';
+  getTagsData(tagsParams).then((res) => {
+    selectData.value[0].select = [];
+    res.obj.totalNum.forEach((item: any) => {
+      selectData.value[0].select.push(item.key);
+    });
+    tagsParams.want = 'author';
+    getTagsData(tagsParams)
+      .then((res) => {
+        selectData.value[1].select = [];
+        res.obj.totalNum.forEach((item: any) => {
+          selectData.value[1].select.push(item.key);
+        });
+        tagsParams.want = 'tags';
+        getTagsData(tagsParams).then((res) => {
+          selectData.value[2].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        });
+      })
+      .catch((error: any) => {
+        isShowData.value = false;
+        throw new Error(error);
+      });
+  });
+};
 // 获取列表数据
 const getListData = (params: ParamsType) => {
   getSortData(params)
@@ -170,37 +203,198 @@ const selectMethod = () => {
   };
   getListData(params);
 };
-onMounted(() => {
-  getListData(sortParams);
 
-  getTagsData(tagsParams).then((res) => {
-    for (let i = 0; i < 5; i++) {
-      tagsDataToChild.value[0].select.push(res.obj.totalNum[i].key);
-    }
-    res.obj.totalNum.forEach((item: any) => {
-      selectData.value[0].select.push(item.key);
-    });
-    tagsParams.tags = 'author';
-    getTagsData(tagsParams)
-      .then((res) => {
-        for (let i = 0; i < 5; i++) {
-          tagsDataToChild.value[1].select.push(res.obj.totalNum[i].key);
-        }
-        res.obj.totalNum.forEach((item: any) => {
-          selectData.value[1].select.push(item.key);
-        });
-        tagsParams.tags = 'tags';
-        getTagsData(tagsParams).then((res) => {
+const timeChange = () => {
+  selectMethod();
+  if (selectTimeVal.value !== '') {
+    const wantauthor = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    const wanttags = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'tags',
+      condition: {
+        archives: selectTimeVal.value,
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+      },
+    };
+    getTagsData(wantauthor).then((res) => {
+      selectData.value[1].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[1].select.push(item.key);
+      });
+      getTagsData(wanttags)
+        .then((res) => {
+          selectData.value[2].select = [];
           res.obj.totalNum.forEach((item: any) => {
             selectData.value[2].select.push(item.key);
           });
+        })
+        .catch((error) => {
+          throw new Error(error);
         });
-      })
-      .catch((error: any) => {
-        isShowData.value = false;
-        throw new Error(error);
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'archives',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
       });
-  });
+    });
+  }
+};
+const authorChange = () => {
+  selectMethod();
+  if (selectAuthorVal.value !== '') {
+    const wantarchive = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'archives',
+      condition: {
+        author: selectAuthorVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    const wanttags = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'tags',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        author: selectAuthorVal.value,
+      },
+    };
+    getTagsData(wantarchive).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
+      });
+      getTagsData(wanttags)
+        .then((res) => {
+          selectData.value[2].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[2].select.push(item.key);
+          });
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        tags: selectTagsVal.value === '' ? undefined : selectTagsVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[1].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[1].select.push(item.key);
+      });
+    });
+  }
+};
+const tagsChange = () => {
+  selectMethod();
+  if (selectTagsVal.value !== '') {
+    const wantarchive = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'archives',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        tags: selectTagsVal.value,
+      },
+    };
+    const wantauthor = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'author',
+      condition: {
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+        tags: selectTagsVal.value,
+      },
+    };
+    getTagsData(wantarchive).then((res) => {
+      selectData.value[0].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[0].select.push(item.key);
+      });
+      getTagsData(wantauthor)
+        .then((res) => {
+          selectData.value[1].select = [];
+          res.obj.totalNum.forEach((item: any) => {
+            selectData.value[1].select.push(item.key);
+          });
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    });
+  } else if (
+    selectTimeVal.value === '' &&
+    selectAuthorVal.value === '' &&
+    selectTagsVal.value === ''
+  ) {
+    getTagsList();
+  } else {
+    const params = {
+      lang: lang.value,
+      category: 'blog',
+      want: 'tags',
+      condition: {
+        author:
+          selectAuthorVal.value === '' ? undefined : selectAuthorVal.value,
+        archives: selectTimeVal.value === '' ? undefined : selectTimeVal.value,
+      },
+    };
+    getTagsData(params).then((res) => {
+      selectData.value[2].select = [];
+      res.obj.totalNum.forEach((item: any) => {
+        selectData.value[2].select.push(item.key);
+      });
+    });
+  }
+};
+
+onMounted(() => {
+  getListData(sortParams);
+  getTagsList();
 });
 // 页数改变
 const currentChange = (val: number) => {
@@ -216,34 +410,37 @@ const currentChange = (val: number) => {
 const postBlog = () => {
   router.go(`/${lang.value}/interaction/post-blog/`);
 };
-
-const moblieCurrentChange = (val:string) => {
-if (val === 'prev' && paginationData.value.currentpage > 1) {
+// 计算总页数
+const pageTotal = computed(() =>
+  Math.ceil(paginationData.value.total / paginationData.value.pagesize)
+);
+const moblieCurrentChange = (val: string) => {
+  if (val === 'prev' && paginationData.value.currentpage > 1) {
     paginationData.value.currentpage = paginationData.value.currentpage - 1;
     currentChange(paginationData.value.currentpage);
   } else if (
     val === 'next' &&
-    paginationData.value.currentpage < Math.ceil(paginationData.value.total / paginationData.value.pagesize)
+    paginationData.value.currentpage < pageTotal.value
   ) {
     paginationData.value.currentpage = paginationData.value.currentpage + 1;
     currentChange(paginationData.value.currentpage);
   }
-}
+};
 </script>
 
 <template>
   <BannerLevel2
-    :background-image="BannerImg1"
-    background-text="INTERACTION"
+    :background-image="banner"
+    background-text="CONNECT"
     :title="userCaseData.BLOG"
-    :illustration="BannerImg2"
+    :illustration="blogIllustration"
   >
     <template #default>
       <OButton
         class="post-btn"
         type="outline"
         animation
-        size="small"
+        size="nomral"
         @click="postBlog"
       >
         {{ userCaseData.STRATEGY }}
@@ -263,7 +460,7 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="timeChange"
           >
             <OOption
               v-for="item in selectData[0].select"
@@ -280,7 +477,7 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="authorChange"
           >
             <OOption
               v-for="item in selectData[1].select"
@@ -297,7 +494,7 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
             filterable
             clearable
             :placeholder="userCaseData.ALL"
-            @change="selectMethod"
+            @change="tagsChange"
           >
             <OOption
               v-for="item in selectData[2].select"
@@ -362,7 +559,7 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
       </div>
       <div class="blog-pagination">
         <OPagination
-          class="pcpagination"
+          v-if="!isMobile"
           v-model:currentPage="paginationData.currentpage"
           v-model:page-size="paginationData.pagesize"
           :background="true"
@@ -370,17 +567,15 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
           :total="paginationData.total"
           :page-sizes="[3, 6, 9]"
           @current-change="currentChange"
-          @size-change="currentChange"
+          @size-change="currentChange(1)"
         >
           <span class="pagination-slot"
-            >{{ paginationData.currentpage }}/{{
-              Math.ceil(paginationData.total / paginationData.pagesize)
-            }}</span
+            >{{ paginationData.currentpage }}/{{ pageTotal }}</span
           >
         </OPagination>
         <AppPaginationMo
           :current-page="paginationData.currentpage"
-          :total-page="Math.ceil(paginationData.total / paginationData.pagesize)"
+          :total-page="pageTotal"
           @turn-page="moblieCurrentChange"
         >
         </AppPaginationMo>
@@ -403,9 +598,11 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
 }
 
 .bannericon {
-  // margin-left: var(--o-spacing-h8);
   color: var(--e-color-brand2);
-  font-size: var(--o-font-size-tip);
+  @media (max-width: 767px) {
+    font-size: var(--o-font-size-text);
+  }
+  // font-size: var(--o-font-size-tip);
   // transform: scale(.5);
 }
 
@@ -413,11 +610,9 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
   color: var(--e-color-white);
   border-color: var(--e-color-white);
   @media (max-width: 767px) {
-    padding: 3px 14px;
+    padding: 3px 16px;
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
-    width: 106px;
-    height: 30px;
   }
 }
 
@@ -442,6 +637,7 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
         margin-right: var(--o-spacing-h5);
         color: var(--e-color-text1);
         font-size: var(--o-font-size-h7);
+        line-height: var(--o-line-height-h7);
       }
     }
   }
@@ -503,7 +699,11 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
         -webkit-line-clamp: 2;
       }
       &-tags {
+        display: flex;
         margin-top: var(--o-spacing-h7);
+        height: 24px;
+        flex-wrap: wrap;
+        overflow: hidden;
         .tagitem {
           font-size: var(--o-spacing-h6);
           margin-right: var(--o-spacing-h8);
@@ -525,8 +725,29 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
   // .blog-tag2 {
   // display: block; // 暂时干掉移动端筛选
   // }
+  // .blog-select {
+  //   display: none;
+  // }
   .blog-select {
-    display: none;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    &-item {
+      &-title {
+        width: 50px;
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
+      }
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--o-spacing-h5);
+      :deep(.o-select) {
+        width: 100%;
+      }
+    }
   }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h4);
@@ -535,10 +756,8 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
 }
 @media (max-width: 768px) {
   .blog-list {
+    margin-top: 0;
     grid-template-columns: repeat(1, 1fr);
-  }
-  .pcpagination {
-    display: none;
   }
 }
 @media (max-width: 415px) {
@@ -567,6 +786,10 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
     font-weight: 500;
+    p {
+      @include showline();
+      -webkit-line-clamp: 1;
+    }
   }
   .tagitem {
     font-size: var(--o-font-size-tip);
@@ -574,6 +797,11 @@ if (val === 'prev' && paginationData.value.currentpage > 1) {
   }
   .blog-list-item-tags {
     margin-top: var(--o-spacing-h5);
+  }
+}
+@media (max-width: 500px) {
+  .blog-select {
+    display: none;
   }
 }
 </style>

@@ -4,7 +4,9 @@ import { computed, useAttrs } from 'vue';
 const attrs = useAttrs();
 
 const drawerClassNames = computed(() => {
-  return `${attrs['custom-class']} o-drawer`;
+  return `${attrs['custom-class']}`
+    ? `${attrs['custom-class']} o-drawer`
+    : 'o-drawer';
 });
 
 const modalClassNames = computed(() => {
@@ -34,13 +36,15 @@ const modalClassNames = computed(() => {
 </template>
 
 <style lang="scss">
+.el-drawer {
+  background-color: var(--e-color-bg2);
+}
 .o-drawer {
   --o-drawer-bg: var(--e-color-bg2);
   &.el-drawer {
     background-color: var(--o-drawer-bg);
   }
 }
-
 .o-drawer-modal {
   --o-drawer-modal-bg: var(--e-color-bg6);
   &.el-overlay {

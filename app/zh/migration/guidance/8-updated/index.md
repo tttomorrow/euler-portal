@@ -3,16 +3,16 @@ title: 使用 SUT 进行升级（原地升级）
 category: migration
 ---
 
-## 使用 SUT 进行升级（原地升级）
+# 使用 SUT 进行升级（原地升级）
 
 对于已经部署了业务的环境，经过升级评估后，可以使用 SUT 工具进行操作系统升级，将原操作系统升级成 openEuler 操作系统。
 SUT 工具提供了自动化脚本，进行一键升级，在应用软件完成兼容性评估后，使用 SUT 进行操作系统升级可以大幅减少迁移的工作量，提升迁移效率。
 
-### 软件上传
+## 软件上传
 
 将 sut-\*.rpm 和 centos2openEuler.sh 脚本使用 sftp 工具上传至操作系统 root 目录下。
 
-### 安装 SUT
+## 安装 SUT
 
 将 sut-\*.rpm 放至服务器中的“/root”目录下。
 
@@ -24,7 +24,7 @@ yum install -y rsync coreutils util-linux iproute net-tools dos2unix yum-utils
 yum install -y /root/sut-*.rpm
 ```
 
-### 使用 SUT
+## 使用 SUT
 
 使用 SUT 工具进行系统升级操作前，需要修改配置文件以及配置 repo 源。
 以 x86_64 架构 CentOS7.6 系统最小安装情况下向 openEuler20.03 LTS SP1 进行升级为例进行相关的修改及配置。
@@ -70,7 +70,7 @@ yum install -y /root/sut-*.rpm
 
     ```
 
-    > ![](./icon-note.gif)**说明：**
+    > <img src="./icon-note.gif" style="margin-top:0">**说明：**
     > 建议参数配置：
     >
     > - repo_source = other
@@ -116,7 +116,6 @@ yum install -y /root/sut-*.rpm
 
     ```
 
-
 2.  升级前检查
 
     - 确保确保"/etc/yum.repos.d"下的 repo 源只有前面配置的 openEuler-2003-lts-sp1 与 openEuler-2003-lts-sp1-update 仓库为启用状态，其他需全部禁用。
@@ -134,7 +133,7 @@ yum install -y /root/sut-*.rpm
 
     ```
 
-### 执行升级
+## 执行升级
 
 操作系统升级脚本会对操作系统进行备份，配置目标版本的 repo 源，之后会将当前操作系统上的 rpm 包升级到 openEuler 上的软件包，在升级过程中需要重启一次，完成对内核升级的生效，
 执行以下命令，即可开始对操作系统进行升级：
@@ -144,12 +143,15 @@ sh centos2openEuler.sh
 ```
 
 ![执行升级脚本](./execshell.png)
+
 脚本会自动安装 SUT 升级工具，并开始对操作系统进行升级。
 升级完成后界面如下所示：
+
 ![升级完成](./UpgradeFinish.png)
 
-### 升级后检查
+## 升级后检查
 
 1. 执行**cat /etc/os-release** 命令，检查操作系统版本是否已经升级到 openEuler。
+
    ![检查版本](./CheckVersion.png)
 2. 当前操作系统内核依旧为原内核，需将内核切换至 openEuler 内核。执行**reboot**命令，然后需要重启后，内核完成切换。 3.检查业务状态是否正常

@@ -157,7 +157,7 @@ const STEP = {
             <a
               href="https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E5%BC%80%E6%BA%90%E5%AE%9E%E4%B9%A0%E8%B5%84%E6%96%99%E4%B8%8B%E8%BD%BD/01%20%E5%AE%9E%E4%B9%A0%E7%94%B3%E8%AF%B7%E6%9D%90%E6%96%99%E6%A8%A1%E6%9D%BF.rar"
               download
-              class="download"
+              class="download download-module"
               >{{ STEP.STEP_ONE.DONWLOAD }}</a
             >
           </div>
@@ -464,6 +464,10 @@ const STEP = {
             .download {
               margin-top: 6px;
               font-size: 12px;
+              padding-left: 12px;
+            }
+            .download-module {
+              padding-left: 0;
             }
           }
           .number {
@@ -485,6 +489,20 @@ const STEP = {
           }
           .attention {
             margin: 6px 0 0 30px;
+          }
+          .black {
+            margin-left: 0;
+            p::before {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 10px;
+              left: 0;
+              height: 4px;
+              width: 4px;
+              background: rgba(0, 0, 0, 0.5);
+              border-radius: 50%;
+            }
           }
         }
         .flow-chart {

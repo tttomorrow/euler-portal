@@ -1,23 +1,26 @@
 <script lang="ts" setup>
-import { reactive, ref, onMounted, watch } from 'vue';
-import { useI18n } from '@/i18n';
+import { reactive, ref, onMounted, watch, computed } from 'vue';
 import { useRouter } from 'vitepress';
+
+import useWindowResize from '@/components/hooks/useWindowResize';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import banner from '@/assets/banner-secondary.png';
-import cve from '@/assets/illustrations/cve.png';
-import search from '@/assets/illustrations/search.png';
+import banner from '@/assets/banner/banner-security.png';
+import supportIllustration from '@/assets/illustrations/support.png';
+import cveIllstration from '@/assets/illustrations/cve.png';
 
 import { getCveList } from '@/api/api-security';
 import { CveLists, CveQuery } from '@/shared/@types/type-support';
-import useWindowResize from '@/components/hooks/useWindowResize';
-const windowWidth = ref(useWindowResize());
+// const windowWidth = ref(useWindowResize());
+const screenWidth = useWindowResize();
 
-const screenWidth = ref(1080);
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+
 const i18n = useI18n();
 const router = useRouter();
 const currentPage = ref(1);
@@ -102,9 +105,9 @@ onMounted(() => {
 });
 
 watch(queryData, () => getCveLists(queryData));
-watch(windowWidth, () => {
-  screenWidth.value = windowWidth.value;
-});
+// watch(windowWidth, () => {
+//   screenWidth.value = windowWidth.value;
+// });
 </script>
 <template>
   <BannerLevel2
@@ -113,7 +116,7 @@ watch(windowWidth, () => {
     background-text="SUPPORT"
     :title="i18n.security.CVE"
     subtitle=""
-    :illustration="screenWidth >= 1000 ? search : cve"
+    :illustration="screenWidth >= 768 ? supportIllustration : cveIllstration"
   />
   <AppContent :mobile-top="16">
     <OSearch
@@ -224,6 +227,7 @@ watch(windowWidth, () => {
     </ul>
 
     <OPagination
+      v-if="!isMobile"
       v-model:page-size="queryData.pages.size"
       v-model:currentPage="queryData.pages.page"
       class="pagination"
@@ -239,6 +243,7 @@ watch(windowWidth, () => {
     </OPagination>
 
     <AppPaginationMo
+      v-if="total > 0 || isMobile"
       :current-page="queryData.pages.page"
       :total-page="Math.ceil(total / 10)"
       @turn-page="turnPage"
@@ -248,7 +253,7 @@ watch(windowWidth, () => {
 <style lang="scss" scoped>
 .o-search {
   height: 48px;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 }
@@ -256,13 +261,13 @@ watch(windowWidth, () => {
   margin: var(--o-spacing-h4) 0;
   background-color: var(--e-color-bg2);
   padding: var(--o-spacing-h5) var(--o-spacing-h2);
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 }
 .filter-mobile {
   display: none;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 768px) {
     display: block;
   }
   .filter {
@@ -295,7 +300,7 @@ watch(windowWidth, () => {
   display: none;
   margin-bottom: var(--o-spacing-h5);
   box-shadow: var(--e-shadow1);
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 768px) {
     display: block;
   }
   .item {
@@ -335,7 +340,7 @@ watch(windowWidth, () => {
     cursor: pointer;
     color: var(--e-color-link1);
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 }
@@ -346,9 +351,6 @@ watch(windowWidth, () => {
     font-weight: 400;
     color: var(--e-color-text1);
     line-height: var(--o-spacing-h4);
-  }
-  @media screen and (max-width: 1000px) {
-    display: none;
   }
 }
 </style>

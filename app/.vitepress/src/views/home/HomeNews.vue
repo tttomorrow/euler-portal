@@ -250,6 +250,9 @@ onMounted(async () => {
 
   &-button:hover {
     color: var(--e-color-brand1);
+    @media screen and (max-width: 1416px) {
+      color: var(--e-color-text1);
+    }
   }
 
   :deep(.o-button) {
@@ -272,7 +275,7 @@ onMounted(async () => {
     display: none;
     padding: var(--o-spacing-h2);
     background-color: var(--e-color-bg2);
-    box-shadow: var(--o-shadow-base);
+    box-shadow: var(--e-shadow-l1);
     .type-title {
       font-size: var(--o-font-size-h7);
       line-height: var(--o-font-size-h7);
@@ -463,14 +466,12 @@ onMounted(async () => {
       justify-content: center;
     }
   }
-  .el-tabs__item {
-    font-size: var(--o-font-size-h8);
-    line-height: var(--o-line-height-h8);
-    @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-    }
-  }
+  // .el-tabs__item {
+  //   @media screen and (max-width: 768px) {
+  //     font-size: var(--o-font-size-text);
+  //     line-height: var(--o-line-height-text);
+  //   }
+  // }
   .el-tabs__nav-wrap::after {
     display: none;
   }

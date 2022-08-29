@@ -22,7 +22,7 @@ const props = defineProps({
 });
 
 const handleGo = (path: string) => {
-  window.open(path, '_blank');
+  window.open(path.replace(/(index)$/g, ''), '_blank');
 };
 
 const handleChangeActive = (index: number) => {
@@ -97,6 +97,7 @@ onMounted(() => {
               v-for="user in caseData && caseData[item.TYPE]"
               :key="user.company"
               class="user-card"
+              @click="handleGo(user.path)"
             >
               <div class="user-title">{{ user.company }}</div>
               <div class="user-word">{{ user.summary }}</div>
@@ -280,7 +281,6 @@ h3 {
     @media (min-width: 1100px) {
       background-color: var(--e-color-bg2);
       border: 1px solid var(--e-color-brand1);
-      box-shadow: var(--o-shadow-secondary);
       border-left: 2px solid var(--e-color-brand1);
       transition: 0.3s all;
     }

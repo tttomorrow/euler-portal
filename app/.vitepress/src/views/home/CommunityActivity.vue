@@ -34,7 +34,9 @@ onMounted(async () => {
   try {
     const responeData = await getStatistic();
     roundList.value = addValue(responeData?.data);
-    roundNumber.value = i18n.value.home.HOME_ROUND.ROUND_LIST;
+    roundNumber.value = JSON.parse(
+      JSON.stringify(i18n.value.home.HOME_ROUND.ROUND_LIST)
+    );
     const observe = new IntersectionObserver((res) => {
       if (res[0].intersectionRatio <= 0) return;
       isShowCommunity.value = true;
@@ -82,30 +84,28 @@ onMounted(async () => {
           </OButton>
         </OCard>
       </OContainer>
-      <OContainer :level-index="2" data-aos="fade-left">
-        <OCard class="round-card" :style="{ padding: '0px' }">
-          <div class="round-list">
-            <div
-              v-for="(item, index) in roundList"
-              :key="item.ROUND_TEXT"
-              class="round-item"
-            >
-              <img
-                :src="
-                  commonStore.theme === 'dark'
-                    ? item.ROUND_IMG_DARK
-                    : item.ROUND_IMG
-                "
-                class="round-img"
-              />
+      <OContainer :level-index="2" data-aos="fade-left" class="round-card">
+        <div class="round-list">
+          <div
+            v-for="(item, index) in roundList"
+            :key="item.ROUND_TEXT"
+            class="round-item"
+          >
+            <img
+              :src="
+                commonStore.theme === 'dark'
+                  ? item.ROUND_IMG_DARK
+                  : item.ROUND_IMG
+              "
+              class="round-img"
+            />
 
-              <div class="round-value">
-                {{ roundNumber[index].ROUND_VALUE.toFixed(0) }}
-              </div>
-              <div class="round-title">{{ item.ROUND_TEXT }}</div>
+            <div class="round-value">
+              {{ roundNumber[index].ROUND_VALUE.toFixed(0) }}
             </div>
+            <div class="round-title">{{ item.ROUND_TEXT }}</div>
           </div>
-        </OCard>
+        </div>
       </OContainer>
     </div>
   </div>
@@ -193,6 +193,9 @@ onMounted(async () => {
 .community {
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h2);
+    .o-container {
+      padding-bottom: 0;
+    }
   }
   h3 {
     margin-top: var(--o-spacing-h1);
@@ -266,6 +269,9 @@ onMounted(async () => {
     padding: 0;
     &:hover {
       color: var(--e-color-brand1);
+      @media screen and (max-width: 1416px) {
+        color: var(--e-color-text1);
+      }
     }
 
     &-icon {
@@ -291,9 +297,6 @@ onMounted(async () => {
       @media (max-width: 768px) {
         padding: var(--o-spacing-h5) var(--o-spacing-h8);
       }
-    }
-    &:hover {
-      box-shadow: var(--o-shadow-base_hover);
     }
   }
 }

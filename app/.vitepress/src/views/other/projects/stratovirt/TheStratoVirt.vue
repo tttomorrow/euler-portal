@@ -6,16 +6,16 @@ import MiniDescription from '../components/MiniDescription.vue';
 import MiniFrame from '../components/MiniFrame.vue';
 import MiniDocs from '../components/MiniDocs.vue';
 import MiniFeatures from './MiniFeatures.vue';
-import BannerMinisite from '@/components/BannerMinisite.vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import BannerIllustration from '/img/projects/stratovirt/illustration-banner.png';
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-minisite.png';
 
 const i18n = useI18n();
 </script>
 <template>
-  <BannerMinisite
+  <BannerLevel2
     class="banner"
     :title="i18n.stratovirt.SVIRT_BANNER_TEXT[0]"
     :subtitle="i18n.stratovirt.SVIRT_BANNER_TEXT[1]"

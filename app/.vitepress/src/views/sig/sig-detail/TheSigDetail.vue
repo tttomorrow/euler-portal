@@ -8,6 +8,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import MobileRepositoryList from './MobileRepositoryList.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import IconEmail from '~icons/app/icon-mail.svg';
 import IconGitee from '~icons/app/icon-gitee.svg';
@@ -58,9 +59,11 @@ function getSigMembers() {
         const data = res.data[0];
         sigMemberData.value = data;
         const { maintainer_info } = data || [];
-        const memberCurLen =
-          maintainer_info.length > 4 ? 4 : maintainer_info.length;
-        memberList.value = maintainer_info.slice(0, memberCurLen);
+        if (maintainer_info) {
+          const memberCurLen =
+            maintainer_info.length > 4 ? 4 : maintainer_info.length;
+          memberList.value = maintainer_info.slice(0, memberCurLen);
+        }
       }
     });
   } catch (error) {
@@ -133,7 +136,13 @@ const getRepositoryList = () => {
     }
   });
 };
-
+function turnPage(option: string) {
+  if (option === 'prev' && currentPage.value > 1) {
+    currentPage.value = currentPage.value - 1;
+  } else if (option === 'next' && currentPage.value < totalPage.value) {
+    currentPage.value = currentPage.value + 1;
+  }
+}
 onMounted(() => {
   function GetUrlParam(paraName: any) {
     const url = document.location.toString();
@@ -333,18 +342,28 @@ onMounted(() => {
           v-else
           :data="repositoryList"
         ></MobileRepositoryList>
-        <OPagination
-          v-model:currentPage="currentPage"
-          v-model:page-size="pageSize"
-          class="repository-pagin"
-          :hide-on-single-page="true"
-          :page-sizes="[10, 20, 30, 40]"
-          :background="true"
-          :layout="paginLayout"
-          :total="totalRepositoryList.length"
-        >
-          <span class="pagination-slot">{{ currentPage }}/{{ totalPage }}</span>
-        </OPagination>
+        <div class="sig-pagination">
+          <OPagination
+            v-model:currentPage="currentPage"
+            v-model:page-size="pageSize"
+            class="repository-pagin"
+            :hide-on-single-page="true"
+            :page-sizes="[10, 20, 30, 40]"
+            :background="true"
+            :layout="paginLayout"
+            :total="totalRepositoryList.length"
+          >
+            <span class="pagination-slot"
+              >{{ currentPage }}/{{ totalPage }}</span
+            >
+          </OPagination>
+          <AppPaginationMo
+            :current-page="currentPage"
+            :total-page="totalRepositoryList.length"
+            @turn-page="turnPage"
+          >
+          </AppPaginationMo>
+        </div>
       </div>
       <div class="recent-event">
         <h5>{{ sigDetail.LATEST_DYNAMIC }}</h5>
@@ -359,7 +378,7 @@ onMounted(() => {
                 </OIcon>
               </a>
             </div>
-            <ul class="body">
+            <ul class="item-body">
               <li class="empty">
                 {{ sigDetail.BLOG_EMPTY1
                 }}<a
@@ -380,7 +399,7 @@ onMounted(() => {
                 </OIcon>
               </a>
             </div>
-            <ul class="body">
+            <ul class="item-body">
               <li class="empty">
                 {{ sigDetail.NEWS_EMPTY
                 }}<a
@@ -407,6 +426,12 @@ onMounted(() => {
     background-color: var(--e-color-bg2);
     @media (max-width: 1100px) {
       margin-top: var(--o-spacing-h5);
+    }
+    .sig-pagination {
+      margin-top: var(--o-spacing-h2);
+      @media screen and (max-width: 768px) {
+        margin-top: var(--o-spacing-h2);
+      }
     }
     .pagination-slot {
       font-size: var(--o-font-size-text);
@@ -617,7 +642,7 @@ onMounted(() => {
               }
             }
           }
-          .body {
+          .item-body {
             margin-top: var(--o-spacing-h4);
             font-size: var(--o-font-size-text);
             line-height: 22px;
@@ -625,7 +650,7 @@ onMounted(() => {
           &:hover {
             background-color: var(--e-color-bg2);
             border: 1px solid var(--e-color-kleinblue8);
-            box-shadow: var(--o-shadow-overlay);
+            box-shadow: var(--e-shadow-l4);
           }
         }
       }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAttrs, nextTick, onUnmounted, computed } from 'vue';
+import { useAttrs, nextTick, onMounted, onUnmounted, computed } from 'vue';
 import { debounce } from 'lodash';
 
 const attrs = useAttrs();
@@ -31,7 +31,20 @@ const classNames = computed(() => {
 });
 
 let optionDom: null | HTMLElement = null;
+
+// 移动端 输入框无法弹出
+function cancalReadOnly(onOff) {
+  nextTick(() => {
+    if (!onOff) {
+      const input = document.querySelector('.el-input__inner');
+      if (input) {
+        input.removeAttribute('readonly');
+      }
+    }
+  });
+}
 function scrollEvent(val) {
+  cancalReadOnly(val);
   if (val && props.listenerScorll) {
     nextTick(() => {
       optionDom = document.querySelector(
@@ -43,6 +56,9 @@ function scrollEvent(val) {
     });
   }
 }
+onMounted(() => {
+  cancalReadOnly(false);
+});
 onUnmounted(() => {
   if (optionDom) {
     optionDom.removeEventListener('scroll', debounceEvent);
@@ -66,7 +82,7 @@ onUnmounted(() => {
 <style lang="scss">
 .o-select {
   --o-select-font-tip: var(--o-font-size-tip);
-  --o-select-font-text2: var(--o-color-text2);
+  --o-select-font-text: var(--e-color-text4);
   --o-select-color-bg: var(--e-color-bg2);
   --o-select-shadow: var(--e-shadow-l1);
   --o-select-shadow_hover: var(--e-shadow-l2);
@@ -87,7 +103,7 @@ onUnmounted(() => {
     height: 40px;
     .el-icon {
       svg {
-        color: var(--o-select-font-text2);
+        color: var(--o-select-font-text);
       }
     }
   }

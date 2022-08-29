@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
+import { useData } from 'vitepress';
+
 import { useI18n } from '@/i18n';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+import AppContent from '@/components/AppContent.vue';
+import TagFilter from '@/components/TagFilter.vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+
 import IconDownload from '~icons/app/icon-download.svg';
 import IconFilter from '~icons/app/icon-filter.svg';
 import IconX from '~icons/app/x.svg';
-import banner from '@/assets/banner-secondary.png';
-import useWindowResize from '@/components/hooks/useWindowResize';
-import TagFilter from '@/components/TagFilter.vue';
 
-import AppContent from '@/components/AppContent.vue';
-
-import Img404 from '@/assets/404.svg';
-import downloadImg from '@/assets/download/download.png';
-import BannerLevel2 from '@/components/BannerLevel2.vue';
-import { useData } from 'vitepress';
+import banner from '@/assets/banner/banner-download.png';
+import emptyImg from '@/assets/404.svg';
+import downloadIllustration from '@/assets/illustrations/download.png';
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -39,6 +41,7 @@ const dataList = computed(() => {
     return filterList.value.slice(0, currentPage.value * pageSize.value);
   }
 });
+
 const handleLoadMore = () => {
   if (currentPage.value * pageSize.value < total.value) {
     currentPage.value = currentPage.value + 1;
@@ -167,9 +170,9 @@ onMounted(() => {
     :background-image="banner"
     background-text="DOWNLOAD"
     :title="i18n.download.OUTSIDE_TITLE"
-    :illustration="downloadImg"
+    :illustration="downloadIllustration"
   />
-  <AppContent class="download">
+  <AppContent :mobile-top="16" class="download">
     <!-- PC筛选 -->
     <OCard class="download-filter">
       <TagFilter
@@ -275,7 +278,7 @@ onMounted(() => {
 
       <ODrawer
         v-model="isDrawerOpen"
-        :title="i18n.download.MANUFACTURER"
+        :title="i18n.download.SELECT"
         direction="btt"
         :show-close="true"
         custom-class="filter-drawer"
@@ -425,7 +428,7 @@ onMounted(() => {
           class="download-button"
           @click="handleDownloadUrl(download.DOWNLOAD_URL)"
         >
-          {{ i18n.download.DOWNLOAD_BTN_NAME }}
+          <span>{{ i18n.download.DOWNLOAD_BTN_NAME }}</span>
           <template #suffixIcon>
             <IconDownload class="download-button-icon" />
           </template>
@@ -433,7 +436,7 @@ onMounted(() => {
       </OCard>
     </div>
     <div v-else class="empty">
-      <img class="img" :src="Img404" alt="404" />
+      <img class="img" :src="emptyImg" alt="404" />
       <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
     </div>
     <!-- 页码 -->
@@ -477,6 +480,7 @@ onMounted(() => {
           v-if="currentPage * pageSize < total"
           class="page-box-button"
           @click="handleLoadMore"
+          size="small"
         >
           {{ i18n.download.PAGINATION[3] }}
         </OButton>
@@ -524,7 +528,7 @@ onMounted(() => {
     color: var(--e-color-text1);
     line-height: var(--o-spacing-h4);
   }
-  .pagination {
+  :deep(.o-pagination) {
     display: flex;
     @media (max-width: 768px) {
       display: none;
@@ -538,6 +542,8 @@ onMounted(() => {
     justify-content: center;
     color: var(--e-color-text1);
     align-items: center;
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
     @media (max-width: 768px) {
       display: flex;
     }
@@ -547,7 +553,7 @@ onMounted(() => {
     width: 100%;
     height: 1px;
     margin-top: var(--o-spacing-h5);
-    background-color: var(--e-color-neutral11);
+    background-color: var(--e-color-bg-secondary);
     &-in {
       height: 100%;
       background-color: var(--e-color-brand1);
@@ -634,8 +640,8 @@ onMounted(() => {
         justify-content: center;
         align-items: center;
         padding: var(--o-spacing-h10) var(--o-spacing-h9);
-        background-color: var(--e-color-neutral11);
-        color: var(--e-color-neutral5);
+        background-color: var(--e-color-bg-secondary);
+        color: var(--e-color-text-secondary);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-right: var(--o-spacing-h9);
@@ -729,9 +735,9 @@ onMounted(() => {
   &-button {
     margin-top: var(--o-spacing-h4);
     padding: var(--o-spacing-h10) var(--o-spacing-h5);
-    line-height: var(--o-line-height-h8);
+    line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
-    color: #ffffff;
+    color: #ffffff !important;
 
     &-icon {
       margin-left: var(--o-spacing-h8);

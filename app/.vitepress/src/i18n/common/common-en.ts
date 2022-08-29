@@ -114,10 +114,11 @@ export default {
         {
           NAME: 'Summit',
           ID: 'summit',
-          PATH: '/interaction/summit-list/devday2022/',
+          PATH: 'https://www.openeuler.org/zh/interaction/summit-list/devday2022/',
+          IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
-      CLASS: ['news', 'blog', 'live', 'salon', 'summit'],
+      CLASS: ['news', 'blog', 'live', 'salon'],
     },
     {
       PATH: '',
@@ -227,6 +228,12 @@ export default {
           NAME: 'Pkgship',
           ID: 'pkgship',
           PATH: 'https://pkgmanage.openeuler.org/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'radiaTest',
+          ID: 'radiaTest',
+          PATH: 'https://radiatest.openeuler.org',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],

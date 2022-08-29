@@ -3,21 +3,28 @@ title: 'Code of Covenant'
 ---
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
-import bannerBG from '@/assets/banner-secondary.png';
-import illustration from '@/assets/illustrations/covenant.png';
+import useWindowResize from '@/components/hooks/useWindowResize';
+import banner from '@/assets/banner/banner-community.png';
+import contributionIllustration from '@/assets/illustrations/contribution.png';
+
+const screenWidth = useWindowResize();
+const isMobile = computed(() => {
+  return screenWidth.value <= 768 ? true : false;
+});
 </script>
 
 <ClientOnly>
   <BannerLevel2
-    :background-image="bannerBG"
     background-text="COMMUNITY"
+    :background-image="banner"
     title="Code of Conduct"
-    :illustration="illustration"
+    :illustration="contributionIllustration"
   />
 </ClientOnly>
 
-<div class='markdown'>
+<div class='markdown' :style="['margin-top:var(--o-spacing-h1)', isMobile ? 'margin-top:var(--o-spacing-h2)' : '']">
 
 The openEuelr community complies with the code of conduct specified in the open source community V1.4. For details, visit the following website:
 

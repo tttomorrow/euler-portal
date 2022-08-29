@@ -67,9 +67,12 @@ const toggleSubDebounced = debounce(
     trailing: true,
   }
 );
-
 const menuActiveFn = (item: any) => {
-  return item.some((el: string) => activeItem.value.includes(el));
+  return item.CLASS.some((el: string) =>
+    item.ID === 'download'
+      ? activeItem.value.includes(`/${lang.value}/${el}`)
+      : activeItem.value.includes(el)
+  );
 };
 </script>
 
@@ -80,7 +83,7 @@ const menuActiveFn = (item: any) => {
         v-for="item in navItems"
         :key="item.ID"
         :class="{
-          active: menuActiveFn(item.CLASS),
+          active: menuActiveFn(item),
           hover: navActive === item.ID,
         }"
         @mouseenter="toggleSubDebounced(item)"

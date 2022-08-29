@@ -7,9 +7,9 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import banner from '@/assets/banner-secondary.png';
-import search from '@/assets/illustrations/search.png';
-import cve from '@/assets/illustrations/cve.png';
+import banner from '@/assets/banner/banner-security.png';
+import supportIllustration from '@/assets/illustrations/support.png';
+import cveIllstration from '@/assets/illustrations/cve.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
@@ -36,7 +36,7 @@ import {
 
 const windowWidth = ref(useWindowResize());
 
-const screenWidth = ref(1080);
+const screenWidth = ref(769);
 const i18n = useI18n();
 const router = useRouter();
 const { lang } = useData();
@@ -392,7 +392,7 @@ onMounted(() => {
     background-text="CONTENT"
     :title="i18n.compatibility.COMPATIBILITY"
     subtitle=""
-    :illustration="screenWidth > 768 ? search : cve"
+    :illustration="screenWidth > 768 ? supportIllustration : cveIllstration"
   />
 
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
@@ -813,6 +813,7 @@ onMounted(() => {
       </OTabPane>
       <div class="bottom-wrapper">
         <OPagination
+          v-if="screenWidth > 768"
           v-model:page-size="queryData.pages.size"
           v-model:currentPage="queryData.pages.page"
           class="pagination"
@@ -1026,6 +1027,7 @@ onMounted(() => {
         <el-collapse-item title="开源软件" name="3">
           <div class="blog-tag">
             <MobileFilter
+              v-if="total > 0 || screenWidth < 768"
               class="filter"
               :data="filterDataTwo"
               :single="true"

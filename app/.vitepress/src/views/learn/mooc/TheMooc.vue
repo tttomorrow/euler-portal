@@ -2,13 +2,12 @@
 import AppContent from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
-import moocBanner from '@/assets/banner-secondary.png';
-import searchBanner from '@/assets/illustrations/search.png';
+import moocBanner from '@/assets/banner/banner-learning.png';
+import moocIllustration from '@/assets/illustrations/mooc.png';
 
 import IconArrowRight1 from '~icons/app/icon-arrow-right1.svg';
 import { useI18n } from '@/i18n';
 
-// const i18n=computed(()=>useI18n());
 const i18n = useI18n();
 </script>
 
@@ -18,11 +17,11 @@ const i18n = useI18n();
       background-text="MOOC"
       :title="i18n.mooc.MOOC.MOOC"
       :background-image="moocBanner"
-      :illustration="searchBanner"
+      :illustration="moocIllustration"
     />
     <AppContent>
       <div class="mooc-content">
-        <div class="hover-box">
+        <OContainer class="hover-box">
           <div class="left">
             <img :src="i18n.mooc.MOOC.MOOC_COURSE[0].IMG" alt="" />
           </div>
@@ -51,7 +50,7 @@ const i18n = useI18n();
               </a>
             </div>
           </div>
-        </div>
+        </OContainer>
       </div>
     </AppContent>
   </div>
@@ -65,10 +64,7 @@ const i18n = useI18n();
   .mooc-content {
     .hover-box {
       display: flex;
-      box-shadow: var(--e-shadow-l1);
-      &:hover {
-        box-shadow: var(--e-shadow-l2_hover);
-      }
+
       @media (max-width: 975px) {
         display: block;
       }

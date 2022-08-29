@@ -32,9 +32,10 @@ const goLink = (path: string) => {
       :outside-title="referenceObj.TITLE_OUTSIDE"
     />
     <div class="reference-list">
-      <div
+      <OContainer
         v-for="(item, index) in referenceObj.LINK_LIST"
         :key="index"
+        :level-index="2"
         class="item"
       >
         <div class="link">
@@ -52,7 +53,7 @@ const goLink = (path: string) => {
           </OButton>
         </div>
         <div class="img"></div>
-      </div>
+      </OContainer>
     </div>
   </div>
 </template>
@@ -66,12 +67,11 @@ const goLink = (path: string) => {
       width: 100%;
       height: 96px;
       background-color: var(--e-color-bg2);
-      box-shadow: var(--o-shadow-base);
+
       font-size: var(--o-font-size-h7);
       color: var(--e-color-text1);
       line-height: var(--o-height-h6);
       position: relative;
-      box-shadow: var(--e-shadow-l2);
       .link {
         z-index: 2;
         position: absolute;
@@ -98,9 +98,7 @@ const goLink = (path: string) => {
         background-size: 100%;
       }
     }
-    .item:hover {
-      box-shadow: var(--e-shadow-l2_hover);
-    }
+
     @media screen and (max-width: 767px) {
       display: grid;
       grid-template-columns: 1fr;

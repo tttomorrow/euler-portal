@@ -37,7 +37,7 @@ const resolveDate = (date: any) => {
 <style lang="scss" scoped>
 .markdown-body-title {
   margin-bottom: 40px;
-  border-bottom: 1px solid var(--o-color-secondary);
+  border-bottom: 1px solid var(--e-color-border2);
   padding-bottom: 24px;
   .page-title {
     font-size: 36px;

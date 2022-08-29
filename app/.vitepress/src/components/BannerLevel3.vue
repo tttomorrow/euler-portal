@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, CSSProperties } from 'vue';
+import { computed, CSSProperties, onMounted } from 'vue';
+import AOS from 'aos';
 
 const props = defineProps({
   backgroundImage: {
@@ -35,12 +36,21 @@ const rootStyle = computed(() => {
   }
   return result;
 });
+
+onMounted(() => {
+  AOS.init();
+});
 </script>
 
 <template>
   <div class="banner-level3" :style="rootStyle">
     <div class="wrap">
-      <div class="banner-text">
+      <div
+        class="banner-text"
+        data-aos="fade-up"
+        data-aos-once="true"
+        data-aos-duration="800"
+      >
         <p v-if="backgroundText" class="banner-text-bg">
           {{ backgroundText }}
         </p>
@@ -71,17 +81,20 @@ const rootStyle = computed(() => {
     justify-content: space-between;
     align-items: center;
     min-height: 160px;
+    @media screen and (max-width: 1439px) {
+      padding: 0 24px;
+    }
+
     @media screen and (max-width: 768px) {
       min-height: 126px;
-      padding: 0 24px;
     }
     .banner-text {
       position: relative;
       width: 50%;
       .banner-text-bg {
         position: absolute;
-        color: #2e4fb0;
-        opacity: 0.8;
+        color: #0d3cb4;
+        opacity: 0.4;
         font-size: var(--o-font-size-h3);
         line-height: var(--o-line-height-h3);
         font-weight: bold;

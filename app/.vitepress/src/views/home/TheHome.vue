@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useI18n } from '@/i18n';
 import AOS from 'aos';
 import zhCn from 'element-plus/lib/locale/lang/zh-cn';
@@ -46,6 +46,10 @@ const caseData = ref(undefined);
 const newsData = ref(undefined);
 const blogData = ref(undefined);
 onMounted(async () => {
+  const body = document.querySelector('body');
+  if (body) {
+    body.classList.add('home-loading');
+  }
   AOS.init({
     offset: 100,
     duration: 800,
@@ -90,10 +94,28 @@ onMounted(async () => {
   }
   try {
     Promise.all([getActivityData(), getMeetingData()]).then((res) => {
+      res[0].tableData.forEach((item: any) => {
+        item.timeData.map((item2: any) => {
+          item2['startTime'] = item2.start_date;
+        });
+      });
       calendarData.value = [...res[0].tableData, ...res[1].tableData];
+      calendarData.value.reduce((re: any, obj: any) => {
+        const item: any = re.find((o: any) => o.start_date === obj.date);
+        item
+          ? (item.timeData = item.timeData.concat(obj.timeData))
+          : re.push(obj);
+        return re;
+      }, []);
     });
   } catch (e: any) {
     throw new Error(e);
+  }
+});
+onUnmounted(() => {
+  const body = document.querySelector('body');
+  if (body) {
+    body.classList.remove('home-loading');
   }
 });
 </script>

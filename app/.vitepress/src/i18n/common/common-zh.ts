@@ -87,6 +87,12 @@ export default {
           ID: 'internship',
           PATH: '/internship/',
         },
+        {
+          NAME: '学习培训',
+          ID: 'training-assessment',
+          PATH: 'https://training-assessment.osinfra.cn/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: ['learn', 'internship', 'learning'],
     },
@@ -118,10 +124,11 @@ export default {
         {
           NAME: '峰会',
           ID: 'summit',
-          PATH: '/interaction/summit-list/devday2022/',
+          PATH: 'https://www.openeuler.org/zh/interaction/summit-list/devday2022/',
+          IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
-      CLASS: ['news', 'blog', 'live', 'salon', 'summit'],
+      CLASS: ['news', 'blog', 'live', 'salon'],
     },
     {
       PATH: '',
@@ -144,8 +151,14 @@ export default {
           PATH: '/community/mailing-list/',
         },
         {
-          NAME: '个人认证',
-          ID: 'certification',
+          NAME: '人才评定',
+          ID: 'talent-assessment',
+          PATH: 'https://talent-assessment.openeuler.org/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'HCIX认证',
+          ID: 'certification-services',
           PATH: '/community/certification-services/',
         },
         {
@@ -233,6 +246,12 @@ export default {
           PATH: 'https://pkgmanage.openeuler.org/',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
+        {
+          NAME: 'radiaTest',
+          ID: 'radiaTest',
+          PATH: 'https://radiatest.openeuler.org',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: ['atune', 'bishengjdk', 'isula', 'secgear', 'stratovirt'],
     },
@@ -264,7 +283,7 @@ export default {
         {
           NAME: '迁移指南',
           ID: 'migration',
-          PATH: '/other/migration/',
+          PATH: '/migration/download/',
         },
       ],
       CLASS: [

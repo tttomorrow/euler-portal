@@ -1,4 +1,3 @@
-@import '../../style/variable.scss';
 @import './var.scss';
 
 .o-button {
@@ -27,14 +26,18 @@
   }
 
   &:hover {
-    color: var(--o-button-font-color_hover);
-    border: var(--o-button-border_hover);
-    background-color: var(--o-button-bg-color_hover);
+    @media screen and (min-width: 1100px) {
+      color: var(--o-button-font-color_hover);
+      border: var(--o-button-border_hover);
+      background-color: var(--o-button-bg-color_hover);
+    }
   }
   &:active {
-    color: var(--o-button-font-color_active);
-    border: var(--o-button-border_active);
-    background-color: var(--o-button-bg-color_active);
+    @media screen and (min-width: 1100px) {
+      color: var(--o-button-font-color_active);
+      background-color: var(--o-button-bg-color_active);
+      border: var(--o-button-border_active);
+    }
   }
   &.is-disabled {
     color: var(--o-button-font-color_disabled);
@@ -47,13 +50,18 @@
     color: var(--o-button-font-color-primary);
     border: var(--o-button-border-primary);
     background-color: var(--o-button-bg-color-primary);
+
     &:hover {
-      border: var(--o-button-border-primary_hover);
-      background-color: var(--o-button-bg-color-primary_hover);
+      @media screen and (min-width: 1100px) {
+        border: var(--o-button-border-primary_hover);
+        background-color: var(--o-button-bg-color-primary_hover);
+      }
     }
     &:active {
-      border: var(--o-button-border-primary_active);
-      background-color: var(--o-button-bg-color-primary_active);
+      @media screen and (min-width: 1100px) {
+        border: var(--o-button-border-primary_active);
+        background-color: var(--o-button-bg-color-primary_active);
+      }
     }
   }
   &.o-button-type-primary.is-disabled {
@@ -119,11 +127,15 @@
   }
 
   &.animation:hover .prefix-icon {
-    transform: translate(-4px);
+    @media screen and (min-width: 1100px) {
+      transform: translate(-4px);
+    }
   }
 
   &.animation:hover .suffix-icon {
-    transform: translate(4px);
+    @media screen and (min-width: 1100px) {
+      transform: translate(4px);
+    }
   }
 
   &.o-button-size-small {

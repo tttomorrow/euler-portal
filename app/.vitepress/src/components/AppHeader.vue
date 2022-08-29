@@ -6,6 +6,7 @@ import { useI18n } from '@/i18n';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
+import NavLangFilter from '@/i18n/common/navLangFilter';
 
 import logo_light from '@/assets/logo.svg';
 import logo_dark from '@/assets/logo_dark.svg';
@@ -98,11 +99,22 @@ const goMobileSubList = (item: NavItem) => {
   }
 };
 
+const langShow = ref([] as any);
 watch(
   () => router.route.path,
   (val: string) => {
     roterPath.value = val;
-  }
+    // 语言过滤
+    NavLangFilter.forEach((item) => {
+      if (val.includes(item.name)) {
+        langShow.value = item.lang;
+      }
+      if (val === `/${lang.value}/`) {
+        langShow.value = ['zh', 'en', 'ru'];
+      }
+    });
+  },
+  { immediate: true }
 );
 // 移动端默认选中、二级菜单
 const moudleItem = () => {
@@ -228,7 +240,7 @@ function search() {
             <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
           </div>
           <!-- 中英文切换 -->
-          <AppLanguage />
+          <AppLanguage :show="langShow" />
           <AppTheme />
         </div>
       </div>
@@ -254,7 +266,10 @@ function search() {
             </div>
             <div class="mobile-tools">
               <AppTheme />
-              <AppLanguage @language-click="mobileMenuIcon = false" />
+              <AppLanguage
+                :show="langShow"
+                @language-click="mobileMenuIcon = false"
+              />
             </div>
           </div>
           <transition name="menu-sub">
@@ -277,9 +292,9 @@ function search() {
 </template>
 
 <style lang="scss" scoped>
-:deep(.o-search) {
-  --o-search-color-bg: var(--o-color-secondary);
-  background-color: var(--e-color-bg4);
+:deep(.el-input__wrapper) {
+  background-color: var(--e-color-bg-secondary) !important;
+  box-shadow: none !important;
 }
 :deep(.el-input__suffix) {
   font-size: var(--o-font-size-h7);
@@ -305,6 +320,9 @@ function search() {
     padding: 0 44px;
     margin: 0 auto;
     height: 80px;
+    @media (max-width: 1439px) {
+      padding: 0 24px;
+    }
     @media (max-width: 1100px) {
       padding: 0 16px;
       height: 48px;
@@ -389,7 +407,14 @@ function search() {
     :deep(.o-search) {
       --o-search-height: 28px;
     }
+    margin-left: 0;
+    z-index: 2;
+    position: fixed;
+    width: calc(100vw - 32px);
+    left: 16px;
+    right: 16px;
   }
+
   &-box {
     .close {
       cursor: pointer;
@@ -401,33 +426,50 @@ function search() {
     height: auto;
     width: 100%;
     margin-top: 21px;
-    // background: rgba(255, 255, 255, 0.9);
-    background: hsla(0, 0%, 100%, 0.97);
+    box-shadow: var(--e-shadow-l4);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     padding: var(--o-spacing-h3);
     @media (max-width: 1100px) {
       margin-top: 8px;
     }
+    @media (max-width: 1100px) {
+      left: -16px;
+      right: 0;
+      width: 100vw;
+      padding: var(--o-spacing-h5);
+    }
     .hots {
       &-title {
         font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-heigh-tip);
-        color: var(--e-color-black);
+        line-height: var(--o-line-height-tip);
+        color: var(--e-color-text1);
       }
       &-list {
         &-item {
-          margin-top: var(--o-spacing-h8);
+          margin-top: var(--o-spacing-h5);
           margin-right: var(--o-spacing-h5);
-          background-color: var(--e-color-greyblue1);
-          color: var(--e-color-neutral5);
+          background-color: var(--e-color-bg4);
+          color: var(--e-color-text-secondary);
           cursor: pointer;
           @media (max-width: 1100px) {
             font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-heigh-tip);
+            line-height: var(--o-line-height-tip);
           }
         }
       }
     }
+    @media (max-width: 768px) {
+      .hots-list-item {
+        margin-right: var(--o-spacing-h8);
+      }
+    }
+  }
+}
+
+.dark {
+  .drawer {
+    background: rgba($color: #2e2e2e, $alpha: 0.9);
   }
 }
 
@@ -440,7 +482,7 @@ function search() {
   display: flex;
   opacity: 0;
   visibility: hidden;
-  border-top: 1px solid var(--o-color-division);
+  border-top: 1px solid var(--e-color-division);
   background: rgba(0, 0, 0, 0.4);
   top: 48px;
   height: calc(100% - 48px);
@@ -543,7 +585,7 @@ function search() {
         color: var(--e-color-text4);
         cursor: pointer;
         &:last-child {
-          border-bottom: 1px solid var(--o-color-division);
+          border-bottom: 1px solid var(--e-color-division1);
         }
       }
     }

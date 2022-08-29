@@ -6,32 +6,32 @@ title: '角色说明'
 import { computed } from 'vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
-import banner from '@/assets/banner-secondary.png';
-import illustration from '@/assets/category/sig/role-description/illustration.png';
-  const tableData = [
-    {
-      SigName: 'Contributor',
-      Gitee: '项目的贡献者',
-      Email: '项目Owner',
-      IRC: 'Gitee注册成员'
-    },
-    {
-      SigName: 'Committer',
-      Gitee: '审核其他成员的贡献',
-      Email: 'SIG的积极贡献者，经验丰富，愿意投入精力参与到审核工作',
-      IRC: 'openEuler SIG拥有的储存库中OWNERS文件中的Commiter条目。'
-    },
-    {
-      SigName: 'Maintainer',
-      Gitee: '项目Owner',
-      Email: '经验丰富，富有责任心、出色的技术能力和管理能力',
-      IRC: 'openEuler SIG拥有的存储库中OWNERS文件中的Maintainer条目。'
-    }
-  ]
-  const screenWidth = useWindowResize();
-  const isMobile = computed(() => {
-    return screenWidth.value <= 768 ? true : false;
-  });
+import banner from '@/assets/banner/banner-sig.png';
+import roleIllustration from '@/assets/illustrations/role.png';
+const tableData = [
+  {
+    SigName: 'Contributor',
+    Gitee: '项目的贡献者',
+    Email: '项目Owner',
+    IRC: 'Gitee注册成员'
+  },
+  {
+    SigName: 'Committer',
+    Gitee: '审核其他成员的贡献',
+    Email: 'SIG的积极贡献者，经验丰富，愿意投入精力参与到审核工作',
+    IRC: 'openEuler SIG拥有的储存库中OWNERS文件中的Commiter条目。'
+  },
+  {
+    SigName: 'Maintainer',
+    Gitee: '项目Owner',
+    Email: '经验丰富，富有责任心、出色的技术能力和管理能力',
+    IRC: 'openEuler SIG拥有的存储库中OWNERS文件中的Maintainer条目。'
+  }
+]
+const screenWidth = useWindowResize();
+const isMobile = computed(() => {
+  return screenWidth.value <= 768 ? true : false;
+});
 </script>
 
 <ClientOnly>
@@ -39,7 +39,7 @@ import illustration from '@/assets/category/sig/role-description/illustration.pn
     :background-image="banner"
     background-text="SIG"
     title="角色说明"
-    :illustration="illustration"
+    :illustration="roleIllustration"
   />
 </ClientOnly>
 

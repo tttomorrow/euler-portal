@@ -107,6 +107,32 @@ const jump = (item: any) => {
 
 <style lang="scss" scoped>
 $banner-color: #fff;
+html[lang='en'],
+html[lang='ru'] {
+  .home-banner {
+    .flex-start {
+      margin-top: 120px;
+      justify-content: flex-start;
+      p {
+        margin: 0;
+        max-width: 600px;
+        line-height: var(--o-line-height-h2);
+        font-size: var(--o-spacing-h3);
+        @media screen and (max-width: 824px) {
+          line-height: 28px;
+          font-size: 20px;
+        }
+      }
+      @media screen and (max-width: 824px) {
+        padding: 0;
+        margin-top: 32px;
+      }
+    }
+    .experts {
+      font-size: 30px !important;
+    }
+  }
+}
 .dark .banner-panel-cover {
   filter: brightness(80%) grayscale(20%) contrast(1.2);
 }
@@ -197,9 +223,10 @@ $banner-color: #fff;
         }
       }
       .experts {
+        margin-top: 0;
         line-height: 84px;
         font-weight: 400;
-        font-size: 56px;
+        font-size: 54px;
         @media screen and (max-width: 1416px) {
           line-height: var(--o-line-height-h3);
           font-size: var(--o-font-size-h3);
@@ -209,6 +236,7 @@ $banner-color: #fff;
           line-height: 28px;
         }
       }
+
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {

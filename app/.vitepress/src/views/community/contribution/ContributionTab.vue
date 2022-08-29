@@ -36,29 +36,11 @@ const handleClick = (tab: TabsPaneContext) => {
 
 <style lang="scss" scoped>
 .tab-wrapper {
-  .el-tabs {
-    background-color: var(--e-color-bg2);
-    :deep(.el-tabs__header) {
-      margin-bottom: 0;
-    }
-    :deep(.el-tabs__nav) {
-      left: 50%;
-      transform: translate(-50%) !important;
-      .el-tabs__item {
-        height: 48px;
-        font-size: var(--o-font-size-h8);
-        line-height: var(--o-line-height-h3);
-        @media screen and (max-width: 767px) {
-          height: 34px;
-          // TODO:
-          line-height: 34px;
-          font-size: var(--o-font-size-text);
-        }
-      }
-      .is-active {
-        color: var(--e-color-brand1);
-      }
-    }
+  background-color: var(--e-color-bg2);
+  display: flex;
+  justify-content: center;
+  :deep(.el-tabs__header) {
+    margin-bottom: 0;
   }
 }
 </style>

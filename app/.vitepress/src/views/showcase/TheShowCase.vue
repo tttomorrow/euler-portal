@@ -12,7 +12,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import NotFound from '@/NotFound.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-community.png';
 import search from '@/assets/illustrations/search.png';
 
 // import useCaseZh from '@/i18n/showcase/showcase.json';
@@ -264,7 +264,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .user-case {
   max-width: 1504px;
-  padding: 0 44px;
+  padding: 40px 44px 64px;
   margin: 0 auto;
   .pagination-slot {
     font-size: var(--o-font-size-text);
@@ -273,7 +273,7 @@ onMounted(() => {
     line-height: var(--o-spacing-h4);
   }
   @media (max-width: 768px) {
-    padding: 0;
+    padding: 0 0 40px 0;
     background-color: var(--e-color-bg1);
   }
   .tag-box {
@@ -294,7 +294,7 @@ onMounted(() => {
       width: 100%;
       margin-top: 24px;
       padding: var(--o-spacing-h5) var(--o-spacing-h2);
-      box-shadow: var(--o-shadow-base);
+      box-shadow: var(--e-shadow-l1);
       @media (max-width: 768px) {
         display: none;
       }
@@ -302,7 +302,7 @@ onMounted(() => {
     .tag-h5 {
       display: none;
       width: 100%;
-      box-shadow: var(--o-shadow-base);
+      box-shadow: var(--e-shadow-l1);
       padding: 0 16px;
       @media (max-width: 768px) {
         display: block;
@@ -325,7 +325,6 @@ onMounted(() => {
   }
   :deep(.search) {
     height: 48px;
-    margin-top: var(--o-spacing-h2);
     margin-bottom: 0;
     @media (max-width: 768px) {
       display: none;
@@ -334,7 +333,7 @@ onMounted(() => {
   .tag-top {
     @media (max-width: 768px) {
       position: fixed;
-      top: 48px;
+      top: 47px;
       left: 0;
       z-index: 9;
     }
@@ -445,7 +444,7 @@ onMounted(() => {
   }
   .page-box {
     margin-top: var(--o-spacing-h2);
-    .pagination-pc {
+    :deep(.pagination-pc) {
       @media (max-width: 768px) {
         display: none;
       }
@@ -472,7 +471,7 @@ onMounted(() => {
           color: var(--e-color-brand1);
         }
         .disable-button {
-          color: var(--o-color-disabled);
+          color: var(--e-color-text5);
         }
       }
     }

@@ -213,9 +213,14 @@ const go = (path: string) => {
           {{ item.INTRODUCE }}
         </div>
         <div class="button-box">
-          <OButton v-if="item.TASK" type="primary" @click="go(item.TASK)">{{
-            TASK.INTERNSHIP_TASK
-          }}</OButton>
+          <OButton
+            v-if="item.TASK"
+            type="primary"
+            class="task-link"
+            @click="go(item.TASK)"
+            >{{ TASK.INTERNSHIP_TASK }}
+            <OIcon><IconArrowRight /></OIcon>
+          </OButton>
           <OButton
             v-if="item.GITEE"
             type="text"
@@ -237,10 +242,10 @@ const go = (path: string) => {
   .task-introduce {
     font-size: 20px;
     line-height: 40px;
-    color: var(--e-color-text1);
+    color: var(--e-color-text4);
     @media (max-width: 1000px) {
-      font-size: 14px;
-      line-height: 22px;
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
     }
   }
   .item-box {
@@ -250,9 +255,11 @@ const go = (path: string) => {
     margin-top: 30px;
     @media (max-width: 1440px) {
       grid-template-columns: repeat(2, 1fr);
+      margin-top: 16px;
     }
     @media (max-width: 780px) {
       grid-template-columns: repeat(1, 1fr);
+      gap: 16px;
     }
     .item {
       padding: 40px;
@@ -266,7 +273,8 @@ const go = (path: string) => {
         font-weight: 600;
         cursor: pointer;
         @media (max-width: 1000px) {
-          font-size: 16px;
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
         }
       }
       .item-intriduce {
@@ -302,6 +310,11 @@ const go = (path: string) => {
           white-space: nowrap span {
             color: var(--e-color-brand1);
           }
+          @media (max-width: 1000px) {
+            padding: 3px 16px;
+            font-size: var(--o-font-size-tip);
+            margin-right: 0;
+          }
           .o-icon {
             color: var(--e-color-brand1);
             margin-left: 8px;
@@ -311,6 +324,11 @@ const go = (path: string) => {
             transform: translateX(3px);
           }
           &:nth-of-type(1) {
+            color: #fff;
+          }
+        }
+        .task-link {
+          .o-icon {
             color: #fff;
           }
         }
@@ -365,13 +383,21 @@ const go = (path: string) => {
   .item-box {
     .item:nth-child(n) {
       width: 100%;
-      padding: 16px 12px;
+      padding: 16px;
+      position: relative;
+      min-height: 160px;
       .item-intriduce {
         width: 100%;
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        margin-bottom: 0;
       }
       .button-box {
         justify-content: inherit;
         gap: 16px;
+        position: absolute;
+        bottom: var(--o-spacing-h5);
+        left: var(--o-spacing-h5);
       }
     }
   }

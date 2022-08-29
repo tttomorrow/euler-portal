@@ -8,35 +8,20 @@
 
 <style lang="scss" scoped>
 .sidebar {
-  position: absolute;
+  position: fixed;
+  right: 0;
   left: 0;
-  top: 0;
+  top: 80px;
   bottom: 0;
   padding: 40px 0;
-  min-height: calc(100vh - 258px);
+  min-height: calc(100vh - 80px);
   width: 300px;
-  overflow-y: auto;
   color: var(--e-color-text2);
-  background-color: var(--e-color-brand1);
-  border-right: 1px solid var(--o-color-division);
-  font-weight: normal;
+  background-color: var(--e-color-kleinblue5);
 
-  &::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: var(--o-color-division);
-    background-clip: content-box;
-  }
-
-  &::-webkit-scrollbar-track {
-    border-radius: 0;
-    box-shadow: none;
-    background: var(--o-color-bg);
-    // background:transparent;
+  @media screen and (max-width: 1100px) {
+    top: 48px;
+    min-height: calc(100vh - 48px);
   }
 
   &-title + .sidebar-title {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, watch, onMounted } from 'vue';
+import { reactive, ref, watch, onMounted, computed } from 'vue';
 import { useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 
@@ -8,7 +8,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-security.png';
 import search from '@/assets/illustrations/search.png';
 import cve from '@/assets/illustrations/cve.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
@@ -18,10 +18,11 @@ import { SecurityLists, CveQuery } from '@/shared/@types/type-support';
 import OSearch from 'opendesign/search/OSearch.vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-const windowWidth = ref(useWindowResize());
+const screenWidth = useWindowResize();
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+
 const i18n = useI18n();
 const router = useRouter();
-const screenWidth = ref(1080);
 
 const inputName = ref('');
 const total = ref(0);
@@ -122,9 +123,6 @@ onMounted(() => {
 });
 
 watch(queryData, () => getSecurityLists(queryData));
-watch(windowWidth, () => {
-  screenWidth.value = windowWidth.value;
-});
 </script>
 
 <template>
@@ -134,7 +132,7 @@ watch(windowWidth, () => {
     background-text="CONTENT"
     :title="i18n.security.SECURITY_ADVISORIES"
     subtitle=""
-    :illustration="screenWidth >= 1000 ? search : cve"
+    :illustration="screenWidth >= 768 ? search : cve"
   />
   <AppContent :mobile-top="16">
     <div class="bulletin-main">
@@ -286,6 +284,7 @@ watch(windowWidth, () => {
       </ul>
 
       <OPagination
+        v-if="!isMobile"
         v-model:page-size="queryData.pages.size"
         v-model:currentPage="queryData.pages.page"
         class="pagination"
@@ -301,7 +300,7 @@ watch(windowWidth, () => {
       </OPagination>
 
       <AppPaginationMo
-        v-if="total !== 1"
+        v-if="total !== 1 || isMobile"
         :current-page="queryData.pages.page"
         :total-page="Math.ceil(total / 10)"
         @turn-page="turnPage"
@@ -315,7 +314,7 @@ watch(windowWidth, () => {
   max-width: 1504px;
   margin: 0 auto;
   .input-container {
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 768px) {
       display: none;
     }
     .o-search {
@@ -360,13 +359,13 @@ watch(windowWidth, () => {
         background-color: var(--e-color-bg4);
       }
     }
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 768px) {
       display: block;
     }
   }
   .filter-card {
     margin: var(--o-spacing-h4) 0;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 768px) {
       display: none;
     }
     :deep(.el-card__body) {
@@ -409,7 +408,7 @@ watch(windowWidth, () => {
   }
   .filter-mobile {
     display: none;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 768px) {
       display: block;
     }
     .filter {
@@ -444,7 +443,7 @@ watch(windowWidth, () => {
       color: var(--e-color-link1);
       cursor: pointer;
     }
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 768px) {
       display: none;
     }
   }
@@ -452,7 +451,7 @@ watch(windowWidth, () => {
     display: none;
     margin-bottom: var(--o-spacing-h5);
     box-shadow: var(--e-shadow1);
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 768px) {
       display: block;
     }
     .item {
@@ -488,20 +487,11 @@ watch(windowWidth, () => {
   }
   .pagination {
     margin-top: var(--o-spacing-h2);
-    @media screen and (max-width: 1000px) {
-      display: none;
-    }
-    .slot-content {
+    s .slot-content {
       font-size: var(--o-font-size-text);
       font-weight: 400;
       color: var(--e-color-text1);
       line-height: var(--o-spacing-h4);
-    }
-  }
-  .mobile-pagination {
-    display: none;
-    @media screen and (max-width: 1000px) {
-      display: block;
     }
   }
 }

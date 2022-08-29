@@ -4,12 +4,15 @@ import { ref, nextTick, onMounted, reactive, PropType, watch } from 'vue';
 import { isValidKey, getNowFormatDate } from '@/shared/utils';
 import { TableData, DayData } from '@/shared/@types/type-calendar';
 import type { TabsPaneContext } from 'element-plus';
+import { useCommon } from '@/stores/common';
 
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import IconDown from '~icons/app/icon-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
+import notFoundImg_light from '@/assets/common/not-found.png';
+import notFoundImg_dark from '@/assets/404.svg';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -25,8 +28,8 @@ const props = defineProps({
     default: true,
   },
 });
-
-const currentMeet = reactive<TableData>({
+const commonStore = useCommon();
+let currentMeet = reactive<TableData>({
   date: '',
   timeData: [
     {
@@ -100,9 +103,10 @@ const windowWidth = ref(useWindowResize());
 function changeTab(tab: TabsPaneContext) {
   const index = Number(tab.index);
   activeIndex.value = index;
+  renderData.value.timeData = [];
   try {
     // 0-全部 1-会议 其他-活动
-    if ((index === 0 && currentMeet.start_date) || currentMeet.date) {
+    if (index === 0) {
       renderData.value.timeData = currentMeet.timeData;
     } else if (index === 1) {
       renderData.value.timeData = currentMeet.timeData.filter(
@@ -116,8 +120,6 @@ function changeTab(tab: TabsPaneContext) {
           return item.activity_type;
         }
       );
-    } else {
-      renderData.value.timeData = [];
     }
   } catch (error: any) {
     throw Error(error);
@@ -135,6 +137,7 @@ function meetClick(day: string) {
         props.tableData[i].start_date === day
       ) {
         // 深拷贝
+        currentMeet = JSON.parse(JSON.stringify(props.tableData[i]));
         renderData.value = JSON.parse(JSON.stringify(props.tableData[i]));
         // 只有一个会议默认展开
         if (props.tableData[i].timeData.length === 1) {
@@ -153,9 +156,15 @@ function meetClick(day: string) {
               parseInt(b.startTime.replace(':', ''))
             );
           });
+          renderData.value.timeData.map((item2) => {
+            if (item2.etherpad) {
+              item2['duration_time'] = `${item2.startTime}-${item2.endTime}`;
+            }
+          });
         }
         return;
       } else {
+        currentMeet.timeData = [];
         renderData.value.timeData = [];
       }
     }
@@ -233,8 +242,8 @@ const watchData = watch(
 );
 </script>
 <template>
-  <div class="main-body">
-    <div class="calendar" :class="{ 'is-home': isHomePage }">
+  <div class="main-body" :class="{ 'is-home': !isHomePage }">
+    <div class="calendar">
       <el-calendar v-if="windowWidth > 768" ref="calendar" class="calender">
         <template #header="{ date }">
           <div class="left-title">
@@ -333,7 +342,13 @@ const watchData = watch(
         <span>{{ currentDay }}</span>
       </div>
       <div class="meeting-list">
-        <div v-if="renderData.timeData.length" class="demo-collapse">
+        <div
+          v-if="
+            (renderData.timeData.length && renderData.date) ||
+            (renderData.timeData.length && renderData.start_date)
+          "
+          class="demo-collapse"
+        >
           <o-collapse v-model="activeName" accordion @change="changeCollapse()">
             <div
               v-for="(item, index) in renderData.timeData"
@@ -348,16 +363,6 @@ const watchData = watch(
                         <p class="meet-name">{{ item.name || item.title }}</p>
                       </div>
                       <div
-                        v-if="item.schedules"
-                        class="more-detail"
-                        @click.stop="goDetail(index)"
-                      >
-                        {{ i18n.LEARN_MORE }}
-                        <OIcon>
-                          <icon-arrow-right></icon-arrow-right>
-                        </OIcon>
-                      </div>
-                      <div
                         v-if="item.group_name"
                         class="group-name more-detail"
                       >
@@ -365,6 +370,17 @@ const watchData = watch(
                       </div>
                     </div>
                     <div class="item-right">
+                      <OButton
+                        v-if="item.schedules"
+                        animation
+                        type="text"
+                        @click.stop="goDetail(index)"
+                      >
+                        {{ i18n.LEARN_MORE }}
+                        <template #suffixIcon>
+                          <OIcon><icon-arrow-right></icon-arrow-right></OIcon>
+                        </template>
+                      </OButton>
                       <div class="detail-time">
                         <span class="start-time"
                           ><i v-if="!item.schedules">{{ item.startTime }}</i>
@@ -432,13 +448,33 @@ const watchData = watch(
                       <p v-else>{{ currentDay }}</p>
                     </div>
                   </template>
+                  <div v-if="item.schedules" class="mo-learn-more">
+                    <OButton
+                      animation
+                      size="mini"
+                      type="outline"
+                      @click.stop="goDetail(index)"
+                    >
+                      {{ i18n.LEARN_MORE }}
+                      <template #suffixIcon>
+                        <OIcon><icon-arrow-right></icon-arrow-right></OIcon>
+                      </template>
+                    </OButton>
+                  </div>
                 </div>
               </o-collapse-item>
             </div>
           </o-collapse>
         </div>
         <div v-else class="empty">
-          <img src="@/assets/common/not-found.png" alt="" />
+          <img
+            :src="
+              commonStore.theme === 'light'
+                ? notFoundImg_light
+                : notFoundImg_dark
+            "
+            alt=""
+          />
           <p>{{ i18n.EMPTY_TEXT }}</p>
         </div>
       </div>
@@ -482,12 +518,12 @@ const watchData = watch(
       justify-content: center;
     }
   }
-  .el-tabs__item {
-    font-size: var(--o-font-size-h8);
-    @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-text);
-    }
-  }
+  // .el-tabs__item {
+  //   font-size: var(--o-font-size-h8);
+  //   @media screen and (max-width: 768px) {
+  //     font-size: var(--o-font-size-text);
+  //   }
+  // }
   .el-tabs__nav-wrap::after {
     display: none;
   }
@@ -506,8 +542,6 @@ const watchData = watch(
 .o-icon {
   cursor: pointer;
   font-size: var(--o-font-size-h7);
-  font-weight: 700;
-  color: var(--e-color-text1);
   transition: color 0.2s;
   &:hover {
     color: var(--e-color-brand1);
@@ -545,11 +579,6 @@ const watchData = watch(
     }
   }
 
-  .is-home {
-    :deep(.el-calendar__header) {
-      background-color: var(--e-color-bg1);
-    }
-  }
   .collapse-box-mo {
     .left-title {
       display: none;
@@ -811,8 +840,15 @@ const watchData = watch(
         }
         .el-collapse-item__wrap {
           border: none;
-          padding: 0 var(--o-spacing-h4);
+          padding: var(--o-spacing-h6) var(--o-spacing-h5);
           background-color: var(--o-collapse-color-bg2);
+          @media screen and (max-width: 768px) {
+            padding: var(--o-spacing-h6);
+            background-color: var(--e-color-bg1);
+            .el-collapse-item__content {
+              background-color: var(--e-color-bg1);
+            }
+          }
         }
       }
       @media screen and (max-width: 768px) {
@@ -838,7 +874,7 @@ const watchData = watch(
         display: none;
       }
       .el-collapse-item__content {
-        padding-bottom: 0;
+        padding: 0;
         @media screen and (max-width: 768px) {
           font-size: var(--o-font-size-tip);
         }
@@ -846,7 +882,7 @@ const watchData = watch(
       .meet-item {
         display: flex;
         justify-content: space-between;
-        padding: var(--o-spacing-h5) var(--o-spacing-h4);
+        padding: var(--o-spacing-h5);
         width: 100%;
         height: 100%;
         background-color: var(--e-color-bg3);
@@ -920,12 +956,25 @@ const watchData = watch(
         .item-right {
           display: flex;
           font-size: var(--o-font-size-text);
+          .o-button {
+            padding: 0;
+            .o-icon {
+              color: var(--e-color-brand1);
+              font-size: var(--o-font-size-h5);
+            }
+            &:hover {
+              color: var(--e-color-brand1);
+            }
+            @media screen and (max-width: 768px) {
+              display: none;
+            }
+          }
 
           .detail-time {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            padding: 0 24px;
+            padding: 0 var(--o-spacing-h5);
             font-weight: normal;
             text-align: center;
             font-size: var(--o-font-size-h8);
@@ -994,7 +1043,6 @@ const watchData = watch(
       }
       .meet-detail {
         color: var(--e-color-text4);
-        padding-top: 10px;
         .meeting-item {
           display: flex;
           padding-bottom: var(--o-spacing-h8);
@@ -1018,6 +1066,22 @@ const watchData = watch(
             }
           }
         }
+        .mo-learn-more {
+          display: none;
+          @media screen and (max-width: 768px) {
+            display: flex;
+            justify-content: center;
+            padding-top: var(--o-spacing-h8);
+            border-top: 1px solid var(--e-color-division1);
+            padding: var(--o-spacing-h5) 0 var(--o-spacing-h10);
+            .o-button {
+              padding: 3px var(--o-spacing-h6);
+              .o-icon {
+                font-size: var(--o-font-size-tip);
+              }
+            }
+          }
+        }
       }
     }
     .empty {
@@ -1034,8 +1098,9 @@ const watchData = watch(
       p {
         margin-top: var(--o-spacing-h5);
       }
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 768px) {
         img {
+          margin-top: var(--o-spacing-h5);
           width: 100%;
         }
         p {
@@ -1043,6 +1108,17 @@ const watchData = watch(
           font-size: var(--o-font-size-tip);
         }
       }
+    }
+  }
+}
+.is-home {
+  .el-calendar {
+    background-color: var(--e-color-bg2);
+  }
+  .detail-list {
+    background-color: var(--e-color-bg2);
+    .right-title {
+      visibility: hidden;
     }
   }
 }

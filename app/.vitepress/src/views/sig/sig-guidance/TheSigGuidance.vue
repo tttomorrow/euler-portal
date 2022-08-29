@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useData } from 'vitepress';
+
 import { useI18n } from '@/i18n';
-import useWindowResize from '@/components/hooks/useWindowResize';
+
 import AppContext from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import banner from '@/assets/banner-secondary.png';
-import illustration from '@/assets/illustrations/search.png';
-import moillustration from '@/assets/category/sig/guidance/mo-illustration.png';
+
+import banner from '@/assets/banner/banner-sig.png';
+import applicationIllustration from '@/assets/illustrations/application.png';
+
 import sig1 from '@/assets/category/sig/guidance/sig1.png';
 import sig2 from '@/assets/category/sig/guidance/sig2.png';
 import sig3 from '@/assets/category/sig/guidance/sig3.png';
@@ -21,10 +22,6 @@ const RIGHT_IMG = [sig4, sig5, sig6];
 const i18n = useI18n();
 const configData = useData();
 const language = configData.lang;
-const screenWidth = useWindowResize();
-const isMobile = computed(() => {
-  return screenWidth.value <= 768 ? true : false;
-});
 </script>
 
 <template>
@@ -32,7 +29,7 @@ const isMobile = computed(() => {
     :background-image="banner"
     background-text="SIG"
     :title="i18n.sig.GUIDANCE_LIST.GUIDE.TITLE"
-    :illustration="isMobile ? moillustration : illustration"
+    :illustration="applicationIllustration"
   />
   <AppContext :pc-top="40">
     <div class="application">

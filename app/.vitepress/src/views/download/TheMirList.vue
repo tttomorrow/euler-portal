@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
-import { useI18n } from '@/i18n';
-import { getAllMirror } from '@/api/api-mirror';
-import IconCpoy from '~icons/app/icon-copy.svg';
 import { ElMessage } from 'element-plus';
-import BannerLevel3 from '@/components/BannerLevel3.vue';
-import AppContent from '@/components/AppContent.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import { useI18n } from '@/i18n';
+
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+import AppContent from '@/components/AppContent.vue';
 import MapContainer from './MapContainer.vue';
+
+import IconCpoy from '~icons/app/icon-copy.svg';
+import banner from '@/assets/banner/banner-download.png';
+import downloadIllustration from '@/assets/illustrations/download.png';
+
+import { getAllMirror } from '@/api/api-mirror';
 
 interface MapMsg {
   name: string;
@@ -135,10 +139,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <BannerLevel3
+  <BannerLevel2
     :background-image="banner"
     background-text="DOWNLOAD"
     :title="i18n.download.MIRROR_ALL.TITLE"
+    :illustration="downloadIllustration"
   />
   <AppContent class="mirror-list">
     <p>
@@ -205,6 +210,7 @@ onMounted(async () => {
       >
       </OTableColumn>
     </OTable>
+
     <div class="mirror-mobile">
       <OCard v-for="item in listData" :key="item.name" class="mirror-card">
         <div class="mirror-card-content">
@@ -266,15 +272,16 @@ onMounted(async () => {
           <div class="mirror-card-word">{{ item.netband }}</div>
         </div>
       </OCard>
-      <div class="mirror-map">
-        <MapContainer :map-data="mapData"></MapContainer>
-      </div>
 
       <div class="input-box">
         <!-- 用于复制RSNC的值 -->
         <input id="useCopy" type="text" />
-      </div></div
-  ></AppContent>
+      </div>
+    </div>
+    <div class="mirror-map">
+      <MapContainer :map-data="mapData"></MapContainer>
+    </div>
+  </AppContent>
 </template>
 <style lang="scss" scoped>
 .mirror {
@@ -282,6 +289,10 @@ onMounted(async () => {
     margin-top: var(--o-spacing-h2);
     width: 100%;
     height: 996px;
+    box-shadow: var(--e-shadow-l1);
+    @media (max-width: 768px) {
+      height: 50vh;
+    }
   }
   &-pc {
     display: block;
