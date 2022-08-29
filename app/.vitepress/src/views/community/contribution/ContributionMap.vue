@@ -16,7 +16,7 @@ const router = useRouter();
 const isDark = computed(() => {
   return commonStore.theme === 'dark' ? true : false;
 });
-const goLink = function (url: string, isBlank: boolean) {
+const goLink = (url: string, isBlank: boolean) => {
   if (isBlank) {
     window.open(url);
     return;
