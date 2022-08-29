@@ -288,9 +288,6 @@ onMounted(() => {
         :deep(.el-input__prefix-inner) {
           font-size: 16px;
         }
-        :deep(.el-input__wrapper) {
-          background-color: var(--e-color-bg4);
-        }
       }
     }
     .close {
@@ -351,19 +348,31 @@ onMounted(() => {
         min-height: 1948px;
         box-shadow: var(--e-shadow-l1);
         background-color: var(--e-color-bg2);
+        @media (max-width: 768px) {
+          margin: var(--o-spacing-h5) var(--o-spacing-h5) 0 var(--o-spacing-h5);
+          min-height: 0;
+        }
         .content-list {
           padding: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
           @media (max-width: 768px) {
             padding: 0 var(--o-spacing-h5) var(--o-spacing-h5)
               var(--o-spacing-h5);
-            margin: var(--o-spacing-h5) var(--o-spacing-h5) 0
-              var(--o-spacing-h5);
-            min-height: 0;
           }
           li {
             padding-top: var(--o-spacing-h2);
             @media (max-width: 768px) {
               padding-top: var(--o-spacing-h5);
+              &::after {
+                display: block;
+                content: '';
+                width: 100%;
+                height: 1px;
+                background-color: var(--e-color-division1);
+                margin-top: 16px;
+              }
+              &:nth-last-of-type(1)::after {
+                display: none;
+              }
             }
             h3 {
               font-size: var(--o-font-size-h5);
@@ -388,8 +397,10 @@ onMounted(() => {
                 color: var(--e-color-brand1);
               }
               @media (max-width: 768px) {
+                margin-top: 4px;
                 font-size: var(--o-font-size-tip);
                 line-height: var(--o-line-height-tip);
+                color: var(--e-color-text4);
               }
             }
             .from {
@@ -398,8 +409,10 @@ onMounted(() => {
               line-height: var(--o-line-height-text);
               color: var(--e-color-text1);
               @media (max-width: 768px) {
+                margin-top: 8px;
                 font-size: var(--o-font-size-tip);
                 line-height: var(--o-line-height-tip);
+                color: var(--e-color-text4);
               }
             }
           }
@@ -446,7 +459,7 @@ onMounted(() => {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
           margin-top: var(--o-spacing-h8);
-          color: var(--e-color-text1);
+          color: var(--e-color-text4);
         }
       }
     }
