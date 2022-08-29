@@ -74,7 +74,7 @@ function turnPage(option: string) {
 <template>
   <BannerLevel2
     :background-image="banner"
-    background-text="CONNECT"
+    background-text="INTERACTION"
     :title="i18n.live.LIVETITLE"
     :illustration="liveIllustration"
   />
