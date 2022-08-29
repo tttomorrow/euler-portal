@@ -11,8 +11,6 @@ author:
 summary: LibcarePlus, developed by the openEuler community together with the e-Cloud infrastructure team, is a hot patch framework for the AArch64 and x86 platforms. It can fix CVE vulnerabilities and emergency bugs that do not interrupt application services.
 ---
 
----
-
 LibcarePlus, developed by the openEuler community together with the e-Cloud infrastructure team, is a hot patch framework for the AArch64 and x86 platforms. It can fix CVE vulnerabilities and emergency bugs that do not interrupt application services. This article briefly introduces the LibcarePlus hot patch technology. As a key technology of the openEuler community, it has attracted attention from developers.
 
 ## Technical Background of Hot Patches
