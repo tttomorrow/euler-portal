@@ -129,7 +129,7 @@ html[lang='ru'] {
       }
     }
     .experts {
-      font-size: 40px !important;
+      font-size: 40px;
     }
   }
 }
