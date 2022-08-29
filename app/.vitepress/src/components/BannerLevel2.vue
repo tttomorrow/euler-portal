@@ -144,8 +144,8 @@ onMounted(() => {
       .banner-text-bg {
         position: absolute;
         top: 0;
-        color: var(--e-color-brand1);
-        opacity: 0.4;
+        color: var(--e-color-white);
+        opacity: 0.14;
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
         font-weight: bold;

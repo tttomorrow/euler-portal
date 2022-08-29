@@ -33,11 +33,11 @@ export default {
       BLANK: false,
     },
     {
-      URL: '/en/other/projects/isula/',
+      URL: '/en/other/projects/secgear/',
       BLANK: false,
     },
     {
-      URL: '/en/other/projects/secgear/',
+      URL: '/en/other/projects/isula/',
       BLANK: false,
     },
     {
