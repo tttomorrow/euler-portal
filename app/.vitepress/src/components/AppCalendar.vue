@@ -642,6 +642,7 @@ const notFoundImg = computed(() =>
         width: 100%;
         .o-icon {
           color: inherit;
+          color: var(--e-color-text1);
           font-size: var(--o-font-size-h8);
         }
         .month-date {
@@ -714,6 +715,9 @@ const notFoundImg = computed(() =>
           height: 66px;
           &:hover {
             background-color: var(--e-color-bg1);
+          }
+          @media screen and (max-width: 768px) {
+            background-color: inherit !important;
           }
           .out-box {
             display: flex;
