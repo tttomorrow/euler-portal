@@ -342,7 +342,7 @@ export default {
   USER_CASE: {
     TITLE: 'Success Stories',
     VIEW_MORE: 'View More',
-    VIEW_MORE_LINK: 'https://new.openeuler.org/zh/showcase/',
+    VIEW_MORE_LINK: 'showcase/',
     CASE_LIST: [
       {
         TYPE: 'Финансы',

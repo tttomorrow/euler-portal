@@ -107,37 +107,11 @@ const jump = (item: any) => {
 
 <style lang="scss" scoped>
 $banner-color: #fff;
-// html[lang='en'],
-// html[lang='ru'] {
-//   .home-banner {
-//     .flex-start {
-//       margin-top: 120px;
-//       justify-content: flex-start;
-//       p {
-//         margin: 0;
-//         max-width: 600px;
-//         line-height: var(--o-line-height-h2);
-//         font-size: var(--o-spacing-h3);
-//         @media screen and (max-width: 824px) {
-//           line-height: 28px;
-//           font-size: 20px;
-//         }
-//       }
-//       @media screen and (max-width: 824px) {
-//         padding: 0;
-//         margin-top: 32px;
-//       }
-//     }
-//     .experts {
-//       font-size: 40px;
-//     }
-//   }
-// }
 .dark .banner-panel-cover {
   filter: brightness(80%) grayscale(20%) contrast(1.2);
 }
 .home-banner-btn {
-  border-color: $banner-color;
+  border-color: $banner-color !important;
   color: $banner-color !important;
   @media screen and (max-width: 824px) {
     padding: 5px 12px 5px 16px;
@@ -149,25 +123,6 @@ $banner-color: #fff;
 .home-banner {
   height: 480px;
   position: relative;
-  // .flex-start {
-  //   margin-top: 120px;
-  //   justify-content: flex-start;
-  //   p {
-  //     margin: 0;
-  //     max-width: 600px;
-  //     line-height: var(--o-line-height-h2);
-  //     font-size: var(--o-spacing-h3);
-  //     @media screen and (max-width: 824px) {
-  //       line-height: var(--o-line-height-h6);
-  //       font-size: var(--o-font-size-h6);
-  //     }
-  //   }
-  //   @media screen and (max-width: 824px) {
-  //     padding: 0;
-  //     margin-top: var(--o-spacing-h3);
-  //   }
-  // }
-
   .banner-panel {
     position: absolute;
     background-color: var(--e-color-bg2);
@@ -183,7 +138,7 @@ $banner-color: #fff;
       box-sizing: border-box;
       max-width: 1504px;
       margin: 0 auto;
-      padding: 0 var(--o-spacing-h2);
+      padding: 0 44px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -238,7 +193,7 @@ $banner-color: #fff;
           margin-top: 0;
         }
       }
-      @media screen and (max-width: 1100px) {
+      @media screen and (max-width: 1440px) {
         padding: 0 16px;
       }
       @media screen and (max-width: 824px) {
