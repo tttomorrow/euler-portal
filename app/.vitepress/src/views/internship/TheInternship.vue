@@ -1050,7 +1050,7 @@ onUnmounted(() => {
     row-gap: 0;
     .img-cover {
       display: flex;
-      margin: 0px -1px -1px 0px;
+      margin: 0px -2px -2px 0px;
       justify-content: center;
       align-items: center;
       border: 1px solid var(--e-color-division1);

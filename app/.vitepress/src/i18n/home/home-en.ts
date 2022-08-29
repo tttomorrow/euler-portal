@@ -523,12 +523,12 @@ export default {
     TRY_URL: 'community/contribution/detail.html',
     LIST: [
       {
-        TITLE: 'All-Scenario Applications',
-        IMG_URL: imgList1,
-      },
-      {
         TITLE: 'Various Devices',
         IMG_URL: imgList2,
+      },
+      {
+        TITLE: 'All-Scenario Applications',
+        IMG_URL: imgList1,
       },
       {
         TITLE: 'Development Tool Chain',

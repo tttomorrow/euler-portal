@@ -51,7 +51,7 @@ onMounted(async () => {
     body.classList.add('home-loading');
   }
   AOS.init({
-    offset: 100,
+    offset: 50,
     duration: 800,
     delay: 100,
     once: true,

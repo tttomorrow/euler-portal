@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 
 import { useI18n } from '@/i18n';
 
 const i18n = useI18n();
-
 const commonStore = useCommon();
 
 const caseData: any = ref({});
