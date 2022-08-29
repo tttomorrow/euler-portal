@@ -13,7 +13,7 @@ const i18n = useI18n();
     <h3 :class="lang === 'en' ? 'en-h3' : ''">
       {{ i18n.home.HOME_SOURCE.SOURCE_PUBLISH_TITLE }}
     </h3>
-    <span>{{ i18n.home.HOME_SOURCE.RANK_TIP }}</span>
+    <p class="rank-tip">{{ i18n.home.RANK_TIP }}</p>
     <div class="publish-edition">
       <a
         v-for="item in i18n.home.HOME_SOURCE_EDITION"
@@ -45,19 +45,24 @@ const i18n = useI18n();
     width: 100%;
     text-align: center;
     margin-top: var(--o-spacing-h1);
-    margin-bottom: var(--o-spacing-h2);
+    margin-bottom: var(--o-spacing-h5);
     @media (max-width: 768px) {
       margin-top: var(--o-spacing-h2);
-      margin-bottom: var(--o-spacing-h5);
+      margin-bottom: var(--o-spacing-h8);
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
     }
   }
 }
-
+.rank-tip {
+  text-align: center;
+  font-size: var(--o-font-size-tip);
+  font-weight: 400;
+  color: var(--e-color-text1);
+}
 .publish-edition {
   display: grid;
-  margin-top: var(--o-spacing-h2);
+  padding-top: var(--o-spacing-h4);
   grid-template-columns: repeat(4, minmax(82px, 1fr));
   column-gap: 0;
   row-gap: 0;
@@ -78,7 +83,7 @@ const i18n = useI18n();
     }
   }
   @media screen and (max-width: 1416px) {
-    margin-top: var(--o-spacing-h5);
+    padding-top: var(--o-spacing-h8);
     grid-template-columns: repeat(3, minmax(82px, 270px));
     justify-content: center;
     a {

@@ -150,7 +150,7 @@ onMounted(() => {
               class="case-more-item"
               @click="handleGo(i18n.home.USER_CASE.VIEW_MORE_LINK)"
             >
-              {{ i18n.home.IMG_CAROUSE.BUTTON }}
+              {{ i18n.home.USER_CASE.VIEW_MORE }}
               <template #suffixIcon>
                 <IconArrowRight class="case-more-icon"></IconArrowRight>
               </template>

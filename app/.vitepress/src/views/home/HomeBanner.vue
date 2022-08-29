@@ -81,7 +81,7 @@ const jump = (item: any) => {
             :class="[{ 'flex-start': index === 0 }]"
             class="banner-panel-content flex-column"
           >
-            <div class="box">
+            <div data-aos="fade-down" class="box">
               <p class="title" :class="{ experts: index === 0 }">
                 {{ item.title }}
               </p>
@@ -129,7 +129,7 @@ html[lang='ru'] {
       }
     }
     .experts {
-      font-size: 30px !important;
+      font-size: 40px !important;
     }
   }
 }

@@ -44,7 +44,6 @@ const totoBLink = (url: string) => {
     : window.open(url);
 };
 
-
 const headGround = computed(() =>
   commonStore.theme === 'dark' ? cardBg_dark : cardBg_light
 );
