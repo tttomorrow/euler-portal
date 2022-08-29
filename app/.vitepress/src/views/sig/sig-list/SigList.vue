@@ -529,9 +529,6 @@ onMounted(() => {
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h4);
   }
-  a {
-    line-height: var(--o-line-height-h9);
-  }
   .sig-name {
     display: flex;
     align-items: center;
@@ -560,6 +557,7 @@ onMounted(() => {
       span {
         white-space: nowrap;
         font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
         color: var(--e-color-text1);
       }
     }
@@ -572,6 +570,7 @@ onMounted(() => {
   align-items: center;
   span {
     font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
     color: var(--e-color-text1);
   }
   &-item {
@@ -584,6 +583,7 @@ onMounted(() => {
       margin-right: var(--o-spacing-h5);
       @media (max-width: 1000px) {
         font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
         width: 100px;
       }
     }
@@ -620,18 +620,20 @@ onMounted(() => {
   .mo-item {
     padding: var(--o-spacing-h5);
     &-text {
+      display: flex;
+      align-items: flex-start;
       margin-bottom: var(--o-spacing-h5);
       .mo-item-title {
         font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
         color: var(--e-color-text1);
         margin-right: var(--o-spacing-h7);
       }
       .sig-board-icon {
         height: var(--o-font-size-text);
         width: var(--o-font-size-text);
-        margin-top: var(--o-spacing-h10);
+        margin-top: 2px;
         position: relative;
-        top: 4px;
         right: 10px;
       }
       .mo-item-name,
@@ -639,6 +641,7 @@ onMounted(() => {
       .mo-item-repo,
       .mo-item-maintainer {
         font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
         color: var(--e-color-text1);
         opacity: 0.5;
       }
