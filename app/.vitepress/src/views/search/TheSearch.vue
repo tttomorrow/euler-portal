@@ -196,7 +196,7 @@ onMounted(() => {
         <ul v-show="!isShow" class="content-list">
           <li v-for="item in searchResultList" :key="item.id">
             <!-- eslint-disable-next-line -->
-              <h3 v-html="item.title" @click="goLink(item.type, item.path)"></h3>
+            <h3 v-html="item.title" @click="goLink(item.type, item.path)"></h3>
             <!-- eslint-disable-next-line -->
             <p class="detail" v-html="item.textContent"></p>
             <p class="from">
@@ -297,6 +297,7 @@ onMounted(() => {
     .search-content {
       width: 100%;
       margin-top: var(--o-spacing-h2);
+      box-shadow: var(--e-shadow-l1);
       @media (max-width: 768px) {
         margin-top: var(--o-spacing-h5);
       }
@@ -412,6 +413,7 @@ onMounted(() => {
     height: 2005px;
     margin-top: 78px;
     background-color: var(--e-color-bg2);
+    box-shadow: var(--e-shadow-l1);
     @media (max-width: 1100px) {
       display: none;
     }
