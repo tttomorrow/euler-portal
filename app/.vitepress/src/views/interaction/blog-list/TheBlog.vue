@@ -431,7 +431,7 @@ const moblieCurrentChange = (val: string) => {
 <template>
   <BannerLevel2
     :background-image="banner"
-    background-text="CONNECT"
+    background-text="INTERACTION"
     :title="userCaseData.BLOG"
     :illustration="blogIllustration"
   >

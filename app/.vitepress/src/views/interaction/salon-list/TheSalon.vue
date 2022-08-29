@@ -232,7 +232,7 @@ onMounted(async () => {
   <div class="salon">
     <BannerLevel2
       :background-image="banner"
-      background-text="CONNECT"
+      background-text="INTERACTION"
       :title="salonData.MEETUPS"
       :illustration="salonIllustration"
     />
