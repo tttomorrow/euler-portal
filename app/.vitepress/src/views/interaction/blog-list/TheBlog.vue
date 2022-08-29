@@ -564,21 +564,23 @@ const moblieCurrentChange = (val: string) => {
         </OCard>
       </div>
       <div class="blog-pagination">
-        <OPagination
-          v-if="!isMobile"
-          v-model:currentPage="paginationData.currentpage"
-          v-model:page-size="paginationData.pagesize"
-          :background="true"
-          layout="sizes, prev, pager, next, slot, jumper"
-          :total="paginationData.total"
-          :page-sizes="[3, 6, 9]"
-          @current-change="currentChange"
-          @size-change="currentChange(1)"
-        >
-          <span class="pagination-slot"
-            >{{ paginationData.currentpage }}/{{ pageTotal }}</span
+        <ClientOnly>
+          <OPagination
+            v-if="!isMobile"
+            v-model:currentPage="paginationData.currentpage"
+            v-model:page-size="paginationData.pagesize"
+            :background="true"
+            layout="sizes, prev, pager, next, slot, jumper"
+            :total="paginationData.total"
+            :page-sizes="[3, 6, 9]"
+            @current-change="currentChange"
+            @size-change="currentChange(1)"
           >
-        </OPagination>
+            <span class="pagination-slot"
+              >{{ paginationData.currentpage }}/{{ pageTotal }}</span
+            >
+          </OPagination>
+        </ClientOnly>
         <AppPaginationMo
           :current-page="paginationData.currentpage"
           :total-page="pageTotal"

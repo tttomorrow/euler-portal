@@ -454,23 +454,25 @@ onMounted(() => {
     </div>
     <!-- 页码 -->
     <div class="page-box">
-      <OPagination
-        v-if="dataList.length"
-        v-model:currentPage="currentPage"
-        v-model:page-size="pageSize"
-        class="pagination"
-        :page-sizes="[12, 18, 24, 36]"
-        :background="true"
-        layout="sizes, prev, pager, next, slot, jumper"
-        :total="total"
-      >
-        <span class="pagination-slot"
-          >{{
-            pageSize * currentPage < total ? pageSize * currentPage : total
-          }}
-          / {{ total }}</span
+      <ClientOnly>
+        <OPagination
+          v-if="dataList.length"
+          v-model:currentPage="currentPage"
+          v-model:page-size="pageSize"
+          class="pagination"
+          :page-sizes="[12, 18, 24, 36]"
+          :background="true"
+          layout="sizes, prev, pager, next, slot, jumper"
+          :total="total"
         >
-      </OPagination>
+          <span class="pagination-slot"
+            >{{
+              pageSize * currentPage < total ? pageSize * currentPage : total
+            }}
+            / {{ total }}</span
+          >
+        </OPagination>
+      </ClientOnly>
       <div v-if="dataList.length" class="page-box-mobile">
         <div>
           {{ i18n.download.PAGINATION[0]

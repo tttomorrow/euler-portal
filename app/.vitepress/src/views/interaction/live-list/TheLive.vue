@@ -144,20 +144,22 @@ function turnPage(option: string) {
       </div>
       <div class="live-pagination">
         <div class="live-pagination-pc">
-          <OPagination
-            v-model:currentPage="currentPage"
-            v-model:page-size="pageSize4"
-            :page-sizes="[6, 12, 18, 24]"
-            :background="true"
-            layout="sizes, prev, pager, next, slot, jumper"
-            :total="total"
-            @current-change="changePage(currentPage, pageSize4)"
-            @size-change="changePage(currentPage, pageSize4)"
-          >
-            <span class="pagination-slot">{{
-              currentPage * pageSize4 + '/' + total
-            }}</span>
-          </OPagination>
+          <ClientOnly>
+            <OPagination
+              v-model:currentPage="currentPage"
+              v-model:page-size="pageSize4"
+              :page-sizes="[6, 12, 18, 24]"
+              :background="true"
+              layout="sizes, prev, pager, next, slot, jumper"
+              :total="total"
+              @current-change="changePage(currentPage, pageSize4)"
+              @size-change="changePage(currentPage, pageSize4)"
+            >
+              <span class="pagination-slot">{{
+                currentPage * pageSize4 + '/' + total
+              }}</span>
+            </OPagination>
+          </ClientOnly>
         </div>
         <AppPaginationMo
           :current-page="currentPage"
