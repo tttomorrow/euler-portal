@@ -10,7 +10,7 @@ import SigLandscape from './SigLandscape.vue';
 
 import { getSigList } from '@/api/api-sig';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-sig.png';
 import sigIllustration from '@/assets/illustrations/sig.png';
 
 interface SIGLIST {

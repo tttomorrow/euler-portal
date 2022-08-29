@@ -8,7 +8,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-security.png';
 import search from '@/assets/illustrations/search.png';
 import cve from '@/assets/illustrations/cve.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';

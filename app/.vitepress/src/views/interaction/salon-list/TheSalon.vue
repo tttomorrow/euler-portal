@@ -12,7 +12,7 @@ import { getSalon } from '@/api/api-sig';
 
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconHome from '~icons/app/icon-home.svg';
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-interaction.png';
 import salonIllustration from '@/assets/illustrations/salon.png';
 import emptyImg from '@/assets/404.svg';
 

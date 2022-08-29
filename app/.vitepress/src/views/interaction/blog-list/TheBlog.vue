@@ -11,7 +11,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import NotFound from '@/NotFound.vue';
 import MobileFilter from '@/components/MobileFilter.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-interaction.png';
 import blogIllustration from '@/assets/illustrations/blog.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';

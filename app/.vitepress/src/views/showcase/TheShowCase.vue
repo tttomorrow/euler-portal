@@ -12,7 +12,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import NotFound from '@/NotFound.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-community.png';
 import search from '@/assets/illustrations/search.png';
 
 // import useCaseZh from '@/i18n/showcase/showcase.json';

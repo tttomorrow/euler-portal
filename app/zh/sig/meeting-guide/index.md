@@ -7,7 +7,7 @@ import { computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-sig.png';
 import illustration from '@/assets/illustrations/metting.png';
 
   const screenWidth = useWindowResize();

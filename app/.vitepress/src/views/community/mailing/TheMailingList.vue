@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { onMounted, Ref, ref, computed } from 'vue';
-import { useI18n } from '@/i18n';
 import { useRouter, useData } from 'vitepress';
+
+import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
+import useWindowResize from '@/components/hooks/useWindowResize';
+
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
-import { getAllMailing } from '@/api/api-mailing';
-import useWindowResize from '@/components/hooks/useWindowResize';
-import { useCommon } from '@/stores/common';
 
-import banner from '@/assets/banner-secondary.png';
+import { getAllMailing } from '@/api/api-mailing';
+
+import banner from '@/assets/banner/banner-interaction.png';
 import illustration from '@/assets/illustrations/mailing.png';
 import sig1 from '@/assets/category/sig/guidance/sig1.png';
 import sig2 from '@/assets/category/sig/guidance/sig5.png';

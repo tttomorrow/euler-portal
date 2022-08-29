@@ -11,7 +11,7 @@ import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-interaction.png';
 import newsIllustration from '@/assets/illustrations/news.png';
 
 import { getSortData, getTagsData } from '@/api/api-search';
