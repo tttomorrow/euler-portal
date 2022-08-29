@@ -279,77 +279,79 @@ onMounted(() => {
         </div>
       </div>
 
-      <ODrawer
-        v-model="isDrawerOpen"
-        :title="i18n.download.SELECT"
-        direction="btt"
-        :show-close="true"
-        custom-class="filter-drawer"
-        size="75%"
-      >
-        <div class="filter-drawer-title">
-          {{ i18n.download.MANUFACTURER }}
-        </div>
-        <OTag
-          v-for="(item, index) in tagManufacturer"
-          :key="item"
-          class="download-filter-item"
-          checkable
-          :checked="index !== 0"
-          :type="
-            index === 0
-              ? manufacturerAll
+      <ClientOnly>
+        <ODrawer
+          v-model="isDrawerOpen"
+          :title="i18n.download.SELECT"
+          direction="btt"
+          :show-close="true"
+          custom-class="filter-drawer"
+          size="75%"
+        >
+          <div class="filter-drawer-title">
+            {{ i18n.download.MANUFACTURER }}
+          </div>
+          <OTag
+            v-for="(item, index) in tagManufacturer"
+            :key="item"
+            class="download-filter-item"
+            checkable
+            :checked="index !== 0"
+            :type="
+              index === 0
+                ? manufacturerAll
+                  ? 'primary'
+                  : 'text'
+                : activeManufacturer.indexOf(item) > -1
                 ? 'primary'
                 : 'text'
-              : activeManufacturer.indexOf(item) > -1
-              ? 'primary'
-              : 'text'
-          "
-          @click="handleManufacturerClick(item, index)"
-        >
-          {{ item }}
-        </OTag>
-        <div class="filter-drawer-title">
-          {{ i18n.download.PUBLISH_DATE }}
-        </div>
-        <OTag
-          v-for="(item, index) in tagPublish"
-          :key="item"
-          class="download-filter-item"
-          checkable
-          :checked="index !== 0"
-          :type="
-            index === 0
-              ? publishAll
+            "
+            @click="handleManufacturerClick(item, index)"
+          >
+            {{ item }}
+          </OTag>
+          <div class="filter-drawer-title">
+            {{ i18n.download.PUBLISH_DATE }}
+          </div>
+          <OTag
+            v-for="(item, index) in tagPublish"
+            :key="item"
+            class="download-filter-item"
+            checkable
+            :checked="index !== 0"
+            :type="
+              index === 0
+                ? publishAll
+                  ? 'primary'
+                  : 'text'
+                : activePublish.indexOf(item) > -1
                 ? 'primary'
                 : 'text'
-              : activePublish.indexOf(item) > -1
-              ? 'primary'
-              : 'text'
-          "
-          @click="handlePublishClick(item, index)"
-        >
-          {{ item }}
-        </OTag>
-        <div class="filter-drawer-title">LTS</div>
-        <OSwitch
-          v-model="activeLTS"
-          active-color="var(--e-color-brand1)"
-          inactive-color="var(--e-color-bg4)"
-          @change="handleLSTClick"
-        />
-        <div class="filter-drawer-button">
-          <!-- <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
+            "
+            @click="handlePublishClick(item, index)"
+          >
+            {{ item }}
+          </OTag>
+          <div class="filter-drawer-title">LTS</div>
+          <OSwitch
+            v-model="activeLTS"
+            active-color="var(--e-color-brand1)"
+            inactive-color="var(--e-color-bg4)"
+            @change="handleLSTClick"
+          />
+          <div class="filter-drawer-button">
+            <!-- <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
             i18n.download.BTNRESET
           }}</OButton> -->
-          <OButton
-            type="primary"
-            class="filter-drawer-button-item"
-            @click="handleToggleDrawer"
-            >{{ i18n.download.BTNSURE }}</OButton
-          >
-        </div>
-      </ODrawer>
+            <OButton
+              type="primary"
+              class="filter-drawer-button-item"
+              @click="handleToggleDrawer"
+              >{{ i18n.download.BTNSURE }}</OButton
+            >
+          </div>
+        </ODrawer>
+      </ClientOnly>
     </div>
     <!-- 表格 -->
     <div v-if="dataList.length" class="download-list">

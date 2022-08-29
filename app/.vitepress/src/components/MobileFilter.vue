@@ -181,53 +181,55 @@ const allHighLight = (val: any) => {
       </OTag>
     </div>
     <div class="o-screen-box">
-      <ODrawer
-        v-model="isDrawerOpen"
-        direction="btt"
-        custom-class="o-drawer"
-        size="auto"
-      >
-        <template #header>
-          <div class="o-screen-box-drawer-header">
-            <p>{{ userCaseData.FILTER }}</p>
-          </div>
-        </template>
-        <div
-          v-for="item in props.data"
-          :key="item"
-          class="o-screen-box-drawer-content"
+      <ClientOnly>
+        <ODrawer
+          v-model="isDrawerOpen"
+          direction="btt"
+          custom-class="o-drawer"
+          size="auto"
         >
-          <p class="o-screen-box-drawer-content-title">{{ item.title }}</p>
-          <div class="o-screen-box-drawer-content-options">
-            <OTag
-              class="o-screen-box-drawer-content-options-option"
-              :class="{ active: allHighLight(item) }"
-              type="primary"
-              checkable
-              @click="allClick(item)"
-              >{{ userCaseData.ALL }}</OTag
-            >
-            <OTag
-              v-for="sele in item.select"
-              :key="sele"
-              class="o-screen-box-drawer-content-options-option"
-              type="primary"
-              checkable
-              :checked="btnCheck(item, sele)"
-              :class="{ active: btnHighLight(sele) }"
-              @click="clickOption(item.title, sele)"
-              >{{ sele }}</OTag
-            >
+          <template #header>
+            <div class="o-screen-box-drawer-header">
+              <p>{{ userCaseData.FILTER }}</p>
+            </div>
+          </template>
+          <div
+            v-for="item in props.data"
+            :key="item"
+            class="o-screen-box-drawer-content"
+          >
+            <p class="o-screen-box-drawer-content-title">{{ item.title }}</p>
+            <div class="o-screen-box-drawer-content-options">
+              <OTag
+                class="o-screen-box-drawer-content-options-option"
+                :class="{ active: allHighLight(item) }"
+                type="primary"
+                checkable
+                @click="allClick(item)"
+                >{{ userCaseData.ALL }}</OTag
+              >
+              <OTag
+                v-for="sele in item.select"
+                :key="sele"
+                class="o-screen-box-drawer-content-options-option"
+                type="primary"
+                checkable
+                :checked="btnCheck(item, sele)"
+                :class="{ active: btnHighLight(sele) }"
+                @click="clickOption(item.title, sele)"
+                >{{ sele }}</OTag
+              >
+            </div>
           </div>
-        </div>
-        <template #footer>
-          <div class="o-screen-box-drawer-footer">
-            <OButton type="primary" @click="sureClick">{{
-              userCaseData.SURE
-            }}</OButton>
-          </div>
-        </template>
-      </ODrawer>
+          <template #footer>
+            <div class="o-screen-box-drawer-footer">
+              <OButton type="primary" @click="sureClick">{{
+                userCaseData.SURE
+              }}</OButton>
+            </div>
+          </template>
+        </ODrawer>
+      </ClientOnly>
     </div>
   </div>
 </template>

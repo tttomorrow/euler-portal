@@ -255,61 +255,67 @@ onMounted(() => {
         <span class="select-item-name">
           {{ i18n.sig.SIG_LIST.SIG }}
         </span>
-        <OSelect
-          v-model="slectedInfo.sigSelected"
-          filterable
-          clearable
-          :placeholder="i18n.sig.SIG_ALL"
-          @change="filterRepositoryList()"
-        >
-          <OOption
-            v-for="item in sigSelectList"
-            :key="item"
-            :label="item"
-            :value="item"
-          />
-        </OSelect>
+        <ClientOnly>
+          <OSelect
+            v-model="slectedInfo.sigSelected"
+            filterable
+            clearable
+            :placeholder="i18n.sig.SIG_ALL"
+            @change="filterRepositoryList()"
+          >
+            <OOption
+              v-for="item in sigSelectList"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </ClientOnly>
       </div>
       <div class="sig-select-item">
         <span class="select-item-name">
           {{ i18n.sig.SIG_LIST.REPOSITORY }}
         </span>
-        <OSelect
-          v-model="slectedInfo.repositiorySelected"
-          filterable
-          clearable
-          :placeholder="i18n.sig.SIG_ALL"
-          :filter-method="debounceEvent"
-          :listener-scorll="true"
-          @scorll-bottom="getNextPage()"
-          @change="filterRepositoryList()"
-        >
-          <OOption
-            v-for="item in repoRenderList"
-            :key="item"
-            :label="item"
-            :value="item"
-          />
-        </OSelect>
+        <ClientOnly>
+          <OSelect
+            v-model="slectedInfo.repositiorySelected"
+            filterable
+            clearable
+            :placeholder="i18n.sig.SIG_ALL"
+            :filter-method="debounceEvent"
+            :listener-scorll="true"
+            @scorll-bottom="getNextPage()"
+            @change="filterRepositoryList()"
+          >
+            <OOption
+              v-for="item in repoRenderList"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </ClientOnly>
       </div>
       <div class="sig-select-item">
         <span class="select-item-name">
           {{ i18n.sig.SIG_LIST.MAINTAINER }}
         </span>
-        <OSelect
-          v-model="slectedInfo.maintainerSelected"
-          filterable
-          clearable
-          :placeholder="i18n.sig.SIG_ALL"
-          @change="filterRepositoryList()"
-        >
-          <OOption
-            v-for="item in maintainerList"
-            :key="item"
-            :label="item"
-            :value="item"
-          />
-        </OSelect>
+        <ClientOnly>
+          <OSelect
+            v-model="slectedInfo.maintainerSelected"
+            filterable
+            clearable
+            :placeholder="i18n.sig.SIG_ALL"
+            @change="filterRepositoryList()"
+          >
+            <OOption
+              v-for="item in maintainerList"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </ClientOnly>
       </div>
       <span>{{ i18n.sig.SIG_LIST.TIPS }}</span>
     </div>

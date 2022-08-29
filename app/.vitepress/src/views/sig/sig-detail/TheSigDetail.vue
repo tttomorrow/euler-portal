@@ -247,56 +247,62 @@ onMounted(() => {
               <span class="select-item-name">
                 {{ sigDetail.REPOSITORY_NAME }}
               </span>
-              <OSelect
-                v-model="repositoryNameSelected"
-                filterable
-                clearable
-                :placeholder="i18n.sig.SIG_ALL"
-                @change="filterRepositoryList()"
-              >
-                <OOption
-                  v-for="item in repositoryNameList"
-                  :key="item"
-                  :label="item"
-                  :value="item"
-                />
-              </OSelect>
+              <ClientOnly>
+                <OSelect
+                  v-model="repositoryNameSelected"
+                  filterable
+                  clearable
+                  :placeholder="i18n.sig.SIG_ALL"
+                  @change="filterRepositoryList()"
+                >
+                  <OOption
+                    v-for="item in repositoryNameList"
+                    :key="item"
+                    :label="item"
+                    :value="item"
+                  />
+                </OSelect>
+              </ClientOnly>
             </div>
             <div v-if="isIphone" class="split-line"></div>
             <div class="select-item">
               <span class="select-item-name"> Maintainer </span>
-              <OSelect
-                v-model="maintainerSelected"
-                filterable
-                clearable
-                :placeholder="i18n.sig.SIG_ALL"
-                @change="filterRepositoryList()"
-              >
-                <OOption
-                  v-for="item in maintainerList"
-                  :key="item"
-                  :value="item"
-                  :lable="item"
-                />
-              </OSelect>
+              <ClientOnly>
+                <OSelect
+                  v-model="maintainerSelected"
+                  filterable
+                  clearable
+                  :placeholder="i18n.sig.SIG_ALL"
+                  @change="filterRepositoryList()"
+                >
+                  <OOption
+                    v-for="item in maintainerList"
+                    :key="item"
+                    :value="item"
+                    :lable="item"
+                  />
+                </OSelect>
+              </ClientOnly>
             </div>
             <div v-if="isIphone" class="split-line"></div>
             <div class="select-item">
               <span class="select-item-name"> Committer </span>
-              <OSelect
-                v-model="committerSelected"
-                filterable
-                clearable
-                :placeholder="i18n.sig.SIG_ALL"
-                @change="filterRepositoryList()"
-              >
-                <OOption
-                  v-for="item in committerList"
-                  :key="item"
-                  :value="item"
-                  :lable="item"
-                />
-              </OSelect>
+              <ClientOnly>
+                <OSelect
+                  v-model="committerSelected"
+                  filterable
+                  clearable
+                  :placeholder="i18n.sig.SIG_ALL"
+                  @change="filterRepositoryList()"
+                >
+                  <OOption
+                    v-for="item in committerList"
+                    :key="item"
+                    :value="item"
+                    :lable="item"
+                  />
+                </OSelect>
+              </ClientOnly>
             </div>
           </div>
         </div>

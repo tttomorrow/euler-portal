@@ -109,31 +109,38 @@ const handleNodeClick = (node: any) => {
 
   <div v-else class="detail-mobile">
     <OIcon class="catalog" @click="toggleMenu(true)"><IconCatalog /></OIcon>
-    <ODrawer
-      v-model="isShowMenu"
-      direction="ltr"
-      size="268px"
-      :show-close="false"
-    >
-      <div class="nav-tree">
-        <div class="nav-top">
-          <img class="logo" :src="logo" alt="openEuler logo" @click="goHome" />
-          <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
+    <ClientOnly>
+      <ODrawer
+        v-model="isShowMenu"
+        direction="ltr"
+        size="268px"
+        :show-close="false"
+      >
+        <div class="nav-tree">
+          <div class="nav-top">
+            <img
+              class="logo"
+              :src="logo"
+              alt="openEuler logo"
+              @click="goHome"
+            />
+            <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
+          </div>
+          <OTree
+            ref="tree"
+            node-key="migration"
+            :data="tocInfo"
+            accordion
+            :props="defaultProps"
+            :highlight-current="true"
+            :icon="IconChevronDown"
+            :current-node-key="activeId"
+            @node-click="handleNodeClick"
+          >
+          </OTree>
         </div>
-        <OTree
-          ref="tree"
-          node-key="migration"
-          :data="tocInfo"
-          accordion
-          :props="defaultProps"
-          :highlight-current="true"
-          :icon="IconChevronDown"
-          :current-node-key="activeId"
-          @node-click="handleNodeClick"
-        >
-        </OTree>
-      </div>
-    </ODrawer>
+      </ODrawer>
+    </ClientOnly>
   </div>
   <div class="migration-wrapper migration-markdown">
     <Content
