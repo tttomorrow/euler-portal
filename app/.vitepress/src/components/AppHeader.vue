@@ -188,7 +188,11 @@ const donShowSearchBox = () => {
 const searchInput = ref<string>('');
 // 搜索事件
 function search() {
-  router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
+  window.open(
+    `/${lang.value}/other/search/?search=${searchInput.value}`,
+    '_self'
+  );
+  // router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
 
