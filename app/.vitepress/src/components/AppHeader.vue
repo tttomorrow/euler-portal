@@ -516,10 +516,11 @@ function search() {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     padding: var(--o-spacing-h3);
+
     @media (max-width: 1100px) {
+      background: rgba(255, 255, 255, 1);
+      backdrop-filter: blur(0px);
       margin-top: 8px;
-    }
-    @media (max-width: 1100px) {
       left: -16px;
       right: 0;
       width: 100vw;
@@ -556,6 +557,9 @@ function search() {
 .dark {
   .drawer {
     background: rgba($color: #2e2e2e, $alpha: 0.9);
+    @media screen and (max-width: 1439px) {
+      background: rgba($color: #2e2e2e, $alpha: 1);
+    }
   }
 }
 

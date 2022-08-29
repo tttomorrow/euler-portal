@@ -27,9 +27,9 @@ const props = defineProps({
 
 const rootStyle = computed(() => {
   const result: CSSProperties = {};
-  if (props.backgroundImage) {
-    result.backgroundImage = `url(${props.backgroundImage})`;
-  }
+  // if (props.backgroundImage) {
+  //   result.backgroundImage = `url(${props.backgroundImage})`;
+  // }
 
   if (props.backgroundColor) {
     result.backgroundColor = props.backgroundColor;
@@ -44,6 +44,7 @@ onMounted(() => {
 
 <template>
   <div class="banner-level3" :style="rootStyle">
+    <img :src="props.backgroundImage" class="banner-bg" />
     <div class="wrap">
       <div
         class="banner-text"
@@ -68,11 +69,29 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+.dark {
+  .banner-bg,
+  .banner-illustration {
+    filter: brightness(0.8) grayscale(0.2) contrast(1.2);
+  }
+  .banner-level2 {
+    background-color: var(--e-color-kleinblue4);
+  }
+}
 .banner-level3 {
+  position: relative;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--e-color-brand1);
+  background-color: var(--e-color-kleinblue6);
+
+  .banner-bg {
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    object-fit: fill;
+    user-select: none;
+  }
   .wrap {
     max-width: 1504px;
     margin: 0 auto;
