@@ -291,6 +291,7 @@ function search() {
 <style lang="scss" scoped>
 :deep(.el-input__wrapper) {
   background-color: var(--e-color-bg-secondary) !important;
+  box-shadow: none !important;
 }
 :deep(.el-input__suffix) {
   font-size: var(--o-font-size-h7);

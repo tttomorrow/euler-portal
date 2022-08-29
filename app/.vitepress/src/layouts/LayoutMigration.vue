@@ -5,7 +5,7 @@ import { ref, watch, computed } from 'vue';
 import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-import categoyInfo from '@/data/migration/migration-category';
+import tocInfo from '@/data/migration/migration-toc';
 
 import DocSideBar from '@/components/DocSideBar.vue';
 import DocSideBarMenu from '@/components/DocSideBarMenu.vue';
@@ -88,7 +88,7 @@ const handleNodeClick = (node: any) => {
   <DocSideBar v-if="screenWidth > 1100">
     <p class="migration-title">迁移专区</p>
     <div class="migration-sidebar-toc">
-      <template v-for="item in categoyInfo" :key="item.label">
+      <template v-for="item in tocInfo" :key="item.label">
         <DocSideBarMenu
           v-if="item.children && item.children.length"
           :info="item"
@@ -123,7 +123,7 @@ const handleNodeClick = (node: any) => {
         <OTree
           ref="tree"
           node-key="migration"
-          :data="categoyInfo"
+          :data="tocInfo"
           accordion
           :props="defaultProps"
           :highlight-current="true"

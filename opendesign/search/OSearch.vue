@@ -34,7 +34,7 @@ const attrs = useAttrs();
   --o-search-font-size: var(--o-font-size-text);
   --o-search-line-height: var(--o-line-height-text);
   --o-search-color-bg: var(--e-color-bg2);
-  --o-search-shadow: none;
+  --o-search-shadow: var(--e-shadow-l1);
 
   &.el-input {
     font-size: var(--o-font-size-text);
