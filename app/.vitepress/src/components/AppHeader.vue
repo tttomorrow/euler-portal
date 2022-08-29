@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import {
-  computed,
-  onMounted,
-  ref,
-  onUnmounted,
-  watch,
-  nextTick,
-  toRefs,
-} from 'vue';
+import { computed, onMounted, ref, onUnmounted, watch, nextTick } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
@@ -23,14 +15,14 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
-import IconClose from '~icons/app/x.svg';
+// import IconClose from '~icons/app/x.svg';
 
-const props = defineProps({
-  isShowTip: {
-    type: Boolean,
-    default: false,
-  },
-});
+// const props = defineProps({
+//   isShowTip: {
+//     type: Boolean,
+//     default: false,
+//   },
+// });
 
 interface NavItem {
   NAME: string;
@@ -46,7 +38,6 @@ const { lang } = useData();
 const i18n = useI18n();
 const commonStore = useCommon();
 const documentElement = document.documentElement;
-const { isShowTip } = toRefs(props);
 
 // 导航数据
 const navRouter = computed(() => i18n.value.common.NAV_ROUTER_CONFIG);
@@ -202,15 +193,16 @@ function search() {
 }
 
 // 点击关闭cookies使用提示
-const emit2 = defineEmits(['click-close']);
-function clickClose() {
-  emit2('click-close');
-}
+// const { isShowTip } = toRefs(props);
+// const emit2 = defineEmits(['click-close']);
+// function clickClose() {
+//   emit2('click-close');
+// }
 </script>
 
 <template>
   <header class="app-header">
-    <!-- 隐私政策 -->
+    <!-- 隐私政策 
     <div v-if="isShowTip" class="cookie-privacy" :class="{ ru: lang === 'ru' }">
       <template v-if="lang !== 'ru'">
         <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
@@ -229,7 +221,7 @@ function clickClose() {
         }}</a>
       </template>
       <OIcon class="icon" @click="clickClose"><IconClose /></OIcon>
-    </div>
+    </div>-->
     <div class="app-header-body">
       <!-- 移动端菜单图标 -->
       <div class="mobile-menu-icon" @click="mobileMenuPanel">
@@ -287,11 +279,11 @@ function clickClose() {
           <AppTheme />
         </div>
       </div>
-      <!-- 移动端菜单 -->
+      <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"   -->
       <teleport v-if="toBody" to="body">
         <div
           class="mobile-menu"
-          :class="{ active: mobileMenuIcon, cookie: isShowTip }"
+          :class="{ active: mobileMenuIcon }"
           @click="handleMenuLayer($event)"
         >
           <div class="mobile-menu-side">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
 import type { Component } from 'vue';
-import { computed, onMounted, ref } from 'vue';
+import { computed } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
@@ -34,20 +34,22 @@ const comp = computed(() => {
 });
 
 // cookies使用提示
-const isShowTip = ref(true);
-function clickClose() {
-  isShowTip.value = false;
-  localStorage.setItem('euler-cookie', 'false');
-}
-onMounted(() => {
-  const show = localStorage.getItem('euler-cookie');
-  isShowTip.value = show ? false : true;
-});
+// const isShowTip = ref(true);
+// function clickClose() {
+//   isShowTip.value = false;
+//   localStorage.setItem('euler-cookie', 'false');
+// }
+// onMounted(() => {
+//   const show = localStorage.getItem('euler-cookie');
+//   isShowTip.value = show ? false : true;
+// });
+// AppHeader :is-show-tip="isShowTip" @click-close="clickClose"
+// main :class="{ cookie: isShowTip }"
 </script>
 
 <template>
-  <AppHeader :is-show-tip="isShowTip" @click-close="clickClose" />
-  <main :class="{ cookie: isShowTip }">
+  <AppHeader />
+  <main>
     <component :is="comp" v-if="isCustomLayout"></component>
     <Content v-else />
   </main>
