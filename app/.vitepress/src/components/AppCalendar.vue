@@ -470,11 +470,15 @@ const watchData = watch(
         </div>
         <div v-else class="empty">
           <img
-            v-if="commonStore.theme === 'light'"
+            v-show="commonStore.theme === 'light'"
             :src="notFoundImg_light"
             alt=""
           />
-          <img v-else :src="notFoundImg_dark" alt="" />
+          <img
+            v-show="commonStore.theme === 'dark'"
+            :src="notFoundImg_dark"
+            alt=""
+          />
           <p>{{ i18n.EMPTY_TEXT }}</p>
         </div>
       </div>
