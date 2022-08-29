@@ -349,19 +349,23 @@ onMounted(() => {
         box-shadow: var(--e-shadow-l1);
         background-color: var(--e-color-bg2);
         @media (max-width: 768px) {
-          margin: var(--o-spacing-h5) var(--o-spacing-h5) 0 var(--o-spacing-h5);
+          width: 100vw;
+          padding: var(--o-spacing-h5) var(--o-spacing-h5) 0 var(--o-spacing-h5);
           min-height: 0;
+          background-color: var(--e-color-bg1);
+          box-shadow: none;
         }
         .content-list {
           padding: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
           @media (max-width: 768px) {
-            padding: 0 var(--o-spacing-h5) var(--o-spacing-h5)
-              var(--o-spacing-h5);
+            padding: 0;
+            background-color: var(--e-color-bg2);
           }
           li {
             padding-top: var(--o-spacing-h2);
             @media (max-width: 768px) {
               padding-top: var(--o-spacing-h5);
+              margin: 0 var(--o-spacing-h5);
               &::after {
                 display: block;
                 content: '';
@@ -371,7 +375,7 @@ onMounted(() => {
                 margin-top: 16px;
               }
               &:nth-last-of-type(1)::after {
-                display: none;
+                background-color: transparent;
               }
             }
             h3 {
