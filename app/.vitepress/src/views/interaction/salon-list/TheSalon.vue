@@ -3,6 +3,7 @@ import { computed, onMounted, Ref, ref } from 'vue';
 import { useData, useRouter } from 'vitepress';
 
 import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -13,9 +14,12 @@ import { getSalon } from '@/api/api-sig';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconHome from '~icons/app/icon-home.svg';
 import banner from '@/assets/banner/banner-interaction.png';
-import illustration from '@/assets/illustrations/salon.png';
-import emptyImg from '@/assets/404.svg';
 
+import illustration from '@/assets/illustrations/salon.png';
+import notFoundImg_light from '@/assets/illustrations/404.png';
+import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
+
+const commonStore = useCommon();
 const salonData = computed(() => i18n.value.interaction.MEETUPSLIST);
 
 const activeName = ref('first');
@@ -332,8 +336,18 @@ onMounted(async () => {
         </div>
         <div v-else>
           <div class="nofound">
-            <img class="img" :src="emptyImg" alt="404" />
-            <p>{{ lang === 'zh' ? '暂无活动！' : 'NotFound !' }}</p>
+            <img
+              class="empty-img"
+              :src="
+                commonStore.theme === 'light'
+                  ? notFoundImg_light
+                  : notFoundImg_dark
+              "
+              alt="404"
+            />
+            <p class="empty-text">
+              {{ lang === 'zh' ? '暂无活动！' : 'NotFound !' }}
+            </p>
           </div>
         </div>
       </div>
@@ -406,8 +420,18 @@ onMounted(async () => {
         </div>
         <div v-else>
           <div class="nofound">
-            <img class="img" :src="emptyImg" alt="404" />
-            <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+            <img
+              class="empty-img"
+              :src="
+                commonStore.theme === 'light'
+                  ? notFoundImg_light
+                  : notFoundImg_dark
+              "
+              alt="404"
+            />
+            <p class="empty-text">
+              {{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}
+            </p>
           </div>
         </div>
       </div>
@@ -423,11 +447,13 @@ onMounted(async () => {
   flex-direction: column;
   font-size: var(--o-font-size-h6);
   color: var(--e-color-text1);
-  padding: var(--o-spacing-h2) 0;
+  padding-top: var(--o-spacing-h1);
   height: 100%;
-  .img {
-    max-width: 500px;
-    object-fit: cover;
+  .empty-img {
+    max-height: 400px;
+  }
+  .empty-text {
+    margin-top: var(--o-spacing-h5);
   }
 }
 .salon {

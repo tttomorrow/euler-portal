@@ -3,6 +3,7 @@ import { computed, onMounted, Ref, ref } from 'vue';
 import { useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import AppContent from '@/components/AppContent.vue';
@@ -14,11 +15,13 @@ import IconFilter from '~icons/app/icon-filter.svg';
 import IconX from '~icons/app/x.svg';
 
 import banner from '@/assets/banner/banner-download.png';
-import emptyImg from '@/assets/404.svg';
+import notFoundImg_light from '@/assets/illustrations/404.png';
+import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
 import illustration from '@/assets/illustrations/iso.png';
 
 const { lang } = useData();
 const i18n = useI18n();
+const commonStore = useCommon();
 const screenWidth = useWindowResize();
 //打开网页
 const handleDownloadUrl = (url: string) => {
@@ -436,8 +439,16 @@ onMounted(() => {
       </OCard>
     </div>
     <div v-else class="empty">
-      <img class="img" :src="emptyImg" alt="404" />
-      <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+      <img
+        class="empty-img"
+        :src="
+          commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
+        "
+        alt="404"
+      />
+      <p class="empty-text">
+        {{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}
+      </p>
     </div>
     <!-- 页码 -->
     <div class="page-box">
@@ -691,18 +702,29 @@ onMounted(() => {
   }
   .empty {
     display: flex;
+    padding-top: var(--o-spacing-h1);
     justify-content: center;
     align-items: center;
+    height: 100%;
     flex-direction: column;
     font-size: var(--o-font-size-h6);
     color: var(--e-color-text1);
-    height: 100%;
-    @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-text);
+    .empty-img {
+      max-height: 400px;
     }
-    img {
-      max-width: 500px;
-      object-fit: cover;
+    .empty-text {
+      margin-top: var(--o-spacing-h5);
+    }
+    @media screen and (max-width: 768px) {
+      padding-top: var(--o-spacing-h2);
+      font-size: var(--o-font-size-text);
+      .empty-img {
+        max-height: 232px;
+      }
+      .empty-text {
+        margin-top: var(--o-spacing-h6);
+        font-size: var(--o-font-size-tip);
+      }
     }
   }
   &-name {
@@ -751,7 +773,7 @@ onMounted(() => {
 .url-list-zh {
   margin-top: var(--o-spacing-h4);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
   @media (max-width: 768px) {
     grid-gap: var(--o-spacing-h8);
@@ -850,6 +872,11 @@ onMounted(() => {
   }
   .url-list-ru {
     grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 415px) {
+    .url-list-zh {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 </style>

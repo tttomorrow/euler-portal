@@ -89,7 +89,7 @@ const jump = (item: any) => {
                 {{ item.desc }}
               </p>
             </div>
-            <div v-if="item.btn" class="action">
+            <div v-if="item.btn" data-aos="fade-up" class="action">
               <OButton animation class="home-banner-btn">
                 {{ item.btn }}
                 <template #suffixIcon
@@ -107,38 +107,38 @@ const jump = (item: any) => {
 
 <style lang="scss" scoped>
 $banner-color: #fff;
-html[lang='en'],
-html[lang='ru'] {
-  .home-banner {
-    .flex-start {
-      margin-top: 120px;
-      justify-content: flex-start;
-      p {
-        margin: 0;
-        max-width: 600px;
-        line-height: var(--o-line-height-h2);
-        font-size: var(--o-spacing-h3);
-        @media screen and (max-width: 824px) {
-          line-height: 28px;
-          font-size: 20px;
-        }
-      }
-      @media screen and (max-width: 824px) {
-        padding: 0;
-        margin-top: 32px;
-      }
-    }
-    .experts {
-      font-size: 40px;
-    }
-  }
-}
+// html[lang='en'],
+// html[lang='ru'] {
+//   .home-banner {
+//     .flex-start {
+//       margin-top: 120px;
+//       justify-content: flex-start;
+//       p {
+//         margin: 0;
+//         max-width: 600px;
+//         line-height: var(--o-line-height-h2);
+//         font-size: var(--o-spacing-h3);
+//         @media screen and (max-width: 824px) {
+//           line-height: 28px;
+//           font-size: 20px;
+//         }
+//       }
+//       @media screen and (max-width: 824px) {
+//         padding: 0;
+//         margin-top: 32px;
+//       }
+//     }
+//     .experts {
+//       font-size: 40px;
+//     }
+//   }
+// }
 .dark .banner-panel-cover {
   filter: brightness(80%) grayscale(20%) contrast(1.2);
 }
 .home-banner-btn {
   border-color: $banner-color;
-  color: $banner-color;
+  color: $banner-color !important;
   @media screen and (max-width: 824px) {
     padding: 5px 12px 5px 16px;
     line-height: 22px;
@@ -149,24 +149,24 @@ html[lang='ru'] {
 .home-banner {
   height: 480px;
   position: relative;
-  .flex-start {
-    margin-top: 120px;
-    justify-content: flex-start;
-    p {
-      margin: 0;
-      max-width: 600px;
-      line-height: var(--o-line-height-h2);
-      font-size: var(--o-spacing-h3);
-      @media screen and (max-width: 824px) {
-        line-height: var(--o-line-height-h6);
-        font-size: var(--o-font-size-h6);
-      }
-    }
-    @media screen and (max-width: 824px) {
-      padding: 0;
-      margin-top: var(--o-spacing-h3);
-    }
-  }
+  // .flex-start {
+  //   margin-top: 120px;
+  //   justify-content: flex-start;
+  //   p {
+  //     margin: 0;
+  //     max-width: 600px;
+  //     line-height: var(--o-line-height-h2);
+  //     font-size: var(--o-spacing-h3);
+  //     @media screen and (max-width: 824px) {
+  //       line-height: var(--o-line-height-h6);
+  //       font-size: var(--o-font-size-h6);
+  //     }
+  //   }
+  //   @media screen and (max-width: 824px) {
+  //     padding: 0;
+  //     margin-top: var(--o-spacing-h3);
+  //   }
+  // }
 
   .banner-panel {
     position: absolute;
@@ -207,6 +207,9 @@ html[lang='ru'] {
         color: $banner-color;
       }
       .desc {
+        @media screen and (min-width: 1439px) {
+          max-width: 500px;
+        }
         font-size: var(--o-font-size-h5);
         font-weight: normal;
         line-height: var(--o-line-height-h5);
@@ -222,25 +225,10 @@ html[lang='ru'] {
           line-height: var(--o-line-height-text);
         }
       }
-      .experts {
-        margin-top: 0;
-        line-height: 84px;
-        font-weight: 400;
-        font-size: 54px;
-        @media screen and (max-width: 1416px) {
-          line-height: var(--o-line-height-h3);
-          font-size: var(--o-font-size-h3);
-        }
-        @media screen and (max-width: 824px) {
-          font-size: 20px;
-          line-height: 28px;
-        }
-      }
 
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {
-          color: $banner-color;
           @media screen and (max-width: 824px) {
             font-size: 16px;
             color: var(--e-color-yellow5);
@@ -261,11 +249,10 @@ html[lang='ru'] {
       }
     }
     .flex-start {
-      margin-top: 120px;
-      justify-content: flex-start;
       @media screen and (max-width: 824px) {
-        padding: 0;
-        margin-top: var(--o-spacing-h3);
+        margin: 0;
+        padding-top: var(--o-spacing-h3);
+        height: 100%;
       }
     }
     &-cover {

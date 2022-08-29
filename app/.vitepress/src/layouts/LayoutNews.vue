@@ -94,7 +94,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .news-markdown-detail {
-  max-width: 880px;
+  // max-width: 880px;
   margin: 0 auto;
 }
 .bread {

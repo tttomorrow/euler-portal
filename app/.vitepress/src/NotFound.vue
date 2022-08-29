@@ -1,13 +1,25 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import Img404 from '@/assets/404.svg';
+import { useCommon } from '@/stores/common';
+
+import notFoundImg_light from '@/assets/illustrations/404.png';
+import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
 const { lang } = useData();
+const commonStore = useCommon();
 </script>
 
 <template>
   <div class="nofound">
-    <img class="img" :src="Img404" alt="404" />
-    <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+    <img
+      class="nofound-img"
+      :src="
+        commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
+      "
+      alt="404"
+    />
+    <p class="nofound-text">
+      {{ lang === 'zh' ? '暂无数据' : 'NotFound !' }}
+    </p>
   </div>
 </template>
 
@@ -20,10 +32,21 @@ const { lang } = useData();
   font-size: var(--o-font-size-h6);
   color: var(--e-color-text1);
   padding: var(--o-spacing-h2) 0;
-  height: 100%;
-  .img {
-    max-width: 500px;
-    object-fit: cover;
+  min-height: calc(100vh - 258px);
+  .nofound-text {
+    margin-top: var(--o-spacing-h5);
+    font-size: var(--o-font-size-h7);
+  }
+  @media screen and (max-width: 768px) {
+    padding-top: var(--o-spacing-h2);
+    font-size: var(--o-font-size-text);
+    .nofound-img {
+      max-height: 232px;
+    }
+    .nofound-text {
+      margin-top: var(--o-spacing-h6);
+      font-size: var(--o-font-size-tip);
+    }
   }
 }
 </style>
