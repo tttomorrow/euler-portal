@@ -295,7 +295,7 @@ onMounted(async () => {
     :deep(.el-card__body) {
       padding: var(--o-spacing-h2);
       @media (max-width: 768px) {
-        padding: var(--o-spacing-h5) var(--o-spacing-h8);
+        padding: var(--o-spacing-h5) var(--o-spacing-h6);
       }
     }
   }

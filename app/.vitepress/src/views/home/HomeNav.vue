@@ -77,10 +77,14 @@ const imgUrlHover = computed(
     .nav-text {
       margin-left: var(--o-spacing-h5);
       .nav-title {
+        word-break: break-all;
         color: var(--e-color-text1);
         line-height: var(--o-line-height-text);
         font-weight: 500;
         font-size: var(--o-font-size-h7);
+        @media screen and (max-width: 768px) {
+          text-align: center;
+        }
       }
       // .nav-title-en {
       //   font-weight: 400;

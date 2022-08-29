@@ -262,6 +262,7 @@ onMounted(async () => {
     margin-top: var(--o-spacing-h2);
     width: 100%;
     height: 996px;
+    box-shadow: var(--e-shadow-l1);
     @media (max-width: 768px) {
       height: 50vh;
     }

@@ -240,7 +240,7 @@ export default {
   USER_CASE: {
     TITLE: '用户案例',
     VIEW_MORE: '查看更多',
-    VIEW_MORE_LINK: 'https://new.openeuler.org/zh/showcase/',
+    VIEW_MORE_LINK: 'showcase/',
     CASE_LIST: [
       {
         TYPE: '金融',
