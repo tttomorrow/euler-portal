@@ -7,7 +7,7 @@ import { computed } from 'vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import useWindowResize from '@/components/hooks/useWindowResize';
 import banner from '@/assets/banner/banner-community.png';
-import contributionIllustration from '@/assets/illustrations/contribution.png';
+import illustration from '@/assets/illustrations/conduct.png';
 
 const screenWidth = useWindowResize();
 const isMobile = computed(() => {
@@ -20,7 +20,7 @@ const isMobile = computed(() => {
     background-text="COMMUNITY"
     :background-image="banner"
     title="Code of Conduct"
-    :illustration="contributionIllustration"
+    :illustration="illustration"
   />
 </ClientOnly>
 

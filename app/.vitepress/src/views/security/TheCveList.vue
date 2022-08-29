@@ -11,8 +11,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner/banner-security.png';
-import supportIllustration from '@/assets/illustrations/support.png';
-import cveIllstration from '@/assets/illustrations/cve.png';
+import illustration from '@/assets/illustrations/cve.png';
 
 import { getCveList } from '@/api/api-security';
 import { CveLists, CveQuery } from '@/shared/@types/type-support';
@@ -111,12 +110,11 @@ watch(queryData, () => getCveLists(queryData));
 </script>
 <template>
   <BannerLevel2
-    class="banner-pc"
     :background-image="banner"
     background-text="SUPPORT"
     :title="i18n.security.CVE"
     subtitle=""
-    :illustration="screenWidth >= 768 ? supportIllustration : cveIllstration"
+    :illustration="illustration"
   />
   <AppContent :mobile-top="16">
     <OSearch

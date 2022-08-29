@@ -11,7 +11,7 @@ import SigLandscape from './SigLandscape.vue';
 import { getSigList } from '@/api/api-sig';
 
 import banner from '@/assets/banner/banner-sig.png';
-import sigIllustration from '@/assets/illustrations/sig.png';
+import illustration from '@/assets/illustrations/sig-list.png';
 
 interface SIGLIST {
   group_name: string;
@@ -39,7 +39,7 @@ onMounted(() => {
 <template>
   <BannerLevel2
     :background-image="banner"
-    :illustration="sigIllustration"
+    :illustration="illustration"
     title="SIG"
     :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
     background-text="SIG"

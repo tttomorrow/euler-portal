@@ -8,7 +8,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue'
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import banner from '@/assets/banner/banner-sig.png';
-import illustration from '@/assets/illustrations/metting.png';
+import illustration from '@/assets/illustrations/sig-meeting.png';
 
   const screenWidth = useWindowResize();
   const isMobile = computed(() => {

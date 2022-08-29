@@ -10,7 +10,7 @@ import MapContainer from './MapContainer.vue';
 
 import IconCpoy from '~icons/app/icon-copy.svg';
 import banner from '@/assets/banner/banner-download.png';
-import downloadIllustration from '@/assets/illustrations/download.png';
+import illustration from '@/assets/illustrations/mirror.png';
 
 import { getAllMirror } from '@/api/api-mirror';
 
@@ -143,7 +143,7 @@ onMounted(async () => {
     :background-image="banner"
     background-text="DOWNLOAD"
     :title="i18n.download.MIRROR_ALL.TITLE"
-    :illustration="downloadIllustration"
+    :illustration="illustration"
   />
   <AppContent class="mirror-list">
     <p>

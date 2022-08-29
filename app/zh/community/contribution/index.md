@@ -8,7 +8,7 @@ import ContributionTab from "@/views/community/contribution/ContributionTab.vue"
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 
 import banner from '@/assets/banner/banner-community.png';
-import contributionIllustration from '@/assets/illustrations/contribution.png';
+import illustration from '@/assets/illustrations/contribution.png';
 </script>
 
 <div>
@@ -16,10 +16,9 @@ import contributionIllustration from '@/assets/illustrations/contribution.png';
     <BannerLevel2
       :background-image="banner"
       title="贡献攻略"
-      :illustration="contributionIllustration"
+      :illustration="illustration"
       background-text="COMMUNITY"
     />
-
   </ClientOnly>
   <ContributionTab />
   <ContributionMap />

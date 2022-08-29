@@ -13,7 +13,7 @@ import { getSalon } from '@/api/api-sig';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconHome from '~icons/app/icon-home.svg';
 import banner from '@/assets/banner/banner-interaction.png';
-import salonIllustration from '@/assets/illustrations/salon.png';
+import illustration from '@/assets/illustrations/salon.png';
 import emptyImg from '@/assets/404.svg';
 
 const salonData = computed(() => i18n.value.interaction.MEETUPSLIST);
@@ -234,7 +234,7 @@ onMounted(async () => {
       :background-image="banner"
       background-text="INTERACTION"
       :title="salonData.MEETUPS"
-      :illustration="salonIllustration"
+      :illustration="illustration"
     />
     <div class="salon-tabs">
       <OTabs v-model="activeName">

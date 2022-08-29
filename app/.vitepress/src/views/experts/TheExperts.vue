@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import banner from '@/assets/banner/banner-community.png';
-import expertsIllustration from '@/assets/illustrations/contribution.png';
-
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import experts from '@/data/experts';
+
+import banner from '@/assets/banner/banner-community.png';
+import illustration from '@/assets/illustrations/expert.png';
 </script>
 
 <template>
@@ -13,7 +13,7 @@ import experts from '@/data/experts';
     :background-image="banner"
     background-text="COMMUNITY"
     title="社区顾问专家"
-    :illustration="expertsIllustration"
+    :illustration="illustration"
   />
   <AppContent class="experts">
     <p class="experts-tip">注：按姓氏拼音首字母顺序排序</p>

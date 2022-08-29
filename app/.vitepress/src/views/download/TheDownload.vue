@@ -15,7 +15,7 @@ import IconX from '~icons/app/x.svg';
 
 import banner from '@/assets/banner/banner-download.png';
 import emptyImg from '@/assets/404.svg';
-import downloadIllustration from '@/assets/illustrations/download.png';
+import illustration from '@/assets/illustrations/iso.png';
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -170,7 +170,7 @@ onMounted(() => {
     :background-image="banner"
     background-text="DOWNLOAD"
     :title="i18n.download.OUTSIDE_TITLE"
-    :illustration="downloadIllustration"
+    :illustration="illustration"
   />
   <AppContent :mobile-top="16" class="download">
     <!-- PC筛选 -->
