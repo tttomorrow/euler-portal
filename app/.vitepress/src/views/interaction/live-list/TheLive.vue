@@ -10,7 +10,7 @@ import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
-import liveIllustration from '@/assets/illustrations/live.png';
+import illustration from '@/assets/illustrations/live.png';
 import cardBg_light from '@/assets/category/interaction/live/light-crad-bg.png';
 import cardBg_light_mo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';
 import cardBg_dark from '@/assets/category/interaction/live/dark-crad-bg.png';
@@ -75,7 +75,7 @@ function turnPage(option: string) {
     :background-image="banner"
     background-text="INTERACTION"
     :title="i18n.live.LIVETITLE"
-    :illustration="liveIllustration"
+    :illustration="illustration"
   />
   <AppContent>
     <div class="live">

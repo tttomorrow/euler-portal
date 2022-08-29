@@ -9,8 +9,7 @@ import TagFilter from '@/components/TagFilter.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner/banner-security.png';
-import search from '@/assets/illustrations/search.png';
-import cve from '@/assets/illustrations/cve.png';
+import illustration from '@/assets/illustrations/safety-bulletin.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 
 import { getSecurityList } from '@/api/api-security';
@@ -127,12 +126,11 @@ watch(queryData, () => getSecurityLists(queryData));
 
 <template>
   <BannerLevel2
-    class="banner-pc"
     :background-image="banner"
-    background-text="CONTENT"
+    background-text="SUPPORT"
     :title="i18n.security.SECURITY_ADVISORIES"
     subtitle=""
-    :illustration="screenWidth >= 768 ? search : cve"
+    :illustration="illustration"
   />
   <AppContent :mobile-top="16">
     <div class="bulletin-main">

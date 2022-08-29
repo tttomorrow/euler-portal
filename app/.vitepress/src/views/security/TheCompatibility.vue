@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted, nextTick, watch, computed } from 'vue';
+import { useI18n } from '@/i18n';
+import { useData, useRouter } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -8,12 +10,9 @@ import MobileFilter from '@/components/MobileFilter.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner/banner-security.png';
-import supportIllustration from '@/assets/illustrations/support.png';
-import cveIllstration from '@/assets/illustrations/cve.png';
+import illustration from '@/assets/illustrations/compatibility.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
-import { useI18n } from '@/i18n';
-import { useData, useRouter } from 'vitepress';
 
 import type {
   CveQuery,
@@ -389,10 +388,10 @@ onMounted(() => {
 <template>
   <BannerLevel2
     :background-image="banner"
-    background-text="CONTENT"
+    background-text="SUPPORT"
     :title="i18n.compatibility.COMPATIBILITY"
     subtitle=""
-    :illustration="screenWidth > 768 ? supportIllustration : cveIllstration"
+    :illustration="illustration"
   />
 
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">

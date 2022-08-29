@@ -5,7 +5,7 @@ import { useI18n } from '@/i18n';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner/banner-download.png';
-import brandIllustration from '@/assets/illustrations/brand.png';
+import illustration from '@/assets/illustrations/brand.png';
 
 const i18n = useI18n();
 
@@ -61,7 +61,7 @@ list.value = initList();
     :background-image="banner"
     background-text="CONTENT"
     :title="i18n.brand.BRAND"
-    :illustration="brandIllustration"
+    :illustration="illustration"
   />
   <div class="brand">
     <div class="brand-all-word">

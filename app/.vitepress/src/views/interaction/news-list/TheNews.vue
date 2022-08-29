@@ -12,7 +12,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
-import newsIllustration from '@/assets/illustrations/news.png';
+import illustration from '@/assets/illustrations/news.png';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 
@@ -416,7 +416,7 @@ const moblieCurrentChange = (val: string) => {
     :background-image="banner"
     background-text="INTERACTION"
     :title="userCaseData.NEWS"
-    :illustration="newsIllustration"
+    :illustration="illustration"
   />
   <AppContent :mobile-top="16">
     <template v-if="true">
