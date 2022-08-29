@@ -67,16 +67,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <ClientOnly>
-    <ElSelect
-      class="o-select"
-      :popper-class="classNames"
-      v-bind="attrs"
-      @visible-change="scrollEvent"
-    >
-      <slot> </slot>
-    </ElSelect>
-  </ClientOnly>
+  <ElSelect
+    class="o-select"
+    :popper-class="classNames"
+    v-bind="attrs"
+    @visible-change="scrollEvent"
+  >
+    <slot> </slot>
+  </ElSelect>
 </template>
 
 <style lang="scss">
