@@ -310,6 +310,9 @@ const go = (path: string) => {
           white-space: nowrap span {
             color: var(--e-color-brand1);
           }
+          &:nth-of-type(2) {
+            margin-right: 0;
+          }
           @media (max-width: 1000px) {
             padding: 3px 16px;
             font-size: var(--o-font-size-tip);

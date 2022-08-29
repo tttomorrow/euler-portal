@@ -8,6 +8,7 @@ export default {
       docs: '文档',
       showcase: '案例',
       other: '其他',
+      migration: '迁移',
     },
     no: '未有',
     relative: '相关软件包',

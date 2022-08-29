@@ -250,9 +250,9 @@ const scroTop = () => {
   } else {
     isShowNav.value = true;
   }
-  if (scrollTop > 200 && scrollTop < 520) {
+  if (scrollTop > 200 && scrollTop < 540) {
     activeIndex.value = 0;
-  } else if (scrollTop > 520 && scrollTop < 1350) {
+  } else if (scrollTop > 540 && scrollTop < 1350) {
     activeIndex.value = 1;
   } else if (scrollTop > 1350 && scrollTop < 3000) {
     activeIndex.value = 2;
@@ -288,181 +288,191 @@ onUnmounted(() => {
   <InternshipBanner />
   <AppContent>
     <div class="intership-wrap">
-      <div class="wrapper">
-        <section id="introduce" class="panel introduce-card">
-          <p class="text">
-            openEuler开源实习是openEuler社区和社区合作单位共同发起的线上实习项目，旨在鼓励在校学生积极参与开源社区，在实际的开源环境中提升实践能力。由openEuler社区提供实习任务，并提供导师辅导，学生通过实习申请后，可在社区领取任务，每完成一个任务可获得相应积分，积分累计达规定量后，可获得实习证明和实习工资。
+      <section id="introduce" class="panel introduce-card">
+        <p class="text">
+          openEuler开源实习是openEuler社区和社区合作单位共同发起的线上实习项目，旨在鼓励在校学生积极参与开源社区，在实际的开源环境中提升实践能力。由openEuler社区提供实习任务，并提供导师辅导，学生通过实习申请后，可在社区领取任务，每完成一个任务可获得相应积分，积分累计达规定量后，可获得实习证明和实习工资。
+        </p>
+      </section>
+      <section id="step" class="panel">
+        <div class="step-title title">
+          <div class="title-img">申请步骤</div>
+        </div>
+        <InternshipStep />
+      </section>
+      <section id="task" class="panel">
+        <div class="task-title title">
+          <div class="title-img">实习任务</div>
+          <ul class="tab-list">
+            <li
+              v-for="(item, index) in tabList"
+              :key="item"
+              :class="{ active: tabIndex === index }"
+              @click="changeTabIndex(index)"
+            >
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+        <InternshipTask v-show="tabIndex === 0" />
+        <div v-show="tabIndex === 1" class="openlookeng-task task-wrap">
+          <p class="title">
+            <a href="https://openlookeng.io/" target="_blank">{{
+              openLooKengTask.title
+            }}</a>
           </p>
-        </section>
-        <section id="step" class="panel">
-          <div class="step-title title">
-            <div class="title-img">申请步骤</div>
+          <p class="intriduce">{{ openLooKengTask.intriduce }}</p>
+          <div class="btn">
+            <a
+              href="https://gitee.com/openlookeng-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
+              target="_blank"
+            >
+              <OButton type="primary" class="task-bth"
+                >实习任务
+                <OIcon><IconArrowRight /></OIcon>
+              </OButton>
+              <!-- <OButton class="task-bth"> 实习任务 </OButton> -->
+            </a>
+            <a href="https://openlookeng.io/" target="_blank">
+              <OButton class="detail-btn">
+                <span>官网详情</span>
+                <OIcon><IconArrowRight /></OIcon>
+              </OButton>
+            </a>
           </div>
-          <InternshipStep />
-        </section>
-        <section id="task" class="panel">
-          <div class="task-title title">
-            <div class="title-img">实习任务</div>
-            <ul class="tab-list">
-              <li
-                v-for="(item, index) in tabList"
-                :key="item"
-                :class="{ active: tabIndex === index }"
-                @click="changeTabIndex(index)"
-              >
-                {{ item }}
-              </li>
-            </ul>
+        </div>
+        <div v-show="tabIndex === 2" class="opengauss-task task-wrap">
+          <p class="title">
+            <a href="https://opengauss.org/" target="_blank">{{
+              openGaussTask.title
+            }}</a>
+          </p>
+          <p class="intriduce">{{ openGaussTask.intriduce }}</p>
+          <div class="btn">
+            <a
+              href="https://gitee.com/opengauss/opensource-intership/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
+              target="_blank"
+            >
+              <OButton type="primary" class="task-bth"
+                >实习任务
+                <OIcon><IconArrowRight /></OIcon>
+              </OButton>
+              <!-- <OButton class="task-bth"> 实习任务 </OButton> -->
+            </a>
+            <a href="https://opengauss.org" target="_blank">
+              <OButton class="detail-btn">
+                <span>官网详情</span>
+                <OIcon><IconArrowRight /></OIcon>
+              </OButton>
+            </a>
           </div>
-          <InternshipTask v-show="tabIndex === 0" />
-          <div v-show="tabIndex === 1" class="openlookeng-task task-wrap">
-            <p class="title">
-              <a href="https://openlookeng.io/" target="_blank">{{
-                openLooKengTask.title
-              }}</a>
+        </div>
+        <div v-show="tabIndex === 3" class="mindspore-task task-wrap">
+          <p class="title">
+            <a href="https://www.mindspore.cn/" target="_blank">{{
+              mindSporeTask.title
+            }}</a>
+          </p>
+          <div>
+            <p
+              v-for="item in mindSporeTask.intriduce"
+              :key="item"
+              class="intriduce"
+            >
+              {{ item }}
             </p>
-            <p class="intriduce">{{ openLooKengTask.intriduce }}</p>
-            <div class="btn">
-              <a
-                href="https://gitee.com/openlookeng-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
-                target="_blank"
-              >
-                <OButton class="task-bth"> 实习任务 </OButton>
-              </a>
-              <a href="https://openlookeng.io/" target="_blank">
-                <OButton class="detail-btn">
-                  <span>官网详情</span>
-                  <OIcon><IconArrowRight /></OIcon>
-                </OButton>
-              </a>
-            </div>
           </div>
-          <div v-show="tabIndex === 2" class="opengauss-task task-wrap">
-            <p class="title">
-              <a href="https://opengauss.org/" target="_blank">{{
-                openGaussTask.title
-              }}</a>
-            </p>
-            <p class="intriduce">{{ openGaussTask.intriduce }}</p>
-            <div class="btn">
-              <a
-                href="https://gitee.com/opengauss/opensource-intership/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
-                target="_blank"
-              >
-                <OButton class="task-bth"> 实习任务 </OButton>
-              </a>
-              <a href="https://opengauss.org" target="_blank">
-                <OButton class="detail-btn">
-                  <span>官网详情</span>
-                  <OIcon><IconArrowRight /></OIcon>
-                </OButton>
-              </a>
-            </div>
-          </div>
-          <div v-show="tabIndex === 3" class="mindspore-task task-wrap">
-            <p class="title">
-              <a href="https://www.mindspore.cn/" target="_blank">{{
-                mindSporeTask.title
-              }}</a>
-            </p>
-            <div>
-              <p
-                v-for="item in mindSporeTask.intriduce"
-                :key="item"
-                class="intriduce"
-              >
-                {{ item }}
-              </p>
-            </div>
 
-            <div class="btn">
-              <a
-                href="https://gitee.com/mindspore/community/issues/I55QGD?from=project-issue&skip_mobile=true"
-                target="_blank"
-              >
-                <OButton class="task-bth"> 实习任务 </OButton>
-              </a>
-              <a href="https://www.mindspore.cn/" target="_blank">
-                <OButton class="detail-btn">
-                  <span>官网详情</span>
-                  <OIcon><IconArrowRight /></OIcon>
-                </OButton>
-              </a>
-            </div>
+          <div class="btn">
+            <a
+              href="https://gitee.com/mindspore/community/issues/I55QGD?from=project-issue&skip_mobile=true"
+              target="_blank"
+            >
+              <OButton class="task-bth">
+                <span>实习任务</span>
+                <OIcon><IconArrowRight /></OIcon>
+              </OButton>
+              <!-- <OButton class="task-bth"> 实习任务 </OButton> -->
+            </a>
+            <a href="https://www.mindspore.cn/" target="_blank">
+              <OButton class="detail-btn">
+                <span>官网详情</span>
+                <OIcon><IconArrowRight /></OIcon>
+              </OButton>
+            </a>
           </div>
-        </section>
-        <section id="integral" class="panel">
-          <div class="integral-title title">
-            <div class="title-img">积分与激励规则</div>
-          </div>
-          <div class="integral-border">
-            <div class="integral-content">
-              <div
-                v-for="(item, index) in INTEGRAL_DATA"
-                :key="item.HEAD"
-                class="integral-item circular"
-              >
-                <h3>{{ item.HEAD }}</h3>
-                <div v-if="index === 1">
-                  <p>
-                    <span>{{ item.TEXT[0] }}</span>
-                  </p>
-                  <p>
-                    <span>{{ item.TEXT[1] }}</span>
-                    <a
-                      href="/doc/导师实习评语.txt"
-                      download
-                      title="下载实习评语"
-                      >{{ item.TEXT[2] }}</a
-                    >
-                  </p>
-                  <p>
+        </div>
+      </section>
+      <section id="integral" class="panel">
+        <div class="integral-title title">
+          <div class="title-img">积分与激励规则</div>
+        </div>
+        <div class="integral-border">
+          <div class="integral-content">
+            <div
+              v-for="(item, index) in INTEGRAL_DATA"
+              :key="item.HEAD"
+              class="integral-item circular"
+            >
+              <h3>{{ item.HEAD }}</h3>
+              <div v-if="index === 1">
+                <p>
+                  <span>{{ item.TEXT[0] }}</span>
+                </p>
+                <p>
+                  <span>{{ item.TEXT[1] }}</span>
+                  <a
+                    href="/doc/导师实习评语.txt"
+                    download
+                    title="下载实习评语"
+                    >{{ item.TEXT[2] }}</a
+                  >
+                </p>
+                <p>
+                  <a
+                    href="/doc/实习报告模板.docx"
+                    download
+                    title="下载报告模板"
+                    >{{ item.TEXT[3] }}</a
+                  >
+                </p>
+              </div>
+              <div v-else>
+                <p
+                  v-for="(item1, index1) in item.TEXT"
+                  :key="item1"
+                  class="star"
+                >
+                  <slot v-if="index === 1 && index1 === 3">
                     <a
                       href="/doc/实习报告模板.docx"
                       download
                       title="下载报告模板"
-                      >{{ item.TEXT[3] }}</a
+                      >{{ item1 }}</a
                     >
-                  </p>
-                </div>
-                <div v-else>
-                  <p
-                    v-for="(item1, index1) in item.TEXT"
-                    :key="item1"
-                    class="star"
-                  >
-                    <slot v-if="index === 1 && index1 === 3">
-                      <a
-                        href="/doc/实习报告模板.docx"
-                        download
-                        title="下载报告模板"
-                        >{{ item1 }}</a
-                      >
-                    </slot>
-                    <span v-else>{{ item1 }}</span>
-                  </p>
-                </div>
-                <div class="supplement">{{ item.SUPPLEMENT }}</div>
+                  </slot>
+                  <span v-else>{{ item1 }}</span>
+                </p>
               </div>
+              <div class="supplement">{{ item.SUPPLEMENT }}</div>
             </div>
           </div>
-        </section>
-        <section id="rank" class="panel">
-          <div class="rank-title">
-            <img
-              class="web"
-              src="@/assets/category/internship/rank-title.png"
-              alt=""
-            />
-            <img
-              class="mobile"
-              src="@/assets/category/internship/rank-title-mo.png"
-              alt=""
-            />
-          </div>
-          <InternshipRank />
-        </section>
-      </div>
+        </div>
+      </section>
+      <section id="rank" class="panel">
+        <div class="rank-title">
+          <img
+            class="web"
+            src="@/assets/category/internship/rank-title.png"
+            alt=""
+          />
+          <img
+            class="mobile"
+            src="@/assets/category/internship/rank-title-mo.png"
+            alt=""
+          />
+        </div>
+        <InternshipRank />
+      </section>
       <section id="rule" class="panel">
         <div class="rule-title title">
           <div class="title-img">实习规则</div>
@@ -492,24 +502,22 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
-      <div class="wrapper">
-        <section id="partner" class="panel">
-          <div class="warper">
-            <div class="partner-title title">
-              <div class="title-img">合作伙伴</div>
-            </div>
-            <div class="img-list">
-              <div
-                v-for="(item, index) in PARTNER_DATA"
-                :key="index"
-                class="img-cover"
-              >
-                <img alt="" :src="item.IMG" />
-              </div>
+      <section id="partner" class="panel">
+        <div class="warper">
+          <div class="partner-title title">
+            <div class="title-img">合作伙伴</div>
+          </div>
+          <div class="img-list">
+            <div
+              v-for="(item, index) in PARTNER_DATA"
+              :key="index"
+              class="img-cover"
+            >
+              <img alt="" :src="item.IMG" />
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
       <div id="help" class="help-title title">
         <div class="title-img">帮助咨询</div>
       </div>
@@ -628,6 +636,7 @@ onUnmounted(() => {
   }
   .task-wrap {
     background-image: url('@/assets/category/internship/other-community-bg.png');
+    background-color: var(--e-color-bg2);
     background-repeat: no-repeat;
     background-size: 120%;
     background-position: 50%;
@@ -658,7 +667,7 @@ onUnmounted(() => {
       }
     }
     .intriduce {
-      color: rgba(0, 0, 0, 0.5);
+      color: var(--e-color-text4);
       font-size: 18px;
       line-height: 22px;
       height: 88px;
@@ -673,13 +682,25 @@ onUnmounted(() => {
         border: none;
         color: #fff;
         background-color: var(--e-color-brand1);
+        padding: 8px 12px;
+        font-size: 16px;
+        @media (max-width: 1000px) {
+          font-size: 12px;
+          padding: 3px 16px;
+        }
         &:hover {
           background-color: var(--e-color-brand2);
+        }
+        .o-icon {
+          margin-left: 8px;
         }
       }
       .detail-btn {
         color: var(--e-color-brand1);
         border: 1px solid transparent;
+        @media (max-width: 1000px) {
+          font-size: 12px;
+        }
         &:hover {
           border: 1px solid var(--e-color-brand2);
           color: var(--e-color-brand2);
@@ -711,7 +732,7 @@ onUnmounted(() => {
     .intriduce {
       font-size: 14px;
       line-height: 22px;
-      color: rgba(0, 0, 0, 0.5);
+      color: var(--e-color-text4);
     }
     .btn {
       text-align: center;
@@ -721,6 +742,15 @@ onUnmounted(() => {
         border: none;
         color: #fff;
         background-color: var(--e-color-brand1);
+        padding: 8px 12px;
+        font-size: 16px;
+        .o-icon {
+          margin-left: 8px;
+        }
+        @media (max-width: 1000px) {
+          font-size: 12px;
+          padding: 3px 16px;
+        }
         &:hover {
           background-color: var(--e-color-brand2);
         }
@@ -728,6 +758,10 @@ onUnmounted(() => {
       .detail-btn {
         color: var(--e-color-brand1);
         border: 1px solid transparent;
+        font-size: 16px;
+        @media (max-width: 1000px) {
+          font-size: 12px;
+        }
         &:hover {
           border: 1px solid var(--e-color-brand2);
           color: var(--e-color-brand2);
@@ -822,7 +856,7 @@ onUnmounted(() => {
       h4 {
         margin: 10px 0;
         font-size: 18px;
-        color: #000000;
+        color: var(--e-color-text1);
         @media (max-width: 1000px) {
           margin: 6px 0;
           font-size: 16px;
@@ -836,6 +870,7 @@ onUnmounted(() => {
       p {
         position: relative;
         padding-left: 12px;
+        color: var(--e-color-text4);
       }
       .circular {
         p::before {
@@ -1081,7 +1116,6 @@ onUnmounted(() => {
     p {
       font-size: 20px;
       color: var(--e-color-text1);
-      line-height: 40px;
       display: block;
       @media (max-width: 1000px) {
         font-size: 16px;
