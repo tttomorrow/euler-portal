@@ -124,4 +124,16 @@ export default [
     name: 'migration',
     lang: ['zh'],
   },
+  {
+    name: 'brand',
+    lang: ['zh', 'en', 'ru'],
+  },
+  {
+    name: 'privacy',
+    lang: ['zh', 'en', 'ru'],
+  },
+  {
+    name: 'legal',
+    lang: ['zh', 'en', 'ru'],
+  },
 ];

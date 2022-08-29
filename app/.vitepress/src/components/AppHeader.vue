@@ -109,6 +109,9 @@ watch(
       if (val.includes(item.name)) {
         langShow.value = item.lang;
       }
+      if (val === `/${lang.value}/`) {
+        langShow.value = ['zh', 'en', 'ru'];
+      }
     });
   },
   { immediate: true }
