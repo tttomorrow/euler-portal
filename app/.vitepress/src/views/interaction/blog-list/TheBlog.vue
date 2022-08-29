@@ -722,32 +722,12 @@ const moblieCurrentChange = (val: string) => {
     grid-template-columns: repeat(2, 1fr);
     margin-top: var(--o-spacing-h5);
   }
-  // .blog-tag2 {
-  // display: block; // 暂时干掉移动端筛选
-  // }
-  // .blog-select {
-  //   display: none;
-  // }
+  .blog-tag2 {
+    display: block;
+    margin-left: var(--o-spacing-h5);
+  }
   .blog-select {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    &-item {
-      &-title {
-        width: 50px;
-        font-size: var(--o-font-size-h8);
-        line-height: var(--o-line-height-h8);
-      }
-      margin: 0;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: var(--o-spacing-h5);
-      :deep(.o-select) {
-        width: 100%;
-      }
-    }
+    display: none;
   }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h4);

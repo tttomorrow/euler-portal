@@ -19,6 +19,7 @@ const i18n = useI18n();
     :subtitle="i18n.secgear.SECGEAR_BANNER_TEXT[1]"
     :illustration="illustration"
     :background-image="banner"
+    background-text="SEARCH"
   />
   <AppContent>
     <MiniDescription :description-desc="i18n.secgear.SECGEAR_DESC" />
@@ -26,6 +27,7 @@ const i18n = useI18n();
       :frame-obj="i18n.secgear.SECGEAR_FRAMEWORK"
       layout="leftAndRight"
     />
+    <!-- 文档 -->
     <MiniDocs :docs-obj="i18n.secgear.SECGEAR_DOCUMENT" />
   </AppContent>
 </template>

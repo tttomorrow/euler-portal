@@ -32,6 +32,19 @@ const isCustomLayout = computed(() => {
 const comp = computed(() => {
   return compMapping[frontmatter.value.category];
 });
+
+// cookies使用提示
+// const isShowTip = ref(true);
+// function clickClose() {
+//   isShowTip.value = false;
+//   localStorage.setItem('euler-cookie', 'false');
+// }
+// onMounted(() => {
+//   const show = localStorage.getItem('euler-cookie');
+//   isShowTip.value = show ? false : true;
+// });
+// AppHeader :is-show-tip="isShowTip" @click-close="clickClose"
+// main :class="{ cookie: isShowTip }"
 </script>
 
 <template>
@@ -55,6 +68,12 @@ main {
   background-color: var(--e-color-bg1);
   margin-top: 80px;
   overflow: hidden;
+  &.cookie {
+    margin-top: 140px;
+    @media (max-width: 1100px) {
+      margin-top: 108px;
+    }
+  }
   @media (max-width: 1100px) {
     margin-top: 48px;
   }

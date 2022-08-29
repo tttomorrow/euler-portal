@@ -481,7 +481,7 @@ const moblieCurrentChange = (val: string) => {
       <div class="news-list">
         <OCard
           v-for="item in newsCardData"
-          :key="item"
+          :key="item.path"
           class="news-list-item"
           @click="toNewsContent(item.path)"
         >
