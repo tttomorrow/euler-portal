@@ -53,6 +53,23 @@ export function getNowFormatDate() {
   const currentDate = year + seperator1 + month + seperator1 + strDate;
   return currentDate;
 }
+
+// 搜索对搜索词埋点
+export function addSearchBuriedData(search_key: string) {
+  const search_event_id = `${search_key}${new Date().getTime()}${(window as any)['sensorsCustomBuriedData']?.ip || ''}`;
+  const obj = {
+      search_key,
+      search_event_id
+  };
+  (window as any)['addSearchBuriedData'] = obj;
+  let sensors = (window as any)['sensorsDataAnalytic201505'];
+  sensors?.setProfile({
+      profileType: 'searchValue',
+      ...((window as any)['sensorsCustomBuriedData'] || {}),
+      ...((window as any)['addSearchBuriedData'] || {})
+  });
+}
+
 /**
  * 判断是否是移动端
  * @returns boolean
