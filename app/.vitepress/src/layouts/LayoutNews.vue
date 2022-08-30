@@ -78,7 +78,7 @@ onMounted(() => {
       <AppMdHead :frontmatter="frontmatter" />
       <Content />
     </div>
-    <hr style="margin-bottom: 40px" />
+    <hr />
     <div class="news-markdown-detail">
       <div v-if="prev !== ''" class="skip" @click="goPrve">
         <span>{{ userCaseData.PREV }}</span>
@@ -94,7 +94,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .news-markdown-detail {
-  max-width: 880px;
+  // max-width: 880px;
   margin: 0 auto;
 }
 .bread {
@@ -135,12 +135,14 @@ onMounted(() => {
     display: inline-block;
 
     @media (max-width: 768px) {
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
     }
   }
   p:hover {
-    color: var(--e-color-link2);
+    @media (min-width: 1100px) {
+      color: var(--e-color-link2);
+    }
   }
 }
 </style>

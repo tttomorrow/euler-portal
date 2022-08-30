@@ -9,7 +9,7 @@ import MiniReference from './MiniReference.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import BannerIllustration from '/img/projects/bisheng/illustration-banner.png';
+import illustration from '@/assets/illustrations/minisite/bisheng.png';
 import banner from '@/assets/banner/banner-minisite.png';
 const i18n = useI18n();
 </script>
@@ -19,7 +19,7 @@ const i18n = useI18n();
     class="banner"
     :title="i18n.bishengjdk.BISHENG_BANNER_TEXT[0]"
     :subtitle="i18n.bishengjdk.BISHENG_BANNER_TEXT[1]"
-    :illustration="BannerIllustration"
+    :illustration="illustration"
     :background-image="banner"
     background-text="SEARCH"
   />

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useI18n } from '@/i18n';
+import { useData } from 'vitepress';
+
 import IconArrowRight from '~icons/app/arrow-right.svg';
+
+const { lang } = useData();
 
 const i18n = useI18n();
 
@@ -28,7 +32,7 @@ const handleGo = (path: string) => {
 <template>
   <div class="carousel">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
-    <OContainer class="carousel-container" :level-index="1">
+    <OContainer data-aos="fade-up" class="carousel-container" :level-index="1">
       <div class="carousel-pc">
         <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
           <div class="carousel-pc-content">
@@ -36,7 +40,11 @@ const handleGo = (path: string) => {
               <div
                 v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
                 :key="item.TITLE"
-                :class="['carousel-pc-title', active === index ? 'active' : '']"
+                :class="[
+                  'carousel-pc-title',
+                  active === index ? 'active' : '',
+                  lang !== 'zh' ? 'carousel-pc-en-title' : '',
+                ]"
                 @click="handleChangeActive(index)"
               >
                 {{ item.TITLE }}
@@ -253,11 +261,14 @@ const handleGo = (path: string) => {
       cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 400;
+      text-align: center;
       color: var(--e-color-text1);
       line-height: var(--o-line-height-h4);
-      text-align: start;
       border-bottom: 1px solid var(--e-color-division1);
       padding: var(--o-spacing-h4) 0;
+    }
+    &-en-title {
+      width: 266px;
     }
     &-title:first-child {
       padding-top: 0;

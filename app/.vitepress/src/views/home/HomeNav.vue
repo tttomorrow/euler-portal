@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
 import { computed } from 'vue';
 
-const { lang } = useData();
 const i18n = useI18n();
 const commonStore = useCommon();
 
@@ -24,7 +22,7 @@ const imgUrlHover = computed(
 </script>
 
 <template>
-  <div class="home-nav" data-aos="fade-up">
+  <div class="home-nav">
     <div
       v-for="item in i18n.home.HOME_NAV"
       :key="item.LINK"
@@ -36,7 +34,7 @@ const imgUrlHover = computed(
         <img :src="imgUrlHover(item)" alt="" class="nav-item-icon-hover" />
       </div>
       <div class="nav-text">
-        <h4 :class="lang === 'zh' ? 'nav-title' : 'nav-title-en'">
+        <h4 class="nav-title">
           {{ item.TITLE }}
         </h4>
         <p class="nav-descriptive">{{ item.DSSCRIPTIVE }}</p>
@@ -79,16 +77,20 @@ const imgUrlHover = computed(
     .nav-text {
       margin-left: var(--o-spacing-h5);
       .nav-title {
+        word-break: break-all;
         color: var(--e-color-text1);
         line-height: var(--o-line-height-text);
         font-weight: 500;
         font-size: var(--o-font-size-h7);
+        @media screen and (max-width: 768px) {
+          text-align: center;
+        }
       }
-      .nav-title-en {
-        font-weight: 400;
-        color: var(--e-color-text1);
-        font-size: var(--o-font-size-h7);
-      }
+      // .nav-title-en {
+      //   font-weight: 400;
+      //   color: var(--e-color-text1);
+      //   font-size: var(--o-font-size-h7);
+      // }
       .nav-descriptive {
         line-height: var(--o-line-height-text);
         font-size: var(--o-font-size-text);
@@ -97,16 +99,17 @@ const imgUrlHover = computed(
       }
     }
     &:hover {
-      @media screen and (max-width: 1100px) {
+      @media screen and (min-width: 1100px) {
         .nav-item-icon-hover {
-          display: none;
-        }
-        .nav-item-icon {
           display: block;
         }
+        .nav-item-icon {
+          display: none;
+        }
         .nav-text {
-          .nav-title {
-            color: var(--e-color-text1);
+          .nav-title,
+          .nav-descriptive {
+            color: var(--e-color-brand1);
           }
         }
       }

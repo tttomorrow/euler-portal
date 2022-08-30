@@ -11,7 +11,7 @@ import AppContent from '@/components/AppContent.vue';
 
 import { getAllMailing } from '@/api/api-mailing';
 
-import banner from '@/assets/banner/banner-interaction.png';
+import banner from '@/assets/banner/banner-community.png';
 import illustration from '@/assets/illustrations/mailing.png';
 import sig1 from '@/assets/category/sig/guidance/sig1.png';
 import sig2 from '@/assets/category/sig/guidance/sig5.png';

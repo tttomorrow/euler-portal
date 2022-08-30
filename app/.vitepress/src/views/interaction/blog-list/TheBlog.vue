@@ -9,7 +9,7 @@ import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import NotFound from '@/NotFound.vue';
-import MobileFilter from '@/components/MobileFilter.vue';
+// import MobileFilter from '@/components/MobileFilter.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
 import blogIllustration from '@/assets/illustrations/blog.png';
@@ -69,16 +69,16 @@ const tagsParams = reactive({
   want: '',
 });
 // 移动端数据
-const tagsDataToChild = ref<any>([
-  {
-    title: '时间',
-    select: [],
-  },
-  {
-    title: '作者',
-    select: [],
-  },
-]);
+// const tagsDataToChild = ref<any>([
+//   {
+//     title: '时间',
+//     select: [],
+//   },
+//   {
+//     title: '作者',
+//     select: [],
+//   },
+// ]);
 // pc端筛选数据
 const selectData = ref<any>([
   {
@@ -169,27 +169,27 @@ const getListData = (params: ParamsType) => {
 };
 
 // 筛选方法
-const listFilter = (val: any) => {
-  let paramsdate = '';
-  let paramsauthor = '';
-  for (let i = 0; i < val.length; i++) {
-    if (val[i].title === '时间') {
-      paramsdate = val[i].sele[0];
-    }
-    if (val[i].title === '作者') {
-      paramsauthor = val[i].sele[0];
-    }
-  }
-  const params = {
-    page: 1,
-    pageSize: 9,
-    lang: lang.value,
-    category: 'blog',
-    archives: paramsdate,
-    author: paramsauthor,
-  };
-  getListData(params);
-};
+// const listFilter = (val: any) => {
+//   let paramsdate = '';
+//   let paramsauthor = '';
+//   for (let i = 0; i < val.length; i++) {
+//     if (val[i].title === '时间') {
+//       paramsdate = val[i].sele[0];
+//     }
+//     if (val[i].title === '作者') {
+//       paramsauthor = val[i].sele[0];
+//     }
+//   }
+//   const params = {
+//     page: 1,
+//     pageSize: 9,
+//     lang: lang.value,
+//     category: 'blog',
+//     archives: paramsdate,
+//     author: paramsauthor,
+//   };
+//   getListData(params);
+// };
 // pc筛选
 const selectMethod = () => {
   const params = {
@@ -431,7 +431,7 @@ const moblieCurrentChange = (val: string) => {
 <template>
   <BannerLevel2
     :background-image="banner"
-    background-text="CONNECT"
+    background-text="INTERACTION"
     :title="userCaseData.BLOG"
     :illustration="blogIllustration"
   >
@@ -455,63 +455,69 @@ const moblieCurrentChange = (val: string) => {
       <div class="blog-select">
         <div class="blog-select-item">
           <span class="blog-select-item-title">{{ userCaseData.TIME }}</span>
-          <OSelect
-            v-model="selectTimeVal"
-            filterable
-            clearable
-            :placeholder="userCaseData.ALL"
-            @change="timeChange"
-          >
-            <OOption
-              v-for="item in selectData[0].select"
-              :key="item"
-              :label="item"
-              :value="item"
-            />
-          </OSelect>
+          <ClientOnly>
+            <OSelect
+              v-model="selectTimeVal"
+              filterable
+              clearable
+              :placeholder="userCaseData.ALL"
+              @change="timeChange"
+            >
+              <OOption
+                v-for="item in selectData[0].select"
+                :key="item"
+                :label="item"
+                :value="item"
+              />
+            </OSelect>
+          </ClientOnly>
         </div>
         <div class="blog-select-item">
           <span class="blog-select-item-title">{{ userCaseData.AUTHOR }}</span>
-          <OSelect
-            v-model="selectAuthorVal"
-            filterable
-            clearable
-            :placeholder="userCaseData.ALL"
-            @change="authorChange"
-          >
-            <OOption
-              v-for="item in selectData[1].select"
-              :key="item"
-              :label="item"
-              :value="item"
-            />
-          </OSelect>
+          <ClientOnly>
+            <OSelect
+              v-model="selectAuthorVal"
+              filterable
+              clearable
+              :placeholder="userCaseData.ALL"
+              @change="authorChange"
+            >
+              <OOption
+                v-for="item in selectData[1].select"
+                :key="item"
+                :label="item"
+                :value="item"
+              />
+            </OSelect>
+          </ClientOnly>
         </div>
         <div class="blog-select-item">
           <span class="blog-select-item-title">{{ userCaseData.TAGS }}</span>
-          <OSelect
-            v-model="selectTagsVal"
-            filterable
-            clearable
-            :placeholder="userCaseData.ALL"
-            @change="tagsChange"
-          >
-            <OOption
-              v-for="item in selectData[2].select"
-              :key="item"
-              :label="item"
-              :value="item"
-            />
-          </OSelect>
+          <ClientOnly>
+            <OSelect
+              v-model="selectTagsVal"
+              filterable
+              clearable
+              :placeholder="userCaseData.ALL"
+              @change="tagsChange"
+            >
+              <OOption
+                v-for="item in selectData[2].select"
+                :key="item"
+                :label="item"
+                :value="item"
+              />
+            </OSelect>
+          </ClientOnly>
         </div>
       </div>
-      <div class="blog-tag2">
+      <!-- <div class="blog-tag2">
         <MobileFilter
           :data="tagsDataToChild"
           :single="true"
           @filter="listFilter"
         />
-      </div>
+      </div> -->
     </template>
     <template v-if="isShowData">
       <div class="blog-list">
@@ -558,21 +564,23 @@ const moblieCurrentChange = (val: string) => {
         </OCard>
       </div>
       <div class="blog-pagination">
-        <OPagination
-          v-if="!isMobile"
-          v-model:currentPage="paginationData.currentpage"
-          v-model:page-size="paginationData.pagesize"
-          :background="true"
-          layout="sizes, prev, pager, next, slot, jumper"
-          :total="paginationData.total"
-          :page-sizes="[3, 6, 9]"
-          @current-change="currentChange"
-          @size-change="currentChange(1)"
-        >
-          <span class="pagination-slot"
-            >{{ paginationData.currentpage }}/{{ pageTotal }}</span
+        <ClientOnly>
+          <OPagination
+            v-if="!isMobile"
+            v-model:currentPage="paginationData.currentpage"
+            v-model:page-size="paginationData.pagesize"
+            :background="true"
+            layout="sizes, prev, pager, next, slot, jumper"
+            :total="paginationData.total"
+            :page-sizes="[3, 6, 9]"
+            @current-change="currentChange"
+            @size-change="currentChange(1)"
           >
-        </OPagination>
+            <span class="pagination-slot"
+              >{{ paginationData.currentpage }}/{{ pageTotal }}</span
+            >
+          </OPagination>
+        </ClientOnly>
         <AppPaginationMo
           :current-page="paginationData.currentpage"
           :total-page="pageTotal"
@@ -642,7 +650,6 @@ const moblieCurrentChange = (val: string) => {
     }
   }
   &-list {
-    max-width: 1448px;
     margin: var(--o-spacing-h2) auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -722,32 +729,12 @@ const moblieCurrentChange = (val: string) => {
     grid-template-columns: repeat(2, 1fr);
     margin-top: var(--o-spacing-h5);
   }
-  // .blog-tag2 {
-  // display: block; // 暂时干掉移动端筛选
-  // }
-  // .blog-select {
-  //   display: none;
-  // }
+  .blog-tag2 {
+    display: block;
+    margin-left: var(--o-spacing-h5);
+  }
   .blog-select {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    &-item {
-      &-title {
-        width: 50px;
-        font-size: var(--o-font-size-h8);
-        line-height: var(--o-line-height-h8);
-      }
-      margin: 0;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: var(--o-spacing-h5);
-      :deep(.o-select) {
-        width: 100%;
-      }
-    }
+    display: none;
   }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h4);
@@ -757,7 +744,9 @@ const moblieCurrentChange = (val: string) => {
 @media (max-width: 768px) {
   .blog-list {
     margin-top: 0;
+    margin-bottom: var(--o-spacing-h5);
     grid-template-columns: repeat(1, 1fr);
+    grid-gap: var(--o-spacing-h5);
   }
 }
 @media (max-width: 415px) {
@@ -769,9 +758,6 @@ const moblieCurrentChange = (val: string) => {
   .blog-list-item {
     min-height: 152px;
     max-height: 152px;
-  }
-  .blog-list {
-    margin-top: var(--o-spacing-h5);
   }
 
   .blog-list-item-content {

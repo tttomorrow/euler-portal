@@ -150,13 +150,13 @@ export default {
           ID: 'application',
           PATH: '/sig/sig-guidance/',
         },
-        {
-          NAME: 'Роли',
-          ID: 'roles',
-          PATH: '/sig/role-description/',
-        },
+        // {
+        //   NAME: 'Роли',
+        //   ID: 'roles',
+        //   PATH: '/sig/role-description/',
+        // },
       ],
-      CLASS: ['sig-list', 'sig-guidance', 'role-description'],
+      CLASS: ['sig-list', 'sig-guidance'],
     },
     {
       PATH: '',

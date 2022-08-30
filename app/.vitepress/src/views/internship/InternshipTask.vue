@@ -48,7 +48,7 @@ const TASK = {
         'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=37&name=sig-KIRAN-DESKTOP&mail=dev%40openeuler.org',
       INTRODUCE:
         '麒麟信安自主研发，致力于为用户提供更加美观，高效和易用的Linux桌面操作系统',
-      TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590528&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
+      TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590352&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590528&single_label_text=&sort=&state=open&target_project=',
       GITEE:
         'https://gitee.com/openeuler/community/tree/master/sig/sig-KIRAN-DESKTOP',
     },
@@ -91,7 +91,7 @@ const TASK = {
       NAME: 'sig-OSCourse',
       NAME_LINK:
         'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=sig-OSCourse',
-      INTRODUCE: '操作系统课程兴趣组',
+      INTRODUCE: '社区探索性项目开发，如用Rust开发相关社区服务等',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590352&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=141433910&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE:
         'https://gitee.com/openeuler/community/tree/master/sig/sig-OSCourse',
@@ -168,13 +168,13 @@ const TASK = {
       TASK: 'https://gitee.com/organizations/src-openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=164549691&single_label_text=&sort=&state=&target_project&skip_mobile=true',
       GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/Compiler',
     },
-    {
-      NAME: '其他',
-      NAME_LINK: '',
-      INTRODUCE: '一些暂不属于任何SIG的任务，如Rust、存储等等',
-      TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=125884711&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&sort=&state=open&target_project&skip_mobile=true',
-      GITEE: '',
-    },
+    // {
+    //   NAME: '其他',
+    //   NAME_LINK: '',
+    //   INTRODUCE: '一些暂不属于任何SIG的任务，如Rust、存储等等',
+    //   TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=125884711&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&sort=&state=open&target_project&skip_mobile=true',
+    //   GITEE: '',
+    // },
     {
       NAME_LINK: '',
       INTRODUCE: '更多SIG任务，敬请期待',
@@ -309,6 +309,9 @@ const go = (path: string) => {
           margin-right: 24px;
           white-space: nowrap span {
             color: var(--e-color-brand1);
+          }
+          &:nth-of-type(2) {
+            margin-right: 0;
           }
           @media (max-width: 1000px) {
             padding: 3px 16px;

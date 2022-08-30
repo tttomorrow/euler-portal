@@ -88,13 +88,17 @@ onMounted(() => {
   .banner-illustration {
     filter: brightness(0.8) grayscale(0.2) contrast(1.2);
   }
+
+  .banner-level2 {
+    background-color: var(--e-color-kleinblue4);
+  }
 }
 .banner-level2 {
   position: relative;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--e-color-brand1);
+  background-color: var(--e-color-kleinblue6);
 
   .banner-bg {
     position: absolute;
@@ -144,8 +148,8 @@ onMounted(() => {
       .banner-text-bg {
         position: absolute;
         top: 0;
-        color: var(--e-color-brand1);
-        opacity: 0.4;
+        color: var(--e-color-white);
+        opacity: 0.14;
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
         font-weight: bold;

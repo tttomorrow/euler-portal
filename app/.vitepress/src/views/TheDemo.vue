@@ -12,6 +12,31 @@ import TagFilter from '@/components/TagFilter.vue';
 import banner from '@/assets/banner-secondary.png';
 import search from '@/assets/illustrations/search.png';
 
+const value = ref('');
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+    disabled: true,
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
+];
+
 const currentPage1 = ref(5);
 const pageSize4 = ref(100);
 const total = ref(100);
@@ -177,13 +202,24 @@ function turnPage(option: string) {
     <div class="demo-box">
       <h4>ODrawer</h4>
       <OButton type="primary" @click="toggleDrawer">toggle drawer</OButton>
-      <ODrawer
+      <ClientOnly>
+        <el-select v-model="value" placeholder="Select">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            :disabled="item.disabled"
+          />
+        </el-select>
+      </ClientOnly>
+      <!-- <ODrawer
         v-model="isDrawerOpen"
         direction="btt"
         :show-close="false"
         custom-class="o-drawer"
       >
-      </ODrawer>
+      </ODrawer> -->
     </div>
 
     <div class="demo-box">

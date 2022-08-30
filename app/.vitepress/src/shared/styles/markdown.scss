@@ -17,13 +17,17 @@
     width: calc(100% - 32px);
   }
   @media (max-width: 768px) {
-    padding: var(--o-spacing-h7);
-    margin-top: var(--o-spacing-h7);
+    padding: var(--o-spacing-h5);
+    margin-top: var(--o-spacing-h5);
     margin-bottom: var(--o-spacing-h2);
   }
   ol,
   ul {
     list-style: inherit;
+  }
+
+  a {
+    word-break: break-all;
   }
 
   h1,
@@ -266,13 +270,16 @@
   }
   --e-color-table: var(--e-color-border2); // 表格边框
   @media (max-width: 768px) {
-    padding: var(--o-spacing-h7);
-    margin-top: var(--o-spacing-h7);
+    padding: var(--o-spacing-h5);
+    margin-top: var(--o-spacing-h5);
     margin-bottom: var(--o-spacing-h2);
   }
   ol,
   ul {
     list-style: inherit;
+  }
+  a {
+    word-break: break-all;
   }
 
   h1,

@@ -12,7 +12,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
-import newsIllustration from '@/assets/illustrations/news.png';
+import illustration from '@/assets/illustrations/news.png';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 
@@ -416,7 +416,7 @@ const moblieCurrentChange = (val: string) => {
     :background-image="banner"
     background-text="INTERACTION"
     :title="userCaseData.NEWS"
-    :illustration="newsIllustration"
+    :illustration="illustration"
   />
   <AppContent :mobile-top="16">
     <template v-if="true">
@@ -426,54 +426,60 @@ const moblieCurrentChange = (val: string) => {
       <div class="news-select">
         <div class="news-select-item">
           <span class="news-select-item-title">{{ userCaseData.TIME }}</span>
-          <OSelect
-            v-model="selectTimeVal"
-            filterable
-            clearable
-            :placeholder="userCaseData.ALL"
-            @change="timeChange"
-          >
-            <OOption
-              v-for="item in selectData[0].select"
-              :key="item"
-              :label="item"
-              :value="item"
-            />
-          </OSelect>
+          <ClientOnly>
+            <OSelect
+              v-model="selectTimeVal"
+              filterable
+              clearable
+              :placeholder="userCaseData.ALL"
+              @change="timeChange"
+            >
+              <OOption
+                v-for="item in selectData[0].select"
+                :key="item"
+                :label="item"
+                :value="item"
+              />
+            </OSelect>
+          </ClientOnly>
         </div>
         <div class="news-select-item">
           <span class="news-select-item-title">{{ userCaseData.AUTHOR }}</span>
-          <OSelect
-            v-model="selectAuthorVal"
-            filterable
-            clearable
-            :placeholder="userCaseData.ALL"
-            @change="authorChange"
-          >
-            <OOption
-              v-for="item in selectData[1].select"
-              :key="item"
-              :label="item"
-              :value="item"
-            />
-          </OSelect>
+          <ClientOnly>
+            <OSelect
+              v-model="selectAuthorVal"
+              filterable
+              clearable
+              :placeholder="userCaseData.ALL"
+              @change="authorChange"
+            >
+              <OOption
+                v-for="item in selectData[1].select"
+                :key="item"
+                :label="item"
+                :value="item"
+              />
+            </OSelect>
+          </ClientOnly>
         </div>
         <div class="news-select-item">
           <span class="news-select-item-title">{{ userCaseData.TAGS }}</span>
-          <OSelect
-            v-model="selectTagsVal"
-            filterable
-            clearable
-            :placeholder="userCaseData.ALL"
-            @change="tagsChange"
-          >
-            <OOption
-              v-for="item in selectData[2].select"
-              :key="item"
-              :label="item"
-              :value="item"
-            />
-          </OSelect>
+          <ClientOnly>
+            <OSelect
+              v-model="selectTagsVal"
+              filterable
+              clearable
+              :placeholder="userCaseData.ALL"
+              @change="tagsChange"
+            >
+              <OOption
+                v-for="item in selectData[2].select"
+                :key="item"
+                :label="item"
+                :value="item"
+              />
+            </OSelect>
+          </ClientOnly>
         </div>
       </div>
     </template>
@@ -481,7 +487,7 @@ const moblieCurrentChange = (val: string) => {
       <div class="news-list">
         <OCard
           v-for="item in newsCardData"
-          :key="item"
+          :key="item.path"
           class="news-list-item"
           @click="toNewsContent(item.path)"
         >
@@ -504,21 +510,23 @@ const moblieCurrentChange = (val: string) => {
         </OCard>
       </div>
       <div class="news-pagination">
-        <OPagination
-          v-if="!isPad"
-          v-model:currentPage="paginationData.currentpage"
-          v-model:page-size="paginationData.pagesize"
-          :background="true"
-          layout="sizes, prev, pager, next, slot, jumper"
-          :total="paginationData.total"
-          :page-sizes="[3, 6, 9]"
-          @current-change="currentChange"
-          @size-change="currentChange(1)"
-        >
-          <span class="pagination-slot"
-            >{{ paginationData.currentpage }}/{{ pageTotal }}</span
+        <ClientOnly>
+          <OPagination
+            v-if="!isPad"
+            v-model:currentPage="paginationData.currentpage"
+            v-model:page-size="paginationData.pagesize"
+            :background="true"
+            layout="sizes, prev, pager, next, slot, jumper"
+            :total="paginationData.total"
+            :page-sizes="[3, 6, 9]"
+            @current-change="currentChange"
+            @size-change="currentChange(1)"
           >
-        </OPagination>
+            <span class="pagination-slot"
+              >{{ paginationData.currentpage }}/{{ pageTotal }}</span
+            >
+          </OPagination>
+        </ClientOnly>
         <AppPaginationMo
           :current-page="paginationData.currentpage"
           :total-page="pageTotal"
@@ -694,6 +702,10 @@ const moblieCurrentChange = (val: string) => {
   }
 }
 @media (max-width: 768px) {
+  .news-list {
+    margin-bottom: var(--o-spacing-h5);
+    grid-gap: var(--o-spacing-h5);
+  }
   .pcpagination {
     display: none;
   }

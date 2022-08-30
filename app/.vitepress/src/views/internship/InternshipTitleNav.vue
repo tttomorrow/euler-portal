@@ -195,6 +195,7 @@ const gotop = () => {
     .item {
       position: relative;
       margin-bottom: 24px;
+      box-shadow: var(--e-shadow-l3);
     }
     .close {
       position: absolute;

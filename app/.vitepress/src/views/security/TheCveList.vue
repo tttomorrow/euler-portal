@@ -11,8 +11,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner/banner-security.png';
-import supportIllustration from '@/assets/illustrations/support.png';
-import cveIllstration from '@/assets/illustrations/cve.png';
+import illustration from '@/assets/illustrations/cve.png';
 
 import { getCveList } from '@/api/api-security';
 import { CveLists, CveQuery } from '@/shared/@types/type-support';
@@ -111,12 +110,11 @@ watch(queryData, () => getCveLists(queryData));
 </script>
 <template>
   <BannerLevel2
-    class="banner-pc"
     :background-image="banner"
     background-text="SUPPORT"
     :title="i18n.security.CVE"
     subtitle=""
-    :illustration="screenWidth >= 768 ? supportIllustration : cveIllstration"
+    :illustration="illustration"
   />
   <AppContent :mobile-top="16">
     <OSearch
@@ -226,21 +224,23 @@ watch(queryData, () => getCveLists(queryData));
       </li>
     </ul>
 
-    <OPagination
-      v-if="!isMobile"
-      v-model:page-size="queryData.pages.size"
-      v-model:currentPage="queryData.pages.page"
-      class="pagination"
-      :page-sizes="[10, 20, 40, 80]"
-      :layout="layout"
-      :total="total"
-      :background="true"
-      :hide-on-single-page="true"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    >
-      <span class="pagination-slot"> {{ currentPage }}/{{ totalPage }}</span>
-    </OPagination>
+    <ClientOnly>
+      <OPagination
+        v-if="!isMobile"
+        v-model:page-size="queryData.pages.size"
+        v-model:currentPage="queryData.pages.page"
+        class="pagination"
+        :page-sizes="[10, 20, 40, 80]"
+        :layout="layout"
+        :total="total"
+        :background="true"
+        :hide-on-single-page="true"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      >
+        <span class="pagination-slot"> {{ currentPage }}/{{ totalPage }}</span>
+      </OPagination>
+    </ClientOnly>
 
     <AppPaginationMo
       v-if="total > 0 || isMobile"

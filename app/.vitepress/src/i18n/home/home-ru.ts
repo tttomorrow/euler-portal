@@ -326,12 +326,12 @@ export default {
     TRY_URL: 'community/contribution/detail.html',
     LIST: [
       {
-        TITLE: 'All-Scenario Applications',
-        IMG_URL: imgList1,
-      },
-      {
         TITLE: 'Various Devices',
         IMG_URL: imgList2,
+      },
+      {
+        TITLE: 'All-Scenario Applications',
+        IMG_URL: imgList1,
       },
       {
         TITLE: 'Development Tool Chain',
@@ -340,9 +340,9 @@ export default {
     ],
   },
   USER_CASE: {
-    TITLE: 'User Case',
+    TITLE: 'Success Stories',
     VIEW_MORE: 'View More',
-    VIEW_MORE_LINK: 'https://new.openeuler.org/zh/showcase/',
+    VIEW_MORE_LINK: 'showcase/',
     CASE_LIST: [
       {
         TYPE: 'Финансы',

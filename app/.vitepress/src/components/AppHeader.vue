@@ -3,6 +3,7 @@ import { computed, onMounted, ref, onUnmounted, watch, nextTick } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
+import { getPop } from '@/api/api-search';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
@@ -14,7 +15,14 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
-import { getPop } from '@/api/api-search';
+// import IconClose from '~icons/app/x.svg';
+
+// const props = defineProps({
+//   isShowTip: {
+//     type: Boolean,
+//     default: false,
+//   },
+// });
 
 interface NavItem {
   NAME: string;
@@ -26,7 +34,7 @@ interface NavItem {
 }
 
 const router = useRouter();
-const { lang } = useData();
+const { lang, theme } = useData();
 const i18n = useI18n();
 const commonStore = useCommon();
 const documentElement = document.documentElement;
@@ -80,7 +88,7 @@ const goMobile = (item: NavItem) => {
 // 移动端二级导航事件
 const goMobileSubList = (item: NavItem) => {
   if (item.IS_OPEN_WINDOW) {
-    window.open(i18n.value.docsUrl + item.PATH);
+    window.open(theme.value.docsUrl + item.PATH);
     return;
   }
   if (item.IS_OPEN_MINISITE_WINDOW) {
@@ -180,13 +188,44 @@ const donShowSearchBox = () => {
 const searchInput = ref<string>('');
 // 搜索事件
 function search() {
-  router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
+  window.open(
+    `/${lang.value}/other/search/?search=${searchInput.value}`,
+    '_self'
+  );
+  // router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
+
+// 点击关闭cookies使用提示
+// const { isShowTip } = toRefs(props);
+// const emit2 = defineEmits(['click-close']);
+// function clickClose() {
+//   emit2('click-close');
+// }
 </script>
 
 <template>
   <header class="app-header">
+    <!-- 隐私政策 
+    <div v-if="isShowTip" class="cookie-privacy" :class="{ ru: lang === 'ru' }">
+      <template v-if="lang !== 'ru'">
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT
+        }}</a>
+      </template>
+      <template v-else>
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT
+        }}</a>
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT_OTHER }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT_OTHER
+        }}</a>
+      </template>
+      <OIcon class="icon" @click="clickClose"><IconClose /></OIcon>
+    </div>-->
     <div class="app-header-body">
       <!-- 移动端菜单图标 -->
       <div class="mobile-menu-icon" @click="mobileMenuPanel">
@@ -244,7 +283,7 @@ function search() {
           <AppTheme />
         </div>
       </div>
-      <!-- 移动端菜单 -->
+      <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"   -->
       <teleport v-if="toBody" to="body">
         <div
           class="mobile-menu"
@@ -327,6 +366,57 @@ function search() {
       padding: 0 16px;
       height: 48px;
       justify-content: space-between;
+      position: relative;
+    }
+  }
+  .cookie-privacy {
+    line-height: 60px;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    background-color: var(--e-color-bg1);
+    color: var(--e-color-text3);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.ru {
+      line-height: 30px;
+      display: inline-block;
+    }
+    @media screen and (max-width: 1000px) {
+      font-size: 12px;
+      line-height: 30px;
+      display: inline-block;
+      &.ru {
+        line-height: 10px;
+      }
+    }
+    a {
+      cursor: pointer;
+      text-decoration: solid;
+      white-space: pre;
+    }
+    .icon {
+      cursor: pointer;
+      vertical-align: middle;
+      margin-left: 16px;
+      width: 24px;
+      height: 24px;
+      background: var(--e-color-greyblack3);
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        font-size: 20px;
+        color: var(--el-color-white);
+      }
+      @media screen and (max-width: 1000px) {
+        width: 20px;
+        height: 20px;
+        margin-left: 12px;
+      }
     }
   }
 }
@@ -430,10 +520,11 @@ function search() {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     padding: var(--o-spacing-h3);
+
     @media (max-width: 1100px) {
+      background: rgba(255, 255, 255, 1);
+      backdrop-filter: blur(0px);
       margin-top: 8px;
-    }
-    @media (max-width: 1100px) {
       left: -16px;
       right: 0;
       width: 100vw;
@@ -470,6 +561,9 @@ function search() {
 .dark {
   .drawer {
     background: rgba($color: #2e2e2e, $alpha: 0.9);
+    @media screen and (max-width: 1439px) {
+      background: rgba($color: #2e2e2e, $alpha: 1);
+    }
   }
 }
 
@@ -505,6 +599,10 @@ function search() {
       opacity: 1;
       z-index: 9;
     }
+  }
+  &.cookie {
+    height: calc(100% - 108px);
+    top: 108px;
   }
   &-side {
     left: -100%;

@@ -10,7 +10,7 @@ import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
-import liveIllustration from '@/assets/illustrations/live.png';
+import illustration from '@/assets/illustrations/live.png';
 import cardBg_light from '@/assets/category/interaction/live/light-crad-bg.png';
 import cardBg_light_mo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';
 import cardBg_dark from '@/assets/category/interaction/live/dark-crad-bg.png';
@@ -73,9 +73,9 @@ function turnPage(option: string) {
 <template>
   <BannerLevel2
     :background-image="banner"
-    background-text="CONNECT"
+    background-text="INTERACTION"
     :title="i18n.live.LIVETITLE"
-    :illustration="liveIllustration"
+    :illustration="illustration"
   />
   <AppContent>
     <div class="live">
@@ -144,20 +144,22 @@ function turnPage(option: string) {
       </div>
       <div class="live-pagination">
         <div class="live-pagination-pc">
-          <OPagination
-            v-model:currentPage="currentPage"
-            v-model:page-size="pageSize4"
-            :page-sizes="[6, 12, 18, 24]"
-            :background="true"
-            layout="sizes, prev, pager, next, slot, jumper"
-            :total="total"
-            @current-change="changePage(currentPage, pageSize4)"
-            @size-change="changePage(currentPage, pageSize4)"
-          >
-            <span class="pagination-slot">{{
-              currentPage * pageSize4 + '/' + total
-            }}</span>
-          </OPagination>
+          <ClientOnly>
+            <OPagination
+              v-model:currentPage="currentPage"
+              v-model:page-size="pageSize4"
+              :page-sizes="[6, 12, 18, 24]"
+              :background="true"
+              layout="sizes, prev, pager, next, slot, jumper"
+              :total="total"
+              @current-change="changePage(currentPage, pageSize4)"
+              @size-change="changePage(currentPage, pageSize4)"
+            >
+              <span class="pagination-slot">{{
+                currentPage * pageSize4 + '/' + total
+              }}</span>
+            </OPagination>
+          </ClientOnly>
         </div>
         <AppPaginationMo
           :current-page="currentPage"
@@ -226,8 +228,8 @@ function turnPage(option: string) {
 
       &.dark {
         @media screen and (max-width: 767px) {
-          background: v-bind('liveStyleMo.dart') left/contain no-repeat,
-            v-bind('liveStyleMo.dartExtension') left no-repeat !important;
+          background: v-bind('liveStyleMo.dark') left/contain no-repeat,
+            v-bind('liveStyleMo.darkExtension') left no-repeat !important;
         }
       }
     }

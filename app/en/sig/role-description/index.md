@@ -1,5 +1,5 @@
 ---
-title: '角色说明'
+title: 'Characters'
 ---
 
 <script setup lang="ts">
@@ -7,7 +7,7 @@ import { computed } from 'vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner/banner-sig.png';
-import roleIllustration from '@/assets/illustrations/role.png';
+import illustration from '@/assets/illustrations/sig-role.png';
 const tableData = [
   {
     SigName: 'Contributor',
@@ -38,7 +38,7 @@ const isMobile = computed(() => {
     :background-image="banner"
     background-text="SIG"
     title="Role Description"
-    :illustration="roleIllustration"
+    :illustration="illustration"
   />
 </ClientOnly>
 

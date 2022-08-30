@@ -3,6 +3,7 @@ import { computed, onMounted, Ref, ref } from 'vue';
 import { useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import AppContent from '@/components/AppContent.vue';
@@ -14,11 +15,13 @@ import IconFilter from '~icons/app/icon-filter.svg';
 import IconX from '~icons/app/x.svg';
 
 import banner from '@/assets/banner/banner-download.png';
-import emptyImg from '@/assets/404.svg';
-import downloadIllustration from '@/assets/illustrations/download.png';
+import notFoundImg_light from '@/assets/illustrations/404.png';
+import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
+import illustration from '@/assets/illustrations/iso.png';
 
 const { lang } = useData();
 const i18n = useI18n();
+const commonStore = useCommon();
 const screenWidth = useWindowResize();
 //打开网页
 const handleDownloadUrl = (url: string) => {
@@ -170,7 +173,7 @@ onMounted(() => {
     :background-image="banner"
     background-text="DOWNLOAD"
     :title="i18n.download.OUTSIDE_TITLE"
-    :illustration="downloadIllustration"
+    :illustration="illustration"
   />
   <AppContent :mobile-top="16" class="download">
     <!-- PC筛选 -->
@@ -276,77 +279,79 @@ onMounted(() => {
         </div>
       </div>
 
-      <ODrawer
-        v-model="isDrawerOpen"
-        :title="i18n.download.SELECT"
-        direction="btt"
-        :show-close="true"
-        custom-class="filter-drawer"
-        size="75%"
-      >
-        <div class="filter-drawer-title">
-          {{ i18n.download.MANUFACTURER }}
-        </div>
-        <OTag
-          v-for="(item, index) in tagManufacturer"
-          :key="item"
-          class="download-filter-item"
-          checkable
-          :checked="index !== 0"
-          :type="
-            index === 0
-              ? manufacturerAll
+      <ClientOnly>
+        <ODrawer
+          v-model="isDrawerOpen"
+          :title="i18n.download.SELECT"
+          direction="btt"
+          :show-close="true"
+          custom-class="filter-drawer"
+          size="75%"
+        >
+          <div class="filter-drawer-title">
+            {{ i18n.download.MANUFACTURER }}
+          </div>
+          <OTag
+            v-for="(item, index) in tagManufacturer"
+            :key="item"
+            class="download-filter-item"
+            checkable
+            :checked="index !== 0"
+            :type="
+              index === 0
+                ? manufacturerAll
+                  ? 'primary'
+                  : 'text'
+                : activeManufacturer.indexOf(item) > -1
                 ? 'primary'
                 : 'text'
-              : activeManufacturer.indexOf(item) > -1
-              ? 'primary'
-              : 'text'
-          "
-          @click="handleManufacturerClick(item, index)"
-        >
-          {{ item }}
-        </OTag>
-        <div class="filter-drawer-title">
-          {{ i18n.download.PUBLISH_DATE }}
-        </div>
-        <OTag
-          v-for="(item, index) in tagPublish"
-          :key="item"
-          class="download-filter-item"
-          checkable
-          :checked="index !== 0"
-          :type="
-            index === 0
-              ? publishAll
+            "
+            @click="handleManufacturerClick(item, index)"
+          >
+            {{ item }}
+          </OTag>
+          <div class="filter-drawer-title">
+            {{ i18n.download.PUBLISH_DATE }}
+          </div>
+          <OTag
+            v-for="(item, index) in tagPublish"
+            :key="item"
+            class="download-filter-item"
+            checkable
+            :checked="index !== 0"
+            :type="
+              index === 0
+                ? publishAll
+                  ? 'primary'
+                  : 'text'
+                : activePublish.indexOf(item) > -1
                 ? 'primary'
                 : 'text'
-              : activePublish.indexOf(item) > -1
-              ? 'primary'
-              : 'text'
-          "
-          @click="handlePublishClick(item, index)"
-        >
-          {{ item }}
-        </OTag>
-        <div class="filter-drawer-title">LTS</div>
-        <OSwitch
-          v-model="activeLTS"
-          active-color="var(--e-color-brand1)"
-          inactive-color="var(--e-color-bg4)"
-          @change="handleLSTClick"
-        />
-        <div class="filter-drawer-button">
-          <!-- <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
+            "
+            @click="handlePublishClick(item, index)"
+          >
+            {{ item }}
+          </OTag>
+          <div class="filter-drawer-title">LTS</div>
+          <OSwitch
+            v-model="activeLTS"
+            active-color="var(--e-color-brand1)"
+            inactive-color="var(--e-color-bg4)"
+            @change="handleLSTClick"
+          />
+          <div class="filter-drawer-button">
+            <!-- <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
             i18n.download.BTNRESET
           }}</OButton> -->
-          <OButton
-            type="primary"
-            class="filter-drawer-button-item"
-            @click="handleToggleDrawer"
-            >{{ i18n.download.BTNSURE }}</OButton
-          >
-        </div>
-      </ODrawer>
+            <OButton
+              type="primary"
+              class="filter-drawer-button-item"
+              @click="handleToggleDrawer"
+              >{{ i18n.download.BTNSURE }}</OButton
+            >
+          </div>
+        </ODrawer>
+      </ClientOnly>
     </div>
     <!-- 表格 -->
     <div v-if="dataList.length" class="download-list">
@@ -436,28 +441,38 @@ onMounted(() => {
       </OCard>
     </div>
     <div v-else class="empty">
-      <img class="img" :src="emptyImg" alt="404" />
-      <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
+      <img
+        class="empty-img"
+        :src="
+          commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
+        "
+        alt="404"
+      />
+      <p class="empty-text">
+        {{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}
+      </p>
     </div>
     <!-- 页码 -->
     <div class="page-box">
-      <OPagination
-        v-if="dataList.length"
-        v-model:currentPage="currentPage"
-        v-model:page-size="pageSize"
-        class="pagination"
-        :page-sizes="[12, 18, 24, 36]"
-        :background="true"
-        layout="sizes, prev, pager, next, slot, jumper"
-        :total="total"
-      >
-        <span class="pagination-slot"
-          >{{
-            pageSize * currentPage < total ? pageSize * currentPage : total
-          }}
-          / {{ total }}</span
+      <ClientOnly>
+        <OPagination
+          v-if="dataList.length"
+          v-model:currentPage="currentPage"
+          v-model:page-size="pageSize"
+          class="pagination"
+          :page-sizes="[12, 18, 24, 36]"
+          :background="true"
+          layout="sizes, prev, pager, next, slot, jumper"
+          :total="total"
         >
-      </OPagination>
+          <span class="pagination-slot"
+            >{{
+              pageSize * currentPage < total ? pageSize * currentPage : total
+            }}
+            / {{ total }}</span
+          >
+        </OPagination>
+      </ClientOnly>
       <div v-if="dataList.length" class="page-box-mobile">
         <div>
           {{ i18n.download.PAGINATION[0]
@@ -479,8 +494,8 @@ onMounted(() => {
         <OButton
           v-if="currentPage * pageSize < total"
           class="page-box-button"
+          size="mini"
           @click="handleLoadMore"
-          size="small"
         >
           {{ i18n.download.PAGINATION[3] }}
         </OButton>
@@ -562,7 +577,6 @@ onMounted(() => {
 
   &-button {
     margin-top: var(--o-spacing-h5);
-    padding: var(--o-spacing-h10) var(--o-spacing-h4);
   }
 }
 .download {
@@ -691,18 +705,29 @@ onMounted(() => {
   }
   .empty {
     display: flex;
+    padding-top: var(--o-spacing-h1);
     justify-content: center;
     align-items: center;
+    height: 100%;
     flex-direction: column;
     font-size: var(--o-font-size-h6);
     color: var(--e-color-text1);
-    height: 100%;
-    @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-text);
+    .empty-img {
+      max-height: 400px;
     }
-    img {
-      max-width: 500px;
-      object-fit: cover;
+    .empty-text {
+      margin-top: var(--o-spacing-h5);
+    }
+    @media screen and (max-width: 768px) {
+      padding-top: var(--o-spacing-h2);
+      font-size: var(--o-font-size-text);
+      .empty-img {
+        max-height: 232px;
+      }
+      .empty-text {
+        margin-top: var(--o-spacing-h6);
+        font-size: var(--o-font-size-tip);
+      }
     }
   }
   &-name {
@@ -751,7 +776,7 @@ onMounted(() => {
 .url-list-zh {
   margin-top: var(--o-spacing-h4);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
   @media (max-width: 768px) {
     grid-gap: var(--o-spacing-h8);
@@ -850,6 +875,11 @@ onMounted(() => {
   }
   .url-list-ru {
     grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 415px) {
+    .url-list-zh {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 </style>

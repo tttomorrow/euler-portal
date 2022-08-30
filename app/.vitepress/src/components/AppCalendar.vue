@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, nextTick, onMounted, reactive, PropType, watch } from 'vue';
 
-import { isValidKey, getNowFormatDate } from '@/shared/utils';
+import { isValidKey, getNowFormatDate, isBrowser } from '@/shared/utils';
 import { TableData, DayData } from '@/shared/@types/type-calendar';
 import type { TabsPaneContext } from 'element-plus';
 import { useCommon } from '@/stores/common';
@@ -11,8 +11,8 @@ import IconRight from '~icons/app/icon-right.svg';
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import IconDown from '~icons/app/icon-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
-import notFoundImg_light from '@/assets/common/not-found.png';
-import notFoundImg_dark from '@/assets/404.svg';
+import notFoundImg_light from '@/assets/illustrations/404.png';
+import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -228,15 +228,17 @@ onMounted(() => {
 const watchData = watch(
   () => props.tableData.length,
   () => {
-    nextTick(() => {
-      const activeBoxs = document.querySelector(
-        '.is-today .out-box'
-      ) as HTMLElement;
-      if (activeBoxs) {
-        activeBoxs.click();
-        watchData();
-      }
-    });
+    if (isBrowser()) {
+      nextTick(() => {
+        const activeBoxs = document.querySelector(
+          '.is-today .out-box'
+        ) as HTMLElement;
+        if (activeBoxs) {
+          activeBoxs.click();
+          watchData();
+        }
+      });
+    }
   },
   { immediate: true }
 );
@@ -468,13 +470,11 @@ const watchData = watch(
         </div>
         <div v-else class="empty">
           <img
-            :src="
-              commonStore.theme === 'light'
-                ? notFoundImg_light
-                : notFoundImg_dark
-            "
+            v-if="commonStore.theme === 'light'"
+            :src="notFoundImg_light"
             alt=""
           />
+          <img v-else :src="notFoundImg_dark" alt="" />
           <p>{{ i18n.EMPTY_TEXT }}</p>
         </div>
       </div>
@@ -590,7 +590,6 @@ const watchData = watch(
       :deep(.el-collapse-item) {
         background-color: var(--e-color-bg2);
         padding: 0 var(--o-spacing-h8);
-        width: 345px;
         .el-icon {
           font-size: var(--o-font-size-text);
           font-weight: 700;
@@ -633,6 +632,7 @@ const watchData = watch(
         width: 100%;
         .o-icon {
           color: inherit;
+          color: var(--e-color-text1);
           font-size: var(--o-font-size-h8);
         }
         .month-date {
@@ -658,6 +658,7 @@ const watchData = watch(
       max-width: 400px;
     }
     @media screen and (max-width: 768px) {
+      max-width: 100%;
       display: none;
     }
 
@@ -705,6 +706,9 @@ const watchData = watch(
           &:hover {
             background-color: var(--e-color-bg1);
           }
+          @media screen and (max-width: 768px) {
+            background-color: inherit !important;
+          }
           .out-box {
             display: flex;
             justify-content: center;
@@ -749,12 +753,17 @@ const watchData = watch(
         }
         @media screen and (max-width: 768px) {
           .el-calendar-day {
-            height: 47px;
+            height: 100%;
             .day-box {
               .date-calender {
                 font-size: var(--o-font-size-tip);
               }
             }
+          }
+          .el-calendar-day::after {
+            display: block;
+            padding-top: 100%;
+            content: '';
           }
         }
       }
@@ -765,6 +774,7 @@ const watchData = watch(
     @media screen and (max-width: 768px) {
       border: none;
       display: block;
+      width: 100%;
       thead {
         th {
           padding: var(--o-spacing-h8) 0;
@@ -887,7 +897,7 @@ const watchData = watch(
         height: 100%;
         background-color: var(--e-color-bg3);
         border: 1px solid var(--e-color-bg3);
-        border-left: 2px solid var(--e-color-brand2);
+        border-left: 2px solid var(--e-color-brand1);
         .meet-left {
           display: flex;
           flex-direction: column;
@@ -1093,7 +1103,7 @@ const watchData = watch(
       color: var(--e-color-text1);
       font-size: var(--o-font-size-h8);
       img {
-        width: 346px;
+        height: 216px;
       }
       p {
         margin-top: var(--o-spacing-h5);
@@ -1101,7 +1111,6 @@ const watchData = watch(
       @media screen and (max-width: 768px) {
         img {
           margin-top: var(--o-spacing-h5);
-          width: 100%;
         }
         p {
           padding-bottom: var(--o-spacing-h5);
@@ -1129,7 +1138,7 @@ const watchData = watch(
   }
   .main-body {
     margin: 0 auto;
-    width: 345px;
+    // width: 345px;
     align-items: center;
     flex-direction: column;
     background-color: var(--e-color-bg2);

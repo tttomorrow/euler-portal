@@ -236,35 +236,37 @@ const goHome = () => {
     <div class="mooc-detail">
       <div class="detail-mobile">
         <OIcon class="catalog" @click="toggleMenu(true)"><IconCatalog /></OIcon>
-        <ODrawer
-          v-model="isShowMenu"
-          direction="ltr"
-          size="268px"
-          :show-close="false"
-        >
-          <div class="nav-tree">
-            <div class="nav-top">
-              <img
-                class="logo"
-                :src="logo"
-                alt="openEuler logo"
-                @click="goHome"
-              />
-              <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
+        <ClientOnly>
+          <ODrawer
+            v-model="isShowMenu"
+            direction="ltr"
+            size="268px"
+            :show-close="false"
+          >
+            <div class="nav-tree">
+              <div class="nav-top">
+                <img
+                  class="logo"
+                  :src="logo"
+                  alt="openEuler logo"
+                  @click="goHome"
+                />
+                <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
+              </div>
+              <OTree
+                ref="tree"
+                node-key="key"
+                :data="menuData"
+                :props="defaultProps"
+                accordion
+                :highlight-current="true"
+                :icon="IconChevronDown"
+                @node-click="handleNodeClick"
+              >
+              </OTree>
             </div>
-            <OTree
-              ref="tree"
-              node-key="key"
-              :data="menuData"
-              :props="defaultProps"
-              accordion
-              :highlight-current="true"
-              :icon="IconChevronDown"
-              @node-click="handleNodeClick"
-            >
-            </OTree>
-          </div>
-        </ODrawer>
+          </ODrawer>
+        </ClientOnly>
         <BreadCrumbs
           :bread1="moocData.MOOC.MOOC"
           :bread2="moocData.MOOC.MOOC_COURSE[0].TITLE"
@@ -768,6 +770,7 @@ const goHome = () => {
           font-weight: 400;
           color: var(--e-color-brand1);
           line-height: 20px;
+          cursor: pointer;
         }
         .prev {
           span:nth-of-type(2) {

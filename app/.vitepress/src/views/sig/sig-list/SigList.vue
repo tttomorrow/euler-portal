@@ -255,61 +255,67 @@ onMounted(() => {
         <span class="select-item-name">
           {{ i18n.sig.SIG_LIST.SIG }}
         </span>
-        <OSelect
-          v-model="slectedInfo.sigSelected"
-          filterable
-          clearable
-          :placeholder="i18n.sig.SIG_ALL"
-          @change="filterRepositoryList()"
-        >
-          <OOption
-            v-for="item in sigSelectList"
-            :key="item"
-            :label="item"
-            :value="item"
-          />
-        </OSelect>
+        <ClientOnly>
+          <OSelect
+            v-model="slectedInfo.sigSelected"
+            filterable
+            clearable
+            :placeholder="i18n.sig.SIG_ALL"
+            @change="filterRepositoryList()"
+          >
+            <OOption
+              v-for="item in sigSelectList"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </ClientOnly>
       </div>
       <div class="sig-select-item">
         <span class="select-item-name">
           {{ i18n.sig.SIG_LIST.REPOSITORY }}
         </span>
-        <OSelect
-          v-model="slectedInfo.repositiorySelected"
-          filterable
-          clearable
-          :placeholder="i18n.sig.SIG_ALL"
-          :filter-method="debounceEvent"
-          :listener-scorll="true"
-          @scorll-bottom="getNextPage()"
-          @change="filterRepositoryList()"
-        >
-          <OOption
-            v-for="item in repoRenderList"
-            :key="item"
-            :label="item"
-            :value="item"
-          />
-        </OSelect>
+        <ClientOnly>
+          <OSelect
+            v-model="slectedInfo.repositiorySelected"
+            filterable
+            clearable
+            :placeholder="i18n.sig.SIG_ALL"
+            :filter-method="debounceEvent"
+            :listener-scorll="true"
+            @scorll-bottom="getNextPage()"
+            @change="filterRepositoryList()"
+          >
+            <OOption
+              v-for="item in repoRenderList"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </ClientOnly>
       </div>
       <div class="sig-select-item">
         <span class="select-item-name">
           {{ i18n.sig.SIG_LIST.MAINTAINER }}
         </span>
-        <OSelect
-          v-model="slectedInfo.maintainerSelected"
-          filterable
-          clearable
-          :placeholder="i18n.sig.SIG_ALL"
-          @change="filterRepositoryList()"
-        >
-          <OOption
-            v-for="item in maintainerList"
-            :key="item"
-            :label="item"
-            :value="item"
-          />
-        </OSelect>
+        <ClientOnly>
+          <OSelect
+            v-model="slectedInfo.maintainerSelected"
+            filterable
+            clearable
+            :placeholder="i18n.sig.SIG_ALL"
+            @change="filterRepositoryList()"
+          >
+            <OOption
+              v-for="item in maintainerList"
+              :key="item"
+              :label="item"
+              :value="item"
+            />
+          </OSelect>
+        </ClientOnly>
       </div>
       <span>{{ i18n.sig.SIG_LIST.TIPS }}</span>
     </div>
@@ -397,23 +403,25 @@ onMounted(() => {
       </el-table-column>
     </OTable>
     <div v-show="!isMobile" class="sig-pagination">
-      <OPagination
-        v-model:currentPage="paginationData.currentPage"
-        v-model:page-size="paginationData.pageSize"
-        :page-sizes="[12, 24, 36, 48]"
-        :total="paginationData.total"
-        :background="true"
-        :hide-on-single-page="paginationShow"
-        layout="sizes, prev, pager, next, slot, jumper"
-        @current-change="currentChange"
-        @size-change="sizeChange"
-      >
-        <span
-          >{{ paginationData.currentPage }}/{{
-            Math.ceil(paginationData.total / paginationData.pageSize)
-          }}</span
+      <ClientOnly>
+        <OPagination
+          v-model:currentPage="paginationData.currentPage"
+          v-model:page-size="paginationData.pageSize"
+          :page-sizes="[12, 24, 36, 48]"
+          :total="paginationData.total"
+          :background="true"
+          :hide-on-single-page="paginationShow"
+          layout="sizes, prev, pager, next, slot, jumper"
+          @current-change="currentChange"
+          @size-change="sizeChange"
         >
-      </OPagination>
+          <span
+            >{{ paginationData.currentPage }}/{{
+              Math.ceil(paginationData.total / paginationData.pageSize)
+            }}</span
+          >
+        </OPagination>
+      </ClientOnly>
     </div>
     <div v-show="isMobile" class="sig-table-mo">
       <div class="sig-table-card">
@@ -521,10 +529,7 @@ onMounted(() => {
 .sig-table {
   margin-top: var(--o-spacing-h2);
   @media (max-width: 768px) {
-    margin-top: var(--o-spacing-h3);
-  }
-  a {
-    line-height: var(--o-line-height-h9);
+    margin-top: var(--o-spacing-h4);
   }
   .sig-name {
     display: flex;
@@ -554,6 +559,7 @@ onMounted(() => {
       span {
         white-space: nowrap;
         font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
         color: var(--e-color-text1);
       }
     }
@@ -566,6 +572,7 @@ onMounted(() => {
   align-items: center;
   span {
     font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
     color: var(--e-color-text1);
   }
   &-item {
@@ -578,6 +585,7 @@ onMounted(() => {
       margin-right: var(--o-spacing-h5);
       @media (max-width: 1000px) {
         font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
         width: 100px;
       }
     }
@@ -614,18 +622,20 @@ onMounted(() => {
   .mo-item {
     padding: var(--o-spacing-h5);
     &-text {
+      display: flex;
+      align-items: flex-start;
       margin-bottom: var(--o-spacing-h5);
       .mo-item-title {
         font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
         color: var(--e-color-text1);
         margin-right: var(--o-spacing-h7);
       }
       .sig-board-icon {
         height: var(--o-font-size-text);
         width: var(--o-font-size-text);
-        margin-top: var(--o-spacing-h10);
+        margin-top: 2px;
         position: relative;
-        top: 4px;
         right: 10px;
       }
       .mo-item-name,
@@ -633,6 +643,7 @@ onMounted(() => {
       .mo-item-repo,
       .mo-item-maintainer {
         font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
         color: var(--e-color-text1);
         opacity: 0.5;
       }
@@ -650,7 +661,7 @@ onMounted(() => {
     }
   }
   .pagination-h5 {
-    margin-top: var(--o-spacing-h2);
+    margin-top: var(--o-spacing-h5);
   }
   .mo-item-odd {
     background-color: var(--e-color-bg4);

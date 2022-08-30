@@ -193,35 +193,43 @@ onMounted(() => {
             <span>({{ item.doc_count }})</span>
           </li>
         </ul>
-        <ul v-show="!isShow" class="content-list">
-          <li v-for="item in searchResultList" :key="item.id">
-            <!-- eslint-disable-next-line -->
-            <h3 v-html="item.title" @click="goLink(item.type, item.path)"></h3>
-            <!-- eslint-disable-next-line -->
-            <p class="detail" v-html="item.textContent"></p>
-            <p class="from">
-              <span>{{ i18n.search.form }}</span>
-              <span>{{ i18n.search.tagList[item.type] }}</span>
-            </p>
-          </li>
-        </ul>
+        <div class="content-box">
+          <ul v-show="!isShow" class="content-list">
+            <li v-for="item in searchResultList" :key="item.id">
+              <!-- eslint-disable-next-line -->
+              <h3
+                @click="goLink(item.type, item.path)"
+                v-html="item.title"
+              ></h3>
+              <!-- eslint-disable-next-line -->
+              <p class="detail" v-html="item.textContent"></p>
+              <p class="from">
+                <span>{{ i18n.search.form }}</span>
+                <span>{{ i18n.search.tagList[item.type] }}</span>
+              </p>
+            </li>
+          </ul>
+          <NotFound v-if="isShow" />
+        </div>
         <div v-if="totalPage > 1 && pageShow" class="page-box">
-          <OPagination
-            v-if="!isMobile"
-            v-model:currentPage="currentPage"
-            v-model:page-size="pageSize"
-            class="pagination-pc"
-            :hide-on-single-page="true"
-            :page-sizes="[pageSize]"
-            :background="true"
-            layout="sizes, prev, pager, next, slot, jumper"
-            :total="total"
-            @current-change="searchDataAll"
-          >
-            <span class="pagination-slot"
-              >{{ currentPage }}/{{ totalPage }}</span
+          <ClientOnly>
+            <OPagination
+              v-if="!isMobile"
+              v-model:currentPage="currentPage"
+              v-model:page-size="pageSize"
+              class="pagination-pc"
+              :hide-on-single-page="true"
+              :page-sizes="[pageSize]"
+              :background="true"
+              layout="sizes, prev, pager, next, slot, jumper"
+              :total="total"
+              @current-change="searchDataAll"
             >
-          </OPagination>
+              <span class="pagination-slot"
+                >{{ currentPage }}/{{ totalPage }}</span
+              >
+            </OPagination>
+          </ClientOnly>
           <AppPaginationMo
             :current-page="currentPage"
             :total-page="totalPage"
@@ -229,7 +237,6 @@ onMounted(() => {
             @jump-page="jumpPage"
           />
         </div>
-        <NotFound v-if="isShow" />
       </div>
     </div>
     <div class="search-right">
@@ -277,7 +284,7 @@ onMounted(() => {
       @media (max-width: 768px) {
         height: 28px;
         font-size: 14px;
-        padding: 0 16px;
+        padding: 0 16px !important;
 
         :deep(.el-input__inner) {
           font-size: 14px;
@@ -285,9 +292,6 @@ onMounted(() => {
         }
         :deep(.el-input__prefix-inner) {
           font-size: 16px;
-        }
-        :deep(.el-input__wrapper) {
-          background-color: var(--e-color-bg4);
         }
       }
     }
@@ -297,7 +301,7 @@ onMounted(() => {
     .search-content {
       width: 100%;
       margin-top: var(--o-spacing-h2);
-      box-shadow: var(--e-shadow-l1);
+
       @media (max-width: 768px) {
         margin-top: var(--o-spacing-h5);
       }
@@ -345,59 +349,85 @@ onMounted(() => {
           }
         }
       }
-      .content-list {
-        padding: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
-        background-color: var(--e-color-bg2);
+      .content-box {
         min-height: 1948px;
+        box-shadow: var(--e-shadow-l1);
+        background-color: var(--e-color-bg2);
         @media (max-width: 768px) {
-          padding: 0 var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h5);
-          margin: var(--o-spacing-h5) var(--o-spacing-h5) 0 var(--o-spacing-h5);
+          width: 100vw;
+          padding: var(--o-spacing-h5) var(--o-spacing-h5) 0 var(--o-spacing-h5);
           min-height: 0;
+          background-color: var(--e-color-bg1);
+          box-shadow: none;
         }
-        li {
-          padding-top: var(--o-spacing-h2);
+        .content-list {
+          padding: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
           @media (max-width: 768px) {
-            padding-top: var(--o-spacing-h5);
+            padding: 0;
+            background-color: var(--e-color-bg2);
           }
-          h3 {
-            font-size: var(--o-font-size-h5);
-            color: var(--e-color-text1);
-            line-height: var(--o-line-height-h5);
-            font-weight: 500;
-            cursor: pointer;
-            :deep(span) {
-              color: var(--e-color-brand1);
-            }
+          li {
+            padding-top: var(--o-spacing-h2);
             @media (max-width: 768px) {
+              padding-top: var(--o-spacing-h5);
+              margin: 0 var(--o-spacing-h5);
+              &::after {
+                display: block;
+                content: '';
+                width: 100%;
+                height: 1px;
+                background-color: var(--e-color-division1);
+                margin-top: 16px;
+              }
+              &:nth-last-of-type(1)::after {
+                background-color: transparent;
+              }
+            }
+            h3 {
+              font-size: var(--o-font-size-h5);
+              color: var(--e-color-text1);
+              line-height: var(--o-line-height-h5);
+              font-weight: 500;
+              cursor: pointer;
+              :deep(span) {
+                color: var(--e-color-brand1);
+              }
+              @media (max-width: 768px) {
+                font-size: var(--o-font-size-text);
+                line-height: var(--o-line-height-text);
+              }
+            }
+            .detail {
+              margin-top: 17px;
               font-size: var(--o-font-size-text);
               line-height: var(--o-line-height-text);
+              color: var(--e-color-text1);
+              :deep(span) {
+                color: var(--e-color-brand1);
+              }
+              @media (max-width: 768px) {
+                margin-top: 4px;
+                font-size: var(--o-font-size-tip);
+                line-height: var(--o-line-height-tip);
+                color: var(--e-color-text4);
+              }
             }
-          }
-          .detail {
-            margin-top: 17px;
-            font-size: var(--o-font-size-text);
-            line-height: var(--o-line-height-text);
-            color: var(--e-color-text1);
-            :deep(span) {
-              color: var(--e-color-brand1);
-            }
-            @media (max-width: 768px) {
-              font-size: var(--o-font-size-tip);
-              line-height: var(--o-line-height-tip);
-            }
-          }
-          .from {
-            margin-top: 15px;
-            font-size: var(--o-font-size-text);
-            line-height: var(--o-line-height-text);
-            color: var(--e-color-text1);
-            @media (max-width: 768px) {
-              font-size: var(--o-font-size-tip);
-              line-height: var(--o-line-height-tip);
+            .from {
+              margin-top: 15px;
+              font-size: var(--o-font-size-text);
+              line-height: var(--o-line-height-text);
+              color: var(--e-color-text1);
+              @media (max-width: 768px) {
+                margin-top: 8px;
+                font-size: var(--o-font-size-tip);
+                line-height: var(--o-line-height-tip);
+                color: var(--e-color-text4);
+              }
             }
           }
         }
       }
+
       .page-box {
         margin-top: var(--o-spacing-h4);
         .pagination-pc {
@@ -438,7 +468,7 @@ onMounted(() => {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
           margin-top: var(--o-spacing-h8);
-          color: var(--e-color-text1);
+          color: var(--e-color-text4);
         }
       }
     }

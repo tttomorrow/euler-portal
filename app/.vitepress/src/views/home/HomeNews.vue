@@ -130,13 +130,13 @@ onMounted(async () => {
                   <a :href="item.path" :title="item.title">
                     {{ item.title }}
                   </a>
-                  <p v-if="typeof item.author === 'string'">
-                    {{ item.author }}
-                  </p>
-                  <p v-else>
-                    <span v-for="author in item.author" :key="author"
-                      >{{ author }}、</span
-                    >
+                  <p>
+                    <span
+                      v-for="(authorName, index2) in item.author"
+                      :key="authorName"
+                      >{{ authorName }}
+                      <span v-show="item.author.length !== index2 + 1">、</span>
+                    </span>
                   </p>
                 </div>
                 <div class="room-bottom">
@@ -147,7 +147,14 @@ onMounted(async () => {
               </div>
             </div>
             <div class="room-item-mo">
-              <span class="author">{{ item.author }}</span>
+              <p class="author">
+                <span
+                  v-for="(authorName, index2) in item.author"
+                  :key="authorName"
+                  >{{ authorName }}
+                  <span v-show="item.author.length !== index2 + 1">、</span>
+                </span>
+              </p>
               <a class="word-hover" :title="item.summary" :href="item.path">
                 {{ item.summary }}
               </a>
@@ -188,8 +195,13 @@ onMounted(async () => {
                   <a :href="item.path" :title="item.title">
                     {{ item.title }}
                   </a>
-                  <p v-if="typeof item.author === 'string'">
-                    {{ item.author }}
+                  <p>
+                    <span
+                      v-for="(authorName, index2) in item.author"
+                      :key="authorName"
+                      >{{ authorName }}
+                      <span v-show="item.author.length !== index2 + 1">、</span>
+                    </span>
                   </p>
                 </div>
                 <div class="room-bottom">
@@ -200,7 +212,14 @@ onMounted(async () => {
               </div>
             </div>
             <div class="room-item-mo">
-              <span class="author">{{ item.author }}</span>
+              <p class="author">
+                <span
+                  v-for="(authorName, index2) in item.author"
+                  :key="authorName"
+                  >{{ authorName }}
+                  <span v-show="item.author.length !== index2 + 1">、</span>
+                </span>
+              </p>
               <a class="word-hover" :title="item.summary" :href="item.path">
                 {{ item.summary }}
               </a>
@@ -226,6 +245,7 @@ onMounted(async () => {
 </template>
 <style lang="scss" scoped>
 .word-hover {
+  display: block;
   cursor: pointer;
   color: var(--e-color-text1);
   &:hover {
@@ -372,9 +392,6 @@ onMounted(async () => {
       }
     }
     @media screen and (max-width: 1080px) {
-      .room-item {
-        padding-bottom: var(--o-spacing-h5);
-      }
       .room-box {
         margin: 0;
         grid-template-columns: repeat(1, minmax(300px, 1fr));
@@ -383,6 +400,7 @@ onMounted(async () => {
     }
     @media screen and (max-width: 768px) {
       padding: var(--o-spacing-h6);
+      padding-bottom: var(--o-spacing-h5);
       .room-box {
         margin: 0;
         grid-template-columns: repeat(1, minmax(300px, 1fr));
@@ -435,6 +453,7 @@ onMounted(async () => {
               display: -webkit-box;
               -webkit-box-orient: vertical;
               -webkit-line-clamp: 2;
+              line-height: var(--o-line-height-tip);
               margin-bottom: var(--o-spacing-h5);
               color: inherit;
               text-decoration: none;

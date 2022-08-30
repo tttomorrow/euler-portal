@@ -26,6 +26,7 @@ const emit = defineEmits(['turn-page', 'jump-page']);
 // 将翻页时间传递给父组件
 const handleCurrentChange = (option: string) => {
   emit('turn-page', option);
+  document.documentElement.scrollTop = 0;
 };
 // 写在父组件内的上下页翻页事件参考
 // function turnPage(option: string) {
