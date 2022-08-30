@@ -1273,7 +1273,6 @@ onMounted(() => {
 }
 .o-search {
   height: 48px;
-  // margin-top: 64px;
 }
 
 .blog-tag {

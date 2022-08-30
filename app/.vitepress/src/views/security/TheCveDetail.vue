@@ -220,14 +220,11 @@ onMounted(() => {
   }
 }
 .breadcrumb {
-  // margin-top: var(--o-spacing-h2);
   color: var(--e-color-text1);
   background: var(--e-color-bg1);
   display: flex;
   @media screen and (max-width: 768px) {
     margin-bottom: var(--o-spacing-h5);
-    margin-top: var(--o-spacing-h5);
-    // padding: 0 var(--o-spacing-h5);
   }
   .last-page {
     font-size: var(--o-font-size-tip);
@@ -254,7 +251,6 @@ onMounted(() => {
   background: var(--e-color-bg1);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
-    // margin: 0 var(--o-spacing-h5);
     margin-bottom: var(--o-spacing-h5);
     background: var(--e-color-bg2);
     box-shadow: var(--e-shadow-l1);
