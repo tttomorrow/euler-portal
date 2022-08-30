@@ -156,6 +156,7 @@ const searchValue = computed(() => i18n.value.common.SEARCH);
 // 显示/移除搜索框
 const isShowBox = ref(false);
 const showSearchBox = () => {
+  commonStore.moocMenuShow = false;
   isShowBox.value = true;
 };
 
@@ -183,6 +184,7 @@ const donShowSearchBox = () => {
   isShowDrawer.value = false;
   searchInput.value = '';
   popList.value = [];
+  commonStore.moocMenuShow = true;
 };
 // 搜索内容
 const searchInput = ref<string>('');
