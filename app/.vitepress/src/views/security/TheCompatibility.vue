@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted, nextTick, watch, computed } from 'vue';
+import { ref, reactive, onMounted, nextTick, computed } from 'vue';
 import { useI18n } from '@/i18n';
 import { useData, useRouter } from 'vitepress';
 
@@ -33,9 +33,8 @@ import {
   getCpu,
 } from '@/api/api-security';
 
-const windowWidth = ref(useWindowResize());
-
-const screenWidth = ref(769);
+const screenWidth = useWindowResize();
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
 const i18n = useI18n();
 const router = useRouter();
 const { lang } = useData();
@@ -53,12 +52,14 @@ const all = computed(() => {
 const searchContent = ref('');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
+const activeIndex2 = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const architectureSelect = ref<string[]>([`${all.value}`]);
 const osOptions = ref<string[]>([`${all.value}`]);
+const cpuList = ref<string[]>([`${all.value}`]);
 const activeName = ref('1');
-const testOrganizationsLists = ref<string[]>(['全部']);
+const testOrganizationsLists = ref<string[]>([`${all.value}`]);
 const lastActiveName = ref('1');
 const currentPage = ref(1);
 const totalPage = ref(0);
@@ -244,6 +245,12 @@ const optionTagClick = (i: number, item: string) => {
   initData(queryData);
 };
 
+function cpuTagClick(index: number, item: string) {
+  activeIndex2.value = index;
+  queryData.cpu = item === '全部' ? '' : item;
+  initData(queryData);
+}
+
 const handleSizeChange = (val: number) => {
   queryData.pages.size = val;
   initData(queryData);
@@ -316,10 +323,6 @@ const go = (id: number) => {
   router.go(`${router.route.path}software-info/?id=${id}`);
 };
 
-watch(windowWidth, () => {
-  screenWidth.value = windowWidth.value;
-});
-
 onMounted(() => {
   getCompatibilityData(queryData);
   try {
@@ -372,6 +375,7 @@ onMounted(() => {
   try {
     getCpu({ lang: 'zh' }).then((res: any) => {
       res.result.forEach((item: string) => {
+        cpuList.value.push(item);
         filterData.value.forEach((it) => {
           if (it.title === 'CPU') {
             it.select.push(item);
@@ -427,6 +431,17 @@ onMounted(() => {
                 checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
                 @click="optionTagClick(index, item)"
+              >
+                {{ item }}
+              </OTag>
+            </TagFilter>
+            <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
+              <OTag
+                v-for="(item, index) in cpuList"
+                :key="'tag' + index"
+                checkable
+                :type="activeIndex2 === index ? 'primary' : 'text'"
+                @click="cpuTagClick(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -813,7 +828,7 @@ onMounted(() => {
       <div class="bottom-wrapper">
         <ClientOnly>
           <OPagination
-            v-if="screenWidth > 768"
+            v-if="total && !isMobile"
             v-model:page-size="queryData.pages.size"
             v-model:currentPage="queryData.pages.page"
             class="pagination"
@@ -821,11 +836,14 @@ onMounted(() => {
             :layout="layout"
             :total="total"
             :background="true"
-            :hide-on-single-page="true"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
           >
-            <span class="pagination-slot"> {{ currentPage }}/{{ total }}</span>
+            <span class="pagination-slot">
+              {{ currentPage }}/{{
+                Math.ceil(total / queryData.pages.size)
+              }}</span
+            >
           </OPagination>
         </ClientOnly>
         <p v-if="activeName === '1' || activeName === '2'" class="about">
@@ -1271,38 +1289,6 @@ onMounted(() => {
   }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h8) var(--o-spacing-h2);
-  }
-  // .category {
-  //   display: inline-block;
-  //   width: 56px;
-  //   font-size: var(--o-font-size-text);
-  //   font-weight: 400;
-  //   color: var(--e-color-text1);
-  //   line-height: var(--o-line-height-text);
-  //   margin-right: var(--o-spacing-h4);
-  // }
-  // .category-item {
-  //   display: inline-block;
-  //   height: 28px;
-  //   border: none;
-  //   font-size: var(--o-font-size-text);
-  //   font-weight: 400;
-  //   color: var(--e-color-text4);
-  //   line-height: var(--o-line-height-text);
-  //   cursor: pointer;
-  // }
-  // .active {
-  //   display: inline-block;
-  //   border: 1px solid #002fa7;
-  //   color: #002fa7;
-  //   padding: 0px 12px;
-  // }
-  .card-header {
-    padding-bottom: var(--o-spacing-h8);
-    border-bottom: 1px solid var(--e-color-division1);
-  }
-  .card-body {
-    padding-top: var(--o-spacing-h8);
   }
 }
 .friendly-link {
