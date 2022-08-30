@@ -142,7 +142,7 @@ function getActivitiesData() {
         : initMap(res.longitude, res.latitude);
       res[
         'posterImg'
-      ] = `https://community-meeting-minutes.obs.cn-north-4.myhuaweicloud.com:443/imgs/event-detail/${res.poster}.png`;
+      ] = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${res.poster}.png`;
       detailObj.value = res;
       const arr: any = [];
       if (res.start && res.end)
@@ -614,6 +614,7 @@ watch(windowWidth, () => {
       background-size: cover;
       background-repeat: no-repeat;
       h2 {
+        padding: 0 var(--o-spacing-h2);
         color: #ffffff;
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-height-h5);

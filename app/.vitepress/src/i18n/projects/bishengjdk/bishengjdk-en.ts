@@ -76,6 +76,13 @@ export default {
       ],
       SHOW: false,
     },
+    {
+      IMG: '/img/projects/bisheng/TCK-affidavit.png',
+      DARK_IMG: '/img/projects/bisheng/TCK-affidavit.png',
+      TITLE: 'TCK Affidavit of BiSheng JDK 8',
+      LINK_LIST: ['/other/projects/bishengjdk/tck-affidavit/'],
+      SHOW: false,
+    },
   ],
   BISHENG_MORE: 'More information:',
   BISHENG_INFO: [

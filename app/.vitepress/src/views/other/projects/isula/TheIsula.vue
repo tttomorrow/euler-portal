@@ -20,7 +20,7 @@ const i18n = useI18n();
     :subtitle="i18n.isula.ISULA_BANNER_TEXT[1]"
     :illustration="illustration"
     :background-image="banner"
-    background-text="SEARCH"
+    background-text="DISCOVERY"
   />
   <AppContent :pc-top="64">
     <MiniCards :cards-link="i18n.isula.ISULA_LINK" />

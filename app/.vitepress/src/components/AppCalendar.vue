@@ -370,6 +370,7 @@ const watchData = watch(
                       >
                         {{ i18n.SIG_GROUP }} {{ item.group_name }}
                       </div>
+                      <div v-else class="group-name more-detail">openEuler</div>
                     </div>
                     <div class="item-right">
                       <OButton
@@ -967,6 +968,7 @@ const watchData = watch(
           display: flex;
           font-size: var(--o-font-size-text);
           .o-button {
+            flex-shrink: 0;
             padding: 0;
             .o-icon {
               color: var(--e-color-brand1);

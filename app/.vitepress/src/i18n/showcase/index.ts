@@ -17,7 +17,7 @@ export default {
     type: 'Category',
     find1: 'Found',
     find2: 'Cases',
-    button: 'Reading',
+    button: 'Read',
     prev: 'Prev',
     next: 'Next',
     tags: ['All', 'Finance', 'Carrier', 'Energy', 'Logistics', 'Others'],
