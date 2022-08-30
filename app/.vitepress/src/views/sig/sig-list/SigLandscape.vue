@@ -50,7 +50,7 @@ const toSigDetail = (name: string): void => {
 <style scoped lang="scss">
 .landscape {
   max-width: 1120px;
-  margin: 0 auto;
+  margin: var(--o-spacing-h2) auto;
   .sig-category-wrapper {
     margin-bottom: var(--o-spacing-h1);
     h2 {
@@ -58,7 +58,7 @@ const toSigDetail = (name: string): void => {
       line-height: var(--o-line-height-h7);
       color: var(--e-color-text1);
       font-weight: normal;
-      margin-bottom: var(--o-spacing-h4);
+      margin-bottom: var(--o-spacing-h2);
       text-align: center;
     }
     .sig-category-list {

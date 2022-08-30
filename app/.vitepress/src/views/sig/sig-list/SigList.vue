@@ -326,6 +326,7 @@ onMounted(() => {
             <a
               target="_blank"
               style="cursor: pointer"
+              class="sig-name-info"
               @click="toSigDetail(scope.row)"
             >
               {{ scope.row.sig_name }}
@@ -350,9 +351,12 @@ onMounted(() => {
           <div v-show="!singleInfo.trueRepo">
             <div v-for="(item, index) in scope.row.repos" :key="item">
               <div v-if="index < 3">
-                <a :href="'https://gitee.com/' + item" target="_blank">{{
-                  item
-                }}</a>
+                <a
+                  :href="'https://gitee.com/' + item"
+                  target="_blank"
+                  class="sig-repo"
+                  >{{ item }}</a
+                >
               </div>
             </div>
             <p v-show="scope.row.repos.length > 3" class="ellipsis">……</p>
@@ -361,6 +365,7 @@ onMounted(() => {
             <a
               :href="'https://gitee.com/' + singleInfo.trueRepo"
               target="_blank"
+              class="sig-repo"
               >{{ singleInfo.trueRepo }}</a
             >
           </div>
@@ -396,7 +401,11 @@ onMounted(() => {
       </el-table-column>
       <el-table-column :label="i18n.sig.SIG_LIST.MAIL">
         <template #default="scope">
-          <a :href="'mailto:' + scope.row.mailing_list" target="_blank">
+          <a
+            :href="'mailto:' + scope.row.mailing_list"
+            target="_blank"
+            class="sig-email"
+          >
             {{ scope.row.mailing_list }}
           </a>
         </template>
@@ -534,6 +543,10 @@ onMounted(() => {
   .sig-name {
     display: flex;
     align-items: center;
+    &-info {
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+    }
     .gitee-icon {
       display: flex;
       margin-left: var(--o-spacing-h8);
@@ -556,13 +569,21 @@ onMounted(() => {
       display: block;
     }
     &-item {
-      span {
+      a {
         white-space: nowrap;
         font-size: var(--o-font-size-text);
-        line-height: var(--o-line-height-text);
+        line-height: var(--o-line-height-h5);
         color: var(--e-color-text1);
       }
     }
+  }
+  .sig-email {
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+  }
+  .sig-repo {
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-h5);
   }
 }
 .sig-select {
