@@ -204,7 +204,7 @@ export default {
           'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=37&name=sig-KIRAN-DESKTOP&mail=dev%40openeuler.org',
         INTRODUCE:
           '麒麟信安自主研发，致力于为用户提供更加美观，高效和易用的Linux桌面操作系统',
-        TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590528&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
+        TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590352&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590528&single_label_text=&sort=&state=open&target_project=',
         GITEE:
           'https://gitee.com/openeuler/community/tree/master/sig/sig-KIRAN-DESKTOP',
       },
@@ -248,7 +248,7 @@ export default {
         NAME: 'sig-OSCourse',
         NAME_LINK:
           'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=sig-OSCourse',
-        INTRODUCE: '操作系统课程兴趣组',
+        INTRODUCE: '社区探索性项目开发，如用Rust开发相关社区服务等',
         TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590352&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=141433910&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
         GITEE:
           'https://gitee.com/openeuler/community/tree/master/sig/sig-OSCourse',
@@ -325,11 +325,11 @@ export default {
         TASK: 'https://gitee.com/organizations/src-openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=164549691&single_label_text=&sort=&state=&target_project&skip_mobile=true',
         GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/Compiler',
       },
-      {
-        NAME: '其他',
-        INTRODUCE: '一些暂不属于任何SIG的任务，如Rust、存储等等',
-        TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=125884711&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&sort=&state=open&target_project&skip_mobile=true',
-      },
+      // {
+      //   NAME: '其他',
+      //   INTRODUCE: '一些暂不属于任何SIG的任务，如Rust、存储等等',
+      //   TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=125884711&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&sort=&state=open&target_project&skip_mobile=true',
+      // },
       {
         INTRODUCE: '更多SIG任务，敬请期待',
       },
@@ -440,7 +440,7 @@ export default {
       {
         QUESTION: '1、哪些人可以报名？',
         ANSWER:
-          'A：开源实习面向全国范围内年满18周岁的全日制/非全日制在校学生招募，无专业年级限制，欢迎感兴趣的同学踊跃报名。',
+          'A：开源实习面向全国范围内年满18周岁的在校学生招募，无专业年级限制，欢迎感兴趣的同学踊跃报名。',
       },
       {
         QUESTION: '2、实习有效期6个月是如何计算的？',
