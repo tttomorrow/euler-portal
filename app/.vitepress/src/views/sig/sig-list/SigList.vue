@@ -661,7 +661,7 @@ onMounted(() => {
     }
   }
   .pagination-h5 {
-    margin-top: var(--o-spacing-h2);
+    margin-top: var(--o-spacing-h5);
   }
   .mo-item-odd {
     background-color: var(--e-color-bg4);

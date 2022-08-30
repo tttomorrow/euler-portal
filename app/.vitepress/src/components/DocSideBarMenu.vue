@@ -14,13 +14,14 @@ const props = defineProps({
     default: '',
   },
 });
-const isOpen = ref(true);
 
 const isActive = computed(() => {
   return props.info.children.some((item: any) => {
     return item.link === props.activeId;
   });
 });
+
+const isOpen = ref(isActive.value);
 
 const emit = defineEmits(['item-click']);
 

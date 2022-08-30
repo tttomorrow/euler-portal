@@ -198,8 +198,8 @@ onMounted(() => {
             <li v-for="item in searchResultList" :key="item.id">
               <!-- eslint-disable-next-line -->
               <h3
-                v-html="item.title"
                 @click="goLink(item.type, item.path)"
+                v-html="item.title"
               ></h3>
               <!-- eslint-disable-next-line -->
               <p class="detail" v-html="item.textContent"></p>
@@ -284,7 +284,7 @@ onMounted(() => {
       @media (max-width: 768px) {
         height: 28px;
         font-size: 14px;
-        padding: 0 16px;
+        padding: 0 16px !important;
 
         :deep(.el-input__inner) {
           font-size: 14px;

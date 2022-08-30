@@ -770,6 +770,7 @@ const goHome = () => {
           font-weight: 400;
           color: var(--e-color-brand1);
           line-height: 20px;
+          cursor: pointer;
         }
         .prev {
           span:nth-of-type(2) {

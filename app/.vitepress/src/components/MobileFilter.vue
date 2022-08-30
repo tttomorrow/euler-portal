@@ -316,7 +316,7 @@ const allHighLight = (val: any) => {
             color: var(--e-color-text1);
             &.active {
               border: 1px solid var(--e-color-brand1);
-              color: var(--e-color-kleinblue5);
+              color: var(--e-color-brand1);
             }
           }
         }
