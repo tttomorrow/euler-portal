@@ -10,6 +10,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import IconX from '~icons/app/x.svg';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
+import { addSearchBuriedData } from '@/shared/utils';
 
 const screenWidth = useWindowResize();
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
@@ -128,6 +129,7 @@ function searchDataAll() {
 // 获取搜索结果的所有内容
 function searchAll() {
   if (searchInput.value) {
+    addSearchBuriedData(searchInput.value)
     currentIndex.value = 0;
     searchType.value = '';
     currentPage.value = 1;
@@ -137,14 +139,34 @@ function searchAll() {
   }
 }
 // 设置搜索结果的跳转路径
-function goLink(type: string, link: string) {
+function goLink(data: any, index: number) {
+  const { type, path } = data;
+  const search_result_url = '/' + lang.value + '/' + path;
+  const searchKeyObj = {
+      search_tag: type,
+      search_rank_num: pageSize.value * (currentPage.value - 1) + (index + 1),
+      search_result_total_num: total.value,
+      search_result_url: location.origin + search_result_url,
+  };
+  let sensors = (window as any)['sensorsDataAnalytic201505'];
+  const sensorObj = {
+      profileType: 'selectSearchResult',
+      ...(data || {}),
+      ...((window as any)['sensorsCustomBuriedData'] || {}),
+      ...((window as any)['addSearchBuriedData'] || {}),
+      ...searchKeyObj
+  }
   if (type === 'docs') {
+    const url = site.value.themeConfig.docsUrl + '/' + lang.value + '/' + path + '.html'
+    sensorObj.search_result_url = url;
+    sensors.setProfile(sensorObj);
     window.open(
-      site.value.themeConfig.docsUrl + '/' + lang.value + '/' + link + '.html',
+      url,
       '_blank'
     );
   } else {
-    router.go('/' + lang.value + '/' + link);
+    sensors.setProfile(sensorObj);
+    router.go(search_result_url);
   }
 }
 // 移动端上下翻页事件
@@ -195,10 +217,10 @@ onMounted(() => {
         </ul>
         <div class="content-box">
           <ul v-show="!isShow" class="content-list">
-            <li v-for="item in searchResultList" :key="item.id">
+            <li v-for="item, index in searchResultList" :key="item.id">
               <!-- eslint-disable-next-line -->
               <h3
-                @click="goLink(item.type, item.path)"
+                @click="goLink(item, index)"
                 v-html="item.title"
               ></h3>
               <!-- eslint-disable-next-line -->

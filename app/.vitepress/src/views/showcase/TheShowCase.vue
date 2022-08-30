@@ -14,6 +14,7 @@ import NotFound from '@/NotFound.vue';
 
 import banner from '@/assets/banner/banner-community.png';
 import search from '@/assets/illustrations/search.png';
+import { addSearchBuriedData } from '@/shared/utils';
 
 // import useCaseZh from '@/i18n/showcase/showcase.json';
 const keyWord = ref('');
@@ -101,8 +102,29 @@ function jumpPage(page: number) {
   currentPage.value = page;
 }
 // 点击跳转案例详情页面
-function goDetail(link: string, item: any) {
-  window.open('/' + item.lang + '/' + link.replace('index', ''));
+function goDetail(link: string, item: any, index: number) {
+  const search_result_url = '/' + item.lang + '/' + link.replace('index', '')
+  const searchKeyObj = {
+      search_tag: currentTag.value,
+      search_rank_num: pageSize.value * (currentPage.value - 1) + (index + 1),
+      search_result_total_num: total.value,
+      search_result_url: location.origin + search_result_url,
+  };
+  let sensors = (window as any)['sensorsDataAnalytic201505'];
+  const searchResult = keyWord.value
+      ? ((window as any)['addSearchBuriedData'] || {})
+      : {
+        search_key: '',
+        search_event_id: '',
+      }
+  sensors.setProfile({
+      profileType: 'selectSearchResult',
+      ...(item || {}),
+      ...((window as any)['sensorsCustomBuriedData'] || {}),
+      ...searchResult,
+      ...searchKeyObj
+  });
+  window.open(search_result_url);
 }
 // 设置当前tag的所有案例
 function setCurrentCaseListAll() {
@@ -148,6 +170,7 @@ function searchCase() {
   activeIndex.value = 0;
   currentTag.value = userCaseData.value.tags[0];
   if (keyWord.value) {
+    addSearchBuriedData(keyWord.value)
     getUserCaseData(searchData.value).then((res) => {
       if (res.status === 200 && res.obj.records) {
         CaseListAll.value = res.obj.records;
@@ -220,13 +243,13 @@ onMounted(() => {
       }}{{ userCaseData.find2 }}
     </p>
     <div class="case-list">
-      <OCard v-for="item in currentCaseList" :key="item.path" class="case-card">
+      <OCard v-for="(item, index) in currentCaseList" :key="item.path" class="case-card">
         <div class="card-content-text">
           <h4>{{ item.title }}</h4>
           <p class="detail">
             {{ item.summary }}
           </p>
-          <a @click="goDetail(item.path, item)">
+          <a @click="goDetail(item.path, item, index)">
             <OButton type="primary" class="button">{{
               userCaseData.button
             }}</OButton>
