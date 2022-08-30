@@ -122,6 +122,10 @@ export default {
             TEXT: 'BiSheng JDK 11',
             LINK: 'https://gitee.com/openeuler/bishengjdk-11/wikis/Home',
           },
+          {
+            TEXT: 'BiSheng JDK 17',
+            LINK: 'https://gitee.com/openeuler/bishengjdk-17/wikis/Home',
+          },
         ],
         BACKGROUND: {
           IMG: '/img/projects/share/group.png',
@@ -150,7 +154,7 @@ export default {
         LINK: [
           {
             TEXT: 'Earlier Versions',
-            LINK: 'https://www.hikunpeng.com/zh/developer/devkit/compiler/jdk',
+            LINK: 'https://www.hikunpeng.com/en/developer/devkit/compiler/jdk',
           },
         ],
         BACKGROUND: {
@@ -166,15 +170,15 @@ export default {
     LINK_LIST: [
       {
         TEXT: 'BiSheng JDK (Kunpeng Community)',
-        LINK: 'https://www.hikunpeng.com/developer/devkit/compiler/jdk',
+        LINK: 'https://www.hikunpeng.com/en/developer/devkit/compiler/jdk',
       },
       {
         TEXT: 'BiSheng Compiler (Kunpeng Community)',
-        LINK: 'https://www.hikunpeng.com/developer/devkit/compiler/bisheng',
+        LINK: 'https://www.hikunpeng.com/en/developer/devkit/compiler/bisheng',
       },
       {
         TEXT: 'BiSheng Compiler (Kunpeng Community)',
-        LINK: 'https://www.hikunpeng.com/developer/devkit/compiler/gcc',
+        LINK: 'https://www.hikunpeng.com/en/developer/devkit/compiler/gcc',
       },
     ],
   },

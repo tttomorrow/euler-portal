@@ -1,5 +1,5 @@
 ---
-title: '毕昇'
+title: '毕昇 JDK'
 ---
 
 <script setup lang="ts">

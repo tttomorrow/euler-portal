@@ -40,7 +40,7 @@ const language = configData.lang;
 const screenWidth = useWindowResize();
 // 所有数据与展示数据
 const allList = ref([]);
-const SigList = ref<Array<SIGLIST>>([]);
+const sigList = ref<Array<SIGLIST>>([]);
 // 仓库列表过滤参数
 const sigSelectList = ref<Array<string>>([]);
 const repositioryList = ref<Array<string>>([]);
@@ -76,7 +76,10 @@ const getSigList = (params: LIST_PARAMS) => {
   try {
     getCompleteList(params).then((res) => {
       const { data } = res;
-      SigList.value = data[0].data;
+      sigList.value = data[0].data;
+      // sigList.value = data[0].data.sort((a, b) => {
+      //   return a.sig_name.localeCompare(b.sig_name);
+      // });
       paginationData.value.total = data[0].total;
     });
   } catch (error) {
@@ -122,7 +125,7 @@ const filterRepositoryList = () => {
     repoRenderList.value = repositioryList.value.slice(0, 99);
     getSigList(initialParams);
   } else {
-    SigList.value = _.filter(allList.value, (item: any) => {
+    sigList.value = _.filter(allList.value, (item: any) => {
       return (
         (!slectedInfo.sigSelected ||
           item.sig_name === slectedInfo.sigSelected) &&
@@ -136,7 +139,7 @@ const filterRepositoryList = () => {
           }))
       );
     });
-    paginationData.value.total = SigList.value.length;
+    paginationData.value.total = sigList.value.length;
   }
 };
 
@@ -205,7 +208,7 @@ const debounceEvent = _.debounce(filterRope, 300, {
   trailing: true,
 });
 watch(
-  () => SigList.value,
+  () => sigList.value,
   (data) => {
     if (data.length > 0 && slectedInfo.repositiorySelected) {
       singleInfo.trueRepo = slectedInfo.repositiorySelected;
@@ -319,7 +322,7 @@ onMounted(() => {
       </div>
       <span>{{ i18n.sig.SIG_LIST.TIPS }}</span>
     </div>
-    <OTable v-show="!isMobile" :data="SigList">
+    <OTable v-show="!isMobile" :data="sigList">
       <el-table-column :label="i18n.sig.SIG_LIST.NAME">
         <template #default="scope">
           <div class="sig-name">
@@ -435,15 +438,15 @@ onMounted(() => {
     <div v-show="isMobile" class="sig-table-mo">
       <div class="sig-table-card">
         <div
-          v-for="(item, index) in SigList"
+          v-for="(item, index) in sigList"
           :key="item.sig_name"
           :class="['mo-item', index % 2 === 0 ? 'mo-item-odd' : '']"
         >
           <div class="mo-item-text">
             <span class="mo-item-title">{{ i18n.sig.SIG_LIST.NAME }}:</span>
-            <span class="mo-item-name" @click="toSigDetail(item)">{{
+            <a class="mo-item-name" @click="toSigDetail(item)">{{
               item.sig_name
-            }}</span>
+            }}</a>
           </div>
           <div class="mo-item-text">
             <span class="mo-item-title"
@@ -554,7 +557,7 @@ onMounted(() => {
     }
   }
   .ellipsis {
-    color: var(--e-color-kleinblue5);
+    color: var(--e-color-brand1);
   }
   .pagination-slot {
     font-size: var(--o-font-size-text);
@@ -665,8 +668,6 @@ onMounted(() => {
       .mo-item-maintainer {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
-        color: var(--e-color-text1);
-        opacity: 0.5;
       }
       .mo-item-maintainersbox {
         display: grid;

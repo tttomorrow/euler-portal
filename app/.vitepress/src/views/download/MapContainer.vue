@@ -95,7 +95,7 @@ const initMap = (lng: number, lat: number) => {
           '</div>' +
           '   <div class="wrap">' +
           '   <div class="map-card">' +
-          '<a class="map-card-name":href="' +
+          '<a class="map-card-name" href="' +
           context.data[0].http +
           '" target="_blank">' +
           context.data[0].title +

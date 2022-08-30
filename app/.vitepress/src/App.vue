@@ -64,7 +64,7 @@ const comp = computed(() => {
 
 main {
   position: relative;
-  min-height: calc(100vh - 258px);
+  min-height: calc(100vh - 339px);
   background-color: var(--e-color-bg1);
   margin-top: 80px;
   overflow: hidden;
