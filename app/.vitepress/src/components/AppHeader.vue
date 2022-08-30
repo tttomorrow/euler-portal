@@ -423,12 +423,14 @@ function search() {
 .logo {
   height: 32px;
   cursor: pointer;
+  margin-right: var(--o-spacing-h4);
   @media (max-width: 1100px) {
     height: 24px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     top: 12px;
+    margin-right: 0;
   }
 }
 .mobile-menu-icon {
