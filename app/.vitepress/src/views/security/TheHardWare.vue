@@ -186,7 +186,7 @@ function goBackPage() {
                 <a
                   target="_blank"
                   :href="
-                    i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_HREF_1
+                    i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_HREF
                   "
                 >
                   {{

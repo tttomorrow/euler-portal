@@ -139,8 +139,11 @@ export default {
         TITLE: '测试兼容性（10天）',
         DESCRIPTION_1:
           '完成issue创建后，即可开展兼容性测试。openEuler团队提供了兼容性测试框架以及使用指南，您可以根据使用指南自助完成兼容性测试。',
-        A_TEXT: '点击此处获取使用指南',
-        A_HREF: '/img/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
+        A_TEXT: '兼容性测试工具套件',
+        A_TEXT_2: '使用指南',
+        DESCRIPTION_2: '|',
+        A_HREF: 'https://gitee.com/src-openeuler/oec-hardware/releases',
+        A_HREF_2: '/img/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
         DOWNLOAD_NAME: 'openEuler硬件兼容性测试工具使用指南.pdf',
       },
       {
