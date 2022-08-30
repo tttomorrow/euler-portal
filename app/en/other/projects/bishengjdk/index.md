@@ -1,5 +1,5 @@
 ---
-title: 'bisheng'
+title: 'BiSheng JDK'
 ---
 
 <script setup lang="ts">

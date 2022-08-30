@@ -153,8 +153,8 @@ const isDark = computed(() => {
     }
     .menu {
       position: absolute;
-      top: 45%;
-      left: 57%;
+      top: 70%;
+      left: 60%;
       z-index: 1;
       width: 160px;
       background-color: var(--e-color-bg2);
@@ -175,6 +175,7 @@ const isDark = computed(() => {
 
     @media screen and (max-width: 767px) {
       width: 100%;
+      height: fit-content;
       box-shadow: var(--e-shadow-l1);
       box-sizing: border-box;
       display: grid;

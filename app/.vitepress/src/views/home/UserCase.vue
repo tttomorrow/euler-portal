@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
@@ -49,6 +49,17 @@ const initData = (res: any) => {
   });
   caseData.value = result;
 };
+const imgUrl = computed(() => (item: { URL_DARK: any; URL: any }) => {
+  return commonStore.theme === 'dark' ? item.URL_DARK : item.URL;
+});
+
+const imgUrlHover = computed(
+  () => (item: { ACTIVE_DARK_URL: any; ACTIVE_URL: any }) => {
+    return commonStore.theme === 'dark'
+      ? item.ACTIVE_DARK_URL
+      : item.ACTIVE_URL;
+  }
+);
 
 onMounted(() => {
   props.caseData && initData(props.caseData);
@@ -114,7 +125,7 @@ onMounted(() => {
               class="case-tab-item"
               @click="handleChangeActive(index)"
             >
-              <img
+              <!-- <img
                 class="case-img"
                 :src="
                   commonStore.theme === 'dark'
@@ -125,7 +136,18 @@ onMounted(() => {
                     ? item.ACTIVE_URL
                     : item.URL
                 "
-              />
+              /> -->
+              <div
+                class="case-img-box"
+                :class="active === index ? 'active' : ''"
+              >
+                <img :src="imgUrl(item)" alt="" class="nav-item-icon" />
+                <img
+                  :src="imgUrlHover(item)"
+                  alt=""
+                  class="nav-item-icon-hover"
+                />
+              </div>
               <div :class="['case-word', active === index ? 'active' : '']">
                 {{ item.TYPE }}
               </div>
@@ -339,10 +361,6 @@ h3 {
       font-size: 12px;
     }
 
-    &-item:hover {
-      color: var(--e-color-brand1);
-    }
-
     :deep(.o-button) {
       padding: 0;
     }
@@ -396,6 +414,40 @@ h3 {
       justify-content: center;
       align-items: center;
       margin: 0px 28px;
+      .nav-item-icon-hover {
+        width: 80px;
+        display: none;
+      }
+      .nav-item-icon {
+        display: block;
+      }
+      &:hover {
+        @media screen and (min-width: 1100px) {
+          .nav-item-icon-hover {
+            display: block;
+          }
+          .nav-item-icon {
+            display: none;
+          }
+          .nav-text {
+            .nav-title,
+            .nav-descriptive {
+              color: var(--e-color-brand1);
+            }
+          }
+          .case-word {
+            color: var(--e-color-brand1);
+          }
+        }
+      }
+      .active {
+        .nav-item-icon-hover {
+          display: block;
+        }
+        .nav-item-icon {
+          display: none;
+        }
+      }
     }
   }
 }

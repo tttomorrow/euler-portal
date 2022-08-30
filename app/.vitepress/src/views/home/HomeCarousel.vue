@@ -266,6 +266,11 @@ const handleGo = (path: string) => {
       line-height: var(--o-line-height-h4);
       border-bottom: 1px solid var(--e-color-division1);
       padding: var(--o-spacing-h4) 0;
+      @media screen and (min-width: 1100px) {
+        &:hover {
+          color: var(--e-color-brand1);
+        }
+      }
     }
     &-en-title {
       width: 266px;
@@ -281,10 +286,6 @@ const handleGo = (path: string) => {
       @media screen and (max-width: 1080px) {
         padding: 20px 0;
         font-size: var(--o-font-size-tip);
-      }
-
-      &-item:hover {
-        color: var(--e-color-brand1);
       }
 
       :deep(.o-button) {

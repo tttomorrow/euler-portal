@@ -375,7 +375,7 @@ export default {
   INTEGRAL: {
     TITLE: '/img/internship/integral-title.png',
     REWARD: {
-      HEAD: '1、实习工资、',
+      HEAD: '1、实习工资',
       TEXT: [
         '实习有效期6个月内满20分以上，可获得不同级别的实习工资。具体见以上“申请步骤4”里的工资说明。',
       ],
@@ -392,7 +392,7 @@ export default {
     },
     INTEGRAL_DATA: [
       {
-        HEAD: '1、实习工资、',
+        HEAD: '1、实习工资',
         TEXT: [
           '实习有效期6个月内满20分以上，可获得不同级别的实习工资。具体见以上“申请步骤4”里的工资说明。',
         ],

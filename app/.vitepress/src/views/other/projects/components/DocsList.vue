@@ -147,6 +147,7 @@ const goLink = (path: string) => {
           font-weight: 500;
         }
         &-desc {
+          margin-top: var(--o-spacing-h10);
           max-width: 256px;
           font-size: var(--o-font-size-text);
           font-weight: 400;

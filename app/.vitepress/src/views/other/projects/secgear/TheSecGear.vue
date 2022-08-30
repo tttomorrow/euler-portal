@@ -19,7 +19,7 @@ const i18n = useI18n();
     :subtitle="i18n.secgear.SECGEAR_BANNER_TEXT[1]"
     :illustration="illustration"
     :background-image="banner"
-    background-text="SEARCH"
+    background-text="DISCOVERY"
   />
   <AppContent>
     <MiniDescription :description-desc="i18n.secgear.SECGEAR_DESC" />

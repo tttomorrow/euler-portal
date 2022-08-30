@@ -3,7 +3,7 @@ export default [
     name: 'oec-hardware',
     description: 'openEuler硬件兼容性验证测试框架',
     summary:
-      'oec-hardware是保证 openEuler 与硬件平台的兼容性，验证仅限于基本功能验证，不包括性能测试等其它测试',
+      'oec-hardware是保证 openEuler 与硬件平台的兼容性，验证仅限于基本功能验证，不包括性能测试等其它测试。',
     version: '1.0.0',
     source: {
       name: '获取源码',
@@ -48,7 +48,7 @@ export default [
     name: 'oecp',
     description: '操作系统之间的差异比较及兼容性分析工具',
     summary:
-      '1.检测2个ISO（基于RPM）的软件包，软件包内文件，库文件接口（C/C++）,内核KABI的变化差异，根据这些差异可以分析2个OS之间的兼容性，为软件移植提供了重要参考 2.OECP还可以检测同一个软件（RPM包）在不同版本下的变化以及差异，判断软件包的文件，接口等变化，可以分析得出软件不同版本之间的兼容性',
+      '1.检测2个ISO（基于RPM）的软件包，软件包内文件，库文件接口（C/C++）,内核KABI的变化差异，根据这些差异可以分析2个OS之间的兼容性，为软件移植提供了重要参考 2.OECP还可以检测同一个软件（RPM包）在不同版本下的变化以及差异，判断软件包的文件，接口等变化，可以分析得出软件不同版本之间的兼容性。',
     version: '1.0.0',
     source: {
       name: '获取源码',
