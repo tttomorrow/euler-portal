@@ -55,6 +55,9 @@ const isShowMenu = ref(false);
 const toggleMenu = (flag: boolean) => {
   isShowMenu.value = flag;
 };
+const IconMenuShow = computed(() => {
+  return commonStore.iconMenuShow;
+});
 // 返回首页
 const goHome = () => {
   router.go(`/${lang.value}/`);
@@ -108,7 +111,9 @@ const handleNodeClick = (node: any) => {
   </DocSideBar>
 
   <div v-else class="detail-mobile">
-    <OIcon class="catalog" @click="toggleMenu(true)"><IconCatalog /></OIcon>
+    <OIcon v-show="IconMenuShow" class="catalog" @click="toggleMenu(true)"
+      ><IconCatalog
+    /></OIcon>
     <ClientOnly>
       <ODrawer
         v-model="isShowMenu"

@@ -230,15 +230,15 @@ onUnmounted(() => {
 const goHome = () => {
   router.go(`/${language.value}/`);
 };
-const menuShowMo = computed(() => {
-  return commonStore.moocMenuShow;
+const iconMenuShow = computed(() => {
+  return commonStore.iconMenuShow;
 });
 </script>
 <template>
   <AppContent :pc-top="40" :mobile-top="16">
     <div class="mooc-detail">
       <div class="detail-mobile">
-        <OIcon v-show="menuShowMo" class="catalog" @click="toggleMenu(true)"
+        <OIcon v-show="iconMenuShow" class="catalog" @click="toggleMenu(true)"
           ><IconCatalog
         /></OIcon>
         <ClientOnly>
