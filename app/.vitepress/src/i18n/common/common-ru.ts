@@ -104,18 +104,18 @@ export default {
           NAME: 'Блог',
           PATH: '/interaction/blog-list/',
         },
-        {
-          NAME: 'Прямой эфир',
-          ID: 'live',
-          PATH: '/interaction/live-list/',
-        },
-        {
-          NAME: 'Семинары',
-          ID: 'salon',
-          PATH: '/interaction/salon-list/',
-        },
+        // {
+        //   NAME: 'Прямой эфир',
+        //   ID: 'live',
+        //   PATH: '/interaction/live-list/',
+        // },
+        // {
+        //   NAME: 'Семинары',
+        //   ID: 'salon',
+        //   PATH: '/interaction/salon-list/',
+        // },
       ],
-      CLASS: ['news', 'blog', 'live', 'salon'],
+      CLASS: ['news', 'blog'],
     },
     {
       PATH: '',
