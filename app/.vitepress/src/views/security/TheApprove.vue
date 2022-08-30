@@ -1,0 +1,419 @@
+<script lang="ts" setup>
+import { reactive, ref, watch, onMounted, computed } from 'vue';
+import { useRouter } from 'vitepress';
+import { useI18n } from '@/i18n';
+
+import AppContent from '@/components/AppContent.vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+import OSearch from 'opendesign/search/OSearch.vue';
+import TagFilter from '@/components/TagFilter.vue';
+import AppPaginationMo from '@/components/AppPaginationMo.vue';
+
+import banner from '@/assets/banner-secondary.png';
+import search from '@/assets/illustrations/search.png';
+import cve from '@/assets/illustrations/cve.png';
+
+import useWindowResize from '@/components/hooks/useWindowResize';
+
+import { CveQuery } from '@/shared/@types/type-support';
+import { getOsName, getOsType, getOsTableData } from '@/api/api-security';
+
+const router = useRouter();
+
+const screenWidth = useWindowResize();
+const i18n = useI18n();
+const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+
+const inputName = ref('');
+const osNames = ref(['']);
+const osTypes = ref(['']);
+const osvList = ref<any>([]); //:TODO:约束
+const activeIndex = ref(0);
+const activeIndex1 = ref(0);
+// const filterIndex = ref(0);
+const total = ref(0);
+const currentPage = ref(1);
+const totalPage = ref(0);
+const layout = ref('sizes, prev, pager, next, slot, jumper');
+
+const queryData: CveQuery = reactive({
+  pages: {
+    page: 1,
+    size: 10,
+  },
+  keyword: '',
+  type: '',
+  osvName: '',
+});
+
+function searchValchange() {
+  queryData.keyword = inputName.value;
+}
+
+const tagClick = (i: number, name: string) => {
+  activeIndex.value = i;
+  queryData.osvName = name;
+};
+
+const typeTagClick = (i: number, type: string) => {
+  queryData.type = type;
+  activeIndex1.value = i;
+};
+
+const handleSizeChange = (val: number) => {
+  queryData.pages.size = val;
+  totalPage.value = Math.ceil(total.value / val);
+};
+
+const handleCurrentChange = (val: number) => {
+  queryData.pages.page = val;
+  currentPage.value = val;
+};
+
+const go = (id: number) => {
+  router.go(`${router.route.path}approve-info/?id=${JSON.stringify(id)}`);
+};
+
+function turnPage(option: string) {
+  if (option === 'prev' && queryData.pages.page > 1) {
+    queryData.pages.page = queryData.pages.page - 1;
+  } else if (option === 'next' && queryData.pages.page < total.value) {
+    queryData.pages.page = queryData.pages.page + 1;
+  }
+}
+
+const getOsTableList = (data: CveQuery) => {
+  try {
+    getOsTableData(data).then((res: any) => {
+      osvList.value = res.result.osvList;
+      total.value = res.result.totalCount;
+      totalPage.value = Math.ceil(res.result.totalCount / queryData.pages.size);
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+};
+
+const goBackPage = () => {
+  router.go(`${router.route.path}approve-step/`);
+};
+
+onMounted(() => {
+  try {
+    getOsName().then((res: any) => {
+      res.result.forEach((item: string) => {
+        osNames.value.push(item);
+      });
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+
+  try {
+    getOsType().then((res: any) => {
+      res.result.forEach((item: string) => {
+        osTypes.value.push(item);
+      });
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  getOsTableList(queryData);
+});
+watch(queryData, () => getOsTableList(queryData));
+</script>
+<template>
+  <BannerLevel2
+    class="banner-pc"
+    :background-image="banner"
+    background-text="CONTENT"
+    :title="i18n.approve.TITLE"
+    subtitle=""
+    :illustration="!isMobile ? search : cve"
+  />
+  <AppContent :mobile-top="16">
+    <div class="approve-desc">
+      <p class="approve-desc-container">
+        {{ i18n.approve.SUMMARY.CONTENT }}
+      </p>
+    </div>
+    <OSearch
+      v-model="inputName"
+      class="search"
+      :placeholder="i18n.approve.SEARCH_PLACEHOLDER"
+      @change="searchValchange"
+    ></OSearch>
+
+    <OCard class="filter-card">
+      <template #header>
+        <div class="card-header">
+          <TagFilter :label="i18n.approve.SELECT_COMPANY" :show="false">
+            <OTag
+              v-for="(item, index) in osNames"
+              :key="'tag' + index"
+              checkable
+              :type="activeIndex === index ? 'primary' : 'text'"
+              @click="tagClick(index, item)"
+            >
+              {{ item === '' ? i18n.approve.SELECT_ALL : item }}
+            </OTag>
+          </TagFilter>
+        </div>
+      </template>
+      <div class="card-body">
+        <TagFilter :show="false" :label="i18n.approve.TABLE_COLUMN.TYPE">
+          <OTag
+            v-for="(item, index) in osTypes"
+            :key="'tag' + index"
+            checkable
+            :type="activeIndex1 === index ? 'primary' : 'text'"
+            @click="typeTagClick(index, item)"
+          >
+            {{ item === '' ? i18n.approve.SELECT_ALL : item }}
+          </OTag>
+        </TagFilter>
+      </div>
+    </OCard>
+
+    <OTable class="pc-list" :data="osvList" style="width: 100%">
+      <OTableColumn :label="i18n.approve.TABLE_COLUMN.ARCHITECTURE" prop="arch">
+      </OTableColumn>
+      <OTableColumn :label="i18n.approve.TABLE_COLUMN.COMPANY" prop="osvName">
+      </OTableColumn>
+      <OTableColumn :label="i18n.approve.TABLE_COLUMN.VERSION" prop="osVersion">
+      </OTableColumn>
+
+      <el-table-column :label="i18n.approve.TABLE_COLUMN.DOWNLOAD" width="220">
+        <template #default="scope">
+          <a :href="scope.row.osDownloadLink" target="_blank" class="link">{{
+            scope.row.osDownloadLink
+          }}</a>
+        </template>
+      </el-table-column>
+
+      <OTableColumn :label="i18n.approve.TABLE_COLUMN.TYPE" prop="type">
+      </OTableColumn>
+      <OTableColumn :label="i18n.approve.TABLE_COLUMN.DATE" prop="date">
+      </OTableColumn>
+
+      <el-table-column :label="i18n.approve.TABLE_COLUMN.DETAILS" width="220">
+        <template #default="scope">
+          <span class="link" @click="go(scope.row.id)">{{
+            scope.row.details
+          }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column :label="i18n.approve.TABLE_COLUMN.DETAILS" width="220">
+        <template #default="scope">
+          <a :href="scope.row.friendlyLink" target="_blank" class="link">{{
+            i18n.approve.TABLE_COLUMN.LINK
+          }}</a>
+        </template>
+      </el-table-column>
+    </OTable>
+
+    <ul class="mobile-list">
+      <li v-for="item in osvList" :key="item.id" class="item">
+        <ul>
+          <li>
+            <span>{{ i18n.approve.TABLE_COLUMN.ARCHITECTURE }}:</span
+            ><span>{{ item.arch }}</span>
+          </li>
+          <li>
+            <span>{{ i18n.approve.TABLE_COLUMN.COMPANY }}:</span
+            >{{ item.osvName }}
+          </li>
+          <li>
+            <span>{{ i18n.approve.TABLE_COLUMN.VERSION }}:</span
+            >{{ item.osVersion }}
+          </li>
+          <li>
+            <span>{{ i18n.approve.TABLE_COLUMN.DOWNLOAD }}:</span>
+            <a :href="item.osDownloadLink" target="_blank">{{
+              item.osDownloadLink
+            }}</a>
+          </li>
+          <li>
+            <span>{{ i18n.approve.TABLE_COLUMN.TYPE }}:</span>{{ item.type }}
+          </li>
+          <li>
+            <span>{{ i18n.approve.TABLE_COLUMN.DATE }}:</span>{{ item.date }}
+          </li>
+          <li>
+            <span>{{ i18n.approve.TABLE_COLUMN.DETAILS }}:</span
+            ><span class="link" @click="go(item.id)">{{ item.details }}</span>
+          </li>
+          <li>
+            <span>{{ i18n.approve.TABLE_COLUMN.LINK }}:</span
+            ><a :href="item.friendlyLink" target="_blank">{{
+              item.friendlyLink
+            }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <OPagination
+      v-model:page-size="queryData.pages.size"
+      v-model:currentPage="queryData.pages.page"
+      :page-sizes="[10, 20, 40, 80]"
+      :layout="layout"
+      :total="total"
+      :background="true"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    >
+      <span class="slot-content">{{ currentPage }}/{{ totalPage }}</span>
+    </OPagination>
+
+    <p class="about">
+      {{ i18n.approve.TO_STEP.TEXT_1 }}
+      <a href="#" @click="goBackPage">{{ i18n.approve.TO_STEP.LINK_1 }}</a>
+    </p>
+
+    <AppPaginationMo
+      v-if="Math.ceil(total / 10) > 0 && isMobile"
+      :current-page="queryData.pages.page"
+      :total-page="Math.ceil(total / 10)"
+      @turn-page="turnPage"
+    />
+  </AppContent>
+</template>
+<style lang="scss" scoped>
+.approve-desc {
+  padding-bottom: var(--o-spacing-h2);
+  @media screen and (max-width: 768px) {
+    padding-bottom: var(--o-spacing-h4);
+  }
+  &-container {
+    max-width: 1504px;
+    margin: 0 auto;
+    color: var(--e-color-text1);
+    line-height: var(--o-line-height-h3);
+    font-size: var(--o-font-size-h7);
+    @media screen and (max-width: 768px) {
+      line-height: var(--o-line-height-tip);
+      font-size: var(--o-font-size-tip);
+    }
+  }
+}
+.search {
+  height: 48px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+.filter-card {
+  margin: var(--o-spacing-h4) 0;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+  :deep(.el-card__body) {
+    padding: var(--o-spacing-h8) var(--o-spacing-h2);
+  }
+  .category {
+    display: inline-block;
+    width: 56px;
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text1);
+    line-height: var(--o-line-height-text);
+    margin-right: var(--o-spacing-h4);
+  }
+  .category-item {
+    display: inline-block;
+    height: 28px;
+    border: none;
+    margin-right: var(--o-spacing-h3);
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--e-color-text4);
+    line-height: var(--o-line-height-text);
+
+    cursor: pointer;
+  }
+  .active {
+    display: inline-block;
+    border: 1px solid var(--e-color-link1);
+    color: var(--e-color-link1);
+    padding: 0px var(--o-spacing-h6);
+  }
+  .card-header {
+    padding-bottom: var(--o-spacing-h8);
+    border-bottom: 1px solid var(--e-color-division1);
+  }
+  .card-body {
+    padding-top: var(--o-spacing-h8);
+  }
+}
+.pc-list {
+  margin-bottom: var(--o-spacing-h2);
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+  .link {
+    cursor: pointer;
+    color: var(--e-color-link1);
+  }
+}
+
+.mobile-list {
+  display: none;
+  margin-bottom: var(--o-spacing-h5);
+  box-shadow: var(--e-shadow1);
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+  .item {
+    padding: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h8);
+    font-size: var(--o-font-size-tip);
+    font-weight: 400;
+    color: var(--e-color-neutral8);
+    line-height: var(--o-line-height-tip);
+    background-color: var(--e-color-bg2);
+    &:nth-child(odd) {
+      background: var(--e-color-bg4);
+    }
+    & li {
+      margin-bottom: var(--o-spacing-h8);
+    }
+    li:last-child {
+      margin-bottom: 0;
+    }
+    li:nth-child(4) {
+      display: flex;
+      span {
+        min-width: 52px;
+      }
+    }
+    span {
+      color: var(--e-color-text1);
+      margin-right: var(--o-spacing-h8);
+    }
+    .link {
+      cursor: pointer;
+      color: var(--e-color-link1);
+    }
+  }
+}
+.about {
+  margin-top: var(--o-spacing-h4);
+  font-size: var(--o-font-size-h8);
+  font-weight: 400;
+  color: var(--e-color-text1);
+  line-height: var(--o-line-height-h8);
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+  a {
+    color: var(--e-color-link1);
+  }
+}
+.slot-content {
+  font-size: var(--o-font-size-text);
+  font-weight: 400;
+  color: var(--e-color-text1);
+  line-height: var(--o-spacing-h4);
+}
+</style>

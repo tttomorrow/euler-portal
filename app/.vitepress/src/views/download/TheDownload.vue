@@ -494,7 +494,6 @@ onMounted(() => {
         <OButton
           v-if="currentPage * pageSize < total"
           class="page-box-button"
-          size="mini"
           @click="handleLoadMore"
         >
           {{ i18n.download.PAGINATION[3] }}

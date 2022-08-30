@@ -28,8 +28,8 @@ const total = ref(0);
 const currentPage = ref(1);
 const totalPage = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-const years = ['', '2021', '2020', '2019'];
-const selectedYear = ref('2021');
+const years = ['', '2022', '2021', '2020'];
+const selectedYear = ref('2022');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const filterIndex = ref(0);
@@ -63,7 +63,7 @@ function getSecurityLists(data: CveQuery) {
         total.value = res.result.totalCount;
         totalPage.value = Math.ceil(total.value / queryData.pages.size);
       } else {
-        total.value = 1;
+        total.value = 0;
       }
     });
   } catch (e: any) {
@@ -300,7 +300,7 @@ watch(queryData, () => getSecurityLists(queryData));
       </ClientOnly>
 
       <AppPaginationMo
-        v-if="total !== 1 || isMobile"
+        v-if="Math.ceil(total / 10) > 0 && isMobile"
         :current-page="queryData.pages.page"
         :total-page="Math.ceil(total / 10)"
         @turn-page="turnPage"
@@ -487,7 +487,7 @@ watch(queryData, () => getSecurityLists(queryData));
   }
   .pagination {
     margin-top: var(--o-spacing-h2);
-    s .slot-content {
+    .slot-content {
       font-size: var(--o-font-size-text);
       font-weight: 400;
       color: var(--e-color-text1);

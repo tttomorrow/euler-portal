@@ -40,7 +40,7 @@ const i18n = useI18n();
 const router = useRouter();
 const { lang } = useData();
 
-const a = computed(() => {
+const all = computed(() => {
   if (lang.value === 'en') {
     return 'ALL';
   } else if (lang.value === 'ru') {
@@ -55,8 +55,8 @@ const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-const architectureSelect = ref<string[]>([`${a.value}`]);
-const osOptions = ref<string[]>([`${a.value}`]);
+const architectureSelect = ref<string[]>([`${all.value}`]);
+const osOptions = ref<string[]>([`${all.value}`]);
 const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>(['全部']);
 const lastActiveName = ref('1');
