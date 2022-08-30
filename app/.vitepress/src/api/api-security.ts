@@ -1,6 +1,7 @@
 import { request } from '@/shared/axios';
 import type { AxiosResponse } from '@/shared/axios';
 import { cveQuery, SelectParams } from '@/shared/@types/type-support.ts';
+import { CveQuery, DetailQuery } from '@/shared/@types/type-support';
 
 /**
  * 调用接口获取安全公告列表
@@ -225,6 +226,62 @@ export function getCpu(params: SelectParams) {
     '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getCpu';
   return request
     .get(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
+ * 调用接口获取OSV技术评测列表-os厂商
+ * @name getOsName
+ */
+export function getOsName() {
+  const url = '/api-euler/api-approve/cve-security-notice-server/osv/getOsName';
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
+ * 调用接口获取OSV技术评测列表-分类
+ * @name getOsType
+ */
+export function getOsType() {
+  const url = '/api-euler/api-approve/cve-security-notice-server/osv/getType';
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
+ * 调用接口获取OSV技术评测表格数据
+ * @name getOsTableData
+ */
+export function getOsTableData(params: CveQuery) {
+  const url = '/api-euler/api-approve/cve-security-notice-server/osv/findAll';
+  return request
+    .post(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
+ * 调用接口获取OSV技术评测详细信息
+ * @name getOsvOne
+ */
+export function getOsvOne(params: DetailQuery) {
+  const url = `/api-euler/api-approve/cve-security-notice-server/osv/getOne?id=${params.id}`;
+  return request
+    .get(url)
     .then((res: AxiosResponse) => res.data)
     .catch((e: any) => {
       throw new Error(e);

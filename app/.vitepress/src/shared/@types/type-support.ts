@@ -13,6 +13,7 @@ export interface CveQuery {
   os?: string;
   lang?: string;
   testOrganization?: string;
+  osvName?: string;
 }
 export interface DetailParams {
   securityNoticeNo: string;
@@ -236,4 +237,7 @@ export interface AffectProduct {
   securityNoticeNo: string;
   status: string;
   updateTime: string;
+}
+export interface DetailQuery {
+  id: string;
 }

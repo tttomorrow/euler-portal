@@ -22,6 +22,7 @@ import screen from './screen';
 import contribution from './community/contribution';
 import mailing from './community/mailing';
 import search from './search';
+import approve from './approve';
 
 const i18n: { [key: string]: any } = {
   zh: {
@@ -40,6 +41,7 @@ const i18n: { [key: string]: any } = {
     showcase: showcase.zh,
     interaction: interaction.zh,
     live: live.zh,
+    approve: approve.zh,
     compatibility: compatibility.zh,
     summit: summit.zh,
     screen: screen.zh,
@@ -62,6 +64,7 @@ const i18n: { [key: string]: any } = {
     showcase: showcase.en,
     interaction: interaction.en,
     live: live.en,
+    approve: approve.en,
     compatibility: compatibility.en,
     summit: summit.en,
     screen: screen.en,
@@ -84,6 +87,7 @@ const i18n: { [key: string]: any } = {
     showcase: showcase.ru,
     interaction: interaction.ru,
     live: live.ru,
+    approve: approve.ru,
     compatibility: compatibility.ru,
     summit: summit.ru,
     screen: screen.ru,

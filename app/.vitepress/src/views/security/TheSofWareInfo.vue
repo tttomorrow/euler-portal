@@ -164,8 +164,10 @@ onMounted(() => {
         <div class="download">
           {{ i18n.compatibility.HARDWARE_DETAIL.TIP_LABEL }}
           <a
-            href="/openEuler-compatibility.pdf"
-            download="openEuler兼容性策略介绍.pdf"
+            :href="i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_HREF"
+            :download="
+              i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].DOWNLOAD_NAME
+            "
             :class="lang === 'en' ? 'download-link-en' : ''"
           >
             {{ i18n.compatibility.HARDWARE_DETAIL.TIP_LINK }}
@@ -285,8 +287,10 @@ onMounted(() => {
         <div class="download">
           {{ i18n.compatibility.HARDWARE_DETAIL.TIP_LABEL }}
           <a
-            href="/openEuler-compatibility.pdf"
-            download="openEuler兼容性策略介绍.pdf"
+            :href="i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_HREF"
+            :download="
+              i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].DOWNLOAD_NAME
+            "
             :class="lang === 'en' ? 'download-link-en' : ''"
           >
             {{ i18n.compatibility.HARDWARE_DETAIL.TIP_LINK }}
@@ -317,8 +321,9 @@ onMounted(() => {
     line-height: var(--o-line-height-h5);
     cursor: pointer;
     @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-h7);
-      font-size: var(--o-font-size-h7);
+      font-size: var(--o-font-size-h8);
+      font-size: var(--o-font-size-h8);
+      margin-bottom: var(--o-spacing-h6);
     }
   }
   .banner-title {
@@ -327,9 +332,9 @@ onMounted(() => {
     margin-bottom: var(--o-spacing-h1);
     color: var(--e-color-text1);
     @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-h5);
-      line-height: var(--o-line-height-h5);
-      margin-bottom: var(--o-spacing-h2);
+      font-size: var(--o-font-size-h7);
+      line-height: var(--o-line-height-h7);
+      margin-bottom: var(--o-spacing-h4);
     }
   }
 }
@@ -338,6 +343,12 @@ onMounted(() => {
   color: var(--e-color-text1);
   margin-bottom: var(--o-spacing-h5);
   line-height: var(--o-line-height-h5);
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: var(--o-spacing-h6);
+  }
 }
 .link {
   font-size: var(--o-font-size-h8);
@@ -346,7 +357,8 @@ onMounted(() => {
   word-break: break-all;
   cursor: pointer;
   @media screen and (max-width: 768px) {
-    font-size: var(--o-font-size-text);
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
   }
 }
 .download {
@@ -354,7 +366,8 @@ onMounted(() => {
   line-height: var(--o-line-height-h8);
   color: var(--e-color-text1);
   @media screen and (max-width: 768px) {
-    font-size: var(--o-font-size-text);
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
   }
   a {
     color: var(--e-color-link1);
@@ -364,7 +377,7 @@ onMounted(() => {
   }
 }
 .main-middle {
-  margin: var(--o-spacing-h2) 0;
+  margin: var(--o-spacing-h4) 0;
   .content {
     display: flex;
     justify-content: space-between;
@@ -373,6 +386,12 @@ onMounted(() => {
     }
     .content-box {
       width: 46%;
+      &:first-child {
+        padding-bottom: 0;
+      }
+      &:last-child {
+        padding-top: 0;
+      }
       @media screen and (max-width: 768px) {
         width: 100%;
         padding: 16px 0;
@@ -386,6 +405,7 @@ onMounted(() => {
         color: var(--e-color-text1);
         @media screen and (max-width: 768px) {
           width: 100%;
+          padding-bottom: var(--o-spacing-h6);
           justify-content: space-between;
           span {
             flex: 1;
@@ -394,8 +414,16 @@ onMounted(() => {
         .label {
           flex: 3;
           color: var(--e-color-text4);
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-height-tip);
+          }
         }
         .content-item {
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-height-tip);
+          }
           flex: 5;
         }
       }

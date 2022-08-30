@@ -276,6 +276,11 @@ export default {
           PATH: '/security/cve/',
         },
         {
+          NAME: 'OSV技术评测',
+          ID: 'approve',
+          PATH: '/security/approve/',
+        },
+        {
           NAME: '兼容性列表',
           ID: 'compatibility',
           PATH: '/security/compatibility/',

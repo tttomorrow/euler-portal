@@ -309,12 +309,22 @@ onMounted(() => {
       font-size: var(--o-font-size-h5);
       font-weight: 400;
       color: var(--e-color-text1);
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
+        margin-bottom: var(--o-spacing-h8);
+      }
     }
     &-content {
       color: var(--e-color-text4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
       margin-bottom: var(--o-spacing-h2);
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        margin-bottom: var(--o-spacing-h4);
+      }
     }
     .metrics-list,
     .affect-list {
