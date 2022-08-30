@@ -1,4 +1,5 @@
-// 菜单语言过滤
+// 菜单语言过滤 每个header nav 链接都要配置
+// 过滤事件写在AppHeader
 export default [
   {
     name: 'download',

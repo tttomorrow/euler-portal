@@ -101,24 +101,24 @@ export default {
           ID: 'blog',
           PATH: '/interaction/blog-list/',
         },
-        {
-          NAME: 'Live',
-          ID: 'live',
-          PATH: '/interaction/live-list/',
-        },
-        {
-          NAME: 'Meetups',
-          ID: 'salon',
-          PATH: '/interaction/salon-list/',
-        },
-        {
-          NAME: 'Summit',
-          ID: 'summit',
-          PATH: 'https://www.openeuler.org/zh/interaction/summit-list/devday2022/',
-          IS_OPEN_MINISITE_WINDOW: 1,
-        },
+        // {
+        //   NAME: 'Live',
+        //   ID: 'live',
+        //   PATH: '/interaction/live-list/',
+        // },
+        // {
+        //   NAME: 'Meetups',
+        //   ID: 'salon',
+        //   PATH: '/interaction/salon-list/',
+        // },
+        // {
+        //   NAME: 'Summit',
+        //   ID: 'summit',
+        //   PATH: 'https://www.openeuler.org/zh/interaction/summit-list/devday2022/',
+        //   IS_OPEN_MINISITE_WINDOW: 1,
+        // },
       ],
-      CLASS: ['news', 'blog', 'live', 'salon'],
+      CLASS: ['news', 'blog'],
     },
     {
       PATH: '',
