@@ -838,9 +838,9 @@ onUnmounted(() => {
     }
   }
   .integral-border {
-    border: 5px solid #5877ff;
-    border-top: 16px solid #5877ff;
-    // background-color: #5877ff;
+    border: 5px solid var(--e-color-brand1);
+    border-top: 16px solid var(--e-color-brand1);
+    // background-color: var(--e-color-brand1);
     .integral-content {
       padding: 32px 30px;
       font-size: 14px;
@@ -872,6 +872,9 @@ onUnmounted(() => {
         padding-left: 12px;
         color: var(--e-color-text4);
       }
+      .supplement {
+        color: var(--e-color-text4);
+      }
       .circular {
         p::before {
           content: '';
@@ -881,7 +884,7 @@ onUnmounted(() => {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background-color: #2e9afe;
+          background-color: var(--e-color-brand1);
         }
       }
       .star {
@@ -901,10 +904,10 @@ onUnmounted(() => {
   }
   @media (max-width: 1000px) {
     .integral-border {
-      border: 5px solid #5877ff;
-      border-top: 16px solid #5877ff;
+      border: 5px solid var(--e-color-brand1);
+      border-top: 16px solid var(--e-color-brand1);
       border-radius: 8px;
-      background-color: #5877ff;
+      background-color: var(--e-color-brand1);
     }
     .integral-content {
       padding-bottom: 41px;
@@ -977,9 +980,9 @@ onUnmounted(() => {
   }
   .rule-border {
     border-radius: 8px;
-    border: 5px solid #5dc8ff;
-    border-top: 16px solid #5dc8ff;
-    background-color: #5dc8ff;
+    border: 5px solid var(--e-color-brand1);
+    border-top: 16px solid var(--e-color-brand1);
+    background-color: var(--e-color-brand1);
   }
   .rule-content {
     padding: 32px 30px;

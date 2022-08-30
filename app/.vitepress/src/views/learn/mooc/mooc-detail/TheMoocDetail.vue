@@ -230,12 +230,17 @@ onUnmounted(() => {
 const goHome = () => {
   router.go(`/${language.value}/`);
 };
+const menuShowMo = computed(() => {
+  return commonStore.moocMenuShow;
+});
 </script>
 <template>
   <AppContent :pc-top="40" :mobile-top="16">
     <div class="mooc-detail">
       <div class="detail-mobile">
-        <OIcon class="catalog" @click="toggleMenu(true)"><IconCatalog /></OIcon>
+        <OIcon v-show="menuShowMo" class="catalog" @click="toggleMenu(true)"
+          ><IconCatalog
+        /></OIcon>
         <ClientOnly>
           <ODrawer
             v-model="isShowMenu"
