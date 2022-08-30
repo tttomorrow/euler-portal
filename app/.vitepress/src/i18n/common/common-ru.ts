@@ -36,7 +36,7 @@ export default {
     MEETINGGUIDE: 'Meeting-Guide',
     DISCOVERY: 'Открытие',
     ATUNE: 'A-Tune',
-    BISHENGJDK: 'Bisheng JDK',
+    BISHENGJDK: 'BiSheng JDK',
     ISULA: 'iSula',
     SECGEAR: 'secGear',
     STRATOVIRT: 'StratoVirt',
@@ -169,7 +169,7 @@ export default {
           PATH: '/other/projects/atune/',
         },
         {
-          NAME: 'Bisheng JDK',
+          NAME: 'BiSheng JDK',
           ID: 'bishengjdk',
           PATH: '/other/projects/bishengjdk/',
         },

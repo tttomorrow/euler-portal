@@ -179,7 +179,7 @@ For details, see the introduction to the [openEuler Technical Committee](https:/
 <style lang="scss" scoped>
 .word {
   margin-top: var(--o-spacing-h2);
-  max-width: 1440px;
+  max-width: 1416px;
   li::marker {
     color: var(--e-color-text1) !important;
   }

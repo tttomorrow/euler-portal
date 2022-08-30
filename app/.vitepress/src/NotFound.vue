@@ -37,6 +37,9 @@ const commonStore = useCommon();
     margin-top: var(--o-spacing-h5);
     font-size: var(--o-font-size-h7);
   }
+  .nofound-img {
+    height: 300px;
+  }
   @media screen and (max-width: 768px) {
     padding-top: var(--o-spacing-h2);
     font-size: var(--o-font-size-text);

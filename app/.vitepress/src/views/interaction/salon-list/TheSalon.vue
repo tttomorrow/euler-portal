@@ -450,7 +450,7 @@ onMounted(async () => {
   padding-top: var(--o-spacing-h1);
   height: 100%;
   .empty-img {
-    max-height: 400px;
+    height: 300px;
   }
   .empty-text {
     margin-top: var(--o-spacing-h5);
