@@ -295,6 +295,7 @@ export default {
         'security',
         'vulnerability-reporting',
         'safety-bulletin',
+        'approve',
         'cve',
         'compatibility',
         'migration',

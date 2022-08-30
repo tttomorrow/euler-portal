@@ -136,4 +136,8 @@ export default [
     name: 'legal',
     lang: ['zh', 'en', 'ru'],
   },
+  {
+    name: 'approve',
+    lang: ['zh'],
+  },
 ];

@@ -4,19 +4,18 @@ import { useCommon } from '@/stores/common';
 
 import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
+import { computed } from 'vue';
 const { lang } = useData();
 const commonStore = useCommon();
+
+const notFoundImg = computed(() =>
+  commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
+);
 </script>
 
 <template>
   <div class="nofound">
-    <img
-      class="nofound-img"
-      :src="
-        commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
-      "
-      alt="404"
-    />
+    <img class="nofound-img" :src="notFoundImg" alt="404" />
     <p class="nofound-text">
       {{ lang === 'zh' ? '暂无数据' : 'NotFound !' }}
     </p>
