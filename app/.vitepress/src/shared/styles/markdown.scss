@@ -1,7 +1,7 @@
 .markdown {
-  width: calc(100% - 88px);
+  width: calc(100% - 80px);
   max-width: 1416px;
-  padding: 44px;
+  padding: 40px;
   margin: var(--o-spacing-h2) auto;
   margin-bottom: var(--o-spacing-h1);
   background-color: var(--e-color-bg2);
@@ -138,16 +138,33 @@
     word-break: break-word;
     border-collapse: collapse;
     padding: 0;
+    line-height: var(--o-line-height-text);
 
     tr {
-      height: 36px;
+      height: 54px;
       color: var(--e-color-text4);
       border-bottom: 1px solid var(--e-color-table);
 
       th {
+        padding-left: var(--o-spacing-h3);
+        text-align: left;
+        font-weight: 500;
         font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
         background-color: var(--e-color-bg4);
         color: var(--e-color-text1);
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-text);
+          padding-left: var(--o-spacing-h5);
+        }
+      }
+      td {
+        padding-left: var(--o-spacing-h3);
+        line-height: var(--o-line-height-text);
+        @media screen and (max-width: 768px) {
+          padding-left: var(--o-spacing-h6);
+          font-size: var(--o-font-size-tip);
+        }
       }
     }
   }
@@ -208,9 +225,10 @@
  **/
 .legal-privacy {
   margin: 0 auto;
+  padding: 0;
   padding-top: 94px;
   padding-bottom: var(--o-spacing-h1);
-  max-width: 860px;
+  max-width: 880px;
   background: var(--e-color-bg1);
 }
 @media screen and (max-width: 768px) {

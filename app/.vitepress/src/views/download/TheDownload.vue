@@ -713,7 +713,7 @@ onMounted(() => {
     font-size: var(--o-font-size-h6);
     color: var(--e-color-text1);
     .empty-img {
-      max-height: 400px;
+      height: 300px;
     }
     .empty-text {
       margin-top: var(--o-spacing-h5);

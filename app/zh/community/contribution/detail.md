@@ -177,7 +177,7 @@ openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社�
 <style lang="scss" scoped>
 .word {
   margin-top: var(--o-spacing-h2);
-  max-width: 1440px;
+  max-width: 1416px;
   li::marker {
     color: var(--e-color-text1) !important;
   }

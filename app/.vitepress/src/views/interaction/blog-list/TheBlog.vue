@@ -15,7 +15,7 @@ import banner from '@/assets/banner/banner-interaction.png';
 import blogIllustration from '@/assets/illustrations/blog.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
-import IconBrowse from '~icons/app/icon-browse.svg';
+// import IconBrowse from '~icons/app/icon-browse.svg';
 import IconRight from '~icons/app/arrow-right.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
@@ -543,11 +543,11 @@ const moblieCurrentChange = (val: string) => {
                 {{ item.archives }}
               </p>
             </div>
-            <div class="infodetail">
+            <!-- <div class="infodetail">
               <OIcon class="icon"><IconBrowse /></OIcon>
-              <!-- <p>{{userCaseData.BROWSE}}{{ item.browsetimes }}{{userCaseData.TIMES}}</p> -->
+              <p>{{userCaseData.BROWSE}}{{ item.browsetimes }}{{userCaseData.TIMES}}</p>
               <p>{{ userCaseData.BROWSE }}10{{ userCaseData.TIMES }}</p>
-            </div>
+            </div> -->
           </div>
           <div class="blog-list-item-content">
             <p>{{ item.summary }}</p>
