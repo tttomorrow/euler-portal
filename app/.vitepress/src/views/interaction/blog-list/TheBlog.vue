@@ -746,6 +746,7 @@ const moblieCurrentChange = (val: string) => {
     margin-top: 0;
     margin-bottom: var(--o-spacing-h5);
     grid-template-columns: repeat(1, 1fr);
+    grid-gap: var(--o-spacing-h5);
   }
 }
 @media (max-width: 415px) {
