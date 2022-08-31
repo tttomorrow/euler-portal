@@ -32,6 +32,6 @@ Jiangxi Province Healthcare Security Administration deployed Galaxy Kylin Advanc
 
 - **System reconstruction**: 1,000 servers were purchased and Galaxy Kylin Advanced Server Operating System V10 was deployed to support the stable operation of medical insurance systems including the insurance handling subsystem and the public service subsystem. As a system-level software and hardware support platform for industry applications, big data, cloud computing, and distributed storage, the cloud platform supports the strategic goals of medical insurance clouds and applications in the healthcare industry, and this is a huge step forward for China's healthcare industry.
 
-## Partner
+## **Partner** 
 
 <img src="./qiling.png"/>

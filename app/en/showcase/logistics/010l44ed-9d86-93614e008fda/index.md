@@ -26,6 +26,6 @@ Set up a professional technical service team to ensure availability, compatibili
 
 - In October 2021, China Post successfully adapted and migrated the innovation cloud platform and OA system to UOS V20.
 
-## Partner
+## **Partner** 
 
 <img src="./tongxin.png"/>

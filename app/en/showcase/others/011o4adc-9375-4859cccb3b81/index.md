@@ -32,6 +32,6 @@ Software and hardware devices were purchased and the full-stack independent inno
 
 - **Industry benchmark**: This project was China Resources Group's pilot project for independent innovation. Through this project, China Resources Group completed the porting of the China Resources Cloud, service systems, and terminal applications, and accumulated valuable technical innovation and O&M experience, laying the groundwork for the group to use other products such as the Kylin OS on a larger scale.
 
-## Partner
+## **Partner** 
 
 <img src="./qiling.png"/>

@@ -34,6 +34,6 @@ Since 2009, SGCC started to migrate the D5000 dispatch system to the Kylinsec OS
 
 - Sufficient technical preparation for the porting of the D5000 system's base software and hardware
 
-## Partner
+## **Partner** 
 
 <img src="./xinan.png"/>

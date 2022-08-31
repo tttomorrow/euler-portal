@@ -24,6 +24,6 @@ The solution aims to complete joint commissioning and adaptation between service
 
 - The success of the adaptation proves that in future, similar architectures can be migrated on a large scale without reconstruction.
 
-## Partner
+## **Partner** 
 
 <img src="./tongxin.png"/>
