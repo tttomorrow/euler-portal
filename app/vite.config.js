@@ -77,12 +77,6 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-approve/, ''),
       },
-      '/api-rank/': {
-        target: 'https://api.openeuler.org/osi-task-manager/',
-        ws: true,
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-rank/, ''),
-      },
       '/api/': {
         target: 'https://api.openeuler.org',
         // target: 'http://119.8.32.82',

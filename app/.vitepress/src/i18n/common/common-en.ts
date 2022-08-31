@@ -262,7 +262,7 @@ export default {
         {
           NAME: 'Compatibility List',
           ID: 'compatibility',
-          PATH: '/security/compatibility/',
+          PATH: '/compatibility/',
         },
       ],
       CLASS: [

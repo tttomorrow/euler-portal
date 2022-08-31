@@ -311,6 +311,9 @@ onMounted(() => {
         margin-bottom: var(--o-spacing-h8);
       }
     }
+    .pc-list {
+      box-shadow: none;
+    }
     &-content {
       color: var(--e-color-text4);
       font-size: var(--o-font-size-text);

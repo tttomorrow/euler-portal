@@ -6,6 +6,7 @@ export default {
   BUSINESS_SOFTWARE: '商业软件',
   SOFTWARETYPE: '软件类型',
   ADAPTIVE: '操作系统',
+  CPU: 'CPU',
   OS: 'OS',
   ARCHITECTURE: 'Architecture',
   SELECT_PLACEHOLDER: 'Select',
