@@ -28,6 +28,6 @@ China Huadian Corporation (CHD) focuses on the security of core information infr
 
 - **Standard system**: The Galaxy Kylin Advanced Server Operating System V10 (workstation) has been developed to provide a standard system version for industrial control and production in the electric power industry.
 
-## Partner
+## **Partner** 
 
 <img src="./qiling.png"/>
