@@ -2,6 +2,7 @@ export default {
   COMPATIBILITY: '兼容性列表',
   HARDWARE: '整机',
   DRIVE: '板卡',
+  CPU: 'CPU',
   SOFTWARE: '开源软件',
   BUSINESS_SOFTWARE: '商业软件',
   SOFTWARETYPE: '软件类型',

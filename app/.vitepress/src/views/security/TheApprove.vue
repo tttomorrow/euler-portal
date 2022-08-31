@@ -126,7 +126,7 @@ watch(queryData, () => getOsTableList(queryData));
   <BannerLevel2
     class="banner-pc"
     :background-image="banner"
-    background-text="CONTENT"
+    background-text="SUPPORT"
     :title="i18n.approve.TITLE"
     subtitle=""
     :illustration="!isMobile ? search : cve"
@@ -255,6 +255,7 @@ watch(queryData, () => getOsTableList(queryData));
     </ul>
 
     <OPagination
+      v-if="total > 0"
       v-model:page-size="queryData.pages.size"
       v-model:currentPage="queryData.pages.page"
       :page-sizes="[10, 20, 40, 80]"

@@ -183,7 +183,7 @@ function goBackPage() {
                   i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4]
                     .DESCRIPTION_1
                 }}
-                <a
+                <!-- <a
                   target="_blank"
                   :href="
                     i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_HREF
@@ -196,7 +196,7 @@ function goBackPage() {
                 {{
                   i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4]
                     .DESCRIPTION_2
-                }}
+                }} -->
                 <a
                   :href="
                     i18n.compatibility.HARDWARE_OEC_DETAIL.ITEM_ARR[4].A_HREF_2

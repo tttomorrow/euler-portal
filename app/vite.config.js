@@ -75,7 +75,7 @@ export default defineConfig({
       '/api-approve': {
         target: 'https://www.openeuler.org/api-approve',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-search/, ''),
+        rewrite: (path) => path.replace(/^\/api-approve/, ''),
       },
       '/api/': {
         target: 'https://api.openeuler.org',

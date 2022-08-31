@@ -435,7 +435,7 @@ onMounted(() => {
                 {{ item }}
               </OTag>
             </TagFilter>
-            <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
+            <TagFilter :show="false" :label="i18n.compatibility.CPU">
               <OTag
                 v-for="(item, index) in cpuList"
                 :key="'tag' + index"
@@ -875,9 +875,8 @@ onMounted(() => {
     <div class="tabs-mobile">
       <el-collapse v-model="activeName" accordion @change="handleChange">
         <el-collapse-item title="整机" name="1">
-          <div class="blog-tag">
+          <div class="blog-tag" style="display: none">
             <MobileFilter
-              class="filter"
               :data="filterData"
               :single="true"
               @filter="listfilter"
@@ -951,9 +950,8 @@ onMounted(() => {
         </el-collapse-item>
 
         <el-collapse-item title="板卡" name="2">
-          <div class="blog-tag">
+          <div class="blog-tag" style="display: none">
             <MobileFilter
-              class="filter"
               :data="filterDataTwo"
               :single="true"
               @filter="listfilter"
@@ -1044,10 +1042,9 @@ onMounted(() => {
         </el-collapse-item>
 
         <el-collapse-item title="开源软件" name="3">
-          <div class="blog-tag">
+          <div class="blog-tag" style="display: none">
             <MobileFilter
               v-if="total > 0 || screenWidth < 768"
-              class="filter"
               :data="filterDataTwo"
               :single="true"
               @filter="listfilter"
@@ -1146,7 +1143,7 @@ onMounted(() => {
         <el-collapse-item title="商业软件" name="4">
           <!-- <div class="blog-tag">
           <MobileFilter
-            class="filter"
+            
             :data="filterData"
             :single="true"
             @filter="listfilter"
@@ -1261,9 +1258,6 @@ onMounted(() => {
     .el-collapse-item__content:last-child {
       padding-bottom: 0;
     }
-  }
-  .filter {
-    background-color: var(--e-color-bg1);
   }
 }
 .bottom-wrapper {
