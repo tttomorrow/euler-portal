@@ -32,13 +32,15 @@ const mobileChaneLanguage = (newlang: string) => {
 
 function chaneLanguage(newlang: string) {
   if (lang.value === newlang) return;
-  const { pathname, host } = location;
+  const { pathname, host } = window.location;
   const newHref = pathname.replace(`/${lang.value}/`, `/${newlang}/`);
+  const RU = 'ru';
   isMenu.value = false;
   //判断是否是ru
-  if (host.includes('ru') || newlang === 'ru') {
+  if (host.includes(RU) || newlang === RU) {
     window.open(
-      `https://${newlang === 'ru' ? 'ru' : 'www'}.openeuler.org` + newHref
+      `https://${newlang === RU ? RU : 'www'}.openeuler.org` + newHref,
+      '_self'
     );
   } else {
     router.go(newHref);
