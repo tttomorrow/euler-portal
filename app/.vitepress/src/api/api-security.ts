@@ -237,7 +237,7 @@ export function getCpu(params: SelectParams) {
  * @name getOsName
  */
 export function getOsName() {
-  const url = '/api-euler/api-approve/cve-security-notice-server/osv/getOsName';
+  const url = '/api-approve/cve-security-notice-server/osv/getOsName';
   return request
     .get(url)
     .then((res: AxiosResponse) => res.data)
@@ -251,7 +251,7 @@ export function getOsName() {
  * @name getOsType
  */
 export function getOsType() {
-  const url = '/api-euler/api-approve/cve-security-notice-server/osv/getType';
+  const url = '/api-approve/cve-security-notice-server/osv/getType';
   return request
     .get(url)
     .then((res: AxiosResponse) => res.data)
@@ -265,7 +265,7 @@ export function getOsType() {
  * @name getOsTableData
  */
 export function getOsTableData(params: CveQuery) {
-  const url = '/api-euler/api-approve/cve-security-notice-server/osv/findAll';
+  const url = '/api-approve/cve-security-notice-server/osv/findAll';
   return request
     .post(url, params)
     .then((res: AxiosResponse) => res.data)
@@ -279,7 +279,7 @@ export function getOsTableData(params: CveQuery) {
  * @name getOsvOne
  */
 export function getOsvOne(params: DetailQuery) {
-  const url = `/api-euler/api-approve/cve-security-notice-server/osv/getOne?id=${params.id}`;
+  const url = `/api-approve/cve-security-notice-server/osv/getOne?id=${params.id}`;
   return request
     .get(url)
     .then((res: AxiosResponse) => res.data)
