@@ -108,7 +108,7 @@ onMounted(() => {
   &-item {
     max-width: 696px;
     box-shadow: var(--e-shadow-l1);
-    margin-bottom: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h4);
     break-inside: avoid;
     padding: var(--o-spacing-h2);
     background-color: var(--e-color-bg2);
