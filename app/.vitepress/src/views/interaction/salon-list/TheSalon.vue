@@ -26,9 +26,9 @@ const activeName = ref('first');
 
 const router = useRouter();
 
-const date: Ref<string> = ref(
-  new Date().getFullYear() + '-' + (new Date().getMonth() + 1)
-);
+// const date: Ref<string> = ref(
+//   new Date().getFullYear() + '-' + (new Date().getMonth() + 1)
+// );
 
 const dateNews: Ref<string> = ref(
   new Date().getFullYear() + '-' + (new Date().getMonth() + 1)
@@ -36,25 +36,24 @@ const dateNews: Ref<string> = ref(
 
 const screenWidth = useWindowResize();
 
-const allMeetsList: Ref<any[]> = ref([]);
+// const allMeetsList: Ref<any[]> = ref([]);
 
 const allNewsList: Ref<any[]> = ref([]);
 
-const showMeetsList: Ref<any> = ref([]);
-
 const showNewsList: Ref<any> = ref([]);
 
-const meetsList = computed(() => {
-  if (screenWidth.value > 768) {
-    return showMeetsList.value[date.value.split('-')[0] + 'year']
-      ? showMeetsList.value[date.value.split('-')[0] + 'year'][
-          mapping[parseInt(date.value.split('-')[1]) - 1]
-        ]
-      : [];
-  } else {
-    return allMeetsList.value;
-  }
-});
+// const meetsList = computed(() => {
+//   if (screenWidth.value > 768) {
+//     return showNewsList.value[dateNews.value.split('-')[0] + 'year']
+//       ? showNewsList.value[dateNews.value.split('-')[0] + 'year'][
+//           mapping[parseInt(dateNews.value.split('-')[1]) - 1]
+//         ]
+//       : [];
+//   } else {
+//     return allNewsList.value;
+//   }
+// });
+const meetsList = ref<any>([]);
 
 const newsList = computed(() => {
   if (screenWidth.value > 768) {
@@ -112,53 +111,53 @@ const sortMeetsList = (array: any) => {
   return temp;
 };
 
-const initData = (res: any[]) => {
-  const tempArr: {
-    MEETUPS_IMG: string;
-    MEETUPS_DATE: any;
-    MEETUPS_TITLE: any;
-    MEETUPS_DESC: any[];
-    IS_MINI: number;
-    ID: any;
-    ADDRESS_UP: string;
-    MEETUPS_MONTH: string;
-  }[] = [];
-  res.forEach((item) => {
-    if (item.state === 5) {
-      tempArr.push({
-        MEETUPS_IMG: `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`,
-        MEETUPS_DATE: item.date,
-        MEETUPS_TITLE: item.title,
-        MEETUPS_DESC: [item.synopsis],
-        IS_MINI: 1,
-        ID: item.id,
-        ADDRESS_UP: item.address ? item.address : '线上',
-        MEETUPS_MONTH: mapping[parseInt(item.date.split('-')[1]) - 1],
-      });
-    }
-  });
+// const initData = (res: any[]) => {
+//   const tempArr: {
+//     MEETUPS_IMG: string;
+//     MEETUPS_DATE: any;
+//     MEETUPS_TITLE: any;
+//     MEETUPS_DESC: any[];
+//     IS_MINI: number;
+//     ID: any;
+//     ADDRESS_UP: string;
+//     MEETUPS_MONTH: string;
+//   }[] = [];
+//   res.forEach((item) => {
+//     if (item.state === 5) {
+//       tempArr.push({
+//         MEETUPS_IMG: `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`,
+//         MEETUPS_DATE: item.date,
+//         MEETUPS_TITLE: item.title,
+//         MEETUPS_DESC: [item.synopsis],
+//         IS_MINI: 1,
+//         ID: item.id,
+//         ADDRESS_UP: item.address ? item.address : '线上',
+//         MEETUPS_MONTH: mapping[parseInt(item.date.split('-')[1]) - 1],
+//       });
+//     }
+//   });
 
-  const allList = salonData.value.MEETUPS_DATA.concat(tempArr);
+//   const allList = salonData.value.MEETUPS_DATA.concat(tempArr);
 
-  allMeetsList.value = sortMeetsList(allList);
+//   allMeetsList.value = sortMeetsList(allList);
 
-  date.value =
-    allMeetsList.value[0].MEETUPS_DATE.slice(0, 4) +
-    '-' +
-    allMeetsList.value[0].MEETUPS_DATE.slice(5, 7);
+//   date.value =
+//     allMeetsList.value[0].MEETUPS_DATE.slice(0, 4) +
+//     '-' +
+//     allMeetsList.value[0].MEETUPS_DATE.slice(5, 7);
 
-  const listObj: any = {};
-  allMeetsList.value.forEach((item) => {
-    if (!listObj[item.fullYear]) {
-      listObj[item.fullYear] = {};
-    }
-    if (!listObj[item.fullYear][item.fullMonth]) {
-      listObj[item.fullYear][item.fullMonth] = [];
-    }
-    listObj[item.fullYear][item.fullMonth].push(item);
-  });
-  return listObj;
-};
+//   const listObj: any = {};
+//   allMeetsList.value.forEach((item) => {
+//     if (!listObj[item.fullYear]) {
+//       listObj[item.fullYear] = {};
+//     }
+//     if (!listObj[item.fullYear][item.fullMonth]) {
+//       listObj[item.fullYear][item.fullMonth] = [];
+//     }
+//     listObj[item.fullYear][item.fullMonth].push(item);
+//   });
+//   return listObj;
+// };
 
 const initNews = (res: any[]) => {
   const tempArr: {
@@ -194,9 +193,9 @@ const initNews = (res: any[]) => {
   allNewsList.value = sortMeetsList(allList);
 
   dateNews.value =
-    allNewsList.value[0].MEETUPS_DATE.slice(0, 4) +
+    allNewsList.value[1].MEETUPS_DATE.slice(0, 4) +
     '-' +
-    allNewsList.value[0].MEETUPS_DATE.slice(5, 7);
+    allNewsList.value[1].MEETUPS_DATE.slice(5, 7);
 
   const listObj: any = {};
   allNewsList.value.forEach((item) => {
@@ -224,8 +223,11 @@ const goDetail = (item: { IS_MINI: any; ID: any }) => {
 onMounted(async () => {
   try {
     const responeData = await getSalon();
-    showMeetsList.value = initData(responeData);
-    showNewsList.value = initNews(responeData);
+    showNewsList.value = JSON.parse(JSON.stringify(initNews(responeData)));
+    Reflect.deleteProperty(showNewsList.value['2022year'], '九月');
+    meetsList.value = JSON.parse(
+      JSON.stringify(initNews(responeData)['2022year']['九月'])
+    );
   } catch (e: any) {
     throw new Error(e);
   }
@@ -249,15 +251,9 @@ onMounted(async () => {
     <AppContent class="salon-content">
       <div v-if="activeName === 'first'">
         <h3 class="salon-title">{{ salonData.DETAIL_NEWS }}</h3>
-        <OTimeline
-          v-model="dateNews"
-          class="salon-time"
-          :right-arrow="true"
-          :left-arrow="true"
-        ></OTimeline>
-        <div v-if="newsList && newsList.length != 0" class="salon-new">
+        <div v-if="meetsList && meetsList.length != 0" class="salon-new">
           <OCard
-            v-for="(item, index) in newsList"
+            v-for="(item, index) in meetsList"
             :key="item.ID"
             class="salon-new-card"
             :style="{ padding: '0px' }"
@@ -356,14 +352,14 @@ onMounted(async () => {
           {{ salonData.DETAIL_REVIEW }}
         </h3>
         <OTimeline
-          v-model="date"
+          v-model="dateNews"
           class="salon-time"
           :right-arrow="true"
           :left-arrow="true"
         ></OTimeline>
-        <div v-if="meetsList && meetsList.length != 0" class="salon-review">
+        <div v-if="newsList && newsList.length != 0" class="salon-review">
           <OCard
-            v-for="item in meetsList"
+            v-for="item in newsList"
             :key="item.ID"
             class="salon-review-card"
             :style="{ padding: '0px' }"

@@ -55,7 +55,7 @@ const jump = (item: any) => {
 <template>
   <swiper
     class="home-banner"
-    :loop="false"
+    :loop="true"
     :pagination="{
       clickable: true,
     }"
@@ -78,18 +78,28 @@ const jump = (item: any) => {
         >
           <div
             v-if="item.title !== ''"
-            :class="[{ 'flex-start': index === 0 }]"
+            :class="[{ 'flex-start': index === 1 }]"
             class="banner-panel-content flex-column"
           >
             <div data-aos="fade-down" class="box">
-              <p class="title" :class="{ experts: index === 0 }">
+              <p class="title" :class="{ experts: index === 1 }">
                 {{ item.title }}
               </p>
-              <p class="desc" :class="{ experts: index === 0 }">
-                {{ item.desc }}
+              <p class="desc" :class="{ experts: index === 1 }">
+                <span
+                  v-for="item2 in item.desc"
+                  class="inline-desc"
+                  :key="item2"
+                  >{{ item2 }}</span
+                >
               </p>
             </div>
-            <div v-if="item.btn" data-aos="fade-up" class="action">
+            <div
+              v-if="item.btn"
+              data-aos="fade-up"
+              class="action"
+              :class="{ liveBanner: index === 1 }"
+            >
               <OButton animation class="home-banner-btn">
                 {{ item.btn }}
                 <template #suffixIcon
@@ -107,6 +117,20 @@ const jump = (item: any) => {
 
 <style lang="scss" scoped>
 $banner-color: #fff;
+html[lang='zh'] {
+  .liveBanner {
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+  .flex-start {
+    @media screen and (max-width: 824px) {
+      margin: 0;
+      padding-top: var(--o-spacing-h3);
+      height: 100%;
+    }
+  }
+}
 .dark .banner-panel-cover {
   filter: brightness(80%) grayscale(20%) contrast(1.2);
 }
@@ -163,8 +187,18 @@ $banner-color: #fff;
       }
       .desc {
         @media screen and (min-width: 1439px) {
-          max-width: 500px;
+          // max-width: 500px;
         }
+        .inline-desc {
+          &:nth-child(2) {
+            padding-left: 30px;
+            @media screen and (max-width: 768px) {
+              padding: 0;
+              display: block;
+            }
+          }
+        }
+
         font-size: var(--o-font-size-h5);
         font-weight: normal;
         line-height: var(--o-line-height-h5);
@@ -180,6 +214,9 @@ $banner-color: #fff;
           line-height: var(--o-line-height-text);
         }
       }
+      //  .experts {
+      //     display: inline-block;
+      //   }
 
       .action {
         margin-top: var(--o-spacing-h3);
@@ -193,6 +230,11 @@ $banner-color: #fff;
           margin-top: 0;
         }
       }
+      // .liveBanner {
+      //   @media screen and (max-width: 768px) {
+      //     display: none;
+      //   }
+      // }
       @media screen and (max-width: 1440px) {
         padding: 0 16px;
       }
@@ -203,13 +245,7 @@ $banner-color: #fff;
         text-align: center;
       }
     }
-    .flex-start {
-      @media screen and (max-width: 824px) {
-        margin: 0;
-        padding-top: var(--o-spacing-h3);
-        height: 100%;
-      }
-    }
+
     &-cover {
       background-position: 50%;
       background-repeat: no-repeat;
