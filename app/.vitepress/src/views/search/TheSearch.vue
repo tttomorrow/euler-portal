@@ -289,6 +289,12 @@ onMounted(() => {
     color: var(--e-color-text1);
     line-height: var(--o-spacing-h4);
   }
+  @media (max-width: 1439px) {
+    padding-left: 24px;
+  }
+  @media (max-width: 1160px) {
+    grid-gap: 12px;
+  }
   @media (max-width: 1100px) {
     padding: 0 16px var(--o-spacing-h2);
     padding-top: var(--o-spacing-h2);
@@ -300,6 +306,9 @@ onMounted(() => {
   }
   .search-left {
     max-width: 1072px;
+    @media (max-width: 1220px) {
+      min-width: 768px;
+    }
     .o-search {
       @media (max-width: 768px) {
         height: 28px;
@@ -336,6 +345,7 @@ onMounted(() => {
         }
         li {
           height: 55px;
+          min-width: 56px;
           margin-right: var(--o-spacing-h2);
           color: var(--e-color-text1);
           font-size: var(--o-font-size-h8);
