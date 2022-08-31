@@ -306,20 +306,21 @@ onMounted(() => {
     @media (max-width: 1220px) {
       min-width: 768px;
     }
-    .o-search {
-      @media (max-width: 768px) {
+
+    @media (max-width: 768px) {
+      :deep(.o-search) {
         height: 28px;
         font-size: 14px;
         width: 100vw;
-        padding: 0 16px !important;
+        padding: 0 16px;
+      }
 
-        :deep(.el-input__inner) {
-          font-size: 14px;
-          height: 100%;
-        }
-        :deep(.el-input__prefix-inner) {
-          font-size: 16px;
-        }
+      :deep(.el-input__inner) {
+        font-size: 14px;
+        height: 100%;
+      }
+      :deep(.el-input__prefix-inner) {
+        font-size: 16px;
       }
     }
     .close {
@@ -367,6 +368,8 @@ onMounted(() => {
             background-color: transparent;
             @media (max-width: 768px) {
               position: relative;
+              width: calc(100% - 16px);
+              left: 8px;
               top: -1px;
             }
           }
