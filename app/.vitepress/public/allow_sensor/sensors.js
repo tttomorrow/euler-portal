@@ -506,7 +506,7 @@ function startSensor(num) {
       sensors = window['sensorsDataAnalytic201505'];
       num--;
       startSensor(num);
-    }, 5000);
+    }, 500);
   }
 }
-startSensor(5);
+startSensor(20);

@@ -55,7 +55,7 @@ export function getNowFormatDate() {
 }
 
 // 搜索对搜索词埋点
-export function addSearchBuriedData(search_key: string) {
+export function setSearchBuriedData(search_key: string) {
   const search_event_id = `${search_key}${new Date().getTime()}${
     (window as any)['sensorsCustomBuriedData']?.ip || ''
   }`;
@@ -70,6 +70,24 @@ export function addSearchBuriedData(search_key: string) {
     ...((window as any)['sensorsCustomBuriedData'] || {}),
     ...((window as any)['addSearchBuriedData'] || {}),
   });
+}
+
+// 等待sensor加载完成
+export function addSearchBuriedData(search_key: string, num = 20) {
+  if (!num) {
+    // 重试最大次数
+    return;
+  }
+  if ((window as any)['sensorsCustomBuriedData']) {
+    console.log(num);
+    setSearchBuriedData(search_key);
+  } else {
+    setTimeout(() => {
+      // 若是一开始没有值，则重试
+      num--;
+      addSearchBuriedData(search_key, num);
+    }, 500);
+  }
 }
 
 /**

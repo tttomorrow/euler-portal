@@ -15,7 +15,6 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
-import { addSearchBuriedData } from '@/shared/utils';
 // import IconClose from '~icons/app/x.svg';
 
 // const props = defineProps({
@@ -191,7 +190,6 @@ const donShowSearchBox = () => {
 const searchInput = ref<string>('');
 // 搜索事件
 function search() {
-  addSearchBuriedData(searchInput.value);
   window.open(
     `/${lang.value}/other/search/?search=${searchInput.value}`,
     '_self'
