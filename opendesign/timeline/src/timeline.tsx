@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, ref, Ref, toRefs } from 'vue';
+import { defineComponent, watch, ref, Ref, toRefs, onMounted } from 'vue';
 import { timelineProps, TimelineProps } from './timeline-types';
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
@@ -12,9 +12,7 @@ export default defineComponent({
   emits: ['update:modelValue'],
   setup(props: TimelineProps, { emit }) {
     const { leftArrow, rightArrow, modelValue } = toRefs(props);
-
     const SPLITEMONTH = 6;
-
     const onClick = (index: number) => {
       activeTab.value = index;
       emit('update:modelValue', timeList.value[activeTab.value]);
@@ -72,21 +70,25 @@ export default defineComponent({
       }
       emit('update:modelValue', timeList.value[activeTab.value]);
     };
-
-    const activeTab = ref(0);
-
-    const timeList: Ref<string[]> = ref([]);
-
-    onMounted(() => {
+    const changeDate = () => {
       const date = !isNaN(new Date(modelValue.value).getTime())
         ? new Date(modelValue.value)
         : new Date();
-
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
-
       timeList.value = initDate(year, month);
+    };
+    const activeTab = ref(0);
+    const timeList: Ref<string[]> = ref([]);
+    onMounted(() => {
+      changeDate();
     });
+    watch(
+      () => modelValue.value,
+      () => {
+        changeDate();
+      }
+    );
 
     return () => {
       return (

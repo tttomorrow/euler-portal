@@ -1,20 +1,20 @@
-import expertImg_pc from '../../assets/category/home/banner/expert_pc.png';
-import expertImg_mo from '../../assets/category/home/banner/expert_mo.png';
+// import liveImg_pc from '../../assets/category/home/banner/liveBanner_pc.png';
+// import liveImg_mo from '../../assets/category/home/banner/liveBanner_pc.png';
 import migrationImg_pc from '../../assets/category/home/banner/migration_pc.png';
 import migrationImg_mo from '../../assets/category/home/banner/migration_mo.png';
 export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
-      {
-        pcBanner: expertImg_pc,
-        moBanner: expertImg_mo,
-        link: '/zh/experts/',
-        targetTap: 1,
-        title: '顾问专家',
-        desc: '欧拉开源社区聘任首批顾问专家',
-        btn: '了解更多',
-      },
+      // {
+      //   pcBanner: liveImg_pc,
+      //   moBanner: liveImg_mo,
+      //   link: '',
+      //   targetTap: 0,
+      //   title: '',
+      //   desc: '',
+      //   btn: '',
+      // },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
@@ -26,15 +26,15 @@ export default {
       },
     ],
     en: [
-      {
-        pcBanner: expertImg_pc,
-        moBanner: expertImg_mo,
-        link: `/zh/experts/`,
-        targetTap: 1,
-        title: 'Expert Consultants',
-        desc: 'openEuler Community  Appointed the First Group of Expert Consultants',
-        btn: 'Learn More',
-      },
+      // {
+      //   pcBanner: liveImg_pc,
+      //   moBanner: liveImg_mo,
+      //   link: '',
+      //   targetTap: 0,
+      //   title: '',
+      //   desc: '',
+      //   btn: '',
+      // },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
@@ -46,15 +46,15 @@ export default {
       },
     ],
     ru: [
-      {
-        pcBanner: expertImg_pc,
-        moBanner: expertImg_mo,
-        link: `/zh/experts/`,
-        targetTap: 1,
-        title: 'Expert Consultants',
-        desc: 'openEuler Community  Appointed the First Group of Expert Consultants',
-        btn: 'Learn More',
-      },
+      // {
+      //   pcBanner: liveImg_pc,
+      //   moBanner: liveImg_mo,
+      //   link: '',
+      //   targetTap: 0,
+      //   title: '',
+      //   desc: '',
+      //   btn: '',
+      // },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
