@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, onUnmounted } from 'vue';
 
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
@@ -8,7 +8,7 @@ import { useI18n } from '@/i18n';
 
 const i18n = useI18n();
 const commonStore = useCommon();
-
+const caseContent = ref<HTMLElement>();
 const caseData: any = ref({});
 
 const active = ref(0);
@@ -24,6 +24,8 @@ const props = defineProps({
 const handleGo = (path: string) => {
   window.open(path.replace(/(index)$/g, ''), '_blank');
 };
+
+const timer = ref();
 
 const handleChangeActive = (index: number) => {
   active.value = index;
@@ -61,8 +63,36 @@ const imgUrlHover = computed(
   }
 );
 
+const changeCase = () => {
+  active.value === i18n.value.home.USER_CASE.CASE_LIST.length - 1
+    ? (active.value = 0)
+    : active.value++;
+};
+
+const setCaseInterval = () => {
+  timer.value = setInterval(changeCase, 5000);
+};
+const clearCaseInterval = () => {
+  clearInterval(timer.value);
+};
+
 onMounted(() => {
   props.caseData && initData(props.caseData);
+  try {
+    if (caseContent.value) {
+      setCaseInterval();
+      caseContent.value.addEventListener('mouseover', clearCaseInterval);
+      //鼠标移出继续
+      caseContent.value.addEventListener('mouseout', setCaseInterval);
+    }
+  } catch (error: any) {
+    throw Error(error);
+  }
+});
+onUnmounted(() => {
+  timer.value.clearInterval;
+  caseContent.value?.removeEventListener('mouseover', clearCaseInterval);
+  caseContent.value?.removeEventListener('mouseout', setCaseInterval);
 });
 </script>
 
@@ -116,7 +146,7 @@ onMounted(() => {
           </div>
         </OCollapseItem>
       </OCollapse>
-      <div class="case">
+      <div ref="caseContent" class="case">
         <OCard class="case-card">
           <div class="case-tab">
             <div
@@ -125,18 +155,6 @@ onMounted(() => {
               class="case-tab-item"
               @click="handleChangeActive(index)"
             >
-              <!-- <img
-                class="case-img"
-                :src="
-                  commonStore.theme === 'dark'
-                    ? index === activeMobile
-                      ? item.ACTIVE_DARK_URL
-                      : item.URL_DARK
-                    : index === activeMobile
-                    ? item.ACTIVE_URL
-                    : item.URL
-                "
-              /> -->
               <div
                 class="case-img-box"
                 :class="active === index ? 'active' : ''"
