@@ -6,6 +6,10 @@ export default [
     lang: ['zh', 'en', 'ru'],
   },
   {
+    name: 'lifecycle',
+    lang: ['zh', 'en', 'ru'],
+  },
+  {
     name: 'mirror',
     lang: ['zh', 'en', 'ru'],
   },
