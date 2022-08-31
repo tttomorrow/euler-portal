@@ -28,6 +28,6 @@ As a state-owned banking institution in China, the credit card core banking syst
 
 - Overall security and reliability in terms of the kernel, services, and applications
 
-## Partner
+## **Partner** 
 
 <img src="./qiling.png"/>
