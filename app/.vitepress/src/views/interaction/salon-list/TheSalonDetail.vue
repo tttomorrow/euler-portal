@@ -339,12 +339,12 @@ watch(windowWidth, () => {
             ></OTabPane>
           </OTabs>
         </div>
-        <div id="synopsis" class="synopsis detail-card">
-          <h1 class="detail-title">{{ tabTitle[0] }}</h1>
+        <div class="synopsis detail-card">
+          <h1 id="synopsis" class="detail-title">{{ tabTitle[0] }}</h1>
           <p class="synopsis-body">{{ detailObj?.synopsis }}</p>
         </div>
-        <div id="agenda" class="agenda detail-card">
-          <h1 class="detail-title">{{ tabTitle[1] }}</h1>
+        <div class="agenda detail-card">
+          <h1 id="agenda" class="detail-title">{{ tabTitle[1] }}</h1>
           <div v-if="betweenDate.length" class="tab-box-time">
             <OTabs v-model="dayTabShow" @tab-click="dayTabClick">
               <OTabPane
@@ -415,10 +415,9 @@ watch(windowWidth, () => {
         </div>
         <div
           v-show="detailObj?.activity_type !== 2"
-          id="meet-message"
           class="meet-message detail-card"
         >
-          <h1 class="detail-title">{{ tabTitle[2] }}</h1>
+          <h1 id="meet-message" class="detail-title">{{ tabTitle[2] }}</h1>
           <div :class="['meet-address']">
             <div class="address-message">
               <img :src="logo" />
@@ -697,13 +696,6 @@ watch(windowWidth, () => {
   }
 
   .detail-card {
-    &::before {
-      content: '';
-      display: block;
-      height: 200px;
-      margin-top: -200px;
-      visibility: hidden;
-    }
     background-color: var(--e-color-bg2);
     padding: var(--o-spacing-h2) 80px;
     @media screen and (max-width: 768px) {
@@ -712,6 +704,17 @@ watch(windowWidth, () => {
     }
   }
   .detail-title {
+    &::before {
+      content: '';
+      display: block;
+      height: 200px;
+      margin-top: -200px;
+      visibility: hidden;
+      @media screen and (max-width: 768px) {
+        height: 120px;
+        margin-top: -120px;
+      }
+    }
     margin-bottom: var(--o-spacing-h4);
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
