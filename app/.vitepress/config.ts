@@ -17,6 +17,12 @@ const config: UserConfig = {
         content: 'width=device-width,initial-scale=1,user-scalable=no',
       },
     ],
+    ['script', {
+      src: '/allow_sensor/sensorsdata.min.js'
+    }],
+    ['script', {
+      src: '/allow_sensor/sensors.js'
+    }],
   ],
   appearance: true, // enable dynamic scripts for dark mode
   titleTemplate: false, //  vitepress supports pageTitileTemplate since 1.0.0
