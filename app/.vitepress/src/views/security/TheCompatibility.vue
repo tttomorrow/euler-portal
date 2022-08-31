@@ -655,7 +655,11 @@ onMounted(() => {
         </ul>
       </OTabPane>
 
-      <OTabPane :label="i18n.compatibility.SOFTWARE" name="3">
+      <OTabPane
+        v-if="lang == 'zh'"
+        :label="i18n.compatibility.SOFTWARE"
+        name="3"
+      >
         <OSearch
           v-model="searchContent"
           class="o-search"
@@ -739,7 +743,11 @@ onMounted(() => {
         </OTable>
       </OTabPane>
 
-      <OTabPane :label="i18n.compatibility.BUSINESS_SOFTWARE" name="4">
+      <OTabPane
+        v-if="lang == 'zh'"
+        :label="i18n.compatibility.BUSINESS_SOFTWARE"
+        name="4"
+      >
         <!-- <OSearch
           v-model="searchContent"
           class="o-search"

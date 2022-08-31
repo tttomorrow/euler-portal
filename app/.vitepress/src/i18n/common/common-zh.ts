@@ -290,7 +290,7 @@ export default {
         {
           NAME: '兼容性列表',
           ID: 'compatibility',
-          PATH: '/security/compatibility/',
+          PATH: '/compatibility/',
         },
         {
           NAME: '迁移指南',
