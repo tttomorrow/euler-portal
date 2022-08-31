@@ -79,7 +79,6 @@ export function addSearchBuriedData(search_key: string, num = 20) {
     return;
   }
   if ((window as any)['sensorsCustomBuriedData']) {
-    console.log(num);
     setSearchBuriedData(search_key);
   } else {
     setTimeout(() => {
