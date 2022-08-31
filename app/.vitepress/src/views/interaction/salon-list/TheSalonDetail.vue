@@ -6,7 +6,7 @@ import AMapLoader from '@amap/amap-jsapi-loader';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import Img404 from '@/assets/404.svg';
+// import Img404 from '@/assets/404.svg';
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
 
@@ -73,8 +73,8 @@ const handleScroll = (index: number) => {
   const element = document.getElementById(anchor.value[index]) as HTMLElement;
 
   if (element) {
-    element.scrollIntoView(false);
-    // element.scrollIntoView({ behavior: 'smooth' });
+    // element.scrollIntoView(false);
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 };
 
@@ -212,33 +212,35 @@ function TabClick(e: any) {
   handleScroll(e.index - 0);
 }
 
-const handleGo = (path: string | undefined) => {
-  if (path) window.open(path, '_blank');
-};
+// const handleGo = (path: string | undefined) => {
+//   if (path) window.open(path, '_blank');
+// };
 
 const scroll = () => {
-  const targetScrollTop =
-    screenWidth.value > 768
-      ? (document.getElementById('tab') as HTMLElement).getBoundingClientRect()
-          .top
-      : (document.getElementById('tab2') as HTMLElement).getBoundingClientRect()
-          .top;
-
-  const synopsisScrollTop = (
-    document.getElementById('synopsis') as HTMLElement
-  ).getBoundingClientRect().top;
-
-  if (targetScrollTop < 0) {
-    (document.getElementById('tab') as HTMLElement).style.position = 'fixed';
-    (document.getElementById('tab') as HTMLElement).style.width =
-      'calc(100% - 88px)';
-    (document.getElementById('tab2') as HTMLElement).style.position = 'fixed';
-  }
-
-  if (synopsisScrollTop >= 0) {
-    (document.getElementById('tab') as HTMLElement).style.position = 'static';
-    (document.getElementById('tab') as HTMLElement).style.width = '100%';
-    (document.getElementById('tab2') as HTMLElement).style.position = 'static';
+  if (document.getElementById('tab') && document.getElementById('tab2')) {
+    const targetScrollTop =
+      screenWidth.value > 768
+        ? (
+            document.getElementById('tab') as HTMLElement
+          ).getBoundingClientRect().top
+        : (
+            document.getElementById('tab2') as HTMLElement
+          ).getBoundingClientRect().top;
+    const synopsisScrollTop = (
+      document.getElementById('synopsis') as HTMLElement
+    ).getBoundingClientRect().top;
+    if (targetScrollTop < 0) {
+      (document.getElementById('tab') as HTMLElement).style.position = 'fixed';
+      (document.getElementById('tab') as HTMLElement).style.width =
+        'calc(100% - 88px)';
+      (document.getElementById('tab2') as HTMLElement).style.position = 'fixed';
+    }
+    if (synopsisScrollTop >= 0) {
+      (document.getElementById('tab') as HTMLElement).style.position = 'static';
+      (document.getElementById('tab') as HTMLElement).style.width = '100%';
+      (document.getElementById('tab2') as HTMLElement).style.position =
+        'static';
+    }
   }
 };
 
@@ -317,7 +319,7 @@ watch(windowWidth, () => {
               animation
               target="_blank"
               class="btn-detail"
-              @click="handleGo(detailObj && detailObj.detail_address)"
+              @click="TabClick({ index: 2 })"
             >
               {{ i18n.interaction.MEETUPSLIST.LEARN_MORE }}
               <template #suffixIcon>
@@ -364,7 +366,7 @@ watch(windowWidth, () => {
                 </template>
               </el-table-column>
               <el-table-column prop="title"> </el-table-column>
-              <el-table-column width="464">
+              <el-table-column width="500">
                 <template #default="scope">
                   <div
                     v-for="item in scope.row.speakerList"
@@ -442,12 +444,12 @@ watch(windowWidth, () => {
         </div></div
     ></AppContent>
   </div>
-  <div v-else>
+  <!-- <div v-else>
     <div class="nofound">
       <img class="img" :src="Img404" alt="404" />
       <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
     </div>
-  </div>
+  </div> -->
 </template>
 <style lang="scss" scoped>
 .nofound {
@@ -579,6 +581,8 @@ watch(windowWidth, () => {
   }
   h2 {
     position: absolute;
+    padding: 0 var(--o-spacing-h2);
+    font-size: var(--o-font-size-h6);
     text-align: center;
     color: #ffffff;
   }
@@ -597,8 +601,9 @@ watch(windowWidth, () => {
     margin: var(--o-spacing-h2) 0;
     padding: 80px;
     background-color: var(--e-color-bg2);
-    @media screen and (max-width: 1080px) {
+    @media screen and (max-width: 1100px) {
       padding: var(--o-spacing-h1);
+      margin-top: var(--o-spacing-h6);
     }
     @media screen and (max-width: 768px) {
       display: none;
@@ -692,6 +697,13 @@ watch(windowWidth, () => {
   }
 
   .detail-card {
+    &::before {
+      content: '';
+      display: block;
+      height: 200px;
+      margin-top: -200px;
+      visibility: hidden;
+    }
     background-color: var(--e-color-bg2);
     padding: var(--o-spacing-h2) 80px;
     @media screen and (max-width: 768px) {
@@ -860,8 +872,11 @@ watch(windowWidth, () => {
         .speark-item {
           display: flex;
           padding: var(--o-spacing-h9) 0;
-          justify-content: space-between;
+          // justify-content: space-between;
           .name {
+            display: flex;
+            align-items: center;
+            padding: 0 var(--o-spacing-h6);
             color: var(--e-color-text1);
             min-width: 100px;
           }
