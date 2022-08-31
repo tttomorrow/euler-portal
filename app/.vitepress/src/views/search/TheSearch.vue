@@ -310,6 +310,7 @@ onMounted(() => {
       @media (max-width: 768px) {
         height: 28px;
         font-size: 14px;
+        width: 100vw;
         padding: 0 16px !important;
 
         :deep(.el-input__inner) {
@@ -457,7 +458,14 @@ onMounted(() => {
       }
 
       .page-box {
+        display: flex;
+        justify-content: center;
+        width: 100%;
         margin-top: var(--o-spacing-h4);
+        @media (max-width: 768px) {
+          width: 100vw;
+        }
+
         .pagination-pc {
           @media (max-width: 768px) {
             display: none;
