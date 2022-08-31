@@ -73,7 +73,8 @@ const handleScroll = (index: number) => {
   const element = document.getElementById(anchor.value[index]) as HTMLElement;
 
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView(false);
+    // element.scrollIntoView({ behavior: 'smooth' });
   }
 };
 

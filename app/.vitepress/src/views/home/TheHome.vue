@@ -136,13 +136,12 @@ onUnmounted(() => {
     />
     <ClientOnly>
       <el-config-provider :locale="zhCn">
-        <div v-if="lang === 'zh'" class="home-calendar">
+        <div
+          v-if="lang === 'zh' && calendarData.length > 1"
+          class="home-calendar"
+        >
           <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
-          <AppCalendar
-            v-if="calendarData.length > 1"
-            :table-data="calendarData"
-            data-aos="fade-up"
-          />
+          <AppCalendar :table-data="calendarData" data-aos="fade-up" />
         </div>
       </el-config-provider>
     </ClientOnly>

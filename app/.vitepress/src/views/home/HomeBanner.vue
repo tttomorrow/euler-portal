@@ -55,7 +55,7 @@ const jump = (item: any) => {
 <template>
   <swiper
     class="home-banner"
-    :loop="true"
+    :loop="false"
     :pagination="{
       clickable: true,
     }"
