@@ -47,10 +47,10 @@ const goPath = (item: NavItem) => {
     router.go('/' + lang.value + item.PATH);
     navActive.value = '';
   }
-
   isShow.value = false;
 };
 
+// nav 鼠标滑过事件
 const isShow = ref(true);
 const navActive = ref('');
 const toggleSubDebounced = debounce(
@@ -67,6 +67,12 @@ const toggleSubDebounced = debounce(
     trailing: true,
   }
 );
+// nav 点击事件
+const navItemClick = (item: NavItem) => {
+  navActive.value = item.ID;
+  isShow.value = true;
+};
+// nav 默认选中
 const menuActiveFn = (item: any) => {
   return item.CLASS.some((el: string) =>
     item.ID === 'download'
@@ -89,7 +95,7 @@ const menuActiveFn = (item: any) => {
         @mouseenter="toggleSubDebounced(item)"
         @mouseleave="toggleSubDebounced(null)"
       >
-        <span class="text" @click="goPath(item)">{{ item.NAME }} </span>
+        <span class="text" @click="navItemClick(item)">{{ item.NAME }} </span>
 
         <div v-if="isShow" class="sub-menu">
           <ul class="sub-menu-content">
@@ -167,7 +173,7 @@ const menuActiveFn = (item: any) => {
         width: calc(100% - var(--o-spacing-h4) * 2);
         height: 2px;
         border-radius: 1px;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.1s linear;
       }
 
       .sub-menu {

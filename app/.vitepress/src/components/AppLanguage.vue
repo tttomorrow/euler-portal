@@ -73,11 +73,11 @@ watch(
 
 <template>
   <div class="lang-menu" @mouseenter="showSub()" @mouseleave="hideSub()">
-    <span class="lang-menu-link">
+    <span class="lang-menu-link" :class="{ 'no-state': langList.length < 2 }">
       {{ lang === 'zh' ? '中文' : lang === 'ru' ? 'Русский' : 'English' }}
-      <OIcon><icon-down></icon-down></OIcon>
+      <OIcon v-if="langList.length > 1"><icon-down></icon-down></OIcon>
     </span>
-    <ul v-if="isMenu" class="lang-menu-list">
+    <ul v-if="isMenu && langList.length > 1" class="lang-menu-list">
       <li
         v-for="item in langList"
         :key="item.id"
@@ -111,6 +111,9 @@ watch(
     color: var(--e-color-text1);
     cursor: pointer;
     height: 100%;
+    &.no-state {
+      cursor: default;
+    }
   }
   &-list {
     position: absolute;
@@ -119,7 +122,7 @@ watch(
     background: var(--e-color-bg2);
     padding: 0 var(--o-spacing-h5);
     cursor: pointer;
-    z-index: 80;
+    z-index: 999;
     box-shadow: var(--e-shadow-l1);
     min-width: 78px;
     .lang-item {
