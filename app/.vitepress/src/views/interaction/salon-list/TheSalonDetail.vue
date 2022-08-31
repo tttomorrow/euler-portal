@@ -838,7 +838,6 @@ watch(windowWidth, () => {
 
       :deep(.el-table__cell) {
         border-bottom: 0px;
-        vertical-align: top;
         padding: var(--o-spacing-h4) 0;
       }
 
@@ -874,8 +873,6 @@ watch(windowWidth, () => {
 
         .speark-item {
           display: flex;
-          padding: var(--o-spacing-h9) 0;
-          // justify-content: space-between;
           .name {
             display: flex;
             align-items: center;
