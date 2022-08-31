@@ -5,9 +5,6 @@ import 'aos/dist/aos.css';
 import '@/shared/styles/element-plus/index.scss';
 import '@/shared/styles/index.scss';
 
-import '@/shared/allow_sensor/sensorsdata.min.js';
-import '@/shared/allow_sensor/sensors.js';
-
 import Layout from '@/App.vue';
 import NotFound from '@/NotFound.vue';
 

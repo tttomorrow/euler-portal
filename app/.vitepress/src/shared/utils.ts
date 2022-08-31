@@ -56,17 +56,19 @@ export function getNowFormatDate() {
 
 // 搜索对搜索词埋点
 export function addSearchBuriedData(search_key: string) {
-  const search_event_id = `${search_key}${new Date().getTime()}${(window as any)['sensorsCustomBuriedData']?.ip || ''}`;
+  const search_event_id = `${search_key}${new Date().getTime()}${
+    (window as any)['sensorsCustomBuriedData']?.ip || ''
+  }`;
   const obj = {
-      search_key,
-      search_event_id
+    search_key,
+    search_event_id,
   };
   (window as any)['addSearchBuriedData'] = obj;
-  let sensors = (window as any)['sensorsDataAnalytic201505'];
+  const sensors = (window as any)['sensorsDataAnalytic201505'];
   sensors?.setProfile({
-      profileType: 'searchValue',
-      ...((window as any)['sensorsCustomBuriedData'] || {}),
-      ...((window as any)['addSearchBuriedData'] || {})
+    profileType: 'searchValue',
+    ...((window as any)['sensorsCustomBuriedData'] || {}),
+    ...((window as any)['addSearchBuriedData'] || {}),
   });
 }
 
