@@ -30,6 +30,6 @@ To filter out junk and infected mail and thereby improve the security and stabil
 
 - **Secure and reliable**: The NeoKylin security-enhanced mail system uses a proxy to isolate the intranet zone from other zones, ensuring that mail is highly secure.
 
-## Partner
+## **Partner** 
 
 <img src="./qiling.png"/>
