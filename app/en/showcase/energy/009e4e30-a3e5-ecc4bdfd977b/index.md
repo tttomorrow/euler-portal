@@ -26,6 +26,6 @@ The Bowei smart construction site has been running stably for more than 6 months
 
 - **BIM**: The BIM developed by Bowei has been adapted to the Galaxy Kylin Advanced Server Operating System V10, which has huge market presence in the engineering field.
 
-## Partner
+## **Partner** 
 
 <img src="./qiling.png"/>
