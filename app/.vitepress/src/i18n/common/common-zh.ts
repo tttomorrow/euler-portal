@@ -279,7 +279,7 @@ export default {
         {
           NAME: 'OSV技术评测',
           ID: 'approve',
-          PATH: '/security/approve/',
+          PATH: '/approve/',
         },
         {
           NAME: '兼容性技术测评',
