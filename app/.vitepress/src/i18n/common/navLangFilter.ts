@@ -18,6 +18,10 @@ export default [
     lang: ['zh', 'en', 'ru'],
   },
   {
+    name: 'showcase',
+    lang: ['zh', 'en'],
+  },
+  {
     name: 'mooc',
     lang: ['zh', 'en'],
   },
