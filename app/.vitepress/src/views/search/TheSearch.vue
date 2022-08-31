@@ -217,10 +217,7 @@ onMounted(() => {
           <ul v-show="!isShow" class="content-list">
             <li v-for="(item, index) in searchResultList" :key="item.id">
               <!-- eslint-disable-next-line -->
-              <h3
-                @click="goLink(item, index)"
-                v-html="item.title"
-              ></h3>
+              <h3 @click="goLink(item, index)" v-html="item.title"></h3>
               <!-- eslint-disable-next-line -->
               <p class="detail" v-html="item.textContent"></p>
               <p class="from">
@@ -355,7 +352,8 @@ onMounted(() => {
             height: 34px;
             line-height: 34px;
             font-size: var(--o-font-size-text);
-            margin-right: 30px;
+            margin-right: -4px;
+            text-align: center;
             span {
               display: none;
             }
