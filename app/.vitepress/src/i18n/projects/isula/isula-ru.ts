@@ -135,7 +135,7 @@ export default {
           LINK: [
             {
               TEXT: 'Eщe',
-              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/architecture_zh.md',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/design/architecture_en.md',
             },
           ],
           BACKGROUND: {
@@ -150,7 +150,7 @@ export default {
           LINK: [
             {
               TEXT: 'Eщe',
-              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/build_guide_zh.md',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/build_guide/build_guide.md',
             },
           ],
           BACKGROUND: {
