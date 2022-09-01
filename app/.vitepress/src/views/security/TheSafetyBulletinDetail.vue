@@ -43,7 +43,7 @@ function goBackPage() {
 
 function goCveDetail(val: string) {
   router.go(
-    `/${lang.value}/security/cve/detail//?cveId=${val}&packageName=${detailData.value.affectedComponent}`
+    `/${lang.value}/security/cve/detail/?cveId=${val}&packageName=${detailData.value.affectedComponent}`
   );
 }
 
@@ -72,11 +72,10 @@ onMounted(() => {
       <p class="bulletin-name">{{ detailData.securityNoticeNo }}</p>
       <div class="bulletin-intro">
         <p>
-          <span>{{ i18n.security.SYNOPSIS }}</span
-          >{{ detailData.summary }}
+          <span>{{ i18n.security.SYNOPSIS }}:</span>{{ detailData.summary }}
         </p>
         <p>
-          <span>{{ i18n.security.RELEASE_DATE }}</span
+          <span>{{ i18n.security.RELEASE_DATE }}:</span
           >{{ detailData.announcementTime }}
         </p>
       </div>
@@ -151,7 +150,7 @@ onMounted(() => {
             </div>
           </div>
         </OTabPane>
-        <OTabPane label="更新的软件包">
+        <OTabPane :label="i18n.security.UPDATED_PACKAGES">
           <div class="tab-content">
             <div
               v-for="item in detailData.packageHelperList"
@@ -267,7 +266,7 @@ onMounted(() => {
     margin-top: var(--o-spacing-h4);
     span {
       display: inline-block;
-      width: 100px;
+      margin-right: var(--o-spacing-h8);
     }
     @media screen and (max-width: 768px) {
       margin: 0;

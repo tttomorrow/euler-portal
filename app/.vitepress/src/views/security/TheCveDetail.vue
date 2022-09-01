@@ -24,7 +24,8 @@ function goBackPage() {
 
 function toDetail(id: string) {
   const url = router.route.path.replace('cve', 'safety-bulletin');
-  router.go(url + `?id="${id}"`);
+
+  router.go(url + `?id=${id}`);
 }
 
 function jumpBulletinDetail(val: any) {
@@ -119,12 +120,12 @@ onMounted(() => {
       <p class="cve-name">{{ cveDetailData.cveId }}</p>
       <div class="cve-intro">
         <p>
-          <span>{{ i18n.security.MODIFIED_TIME }}</span
-          >{{ cveDetailData.updateTime }}
+          <span>{{ i18n.security.RELEASE_DATE }}:</span
+          >{{ cveDetailData.announcementTime }}
         </p>
         <p>
-          <span>{{ i18n.security.RELEASE_DATE }}</span
-          >{{ cveDetailData.announcementTime }}
+          <span>{{ i18n.security.MODIFIED_TIME }}:</span
+          >{{ cveDetailData.updateTime }}
         </p>
       </div>
     </div>
@@ -274,7 +275,7 @@ onMounted(() => {
     margin-top: var(--o-spacing-h4);
     span {
       display: inline-block;
-      width: 100px;
+      margin-right: var(--o-spacing-h8);
     }
     @media screen and (max-width: 768px) {
       margin: 0;
