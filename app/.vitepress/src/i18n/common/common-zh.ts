@@ -46,7 +46,7 @@ export default {
     COMPATIBILITY_EVALUATION: '兼容性技术测评',
     APPROVE: 'OSV技术测评列表',
     COMPATIBILITY: '兼容性列表',
-    MIGRATION: '迁移指南',
+    MIGRATION: '迁移专区',
   },
   NAV_ROUTER_CONFIG: [
     {
@@ -293,7 +293,7 @@ export default {
           PATH: '/compatibility/',
         },
         {
-          NAME: '迁移指南',
+          NAME: '迁移专区',
           ID: 'migration',
           PATH: '/migration/download/',
         },
