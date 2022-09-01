@@ -193,7 +193,8 @@ onMounted(() => {
     justify-content: center;
     height: 48px;
     @media screen and (max-width: 768px) {
-      margin: var(--o-spacing-h5) 0 0 0;
+      // margin: var(--o-spacing-h5) 0 0 0;
+      height: 38px;
       background-color: var(--e-color-bg2);
     }
   }

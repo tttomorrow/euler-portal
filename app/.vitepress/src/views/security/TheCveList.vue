@@ -256,7 +256,7 @@ watch(queryData, () => getCveLists(queryData));
     </ClientOnly>
 
     <AppPaginationMo
-      v-if="total > 0 || isMobile"
+      v-if="Math.ceil(total) > 0 && isMobile"
       :current-page="queryData.pages.page"
       :total-page="Math.ceil(total / 10)"
       @turn-page="turnPage"
@@ -264,10 +264,20 @@ watch(queryData, () => getCveLists(queryData));
   </AppContent>
 </template>
 <style lang="scss" scoped>
+:deep(.el-input .el-input__wrapper) {
+  .el-input__inner {
+    font-size: var(--o-font-size-tip);
+  }
+  .el-input__prefix-inner {
+    font-size: var(--o-font-size-h8) !important;
+  }
+}
 .o-search {
   height: 48px;
   @media screen and (max-width: 768px) {
-    display: none;
+    // display: none;
+    height: 36px;
+    margin-bottom: var(--o-spacing-h6);
   }
 }
 .filter-card {
@@ -282,6 +292,7 @@ watch(queryData, () => getCveLists(queryData));
   display: none;
   @media screen and (max-width: 768px) {
     display: block;
+    margin-bottom: var(--o-spacing-h6);
   }
   .filter {
     display: flex;
