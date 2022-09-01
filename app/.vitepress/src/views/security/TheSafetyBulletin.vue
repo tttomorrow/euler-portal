@@ -318,10 +318,10 @@ watch(queryData, () => getSecurityLists(queryData));
       // display: none;
       margin-bottom: var(--o-spacing-h5);
     }
-    .o-search {
-      height: 48px !important;
+    :deep(.o-search) {
+      height: 48px;
       @media screen and (max-width: 768px) {
-        height: 36px !important;
+        height: 36px;
       }
     }
   }

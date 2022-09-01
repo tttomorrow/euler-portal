@@ -60,24 +60,28 @@ const queryData: CveQuery = reactive({
 });
 
 function osNameSelected(val: string) {
-  queryData.osvName = val;
+  queryData.osvName = val === '全部' ? '' : val;
+  activeIndex.value = osNames.value.indexOf(val);
 }
 
 function osTypeSelected(val: string) {
   queryData.type = val === '全部' ? '' : val;
+  activeIndex1.value = osTypes.value.indexOf(val);
 }
+
+const tagClick = (i: number, name: string) => {
+  activeIndex.value = i;
+  osName.value = name;
+  queryData.osvName = name === '全部' ? '' : name;
+};
 
 function searchValchange() {
   queryData.keyword = inputName.value;
 }
 
-const tagClick = (i: number, name: string) => {
-  activeIndex.value = i;
-  queryData.osvName = name === '全部' ? '' : name;
-};
-
 const typeTagClick = (i: number, type: string) => {
   queryData.type = type === '全部' ? '' : type;
+  osType.value = type;
   activeIndex1.value = i;
 };
 
