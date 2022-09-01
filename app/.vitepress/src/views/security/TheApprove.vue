@@ -64,7 +64,7 @@ function osNameSelected(val: string) {
 }
 
 function osTypeSelected(val: string) {
-  queryData.type = val;
+  queryData.type = val === '全部' ? '' : val;
 }
 
 function searchValchange() {
@@ -73,11 +73,11 @@ function searchValchange() {
 
 const tagClick = (i: number, name: string) => {
   activeIndex.value = i;
-  queryData.osvName = name;
+  queryData.osvName = name === '全部' ? '' : name;
 };
 
 const typeTagClick = (i: number, type: string) => {
-  queryData.type = type;
+  queryData.type = type === '全部' ? '' : type;
   activeIndex1.value = i;
 };
 
@@ -207,7 +207,7 @@ watch(queryData, () => getOsTableList(queryData));
               :type="activeIndex === index ? 'primary' : 'text'"
               @click="tagClick(index, item)"
             >
-              {{ item === '' ? i18n.approve.SELECT_ALL : item }}
+              {{ item }}
             </OTag>
           </TagFilter>
         </div>
@@ -221,7 +221,7 @@ watch(queryData, () => getOsTableList(queryData));
             :type="activeIndex1 === index ? 'primary' : 'text'"
             @click="typeTagClick(index, item)"
           >
-            {{ item === '' ? i18n.approve.SELECT_ALL : item }}
+            {{ item }}
           </OTag>
         </TagFilter>
       </div>
