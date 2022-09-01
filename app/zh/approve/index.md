@@ -1,5 +1,5 @@
 ---
-title: 'Approve'
+title: 'OSV'
 ---
 
 <script setup lang="ts">

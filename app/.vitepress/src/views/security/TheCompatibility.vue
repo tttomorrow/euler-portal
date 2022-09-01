@@ -308,9 +308,9 @@ const listfilter = (val: any) => {
 
 const goBackPage = () => {
   if (activeName.value === '1' || activeName.value === '2') {
-    router.go(`/${lang.value}/security/compatibility/hardware/`);
+    router.go(`/${lang.value}/compatibility/hardware/`);
   } else if (activeName.value === '3') {
-    router.go(`/${lang.value}/security/compatibility/software/`);
+    router.go(`/${lang.value}/compatibility/software/`);
   } else {
     window.open(
       'https://gitee.com/openeuler/technical-certification',
@@ -702,12 +702,12 @@ onMounted(() => {
           >
           </OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARETYPE"
-            prop="group"
-          ></OTableColumn>
-          <OTableColumn
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARENAME"
             prop="softwareName"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM"
+            prop="os"
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.VERSION"
@@ -715,14 +715,15 @@ onMounted(() => {
             width="140"
           ></OTableColumn>
           <OTableColumn
+            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SOFTWARETYPE"
+            prop="group"
+          ></OTableColumn>
+          <OTableColumn
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.PROPERTIES"
             prop="property"
             width="160"
           ></OTableColumn>
-          <OTableColumn
-            :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.SYSTEM"
-            prop="os"
-          ></OTableColumn>
+
           <el-table-column
             :label="i18n.compatibility.SOFTWARE_TABLE_COLUMN.DOWNLOADLINK"
             width="130"

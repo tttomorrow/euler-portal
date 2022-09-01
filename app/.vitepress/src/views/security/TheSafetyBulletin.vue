@@ -315,10 +315,14 @@ watch(queryData, () => getSecurityLists(queryData));
   margin: 0 auto;
   .input-container {
     @media screen and (max-width: 768px) {
-      display: none;
+      // display: none;
+      margin-bottom: var(--o-spacing-h5);
     }
     .o-search {
       height: 48px !important;
+      @media screen and (max-width: 768px) {
+        height: 36px !important;
+      }
     }
   }
   .calendar-mobile {
@@ -338,7 +342,7 @@ watch(queryData, () => getSecurityLists(queryData));
         background-color: var(--e-color-bg2);
         padding: 0 8px;
         border: none;
-        height: 34px;
+        height: 36px;
       }
       .el-collapse-item__wrap {
         border: none;
@@ -355,6 +359,12 @@ watch(queryData, () => getSecurityLists(queryData));
       padding: 0 8px 8px;
       background-color: var(--e-color-bg2);
       color: var(--e-color-text1);
+      &-item {
+        margin-top: var(--o-spacing-h8);
+        &:first-child {
+          margin-top: 0;
+        }
+      }
       .selected {
         background-color: var(--e-color-bg4);
       }
