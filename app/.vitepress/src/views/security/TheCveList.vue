@@ -264,16 +264,19 @@ watch(queryData, () => getCveLists(queryData));
   </AppContent>
 </template>
 <style lang="scss" scoped>
-:deep(.el-input .el-input__wrapper) {
-  .el-input__inner {
-    font-size: var(--o-font-size-tip);
-  }
-  .el-input__prefix-inner {
-    font-size: var(--o-font-size-h8) !important;
+@media screen and (max-width: 768px) {
+  :deep(.el-input .el-input__wrapper) {
+    .el-input__inner {
+      font-size: var(--o-font-size-tip);
+    }
+    .el-input__prefix-inner {
+      font-size: var(--o-font-size-h8) !important;
+    }
   }
 }
 .o-search {
   height: 48px;
+
   @media screen and (max-width: 768px) {
     // display: none;
     height: 36px;

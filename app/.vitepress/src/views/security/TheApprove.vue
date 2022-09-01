@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, ref, watch, onMounted, computed } from 'vue';
-import { useRouter } from 'vitepress';
+import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import AppContent from '@/components/AppContent.vue';
@@ -17,16 +17,27 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 
 import { CveQuery } from '@/shared/@types/type-support';
 import { getOsName, getOsType, getOsTableData } from '@/api/api-security';
+import OOption from 'opendesign/select/OOption.vue';
 
 const router = useRouter();
 
 const screenWidth = useWindowResize();
 const i18n = useI18n();
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+const { lang } = useData();
+const all = computed(() => {
+  if (lang.value === 'en') {
+    return 'ALL';
+  } else if (lang.value === 'ru') {
+    return 'ВСЕ';
+  } else {
+    return '全部';
+  }
+});
 
 const inputName = ref('');
-const osNames = ref(['']);
-const osTypes = ref(['']);
+const osNames = ref([`${all.value}`]);
+const osTypes = ref([`${all.value}`]);
 const osvList = ref<any>([]); //:TODO:约束
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
@@ -35,6 +46,8 @@ const total = ref(0);
 const currentPage = ref(1);
 const totalPage = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
+const osName = ref('');
+const osType = ref('');
 
 const queryData: CveQuery = reactive({
   pages: {
@@ -45,6 +58,14 @@ const queryData: CveQuery = reactive({
   type: '',
   osvName: '',
 });
+
+function osNameSelected(val: string) {
+  queryData.osvName = val;
+}
+
+function osTypeSelected(val: string) {
+  queryData.type = val;
+}
 
 function searchValchange() {
   queryData.keyword = inputName.value;
@@ -136,6 +157,37 @@ watch(queryData, () => getOsTableList(queryData));
       <p class="approve-desc-container">
         {{ i18n.approve.SUMMARY.CONTENT }}
       </p>
+    </div>
+    <div class="filter-card-mobile">
+      <div class="filter-box">
+        <OSelect
+          v-model="osName"
+          :placeholder="i18n.approve.SELECT_COMPANY"
+          @change="osNameSelected"
+        >
+          <OOption
+            v-for="item in osNames"
+            :key="item"
+            :label="item"
+            :value="item"
+            >{{ item }}</OOption
+          >
+        </OSelect>
+
+        <OSelect
+          v-model="osType"
+          :placeholder="i18n.approve.TABLE_COLUMN.TYPE"
+          @change="osTypeSelected"
+        >
+          <OOption
+            v-for="item in osTypes"
+            :key="item"
+            :label="item"
+            :value="item"
+            >{{ item }}</OOption
+          >
+        </OSelect>
+      </div>
     </div>
     <OSearch
       v-model="inputName"
@@ -282,10 +334,20 @@ watch(queryData, () => getOsTableList(queryData));
   </AppContent>
 </template>
 <style lang="scss" scoped>
+@media screen and (max-width: 768px) {
+  :deep(.el-input .el-input__wrapper) {
+    .el-input__inner {
+      font-size: var(--o-font-size-tip);
+    }
+    .el-input__prefix-inner {
+      font-size: var(--o-font-size-h8) !important;
+    }
+  }
+}
 .approve-desc {
   padding-bottom: var(--o-spacing-h2);
   @media screen and (max-width: 768px) {
-    padding-bottom: var(--o-spacing-h4);
+    padding-bottom: var(--o-spacing-h5);
   }
   &-container {
     max-width: 1504px;
@@ -302,7 +364,22 @@ watch(queryData, () => getOsTableList(queryData));
 .search {
   height: 48px;
   @media screen and (max-width: 768px) {
-    display: none;
+    // display: none;
+    height: 36px;
+    margin-bottom: var(--o-spacing-h6);
+  }
+}
+.filter-card-mobile {
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+  .filter-box {
+    display: flex;
+    flex-direction: column;
+    .o-select {
+      margin-bottom: var(--o-spacing-h6);
+    }
   }
 }
 .filter-card {
