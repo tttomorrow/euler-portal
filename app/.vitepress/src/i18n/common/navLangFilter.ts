@@ -82,16 +82,12 @@ export default [
     lang: ['zh', 'en', 'ru'],
   },
   {
-    name: 'sig-list',
+    name: 'sig-detail',
     lang: ['zh', 'en', 'ru'],
   },
   {
     name: 'meeting-guide',
     lang: ['zh'],
-  },
-  {
-    name: 'sig-list',
-    lang: ['zh', 'en', 'ru'],
   },
   {
     name: 'atune',
