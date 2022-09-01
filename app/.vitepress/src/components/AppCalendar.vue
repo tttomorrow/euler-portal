@@ -5,6 +5,7 @@ import { isValidKey, getNowFormatDate, isBrowser } from '@/shared/utils';
 import { TableData, DayData } from '@/shared/@types/type-calendar';
 import type { TabsPaneContext } from 'element-plus';
 import { useCommon } from '@/stores/common';
+import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
 import IconLeft from '~icons/app/icon-left.svg';
 import IconRight from '~icons/app/icon-right.svg';
@@ -245,138 +246,224 @@ const watchData = watch(
 </script>
 <template>
   <div class="main-body" :class="{ 'is-home': !isHomePage }">
-    <div class="calendar">
-      <el-calendar v-if="windowWidth > 768" ref="calendar" class="calender">
-        <template #header="{ date }">
-          <div class="left-title">
-            <OIcon @click="selectDate('prev-month')">
-              <icon-left></icon-left>
-            </OIcon>
-            <span class="month-date">{{ date }}</span>
-            <OIcon @click="selectDate('next-month')">
-              <icon-right></icon-right>
-            </OIcon>
-          </div>
-        </template>
-        <template #dateCell="{ data }">
-          <div
-            class="out-box"
-            :class="{ 'be-active': getMeetTimes(data.day) }"
-            @click="meetClick(data.day)"
-          >
-            <div class="day-box">
-              <p
-                :class="data.isSelected ? 'is-selected' : ''"
-                class="date-calender"
-              >
-                {{ data.day.split('-').slice(2)[0] }}
-              </p>
-              <!-- TODO: 添加节日提醒 -->
-              <!-- <div class="holiday" v-if="data.day === '2022-04-20'">春节快乐</div>
-                <div class="holiday" v-if="data.day === '2022-05-20'">程序员节</div> -->
+    <el-config-provider :locale="zhCn">
+      <div class="calendar">
+        <el-calendar v-if="windowWidth > 768" ref="calendar" class="calender">
+          <template #header="{ date }">
+            <div class="left-title">
+              <OIcon @click="selectDate('prev-month')">
+                <icon-left></icon-left>
+              </OIcon>
+              <span class="month-date">{{ date }}</span>
+              <OIcon @click="selectDate('next-month')">
+                <icon-right></icon-right>
+              </OIcon>
             </div>
-          </div>
-        </template>
-      </el-calendar>
-    </div>
-    <div class="detail-list">
-      <div class="right-title">
-        <div class="title-list">
-          <OTabs v-model="tabType" @tab-click="changeTab">
-            <OTab-pane
-              v-for="item in titleList"
-              :key="item"
-              :label="item"
-              :name="item"
-            ></OTab-pane>
-          </OTabs>
-        </div>
-      </div>
-      <el-collapse v-if="windowWidth < 768" class="calendar calendar-mo">
-        <div class="collapse-box-mo">
-          <OCollapse-item>
-            <template #title>
-              <div class="mo-collapse">
-                <OIcon>
-                  <icon-calendar></icon-calendar>
-                </OIcon>
-                <span class="month-date">
-                  {{ getNowFormatDate() }}
-                </span>
-              </div>
-            </template>
-            <div class="meet-detail">
-              <el-calendar ref="calendar" class="calendar-mo calender">
-                <template #header="{ date }">
-                  <div class="left-title">
-                    <OIcon @click="selectDate('prev-month')">
-                      <icon-left></icon-left>
-                    </OIcon>
-                    <span class="month-date">{{ date }}</span>
-                    <OIcon @click="selectDate('next-month')">
-                      <icon-right></icon-right>
-                    </OIcon>
-                  </div>
-                </template>
-                <template #dateCell="{ data }">
-                  <div
-                    class="out-box"
-                    :class="{ 'be-active': getMeetTimes(data.day) }"
-                    @click="meetClick(data.day)"
-                  >
-                    <div class="day-box">
-                      <p
-                        :class="data.isSelected ? 'is-selected' : ''"
-                        class="date-calender"
-                      >
-                        {{ data.day.split('-').slice(2)[0] }}
-                      </p>
-                    </div>
-                  </div>
-                </template>
-              </el-calendar>
-            </div>
-          </OCollapse-item>
-        </div>
-      </el-collapse>
-      <div class="detail-head">
-        {{ i18n.NEW_DATE }}
-        <span>{{ currentDay }}</span>
-      </div>
-      <div class="meeting-list">
-        <div
-          v-if="
-            (renderData.timeData.length && renderData.date) ||
-            (renderData.timeData.length && renderData.start_date)
-          "
-          class="demo-collapse"
-        >
-          <o-collapse v-model="activeName" accordion @change="changeCollapse()">
+          </template>
+          <template #dateCell="{ data }">
             <div
-              v-for="(item, index) in renderData.timeData"
-              :key="item.id"
-              class="collapse-box"
+              class="out-box"
+              :class="{ 'be-active': getMeetTimes(data.day) }"
+              @click="meetClick(data.day)"
             >
-              <o-collapse-item :name="index">
-                <template #title>
-                  <div class="meet-item">
-                    <div class="meet-left">
-                      <div class="left-top">
-                        <p class="meet-name">{{ item.name || item.title }}</p>
-                      </div>
-                      <div
-                        v-if="item.group_name"
-                        class="group-name more-detail"
-                      >
-                        {{ i18n.SIG_GROUP }} {{ item.group_name }}
-                      </div>
-                      <div v-else class="group-name more-detail">openEuler</div>
+              <div class="day-box">
+                <p
+                  :class="data.isSelected ? 'is-selected' : ''"
+                  class="date-calender"
+                >
+                  {{ data.day.split('-').slice(2)[0] }}
+                </p>
+                <!-- TODO: 添加节日提醒 -->
+                <!-- <div class="holiday" v-if="data.day === '2022-04-20'">春节快乐</div>
+                <div class="holiday" v-if="data.day === '2022-05-20'">程序员节</div> -->
+              </div>
+            </div>
+          </template>
+        </el-calendar>
+      </div>
+      <div class="detail-list">
+        <div class="right-title">
+          <div class="title-list">
+            <OTabs v-model="tabType" @tab-click="changeTab">
+              <OTab-pane
+                v-for="item in titleList"
+                :key="item"
+                :label="item"
+                :name="item"
+              ></OTab-pane>
+            </OTabs>
+          </div>
+        </div>
+        <el-collapse v-if="windowWidth < 768" class="calendar calendar-mo">
+          <div class="collapse-box-mo">
+            <OCollapse-item>
+              <template #title>
+                <div class="mo-collapse">
+                  <OIcon>
+                    <icon-calendar></icon-calendar>
+                  </OIcon>
+                  <span class="month-date">
+                    {{ getNowFormatDate() }}
+                  </span>
+                </div>
+              </template>
+              <div class="meet-detail">
+                <el-calendar ref="calendar" class="calendar-mo calender">
+                  <template #header="{ date }">
+                    <div class="left-title">
+                      <OIcon @click="selectDate('prev-month')">
+                        <icon-left></icon-left>
+                      </OIcon>
+                      <span class="month-date">{{ date }}</span>
+                      <OIcon @click="selectDate('next-month')">
+                        <icon-right></icon-right>
+                      </OIcon>
                     </div>
-                    <div class="item-right">
+                  </template>
+                  <template #dateCell="{ data }">
+                    <div
+                      class="out-box"
+                      :class="{ 'be-active': getMeetTimes(data.day) }"
+                      @click="meetClick(data.day)"
+                    >
+                      <div class="day-box">
+                        <p
+                          :class="data.isSelected ? 'is-selected' : ''"
+                          class="date-calender"
+                        >
+                          {{ data.day.split('-').slice(2)[0] }}
+                        </p>
+                      </div>
+                    </div>
+                  </template>
+                </el-calendar>
+              </div>
+            </OCollapse-item>
+          </div>
+        </el-collapse>
+        <div class="detail-head">
+          {{ i18n.NEW_DATE }}
+          <span>{{ currentDay }}</span>
+        </div>
+        <div class="meeting-list">
+          <div
+            v-if="
+              (renderData.timeData.length && renderData.date) ||
+              (renderData.timeData.length && renderData.start_date)
+            "
+            class="demo-collapse"
+          >
+            <o-collapse
+              v-model="activeName"
+              accordion
+              @change="changeCollapse()"
+            >
+              <div
+                v-for="(item, index) in renderData.timeData"
+                :key="item.id"
+                class="collapse-box"
+              >
+                <o-collapse-item :name="index">
+                  <template #title>
+                    <div class="meet-item">
+                      <div class="meet-left">
+                        <div class="left-top">
+                          <p class="meet-name">{{ item.name || item.title }}</p>
+                        </div>
+                        <div
+                          v-if="item.group_name"
+                          class="group-name more-detail"
+                        >
+                          {{ i18n.SIG_GROUP }} {{ item.group_name }}
+                        </div>
+                        <div v-else class="group-name more-detail">
+                          openEuler
+                        </div>
+                      </div>
+                      <div class="item-right">
+                        <OButton
+                          v-if="item.schedules"
+                          animation
+                          type="text"
+                          @click.stop="goDetail(index)"
+                        >
+                          {{ i18n.LEARN_MORE }}
+                          <template #suffixIcon>
+                            <OIcon><icon-arrow-right></icon-arrow-right></OIcon>
+                          </template>
+                        </OButton>
+                        <div class="detail-time">
+                          <span class="start-time"
+                            ><i v-if="!item.schedules">{{ item.startTime }}</i>
+                            <i v-else>{{ item.schedules[0].start }}</i></span
+                          >
+                          <span v-if="windowWidth < 768">-</span>
+                          <span class="end-time">
+                            <i v-if="!item.schedules">{{ item.endTime }}</i>
+                            <i v-else>{{
+                              item.schedules[item.schedules.length - 1].end
+                            }}</i>
+                          </span>
+                        </div>
+                        <div class="extend">
+                          <OIcon
+                            :class="{
+                              reversal:
+                                isCollapse && activeName == index.toString(),
+                            }"
+                          >
+                            <icon-down></icon-down>
+                          </OIcon>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                  <div class="meet-detail">
+                    <template v-for="keys in detailItem" :key="keys.key">
+                      <div
+                        v-if="isValidKey(keys.key, item) && item[keys.key]"
+                        class="meeting-item"
+                      >
+                        <div class="item-title">{{ keys.text }}:</div>
+                        <p
+                          v-if="
+                            !keys.isLink &&
+                            keys.key !== 'activity_type' &&
+                            keys.key !== 'date'
+                          "
+                        >
+                          {{ item[keys.key] }}
+                        </p>
+                        <p
+                          v-else-if="
+                            keys.isLink &&
+                            item[keys.key] &&
+                            !(item[keys.key] as string).startsWith('http')
+                          "
+                        >
+                          {{ item[keys.key] }}
+                        </p>
+                        <a
+                          v-else-if="keys.isLink"
+                          :href="item[keys.key]"
+                          target="_blank"
+                          >{{ item[keys.key] }}</a
+                        >
+                        <p
+                          v-else-if="
+                            keys.key === 'activity_type' && item.activity_type
+                          "
+                        >
+                          {{ activityType[item.activity_type - 1] }}
+                        </p>
+                        <p v-else>{{ currentDay }}</p>
+                      </div>
+                    </template>
+                    <div v-if="item.schedules" class="mo-learn-more">
                       <OButton
-                        v-if="item.schedules"
                         animation
-                        type="text"
+                        size="mini"
+                        type="outline"
                         @click.stop="goDetail(index)"
                       >
                         {{ i18n.LEARN_MORE }}
@@ -384,102 +471,24 @@ const watchData = watch(
                           <OIcon><icon-arrow-right></icon-arrow-right></OIcon>
                         </template>
                       </OButton>
-                      <div class="detail-time">
-                        <span class="start-time"
-                          ><i v-if="!item.schedules">{{ item.startTime }}</i>
-                          <i v-else>{{ item.schedules[0].start }}</i></span
-                        >
-                        <span v-if="windowWidth < 768">-</span>
-                        <span class="end-time">
-                          <i v-if="!item.schedules">{{ item.endTime }}</i>
-                          <i v-else>{{
-                            item.schedules[item.schedules.length - 1].end
-                          }}</i>
-                        </span>
-                      </div>
-                      <div class="extend">
-                        <OIcon
-                          :class="{
-                            reversal:
-                              isCollapse && activeName == index.toString(),
-                          }"
-                        >
-                          <icon-down></icon-down>
-                        </OIcon>
-                      </div>
                     </div>
                   </div>
-                </template>
-                <div class="meet-detail">
-                  <template v-for="keys in detailItem" :key="keys.key">
-                    <div
-                      v-if="isValidKey(keys.key, item) && item[keys.key]"
-                      class="meeting-item"
-                    >
-                      <div class="item-title">{{ keys.text }}:</div>
-                      <p
-                        v-if="
-                          !keys.isLink &&
-                          keys.key !== 'activity_type' &&
-                          keys.key !== 'date'
-                        "
-                      >
-                        {{ item[keys.key] }}
-                      </p>
-                      <p
-                        v-else-if="
-                            keys.isLink &&
-                            item[keys.key] &&
-                            !(item[keys.key] as string).startsWith('http')
-                          "
-                      >
-                        {{ item[keys.key] }}
-                      </p>
-                      <a
-                        v-else-if="keys.isLink"
-                        :href="item[keys.key]"
-                        target="_blank"
-                        >{{ item[keys.key] }}</a
-                      >
-                      <p
-                        v-else-if="
-                          keys.key === 'activity_type' && item.activity_type
-                        "
-                      >
-                        {{ activityType[item.activity_type - 1] }}
-                      </p>
-                      <p v-else>{{ currentDay }}</p>
-                    </div>
-                  </template>
-                  <div v-if="item.schedules" class="mo-learn-more">
-                    <OButton
-                      animation
-                      size="mini"
-                      type="outline"
-                      @click.stop="goDetail(index)"
-                    >
-                      {{ i18n.LEARN_MORE }}
-                      <template #suffixIcon>
-                        <OIcon><icon-arrow-right></icon-arrow-right></OIcon>
-                      </template>
-                    </OButton>
-                  </div>
-                </div>
-              </o-collapse-item>
-            </div>
-          </o-collapse>
-        </div>
-        <div v-else class="empty">
-          <img
-            v-if="commonStore.theme === 'light'"
-            :src="notFoundImg_light"
-            alt=""
-          />
-          <img v-else :src="notFoundImg_dark" alt="" />
-          <p>{{ i18n.EMPTY_TEXT }}</p>
+                </o-collapse-item>
+              </div>
+            </o-collapse>
+          </div>
+          <div v-else class="empty">
+            <img
+              v-if="commonStore.theme === 'light'"
+              :src="notFoundImg_light"
+              alt=""
+            />
+            <img v-else :src="notFoundImg_dark" alt="" />
+            <p>{{ i18n.EMPTY_TEXT }}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </el-config-provider>
   </div>
 </template>
 <style lang="scss" scoped>

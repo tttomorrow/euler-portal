@@ -2,7 +2,6 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useI18n } from '@/i18n';
 import AOS from 'aos';
-import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -135,15 +134,13 @@ onUnmounted(() => {
       :news-data="newsData"
     />
     <ClientOnly>
-      <el-config-provider :locale="zhCn">
-        <div
-          v-if="lang === 'zh' && calendarData.length > 1"
-          class="home-calendar"
-        >
-          <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
-          <AppCalendar :table-data="calendarData" data-aos="fade-up" />
-        </div>
-      </el-config-provider>
+      <div
+        v-if="lang === 'zh' && calendarData.length > 1"
+        class="home-calendar"
+      >
+        <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
+        <AppCalendar :table-data="calendarData" data-aos="fade-up" />
+      </div>
     </ClientOnly>
     <HomePlayground />
     <PublishLink />
