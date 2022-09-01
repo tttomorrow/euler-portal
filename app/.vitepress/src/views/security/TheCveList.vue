@@ -125,7 +125,7 @@ watch(queryData, () => getCveLists(queryData));
     ></OSearch>
 
     <div class="filter-card">
-      <TagFilter :label="i18n.security.SEVERITY" :show="false">
+      <TagFilter :label="i18n.security.STATUS" :show="false">
         <OTag
           v-for="(item, index) in i18n.security.CATEGORY_LIST"
           :key="'tag' + index"
@@ -139,8 +139,16 @@ watch(queryData, () => getCveLists(queryData));
     </div>
 
     <OTable class="pc-list" :data="tableData" style="width: 100%">
-      <OTableColumn :label="i18n.security.CVE" prop="cveId" width="160">
-      </OTableColumn>
+      <el-table-column :label="i18n.security.CVE" width="160">
+        <template #default="scope">
+          <span
+            class="detail-page"
+            @click="goCveDetail(scope.row.cveId, scope.row.packageName)"
+            >{{ scope.row.cveId }}</span
+          >
+        </template>
+      </el-table-column>
+
       <OTableColumn
         :label="i18n.security.SYNOPSIS"
         prop="summary"
@@ -159,6 +167,11 @@ watch(queryData, () => getCveLists(queryData));
         width="180"
         :label="i18n.security.MODIFIED_TIME"
         prop="updateTime"
+      ></OTableColumn>
+      <OTableColumn
+        width="100"
+        :label="i18n.security.PACKAGE"
+        prop="packageName"
       ></OTableColumn>
       <OTableColumn
         :label="i18n.security.STATUS"

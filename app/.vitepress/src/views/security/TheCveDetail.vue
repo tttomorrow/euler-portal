@@ -28,9 +28,7 @@ function toDetail(id: string) {
 }
 
 function jumpBulletinDetail(val: any) {
-  router.go(
-    `/${lang.value}/security/safety-bulletin/detail/?id=${JSON.stringify(val)}`
-  );
+  router.go(`/${lang.value}/security/safety-bulletin/detail/?id=${val}`);
 }
 
 onMounted(() => {

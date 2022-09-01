@@ -101,7 +101,7 @@ function searchValchange() {
 }
 
 function jumpBulletinDetail(val: any) {
-  router.go(`${router.route.path}detail/?id=${JSON.stringify(val)}`);
+  router.go(`${router.route.path}detail/?id=${val}`);
 }
 
 const selectYear = (val: string) => {
