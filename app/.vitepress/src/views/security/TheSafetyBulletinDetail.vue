@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive, onMounted, ref } from 'vue';
 import { useI18n } from '@/i18n';
-import { useRouter } from 'vitepress';
+import { useRouter, useData } from 'vitepress';
 
 import { getSecurityDetail } from '@/api/api-security';
 import { DetailParams } from '@/shared/@types/type-support';
@@ -14,8 +14,10 @@ import type { AxiosResponse } from '@/shared/axios';
 
 const i18n = useI18n();
 const router = useRouter();
+const { lang } = useData();
 
 const detailData: any = ref({});
+const cveIdList = ref<string[]>([]);
 
 const queryData: DetailParams = reactive({
   securityNoticeNo: '',
@@ -24,7 +26,10 @@ const queryData: DetailParams = reactive({
 function getSecurityDetailInfo(data: any) {
   try {
     getSecurityDetail(data).then((res: AxiosResponse) => {
-      detailData.value = res;
+      if (res) {
+        detailData.value = res;
+        cveIdList.value = res.cveId.split(';');
+      }
     });
   } catch (e: any) {
     throw new Error(e);
@@ -36,15 +41,17 @@ function goBackPage() {
   router.go(`${router.route.path.substring(0, i)}`);
 }
 
-onMounted(() => {
-  const index1 = decodeURIComponent(window.location.href).indexOf('"');
-  const index2 = decodeURIComponent(window.location.href).indexOf(
-    '"',
-    index1 + 1
+function goCveDetail(val: string) {
+  router.go(
+    `/${lang.value}/security/cve/detail//?cveId=${val}&packageName=${detailData.value.affectedComponent}`
   );
+}
+
+onMounted(() => {
+  const index1 = decodeURIComponent(window.location.href).indexOf('=');
   queryData.securityNoticeNo = decodeURIComponent(
     window.location.href
-  ).substring(index1 + 1, index2);
+  ).substring(index1 + 1);
   getSecurityDetailInfo(queryData);
 });
 </script>
@@ -121,8 +128,13 @@ onMounted(() => {
             </div>
             <div class="tab-content-item">
               <h5 class="tab-content-item-title">{{ i18n.security.CVE }}</h5>
-              <p class="tab-content-item-text">
-                {{ detailData.cveId }}
+              <p
+                v-for="(item, index) in cveIdList"
+                :key="index"
+                class="tab-content-item-link"
+                @click="goCveDetail(item)"
+              >
+                {{ item }}
               </p>
             </div>
             <div class="tab-content-item">
@@ -172,7 +184,7 @@ onMounted(() => {
     margin-bottom: 0;
     background-color: var(--e-color-bg2);
     box-shadow: var(--e-shadow-l1);
-    z-index: 100;
+    z-index: 20;
     @media screen and (max-width: 768px) {
       box-shadow: none;
     }
@@ -297,6 +309,18 @@ onMounted(() => {
             font-size: var(--o-font-size-text);
             font-weight: 500;
             line-height: var(--o-line-height-text);
+          }
+        }
+        &-link {
+          color: var(--e-color-link1);
+          font-size: var(--o-font-size-text);
+          font-weight: 400;
+          line-height: var(--o-line-height-text);
+          cursor: pointer;
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-tip);
+            font-weight: 400;
+            line-height: var(--o-line-height-tip);
           }
         }
         &-text {

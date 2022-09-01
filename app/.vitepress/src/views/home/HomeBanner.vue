@@ -88,8 +88,8 @@ const jump = (item: any) => {
               <p class="desc" :class="{ experts: index === 1 }">
                 <span
                   v-for="item2 in item.desc"
-                  class="inline-desc"
                   :key="item2"
+                  class="inline-desc"
                   >{{ item2 }}</span
                 >
               </p>
