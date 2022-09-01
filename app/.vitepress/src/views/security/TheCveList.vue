@@ -117,12 +117,13 @@ watch(queryData, () => getCveLists(queryData));
     :illustration="illustration"
   />
   <AppContent :mobile-top="16">
-    <OSearch
-      v-model="searchContent"
-      class="o-search"
-      :placeholder="i18n.security.INPUT_CVE_ID"
-      @change="searchValchange"
-    ></OSearch>
+    <div class="o-search">
+      <OSearch
+        v-model="searchContent"
+        :placeholder="i18n.security.INPUT_CVE_ID"
+        @change="searchValchange"
+      ></OSearch>
+    </div>
 
     <div class="filter-card">
       <TagFilter :label="i18n.security.STATUS" :show="false">
@@ -276,7 +277,6 @@ watch(queryData, () => getCveLists(queryData));
 }
 .o-search {
   height: 48px;
-
   @media screen and (max-width: 768px) {
     // display: none;
     height: 36px;
