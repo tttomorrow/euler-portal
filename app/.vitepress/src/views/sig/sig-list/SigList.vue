@@ -576,7 +576,6 @@ onMounted(() => {
         white-space: nowrap;
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-h5);
-        color: var(--e-color-text1);
       }
     }
   }

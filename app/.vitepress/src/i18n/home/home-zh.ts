@@ -128,7 +128,7 @@ export default {
       IMG_HOVER: internshipSummitHover,
       IMG_DARK: internshipSummitDark,
       IMG_DARK_HOVER: internshipSummitDarkHover,
-      DSSCRIPTIVE: '和小伙伴儿一起畅享开源的夏天',
+      DSSCRIPTIVE: '帮助高校开发者在社区成长',
       LINK: 'internship/',
     },
     {
