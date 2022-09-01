@@ -341,6 +341,7 @@ onMounted(() => {
         border-bottom: 1px solid var(--e-color-division1);
         @media (max-width: 768px) {
           padding-left: var(--o-spacing-h4);
+          padding-right: var(--o-spacing-h5);
         }
         li {
           height: 55px;
@@ -353,9 +354,13 @@ onMounted(() => {
           @media (max-width: 768px) {
             height: 34px;
             line-height: 34px;
+            min-width: auto;
             font-size: var(--o-font-size-text);
-            margin-right: -4px;
+            margin-right: 0;
             text-align: center;
+            & + li {
+              margin-left: 16px;
+            }
             span {
               display: none;
             }
@@ -368,8 +373,7 @@ onMounted(() => {
             background-color: transparent;
             @media (max-width: 768px) {
               position: relative;
-              width: calc(100% - 16px);
-              left: 8px;
+              width: 100%;
               top: -1px;
             }
           }
