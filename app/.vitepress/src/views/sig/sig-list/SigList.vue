@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData, useRouter } from 'vitepress';
-import { computed, onMounted, ref, reactive, watch } from 'vue';
+import { computed, onMounted, ref, reactive, watch, PropType } from 'vue';
 import _ from 'lodash';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
@@ -33,6 +33,19 @@ interface SIGLIST {
   repos: Array<string>;
   sig_name: string;
 }
+interface oldSigList {
+  group_name: string;
+  maillist: string;
+}
+
+// sig列表采用老接口数据的邮箱做渲染
+const props = defineProps({
+  oldSigList: {
+    type: Array as PropType<oldSigList[]>,
+    default: () => [],
+  },
+});
+
 const configData = useData();
 const i18n = useI18n();
 const router = useRouter();
@@ -77,9 +90,13 @@ const getSigList = (params: LIST_PARAMS) => {
     getCompleteList(params).then((res) => {
       const { data } = res;
       sigList.value = data[0].data;
-      // sigList.value = data[0].data.sort((a, b) => {
-      //   return a.sig_name.localeCompare(b.sig_name);
-      // });
+      props.oldSigList.forEach((oldMail) => {
+        sigList.value.map((newMail) => {
+          if (newMail.sig_name === oldMail.group_name) {
+            newMail.mailing_list = oldMail.maillist;
+          }
+        });
+      });
       paginationData.value.total = data[0].total;
     });
   } catch (error) {
@@ -90,6 +107,9 @@ const getAllRepo = () => {
   try {
     getRepoList().then((res) => {
       repositioryList.value = JSON.parse(JSON.stringify(res.data));
+      repositioryList.value.sort((a, b) => {
+        return a.localeCompare(b);
+      });
       repoRenderList.value = res.data.slice(0, 99);
     });
   } catch (error) {
@@ -108,8 +128,14 @@ const getRepositoryList = () => {
           item.maintainers.forEach((subItem: string) => {
             maintainerList.value.push(subItem);
           });
+          sigSelectList.value.sort((a, b) => {
+            return a.localeCompare(b);
+          });
         });
         maintainerList.value = _.uniq(maintainerList.value);
+        maintainerList.value.sort((a, b) => {
+          return a.localeCompare(b);
+        });
       }
     });
   } catch (error) {

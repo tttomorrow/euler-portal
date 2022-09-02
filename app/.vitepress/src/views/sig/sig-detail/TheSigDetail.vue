@@ -198,7 +198,7 @@ onMounted(() => {
           }}</a>
         </p>
       </div>
-      <div class="meeting">
+      <div class="meeting" v-if="lang === 'zh'">
         <h5>{{ sigDetail.ORGANIZING_MEETINGS }}</h5>
         <div v-if="sigMeetingData.tableData" class="calender-wrapper">
           <AppCalendar
