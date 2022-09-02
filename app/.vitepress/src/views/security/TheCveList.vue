@@ -170,7 +170,7 @@ watch(queryData, () => getCveLists(queryData));
         prop="updateTime"
       ></OTableColumn>
       <OTableColumn
-        width="100"
+        width="120"
         :label="i18n.security.PACKAGE"
         prop="packageName"
       ></OTableColumn>
