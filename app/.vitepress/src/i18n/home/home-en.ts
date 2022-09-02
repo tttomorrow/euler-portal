@@ -499,7 +499,7 @@ export default {
       LINK: '/zh/migration/download/',
     },
     {
-      TITLE: 'Open Source Promotion Plan',
+      TITLE: 'Opensource Internship',
       IMG: internshipSummit,
       IMG_HOVER: internshipSummitHover,
       IMG_DARK: internshipSummitDark,

@@ -123,7 +123,7 @@ export default {
       LINK: 'migration/download/',
     },
     {
-      TITLE: '开源之夏',
+      TITLE: '开源实习',
       IMG: internshipSummit,
       IMG_HOVER: internshipSummitHover,
       IMG_DARK: internshipSummitDark,
