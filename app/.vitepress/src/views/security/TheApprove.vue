@@ -164,33 +164,36 @@ watch(queryData, () => getOsTableList(queryData));
     </div>
     <div class="filter-card-mobile">
       <div class="filter-box">
-        <OSelect
-          v-model="osName"
-          :placeholder="i18n.approve.SELECT_COMPANY"
-          @change="osNameSelected"
-        >
-          <OOption
-            v-for="item in osNames"
-            :key="item"
-            :label="item"
-            :value="item"
-            >{{ item }}</OOption
+        <ClientOnly>
+          <OSelect
+            v-model="osName"
+            :placeholder="i18n.approve.SELECT_COMPANY"
+            @change="osNameSelected"
           >
-        </OSelect>
-
-        <OSelect
-          v-model="osType"
-          :placeholder="i18n.approve.TABLE_COLUMN.TYPE"
-          @change="osTypeSelected"
-        >
-          <OOption
-            v-for="item in osTypes"
-            :key="item"
-            :label="item"
-            :value="item"
-            >{{ item }}</OOption
+            <OOption
+              v-for="item in osNames"
+              :key="item"
+              :label="item"
+              :value="item"
+              >{{ item }}</OOption
+            >
+          </OSelect>
+        </ClientOnly>
+        <ClientOnly>
+          <OSelect
+            v-model="osType"
+            :placeholder="i18n.approve.TABLE_COLUMN.TYPE"
+            @change="osTypeSelected"
           >
-        </OSelect>
+            <OOption
+              v-for="item in osTypes"
+              :key="item"
+              :label="item"
+              :value="item"
+              >{{ item }}</OOption
+            >
+          </OSelect>
+        </ClientOnly>
       </div>
     </div>
     <OSearch
