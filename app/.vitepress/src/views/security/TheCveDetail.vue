@@ -210,14 +210,7 @@ onMounted(() => {
   color: var(--e-color-link1);
   cursor: pointer;
 }
-.wrapper {
-  max-width: 1504px;
-  margin: 0 auto;
-  padding: var(--o-spacing-h2) var(--o-spacing-h2) 0;
-  @media screen and (max-width: 768px) {
-    padding: 0 var(--o-spacing-h5);
-  }
-}
+
 .breadcrumb {
   color: var(--e-color-text1);
   background: var(--e-color-bg1);

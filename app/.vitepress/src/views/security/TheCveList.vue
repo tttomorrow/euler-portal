@@ -104,9 +104,6 @@ onMounted(() => {
 });
 
 watch(queryData, () => getCveLists(queryData));
-// watch(windowWidth, () => {
-//   screenWidth.value = windowWidth.value;
-// });
 </script>
 <template>
   <BannerLevel2
@@ -170,7 +167,7 @@ watch(queryData, () => getCveLists(queryData));
         prop="updateTime"
       ></OTableColumn>
       <OTableColumn
-        width="100"
+        width="120"
         :label="i18n.security.PACKAGE"
         prop="packageName"
       ></OTableColumn>

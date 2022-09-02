@@ -475,7 +475,7 @@ onMounted(() => {
           ></OTableColumn>
           <OTableColumn
             :label="i18n.compatibility.HARDWARE_TABLE_COLUMN.DATE"
-            prop="certificationTime"
+            prop="date"
           ></OTableColumn>
           <el-table-column
             :label="
@@ -568,7 +568,7 @@ onMounted(() => {
             prop="type"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE"
+            :label="i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_DATE"
             prop="driverDate"
             width="150"
           ></OTableColumn>
@@ -588,7 +588,7 @@ onMounted(() => {
           ></OTableColumn>
         </OTable>
 
-        <ul class="mobile-list">
+        <!-- <ul class="mobile-list">
           <li v-for="item in tableData" :key="item.id" class="item">
             <ul>
               <li>
@@ -622,9 +622,7 @@ onMounted(() => {
               </li>
               <li>
                 <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE
-                  }}:</span
+                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_DATE }}:</span
                 >
                 {{ item.driverDate }}
               </li>
@@ -652,7 +650,7 @@ onMounted(() => {
               </li>
             </ul>
           </li>
-        </ul>
+        </ul> -->
       </OTabPane>
 
       <OTabPane
@@ -834,6 +832,7 @@ onMounted(() => {
           ></OTableColumn>
         </OTable>
       </OTabPane>
+
       <div class="bottom-wrapper">
         <ClientOnly>
           <OPagination
@@ -1003,7 +1002,7 @@ onMounted(() => {
                 <li>
                   <span
                     >{{
-                      i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVER_DATE
+                      i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_DATE
                     }}:</span
                   >
                   {{ item.driverDate }}
