@@ -68,6 +68,7 @@ const dayTabShow = ref(0);
 const tabIndex = ref(0);
 const betweenDate = ref<any>([]);
 const commonStore = useCommon();
+const activityId = ref('');
 
 const handleScroll = (index: number) => {
   const element = document.getElementById(anchor.value[index]) as HTMLElement;
@@ -134,9 +135,10 @@ const GetUrlParam = (paraName: string) => {
 };
 
 function getActivitiesData() {
-  const id = GetUrlParam('id');
+  activityId.value = GetUrlParam('id');
+  console.log(activityId.value);
   try {
-    getActivityDetail(id).then((res: detailDate) => {
+    getActivityDetail(activityId.value).then((res: detailDate) => {
       //  线上活动不加载地图，不显示tab
       res.activity_type === 2
         ? (tabTitle.value = tabTitle.value.splice(0, 2))
@@ -428,8 +430,13 @@ watch(windowWidth, () => {
                 {{ detailObj?.address }}
               </p>
               <p>{{ i18n.interaction.MEETUPSLIST.LIVE_ADDRESS }}</p>
-              <p v-if="detailObj?.detail_address">
+              <p v-if="detailObj?.detail_address && activityId !== '70'">
                 {{ detailObj?.detail_address }}
+              </p>
+              <p v-else>
+                <a href="http://live.bilibili.com/22290444" target="_blank"
+                  >http://live.bilibili.com/22290444</a
+                >
               </p>
             </div>
             <div class="scan-qrcode">
