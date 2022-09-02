@@ -23,12 +23,12 @@ interface SIGLIST {
 }
 
 const i18n = useI18n();
-const sigList = ref<SIGLIST[]>([]);
+const oldSigList = ref<SIGLIST[]>([]);
 
 onMounted(() => {
   try {
     getSigList().then((res) => {
-      sigList.value = res;
+      oldSigList.value = res;
     });
   } catch (error) {
     throw Error();
@@ -56,10 +56,10 @@ onMounted(() => {
       <p>SIG List</p>
       <OTabs>
         <OTabPane label="SIG List">
-          <SigList />
+          <SigList v-if="oldSigList.length" :old-sig-list="oldSigList" />
         </OTabPane>
         <OTabPane label="SIG Board" lazy>
-          <SigBoard :sig-list="sigList" />
+          <SigBoard :sig-list="oldSigList" />
         </OTabPane>
         <OTabPane label="SIG Landscape">
           <SigLandscape />
