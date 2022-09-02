@@ -52,7 +52,7 @@ const router = useRouter();
 const language = configData.lang;
 const screenWidth = useWindowResize();
 // 所有数据与展示数据
-const allList = ref([]);
+const allList = ref<Array<any>>([]);
 const sigList = ref<Array<SIGLIST>>([]);
 // 仓库列表过滤参数
 const sigSelectList = ref<Array<string>>([]);
@@ -123,6 +123,7 @@ const getRepositoryList = () => {
       const { code, data } = res;
       if (code === 200) {
         allList.value = data;
+        replaceMail();
         data.map((item: SIGLIST) => {
           sigSelectList.value.push(item.sig_name);
           item.maintainers.forEach((subItem: string) => {
@@ -228,6 +229,15 @@ function turnPage(option: string) {
     paginationData.value.currentPage = paginationData.value.currentPage + 1;
   }
   currentChange(paginationData.value.currentPage);
+}
+function replaceMail() {
+  props.oldSigList.forEach((oldMail) => {
+    allList.value.map((newMail) => {
+      if (newMail.sig_name === oldMail.group_name) {
+        newMail.mailing_list = oldMail.maillist;
+      }
+    });
+  });
 }
 // 输入框防抖
 const debounceEvent = _.debounce(filterRope, 300, {
