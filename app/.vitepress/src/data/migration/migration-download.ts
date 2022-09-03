@@ -40,7 +40,7 @@ export default [
       link: 'https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/x2openEuler/',
     },
     doc: {
-      name: 'oec-hardware使用指南',
+      name: 'x2openEuler使用指南',
       link: 'https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/thirdparty_migration/x2openEuleruseguide.html',
     },
   },
@@ -55,7 +55,7 @@ export default [
       link: 'https://toscode.gitee.com/openeuler/oecp/tree/master',
     },
     doc: {
-      name: 'oec-hardware使用指南',
+      name: 'oecp使用指南',
       link: 'https://toscode.gitee.com/openeuler/oecp/blob/master/README.md',
     },
   },
