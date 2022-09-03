@@ -204,8 +204,9 @@ onMounted(() => {
   margin: var(--o-spacing-h2) auto var(--o-spacing-h1);
   background-color: var(--e-color-bg1);
   @media screen and (max-width: 768px) {
-    background-color: var(--e-color-bg1);
-    margin: var(--o-spacing-h5) 0 var(--o-spacing-h2) 0;
+    // background-color: var(--e-color-bg1);
+    // margin: var(--o-spacing-h5) 0 var(--o-spacing-h2) 0;
+    margin: 16px 0 40px;
   }
 }
 .breadcrumb {
