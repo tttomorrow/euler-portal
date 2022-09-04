@@ -18,7 +18,7 @@ const isDark = computed(() => {
 });
 const goLink = (url: string, isBlank: boolean) => {
   if (isBlank) {
-    window.open(url);
+    window.open(url, '_blank');
     return;
   }
   router.go(url);
