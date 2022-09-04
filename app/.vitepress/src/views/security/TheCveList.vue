@@ -104,9 +104,6 @@ onMounted(() => {
 });
 
 watch(queryData, () => getCveLists(queryData));
-// watch(windowWidth, () => {
-//   screenWidth.value = windowWidth.value;
-// });
 </script>
 <template>
   <BannerLevel2
