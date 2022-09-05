@@ -2,12 +2,12 @@
 import { ref, onMounted } from 'vue';
 import { useI18n } from '@/i18n';
 import { getCveDetail, getAffectedProduct } from '@/api/api-security';
-import { useRouter } from 'vitepress';
-
+import { useRouter, useData } from 'vitepress';
 import { CveDetailCvss, AffectProduct } from '@/shared/type-support';
+
 import AppContent from '@/components/AppContent.vue';
+
 import IconChevron from '~icons/app/chevron-right.svg';
-import { useData } from 'vitepress';
 
 const { lang } = useData();
 const i18n = useI18n();

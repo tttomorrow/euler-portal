@@ -28,11 +28,10 @@ const total = ref(0);
 const currentPage = ref(1);
 const totalPage = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-const years = ['', '2022', '2021', '2020'];
+const years = ['', '2022', '2021', '2019'];
 const selectedYear = ref('2022');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
-const filterIndex = ref(0);
 
 const tableData = ref<SecurityLists[]>([
   {
@@ -76,14 +75,10 @@ const tagClick = (i: number, type: string) => {
   queryData.type = type;
 };
 
-function filterClick(i: number, category: string) {
-  filterIndex.value = i;
-  queryData.type = category;
-}
-
 const yearTagClick = (i: number, type: string) => {
   queryData.year = type;
   activeIndex1.value = i;
+  selectedYear.value = type === '' ? '全部' : type;
 };
 
 const handleSizeChange = (val: number) => {
@@ -104,8 +99,9 @@ function jumpBulletinDetail(val: any) {
   router.go(`${router.route.path}detail/?id=${val}`);
 }
 
-const selectYear = (val: string) => {
+const selectYear = (i: number, val: string) => {
   selectedYear.value = val;
+  activeIndex1.value = i;
   queryData.year = val;
 };
 
@@ -178,9 +174,9 @@ watch(queryData, () => getSecurityLists(queryData));
           <div
             v-for="(item, index) in i18n.security.SEVERITY_LIST"
             :key="item"
-            :class="filterIndex === index ? 'selected' : ''"
+            :class="activeIndex === index ? 'selected' : ''"
             class="filter-item"
-            @click="filterClick(index, item.LABEL)"
+            @click="tagClick(index, item.LABEL)"
           >
             {{ item.NAME }}
           </div>
@@ -198,11 +194,11 @@ watch(queryData, () => getSecurityLists(queryData));
             </template>
             <div class="years">
               <p
-                v-for="item in years"
+                v-for="(item, index) in years"
                 :key="item"
                 class="years-item"
                 :class="selectedYear === item ? 'selected' : ''"
-                @click="selectYear(item)"
+                @click="selectYear(index, item)"
               >
                 {{ item === '' ? i18n.security.ALL : item }}
               </p>
@@ -280,6 +276,8 @@ watch(queryData, () => getSecurityLists(queryData));
           </ul>
         </li>
       </ul>
+
+      <div v-if="total === 0 && isMobile" class="empty-tip">未搜索到数据</div>
 
       <ClientOnly>
         <OPagination
@@ -456,6 +454,12 @@ watch(queryData, () => getSecurityLists(queryData));
     @media screen and (max-width: 768px) {
       display: none;
     }
+  }
+  .empty-tip {
+    text-align: center;
+    font-size: var(--o-font-size-tip);
+    color: var(--e-color-text4);
+    padding: var(--o-spacing-h2) 0;
   }
   .mobile-list {
     display: none;

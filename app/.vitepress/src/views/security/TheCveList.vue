@@ -28,7 +28,6 @@ const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const searchContent = ref('');
 const activeIndex = ref(0);
-const filterIndex = ref(0);
 
 const tableData = ref<CveLists[]>([
   {
@@ -77,11 +76,6 @@ const handleCurrentChange = (val: number) => {
   queryData.pages.page = val;
   currentPage.value = val;
 };
-
-function filterClick(i: number, category: string) {
-  filterIndex.value = i;
-  queryData.status = category;
-}
 
 function searchValchange() {
   queryData.keyword = searchContent.value;
@@ -136,6 +130,20 @@ watch(queryData, () => getCveLists(queryData));
       </TagFilter>
     </div>
 
+    <div class="filter-mobile">
+      <div class="filter">
+        <div
+          v-for="(item, index) in i18n.security.CATEGORY_LIST"
+          :key="item"
+          :class="activeIndex === index ? 'selected' : ''"
+          class="filter-item"
+          @click="tagClick(index, item.LABEL)"
+        >
+          {{ item.NAME }}
+        </div>
+      </div>
+    </div>
+
     <OTable class="pc-list" :data="tableData" style="width: 100%">
       <el-table-column :label="i18n.security.CVE" width="160">
         <template #default="scope">
@@ -187,20 +195,6 @@ watch(queryData, () => getCveLists(queryData));
       </el-table-column>
     </OTable>
 
-    <div class="filter-mobile">
-      <div class="filter">
-        <div
-          v-for="(item, index) in i18n.security.CATEGORY_LIST"
-          :key="item"
-          :class="filterIndex === index ? 'selected' : ''"
-          class="filter-item"
-          @click="filterClick(index, item.LABEL)"
-        >
-          {{ item.NAME }}
-        </div>
-      </div>
-    </div>
-
     <ul class="mobile-list">
       <li v-for="item in tableData" :key="item.cveId" class="item">
         <ul>
@@ -234,6 +228,10 @@ watch(queryData, () => getCveLists(queryData));
         </ul>
       </li>
     </ul>
+
+    <div v-if="totalPage === 0" class="empty-status">
+      {{ i18n.compatibility.EMPTY_SEARCH_RESULT }}
+    </div>
 
     <ClientOnly>
       <OPagination
@@ -319,6 +317,13 @@ watch(queryData, () => getCveLists(queryData));
       }
     }
   }
+}
+.empty-status {
+  text-align: center;
+  font-size: var(--o-font-size-tip);
+  color: var(--e-color-text4);
+  line-height: var(--o-spacing-tip);
+  padding: var(--o-spacing-h2) 0 var(--o-spacing-h5);
 }
 .mobile-list {
   display: none;
