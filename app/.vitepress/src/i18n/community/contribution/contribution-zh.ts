@@ -26,19 +26,19 @@ export default {
     },
     {
       URL: '/zh/other/projects/stratovirt/',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/other/projects/atune/',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/other/projects/secgear/',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/other/projects/isula/',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: 'https://pkgmanage.openeuler.org/',
@@ -50,7 +50,7 @@ export default {
     },
     {
       URL: '/zh/other/projects/bishengjdk/',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: 'https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZXVsZXI=',
@@ -70,27 +70,27 @@ export default {
     },
     {
       URL: '/zh/#meeting',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/interaction/salon-list/',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/interaction/live-list/',
-      BLANK: false,
+      BLANK: true,
     },
     {
-      URL: '/zh/interaction/summit-list/devday2022/',
-      BLANK: false,
+      URL: 'https://www.openeuler.org/zh/interaction/summit-list/devday2022/',
+      BLANK: true,
     },
     {
       URL: '/zh/sig/sig-list/',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/sig/sig-guidance/',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: 'https://gitee.com/openeuler/community/issues',
@@ -98,19 +98,19 @@ export default {
     },
     {
       URL: '/zh/community/contribution/detail.html#_3-3-2-贡献编码',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/community/contribution/detail.html#_3-3-3-贡献软件包',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/community/contribution/detail.html#_3-3-4-贡献原创开源项目',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: '/zh/community/contribution/detail.html#_3-3-5-检视代码',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: 'https://gitee.com/openeuler/QA/blob/master/%E7%A4%BE%E5%8C%BA%E6%B5%8B%E8%AF%95%E4%BD%93%E7%B3%BB%E4%BB%8B%E7%BB%8D.md',
@@ -130,7 +130,7 @@ export default {
     },
     {
       URL: '/zh/sig/sig-list/sig-detail.html?id=21&name=TC&mail=dev%40openeuler.org',
-      BLANK: false,
+      BLANK: true,
     },
     {
       URL: 'https://gitee.com/openeuler/community/blob/master/community-membership_cn.md',
