@@ -4,6 +4,12 @@ import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
 import { getPop } from '@/api/api-search';
+import {
+  showGuard,
+  logout,
+  useStoreData,
+  getUserAuth,
+} from '../shared/login';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
@@ -32,6 +38,9 @@ interface NavItem {
   IS_OPEN_WINDOW?: number;
   IS_OPEN_MINISITE_WINDOW?: string;
 }
+
+const { token } = getUserAuth();
+const { guardAuthClient } = useStoreData();
 
 const router = useRouter();
 const { lang, theme } = useData();
@@ -204,6 +213,12 @@ function search() {
 // function clickClose() {
 //   emit2('click-close');
 // }
+const jumpToUserZone = () => {
+  window.open(
+    'https://jldibemigdfj.authing.cn/u?app_id=62679eab0b22b146d2ea0a3a',
+    '_blank'
+  );
+};
 </script>
 
 <template>
@@ -328,6 +343,31 @@ function search() {
           </transition>
         </div>
       </teleport>
+      <div class="opt-user">
+        <el-dropdown v-if="token">
+          <div class="el-dropdown-link opt-info">
+            <img
+              :src="guardAuthClient.photo"
+              :alt="guardAuthClient.username || 'LogOut'"
+              class="img"
+            />
+            <p class="opt-name">{{ guardAuthClient.username }}</p>
+          </div>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click="jumpToUserZone()"
+                >个人中心</el-dropdown-item
+              >
+              <el-dropdown-item @click="logout()"
+                >退出登录</el-dropdown-item
+              >
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+        <div v-else class="login" @click="showGuard()">
+          登录
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -719,5 +759,36 @@ function search() {
 .menu-sub-leave {
   opacity: 1;
   left: -100%;
+}
+.opt-user {
+  margin-left:24px;
+  .opt-info {
+    display: flex;
+    align-items: center;
+    width: 112px;
+    .img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    .opt-name {
+        margin-left: 8px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+  }
+}
+.login {
+  width: 112px;
+  height: 32px;
+  line-height: 30px;
+  border: 1px solid var(--e-color-text1);
+  text-align: center;
+  color: var(--e-color-text1);
+  cursor: pointer;
+  font-size: 16px;
 }
 </style>

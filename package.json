@@ -16,6 +16,7 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "aos": "^2.3.4",
+    "authing-js-sdk": "^4.23.35",
     "axios": "^0.27.2",
     "dayjs": "^1.8.31",
     "element-plus": "^2.2.9",
