@@ -42,42 +42,10 @@ interface MailingMsg {
 
 const tableData: Ref<MailingMsg[]> = ref([]);
 
-const initTable = (data: any[]) => {
-  const result: MailingMsg[] = [];
-  data.entries.forEach((item) => {
-    const itemObj = {
-      description: '',
-      display_name: '',
-      fqdn_listname: '',
-      http_etag: '',
-      list_id: '',
-      list_name: '',
-      mail_host: '',
-      member_count: null,
-      self_link: '',
-      volume: null,
-    };
-    itemObj.description = item.description;
-    itemObj.display_name = item.display_name;
-    itemObj.fqdn_listname = item.fqdn_listname;
-    itemObj.http_etag = item.http_etag;
-    itemObj.list_id = item.list_id;
-    itemObj.list_name = item.list_name;
-    itemObj.mail_host = item.mail_host;
-    itemObj.member_count = item.member_count;
-    itemObj.self_link = item.self_link;
-    itemObj.volume = item.volume;
-    result.push(itemObj);
-  });
-  result.sort((a, b) => {
-    return (a.display_name + '').localeCompare(b.display_name + '');
-  });
-  return result;
-};
 onMounted(async () => {
   try {
     const responeData = await getAllMailing();
-    tableData.value = initTable(responeData);
+    tableData.value = responeData?.entries;
   } catch (e: any) {
     throw new Error(e);
   }
