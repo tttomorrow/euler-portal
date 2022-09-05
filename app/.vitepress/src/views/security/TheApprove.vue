@@ -196,12 +196,14 @@ watch(queryData, () => getOsTableList(queryData));
         </ClientOnly>
       </div>
     </div>
-    <OSearch
-      v-model="inputName"
-      class="search"
-      :placeholder="i18n.approve.SEARCH_PLACEHOLDER"
-      @change="searchValchange"
-    ></OSearch>
+    <ClientOnly>
+      <OSearch
+        v-model="inputName"
+        class="search"
+        :placeholder="i18n.approve.SEARCH_PLACEHOLDER"
+        @change="searchValchange"
+      ></OSearch
+    ></ClientOnly>
 
     <OCard class="filter-card">
       <template #header>
@@ -312,6 +314,10 @@ watch(queryData, () => getOsTableList(queryData));
         </ul>
       </li>
     </ul>
+
+    <div v-if="total === 0" class="empty-status">
+      {{ i18n.compatibility.EMPTY_SEARCH_RESULT }}
+    </div>
 
     <OPagination
       v-if="total > 0"
@@ -442,7 +448,13 @@ watch(queryData, () => getOsTableList(queryData));
     color: var(--e-color-link1);
   }
 }
-
+.empty-status {
+  text-align: center;
+  font-size: var(--o-font-size-tip);
+  color: var(--e-color-text4);
+  line-height: var(--o-spacing-tip);
+  padding: var(--o-spacing-h2) 0 var(--o-spacing-h5);
+}
 .mobile-list {
   display: none;
   margin-bottom: var(--o-spacing-h5);

@@ -6,7 +6,6 @@ import { useData, useRouter } from 'vitepress';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
-import MobileFilter from '@/components/MobileFilter.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner/banner-security.png';
@@ -31,7 +30,10 @@ import {
   getBusinessSoftwareList,
   getTestOrganizations,
   getCpu,
+  getSoftFilter,
 } from '@/api/api-security';
+import OSelect from 'opendesign/select/OSelect.vue';
+import OOption from 'opendesign/select/OOption.vue';
 
 const screenWidth = useWindowResize();
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
@@ -53,16 +55,24 @@ const searchContent = ref('');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const activeIndex2 = ref(0);
+const activeIndex3 = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const architectureSelect = ref<string[]>([`${all.value}`]);
 const osOptions = ref<string[]>([`${all.value}`]);
 const cpuList = ref<string[]>([`${all.value}`]);
+const softType = ref<string[]>([`${all.value}`]);
+const osLists = ref<string[]>([`${all.value}`]);
+
 const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>([`${all.value}`]);
 const lastActiveName = ref('1');
 const currentPage = ref(1);
 const totalPage = ref(0);
+const osName = ref('');
+const architehture = ref('');
+const cpuName = ref('');
+const typeName = ref('');
 
 const filterData = ref<FilterList[]>([
   {
@@ -99,6 +109,7 @@ const queryData: CveQuery = reactive({
   cpu: '',
   os: '',
   testOrganization: '',
+  type: '',
   lang: `${lang.value}`,
 });
 
@@ -177,6 +188,8 @@ const jumpPage = (page: number) => {
 };
 
 const handleChange = () => {
+  initQueryData();
+
   currentPage.value = 1;
   if (activeName.value) {
     lastActiveName.value = activeName.value;
@@ -196,6 +209,11 @@ const initQueryData = () => {
   searchContent.value = '';
   activeIndex1.value = 0;
   activeIndex.value = 0;
+
+  osName.value = '';
+  architehture.value = '';
+  cpuName.value = '';
+  typeName.value = '';
 };
 
 const handleClick = () => {
@@ -231,6 +249,7 @@ const initData = (params: CveQuery) => {
 
 const tagClick = (i: number, item: string) => {
   activeIndex.value = i;
+  osName.value = item;
   queryData.os = item === '全部' ? '' : item;
   initData(queryData);
 };
@@ -241,6 +260,7 @@ const optionTagClick = (i: number, item: string) => {
     queryData.testOrganization = item === '全部' ? '' : item;
   } else {
     queryData.architecture = item === '全部' ? '' : item;
+    architehture.value = item === '全部' ? '' : item;
   }
   initData(queryData);
 };
@@ -248,6 +268,7 @@ const optionTagClick = (i: number, item: string) => {
 function cpuTagClick(index: number, item: string) {
   activeIndex2.value = index;
   queryData.cpu = item === '全部' ? '' : item;
+  cpuName.value = item === '全部' ? '' : item;
   initData(queryData);
 }
 
@@ -267,44 +288,44 @@ function searchValchange() {
   initData(queryData);
 }
 
-const listfilter = (val: any) => {
-  if (activeName.value === '1') {
-    val.forEach((item: any) => {
-      if (item.title === '操作系统') {
-        queryData.os = item.sele[0];
-      } else if (item.title === '架构') {
-        queryData.architecture = item.sele[0];
-      } else if (item.title === 'CPU') {
-        queryData.cpu = item.sele[0];
-      } else {
-        return;
-      }
-    });
-    initData(queryData);
-  } else if (activeName.value === '2') {
-    val.forEach((item: any) => {
-      if (item.title === '操作系统') {
-        queryData.os = item.sele[0];
-      } else if (item.title === '架构') {
-        queryData.architecture = item.sele[0];
-      } else {
-        return;
-      }
-    });
-    initData(queryData);
-  } else if (activeName.value === '3') {
-    val.forEach((item: any) => {
-      if (item.title === '操作系统') {
-        queryData.os = item.sele[0];
-      } else if (item.title === '架构') {
-        queryData.architecture = item.sele[0];
-      } else {
-        return;
-      }
-    });
-    initData(queryData);
-  }
-};
+// const listfilter = (val: any) => {
+//   if (activeName.value === '1') {
+//     val.forEach((item: any) => {
+//       if (item.title === '操作系统') {
+//         queryData.os = item.sele[0];
+//       } else if (item.title === '架构') {
+//         queryData.architecture = item.sele[0];
+//       } else if (item.title === 'CPU') {
+//         queryData.cpu = item.sele[0];
+//       } else {
+//         return;
+//       }
+//     });
+//     initData(queryData);
+//   } else if (activeName.value === '2') {
+//     val.forEach((item: any) => {
+//       if (item.title === '操作系统') {
+//         queryData.os = item.sele[0];
+//       } else if (item.title === '架构') {
+//         queryData.architecture = item.sele[0];
+//       } else {
+//         return;
+//       }
+//     });
+//     initData(queryData);
+//   } else if (activeName.value === '3') {
+//     val.forEach((item: any) => {
+//       if (item.title === '操作系统') {
+//         queryData.os = item.sele[0];
+//       } else if (item.title === '架构') {
+//         queryData.architecture = item.sele[0];
+//       } else {
+//         return;
+//       }
+//     });
+//     initData(queryData);
+//   }
+// };
 
 const goBackPage = () => {
   if (activeName.value === '1' || activeName.value === '2') {
@@ -319,6 +340,39 @@ const goBackPage = () => {
   }
 };
 
+function osNameSelected(val: string) {
+  queryData.os = val === '全部' ? '' : val;
+  activeIndex.value = osOptions.value.indexOf(val);
+  initMobileData(queryData);
+}
+
+function architehtureSelected(val: string) {
+  queryData.architecture = val === '全部' ? '' : val;
+  activeIndex1.value = architectureSelect.value.indexOf(val);
+  architehture.value = val;
+  initMobileData(queryData);
+}
+
+function cpuSelected(val: string) {
+  queryData.cpu = cpuName.value = val === '全部' ? '' : val;
+  activeIndex2.value = cpuList.value.indexOf(val);
+  cpuName.value = val;
+  initMobileData(queryData);
+}
+
+function softTypeClick(i: number, val: string) {
+  queryData.type = val === '全部' ? '' : val;
+  activeIndex3.value = i;
+  typeName.value = val;
+  initMobileData(queryData);
+}
+
+function typeSelected(val: string) {
+  activeIndex3.value = softType.value.indexOf(val);
+  queryData.type = typeName.value = val === '全部' ? '' : val;
+  initMobileData(queryData);
+}
+
 const go = (id: number) => {
   router.go(`${router.route.path}software-info/?id=${id}`);
 };
@@ -326,7 +380,7 @@ const go = (id: number) => {
 onMounted(() => {
   getCompatibilityData(queryData);
   try {
-    driverArchitectureOptions({ lang: 'zh' }).then((res: any) => {
+    driverArchitectureOptions({ lang: `${lang.value}` }).then((res: any) => {
       res.result.forEach((item: string) => {
         architectureSelect.value.push(item);
         filterData.value.forEach((it) => {
@@ -345,7 +399,7 @@ onMounted(() => {
     throw new Error(e);
   }
   try {
-    driverOSOptions({ lang: 'zh' }).then((res: any) => {
+    driverOSOptions({ lang: `${lang.value}` }).then((res: any) => {
       res.result.forEach((item: string) => {
         osOptions.value.push(item);
         filterData.value.forEach((it) => {
@@ -373,7 +427,7 @@ onMounted(() => {
     throw new Error(e);
   }
   try {
-    getCpu({ lang: 'zh' }).then((res: any) => {
+    getCpu({ lang: `${lang.value}` }).then((res: any) => {
       res.result.forEach((item: string) => {
         cpuList.value.push(item);
         filterData.value.forEach((it) => {
@@ -382,6 +436,17 @@ onMounted(() => {
           }
         });
       });
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+
+  try {
+    getSoftFilter().then((res: any) => {
+      res.Type.forEach((item: string) => {
+        softType.value.push(item);
+      });
+      osLists.value.push(res.OS[0]);
     });
   } catch (e: any) {
     throw new Error(e);
@@ -407,6 +472,7 @@ onMounted(() => {
           :placeholder="i18n.compatibility.HARDWARE_SEARCH_PLACEHOLDER"
           @change="searchValchange"
         ></OSearch>
+
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">
@@ -517,10 +583,11 @@ onMounted(() => {
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">
-              <TagFilter :label="i18n.compatibility.OS" :show="false">
+              <TagFilter :label="i18n.compatibility.OS" :show="false" checkable>
                 <OTag
                   v-for="(item, index) in osOptions"
                   :key="'tag' + index"
+                  checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
                   @click="tagClick(index, item)"
                 >
@@ -530,10 +597,15 @@ onMounted(() => {
             </div>
           </template>
           <div class="card-body">
-            <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
+            <TagFilter
+              :show="false"
+              :label="i18n.compatibility.ARCHITECTURE"
+              checkable
+            >
               <OTag
                 v-for="(item, index) in architectureSelect"
                 :key="'tag' + index"
+                checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
                 @click="optionTagClick(index, item)"
               >
@@ -671,6 +743,7 @@ onMounted(() => {
                 <OTag
                   v-for="(item, index) in osOptions"
                   :key="'tag' + index"
+                  checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
                   @click="tagClick(index, item)"
                 >
@@ -680,10 +753,23 @@ onMounted(() => {
             </div>
           </template>
           <div class="card-body">
+            <TagFilter :show="false" :label="i18n.compatibility.SOFTWARETYPE">
+              <OTag
+                v-for="(item, index) in softType"
+                :key="'tag' + index"
+                checkable
+                :type="activeIndex3 === index ? 'primary' : 'text'"
+                @click="softTypeClick(index, item)"
+              >
+                {{ item }}
+              </OTag>
+            </TagFilter>
+
             <TagFilter :show="false" :label="i18n.compatibility.ARCHITECTURE">
               <OTag
                 v-for="(item, index) in architectureSelect"
                 :key="'tag' + index"
+                checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
                 @click="optionTagClick(index, item)"
               >
@@ -883,13 +969,61 @@ onMounted(() => {
     <div class="tabs-mobile">
       <el-collapse v-model="activeName" accordion @change="handleChange">
         <el-collapse-item title="整机" name="1">
-          <div class="blog-tag" style="display: none">
-            <MobileFilter
-              :data="filterData"
-              :single="true"
-              @filter="listfilter"
-            />
-          </div>
+          <ClientOnly>
+            <OSearch
+              v-model="searchContent"
+              class="o-search"
+              :placeholder="i18n.compatibility.HARDWARE_SEARCH_PLACEHOLDER"
+              @change="searchValchange"
+            ></OSearch>
+
+            <OSelect
+              v-model="osName"
+              :placeholder="i18n.compatibility.OS"
+              @change="osNameSelected"
+            >
+              <OOption
+                v-for="item in osOptions"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+            <OSelect
+              v-model="architehture"
+              :placeholder="i18n.compatibility.ARCHITECTURE"
+              @change="architehtureSelected"
+            >
+              <OOption
+                v-for="item in architectureSelect"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+            <OSelect
+              v-model="cpuName"
+              :placeholder="i18n.compatibility.CPU"
+              @change="cpuSelected"
+            >
+              <OOption
+                v-for="item in cpuList"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+          </ClientOnly>
+
           <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>
@@ -942,6 +1076,10 @@ onMounted(() => {
               </ul>
             </li>
           </ul>
+          <div v-if="totalPage === 0" class="empty-status">
+            {{ i18n.compatibility.EMPTY_SEARCH_RESULT }}
+          </div>
+
           <AppPaginationMo
             v-if="totalPage !== 0"
             :current-page="currentPage"
@@ -958,13 +1096,46 @@ onMounted(() => {
         </el-collapse-item>
 
         <el-collapse-item title="板卡" name="2">
-          <div class="blog-tag" style="display: none">
-            <MobileFilter
-              :data="filterDataTwo"
-              :single="true"
-              @filter="listfilter"
-            />
-          </div>
+          <ClientOnly>
+            <OSearch
+              v-model="searchContent"
+              class="o-search"
+              :placeholder="i18n.compatibility.DRIVE_SEARCH_PLACEHOLDER"
+              @change="searchValchange"
+            ></OSearch>
+
+            <OSelect
+              v-model="osName"
+              :placeholder="i18n.compatibility.OS"
+              @change="osNameSelected"
+            >
+              <OOption
+                v-for="item in osOptions"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+            <OSelect
+              v-model="architehture"
+              :placeholder="i18n.compatibility.ARCHITECTURE"
+              @change="architehtureSelected"
+            >
+              <OOption
+                v-for="item in architectureSelect"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+          </ClientOnly>
+
           <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>
@@ -1034,6 +1205,11 @@ onMounted(() => {
               </ul>
             </li>
           </ul>
+
+          <div v-if="totalPage === 0" class="empty-status">
+            {{ i18n.compatibility.EMPTY_SEARCH_RESULT }}
+          </div>
+
           <AppPaginationMo
             v-if="totalPage !== 0"
             :current-page="currentPage"
@@ -1050,14 +1226,63 @@ onMounted(() => {
         </el-collapse-item>
 
         <el-collapse-item title="开源软件" name="3">
-          <div class="blog-tag" style="display: none">
-            <MobileFilter
-              v-if="total > 0 || screenWidth < 768"
-              :data="filterDataTwo"
-              :single="true"
-              @filter="listfilter"
-            />
-          </div>
+          <ClientOnly>
+            <OSearch
+              v-model="searchContent"
+              class="o-search"
+              :placeholder="i18n.compatibility.SOFTWARE_SEARCH_PLACEHOLDER"
+              @change="searchValchange"
+            ></OSearch>
+            <!-- 架构 -->
+            <OSelect
+              v-model="architehture"
+              :placeholder="i18n.compatibility.ARCHITECTURE"
+              @change="architehtureSelected"
+            >
+              <OOption
+                v-for="item in architectureSelect"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+            <!-- 软件类型 -->
+            <OSelect
+              v-model="typeName"
+              :placeholder="i18n.compatibility.SOFTWARETYPE"
+              @change="typeSelected"
+            >
+              <OOption
+                v-for="item in softType"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+            <!-- 操作系统-->
+            <OSelect
+              v-model="osName"
+              :placeholder="i18n.compatibility.OS"
+              @change="osNameSelected"
+            >
+              <OOption
+                v-for="item in osLists"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+          </ClientOnly>
+
           <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>
@@ -1133,6 +1358,11 @@ onMounted(() => {
               </ul>
             </li>
           </ul>
+
+          <div v-if="totalPage === 0" class="empty-status">
+            {{ i18n.compatibility.EMPTY_SEARCH_RESULT }}
+          </div>
+
           <AppPaginationMo
             v-if="totalPage !== 0"
             :current-page="currentPage"
@@ -1149,14 +1379,6 @@ onMounted(() => {
         </el-collapse-item>
 
         <el-collapse-item title="商业软件" name="4">
-          <!-- <div class="blog-tag">
-          <MobileFilter
-            
-            :data="filterData"
-            :single="true"
-            @filter="listfilter"
-          />
-        </div> -->
           <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>
@@ -1267,6 +1489,23 @@ onMounted(() => {
       padding-bottom: 0;
     }
   }
+  :deep(.o-select) {
+    width: 100%;
+    margin-top: var(--o-spacing-h6);
+  }
+  :deep(.o-search) {
+    height: 36px;
+    margin-top: 12px;
+    .el-input__prefix-inner {
+      --el-input-icon-color: var(--el-text-color-placeholder);
+    }
+    .el-input__wrapper {
+      font-size: var(--o-font-size-tip);
+    }
+    .el-input__prefix-inner {
+      font-size: 18px;
+    }
+  }
 }
 .bottom-wrapper {
   max-width: 1504px;
@@ -1277,12 +1516,12 @@ onMounted(() => {
   height: 48px;
 }
 
-.blog-tag {
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: block;
-  }
-}
+// .blog-tag {
+//   display: none;
+//   @media screen and (max-width: 768px) {
+//     display: block;
+//   }
+// }
 .filter-card {
   margin: var(--o-spacing-h4) 0;
   @media screen and (max-width: 768px) {
@@ -1305,9 +1544,17 @@ onMounted(() => {
     display: none;
   }
 }
+.empty-status {
+  text-align: center;
+  font-size: var(--o-font-size-tip);
+  color: var(--e-color-text4);
+  line-height: var(--o-spacing-tip);
+  padding: var(--o-spacing-h2) 0 var(--o-spacing-h5);
+}
 .mobile-list {
   display: none;
   margin-bottom: var(--o-spacing-h5);
+  margin-top: var(--o-spacing-h6);
   box-shadow: var(--e-shadow-l1);
   @media screen and (max-width: 768px) {
     display: block;
