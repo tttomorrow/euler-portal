@@ -324,7 +324,9 @@ const go = (path: string) => {
             transition: all 0.3s;
           }
           &:hover .o-icon {
-            transform: translateX(3px);
+            @media screen and (min-width: 1100px) {
+              transform: translateX(3px);
+            }
           }
           &:nth-of-type(1) {
             color: #fff;
@@ -337,9 +339,11 @@ const go = (path: string) => {
         }
         .sig-detail {
           &:hover {
-            border: 1px solid var(--e-color-brand1);
-            span {
-              color: var(--e-color-brand1);
+            @media screen and (min-width: 1100px) {
+              border: 1px solid var(--e-color-brand1);
+              span {
+                color: var(--e-color-brand1);
+              }
             }
           }
         }
@@ -348,8 +352,10 @@ const go = (path: string) => {
           padding: 8px 12px !important;
           height: auto;
           &:hover {
-            .o-icon {
-              color: var(--e-color-brand2);
+            @media screen and (min-width: 1100px) {
+              .o-icon {
+                color: var(--e-color-brand2);
+              }
             }
           }
           .o-icon {
@@ -360,8 +366,10 @@ const go = (path: string) => {
     }
 
     .item:hover {
-      box-shadow: var(--e-shadow-l2_hover);
-      transform: translateY(-2px);
+      @media screen and (min-width: 1100px) {
+        box-shadow: var(--e-shadow-l2_hover);
+        transform: translateY(-2px);
+      }
     }
   }
 }
