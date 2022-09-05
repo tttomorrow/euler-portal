@@ -245,12 +245,6 @@ const isMobile = computed(() => {
                   ref="listName"
                   class="imformation-color"
                   target="_blank"
-                  :style="{
-                    color:
-                      commonStore.theme === 'dark'
-                        ? 'var(--e-color-link2)'
-                        : '',
-                  }"
                   @click="userSubscribe(scope.row.list_id)"
                 >
                   {{ scope.row.display_name }}
@@ -267,24 +261,9 @@ const isMobile = computed(() => {
               prop="fqdn_listname"
             >
               <template #default="scope">
-                <div>
-                  <span
-                    class="ellipsis"
-                    :style="{
-                      color:
-                        commonStore.theme === 'dark'
-                          ? 'var(--e-color-white)'
-                          : '',
-                    }"
-                    >{{ scope.row.fqdn_listname }}</span
-                  >
+                <div class="ellipsis">
+                  {{ scope.row.fqdn_listname }}
                 </div>
-                <!-- <el-popover trigger="hover" placement="top"  width="300">
-                <p>{{ scope.row.fqdn_listname }}</p>
-                <div>
-                  <span class="ellipsis">{{ scope.row.fqdn_listname }}</span>
-                </div>
-              </el-popover> -->
               </template>
             </el-table-column>
             <el-table-column
@@ -304,12 +283,6 @@ const isMobile = computed(() => {
                   "
                   class="imformation-color"
                   target="_blank"
-                  :style="{
-                    color:
-                      commonStore.theme === 'dark'
-                        ? 'var(--e-color-link2)'
-                        : '',
-                  }"
                 >
                   archive
                 </a>
@@ -324,17 +297,8 @@ const isMobile = computed(() => {
               prop="description"
             >
               <template #default="scope">
-                <div>
-                  <span
-                    class="ellipsis"
-                    :style="{
-                      color:
-                        commonStore.theme === 'dark'
-                          ? 'var(--e-color-white)'
-                          : '',
-                    }"
-                    >{{ scope.row.description }}</span
-                  >
+                <div class="ellipsis">
+                  {{ scope.row.description }}
                 </div>
               </template>
             </el-table-column>
@@ -480,13 +444,12 @@ const isMobile = computed(() => {
           }
         }
         p {
-          color: var(--e-color-link3);
+          color: var(--e-color-brand1);
           cursor: pointer;
           display: inline;
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           bottom: var(--o-spacing-h4);
-          float: center;
           @media (max-width: 780px) {
             line-height: var(--o-line-height-text);
           }
@@ -605,7 +568,6 @@ const isMobile = computed(() => {
   }
 }
 .imformation-color {
-  color: var(--e-color-brand1);
   cursor: pointer;
 }
 </style>
