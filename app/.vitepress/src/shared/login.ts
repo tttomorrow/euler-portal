@@ -64,7 +64,6 @@ export function getUserAuth() {
     username,
   };
 }
-const redirectUri = `${location.origin}${location.pathname}`;
 
 // 退出登录
 export function logout(community = 'openeuler') {
@@ -73,17 +72,17 @@ export function logout(community = 'openeuler') {
     const client1 = createClient(community);
     const logoutUrl = client1.buildLogoutUrl({
       expert: true,
-      redirectUri: `${location.origin}`,
+      redirectUri: `${window?.location?.origin}`,
       idToken,
     });
     saveUserAuth();
-    location.href = logoutUrl;
+    window!.location!.href = logoutUrl;
   });
 }
 
 // 跳转首页
 export function goToHome() {
-  window.location.reload()
+  window?.location?.reload()
 }
 
 export function getCodeByUrl(community = 'openeuler') {
@@ -93,19 +92,19 @@ export function getCodeByUrl(community = 'openeuler') {
       code: query.code,
       permission: 'sigRead',
       community,
-      redirect: redirectUri,
+      redirect: `${window?.location?.origin}${window?.location?.pathname}`,
     };
     queryToken(param).then((res) => {
       const { data = {} } = res;
       const { token = '', photo = '', username = '' } = data;
       saveUserAuth(token, photo, username);
-      const newUrl = `${location.origin}`;
+      const newUrl = `${window?.location?.origin}`;
       window.parent.window.location.href = newUrl;
     });
   }
 }
 
-function getUrlParam(url = window.location.search) {
+function getUrlParam(url = window?.location?.search) {
   const param = {} as IObject;
   const arr = url.split('?');
   if (arr[1]) {
@@ -129,7 +128,7 @@ function createClient(community = 'openeuler') {
       // appId: '62845f26b7dbf20f7890c0ad',
       appId: '62679eab0b22b146d2ea0a3a',
       appHost: 'https://datastat.authing.cn',
-      redirectUri,
+      redirectUri: `${window?.location?.origin}${window?.location?.pathname}`,
     },
     openeulerPlayground: {
       appId: '6219de6da01da1ce012db473',
