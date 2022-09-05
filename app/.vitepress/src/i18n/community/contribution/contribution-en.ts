@@ -129,7 +129,7 @@ export default {
       BLANK: true,
     },
     {
-      URL: '/en/sig/sig-list/sig-detail.html?id=21&name=TC&mail=dev%40openeuler.org',
+      URL: '/en/sig/sig-list/sig-detail/?name=TC',
       BLANK: true,
     },
     {
