@@ -17,9 +17,15 @@ import {
   getSigDetail,
   getSigMember,
   getSigRepositoryList,
+  getSigList,
 } from '@/api/api-sig';
 
 import IconArrowRight from '~icons/app/right.svg';
+
+interface SIGLIST {
+  group_name: string;
+  maillist: string;
+}
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -39,6 +45,7 @@ const sigDetail = computed(() => {
 const sigMeetingData: any = ref('');
 const sigMemberData: any = ref('');
 const memberList: any = ref([]);
+const oldEmail = ref('');
 function getSigDetails() {
   try {
     getSigDetail(sigDetailName.value).then((res: any) => {
@@ -47,6 +54,17 @@ function getSigDetails() {
   } catch (error) {
     throw Error();
   }
+}
+
+function getOldEmail() {
+  getSigList().then((res) => {
+    const targetData = res.filter((item: SIGLIST) => {
+      return item.group_name === sigDetailName.value;
+    });
+    if (targetData.length) {
+      oldEmail.value = targetData[0].maillist;
+    }
+  });
 }
 function getSigMembers() {
   try {
@@ -163,6 +181,7 @@ onMounted(() => {
   }
   sigDetailName.value = GetUrlParam('name');
   getSigDetails();
+  getOldEmail();
   getSigMembers();
   getRepositoryList();
 });
@@ -193,8 +212,8 @@ onMounted(() => {
         </p>
         <p class="email">
           <span>{{ sigDetail.MAIL_LIST }}:</span>
-          <a :href="`mailto:${sigMemberData.mailing_list}`">{{
-            sigMemberData.mailing_list
+          <a :href="`mailto:${oldEmail}`">{{
+            oldEmail || 'dev@openeuler.org'
           }}</a>
         </p>
       </div>

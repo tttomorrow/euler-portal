@@ -136,7 +136,6 @@ const GetUrlParam = (paraName: string) => {
 
 function getActivitiesData() {
   activityId.value = GetUrlParam('id');
-  console.log(activityId.value);
   try {
     getActivityDetail(activityId.value).then((res: detailDate) => {
       //  线上活动不加载地图，不显示tab

@@ -64,7 +64,6 @@ const renderData = ref<TableData>({
 
 const currentDay = ref('');
 const activeName = ref('');
-const activeIndex = ref(0);
 const isCollapse = ref(false);
 const i18n = {
   SIG_GROUP: 'SIG组:',
@@ -93,7 +92,7 @@ const detailItem = [
 ];
 const activityType = ['线下', '线上', '线上 + 线下'];
 const titleList = ['全部', '会议', '活动', '峰会'];
-const tabType = titleList[0];
+const tabType = ref(titleList[0]);
 const calendar = ref();
 
 const calendarHeight = ref<number | string>(335);
@@ -103,7 +102,6 @@ const windowWidth = ref(useWindowResize());
 // 活动会议筛选
 function changeTab(tab: TabsPaneContext) {
   const index = Number(tab.index);
-  activeIndex.value = index;
   renderData.value.timeData = [];
   try {
     // 0-全部 1-会议 其他-活动
@@ -129,7 +127,7 @@ function changeTab(tab: TabsPaneContext) {
 
 function meetClick(day: string) {
   currentDay.value = resolveDate(day);
-  activeIndex.value = 0;
+  tabType.value = titleList[0];
   try {
     for (let i = 0; i < props.tableData.length; i++) {
       isCollapse.value = false;

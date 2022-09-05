@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import IconArrowRight from '~icons/app/arrow-right.svg';
 import { useI18n } from '@/i18n';
-import gsap from 'gsap';
+
+import TWEEN from '@tweenjs/tween.js';
 import { useCommon } from '@/stores/common';
 import { onMounted, Ref, ref } from 'vue';
 import { getStatistic } from '@/api/api-search';
@@ -21,13 +22,34 @@ const handleGo = (path: string) => {
   window.open(path, '_blank');
 };
 
+const changeNum = () => {
+  roundNumber.value.forEach((item: { ROUND_VALUE: number }, index: number) => {
+    new TWEEN.Tween(item)
+      .to(
+        {
+          ROUND_VALUE: roundList.value[index].ROUND_VALUE || 0,
+        },
+        2500
+      )
+      .start();
+    function animate() {
+      if (TWEEN.update()) {
+        requestAnimationFrame(animate);
+      }
+    }
+    animate();
+  });
+};
+
 const addValue = (arr: any) => {
   const template = JSON.parse(
     JSON.stringify(i18n.value.home.HOME_ROUND.ROUND_LIST)
   );
-  template.forEach((item: { ROUND_VALUE: any; ROUND_KEY: string | number }) => {
-    item.ROUND_VALUE = arr[item.ROUND_KEY];
-  });
+  template.forEach(
+    (item: { ROUND_VALUE: number; ROUND_KEY: string | number }) => {
+      item.ROUND_VALUE = arr[item.ROUND_KEY];
+    }
+  );
   return template;
 };
 onMounted(async () => {
@@ -40,12 +62,7 @@ onMounted(async () => {
     const observe = new IntersectionObserver((res) => {
       if (res[0].intersectionRatio <= 0) return;
       isShowCommunity.value = true;
-      roundNumber.value.forEach((item: any, index: number) => {
-        gsap.to(item, {
-          duration: 2.5,
-          ROUND_VALUE: roundList.value[index].ROUND_VALUE || 0,
-        });
-      });
+      changeNum();
     });
     community.value && observe.observe(community.value);
   } catch (error: any) {
