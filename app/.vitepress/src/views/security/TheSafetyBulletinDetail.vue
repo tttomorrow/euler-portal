@@ -6,8 +6,6 @@ import { useRouter, useData } from 'vitepress';
 import { getSecurityDetail } from '@/api/api-security';
 import { DetailParams } from '@/shared/@types/type-support';
 
-// import AppContent from '@/components/AppContent.vue';
-
 import IconChevron from '~icons/app/chevron-right.svg';
 
 import type { AxiosResponse } from '@/shared/axios';
@@ -48,10 +46,8 @@ function goCveDetail(val: string) {
 }
 
 onMounted(() => {
-  const index1 = decodeURIComponent(window.location.href).indexOf('=');
-  queryData.securityNoticeNo = decodeURIComponent(
-    window.location.href
-  ).substring(index1 + 1);
+  const index1 = window.location.href.indexOf('=');
+  queryData.securityNoticeNo = window.location.href.substring(index1 + 1);
   getSecurityDetailInfo(queryData);
 });
 </script>
@@ -68,6 +64,7 @@ onMounted(() => {
         {{ i18n.security.SECURITY_ADVISORIES_DETAIL }}
       </p>
     </div>
+
     <div class="bulletin-head">
       <p class="bulletin-name">{{ detailData.securityNoticeNo }}</p>
       <div class="bulletin-intro">
@@ -80,99 +77,107 @@ onMounted(() => {
         </p>
       </div>
     </div>
-
+  </div>
+  <div class="wrapper2">
     <div class="tabs-container">
       <OTabs class="o-tabs">
-        <OTabPane :label="i18n.security.OVERVIEW">
-          <div class="tab-content">
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.BRIEF_INTRODUCTION }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.introduction }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.SEVERITY }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.type }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.THEME }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.subject }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.DESCRIPTION }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.description }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.AFFECTED_COMPONENTS }}
-              </h5>
-              <p class="tab-content-item-text">
-                {{ detailData.affectedComponent }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">{{ i18n.security.CVE }}</h5>
-              <p
-                v-for="(item, index) in cveIdList"
-                :key="index"
-                class="tab-content-item-link"
-                @click="goCveDetail(item)"
-              >
-                {{ item }}
-              </p>
-            </div>
-            <div class="tab-content-item">
-              <h5 class="tab-content-item-title">
-                {{ i18n.security.REFERENCE_DOCUMENTS }}
-              </h5>
-              <div
-                v-for="item in detailData.referenceList"
-                :key="item"
-                class="tab-content-item-text"
-              >
-                <a :href="item.url" target="_blank">{{ item.url }}</a>
-              </div>
-            </div>
-          </div>
-        </OTabPane>
-        <OTabPane :label="i18n.security.UPDATED_PACKAGES">
-          <div class="tab-content">
-            <div
-              v-for="item in detailData.packageHelperList"
-              :key="item"
-              class="packge-item"
-            >
-              <h1 class="packge-item-title">{{ item.productName }}</h1>
-              <div v-for="it in item.child" :key="it" class="packge-item-class">
-                <p class="packge-item-class-achitecture">
-                  {{ it.productName }}
+        <div class="wrapper1">
+          <OTabPane :label="i18n.security.OVERVIEW">
+            <div class="tab-content">
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.BRIEF_INTRODUCTION }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.introduction }}
                 </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.SEVERITY }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.type }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.THEME }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.subject }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.DESCRIPTION }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.description }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.AFFECTED_COMPONENTS }}
+                </h5>
+                <p class="tab-content-item-text">
+                  {{ detailData.affectedComponent }}
+                </p>
+              </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">{{ i18n.security.CVE }}</h5>
                 <p
-                  v-for="single in it.child"
-                  :key="single"
-                  class="packge-item-class-rpm"
+                  v-for="(item, index) in cveIdList"
+                  :key="index"
+                  class="tab-content-item-link"
+                  @click="goCveDetail(item)"
                 >
-                  {{ single.packageName }}
+                  {{ item }}
                 </p>
               </div>
+              <div class="tab-content-item">
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.REFERENCE_DOCUMENTS }}
+                </h5>
+                <div
+                  v-for="item in detailData.referenceList"
+                  :key="item"
+                  class="tab-content-item-text"
+                >
+                  <a :href="item.url" target="_blank">{{ item.url }}</a>
+                </div>
+              </div>
             </div>
-          </div>
-        </OTabPane>
+          </OTabPane>
+
+          <OTabPane :label="i18n.security.UPDATED_PACKAGES">
+            <div class="tab-content">
+              <div
+                v-for="item in detailData.packageHelperList"
+                :key="item"
+                class="packge-item"
+              >
+                <h1 class="packge-item-title">{{ item.productName }}</h1>
+                <div
+                  v-for="it in item.child"
+                  :key="it"
+                  class="packge-item-class"
+                >
+                  <p class="packge-item-class-achitecture">
+                    {{ it.productName }}
+                  </p>
+                  <p
+                    v-for="single in it.child"
+                    :key="single"
+                    class="packge-item-class-rpm"
+                  >
+                    {{ single.packageName }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </OTabPane>
+        </div>
       </OTabs>
     </div>
   </div>
@@ -201,12 +206,34 @@ onMounted(() => {
 }
 .wrapper {
   max-width: 1504px;
-  margin: var(--o-spacing-h2) auto var(--o-spacing-h1);
+  margin: var(--o-spacing-h2) auto 0;
+  background-color: var(--e-color-bg1);
+  padding: 0 44px;
+  @media screen and (max-width: 768px) {
+    // background-color: var(--e-color-bg1);
+    // margin: var(--o-spacing-h5) 0 var(--o-spacing-h2) 0;
+    margin: 16px 0 0;
+    padding: 0;
+  }
+}
+.wrapper1 {
+  max-width: 1504px;
+  margin: 0 auto var(--o-spacing-h1);
   background-color: var(--e-color-bg1);
   @media screen and (max-width: 768px) {
     // background-color: var(--e-color-bg1);
     // margin: var(--o-spacing-h5) 0 var(--o-spacing-h2) 0;
     margin: 16px 0 40px;
+  }
+}
+.wrapper2 {
+  max-width: 1504px;
+  margin: 0 auto;
+  padding: 0 44px;
+  background-color: var(--e-color-bg1);
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 0;
   }
 }
 .breadcrumb {
