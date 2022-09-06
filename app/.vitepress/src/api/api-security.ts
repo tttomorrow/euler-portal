@@ -49,7 +49,7 @@ export function getCveDetail(id: string, name: string) {
 }
 
 /**
- * 调用接口获取Cve详情影响产品信息
+ * 调用接口获取Cve详情-影响产品信息
  * @name getAffectedProduct
  */
 export function getAffectedProduct(id: string, name: string) {
