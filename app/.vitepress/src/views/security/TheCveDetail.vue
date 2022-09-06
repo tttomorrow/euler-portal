@@ -2,12 +2,12 @@
 import { ref, onMounted } from 'vue';
 import { useI18n } from '@/i18n';
 import { getCveDetail, getAffectedProduct } from '@/api/api-security';
-import { useRouter } from 'vitepress';
-
+import { useRouter, useData } from 'vitepress';
 import { CveDetailCvss, AffectProduct } from '@/shared/type-support';
+
 import AppContent from '@/components/AppContent.vue';
+
 import IconChevron from '~icons/app/chevron-right.svg';
-import { useData } from 'vitepress';
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -33,13 +33,11 @@ function jumpBulletinDetail(val: any) {
 }
 
 onMounted(() => {
-  const i1 = decodeURIComponent(window.location.href).indexOf('=');
-  const i2 = decodeURIComponent(window.location.href).lastIndexOf('&');
-  const i3 = decodeURIComponent(window.location.href).lastIndexOf('=');
-  const cveId = decodeURIComponent(window.location.href).substring(i1 + 1, i2);
-  const packageName = decodeURIComponent(window.location.href).substring(
-    i3 + 1
-  );
+  const i1 = window.location.href.indexOf('=');
+  const i2 = window.location.href.lastIndexOf('&');
+  const i3 = window.location.href.lastIndexOf('=');
+  const cveId = window.location.href.substring(i1 + 1, i2);
+  const packageName = window.location.href.substring(i3 + 1);
 
   try {
     getCveDetail(cveId, packageName).then((res: any) => {

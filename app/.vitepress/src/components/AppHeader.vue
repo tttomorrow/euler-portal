@@ -21,14 +21,6 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
-// import IconClose from '~icons/app/x.svg';
-
-// const props = defineProps({
-//   isShowTip: {
-//     type: Boolean,
-//     default: false,
-//   },
-// });
 
 interface NavItem {
   NAME: string;
@@ -223,26 +215,6 @@ const jumpToUserZone = () => {
 
 <template>
   <header class="app-header">
-    <!-- 隐私政策
-    <div v-if="isShowTip" class="cookie-privacy" :class="{ ru: lang === 'ru' }">
-      <template v-if="lang !== 'ru'">
-        <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
-        <a :href="'/' + lang + '/other/privacy/'">{{
-          i18n.common.COOKIE_LEGAL_LINK_TEXT
-        }}</a>
-      </template>
-      <template v-else>
-        <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
-        <a :href="'/' + lang + '/other/privacy/'">{{
-          i18n.common.COOKIE_LEGAL_LINK_TEXT
-        }}</a>
-        <span>{{ i18n.common.COOKIE_LEGAL_TEXT_OTHER }} </span>
-        <a :href="'/' + lang + '/other/privacy/'">{{
-          i18n.common.COOKIE_LEGAL_LINK_TEXT_OTHER
-        }}</a>
-      </template>
-      <OIcon class="icon" @click="clickClose"><IconClose /></OIcon>
-    </div>-->
     <div class="app-header-body">
       <!-- 移动端菜单图标 -->
       <div class="mobile-menu-icon" @click="mobileMenuPanel">
@@ -409,56 +381,6 @@ const jumpToUserZone = () => {
       height: 48px;
       justify-content: space-between;
       position: relative;
-    }
-  }
-  .cookie-privacy {
-    line-height: 60px;
-    width: 100%;
-    height: 60px;
-    text-align: center;
-    background-color: var(--e-color-bg1);
-    color: var(--e-color-text3);
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &.ru {
-      line-height: 30px;
-      display: inline-block;
-    }
-    @media screen and (max-width: 1000px) {
-      font-size: 12px;
-      line-height: 30px;
-      display: inline-block;
-      &.ru {
-        line-height: 10px;
-      }
-    }
-    a {
-      cursor: pointer;
-      text-decoration: solid;
-      white-space: pre;
-    }
-    .icon {
-      cursor: pointer;
-      vertical-align: middle;
-      margin-left: 16px;
-      width: 24px;
-      height: 24px;
-      background: var(--e-color-greyblack3);
-      border-radius: 50%;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      svg {
-        font-size: 20px;
-        color: var(--el-color-white);
-      }
-      @media screen and (max-width: 1000px) {
-        width: 20px;
-        height: 20px;
-        margin-left: 12px;
-      }
     }
   }
 }

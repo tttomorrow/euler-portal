@@ -126,10 +126,9 @@ watch(
   }
   &-list {
     position: absolute;
-    top: 60px;
+    top: 80px;
     left: -24px;
     background: var(--e-color-bg2);
-    padding: 0 var(--o-spacing-h5);
     cursor: pointer;
     z-index: 999;
     box-shadow: var(--e-shadow-l1);
@@ -140,12 +139,19 @@ watch(
       font-size: var(--o-font-size-text);
       color: var(--e-color-text1);
       border-bottom: 1px solid var(--e-color-division1);
+      padding: 0 var(--o-spacing-h5);
       &:last-child {
         border-bottom: 0 none;
       }
-      &.active,
+
       &:hover {
+        background: var(--e-color-brand1);
+        color: var(--e-color-text2);
+      }
+      &.active {
         color: var(--e-color-brand1);
+        background: none;
+        cursor: default;
       }
     }
   }

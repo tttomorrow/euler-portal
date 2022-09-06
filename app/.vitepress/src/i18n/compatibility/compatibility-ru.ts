@@ -17,6 +17,7 @@ export default {
   DRIVE_SEARCH_PLACEHOLDER: 'Driver Name, Card Model, or Chip Vendor',
   LINK: 'link',
   BUSINESS_TESTING_ORGANIZATION: '测试机构',
+  EMPTY_SEARCH_RESULT: 'No Data',
   HARDWARE_TABLE_COLUMN: {
     VENDOR: 'Vendor',
     MODEL: 'Model',

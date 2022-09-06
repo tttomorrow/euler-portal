@@ -17,6 +17,7 @@ export default {
   DRIVE_SEARCH_PLACEHOLDER: '驱动名称、板卡型号、芯片厂家',
   LINK: 'link',
   BUSINESS_TESTING_ORGANIZATION: '测试机构',
+  EMPTY_SEARCH_RESULT: '未搜索到结果',
   HARDWARE_TABLE_COLUMN: {
     VENDOR: '硬件厂家',
     MODEL: '硬件型号',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, computed, onUnmounted } from 'vue';
+import { onMounted, ref, nextTick, computed, onUnmounted } from 'vue';
 
 import { useCommon } from '@/stores/common';
 import IconArrowRight from '~icons/app/arrow-right.svg';
@@ -13,6 +13,8 @@ const caseData: any = ref({});
 
 const active = ref(0);
 const activeMobile = ref(0);
+
+const isShow = ref(false);
 
 const props = defineProps({
   caseData: {
@@ -78,8 +80,17 @@ const clearCaseInterval = () => {
 
 onMounted(() => {
   props.caseData && initData(props.caseData);
+
   try {
     if (caseContent.value) {
+      const observer = new IntersectionObserver((res) => {
+        isShow.value = false;
+        if (res[0].intersectionRatio <= 0) return;
+        nextTick(() => {
+          isShow.value = true;
+        });
+      });
+      caseContent.value && observer.observe(caseContent.value);
       setCaseInterval();
       caseContent.value.addEventListener('mouseover', clearCaseInterval);
       //鼠标移出继续
@@ -99,7 +110,12 @@ onUnmounted(() => {
 <template>
   <div class="case-main">
     <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
-    <OContainer :level-index="1" data-aos="fade-down" class="container">
+    <OContainer
+      ref="userCase"
+      :level-index="1"
+      data-aos="fade-down"
+      class="container"
+    >
       <OCollapse
         v-model="activeMobile"
         accordion
@@ -146,7 +162,7 @@ onUnmounted(() => {
           </div>
         </OCollapseItem>
       </OCollapse>
-      <div ref="caseContent" class="case">
+      <div ref="caseContent" class="case" :class="isShow ? '' : 'pc-height'">
         <OCard class="case-card">
           <div class="case-tab">
             <div
@@ -403,6 +419,7 @@ h3 {
     margin-top: var(--o-spacing-h2);
     width: 100%;
     padding: 20px;
+    box-shadow: none !important;
   }
 
   &-img {
@@ -468,6 +485,12 @@ h3 {
       }
     }
   }
+}
+.pc-height {
+  height: 500px;
+}
+.is-show {
+  display: block;
 }
 
 .active {

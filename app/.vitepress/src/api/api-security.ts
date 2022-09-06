@@ -173,9 +173,9 @@ export function getSoftwareList(params: cveQuery) {
   const architecture = params.architecture
     ? `&arch=${params.architecture}`
     : '';
-  // const type = params.type ? `&type=${params.type}` : '';
+  const type = params.type ? `&type=${params.type}` : '';
   const keyword = params.keyword ? `&keyword=${params.keyword}` : '';
-  const url = ` /compatibility/web_backend/compat_software_info?page_size=${params.pages.size}&page_num=${params.pages.page}${keyword}${architecture}${os}`;
+  const url = ` /compatibility/web_backend/compat_software_info?page_size=${params.pages.size}&page_num=${params.pages.page}${keyword}${architecture}${os}${type}`;
   return request
     .get(url)
     .then((res: AxiosResponse) => res.data)
@@ -204,6 +204,20 @@ export function getBusinessSoftwareList(params: cveQuery) {
 }
 
 /**
+ * 调用接口获取兼容性列表-开源软件筛选条件
+ * @name getSoftFilter
+ */
+export function getSoftFilter() {
+  const url = '/compatibility/web_backend/query_compat_software';
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
  * 调用接口获取兼容性列表-测试机构
  * @name getTestOrganizations
  */
@@ -222,10 +236,9 @@ export function getTestOrganizations() {
  * @name getCpu
  */
 export function getCpu(params: SelectParams) {
-  const url =
-    '/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getCpu';
+  const url = `/api-euler/api-cve/cve-security-notice-server/hardwarecomp/getCpu?lang=${params.lang}`;
   return request
-    .get(url, params)
+    .get(url)
     .then((res: AxiosResponse) => res.data)
     .catch((e: any) => {
       throw new Error(e);
