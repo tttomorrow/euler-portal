@@ -125,7 +125,9 @@ const getCompatibilityData = (data: CveQuery) => {
     getCompatibilityList(data).then((res: any) => {
       total.value = res.result.totalCount;
       totalPage.value = Math.ceil(total.value / queryData.pages.size);
-      tableData.value = res.result.hardwareCompList;
+      tableData.value = res.result.hardwareCompList.sort((a: any, b: any) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
     });
   } catch (e: any) {
     throw new Error(e);
@@ -138,7 +140,9 @@ const getDriverData = (data: CveQuery) => {
     getDriverList(data).then((res: any) => {
       total.value = res.result.totalCount;
       totalPage.value = Math.ceil(total.value / queryData.pages.size);
-      tableData.value = res.result.driverCompList;
+      tableData.value = res.result.driverCompList.sort((a: any, b: any) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
     });
   } catch (e: any) {
     throw new Error(e);
@@ -659,70 +663,6 @@ onMounted(() => {
             prop="chipModel"
           ></OTableColumn>
         </OTable>
-
-        <!-- <ul class="mobile-list">
-          <li v-for="item in tableData" :key="item.id" class="item">
-            <ul>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.ARCHITECTURE
-                  }}:</span
-                >{{ item.architecture }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_NAME }}:</span
-                >
-                {{ item.driverName }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_OS }}:</span
-                >
-                {{ item.os }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.VERSION }}:</span
-                >
-                {{ item.version }}
-              </li>
-              <li>
-                <span>{{ i18n.compatibility.DRIVE_TABLE_COLUMN.TYPE }}:</span>
-                {{ item.type }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.DRIVE_DATE }}:</span
-                >
-                {{ item.driverDate }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_VENDOR
-                  }}:</span
-                >
-                {{ item.chipVendor }}
-              </li>
-              <li>
-                <span
-                  >{{
-                    i18n.compatibility.DRIVE_TABLE_COLUMN.BOARD_MODEL
-                  }}:</span
-                >
-                {{ item.boardModel }}
-              </li>
-              <li>
-                <span
-                  >{{ i18n.compatibility.DRIVE_TABLE_COLUMN.CHIP_MODEL }}:</span
-                >
-                {{ item.chipModel }}
-              </li>
-            </ul>
-          </li>
-        </ul> -->
       </OTabPane>
 
       <OTabPane
