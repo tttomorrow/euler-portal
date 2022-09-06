@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, toRefs } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
@@ -30,6 +30,15 @@ import CodeTitleXzs from '@/assets/footer/img-xzs.png';
 import CodeTitleGzh from '@/assets/footer/img-gzh.png';
 import CodeImgXzs from '@/assets/footer/code-xzs.png';
 import CodeImgZgz from '@/assets/footer/code-zgz.png';
+
+import IconClose from '~icons/app/x.svg';
+
+const props = defineProps({
+  isCookieTip: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 const { lang, frontmatter } = useData();
 const i18n = useI18n();
@@ -170,10 +179,41 @@ const isMigration = computed(() => {
     router.route.path.split('/')[2] === 'migration'
   );
 });
+
+// 点击关闭cookies使用提示
+const { isCookieTip } = toRefs(props);
+const emit2 = defineEmits(['click-close']);
+function clickClose() {
+  emit2('click-close');
+}
 </script>
 
 <template>
   <div class="footer" :class="{ migration: isMigration }">
+    <!-- 隐私政策 -->
+    <div
+      v-if="isCookieTip"
+      class="cookie-privacy"
+      :class="{ ru: lang === 'ru' }"
+    >
+      <template v-if="lang !== 'ru'">
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT
+        }}</a>
+      </template>
+      <template v-else>
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT
+        }}</a>
+        <span>{{ i18n.common.COOKIE_LEGAL_TEXT_OTHER }} </span>
+        <a :href="'/' + lang + '/other/privacy/'">{{
+          i18n.common.COOKIE_LEGAL_LINK_TEXT_OTHER
+        }}</a>
+      </template>
+      <OIcon class="icon" @click="clickClose"><IconClose /></OIcon>
+    </div>
     <AppContent :pc-top="0" :mobile-top="0">
       <div class="atom">
         <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}</p>
@@ -254,6 +294,64 @@ $color: #fff;
   }
   :deep(.app-content) {
     padding-bottom: 0;
+  }
+  .cookie-privacy {
+    line-height: 48px;
+    width: 100%;
+    height: 48px;
+    background-color: var(--e-color-bg1);
+    color: var(--e-color-text3);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    box-shadow: var(--e-shadow-l1);
+    text-align: center;
+    &.ru {
+      line-height: 16px;
+      display: inline-block;
+      padding: 4px 0;
+    }
+    @media screen and (max-width: 1000px) {
+      font-size: 12px;
+      line-height: 20px;
+      display: inline-block;
+      &.ru {
+        line-height: 10px;
+        height: auto;
+      }
+    }
+    a {
+      cursor: pointer;
+      text-decoration: solid;
+      white-space: pre;
+    }
+    .icon {
+      cursor: pointer;
+      vertical-align: middle;
+      margin-left: 16px;
+      width: 24px;
+      height: 24px;
+      background: var(--e-color-greyblack3);
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        font-size: 20px;
+        color: var(--el-color-white);
+      }
+      @media screen and (max-width: 1000px) {
+        width: 20px;
+        height: 20px;
+        margin-left: 12px;
+      }
+    }
   }
   .atom {
     text-align: center;

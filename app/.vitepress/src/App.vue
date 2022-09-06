@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
 import type { Component } from 'vue';
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
@@ -34,17 +34,15 @@ const comp = computed(() => {
 });
 
 // cookies使用提示
-// const isShowTip = ref(true);
-// function clickClose() {
-//   isShowTip.value = false;
-//   localStorage.setItem('euler-cookie', 'false');
-// }
-// onMounted(() => {
-//   const show = localStorage.getItem('euler-cookie');
-//   isShowTip.value = show ? false : true;
-// });
-// AppHeader :is-show-tip="isShowTip" @click-close="clickClose"
-// main :class="{ cookie: isShowTip }"
+const isCookieTip = ref(true);
+function clickCookieClose() {
+  isCookieTip.value = false;
+  localStorage.setItem('euler-cookie', 'false');
+}
+onMounted(() => {
+  const show = localStorage.getItem('euler-cookie');
+  isCookieTip.value = show ? false : true;
+});
 </script>
 
 <template>
@@ -53,7 +51,7 @@ const comp = computed(() => {
     <component :is="comp" v-if="isCustomLayout"></component>
     <Content v-else />
   </main>
-  <AppFooter />
+  <AppFooter :is-cookie-tip="isCookieTip" @click-close="clickCookieClose" />
 </template>
 
 <style lang="scss" scoped>
@@ -68,12 +66,7 @@ main {
   background-color: var(--e-color-bg1);
   margin-top: 80px;
   overflow: hidden;
-  &.cookie {
-    margin-top: 140px;
-    @media (max-width: 1100px) {
-      margin-top: 108px;
-    }
-  }
+
   @media (max-width: 1100px) {
     margin-top: 48px;
   }
