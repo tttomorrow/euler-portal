@@ -229,7 +229,7 @@ onMounted(() => {
           {{ sigDetail.NO_MEETINGS }}
         </p>
       </div>
-      <div class="member">
+      <div v-if="memberList.length" class="member">
         <h5>{{ sigDetail.MAINTAINER }}</h5>
         <ul>
           <li v-for="item in memberList" :key="item.gitee_id">

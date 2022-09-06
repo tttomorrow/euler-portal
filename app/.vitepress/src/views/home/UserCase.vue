@@ -162,8 +162,8 @@ onUnmounted(() => {
           </div>
         </OCollapseItem>
       </OCollapse>
-      <div ref="caseContent" class="case">
-        <OCard v-show="isShow" class="case-card">
+      <div ref="caseContent" class="case" :class="isShow ? '' : 'pc-height'">
+        <OCard class="case-card">
           <div class="case-tab">
             <div
               v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
@@ -419,6 +419,7 @@ h3 {
     margin-top: var(--o-spacing-h2);
     width: 100%;
     padding: 20px;
+    box-shadow: none !important;
   }
 
   &-img {
@@ -484,6 +485,9 @@ h3 {
       }
     }
   }
+}
+.pc-height {
+  height: 500px;
 }
 .is-show {
   display: block;
