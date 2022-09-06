@@ -15,14 +15,14 @@ const i18n = useI18n();
 const textBlock = ref(false);
 
 onMounted(() => {
-  const observe = new IntersectionObserver((res) => {
+  const observer = new IntersectionObserver((res) => {
     if (res[0].intersectionRatio <= 0) return;
     textBlock.value = false;
     nextTick(() => {
       textBlock.value = true;
     });
   });
-  playground.value && observe.observe(playground.value);
+  playground.value && observer.observe(playground.value);
 });
 </script>
 <template>

@@ -50,7 +50,7 @@ onMounted(async () => {
     body.classList.add('home-loading');
   }
   AOS.init({
-    offset: 50,
+    offset: -100,
     duration: 800,
     delay: 100,
     once: true,
@@ -99,12 +99,14 @@ onMounted(async () => {
         });
       });
       calendarData.value = [...res[0].tableData, ...res[1].tableData];
-      calendarData.value.reduce((re: any, obj: any) => {
-        const item: any = re.find((o: any) => o.start_date === obj.date);
+      calendarData.value.reduce((prev: any, current: any) => {
+        const item: any = prev.find(
+          (sameDate: any) => sameDate.start_date === current.date
+        );
         item
-          ? (item.timeData = item.timeData.concat(obj.timeData))
-          : re.push(obj);
-        return re;
+          ? (item.timeData = item.timeData.concat(current.timeData))
+          : prev.push(current);
+        return prev;
       }, []);
     });
   } catch (e: any) {
