@@ -122,13 +122,13 @@ function getUrlParam(url = window?.location?.search) {
   return param;
 }
 
-function createClient(community = 'openeuler') {
+function createClient(community = 'openeuler', url?: string) {
   const obj: IObject = {
     openeuler: {
       // appId: '62845f26b7dbf20f7890c0ad',
       appId: '62679eab0b22b146d2ea0a3a',
       appHost: 'https://datastat.authing.cn',
-      redirectUri: `${window?.location?.origin}${window?.location?.pathname}`,
+      redirectUri: url || `${window?.location?.origin}${window?.location?.pathname}`,
     },
     openeulerPlayground: {
       appId: '6219de6da01da1ce012db473',
@@ -153,8 +153,8 @@ export function showGuard(community = 'openeuler') {
   loginIframeSrc.value = url;
 }
 
-export function goToOtherServices(name: string) {
-  const client = createClient(name);
+export function goToOtherServices(name: string, uri?: string) {
+  const client = createClient(name, uri);
   // 构造 OIDC 授权登录 URL
   const url = client.buildAuthorizeUrl(scopeConfig);
   return url;
@@ -198,6 +198,25 @@ export function refreshInfo(community = 'openeuler') {
       }
     });
   }
+}
+
+// 判断是否为有效登录状态
+export function isLogined() {
+  return new Promise((resolve, reject) => {
+    const { token } = getUserAuth();
+    if (token) {
+      queryCourse({ community: 'openeuler' }).then((res) => {
+        const { data } = res;
+        if (data) {
+          resolve(true);
+        } else {
+          reject(false)
+        }
+      }).catch(() => reject(false));
+    } else {
+      reject(false);
+    }
+  })
 }
 
 export function hasPermission(per: string) {

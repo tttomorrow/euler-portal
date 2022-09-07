@@ -3,6 +3,7 @@ import { ref, watch } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import { debounce } from 'lodash';
+import { goToOtherServices, isLogined } from '@/shared/login';
 
 defineProps({
   navItems: {
@@ -35,7 +36,19 @@ watch(
 // 点击子导航事件
 const goPath = (item: NavItem) => {
   if (item.IS_OPEN_WINDOW) {
-    window.open(theme.value.docsUrl + item.PATH);
+    const url = theme.value.docsUrl + item.PATH;
+    if (item.ID === 'docs') {
+      // 测试环境，正式环境删除
+      const url = 'https://openeuler-doc-zh2.test.osinfra.cn' + item.PATH;
+      isLogined().then(() => {
+        const uri = goToOtherServices('openeuler', url)
+        window.open(uri);
+      }).catch(() => {
+        window.open(url);
+      })
+    } else {
+      window.open(url);
+    }
     return;
   }
   if (item.IS_OPEN_MINISITE_WINDOW) {
