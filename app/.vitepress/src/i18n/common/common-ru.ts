@@ -274,6 +274,8 @@ export default {
   ],
   LANG: 'Русский',
   LANG_LIST: ['中文', 'English', 'Русский'],
+  USER_CENTER: 'Личный центр',
+  LOGOUT: 'выход',
   GITTE: 'Source code',
   CODE: 'Код',
   FOOTER: {

@@ -21,6 +21,7 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/search.svg';
 import IconX from '~icons/app/x.svg';
 import IconMenu from '~icons/app/menu.svg';
+import IconLogin from '~icons/app/login.svg';
 
 interface NavItem {
   NAME: string;
@@ -217,11 +218,11 @@ const jumpToUserZone = () => {
   <header class="app-header">
     <div class="app-header-body">
       <!-- 移动端菜单图标 -->
-      <div class="mobile-menu-icon" @click="mobileMenuPanel">
-        <OIcon v-if="!mobileMenuIcon" class="icon">
+      <div class="mobile-menu-icon">
+        <OIcon v-if="!mobileMenuIcon" class="icon" @click="mobileMenuPanel">
           <IconMenu />
         </OIcon>
-        <OIcon v-else class="icon"><IconX /></OIcon>
+        <OIcon v-else class="icon" @click="mobileMenuPanel"><IconX /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <clientOnly>
@@ -339,7 +340,9 @@ const jumpToUserZone = () => {
           </template>
         </el-dropdown>
         <div v-else class="login" @click="showGuard()">
-          登录
+          <OIcon class="icon">
+            <IconLogin />
+          </OIcon>
         </div>
       </div>
     </div>
@@ -403,6 +406,7 @@ const jumpToUserZone = () => {
   display: none;
   margin-right: var(--o-spacing-h5);
   @media (max-width: 1100px) {
+    flex: 1;
     display: block;
   }
   .icon {
@@ -689,10 +693,9 @@ const jumpToUserZone = () => {
   .opt-info {
     display: flex;
     align-items: center;
-    width: 112px;
     .img {
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         cursor: pointer;
         vertical-align: middle;
@@ -702,17 +705,18 @@ const jumpToUserZone = () => {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        width: 72px;
+        @media (max-width: 1100px) {
+          display: none;
+        }
     }
   }
 }
 .login {
-  width: 112px;
-  height: 32px;
-  line-height: 30px;
-  border: 1px solid var(--e-color-text1);
-  text-align: center;
-  color: var(--e-color-text1);
-  cursor: pointer;
-  font-size: 16px;
+  .icon {
+    font-size: var(--o-font-size-h6);
+    color: var(--e-color-text1);
+    cursor: pointer;
+  }
 }
 </style>

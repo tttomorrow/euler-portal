@@ -334,6 +334,8 @@ export default {
   ],
   LANG: '中文',
   LANG_LIST: ['中文', 'English', 'Русский'],
+  USER_CENTER: '个人中心',
+  LOGOUT: '退出登录',
   GITTE: '源码',
   CODE: '代码',
   FOOTER: {
