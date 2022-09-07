@@ -292,45 +292,6 @@ function searchValchange() {
   initData(queryData);
 }
 
-// const listfilter = (val: any) => {
-//   if (activeName.value === '1') {
-//     val.forEach((item: any) => {
-//       if (item.title === '操作系统') {
-//         queryData.os = item.sele[0];
-//       } else if (item.title === '架构') {
-//         queryData.architecture = item.sele[0];
-//       } else if (item.title === 'CPU') {
-//         queryData.cpu = item.sele[0];
-//       } else {
-//         return;
-//       }
-//     });
-//     initData(queryData);
-//   } else if (activeName.value === '2') {
-//     val.forEach((item: any) => {
-//       if (item.title === '操作系统') {
-//         queryData.os = item.sele[0];
-//       } else if (item.title === '架构') {
-//         queryData.architecture = item.sele[0];
-//       } else {
-//         return;
-//       }
-//     });
-//     initData(queryData);
-//   } else if (activeName.value === '3') {
-//     val.forEach((item: any) => {
-//       if (item.title === '操作系统') {
-//         queryData.os = item.sele[0];
-//       } else if (item.title === '架构') {
-//         queryData.architecture = item.sele[0];
-//       } else {
-//         return;
-//       }
-//     });
-//     initData(queryData);
-//   }
-// };
-
 const goBackPage = () => {
   if (activeName.value === '1' || activeName.value === '2') {
     router.go(`/${lang.value}/compatibility/hardware/`);
@@ -666,7 +627,7 @@ onMounted(() => {
       </OTabPane>
 
       <OTabPane
-        v-if="lang == 'zh'"
+        v-if="lang === 'zh'"
         :label="i18n.compatibility.SOFTWARE"
         name="3"
       >
@@ -769,7 +730,7 @@ onMounted(() => {
       </OTabPane>
 
       <OTabPane
-        v-if="lang == 'zh'"
+        v-if="lang === 'zh'"
         :label="i18n.compatibility.BUSINESS_SOFTWARE"
         name="4"
       >
@@ -908,7 +869,7 @@ onMounted(() => {
   <AppContent class="mobile-content" :mobile-top="16">
     <div class="tabs-mobile">
       <el-collapse v-model="activeName" accordion @change="handleChange">
-        <el-collapse-item title="整机" name="1">
+        <el-collapse-item :title="i18n.compatibility.HARDWARE" name="1">
           <ClientOnly>
             <OSearch
               v-model="searchContent"
@@ -1035,7 +996,7 @@ onMounted(() => {
           </p>
         </el-collapse-item>
 
-        <el-collapse-item title="板卡" name="2">
+        <el-collapse-item :title="i18n.compatibility.DRIVE" name="2">
           <ClientOnly>
             <OSearch
               v-model="searchContent"
@@ -1165,7 +1126,11 @@ onMounted(() => {
           </p>
         </el-collapse-item>
 
-        <el-collapse-item title="开源软件" name="3">
+        <el-collapse-item
+          v-if="lang === 'zh'"
+          :title="i18n.compatibility.SOFTWARE"
+          name="3"
+        >
           <ClientOnly>
             <OSearch
               v-model="searchContent"
@@ -1318,7 +1283,11 @@ onMounted(() => {
           </p>
         </el-collapse-item>
 
-        <el-collapse-item title="商业软件" name="4">
+        <el-collapse-item
+          v-if="lang === 'zh'"
+          :title="i18n.compatibility.BUSINESS_SOFTWARE"
+          name="4"
+        >
           <ul v-if="totalPage !== 0" class="mobile-list">
             <li v-for="item in tableData" :key="item.id" class="item">
               <ul>

@@ -177,64 +177,67 @@ onMounted(() => {
   />
   <AppContent :mobile-top="16" class="download">
     <!-- PC筛选 -->
-    <OCard class="download-filter">
-      <TagFilter
-        :label="i18n.download.MANUFACTURER"
-        class="download-filter-manufacturer"
-      >
-        <OTag
-          v-for="(item, index) in tagManufacturer"
-          :key="item"
-          class="download-filter-item"
-          checkable
-          :checked="index !== 0"
-          :type="
-            index === 0
-              ? manufacturerAll
+    <ClientOnly>
+      <OCard class="download-filter">
+        <TagFilter
+          :label="i18n.download.MANUFACTURER"
+          class="download-filter-manufacturer"
+        >
+          <OTag
+            v-for="(item, index) in tagManufacturer"
+            :key="item"
+            class="download-filter-item"
+            checkable
+            :checked="index !== 0"
+            :type="
+              index === 0
+                ? manufacturerAll
+                  ? 'primary'
+                  : 'text'
+                : activeManufacturer.indexOf(item) > -1
                 ? 'primary'
                 : 'text'
-              : activeManufacturer.indexOf(item) > -1
-              ? 'primary'
-              : 'text'
-          "
-          @click="handleManufacturerClick(item, index)"
+            "
+            @click="handleManufacturerClick(item, index)"
+          >
+            {{ item }}
+          </OTag>
+        </TagFilter>
+        <TagFilter
+          :label="i18n.download.PUBLISH_DATE"
+          class="download-filter-manufacturer"
         >
-          {{ item }}
-        </OTag>
-      </TagFilter>
-      <TagFilter
-        :label="i18n.download.PUBLISH_DATE"
-        class="download-filter-manufacturer"
-      >
-        <OTag
-          v-for="(item, index) in tagPublish"
-          :key="item"
-          checkable
-          :checked="index !== 0"
-          class="download-filter-item"
-          :type="
-            index === 0
-              ? publishAll
+          <OTag
+            v-for="(item, index) in tagPublish"
+            :key="item"
+            checkable
+            :checked="index !== 0"
+            class="download-filter-item"
+            :type="
+              index === 0
+                ? publishAll
+                  ? 'primary'
+                  : 'text'
+                : activePublish.indexOf(item) > -1
                 ? 'primary'
                 : 'text'
-              : activePublish.indexOf(item) > -1
-              ? 'primary'
-              : 'text'
-          "
-          @click="handlePublishClick(item, index)"
-        >
-          {{ item }}
-        </OTag>
-      </TagFilter>
-      <TagFilter label="LTS" class="download-filter-manufacturer">
-        <OSwitch
-          v-model="activeLTS"
-          active-color="var(--e-color-brand1)"
-          inactive-color="var(--e-color-bg4)"
-          @change="handleLSTClick"
-        />
-      </TagFilter>
-    </OCard>
+            "
+            @click="handlePublishClick(item, index)"
+          >
+            {{ item }}
+          </OTag>
+        </TagFilter>
+        <TagFilter label="LTS" class="download-filter-manufacturer">
+          <OSwitch
+            v-model="activeLTS"
+            active-color="var(--e-color-brand1)"
+            inactive-color="var(--e-color-bg4)"
+            @change="handleLSTClick"
+          />
+        </TagFilter>
+      </OCard>
+    </ClientOnly>
+
     <!-- 移动筛选 -->
     <div class="download-filter-mobile">
       <div class="download-filter-mobile-title" @click="handleToggleDrawer">
@@ -340,9 +343,6 @@ onMounted(() => {
             @change="handleLSTClick"
           />
           <div class="filter-drawer-button">
-            <!-- <OButton class="filter-drawer-button-item" @click="resetDrawer">{{
-            i18n.download.BTNRESET
-          }}</OButton> -->
             <OButton
               type="primary"
               class="filter-drawer-button-item"

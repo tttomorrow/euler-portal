@@ -224,37 +224,39 @@ const jumpToUserZone = () => {
         <OIcon v-else class="icon"><IconX /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
-      <div v-if="isShowBox" class="header-search">
-        <div class="header-search-box">
-          <OSearch
-            v-model="searchInput"
-            :placeholder="searchValue.PLEACHOLDER"
-            @change="search"
-            @focus="showDrawer"
-          >
-            <template #suffix>
-              <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
-            </template>
-          </OSearch>
-        </div>
-        <div v-show="isShowDrawer" class="drawer">
-          <div class="hots">
-            <div class="hots-title">
-              <p class="hots-text">{{ searchValue.TOPSEARCH }}</p>
-            </div>
-            <div class="hots-list">
-              <OTag
-                v-for="item in popList"
-                :key="item"
-                type="text"
-                class="hots-list-item"
-                @click="topSearchClick(item)"
-                >{{ item }}</OTag
-              >
+      <clientOnly>
+        <div v-if="isShowBox" class="header-search">
+          <div class="header-search-box">
+            <OSearch
+              v-model="searchInput"
+              :placeholder="searchValue.PLEACHOLDER"
+              @change="search"
+              @focus="showDrawer"
+            >
+              <template #suffix>
+                <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
+              </template>
+            </OSearch>
+          </div>
+          <div v-show="isShowDrawer" class="drawer">
+            <div class="hots">
+              <div class="hots-title">
+                <p class="hots-text">{{ searchValue.TOPSEARCH }}</p>
+              </div>
+              <div class="hots-list">
+                <OTag
+                  v-for="item in popList"
+                  :key="item"
+                  type="text"
+                  class="hots-list-item"
+                  @click="topSearchClick(item)"
+                  >{{ item }}</OTag
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </clientOnly>
       <!-- 移动端搜索按钮 -->
       <div v-if="!isShowBox" class="mobile-search">
         <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
