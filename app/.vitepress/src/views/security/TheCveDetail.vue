@@ -117,14 +117,14 @@ onMounted(() => {
     <div class="cve-head">
       <p class="cve-name">{{ cveDetailData.cveId }}</p>
       <div class="cve-intro">
-        <p>
-          <span>{{ i18n.security.RELEASE_DATE }}:</span
-          >{{ cveDetailData.announcementTime }}
-        </p>
-        <p>
-          <span>{{ i18n.security.MODIFIED_TIME }}:</span
-          >{{ cveDetailData.updateTime }}
-        </p>
+        <div>
+          <span>{{ i18n.security.RELEASE_DATE }}:</span>
+          <p>{{ cveDetailData.announcementTime }}</p>
+        </div>
+        <div>
+          <span>{{ i18n.security.MODIFIED_TIME }}: </span>
+          <p>{{ cveDetailData.updateTime }}</p>
+        </div>
       </div>
     </div>
     <div class="cve-detail-body">
@@ -146,6 +146,7 @@ onMounted(() => {
         <h2 class="detail-item-title">
           {{ i18n.security.AFFECTED_PRODUCTS }}
         </h2>
+
         <OTable class="affect-list" :data="affectedProductList">
           <OTableColumn :label="i18n.security.PRODUCT" prop="productName">
           </OTableColumn>
@@ -264,6 +265,9 @@ onMounted(() => {
     color: var(--e-color-text1);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h4);
+    div {
+      display: flex;
+    }
     span {
       display: inline-block;
       margin-right: var(--o-spacing-h8);

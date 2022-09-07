@@ -339,6 +339,6 @@ export default {
     CHANGE: 'Change',
     PLEACHOLDER: 'Please enter the content',
   },
-  PREV: '上一页',
-  NEXT: '下一页',
+  PREV: 'pre',
+  NEXT: 'next',
 };

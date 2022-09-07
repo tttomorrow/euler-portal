@@ -68,13 +68,14 @@ onMounted(() => {
     <div class="bulletin-head">
       <p class="bulletin-name">{{ detailData.securityNoticeNo }}</p>
       <div class="bulletin-intro">
-        <p>
-          <span>{{ i18n.security.SYNOPSIS }}:</span>{{ detailData.summary }}
-        </p>
-        <p>
-          <span>{{ i18n.security.RELEASE_DATE }}:</span
-          >{{ detailData.announcementTime }}
-        </p>
+        <div>
+          <span>{{ i18n.security.SYNOPSIS }}:</span>
+          <p>{{ detailData.summary }}</p>
+        </div>
+        <div>
+          <span>{{ i18n.security.RELEASE_DATE }}:</span>
+          <p>{{ detailData.announcementTime }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -125,7 +126,9 @@ onMounted(() => {
                 </p>
               </div>
               <div class="tab-content-item">
-                <h5 class="tab-content-item-title">{{ i18n.security.CVE }}</h5>
+                <h5 class="tab-content-item-title">
+                  {{ i18n.security.CVE }}
+                </h5>
                 <p
                   v-for="(item, index) in cveIdList"
                   :key="index"
@@ -293,6 +296,9 @@ onMounted(() => {
     color: var(--e-color-text1);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h4);
+    & div {
+      display: flex;
+    }
     span {
       display: inline-block;
       margin-right: var(--o-spacing-h8);

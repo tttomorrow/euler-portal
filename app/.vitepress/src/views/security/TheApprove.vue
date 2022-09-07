@@ -10,8 +10,8 @@ import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import banner from '@/assets/banner-secondary.png';
-import search from '@/assets/illustrations/osv.png';
-import cve from '@/assets/illustrations/cve.png';
+import osv from '@/assets/illustrations/osv.png';
+// import search from '@/assets/illustrations/cve.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -154,7 +154,7 @@ watch(queryData, () => getOsTableList(queryData));
     background-text="SUPPORT"
     :title="i18n.approve.TITLE"
     subtitle=""
-    :illustration="!isMobile ? search : cve"
+    :illustration="osv"
   />
   <AppContent :mobile-top="16">
     <div class="approve-desc">

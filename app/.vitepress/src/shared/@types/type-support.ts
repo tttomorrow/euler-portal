@@ -241,3 +241,26 @@ export interface AffectProduct {
 export interface DetailQuery {
   id: string;
 }
+
+// export interface BulletinDetail {
+//   affectedComponent: string;
+//   affectedProduct?: string;
+//   announcementTime: string;
+//   cveId?: string;
+//   cveList?: [];
+//   cvrf?: null;
+//   description: string;
+//   id?: number;
+//   introduction: string;
+//   packageHelperList: object[];
+//   packageList?: [];
+//   packageName?: string;
+//   referenceDocuments?: string;
+//   referenceList: object[];
+//   revisionHistory?: string;
+//   securityNoticeNo: string;
+//   subject: string;
+//   summary: string;
+//   type: string;
+//   updateTime?: string;
+// }
