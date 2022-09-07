@@ -18,21 +18,21 @@ category: blog
 ## Understand blog format
 
 The openEuler blog is written in markdown format.
-You can read <https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/en/interaction/post-blog/README.md> to get understand how the blog is designed.
+You can read <https://gitee.com/openeuler/openEuler-portal/blob/master/app/en/interaction/post-blog/index.md> to get understand how the blog is designed.
 
 The head includes the following information:
 
 ```
 ---
 title: Sample Post
-date: 2020-03-03
+date: '2020-03-03'
 category: blog
 tags:
     - Sample
     - ABC
     - cccc
 sig: sig-xxx
-archives: 2020-03
+archives: '2020-03'
 author:
   - openEuler Blog Maintainer
 summary: Just about everything you'll need to style in the theme：headings, paragraphs, blockquotes, tables, code blocks, and more.
@@ -41,18 +41,18 @@ summary: Just about everything you'll need to style in the theme：headings, par
 Here you can edit your blog.
 ```
 
-Tips: you can copy https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/en/interaction/post-blog/blog_example/2020-03-03-sample-post.md to your folder and edit it.
+Tips: you can copy `https://gitee.com/openeuler/openEuler-portal/blob/master/app/en/interaction/post-blog/blog_example/20220901-sample-post.md` to your folder and edit it.
 
 ## Post your blog
 
 The blog posting follows the pull request of [Gitee](gitee.com).
 
-1. Fork openEuler blog project <https://gitee.com/openeuler/website-v2> to your own gitee. Refer to <http://git.mydoc.io/?t=153749> for detailed guidance.
+1. Fork openEuler blog project <https://gitee.com/openeuler/openEuler-portal> to your own gitee. Refer to <http://git.mydoc.io/?t=153749> for detailed guidance.
 
 2. Clone the code to your local environment.
 
 ```
-git clone https://gitee.com/<your-gitee-id>/website-v2
+git clone https://gitee.com/<your-gitee-id>/openEuler-portal
 ```
 
 3. Create a branch
@@ -62,14 +62,14 @@ git checkout -b <branch-name>
 ```
 
 4. Create a folder in the website floder
-   If you are going to post a blog in English, the web-ui/docs/en/blog is your work path.
+   If you are going to post a blog in English, the app/en/blog is your work path.
 
-And if you are going to post a blog in Chinese, the web-ui/docs/zh/blog is your work path.
+And if you are going to post a blog in Chinese, the app/zh/blog is your work path.
 
 Assume that you are preparing a English blog.
 
 ```
-cd web-ui/docs/en/blog
+cd app/en/blog
 mkdir <your-gitee-id>
 cd <your-gitee-id>
 touch YEAR-MONTH-DAY-title.md
