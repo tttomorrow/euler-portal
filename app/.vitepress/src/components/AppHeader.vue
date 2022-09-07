@@ -331,10 +331,10 @@ const jumpToUserZone = () => {
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item @click="jumpToUserZone()"
-                >个人中心</el-dropdown-item
+                >{{ i18n.common.USER_CENTER }}</el-dropdown-item
               >
               <el-dropdown-item @click="logout()"
-                >退出登录</el-dropdown-item
+                >{{ i18n.common.LOGOUT }}</el-dropdown-item
               >
             </el-dropdown-menu>
           </template>
