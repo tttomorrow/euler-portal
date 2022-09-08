@@ -228,7 +228,8 @@ onMounted(() => {
             <li>
               <span>{{ i18n.approve.TOOL_LIST.DETECTION_DESC }}:</span>
               <div>
-                <img src="@/assets/support/adopt.png" alt="" />{{ item.result }}
+                <img src="@/assets/support/adopt.png" alt="" />
+                <span>{{ item.result }}</span>
               </div>
             </li>
           </ul>
@@ -275,7 +276,8 @@ onMounted(() => {
             <li>
               <span>{{ i18n.approve.TOOL_LIST.DETECTION_DESC }}:</span>
               <div>
-                <img src="@/assets/support/adopt.png" alt="" />{{ item.result }}
+                <img src="@/assets/support/adopt.png" alt="" />
+                <span>{{ item.result }}</span>
               </div>
             </li>
           </ul>
