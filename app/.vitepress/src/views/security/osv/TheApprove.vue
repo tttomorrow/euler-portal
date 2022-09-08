@@ -3,6 +3,10 @@ import { reactive, ref, watch, onMounted, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
+import { CveQuery } from '@/shared/@types/type-support';
+import { getOsName, getOsType, getOsTableData } from '@/api/api-security';
+
+// import OOption from 'opendesign/select/OOption.vue';
 import AppContent from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import OSearch from 'opendesign/search/OSearch.vue';
@@ -10,14 +14,9 @@ import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import banner from '@/assets/banner-secondary.png';
-import osv from '@/assets/illustrations/osv.png';
-// import search from '@/assets/illustrations/cve.png';
+import osv from '@/assets/illustrations/support/osv.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
-
-import { CveQuery } from '@/shared/@types/type-support';
-import { getOsName, getOsType, getOsTableData } from '@/api/api-security';
-import OOption from 'opendesign/select/OOption.vue';
 
 const router = useRouter();
 
@@ -402,6 +401,9 @@ watch(queryData, () => getOsTableList(queryData));
   }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h8) var(--o-spacing-h2);
+    .o-tag {
+      margin: var(--o-spacing-h10);
+    }
   }
   .category {
     display: inline-block;

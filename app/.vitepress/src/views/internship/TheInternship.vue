@@ -839,7 +839,7 @@ onUnmounted(() => {
         height: 34px;
       }
     }
-    .title-img{
+    .title-img {
       background-image: url(@/assets/category/internship/integral-title-bg.png);
       background-size: 100% 100%;
     }
@@ -1117,7 +1117,7 @@ onUnmounted(() => {
 .help-content {
   display: flex;
   justify-content: center;
-  padding-top:0 !important;
+  padding-top: 0 !important;
   .help-left {
     padding-right: 80px;
     display: flex;

@@ -1,14 +1,12 @@
 <script lang="ts" setup>
 import { reactive, ref, onMounted } from 'vue';
-
-import AppContent from '@/components/AppContent.vue';
-
 import { useI18n } from '@/i18n';
 import { useRouter } from 'vitepress';
 
 import { DetailQuery } from '@/shared/@types/type-support';
-
 import { getOsvOne } from '@/api/api-security';
+
+import AppContent from '@/components/AppContent.vue';
 
 const i18n = useI18n();
 const router = useRouter();
@@ -173,11 +171,11 @@ onMounted(() => {
         <div class="right">
           <div v-show="approveList.totalResult" class="top">
             <div v-if="approveList.totalResult == 'pass'" class="title-claim">
-              <img src="@/assets/support/adopt.png" alt="" />
+              <img src="@/assets/category/support/osv/adopt.png" alt="" />
               <div class="claim-text">{{ i18n.approve.ADOPT }}</div>
             </div>
             <div v-else class="title-claim">
-              <img src="@/assets/support/fail.png" alt="" />
+              <img src="@/assets/category/support/osv/fail.png" alt="" />
               <div class="claim-text">{{ i18n.approve.FAIL }}</div>
             </div>
             <div class="subtitle-claim">
@@ -206,7 +204,7 @@ onMounted(() => {
         <el-table-column :label="i18n.approve.TOOL_LIST.CONCLUSION" width="300">
           <template #default="scope">
             <div class="pass-box">
-              <img src="@/assets/support/adopt.png" alt="" />
+              <img src="@/assets/category/support/osv/adopt.png" alt="" />
               <p>
                 {{ scope.row.result }}
               </p>
@@ -228,7 +226,7 @@ onMounted(() => {
             <li>
               <span>{{ i18n.approve.TOOL_LIST.DETECTION_DESC }}:</span>
               <div>
-                <img src="@/assets/support/adopt.png" alt="" />
+                <img src="@/assets/category/support/osv/adopt.png" alt="" />
                 <span>{{ item.result }}</span>
               </div>
             </li>
@@ -254,7 +252,7 @@ onMounted(() => {
         <el-table-column :label="i18n.approve.TOOL_LIST.CONCLUSION" width="300">
           <template #default="scope">
             <div class="pass-box">
-              <img src="@/assets/support/adopt.png" alt="" />
+              <img src="@/assets/category/support/osv/adopt.png" alt="" />
               <p>
                 {{ scope.row.result }}
               </p>
@@ -276,7 +274,7 @@ onMounted(() => {
             <li>
               <span>{{ i18n.approve.TOOL_LIST.DETECTION_DESC }}:</span>
               <div>
-                <img src="@/assets/support/adopt.png" alt="" />
+                <img src="@/assets/category/support/osv/adopt.png" alt="" />
                 <span>{{ item.result }}</span>
               </div>
             </li>

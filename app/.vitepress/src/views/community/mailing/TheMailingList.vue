@@ -88,7 +88,7 @@ const isMobile = computed(() => {
             <div
               class="big-bg"
               :style="{
-                height: lang === 'zh' ? '120px' : '',
+                height: lang === 'zh' ? '196px' : '',
                 'border-color':
                   commonStore.theme === 'dark' ? 'var(--e-color-neutral5)' : '',
               }"
@@ -365,21 +365,25 @@ const isMobile = computed(() => {
       }
       &-left {
         display: flex;
+        height: 204px;
         margin-right: 0px;
         z-index: 4;
         @media (max-width: 780px) {
           margin-right: 0px;
           margin-bottom: var(--o-spacing-h5);
+          height: 86px;
         }
       }
       &-right {
         margin-top: 100px;
         display: flex;
         margin-right: 0px;
+        height: 204px;
         z-index: 4;
         @media (max-width: 780px) {
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
+          height: 86px;
         }
       }
       &-right-1 {

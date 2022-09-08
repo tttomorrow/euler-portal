@@ -7,9 +7,11 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppContent from '@/components/AppContent.vue';
+import OSelect from 'opendesign/select/OSelect.vue';
+import OOption from 'opendesign/select/OOption.vue';
 
 import banner from '@/assets/banner/banner-security.png';
-import illustration from '@/assets/illustrations/compatibility.png';
+import compatibility from '@/assets/illustrations/support/compatibility.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -32,8 +34,6 @@ import {
   getCpu,
   getSoftFilter,
 } from '@/api/api-security';
-import OSelect from 'opendesign/select/OSelect.vue';
-import OOption from 'opendesign/select/OOption.vue';
 
 const screenWidth = useWindowResize();
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
@@ -425,7 +425,7 @@ onMounted(() => {
     background-text="SUPPORT"
     :title="i18n.compatibility.COMPATIBILITY"
     subtitle=""
-    :illustration="illustration"
+    :illustration="compatibility"
   />
 
   <OTabs v-model="activeName" class="tabs-pc" @tab-click="handleClick">
@@ -1438,6 +1438,9 @@ onMounted(() => {
   }
   :deep(.el-card__body) {
     padding: var(--o-spacing-h8) var(--o-spacing-h2);
+    .o-tag {
+      margin: var(--o-spacing-h10);
+    }
   }
 }
 .friendly-link {
