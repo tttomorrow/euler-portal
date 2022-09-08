@@ -237,7 +237,7 @@ const NAV_LIST = [
     name: '帮助咨询',
   },
 ];
-const tabList = ['openEuler', 'openLooKeng', 'openGauss', '昇思 MindSpore'];
+const tabList = ['openEuler', 'openLooKeng', 'openGauss', '昇思'];
 const tabIndex = ref(0);
 function changeTabIndex(index: number) {
   tabIndex.value = index;
@@ -625,7 +625,7 @@ onUnmounted(() => {
           content: '';
           display: block;
           width: 100%;
-          height: 1px;
+          height: 2px;
           background-color: var(--e-color-brand1);
           position: absolute;
           left: 0;
@@ -799,9 +799,9 @@ onUnmounted(() => {
       font-weight: 300;
       @media (max-width: 1000px) {
         font-size: var(--o-font-size-h8);
-        line-height: 34px;
-        width: 113px;
-        height: 34px;
+        line-height: 24px;
+        width: 83px;
+        height: 24px;
         background-size: 100% 100%;
         margin-bottom: var(--o-spacing-h5);
       }
@@ -810,6 +810,7 @@ onUnmounted(() => {
 }
 .title .title-img {
   min-width: 183px;
+  padding: 0 16px;
   text-align: center;
   display: inline-block;
   margin: 0 auto;
@@ -819,12 +820,14 @@ onUnmounted(() => {
   line-height: 48px;
   background-image: url(@/assets/category/internship/title.png);
   background-repeat: no-repeat;
+  background-size: 100% 100%;
   @media (max-width: 1000px) {
+    padding: 0 8px;
     font-size: var(--o-font-size-h8);
     line-height: 34px;
-    min-width: 113px;
-    height: 34px;
-    background-size: 100%;
+    min-width: 83px;
+    height: 24px;
+    // background-size: 100% 100%;
   }
 }
 #integral {
@@ -835,6 +838,10 @@ onUnmounted(() => {
         width: 155px;
         height: 34px;
       }
+    }
+    .title-img{
+      background-image: url(@/assets/category/internship/integral-title-bg.png);
+      background-size: 100% 100%;
     }
   }
   .integral-border {
@@ -1110,6 +1117,7 @@ onUnmounted(() => {
 .help-content {
   display: flex;
   justify-content: center;
+  padding-top:0 !important;
   .help-left {
     padding-right: 80px;
     display: flex;
