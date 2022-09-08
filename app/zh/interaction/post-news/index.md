@@ -18,14 +18,14 @@ category: news
 ## 理解新闻格式
 
 openEuler 是用 markdown 格式写新闻的。
-请阅读该文章 <https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/zh/interaction/post-news/index.md>来理解 openEuler 新闻是如何设计的。
+请阅读该文章 <https://gitee.com/openeuler/openEuler-portal/blob/master/app/zh/interaction/post-news/index.md>来理解 openEuler 新闻是如何设计的。
 
 文件头需要包含如下信息：
 
 ```
 ---
 title: Sample Post
-date: 2020-03-03
+date: '2020-03-03'
 tags:
     - theme
 banner: img/banners/banner-2020hdc.png
@@ -38,18 +38,18 @@ summary: Just about everything you'll need to style in the theme：headings, par
 Here you can edit your news.
 ```
 
-小提示：你可以复制 https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/zh/interaction/post-news/news_example/2020-03-03-sample-post.md 到你的工作路径下然后继续编辑。
+小提示：你可以复制 https://gitee.com/openeuler/openEuler-portal/blob/master/web-ui/docs/zh/interaction/post-news/news_example/2020-03-03-sample-post.md 到你的工作路径下然后继续编辑。
 
 ## 提交新闻
 
 新闻的提交利用了 Gitee 的 PR(Pull Request)。
 
-1. Fork openEuler 新闻项目 <https://gitee.com/openeuler/website-v2> 到你自己的 Gitee 上。如果需要具体指导请参考 <http://git.mydoc.io/?t=153749> 。
+1. Fork openEuler 新闻项目 <https://gitee.com/openeuler/openEuler-portal> 到你自己的 Gitee 上。如果需要具体指导请参考 <http://git.mydoc.io/?t=153749> 。
 
 2. Clone 代码
 
 ```
-git clone https://gitee.com/<your-gitee-id>/website-v2
+git clone https://gitee.com/<your-gitee-id>/openEuler-portal
 ```
 
 3. 创建分支
@@ -60,11 +60,11 @@ git checkout -b <branch-name>
 
 4. 创建工作路径
 
-如果你发表中文新闻，工作路径是 web-ui/docs/zh/news 。
+如果你发表中文新闻，工作路径是 app/zh/news 。
 假设你要写一个英文新闻：
 
 ```
-cd web-ui/docs/en/news
+cd app/en/news
 mkdir <your-gitee-id>
 cd <your-gitee-id>
 touch YEAR-MONTH-DAY-title.md
