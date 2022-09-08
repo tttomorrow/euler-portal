@@ -698,7 +698,9 @@ const iconMenuShow = computed(() => {
             }
           }
           .welcome {
-            color: var(--e-color-brand1);
+            color: var(--e-color-text1);
+            font-size: 18px;
+            font-weight: 300;
             margin-bottom: var(--o-spacing-h5);
           }
           .list1 {
