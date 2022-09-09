@@ -30,7 +30,7 @@ export default {
     {
       IMG: '/img/projects/share/cards-letter.png',
       DARK_IMG: '/img/projects/share/cards-letter.png',
-      TITLE: '相对iSula说',
+      TITLE: '想对iSula说',
       LINK_LIST: ['mail to:isulad@openeuler.org'],
       SHOW: true,
     },
