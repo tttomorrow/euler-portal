@@ -204,9 +204,7 @@ onMounted(() => {
           {{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT1
           }}<a
             target="_blank"
-            :href="
-              'https://gitee.com/openeuler/community/tree/master/sig/' + 'a-tm'
-            "
+            :href="`https://gitee.com/openeuler/community/tree/master/sig/${sigDetailName}`"
             >{{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT2 }}</a
           >{{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT3 }}
         </p>

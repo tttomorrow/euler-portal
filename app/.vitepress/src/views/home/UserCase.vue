@@ -337,7 +337,6 @@ h3 {
     @media (min-width: 1100px) {
       background-color: var(--e-color-bg2);
       border: 1px solid var(--e-color-brand1);
-      border-left: 2px solid var(--e-color-brand1);
       transition: 0.3s all;
     }
   }
