@@ -12,7 +12,7 @@ const TASK = {
     {
       NAME: 'Kernel',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=10&name=Kernel',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=10&name=Kernel',
       INTRODUCE: 'openEuler社区维护的Linux 内核',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590412&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590412&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/Kernel',
@@ -20,7 +20,7 @@ const TASK = {
     {
       NAME: 'sig-QA',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=41&name=sig-QA',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=41&name=sig-QA',
       INTRODUCE: '致力于持续提升openEuler社区发行版本质量',
       TASK: 'https://gitee.com/organizations/src-openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590164&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590164&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/sig-QA',
@@ -28,7 +28,7 @@ const TASK = {
     {
       NAME: 'sig-openstack',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=59&name=sig-openstack',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=59&name=sig-openstack',
       INTRODUCE:
         '在openEuler之上提供原生的OpenStack，构建开放可靠的云计算技术栈',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590186&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590186&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
@@ -37,7 +37,7 @@ const TASK = {
     {
       NAME: 'A-tune',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=1&name=A-Tune',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=1&name=A-Tune',
       INTRODUCE: '基于openEuler开发的自动化、智能化性能调优引擎',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590388&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590194&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/A-Tune',
@@ -45,7 +45,7 @@ const TASK = {
     {
       NAME: 'sig-KIRAN-DESKTOP',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=37&name=sig-KIRAN-DESKTOP&mail=dev%40openeuler.org',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=37&name=sig-KIRAN-DESKTOP&mail=dev%40openeuler.org',
       INTRODUCE:
         '麒麟信安自主研发，致力于为用户提供更加美观，高效和易用的Linux桌面操作系统',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590352&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590528&single_label_text=&sort=&state=open&target_project=',
@@ -55,7 +55,7 @@ const TASK = {
     {
       NAME: 'sig-ops',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=83&name=sig-ops',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=83&name=sig-ops',
       INTRODUCE: '致力于运维工具的移植与开发，提升openEuler操作系统的运维能力',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590388&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590323&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/sig-ops',
@@ -63,7 +63,7 @@ const TASK = {
     {
       NAME: 'Cloud Native',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=85&name=sig-CloudNative',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=85&name=sig-CloudNative',
       INTRODUCE:
         '提供便捷、易用的云原生基础设施，提供简单、高效的云原生应用开发托管环境，共建云原生生态',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590352&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590352&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
@@ -72,8 +72,7 @@ const TASK = {
     },
     {
       NAME: 'G11N',
-      NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=98&name=G11N',
+      NAME_LINK: 'https://www.openeuler.org/zh/sig/sig-detail/?id=98&name=G11N',
       INTRODUCE: '致力于openEuler的国际化和本地化',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590352&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590388&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/G11N',
@@ -81,7 +80,7 @@ const TASK = {
     {
       NAME: 'sig-UKUI',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=46&name=sig-UKUI',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=46&name=sig-UKUI',
       INTRODUCE:
         '负责在openEuler上提供UKUI桌面环境，及相关软件包的规划、维护和升级',
       TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590230&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
@@ -90,7 +89,7 @@ const TASK = {
     {
       NAME: 'sig-OSCourse',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=sig-OSCourse',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=sig-OSCourse',
       INTRODUCE: '社区探索性项目开发，如用Rust开发相关社区服务等',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590352&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=141433910&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE:
@@ -99,7 +98,7 @@ const TASK = {
     {
       NAME: 'sig-DDE',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=sig-DDE',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=sig-DDE',
       INTRODUCE: '深度科技自主开发的美观易用、极简操作的桌面环境',
       TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590403&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/sig-DDE',
@@ -107,7 +106,7 @@ const TASK = {
     {
       NAME: 'Infrastructure',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=Infrastructure',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=Infrastructure',
       INTRODUCE: '主要负责openEuler社区的基础设施功能开发、维护',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=124590142&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
       GITEE:
@@ -116,7 +115,7 @@ const TASK = {
     {
       NAME: 'sig-OS-Builder',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=sig-OS-Builder',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=sig-OS-Builder',
       INTRODUCE:
         '维护openEuler业务软件包,提供更加方便的ISO构建/换标方案,提供更好的安装与升级方案',
       TASK: 'https://gitee.com/openeuler-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=145511845&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openeuler-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
@@ -126,7 +125,7 @@ const TASK = {
     {
       NAME: 'sig-CICD',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=sig-OS-Builder',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=sig-OS-Builder',
       INTRODUCE:
         '致力于为开发者提供针对上游开源软件（来自Github、Gitee、Gitlab等托管平台）的测试服务、登录服务、故障辅助定界服务和基于历史数据的分析服务于一体的测试系统',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=124590412&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=146173410&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
@@ -135,7 +134,7 @@ const TASK = {
     {
       NAME: 'sig-HPC',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=sig-HPC',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=sig-HPC',
       INTRODUCE:
         '建立HPC领域的高校、企业与工程师的交流圈，打造HPC快速部署调优平台，让HPC流行起来！',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=151994810&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
@@ -144,7 +143,7 @@ const TASK = {
     {
       NAME: 'sig-Virt',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=Sig-Virt',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=Sig-Virt',
       INTRODUCE:
         '致力于打造面向全场景、支撑多样性算力的虚拟化解决方案，提供高性能、高可靠和高安全的虚拟化组件。',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=162794355&single_label_text=&sort=&state=&target_project&skip_mobile=true',
@@ -153,7 +152,7 @@ const TASK = {
     {
       NAME: 'sig-Compatibility-Infra',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=Sig-Compatibility-Infra',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=Sig-Compatibility-Infra',
       INTRODUCE: '探索操作系统与服务器、应用程序等方面的兼容性。',
       TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=163702716&single_label_text=&sort=&state=&target_project&skip_mobile=true',
       GITEE:
@@ -162,7 +161,7 @@ const TASK = {
     {
       NAME: 'Compiler',
       NAME_LINK:
-        'https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=95&name=Compiler',
+        'https://www.openeuler.org/zh/sig/sig-detail/?id=95&name=Compiler',
       INTRODUCE:
         '致力于打造编译器根技术，为用户提供高性能、高可靠编译器工具链。',
       TASK: 'https://gitee.com/organizations/src-openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=164549691&single_label_text=&sort=&state=&target_project&skip_mobile=true',

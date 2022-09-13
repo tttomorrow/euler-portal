@@ -1,7 +1,8 @@
 /**
  * @file  资料组维护数据文件
  * */
-
+import yangLei from '@/assets/category/mooc/yanglei.png';
+import zhongYunAn from '@/assets/category/mooc/zhongyunan.png';
 export default {
   COURSE_LIST: [
     {
@@ -31,12 +32,12 @@ export default {
           ],
           teacher: [
             {
-              img: '/img/learn/yanglei.png',
+              img: yangLei,
               position: '华为认证高级讲师',
               name: '杨磊',
             },
             {
-              img: '/img/learn/zhongyunan.png',
+              img: zhongYunAn,
               position: '华为认证高级讲师',
               name: '钟育楠',
             },
