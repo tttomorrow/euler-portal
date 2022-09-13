@@ -12,6 +12,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import IconEmail from '~icons/app/icon-mail.svg';
 import IconGitee from '~icons/app/icon-gitee.svg';
+import IconSearch from '~icons/app/search.svg';
 
 import {
   getSigDetail,
@@ -272,6 +273,11 @@ onMounted(() => {
                   :placeholder="i18n.sig.SIG_ALL"
                   @change="filterRepositoryList()"
                 >
+                  <template #prefix>
+                    <OIcon>
+                      <IconSearch />
+                    </OIcon>
+                  </template>
                   <OOption
                     v-for="item in repositoryNameList"
                     :key="item"
@@ -292,6 +298,11 @@ onMounted(() => {
                   :placeholder="i18n.sig.SIG_ALL"
                   @change="filterRepositoryList()"
                 >
+                  <template #prefix>
+                    <OIcon>
+                      <IconSearch />
+                    </OIcon>
+                  </template>
                   <OOption
                     v-for="item in maintainerList"
                     :key="item"
@@ -312,6 +323,11 @@ onMounted(() => {
                   :placeholder="i18n.sig.SIG_ALL"
                   @change="filterRepositoryList()"
                 >
+                  <template #prefix>
+                    <OIcon>
+                      <IconSearch />
+                    </OIcon>
+                  </template>
                   <OOption
                     v-for="item in committerList"
                     :key="item"
@@ -584,11 +600,19 @@ onMounted(() => {
           justify-items: center;
           align-items: center;
           .select-item {
+            display: flex;
+            align-items: center;
             &-name {
               margin-right: var(--o-spacing-h5);
             }
-            :deep(.o-select) {
-              margin-right: var(--o-spacing-h1);
+            margin-right: var(--o-spacing-h1);
+            .el-input__prefix-inner {
+              .o-icon {
+                font-size: var(--o-font-size-h7);
+                @media screen and (max-width: 768px) {
+                  font-size: var(--o-font-size-h8);
+                }
+              }
             }
           }
         }

@@ -13,6 +13,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
 import illustration from '@/assets/illustrations/news.png';
+import IconSearch from '~icons/app/search.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 
@@ -434,6 +435,11 @@ const moblieCurrentChange = (val: string) => {
               :placeholder="userCaseData.ALL"
               @change="timeChange"
             >
+              <template #prefix>
+                <OIcon>
+                  <IconSearch />
+                </OIcon>
+              </template>
               <OOption
                 v-for="item in selectData[0].select"
                 :key="item"
@@ -453,6 +459,11 @@ const moblieCurrentChange = (val: string) => {
               :placeholder="userCaseData.ALL"
               @change="authorChange"
             >
+              <template #prefix>
+                <OIcon>
+                  <IconSearch />
+                </OIcon>
+              </template>
               <OOption
                 v-for="item in selectData[1].select"
                 :key="item"
@@ -472,6 +483,11 @@ const moblieCurrentChange = (val: string) => {
               :placeholder="userCaseData.ALL"
               @change="tagsChange"
             >
+              <template #prefix>
+                <OIcon>
+                  <IconSearch />
+                </OIcon>
+              </template>
               <OOption
                 v-for="item in selectData[2].select"
                 :key="item"
@@ -581,7 +597,15 @@ const moblieCurrentChange = (val: string) => {
     flex-direction: row;
     width: 1416px;
     &-item {
+      display: flex;
+      align-items: center;
       margin-right: var(--o-spacing-h1);
+      .o-icon {
+        font-size: var(--o-font-size-h7);
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-h8);
+        }
+      }
       &-title {
         margin-right: var(--o-spacing-h5);
         color: var(--e-color-text1);

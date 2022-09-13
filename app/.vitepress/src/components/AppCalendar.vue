@@ -1025,6 +1025,7 @@ const watchData = watch(
         @media screen and (max-width: 768px) {
           background-color: var(--e-color-bg2);
           padding: var(--o-spacing-h6);
+          border: 1px solid var(--e-color-division1);
           border-left: 2px solid var(--e-color-brand1);
           .meet-left {
             max-width: 200px;

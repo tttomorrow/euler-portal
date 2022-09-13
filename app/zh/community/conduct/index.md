@@ -27,9 +27,9 @@ const isMobile = computed(() => {
 
 <div class="markdown" :style="['margin-top:var(--o-spacing-h1)', isMobile ? 'margin-top:var(--o-spacing-h2)' : '']">
 
-openEuelr 社区遵守开源社区《贡献者公约》V1.4 中规定的行为守则，请参考 V1.4 版本
+openEuelr社区遵守开源社区<a href="https://www.contributor-covenant.org/" target="_blank">《贡献者公约》</a>V1.4中规定的行为守则，请参考<a href="https://www.contributor-covenant.org/zh-cn/version/1/4/code-of-conduct/" target="_blank">V1.4版本</a>
 
-如需举报侮辱、骚扰或其他不可接受的行为，您可以发送邮箱至tc@openeuler.org，联系 openEuler 技术委员会处理。
+如需举报侮辱、骚扰或其他不可接受的行为，您可以发送邮箱至<tc@openeuler.org>，联系 openEuler 技术委员会处理。
 
 ## 贡献者们的承诺
 
@@ -45,7 +45,7 @@ openEuelr 社区遵守开源社区《贡献者公约》V1.4 中规定的行为�
 - 关注对社区最有利的事情
 - 与社区其他成员友善相处
 
-有助于创造积极环境的行为包括但不限于：
+参与者不应采取的行为包括但不限于：
 
 - 发布与性有关的言论或图像、不受欢迎地献殷勤
 - 捣乱/煽动/造谣行为、侮辱/贬损的评论、人身及政治攻击
