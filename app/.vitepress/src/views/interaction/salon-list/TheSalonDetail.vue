@@ -231,8 +231,7 @@ const scroll = () => {
     ).getBoundingClientRect().top;
     if (targetScrollTop < 0) {
       (document.getElementById('tab') as HTMLElement).style.position = 'fixed';
-      (document.getElementById('tab') as HTMLElement).style.width =
-        'calc(100% - 88px)';
+      (document.getElementById('tab') as HTMLElement).style.maxWidth = '1416px';
       (document.getElementById('tab2') as HTMLElement).style.position = 'fixed';
     }
     if (synopsisScrollTop >= 0) {

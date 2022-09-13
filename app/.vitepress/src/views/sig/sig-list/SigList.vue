@@ -11,6 +11,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 
 import IconGitee from '~icons/app/icon-gitee.svg';
+// import IconSearch from '~icons/app/search.svg';
 import IconHome from '~icons/app/icon-home.svg';
 
 interface LIST_PARAMS {
@@ -302,6 +303,11 @@ onMounted(() => {
             :placeholder="i18n.sig.SIG_ALL"
             @change="filterRepositoryList()"
           >
+            <!-- <template #prefix>
+              <OIcon>
+                <IconSearch />
+              </OIcon>
+            </template> -->
             <OOption
               v-for="item in sigSelectList"
               :key="item"
@@ -576,6 +582,10 @@ onMounted(() => {
 <style scoped lang="scss">
 .sig-table {
   margin-top: var(--o-spacing-h2);
+  // .o-icon {
+  //   display: flex;
+  //   align-items: center;
+  // }
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h4);
   }
@@ -635,6 +645,8 @@ onMounted(() => {
     color: var(--e-color-text1);
   }
   &-item {
+    display: flex;
+    align-items: center;
     margin-right: var(--o-spacing-h1);
     flex-wrap: nowrap;
     span {
