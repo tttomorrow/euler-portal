@@ -24,6 +24,8 @@ import IconCatalog from '~icons/mooc/catalog.svg';
 
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
+import video_bg_light from '@/assets/category/mooc/video-bg-light.png';
+import video_bg_dark from '@/assets/category/mooc/video-bg-dark.png';
 
 const i18n = useI18n();
 const router = useRouter();
@@ -63,6 +65,10 @@ const listTitleIndex = ref(0);
 const logo = computed(() => {
   return commonStore.theme === 'light' ? logo_light : logo_dark;
 });
+const videoBg = computed(() => {
+  return commonStore.theme === 'light' ? video_bg_light : video_bg_dark;
+});
+const videoBgShow = ref(true);
 onMounted(() => {
   const { $refs } = (getCurrentInstance() as any).proxy;
   refs = $refs;
@@ -108,6 +114,7 @@ function getMenu() {
 }
 // 控制视频的播放和暂停
 function checkStatus(status: boolean) {
+  videoBgShow.value = false;
   if (status === true) {
     isNowPlay.value = true;
   } else {
@@ -131,6 +138,7 @@ function getCoursePath(menuData: any) {
 }
 // 点击视频播放按钮播放视频并隐藏该按钮,option:webBtn(pc端操作)、mobileBtn(移动端操作)
 function playmoocVideo(option: string) {
+  videoBgShow.value = false;
   if (option === 'webBtn') {
     refs.playctrlEle.isPlay = true;
   } else if (option === 'mobileBtn') {
@@ -140,6 +148,7 @@ function playmoocVideo(option: string) {
 }
 // 根据上下页操作改变激活节点及显示内容
 function getTitleAndIndex(arr: any, option: string) {
+  isNowPlay.value = false;
   arr.forEach((item: any, index: number) => {
     if (
       item.key === currentNode.value.key &&
@@ -208,6 +217,7 @@ function setListTitleIndex() {
 // 上一页
 function previous() {
   getTitleAndIndex(allNode.value, 'prev');
+  videoBgShow.value = true;
   currentNode.value.key = allNode.value[courseIndex.value].key;
   setCourseData(allNode.value[courseIndex.value]);
 }
@@ -218,6 +228,7 @@ function next() {
   if (courseIndex.value === allNode.value.length - 1) {
     return false;
   } else {
+    videoBgShow.value = true;
     currentNode.value.key = allNode.value[courseIndex.value].key;
   }
   setCourseData(allNode.value[courseIndex.value]);
@@ -330,6 +341,11 @@ const iconMenuShow = computed(() => {
               style="width: 100%"
             ></video>
             <div
+              v-if="videoBgShow"
+              class="video-bg"
+              :style="{ backgroundImage: 'url(' + videoBg + ')' }"
+            ></div>
+            <div
               v-if="!isNowPlay"
               class="play-btn"
               @click="playmoocVideo('mobileBtn')"
@@ -428,6 +444,11 @@ const iconMenuShow = computed(() => {
                 loop
                 style="width: 100%"
               ></video>
+              <div
+                v-if="videoBgShow"
+                class="video-bg"
+                :style="{ backgroundImage: 'url(' + videoBg + ')' }"
+              ></div>
               <VideoCtrl
                 ref="playctrlEle"
                 :ctrl-obj="ctrlObj"
@@ -617,6 +638,14 @@ const iconMenuShow = computed(() => {
           @media (max-width: 1400px) {
             width: 560px;
             height: 375px;
+          }
+          .video-bg {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 58px);
+            background-size: 100% 100%;
           }
           :deep(.playControll) {
             display: none;
@@ -887,8 +916,6 @@ const iconMenuShow = computed(() => {
           border-bottom: 1px solid var(--e-color-division1);
           padding: var(--o-spacing-h5) 0;
           margin-top: var(--o-spacing-h5);
-        }
-        .video {
           position: relative;
           .play-btn {
             width: 50px;
@@ -902,6 +929,15 @@ const iconMenuShow = computed(() => {
             cursor: pointer;
             background-size: contain;
             opacity: 0.6;
+          }
+          .video-bg {
+            position: absolute;
+            top: 16px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 32px);
+            background-size: 100% 100%;
+            // background-image: url(@/assets/category/mooc/video-bg-light.png);
           }
         }
       }
