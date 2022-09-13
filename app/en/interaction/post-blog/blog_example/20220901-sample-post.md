@@ -6,7 +6,6 @@ tags:
   - Sample
   - ABC
   - cccc
-sig: A-Tune
 archives: '2020-03'
 author:
   - openEuler Blog Maintainer
@@ -25,11 +24,9 @@ Below is just about everything you'll need to style in the blog.
 
 #### Heading 4
 
-##### Heading 5
-
 ### Body text
 
-This blog is about bla bla. **This is strong**.
+This blog is about bla. **This is strong**
 
 ### Quotation
 
@@ -57,13 +54,6 @@ This blog is about bla bla. **This is strong**.
 | :------ | :-----: | ------: |
 | cell1   |  cell2  |   cell3 |
 | cell4   |  cell5  |   cell6 |
-
-|----
-| cell1 | cell2 | cell3 |
-| cell4 | cell5 | cell6 |
-|=====
-| Foot1 | Foot2 | Foot3
-{: rules="groups"}
 
 ## Code
 
