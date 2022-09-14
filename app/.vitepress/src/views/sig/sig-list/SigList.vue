@@ -11,7 +11,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 
 import IconGitee from '~icons/app/icon-gitee.svg';
-// import IconSearch from '~icons/app/search.svg';
+import IconSearch from '~icons/app/search.svg';
 import IconHome from '~icons/app/icon-home.svg';
 
 interface LIST_PARAMS {
@@ -303,11 +303,11 @@ onMounted(() => {
             :placeholder="i18n.sig.SIG_ALL"
             @change="filterRepositoryList()"
           >
-            <!-- <template #prefix>
+            <template #prefix>
               <OIcon>
                 <IconSearch />
               </OIcon>
-            </template> -->
+            </template>
             <OOption
               v-for="item in sigSelectList"
               :key="item"
@@ -332,6 +332,11 @@ onMounted(() => {
             @scorll-bottom="getNextPage()"
             @change="filterRepositoryList()"
           >
+            <template #prefix>
+              <OIcon>
+                <IconSearch />
+              </OIcon>
+            </template>
             <OOption
               v-for="item in repoRenderList"
               :key="item"
@@ -353,6 +358,11 @@ onMounted(() => {
             :placeholder="i18n.sig.SIG_ALL"
             @change="filterRepositoryList()"
           >
+            <template #prefix>
+              <OIcon>
+                <IconSearch />
+              </OIcon>
+            </template>
             <OOption
               v-for="item in maintainerList"
               :key="item"
@@ -362,7 +372,7 @@ onMounted(() => {
           </OSelect>
         </ClientOnly>
       </div>
-      <span>{{ i18n.sig.SIG_LIST.TIPS }}</span>
+      <span class="sig-tip">{{ i18n.sig.SIG_LIST.TIPS }}</span>
     </div>
     <OTable v-show="!isMobile" :data="sigList">
       <el-table-column :label="i18n.sig.SIG_LIST.NAME">
@@ -639,7 +649,7 @@ onMounted(() => {
   display: flex;
   align-items: flex-end;
   align-items: center;
-  span {
+  .sig-tip {
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
     color: var(--e-color-text1);
@@ -649,15 +659,20 @@ onMounted(() => {
     align-items: center;
     margin-right: var(--o-spacing-h1);
     flex-wrap: nowrap;
-    span {
-      font-size: var(--o-font-size-h7);
-      line-height: var(--o-line-height-h7);
-      color: var(--e-color-text1);
+    .select-item-name {
       margin-right: var(--o-spacing-h5);
+      color: var(--e-color-text1);
+      line-height: var(--o-line-height-h7);
       @media (max-width: 1000px) {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
         width: 100px;
+      }
+    }
+    span {
+      font-size: var(--o-font-size-h7);
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-h8);
       }
     }
     @media (max-width: 1280px) {

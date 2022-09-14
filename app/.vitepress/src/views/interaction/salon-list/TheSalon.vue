@@ -864,7 +864,7 @@ onMounted(async () => {
           text-align: center;
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
-          color: var(--e-color-text2);
+          color: #fff;
           @media (max-width: 768px) {
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
