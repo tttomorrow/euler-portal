@@ -421,7 +421,7 @@ onUnmounted(() => {
                 <p>
                   <span>{{ item.TEXT[1] }}</span>
                   <a
-                    href="/doc/导师实习评语.txt"
+                    href="@/assets/category/internship/doc/导师实习评语.docx"
                     download
                     title="下载实习评语"
                     >{{ item.TEXT[2] }}</a
@@ -429,7 +429,7 @@ onUnmounted(() => {
                 </p>
                 <p>
                   <a
-                    href="/doc/实习报告模板.docx"
+                    href="@/assets/category/internship/doc/实习报告模板.docx"
                     download
                     title="下载报告模板"
                     >{{ item.TEXT[3] }}</a
@@ -444,7 +444,7 @@ onUnmounted(() => {
                 >
                   <slot v-if="index === 1 && index1 === 3">
                     <a
-                      href="/doc/实习报告模板.docx"
+                      href="@/assets/category/internship/doc/实习报告模板.docx"
                       download
                       title="下载报告模板"
                       >{{ item1 }}</a

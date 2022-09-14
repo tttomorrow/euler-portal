@@ -1,7 +1,7 @@
 /**
  * @file  学习模块国际化配置入口
  * */
-import mooc from '../../assets/category/mooc/mooc.png';
+import mooc from '@/assets/category/mooc/mooc.png';
 export default {
   MOOC: '慕课',
   MOOC_COURSE: [
