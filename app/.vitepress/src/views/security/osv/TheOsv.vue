@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { reactive, ref, watch, onMounted, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
+
 import { useI18n } from '@/i18n';
 
 import { CveQuery } from '@/shared/@types/type-support';
 import { getOsName, getOsType, getOsTableData } from '@/api/api-security';
 
-// import OOption from 'opendesign/select/OOption.vue';
 import AppContent from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import OSearch from 'opendesign/search/OSearch.vue';
@@ -40,7 +40,6 @@ const osTypes = ref([`${all.value}`]);
 const osvList = ref<any>([]); //:TODO:约束
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
-// const filterIndex = ref(0);
 const total = ref(0);
 const currentPage = ref(1);
 const totalPage = ref(0);

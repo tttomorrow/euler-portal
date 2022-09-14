@@ -3,7 +3,7 @@ title: 'CVE'
 ---
 
 <script setup lang="ts">
-  import TheCveList from "@/views/security/cve/TheCveList.vue";
+  import TheCve from "@/views/security/cve/TheCve.vue";
 </script>
 
-<TheCveList />
+<TheCve />

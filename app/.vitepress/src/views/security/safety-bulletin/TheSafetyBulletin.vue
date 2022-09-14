@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { reactive, ref, watch, onMounted, computed } from 'vue';
 import { useRouter } from 'vitepress';
+
 import { useI18n } from '@/i18n';
 
 import { getSecurityList } from '@/api/api-security';
@@ -29,7 +30,7 @@ const total = ref(0);
 const currentPage = ref(1);
 const totalPage = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
-const years = ['', '2022', '2021', '2019'];
+const years = ['', '2022', '2021', '2020'];
 const selectedYear = ref('2022');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);

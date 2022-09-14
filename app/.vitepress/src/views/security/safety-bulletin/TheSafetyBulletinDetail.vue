@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { reactive, onMounted, ref } from 'vue';
-import { useI18n } from '@/i18n';
 import { useRouter, useData } from 'vitepress';
+
+import { useI18n } from '@/i18n';
 
 import { getSecurityDetail } from '@/api/api-security';
 import { DetailParams } from '@/shared/@types/type-support';

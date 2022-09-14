@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { reactive, ref, onMounted } from 'vue';
-import { useI18n } from '@/i18n';
 import { useRouter } from 'vitepress';
+
+import { useI18n } from '@/i18n';
 
 import { DetailQuery } from '@/shared/@types/type-support';
 import { getOsvOne } from '@/api/api-security';

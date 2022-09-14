@@ -3,8 +3,8 @@ import { ref, onMounted } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
-import { getConfigurationInfo, getdetailAapterList } from '@/api/api-security';
 
+import { getConfigurationInfo, getdetailAapterList } from '@/api/api-security';
 import { ConfigurationInfo } from '@/shared/type-support';
 
 import AppContent from '@/components/AppContent.vue';

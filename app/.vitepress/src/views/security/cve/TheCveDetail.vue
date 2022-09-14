@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import { useI18n } from '@/i18n';
-import { getCveDetail, getAffectedProduct } from '@/api/api-security';
 import { useRouter, useData } from 'vitepress';
+
+import { useI18n } from '@/i18n';
+
+import { getCveDetail, getAffectedProduct } from '@/api/api-security';
 import { CveDetailCvss, AffectProduct } from '@/shared/type-support';
 
 import AppContent from '@/components/AppContent.vue';

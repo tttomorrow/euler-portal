@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { reactive, ref, onMounted, watch, computed } from 'vue';
 import { useRouter } from 'vitepress';
+
 import { useI18n } from '@/i18n';
 import { getCveList } from '@/api/api-security';
 import { CveLists, CveQuery } from '@/shared/@types/type-support';
