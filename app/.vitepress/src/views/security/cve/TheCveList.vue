@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { reactive, ref, onMounted, watch, computed } from 'vue';
 import { useRouter } from 'vitepress';
-
-import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
+import { getCveList } from '@/api/api-security';
+import { CveLists, CveQuery } from '@/shared/@types/type-support';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
@@ -11,11 +11,10 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner/banner-security.png';
-import illustration from '@/assets/illustrations/cve.png';
+import illustration from '@/assets/illustrations/support/cve.png';
 
-import { getCveList } from '@/api/api-security';
-import { CveLists, CveQuery } from '@/shared/@types/type-support';
-// const windowWidth = ref(useWindowResize());
+import useWindowResize from '@/components/hooks/useWindowResize';
+
 const screenWidth = useWindowResize();
 
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));

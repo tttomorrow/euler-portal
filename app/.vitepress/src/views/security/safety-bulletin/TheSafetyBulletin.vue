@@ -3,18 +3,19 @@ import { reactive, ref, watch, onMounted, computed } from 'vue';
 import { useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 
+import { getSecurityList } from '@/api/api-security';
+import { SecurityLists, CveQuery } from '@/shared/@types/type-support';
+
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppContent from '@/components/AppContent.vue';
+import OSearch from 'opendesign/search/OSearch.vue';
 
 import banner from '@/assets/banner/banner-security.png';
-import illustration from '@/assets/illustrations/safety-bulletin.png';
+import satetyBulletin from '@/assets/illustrations/support/safety-bulletin.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 
-import { getSecurityList } from '@/api/api-security';
-import { SecurityLists, CveQuery } from '@/shared/@types/type-support';
-import OSearch from 'opendesign/search/OSearch.vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 const screenWidth = useWindowResize();
@@ -126,7 +127,7 @@ watch(queryData, () => getSecurityLists(queryData));
     background-text="SUPPORT"
     :title="i18n.security.SECURITY_ADVISORIES"
     subtitle=""
-    :illustration="illustration"
+    :illustration="satetyBulletin"
   />
   <AppContent :mobile-top="16">
     <div class="bulletin-main">

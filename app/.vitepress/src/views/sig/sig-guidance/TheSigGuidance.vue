@@ -123,13 +123,21 @@ const language = configData.lang;
       }
       @media (max-width: 780px) {
         width: 100%;
+        &:first-child {
+          margin-top: 3px;
+        }
+        &:nth-child(3) {
+          margin-bottom: 3px;
+        }
       }
       &-left {
         display: flex;
         margin-right: var(--o-spacing-h4);
+        height: 204px;
         @media (max-width: 1080px) {
           margin-right: 0px;
           margin-bottom: var(--o-spacing-h5);
+          height: 120px;
         }
       }
       &-left-ruf {
@@ -151,9 +159,11 @@ const language = configData.lang;
         margin-top: 80px;
         display: flex;
         margin-right: var(--o-spacing-h4);
+        height: 204px;
         @media (max-width: 1080px) {
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
+          height: 120px;
         }
       }
       &-right-f {
@@ -260,7 +270,7 @@ const language = configData.lang;
     &-zh {
       .line-first {
         position: absolute;
-        top: 375px;
+        top: 384px;
         left: 47%;
         height: 70px;
         width: 400px;
@@ -269,50 +279,50 @@ const language = configData.lang;
       }
       .line-second {
         position: absolute;
-        top: 560px;
+        top: 622px;
         left: 31%;
         height: 70px;
         width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-left: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
-          top: 570px;
+          top: 610px;
         }
       }
       .line-third {
         position: absolute;
-        top: 650px;
+        top: 702px;
         left: 48%;
         height: 50px;
         width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
-          top: 670px;
+          top: 700px;
         }
       }
       .line-forth {
         position: absolute;
-        top: 820px;
+        top: 926px;
         left: 31%;
         height: 70px;
         width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-left: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
-          top: 850px;
+          top: 920px;
         }
       }
       .line-fifth {
         position: absolute;
-        top: 905px;
+        top: 1016px;
         left: 48%;
         height: 50px;
         width: 400px;
         border-top: 2px dashed var(--e-color-brand1);
         border-right: 2px dashed var(--e-color-brand1);
         @media (max-width: 1280px) {
-          top: 950px;
+          top: 1010px;
         }
       }
       @media (max-width: 1080px) {
