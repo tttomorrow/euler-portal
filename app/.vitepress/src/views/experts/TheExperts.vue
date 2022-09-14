@@ -36,6 +36,9 @@ import illustration from '@/assets/illustrations/expert.png';
 </template>
 
 <style lang="scss" scoped>
+.item + .item {
+  margin-left: 20px;
+}
 .experts {
   &-tip {
     color: var(--e-color-text1);

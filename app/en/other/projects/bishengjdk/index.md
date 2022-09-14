@@ -3,7 +3,7 @@ title: 'BiSheng JDK'
 ---
 
 <script setup lang="ts">
-  import TheBisheng from "@/views/other/projects/bishengjdk/TheBisheng.vue"
+  import TheBisheng from "@/views/minisite/bisheng/TheBisheng.vue"
 </script>
 
 <TheBisheng />

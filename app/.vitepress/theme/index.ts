@@ -20,7 +20,6 @@ export default {
       global.window = {};
     }
     app.use(createPinia());
-
     app.use(ElementPlus);
     app.use(OpenDesign);
   },
