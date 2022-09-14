@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted, nextTick, computed } from 'vue';
-import { useI18n } from '@/i18n';
 import { useData, useRouter } from 'vitepress';
+import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';

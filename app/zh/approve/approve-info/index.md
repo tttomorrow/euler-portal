@@ -3,7 +3,7 @@ title: 'ApproveInfo'
 ---
 
 <script setup lang="ts">
-  import TheApproveInfo from "@/views/security/osv/TheApproveInfo.vue";
+  import TheOsvDetail from "@/views/security/osv/TheOsvDetail.vue";
 </script>
 
-<TheApproveInfo />
+<TheOsvDetail />

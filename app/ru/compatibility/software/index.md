@@ -3,7 +3,7 @@ title: 'Software'
 ---
 
 <script setup lang="ts">
-  import TheSoftWare from "@/views/security/TheSoftWare.vue";
+  import TheSoftWare from "@/views/security/compatility/TheSoftWare.vue";
 </script>
 
 <TheSoftWare />

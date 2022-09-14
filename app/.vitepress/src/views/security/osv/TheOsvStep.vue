@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import { useI18n } from '@/i18n';
 import { useRouter } from 'vitepress';
+
+import { useI18n } from '@/i18n';
+
 import AppContent from '@/components/AppContent.vue';
 
 const i18n = useI18n();
