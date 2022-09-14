@@ -94,7 +94,6 @@ const activityType = ['线下', '线上', '线上 + 线下'];
 const titleList = ['全部', '会议', '活动', '峰会'];
 const tabType = ref(titleList[0]);
 const calendar = ref();
-
 const calendarHeight = ref<number | string>(335);
 
 const windowWidth = ref(useWindowResize());
@@ -125,7 +124,11 @@ function changeTab(tab: TabsPaneContext) {
   }
 }
 
-function meetClick(day: string) {
+function meetClick(day: string, event: Event) {
+  if (new Date(day.replace(/-/g, '/')).getTime() / 1000 < 1610380800) {
+    event.stopPropagation();
+    return;
+  }
   currentDay.value = resolveDate(day);
   tabType.value = titleList[0];
   try {
@@ -184,7 +187,10 @@ function getMeetTimes(day: string): number {
   return times;
 }
 
-function selectDate(val: string) {
+function selectDate(val: string, date: string) {
+  if (date === '2021 年 1 月' && val === 'prev-month') {
+    return;
+  }
   calendar.value.selectDate(val);
 }
 
@@ -249,11 +255,11 @@ const watchData = watch(
         <el-calendar v-if="windowWidth > 768" ref="calendar" class="calender">
           <template #header="{ date }">
             <div class="left-title">
-              <OIcon @click="selectDate('prev-month')">
+              <OIcon @click="selectDate('prev-month', date)">
                 <icon-left></icon-left>
               </OIcon>
               <span class="month-date">{{ date }}</span>
-              <OIcon @click="selectDate('next-month')">
+              <OIcon @click="selectDate('next-month', date)">
                 <icon-right></icon-right>
               </OIcon>
             </div>
@@ -262,7 +268,7 @@ const watchData = watch(
             <div
               class="out-box"
               :class="{ 'be-active': getMeetTimes(data.day) }"
-              @click="meetClick(data.day)"
+              @click="meetClick(data.day, $event)"
             >
               <div class="day-box">
                 <p
@@ -272,8 +278,6 @@ const watchData = watch(
                   {{ data.day.split('-').slice(2)[0] }}
                 </p>
                 <!-- TODO: 添加节日提醒 -->
-                <!-- <div class="holiday" v-if="data.day === '2022-04-20'">春节快乐</div>
-                <div class="holiday" v-if="data.day === '2022-05-20'">程序员节</div> -->
               </div>
             </div>
           </template>
@@ -309,11 +313,11 @@ const watchData = watch(
                 <el-calendar ref="calendar" class="calendar-mo calender">
                   <template #header="{ date }">
                     <div class="left-title">
-                      <OIcon @click="selectDate('prev-month')">
+                      <OIcon @click="selectDate('prev-month', date)">
                         <icon-left></icon-left>
                       </OIcon>
                       <span class="month-date">{{ date }}</span>
-                      <OIcon @click="selectDate('next-month')">
+                      <OIcon @click="selectDate('next-month', date)">
                         <icon-right></icon-right>
                       </OIcon>
                     </div>
@@ -322,7 +326,7 @@ const watchData = watch(
                     <div
                       class="out-box"
                       :class="{ 'be-active': getMeetTimes(data.day) }"
-                      @click="meetClick(data.day)"
+                      @click="meetClick(data.day, $event)"
                     >
                       <div class="day-box">
                         <p

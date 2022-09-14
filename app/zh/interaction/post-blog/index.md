@@ -18,7 +18,7 @@ category: blog
 ## 理解博客格式
 
 openEuler 是用 markdown 格式写博客的。
-请阅读该文章 <https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/zh/interaction/post-blog/README.md>来理解 openEuler 博客是如何设计的。
+请阅读该文章 <https://gitee.com/openeuler/openEuler-portal/blob/master/app/zh/interaction/post-blog/index.md>来理解 openEuler 博客是如何设计的。
 
 文件头需要包含如下信息：
 
@@ -41,18 +41,18 @@ summary: Just about everything you'll need to style in the theme：headings, par
 Here you can edit your blog.
 ```
 
-小提示：你可以复制 https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/zh/interaction/post-blog/blog_example/2020-03-03-sample-post.md 到你的工作路径下然后继续编辑。
+小提示：你可以复制 `https://gitee.com/openeuler/openEuler-portal/blob/master/app/zh/interaction/post-blog/blog_example/20220901-sample-post.md` 到你的工作路径下然后继续编辑。
 
 ## 提交博客
 
 博客的提交利用了 Gitee 的 PR(Pull Request)。
 
-1. Fork openEuler 博客项目 <https://gitee.com/openeuler/website-v2> 到你自己的 Gitee 上。如果需要具体指导请参考 <http://git.mydoc.io/?t=153749> 。
+1. Fork openEuler 博客项目 <https://gitee.com/openeuler/openEuler-portal> 到你自己的 Gitee 上。如果需要具体指导请参考 <http://git.mydoc.io/?t=153749> 。
 
 2. Clone 代码
 
 ```
-git clone https://gitee.com/<your-gitee-id>/website-v2
+git clone https://gitee.com/<your-gitee-id>/openEuler-portal
 ```
 
 3. 创建分支
@@ -63,11 +63,11 @@ git checkout -b <branch-name>
 
 4. 创建工作路径
 
-如果你发表中文博客，工作路径是 web-ui/docs/zh/blog 。
+如果你发表中文博客，工作路径是 `app/zh/blog` 。
 假设你要写一个英文博客：
 
 ```
-cd web-ui/docs/en/blog
+cd app/zh/blog
 mkdir <your-gitee-id>
 cd <your-gitee-id>
 touch YEAR-MONTH-DAY-title.md

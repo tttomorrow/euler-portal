@@ -6,7 +6,6 @@ import AMapLoader from '@amap/amap-jsapi-loader';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppContent from '@/components/AppContent.vue';
 
-// import Img404 from '@/assets/404.svg';
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
 
@@ -232,8 +231,7 @@ const scroll = () => {
     ).getBoundingClientRect().top;
     if (targetScrollTop < 0) {
       (document.getElementById('tab') as HTMLElement).style.position = 'fixed';
-      (document.getElementById('tab') as HTMLElement).style.width =
-        'calc(100% - 88px)';
+      (document.getElementById('tab') as HTMLElement).style.maxWidth = '1416px';
       (document.getElementById('tab2') as HTMLElement).style.position = 'fixed';
     }
     if (synopsisScrollTop >= 0) {
