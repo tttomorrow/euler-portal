@@ -706,6 +706,7 @@ const jumpToUserZone = () => {
         text-overflow: ellipsis;
         overflow: hidden;
         width: 72px;
+        line-height: var(--o-line-height-h8);
         @media (max-width: 1100px) {
           display: none;
         }

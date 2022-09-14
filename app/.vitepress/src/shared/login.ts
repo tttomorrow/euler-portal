@@ -184,13 +184,14 @@ export function setStoreData(community = 'openeuler') {
 
 // 刷新后重新请求登录用户信息
 export function refreshInfo(community = 'openeuler') {
-  const { token } = getUserAuth();
+  const { token, username, photo } = getUserAuth();
   if (token) {
+    const { guardAuthClient } = useStoreData();
+    // 优先取存储的photo
+    guardAuthClient.value = { username, photo };
     queryCourse({ community }).then((res) => {
       const { data } = res;
-      const { guardAuthClient } = useStoreData();
       if (
-        !guardAuthClient.value.photo &&
         Object.prototype.toString.call(data) === '[object Object]'
       ) {
         guardAuthClient.value = data;
