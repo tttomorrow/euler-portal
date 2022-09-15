@@ -140,7 +140,7 @@ export default {
         LINK: [
           {
             TEXT: 'Eщe',
-            LINK: 'https:/gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E5%AE%89%E8%A3%85StratoVirt.md',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E5%AE%89%E8%A3%85StratoVirt.md',
           },
         ],
         BACKGROUND: {
