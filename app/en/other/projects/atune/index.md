@@ -3,7 +3,7 @@ title: 'A-Tune'
 ---
 
 <script setup lang="ts">
-  import TheATune from "@/views/other/projects/atune/TheATune.vue"
+  import TheATune from "@/views/minisite/atune/TheATune.vue"
 </script>
 
 <TheATune />
