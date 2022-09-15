@@ -31,7 +31,7 @@ import CodeTitleGzh from '@/assets/footer/img-gzh.png';
 import CodeImgXzs from '@/assets/footer/code-xzs.png';
 import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
-import IconClose from '~icons/app/x.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
 
 const props = defineProps({
   isCookieTip: {
@@ -212,7 +212,7 @@ function clickClose() {
           i18n.common.COOKIE_LEGAL_LINK_TEXT_OTHER
         }}</a>
       </template>
-      <OIcon class="icon" @click="clickClose"><IconClose /></OIcon>
+      <OIcon class="icon" @click="clickClose"><IconCancel /></OIcon>
     </div>
     <AppContent :pc-top="0" :mobile-top="0">
       <div class="atom">

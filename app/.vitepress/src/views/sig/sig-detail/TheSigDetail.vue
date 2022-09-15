@@ -12,7 +12,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import IconEmail from '~icons/app/icon-mail.svg';
 import IconGitee from '~icons/app/icon-gitee.svg';
-import IconSearch from '~icons/app/search.svg';
+import IconSearch from '~icons/app/icon-search.svg';
 
 import {
   getSigDetail,
@@ -21,7 +21,7 @@ import {
   getSigList,
 } from '@/api/api-sig';
 
-import IconArrowRight from '~icons/app/right.svg';
+import IconChevronRight from '~icons/app/icon-chevron-right.svg';
 
 interface SIGLIST {
   group_name: string;
@@ -415,7 +415,7 @@ onMounted(() => {
               <a class="right">
                 <span>{{ sigDetail.MORE }}</span>
                 <OIcon class="icon-more">
-                  <IconArrowRight />
+                  <IconChevronRight />
                 </OIcon>
               </a>
             </div>
@@ -436,7 +436,7 @@ onMounted(() => {
               <a class="right">
                 <span>{{ sigDetail.MORE }}</span>
                 <OIcon class="icon-more">
-                  <IconArrowRight />
+                  <IconChevronRight />
                 </OIcon>
               </a>
             </div>

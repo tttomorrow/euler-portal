@@ -5,7 +5,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import banner from '@/assets/banner/banner-learning.png';
 import illustration from '@/assets/illustrations/mooc.png';
 
-import IconArrowRight1 from '~icons/app/icon-arrow-right1.svg';
+import IconArrowRight1 from '~icons/app/icon-arrow-right.svg';
 import { useI18n } from '@/i18n';
 
 const i18n = useI18n();

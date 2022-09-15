@@ -29,7 +29,7 @@ import qiLin_dark from '@/assets/category/internship/logo/qilin_dark.png';
 import tongXin_dark from '@/assets/category/internship/logo/tongxin_dark.png';
 import xinAn_dark from '@/assets/category/internship/logo/xinan_dark.png';
 
-import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 const commonStore = useCommon();
 const INTEGRAL_DATA = [
   {

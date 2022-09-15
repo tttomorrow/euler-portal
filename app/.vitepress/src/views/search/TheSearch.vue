@@ -7,7 +7,7 @@ import { getSearchData, getSearchCount, getSearchRpm } from '@/api/api-search';
 import NotFound from '@/NotFound.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
-import IconX from '~icons/app/x.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { addSearchBuriedData } from '@/shared/utils';
@@ -198,7 +198,7 @@ onMounted(() => {
         @change="searchAll"
       >
         <template #suffix>
-          <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
+          <OIcon class="close" @click="donShowSearchBox"><IconCancel /></OIcon>
         </template>
       </OSearch>
       <div class="search-content">

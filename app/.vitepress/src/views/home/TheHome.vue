@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useI18n } from '@/i18n';
+import { useData } from 'vitepress';
 import AOS from 'aos';
+
+import { useI18n } from '@/i18n';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -16,9 +18,8 @@ import AppCalendar from '@/components/AppCalendar.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import { getMeetingData, getActivityData } from '@/api/api-calendar';
-import { TableData } from '@/shared/@types/type-calendar';
-import { useData } from 'vitepress';
 import { getSortData } from '@/api/api-search';
+import { TableData } from '@/shared/@types/type-calendar';
 
 const { lang } = useData();
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useRouter } from 'vitepress';
-import IconArrowRight from '~icons/app/icon-arrow.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right';
 
 const router = useRouter();
 

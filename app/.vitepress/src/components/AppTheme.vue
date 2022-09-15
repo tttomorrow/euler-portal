@@ -2,8 +2,8 @@
 import { computed, onMounted, ref, watch } from 'vue';
 import { useCommon } from '@/stores/common';
 
-import IconMoonLight from '~icons/app/sun.svg';
-import IconMoonDark from '~icons/app/moon.svg';
+import IconSun from '~icons/app/icon-sun-outline.svg';
+import IconMoon from '~icons/app/icon-moon-outline.svg';
 
 // 风格切换
 const APPEARANCE_KEY = 'vitepress-theme-appearance';
@@ -41,8 +41,8 @@ watch(
   <div class="theme-box">
     <div class="theme-box-pc" @click="changeTheme">
       <OIcon class="icon">
-        <IconMoonDark v-if="isLight" />
-        <IconMoonLight v-else />
+        <IconMoon v-if="isLight" />
+        <IconSun v-else />
       </OIcon>
     </div>
     <div class="theme-box-mobile">
