@@ -174,26 +174,12 @@ export default {
         },
       },
       {
-        THEME: '管理虚拟机生命周期',
-        DESC: '学习如何管理虚拟机生命周期',
+        THEME: '管理虚拟机',
+        DESC: '学习如何管理虚拟机',
         LINK: [
           {
             TEXT: '了解更多',
             LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AE%A1%E7%90%86.md',
-          },
-        ],
-        BACKGROUND: {
-          IMG: grainImg,
-          TYPE: 1,
-        },
-      },
-      {
-        THEME: '管理虚拟机资源',
-        DESC: '学习如何管理虚拟机资源',
-        LINK: [
-          {
-            TEXT: '了解更多',
-            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/StratoVirt/%E5%AF%B9%E6%8E%A5iSula%E5%AE%89%E5%85%A8%E5%AE%B9%E5%99%A8.md',
           },
         ],
         BACKGROUND: {
