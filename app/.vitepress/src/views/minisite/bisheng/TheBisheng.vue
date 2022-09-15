@@ -33,10 +33,7 @@ const i18n = useI18n();
       :description-more="i18n.bisheng.BISHENG_MORE"
     />
     <!-- 架构模块 -->
-    <MiniFrame
-      :frame-obj="i18n.bisheng.BISHENG_FRAMEWORK"
-      layout="upAndDown"
-    />
+    <MiniFrame :frame-obj="i18n.bisheng.BISHENG_FRAMEWORK" layout="upAndDown" />
     <!-- 学习模块 -->
     <MiniDocs :docs-obj="i18n.bisheng.BISHENG_LEARN" />
     <!-- 友情链接模块 -->

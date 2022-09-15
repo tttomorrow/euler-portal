@@ -95,18 +95,15 @@ export default {
         '构建时，isula-build读取Dockerfile作为输入，快速构建符合Docker镜像和OCI镜像规范的容器镜像，最后将镜像分发至同节点的iSulad/docker、本地tar包或远端容器镜像仓库。',
       ],
       FRAMEWORK_TITLE: 'isula-build的架构图如下：',
-      FRAMEWORK_IMG:frameBuildImg_light_en,
-      FRAMEWORK_IMG_DARK:
-        frameBuildImg_dark_en,
+      FRAMEWORK_IMG: frameBuildImg_light_en,
+      FRAMEWORK_IMG_DARK: frameBuildImg_dark_en,
     },
     ISULAD_TRANSFORM: {
       DESC_LIST: [
         'isula-transform 配合 iSulad 2.0 推出，支持将 Docker 容器引擎管理的容器转换、迁移给 iSulad 引擎进行管理。迁移完成后，就可以通过 iSulad 完成容器的生命周期管理功能。',
       ],
-      FRAMEWORK_IMG:
-        frameTransformImg_light_en,
-      FRAMEWORK_IMG_DARK:
-        frameTransformImg_dark_en,
+      FRAMEWORK_IMG: frameTransformImg_light_en,
+      FRAMEWORK_IMG_DARK: frameTransformImg_dark_en,
     },
   },
   ISULA_DOCUMENT: {

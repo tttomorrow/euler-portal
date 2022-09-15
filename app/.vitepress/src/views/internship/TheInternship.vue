@@ -679,7 +679,7 @@ onUnmounted(() => {
     .btn {
       .task-bth {
         margin-right: 24px;
-        border: none;
+        border: 1px solid var(--e-color-brand1);
         color: #fff;
         background-color: var(--e-color-brand1);
         padding: 8px 12px;
@@ -690,16 +690,23 @@ onUnmounted(() => {
         }
         &:hover {
           background-color: var(--e-color-brand2);
+          border: 1px solid var(--e-color-brand2);
+          :deep(.o-icon) {
+            transform: translateX(5px);
+          }
         }
-        .o-icon {
-          margin-left: 8px;
+        :deep(.o-icon) {
+          transition: all 0.2s;
+          margin-left: 6px;
         }
       }
       .detail-btn {
         color: var(--e-color-brand1);
+        padding: 8px 12px;
         border: 1px solid transparent;
         @media (max-width: 1000px) {
           font-size: 12px;
+          padding: 3px 16px;
         }
         &:hover {
           border: 1px solid var(--e-color-brand2);
@@ -739,13 +746,14 @@ onUnmounted(() => {
       margin-top: 5px;
       .task-bth {
         margin-right: 24px;
-        border: none;
+        border: 1px solid var(--e-color-brand1);
         color: #fff;
         background-color: var(--e-color-brand1);
         padding: 8px 12px;
         font-size: 16px;
-        .o-icon {
-          margin-left: 8px;
+        :deep(.o-icon) {
+          margin-left: 6px;
+          transition: all 0.2s;
         }
         @media (max-width: 1000px) {
           font-size: 12px;
@@ -753,14 +761,20 @@ onUnmounted(() => {
         }
         &:hover {
           background-color: var(--e-color-brand2);
+          border: 1px solid var(--e-color-brand2);
+          :deep(.o-icon) {
+            transform: translateX(5px);
+          }
         }
       }
       .detail-btn {
         color: var(--e-color-brand1);
         border: 1px solid transparent;
         font-size: 16px;
+        padding: 8px 12px;
         @media (max-width: 1000px) {
           font-size: 12px;
+          padding: 3px 16px;
         }
         &:hover {
           border: 1px solid var(--e-color-brand2);

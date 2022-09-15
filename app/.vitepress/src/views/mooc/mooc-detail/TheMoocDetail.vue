@@ -484,6 +484,11 @@ const iconMenuShow = computed(() => {
 :deep(.el-tree-node__content:hover) {
   background-color: var(--e-color-bg4);
 }
+:deep(.el-tree-node) {
+  &:focus > .el-tree-node__content {
+    background-color: var(--e-color-bg4) !important;
+  }
+}
 .mooc-detail {
   width: 100%;
   .detail-pc {
