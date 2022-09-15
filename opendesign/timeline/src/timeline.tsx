@@ -1,7 +1,7 @@
 import { defineComponent, watch, ref, Ref, toRefs, onMounted } from 'vue';
 import { timelineProps, TimelineProps } from './timeline-types';
-import IconLeft from '~icons/app/icon-left.svg';
-import IconRight from '~icons/app/icon-right.svg';
+import IconLeft from '~icons/app/icon-chevron-left.svg';
+import IconRight from '~icons/app/icon-chevron-right';
 import IconChecked from '~icons/app/icon-checked.svg';
 import IconUnchecked from '~icons/app/icon-unchecked.svg';
 import './timeline.scss';

@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { useI18n } from '@/i18n';
 import { useData } from 'vitepress';
 
-import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 const { lang } = useData();
 

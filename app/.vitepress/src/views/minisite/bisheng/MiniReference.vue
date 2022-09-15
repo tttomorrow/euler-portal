@@ -3,7 +3,7 @@ import { useRouter, useData } from 'vitepress';
 
 import MiniTitle from '../components/MiniTitle.vue';
 
-import IconArrowRight from '~icons/app/arrow-right';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 const router = useRouter();
 const { lang } = useData();

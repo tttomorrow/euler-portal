@@ -16,8 +16,8 @@ import blogIllustration from '@/assets/illustrations/blog.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
 // import IconBrowse from '~icons/app/icon-browse.svg';
-import IconRight from '~icons/app/arrow-right.svg';
-import IconSearch from '~icons/app/search.svg';
+import IconRight from '~icons/app/icon-arrow-right.svg';
+import IconSearch from '~icons/app/icon-search.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 

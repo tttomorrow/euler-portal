@@ -18,7 +18,7 @@ import cardBg_dark_mo from '@/assets/category/interaction/live/dark-crad-bg-mobi
 import cardBg_light_mo_extension from '@/assets/category/interaction/live/bg-extension-light.png';
 import cardBg_dark_mo_extension from '@/assets/category/interaction/live/bg-extension-dark.png';
 
-import IconRight from '~icons/app/icon-arrow-right1.svg';
+import IconRight from '~icons/app/icon-arrow-right.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconTime from '~icons/app/icon-time.svg';
 

@@ -2,7 +2,7 @@
 import { ref, Ref, watch } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
-import IconDown from '~icons/app/icon-down.svg';
+import IconDown from '~icons/app/icon-chevron-down.svg';
 
 const props = defineProps({
   show: {

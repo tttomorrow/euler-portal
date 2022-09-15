@@ -16,8 +16,8 @@ import VideoCtrl from '@/components/VideoCtrl.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import IconArrowLeft from '~icons/app/icon-arrow-left1.svg';
-import IconArrowRight from '~icons/app/icon-arrow-right1.svg';
+import IconArrowLeft from '~icons/app/icon-arrow-left.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 import IconChevronDown from '~icons/app/icon-chevron-down.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconCatalog from '~icons/mooc/catalog.svg';

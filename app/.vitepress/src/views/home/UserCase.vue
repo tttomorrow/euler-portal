@@ -2,7 +2,7 @@
 import { onMounted, ref, nextTick, computed, onUnmounted } from 'vue';
 
 import { useCommon } from '@/stores/common';
-import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 import { useI18n } from '@/i18n';
 

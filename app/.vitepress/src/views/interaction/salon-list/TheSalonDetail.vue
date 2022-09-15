@@ -9,9 +9,9 @@ import AppContent from '@/components/AppContent.vue';
 import logo_light from '@/assets/logo.png';
 import logo_dark from '@/assets/logo_dark.png';
 
-import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 import IconTime from '~icons/app/icon-time.svg';
-//import IconMapPin from '~icons/app/map-pin.svg';
+//import IconMapPin from '~icons/app/icon-map-pin.svg';
 
 import { getActivityDetail } from '@/api/api-calendar';
 import { useCommon } from '@/stores/common';

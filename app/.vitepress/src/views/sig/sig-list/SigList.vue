@@ -11,7 +11,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 
 import IconGitee from '~icons/app/icon-gitee.svg';
-import IconSearch from '~icons/app/search.svg';
+import IconSearch from '~icons/app/icon-search.svg';
 import IconHome from '~icons/app/icon-home.svg';
 
 interface LIST_PARAMS {

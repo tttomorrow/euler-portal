@@ -10,7 +10,7 @@ import HomeConfig from './config';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-import IconArrowRight from '~icons/app/icon-arrow-right1.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 

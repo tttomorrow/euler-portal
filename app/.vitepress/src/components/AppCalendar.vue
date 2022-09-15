@@ -7,10 +7,10 @@ import type { TabsPaneContext } from 'element-plus';
 import { useCommon } from '@/stores/common';
 import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
-import IconLeft from '~icons/app/icon-left.svg';
-import IconRight from '~icons/app/icon-right.svg';
-import IconArrowRight from '~icons/app/arrow-right.svg';
-import IconDown from '~icons/app/icon-down.svg';
+import IconLeft from '~icons/app/icon-chevron-left.svg';
+import IconRight from '~icons/app/icon-chevron-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
+import IconDown from '~icons/app/icon-chevron-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';

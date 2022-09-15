@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import IconDown from '~icons/app/icon-down.svg';
+import IconDown from '~icons/app/icon-chevron-down.svg';
 
 defineProps({
   label: {

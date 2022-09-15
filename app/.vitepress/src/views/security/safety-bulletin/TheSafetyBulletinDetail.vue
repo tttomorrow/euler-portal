@@ -7,7 +7,7 @@ import { useI18n } from '@/i18n';
 import { getSecurityDetail } from '@/api/api-security';
 import { DetailParams } from '@/shared/@types/type-support';
 
-import IconChevron from '~icons/app/chevron-right.svg';
+import IconChevronRight from '~icons/app/icon-chevron-right.svg';
 
 import type { AxiosResponse } from '@/shared/axios';
 
@@ -59,8 +59,8 @@ onMounted(() => {
         {{ i18n.security.SECURITY_ADVISORIES }}
       </p>
       <span class="separtor">
-        <o-icon><icon-chevron></icon-chevron></o-icon
-      ></span>
+        <OIcon><IconChevronRight /></OIcon>
+      </span>
       <p class="current-page">
         {{ i18n.security.SECURITY_ADVISORIES_DETAIL }}
       </p>

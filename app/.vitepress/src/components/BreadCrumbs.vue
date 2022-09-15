@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
-import IconArrowRight from '~icons/app/right.svg';
+import IconChevronRight from '~icons/app/icon-chevron-right.svg';
 const props = defineProps({
   bread1: {
     type: String,
@@ -27,7 +27,7 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
       <a :href="link1">{{ bread1 }}</a>
     </span>
     <OIcon>
-      <IconArrowRight />
+      <IconChevronRight />
     </OIcon>
     <span
       ><a :href="link2" :class="link2 === '#' ? 'no-click' : ''">{{

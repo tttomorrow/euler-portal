@@ -2,7 +2,7 @@
 import { onMounted, Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import dayjs from 'dayjs';
-import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 const i18n = useI18n();
 

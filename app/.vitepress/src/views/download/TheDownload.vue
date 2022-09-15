@@ -12,7 +12,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import IconDownload from '~icons/app/icon-download.svg';
 import IconFilter from '~icons/app/icon-filter.svg';
-import IconX from '~icons/app/x.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
 
 import banner from '@/assets/banner/banner-download.png';
 import notFoundImg_light from '@/assets/illustrations/404.png';
@@ -260,7 +260,7 @@ onMounted(() => {
           class="download-filter-mobile-card"
           @click="handleManufacturerClick(item, 1)"
         >
-          {{ item }} <IconX class="download-filter-mobile-card-icon"></IconX>
+          {{ item }} <IconCancel class="download-filter-mobile-card-icon"></IconCancel>
         </div>
         <div
           v-for="item in activePublish"
@@ -268,7 +268,7 @@ onMounted(() => {
           class="download-filter-mobile-card"
           @click="handlePublishClick(item, 1)"
         >
-          {{ item }}<IconX class="download-filter-mobile-card-icon"></IconX>
+          {{ item }}<IconCancel class="download-filter-mobile-card-icon"></IconCancel>
         </div>
         <div
           v-if="activeLTS"
@@ -278,7 +278,7 @@ onMounted(() => {
             handleLSTClick();
           "
         >
-          LST<IconX class="download-filter-mobile-card-icon"></IconX>
+          LST<IconCancel class="download-filter-mobile-card-icon"></IconCancel>
         </div>
       </div>
 

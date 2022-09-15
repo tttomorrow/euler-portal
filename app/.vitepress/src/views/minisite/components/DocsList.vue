@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useRouter, useData } from 'vitepress';
 
-import IconArrowRight from '~icons/app/arrow-right';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 import docBg_mobile from '@/assets/category/minisite/shared/bg-doc_mobile.png';
 import stratovirtBg_mobile from '@/assets/category/minisite/stratovirt/stratovirt-grain_mobile.png';

@@ -13,7 +13,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
 import illustration from '@/assets/illustrations/news.png';
-import IconSearch from '~icons/app/search.svg';
+import IconSearch from '~icons/app/icon-search.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 

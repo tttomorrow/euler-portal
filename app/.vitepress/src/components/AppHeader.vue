@@ -12,9 +12,9 @@ import NavLangFilter from '@/i18n/common/navLangFilter';
 import logo_light from '@/assets/logo.svg';
 import logo_dark from '@/assets/logo_dark.svg';
 
-import IconSearch from '~icons/app/search.svg';
-import IconX from '~icons/app/x.svg';
-import IconMenu from '~icons/app/menu.svg';
+import IconSearch from '~icons/app/icon-search.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
+import IconMenu from '~icons/app/icon-menu.svg';
 
 interface NavItem {
   NAME: string;
@@ -199,7 +199,7 @@ function search() {
         <OIcon v-if="!mobileMenuIcon" class="icon">
           <IconMenu />
         </OIcon>
-        <OIcon v-else class="icon"><IconX /></OIcon>
+        <OIcon v-else class="icon"><IconCancel /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <clientOnly>
@@ -212,7 +212,7 @@ function search() {
               @focus="showDrawer"
             >
               <template #suffix>
-                <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
+                <OIcon class="close" @click="donShowSearchBox"><IconCancel /></OIcon>
               </template>
             </OSearch>
           </div>

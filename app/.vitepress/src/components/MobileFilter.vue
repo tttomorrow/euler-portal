@@ -21,8 +21,8 @@
 import { useAttrs, ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
 
-import IconFilter from '~icons/app/icon-double_caret_vertical.svg';
-import IconX from '~icons/app/x.svg';
+import IconFilter from '~icons/app/icon-filter.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
 
 const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.screen);
@@ -176,7 +176,7 @@ const allHighLight = (val: any) => {
         class="o-screen-tags-tag"
         >{{ item }}
         <OIcon class="o-screen-tags-tag-icon" @click="delTag(item)"
-          ><IconX
+          ><IconCancel
         /></OIcon>
       </OTag>
     </div>
