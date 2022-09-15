@@ -212,7 +212,9 @@ function search() {
               @focus="showDrawer"
             >
               <template #suffix>
-                <OIcon class="close" @click="donShowSearchBox"><IconCancel /></OIcon>
+                <OIcon class="close" @click="donShowSearchBox"
+                  ><IconCancel
+                /></OIcon>
               </template>
             </OSearch>
           </div>

@@ -260,7 +260,8 @@ onMounted(() => {
           class="download-filter-mobile-card"
           @click="handleManufacturerClick(item, 1)"
         >
-          {{ item }} <IconCancel class="download-filter-mobile-card-icon"></IconCancel>
+          {{ item }}
+          <IconCancel class="download-filter-mobile-card-icon"></IconCancel>
         </div>
         <div
           v-for="item in activePublish"
@@ -268,7 +269,8 @@ onMounted(() => {
           class="download-filter-mobile-card"
           @click="handlePublishClick(item, 1)"
         >
-          {{ item }}<IconCancel class="download-filter-mobile-card-icon"></IconCancel>
+          {{ item
+          }}<IconCancel class="download-filter-mobile-card-icon"></IconCancel>
         </div>
         <div
           v-if="activeLTS"
