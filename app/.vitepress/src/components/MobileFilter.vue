@@ -25,7 +25,7 @@ import IconFilter from '~icons/app/icon-filter.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 
 const i18n = useI18n();
-const userCaseData = computed(() => i18n.value.screen);
+const userCaseData = computed(() => i18n.value.filter);
 
 const props = defineProps<{
   data: any;
