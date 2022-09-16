@@ -147,8 +147,8 @@ const changeTabItem = (event: any): void => {
         justify-content: center;
         width: 220px;
         height: 94px;
-        background-color: var(--e-color-brand1);
-        color: var(--e-color-text2);
+        background-color: var(--o-color-brand1);
+        color: var(--o-color-text2);
         font-size: var(--o-font-size-h7);
         margin-bottom: var(--o-spacing-h4);
         &-en {
@@ -173,10 +173,10 @@ const changeTabItem = (event: any): void => {
           justify-content: center;
           height: 48px;
           width: 100%;
-          color: var(--e-color-text1);
-          background-color: var(--e-color-bg2);
+          color: var(--o-color-text1);
+          background-color: var(--o-color-bg2);
           margin-right: var(--o-spacing-h5);
-          box-shadow: var(--e-shadow-l1);
+          box-shadow: var(--o-shadow-l1);
         }
         .right-title-item:last-child {
           margin: 0;
@@ -195,9 +195,9 @@ const changeTabItem = (event: any): void => {
               var(--o-spacing-h5);
             height: 94px;
             margin-right: var(--o-spacing-h5);
-            color: var(--e-color-text1);
-            background-color: var(--e-color-bg2);
-            box-shadow: var(--e-shadow-l1);
+            color: var(--o-color-text1);
+            background-color: var(--o-color-bg2);
+            box-shadow: var(--o-shadow-l1);
             &-right {
               display: flex;
               flex-direction: column;
@@ -210,13 +210,13 @@ const changeTabItem = (event: any): void => {
                 width: 60px;
                 height: 46px;
                 font-size: var(--o-font-size-text);
-                color: var(--e-color-brand1);
+                color: var(--o-color-brand1);
                 background-color: rgb(229, 234, 246);
               }
               .dialogue:hover,
               .etherpad:hover {
-                background-color: var(--e-color-brand1);
-                color: var(--e-color-text2);
+                background-color: var(--o-color-brand1);
+                color: var(--o-color-text2);
               }
               .etherpad {
                 margin-top: 2px;
@@ -238,7 +238,7 @@ const changeTabItem = (event: any): void => {
       font-weight: 700;
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-h8);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
     .mo-box {
       display: flex;
@@ -258,8 +258,8 @@ const changeTabItem = (event: any): void => {
           margin-bottom: var(--o-spacing-h5);
           width: 315px;
           height: 48px;
-          color: var(--e-color-text2);
-          background-color: var(--e-color-brand1);
+          color: var(--o-color-text2);
+          background-color: var(--o-color-brand1);
         }
         &-detail {
           display: flex;
@@ -269,10 +269,10 @@ const changeTabItem = (event: any): void => {
           width: 100%;
           height: 70px;
           padding: var(--o-spacing-h6) 0 var(--o-spacing-h6) var(--o-spacing-h4);
-          box-shadow: var(--e-shadow-l1);
+          box-shadow: var(--o-shadow-l1);
           margin-bottom: var(--o-spacing-h4);
           .detail-left {
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-h8);
             text-align: left;
@@ -291,13 +291,13 @@ const changeTabItem = (event: any): void => {
               width: 40px;
               height: 34px;
               font-size: var(--o-font-size-text);
-              color: var(--e-color-brand1);
+              color: var(--o-color-brand1);
               background-color: rgb(229, 234, 246);
             }
             .dialogue:hover,
             .etherpad:hover {
-              background-color: var(--e-color-brand1);
-              color: var(--e-color-text2);
+              background-color: var(--o-color-brand1);
+              color: var(--o-color-text2);
             }
             .etherpad {
               margin-top: 2px;

@@ -107,13 +107,13 @@ onMounted(() => {
   }
   &-item {
     max-width: 696px;
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
     margin-bottom: var(--o-spacing-h4);
     break-inside: avoid;
     padding: var(--o-spacing-h2);
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     &:hover {
-      box-shadow: var(--e-shadow-l2_hover);
+      box-shadow: var(--o-shadow-l2_hover);
     }
     @media (max-width: 1080px) {
       width: 100%;
@@ -128,9 +128,9 @@ onMounted(() => {
       font-size: var(--o-font-size-h4);
       line-height: var(--o-line-height-h4);
       cursor: pointer;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       &:hover {
-        color: var(--e-color-kleinblue6);
+        color: var(--o-color-kleinblue6);
       }
 
       @media (max-width: 768px) {
@@ -139,7 +139,7 @@ onMounted(() => {
       }
     }
     &-info {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       @media (max-width: 1080px) {
         margin-top: var(--o-spacing-h7);
       }
@@ -223,7 +223,7 @@ onMounted(() => {
           display: inline-block;
           margin-top: var(--o-spacing-h5);
           margin-right: var(--o-spacing-h5);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;

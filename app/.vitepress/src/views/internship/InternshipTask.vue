@@ -241,7 +241,7 @@ const go = (path: string) => {
   .task-introduce {
     font-size: 20px;
     line-height: 40px;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     @media (max-width: 1000px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
@@ -262,12 +262,12 @@ const go = (path: string) => {
     }
     .item {
       padding: 40px;
-      background-color: var(--e-color-bg2);
-      box-shadow: var(--e-shadow-l2);
+      background-color: var(--o-color-bg2);
+      box-shadow: var(--o-shadow-l2);
       transition: box-shadow 0.1s;
       min-height: 180px;
       .item-name {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         font-size: 20px;
         font-weight: 600;
         cursor: pointer;
@@ -287,7 +287,7 @@ const go = (path: string) => {
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
       }
       .more {
         font-size: 20px;
@@ -307,7 +307,7 @@ const go = (path: string) => {
           height: auto;
           margin-right: 24px;
           white-space: nowrap span {
-            color: var(--e-color-brand1);
+            color: var(--o-color-brand1);
           }
           &:nth-of-type(2) {
             margin-right: 0;
@@ -318,7 +318,7 @@ const go = (path: string) => {
             margin-right: 0;
           }
           .o-icon {
-            color: var(--e-color-brand1);
+            color: var(--o-color-brand1);
             margin-left: 8px;
             transition: all 0.3s;
           }
@@ -339,26 +339,26 @@ const go = (path: string) => {
         .sig-detail {
           &:hover {
             @media screen and (min-width: 1100px) {
-              border: 1px solid var(--e-color-brand1);
+              border: 1px solid var(--o-color-brand1);
               span {
-                color: var(--e-color-brand1);
+                color: var(--o-color-brand1);
               }
             }
           }
         }
         .o-button--text {
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           padding: 8px 12px !important;
           height: auto;
           &:hover {
             @media screen and (min-width: 1100px) {
               .o-icon {
-                color: var(--e-color-brand2);
+                color: var(--o-color-brand2);
               }
             }
           }
           .o-icon {
-            color: var(--e-color-brand1);
+            color: var(--o-color-brand1);
           }
         }
       }
@@ -366,7 +366,7 @@ const go = (path: string) => {
 
     .item:hover {
       @media screen and (min-width: 1100px) {
-        box-shadow: var(--e-shadow-l2_hover);
+        box-shadow: var(--o-shadow-l2_hover);
         transform: translateY(-2px);
       }
     }

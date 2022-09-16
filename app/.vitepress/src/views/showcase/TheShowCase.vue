@@ -298,12 +298,12 @@ onMounted(() => {
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
   @media (max-width: 768px) {
     padding: 0 0 40px 0;
-    background-color: var(--e-color-bg1);
+    background-color: var(--o-color-bg1);
   }
   .tag-box {
     width: 100%;
@@ -316,14 +316,14 @@ onMounted(() => {
     .tag-filter {
       padding-left: 0;
       :deep(.label) {
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
     }
     .tag-pc {
       width: 100%;
       margin-top: 24px;
       padding: var(--o-spacing-h5) var(--o-spacing-h2);
-      box-shadow: var(--e-shadow-l1);
+      box-shadow: var(--o-shadow-l1);
       @media (max-width: 768px) {
         display: none;
       }
@@ -331,7 +331,7 @@ onMounted(() => {
     .tag-h5 {
       display: none;
       width: 100%;
-      box-shadow: var(--e-shadow-l1);
+      box-shadow: var(--o-shadow-l1);
       padding: 0 16px;
       @media (max-width: 768px) {
         display: block;
@@ -371,7 +371,7 @@ onMounted(() => {
     margin-top: var(--o-spacing-h4);
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     @media (max-width: 768px) {
       display: none;
     }
@@ -487,20 +487,20 @@ onMounted(() => {
         font-size: var(--o-font-size-tip);
         .icon-prev {
           margin-right: 8px;
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
         }
         .page-number {
           margin: 0 28px;
           span:nth-of-type(1) {
-            color: var(--e-color-brand1);
+            color: var(--o-color-brand1);
           }
         }
         .icon-next {
           margin-left: 8px;
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
         }
         .disable-button {
-          color: var(--e-color-text5);
+          color: var(--o-color-text5);
         }
       }
     }

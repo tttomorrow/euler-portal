@@ -61,10 +61,10 @@ const { frontmatter } = useData();
 
 <style lang="scss" scoped>
 .migration-download {
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
 
   .migration-download-desc {
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     font-size: var(--o-font-size-h7);
     line-height: var(--o-line-height-h7);
     font-weight: 300;
@@ -126,7 +126,7 @@ const { frontmatter } = useData();
           margin-top: var(--o-spacing-h5);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
 
           @media screen and (max-width: 768px) {
             font-size: var(--o-font-size-tip);
@@ -151,7 +151,7 @@ const { frontmatter } = useData();
         .migration-version {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
 
           @media screen and (max-width: 768px) {
             font-size: var(--o-font-size-tip);
@@ -162,7 +162,7 @@ const { frontmatter } = useData();
         .migration-link {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
           margin-top: var(--o-spacing-h5);
           display: flex;
           justify-content: space-between;

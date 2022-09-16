@@ -90,7 +90,7 @@ onMounted(() => {
   }
 
   .banner-level2 {
-    background-color: var(--e-color-kleinblue4);
+    background-color: var(--o-color-kleinblue4);
   }
 }
 .banner-level2 {
@@ -98,7 +98,7 @@ onMounted(() => {
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--e-color-kleinblue6);
+  background-color: var(--o-color-kleinblue6);
 
   .banner-bg {
     position: absolute;
@@ -148,7 +148,7 @@ onMounted(() => {
       .banner-text-bg {
         position: absolute;
         top: 0;
-        color: var(--e-color-white);
+        color: var(--o-color-white);
         opacity: 0.14;
         font-size: var(--o-font-size-h1);
         line-height: var(--o-line-height-h1);
@@ -170,7 +170,7 @@ onMounted(() => {
       .banner-title {
         position: relative;
         z-index: 1;
-        color: var(--e-color-white);
+        color: var(--o-color-white);
         font-size: var(--o-font-size-h2);
         line-height: var(--o-line-height-h2);
         margin-top: 32px;
@@ -191,7 +191,7 @@ onMounted(() => {
       .banner-subtitle {
         position: relative;
         z-index: 1;
-        color: var(--e-color-white);
+        color: var(--o-color-white);
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
         margin-top: var(--o-spacing-h9);

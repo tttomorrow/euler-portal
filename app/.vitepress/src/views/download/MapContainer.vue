@@ -183,16 +183,16 @@ onMounted(() => {
     position: absolute;
     border: #fff285 1px solid;
     border-radius: var(--o-spacing-h10);
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
     z-index: 100;
     &-name {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
       white-space: nowrap;
     }
     &-location {
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
     }

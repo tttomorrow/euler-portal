@@ -28,10 +28,10 @@ const { frontmatter } = useData();
 
 <style lang="scss" scoped>
 .migration-transplantation {
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
 
   .migration-transplantation-desc {
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     font-size: var(--o-font-size-h7);
     line-height: var(--o-line-height-h7);
     font-weight: 300;
@@ -77,18 +77,18 @@ const { frontmatter } = useData();
 
     .migration-transplantation-card {
       position: relative;
-      background-color: var(--e-color-bg2);
-      border: 1px solid var(--e-color-brand1);
+      background-color: var(--o-color-bg2);
+      border: 1px solid var(--o-color-brand1);
       padding: 16px 18px;
       font-size: var(--o-font-size-h7);
       line-height: var(--o-font-size-h7);
       font-weight: 500;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       cursor: pointer;
 
       @media screen and (max-width: 768px) {
-        background-color: var(--e-color-brand1);
-        color: var(--e-color-text2);
+        background-color: var(--o-color-brand1);
+        color: var(--o-color-text2);
         text-align: center;
         padding: 3px 0;
         font-size: var(--o-font-size-text);
@@ -103,11 +103,11 @@ const { frontmatter } = useData();
         top: -1px;
         bottom: 0;
         width: 2px;
-        background-color: var(--e-color-brand1);
+        background-color: var(--o-color-brand1);
       }
 
       &:hover {
-        box-shadow: var(--e-shadow-l2_hover);
+        box-shadow: var(--o-shadow-l2_hover);
       }
     }
   }

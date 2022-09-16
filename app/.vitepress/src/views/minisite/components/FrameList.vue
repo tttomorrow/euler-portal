@@ -45,15 +45,15 @@ defineProps({
 <style lang="scss" scoped>
 .framelist-wrapper {
   .info {
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
     padding: var(--o-spacing-h2) 0;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
   }
   .desc {
     margin: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
     p {
       font-size: var(--o-font-size-text);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-text);
     }
     &-title {

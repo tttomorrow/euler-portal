@@ -190,8 +190,8 @@ onMounted(() => {
 :deep(.el-tabs) {
   .el-tabs__header {
     margin-bottom: 0;
-    background-color: var(--e-color-bg2);
-    box-shadow: var(--e-shadow-l1);
+    background-color: var(--o-color-bg2);
+    box-shadow: var(--o-shadow-l1);
     z-index: 20;
     @media screen and (max-width: 768px) {
       box-shadow: none;
@@ -204,17 +204,17 @@ onMounted(() => {
     @media screen and (max-width: 768px) {
       // margin: var(--o-spacing-h5) 0 0 0;
       height: 38px;
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
     }
   }
 }
 .wrapper {
   max-width: 1504px;
   margin: var(--o-spacing-h2) auto 0;
-  background-color: var(--e-color-bg1);
+  background-color: var(--o-color-bg1);
   padding: 0 44px;
   @media screen and (max-width: 768px) {
-    // background-color: var(--e-color-bg1);
+    // background-color: var(--o-color-bg1);
     // margin: var(--o-spacing-h5) 0 var(--o-spacing-h2) 0;
     margin: 16px 0 0;
     padding: 0;
@@ -223,9 +223,9 @@ onMounted(() => {
 .wrapper1 {
   max-width: 1504px;
   margin: 0 auto var(--o-spacing-h1);
-  background-color: var(--e-color-bg1);
+  background-color: var(--o-color-bg1);
   @media screen and (max-width: 768px) {
-    // background-color: var(--e-color-bg1);
+    // background-color: var(--o-color-bg1);
     // margin: var(--o-spacing-h5) 0 var(--o-spacing-h2) 0;
     margin: 16px 0 40px;
   }
@@ -234,15 +234,15 @@ onMounted(() => {
   max-width: 1504px;
   margin: 0 auto;
   padding: 0 44px;
-  background-color: var(--e-color-bg1);
+  background-color: var(--o-color-bg1);
   @media screen and (max-width: 768px) {
     width: 100%;
     padding: 0;
   }
 }
 .breadcrumb {
-  color: var(--e-color-text1);
-  background: var(--e-color-bg1);
+  color: var(--o-color-text1);
+  background: var(--o-color-bg1);
   display: flex;
   @media screen and (max-width: 768px) {
     margin-bottom: var(--o-spacing-h5);
@@ -252,49 +252,49 @@ onMounted(() => {
   .last-page {
     font-size: var(--o-font-size-tip);
     font-weight: normal;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     line-height: var(--o-line-height-tip);
     cursor: pointer;
   }
   .separtor {
     margin: 0 var(--o-spacing-h10);
     .o-icon {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
   }
   .current-page {
     font-size: var(--o-font-size-tip);
     font-weight: 600;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-tip);
   }
 }
 .bulletin-head {
   padding: var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2) 0;
-  background: var(--e-color-bg1);
+  background: var(--o-color-bg1);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
     margin: 0 var(--o-spacing-h5) var(--o-spacing-h5);
-    background: var(--e-color-bg2);
-    box-shadow: var(--e-shadow-l1);
+    background: var(--o-color-bg2);
+    box-shadow: var(--o-shadow-l1);
   }
   .bulletin-name {
     font-size: var(--o-font-size-h3);
     font-weight: normal;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h3);
     @media screen and (max-width: 768px) {
       line-height: var(--o-line-height-h8);
       font-size: var(--o-font-size-h8);
       font-weight: 300;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-bottom: var(--o-spacing-h8);
     }
   }
   .bulletin-intro {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h4);
     & div {
@@ -308,7 +308,7 @@ onMounted(() => {
       margin: 0;
       font-size: var(--o-font-size-tip);
       font-weight: 400;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-tip);
     }
   }
@@ -318,7 +318,7 @@ onMounted(() => {
   .o-tabs {
     .tab-content {
       padding: var(--o-spacing-h2);
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
       @media screen and (max-width: 768px) {
         margin: var(--o-spacing-h5) var(--o-spacing-h5) 0;
         padding: var(--o-spacing-h5);
@@ -337,7 +337,7 @@ onMounted(() => {
         &-title {
           font-size: var(--o-font-size-h5);
           font-weight: 500;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           line-height: var(--o-line-height-h5);
           margin-bottom: var(--o-spacing-h5);
           @media screen and (max-width: 768px) {
@@ -347,7 +347,7 @@ onMounted(() => {
           }
         }
         &-link {
-          color: var(--e-color-link1);
+          color: var(--o-color-link1);
           font-size: var(--o-font-size-text);
           font-weight: 400;
           line-height: var(--o-line-height-text);
@@ -361,7 +361,7 @@ onMounted(() => {
         &-text {
           font-size: var(--o-font-size-text);
           font-weight: 400;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           line-height: var(--o-line-height-text);
           @media screen and (max-width: 768px) {
             font-size: var(--o-font-size-tip);
@@ -369,7 +369,7 @@ onMounted(() => {
             line-height: var(--o-line-height-tip);
           }
           a {
-            color: var(--e-color-link1);
+            color: var(--o-color-link1);
           }
         }
       }
@@ -380,7 +380,7 @@ onMounted(() => {
           font-weight: 400;
           line-height: var(--o-line-height-h8);
           margin-bottom: var(--o-spacing-h3);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
         }
         &-class {
           margin-bottom: var(--o-spacing-h4);
@@ -388,16 +388,16 @@ onMounted(() => {
             margin-bottom: 0;
           }
           &-achitecture {
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             font-size: var(--o-font-size-h8);
             line-height: 64px;
-            border-bottom: 1px solid var(--e-color-border1);
+            border-bottom: 1px solid var(--o-color-border1);
           }
           &-rpm {
             line-height: var(--o-line-height-h3);
             font-size: var(--o-font-size-text);
-            color: var(--e-color-text4);
-            border-bottom: 1px solid var(--e-color-border1);
+            color: var(--o-color-text4);
+            border-bottom: 1px solid var(--o-color-border1);
             &:last-child {
               border: none;
             }

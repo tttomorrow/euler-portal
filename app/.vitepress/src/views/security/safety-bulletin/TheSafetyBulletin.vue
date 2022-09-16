@@ -11,7 +11,6 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppContent from '@/components/AppContent.vue';
-import OSearch from 'opendesign/search/OSearch.vue';
 
 import banner from '@/assets/banner/banner-security.png';
 import satetyBulletin from '@/assets/illustrations/support/safety-bulletin.png';
@@ -329,17 +328,17 @@ watch(queryData, () => getSecurityLists(queryData));
     display: none;
     margin: var(--o-spacing-h5) 0;
     width: 100%;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     .o-icon {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
     .selected-year {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
     :deep(.el-collapse) {
       border: none;
       .el-collapse-item__header {
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         padding: 0 8px;
         border: none;
         height: 36px;
@@ -357,8 +356,8 @@ watch(queryData, () => getSecurityLists(queryData));
     }
     .years {
       padding: 0 8px 8px;
-      background-color: var(--e-color-bg2);
-      color: var(--e-color-text1);
+      background-color: var(--o-color-bg2);
+      color: var(--o-color-text1);
       &-item {
         margin-top: var(--o-spacing-h8);
         &:first-child {
@@ -366,7 +365,7 @@ watch(queryData, () => getSecurityLists(queryData));
         }
       }
       .selected {
-        background-color: var(--e-color-bg4);
+        background-color: var(--o-color-bg4);
       }
     }
     @media screen and (max-width: 768px) {
@@ -386,7 +385,7 @@ watch(queryData, () => getSecurityLists(queryData));
       width: 56px;
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-text);
       margin-right: var(--o-spacing-h4);
     }
@@ -397,20 +396,20 @@ watch(queryData, () => getSecurityLists(queryData));
       margin-right: var(--o-spacing-h3);
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
       line-height: var(--o-line-height-text);
 
       cursor: pointer;
     }
     .active {
       display: inline-block;
-      border: 1px solid var(--e-color-link1);
-      color: var(--e-color-link1);
+      border: 1px solid var(--o-color-link1);
+      color: var(--o-color-link1);
       padding: 0px var(--o-spacing-h6);
     }
     .card-header {
       padding-bottom: var(--o-spacing-h8);
-      border-bottom: 1px solid var(--e-color-division1);
+      border-bottom: 1px solid var(--o-color-division1);
     }
     .card-body {
       padding-top: var(--o-spacing-h8);
@@ -427,8 +426,8 @@ watch(queryData, () => getSecurityLists(queryData));
       width: 100%;
       margin-bottom: var(--o-spacing-h8);
       .selected {
-        background-color: var(--e-color-brand1);
-        color: var(--e-color-text2);
+        background-color: var(--o-color-brand1);
+        color: var(--o-color-text2);
       }
       &-item {
         cursor: pointer;
@@ -437,12 +436,12 @@ watch(queryData, () => getSecurityLists(queryData));
         padding: var(--o-spacing-h9);
         font-size: var(--o-font-size-text);
         font-weight: 400;
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         line-height: var(--o-line-height-text);
-        border: 1px solid var(--e-color-brand1);
+        border: 1px solid var(--o-color-brand1);
         border-right: 0;
         &:last-child {
-          border: 1px solid var(--e-color-brand1);
+          border: 1px solid var(--o-color-brand1);
         }
       }
     }
@@ -450,7 +449,7 @@ watch(queryData, () => getSecurityLists(queryData));
   .pc-list {
     margin-bottom: var(--o-spacing-h2);
     .detail-page {
-      color: var(--e-color-link1);
+      color: var(--o-color-link1);
       cursor: pointer;
     }
     @media screen and (max-width: 768px) {
@@ -460,13 +459,13 @@ watch(queryData, () => getSecurityLists(queryData));
   .empty-tip {
     text-align: center;
     font-size: var(--o-font-size-tip);
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     padding: var(--o-spacing-h2) 0;
   }
   .mobile-list {
     display: none;
     margin-bottom: var(--o-spacing-h5);
-    box-shadow: var(--e-shadow1);
+    box-shadow: var(--o-shadow1);
     @media screen and (max-width: 768px) {
       display: block;
     }
@@ -474,11 +473,11 @@ watch(queryData, () => getSecurityLists(queryData));
       padding: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h8);
       font-size: var(--o-font-size-tip);
       font-weight: 400;
-      color: var(--e-color-neutral8);
+      color: var(--o-color-neutral8);
       line-height: var(--o-line-height-tip);
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
       &:nth-child(odd) {
-        background: var(--e-color-bg4);
+        background: var(--o-color-bg4);
       }
       & li {
         margin-bottom: var(--o-spacing-h8);
@@ -486,7 +485,7 @@ watch(queryData, () => getSecurityLists(queryData));
       li:first-child {
         margin-bottom: 0;
         .notice {
-          color: var(--e-color-link1);
+          color: var(--o-color-link1);
         }
       }
       li:nth-child(4) {
@@ -496,7 +495,7 @@ watch(queryData, () => getSecurityLists(queryData));
         }
       }
       span {
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         margin-right: var(--o-spacing-h8);
       }
     }
@@ -506,7 +505,7 @@ watch(queryData, () => getSecurityLists(queryData));
     .slot-content {
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-spacing-h4);
     }
   }

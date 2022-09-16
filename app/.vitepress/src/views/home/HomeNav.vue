@@ -52,8 +52,8 @@ const imgUrlHover = computed(
   grid-template-columns: repeat(4, minmax(82px, 1fr));
   column-gap: 0;
   row-gap: 0;
-  background: var(--e-color-bg2);
-  box-shadow: var(--e-shadow-l1);
+  background: var(--o-color-bg2);
+  box-shadow: var(--o-shadow-l1);
   z-index: 10;
 
   .nav-item {
@@ -61,7 +61,7 @@ const imgUrlHover = computed(
     padding-left: var(--o-spacing-h5);
     display: flex;
     align-items: center;
-    border-left: 1px solid var(--e-color-division1);
+    border-left: 1px solid var(--o-color-division1);
     .nav-item-icon-hover {
       display: none;
     }
@@ -78,7 +78,7 @@ const imgUrlHover = computed(
       margin-left: var(--o-spacing-h5);
       .nav-title {
         word-break: break-all;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         line-height: var(--o-line-height-text);
         font-weight: 500;
         font-size: var(--o-font-size-h7);
@@ -88,13 +88,13 @@ const imgUrlHover = computed(
       }
       // .nav-title-en {
       //   font-weight: 400;
-      //   color: var(--e-color-text1);
+      //   color: var(--o-color-text1);
       //   font-size: var(--o-font-size-h7);
       // }
       .nav-descriptive {
         line-height: var(--o-line-height-text);
         font-size: var(--o-font-size-text);
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
         text-align: left;
       }
     }
@@ -109,7 +109,7 @@ const imgUrlHover = computed(
         .nav-text {
           .nav-title,
           .nav-descriptive {
-            color: var(--e-color-brand1);
+            color: var(--o-color-brand1);
           }
         }
       }
@@ -132,7 +132,7 @@ const imgUrlHover = computed(
       content: '';
       width: 1px;
       height: calc(100% - 48px);
-      background-color: var(--e-color-division1);
+      background-color: var(--o-color-division1);
     }
     .nav-item {
       padding: 0;
@@ -161,7 +161,7 @@ const imgUrlHover = computed(
     .nav-item:nth-child(-n + 2) {
       padding-top: 0;
       padding-bottom: var(--o-spacing-h6);
-      border-bottom: 1px solid var(--e-color-division1);
+      border-bottom: 1px solid var(--o-color-division1);
     }
     .nav-item:nth-child(2) {
       position: relative;

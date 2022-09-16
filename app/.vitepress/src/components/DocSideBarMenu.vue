@@ -87,7 +87,7 @@ const leave = (el: HTMLUListElement) => {
 <style lang="scss" scoped>
 .sidebar-menu {
   position: relative;
-  color: var(--e-color-white);
+  color: var(--o-color-white);
 
   .menu-title {
     position: relative;
@@ -118,11 +118,11 @@ const leave = (el: HTMLUListElement) => {
     }
 
     &:hover {
-      color: var(--e-color-yellow5);
+      color: var(--o-color-yellow5);
     }
 
     &.active {
-      color: var(--e-color-yellow5);
+      color: var(--o-color-yellow5);
     }
 
     &.open {
@@ -135,7 +135,7 @@ const leave = (el: HTMLUListElement) => {
   .menu-list {
     overflow-y: hidden;
     transition: 0.3s height cubic-bezier(0.645, 0.045, 0.355, 1);
-    background-color: var(--e-color-kleinblue4);
+    background-color: var(--o-color-kleinblue4);
     padding: 0 40px;
 
     .menu-item {
@@ -158,11 +158,11 @@ const leave = (el: HTMLUListElement) => {
       }
 
       &:hover {
-        color: var(--e-color-yellow5);
+        color: var(--o-color-yellow5);
       }
 
       &.active {
-        color: var(--e-color-yellow5);
+        color: var(--o-color-yellow5);
       }
     }
   }

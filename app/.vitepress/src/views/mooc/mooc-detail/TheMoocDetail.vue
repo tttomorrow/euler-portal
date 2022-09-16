@@ -482,11 +482,11 @@ const iconMenuShow = computed(() => {
 </template>
 <style lang="scss" scoped>
 :deep(.el-tree-node__content:hover) {
-  background-color: var(--e-color-bg4);
+  background-color: var(--o-color-bg4);
 }
 :deep(.el-tree-node) {
   &:focus > .el-tree-node__content {
-    background-color: var(--e-color-bg4) !important;
+    background-color: var(--o-color-bg4) !important;
   }
 }
 .mooc-detail {
@@ -498,13 +498,13 @@ const iconMenuShow = computed(() => {
       width: 100%;
       font-size: var(--o-font-size-h3);
       line-height: var(--o-line-height-h3);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-top: var(--o-spacing-h2);
     }
     .entry-welcome {
       font-size: var(--o-font-size-text);
       line-height: 22px;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-top: var(--o-spacing-h8);
     }
     .back {
@@ -522,30 +522,30 @@ const iconMenuShow = computed(() => {
       align-items: flex-start;
       .article-nav {
         margin-right: 60px;
-        background: var(--e-color-bg2);
-        box-shadow: var(--e-shadow-l1);
+        background: var(--o-color-bg2);
+        box-shadow: var(--o-shadow-l1);
         border-radius: 8px;
         .nav-top {
           width: 360px;
           height: 56px;
-          background: var(--e-color-bg2);
+          background: var(--o-color-bg2);
           font-size: 18px;
           line-height: 60px;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           padding-left: var(--o-spacing-h4);
           font-weight: bold;
         }
         :deep(.el-tree) {
           width: 360px;
           overflow: hidden;
-          background-color: var(--e-color-bg2);
+          background-color: var(--o-color-bg2);
         }
 
         :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
           order: 2;
           padding: 12px;
           font-size: var(--o-font-size-h5);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
         }
         :deep(.el-tree-node__expand-icon.expanded) {
           transform: rotate(180deg);
@@ -558,13 +558,13 @@ const iconMenuShow = computed(() => {
         :deep(.el-tree--highlight-current
             .el-tree-node.is-current
             > .el-tree-node__content) {
-          background-color: var(--e-color-bg4);
+          background-color: var(--o-color-bg4);
         }
         :deep(.el-tree-node__children .el-tree-node__expand-icon) {
           display: none;
         }
         :deep(.el-tree-node__children) {
-          background-color: var(--e-color-bg1);
+          background-color: var(--o-color-bg1);
         }
         :deep(.el-tree-node__children .is-current .el-tree-node__content) {
           background-color: transparent;
@@ -576,16 +576,16 @@ const iconMenuShow = computed(() => {
             left: 0;
             width: 2px;
             height: 60px;
-            background-color: var(--e-color-brand1);
+            background-color: var(--o-color-brand1);
           }
         }
         :deep(.el-tree-node__content:hover) {
-          background-color: var(--e-color-bg4);
+          background-color: var(--o-color-bg4);
         }
         :deep(.el-tree .el-tree-node__label) {
           font-size: 16px;
           line-height: 16px;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
         }
         :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
           font-size: 14px;
@@ -601,12 +601,12 @@ const iconMenuShow = computed(() => {
         max-width: 864px;
         .infomation {
           padding-bottom: 30px;
-          border-bottom: 1px solid var(--e-color-division1);
+          border-bottom: 1px solid var(--o-color-division1);
           & > div {
             &:first-of-type {
               .desc {
                 font-size: var(--o-font-size-text);
-                color: var(--e-color-text1);
+                color: var(--o-color-text1);
                 line-height: 22px;
                 margin-top: 20px;
               }
@@ -614,7 +614,7 @@ const iconMenuShow = computed(() => {
                 font-size: var(--o-font-size-h5);
                 line-height: var(--o-line-height-h5);
                 font-weight: 600;
-                color: var(--e-color-text1);
+                color: var(--o-color-text1);
               }
               .download {
                 :deep(.o-button) {
@@ -639,7 +639,7 @@ const iconMenuShow = computed(() => {
           min-width: 60%;
           position: relative;
           padding: 30px 0;
-          border-bottom: 1px solid var(--e-color-division1);
+          border-bottom: 1px solid var(--o-color-division1);
           @media (max-width: 1400px) {
             width: 560px;
             height: 375px;
@@ -684,20 +684,20 @@ const iconMenuShow = computed(() => {
           font-size: var(--o-font-size-text);
           line-height: 22px;
           padding: var(--o-spacing-h2) 0;
-          color: var(--e-color-text4);
-          border-bottom: 1px solid var(--e-color-division1);
+          color: var(--o-color-text4);
+          border-bottom: 1px solid var(--o-color-division1);
           .teacher {
             margin-top: 20px;
             & > p {
               font-size: 14px;
-              color: var(--e-color-text4);
+              color: var(--o-color-text4);
               margin-bottom: 10px;
               line-height: 36px;
               &:nth-of-type(1) {
                 font-size: var(--o-font-size-h8);
                 line-height: var(--o-line-height-h8);
                 font-weight: 600;
-                color: var(--e-color-text1);
+                color: var(--o-color-text1);
               }
             }
             .techer-img {
@@ -719,20 +719,20 @@ const iconMenuShow = computed(() => {
                 .name {
                   font-size: var(--o-font-size-h7);
                   line-height: var(--o-line-height-h7);
-                  color: var(--e-color-text1);
+                  color: var(--o-color-text1);
                   margin-top: 30px;
                 }
                 .position {
                   font-size: 14px;
                   line-height: 22px;
-                  color: var(--e-color-text4);
+                  color: var(--o-color-text4);
                   margin-top: 3px;
                 }
               }
             }
           }
           .welcome {
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             font-size: 18px;
             font-weight: 300;
             margin-bottom: var(--o-spacing-h5);
@@ -754,18 +754,18 @@ const iconMenuShow = computed(() => {
             line-height: 22px;
             font-weight: 400;
             position: absolute;
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             .o-icon {
               font-size: var(--o-font-size-h8);
-              color: var(--e-color-brand1);
+              color: var(--o-color-brand1);
             }
             span:nth-of-type(1) {
               margin-right: 8px;
             }
             &:hover {
-              color: var(--e-color-brand2);
+              color: var(--o-color-brand2);
               .o-icon {
-                color: var(--e-color-brand2);
+                color: var(--o-color-brand2);
               }
             }
           }
@@ -797,7 +797,7 @@ const iconMenuShow = computed(() => {
         left: 48px;
         z-index: 99;
         font-size: 24px;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
       .mobile-menu {
         width: 100%;
@@ -809,13 +809,13 @@ const iconMenuShow = computed(() => {
         .next {
           font-size: 14px;
           font-weight: 400;
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
           line-height: 20px;
           cursor: pointer;
         }
         .prev {
           span:nth-of-type(2) {
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             margin-left: var(--o-spacing-h8);
             position: relative;
             top: -2px;
@@ -823,7 +823,7 @@ const iconMenuShow = computed(() => {
         }
         .next {
           span:nth-of-type(1) {
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             margin-right: var(--o-spacing-h8);
             position: relative;
             top: -2px;
@@ -835,17 +835,17 @@ const iconMenuShow = computed(() => {
         width: 100%;
         margin-top: var(--o-spacing-h5);
         padding: var(--o-spacing-h5);
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         h1 {
           font-size: var(--o-font-size-h8);
           line-height: var(--o-line-height-h8);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           font-weight: 500;
         }
         .entry-welcome {
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           margin-top: var(--o-spacing-h8);
         }
         .infomation {
@@ -853,12 +853,12 @@ const iconMenuShow = computed(() => {
           .title {
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             font-weight: 600;
           }
           .desc {
             font-size: 12px;
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             line-height: 20px;
             margin-top: var(--o-spacing-h8);
           }
@@ -878,13 +878,13 @@ const iconMenuShow = computed(() => {
         .text {
           p {
             font-size: 14px;
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             line-height: 24px;
           }
           .teacher {
             margin-top: 16px;
             & > p {
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
             }
             .item {
               display: flex;
@@ -900,10 +900,10 @@ const iconMenuShow = computed(() => {
               div {
                 p {
                   font-size: 12px;
-                  color: var(--e-color-text1);
+                  color: var(--o-color-text1);
                   line-height: 16px;
                   &:last-of-type {
-                    color: var(--e-color-text1);
+                    color: var(--o-color-text1);
                     margin-top: 10px;
                   }
                 }
@@ -911,14 +911,14 @@ const iconMenuShow = computed(() => {
             }
           }
           .welcome {
-            color: var(--e-color-brand1);
+            color: var(--o-color-brand1);
             margin-bottom: var(--o-spacing-h5);
           }
         }
         .text,
         .video {
-          border-top: 1px solid var(--e-color-division1);
-          border-bottom: 1px solid var(--e-color-division1);
+          border-top: 1px solid var(--o-color-division1);
+          border-bottom: 1px solid var(--o-color-division1);
           padding: var(--o-spacing-h5) 0;
           margin-top: var(--o-spacing-h5);
           position: relative;
@@ -957,16 +957,16 @@ const iconMenuShow = computed(() => {
     top: 0;
     width: 268px;
     height: 100vh;
-    background: var(--e-color-bg2);
+    background: var(--o-color-bg2);
     box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     z-index: 999;
     .nav-top {
       width: 100%;
-      background: var(--e-color-bg2);
+      background: var(--o-color-bg2);
       font-size: 14px;
       line-height: 22px;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       padding: var(--o-spacing-h5);
       font-weight: bold;
       display: flex;
@@ -985,13 +985,13 @@ const iconMenuShow = computed(() => {
     :deep(.el-tree) {
       width: 100%;
       overflow: hidden;
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
     }
     :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
       order: 2;
       padding: 12px;
       font-size: var(--o-font-size-h8);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
     :deep(.el-tree-node__expand-icon.expanded) {
       transform: rotate(180deg);
@@ -999,7 +999,7 @@ const iconMenuShow = computed(() => {
     :deep(.el-tree--highlight-current
         .el-tree-node.is-current
         > .el-tree-node__content) {
-      background-color: var(--e-color-bg4);
+      background-color: var(--o-color-bg4);
     }
     :deep(.el-tree-node:nth-of-type(1)
         > .el-tree-node__content
@@ -1010,7 +1010,7 @@ const iconMenuShow = computed(() => {
       display: none;
     }
     :deep(.el-tree-node__children .is-current .el-tree-node__label) {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
     :deep(.el-tree--highlight-current
         .el-tree-node.is-current
@@ -1018,12 +1018,12 @@ const iconMenuShow = computed(() => {
       background-color: transparent;
     }
     :deep(.el-tree-node__children) {
-      background-color: var(--e-color-bg1);
+      background-color: var(--o-color-bg1);
     }
     :deep(.el-tree .el-tree-node__label) {
       font-size: 14px;
       line-height: 16px;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
     :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
       font-size: 14px;

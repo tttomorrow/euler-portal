@@ -39,7 +39,7 @@ const i18n = useI18n();
   h3 {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -64,8 +64,8 @@ const i18n = useI18n();
     margin: 0px -2px -2px 0px;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--e-color-division1);
-    background-color: var(--e-color-bg2);
+    border: 1px solid var(--o-color-division1);
+    background-color: var(--o-color-bg2);
     max-height: 120px;
     overflow: hidden;
     img {

@@ -83,10 +83,10 @@ onUnmounted(() => {
 <style lang="scss">
 .o-select {
   --o-select-font-tip: var(--o-font-size-tip);
-  --o-select-font-text: var(--e-color-text4);
-  --o-select-color-bg: var(--e-color-bg2);
-  --o-select-shadow: var(--e-shadow-l1);
-  --o-select-shadow_hover: var(--e-shadow-l2);
+  --o-select-font-text: var(--o-color-text4);
+  --o-select-color-bg: var(--o-color-bg2);
+  --o-select-shadow: var(--o-shadow-l1);
+  --o-select-shadow_hover: var(--o-shadow-l2);
   border: none;
   --el-select-border-color-hover: transparent !important;
   &:hover {

@@ -124,20 +124,20 @@ const commonStore = useCommon();
 
 <style scoped lang="scss">
 .headline {
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   margin-top: var(--o-spacing-h1);
   font-size: 40px;
   opacity: 0.1;
 }
 .subtitle {
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   font-size: var(--o-font-size-h3);
   margin-bottom: var(--o-spacing-h2);
   transform: translateY(-24px);
 }
 .summit-middle {
   &-text {
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     font-size: var(--o-font-size-h8);
     line-height: var(--o-line-height-h8);
     @media (max-width: 780px) {
@@ -161,7 +161,7 @@ const commonStore = useCommon();
   &-construction {
     text-align: center;
     &-guidance {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       font-size: var(--o-font-size-h6);
       line-height: var(--o-line-height-h3);
       margin-bottom: var(--o-spacing-h2);
@@ -184,7 +184,7 @@ const commonStore = useCommon();
       }
     }
     &-company {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       font-size: var(--o-font-size-h6);
       line-height: var(--o-line-height-h3);
       p {
@@ -223,9 +223,9 @@ const commonStore = useCommon();
         &-item {
           cursor: pointer;
           width: 456px;
-          background-color: var(--e-color-bg2);
+          background-color: var(--o-color-bg2);
           display: flex;
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
           font-size: var(--o-font-size-h7);
           img {
             margin: var(--o-spacing-h4);

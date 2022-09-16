@@ -57,7 +57,7 @@ const goLink = (url: string, isBlank: boolean) => {
 </template>
 <style lang="scss" scoped>
 .content-map {
-  background-color: var(--e-color-bg1);
+  background-color: var(--o-color-bg1);
   width: 100%;
   padding-bottom: var(--o-spacing-h1);
   &-img {
@@ -65,7 +65,7 @@ const goLink = (url: string, isBlank: boolean) => {
     position: relative;
     display: block;
     margin: 0 auto;
-    background-color: var(--e-color-bg4);
+    background-color: var(--o-color-bg4);
     img {
       width: 1034px;
       display: block;
@@ -109,9 +109,9 @@ const goLink = (url: string, isBlank: boolean) => {
     height: 30px;
     top: 22px;
     right: 22px;
-    background-color: var(--e-color-bg2);
-    color: var(--e-color-brand1);
-    border: 1px solid var(--e-color-brand1);
+    background-color: var(--o-color-bg2);
+    color: var(--o-color-brand1);
+    border: 1px solid var(--o-color-brand1);
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-h6);
     text-align: center;

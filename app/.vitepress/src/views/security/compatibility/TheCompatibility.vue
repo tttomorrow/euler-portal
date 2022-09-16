@@ -7,8 +7,6 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppContent from '@/components/AppContent.vue';
-import OSelect from 'opendesign/select/OSelect.vue';
-import OOption from 'opendesign/select/OOption.vue';
 
 import banner from '@/assets/banner/banner-security.png';
 import compatibility from '@/assets/illustrations/support/compatibility.png';
@@ -1362,7 +1360,7 @@ onMounted(() => {
 :deep(.el-tabs__nav-scroll) {
   display: flex;
   justify-content: center;
-  background-color: var(--e-color-bg2);
+  background-color: var(--o-color-bg2);
   height: 48px;
 }
 .mobile-content {
@@ -1385,14 +1383,14 @@ onMounted(() => {
     --el-collapse-border-color: none;
     .el-collapse-item__header {
       padding-left: var(--o-spacing-h8);
-      background-color: var(--e-color-bg2);
-      color: var(--e-color-text1);
+      background-color: var(--o-color-bg2);
+      color: var(--o-color-text1);
       border-bottom: none;
-      box-shadow: var(--e-shadow-l1);
+      box-shadow: var(--o-shadow-l1);
       height: 34px;
     }
     .el-collapse-item__content {
-      background-color: var(--e-color-bg1);
+      background-color: var(--o-color-bg1);
     }
     .el-collapse-item__content:last-child {
       padding-bottom: 0;
@@ -1444,13 +1442,13 @@ onMounted(() => {
   }
 }
 .friendly-link {
-  color: var(--e-color-link1);
+  color: var(--o-color-link1);
 }
 .pc-list {
   margin-bottom: var(--o-spacing-h2);
   .hardware-info {
     cursor: pointer;
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
   }
   @media screen and (max-width: 768px) {
     display: none;
@@ -1459,7 +1457,7 @@ onMounted(() => {
 .empty-status {
   text-align: center;
   font-size: var(--o-font-size-tip);
-  color: var(--e-color-text4);
+  color: var(--o-color-text4);
   line-height: var(--o-spacing-tip);
   padding: var(--o-spacing-h2) 0 var(--o-spacing-h5);
 }
@@ -1467,7 +1465,7 @@ onMounted(() => {
   display: none;
   margin-bottom: var(--o-spacing-h5);
   margin-top: var(--o-spacing-h6);
-  box-shadow: var(--e-shadow-l1);
+  box-shadow: var(--o-shadow-l1);
   @media screen and (max-width: 768px) {
     display: block;
   }
@@ -1476,11 +1474,11 @@ onMounted(() => {
     padding: var(--o-spacing-h5);
     font-size: var(--o-font-size-tip);
     font-weight: 400;
-    color: var(--e-color-neutral8);
+    color: var(--o-color-neutral8);
     line-height: var(--o-line-height-tip);
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     &:nth-child(odd) {
-      background: var(--e-color-bg4);
+      background: var(--o-color-bg4);
     }
     & li {
       margin-bottom: 8px;
@@ -1495,7 +1493,7 @@ onMounted(() => {
       }
     }
     span {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-right: var(--o-spacing-h8);
     }
   }
@@ -1506,7 +1504,7 @@ onMounted(() => {
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
 }
@@ -1514,20 +1512,20 @@ onMounted(() => {
   margin-top: var(--o-spacing-h4);
   font-size: var(--o-font-size-h8);
   font-weight: 400;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-line-height-h8);
   a {
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
   }
 }
 .mobile-about {
   padding: var(--o-spacing-h5);
   font-size: var(--o-font-size-tip);
   font-weight: 400;
-  color: var(--e-color-text4);
+  color: var(--o-color-text4);
   line-height: var(--o-line-height-tip);
   a {
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
   }
 }
 .last-mobile-about {

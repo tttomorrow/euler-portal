@@ -52,7 +52,7 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
   }
   span:nth-of-type(1) {
     a {
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
     }
   }
   span:nth-of-type(2) {
@@ -61,9 +61,9 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
   }
   span:nth-of-type(2),
   span:nth-of-type(3) {
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     a {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
     .no-click {
       cursor: default;

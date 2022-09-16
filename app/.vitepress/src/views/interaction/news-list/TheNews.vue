@@ -584,7 +584,7 @@ const moblieCurrentChange = (val: string) => {
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
 }
@@ -608,7 +608,7 @@ const moblieCurrentChange = (val: string) => {
       }
       &-title {
         margin-right: var(--o-spacing-h5);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         font-size: var(--o-font-size-h7);
       }
     }
@@ -628,7 +628,7 @@ const moblieCurrentChange = (val: string) => {
       cursor: pointer;
     }
     &-item:hover {
-      box-shadow: var(--e-shadow-l2_hover);
+      box-shadow: var(--o-shadow-l2_hover);
       .news-img img {
         transform: scale(1.05);
       }
@@ -649,7 +649,7 @@ const moblieCurrentChange = (val: string) => {
   }
   &-info {
     padding: var(--o-spacing-h4);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
   &-title {
     font-weight: 400;
@@ -773,12 +773,12 @@ const moblieCurrentChange = (val: string) => {
   .news-time {
     line-height: var(--o-line-height-tip);
     font-size: var(--o-font-size-tip);
-    color: var(--e-color-neutral5);
+    color: var(--o-color-neutral5);
   }
   .news-content {
     line-height: var(--o-line-height-tip);
     font-size: var(--o-font-size-tip);
-    color: var(--e-color-neutral5);
+    color: var(--o-color-neutral5);
   }
   .news-select {
     display: none;

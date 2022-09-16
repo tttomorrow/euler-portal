@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import MiniTitle from './MiniTitle.vue';
 import DocsList from './DocsList.vue';
-import OCollapseItem from 'opendesign/collapse/OCollapseItem.vue';
 const props = defineProps({
   docsObj: {
     type: Object,
@@ -77,7 +76,7 @@ const docsActive = ref(props.docsObj.TAB && props.docsObj.TAB[0]?.VALUE);
       }
       :deep(.el-tabs__nav) {
         .is-active {
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
         }
       }
       :deep(.el-tabs__content) {
@@ -109,7 +108,7 @@ const docsActive = ref(props.docsObj.TAB && props.docsObj.TAB[0]?.VALUE);
             left: var(--o-spacing-h8);
             right: var(--o-spacing-h8);
             position: absolute;
-            background: var(--e-color-border2);
+            background: var(--o-color-border2);
             height: 1px;
             font-size: 0;
             bottom: 0;
@@ -121,7 +120,7 @@ const docsActive = ref(props.docsObj.TAB && props.docsObj.TAB[0]?.VALUE);
           }
         }
         :deep(.el-collapse-item__wrap) {
-          background-color: var(--e-color-bg1);
+          background-color: var(--o-color-bg1);
           .el-collapse-item__content {
             padding: 0;
           }

@@ -507,11 +507,11 @@ const watchData = watch(
   font-size: var(--o-font-size-h8);
   .o-icon {
     font-size: var(--o-font-size-h5);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
 }
 .month-date {
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   padding: 0 var(--o-spacing-h8);
 }
 @media screen and (max-width: 768px) {
@@ -543,12 +543,12 @@ const watchData = watch(
     cursor: pointer;
     padding: 12px;
     &:hover {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
   }
   .active {
-    background-color: var(--e-color-brand1);
-    color: var(--e-color-text2) !important;
+    background-color: var(--o-color-brand1);
+    color: var(--o-color-text2) !important;
   }
 }
 .o-icon {
@@ -556,18 +556,18 @@ const watchData = watch(
   font-size: var(--o-font-size-h7);
   transition: color 0.2s;
   &:hover {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     svg {
-      color: var(--e-color-brand2);
-      fill: var(--e-color-brand2);
+      color: var(--o-color-brand2);
+      fill: var(--o-color-brand2);
     }
   }
 }
 .main-body {
   display: flex;
   :deep(.el-calendar) {
-    --el-calendar-border: 1px solid var(--e-color-border2);
-    background-color: var(--e-color-bg1);
+    --el-calendar-border: 1px solid var(--o-color-border2);
+    background-color: var(--o-color-bg1);
     .el-collapse-item__content {
       padding: 0;
       background-color: transparent;
@@ -577,16 +577,16 @@ const watchData = watch(
       padding: 0;
       border: none;
       @media screen and (max-width: 768px) {
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         .left-title {
           margin: 0;
         }
       }
     }
     .el-calendar__body {
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
       th {
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
       }
     }
   }
@@ -600,13 +600,13 @@ const watchData = watch(
     .collapse-box-mo {
       margin: var(--o-spacing-h6) 0;
       :deep(.el-collapse-item) {
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         padding: 0 var(--o-spacing-h8);
         .el-icon {
           font-size: var(--o-font-size-text);
           font-weight: 700;
           transform: rotate(90deg);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
         }
         .el-icon.is-active {
           transform: rotate(270deg);
@@ -614,7 +614,7 @@ const watchData = watch(
         .el-collapse-item__header {
           height: 34px;
           border: none;
-          background-color: var(--e-color-bg2);
+          background-color: var(--o-color-bg2);
         }
         .el-collapse-item__wrap {
           border: 0;
@@ -644,7 +644,7 @@ const watchData = watch(
         width: 100%;
         .o-icon {
           color: inherit;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           font-size: var(--o-font-size-h8);
         }
         .month-date {
@@ -664,7 +664,7 @@ const watchData = watch(
       th {
         text-align: center;
       }
-      background-color: var(--e-color-bg4);
+      background-color: var(--o-color-bg4);
     }
     @media screen and (max-width: 1100px) {
       max-width: 400px;
@@ -677,8 +677,8 @@ const watchData = watch(
     .is-today {
       .el-calendar-day {
         .day-box {
-          color: var(--e-color-text4);
-          background-color: var(--e-color-bg4);
+          color: var(--o-color-text4);
+          background-color: var(--o-color-bg4);
         }
       }
     }
@@ -702,9 +702,9 @@ const watchData = watch(
           background-color: transparent;
           .el-calendar-day {
             .day-box {
-              background-color: var(--e-color-brand1);
+              background-color: var(--o-color-brand1);
               .date-calender {
-                color: var(--e-color-text2);
+                color: var(--o-color-text2);
               }
             }
           }
@@ -716,7 +716,7 @@ const watchData = watch(
           padding: 0;
           height: 66px;
           &:hover {
-            background-color: var(--e-color-bg1);
+            background-color: var(--o-color-bg1);
           }
           @media screen and (max-width: 768px) {
             background-color: inherit !important;
@@ -739,7 +739,7 @@ const watchData = watch(
             width: 20px;
             height: 20px;
             border-radius: 0 0 0 20px;
-            background-color: var(--e-color-brand2);
+            background-color: var(--o-color-brand2);
             @media screen and (max-width: 768px) {
               width: 12px;
               height: 12px;
@@ -759,7 +759,7 @@ const watchData = watch(
             .date-calender {
               line-height: var(--o-line-height-text);
               font-size: var(--o-font-size-h8);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
             }
           }
         }
@@ -810,7 +810,7 @@ const watchData = watch(
   }
   :deep(.detail-list) {
     width: 100%;
-    background-color: var(--e-color-bg1);
+    background-color: var(--o-color-bg1);
     .right-title {
       display: flex;
       height: 40px;
@@ -820,7 +820,7 @@ const watchData = watch(
         margin-bottom: 0;
         padding-bottom: var(--o-spacing-h5);
         justify-content: center;
-        background-color: var(--e-color-bg1);
+        background-color: var(--o-color-bg1);
       }
       .el-tabs__header {
         margin: 0;
@@ -830,8 +830,8 @@ const watchData = watch(
       line-height: 21px;
       padding: var(--o-spacing-h6);
       text-align: center;
-      color: var(--e-color-text4);
-      background-color: var(--e-color-bg4);
+      color: var(--o-color-text4);
+      background-color: var(--o-color-bg4);
       @media screen and (max-width: 768px) {
         padding: var(--o-spacing-h8) 0;
         font-size: var(--o-font-size-tip);
@@ -841,7 +841,7 @@ const watchData = watch(
     .meeting-list {
       padding: var(--o-spacing-h8) 0 0 var(--o-spacing-h8);
       height: v-bind('calendarHeight');
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
       overflow-y: scroll;
       box-shadow: 0 1px 5px rgba(45, 47, 51, 0.1);
       .el-collapse {
@@ -866,9 +866,9 @@ const watchData = watch(
           background-color: var(--o-collapse-color-bg2);
           @media screen and (max-width: 768px) {
             padding: var(--o-spacing-h6);
-            background-color: var(--e-color-bg1);
+            background-color: var(--o-color-bg1);
             .el-collapse-item__content {
-              background-color: var(--e-color-bg1);
+              background-color: var(--o-color-bg1);
             }
           }
         }
@@ -880,17 +880,17 @@ const watchData = watch(
       }
       &::-webkit-scrollbar-track {
         border-radius: 4px;
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
       }
 
       &::-webkit-scrollbar {
         width: 6px;
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
       }
 
       &::-webkit-scrollbar-thumb {
         border-radius: 4px;
-        background: var(--e-color-division1);
+        background: var(--o-color-division1);
       }
       .el-collapse-item__arrow {
         display: none;
@@ -907,9 +907,9 @@ const watchData = watch(
         padding: var(--o-spacing-h5);
         width: 100%;
         height: 100%;
-        background-color: var(--e-color-bg3);
-        border: 1px solid var(--e-color-bg3);
-        border-left: 2px solid var(--e-color-brand1);
+        background-color: var(--o-color-bg3);
+        border: 1px solid var(--o-color-bg3);
+        border-left: 2px solid var(--o-color-brand1);
         .meet-left {
           display: flex;
           flex-direction: column;
@@ -925,7 +925,7 @@ const watchData = watch(
               text-overflow: ellipsis;
               white-space: nowrap;
               font-size: var(--o-font-size-h7);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
               line-height: var(--o-line-height-tip);
             }
             .el-collapse-item__content {
@@ -961,11 +961,11 @@ const watchData = watch(
             }
             .o-icon {
               margin: 0 5px;
-              color: var(--e-color-brand1);
+              color: var(--o-color-brand1);
               font-size: var(--o-font-size-h5);
               transition: all 0.3s;
               svg {
-                color: var(--e-color-brand1);
+                color: var(--o-color-brand1);
               }
             }
             &:hover {
@@ -982,11 +982,11 @@ const watchData = watch(
             flex-shrink: 0;
             padding: 0;
             .o-icon {
-              color: var(--e-color-brand1);
+              color: var(--o-color-brand1);
               font-size: var(--o-font-size-h5);
             }
             &:hover {
-              color: var(--e-color-brand1);
+              color: var(--o-color-brand1);
             }
             @media screen and (max-width: 768px) {
               display: none;
@@ -1014,7 +1014,7 @@ const watchData = watch(
             width: 24px;
             .o-icon {
               font-size: var(--o-font-size-h5);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
               transition: all 0.3s;
             }
             .reversal {
@@ -1023,10 +1023,10 @@ const watchData = watch(
           }
         }
         @media screen and (max-width: 768px) {
-          background-color: var(--e-color-bg2);
+          background-color: var(--o-color-bg2);
           padding: var(--o-spacing-h6);
-          border: 1px solid var(--e-color-division1);
-          border-left: 2px solid var(--e-color-brand1);
+          border: 1px solid var(--o-color-division1);
+          border-left: 2px solid var(--o-color-brand1);
           .meet-left {
             max-width: 200px;
             .left-top {
@@ -1040,7 +1040,7 @@ const watchData = watch(
               overflow: hidden;
               text-overflow: ellipsis;
               font-size: var(--o-font-size-tip);
-              color: var(--e-color-text4);
+              color: var(--o-color-text4);
             }
           }
           .item-right {
@@ -1066,7 +1066,7 @@ const watchData = watch(
         }
       }
       .meet-detail {
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
         .meeting-item {
           display: flex;
           padding-bottom: var(--o-spacing-h8);
@@ -1096,7 +1096,7 @@ const watchData = watch(
             display: flex;
             justify-content: center;
             padding-top: var(--o-spacing-h8);
-            border-top: 1px solid var(--e-color-division1);
+            border-top: 1px solid var(--o-color-division1);
             padding: var(--o-spacing-h5) 0 var(--o-spacing-h10);
             .o-button {
               padding: 3px var(--o-spacing-h6);
@@ -1114,7 +1114,7 @@ const watchData = watch(
       align-items: center;
       justify-content: center;
       height: 100%;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       font-size: var(--o-font-size-h8);
       img {
         height: 216px;
@@ -1136,10 +1136,10 @@ const watchData = watch(
 }
 .is-home {
   .el-calendar {
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
   }
   .detail-list {
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     .right-title {
       visibility: hidden;
     }
@@ -1155,7 +1155,7 @@ const watchData = watch(
     // width: 345px;
     align-items: center;
     flex-direction: column;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
   }
 }
 </style>

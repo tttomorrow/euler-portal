@@ -283,7 +283,7 @@ onMounted(() => {
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
   @media (max-width: 1439px) {
@@ -337,8 +337,8 @@ onMounted(() => {
         width: 100%;
         display: flex;
         padding-left: var(--o-spacing-h2);
-        background-color: var(--e-color-bg2);
-        border-bottom: 1px solid var(--e-color-division1);
+        background-color: var(--o-color-bg2);
+        border-bottom: 1px solid var(--o-color-division1);
         @media (max-width: 768px) {
           padding-left: var(--o-spacing-h4);
           padding-right: var(--o-spacing-h5);
@@ -347,7 +347,7 @@ onMounted(() => {
           height: 55px;
           min-width: 56px;
           margin-right: var(--o-spacing-h2);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           font-size: var(--o-font-size-h8);
           line-height: 55px;
           cursor: pointer;
@@ -379,28 +379,28 @@ onMounted(() => {
           }
         }
         .active {
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
           &::after {
-            background-color: var(--e-color-brand1);
+            background-color: var(--o-color-brand1);
           }
         }
       }
       .content-box {
         min-height: 1948px;
-        box-shadow: var(--e-shadow-l1);
-        background-color: var(--e-color-bg2);
+        box-shadow: var(--o-shadow-l1);
+        background-color: var(--o-color-bg2);
         @media (max-width: 768px) {
           width: 100vw;
           padding: var(--o-spacing-h5) var(--o-spacing-h5) 0 var(--o-spacing-h5);
           min-height: 0;
-          background-color: var(--e-color-bg1);
+          background-color: var(--o-color-bg1);
           box-shadow: none;
         }
         .content-list {
           padding: 0 var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2);
           @media (max-width: 768px) {
             padding: 0;
-            background-color: var(--e-color-bg2);
+            background-color: var(--o-color-bg2);
           }
           li {
             padding-top: var(--o-spacing-h2);
@@ -412,7 +412,7 @@ onMounted(() => {
                 content: '';
                 width: 100%;
                 height: 1px;
-                background-color: var(--e-color-division1);
+                background-color: var(--o-color-division1);
                 margin-top: 16px;
               }
               &:nth-last-of-type(1)::after {
@@ -421,12 +421,12 @@ onMounted(() => {
             }
             h3 {
               font-size: var(--o-font-size-h5);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
               line-height: var(--o-line-height-h5);
               font-weight: 500;
               cursor: pointer;
               :deep(span) {
-                color: var(--e-color-brand1);
+                color: var(--o-color-brand1);
               }
               @media (max-width: 768px) {
                 font-size: var(--o-font-size-text);
@@ -437,27 +437,27 @@ onMounted(() => {
               margin-top: 17px;
               font-size: var(--o-font-size-text);
               line-height: var(--o-line-height-text);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
               :deep(span) {
-                color: var(--e-color-brand1);
+                color: var(--o-color-brand1);
               }
               @media (max-width: 768px) {
                 margin-top: 4px;
                 font-size: var(--o-font-size-tip);
                 line-height: var(--o-line-height-tip);
-                color: var(--e-color-text4);
+                color: var(--o-color-text4);
               }
             }
             .from {
               margin-top: 15px;
               font-size: var(--o-font-size-text);
               line-height: var(--o-line-height-text);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
               @media (max-width: 768px) {
                 margin-top: 8px;
                 font-size: var(--o-font-size-tip);
                 line-height: var(--o-line-height-tip);
-                color: var(--e-color-text4);
+                color: var(--o-color-text4);
               }
             }
           }
@@ -485,8 +485,8 @@ onMounted(() => {
     width: 320px;
     height: 2005px;
     margin-top: 78px;
-    background-color: var(--e-color-bg2);
-    box-shadow: var(--e-shadow-l1);
+    background-color: var(--o-color-bg2);
+    box-shadow: var(--o-shadow-l1);
     @media (max-width: 1100px) {
       display: none;
     }
@@ -495,23 +495,23 @@ onMounted(() => {
       line-height: var(--o-line-height-h5);
       padding: var(--o-spacing-h2);
       padding-bottom: 0;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
     ul {
       padding: 0 var(--o-spacing-h2);
       li {
         padding-top: var(--o-spacing-h4);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         a {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
         }
         p {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
           margin-top: var(--o-spacing-h8);
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
         }
       }
     }

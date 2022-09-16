@@ -464,7 +464,7 @@ onMounted(() => {
   .content {
     width: 100%;
     margin-top: var(--o-spacing-h2);
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     @media (max-width: 1100px) {
       margin-top: var(--o-spacing-h5);
     }
@@ -477,13 +477,13 @@ onMounted(() => {
     .pagination-slot {
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-spacing-h4);
     }
     h3 {
       font-size: var(--o-font-size-h3);
       line-height: var(--o-line-height-h3);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       font-weight: 500;
     }
     .brief-introduction {
@@ -491,18 +491,18 @@ onMounted(() => {
       h4 {
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-height-h5);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
       p {
         margin-top: var(--o-spacing-h5);
         font-size: var(--o-font-size-text);
         line-height: 22px;
-        color: var(--e-color-text3);
+        color: var(--o-color-text3);
       }
     }
     .meeting {
       margin-top: var(--o-spacing-h2);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       .no-meeting {
         padding: var(--o-spacing-h5) 0;
         text-align: center;
@@ -524,7 +524,7 @@ onMounted(() => {
 
     .member {
       margin-top: var(--o-spacing-h2);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       h5 {
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
@@ -584,14 +584,14 @@ onMounted(() => {
     }
     .repository {
       margin-top: var(--o-spacing-h2);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       h5 {
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
       }
       a {
         cursor: pointer;
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
       }
       .repository-filter {
         margin: var(--o-spacing-h4) 0;
@@ -626,7 +626,7 @@ onMounted(() => {
           .split-line {
             height: 1px;
             margin: var(--o-spacing-h6) 0;
-            background-color: var(--e-color-border2);
+            background-color: var(--o-color-border2);
           }
         }
       }
@@ -643,7 +643,7 @@ onMounted(() => {
     }
     .recent-event {
       margin-top: var(--o-spacing-h2);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       h5 {
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
@@ -660,7 +660,7 @@ onMounted(() => {
         .item {
           max-width: 656px;
           padding: 40px;
-          background-color: var(--e-color-bg2);
+          background-color: var(--o-color-bg2);
           border: 1px solid transparent;
           .header {
             display: flex;
@@ -675,7 +675,7 @@ onMounted(() => {
                 content: '';
                 width: 20px;
                 height: 2px;
-                background-color: var(--e-color-brand1);
+                background-color: var(--o-color-brand1);
               }
             }
             .right {
@@ -687,7 +687,7 @@ onMounted(() => {
                 margin-left: var(--o-spacing-h8);
                 position: relative;
                 top: 2px;
-                color: var(--e-color-brand1);
+                color: var(--o-color-brand1);
               }
             }
           }
@@ -697,9 +697,9 @@ onMounted(() => {
             line-height: 22px;
           }
           &:hover {
-            background-color: var(--e-color-bg2);
-            border: 1px solid var(--e-color-kleinblue8);
-            box-shadow: var(--e-shadow-l4);
+            background-color: var(--o-color-bg2);
+            border: 1px solid var(--o-color-kleinblue8);
+            box-shadow: var(--o-shadow-l4);
           }
         }
       }

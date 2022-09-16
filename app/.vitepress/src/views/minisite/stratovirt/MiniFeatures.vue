@@ -60,18 +60,18 @@ const changeImg = function (url: string) {
   margin-bottom: var(--o-spacing-h2);
   .content {
     margin: 0 auto;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     padding: 0 150px;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 24px;
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
     &-item {
       max-width: 482px;
       display: flex;
       padding: var(--o-spacing-h2) 0;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       img {
         display: block;
         width: 80px;
@@ -84,10 +84,10 @@ const changeImg = function (url: string) {
       &-desc {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
       }
       &-bottom {
-        border-bottom: 1px solid var(--e-color-text5);
+        border-bottom: 1px solid var(--o-color-text5);
       }
     }
     @media screen and (min-width: 1440px) {
@@ -126,7 +126,7 @@ const changeImg = function (url: string) {
   }
   @media screen and (max-width: 767px) {
     .content :nth-child(5) {
-      border-bottom: 1px solid var(--e-color-text5);
+      border-bottom: 1px solid var(--o-color-text5);
     }
   }
 }

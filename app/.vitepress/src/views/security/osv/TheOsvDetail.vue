@@ -291,7 +291,7 @@ onMounted(() => {
   .breadcrumb {
     margin-bottom: var(--o-spacing-h5);
     font-size: var(--o-font-size-h6);
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
     line-height: var(--o-line-height-h5);
     cursor: pointer;
     @media screen and (max-width: 768px) {
@@ -303,7 +303,7 @@ onMounted(() => {
     font-size: var(--o-font-size-h3);
     line-height: var(--o-line-height-h3);
     margin-bottom: var(--o-spacing-h1);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-h5);
       line-height: var(--o-line-height-h5);
@@ -314,7 +314,7 @@ onMounted(() => {
 .common-title {
   font-size: var(--o-font-size-h5);
   font-weight: 500;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-line-height-h5);
   margin-bottom: var(--o-spacing-h4);
   @media screen and (max-width: 768px) {
@@ -327,7 +327,7 @@ onMounted(() => {
   &-box {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-text);
     display: flex;
     justify-content: space-between;
@@ -339,14 +339,14 @@ onMounted(() => {
       display: flex;
       padding-bottom: var(--o-spacing-h5);
       a {
-        color: var(--e-color-link1);
+        color: var(--o-color-link1);
       }
       p {
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
       }
       .item-name {
         width: 180px;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
     }
     .left {
@@ -377,7 +377,7 @@ onMounted(() => {
           }
           .claim-text {
             font-size: var(--o-font-size-h4);
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             line-height: var(--o-line-height-h3);
             font-weight: 800;
             @media screen and (max-width: 768px) {
@@ -389,7 +389,7 @@ onMounted(() => {
         .subtitle-claim {
           width: 100px;
           font-size: var(--o-font-size-text);
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
           text-align: center;
           line-height: var(--o-spacing-h4);
           margin-top: var(--o-spacing-h5);
@@ -406,7 +406,7 @@ onMounted(() => {
 .mobile-list {
   display: none;
   margin-bottom: var(--o-spacing-h5);
-  box-shadow: var(--e-shadow1);
+  box-shadow: var(--o-shadow1);
   @media screen and (max-width: 768px) {
     display: block;
   }
@@ -414,11 +414,11 @@ onMounted(() => {
     padding: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h8);
     font-size: var(--o-font-size-tip);
     font-weight: 400;
-    color: var(--e-color-neutral8);
+    color: var(--o-color-neutral8);
     line-height: var(--o-line-height-tip);
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     &:nth-child(odd) {
-      background: var(--e-color-bg4);
+      background: var(--o-color-bg4);
     }
     & li {
       margin-bottom: var(--o-spacing-h8);
@@ -444,7 +444,7 @@ onMounted(() => {
       }
     }
     span {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-right: var(--o-spacing-h8);
     }
   }

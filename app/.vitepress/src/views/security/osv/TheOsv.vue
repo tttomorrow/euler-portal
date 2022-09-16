@@ -9,7 +9,6 @@ import { getOsName, getOsType, getOsTableData } from '@/api/api-security';
 
 import AppContent from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
-import OSearch from 'opendesign/search/OSearch.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
@@ -363,7 +362,7 @@ watch(queryData, () => getOsTableList(queryData));
   &-container {
     max-width: 1504px;
     margin: 0 auto;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h3);
     font-size: var(--o-font-size-h7);
     @media screen and (max-width: 768px) {
@@ -409,7 +408,7 @@ watch(queryData, () => getOsTableList(queryData));
     width: 56px;
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-text);
     margin-right: var(--o-spacing-h4);
   }
@@ -420,20 +419,20 @@ watch(queryData, () => getOsTableList(queryData));
     margin-right: var(--o-spacing-h3);
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
 
     cursor: pointer;
   }
   .active {
     display: inline-block;
-    border: 1px solid var(--e-color-link1);
-    color: var(--e-color-link1);
+    border: 1px solid var(--o-color-link1);
+    color: var(--o-color-link1);
     padding: 0px var(--o-spacing-h6);
   }
   .card-header {
     padding-bottom: var(--o-spacing-h8);
-    border-bottom: 1px solid var(--e-color-division1);
+    border-bottom: 1px solid var(--o-color-division1);
   }
   .card-body {
     padding-top: var(--o-spacing-h8);
@@ -446,20 +445,20 @@ watch(queryData, () => getOsTableList(queryData));
   }
   .link {
     cursor: pointer;
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
   }
 }
 .empty-status {
   text-align: center;
   font-size: var(--o-font-size-tip);
-  color: var(--e-color-text4);
+  color: var(--o-color-text4);
   line-height: var(--o-spacing-tip);
   padding: var(--o-spacing-h2) 0 var(--o-spacing-h5);
 }
 .mobile-list {
   display: none;
   margin-bottom: var(--o-spacing-h5);
-  box-shadow: var(--e-shadow1);
+  box-shadow: var(--o-shadow1);
   @media screen and (max-width: 768px) {
     display: block;
   }
@@ -467,11 +466,11 @@ watch(queryData, () => getOsTableList(queryData));
     padding: var(--o-spacing-h5) var(--o-spacing-h5) var(--o-spacing-h8);
     font-size: var(--o-font-size-tip);
     font-weight: 400;
-    color: var(--e-color-neutral8);
+    color: var(--o-color-neutral8);
     line-height: var(--o-line-height-tip);
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     &:nth-child(odd) {
-      background: var(--e-color-bg4);
+      background: var(--o-color-bg4);
     }
     & li {
       margin-bottom: var(--o-spacing-h8);
@@ -486,12 +485,12 @@ watch(queryData, () => getOsTableList(queryData));
       }
     }
     span {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-right: var(--o-spacing-h8);
     }
     .link {
       cursor: pointer;
-      color: var(--e-color-link1);
+      color: var(--o-color-link1);
     }
   }
 }
@@ -499,19 +498,19 @@ watch(queryData, () => getOsTableList(queryData));
   margin-top: var(--o-spacing-h4);
   font-size: var(--o-font-size-h8);
   font-weight: 400;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-line-height-h8);
   @media screen and (max-width: 768px) {
     display: none;
   }
   a {
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
   }
 }
 .slot-content {
   font-size: var(--o-font-size-text);
   font-weight: 400;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-spacing-h4);
 }
 </style>

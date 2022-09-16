@@ -37,16 +37,16 @@ const modalClassNames = computed(() => {
 
 <style lang="scss">
 .el-drawer {
-  background-color: var(--e-color-bg2);
+  background-color: var(--o-color-bg2);
 }
 .o-drawer {
-  --o-drawer-bg: var(--e-color-bg2);
+  --o-drawer-bg: var(--o-color-bg2);
   &.el-drawer {
     background-color: var(--o-drawer-bg);
   }
 }
 .o-drawer-modal {
-  --o-drawer-modal-bg: var(--e-color-bg6);
+  --o-drawer-modal-bg: var(--o-color-bg6);
   &.el-overlay {
     background-color: var(--o-drawer-modal-bg);
   }

@@ -296,7 +296,7 @@ function goBackPage() {
   .breadcrumb {
     margin-bottom: var(--o-spacing-h5);
     font-size: var(--o-font-size-h6);
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
     line-height: var(--o-line-height-h5);
     cursor: pointer;
     @media screen and (max-width: 768px) {
@@ -308,7 +308,7 @@ function goBackPage() {
     font-size: var(--o-font-size-h3);
     line-height: var(--o-line-height-h3);
     margin-bottom: var(--o-spacing-h1);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-h5);
       line-height: var(--o-line-height-h5);
@@ -319,23 +319,23 @@ function goBackPage() {
 .hardware-content {
   max-width: 1504px;
   margin: 0 auto;
-  color: var(--e-color-text5);
+  color: var(--o-color-text5);
   font-size: var(--o-font-size-h8);
   line-height: var(--o-line-height-h7);
-  background-color: var(--e-color-bg2);
+  background-color: var(--o-color-bg2);
   padding: var(--o-spacing-h2);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
   }
   a {
     text-decoration: none;
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
     cursor: pointer;
   }
   .hardware-content-top {
     .title {
       font-size: var(--o-font-size-h5);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-bottom: var(--o-spacing-h4);
       line-height: var(--o-line-height-h5);
       @media screen and (max-width: 768px) {
@@ -346,7 +346,7 @@ function goBackPage() {
     .content {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h7);
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
       @media screen and (max-width: 768px) {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
@@ -357,7 +357,7 @@ function goBackPage() {
     margin-top: var(--o-spacing-h2);
     .title {
       font-size: var(--o-font-size-h5);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-bottom: var(--o-spacing-h4);
       line-height: var(--o-line-height-h4);
       @media screen and (max-width: 768px) {
@@ -381,7 +381,7 @@ function goBackPage() {
       }
       .left {
         font-size: var(--o-line-height-h3);
-        color: var(--e-color-link1);
+        color: var(--o-color-link1);
         padding-right: var(--o-spacing-h3);
         @media screen and (max-width: 768px) {
           font-size: var(--o-line-height-h4);
@@ -390,12 +390,12 @@ function goBackPage() {
       }
       .right {
         padding-left: var(--o-spacing-h3);
-        border-left: 1px solid var(--e-color-border1);
+        border-left: 1px solid var(--o-color-border1);
         @media screen and (max-width: 768px) {
           padding-left: var(--o-spacing-h5);
         }
         .item-title {
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
           margin-bottom: var(--o-spacing-h6);
@@ -407,7 +407,7 @@ function goBackPage() {
           font-size: var(--o-font-size-h8);
           line-height: var(--o-line-height-h8);
           word-break: break-all;
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
           @media screen and (max-width: 768px) {
             font-size: var(--o-font-size-tip);
           }

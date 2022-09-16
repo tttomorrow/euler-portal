@@ -103,7 +103,7 @@ SIG 版本规划工作会议遵循开源、开放原则，议题收集、技术�
   }
   .link {
     word-break: break-all;
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
   }
   .space {
     margin-left: var(--o-spacing-h4);
