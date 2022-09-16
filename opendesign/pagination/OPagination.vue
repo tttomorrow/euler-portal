@@ -18,12 +18,12 @@ const classNames = computed(() => {
 
 <style lang="scss">
 .o-pagination {
-  --o-pagination-font-color: var(--e-color-text1);
-  --o-pagination-font-color_active: var(--e-color-brand1);
-  --o-pagination-bg-color: var(--e-color-text5);
-  --o-pagination-bg-color_hover: var(--e-color-brand5);
-  --o-pagination-bg-color_selected: var(--e-color-brand5);
-  --o-pagination-number-border-color_active: var(--e-color-brand1);
+  --o-pagination-font-color: var(--o-color-text1);
+  --o-pagination-font-color_active: var(--o-color-brand1);
+  --o-pagination-bg-color: var(--o-color-text5);
+  --o-pagination-bg-color_hover: var(--o-color-brand5);
+  --o-pagination-bg-color_selected: var(--o-color-brand5);
+  --o-pagination-number-border-color_active: var(--o-color-brand1);
 
   &.el-pagination {
     justify-content: center;
@@ -63,13 +63,13 @@ const classNames = computed(() => {
       height: 36px;
       width: 36px;
       &:hover {
-        color: var(--e-color-text2) !important;
+        color: var(--o-color-text2) !important;
         background-color: var(--o-pagination-font-color_active);
       }
     }
     .el-pager li.is-active.number {
       background: var(--o-pagination-font-color_active);
-      color: var(--e-color-text2);
+      color: var(--o-color-text2);
       font-weight: 400;
       font-size: var(--o-font-size-text);
     }
@@ -82,13 +82,13 @@ const classNames = computed(() => {
       background: var(--o-pagination-bg-color);
     }
     .btn-prev:disabled {
-      background: var(--e-color-text5);
+      background: var(--o-color-text5);
     }
     .btn-next {
       margin-right: var(--o-spacing-h5) !important;
     }
     .btn-next:disabled {
-      background: var(--e-color-text5);
+      background: var(--o-color-text5);
     }
 
     .el-pagination__jump {
@@ -96,7 +96,7 @@ const classNames = computed(() => {
       font-size: var(--o-font-size-text);
       font-weight: 400;
       line-height: var(--o-line-height-text);
-      color: var(--e-color-neutral8);
+      color: var(--o-color-neutral8);
       border-radius: 0px;
       margin-left: var(--o-spacing-h4);
       .el-input__wrapper {
@@ -106,7 +106,7 @@ const classNames = computed(() => {
   }
 }
 .o-pagination-popper {
-  box-shadow: var(--e-shadow-l3);
+  box-shadow: var(--o-shadow-l3);
   &.el-popper {
     box-shadow: none !important;
     --el-popper-border-radius: none;
@@ -116,29 +116,29 @@ const classNames = computed(() => {
     }
 
     .el-select-dropdown__item {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
 
       &:hover {
-        color: var(--e-color-brand1);
-        background: var(--e-color-bg1);
+        color: var(--o-color-brand1);
+        background: var(--o-color-bg1);
       }
     }
     .hover {
-      color: var(--e-color-brand1);
-      background: var(--e-color-bg1);
+      color: var(--o-color-brand1);
+      background: var(--o-color-bg1);
     }
 
     .el-select-dropdown__item.selected {
-      background-color: var(--e-color-bg1);
+      background-color: var(--o-color-bg1);
     }
 
     .el-select-dropdown__item.selected {
       font-weight: normal;
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
 
     .el-select-dropdown__wrap {
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
     }
   }
 }

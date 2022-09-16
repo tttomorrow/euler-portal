@@ -15,22 +15,22 @@ body {
     sans-serif;
   &::-webkit-scrollbar-track {
     border-radius: 4px;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
   }
 
   &::-webkit-scrollbar {
     width: 6px;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background: var(--e-color-division1);
+    background: var(--o-color-division1);
   }
 }
 
 :root.dark {
-  --el-color-primary: var(--e-color-kleinblue8);
+  --el-color-primary: var(--o-color-kleinblue8);
 }
 
 *,
@@ -50,13 +50,13 @@ img {
 }
 
 a {
-  color: var(--e-color-link1);
+  color: var(--o-color-link1);
   text-decoration: none;
   &:hover {
-    color: var(--e-color-link2);
+    color: var(--o-color-link2);
   }
   &:active {
-    color: var(--e-color-link3);
+    color: var(--o-color-link3);
   }
 }
 

@@ -3,7 +3,7 @@ title: 'iSula'
 ---
 
 <script setup lang="ts">
-  import TheIsula from "@/views/other/projects/isula/TheIsula.vue"
+  import TheIsula from "@/views/minisite/isula/TheIsula.vue"
 </script>
 
 <TheIsula/>

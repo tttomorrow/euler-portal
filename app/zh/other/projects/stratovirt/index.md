@@ -3,7 +3,7 @@ title: 'StratoVirt'
 ---
 
 <script setup lang="ts">
-  import TheStratoVirt from "@/views/other/projects/stratovirt/TheStratoVirt.vue"
+  import TheStratoVirt from "@/views/minisite/stratovirt/TheStratoVirt.vue"
 </script>
 
 <TheStratoVirt/>

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useI18n } from '@/i18n';
+import { useData } from 'vitepress';
 import AOS from 'aos';
+
+import { useI18n } from '@/i18n';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -16,9 +18,8 @@ import AppCalendar from '@/components/AppCalendar.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import { getMeetingData, getActivityData } from '@/api/api-calendar';
-import { TableData } from '@/shared/@types/type-calendar';
-import { useData } from 'vitepress';
 import { getSortData } from '@/api/api-search';
+import { TableData } from '@/shared/@types/type-calendar';
 
 const { lang } = useData();
 
@@ -158,7 +159,7 @@ onUnmounted(() => {
 h3 {
   font-size: var(--o-font-size-h3);
   font-weight: 300;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-line-height-h3);
   width: 100%;
   text-align: center;

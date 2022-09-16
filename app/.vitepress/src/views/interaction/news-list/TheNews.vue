@@ -13,6 +13,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
 import illustration from '@/assets/illustrations/news.png';
+import IconSearch from '~icons/app/icon-search.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
 
@@ -434,6 +435,11 @@ const moblieCurrentChange = (val: string) => {
               :placeholder="userCaseData.ALL"
               @change="timeChange"
             >
+              <template #prefix>
+                <OIcon>
+                  <IconSearch />
+                </OIcon>
+              </template>
               <OOption
                 v-for="item in selectData[0].select"
                 :key="item"
@@ -453,6 +459,11 @@ const moblieCurrentChange = (val: string) => {
               :placeholder="userCaseData.ALL"
               @change="authorChange"
             >
+              <template #prefix>
+                <OIcon>
+                  <IconSearch />
+                </OIcon>
+              </template>
               <OOption
                 v-for="item in selectData[1].select"
                 :key="item"
@@ -472,6 +483,11 @@ const moblieCurrentChange = (val: string) => {
               :placeholder="userCaseData.ALL"
               @change="tagsChange"
             >
+              <template #prefix>
+                <OIcon>
+                  <IconSearch />
+                </OIcon>
+              </template>
               <OOption
                 v-for="item in selectData[2].select"
                 :key="item"
@@ -568,7 +584,7 @@ const moblieCurrentChange = (val: string) => {
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
 }
@@ -581,10 +597,18 @@ const moblieCurrentChange = (val: string) => {
     flex-direction: row;
     width: 1416px;
     &-item {
+      display: flex;
+      align-items: center;
       margin-right: var(--o-spacing-h1);
+      .o-icon {
+        font-size: var(--o-font-size-h7);
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-h8);
+        }
+      }
       &-title {
         margin-right: var(--o-spacing-h5);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         font-size: var(--o-font-size-h7);
       }
     }
@@ -604,7 +628,7 @@ const moblieCurrentChange = (val: string) => {
       cursor: pointer;
     }
     &-item:hover {
-      box-shadow: var(--e-shadow-l2_hover);
+      box-shadow: var(--o-shadow-l2_hover);
       .news-img img {
         transform: scale(1.05);
       }
@@ -625,7 +649,7 @@ const moblieCurrentChange = (val: string) => {
   }
   &-info {
     padding: var(--o-spacing-h4);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
   &-title {
     font-weight: 400;
@@ -749,12 +773,12 @@ const moblieCurrentChange = (val: string) => {
   .news-time {
     line-height: var(--o-line-height-tip);
     font-size: var(--o-font-size-tip);
-    color: var(--e-color-neutral5);
+    color: var(--o-color-neutral5);
   }
   .news-content {
     line-height: var(--o-line-height-tip);
     font-size: var(--o-font-size-tip);
-    color: var(--e-color-neutral5);
+    color: var(--o-color-neutral5);
   }
   .news-select {
     display: none;

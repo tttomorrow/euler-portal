@@ -23,7 +23,7 @@
     border: var(--o-tag-border-primary);
     &:hover {
       @media screen and (min-width: 1100px) {
-        color: var(--e-color-brand2);
+        color: var(--o-color-brand2);
         border: var(--o-tag-border-primary_hover);
       }
     }
@@ -37,8 +37,8 @@
         height: 16px;
         &::after {
           border: 8px solid transparent;
-          border-right: 8px solid var(--e-color-brand1);
-          border-bottom: 8px solid var(--e-color-brand1);
+          border-right: 8px solid var(--o-color-brand1);
+          border-bottom: 8px solid var(--o-color-brand1);
           content: '';
           width: 16px;
           height: 16px;

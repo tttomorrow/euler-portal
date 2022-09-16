@@ -10,7 +10,7 @@ import HomeConfig from './config';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-import IconArrowRight from '~icons/app/icon-arrow-right1.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -66,7 +66,7 @@ const jump = (item: any) => {
     :navigation="true"
     @swiper="onSwiper"
   >
-    <swiper-slide v-for="(item, index) in homeBanner" :key="item.link">
+    <swiper-slide v-for="item in homeBanner" :key="item.link">
       <a class="banner-panel" @click="jump(item)">
         <div
           class="banner-panel-cover"
@@ -78,14 +78,13 @@ const jump = (item: any) => {
         >
           <div
             v-if="item.title !== ''"
-            :class="[{ 'flex-start': index === 1 }]"
             class="banner-panel-content flex-column"
           >
             <div data-aos="fade-down" class="box">
-              <p class="title" :class="{ experts: index === 1 }">
+              <p class="title">
                 {{ item.title }}
               </p>
-              <p class="desc" :class="{ experts: index === 1 }">
+              <p class="desc">
                 <span
                   v-for="item2 in item.desc"
                   :key="item2"
@@ -94,12 +93,7 @@ const jump = (item: any) => {
                 >
               </p>
             </div>
-            <div
-              v-if="item.btn"
-              data-aos="fade-up"
-              class="action"
-              :class="{ liveBanner: index === 1 }"
-            >
+            <div v-if="item.btn" data-aos="fade-up" class="action">
               <OButton animation class="home-banner-btn">
                 {{ item.btn }}
                 <template #suffixIcon
@@ -118,11 +112,6 @@ const jump = (item: any) => {
 <style lang="scss" scoped>
 $banner-color: #fff;
 html[lang='zh'] {
-  .liveBanner {
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
   .flex-start {
     @media screen and (max-width: 824px) {
       margin: 0;
@@ -149,7 +138,7 @@ html[lang='zh'] {
   position: relative;
   .banner-panel {
     position: absolute;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     display: flex;
     background-position: 50%;
     background-repeat: no-repeat;
@@ -223,7 +212,7 @@ html[lang='zh'] {
         .o-icon {
           @media screen and (max-width: 824px) {
             font-size: 16px;
-            color: var(--e-color-yellow5);
+            color: var(--o-color-yellow5);
           }
         }
         @media screen and (max-width: 824px) {
@@ -290,7 +279,7 @@ html[lang='zh'] {
     margin: 0 4px;
   }
   .swiper-pagination-bullet-active {
-    background: var(--e-color-yellow5);
+    background: var(--o-color-yellow5);
     opacity: 1;
   }
   @media screen and (max-width: 1439px) {

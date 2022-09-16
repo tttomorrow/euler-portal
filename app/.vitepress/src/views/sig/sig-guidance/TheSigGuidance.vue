@@ -123,13 +123,21 @@ const language = configData.lang;
       }
       @media (max-width: 780px) {
         width: 100%;
+        &:first-child {
+          margin-top: 3px;
+        }
+        &:nth-child(3) {
+          margin-bottom: 3px;
+        }
       }
       &-left {
         display: flex;
         margin-right: var(--o-spacing-h4);
+        height: 204px;
         @media (max-width: 1080px) {
           margin-right: 0px;
           margin-bottom: var(--o-spacing-h5);
+          height: 120px;
         }
       }
       &-left-ruf {
@@ -151,9 +159,11 @@ const language = configData.lang;
         margin-top: 80px;
         display: flex;
         margin-right: var(--o-spacing-h4);
+        height: 204px;
         @media (max-width: 1080px) {
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
+          height: 120px;
         }
       }
       &-right-f {
@@ -173,7 +183,7 @@ const language = configData.lang;
       }
       &-bgdconfig {
         width: 240px;
-        background-color: var(--e-color-kleinblue8);
+        background-color: var(--o-color-kleinblue8);
         @media (max-width: 1280px) {
           width: 180px;
         }
@@ -197,7 +207,7 @@ const language = configData.lang;
       }
       &-infoconfig {
         max-width: 456px;
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         @media (max-width: 1280px) {
           max-width: 350px;
         }
@@ -205,7 +215,7 @@ const language = configData.lang;
           width: 300px;
         }
         span {
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           float: left;
@@ -216,7 +226,7 @@ const language = configData.lang;
             margin: 0 var(--o-spacing-h6) var(--o-spacing-h10)
               var(--o-spacing-h4);
             line-height: var(--o-line-height-tip);
-            color: var(--e-color-text4);
+            color: var(--o-color-text4);
             font-size: var(--o-font-size-tip);
             position: relative;
             bottom: 15px;
@@ -225,21 +235,21 @@ const language = configData.lang;
         &-circle {
           height: 78px;
           width: 78px;
-          border: 4px solid var(--e-color-white);
+          border: 4px solid var(--o-color-white);
           border-radius: 50%;
-          background-color: var(--e-color-kleinblue5);
+          background-color: var(--o-color-kleinblue5);
           position: relative;
           top: 50%;
           transform: translate(-50%, -50%);
           @media (max-width: 780px) {
             height: 36px;
             width: 36px;
-            border: 2px solid var(--e-color-white);
+            border: 2px solid var(--o-color-white);
           }
           span {
             white-space: nowrap;
             font-size: var(--o-font-size-h5);
-            color: var(--e-color-white);
+            color: var(--o-color-white);
             line-height: var(--o-line-height-h5);
             position: relative;
             top: 50%;
@@ -260,59 +270,59 @@ const language = configData.lang;
     &-zh {
       .line-first {
         position: absolute;
-        top: 375px;
+        top: 384px;
         left: 47%;
         height: 70px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
       }
       .line-second {
         position: absolute;
-        top: 560px;
+        top: 622px;
         left: 31%;
         height: 70px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-left: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-left: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
-          top: 570px;
+          top: 610px;
         }
       }
       .line-third {
         position: absolute;
-        top: 650px;
+        top: 702px;
         left: 48%;
         height: 50px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
-          top: 670px;
+          top: 700px;
         }
       }
       .line-forth {
         position: absolute;
-        top: 820px;
+        top: 926px;
         left: 31%;
         height: 70px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-left: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-left: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
-          top: 850px;
+          top: 920px;
         }
       }
       .line-fifth {
         position: absolute;
-        top: 905px;
+        top: 1016px;
         left: 48%;
         height: 50px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
-          top: 950px;
+          top: 1010px;
         }
       }
       @media (max-width: 1080px) {
@@ -326,8 +336,8 @@ const language = configData.lang;
         left: 48%;
         height: 70px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
       }
       .line-second {
         position: absolute;
@@ -335,8 +345,8 @@ const language = configData.lang;
         left: 31%;
         height: 70px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-left: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-left: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           top: 680px;
         }
@@ -347,8 +357,8 @@ const language = configData.lang;
         left: 48%;
         height: 50px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           top: 770px;
         }
@@ -359,8 +369,8 @@ const language = configData.lang;
         left: 31%;
         height: 70px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-left: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-left: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           top: 1050px;
         }
@@ -371,8 +381,8 @@ const language = configData.lang;
         left: 48%;
         height: 50px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           top: 1150px;
         }
@@ -388,8 +398,8 @@ const language = configData.lang;
         left: 48%;
         height: 100px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           left: 45%;
           height: 200px;
@@ -401,8 +411,8 @@ const language = configData.lang;
         left: 31%;
         height: 100px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-left: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-left: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           left: 34%;
           top: 760px;
@@ -414,8 +424,8 @@ const language = configData.lang;
         left: 48%;
         height: 50px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           left: 45%;
           top: 890px;
@@ -427,8 +437,8 @@ const language = configData.lang;
         left: 31%;
         height: 94px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-left: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-left: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           left: 30%;
           top: 1220px;
@@ -440,8 +450,8 @@ const language = configData.lang;
         left: 48%;
         height: 70px;
         width: 400px;
-        border-top: 2px dashed var(--e-color-brand1);
-        border-right: 2px dashed var(--e-color-brand1);
+        border-top: 2px dashed var(--o-color-brand1);
+        border-right: 2px dashed var(--o-color-brand1);
         @media (max-width: 1280px) {
           left: 45%;
           top: 1315px;

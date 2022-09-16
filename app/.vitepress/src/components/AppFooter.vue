@@ -31,7 +31,7 @@ import CodeTitleGzh from '@/assets/footer/img-gzh.png';
 import CodeImgXzs from '@/assets/footer/code-xzs.png';
 import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
-import IconClose from '~icons/app/x.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
 
 const props = defineProps({
   isCookieTip: {
@@ -212,7 +212,7 @@ function clickClose() {
           i18n.common.COOKIE_LEGAL_LINK_TEXT_OTHER
         }}</a>
       </template>
-      <OIcon class="icon" @click="clickClose"><IconClose /></OIcon>
+      <OIcon class="icon" @click="clickClose"><IconCancel /></OIcon>
     </div>
     <AppContent :pc-top="0" :mobile-top="0">
       <div class="atom">
@@ -285,7 +285,7 @@ function clickClose() {
 <style lang="scss" scoped>
 $color: #fff;
 .footer {
-  background: var(--e-color-greyblack1);
+  background: var(--o-color-greyblack1);
   &.migration {
     margin-left: 300px;
     @media (max-width: 1100px) {
@@ -299,8 +299,8 @@ $color: #fff;
     line-height: 48px;
     width: 100%;
     height: 48px;
-    background-color: var(--e-color-bg1);
-    color: var(--e-color-text3);
+    background-color: var(--o-color-bg1);
+    color: var(--o-color-text3);
     font-size: 14px;
     display: flex;
     justify-content: center;
@@ -310,7 +310,7 @@ $color: #fff;
     right: 0;
     left: 0;
     z-index: 999;
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
     text-align: center;
     &.ru {
       line-height: 16px;
@@ -337,7 +337,7 @@ $color: #fff;
       margin-left: 16px;
       width: 24px;
       height: 24px;
-      background: var(--e-color-greyblack3);
+      background: var(--o-color-greyblack3);
       border-radius: 50%;
       display: inline-flex;
       justify-content: center;

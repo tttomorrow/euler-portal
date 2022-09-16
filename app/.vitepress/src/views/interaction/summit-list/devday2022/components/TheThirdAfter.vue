@@ -67,18 +67,18 @@ const isMobile = computed(() => {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
       width: 170px;
       height: 92px;
       font-size: var(--o-font-size-h6);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-bottom: var(--o-spacing-h4);
-      box-shadow: var (--e-shadow-l1);
+      box-shadow: var (--o-shadow-l1);
     }
     &-item:first-child {
       height: 48px;
-      color: var(--e-color-text2);
-      background-color: var(--e-color-brand1);
+      color: var(--o-color-text2);
+      background-color: var(--o-color-brand1);
     }
     @media (max-width: 780px) {
       display: none;
@@ -113,10 +113,10 @@ const isMobile = computed(() => {
             align-items: center;
             margin-bottom: var(--o-spacing-h4);
             font-size: var(--o-font-size-h6);
-            color: var(--e-color-text2);
-            background-color: var(--e-color-brand1);
+            color: var(--o-color-text2);
+            background-color: var(--o-color-brand1);
             height: 48px;
-            box-shadow: var(--e-shadow-l1);
+            box-shadow: var(--o-shadow-l1);
             @media (max-width: 780px) {
               font-size: var(--o-font-size-tip);
               margin-bottom: var(--o-spacing-h5);
@@ -141,8 +141,8 @@ const isMobile = computed(() => {
             width: 218px;
             height: 92px;
             margin-bottom: var(--o-spacing-h4);
-            background-color: var(--e-color-bg2);
-            box-shadow: var(--e-shadow-l1);
+            background-color: var(--o-color-bg2);
+            box-shadow: var(--o-shadow-l1);
             @media (max-width: 780px) {
               width: 100%;
               height: fit-content;
@@ -151,7 +151,7 @@ const isMobile = computed(() => {
             }
             p {
               font-size: var(--o-font-size-h7);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
               line-height: var(--o-line-height-h5);
               text-overflow: ellipsis;
               display: -webkit-box;

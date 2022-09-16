@@ -11,11 +11,11 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-input {
   --o-input-height: 36px;
-  --o-input-border-color: var(--e-color-border1);
-  --o-input-font-color: var(--e-color-text1);
+  --o-input-border-color: var(--o-color-border1);
+  --o-input-font-color: var(--o-color-text1);
   --o-input-font-size: var(--o-font-size-text);
   --o-input-line-height: var(--o-line-height-text);
-  --o-input-color-bg: var(--e-color-bg2);
+  --o-input-color-bg: var(--o-color-bg2);
 
   &.el-input {
     font-size: var(--o-input-font-size);

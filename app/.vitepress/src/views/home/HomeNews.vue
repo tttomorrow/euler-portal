@@ -2,7 +2,7 @@
 import { onMounted, Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
 import dayjs from 'dayjs';
-import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 const i18n = useI18n();
 
@@ -247,9 +247,9 @@ onMounted(async () => {
 .word-hover {
   display: block;
   cursor: pointer;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   &:hover {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
   }
 }
 .statistics {
@@ -269,9 +269,9 @@ onMounted(async () => {
   }
 
   &-button:hover {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     @media screen and (max-width: 1416px) {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
   }
 
@@ -280,7 +280,7 @@ onMounted(async () => {
   }
 
   &-icon {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     width: var(--o-font-size-h8);
     height: var(--o-font-size-h8);
   }
@@ -294,13 +294,13 @@ onMounted(async () => {
   .room-contain-new {
     display: none;
     padding: var(--o-spacing-h2);
-    background-color: var(--e-color-bg2);
-    box-shadow: var(--e-shadow-l1);
+    background-color: var(--o-color-bg2);
+    box-shadow: var(--o-shadow-l1);
     .type-title {
       font-size: var(--o-font-size-h7);
       line-height: var(--o-font-size-h7);
       font-weight: 500;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       display: block;
       @media screen and (max-width: 1080px) {
         display: none;
@@ -315,7 +315,7 @@ onMounted(async () => {
       .room-item-pc {
         display: flex;
         padding-bottom: var(--o-spacing-h2);
-        border-bottom: 1px solid var(--e-color-division1);
+        border-bottom: 1px solid var(--o-color-division1);
         p {
           text-align: left;
         }
@@ -328,8 +328,8 @@ onMounted(async () => {
           margin-right: var(--o-spacing-h4);
           width: 100px;
           height: 110px;
-          background-color: var(--e-color-bg3);
-          color: var(--e-color-text1);
+          background-color: var(--o-color-bg3);
+          color: var(--o-color-text1);
           .day {
             margin-bottom: var(--o-spacing-h8);
             font-size: var(--o-font-size-h4);
@@ -357,16 +357,16 @@ onMounted(async () => {
               text-overflow: ellipsis;
               font-weight: 500;
               font-size: var(--o-font-size-h7);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
               &:hover {
-                color: var(--e-color-brand1);
+                color: var(--o-color-brand1);
               }
             }
             p {
               line-height: var(--o-line-height-text);
               font-size: var(--o-font-size-text);
               margin-top: var(--o-spacing-h9);
-              color: var(--e-color-text1);
+              color: var(--o-color-text1);
             }
             @media screen and (max-width: 768px) {
               a {
@@ -380,7 +380,7 @@ onMounted(async () => {
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 1;
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             a {
               text-decoration: none;
             }
@@ -405,7 +405,7 @@ onMounted(async () => {
         margin: 0;
         grid-template-columns: repeat(1, minmax(300px, 1fr));
         .room-item {
-          border-bottom: 1px solid var(--e-color-division1);
+          border-bottom: 1px solid var(--o-color-division1);
 
           .room-item-pc {
             border-bottom: none;
@@ -443,7 +443,7 @@ onMounted(async () => {
             display: flex;
             flex-direction: column;
             font-size: var(--o-font-size-tip);
-            color: var(--e-color-text4);
+            color: var(--o-color-text4);
             .author {
               padding-bottom: var(--o-spacing-h8);
             }
@@ -498,12 +498,12 @@ onMounted(async () => {
     cursor: pointer;
     padding: var(--o-spacing-h6);
     &:hover {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
   }
   .active {
-    background-color: var(--e-color-brand1);
-    color: var(--e-color-text2) !important;
+    background-color: var(--o-color-brand1);
+    color: var(--o-color-text2) !important;
   }
 }
 </style>

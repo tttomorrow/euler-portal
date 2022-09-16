@@ -2,7 +2,7 @@
 import { ref, Ref, watch } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
-import IconDown from '~icons/app/icon-down.svg';
+import IconDown from '~icons/app/icon-chevron-down.svg';
 
 const props = defineProps({
   show: {
@@ -117,7 +117,7 @@ watch(
     display: flex;
     align-items: center;
     font-size: var(--o-font-size-text);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     cursor: pointer;
     height: 100%;
     &.no-state {
@@ -128,28 +128,28 @@ watch(
     position: absolute;
     top: 80px;
     left: -24px;
-    background: var(--e-color-bg2);
+    background: var(--o-color-bg2);
     cursor: pointer;
     z-index: 999;
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
     min-width: 78px;
     .lang-item {
       line-height: var(--o-line-height-h3);
       text-align: center;
       font-size: var(--o-font-size-text);
-      color: var(--e-color-text1);
-      border-bottom: 1px solid var(--e-color-division1);
+      color: var(--o-color-text1);
+      border-bottom: 1px solid var(--o-color-division1);
       padding: 0 var(--o-spacing-h5);
       &:last-child {
         border-bottom: 0 none;
       }
 
       &:hover {
-        background: var(--e-color-brand1);
-        color: var(--e-color-text2);
+        background: var(--o-color-brand1);
+        color: var(--o-color-text2);
       }
       &.active {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         background: none;
         cursor: default;
       }
@@ -164,17 +164,17 @@ watch(
   line-height: var(--o-line-height-h3);
   span {
     font-size: var(--o-font-size-tip);
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     margin-right: 12px;
     &.active {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
       font-weight: 600;
     }
     &:not(:last-child) {
       &:after {
         content: '|';
         margin-left: 12px;
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
       }
     }
   }

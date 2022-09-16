@@ -202,7 +202,7 @@ const isMobile = computed(() => {
   .top {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h7);
   }
   .duty-table {
@@ -219,7 +219,7 @@ const isMobile = computed(() => {
     }
   }
   .link {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
   }
   .mo-card {
     margin: var(--o-spacing-h4) 0;
@@ -231,12 +231,12 @@ const isMobile = computed(() => {
           white-space:nowrap;
         }
         .text-content {
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
         }
       }
     }
     &-sides {
-      background-color: var(--e-color-bg1);
+      background-color: var(--o-color-bg1);
     }
   }
 </style>

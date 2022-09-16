@@ -29,12 +29,12 @@ const attrs = useAttrs();
 <style lang="scss">
 .o-search {
   --o-search-height: 36px;
-  --o-search-border-color: var(--e-color-border);
-  --o-search-font-color: var(--e-color-text1);
+  --o-search-border-color: var(--o-color-border);
+  --o-search-font-color: var(--o-color-text1);
   --o-search-font-size: var(--o-font-size-text);
   --o-search-line-height: var(--o-line-height-text);
-  --o-search-color-bg: var(--e-color-bg2);
-  --o-search-shadow: var(--e-shadow-l1);
+  --o-search-color-bg: var(--o-color-bg2);
+  --o-search-shadow: var(--o-shadow-l1);
 
   &.el-input {
     font-size: var(--o-font-size-text);
@@ -48,7 +48,7 @@ const attrs = useAttrs();
       .el-input__prefix-inner {
         font-size: var(--o-font-size-h5);
         line-height: var(--o-line-heihgt-h5);
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
       }
 
       svg {

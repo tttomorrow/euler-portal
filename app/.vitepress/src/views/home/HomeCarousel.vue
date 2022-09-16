@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { useI18n } from '@/i18n';
 import { useData } from 'vitepress';
 
-import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 const { lang } = useData();
 
@@ -104,7 +104,7 @@ const handleGo = (path: string) => {
 .carousel {
   :deep(.el-collapse) {
     border: none;
-    background-color: var(--e-color-bg1);
+    background-color: var(--o-color-bg1);
   }
   &-container {
     @media screen and (max-width: 1100px) {
@@ -118,7 +118,7 @@ const handleGo = (path: string) => {
   h3 {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -165,7 +165,7 @@ const handleGo = (path: string) => {
           height: 1px;
           width: calc((100% - 48px));
           transition: all 0.3s;
-          background-color: var(--e-color-border2);
+          background-color: var(--o-color-border2);
         }
         @media (max-width: 768px) {
           padding: var(--o-spacing-h8);
@@ -202,7 +202,7 @@ const handleGo = (path: string) => {
       cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 500;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-h5);
       @media (max-width: 768px) {
         font-size: var(--o-font-size-text);
@@ -212,7 +212,7 @@ const handleGo = (path: string) => {
 
     &-icon {
       font-size: var(--o-font-size-h8);
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
     }
   }
   &-pc {
@@ -232,7 +232,7 @@ const handleGo = (path: string) => {
       display: flex;
       flex-flow: row;
       padding-bottom: var(--o-spacing-h2);
-      border-bottom: 1px solid var(--e-color-division1);
+      border-bottom: 1px solid var(--o-color-division1);
     }
 
     &-list {
@@ -262,13 +262,13 @@ const handleGo = (path: string) => {
       font-size: var(--o-font-size-h5);
       font-weight: 400;
       text-align: center;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-h4);
-      border-bottom: 1px solid var(--e-color-division1);
+      border-bottom: 1px solid var(--o-color-division1);
       padding: var(--o-spacing-h4) 0;
       @media screen and (min-width: 1100px) {
         &:hover {
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
         }
       }
     }
@@ -293,7 +293,7 @@ const handleGo = (path: string) => {
       }
 
       &-icon {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         width: var(--o-font-size-h8);
         height: var(--o-font-size-h8);
       }
@@ -314,11 +314,11 @@ const handleGo = (path: string) => {
   .el-collapse-item__header {
     position: relative;
     border-left: none;
-    border-bottom: 1px solid var(--e-color-division1);
+    border-bottom: 1px solid var(--o-color-division1);
   }
 }
 
 .active {
-  color: var(--e-color-brand1);
+  color: var(--o-color-brand1);
 }
 </style>

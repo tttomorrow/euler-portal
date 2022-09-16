@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData, useRouter } from 'vitepress';
 import { computed, onMounted, ref, reactive, watch, PropType } from 'vue';
-import _ from 'lodash';
+import { debounce, filter, uniq } from 'lodash-es';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
@@ -11,7 +11,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 
 import IconGitee from '~icons/app/icon-gitee.svg';
-// import IconSearch from '~icons/app/search.svg';
+import IconSearch from '~icons/app/icon-search.svg';
 import IconHome from '~icons/app/icon-home.svg';
 
 interface LIST_PARAMS {
@@ -134,7 +134,7 @@ const getRepositoryList = () => {
             return a.localeCompare(b);
           });
         });
-        maintainerList.value = _.uniq(maintainerList.value);
+        maintainerList.value = uniq(maintainerList.value);
         maintainerList.value.sort((a, b) => {
           return a.localeCompare(b);
         });
@@ -153,7 +153,7 @@ const filterRepositoryList = () => {
     repoRenderList.value = repositioryList.value.slice(0, 99);
     getSigList(initialParams);
   } else {
-    sigList.value = _.filter(allList.value, (item: any) => {
+    sigList.value = filter(allList.value, (item: any) => {
       return (
         (!slectedInfo.sigSelected ||
           item.sig_name === slectedInfo.sigSelected) &&
@@ -241,7 +241,7 @@ function replaceMail() {
   });
 }
 // 输入框防抖
-const debounceEvent = _.debounce(filterRope, 300, {
+const debounceEvent = debounce(filterRope, 300, {
   trailing: true,
 });
 watch(
@@ -303,11 +303,11 @@ onMounted(() => {
             :placeholder="i18n.sig.SIG_ALL"
             @change="filterRepositoryList()"
           >
-            <!-- <template #prefix>
+            <template #prefix>
               <OIcon>
                 <IconSearch />
               </OIcon>
-            </template> -->
+            </template>
             <OOption
               v-for="item in sigSelectList"
               :key="item"
@@ -332,6 +332,11 @@ onMounted(() => {
             @scorll-bottom="getNextPage()"
             @change="filterRepositoryList()"
           >
+            <template #prefix>
+              <OIcon>
+                <IconSearch />
+              </OIcon>
+            </template>
             <OOption
               v-for="item in repoRenderList"
               :key="item"
@@ -353,6 +358,11 @@ onMounted(() => {
             :placeholder="i18n.sig.SIG_ALL"
             @change="filterRepositoryList()"
           >
+            <template #prefix>
+              <OIcon>
+                <IconSearch />
+              </OIcon>
+            </template>
             <OOption
               v-for="item in maintainerList"
               :key="item"
@@ -362,7 +372,7 @@ onMounted(() => {
           </OSelect>
         </ClientOnly>
       </div>
-      <span>{{ i18n.sig.SIG_LIST.TIPS }}</span>
+      <span class="sig-tip">{{ i18n.sig.SIG_LIST.TIPS }}</span>
     </div>
     <OTable v-show="!isMobile" :data="sigList">
       <el-table-column :label="i18n.sig.SIG_LIST.NAME">
@@ -603,12 +613,12 @@ onMounted(() => {
     }
   }
   .ellipsis {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
   }
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
   .sig-maintainer {
@@ -639,25 +649,30 @@ onMounted(() => {
   display: flex;
   align-items: flex-end;
   align-items: center;
-  span {
+  .sig-tip {
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
   &-item {
     display: flex;
     align-items: center;
     margin-right: var(--o-spacing-h1);
     flex-wrap: nowrap;
-    span {
-      font-size: var(--o-font-size-h7);
-      line-height: var(--o-line-height-h7);
-      color: var(--e-color-text1);
+    .select-item-name {
       margin-right: var(--o-spacing-h5);
+      color: var(--o-color-text1);
+      line-height: var(--o-line-height-h7);
       @media (max-width: 1000px) {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
         width: 100px;
+      }
+    }
+    span {
+      font-size: var(--o-font-size-h7);
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-h8);
       }
     }
     @media (max-width: 1280px) {
@@ -699,7 +714,7 @@ onMounted(() => {
       .mo-item-title {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         margin-right: var(--o-spacing-h7);
       }
       .sig-board-icon {
@@ -733,7 +748,7 @@ onMounted(() => {
     margin-top: var(--o-spacing-h5);
   }
   .mo-item-odd {
-    background-color: var(--e-color-bg4);
+    background-color: var(--o-color-bg4);
   }
 }
 </style>

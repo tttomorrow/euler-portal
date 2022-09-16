@@ -3,7 +3,7 @@ title: 'approve'
 ---
 
 <script setup lang="ts">
-  import TheApprove from "@/views/security/TheApprove.vue";
+  import TheOsv from "@/views/security/osv/TheOsv.vue";
 </script>
 
-<TheApprove />
+<TheOsv />

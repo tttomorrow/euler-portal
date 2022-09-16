@@ -29,7 +29,7 @@ import qiLin_dark from '@/assets/category/internship/logo/qilin_dark.png';
 import tongXin_dark from '@/assets/category/internship/logo/tongxin_dark.png';
 import xinAn_dark from '@/assets/category/internship/logo/xinan_dark.png';
 
-import IconArrowRight from '~icons/app/arrow-right.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 const commonStore = useCommon();
 const INTEGRAL_DATA = [
   {
@@ -421,7 +421,7 @@ onUnmounted(() => {
                 <p>
                   <span>{{ item.TEXT[1] }}</span>
                   <a
-                    href="/doc/导师实习评语.txt"
+                    href="@/assets/category/internship/doc/导师实习评语.docx"
                     download
                     title="下载实习评语"
                     >{{ item.TEXT[2] }}</a
@@ -429,7 +429,7 @@ onUnmounted(() => {
                 </p>
                 <p>
                   <a
-                    href="/doc/实习报告模板.docx"
+                    href="@/assets/category/internship/doc/实习报告模板.docx"
                     download
                     title="下载报告模板"
                     >{{ item.TEXT[3] }}</a
@@ -444,7 +444,7 @@ onUnmounted(() => {
                 >
                   <slot v-if="index === 1 && index1 === 3">
                     <a
-                      href="/doc/实习报告模板.docx"
+                      href="@/assets/category/internship/doc/实习报告模板.docx"
                       download
                       title="下载报告模板"
                       >{{ item1 }}</a
@@ -555,7 +555,7 @@ onUnmounted(() => {
     .text {
       font-size: 14px;
       line-height: 22px;
-      color: var(--e-color-text4) !important;
+      color: var(--o-color-text4) !important;
     }
     .title {
       margin-bottom: 16px;
@@ -568,7 +568,7 @@ onUnmounted(() => {
   .text {
     font-size: 20px;
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: 40px;
     @media (max-width: 1000px) {
       font-size: var(--o-font-size-tip);
@@ -602,7 +602,7 @@ onUnmounted(() => {
       li {
         cursor: pointer;
         white-space: nowrap;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         position: relative;
         font-size: var(--o-font-size-h5);
         @media (max-width: 1000px) {
@@ -620,13 +620,13 @@ onUnmounted(() => {
         }
       }
       .active {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         &::after {
           content: '';
           display: block;
           width: 100%;
           height: 2px;
-          background-color: var(--e-color-brand1);
+          background-color: var(--o-color-brand1);
           position: absolute;
           left: 0;
           bottom: 0;
@@ -636,7 +636,7 @@ onUnmounted(() => {
   }
   .task-wrap {
     background-image: url('@/assets/category/internship/other-community-bg.png');
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     background-repeat: no-repeat;
     background-size: 120%;
     background-position: 50%;
@@ -659,7 +659,7 @@ onUnmounted(() => {
       a {
         font-size: 20px;
         line-height: 20px;
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         text-align: center;
         @media (max-width: 1000px) {
           font-size: 16px;
@@ -667,7 +667,7 @@ onUnmounted(() => {
       }
     }
     .intriduce {
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
       font-size: 18px;
       line-height: 22px;
       height: 88px;
@@ -679,9 +679,9 @@ onUnmounted(() => {
     .btn {
       .task-bth {
         margin-right: 24px;
-        border: none;
+        border: 1px solid var(--o-color-brand1);
         color: #fff;
-        background-color: var(--e-color-brand1);
+        background-color: var(--o-color-brand1);
         padding: 8px 12px;
         font-size: 16px;
         @media (max-width: 1000px) {
@@ -689,21 +689,28 @@ onUnmounted(() => {
           padding: 3px 16px;
         }
         &:hover {
-          background-color: var(--e-color-brand2);
+          background-color: var(--o-color-brand2);
+          border: 1px solid var(--o-color-brand2);
+          :deep(.o-icon) {
+            transform: translateX(5px);
+          }
         }
-        .o-icon {
-          margin-left: 8px;
+        :deep(.o-icon) {
+          transition: all 0.2s;
+          margin-left: 6px;
         }
       }
       .detail-btn {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
+        padding: 8px 12px;
         border: 1px solid transparent;
         @media (max-width: 1000px) {
           font-size: 12px;
+          padding: 3px 16px;
         }
         &:hover {
-          border: 1px solid var(--e-color-brand2);
-          color: var(--e-color-brand2);
+          border: 1px solid var(--o-color-brand2);
+          color: var(--o-color-brand2);
           :deep(.o-icon) {
             transform: translateX(5px);
           }
@@ -732,39 +739,46 @@ onUnmounted(() => {
     .intriduce {
       font-size: 14px;
       line-height: 22px;
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
     }
     .btn {
       text-align: center;
       margin-top: 5px;
       .task-bth {
         margin-right: 24px;
-        border: none;
+        border: 1px solid var(--o-color-brand1);
         color: #fff;
-        background-color: var(--e-color-brand1);
+        background-color: var(--o-color-brand1);
         padding: 8px 12px;
         font-size: 16px;
-        .o-icon {
-          margin-left: 8px;
+        :deep(.o-icon) {
+          margin-left: 6px;
+          transition: all 0.2s;
         }
         @media (max-width: 1000px) {
           font-size: 12px;
           padding: 3px 16px;
         }
         &:hover {
-          background-color: var(--e-color-brand2);
+          background-color: var(--o-color-brand2);
+          border: 1px solid var(--o-color-brand2);
+          :deep(.o-icon) {
+            transform: translateX(5px);
+          }
         }
       }
       .detail-btn {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         border: 1px solid transparent;
         font-size: 16px;
+        padding: 8px 12px;
         @media (max-width: 1000px) {
           font-size: 12px;
+          padding: 3px 16px;
         }
         &:hover {
-          border: 1px solid var(--e-color-brand2);
-          color: var(--e-color-brand2);
+          border: 1px solid var(--o-color-brand2);
+          color: var(--o-color-brand2);
           :deep(.o-icon) {
             transform: translateX(5px);
           }
@@ -780,7 +794,7 @@ onUnmounted(() => {
 .introduce-card {
   @media (max-width: 1000px) {
     margin-top: 0;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     padding: var(--o-font-size-h5);
   }
 }
@@ -791,7 +805,7 @@ onUnmounted(() => {
       height: 48px;
       margin: 0 auto;
       font-size: var(--o-font-size-h3);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: 48px;
       background-image: url(@/assets/category/internship/title.png);
       background-repeat: no-repeat;
@@ -815,7 +829,7 @@ onUnmounted(() => {
   display: inline-block;
   margin: 0 auto;
   font-size: var(--o-font-size-h3);
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   font-weight: 300;
   line-height: 48px;
   background-image: url(@/assets/category/internship/title.png);
@@ -845,9 +859,9 @@ onUnmounted(() => {
     }
   }
   .integral-border {
-    border: 5px solid var(--e-color-brand1);
-    border-top: 16px solid var(--e-color-brand1);
-    // background-color: var(--e-color-brand1);
+    border: 5px solid var(--o-color-brand1);
+    border-top: 16px solid var(--o-color-brand1);
+    // background-color: var(--o-color-brand1);
     .integral-content {
       padding: 32px 30px;
       font-size: 14px;
@@ -863,7 +877,7 @@ onUnmounted(() => {
       h4 {
         margin: 10px 0;
         font-size: 18px;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         @media (max-width: 1000px) {
           margin: 6px 0;
           font-size: 16px;
@@ -877,10 +891,10 @@ onUnmounted(() => {
       p {
         position: relative;
         padding-left: 12px;
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
       }
       .supplement {
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
       }
       .circular {
         p::before {
@@ -891,7 +905,7 @@ onUnmounted(() => {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background-color: var(--e-color-brand1);
+          background-color: var(--o-color-brand1);
         }
       }
       .star {
@@ -911,10 +925,10 @@ onUnmounted(() => {
   }
   @media (max-width: 1000px) {
     .integral-border {
-      border: 5px solid var(--e-color-brand1);
-      border-top: 16px solid var(--e-color-brand1);
+      border: 5px solid var(--o-color-brand1);
+      border-top: 16px solid var(--o-color-brand1);
       border-radius: 8px;
-      background-color: var(--e-color-brand1);
+      background-color: var(--o-color-brand1);
     }
     .integral-content {
       padding-bottom: 41px;
@@ -987,9 +1001,9 @@ onUnmounted(() => {
   }
   .rule-border {
     border-radius: 8px;
-    border: 5px solid var(--e-color-brand1);
-    border-top: 16px solid var(--e-color-brand1);
-    background-color: var(--e-color-brand1);
+    border: 5px solid var(--o-color-brand1);
+    border-top: 16px solid var(--o-color-brand1);
+    background-color: var(--o-color-brand1);
   }
   .rule-content {
     padding: 32px 30px;
@@ -1063,8 +1077,8 @@ onUnmounted(() => {
       margin: 0px -2px -2px 0px;
       justify-content: center;
       align-items: center;
-      border: 1px solid var(--e-color-division1);
-      background-color: var(--e-color-bg2);
+      border: 1px solid var(--o-color-division1);
+      background-color: var(--o-color-bg2);
       max-height: 120px;
       overflow: hidden;
       img {
@@ -1094,7 +1108,7 @@ onUnmounted(() => {
   }
 }
 .help-wrap {
-  background: var(--e-color-bg2);
+  background: var(--o-color-bg2);
   padding: 40px 0;
   .panel {
     margin-top: 0;
@@ -1126,7 +1140,7 @@ onUnmounted(() => {
 
     p {
       font-size: 20px;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       display: block;
       @media (max-width: 1000px) {
         font-size: 16px;
@@ -1134,7 +1148,7 @@ onUnmounted(() => {
       }
       a {
         font-size: 20px;
-        color: var(--e-color-link1);
+        color: var(--o-color-link1);
         @media (max-width: 1000px) {
           font-size: 16px;
           line-height: 32px;
@@ -1184,7 +1198,7 @@ onUnmounted(() => {
         }
         .mo-number {
           display: block;
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
           font-size: var(--o-font-size-text);
           line-height: var(--o-font-size-text);
         }

@@ -73,7 +73,7 @@ onMounted(() => {
   font-size: var(--o-font-size-text);
   font-weight: 400;
   line-height: var(--o-line-height-h8);
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   @media (max-width: 1100px) {
     padding-left: var(--o-spacing-h5);
     font-size: var(--o-font-size-tip);
@@ -102,7 +102,7 @@ onMounted(() => {
     }
     p {
       display: block;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       text-align: center;
     }
   }

@@ -3,7 +3,7 @@ title: 'ApproveStep'
 ---
 
 <script setup lang="ts">
-  import TheApproveStep from "@/views/security/TheApproveStep.vue";
+  import TheOsvStep from "@/views/security/osv/TheOsvStep.vue";
 </script>
 
-<TheApproveStep />
+<TheOsvStep />

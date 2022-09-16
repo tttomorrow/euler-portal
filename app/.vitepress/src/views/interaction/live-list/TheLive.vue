@@ -18,7 +18,7 @@ import cardBg_dark_mo from '@/assets/category/interaction/live/dark-crad-bg-mobi
 import cardBg_light_mo_extension from '@/assets/category/interaction/live/bg-extension-light.png';
 import cardBg_dark_mo_extension from '@/assets/category/interaction/live/bg-extension-dark.png';
 
-import IconRight from '~icons/app/icon-arrow-right1.svg';
+import IconRight from '~icons/app/icon-arrow-right.svg';
 import IconUser from '~icons/app/icon-user.svg';
 import IconTime from '~icons/app/icon-time.svg';
 
@@ -128,7 +128,7 @@ function turnPage(option: string) {
                   :style="{
                     color:
                       commonStore.theme === 'dark'
-                        ? 'var(--e-color-white)'
+                        ? 'var(--o-color-white)'
                         : '',
                   }"
                   @click="totoBLink(live.FORMERLYLINK)"
@@ -177,7 +177,7 @@ function turnPage(option: string) {
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
   &-top-title {
@@ -186,7 +186,7 @@ function turnPage(option: string) {
     font-weight: 300;
     font-size: var(--o-font-size-h3);
     text-align: center;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     @media screen and (max-width: 767px) {
       font-size: var(--o-font-size-h8);
     }
@@ -252,10 +252,10 @@ function turnPage(option: string) {
       font-size: var(--o-font-size-h5);
       text-align: left;
       font-weight: 500;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       @media screen and (max-width: 767px) {
         font-size: var(--o-font-size-text);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
     }
   }
@@ -266,7 +266,7 @@ function turnPage(option: string) {
       width: 100%;
       height: 98px;
       background-repeat: no-repeat;
-      background-color: var(--e-color-bg4);
+      background-color: var(--o-color-bg4);
     }
     &-img {
       margin: 70px 71px;
@@ -295,7 +295,7 @@ function turnPage(option: string) {
       margin-right: var(--o-spacing-h3);
       line-height: var(--o-line-height-tip);
       font-size: var(--o-font-size-text);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       overflow: hidden;
       text-overflow: ellipsis;
       @media screen and (max-width: 767px) {
@@ -306,7 +306,7 @@ function turnPage(option: string) {
   }
   &-button {
     &-icon {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
   }
   &-pagination {
@@ -322,11 +322,11 @@ function turnPage(option: string) {
   .smail-icon {
     font-size: var(--o-font-size-h7);
     vertical-align: text-bottom;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     margin-right: var(--o-spacing-h8);
     @media screen and (max-width: 767px) {
       font-size: var(--o-font-size-h8);
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
     }
   }
   .pagination {
@@ -344,7 +344,7 @@ function turnPage(option: string) {
       margin: auto;
       &-icon {
         font-size: var(--o-font-size-tip);
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
       }
       &-icon:hover {
         cursor: pointer;
@@ -353,10 +353,10 @@ function turnPage(option: string) {
         font-size: var(--o-font-size-tip);
         margin-left: var(--o-spacing-h8);
         margin-right: var(--o-spacing-h8);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
       &-text:hover {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         cursor: pointer;
       }
     }
@@ -364,9 +364,9 @@ function turnPage(option: string) {
       margin-left: 20px;
       margin-right: 20px;
       font-size: var(--o-font-size-tip);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       &-current {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         font-size: var(--o-font-size-tip);
       }
     }

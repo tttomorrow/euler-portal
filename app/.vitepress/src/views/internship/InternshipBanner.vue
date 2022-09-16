@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import IconArrowRight from '~icons/app/icon-arrow.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right';
 </script>
 
 <template>

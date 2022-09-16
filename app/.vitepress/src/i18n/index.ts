@@ -8,17 +8,17 @@ import security from './security';
 import home from './home';
 import common from './common';
 import mooc from './learn';
-import atune from './projects/atune';
-import bishengjdk from './projects/bishengjdk';
-import isula from './projects/isula';
-import secgear from './projects/secgear';
-import stratovirt from './projects/stratovirt';
+import atune from './minisite/atune';
+import bisheng from './minisite/bisheng';
+import isula from './minisite/isula';
+import secgear from './minisite/secgear';
+import stratovirt from './minisite/stratovirt';
 import showcase from './showcase';
 import interaction from './interaction';
 import live from './interaction/live';
 import compatibility from './compatibility';
 import summit from './interaction/summit';
-import screen from './screen';
+import filter from './filter';
 import contribution from './community/contribution';
 import mailing from './community/mailing';
 import search from './search';
@@ -34,7 +34,7 @@ const i18n: { [key: string]: any } = {
     common: common.zh,
     mooc: mooc.zh,
     atune: atune.zh,
-    bishengjdk: bishengjdk.zh,
+    bisheng: bisheng.zh,
     isula: isula.zh,
     secgear: secgear.zh,
     stratovirt: stratovirt.zh,
@@ -44,7 +44,7 @@ const i18n: { [key: string]: any } = {
     approve: approve.zh,
     compatibility: compatibility.zh,
     summit: summit.zh,
-    screen: screen.zh,
+    filter: filter.zh,
     contribution: contribution.zh,
     mailing: mailing.zh,
     search: search.zh,
@@ -57,7 +57,7 @@ const i18n: { [key: string]: any } = {
     home: home.en,
     common: common.en,
     atune: atune.en,
-    bishengjdk: bishengjdk.en,
+    bisheng: bisheng.en,
     isula: isula.en,
     secgear: secgear.en,
     stratovirt: stratovirt.en,
@@ -67,7 +67,7 @@ const i18n: { [key: string]: any } = {
     approve: approve.en,
     compatibility: compatibility.en,
     summit: summit.en,
-    screen: screen.en,
+    filter: filter.en,
     contribution: contribution.en,
     mailing: mailing.en,
     search: search.en,
@@ -80,7 +80,7 @@ const i18n: { [key: string]: any } = {
     home: home.ru,
     common: common.ru,
     atune: atune.ru,
-    bishengjdk: bishengjdk.ru,
+    bisheng: bisheng.ru,
     isula: isula.ru,
     secgear: secgear.ru,
     stratovirt: stratovirt.ru,
@@ -90,7 +90,7 @@ const i18n: { [key: string]: any } = {
     approve: approve.ru,
     compatibility: compatibility.ru,
     summit: summit.ru,
-    screen: screen.ru,
+    filter: filter.ru,
     contribution: contribution.ru,
     mailing: mailing.ru,
     search: search.ru,

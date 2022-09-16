@@ -222,7 +222,7 @@ const jumpToUserZone = () => {
         <OIcon v-if="!mobileMenuIcon" class="icon" @click="mobileMenuPanel">
           <IconMenu />
         </OIcon>
-        <OIcon v-else class="icon" @click="mobileMenuPanel"><IconX /></OIcon>
+        <OIcon v-else class="icon"><IconX /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <clientOnly>
@@ -235,7 +235,9 @@ const jumpToUserZone = () => {
               @focus="showDrawer"
             >
               <template #suffix>
-                <OIcon class="close" @click="donShowSearchBox"><IconX /></OIcon>
+                <OIcon class="close" @click="donShowSearchBox"
+                  ><IconCancel
+                /></OIcon>
               </template>
             </OSearch>
           </div>
@@ -351,7 +353,7 @@ const jumpToUserZone = () => {
 
 <style lang="scss" scoped>
 :deep(.el-input__wrapper) {
-  background-color: var(--e-color-bg-secondary) !important;
+  background-color: var(--o-color-bg-secondary) !important;
   box-shadow: none !important;
 }
 :deep(.el-input__suffix) {
@@ -364,13 +366,13 @@ const jumpToUserZone = () => {
   font-size: var(--o-font-size-h1);
 }
 .app-header {
-  background-color: var(--e-color-bg2);
+  background-color: var(--o-color-bg2);
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   z-index: 99;
-  box-shadow: var(--e-shadow-l1);
+  box-shadow: var(--o-shadow-l1);
   &-body {
     display: flex;
     align-items: center;
@@ -411,14 +413,14 @@ const jumpToUserZone = () => {
   }
   .icon {
     font-size: var(--o-font-size-h6);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     cursor: pointer;
   }
 }
 .mobile-search {
   font-size: var(--o-font-size-h6);
   display: none;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   @media (max-width: 1100px) {
     display: block;
   }
@@ -445,7 +447,7 @@ const jumpToUserZone = () => {
     align-items: center;
     height: 100%;
     .lang {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       letter-spacing: 0.08em;
       font-size: 16px;
     }
@@ -458,7 +460,7 @@ const jumpToUserZone = () => {
   }
   .icon {
     font-size: 22px;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
 }
 .header-search {
@@ -480,7 +482,7 @@ const jumpToUserZone = () => {
   &-box {
     .close {
       cursor: pointer;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
   }
   .drawer {
@@ -488,7 +490,7 @@ const jumpToUserZone = () => {
     height: auto;
     width: 100%;
     margin-top: 21px;
-    box-shadow: var(--e-shadow-l4);
+    box-shadow: var(--o-shadow-l4);
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     padding: var(--o-spacing-h3);
@@ -506,14 +508,14 @@ const jumpToUserZone = () => {
       &-title {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
       &-list {
         &-item {
           margin-top: var(--o-spacing-h5);
           margin-right: var(--o-spacing-h5);
-          background-color: var(--e-color-bg4);
-          color: var(--e-color-text-secondary);
+          background-color: var(--o-color-bg4);
+          color: var(--o-color-text-secondary);
           cursor: pointer;
           @media (max-width: 1100px) {
             font-size: var(--o-font-size-tip);
@@ -548,7 +550,7 @@ const jumpToUserZone = () => {
   display: flex;
   opacity: 0;
   visibility: hidden;
-  border-top: 1px solid var(--e-color-division);
+  border-top: 1px solid var(--o-color-division);
   background: rgba(0, 0, 0, 0.4);
   top: 48px;
   height: calc(100% - 48px);
@@ -578,11 +580,11 @@ const jumpToUserZone = () => {
   }
   &-side {
     left: -100%;
-    background: var(--e-color-bg1);
+    background: var(--o-color-bg1);
     display: inline-flex;
     height: 100%;
     flex-direction: column;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     min-width: 164px;
     opacity: 0;
     position: relative;
@@ -606,7 +608,7 @@ const jumpToUserZone = () => {
         display: block;
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-h3);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         padding: 0 var(--o-spacing-h5);
         position: relative;
         cursor: pointer;
@@ -622,11 +624,11 @@ const jumpToUserZone = () => {
           bottom: 0;
         }
         &.active {
-          background: var(--e-color-bg2);
-          color: var(--e-color-brand1);
+          background: var(--o-color-bg2);
+          color: var(--o-color-brand1);
           &::after {
             width: 24px;
-            background: var(--e-color-brand1);
+            background: var(--o-color-brand1);
           }
         }
       }
@@ -638,7 +640,7 @@ const jumpToUserZone = () => {
   }
   &-content {
     flex: 1;
-    background: var(--e-color-bg2);
+    background: var(--o-color-bg2);
     position: relative;
 
     left: 0;
@@ -652,10 +654,10 @@ const jumpToUserZone = () => {
         line-height: var(--o-line-height-h3);
         font-size: var(--o-font-size-tip);
         font-weight: normal;
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
         cursor: pointer;
         &:last-child {
-          border-bottom: 1px solid var(--e-color-division1);
+          border-bottom: 1px solid var(--o-color-division1);
         }
       }
     }

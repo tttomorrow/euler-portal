@@ -83,10 +83,10 @@ const tabLiveRoom = (src: string, index: number): void => {
         width: 163px;
         padding: var(--o-spacing-h6) 0;
         cursor: pointer;
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         margin-bottom: var(--o-spacing-h7);
         p {
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
           font-size: var(--o-font-size-h7);
           padding: var(--o-spacing-h8);
         }
@@ -94,7 +94,7 @@ const tabLiveRoom = (src: string, index: number): void => {
           margin-top: var(--o-spacing-h4);
         }
         &:hover {
-          box-shadow: var(--e-shadow-l2_hover);
+          box-shadow: var(--o-shadow-l2_hover);
         }
       }
       &-live-main {
@@ -103,9 +103,9 @@ const tabLiveRoom = (src: string, index: number): void => {
         padding-top: var(--o-spacing-h4);
       }
       &-live-active {
-        background-color: var(--e-color-kleinblue5);
+        background-color: var(--o-color-kleinblue5);
         p {
-          color: var(--e-color-white);
+          color: var(--o-color-white);
         }
       }
     }

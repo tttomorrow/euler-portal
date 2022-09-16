@@ -206,8 +206,8 @@ list.value = initList();
     }
   }
   &-item:hover {
-    background-color: var(--e-color-brand1);
-    color: var(--e-color-text2);
+    background-color: var(--o-color-brand1);
+    color: var(--o-color-text2);
   }
 }
 .brand {
@@ -221,7 +221,7 @@ list.value = initList();
   &-title {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -234,11 +234,11 @@ list.value = initList();
   &-faq {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h7);
     margin-top: var(--o-spacing-h10);
     a {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
@@ -254,11 +254,11 @@ list.value = initList();
   &-word {
     font-size: var(--o-font-size-h7);
     font-weight: 300;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h7);
     margin-top: var(--o-spacing-h10);
     a {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
@@ -292,7 +292,7 @@ list.value = initList();
     &-title {
       font-size: var(--o-font-size-h7);
       font-weight: 400;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-h7);
       margin-top: var(--o-spacing-h10);
       @media (max-width: 768px) {
@@ -329,7 +329,7 @@ list.value = initList();
     h3 {
       font-size: var(--o-font-size-h3);
       font-weight: 300;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-h3);
       width: 100%;
       text-align: center;
@@ -371,7 +371,7 @@ list.value = initList();
 
   &-word {
     padding: var(--o-spacing-h4);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     font-size: var(--o-font-size-h7);
     line-height: var(--o-line-height-h7);
     @media (max-width: 768px) {
