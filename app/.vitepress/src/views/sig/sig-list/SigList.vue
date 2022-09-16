@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData, useRouter } from 'vitepress';
 import { computed, onMounted, ref, reactive, watch, PropType } from 'vue';
-import _ from 'lodash';
+import { uniq } from 'lodash-es';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
@@ -134,7 +134,7 @@ const getRepositoryList = () => {
             return a.localeCompare(b);
           });
         });
-        maintainerList.value = _.uniq(maintainerList.value);
+        maintainerList.value = uniq(maintainerList.value);
         maintainerList.value.sort((a, b) => {
           return a.localeCompare(b);
         });
