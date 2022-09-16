@@ -4,7 +4,7 @@ title: 'Contribution'
 
 <script lang="ts" setup>
 import BannerLevel2 from '@/components/BannerLevel2.vue'
-import ContributionTab from "@/views/community/contribution/ContributionTab.vue";
+import ContributionTab from "@/views/contribution/ContributionTab.vue";
 
 import banner from '@/assets/banner/banner-community.png';
 import illustration from '@/assets/illustrations/contribution.png';

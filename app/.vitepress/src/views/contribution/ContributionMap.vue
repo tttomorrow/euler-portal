@@ -5,10 +5,10 @@ import { useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
 
-import ContributionMap from '/img/community/contribution/contribution-map.png';
-import ContributionMapDark from '/img/community/contribution/contribution-map-dark.png';
-import ContributionMapMobile from '/img/community/contribution/contribution-map-mobile.png';
-import ContributionMapMobileDark from '/img/community/contribution/contribution-map-mobile-dark.png';
+import contributionMap_light_zh from '@/assets/category/contribution/contribution-map_light_zh.png';
+import contributionMap_dark_zh from '@/assets/category/contribution/contribution-map_dark_zh.png';
+import contributionMap_light_zh_mobile from '@/assets/category/contribution/contribution-map_light_zh_mobile.png';
+import contributionMap_dark_zh_mobile from '@/assets/category/contribution/contribution-map_dark_zh_mobile.png';
 
 const i18n = useI18n();
 const commonStore = useCommon();
@@ -27,8 +27,8 @@ const goLink = (url: string, isBlank: boolean) => {
 <template>
   <div class="content-map">
     <div class="content-map-img">
-      <img v-show="!isDark" :src="ContributionMap" />
-      <img v-show="isDark" :src="ContributionMapDark" />
+      <img v-show="!isDark" :src="contributionMap_light_zh" />
+      <img v-show="isDark" :src="contributionMap_dark_zh" />
       <!-- 定位的空标签 -->
       <div
         v-for="(item, index) in i18n.contribution.LINK_LIST"
@@ -44,8 +44,8 @@ const goLink = (url: string, isBlank: boolean) => {
       >
     </div>
     <div class="content-map-mobile-img">
-      <img v-show="!isDark" :src="ContributionMapMobile" />
-      <img v-show="isDark" :src="ContributionMapMobileDark" />
+      <img v-show="!isDark" :src="contributionMap_light_zh_mobile" />
+      <img v-show="isDark" :src="contributionMap_dark_zh_mobile" />
       <div
         v-for="(item, index) in i18n.contribution.LINK_LIST"
         :key="index"

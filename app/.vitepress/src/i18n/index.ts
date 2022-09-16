@@ -19,8 +19,8 @@ import live from './interaction/live';
 import compatibility from './compatibility';
 import summit from './interaction/summit';
 import filter from './filter';
-import contribution from './community/contribution';
-import mailing from './community/mailing';
+import contribution from './contribution';
+import mailing from './mailing';
 import search from './search';
 import approve from './approve';
 
