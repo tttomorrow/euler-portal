@@ -18,7 +18,7 @@ import interaction from './interaction';
 import live from './interaction/live';
 import compatibility from './compatibility';
 import summit from './interaction/summit';
-import screen from './screen';
+import filter from './filter';
 import contribution from './community/contribution';
 import mailing from './community/mailing';
 import search from './search';
@@ -44,7 +44,7 @@ const i18n: { [key: string]: any } = {
     approve: approve.zh,
     compatibility: compatibility.zh,
     summit: summit.zh,
-    screen: screen.zh,
+    filter: filter.zh,
     contribution: contribution.zh,
     mailing: mailing.zh,
     search: search.zh,
@@ -67,7 +67,7 @@ const i18n: { [key: string]: any } = {
     approve: approve.en,
     compatibility: compatibility.en,
     summit: summit.en,
-    screen: screen.en,
+    filter: filter.en,
     contribution: contribution.en,
     mailing: mailing.en,
     search: search.en,
@@ -90,7 +90,7 @@ const i18n: { [key: string]: any } = {
     approve: approve.ru,
     compatibility: compatibility.ru,
     summit: summit.ru,
-    screen: screen.ru,
+    filter: filter.ru,
     contribution: contribution.ru,
     mailing: mailing.ru,
     search: search.ru,
