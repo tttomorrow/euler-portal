@@ -77,7 +77,7 @@ h3 {
   margin-bottom: var(--o-spacing-h2);
   font-size: var(--o-font-size-h3);
   font-weight: 300;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-line-height-h3);
   width: 100%;
   text-align: center;

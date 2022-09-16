@@ -307,7 +307,7 @@ onMounted(() => {
   // margin: 0 auto;
   padding: var(--o-spacing-h2);
   // margin-top: var(--o-spacing-h2);
-  background-color: var(--e-color-bg2);
+  background-color: var(--o-color-bg2);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
   }
@@ -317,7 +317,7 @@ onMounted(() => {
   .breadcrumb {
     margin-bottom: var(--o-spacing-h5);
     font-size: var(--o-font-size-h6);
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
     line-height: var(--o-line-height-h5);
     cursor: pointer;
     @media screen and (max-width: 768px) {
@@ -330,7 +330,7 @@ onMounted(() => {
     font-size: var(--o-font-size-h3);
     line-height: var(--o-line-height-h3);
     margin-bottom: var(--o-spacing-h1);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-h7);
       line-height: var(--o-line-height-h7);
@@ -340,7 +340,7 @@ onMounted(() => {
 }
 .title {
   font-size: var(--o-font-size-h5);
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   margin-bottom: var(--o-spacing-h5);
   line-height: var(--o-line-height-h5);
   @media screen and (max-width: 768px) {
@@ -353,7 +353,7 @@ onMounted(() => {
 .link {
   font-size: var(--o-font-size-h8);
   line-height: var(--o-line-height-h8);
-  color: var(--e-color-link1);
+  color: var(--o-color-link1);
   word-break: break-all;
   cursor: pointer;
   @media screen and (max-width: 768px) {
@@ -364,13 +364,13 @@ onMounted(() => {
 .download {
   font-size: var(--o-font-size-h8);
   line-height: var(--o-line-height-h8);
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   @media screen and (max-width: 768px) {
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
   }
   a {
-    color: var(--e-color-link1);
+    color: var(--o-color-link1);
   }
   .download-link-en {
     font-style: italic;
@@ -402,7 +402,7 @@ onMounted(() => {
         justify-content: left;
         padding-bottom: var(--o-spacing-h4);
         font-size: var(--o-font-size-text);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         @media screen and (max-width: 768px) {
           width: 100%;
           padding-bottom: var(--o-spacing-h6);
@@ -413,7 +413,7 @@ onMounted(() => {
         }
         .label {
           flex: 3;
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
           @media screen and (max-width: 768px) {
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
@@ -440,7 +440,7 @@ onMounted(() => {
   .table-mobile {
     display: none;
     margin-bottom: var(--o-spacing-h5);
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
     @media screen and (max-width: 768px) {
       display: block;
     }
@@ -449,11 +449,11 @@ onMounted(() => {
       padding: var(--o-spacing-h5);
       font-size: var(--o-font-size-tip);
       font-weight: 400;
-      color: var(--e-color-neutral8);
+      color: var(--o-color-neutral8);
       line-height: var(--o-line-height-tip);
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
       &:nth-child(odd) {
-        background: var(--e-color-bg4);
+        background: var(--o-color-bg4);
       }
       & li {
         margin-bottom: var(--o-spacing-h8);
@@ -468,7 +468,7 @@ onMounted(() => {
         }
       }
       span {
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         margin-right: var(--o-spacing-h8);
       }
     }

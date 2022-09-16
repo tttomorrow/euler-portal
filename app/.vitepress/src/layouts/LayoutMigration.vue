@@ -157,7 +157,7 @@ const handleNodeClick = (node: any) => {
 
 <style lang="scss" scoped>
 :deep(.el-tree-node__content:hover) {
-  background-color: var(--e-color-bg4);
+  background-color: var(--o-color-bg4);
 }
 
 .migration-content {
@@ -165,16 +165,16 @@ const handleNodeClick = (node: any) => {
   margin: 0 auto;
 
   @media screen and (max-width: 768px) {
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     padding: 24px 16px 16px 16px;
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
   }
 }
 
 .custom-layout {
   @media screen and (max-width: 768px) {
-    background-color: var(--e-color-bg1);
-    box-shadow: var(--e-shadow-sl1);
+    background-color: var(--o-color-bg1);
+    box-shadow: var(--o-shadow-sl1);
     padding: 0;
     box-shadow: none;
   }
@@ -187,7 +187,7 @@ const handleNodeClick = (node: any) => {
   left: 40px;
   margin-bottom: var(--o-spacing-h8);
   margin-top: 0;
-  color: var(--e-color-white);
+  color: var(--o-color-white);
 }
 
 .migration-sidebar-toc {
@@ -201,14 +201,14 @@ const handleNodeClick = (node: any) => {
 
   &::-webkit-scrollbar-thumb {
     border-radius: 2px;
-    background-color: var(--e-color-division);
+    background-color: var(--o-color-division);
     background-clip: content-box;
   }
 
   &::-webkit-scrollbar-track {
     border-radius: 0;
     box-shadow: none;
-    background: var(--e-color-bg1);
+    background: var(--o-color-bg1);
   }
 
   .sidebar-title:first-child {
@@ -224,7 +224,7 @@ const handleNodeClick = (node: any) => {
   font-size: var(--o-font-size-text);
   height: 70px;
   line-height: 70px;
-  color: var(--e-color-white);
+  color: var(--o-color-white);
   cursor: pointer;
 
   &::before {
@@ -232,7 +232,7 @@ const handleNodeClick = (node: any) => {
     top: 0;
     width: calc(100% - 80px);
     height: 1px;
-    background-color: var(--e-color-neutral11);
+    background-color: var(--o-color-neutral11);
     content: '';
     background-color: #ffffff;
     opacity: 0.1;
@@ -263,7 +263,7 @@ const handleNodeClick = (node: any) => {
   left: 48px;
   z-index: 99;
   font-size: 24px;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
 }
 .nav-tree {
   position: fixed;
@@ -271,16 +271,16 @@ const handleNodeClick = (node: any) => {
   top: 0;
   width: 268px;
   height: 100vh;
-  background: var(--e-color-bg2);
+  background: var(--o-color-bg2);
   box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   z-index: 999;
   .nav-top {
     width: 100%;
-    background: var(--e-color-bg2);
+    background: var(--o-color-bg2);
     font-size: 14px;
     line-height: 22px;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     padding: var(--o-spacing-h5);
     font-weight: bold;
     display: flex;
@@ -299,7 +299,7 @@ const handleNodeClick = (node: any) => {
   :deep(.el-tree) {
     width: 100%;
     overflow: hidden;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
   }
 
   :deep(.el-icon.el-tree-node__expand-icon.is-leaf) {
@@ -309,7 +309,7 @@ const handleNodeClick = (node: any) => {
     order: 2;
     padding: 12px;
     font-size: var(--o-font-size-h8);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
   :deep(.el-tree-node__expand-icon.expanded) {
     transform: rotate(180deg);
@@ -317,7 +317,7 @@ const handleNodeClick = (node: any) => {
   :deep(.el-tree--highlight-current
       .el-tree-node.is-current
       > .el-tree-node__content) {
-    background-color: var(--e-color-bg4);
+    background-color: var(--o-color-bg4);
   }
   // :deep(.el-tree-node:nth-of-type(1)
   //     > .el-tree-node__content
@@ -328,7 +328,7 @@ const handleNodeClick = (node: any) => {
     display: none;
   }
   :deep(.el-tree-node__children .is-current .el-tree-node__label) {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
   }
   :deep(.el-tree--highlight-current
       .el-tree-node.is-current
@@ -336,12 +336,12 @@ const handleNodeClick = (node: any) => {
     background-color: transparent;
   }
   :deep(.el-tree-node__children) {
-    background-color: var(--e-color-bg1);
+    background-color: var(--o-color-bg1);
   }
   :deep(.el-tree .el-tree-node__label) {
     font-size: 14px;
     line-height: 16px;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
   :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
     font-size: 14px;

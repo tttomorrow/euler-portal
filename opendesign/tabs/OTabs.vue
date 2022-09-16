@@ -11,9 +11,9 @@ const attrs = useAttrs();
 
 <style lang="scss">
 .o-tabs {
-  --o-tabs-font: var(--e-color-text1);
-  --o-tabs-color: var(--e-color-text1);
-  --o-tabs-color_hover: var(--e-color-brand1);
+  --o-tabs-font: var(--o-color-text1);
+  --o-tabs-color: var(--o-color-text1);
+  --o-tabs-color_hover: var(--o-color-brand1);
   --o-font-color: var(--o-tabs-font);
   &.el-tabs {
     .el-tabs__header {

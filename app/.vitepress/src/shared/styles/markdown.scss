@@ -5,12 +5,12 @@
   padding: 40px;
   margin: var(--o-spacing-h2) auto;
   margin-bottom: var(--o-spacing-h1);
-  background-color: var(--e-color-bg2);
-  box-shadow: var(--e-shadow-l1);
+  background-color: var(--o-color-bg2);
+  box-shadow: var(--o-shadow-l1);
   & > *:first-child {
     margin-top: 0 !important;
   }
-  --e-color-table: var(--e-color-border2);
+  --o-color-table: var(--o-color-border2);
   @media (max-width: 1439px) {
     width: calc(100% - 48px);
   }
@@ -38,7 +38,7 @@
   h4,
   h5,
   h6 {
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     font-weight: normal;
 
     a {
@@ -50,7 +50,7 @@
     margin: var(--o-spacing-h1) 0;
     border: none;
     height: 1px;
-    background-color: var(--e-color-division1);
+    background-color: var(--o-color-division1);
     @media screen and (max-width: 768px) {
       margin: var(--o-spacing-h4) 0;
     }
@@ -115,7 +115,7 @@
     margin-bottom: var(--o-spacing-h8);
     font-size: var(--o-font-size-text);
     font-weight: normal;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
     @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-tip);
@@ -128,7 +128,7 @@
 
     li {
       &::marker {
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
     }
   }
@@ -144,8 +144,8 @@
 
     tr {
       height: 54px;
-      color: var(--e-color-text4);
-      border-bottom: 1px solid var(--e-color-table);
+      color: var(--o-color-text4);
+      border-bottom: 1px solid var(--o-color-table);
 
       th {
         padding-left: var(--o-spacing-h3);
@@ -153,8 +153,8 @@
         font-weight: 500;
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-h8);
-        background-color: var(--e-color-bg4);
-        color: var(--e-color-text1);
+        background-color: var(--o-color-bg4);
+        color: var(--o-color-text1);
         @media screen and (max-width: 768px) {
           font-size: var(--o-font-size-text);
           padding-left: var(--o-spacing-h5);
@@ -185,8 +185,8 @@
   // div[class*='language-'] {
   //   position: relative;
   //   margin: 8px 0;
-  //   background-color: var(--e-color-bg1);
-  //   box-shadow: var(--e-shadow-l1);
+  //   background-color: var(--o-color-bg1);
+  //   box-shadow: var(--o-shadow-l1);
   //   overflow-x: auto;
   // }
   code,
@@ -208,8 +208,8 @@
   pre {
     position: relative;
     margin: 8px 0;
-    background-color: var(--e-color-bg1);
-    box-shadow: var(--e-shadow-l1);
+    background-color: var(--o-color-bg1);
+    box-shadow: var(--o-shadow-l1);
     overflow-x: auto;
     z-index: 1;
     padding: 24px 32px;
@@ -218,17 +218,17 @@
     }
     &::-webkit-scrollbar-track {
       border-radius: 4px;
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
     }
 
     &::-webkit-scrollbar {
       height: 8px;
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background: var(--e-color-bg4);
+      background: var(--o-color-bg4);
     }
   }
 
@@ -236,7 +236,7 @@
     padding: 0;
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
 }
 
@@ -249,7 +249,7 @@
   padding-top: 94px;
   padding-bottom: var(--o-spacing-h1);
   max-width: 880px;
-  background: var(--e-color-bg1);
+  background: var(--o-color-bg1);
   box-shadow: none;
 }
 @media screen and (max-width: 768px) {
@@ -295,7 +295,7 @@
   height: 100%;
   padding: 64px 120px;
   margin-left: 300px;
-  background-color: var(--e-color-bg1);
+  background-color: var(--o-color-bg1);
   @media screen and (max-width: 1280px) {
     padding: 64px 60px;
   }
@@ -307,7 +307,7 @@
   & > *:first-child {
     margin-top: 0 !important;
   }
-  --e-color-table: var(--e-color-border2); // 表格边框
+  --o-color-table: var(--o-color-border2); // 表格边框
   @media (max-width: 768px) {
     padding: var(--o-spacing-h5);
     margin-top: var(--o-spacing-h5);
@@ -327,7 +327,7 @@
   h4,
   h5,
   h6 {
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     font-weight: normal;
 
     a {
@@ -344,7 +344,7 @@
     margin: var(--o-spacing-h1) 0;
     border: none;
     height: 1px;
-    background-color: var(--e-color-division1);
+    background-color: var(--o-color-division1);
     @media screen and (max-width: 768px) {
       margin: var(--o-spacing-h4) 0;
     }
@@ -409,7 +409,7 @@
     margin-bottom: var(--o-spacing-h8);
     font-size: var(--o-font-size-text);
     font-weight: normal;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
     @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-tip);
@@ -424,7 +424,7 @@
     li {
       margin-top: 0.25em;
       &::marker {
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
     }
   }
@@ -439,13 +439,13 @@
 
     tr {
       height: 36px;
-      color: var(--e-color-text4);
-      border-bottom: 1px solid var(--e-color-table);
+      color: var(--o-color-text4);
+      border-bottom: 1px solid var(--o-color-table);
 
       th {
         font-size: var(--o-font-size-h8);
-        background-color: var(--e-color-bg4);
-        color: var(--e-color-text1);
+        background-color: var(--o-color-bg4);
+        color: var(--o-color-text1);
       }
     }
   }
@@ -465,11 +465,11 @@
   div[class*='language-'] {
     position: relative;
     margin: 8px 0;
-    background-color: var(--e-color-bg2);
-    box-shadow: var(--e-shadow-sl1);
+    background-color: var(--o-color-bg2);
+    box-shadow: var(--o-shadow-sl1);
     overflow-x: auto;
     @media screen and (max-width: 768px) {
-      background-color: var(--e-color-bg1);
+      background-color: var(--o-color-bg1);
     }
   }
   [class*='language-'] code,
@@ -488,17 +488,17 @@
     hyphens: none;
     &::-webkit-scrollbar-track {
       border-radius: 4px;
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
     }
 
     &::-webkit-scrollbar {
       height: 8px;
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background: var(--e-color-bg4);
+      background: var(--o-color-bg4);
     }
   }
 
@@ -518,6 +518,6 @@
     padding: 0;
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
 }

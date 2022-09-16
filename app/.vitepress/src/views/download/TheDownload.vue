@@ -230,8 +230,8 @@ onMounted(() => {
         <TagFilter label="LTS" class="download-filter-manufacturer">
           <OSwitch
             v-model="activeLTS"
-            active-color="var(--e-color-brand1)"
-            inactive-color="var(--e-color-bg4)"
+            active-color="var(--o-color-brand1)"
+            inactive-color="var(--o-color-bg4)"
             @change="handleLSTClick"
           />
         </TagFilter>
@@ -340,8 +340,8 @@ onMounted(() => {
           <div class="filter-drawer-title">LTS</div>
           <OSwitch
             v-model="activeLTS"
-            active-color="var(--e-color-brand1)"
-            inactive-color="var(--e-color-bg4)"
+            active-color="var(--o-color-brand1)"
+            inactive-color="var(--o-color-bg4)"
             @change="handleLSTClick"
           />
           <div class="filter-drawer-button">
@@ -511,7 +511,7 @@ onMounted(() => {
     width: 100%;
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     margin-top: var(--o-spacing-h4);
     margin-bottom: var(--o-spacing-h9);
   }
@@ -531,7 +531,7 @@ onMounted(() => {
   }
 }
 .tag-filter :deep(.label) {
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
 }
 .page-box {
   display: flex;
@@ -541,7 +541,7 @@ onMounted(() => {
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
   :deep(.o-pagination) {
@@ -556,7 +556,7 @@ onMounted(() => {
     display: none;
     flex-flow: column;
     justify-content: center;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     align-items: center;
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
@@ -569,10 +569,10 @@ onMounted(() => {
     width: 100%;
     height: 1px;
     margin-top: var(--o-spacing-h5);
-    background-color: var(--e-color-bg-secondary);
+    background-color: var(--o-color-bg-secondary);
     &-in {
       height: 100%;
-      background-color: var(--e-color-brand1);
+      background-color: var(--o-color-brand1);
     }
   }
 
@@ -603,7 +603,7 @@ onMounted(() => {
       }
 
       &:deep(.el-drawer__header) {
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         margin-bottom: 0px;
         :first-child {
           display: flex;
@@ -613,11 +613,11 @@ onMounted(() => {
       }
 
       &:deep(.el-drawer) {
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
       }
 
       &:deep(.o-tag-type-text) {
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
       &-title {
         display: flex;
@@ -628,12 +628,12 @@ onMounted(() => {
         cursor: pointer;
       }
       &-icon {
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
         height: var(--o-font-size-tip);
         width: var(--o-font-size-tip);
       }
       &-word {
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-right: var(--o-spacing-h10);
@@ -655,14 +655,14 @@ onMounted(() => {
         justify-content: center;
         align-items: center;
         padding: var(--o-spacing-h10) var(--o-spacing-h9);
-        background-color: var(--e-color-bg-secondary);
-        color: var(--e-color-text-secondary);
+        background-color: var(--o-color-bg-secondary);
+        color: var(--o-color-text-secondary);
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-right: var(--o-spacing-h9);
         margin-top: var(--o-spacing-h10);
         &-icon {
-          font-size: var(--e-color-text1);
+          font-size: var(--o-color-text1);
           width: var(--o-font-size-tip);
           height: var(--o-font-size-tip);
           margin-left: var(--o-spacing-h9);
@@ -712,7 +712,7 @@ onMounted(() => {
     height: 100%;
     flex-direction: column;
     font-size: var(--o-font-size-h6);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     .empty-img {
       height: 300px;
     }
@@ -733,7 +733,7 @@ onMounted(() => {
   }
   &-name {
     font-size: var(--o-font-size-h5);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h5);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
@@ -744,7 +744,7 @@ onMounted(() => {
   &-desc {
     margin-top: var(--o-spacing-h5);
     font-size: var(--o-font-size-text);
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -785,7 +785,7 @@ onMounted(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
@@ -804,7 +804,7 @@ onMounted(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
@@ -823,7 +823,7 @@ onMounted(() => {
 
   a {
     font-size: var(--o-font-size-text);
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);

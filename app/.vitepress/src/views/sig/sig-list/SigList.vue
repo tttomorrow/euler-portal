@@ -613,12 +613,12 @@ onMounted(() => {
     }
   }
   .ellipsis {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
   }
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
   .sig-maintainer {
@@ -652,7 +652,7 @@ onMounted(() => {
   .sig-tip {
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
   &-item {
     display: flex;
@@ -661,7 +661,7 @@ onMounted(() => {
     flex-wrap: nowrap;
     .select-item-name {
       margin-right: var(--o-spacing-h5);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-h7);
       @media (max-width: 1000px) {
         font-size: var(--o-font-size-text);
@@ -714,7 +714,7 @@ onMounted(() => {
       .mo-item-title {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         margin-right: var(--o-spacing-h7);
       }
       .sig-board-icon {
@@ -748,7 +748,7 @@ onMounted(() => {
     margin-top: var(--o-spacing-h5);
   }
   .mo-item-odd {
-    background-color: var(--e-color-bg4);
+    background-color: var(--o-color-bg4);
   }
 }
 </style>

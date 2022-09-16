@@ -26,7 +26,7 @@ defineProps({
   margin: 0 auto;
   height: 64px;
   font-size: var(--o-font-size-h3);
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-line-height-h3);
   position: relative;
   text-align: center;
@@ -40,7 +40,7 @@ defineProps({
     z-index: 1;
   }
   &-inside {
-    color: var(--e-color-neutral10);
+    color: var(--o-color-neutral10);
     // TODO:
     font-size: 40px;
     font-weight: 300;
@@ -56,7 +56,7 @@ defineProps({
       top: 8px;
     }
     &-inside {
-      color: var(--e-color-bg4);
+      color: var(--o-color-bg4);
       font-size: var(--o-font-size-h8);
       user-select: none;
     }

@@ -90,14 +90,14 @@ const isMobile = computed(() => {
               :style="{
                 height: lang === 'zh' ? '196px' : '',
                 'border-color':
-                  commonStore.theme === 'dark' ? 'var(--e-color-neutral5)' : '',
+                  commonStore.theme === 'dark' ? 'var(--o-color-neutral5)' : '',
               }"
             ></div>
             <div
               class="small-bg"
               :style="{
                 'border-color':
-                  commonStore.theme === 'dark' ? 'var(--e-color-neutral5)' : '',
+                  commonStore.theme === 'dark' ? 'var(--o-color-neutral5)' : '',
               }"
             ></div>
             <div
@@ -105,7 +105,7 @@ const isMobile = computed(() => {
               :style="{
                 height: lang === 'zh' ? '120px' : '',
                 'border-color':
-                  commonStore.theme === 'dark' ? 'var(--e-color-neutral5)' : '',
+                  commonStore.theme === 'dark' ? 'var(--o-color-neutral5)' : '',
               }"
             ></div>
           </div>
@@ -125,7 +125,7 @@ const isMobile = computed(() => {
                     :style="{
                       color:
                         commonStore.theme === 'dark'
-                          ? 'var(--e-color-white)'
+                          ? 'var(--o-color-white)'
                           : '',
                     }"
                   >
@@ -138,7 +138,7 @@ const isMobile = computed(() => {
                       :style="{
                         color:
                           commonStore.theme === 'dark'
-                            ? 'var(--e-color-white)'
+                            ? 'var(--o-color-white)'
                             : '',
                       }"
                     >
@@ -148,7 +148,7 @@ const isMobile = computed(() => {
                       :style="{
                         color:
                           commonStore.theme === 'dark'
-                            ? 'var(--e-color-white)'
+                            ? 'var(--o-color-white)'
                             : '',
                       }"
                       >{{ item.LEFT.LEFT_INFO }}</span
@@ -158,7 +158,7 @@ const isMobile = computed(() => {
                       :style="{
                         color:
                           commonStore.theme === 'dark'
-                            ? 'var(--e-color-white)'
+                            ? 'var(--o-color-white)'
                             : '',
                       }"
                       >{{ item.LEFT.DO_THIS }}</span
@@ -179,7 +179,7 @@ const isMobile = computed(() => {
                     :style="{
                       color:
                         commonStore.theme === 'dark'
-                          ? 'var(--e-color-white)'
+                          ? 'var(--o-color-white)'
                           : '',
                     }"
                   >
@@ -192,7 +192,7 @@ const isMobile = computed(() => {
                       :style="{
                         color:
                           commonStore.theme === 'dark'
-                            ? 'var(--e-color-white)'
+                            ? 'var(--o-color-white)'
                             : '',
                       }"
                     >
@@ -202,7 +202,7 @@ const isMobile = computed(() => {
                       :style="{
                         color:
                           commonStore.theme === 'dark'
-                            ? 'var(--e-color-white)'
+                            ? 'var(--o-color-white)'
                             : '',
                       }"
                       >{{ item.RIGHT.RIGHT_INFO }}
@@ -211,7 +211,7 @@ const isMobile = computed(() => {
                         :style="{
                           color:
                             commonStore.theme === 'dark'
-                              ? 'var(--e-color-link2)'
+                              ? 'var(--o-color-link2)'
                               : '',
                         }"
                         @click="goUnsubscribeBlog()"
@@ -330,7 +330,7 @@ const isMobile = computed(() => {
         height: 170px;
         border-width: 2px;
         border-style: dashed;
-        border-color: var(--e-color-brand1);
+        border-color: var(--o-color-brand1);
         border-bottom: none;
         border-left: none;
       }
@@ -340,7 +340,7 @@ const isMobile = computed(() => {
         min-height: 102px;
         border-width: 2px;
         border-style: dashed;
-        border-color: var(--e-color-brand1);
+        border-color: var(--o-color-brand1);
         border-bottom: none;
         border-right: none;
       }
@@ -395,7 +395,7 @@ const isMobile = computed(() => {
       }
       &-bgdconfig {
         width: 216px;
-        background-color: var(--e-color-brand2);
+        background-color: var(--o-color-brand2);
         @media (max-width: 1280px) {
           width: 180px;
         }
@@ -419,7 +419,7 @@ const isMobile = computed(() => {
       }
       &-infoconfig {
         width: 456px;
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         @media (max-width: 1440px) {
           width: 430px;
         }
@@ -433,7 +433,7 @@ const isMobile = computed(() => {
           width: 300px;
         }
         span {
-          color: var(--e-color-black);
+          color: var(--o-color-black);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           float: left;
@@ -448,7 +448,7 @@ const isMobile = computed(() => {
           }
         }
         p {
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
           cursor: pointer;
           display: inline;
           font-size: var(--o-font-size-text);
@@ -461,22 +461,22 @@ const isMobile = computed(() => {
         &-circle {
           height: 78px;
           width: 78px;
-          border: 4px solid var(--e-color-white);
+          border: 4px solid var(--o-color-white);
           border-radius: 50%;
-          background-color: var(--e-color-kleinblue5);
+          background-color: var(--o-color-kleinblue5);
           position: relative;
           top: 50%;
           transform: translate(-50%, -50%);
           @media (max-width: 780px) {
             height: 38px;
             width: 38px;
-            border: 2px solid var(--e-color-white);
+            border: 2px solid var(--o-color-white);
             justify-content: center;
           }
           span {
             white-space: nowrap;
             font-size: var(--o-font-size-h5);
-            color: var(--e-color-white);
+            color: var(--o-color-white);
             line-height: var(--o-line-height-h5);
             position: relative;
             top: 50%;
@@ -502,7 +502,7 @@ const isMobile = computed(() => {
     :deep(.mirror-list-header) {
       font-size: var(--o-font-size-h8);
       font-weight: 400;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: 54px;
       padding: 0 !important;
       @media (max-width: 780px) {

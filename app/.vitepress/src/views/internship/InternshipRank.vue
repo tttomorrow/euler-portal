@@ -293,7 +293,7 @@ onMounted(() => {
       cursor: pointer;
       display: flex;
       justify-content: center;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       div {
         display: flex;
         justify-content: center;

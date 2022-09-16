@@ -461,7 +461,7 @@ watch(windowWidth, () => {
   align-items: center;
   flex-direction: column;
   font-size: var(--o-font-size-h6);
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   padding: var(--o-spacing-h2) 0;
   height: 100%;
   .img {
@@ -485,7 +485,7 @@ watch(windowWidth, () => {
     margin-right: var(--o-spacing-h8);
   }
   .ponit {
-    background-color: var(--e-color-brand1);
+    background-color: var(--o-color-brand1);
     width: 9px;
     height: 9px;
     border-radius: 9px;
@@ -495,7 +495,7 @@ watch(windowWidth, () => {
   .line {
     flex: 1;
     width: 1px;
-    border-left: 2px var(--e-color-brand1) dashed;
+    border-left: 2px var(--o-color-brand1) dashed;
   }
 
   &-content {
@@ -509,28 +509,28 @@ watch(windowWidth, () => {
 
   &-duration {
     font-size: 10px;
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     line-height: 16px;
     margin-bottom: var(--o-spacing-h8);
   }
 
   &-title {
     font-size: var(--o-font-size-tip);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-tip);
     margin-bottom: var(--o-spacing-h8);
   }
 
   &-name {
     font-size: 10px;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     line-height: 16px;
     display: flex;
     flex-flow: row;
   }
 }
 .tab-box-mobile {
-  background-color: var(--e-color-bg2);
+  background-color: var(--o-color-bg2);
   display: none;
   z-index: 99;
   width: 100%;
@@ -567,7 +567,7 @@ watch(windowWidth, () => {
   }
 
   :deep(.is-active) {
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
   }
 }
 
@@ -598,12 +598,12 @@ watch(windowWidth, () => {
   }
 }
 .calendar-detail {
-  background-color: var(--e-color-bg1);
+  background-color: var(--o-color-bg1);
   .top-content {
     display: flex;
     margin: var(--o-spacing-h2) 0;
     padding: 80px;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     @media screen and (max-width: 1100px) {
       padding: var(--o-spacing-h1);
       margin-top: var(--o-spacing-h6);
@@ -646,7 +646,7 @@ watch(windowWidth, () => {
         font-weight: 400;
         font-size: var(--o-font-size-h3);
         line-height: var(--o-line-height-h3);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -663,7 +663,7 @@ watch(windowWidth, () => {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
         word-break: break-all;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
 
       .category {
@@ -673,7 +673,7 @@ watch(windowWidth, () => {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
         word-break: break-all;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
 
       .btn-detail {
@@ -700,7 +700,7 @@ watch(windowWidth, () => {
   }
 
   .detail-card {
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     padding: var(--o-spacing-h2) 80px;
     @media screen and (max-width: 768px) {
       margin-top: var(--o-spacing-h5);
@@ -722,7 +722,7 @@ watch(windowWidth, () => {
     margin-bottom: var(--o-spacing-h4);
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     font-weight: 400;
     @media screen and (max-width: 768px) {
       margin: 0;
@@ -733,7 +733,7 @@ watch(windowWidth, () => {
   .synopsis {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     margin-bottom: var(--o-spacing-h2);
 
     .synopsis-body {
@@ -746,7 +746,7 @@ watch(windowWidth, () => {
     }
   }
   .tab-box {
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     display: flex;
     top: 80px;
     width: 100%;
@@ -754,7 +754,7 @@ watch(windowWidth, () => {
     position: static;
     align-items: flex-end;
     justify-content: center;
-    border-bottom: 1px solid var(--e-color-division1);
+    border-bottom: 1px solid var(--o-color-division1);
     @media (max-width: 1100px) {
       top: 48px;
     }
@@ -786,13 +786,13 @@ watch(windowWidth, () => {
     }
 
     :deep(.is-active) {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
   }
   .agenda {
     margin-bottom: var(--o-spacing-h2);
     .tab-box-time {
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
       display: flex;
       align-items: flex-end;
       margin-top: var(--o-spacing-h4);
@@ -824,7 +824,7 @@ watch(windowWidth, () => {
       }
 
       :deep(.is-active) {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
       }
     }
     .table {
@@ -854,7 +854,7 @@ watch(windowWidth, () => {
         flex-flow: row;
         justify-content: flex-start;
         align-items: flex-start;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         font-weight: normal;
       }
 
@@ -863,16 +863,16 @@ watch(windowWidth, () => {
         font-size: var(--o-font-size-h6);
         line-height: var(--o-line-height-h6);
         &:hover {
-          background-color: var(--e-color-bg2);
+          background-color: var(--o-color-bg2);
         }
-        --el-table-row-hover-bg-color: var(--e-color-bg2);
+        --el-table-row-hover-bg-color: var(--o-color-bg2);
         &:last-child {
           .el-table__cell {
             border-bottom: none;
           }
         }
         .el-table__cell {
-          border-bottom: 1px solid var(--e-color-division1);
+          border-bottom: 1px solid var(--o-color-division1);
         }
 
         .speark-item {
@@ -881,7 +881,7 @@ watch(windowWidth, () => {
             display: flex;
             align-items: center;
             padding: 0 var(--o-spacing-h6);
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             min-width: 100px;
           }
           .position {
@@ -910,9 +910,9 @@ watch(windowWidth, () => {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      background: var(--e-color-bg2);
-      box-shadow: var(--e-shadow-l1);
-      border-bottom: 3px solid var(--e-color-brand1);
+      background: var(--o-color-bg2);
+      box-shadow: var(--o-shadow-l1);
+      border-bottom: 3px solid var(--o-color-brand1);
       z-index: 10;
       @media (max-width: 1080px) {
         flex-flow: column;
@@ -950,7 +950,7 @@ watch(windowWidth, () => {
         p {
           font-size: var(--o-font-size-h8);
           max-width: 350px;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           line-height: var(--o-line-height-h8);
           margin-bottom: var(--o-spacing-h4);
           @media (max-width: 1080px) {
@@ -963,7 +963,7 @@ watch(windowWidth, () => {
             line-height: var(--o-line-height-text);
           }
           &:nth-of-type(odd) {
-            color: var(--e-color-brand1);
+            color: var(--o-color-brand1);
             font-size: var(--o-font-size-h6);
             line-height: var(--o-line-height-h6);
             margin-bottom: var(--o-spacing-h5);
@@ -990,7 +990,7 @@ watch(windowWidth, () => {
           justify-content: center;
           align-items: center;
           font-size: var(--o-font-size-h6);
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
           line-height: var(--o-line-height-h6);
           @media (max-width: 1080px) {
             margin-top: var(--o-spacing-h5);

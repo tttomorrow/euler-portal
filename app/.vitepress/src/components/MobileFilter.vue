@@ -240,7 +240,7 @@ const allHighLight = (val: any) => {
   line-height: var(--o-line-height-tip);
   padding-left: var(--o-spacing-h8);
   padding-right: 0;
-  color: var(--e-color-text4);
+  color: var(--o-color-text4);
 }
 :deep(.o-button) {
   width: 104px;
@@ -259,13 +259,13 @@ const allHighLight = (val: any) => {
     &-button {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
       &-icon {
         display: inline-block;
         .icon {
           position: relative;
           bottom: -2px;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
         }
       }
     }
@@ -275,12 +275,12 @@ const allHighLight = (val: any) => {
     &-tag {
       margin-right: var(--o-spacing-h8);
       margin-top: var(--o-spacing-h8);
-      background-color: var(--e-color-bg4);
+      background-color: var(--o-color-bg4);
       &-icon {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-tip);
-        // color: var(--e-color-text1);
-        color: var(--e-color-text3);
+        // color: var(--o-color-text1);
+        color: var(--o-color-text3);
         position: relative;
         top: 1px;
       }
@@ -294,7 +294,7 @@ const allHighLight = (val: any) => {
         text-align: center;
         p {
           display: inline-block;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
         }
@@ -303,7 +303,7 @@ const allHighLight = (val: any) => {
         &-title {
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
         }
         &-options {
           &-option {
@@ -312,11 +312,11 @@ const allHighLight = (val: any) => {
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
             margin: var(--o-spacing-h8);
-            border: 1px solid var(--e-color-transparent);
-            color: var(--e-color-text1);
+            border: 1px solid var(--o-color-transparent);
+            color: var(--o-color-text1);
             &.active {
-              border: 1px solid var(--e-color-brand1);
-              color: var(--e-color-brand1);
+              border: 1px solid var(--o-color-brand1);
+              color: var(--o-color-brand1);
             }
           }
         }

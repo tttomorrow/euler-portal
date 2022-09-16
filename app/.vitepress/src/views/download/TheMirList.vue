@@ -289,7 +289,7 @@ onMounted(async () => {
     margin-top: var(--o-spacing-h2);
     width: 100%;
     height: 996px;
-    box-shadow: var(--e-shadow-l1);
+    box-shadow: var(--o-shadow-l1);
     @media (max-width: 768px) {
       height: 50vh;
     }
@@ -302,7 +302,7 @@ onMounted(async () => {
   }
   &-mobile {
     > :nth-child(odd) {
-      background-color: var(--e-color-bg4);
+      background-color: var(--o-color-bg4);
     }
 
     display: none;
@@ -330,7 +330,7 @@ onMounted(async () => {
     &-title {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
       margin-right: var(--o-spacing-h10);
       margin-top: var(--o-spacing-h8);
     }
@@ -338,13 +338,13 @@ onMounted(async () => {
     &-word {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      color: var(--e-color-neutral8);
+      color: var(--o-color-neutral8);
       margin-top: var(--o-spacing-h8);
       a {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         margin-top: var(--o-spacing-h8);
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
       }
     }
 
@@ -352,7 +352,7 @@ onMounted(async () => {
       margin-top: var(--o-spacing-h8);
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
     }
   }
 }
@@ -388,16 +388,16 @@ onMounted(async () => {
         font-size: var(--o-font-size-h7);
         line-height: var(--o-line-height-h7);
         font-weight: 800;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
     }
   }
 
   :deep(.mirror-list-header) {
-    background: var(--e-color-bg4);
+    background: var(--o-color-bg4);
     font-size: var(--o-font-size-h8);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: 54px;
     padding: 0 !important;
     .cell {
@@ -448,7 +448,7 @@ onMounted(async () => {
   :deep(.mirror-list-row) {
     font-size: var(--o-font-size-h8);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     height: 54px;
     border: none;
 
@@ -457,7 +457,7 @@ onMounted(async () => {
       width: 100%;
       height: 1px;
       position: relative;
-      background-color: var(--e-color-division1);
+      background-color: var(--o-color-division1);
       margin: 0 auto;
       display: flex;
     }
@@ -478,7 +478,7 @@ onMounted(async () => {
         width: 100%;
         height: 1px;
         position: relative;
-        background-color: var(--e-color-division1);
+        background-color: var(--o-color-division1);
         margin: 0 auto;
         display: flex;
         left: var(--o-spacing-h2);
@@ -494,7 +494,7 @@ onMounted(async () => {
         width: 100%;
         height: 1px;
         position: relative;
-        background-color: var(--e-color-division1);
+        background-color: var(--o-color-division1);
         margin: 0 auto;
         display: flex;
         right: var(--o-spacing-h2);
@@ -507,7 +507,7 @@ onMounted(async () => {
   p {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     margin-bottom: var(--o-spacing-h2);
     line-height: var(--o-line-height-h7);
     @media (max-width: 768px) {
@@ -518,7 +518,7 @@ onMounted(async () => {
   }
   a {
     text-decoration: none;
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
   }
 
   &-img {
@@ -526,14 +526,14 @@ onMounted(async () => {
   }
   &-rsnc {
     cursor: pointer;
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     display: block;
     width: var(--o-line-height-h8);
     height: var(--o-line-height-h8);
   }
   &-ftp {
     cursor: pointer;
-    color: var(--e-color-brand1);
+    color: var(--o-color-brand1);
     display: block;
     width: var(--o-line-height-h8);
     height: var(--o-line-height-h8);

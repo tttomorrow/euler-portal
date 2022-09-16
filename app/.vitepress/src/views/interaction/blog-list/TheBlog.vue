@@ -622,7 +622,7 @@ const moblieCurrentChange = (val: string) => {
 }
 
 .bannericon {
-  color: var(--e-color-brand2);
+  color: var(--o-color-brand2);
   @media (max-width: 767px) {
     font-size: var(--o-font-size-text);
   }
@@ -631,8 +631,8 @@ const moblieCurrentChange = (val: string) => {
 }
 
 .post-btn {
-  color: var(--e-color-white);
-  border-color: var(--e-color-white);
+  color: var(--o-color-white);
+  border-color: var(--o-color-white);
   @media (max-width: 767px) {
     padding: 3px 16px;
     font-size: var(--o-font-size-text);
@@ -643,7 +643,7 @@ const moblieCurrentChange = (val: string) => {
 .pagination-slot {
   font-size: var(--o-font-size-text);
   font-weight: 400;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-spacing-h4);
 }
 
@@ -665,7 +665,7 @@ const moblieCurrentChange = (val: string) => {
       }
       &-title {
         margin-right: var(--o-spacing-h5);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         font-size: var(--o-font-size-h7);
         line-height: var(--o-line-height-h7);
       }
@@ -686,7 +686,7 @@ const moblieCurrentChange = (val: string) => {
       &-title {
         font-size: var(--o-font-size-h7);
         margin-bottom: var(--o-spacing-h3); // 32px
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
 
         p {
           display: inline-block;
@@ -695,7 +695,7 @@ const moblieCurrentChange = (val: string) => {
         }
       }
       &-info {
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -723,7 +723,7 @@ const moblieCurrentChange = (val: string) => {
         line-height: var(--o-line-height-text);
         margin-top: var(--o-spacing-h5);
         height: 44px;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         @include showline();
         -webkit-line-clamp: 2;
       }
@@ -736,13 +736,13 @@ const moblieCurrentChange = (val: string) => {
         .tagitem {
           font-size: var(--o-spacing-h6);
           margin-right: var(--o-spacing-h8);
-          color: var(--e-color-black);
+          color: var(--o-color-black);
           margin-bottom: var(--o-spacing-h10);
         }
       }
     }
     &-item:hover {
-      box-shadow: var(--e-shadow-l2_hover);
+      box-shadow: var(--o-shadow-l2_hover);
     }
   }
 }

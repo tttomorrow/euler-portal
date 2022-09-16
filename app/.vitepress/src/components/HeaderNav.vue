@@ -146,22 +146,22 @@ const menuActiveFn = (item: any) => {
       padding: 0 var(--o-spacing-h4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-h8);
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       cursor: pointer;
 
       &.active {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         &::after {
-          background: var(--e-color-brand1);
+          background: var(--o-color-brand1);
         }
       }
       &.hover {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
         .sub-menu {
           transform: translate(-50%) scaleY(1);
         }
         &::after {
-          background: var(--e-color-brand1);
+          background: var(--o-color-brand1);
         }
       }
 
@@ -181,13 +181,13 @@ const menuActiveFn = (item: any) => {
         top: 80px;
         left: 50%;
         right: 0;
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         transform: translate(-50%) scaleY(0);
         transform-origin: top;
         transition: all 0.3s ease-in-out;
         display: table;
         z-index: 99;
-        box-shadow: var(--e-shadow-l1);
+        box-shadow: var(--o-shadow-l1);
         &-content {
           margin: 0;
           padding: 0;
@@ -196,18 +196,18 @@ const menuActiveFn = (item: any) => {
           line-height: var(--o-line-height-h3);
           text-align: center;
           font-size: var(--o-font-size-text);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           display: block;
           white-space: nowrap;
           padding: 0 var(--o-spacing-h8);
           min-width: 106px;
           &.active {
-            background-color: var(--e-color-brand1);
-            color: var(--e-color-text2);
+            background-color: var(--o-color-brand1);
+            color: var(--o-color-text2);
           }
           &:hover {
-            background-color: var(--e-color-brand1);
-            color: var(--e-color-text2);
+            background-color: var(--o-color-brand1);
+            color: var(--o-color-text2);
           }
         }
       }
@@ -222,7 +222,7 @@ const menuActiveFn = (item: any) => {
     transition: all 0.3s ease-in-out;
     display: block;
     z-index: 9;
-    background: var(--e-color-brand1);
+    background: var(--o-color-brand1);
   }
 }
 </style>

@@ -208,13 +208,13 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .detail-link {
-  color: var(--e-color-link1);
+  color: var(--o-color-link1);
   cursor: pointer;
 }
 
 .breadcrumb {
-  color: var(--e-color-text1);
-  background: var(--e-color-bg1);
+  color: var(--o-color-text1);
+  background: var(--o-color-bg1);
   display: flex;
   @media screen and (max-width: 768px) {
     margin-bottom: var(--o-spacing-h5);
@@ -222,49 +222,49 @@ onMounted(() => {
   .last-page {
     font-size: var(--o-font-size-tip);
     font-weight: normal;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     line-height: var(--o-line-height-tip);
     cursor: pointer;
   }
   .separtor {
     margin: 0 var(--o-spacing-h10);
     .o-icon {
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
   }
   .current-page {
     font-size: var(--o-font-size-tip);
     font-weight: 600;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-tip);
   }
 }
 .cve-head {
   padding: var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h2) 0;
-  background: var(--e-color-bg1);
+  background: var(--o-color-bg1);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
     margin-bottom: var(--o-spacing-h5);
-    background: var(--e-color-bg2);
-    box-shadow: var(--e-shadow-l1);
+    background: var(--o-color-bg2);
+    box-shadow: var(--o-shadow-l1);
   }
   .cve-name {
     font-size: var(--o-font-size-h3);
     font-weight: normal;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h3);
     @media screen and (max-width: 768px) {
       line-height: var(--o-line-height-h8);
       font-size: var(--o-font-size-h8);
       font-weight: 300;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       margin-bottom: var(--o-spacing-h8);
     }
   }
   .cve-intro {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-text);
     margin-top: var(--o-spacing-h4);
     div {
@@ -283,7 +283,7 @@ onMounted(() => {
   }
 }
 .cve-detail-body {
-  background-color: var(--e-color-bg2);
+  background-color: var(--o-color-bg2);
   padding: var(--o-spacing-h2);
   @media screen and (max-width: 768px) {
     padding: var(--o-spacing-h5);
@@ -294,13 +294,13 @@ onMounted(() => {
       margin-bottom: 0;
     }
     @media screen and (max-width: 768px) {
-      background-color: var(--e-color-bg2);
+      background-color: var(--o-color-bg2);
     }
     &-title {
       margin-bottom: var(--o-spacing-h4);
       font-size: var(--o-font-size-h5);
       font-weight: 400;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       @media screen and (max-width: 768px) {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-h8);
@@ -311,7 +311,7 @@ onMounted(() => {
       box-shadow: none;
     }
     &-content {
-      color: var(--e-color-text4);
+      color: var(--o-color-text4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
       margin-bottom: var(--o-spacing-h2);
@@ -325,7 +325,7 @@ onMounted(() => {
     .affect-list {
       margin-bottom: var(--o-spacing-h2);
       .detail-page {
-        color: var(--e-color-link1);
+        color: var(--o-color-link1);
         cursor: pointer;
       }
       @media screen and (max-width: 768px) {
@@ -342,11 +342,11 @@ onMounted(() => {
         padding: var(--o-spacing-h5);
         font-size: var(--o-font-size-tip);
         font-weight: 400;
-        color: var(--e-color-neutral8);
+        color: var(--o-color-neutral8);
         line-height: var(--o-line-height-tip);
-        background-color: var(--e-color-bg4);
+        background-color: var(--o-color-bg4);
         &:nth-child(2n) {
-          background: var(--e-color-bg1);
+          background: var(--o-color-bg1);
         }
         & li {
           margin-bottom: var(--o-spacing-h8);
@@ -354,7 +354,7 @@ onMounted(() => {
         li:last-child {
           margin-bottom: 0;
           a {
-            color: var(--e-color-link1);
+            color: var(--o-color-link1);
           }
         }
         li:nth-child(2) {
@@ -364,7 +364,7 @@ onMounted(() => {
           }
         }
         span {
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           margin-right: var(--o-spacing-h8);
         }
       }

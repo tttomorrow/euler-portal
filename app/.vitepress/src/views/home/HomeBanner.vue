@@ -138,7 +138,7 @@ html[lang='zh'] {
   position: relative;
   .banner-panel {
     position: absolute;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     display: flex;
     background-position: 50%;
     background-repeat: no-repeat;
@@ -212,7 +212,7 @@ html[lang='zh'] {
         .o-icon {
           @media screen and (max-width: 824px) {
             font-size: 16px;
-            color: var(--e-color-yellow5);
+            color: var(--o-color-yellow5);
           }
         }
         @media screen and (max-width: 824px) {
@@ -279,7 +279,7 @@ html[lang='zh'] {
     margin: 0 4px;
   }
   .swiper-pagination-bullet-active {
-    background: var(--e-color-yellow5);
+    background: var(--o-color-yellow5);
     opacity: 1;
   }
   @media screen and (max-width: 1439px) {

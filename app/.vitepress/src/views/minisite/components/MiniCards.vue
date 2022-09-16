@@ -102,7 +102,7 @@ const isDark = computed(() => {
 <style lang="scss" scoped>
 .cards-wraper {
   margin-bottom: var(--o-spacing-h2);
-  box-shadow: var(--e-shadow-l1);
+  box-shadow: var(--o-shadow-l1);
   @media screen and (max-width: 767px) {
     margin-bottom: var(--o-spacing-h5);
   }
@@ -112,7 +112,7 @@ const isDark = computed(() => {
   &-cards {
     height: 290px;
     margin: 0 auto;
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     &-item {
       position: relative;
       .cover {
@@ -134,7 +134,7 @@ const isDark = computed(() => {
     &-title {
       font-size: var(--o-font-size-h8);
       font-weight: 400;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
       line-height: var(--o-line-height-h8);
       margin-top: var(--o-spacing-h5);
       text-align: center;
@@ -145,11 +145,11 @@ const isDark = computed(() => {
       left: -32%;
       z-index: 1;
       width: 260px;
-      background-color: var(--e-color-bg2);
-      border: 1px solid var(--e-color-brand1);
+      background-color: var(--o-color-bg2);
+      border: 1px solid var(--o-color-brand1);
       padding: var(--o-spacing-h5) 0;
       text-align: center;
-      color: var(--e-color-text1);
+      color: var(--o-color-text1);
     }
     .menu {
       position: absolute;
@@ -157,8 +157,8 @@ const isDark = computed(() => {
       left: 60%;
       z-index: 1;
       width: 160px;
-      background-color: var(--e-color-bg2);
-      border: 1px solid var(--e-color-brand1);
+      background-color: var(--o-color-bg2);
+      border: 1px solid var(--o-color-brand1);
       padding: var(--o-spacing-h5) 0;
       &-item {
         display: block;
@@ -166,17 +166,17 @@ const isDark = computed(() => {
         padding: var(--o-spacing-h8) 0;
         line-height: var(--o-line-height-h6);
         cursor: pointer;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
       }
       &-item:hover {
-        color: var(--e-color-brand1);
+        color: var(--o-color-brand1);
       }
     }
 
     @media screen and (max-width: 767px) {
       width: 100%;
       height: fit-content;
-      box-shadow: var(--e-shadow-l1);
+      box-shadow: var(--o-shadow-l1);
       box-sizing: border-box;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -226,7 +226,7 @@ const isDark = computed(() => {
           text-align: center;
           padding: 0;
           cursor: pointer;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
         }
       }
     }

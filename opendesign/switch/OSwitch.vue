@@ -10,9 +10,9 @@ const attrs = useAttrs();
 
 <style lang="scss">
 .o-switch {
-  --o-switch-font-color: var(--e-color-text4);
-  --o-switch-font-color-active: var(--e-color-brand1);
-  --o-switch-on-color: var(--e-color-brand1);
+  --o-switch-font-color: var(--o-color-text4);
+  --o-switch-font-color-active: var(--o-color-brand1);
+  --o-switch-on-color: var(--o-color-brand1);
   &.el-switch {
     .el-switch__label {
       color: var(--o-switch-font-color);

@@ -222,7 +222,7 @@ onUnmounted(() => {
 h3 {
   font-size: var(--o-font-size-h3);
   font-weight: 300;
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   line-height: var(--o-line-height-h3);
   width: 100%;
   text-align: center;
@@ -237,13 +237,13 @@ h3 {
   @media screen and (max-width: 1100px) {
     box-shadow: none;
     .o-collapse-item {
-      box-shadow: var(--e-shadow-l1);
+      box-shadow: var(--o-shadow-l1);
     }
   }
 }
 .case-mobile {
   display: none;
-  background-color: var(--e-color-bg1);
+  background-color: var(--o-color-bg1);
   @media (max-width: 1100px) {
     border-top: none;
     display: block;
@@ -277,7 +277,7 @@ h3 {
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
       font-weight: 400;
@@ -288,13 +288,13 @@ h3 {
   &-img {
     width: 40px;
     height: 40px;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
   }
 
   &-card {
     margin-top: var(--o-spacing-h5);
     width: 100%;
-    border-left: 2px solid var(--e-color-brand1);
+    border-left: 2px solid var(--o-color-brand1);
     &-content {
       display: flex;
       flex-flow: row;
@@ -305,12 +305,12 @@ h3 {
 
   &-icon {
     font-size: var(--o-font-size-h8);
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
   }
 }
 .user {
   &-mobile {
-    background-color: var(--e-color-bg4);
+    background-color: var(--o-color-bg4);
     > :nth-child(1) {
       margin-top: 0px;
     }
@@ -320,11 +320,11 @@ h3 {
     padding: var(--o-spacing-h5);
     width: 100%;
     height: 100%;
-    background: var(--e-color-bg1);
+    background: var(--o-color-bg1);
     border: 1px solid rgba(0, 0, 0, 0);
 
     @media (max-width: 1100px) {
-      background: var(--e-color-bg2);
+      background: var(--o-color-bg2);
       margin-top: var(--o-spacing-h8);
     }
 
@@ -335,8 +335,8 @@ h3 {
 
   &-card:hover {
     @media (min-width: 1100px) {
-      background-color: var(--e-color-bg2);
-      border: 1px solid var(--e-color-brand1);
+      background-color: var(--o-color-bg2);
+      border: 1px solid var(--o-color-brand1);
       transition: 0.3s all;
     }
   }
@@ -344,7 +344,7 @@ h3 {
   &-title {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h7);
     @media (max-width: 768px) {
       font-size: var(--o-font-size-text);
@@ -355,7 +355,7 @@ h3 {
   &-word {
     font-size: var(--o-font-size-text);
     font-weight: 400;
-    color: var(--e-color-text4);
+    color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
     display: -webkit-box;
     text-overflow: ellipsis;
@@ -380,7 +380,7 @@ h3 {
     }
 
     :deep(.el-collapse-item__header) {
-      border-left: 2px solid var(--e-color-brand1);
+      border-left: 2px solid var(--o-color-brand1);
     }
   }
 
@@ -399,7 +399,7 @@ h3 {
     }
 
     &-icon {
-      color: var(--e-color-brand1);
+      color: var(--o-color-brand1);
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
     }
@@ -411,7 +411,7 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
     padding-bottom: var(--o-spacing-h2);
     grid-gap: var(--o-spacing-h4) var(--o-spacing-h2);
-    border-bottom: 1px solid var(--e-color-division1);
+    border-bottom: 1px solid var(--o-color-division1);
   }
 
   &-card {
@@ -431,7 +431,7 @@ h3 {
   &-word {
     font-size: var(--o-font-size-h5);
     font-weight: 400;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h5);
     margin-top: 2px;
   }
@@ -466,11 +466,11 @@ h3 {
           .nav-text {
             .nav-title,
             .nav-descriptive {
-              color: var(--e-color-brand1);
+              color: var(--o-color-brand1);
             }
           }
           .case-word {
-            color: var(--e-color-brand1);
+            color: var(--o-color-brand1);
           }
         }
       }
@@ -493,6 +493,6 @@ h3 {
 }
 
 .active {
-  color: var(--e-color-brand1);
+  color: var(--o-color-brand1);
 }
 </style>

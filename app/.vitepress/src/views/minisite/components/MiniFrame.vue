@@ -144,14 +144,14 @@ const isDark = computed(() => {
       }
       .el-tabs__nav {
         .el-tabs__active-bar {
-          background-color: var(--e-color-brand1);
+          background-color: var(--o-color-brand1);
         }
         .is-active {
-          color: var(--e-color-brand1);
+          color: var(--o-color-brand1);
         }
       }
       .el-tabs__content {
-        box-shadow: var(--e-shadow-l1);
+        box-shadow: var(--o-shadow-l1);
       }
     }
   }
@@ -165,14 +165,14 @@ const isDark = computed(() => {
         flex: 1;
       }
       .desc {
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         margin: 0 var(--o-spacing-h6) 0 0;
         padding: var(--o-spacing-h2) var(--o-spacing-h2) 0 var(--o-spacing-h2);
         position: relative;
         height: 100%;
-        box-shadow: var(--e-shadow-l1);
+        box-shadow: var(--o-shadow-l1);
         &-item {
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           font-size: var(--o-font-size-h7);
           line-height: var(--o-line-height-h7);
           margin-bottom: var(--o-spacing-h4);
@@ -180,7 +180,7 @@ const isDark = computed(() => {
         &-title {
           font-size: var(--o-font-size-h5);
           font-weight: 500;
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           line-height: var(--o-line-height-h5);
           padding-bottom: var(--o-spacing-h4);
         }
@@ -196,9 +196,9 @@ const isDark = computed(() => {
       }
       .img {
         flex: 1;
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         margin-left: var(--o-spacing-h6);
-        box-shadow: var(--e-shadow-l1);
+        box-shadow: var(--o-shadow-l1);
         img {
           margin: 0 auto;
           display: block;
@@ -233,12 +233,12 @@ const isDark = computed(() => {
           &-title {
             font-size: var(--o-font-size-text);
             font-weight: 500px;
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             line-height: var(--o-line-height-h8);
             padding-bottom: var(--o-spacing-h6);
           }
           &-item {
-            color: var(--e-color-text1);
+            color: var(--o-color-text1);
             line-height: var(--o-line-height-tip);
             font-size: var(--o-font-size-tip);
             padding: var(--o-spacing-h8) 0;
@@ -286,7 +286,7 @@ const isDark = computed(() => {
           margin-top: var(--o-spacing-h5);
           margin-left: 0;
           width: 100%;
-          background-color: var(--e-color-bg2);
+          background-color: var(--o-color-bg2);
           img {
             margin: 0 auto;
             display: block;

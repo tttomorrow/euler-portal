@@ -29,7 +29,7 @@ const notFoundImg = computed(() =>
   align-items: center;
   flex-direction: column;
   font-size: var(--o-font-size-h6);
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   padding: var(--o-spacing-h2) 0;
   min-height: calc(100vh - 339px);
   .nofound-text {

@@ -70,7 +70,7 @@ const i18n = useI18n();
       }
       .left {
         max-height: 222px;
-        box-shadow: var(--e-shadow1);
+        box-shadow: var(--o-shadow1);
         @media (max-width: 975px) {
           width: 100%;
         }
@@ -84,16 +84,16 @@ const i18n = useI18n();
         // min-width: 420px;
         padding: var(--o-spacing-h2);
         position: relative;
-        background-color: var(--e-color-bg2);
+        background-color: var(--o-color-bg2);
         flex-grow: 1;
-        box-shadow: var(--e-shadow1);
+        box-shadow: var(--o-shadow1);
         @media (max-width: 768px) {
           padding: var(--o-spacing-h5);
         }
         h3 {
           font-size: var(--o-font-size-h5);
           line-height: var(--o-line-height-h5);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           @media (max-width: 768px) {
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
@@ -102,7 +102,7 @@ const i18n = useI18n();
         p {
           font-size: var(--o-font-size-text);
           line-height: 22px;
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
           margin-top: var(--o-spacing-h5);
           @media (max-width: 768px) {
             font-size: var(--o-font-size-tip);

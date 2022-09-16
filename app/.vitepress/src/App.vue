@@ -63,7 +63,7 @@ onMounted(() => {
 main {
   position: relative;
   min-height: calc(100vh - 339px);
-  background-color: var(--e-color-bg1);
+  background-color: var(--o-color-bg1);
   margin-top: 80px;
   overflow: hidden;
 
