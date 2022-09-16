@@ -139,7 +139,9 @@ const getDriverData = (data: CveQuery) => {
       total.value = res.result.totalCount;
       totalPage.value = Math.ceil(total.value / queryData.pages.size);
       tableData.value = res.result.driverCompList.sort((a: any, b: any) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
+        return (
+          new Date(b.driverDate).getTime() - new Date(a.driverDate).getTime()
+        );
       });
     });
   } catch (e: any) {
