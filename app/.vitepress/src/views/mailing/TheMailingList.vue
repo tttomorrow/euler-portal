@@ -13,13 +13,13 @@ import { getAllMailing } from '@/api/api-mailing';
 
 import banner from '@/assets/banner/banner-community.png';
 import illustration from '@/assets/illustrations/mailing.png';
-import sig1 from '@/assets/category/sig/guidance/sig1.png';
-import sig2 from '@/assets/category/sig/guidance/sig5.png';
-import sig4 from '@/assets/category/sig/guidance/sig2.png';
-import sig5 from '@/assets/category/sig/guidance/sig3.png';
+import p1 from '@/assets/category/mailing/p1.png';
+import p2 from '@/assets/category/mailing/p2.png';
+import p3 from '@/assets/category/mailing/p3.png';
+import p4 from '@/assets/category/mailing/p4.png';
 
-const LEFT_IMG = [sig1, sig2];
-const RIGHT_IMG = [sig4, sig5];
+const LEFT_IMG = [p1, p2];
+const RIGHT_IMG = [p3, p4];
 
 const i18n = useI18n();
 const router = useRouter();
