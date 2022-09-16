@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
-import { debounce } from 'lodash';
+import { debounce } from 'lodash-es';
 
 defineProps({
   navItems: {
