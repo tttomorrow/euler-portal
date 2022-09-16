@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData, useRouter } from 'vitepress';
 import { computed, onMounted, ref, reactive, watch, PropType } from 'vue';
-import { uniq } from 'lodash-es';
+import { debounce, filter, uniq } from 'lodash-es';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { useI18n } from '@/i18n';
@@ -153,7 +153,7 @@ const filterRepositoryList = () => {
     repoRenderList.value = repositioryList.value.slice(0, 99);
     getSigList(initialParams);
   } else {
-    sigList.value = _.filter(allList.value, (item: any) => {
+    sigList.value = filter(allList.value, (item: any) => {
       return (
         (!slectedInfo.sigSelected ||
           item.sig_name === slectedInfo.sigSelected) &&
@@ -241,7 +241,7 @@ function replaceMail() {
   });
 }
 // 输入框防抖
-const debounceEvent = _.debounce(filterRope, 300, {
+const debounceEvent = debounce(filterRope, 300, {
   trailing: true,
 });
 watch(
