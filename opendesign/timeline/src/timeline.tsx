@@ -1,4 +1,4 @@
-import { defineComponent, watch, ref, Ref, toRefs, onMounted } from 'vue';
+import { defineComponent, ref, Ref, toRefs, onMounted } from 'vue';
 import { timelineProps, TimelineProps } from './timeline-types';
 import IconLeft from '~icons/app/icon-chevron-left.svg';
 import IconRight from '~icons/app/icon-chevron-right';
@@ -12,120 +12,129 @@ export default defineComponent({
   emits: ['update:modelValue'],
   setup(props: TimelineProps, { emit }) {
     const { leftArrow, rightArrow, modelValue } = toRefs(props);
+    // 六月
     const SPLITEMONTH = 6;
-    const onClick = (index: number) => {
-      activeTab.value = index;
-      emit('update:modelValue', timeList.value[activeTab.value]);
-    };
-
-    const initDate = (year: number, month: number) => {
-      const result = [];
-      if (month > SPLITEMONTH) {
-        for (let i = SPLITEMONTH + 1; i <= 12; i++) {
-          result?.push(year + '-' + (i < 10 ? '0' + i : i));
-          if (month === i) {
-            activeTab.value = i - SPLITEMONTH - 1;
-          }
+    // 时间线列表
+    const timeList: Ref<string[]> = ref([]);
+    // 命中的tab
+    const activeTab = ref(5);
+    // 最左与最右阈值
+    const leftThreshold: string = '2021-01';
+    const rightThreshold: Ref<string> = ref('');
+    // 时间线列表赋值
+    const changeDate = (year: number, month: number): Array<string> => {
+      const result: Array<string> = [];
+      if (month >= SPLITEMONTH) {
+        for (let i = 0; i < 6; i++) {
+          result.push(
+            year +
+              '-' +
+              (month - (6 - i - 1) >= 10
+                ? month - (6 - i - 1)
+                : '0' + (month - (6 - i - 1)))
+          );
         }
       } else {
-        for (let i = 1; i <= SPLITEMONTH; i++) {
-          result?.push(year + '-' + (i < 10 ? '0' + i : i));
-          if (month === i) {
-            activeTab.value = i - 1;
-          }
+        // last year
+        for (let i = 1; i <= 6 - month; i++) {
+          result.push(
+            year -
+              1 +
+              '-' +
+              (6 + i + month >= 10 ? 6 + i + month : '0' + (6 + i + month))
+          );
+        }
+        // this year
+        for (let i = 1; i < month + 1; i++) {
+          result.push(year + '-0' + i);
         }
       }
-
       return result;
     };
-
-    const onClickLeft = () => {
-      if (activeTab.value === 0) {
-        const date = new Date(timeList.value[activeTab.value]);
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        if (month > SPLITEMONTH) {
-          timeList.value = initDate(year, SPLITEMONTH);
-        } else {
-          timeList.value = initDate(year - 1, 12);
-        }
-      } else {
-        activeTab.value = activeTab.value - 1;
-      }
-      emit('update:modelValue', timeList.value[activeTab.value]);
-    };
-
-    const onClickRight = () => {
-      if (activeTab.value === SPLITEMONTH - 1) {
-        const date = new Date(timeList.value[activeTab.value]);
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        if (month > SPLITEMONTH) {
-          timeList.value = initDate(year + 1, 1);
-        } else {
-          timeList.value = initDate(year, SPLITEMONTH + 1);
-        }
-      } else {
-        activeTab.value = activeTab.value + 1;
-      }
-      emit('update:modelValue', timeList.value[activeTab.value]);
-    };
-    const changeDate = () => {
+    // 初始化时间线列表赋值
+    const initDate = () => {
       const date = !isNaN(new Date(modelValue.value).getTime())
         ? new Date(modelValue.value)
         : new Date();
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
-      timeList.value = initDate(year, month);
+      rightThreshold.value = year + '-' + (month >= 10 ? month : '0' + month);
+      timeList.value = changeDate(year, month);
     };
-    const activeTab = ref(0);
-    const timeList: Ref<string[]> = ref([]);
+    // 点击时间线tab
+    const useClickTab = (index: number): void => {
+      activeTab.value = index;
+      emit('update:modelValue', timeList.value[activeTab.value]);
+    };
+    // 点击左侧按钮
+    const useClickLeft = () => {
+      const date = new Date(timeList.value[4]);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      timeList.value = changeDate(year, month);
+      activeTab.value =
+        activeTab.value < 5 ? activeTab.value + 1 : activeTab.value;
+      emit('update:modelValue', timeList.value[activeTab.value]);
+    };
+    // 点击右侧按钮
+    const useClickRight = () => {
+      const date = new Date(timeList.value[5]);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 2;
+      timeList.value =
+        month <= 12 ? changeDate(year, month) : changeDate(year + 1, 1);
+      activeTab.value =
+        activeTab.value > 0 ? activeTab.value - 1 : activeTab.value;
+      emit('update:modelValue', timeList.value[activeTab.value]);
+    };
+
     onMounted(() => {
-      changeDate();
+      initDate();
     });
-    watch(
-      () => modelValue.value,
-      () => {
-        changeDate();
-      }
-    );
 
     return () => {
       return (
         <div class="o-timeline">
-          {leftArrow && leftArrow.value ? (
+          {leftArrow &&
+          leftArrow.value &&
+          timeList.value[0] !== leftThreshold ? (
             <IconLeft
+              onClick={() => useClickLeft()}
               class="o-timeline-left-arrow"
-              onClick={onClickLeft}
             ></IconLeft>
           ) : (
             ''
           )}
           <ul class="o-timeline-list">
-            {timeList.value.map((item, index) => {
-              return (
-                <li
-                  class={[
-                    'o-timeline-item',
-                    index === activeTab.value ? 'active' : '',
-                  ]}
-                  onClick={() => onClick(index)}
-                >
-                  <p class="o-timeline-day">{item}</p>
-                  {index === activeTab.value ? (
-                    <IconChecked class="o-timeline-icon"></IconChecked>
-                  ) : (
-                    <IconUnchecked class="o-timeline-icon"></IconUnchecked>
-                  )}
-                </li>
-              );
-            })}
+            {timeList &&
+              timeList.value.map((item, index) => {
+                return (
+                  <li
+                    class={[
+                      'o-timeline-item',
+                      index === activeTab.value ? 'active' : '',
+                    ]}
+                    onClick={() => useClickTab(index)}
+                  >
+                    <p class="o-timeline-day">{item}</p>
+                    {index === activeTab.value ? (
+                      <IconChecked class="o-timeline-icon"></IconChecked>
+                    ) : (
+                      <IconUnchecked class="o-timeline-icon"></IconUnchecked>
+                    )}
+                  </li>
+                );
+              })}
           </ul>
-          {rightArrow && rightArrow.value && (
+          {rightArrow &&
+          rightArrow.value &&
+          timeList.value[5] !== rightThreshold.value ? (
             <IconRight
               class="o-timeline-right-arrow"
-              onClick={onClickRight}
+              onClick={() => useClickRight()}
             ></IconRight>
+          ) : (
+            ''
           )}
         </div>
       );
