@@ -20,7 +20,8 @@ import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
 
 interface LATEST_ACTIVITY {
-  id: number;
+  IS_MINI: number;
+  ID: number | string;
   date: string;
   activity_img: string;
   [propName: string]: string | number;
@@ -177,6 +178,8 @@ onMounted(async () => {
     const currentMonth: string = year + '-' + month;
     responeData.forEach((item: LATEST_ACTIVITY) => {
       if (item.date.slice(0, 7) === currentMonth) {
+        item.IS_MINI = 1;
+        item.ID = item.id;
         (item.activity_img = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`),
           latestList.value.push(item);
       }
@@ -216,6 +219,7 @@ onMounted(async () => {
             class="salon-latest-card"
             :style="{ padding: '0px' }"
             shadow="hover"
+            @click="goDetail(item)"
           >
             <div v-if="item.activity_img" class="salon-latest-card-img">
               <img :src="item.activity_img" alt="" />
