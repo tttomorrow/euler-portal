@@ -101,7 +101,7 @@ SIG 就是 Special Interest Group 的缩写，openEuler 社区按照不同的 SI
 - 准备 openEuler 的开发环境  
   如果您想参与编码贡献，需要准备 openEuler 的开发环境，请参考[开发环境准备](https://gitee.com/openeuler/community/blob/master/zh/contributors/prepare-environment.md)。
 - 了解 SIG 和项目内的开发注意事项  
-  每个 SIG 内的项目使用的编码语言、开发环境、编码约定等都可能存在差异的。如果您想了解并参与到编码类贡献，可以先找到该项目给开发者提供的贡献者指南——这个指南一般是在该 SIG 的首页地址内，以 CONTRIBUTING.md 文件的形式提供，或者就直接在该项目的 README.md 内。
+  每个 SIG 内的项目使用的编码语言、开发环境、编码约定等都可能存在差异的。如果您想了解并参与到编码类贡献，可以先找到该项目给开发者提供的贡献者指南——这个指南一般是在该 SIG 的首页地址内，以CONTRIBUTING.md文件的形式提供，或者就直接在该项目的README.md内。
 - 下载代码和拉分支  
   如果要参与代码贡献，您还需要了解如何在 Gitee 下载代码，通过 PR 合入代码等。openEuler 使用 Gitee 代码托管平台，想了解具体的指导，请参考[Gitee Workflow Guide](https://gitee.com/openeuler/community/blob/master/zh/contributors/Gitee-workflow.md)。该托管平台的使用方法类似 GitHub，如果您以前使用过 GitHub，本节的内容您可以大致了解甚至跳过。
 - 修改、构建和本地验证  
@@ -130,7 +130,7 @@ SIG 就是 Special Interest Group 的缩写，openEuler 社区按照不同的 SI
 - 方式二：在 openEuler 社区中开发，在 openEuler 中集成  
   直接在https://gitee.com/openeuler中建立原创项目，类似将项目“托管”到openEuler社区，比如现在社区中的iSula和A-Tune就是这样的模式。  
   如果你有了一个很棒的 idea 想要在 openEuler 社区里实现，那么他可以依照下面的过程来深度参与到 openEuler 中。  
-  1.在[TC 委员会的例会](https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=21&name=TC&mail=dev%40openeuler.org)中申请一个开源项目；  
+  1.在[TC 委员会的例会](https://www.openeuler.org/zh/sig/sig-detail/?id=21&name=TC&mail=dev%40openeuler.org)中申请一个开源项目；  
   2.如果 TC 委员会认为这是一个很好的 idea，并且认为值得去推进，那么我们会在[https://gitee.com/openeuler](https://gitee.com/openeuler)中建立一个 repo；  
   3.这个项目在 openeuler 中持续开发和孵化，直到项目逐渐成熟，那么就可以在 src-openeuler 中建立一个仓，为该项目提供相关的 spec 文件，制作成为一个 rpm；  
   4.最终这个原创的开源项目会随着 openEuler 的发布版本走遍全世界，为世界人民所使用。
@@ -170,7 +170,7 @@ openEuler 是一个开放的社区，我们希望所有参与社区的人都能�
 ### 4.2 技术委员会
 
 openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社区的技术决策机构，负责社区技术决策和技术资源的协调。  
-详情请查看 [openEuler 技术委员会介绍](https://www.openeuler.org/zh/sig/sig-list/sig-detail.html?id=21&name=TC&mail=dev%40openeuler.org)
+详情请查看 [openEuler 技术委员会介绍](https://www.openeuler.org/zh/sig/sig-detail/?id=21&name=TC&mail=dev%40openeuler.org)
 
 </div>
 
