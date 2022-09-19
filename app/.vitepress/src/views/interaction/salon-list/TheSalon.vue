@@ -24,137 +24,52 @@ interface LATEST_ACTIVITY {
   ID: number | string;
   date: string;
   activity_img: string;
+  address: string;
+  synopsis: string;
   [propName: string]: string | number;
 }
-
-// 本月最新活动列表
-const latestList: Ref<Array<LATEST_ACTIVITY>> = ref([]);
-
+// system variable
 const commonStore = useCommon();
+const { lang } = useData();
+const i18n = useI18n();
 const salonData = computed(() => i18n.value.interaction.MEETUPSLIST);
-
-const activeName = ref('first');
-
 const router = useRouter();
-
-const dateNews: Ref<string> = ref(
-  new Date().getFullYear() + '-' + (new Date().getMonth() + 1)
-);
-
 const screenWidth = useWindowResize();
 
-const allNewsList: Ref<any[]> = ref([]);
+// define variable
 
-const showNewsList: Ref<any> = ref([]);
-
-const meetsList = ref<any>([]);
-
+// 所需日期
+const nowDate = new Date();
+const thisYear: number = nowDate.getFullYear();
+const thisMonth: number | string =
+  nowDate.getMonth() + 1 >= 10
+    ? nowDate.getMonth() + 1
+    : '0' + (nowDate.getMonth() + 1);
+const today: number | string =
+  nowDate.getDate() >= 10 ? nowDate.getDate() : '0' + nowDate.getDate();
+const currentDay: string = thisYear + '-' + thisMonth + '-' + today;
+// 当前导航栏
+const activeName = ref('first');
+// 本月及以后最新活动列表
+const latestList: Ref<Array<LATEST_ACTIVITY>> = ref([]);
+// 精彩回顾中所有的数据
+const allReviewList: Ref<Array<LATEST_ACTIVITY>> = ref([]);
+// 时间线所选中的日期
+const timeLineDate: Ref<string> = ref(thisYear + '-' + thisMonth);
+// 精彩回顾下展示列表
 const newsList = computed(() => {
   if (screenWidth.value > 768) {
-    return showNewsList.value[dateNews.value.split('-')[0] + 'year']
-      ? showNewsList.value[dateNews.value.split('-')[0] + 'year'][
-          mapping[parseInt(dateNews.value.split('-')[1]) - 1]
-        ]
-      : [];
+    const showList: Ref<Array<LATEST_ACTIVITY>> = ref([]);
+    allReviewList.value.forEach((item: LATEST_ACTIVITY) => {
+      if (item.date.slice(0, 7) === timeLineDate.value) {
+        showList.value.push(item);
+      }
+    });
+    return showList.value;
   } else {
-    return allNewsList.value;
+    return allReviewList.value;
   }
 });
-
-const { lang } = useData();
-
-const i18n = useI18n();
-
-const mapping = [
-  '一月',
-  '二月',
-  '三月',
-  '四月',
-  '五月',
-  '六月',
-  '七月',
-  '八月',
-  '九月',
-  '十月',
-  '十一月',
-  '十二月',
-];
-
-const sortMeetsList = (array: any) => {
-  const temp = array;
-  temp.forEach(
-    (item: {
-      number: any;
-      MEETUPS_DATE: string;
-      fullYear: string;
-      fullMonth: any;
-      MEETUPS_MONTH: any;
-    }) => {
-      item.number =
-        item.MEETUPS_DATE.slice(0, 4) +
-        item.MEETUPS_DATE.slice(5, 7) +
-        item.MEETUPS_DATE.slice(8);
-      item.fullYear = item.MEETUPS_DATE.slice(0, 4) + 'year';
-      item.fullMonth = item.MEETUPS_MONTH;
-    }
-  );
-  temp.sort((a: { number: number }, b: { number: number }) => {
-    return b.number - a.number;
-  });
-
-  return temp;
-};
-
-const initNews = (res: any[]) => {
-  const tempArr: {
-    MEETUPS_IMG: string;
-    MEETUPS_DATE: any;
-    MEETUPS_TITLE: any;
-    MEETUPS_DESC: any[];
-    IS_MINI: number;
-    ID: any;
-    ADDRESS_UP: string;
-    MEETUPS_MONTH: string;
-  }[] = [];
-  res.forEach((item) => {
-    tempArr.push({
-      MEETUPS_IMG: `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`,
-      MEETUPS_DATE: item.date,
-      MEETUPS_TITLE: item.title,
-      MEETUPS_DESC: [item.synopsis],
-      IS_MINI: 1,
-      ID: item.id,
-      ADDRESS_UP:
-        item.activity_type === 2
-          ? '线上'
-          : item.address
-          ? item.address
-          : '线上',
-      MEETUPS_MONTH: mapping[parseInt(item.date.split('-')[1]) - 1],
-    });
-  });
-
-  const allList = tempArr;
-
-  allNewsList.value = sortMeetsList(allList);
-
-  dateNews.value =
-    allNewsList.value[1].MEETUPS_DATE.slice(0, 4) +
-    '-' +
-    allNewsList.value[1].MEETUPS_DATE.slice(5, 7);
-
-  const listObj: any = {};
-  allNewsList.value.forEach((item) => {
-    if (!listObj[item.fullYear]) {
-      listObj[item.fullYear] = {};
-    }
-    if (!listObj[item.fullYear][item.fullMonth]) {
-      listObj[item.fullYear][item.fullMonth] = [];
-    }
-    listObj[item.fullYear][item.fullMonth].push(item);
-  });
-  return listObj;
-};
 
 const goDetail = (item: { IS_MINI: any; ID: any }) => {
   let query = '';
@@ -169,26 +84,21 @@ const goDetail = (item: { IS_MINI: any; ID: any }) => {
 onMounted(async () => {
   try {
     const responeData = await getSalon();
-    const date = new Date();
-    const year: number = date.getFullYear();
-    const month: number | string =
-      date.getMonth() + 1 >= 10
-        ? date.getMonth() + 1
-        : '0' + (date.getMonth() + 1);
-    const currentMonth: string = year + '-' + month;
     responeData.forEach((item: LATEST_ACTIVITY) => {
-      if (item.date.slice(0, 7) === currentMonth) {
-        item.IS_MINI = 1;
-        item.ID = item.id;
-        (item.activity_img = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`),
-          latestList.value.push(item);
+      item.IS_MINI = 1;
+      item.ID = item.id;
+      item.activity_img = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`;
+      if (
+        item.date === currentDay ||
+        (Number(item.date.slice(0, 4)) >= Number(thisYear) &&
+          Number(item.date.slice(5, 7)) >= Number(thisMonth) &&
+          Number(item.date.slice(8, 10)) > Number(today))
+      ) {
+        latestList.value.push(item);
+      } else {
+        allReviewList.value.push(item);
       }
     });
-    showNewsList.value = JSON.parse(JSON.stringify(initNews(responeData)));
-    Reflect.deleteProperty(showNewsList.value['2022year'], '九月');
-    meetsList.value = JSON.parse(
-      JSON.stringify(initNews(responeData)['2022year']['九月'])
-    );
   } catch (e: any) {
     throw new Error(e);
   }
@@ -229,8 +139,8 @@ onMounted(async () => {
               <p class="salon-latest-card-img-span">{{ item.title }}</p>
             </div>
             <!-- <div class="openeuler">
-                <p>openEuler</p>
-              </div> -->
+              <p>openEuler</p>
+            </div> -->
             <span class="salon-latest-card-synopsis">{{ item.synopsis }}</span>
             <div class="salon-latest-card-info">
               <IconCalendar class="salon-latest-card-icon"></IconCalendar>
@@ -260,7 +170,7 @@ onMounted(async () => {
           {{ salonData.DETAIL_REVIEW }}
         </h3>
         <OTimeline
-          v-model="dateNews"
+          v-model="timeLineDate"
           class="salon-time"
           :right-arrow="true"
           :left-arrow="true"
@@ -275,48 +185,37 @@ onMounted(async () => {
             @click="goDetail(item)"
           >
             <div class="salon-review-card-title">
-              {{ item.MEETUPS_TITLE }}
+              {{ item.title }}
             </div>
-            <div v-if="item.MEETUPS_IMG" class="salon-review-card-img">
-              <img :src="item.MEETUPS_IMG" alt="" />
-              <span v-if="item.IS_MINI">{{ item.MEETUPS_TITLE }}</span>
+            <div v-if="item.activity_img" class="salon-review-card-img">
+              <img :src="item.activity_img" alt="" />
+              <span v-if="item.IS_MINI">{{ item.title }}</span>
             </div>
             <div
               v-else
               class="salon-review-card-desc"
-              :title="item.MEETUPS_DESC ? item.MEETUPS_DESC[0] : ''"
+              :title="item.synopsis ? item.synopsis : ''"
             >
-              {{ item.MEETUPS_DESC ? item.MEETUPS_DESC[0] : '' }}
+              {{ item.synopsis ? item.synopsis : '' }}
             </div>
             <div class="salon-review-card-bottom">
               <div class="salon-review-card-mobile">
                 <div class="salon-review-card-mobile-title">
-                  {{ item.MEETUPS_TITLE }}
+                  {{ item.title }}
                 </div>
                 <div
                   class="salon-review-card-mobile-desc"
-                  :title="item.MEETUPS_DESC ? item.MEETUPS_DESC[0] : ''"
+                  :title="item.synopsis ? item.synopsis : ''"
                 >
-                  {{ item.MEETUPS_DESC ? item.MEETUPS_DESC[0] : '' }}
+                  {{ item.synopsis ? item.synopsis : '' }}
                 </div>
               </div>
               <div class="salon-review-card-info">
                 <IconCalendar class="salon-review-card-icon"></IconCalendar>
-                <span>{{ item.MEETUPS_DATE }}</span>
+                <span>{{ item.date }}</span>
                 <IconHome class="home salon-review-card-icon"></IconHome>
-                <span
-                  class="address"
-                  :title="
-                    item.MEETINGS_INFO
-                      ? item.MEETINGS_INFO.ADDRESS_UP
-                      : item.ADDRESS_UP
-                  "
-                >
-                  {{
-                    item.MEETINGS_INFO
-                      ? item.MEETINGS_INFO.ADDRESS_UP
-                      : item.ADDRESS_UP
-                  }}</span
+                <span class="address" :title="item.address">
+                  {{ item.address }}</span
                 >
               </div>
             </div>
