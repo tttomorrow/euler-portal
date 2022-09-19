@@ -217,7 +217,9 @@ function clickClose() {
     <AppContent :pc-top="0" :mobile-top="0">
       <div class="atom">
         <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}</p>
-        <img :src="LogoAtom" class="atom-logo" alt="" />
+        <a href="https://openatom.cn/home" target="_blank">
+          <img :src="LogoAtom" class="atom-logo" alt="" />
+        </a>
       </div>
     </AppContent>
     <div class="footer-content">
