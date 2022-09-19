@@ -53,7 +53,6 @@ const imgUrlHover = computed(
   column-gap: 0;
   row-gap: 0;
   background: var(--o-color-bg2);
-  box-shadow: var(--o-shadow-l1);
   z-index: 10;
 
   .nav-item {
