@@ -6,6 +6,7 @@ import TWEEN from '@tweenjs/tween.js';
 import { useCommon } from '@/stores/common';
 import { onMounted, Ref, ref } from 'vue';
 import { getStatistic } from '@/api/api-search';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 const commonStore = useCommon();
 
@@ -52,6 +53,7 @@ const addValue = (arr: any) => {
   );
   return template;
 };
+const windowWidth = ref(useWindowResize());
 onMounted(async () => {
   try {
     const responeData = await getStatistic();
@@ -101,7 +103,11 @@ onMounted(async () => {
           </OButton>
         </OCard>
       </OContainer>
-      <OContainer :level-index="2" data-aos="fade-left" class="round-card">
+      <OContainer
+        :level-index="windowWidth > 768 ? 2 : 1"
+        data-aos="fade-left"
+        class="round-card"
+      >
         <div class="round-list">
           <div
             v-for="(item, index) in roundList"

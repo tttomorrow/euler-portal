@@ -54,7 +54,7 @@ onMounted(async () => {
 const goUnsubscribeBlog = () => {
   const path1 = router.route.path.substring(0, 3);
   const path2 = i18n.value.mailing.MAILING_LIST.GUIDE_CONTENT[1].RIGHT.LINK;
-  router.go(`${path1}/${path2}`);
+  window.open(`${path1}/${path2}`);
 };
 
 const userSubscribe = (userID: string) => {
@@ -455,6 +455,7 @@ const isMobile = computed(() => {
           line-height: var(--o-line-height-h8);
           bottom: var(--o-spacing-h4);
           @media (max-width: 780px) {
+            font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-text);
           }
         }
