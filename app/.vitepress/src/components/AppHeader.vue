@@ -207,8 +207,9 @@ function search() {
 //   emit2('click-close');
 // }
 const jumpToUserZone = () => {
+  const language = lang.value === 'zh' ? 'zh' : 'en';
   window.open(
-    'https://jldibemigdfj.authing.cn/u?app_id=62679eab0b22b146d2ea0a3a',
+    `https://jldibemigdfj.authing.cn/u?app_id=62679eab0b22b146d2ea0a3a&lang=${language}`,
     '_blank'
   );
 };
@@ -222,7 +223,7 @@ const jumpToUserZone = () => {
         <OIcon v-if="!mobileMenuIcon" class="icon" @click="mobileMenuPanel">
           <IconMenu />
         </OIcon>
-        <OIcon v-else class="icon"><IconCancel /></OIcon>
+        <OIcon v-else class="icon" @click="mobileMenuPanel"><IconCancel /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <clientOnly>

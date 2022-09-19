@@ -98,8 +98,7 @@ export function getCodeByUrl(community = 'openeuler') {
       const { data = {} } = res;
       const { token = '', photo = '', username = '' } = data;
       saveUserAuth(token, photo, username);
-      const newUrl = `${window?.location?.origin}`;
-      window.parent.window.location.href = newUrl;
+      window.parent.window.location.reload();
     });
   }
 }
@@ -123,17 +122,20 @@ function getUrlParam(url = window?.location?.search) {
 }
 
 function createClient(community = 'openeuler', url?: string) {
+  const lang = getLanguage();
   const obj: IObject = {
     openeuler: {
       // appId: '62845f26b7dbf20f7890c0ad',
       appId: '62679eab0b22b146d2ea0a3a',
       appHost: 'https://datastat.authing.cn',
       redirectUri: url || `${window?.location?.origin}${window?.location?.pathname}`,
+      lang: lang.language,
     },
     openeulerPlayground: {
       appId: '6219de6da01da1ce012db473',
       appHost: 'https://openeuler.authing.cn',
       redirectUri: 'https://moocstudio.openeuler.sh/',
+      lang: lang.language,
     },
   };
   if (obj[community]) {
@@ -226,4 +228,17 @@ export function hasPermission(per: string) {
     return guardAuthClient.value.permissions.includes(per);
   }
   return false;
+}
+
+export function getLanguage() {
+  if (location.pathname.includes('/zh/')) {
+    return {
+      lang: 'zh',
+      language: 'zh-CN',
+    }
+  }
+  return {
+    lang: 'en',
+    language: 'en-US',
+  }
 }
