@@ -21,7 +21,7 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/icon-search.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconMenu from '~icons/app/icon-menu.svg';
-import IconLogin from '~icons/app/login.svg';
+import IconLogin from '~icons/app/icon-login.svg';
 
 interface NavItem {
   NAME: string;
