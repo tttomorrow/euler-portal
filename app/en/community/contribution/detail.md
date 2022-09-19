@@ -4,7 +4,7 @@ title: 'Contribution'
 
 <script lang="ts" setup>
 import BannerLevel2 from '@/components/BannerLevel2.vue'
-import ContributionTab from "@/views/community/contribution/ContributionTab.vue";
+import ContributionTab from "@/views/contribution/ContributionTab.vue";
 
 import banner from '@/assets/banner/banner-community.png';
 import illustration from '@/assets/illustrations/contribution.png';
@@ -129,7 +129,7 @@ If you want to contribute your original open source project to the openEuler com
 - Method 2: Develop and integrate a project in openEuler.  
   Creating original projects directly at [https://gitee.com/openeuler](https://gitee.com/openeuler) is similar to "hosting" projects to the openEuler community, such as iSula and A-Tune.
   If you have a great idea that you want to implement in the openEuler community, follow the procedure below to get deeply involved in the openEuler community.  
-  1.Apply for an open source project in [regular meetings of the Technical Committee (TC)](https://www.openeuler.org/en/sig/sig-list/sig-detail.html?id=21&name=TC&mail=dev%40openeuler.org).  
+  1.Apply for an open source project in [regular meetings of the Technical Committee (TC)](https://www.openeuler.org/en/sig/sig-detail/?id=21&name=TC&mail=dev%40openeuler.org).  
   2.If the TC evaluates that it is a good idea and deserves to be promoted, you can set up a repository at [https://gitee.com/openeuler](https://gitee.com/openeuler).  
   3.The project will be continuously developed and incubated in openEuler until it matures. Then create a repository in src-openeuler to provide relevant spec files for the project and create an RPM file.  
   4.Eventually, your original open source project will be used by people around the world with openEuler releases.
@@ -172,7 +172,7 @@ Everyone in the community plays an important part. Roles differ in terms of resp
 ### 4.2 Technical Committee
 
 The openEuler Technical Committee (TC) is the technical decision-making body of the openEuler community. It is responsible for technical decision-making and coordination of technical resources in the openEuler community.  
-For details, see the introduction to the [openEuler Technical Committee](https://www.openeuler.org/en/sig/sig-list/sig-detail.html?id=21&name=TC&mail=dev%40openeuler.org).
+For details, see the introduction to the [openEuler Technical Committee](https://www.openeuler.org/en/sig/sig-detail/?id=21&name=TC&mail=dev%40openeuler.org).
 
 </div>
 

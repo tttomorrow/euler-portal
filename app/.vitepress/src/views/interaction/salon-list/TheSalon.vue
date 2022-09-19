@@ -19,6 +19,17 @@ import illustration from '@/assets/illustrations/salon.png';
 import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
 
+interface LATEST_ACTIVITY {
+  IS_MINI: number;
+  ID: number | string;
+  date: string;
+  activity_img: string;
+  [propName: string]: string | number;
+}
+
+// 本月最新活动列表
+const latestList: Ref<Array<LATEST_ACTIVITY>> = ref([]);
+
 const commonStore = useCommon();
 const salonData = computed(() => i18n.value.interaction.MEETUPSLIST);
 
@@ -26,33 +37,16 @@ const activeName = ref('first');
 
 const router = useRouter();
 
-// const date: Ref<string> = ref(
-//   new Date().getFullYear() + '-' + (new Date().getMonth() + 1)
-// );
-
 const dateNews: Ref<string> = ref(
   new Date().getFullYear() + '-' + (new Date().getMonth() + 1)
 );
 
 const screenWidth = useWindowResize();
 
-// const allMeetsList: Ref<any[]> = ref([]);
-
 const allNewsList: Ref<any[]> = ref([]);
 
 const showNewsList: Ref<any> = ref([]);
 
-// const meetsList = computed(() => {
-//   if (screenWidth.value > 768) {
-//     return showNewsList.value[dateNews.value.split('-')[0] + 'year']
-//       ? showNewsList.value[dateNews.value.split('-')[0] + 'year'][
-//           mapping[parseInt(dateNews.value.split('-')[1]) - 1]
-//         ]
-//       : [];
-//   } else {
-//     return allNewsList.value;
-//   }
-// });
 const meetsList = ref<any>([]);
 
 const newsList = computed(() => {
@@ -110,54 +104,6 @@ const sortMeetsList = (array: any) => {
 
   return temp;
 };
-
-// const initData = (res: any[]) => {
-//   const tempArr: {
-//     MEETUPS_IMG: string;
-//     MEETUPS_DATE: any;
-//     MEETUPS_TITLE: any;
-//     MEETUPS_DESC: any[];
-//     IS_MINI: number;
-//     ID: any;
-//     ADDRESS_UP: string;
-//     MEETUPS_MONTH: string;
-//   }[] = [];
-//   res.forEach((item) => {
-//     if (item.state === 5) {
-//       tempArr.push({
-//         MEETUPS_IMG: `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`,
-//         MEETUPS_DATE: item.date,
-//         MEETUPS_TITLE: item.title,
-//         MEETUPS_DESC: [item.synopsis],
-//         IS_MINI: 1,
-//         ID: item.id,
-//         ADDRESS_UP: item.address ? item.address : '线上',
-//         MEETUPS_MONTH: mapping[parseInt(item.date.split('-')[1]) - 1],
-//       });
-//     }
-//   });
-
-//   const allList = salonData.value.MEETUPS_DATA.concat(tempArr);
-
-//   allMeetsList.value = sortMeetsList(allList);
-
-//   date.value =
-//     allMeetsList.value[0].MEETUPS_DATE.slice(0, 4) +
-//     '-' +
-//     allMeetsList.value[0].MEETUPS_DATE.slice(5, 7);
-
-//   const listObj: any = {};
-//   allMeetsList.value.forEach((item) => {
-//     if (!listObj[item.fullYear]) {
-//       listObj[item.fullYear] = {};
-//     }
-//     if (!listObj[item.fullYear][item.fullMonth]) {
-//       listObj[item.fullYear][item.fullMonth] = [];
-//     }
-//     listObj[item.fullYear][item.fullMonth].push(item);
-//   });
-//   return listObj;
-// };
 
 const initNews = (res: any[]) => {
   const tempArr: {
@@ -223,6 +169,21 @@ const goDetail = (item: { IS_MINI: any; ID: any }) => {
 onMounted(async () => {
   try {
     const responeData = await getSalon();
+    const date = new Date();
+    const year: number = date.getFullYear();
+    const month: number | string =
+      date.getMonth() + 1 >= 10
+        ? date.getMonth() + 1
+        : '0' + (date.getMonth() + 1);
+    const currentMonth: string = year + '-' + month;
+    responeData.forEach((item: LATEST_ACTIVITY) => {
+      if (item.date.slice(0, 7) === currentMonth) {
+        item.IS_MINI = 1;
+        item.ID = item.id;
+        (item.activity_img = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`),
+          latestList.value.push(item);
+      }
+    });
     showNewsList.value = JSON.parse(JSON.stringify(initNews(responeData)));
     Reflect.deleteProperty(showNewsList.value['2022year'], '九月');
     meetsList.value = JSON.parse(
@@ -251,82 +212,29 @@ onMounted(async () => {
     <AppContent class="salon-content">
       <div v-if="activeName === 'first'">
         <h3 class="salon-title">{{ salonData.DETAIL_NEWS }}</h3>
-        <div v-if="meetsList && meetsList.length != 0" class="salon-new">
+        <div v-if="latestList && latestList.length != 0" class="salon-latest">
           <OCard
-            v-for="(item, index) in meetsList"
-            :key="item.ID"
-            class="salon-new-card"
+            v-for="item in latestList"
+            :key="item.id"
+            class="salon-latest-card"
             :style="{ padding: '0px' }"
             shadow="hover"
             @click="goDetail(item)"
           >
-            <div v-if="index === 0" class="salon-new-card-img">
-              <img :src="item.MEETUPS_IMG" alt="" />
-              <span v-if="item.IS_MINI">{{ item.MEETUPS_TITLE }}</span>
+            <div v-if="item.activity_img" class="salon-latest-card-img">
+              <img :src="item.activity_img" alt="" />
+              <span>{{ item.title }}</span>
             </div>
-            <div
-              :class="
-                index === 0 ? 'salon-new-card-bottom' : 'salon-new-card-mobile'
-              "
-            >
-              <div class="salon-new-card-left">
-                <div class="salon-new-card-left-title">
-                  {{ item.MEETUPS_TITLE }}
-                </div>
-                <div v-if="index === 0" class="salon-new-card-left-logo">
-                  openEulur
-                </div>
-                <div
-                  class="salon-new-card-left-desc"
-                  :title="item.MEETUPS_DESC ? item.MEETUPS_DESC[0] : ''"
-                >
-                  {{ item.MEETUPS_DESC ? item.MEETUPS_DESC[0] : '' }}
-                </div>
-              </div>
-              <div class="salon-new-card-info">
-                <div class="salon-new-card-info-group">
-                  <IconCalendar class="salon-new-card-icon"></IconCalendar>
-                  <span>{{ item.MEETUPS_DATE }}</span>
-                </div>
-                <div class="salon-new-card-info-group">
-                  <IconHome class="home salon-new-card-icon"></IconHome>
-                  <span
-                    class="address"
-                    :title="
-                      item.MEETINGS_INFO
-                        ? item.MEETINGS_INFO.ADDRESS_UP
-                        : item.ADDRESS_UP
-                    "
-                  >
-                    {{
-                      item.MEETINGS_INFO
-                        ? item.MEETINGS_INFO.ADDRESS_UP
-                        : item.ADDRESS_UP
-                    }}</span
-                  >
-                </div>
-                <div class="salon-new-card-info-mobile">
-                  <IconCalendar class="salon-new-card-icon"></IconCalendar>
-                  <span>{{ item.MEETUPS_DATE }}</span>
-
-                  <IconHome class="home salon-new-card-icon"></IconHome>
-                  <span
-                    class="address"
-                    :title="
-                      item.MEETINGS_INFO
-                        ? item.MEETINGS_INFO.ADDRESS_UP
-                        : item.ADDRESS_UP
-                    "
-                  >
-                    {{
-                      item.MEETINGS_INFO
-                        ? item.MEETINGS_INFO.ADDRESS_UP
-                        : item.ADDRESS_UP
-                    }}</span
-                  >
-                </div>
-              </div>
-              <div class="salon-new-card-left-logo-mobile">openEulur</div>
+            <div v-else class="salon-latest-card-img">
+              <p class="salon-latest-card-img-span">{{ item.title }}</p>
+            </div>
+            <!-- <div class="openeuler">
+                <p>openEuler</p>
+              </div> -->
+            <span class="salon-latest-card-synopsis">{{ item.synopsis }}</span>
+            <div class="salon-latest-card-info">
+              <IconCalendar class="salon-latest-card-icon"></IconCalendar>
+              <span>{{ item.date }}</span>
             </div>
           </OCard>
         </div>
@@ -442,7 +350,7 @@ onMounted(async () => {
   align-items: center;
   flex-direction: column;
   font-size: var(--o-font-size-h6);
-  color: var(--o-color-text1);
+  color: var(--e-color-text1);
   padding-top: var(--o-spacing-h1);
   height: 100%;
   .empty-img {
@@ -453,137 +361,47 @@ onMounted(async () => {
   }
 }
 .salon {
-  &-new {
+  &-latest {
     display: grid;
     width: 100%;
     margin-top: var(--o-spacing-h2);
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: var(--o-spacing-h4);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--o-spacing-h2) var(--o-spacing-h4);
+    @media (max-width: 1080px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
     @media (max-width: 768px) {
+      grid-template-columns: repeat(1, 1fr);
       grid-gap: var(--o-spacing-h5);
       margin-top: 0;
     }
-
     &-card {
       cursor: pointer;
       width: 100%;
       :deep(.el-card__body) {
-        padding: 0;
         width: 100%;
         display: flex;
-        flex-flow: row;
-
-        @media (max-width: 768px) {
-          flex-flow: column;
-        }
-      }
-
-      &-left {
-        display: flex;
         flex-flow: column;
-        &-title {
-          font-size: var(--o-font-size-h5);
-          line-height: var(--o-line-height-h5);
-          color: var(--o-color-text1);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          word-break: break-all;
-          @media (max-width: 768px) {
-            font-size: var(--o-font-size-text);
-            line-height: var(--o-line-height-text);
-          }
-        }
-
-        &-logo {
-          width: 80px;
-          height: 24px;
-          background: linear-gradient(
-            225deg,
-            var(--o-color-yellow5) 0%,
-            #f6d365 100%
-          );
-          display: flex;
-          flex-flow: row;
-          color: #000000;
-          justify-content: center;
-          align-items: center;
-          font-size: var(--o-font-size-tip);
-          margin-top: var(--o-spacing-h5);
-          @media (max-width: 768px) {
-            display: none;
-          }
-
-          &-mobile {
-            width: 80px;
-            height: 24px;
-            background: linear-gradient(
-              225deg,
-              var(--o-color-yellow5) 0%,
-              #f6d365 100%
-            );
-            display: none;
-            flex-flow: row;
-            justify-content: center;
-            align-items: center;
-            color: #000000;
-            font-size: var(--o-font-size-tip);
-            margin-top: var(--o-spacing-h5);
-            @media (max-width: 768px) {
-              display: flex;
-            }
-          }
-        }
-        &-desc {
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-          color: var(--o-color-text);
-          margin-top: var(--o-spacing-h5);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 4;
-          word-break: break-all;
-          @media (max-width: 768px) {
-            color: var(--o-color-text4);
-            margin-top: var(--o-spacing-h9);
-            font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-height-tip);
-          }
-        }
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 100%;
+        padding: 0px;
       }
-
-      &-icon {
-        height: 24px;
-        width: 24px;
-        color: var(--o-color-text4);
-        margin-right: var(--o-spacing-h9);
-        @media (max-width: 768px) {
-          height: 16px;
-          width: 16px;
-          color: var(--o-color-neutral8);
-          margin-right: var(--o-spacing-h10);
-        }
-      }
-
       &-img {
-        width: 67%;
+        width: 100%;
+        height: 196px;
         display: flex;
         flex-flow: row;
         justify-content: center;
         align-items: center;
         @media (max-width: 768px) {
-          width: 100%;
+          height: 120px;
         }
-
         img {
           object-fit: cover;
-          height: 100%;
+          height: 196px;
           width: 100%;
           @media (max-width: 768px) {
             height: 120px;
@@ -594,141 +412,87 @@ onMounted(async () => {
           text-align: center;
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
-          color: #ffffff;
+          color: #fff;
           @media (max-width: 768px) {
             font-size: var(--o-font-size-text);
             line-height: var(--o-line-height-text);
           }
         }
+        p {
+          text-align: center;
+          font-size: var(--o-font-size-h6);
+          line-height: var(--o-line-height-h6);
+        }
       }
-
+      // .openeuler {
+      //   background: linear-gradient(
+      //     225deg,
+      //     var(--o-color-yellow5) 0%,
+      //     #f6d365 100%
+      //   );
+      //   height: 23px;
+      //   width: 80px;
+      //   p {
+      //     color: var(--o-color-black);
+      //     font-size: var(--o-font-size-tip);
+      //     line-height: var(--o-line-height-tip);
+      //     text-align: center;
+      //     position: relative;
+      //     top: 50%;
+      //     transform: translateY(-50%);
+      //   }
+      // }
+      &-synopsis {
+        height: 75px;
+        color: var(--e-color-text1);
+        font-weight: 400;
+        font-size: var(--o-font-size-h7);
+        line-height: var(--o-line-height-h7);
+        padding: var(--o-spacing-h4) var(--o-spacing-h4) 0px var(--o-spacing-h4);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        margin-bottom: var(--o-spacing-h5);
+        @media (max-width: 780px) {
+          height: 65px;
+          padding: var(--o-spacing-h6) var(--o-spacing-h6) 0px
+            var(--o-spacing-h6);
+          margin-bottom: var(--o-spacing-h6);
+        }
+      }
       &-info {
         display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         width: 100%;
-        margin-top: var(--o-spacing-h5);
-        @media (max-width: 768px) {
-          margin-top: var(--o-spacing-h8);
-          flex-flow: row;
-          justify-content: flex-start;
-        }
-
-        &-mobile {
-          display: none;
-          width: 100%;
-          margin-top: var(--o-spacing-h8);
-          @media (max-width: 768px) {
-            display: flex;
-          }
-        }
-
-        &-group {
-          margin-top: var(--o-spacing-h7);
-          display: flex;
-          flex-flow: row;
-          justify-content: flex-start;
-          align-items: center;
-          width: 100%;
-          @media (max-width: 768px) {
-            display: none;
-          }
-        }
-      }
-
-      &-mobile {
-        @media (max-width: 768px) {
-          padding: var(--o-spacing-h5) var(--o-spacing-h6);
-          width: 100%;
-        }
-
-        .home {
-          margin-left: 0px;
-          @media (max-width: 768px) {
-            margin-left: var(--o-spacing-h5);
-          }
-        }
-        .address {
-          flex: 1;
-          overflow: hidden;
-          /* 限制一行显示 */
-          white-space: nowrap;
-          /* 显示不下省略号显示 */
-          text-overflow: ellipsis;
-        }
-
+        margin-left: var(--o-spacing-h4);
+        margin-bottom: var(--o-spacing-h4);
         span {
-          color: var(--o-color-text4);
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
-          white-space: nowrap;
-          @media (max-width: 768px) {
-            color: var(--o-color-neutral8);
-          }
+          font-weight: 400;
+          color: var(--e-color-text-secondary);
         }
-
-        @media (min-width: 768px) {
-          width: 100%;
-          display: flex;
-          flex-flow: row;
-          .salon-new-card-left {
-            width: 85%;
-            padding: var(--o-spacing-h2);
-
-            .salon-new-card-left-desc {
-              overflow: hidden;
-              /* 限制一行显示 */
-              white-space: nowrap;
-              /* 显示不下省略号显示 */
-              text-overflow: ellipsis;
-            }
-          }
-          .salon-new-card-info {
-            width: 13%;
-          }
+        @media (max-width: 780px) {
+          margin-left: var(--o-spacing-h6);
+          margin-bottom: var(--o-spacing-h5);
         }
       }
-
-      &-bottom {
-        @media (min-width: 768px) {
-          height: 584px;
-        }
-        padding: var(--o-spacing-h2);
-        width: 33%;
-        @media (max-width: 768px) {
-          padding: var(--o-spacing-h5) var(--o-spacing-h6);
-          width: 100%;
-        }
-
-        .home {
-          margin-left: 0px;
-          @media (max-width: 768px) {
-            margin-left: var(--o-spacing-h5);
-          }
-        }
-        .address {
-          flex: 1;
-          overflow: hidden;
-          /* 限制一行显示 */
-          white-space: nowrap;
-          /* 显示不下省略号显示 */
-          text-overflow: ellipsis;
-        }
-
-        span {
-          color: var(--o-color-text4);
-          font-size: var(--o-font-size-tip);
-          line-height: var(--o-line-height-tip);
-          white-space: nowrap;
-          @media (max-width: 768px) {
-            color: var(--o-color-neutral8);
-          }
+      &-icon {
+        height: 24px;
+        width: 24px;
+        color: var(--e-color-text4);
+        margin-right: var(--o-spacing-h9);
+        @media (max-width: 780px) {
+          height: 16px;
+          width: 16px;
+          color: var(--e-color-neutral8);
+          margin-right: var(--o-spacing-h10);
         }
       }
     }
   }
-
   &-review {
     display: grid;
     width: 100%;
@@ -772,7 +536,7 @@ onMounted(async () => {
         &-title {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--o-color-text1);
+          color: var(--e-color-text1);
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
@@ -783,7 +547,7 @@ onMounted(async () => {
         &-desc {
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
-          color: var(--o-color-text4);
+          color: var(--e-color-text4);
           margin-top: var(--o-spacing-h9);
           overflow: hidden;
           text-overflow: ellipsis;
@@ -797,12 +561,12 @@ onMounted(async () => {
       &-icon {
         height: 24px;
         width: 24px;
-        color: var(--o-color-text4);
+        color: var(--e-color-text4);
         margin-right: var(--o-spacing-h9);
         @media (max-width: 768px) {
           height: 16px;
           width: 16px;
-          color: var(--o-color-neutral8);
+          color: var(--e-color-neutral8);
           margin-right: var(--o-spacing-h10);
         }
       }
@@ -810,7 +574,7 @@ onMounted(async () => {
       &-title {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-h8);
-        color: var(--o-color-text1);
+        color: var(--e-color-text1);
         overflow: hidden;
         text-overflow: ellipsis;
         height: 52px;
@@ -828,7 +592,7 @@ onMounted(async () => {
         height: 172px;
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-        color: var(--o-color-text1);
+        color: var(--e-color-text1);
         overflow: hidden;
         margin-top: var(--o-spacing-h4);
         text-overflow: ellipsis;
@@ -907,12 +671,12 @@ onMounted(async () => {
         }
 
         span {
-          color: var(--o-color-text4);
+          color: var(--e-color-text4);
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
           white-space: nowrap;
           @media (max-width: 768px) {
-            color: var(--o-color-neutral8);
+            color: var(--e-color-neutral8);
           }
         }
       }
@@ -929,7 +693,7 @@ onMounted(async () => {
   &-title {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--o-color-text1);
+    color: var(--e-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -940,7 +704,7 @@ onMounted(async () => {
     }
   }
   &-tabs {
-    background-color: var(--o-color-bg2);
+    background-color: var(--e-color-bg2);
     display: flex;
     align-items: flex-end;
     justify-content: center;

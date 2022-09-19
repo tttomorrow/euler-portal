@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAttrs, nextTick, onMounted, onUnmounted, computed } from 'vue';
-import { debounce } from 'lodash-es';
+import { debounce } from 'lodash';
 
 const attrs = useAttrs();
 const props = defineProps({

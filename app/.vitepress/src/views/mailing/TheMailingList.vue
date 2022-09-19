@@ -13,13 +13,13 @@ import { getAllMailing } from '@/api/api-mailing';
 
 import banner from '@/assets/banner/banner-community.png';
 import illustration from '@/assets/illustrations/mailing.png';
-import sig1 from '@/assets/category/sig/guidance/sig1.png';
-import sig2 from '@/assets/category/sig/guidance/sig5.png';
-import sig4 from '@/assets/category/sig/guidance/sig2.png';
-import sig5 from '@/assets/category/sig/guidance/sig3.png';
+import p1 from '@/assets/category/mailing/p1.png';
+import p2 from '@/assets/category/mailing/p2.png';
+import p3 from '@/assets/category/mailing/p3.png';
+import p4 from '@/assets/category/mailing/p4.png';
 
-const LEFT_IMG = [sig1, sig2];
-const RIGHT_IMG = [sig4, sig5];
+const LEFT_IMG = [p1, p2];
+const RIGHT_IMG = [p3, p4];
 
 const i18n = useI18n();
 const router = useRouter();
@@ -54,7 +54,7 @@ onMounted(async () => {
 const goUnsubscribeBlog = () => {
   const path1 = router.route.path.substring(0, 3);
   const path2 = i18n.value.mailing.MAILING_LIST.GUIDE_CONTENT[1].RIGHT.LINK;
-  router.go(`${path1}/${path2}`);
+  window.open(`${path1}/${path2}`);
 };
 
 const userSubscribe = (userID: string) => {
@@ -455,6 +455,7 @@ const isMobile = computed(() => {
           line-height: var(--o-line-height-h8);
           bottom: var(--o-spacing-h4);
           @media (max-width: 780px) {
+            font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-text);
           }
         }
