@@ -295,7 +295,6 @@ onMounted(async () => {
     display: none;
     padding: var(--o-spacing-h2);
     background-color: var(--o-color-bg2);
-    box-shadow: var(--o-shadow-l1);
     .type-title {
       font-size: var(--o-font-size-h7);
       line-height: var(--o-font-size-h7);
