@@ -6,6 +6,8 @@ RUN mkdir -p /home/openeuler/web
 WORKDIR /home/openeuler/web
 COPY . /home/openeuler/web
 
+RUN rm -rf ./app/ru
+
 RUN pnpm install
 RUN pnpm build
 
