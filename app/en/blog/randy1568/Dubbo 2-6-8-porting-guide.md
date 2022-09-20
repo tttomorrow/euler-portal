@@ -10,9 +10,6 @@ archives: 2021-12
 author: randy1568
 summary: Just about everything you need to port Dubbo 2.6.8
 ---
-
-#  Dubbo 2.6.8 Porting Guide (openEuler 20.03 LTS SP1)
-
 ## Introduction
 
 ### Overview

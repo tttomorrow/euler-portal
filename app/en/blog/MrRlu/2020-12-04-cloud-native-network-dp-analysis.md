@@ -11,8 +11,6 @@ author: luzhihao
 summary: This article analyzes the data plane performance bottlenecks in each phase and possible optimization methods based on the cloud native network.
 ---
 
-# Analysis of the Cloud Native Network Data Plane Acceleration Solution
-
 ## Background
 
 The data plane performance of the cloud native network directly determines key performance metrics such as the throughput and service response time of the entire system. Data plane acceleration is an important means of system acceleration.

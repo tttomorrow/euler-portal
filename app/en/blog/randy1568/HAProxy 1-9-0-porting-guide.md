@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you need to port HAProxy 1.9.0  
 ---
 
-# HAProxy 1.9.0 Porting Guide (openEuler 20.03 LTS SP1)
-
 ## Introduction
 
 #### Overview

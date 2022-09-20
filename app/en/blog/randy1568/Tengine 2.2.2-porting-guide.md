@@ -10,9 +10,6 @@ archives: 2021-12
 author: randy1568
 summary: Just about everything you need to port Tengine 2.2.2.
 ---
-
-# Tengine 2.2.2 Porting Guide
-
 # Introduction
 
 #### Overview

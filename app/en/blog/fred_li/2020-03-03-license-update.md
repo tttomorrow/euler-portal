@@ -10,8 +10,6 @@ author: Fred Li
 summary: Mulan Permissive Software License v2 has got accepted by OSI, thus openEuler community is planning to upgrade the license from Mulan PSL v1 to v2.
 ---
 
-## Notice to upgrade openEuler software license from Mulan PSL v1 to v2
-
 Now openEuler community uses [Mulan PSL v1](https://license.coscl.org.cn/MulanPSL/index.html). 
 
 _At the Board meeting of February 14, 2020, the Board of the Open Source Initiative approved the Mulan PSL License v2._ You can find the email <http://lists.opensource.org/pipermail/license-review_lists.opensource.org/2020-February/004695.html>

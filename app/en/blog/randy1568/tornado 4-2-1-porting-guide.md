@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you need to port Tornado 4.2.1
 ---
 
-# Tornado 4.2.1 Porting Guide (openEuler 20.03 LTS SP1)
-
 # Introduction
 
 ## Tornado Overview

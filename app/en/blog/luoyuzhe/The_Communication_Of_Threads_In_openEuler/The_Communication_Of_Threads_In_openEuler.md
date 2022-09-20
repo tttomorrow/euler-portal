@@ -10,8 +10,6 @@ author: luoyuzhe
 summary: This article introduces queued readers-writer locks on openEuler, involving spin locks and atomic operations.
 ---
 
-# Queued Readers-Writer Locks on openEuler
-
 Threads in a same thread group share data structures **mm_struct** and **vm_area_struct**, thereby implementing memory sharing. However, when two threads access a same shared memory block at the same time, contention occurs. In other words, the sequence for the two threads to access the memory may be uncertain. Consequently, the output of a program is uncertain. To ensure an expected sequence in which threads access shared variables, an inter-thread communication mechanism is required. Common inter-thread communication mechanisms include locks and semaphores. The two mechanisms may be used to ensure that only one thread enters the program segment where a shared resource is accessed at a time. Such a program segment is referred to as a critical section. Locks on openEuler include spin locks and mutex locks. In this article, spin locks are introduced, including queued spin locks and queued readers-writer locks.
 
 Spin locks are used to protect short critical sections where sleep is not allowed. The spin lock definition code can be found in **include/linux/spinlock_types.h**.  

@@ -10,8 +10,6 @@ author: luoyuzhe
 summary: This article describes the basic principle, usage, data structures, quiescent state monitoring and reporting mechanism, and callback function processing mechanism of the RCU mechanism on openEuler.
 ---
 
-#  Read-Copy Update Mechanism on openEuler
-
 As the increase in the speed of instruction execution of CPU cores is faster than latency reduction in the multi-core architecture, the overhead of global synchronization increases. In this case, the read-copy update (RCU) mechanism, a more efficient lock mechanism, is developed. The RCU mechanism is an asymmetric read-write synchronization mechanism for the data structure whose read access frequency is much higher than the write access frequency. The basic principle is to reduce the read access overhead at the cost of increasing the write access overhead, thereby reducing the overall overhead of frequent reads and few writes on data structures. In the RCU mechanism, no synchronization operation or lock is applied to a read operation, so that an update to a data structure does not block the read operation. This means that an old value may be read, which is allowed in the RCU mechanism.
 
 To better understand the RCU mechanism, check the following basic concepts:

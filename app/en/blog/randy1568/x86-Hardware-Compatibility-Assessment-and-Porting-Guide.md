@@ -11,10 +11,6 @@ archives: 2022-01
 author: randy1568
 summary: Just about everything you need to evaluate the compatibility of x86 hardware (Hi1822 NIC & 3108 RAID controller card)
 ---
-
-# x86 Hardware Compatibility Assessment and Porting Guide (openEuler 20.03 LTS SP1)
-
-
 # Environment
 
 ## Hardware

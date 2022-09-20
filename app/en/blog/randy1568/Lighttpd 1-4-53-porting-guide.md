@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you need to port lighttpd 1.4.53
 ---
 
-# lighttpd 1.4.53 Porting Guide (openEuler 20.03 LTS SP1)
-
 # Introduction  
 
 ## Overview

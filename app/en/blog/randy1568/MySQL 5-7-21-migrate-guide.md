@@ -11,9 +11,6 @@ author: xielihao
 summary: Just everything about the MySQL 5.7.21 porting cases
 ---
 
-# MySQL 5.7.21 Porting Guide (openEuler 20.03 LTS SP1)
-
-
 ## 1. Introduction
 
 This document describes how to deploy the MySQL database on openEuler 20.03 SP1.

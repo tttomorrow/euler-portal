@@ -11,10 +11,6 @@ author: randy1568
 summary: Just about everything of the Flask 1.1.2 Porting Case
 ---
 
-# Flask 1.1.2 Porting Guide (OpenEuler 20.03 LTS SP1)
-
-
-
 ## Introduction
 
 ### Overview
