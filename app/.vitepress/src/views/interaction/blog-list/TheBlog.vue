@@ -540,6 +540,7 @@ const moblieCurrentChange = (val: string) => {
         <OCard
           v-for="item in blogCardData"
           :key="item"
+          shadow="hover"
           class="blog-list-item"
           @click="toBlogContent(item.path)"
         >
@@ -740,9 +741,6 @@ const moblieCurrentChange = (val: string) => {
           margin-bottom: var(--o-spacing-h10);
         }
       }
-    }
-    &-item:hover {
-      box-shadow: var(--o-shadow-l2_hover);
     }
   }
 }

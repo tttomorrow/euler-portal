@@ -249,7 +249,7 @@ onMounted(async () => {
   align-items: center;
   flex-direction: column;
   font-size: var(--o-font-size-h6);
-  color: var(--e-color-text1);
+  color: var(--o-color-text1);
   padding-top: var(--o-spacing-h1);
   height: 100%;
   .empty-img {
@@ -343,7 +343,7 @@ onMounted(async () => {
       // }
       &-synopsis {
         height: 75px;
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         font-weight: 400;
         font-size: var(--o-font-size-h7);
         line-height: var(--o-line-height-h7);
@@ -371,7 +371,7 @@ onMounted(async () => {
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
           font-weight: 400;
-          color: var(--e-color-text-secondary);
+          color: var(--o-color-text-secondary);
         }
         @media (max-width: 780px) {
           margin-left: var(--o-spacing-h6);
@@ -381,12 +381,12 @@ onMounted(async () => {
       &-icon {
         height: 24px;
         width: 24px;
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
         margin-right: var(--o-spacing-h9);
         @media (max-width: 780px) {
           height: 16px;
           width: 16px;
-          color: var(--e-color-neutral8);
+          color: var(--o-color-neutral8);
           margin-right: var(--o-spacing-h10);
         }
       }
@@ -435,7 +435,7 @@ onMounted(async () => {
         &-title {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
-          color: var(--e-color-text1);
+          color: var(--o-color-text1);
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
@@ -446,7 +446,7 @@ onMounted(async () => {
         &-desc {
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
           margin-top: var(--o-spacing-h9);
           overflow: hidden;
           text-overflow: ellipsis;
@@ -460,12 +460,12 @@ onMounted(async () => {
       &-icon {
         height: 24px;
         width: 24px;
-        color: var(--e-color-text4);
+        color: var(--o-color-text4);
         margin-right: var(--o-spacing-h9);
         @media (max-width: 768px) {
           height: 16px;
           width: 16px;
-          color: var(--e-color-neutral8);
+          color: var(--o-color-neutral8);
           margin-right: var(--o-spacing-h10);
         }
       }
@@ -473,7 +473,7 @@ onMounted(async () => {
       &-title {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-h8);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         overflow: hidden;
         text-overflow: ellipsis;
         height: 52px;
@@ -491,7 +491,7 @@ onMounted(async () => {
         height: 172px;
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-        color: var(--e-color-text1);
+        color: var(--o-color-text1);
         overflow: hidden;
         margin-top: var(--o-spacing-h4);
         text-overflow: ellipsis;
@@ -570,12 +570,12 @@ onMounted(async () => {
         }
 
         span {
-          color: var(--e-color-text4);
+          color: var(--o-color-text4);
           font-size: var(--o-font-size-tip);
           line-height: var(--o-line-height-tip);
           white-space: nowrap;
           @media (max-width: 768px) {
-            color: var(--e-color-neutral8);
+            color: var(--o-color-neutral8);
           }
         }
       }
@@ -592,7 +592,7 @@ onMounted(async () => {
   &-title {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
-    color: var(--e-color-text1);
+    color: var(--o-color-text1);
     line-height: var(--o-line-height-h3);
     width: 100%;
     text-align: center;
@@ -603,7 +603,7 @@ onMounted(async () => {
     }
   }
   &-tabs {
-    background-color: var(--e-color-bg2);
+    background-color: var(--o-color-bg2);
     display: flex;
     align-items: flex-end;
     justify-content: center;
