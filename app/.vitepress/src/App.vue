@@ -10,7 +10,7 @@ import LayoutNews from '@/layouts/LayoutNews.vue';
 import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
 
-import categories from '@/data/category';
+import categories from '@/data/common/category';
 
 const { frontmatter } = useData();
 

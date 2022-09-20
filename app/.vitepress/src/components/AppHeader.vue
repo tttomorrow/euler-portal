@@ -7,7 +7,7 @@ import { getPop } from '@/api/api-search';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
-import NavLangFilter from '@/i18n/common/navLangFilter';
+import navFilterConfig from '@/data/common/nav-filter';
 
 import logo_light from '@/assets/logo.svg';
 import logo_dark from '@/assets/logo_dark.svg';
@@ -105,7 +105,7 @@ watch(
   (val: string) => {
     roterPath.value = val;
     // 语言过滤
-    NavLangFilter.forEach((item) => {
+    navFilterConfig.forEach((item) => {
       if (val.includes(item.name)) {
         langShow.value = item.lang;
       }
