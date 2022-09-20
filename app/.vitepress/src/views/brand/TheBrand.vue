@@ -105,7 +105,9 @@ list.value = initList();
             target="_blank"
             download
           >
-            <OButton size="mini" class="button-item">{{ item2.STYLE }} </OButton>
+            <OButton size="mini" class="button-item"
+              >{{ item2.STYLE }}
+            </OButton>
           </a>
         </div>
       </OCard>
@@ -138,7 +140,9 @@ list.value = initList();
             target="_blank"
             download
           >
-            <OButton size="mini" class="button-item">{{ item2.STYLE }} </OButton>
+            <OButton size="mini" class="button-item"
+              >{{ item2.STYLE }}
+            </OButton>
           </a>
         </div>
       </OCard>
