@@ -326,11 +326,11 @@ onUnmounted(() => {
               href="https://gitee.com/openlookeng-competition/opensource-internship/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
               target="_blank"
             >
-              <OButton type="primary" class="task-bth"
+              <OButton type="primary" class="task-btn"
                 >实习任务
                 <OIcon><IconArrowRight /></OIcon>
               </OButton>
-              <!-- <OButton class="task-bth"> 实习任务 </OButton> -->
+              <!-- <OButton class="task-btn"> 实习任务 </OButton> -->
             </a>
             <a href="https://openlookeng.io/" target="_blank">
               <OButton class="detail-btn">
@@ -352,11 +352,11 @@ onUnmounted(() => {
               href="https://gitee.com/opengauss/opensource-intership/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=openlookeng-competition%2Fopensource-internship&project_type=&scope=&single_label_id=&single_label_text=&sort=newest&state=open&target_project&skip_mobile=true"
               target="_blank"
             >
-              <OButton type="primary" class="task-bth"
+              <OButton type="primary" class="task-btn"
                 >实习任务
                 <OIcon><IconArrowRight /></OIcon>
               </OButton>
-              <!-- <OButton class="task-bth"> 实习任务 </OButton> -->
+              <!-- <OButton class="task-btn"> 实习任务 </OButton> -->
             </a>
             <a href="https://opengauss.org" target="_blank">
               <OButton class="detail-btn">
@@ -387,11 +387,11 @@ onUnmounted(() => {
               href="https://gitee.com/mindspore/community/issues/I55QGD?from=project-issue&skip_mobile=true"
               target="_blank"
             >
-              <OButton class="task-bth">
+              <OButton class="task-btn">
                 <span>实习任务</span>
                 <OIcon><IconArrowRight /></OIcon>
               </OButton>
-              <!-- <OButton class="task-bth"> 实习任务 </OButton> -->
+              <!-- <OButton class="task-btn"> 实习任务 </OButton> -->
             </a>
             <a href="https://www.mindspore.cn/" target="_blank">
               <OButton class="detail-btn">
@@ -677,7 +677,7 @@ onUnmounted(() => {
       }
     }
     .btn {
-      .task-bth {
+      .task-btn {
         margin-right: 24px;
         border: 1px solid var(--o-color-brand1);
         color: #fff;
@@ -744,7 +744,7 @@ onUnmounted(() => {
     .btn {
       text-align: center;
       margin-top: 5px;
-      .task-bth {
+      .task-btn {
         margin-right: 24px;
         border: 1px solid var(--o-color-brand1);
         color: #fff;

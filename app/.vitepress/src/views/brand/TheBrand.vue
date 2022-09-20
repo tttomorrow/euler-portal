@@ -97,7 +97,7 @@ list.value = initList();
         <div class="brand-item-img">
           <img :src="item.mobile" />
         </div>
-        <div class="button">
+        <div class="button-group">
           <a
             v-for="item2 in item.image"
             :key="item2.STYLE"
@@ -105,7 +105,7 @@ list.value = initList();
             target="_blank"
             download
           >
-            <OButton class="button-item">{{ item2.STYLE }} </OButton>
+            <OButton size="mini" class="button-item">{{ item2.STYLE }} </OButton>
           </a>
         </div>
       </OCard>
@@ -130,7 +130,7 @@ list.value = initList();
             }"
           />
         </div>
-        <div class="button">
+        <div class="button-group">
           <a
             v-for="item2 in item.DOWNLOAD_LINK"
             :key="item2.STYLE"
@@ -138,7 +138,7 @@ list.value = initList();
             target="_blank"
             download
           >
-            <OButton class="button-item">{{ item2.STYLE }} </OButton>
+            <OButton size="mini" class="button-item">{{ item2.STYLE }} </OButton>
           </a>
         </div>
       </OCard>
@@ -174,7 +174,7 @@ list.value = initList();
 </template>
 
 <style lang="scss" scoped>
-.button {
+.button-group {
   display: grid;
   width: 100%;
   margin-top: var(--o-spacing-h5);
@@ -190,22 +190,22 @@ list.value = initList();
     align-items: center;
   }
 
-  &-item {
-    padding: var(--o-spacing-h10) 0;
+  .button-item {
+    // padding: var(--o-spacing-h10) 0;
     max-width: 70px;
-    width: 100%;
-    font-size: var(--o-font-size-text);
-    font-weight: 400;
-    line-height: var(--o-line-height-text);
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
+    // width: 100%;
+    // font-size: var(--o-font-size-text);
+    // font-weight: 400;
+    // line-height: var(--o-line-height-text);
+    // display: flex;
+    // flex-flow: row;
+    // justify-content: center;
+    // align-items: center;
     @media (max-width: 768px) {
       max-width: 80px;
     }
   }
-  &-item:hover {
+  .button-item:hover {
     background-color: var(--o-color-brand1);
     color: var(--o-color-text2);
   }
