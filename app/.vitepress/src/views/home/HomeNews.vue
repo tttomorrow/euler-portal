@@ -135,7 +135,7 @@ onMounted(async () => {
                       v-for="(authorName, index2) in item.author"
                       :key="authorName"
                       >{{ authorName }}
-                      <span v-show="item.author.length !== index2 + 1">、</span>
+                      <span v-show="item.author.length !== index2 + 1">, </span>
                     </span>
                   </p>
                 </div>

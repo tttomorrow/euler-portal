@@ -1,5 +1,3 @@
-// import liveImg_pc from '@/assets/category/home/banner/liveBanner_pc.png';
-// import liveImg_mo from '@/assets/category/home/banner/liveBanner_mo.png';
 import ossImg_pc from '@/assets/category/home/banner/banner-oss_pc.jpg';
 import ossImg_mo from '@/assets/category/home/banner/banner-oss_mo.jpg';
 import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png';
@@ -34,15 +32,6 @@ export default {
       },
     ],
     en: [
-      // {
-      //   pcBanner: liveImg_pc,
-      //   moBanner: liveImg_mo,
-      //   link: '',
-      //   targetTap: 0,
-      //   title: '',
-      //   desc: '',
-      //   btn: '',
-      // },
       {
         pcBanner: ossImg_pc,
         moBanner: ossImg_mo,
@@ -60,15 +49,6 @@ export default {
       },
     ],
     ru: [
-      // {
-      //   pcBanner: liveImg_pc,
-      //   moBanner: liveImg_mo,
-      //   link: '',
-      //   targetTap: 0,
-      //   title: '',
-      //   desc: '',
-      //   btn: '',
-      // },
       {
         pcBanner: ossImg_pc,
         moBanner: ossImg_mo,
