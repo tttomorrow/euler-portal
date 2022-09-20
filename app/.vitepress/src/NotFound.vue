@@ -3,7 +3,7 @@ import { useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 
 import notFoundImg_light from '@/assets/illustrations/404.png';
-import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
+import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
 import { computed } from 'vue';
 const { lang } = useData();
 const commonStore = useCommon();

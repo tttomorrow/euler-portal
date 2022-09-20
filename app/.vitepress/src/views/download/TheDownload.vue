@@ -16,7 +16,7 @@ import IconCancel from '~icons/app/icon-cancel.svg';
 
 import banner from '@/assets/banner/banner-download.png';
 import notFoundImg_light from '@/assets/illustrations/404.png';
-import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
+import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
 import illustration from '@/assets/illustrations/iso.png';
 
 const { lang } = useData();
