@@ -246,6 +246,7 @@ onMounted(() => {
       <OCard
         v-for="(item, index) in currentCaseList"
         :key="item.path"
+        shadow="hover"
         class="case-card"
       >
         <div class="card-content-text">
@@ -368,7 +369,7 @@ onMounted(() => {
     }
   }
   .case-number {
-    margin-top: var(--o-spacing-h4);
+    margin-top: var(--o-spacing-h2);
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
     color: var(--o-color-text1);
