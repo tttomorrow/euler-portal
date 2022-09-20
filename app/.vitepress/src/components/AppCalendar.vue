@@ -13,7 +13,7 @@ import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 import IconDown from '~icons/app/icon-chevron-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import notFoundImg_light from '@/assets/illustrations/404.png';
-import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
+import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 

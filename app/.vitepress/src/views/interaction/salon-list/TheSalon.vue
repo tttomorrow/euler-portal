@@ -17,7 +17,7 @@ import banner from '@/assets/banner/banner-interaction.png';
 
 import illustration from '@/assets/illustrations/salon.png';
 import notFoundImg_light from '@/assets/illustrations/404.png';
-import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
+import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
 
 interface LATEST_ACTIVITY {
   IS_MINI: number;
