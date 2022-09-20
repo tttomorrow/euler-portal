@@ -109,7 +109,7 @@ const requestInterceptorId = request.interceptors.request.use(
     });
     // 使用token
     const { token } = getUserAuth();
-    if (token) {
+    if (token && !config.headers!.authorization) {
       const to = {
         token,
       };
