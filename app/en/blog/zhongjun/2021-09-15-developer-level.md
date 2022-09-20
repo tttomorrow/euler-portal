@@ -10,10 +10,6 @@ archives: 2021-09
 author: openEuler Infrastructure
 summary: Open source community operation metric design exploration.
 ---
-
-### Open source community operation metric design exploration
-
-
 #### Preface
 
 The developer operation process of the open source community is a process of expanding the community user and developer of open source projects. 
