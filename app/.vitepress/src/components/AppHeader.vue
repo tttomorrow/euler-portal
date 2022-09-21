@@ -4,16 +4,11 @@ import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
 import { getPop } from '@/api/api-search';
-import {
-  showGuard,
-  logout,
-  useStoreData,
-  getUserAuth,
-} from '../shared/login';
+import { showGuard, logout, useStoreData, getUserAuth } from '../shared/login';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
-import NavLangFilter from '@/i18n/common/navLangFilter';
+import navFilterConfig from '@/data/common/nav-filter';
 
 import logo_light from '@/assets/logo.svg';
 import logo_dark from '@/assets/logo_dark.svg';
@@ -115,7 +110,7 @@ watch(
   (val: string) => {
     roterPath.value = val;
     // 语言过滤
-    NavLangFilter.forEach((item) => {
+    navFilterConfig.forEach((item) => {
       if (val.includes(item.name)) {
         langShow.value = item.lang;
       }
@@ -223,7 +218,9 @@ const jumpToUserZone = () => {
         <OIcon v-if="!mobileMenuIcon" class="icon" @click="mobileMenuPanel">
           <IconMenu />
         </OIcon>
-        <OIcon v-else class="icon" @click="mobileMenuPanel"><IconCancel /></OIcon>
+        <OIcon v-else class="icon" @click="mobileMenuPanel"
+          ><IconCancel
+        /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <clientOnly>
@@ -333,12 +330,12 @@ const jumpToUserZone = () => {
           </div>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item @click="jumpToUserZone()"
-                >{{ i18n.common.USER_CENTER }}</el-dropdown-item
-              >
-              <el-dropdown-item @click="logout()"
-                >{{ i18n.common.LOGOUT }}</el-dropdown-item
-              >
+              <el-dropdown-item @click="jumpToUserZone()">{{
+                i18n.common.USER_CENTER
+              }}</el-dropdown-item>
+              <el-dropdown-item @click="logout()">{{
+                i18n.common.LOGOUT
+              }}</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -692,27 +689,27 @@ const jumpToUserZone = () => {
   left: -100%;
 }
 .opt-user {
-  margin-left:24px;
+  margin-left: 24px;
   .opt-info {
     display: flex;
     align-items: center;
     .img {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        cursor: pointer;
-        vertical-align: middle;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      vertical-align: middle;
     }
     .opt-name {
-        margin-left: 8px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width: 72px;
-        line-height: var(--o-line-height-h8);
-        @media (max-width: 1100px) {
-          display: none;
-        }
+      margin-left: 8px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 72px;
+      line-height: var(--o-line-height-h8);
+      @media (max-width: 1100px) {
+        display: none;
+      }
     }
   }
 }

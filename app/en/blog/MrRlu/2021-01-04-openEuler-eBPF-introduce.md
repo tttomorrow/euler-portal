@@ -9,8 +9,6 @@ author: luzhihao
 summary: Introduction to the BPF technology, its application scenarios, and the implementation of the eBPF technology on openEuler.
 ---
 
-# eBPF Introduction
-
 ## Development History
 
 - In 1992, Berkeley Packet Filter (BPF) was born to provide a custom packet filtering method (class assembly) in the kernel to improve packet capture efficiency by using tcpdump.

@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you need to port iok 2.1.3 
 ---
 
-# iok 2.1.3 Porting Guide (openEuler 20.03 LTS SP1)
-
 ## Introduction
 
 iok is a keyboard mapping application that displays Indian languages.

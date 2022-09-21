@@ -81,7 +81,7 @@ onMounted(async () => {
         <OCard
           class="community-card"
           :style="{ padding: '0px' }"
-          shadow="hover"
+          shadow="never"
         >
           <div class="community-title">
             {{ i18n.home.COMMUNITY_ACTIVITY.CARD.TITLE }}

@@ -6,6 +6,10 @@ RUN mkdir -p /home/openeuler/web
 WORKDIR /home/openeuler/web
 COPY . /home/openeuler/web
 
+RUN rm -rf ./app/zh
+RUN rm -rf ./app/en
+RUN cp ./app/.vitepress/config.ru.ts ./app/.vitepress/config.ts
+
 RUN pnpm install
 RUN pnpm build
 

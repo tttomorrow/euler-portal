@@ -12,7 +12,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
-import banner from '@/assets/banner-secondary.png';
+import banner from '@/assets/banner/banner-security.png';
 import osv from '@/assets/illustrations/support/osv.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';

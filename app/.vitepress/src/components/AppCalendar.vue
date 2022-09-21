@@ -13,7 +13,7 @@ import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 import IconDown from '~icons/app/icon-chevron-down.svg';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import notFoundImg_light from '@/assets/illustrations/404.png';
-import notFoundImg_dark from '@/assets/illustrations_dark/404_dark.png';
+import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -95,7 +95,7 @@ const titleList = ['全部', '会议', '活动', '峰会'];
 const tabType = ref(titleList[0]);
 const calendar = ref();
 const calendarHeight = ref<number | string>(335);
-
+const isLimit = ref(false);
 const windowWidth = ref(useWindowResize());
 
 // 活动会议筛选
@@ -189,8 +189,10 @@ function getMeetTimes(day: string): number {
 
 function selectDate(val: string, date: string) {
   if (date === '2021 年 1 月' && val === 'prev-month') {
+    isLimit.value = true;
     return;
   }
+  isLimit.value = false;
   calendar.value.selectDate(val);
 }
 
@@ -256,7 +258,7 @@ const watchData = watch(
           <template #header="{ date }">
             <div class="left-title">
               <OIcon @click="selectDate('prev-month', date)">
-                <icon-left></icon-left>
+                <icon-left :class="{ disable: isLimit }"></icon-left>
               </OIcon>
               <span class="month-date">{{ date }}</span>
               <OIcon @click="selectDate('next-month', date)">
@@ -314,7 +316,7 @@ const watchData = watch(
                   <template #header="{ date }">
                     <div class="left-title">
                       <OIcon @click="selectDate('prev-month', date)">
-                        <icon-left></icon-left>
+                        <icon-left :class="{ disable: isLimit }"></icon-left>
                       </OIcon>
                       <span class="month-date">{{ date }}</span>
                       <OIcon @click="selectDate('next-month', date)">
@@ -505,6 +507,13 @@ const watchData = watch(
   align-items: center;
   height: 40px;
   font-size: var(--o-font-size-h8);
+  .disable {
+    cursor: not-allowed;
+    color: var(--o-color-text5);
+    &:hover {
+      color: var(--o-color-text5);
+    }
+  }
   .o-icon {
     font-size: var(--o-font-size-h5);
     color: var(--o-color-text1);

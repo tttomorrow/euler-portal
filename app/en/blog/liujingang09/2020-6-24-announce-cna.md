@@ -13,8 +13,6 @@ author:
 summary: openEuler Becomes a Member of the CNA Program
 ---
 
-### openEuler Becomes a Member of the CNA Program
-
 The openEuler community attaches great importance to the community version security. To quickly respond to and handle security issues related to the openEuler, the community has developed a complete vulnerability management policy. On June 24, 2020, openEuler joins the CVE Numbering Authority (CNA) Program. Currently, openEuler is entitled to assign and manage CVEs related to the openEuler community. By joining the CNA Program, openEuler applies mature vulnerability management standards in the industry to promote the community cyber security.
 
 The security committee of openEuler community is responsible for building community security engineering and improving vulnerability response capabilities. We hope that security experts and enthusiasts who are interested in openEuler can join our hands to enhance the openEuler community security.

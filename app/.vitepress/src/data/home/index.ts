@@ -1,13 +1,20 @@
-// import liveImg_pc from '../../assets/category/home/banner/liveBanner_pc.png';
-// import liveImg_mo from '../../assets/category/home/banner/liveBanner_mo.png';
-import liveImg_pc from '../../assets/category/home/banner/banner-contribution_pc.png';
-import liveImg_mo from '../../assets/category/home/banner/banner-contribution_mo.png';
-import migrationImg_pc from '../../assets/category/home/banner/migration_pc.png';
-import migrationImg_mo from '../../assets/category/home/banner/migration_mo.png';
+import ossImg_pc from '@/assets/category/home/banner/banner-oss_pc.jpg';
+import ossImg_mo from '@/assets/category/home/banner/banner-oss_mo.jpg';
+import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png';
+import liveImg_mo from '@/assets/category/home/banner/banner-contribution_mo.png';
+import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
+import migrationImg_mo from '@/assets/category/home/banner/migration_mo.png';
+
 export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
+      {
+        pcBanner: ossImg_pc,
+        moBanner: ossImg_mo,
+        link: 'https://mp.weixin.qq.com/s/CGgvaj9lL3kW6nsU-kY9Ww',
+        targetTap: 1,
+      },
       {
         pcBanner: liveImg_pc,
         moBanner: liveImg_mo,
@@ -25,15 +32,12 @@ export default {
       },
     ],
     en: [
-      // {
-      //   pcBanner: liveImg_pc,
-      //   moBanner: liveImg_mo,
-      //   link: '',
-      //   targetTap: 0,
-      //   title: '',
-      //   desc: '',
-      //   btn: '',
-      // },
+      {
+        pcBanner: ossImg_pc,
+        moBanner: ossImg_mo,
+        link: 'https://mp.weixin.qq.com/s/CGgvaj9lL3kW6nsU-kY9Ww',
+        targetTap: 1,
+      },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
@@ -45,15 +49,12 @@ export default {
       },
     ],
     ru: [
-      // {
-      //   pcBanner: liveImg_pc,
-      //   moBanner: liveImg_mo,
-      //   link: '',
-      //   targetTap: 0,
-      //   title: '',
-      //   desc: '',
-      //   btn: '',
-      // },
+      {
+        pcBanner: ossImg_pc,
+        moBanner: ossImg_mo,
+        link: 'https://mp.weixin.qq.com/s/CGgvaj9lL3kW6nsU-kY9Ww',
+        targetTap: 1,
+      },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,

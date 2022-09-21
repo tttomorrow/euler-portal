@@ -12,8 +12,6 @@ summary: Guidebook for openEuler community software upload
 ---
 
 
-# Guide for Uploading a Software Package to the openEuler Community
-
 This guide describes how to upload a software package to the openEuler community for contributors, so as to improve efficiency and ensure the package to be uploaded to meet certain requirements.
 
 ## 1. Checklist

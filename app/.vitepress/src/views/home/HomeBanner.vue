@@ -6,7 +6,7 @@ import 'swiper/swiper.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 import 'swiper/components/pagination/pagination.min.css';
 import { useData } from 'vitepress';
-import HomeConfig from './config';
+import HOME_CONFIG from '@/data/home';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -32,11 +32,11 @@ const windowWidth = ref(useWindowResize());
 // 判断语言 banner
 const homeBanner = computed(() => {
   if (lang.value === 'en') {
-    return HomeConfig.HOMEBANNER.en;
+    return HOME_CONFIG.HOMEBANNER.en;
   } else if (lang.value === 'ru') {
-    return HomeConfig.HOMEBANNER.ru;
+    return HOME_CONFIG.HOMEBANNER.ru;
   } else {
-    return HomeConfig.HOMEBANNER.zh;
+    return HOME_CONFIG.HOMEBANNER.zh;
   }
 });
 

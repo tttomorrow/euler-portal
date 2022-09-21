@@ -53,13 +53,19 @@ export default defineComponent({
     };
     // 初始化时间线列表赋值
     const initDate = () => {
-      const date = !isNaN(new Date(modelValue.value).getTime())
+      const modelDate = !isNaN(new Date(modelValue.value).getTime())
         ? new Date(modelValue.value)
         : new Date();
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
+      const modelYear = modelDate.getFullYear();
+      const modelMonth =
+        modelYear === 2021 && modelDate.getMonth() + 1 < 6
+          ? 6
+          : modelDate.getMonth() + 1;
+      const year = new Date().getFullYear();
+      const month = new Date().getMonth() + 1;
       rightThreshold.value = year + '-' + (month >= 10 ? month : '0' + month);
-      timeList.value = changeDate(year, month);
+      timeList.value = changeDate(modelYear, modelMonth);
+      emit('update:modelValue', timeList.value[activeTab.value]);
     };
     // 点击时间线tab
     const useClickTab = (index: number): void => {
@@ -72,8 +78,6 @@ export default defineComponent({
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
       timeList.value = changeDate(year, month);
-      activeTab.value =
-        activeTab.value < 5 ? activeTab.value + 1 : activeTab.value;
       emit('update:modelValue', timeList.value[activeTab.value]);
     };
     // 点击右侧按钮
@@ -83,8 +87,6 @@ export default defineComponent({
       const month = date.getMonth() + 2;
       timeList.value =
         month <= 12 ? changeDate(year, month) : changeDate(year + 1, 1);
-      activeTab.value =
-        activeTab.value > 0 ? activeTab.value - 1 : activeTab.value;
       emit('update:modelValue', timeList.value[activeTab.value]);
     };
 

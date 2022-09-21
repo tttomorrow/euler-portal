@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you need to port Memcached 1.5.12
 ---
 
-# Memcached 1.5.12 Porting Guide
-
 ## Introduction
 
 #### Overview

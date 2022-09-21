@@ -34,7 +34,11 @@ const handleGo = (path: string) => {
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
     <OContainer data-aos="fade-up" class="carousel-container" :level-index="1">
       <div class="carousel-pc">
-        <OCard class="carousel-pc-card" :style="{ padding: '0px' }">
+        <OCard
+          class="carousel-pc-card"
+          shadow="never"
+          :style="{ padding: '0px' }"
+        >
           <div class="carousel-pc-content">
             <div class="carousel-pc-list">
               <div

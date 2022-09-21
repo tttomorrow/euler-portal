@@ -246,6 +246,7 @@ onMounted(() => {
       <OCard
         v-for="(item, index) in currentCaseList"
         :key="item.path"
+        shadow="hover"
         class="case-card"
       >
         <div class="card-content-text">
@@ -254,7 +255,7 @@ onMounted(() => {
             {{ item.summary }}
           </p>
           <a @click="goDetail(item.path, item, index)">
-            <OButton type="primary" class="button">{{
+            <OButton type="primary" size="mini" class="confirm-btn">{{
               userCaseData.button
             }}</OButton>
           </a>
@@ -368,7 +369,7 @@ onMounted(() => {
     }
   }
   .case-number {
-    margin-top: var(--o-spacing-h4);
+    margin-top: var(--o-spacing-h2);
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
     color: var(--o-color-text1);
@@ -438,18 +439,14 @@ onMounted(() => {
           @media (max-width: 768px) {
             bottom: 14px;
           }
-          :deep(.button) {
+          :deep(.confirm-btn) {
             width: 96px;
-            height: 28px;
             display: flex;
             justify-content: center;
-            padding: 0;
             color: #ffffff;
-            font-size: var(--o-font-size-text);
-            line-height: var(--o-line-height-text);
+
             @media (max-width: 768px) {
               width: 88px;
-              height: 24px;
               font-size: var(--o-font-size-tip);
             }
           }

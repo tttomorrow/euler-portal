@@ -163,7 +163,7 @@ onUnmounted(() => {
         </OCollapseItem>
       </OCollapse>
       <div ref="caseContent" class="case" :class="isShow ? '' : 'pc-height'">
-        <OCard class="case-card">
+        <OCard class="case-card" shadow="never">
           <div class="case-tab">
             <div
               v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"

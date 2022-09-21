@@ -135,7 +135,7 @@ onMounted(async () => {
                       v-for="(authorName, index2) in item.author"
                       :key="authorName"
                       >{{ authorName }}
-                      <span v-show="item.author.length !== index2 + 1">、</span>
+                      <span v-show="item.author.length !== index2 + 1">, </span>
                     </span>
                   </p>
                 </div>
@@ -295,7 +295,6 @@ onMounted(async () => {
     display: none;
     padding: var(--o-spacing-h2);
     background-color: var(--o-color-bg2);
-    box-shadow: var(--o-shadow-l1);
     .type-title {
       font-size: var(--o-font-size-h7);
       line-height: var(--o-font-size-h7);

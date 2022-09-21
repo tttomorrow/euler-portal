@@ -52,8 +52,8 @@ onMounted(() => {
       class="sig-board-item"
     >
       <h2 @click="toSigDetail(item)">{{ item.group_name }}</h2>
-      <ul class="sig-board-item-info">
-        <li class="sig-board-item-info-page">
+      <ul class="item-info">
+        <li class="item-info-page">
           <IconHome class="sig-board-icon" />
           <span>
             <a target="_black" :href="item.home_page">
@@ -61,7 +61,7 @@ onMounted(() => {
             </a>
           </span>
         </li>
-        <li class="sig-board-item-info-mail">
+        <li class="item-info-mail">
           <IconMail class="sig-board-icon" />
           <span
             >{{ i18n.sig.SIG_LIST.MAIL }} :
@@ -70,16 +70,16 @@ onMounted(() => {
             </a>
           </span>
         </li>
-        <li class="sig-board-item-info-video">
+        <li class="item-info-video">
           <IconVideo class="sig-board-icon" />
           <span> {{ i18n.sig.SIG_LIST.IRC }} : {{ item.irc }} </span>
         </li>
-        <li class="sig-board-item-info-user">
+        <li class="item-info-user">
           <IconUser class="sig-board-icon" />
           <span>{{ i18n.sig.SIG_LIST.MANAGER }} :</span>
         </li>
       </ul>
-      <ul class="sig-board-item-admin">
+      <ul class="item-admin">
         <li
           v-for="subItem in JSON.parse(item.owners).slice(0, 4)"
           :key="subItem.gitee_id"
@@ -101,7 +101,7 @@ onMounted(() => {
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h4);
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1080px) {
     column-count: 1;
     padding: 0 var(--o-spacing-h5);
   }
@@ -138,7 +138,7 @@ onMounted(() => {
         line-height: var(--o-line-height-h6);
       }
     }
-    &-info {
+    .item-info {
       color: var(--o-color-text1);
       @media (max-width: 1080px) {
         margin-top: var(--o-spacing-h7);
@@ -183,36 +183,30 @@ onMounted(() => {
         align-items: center;
       }
     }
-    &-admin {
-      display: flex;
-      justify-content: left;
+    .item-admin {
+      display: grid;
       margin-top: var(--o-spacing-h6);
+      grid-template-columns: repeat(4, 1fr);
       @media (max-width: 780px) {
-        flex-wrap: wrap;
+        grid-template-columns: repeat(2, 1fr);
       }
       li {
-        flex: 0 0 25%;
         text-align: center;
         margin-top: var(--o-spacing-h5);
-        margin-right: var(--o-spacing-h7);
-        @media (max-width: 1080px) {
-          margin-right: 0px;
-        }
-        @media (max-width: 780px) {
-          flex: 0 0 50%;
-          margin-right: 0px;
+        margin-right: var(--o-spacing-h4);
+        @media (max-width: 1280px) {
+          margin-right: var(--o-spacing-h3);
         }
         img {
           width: 120px;
           height: 120px;
           display: block;
-          margin: 0 var(--o-spacing-h9);
           border-radius: 50%;
           @media (max-width: 1280px) {
             width: 90px;
             height: 90px;
           }
-          @media (max-width: 1080px) {
+          @media (max-width: 1120px) {
             width: 80px;
             height: 80px;
             margin-bottom: var(--o-spacing-h4);
@@ -222,7 +216,6 @@ onMounted(() => {
         span {
           display: inline-block;
           margin-top: var(--o-spacing-h5);
-          margin-right: var(--o-spacing-h5);
           color: var(--o-color-text1);
           white-space: nowrap;
           overflow: hidden;

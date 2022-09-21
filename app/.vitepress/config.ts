@@ -17,12 +17,39 @@ const config: UserConfig = {
         content: 'width=device-width,initial-scale=1,user-scalable=no',
       },
     ],
-    ['script', {
-      src: '/allow_sensor/sensorsdata.min.js'
-    }],
-    ['script', {
-      src: '/allow_sensor/sensors.js'
-    }],
+    [
+      'script',
+      {
+        src: '/js/analytics.js',
+      },
+    ],
+    [
+      'script',
+      {
+        src: '/allow_sensor/sensorsdata.min.js',
+      },
+    ],
+    [
+      'script',
+      {
+        src: '/allow_sensor/sensors.js',
+      },
+    ],
+    [
+      'meta',
+      {
+        name: 'keywords',
+        content:
+          'openEuler, 操作系统, 开放, 生态, 开源, Linux 开源, OS, open, ecosystem, open source, Linux open source',
+      },
+    ],
+    [
+      'meta',
+      {
+        name: 'baidu-site-verification',
+        content: 'code-EWzbQRssNU',
+      },
+    ],
   ],
   appearance: true, // enable dynamic scripts for dark mode
   titleTemplate: false, //  vitepress supports pageTitileTemplate since 1.0.0
