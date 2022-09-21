@@ -8,7 +8,7 @@ import type { AxiosResponse } from '@/shared/axios';
 /**
  * 获取授权的相关回调链接
  */
- export function queryCourse(params: object) {
+export function queryCourse(params: object) {
   const url = '/authing/user/permission';
   return request
     .get(url, { params, global: true })

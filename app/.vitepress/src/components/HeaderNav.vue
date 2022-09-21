@@ -40,12 +40,14 @@ const goPath = (item: NavItem) => {
     if (item.ID === 'docs') {
       // 测试环境，正式环境删除
       const url = 'https://openeuler-doc-zh2.test.osinfra.cn' + item.PATH;
-      isLogined().then(() => {
-        const uri = goToOtherServices('openeuler', url)
-        window.open(uri);
-      }).catch(() => {
-        window.open(url);
-      })
+      isLogined()
+        .then(() => {
+          const uri = goToOtherServices('openeuler', url);
+          window.open(uri);
+        })
+        .catch(() => {
+          window.open(url);
+        });
     } else {
       window.open(url);
     }

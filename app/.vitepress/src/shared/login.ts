@@ -33,12 +33,12 @@ function deleteCookie(cname: string) {
 }
 
 // 存储用户id及token，用于下次登录
-export function saveUserAuth(code = '', photo = '', username='') {
+export function saveUserAuth(code = '', photo = '', username = '') {
   if (!code) {
     deleteCookie(LOGIN_KEYS.USER_TOKEN);
     deleteCookie(LOGIN_KEYS.USER_INFO);
   } else {
-    const str = JSON.stringify({photo, username})
+    const str = JSON.stringify({ photo, username });
     setCookie(LOGIN_KEYS.USER_TOKEN, code, 1);
     setCookie(LOGIN_KEYS.USER_INFO, str, 1);
   }
@@ -50,11 +50,11 @@ export function getUserAuth() {
   const str = getCookie(LOGIN_KEYS.USER_INFO) || '';
   let obj: IObject = {};
   try {
-    obj = JSON.parse(str)
+    obj = JSON.parse(str);
   } catch {
-    obj = {}
+    obj = {};
   }
-  const { photo = '', username='' } = obj;
+  const { photo = '', username = '' } = obj;
   if (!token) {
     saveUserAuth();
   }
@@ -82,7 +82,7 @@ export function logout(community = 'openeuler') {
 
 // 跳转首页
 export function goToHome() {
-  window?.location?.reload()
+  window?.location?.reload();
 }
 
 export function getCodeByUrl(community = 'openeuler') {
@@ -98,9 +98,25 @@ export function getCodeByUrl(community = 'openeuler') {
       const { data = {} } = res;
       const { token = '', photo = '', username = '' } = data;
       saveUserAuth(token, photo, username);
+      deleteUrlCode(query);
       window.parent.window.location.reload();
     });
   }
+}
+
+// 删除url上的code
+function deleteUrlCode(query: IObject) {
+  const arr = Object.entries(query);
+  let url = location.origin + location.pathname;
+  if (arr.length > 2) {
+    const _arr = arr.filter((item) => !['code', 'state'].includes(item[0]));
+    const search = _arr.reduce((pre, next) => {
+      pre += `${next[0]}=${next[1]}`;
+      return pre;
+    }, '?');
+    url += search;
+  }
+  history.replaceState(null, '', url);
 }
 
 function getUrlParam(url = window?.location?.search) {
@@ -128,7 +144,8 @@ function createClient(community = 'openeuler', url?: string) {
       // appId: '62845f26b7dbf20f7890c0ad',
       appId: '62679eab0b22b146d2ea0a3a',
       appHost: 'https://datastat.authing.cn',
-      redirectUri: url || `${window?.location?.origin}${window?.location?.pathname}`,
+      redirectUri:
+        url || `${window?.location?.origin}${window?.location?.pathname}`,
       lang: lang.language,
     },
     openeulerPlayground: {
@@ -146,7 +163,7 @@ function createClient(community = 'openeuler', url?: string) {
 // scope配置，设置登录后用户返回信息
 const scopeConfig = {
   scope: 'openid profile username',
-}
+};
 export function showGuard(community = 'openeuler') {
   const client = createClient(community);
   // 构造 OIDC 授权登录 URL
@@ -193,9 +210,7 @@ export function refreshInfo(community = 'openeuler') {
     guardAuthClient.value = { username, photo };
     queryCourse({ community }).then((res) => {
       const { data } = res;
-      if (
-        Object.prototype.toString.call(data) === '[object Object]'
-      ) {
+      if (Object.prototype.toString.call(data) === '[object Object]') {
         guardAuthClient.value = data;
         saveUserAuth(token, data.photo, data.username);
       }
@@ -208,18 +223,20 @@ export function isLogined() {
   return new Promise((resolve, reject) => {
     const { token } = getUserAuth();
     if (token) {
-      queryCourse({ community: 'openeuler' }).then((res) => {
-        const { data } = res;
-        if (data) {
-          resolve(true);
-        } else {
-          reject(false)
-        }
-      }).catch(() => reject(false));
+      queryCourse({ community: 'openeuler' })
+        .then((res) => {
+          const { data } = res;
+          if (data) {
+            resolve(true);
+          } else {
+            reject(false);
+          }
+        })
+        .catch(() => reject(false));
     } else {
       reject(false);
     }
-  })
+  });
 }
 
 export function hasPermission(per: string) {
@@ -235,10 +252,10 @@ export function getLanguage() {
     return {
       lang: 'zh',
       language: 'zh-CN',
-    }
+    };
   }
   return {
     lang: 'en',
     language: 'en-US',
-  }
+  };
 }
