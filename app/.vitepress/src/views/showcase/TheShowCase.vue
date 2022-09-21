@@ -439,7 +439,7 @@ onMounted(() => {
           @media (max-width: 768px) {
             bottom: 14px;
           }
-          :deep(.confirm-button) {
+          :deep(.confirm-btn) {
             width: 96px;
             display: flex;
             justify-content: center;
