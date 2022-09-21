@@ -10,8 +10,6 @@ author: luoyuzhe
 summary: Introduction to the adaptation of OP-TEE to openEuler.
 ---
 
-# Adaptation of OP-TEE to openEuler
-
 Kunpeng 920 processors support the Arm TrustZone technology, so theoretically, they also support the ARM-based Trusted Execution Environment (TEE) solution. The TrustZone technology divides the execution environment of the ARM CPU into two states: normal world state and secure world state. Programs executed in the normal world state cannot access the memory, cache, and other peripheral, secure, and hardware devices in the secure world state, achieving hardware-level security isolation.
 
 In ARMv8 architecture, the CPU can execute in four different exception levels (EL0-EL3). EL0 is used to run a user application, EL1 is used to run an OS kernel, EL2 is used to support virtualization of the non-secure state, and EL3 is used to switch between the secure world state and the normal world state. The following figure shows the relationship between the execution levels and security states.

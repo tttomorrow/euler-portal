@@ -9,8 +9,6 @@ archives: 2022-04
 author: georgecao
 summary: Details about the SIG member management solution for the openEuler community.
 ---
-
-# SIG Member Management Solution for the openEuler Community
 ## Roles of Community SIG Members
 Following discussion with multiple SIGs and the Technical Committee, the roles of openEuler community SIG members are divided as follows:
 | Role| Responsibility |

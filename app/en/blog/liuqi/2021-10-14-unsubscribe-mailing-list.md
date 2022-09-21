@@ -10,9 +10,8 @@ sig: sig-Gatekeeper
 archives: 2021-11  
 author: liuqi<469227928@qq.com>
 summary:  This blog describes two methods to unsubscribe from an openEuler mailing list. 
-
 ---
-# How to Unsubscribe from a Mailing List of the openEuler Community
+
 The openEuler infrastructure team has received some inquiries from community maintainers and contributors about how to unsubscribe from openEuler mailing lists. Here are two methods:
 
 ### 1. Unsubscribe through email

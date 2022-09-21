@@ -11,8 +11,6 @@ author: cascades
 summary: libFuzzer is an in-process, coverage-guided, evolutionary fuzzing engine for library functions. It is included in the LLVM project.
 ---
 
-# Learning About libFuzzer
-
 This article was first published in the openEuler community [Open Source Promotion Plan](https://summer.iscas.ac.cn/).  
 Project Name: [No. 112 Improving QEMU Fuzzing](https://gitee.com/openeuler-competition/summer2021-112)  
 

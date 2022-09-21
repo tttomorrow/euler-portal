@@ -11,12 +11,6 @@ author: ByBryan Che
 summary: How was Huawei Cloud able to grow so quickly over such a short time? One of the things that distinguishes Huawei is that we believe in the power of open innovation.
 
 ---
-
-# The Future of Cloud in a COVID-19 Era
-
-
-
-
 ## **Three Years of Astonishing Cloud Growth**
 
 Almost exactly three years ago in June 2017, Huawei launched its public cloud business, [Huawei Cloud](https://www.huaweicloud.com/en-us/), in China. At the time, China’s public cloud market had just exceeded **US$1 billion in the 1H 2017**.

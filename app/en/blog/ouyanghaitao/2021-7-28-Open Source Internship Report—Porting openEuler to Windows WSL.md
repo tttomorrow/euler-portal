@@ -9,10 +9,6 @@ archives: 2021-07
 author: ouyanghaitao
 summary: Porting openEuler to Windows Subsystem for Linux (WSL)
 ---
-
-# Open Source Internship Report—Porting openEuler to Windows WSL
-
-
 ## Joining Huawei and Determining My Objective  
 
 My name is Wang Haitao, a third-year student in computer science of Harbin Institute of Technology (Shenzhen).  

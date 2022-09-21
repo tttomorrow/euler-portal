@@ -11,8 +11,6 @@ author: yang_yanchao
 summary: This article describes how to build an openEuler system based on RISC-V, deploy runc, and run containers.
 ---
 
-# How to Build a RISC-V-based openEuler System, Deploy runc, and Run Containers
-
 RISC-V is an open source instruction set architecture (ISA) based on reduced instruction set computing (RISC). openEuler has made some explorations on RISC-V:
 
 [^]: The following information is selected from https://gitee.com/openeuler/RISC-V.

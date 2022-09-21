@@ -10,9 +10,6 @@ archives: 2021-12
 author: randy1568
 summary: Just about everything you need to port enca 1.19
 ---
-
-# enca 1.19 Porting Guide (openEuler 20.03 LTS SP1)
-
 # Introduction
 
 ## Overview

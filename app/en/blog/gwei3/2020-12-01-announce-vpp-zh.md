@@ -13,8 +13,6 @@ author:
 summary: The openEuler bug bounty program goes on trial on the Vulbox platform.
 ---
 
-### openEuler Bug Bounty Program Goes on Trial
-
 On December 1, 2020, the openEuler bug bounty program was launched for trial run on Vulbox. The openEuler security team works with white hats to maintain and improve the overall security of the openEuler community. Acknowledgment and rewards will be given to the white hats that protect user interests and helps the openEuler community improve security. Each reported issue is followed up, analyzed, and handled by dedicated personnel, and is replied in a timely manner.
 
 #### Vulnerability Report

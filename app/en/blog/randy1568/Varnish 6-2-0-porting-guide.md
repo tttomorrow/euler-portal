@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you need to port Varnish 6.2.0
 ---
 
-# Varnish 6.2.0 Porting Guide (openEuler 20.03 LTS SP1)
-
 # Introduction
 
 ## Varnish Overview

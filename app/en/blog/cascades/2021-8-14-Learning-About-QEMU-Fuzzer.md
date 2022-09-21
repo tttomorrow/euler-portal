@@ -11,8 +11,6 @@ author: cascades
 summary: QEMU Fuzzer is a framework that uses libqtest and libFuzzer to perform fuzz testing on the process of reading and writing devices by the guest OS. QEMU Fuzzer is included in QEMU 5.0 and later versions.
 ---
 
-# Learning about the QEMU Fuzzer
-
 This article was first published in the openEuler community [Open Source Promotion Plan](https://summer.iscas.ac.cn/).
 Project Name: [No. 112 Improving QEMU Fuzzing](https://gitee.com/openeuler-competition/summer2021-112)
 

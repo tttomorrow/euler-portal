@@ -10,9 +10,6 @@ archives: 2021-12
 author: randy1568
 summary: Just about everything you need to port Apache 2.4.39
 ---
-
-# Apache 2.4.39 Porting Guide (openEuler 20.03 LTS SP1)
-
 # Introduction  
 
 ## Apache Overview

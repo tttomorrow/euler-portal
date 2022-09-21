@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you need to port pkgship 2.1.0
 ---
 
-# pkgship 2.1.0 Porting Guide (openEuler 20.03 LTS SP1)
-
 ## Introduction
 
 pkgship is a query tool used to manage the dependency of OS software packages and provide a complete dependency graph. It provides functions such as software package dependency query, lifecycle management, and patch query.

@@ -12,8 +12,6 @@ author:
 summary: openEuler lifecycle.
 ---
 
-# openEuler community release rule and life cycle management
-
 <img src="./2020-03-25-lifecycle-02.png" style="width:100%;">
 
 - 社区版本按按照交付年份和月份进行版本号命名。例如，openEuler 20.09 于 2020 年 09 月发布。

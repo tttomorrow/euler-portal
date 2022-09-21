@@ -33,6 +33,7 @@ const years = ['', '2022', '2021', '2020'];
 const selectedYear = ref('2022');
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
+const activeNames = ref(['1']);
 
 const tableData = ref<SecurityLists[]>([
   {
@@ -104,6 +105,7 @@ const selectYear = (i: number, val: string) => {
   selectedYear.value = val;
   activeIndex1.value = i;
   queryData.year = val;
+  activeNames.value = ['2'];
 };
 
 function turnPage(option: string) {
@@ -183,10 +185,10 @@ watch(queryData, () => getSecurityLists(queryData));
           </div>
         </div>
       </div>
-
+      <!-- v-model="activeNames" @change="handleChange -->
       <div class="calendar-mobile">
-        <el-collapse>
-          <el-collapse-item>
+        <el-collapse v-model="activeNames">
+          <el-collapse-item name="1">
             <template #title>
               <o-icon><icon-calendar></icon-calendar></o-icon>
               <span class="selected-year">{{
@@ -359,10 +361,13 @@ watch(queryData, () => getSecurityLists(queryData));
       background-color: var(--o-color-bg2);
       color: var(--o-color-text1);
       &-item {
-        margin-top: var(--o-spacing-h8);
-        &:first-child {
-          margin-top: 0;
-        }
+        // margin-top: var(--o-spacing-h8);
+        // &:first-child {
+        //   margin-top: 0;
+        // }
+        padding: 2px 0;
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-h8);
       }
       .selected {
         background-color: var(--o-color-bg4);
@@ -483,7 +488,6 @@ watch(queryData, () => getSecurityLists(queryData));
         margin-bottom: var(--o-spacing-h8);
       }
       li:first-child {
-        margin-bottom: 0;
         .notice {
           color: var(--o-color-link1);
         }

@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you need to port Squid 4.8
 ---
 
-# Squid 4.8 Porting Guide (openEuler 20.03 LTS SP1)
-
 # Introduction
 
 #### Squid Overview
