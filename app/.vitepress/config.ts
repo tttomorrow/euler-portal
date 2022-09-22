@@ -79,6 +79,14 @@ const config: UserConfig = {
         'openEuler is an open source, free Linux distribution platform. The platform provides an open community for global developers to build an open, diversified, and architecture-inclusive software ecosystem. openEuler is also an innovative platform that encourages everyone to propose new ideas, explore new approaches, and practice new solutions.',
     },
   },
+  markdown: {
+    config(md) {
+      md.set({
+        html: true,
+        linkify: false,
+      });
+    },
+  },
   themeConfig: {
     // locales: {
     //   '/': i18n.zh,
