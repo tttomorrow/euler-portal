@@ -1,76 +1,74 @@
 [
-    {
-        "os_version":"ctyunos-2.0.1-210625-x86_64-dvd.iso",
-        "osv_name": "天翼云科技有限公司",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/09/06",
-        "arch": "x86_64",
-        "details": "详细信息",
-        "friendly_link": "https://www.ctyun.cn/",
-        "os_download_link": "https://www.ctyun.cn/",
-        "checksum": "163cdc95915e1a048b12e9aab2adce57",
-        "base_openeuler_version": "openEuler 20.03 LTS SP1",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result":[
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-
-
+  {
+    "os_version": "ctyunos-2.0.1-210625-x86_64-dvd.iso",
+    "osv_name": "天翼云科技有限公司",
+    "total_result": "pass",
+    "type": "服务器",
+    "date": "2022/09/06",
+    "arch": "x86_64",
+    "details": "详细信息",
+    "friendly_link": "https://www.ctyun.cn/",
+    "os_download_link": "https://www.ctyun.cn/",
+    "checksum": "163cdc95915e1a048b12e9aab2adce57",
+    "base_openeuler_version": "openEuler 20.03 LTS SP1",
+    "tools_result": [
+      {
+        "name": "core_pkg",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "soft_pkg",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "KABI",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "ABI",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "service_config",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "soft_config",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "kernel_config",
+        "percent": "NA",
+        "result": "pass"
+      }
+    ],
+    "platform_result": [
+      {
+        "name": "repo",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "base_test",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "performance_test",
+        "percent": "NA",
+        "result": "pass"
+      },
+      {
+        "name": "running_config",
+        "percent": "NA",
+        "result": "pass"
+      }
+    ]
+  }
 ]
