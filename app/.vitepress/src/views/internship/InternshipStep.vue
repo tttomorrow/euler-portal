@@ -104,9 +104,13 @@ const STEP = {
     ],
     ATTENTION_TEXT: [
       '以上工资金额为总计金额，每月月初按上月积分结算一次应发工资，在月底发放到实习生账户。应发工资为达到相应积分标准的总计工资金额减去已结算金额。',
-      '总计100分为工资结算上限。超过100分不再计算工资，可选择结束实习，或继续贡献社区，满150分可获得“开源之星”荣誉。',
+      '总计100分为工资结算上限。超过100分不再计算工资。可选择加入',
+      '“欧拉&高斯人才发展加速计划”',
+      '继续在社区贡献，2022年度累计积分≥120分有机会获得“欧拉&高斯社区在线实习进步奖”，2022年度共计200个名额，奖金10000元。',
       '证明开具后视为实习结束，不再计算实习工资。',
     ],
+    ATTENTION_LINK:
+      'https://edu.hicomputing.huawei.com/openeuler-opengauss-talent',
     DONWLOAD: '证明申请材料和邮件模板下载',
   },
 };
@@ -275,9 +279,17 @@ const STEP = {
           </p>
           <div class="attention black">
             <div class="attention-title">{{ STEP.ATTENTION }}</div>
-            <p v-for="item in STEP.STEP_FOUR.ATTENTION_TEXT" :key="item">
-              {{ item }}
+            <p>
+              {{ STEP.STEP_FOUR.ATTENTION_TEXT[0] }}
             </p>
+            <p>
+              {{ STEP.STEP_FOUR.ATTENTION_TEXT[1] }}
+              <a :href="STEP.STEP_FOUR.ATTENTION_LINK" target="_blank">{{
+                STEP.STEP_FOUR.ATTENTION_TEXT[2]
+              }}</a>
+              {{ STEP.STEP_FOUR.ATTENTION_TEXT[3] }}
+            </p>
+            <p>{{ STEP.STEP_FOUR.ATTENTION_TEXT[4] }}</p>
             <a
               href="https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E5%BC%80%E6%BA%90%E5%AE%9E%E4%B9%A0%E8%B5%84%E6%96%99%E4%B8%8B%E8%BD%BD/03%20%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7%E6%9D%90%E6%96%99%E5%92%8C%E9%82%AE%E4%BB%B6%E6%A8%A1%E6%9D%BF.rar"
               download
