@@ -4,8 +4,8 @@ category: showcase
 industry: 物流
 company: 中国邮政
 summary: OA 业务系统迁移改造
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/logistics.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/logistics.png
 ---
 
 ## 应用场景

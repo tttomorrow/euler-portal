@@ -4,8 +4,8 @@ category: showcase
 industry: Energy
 company: China Southern Power Grid
 summary: Smooth OS Porting and Complete System Upgrade for Information Systems
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/energy.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/energy.png
 ---
 
 ## **Scenarios** 

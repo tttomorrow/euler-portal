@@ -4,8 +4,8 @@ category: showcase
 industry: Логистика
 company: China Post
 summary: Портирование системы автоматизации офиса
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/logistics.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/logistics.png
 ---
 
 ## **Сценарий**

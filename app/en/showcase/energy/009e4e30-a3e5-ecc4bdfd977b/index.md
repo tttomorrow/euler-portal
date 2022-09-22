@@ -4,8 +4,8 @@ category: showcase
 industry: Energy
 company: State Grid Corporation of China
 summary: OS Innovation for the Hebei Smart Substation's Bowei Smart Construction Site
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/energy.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/energy.png
 ---
 
 ## **Scenarios**

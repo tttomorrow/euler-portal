@@ -4,8 +4,8 @@ category: showcase
 industry: Оператор
 company: China Mobile (Zhejiang)
 summary: Беспроблемное портирование ОС и повышение стабильности работы базовых систем
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/provider.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/provider.png
 ---
 
 ## **Сценарий**

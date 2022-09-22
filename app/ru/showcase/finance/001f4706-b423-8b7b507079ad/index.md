@@ -4,8 +4,8 @@ category: showcase
 industry: Финансы
 company: China Construction Bank
 summary: Повышение стабильности обработки транзакций в распределенной базовой банковской системе CCB по работе с кредитными картами
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/finance.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/finance.png
 ---
 
 ## **Сценарий**

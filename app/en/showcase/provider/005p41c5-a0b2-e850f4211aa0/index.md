@@ -4,8 +4,8 @@ category: showcase
 industry: Carrier
 company: China Mobile
 summary: Smooth OS Porting for Core Service Systems
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/provider.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/provider.png
 ---
 
 ## **Scenarios**

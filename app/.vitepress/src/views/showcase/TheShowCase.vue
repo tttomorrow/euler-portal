@@ -393,7 +393,7 @@ onMounted(() => {
     .case-card {
       height: 198px;
       padding: 40px 26px 40px 40px;
-      background-image: url(@/assets/category/showcase/case-bg.png);
+      background-image: url(@/assets/category/showcase/case-card-bg.png);
       background-size: cover;
       position: relative;
       display: flex;
