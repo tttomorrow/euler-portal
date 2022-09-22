@@ -4,8 +4,8 @@ category: showcase
 industry: Others
 company: Heilongjiang Tobacco
 summary: Security Mail System Project
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/others.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/others.png
 ---
 
 ## **Scenarios**

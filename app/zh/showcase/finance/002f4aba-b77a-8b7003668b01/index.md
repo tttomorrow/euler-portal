@@ -4,8 +4,8 @@ category: showcase
 industry: 金融
 company: 兴业银行
 summary: 某核心业务系统国产化改造项目
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/finance.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/finance.png
 ---
 
 ## 应用场景

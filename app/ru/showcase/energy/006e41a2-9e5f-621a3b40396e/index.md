@@ -4,8 +4,8 @@ category: showcase
 industry: Энергетика
 company: State Grid Corporation of China
 summary: Портирование ОС для интеллектуальной диспетчерской системы
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/energy.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/energy.png
 ---
 
 ## **Сценарий**

@@ -4,8 +4,8 @@ category: showcase
 industry: Finance
 company: China Construction Bank
 summary: Improved Operational Stability for the Distributed Credit Card Core Banking System
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/finance.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/finance.png
 ---
 
 ## **Scenarios**

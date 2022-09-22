@@ -4,8 +4,8 @@ category: showcase
 industry: Другие сферы
 company: Jiangxi Province Healthcare Security Administration
 summary: Проект облачной платформы
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/others.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/others.png
 ---
 
 ## **Сценарий**

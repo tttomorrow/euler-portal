@@ -4,8 +4,8 @@ category: showcase
 industry: 能源
 company: 国家电网
 summary: 华电芜湖电厂 DCS 核心控制系统，平滑完成操作系统迁移，实现业务高效稳定运行
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/energy.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/energy.png
 ---
 
 ## 应用场景

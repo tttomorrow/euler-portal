@@ -4,8 +4,8 @@ category: showcase
 industry: Energy
 company: State Grid Corporation of China
 summary: OS Porting for the Smart Dispatch System
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/energy.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/energy.png
 ---
 
 ## **Scenarios**

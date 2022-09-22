@@ -4,8 +4,8 @@ category: showcase
 industry: Оператор
 company: China Unicom
 summary: Легкая модернизация ОС и повышение стабильности мобильной сервисной системы
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/provider.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/provider.png
 ---
 
 ## **Сценарий**

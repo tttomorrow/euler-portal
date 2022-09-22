@@ -4,8 +4,8 @@ category: showcase
 industry: Carrier
 company: China Unicom
 summary: Smooth OS Upgrade and a More Stable Mobile Service System
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/provider.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/provider.png
 ---
 
 ## **Scenarios**

@@ -4,8 +4,8 @@ category: showcase
 industry: 其他
 company: 江西省医保局
 summary: 江西省医保局云平台建设项目
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/others.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/others.png
 ---
 
 ## 应用场景
