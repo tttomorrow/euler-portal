@@ -130,7 +130,8 @@ export default {
         {
           NAME: 'Сертификация',
           ID: 'certification',
-          PATH: '/community/certification-services/',
+          PATH: 'https://www.openeuler.org/en/community/certification-services/',
+          IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
       CLASS: ['conduct', 'certification-services'],
