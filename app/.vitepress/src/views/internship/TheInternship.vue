@@ -65,8 +65,13 @@ const INTEGRAL_DATA = [
       '2022年内独在openEuler社区（或openGauss社区）积分满150分。 ',
       '2022年内独在openEuler社区（或openGauss社区）满120分并在openEuler（或openGauss）公众号发布3篇以上实习项目相关文章及参与过一次实习直播主讲。',
     ],
-    SUPPLEMENT:
-      '满足以上一条可获得“开源之星”荣誉徽章，在openEuler（openGauss）官网展示，并获得参与2022年度实习优秀贡献者评选资格，评选上将获得奖金10000元。',
+    SUPPLEMENT: [
+      '满足以上一条可获得“开源之星”荣誉徽章，在openEuler（openGauss）官网展示。加入',
+      '“欧拉&高斯人才发展加速计划”',
+      '，有机会获得“欧拉&高斯社区在线实习进步奖”，2022年度共计200个名额，奖金10000元。',
+    ],
+    SUPPLEMENT_LINK:
+      'https://edu.hicomputing.huawei.com/openeuler-opengauss-talent',
   },
 ];
 const RULE = {
@@ -453,7 +458,16 @@ onUnmounted(() => {
                   <span v-else>{{ item1 }}</span>
                 </p>
               </div>
-              <div class="supplement">{{ item.SUPPLEMENT }}</div>
+              <div class="supplement" v-if="item.SUPPLEMENT_LINK">
+                {{ item.SUPPLEMENT[0] }}
+                <a :href="item.SUPPLEMENT_LINK" target="_blank">{{
+                  item.SUPPLEMENT[1]
+                }}</a>
+                {{ item.SUPPLEMENT[2] }}
+              </div>
+              <div class="supplement" v-else>
+                {{ item.SUPPLEMENT }}
+              </div>
             </div>
           </div>
         </div>
