@@ -412,7 +412,7 @@ onMounted(() => {
           <div class="item">
             <div class="header">
               <span class="left">{{ sigDetail.BLOG }}</span>
-              <a class="right">
+              <a :href="'/' + lang + '/interaction/blog-list/'" class="right">
                 <span>{{ sigDetail.MORE }}</span>
                 <OIcon class="icon-more">
                   <IconChevronRight />
@@ -433,7 +433,7 @@ onMounted(() => {
           <div class="item">
             <div class="header">
               <span class="left">{{ sigDetail.NEWS }}</span>
-              <a class="right">
+              <a :href="'/' + lang + '/interaction/news-list/'" class="right">
                 <span>{{ sigDetail.MORE }}</span>
                 <OIcon class="icon-more">
                   <IconChevronRight />
@@ -444,7 +444,7 @@ onMounted(() => {
               <li class="empty">
                 {{ sigDetail.NEWS_EMPTY
                 }}<a
-                  href="https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/zh/interaction/post-news/README.md"
+                  :href="'/' + lang + '/interaction/post-news/'"
                   target="_blank"
                   >{{ sigDetail.NEWS_EMPTY3 }}</a
                 >{{ sigDetail.NEWS_EMPTY4 }}

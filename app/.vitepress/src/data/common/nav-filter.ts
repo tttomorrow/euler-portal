@@ -19,7 +19,7 @@ export default [
   },
   {
     name: 'showcase',
-    lang: ['zh', 'en'],
+    lang: ['zh', 'en', 'ru'],
   },
   {
     name: 'mooc',
