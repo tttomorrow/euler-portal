@@ -125,7 +125,7 @@ export default {
         DESCRIPTION_1:
           '在开展兼容性测试前，您需要了解openEuler硬件兼容性策略，',
         A_TEXT: '点击此处获取文档。',
-        A_HREF: '/category/security/openEuler-compatibility.pdf',
+        A_HREF: '/category/support/compatibility/openEuler-compatibility.pdf',
         DOWNLOAD_NAME: 'openEuler兼容性策略介绍.pdf',
       },
       {
@@ -145,7 +145,7 @@ export default {
         A_TEXT_2: '使用指南',
         DESCRIPTION_2: '|',
         A_HREF: 'https://gitee.com/src-openeuler/oec-hardware/releases',
-        A_HREF_2: '/category/security/openEuler硬件兼容性测试工具使用指南.pdf',
+        A_HREF_2: '/category/support/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
         DOWNLOAD_NAME: 'openEuler硬件兼容性测试工具使用指南.pdf',
       },
       {
