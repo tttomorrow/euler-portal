@@ -24,9 +24,13 @@ summary: 本博客介绍了如何在Gitee配置邮件通知
 访问 Gitee 的[个人设置](https://gitee.com/profile/account_information)，选择消息中心的通知设置。
 你可以根据个人喜好或需求选择某项设置的通知方式，也可以选择多种通知方式。
 
-<div align="center"><img src="./2022-07-22-gitee-notification-settings-01.png" width=600 alt="01.png"/></div>
+<div style="text-align:center"><img src="./2022-07-22-gitee-notification-settings-01.png" width=600 alt="01.png"/></div>
 
-<div align="center">Gitee通知设置</div>
+<div align="center">
+
+Gitee通知设置
+
+</div>
 
 ### 通知
 
@@ -38,11 +42,19 @@ summary: 本博客介绍了如何在Gitee配置邮件通知
 
 <div align="center"><img src="./2022-07-22-gitee-notification-settings-02.png" width=600 alt="02.png"/></div>
 
-<div align="center">Gitee站内信通知</div>
+<div align="center">
+
+Gitee站内信通知
+
+</div>
 
 <div align="center"><img src="./2022-07-22-gitee-notification-settings-03.png" width=600 alt="03.png"/></div>
 
-<div align="center">邮件通知</div>
+<div align="center">
+
+邮件通知
+
+</div>
 
 - 场景二：被指派 issue
 
@@ -50,7 +62,11 @@ summary: 本博客介绍了如何在Gitee配置邮件通知
 
 <div align="center"><img src="./2022-07-22-gitee-notification-settings-04.png" width=600 alt="04.png"/></div>
 
-<div align="center">邮件通知</div>
+<div align="center">
+
+邮件通知
+
+</div>
 
 - 场景三：被指派的 issue 发生状态变更
 
@@ -58,20 +74,36 @@ summary: 本博客介绍了如何在Gitee配置邮件通知
 
 <div align="center"><img src="./2022-07-22-gitee-notification-settings-05.png" width=600 alt="05.png"/></div>
 
-<div align="center">Gitee站内信通知</div>
+<div align="center">
+
+Gitee站内信通知
+
+</div>
 
 <div align="center"><img src="./2022-07-22-gitee-notification-settings-06.png" width=600 alt="06.png"/></div>
 
-<div align="center">邮件通知</div>
+<div align="center">
+
+邮件通知
+
+</div>
 
 - 场景四：被@
 
   **提到我的 @** 选择通知方式为站内信和邮件，被@
 
 <div align="center"><img src="./2022-07-22-gitee-notification-settings-07.png" width=600 alt="07.png"/></div>
-<div align="center">Gitee站内信通知</div>
+<div align="center">
+
+Gitee站内信通知
+
+</div>
 
 <div align="center"><img src="./2022-07-22-gitee-notification-settings-08.png" width=600 alt="08.png"/></div>
-<div align="center">邮件通知</div>
+<div align="center">
+
+邮件通知
+
+</div>
 
 **Tips**：需要注意的是，以上场景均为非本人触发，若本人做如上操作，不会收到对应的通知。而@操作也需要被@用户有访问权限，否则不会通知被@的用户。
