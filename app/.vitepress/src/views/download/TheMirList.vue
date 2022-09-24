@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
 import { ElMessage } from 'element-plus';
-import useClipboard from 'vue-clipboard3';
+// TODO:useClipboard
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -22,7 +22,6 @@ interface MapMsg {
   http: string;
 }
 const i18n = useI18n();
-const { toClipboard } = useClipboard();
 
 interface MirrorMsg {
   name: string;
@@ -40,7 +39,7 @@ interface MirrorMsg {
 const tableData: Ref<MirrorMsg[]> = ref([]);
 
 const mapData: Ref<MapMsg[]> = ref([]);
-
+const inputDom: Ref<HTMLElement | null> = ref(null);
 const initTable = (data: any[]) => {
   let result: MirrorMsg[] = [];
   data.forEach((item) => {
@@ -113,7 +112,11 @@ const tableRowClassName = ({ row }: any) => {
 
 async function handleCopyText(value: string | undefined) {
   if (!value) return;
-  await toClipboard(value);
+  if (inputDom.value) {
+    (inputDom.value as HTMLInputElement).value = value;
+    (inputDom.value as HTMLInputElement).select();
+    document.execCommand('copy');
+  }
   ElMessage({
     message: i18n.value.download.COPY_SUCCESS,
     type: 'success',
@@ -124,6 +127,7 @@ const listData = computed(() => {
   return tableData.value.filter((item) => typeof item.area === 'undefined');
 });
 onMounted(async () => {
+  inputDom.value = document.getElementById('useCopy');
   try {
     const responeData = await getAllMirror();
     tableData.value = initTable(responeData);
@@ -273,6 +277,10 @@ onMounted(async () => {
       <MapContainer :map-data="mapData"></MapContainer>
     </div>
   </AppContent>
+  <div class="input-box">
+    <!-- 用于复制RSNC的值 -->
+    <input id="useCopy" type="text" />
+  </div>
 </template>
 <style lang="scss" scoped>
 .mirror {
@@ -346,6 +354,10 @@ onMounted(async () => {
       color: var(--o-color-brand1);
     }
   }
+}
+.input-box #useCopy {
+  position: absolute;
+  opacity: 0;
 }
 
 .mirror-list {
