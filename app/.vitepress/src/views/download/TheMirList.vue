@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
 import { ElMessage } from 'element-plus';
-
+import useClipboard from 'vue-clipboard3';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -22,6 +22,7 @@ interface MapMsg {
   http: string;
 }
 const i18n = useI18n();
+const { toClipboard } = useClipboard();
 
 interface MirrorMsg {
   name: string;
@@ -39,8 +40,6 @@ interface MirrorMsg {
 const tableData: Ref<MirrorMsg[]> = ref([]);
 
 const mapData: Ref<MapMsg[]> = ref([]);
-
-const inputDom: Ref<HTMLElement | null> = ref(null);
 
 const initTable = (data: any[]) => {
   let result: MirrorMsg[] = [];
@@ -111,23 +110,20 @@ const tableRowClassName = ({ row }: any) => {
   }
   return '';
 };
-const handleCopyText = (value: string | undefined) => {
+
+async function handleCopyText(value: string | undefined) {
   if (!value) return;
-  if (inputDom.value) {
-    (inputDom.value as HTMLInputElement).value = value;
-    (inputDom.value as HTMLInputElement).select();
-  }
-  const text = '复制成功';
+  await toClipboard(value);
   ElMessage({
-    message: text,
+    message: i18n.value.download.COPY_SUCCESS,
     type: 'success',
   });
-};
+}
+
 const listData = computed(() => {
   return tableData.value.filter((item) => typeof item.area === 'undefined');
 });
 onMounted(async () => {
-  inputDom.value = document.getElementById('useCopy');
   try {
     const responeData = await getAllMirror();
     tableData.value = initTable(responeData);
@@ -272,11 +268,6 @@ onMounted(async () => {
           <div class="mirror-card-word">{{ item.netband }}</div>
         </div>
       </OCard>
-
-      <div class="input-box">
-        <!-- 用于复制RSNC的值 -->
-        <input id="useCopy" type="text" />
-      </div>
     </div>
     <div class="mirror-map">
       <MapContainer :map-data="mapData"></MapContainer>
@@ -538,10 +529,5 @@ onMounted(async () => {
     width: var(--o-line-height-h8);
     height: var(--o-line-height-h8);
   }
-}
-
-.input-box #useCopy {
-  position: absolute;
-  opacity: 0;
 }
 </style>

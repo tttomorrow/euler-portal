@@ -1,5 +1,6 @@
 import data from '../../data/download/download';
 export default {
+  COPY_SUCCESS: 'copied successfully.',
   RELEASE_DESC: 'Описание релиза',
   INSTALL_GUIDENCE: 'Руководство по установке',
   SEEK_HELP: 'Справка',
