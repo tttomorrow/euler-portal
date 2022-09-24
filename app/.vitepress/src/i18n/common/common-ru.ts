@@ -7,7 +7,7 @@ export default {
   COOKIE_LEGAL_TEXT_OTHER:
     'в том числе на передачу данных, указанных в Политике, третьим лицам (статистическим службам сети Интернет), в соответствии с ',
   COOKIE_LEGAL_LINK_TEXT: 'Политикой в отношении файлов cookie ',
-  COOKIE_LEGAL_LINK_TEXT_OTHER: 'Пользовательским соглашением >',
+  COOKIE_LEGAL_LINK_TEXT_OTHER: 'Пользовательским соглашением.',
   NAV_ROUTER: {
     DOWNLOAD: 'Загрузить',
     ISO: 'Software Packages',

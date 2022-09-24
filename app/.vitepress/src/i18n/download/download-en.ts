@@ -1,5 +1,6 @@
 import data from '../../data/download/download';
 export default {
+  COPY_SUCCESS: 'copied successfully.',
   RELEASE_DESC: 'Release Notes',
   SERVER_IMAGE: 'Server Image',
   CLOUD_IMAGE: 'Cloud Image',
