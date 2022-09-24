@@ -1,6 +1,7 @@
 import data from '../../data/download/download';
 export default {
   RELEASE_DESC: '发行说明',
+  COPY_SUCCESS: '复制成功',
   SERVER_IMAGE: '服务器镜像',
   CLOUD_IMAGE: '云镜像',
   EDGE_IMAGE: '边缘镜像',

@@ -4,7 +4,7 @@ export default {
   SEARCH_PLACE_HOLDER: 'Input content',
   COOKIE_LEGAL_TEXT:
     'This site uses cookies. By continuing to browse the site you are agreeing to our use of cookies.',
-  COOKIE_LEGAL_LINK_TEXT: ' Read our privacy policy>',
+  COOKIE_LEGAL_LINK_TEXT: ' Read our privacy policy.',
   NAV_ROUTER: {
     DOWNLOAD: 'Download',
     ISO: 'Software Packages',

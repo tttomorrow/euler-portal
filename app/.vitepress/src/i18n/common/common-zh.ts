@@ -3,7 +3,7 @@ export default {
   MEETINGS_REPLAY: '回放链接',
   SEARCH_PLACE_HOLDER: '输入内容',
   COOKIE_LEGAL_TEXT: '本站点使用Cookies，继续浏览表示您同意我们使用Cookies。',
-  COOKIE_LEGAL_LINK_TEXT: 'Cookies和隐私政策>',
+  COOKIE_LEGAL_LINK_TEXT: 'Cookies和隐私政策。',
   NAV_ROUTER: {
     DOWNLOAD: '下载',
     ISO: 'ISO',
