@@ -70,7 +70,7 @@ const form = ref(
   }
 }
 .line {
-  border-bottom: 1px solid var(--o-color-neutral11);
+  border-bottom: 1px solid var(--o-color-division1);
   margin-bottom: 18px;
 }
 .group {

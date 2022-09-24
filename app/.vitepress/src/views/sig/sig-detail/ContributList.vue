@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TheProgress from './TheProgress.vue';
-import OFormRadio from './OFormRadio.vue';
+import ListProgress from './ListProgress.vue';
+import ListFormRadio from './ListFormRadio.vue';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
@@ -25,14 +25,19 @@ const props = defineProps({
 });
 const contributionSelectBox = ref([
   {
-    color: '#002fa7',
+    color: 'bgColor-maintainer',
     isSelected: true,
     label: 'Maintainer',
     key: 'maintainers',
   },
-  { color: '#feb32a', isSelected: true, label: 'Committer', key: 'committers' },
   {
-    color: '#4aaead',
+    color: 'bgColor-committer',
+    isSelected: true,
+    label: 'Committer',
+    key: 'committers',
+  },
+  {
+    color: 'bgColor-contributor',
     isSelected: true,
     label: 'Contributor',
     key: 'contributor',
@@ -192,7 +197,7 @@ const turnPage = (option: string) => {
 <template>
   <div>
     <div class="theSecondForm">
-      <o-form-radio
+      <ListFormRadio
         :option="lastformOption"
         @get-contribute-info="getContributeInfo($event)"
       >
@@ -213,8 +218,9 @@ const turnPage = (option: string) => {
                   ><IconSearch></IconSearch
                 ></OIcon> </template
             ></OInput>
-          </div> </template
-      ></o-form-radio>
+          </div>
+        </template>
+      </ListFormRadio>
     </div>
     <div class="edcolor-box">
       <div
@@ -226,16 +232,11 @@ const turnPage = (option: string) => {
       >
         <div
           class="box"
-          :style="{
-            'background-color': value.isSelected ? value.color : '#cccccc',
-          }"
+          :class="value.isSelected ? value.color : 'bgColor-cancel'"
         ></div>
-        <span
-          :style="{
-            color: value.isSelected ? '' : '#cccccc',
-          }"
-          >{{ value.label }}</span
-        >
+        <span :class="value.isSelected ? '' : 'color-cancel'">{{
+          value.label
+        }}</span>
       </div>
     </div>
     <div class="leader">
@@ -272,19 +273,15 @@ const turnPage = (option: string) => {
                 <span
                   v-show="scope.row.usertype !== 'committers'"
                   class="usertypecolorbox"
-                  :style="({
-                    '--color':
-                      scope.row.usertype === 'maintainers'
-                        ? '#002FA7'
-                        : '#4AAEAD',
-                  } as any)"
+                  :class="
+                    scope.row.usertype === 'maintainers'
+                      ? 'bgColor-maintainer'
+                      : 'bgColor-contributor'
+                  "
                 ></span>
                 <span
                   v-show="scope.row.usertype === 'committers'"
-                  class="usertypecolorbox"
-                  :style="({
-                    '--color': '#FEB32A',
-                  } as any)"
+                  class="usertypecolorbox bgColor-committer"
                 ></span>
                 <span
                   class="num"
@@ -306,12 +303,12 @@ const turnPage = (option: string) => {
               <div class="box">
                 <span class="num">{{ scope.row.contribute }}</span>
 
-                <the-progress
+                <ListProgress
                   :item="scope.row.contribute"
                   :component-name="componentName"
                   :member-list="memberMax"
                   :usertype="scope.row.usertype"
-                ></the-progress>
+                ></ListProgress>
               </div>
             </template>
           </el-table-column>
@@ -400,26 +397,6 @@ const turnPage = (option: string) => {
   display: flex;
   padding-bottom: 10px;
 
-  .blue-box {
-    margin-right: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .box {
-      width: 12px;
-      height: 12px;
-      background: var(--o-color-brand1);
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-    .nobox {
-      width: 12px;
-      height: 12px;
-      background: var(--o-color-black);
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-  }
   .yellow-box {
     margin-right: 24px;
     display: flex;
@@ -428,25 +405,6 @@ const turnPage = (option: string) => {
     .box {
       width: 12px;
       height: 12px;
-      background-color: var(--o-color-yellow5);
-      border-radius: 2px;
-      font-size: 10px;
-      color: var(--o-color-white);
-      line-height: 12px;
-      text-align: center;
-      margin-right: 8px;
-      border-radius: 50%;
-    }
-  }
-  .red-box {
-    margin-right: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .box {
-      width: 12px;
-      height: 12px;
-      background: #4aaead;
       border-radius: 2px;
       font-size: 10px;
       color: var(--o-color-white);
@@ -460,8 +418,6 @@ const turnPage = (option: string) => {
 .usertypecolorbox {
   width: 12px;
   height: 12px;
-  // background: linear-gradient(var(--color));
-  background: var(--color);
   border-radius: 50%;
   margin-right: 8px;
 }
@@ -490,5 +446,20 @@ const turnPage = (option: string) => {
   .search-icon {
     font-size: 20px;
   }
+}
+.bgColor-maintainer {
+  background-color: var(--o-color-brand1);
+}
+.bgColor-committer {
+  background-color: var(--o-color-yellow5);
+}
+.bgColor-contributor {
+  background-color: #4aaead;
+}
+.bgColor-cancel {
+  background-color: var(--o-color-neutral10);
+}
+.color-cancel {
+  color: var(--o-color-neutral10);
 }
 </style>
