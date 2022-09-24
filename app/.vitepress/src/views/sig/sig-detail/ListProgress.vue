@@ -33,19 +33,19 @@ const props = defineProps({
 const { componentName, memberList, usertype } = toRefs(props);
 const progressColor = () => {
   if (componentName.value === 'member' && usertype.value === 'contributor') {
-    return '#4AAEAD';
+    return 'bgColor-contributor';
   } else if (
     componentName.value === 'member' &&
     usertype.value === 'maintainers'
   ) {
-    return '#002FA7';
+    return 'bgColor-maintainer';
   } else if (
     componentName.value === 'member' &&
     usertype.value === 'committers'
   ) {
-    return '#FEB32A';
+    return 'bgColor-committer';
   } else {
-    return '#002FA7';
+    return 'bgColor-maintainer';
   }
 };
 
@@ -59,8 +59,8 @@ const progressFormat = (item: number) => {
   <el-progress
     :style="{ width }"
     :show-text="false"
+    :class="progressColor()"
     :stroke-width="8"
-    :color="progressColor()"
     :percentage="progressFormat(props.item)"
   />
 </template>
@@ -70,6 +70,24 @@ const progressFormat = (item: number) => {
   margin-left: 10px;
   :deep(.el-progress-bar__outer) {
     background: none;
+  }
+}
+.bgColor-maintainer {
+  background-color: inherit !important;
+  .el-progress-bar__inner {
+    background-color: var(--o-color-brand1);
+  }
+}
+.bgColor-committer {
+  background-color: inherit !important;
+  :deep(.el-progress-bar__inner) {
+    background-color: var(--o-color-yellow5);
+  }
+}
+.bgColor-contributor {
+  background-color: inherit !important;
+  :deep(.el-progress-bar__inner) {
+    background-color: #4aaead;
   }
 }
 </style>
