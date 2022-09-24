@@ -8,6 +8,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import MobileRepositoryList from './MobileRepositoryList.vue';
+import ContributList from './ContributList.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import IconEmail from '~icons/app/icon-mail.svg';
@@ -404,6 +405,14 @@ onMounted(() => {
             @turn-page="turnPage"
           >
           </AppPaginationMo>
+        </div>
+      </div>
+      <div class="repository">
+        <h5>
+          {{ `${sigDetailName} ${sigDetail.USER_CONTRIBUTOR}` }}
+        </h5>
+        <div class="repository-filter">
+          <ContributList :sig="sigDetailName"></ContributList>
         </div>
       </div>
       <div class="recent-event">

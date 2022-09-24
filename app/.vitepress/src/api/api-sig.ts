@@ -42,3 +42,11 @@ export function getSalon() {
   const url = `${baseUrl}/api-sig/activities/`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
+
+/**
+ * sig用户的个人贡献
+ */
+export function querySigUserContribute(params: object) {
+  const url = '/query/sig/usercontribute';
+  return request.get(url, { params }).then((res: AxiosResponse) => res.data);
+}
