@@ -1,0 +1,88 @@
+<script lang="ts" setup>
+import { toRefs, ref } from 'vue';
+import { IObject } from './interface';
+const props = defineProps({
+  option: {
+    type: Array as () => IObject[],
+    default: () => [] as IObject[],
+  },
+});
+const { option } = toRefs(props);
+
+const changeRadio = (item: IObject, list: IObject) => {
+  item.active = list.value;
+  emits('get-contribute-info', item);
+};
+const emits = defineEmits(['get-contribute-info']);
+
+// 动态计算参数赋值
+const form = ref(
+  option.value.reduce((pre: any, next: any) => {
+    pre[next.id] = next.active;
+    return pre;
+  }, {})
+);
+</script>
+
+<template>
+  <div v-for="(item, index) in option" :key="item.id">
+    <div v-if="index" class="line"></div>
+    <div class="group">
+      <p class="label">{{ item.label }}</p>
+      <el-radio-group v-model="form[item.id]">
+        <el-radio
+          v-for="list in item.list"
+          :key="list.id"
+          border
+          :label="list.value"
+          @change="changeRadio(item, list)"
+          >{{ list.label }}</el-radio
+        >
+      </el-radio-group>
+    </div>
+  </div>
+  <div class="searchInput">
+    <slot name="searchInput"></slot>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.el-radio {
+  border-radius: 0;
+  margin-right: 12px;
+  border: 1px solid transparent;
+  height: 28px;
+  padding: 0 12px;
+  :deep(.el-radio__label) {
+    color: var(--o-color-neutral5);
+    font-weight: normal;
+    padding: 0;
+  }
+  &.is-checked:deep(.el-radio__label) {
+    color: var(--o-color-brand1);
+  }
+  &.is-checked {
+    border-color: var(--o-color-brand1);
+  }
+
+  :deep(.el-radio__input) {
+    display: none;
+  }
+}
+.line {
+  border-bottom: 1px solid var(--o-color-neutral11);
+  margin-bottom: 18px;
+}
+.group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  .label {
+    // width:88px;
+    margin-right: 24px;
+  }
+}
+.searchInput {
+  margin-left: 85px;
+}
+</style>
