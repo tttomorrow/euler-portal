@@ -1,3 +1,5 @@
+import summitImg_pc from '@/assets/category/home/banner/banner-summit_pc.png';
+import summitImg_mo from '@/assets/category/home/banner/banner-summit_mo.png';
 import ossImg_pc from '@/assets/category/home/banner/banner-oss_pc.jpg';
 import ossImg_mo from '@/assets/category/home/banner/banner-oss_mo.jpg';
 import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png';
@@ -9,6 +11,12 @@ export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
+      {
+        pcBanner: summitImg_pc,
+        moBanner: summitImg_mo,
+        link: '/zh/interaction/summit-list/summit2022-changsha/',
+        targetTap: 1,
+      },
       {
         pcBanner: ossImg_pc,
         moBanner: ossImg_mo,
