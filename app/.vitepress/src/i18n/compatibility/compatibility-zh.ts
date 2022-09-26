@@ -145,7 +145,8 @@ export default {
         A_TEXT_2: '使用指南',
         DESCRIPTION_2: '|',
         A_HREF: 'https://gitee.com/src-openeuler/oec-hardware/releases',
-        A_HREF_2: '/category/support/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
+        A_HREF_2:
+          '/category/support/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
         DOWNLOAD_NAME: 'openEuler硬件兼容性测试工具使用指南.pdf',
       },
       {
