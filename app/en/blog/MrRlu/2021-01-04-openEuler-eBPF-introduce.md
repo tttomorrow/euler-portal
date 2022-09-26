@@ -1,7 +1,6 @@
 ---
 title: 'eBPF Introduction'
 date: 2021-01-04
-category: blog 
 tags: 
     - kernel
     - eBPF
@@ -49,19 +48,19 @@ The software architecture has the following features:
 
 ### Main Functions
 
-| **Feature**          | **First Available In** | **Function Description**                                                                                                                                                                                      | **Application Scenarios**    |
-| -------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| Tc-bpf               | 4.1                    | eBPF reconstructs kernel traffic classification.                                                                                                                                                              | Networking                   |
-| XDP                  | 4.8                    | Network data plane programming technology (for L2/L3 services)                                                                                                                                                | Networking                   |
-| Cgroup socket        | 4.10                   | The socket in the cgroup allows the eBPF logic to be extended.                                                                                                                                                | Container                    |
-| AF_XDP               | 4.18                   | Original network packets are directly sent to the user mode (similar to DPDK).                                                                                                                                | Networking                   |
-| Sockmap              | 4.20                   | Sockmap supports short circuit processing.                                                                                                                                                                    | Container                    |
-| Device  JIT          | 4.20                   | JIT/ISA decoupling. The host can compile ISA instructions of a specified device form.                                                                                                                         | Heterogeneous programming    |
-| Cgroup sysctl        | 5.2                    | The system invoking permission can be controlled in a cgroup.                                                                                                                                                 | Container                    |
-| Struct ops  Prog ext | 5.3                    | The kernel logic and eBPF Prog can be dynamically replaced.                                                                                                                                                   | Framework basics             |
-| Bpf trampoline       | 5.5                    | 1. Replaces K(ret)probe in the kernel for better performance. <br />2. Used in eBPF Prog to solve the eBPF Prog debugging problem. <br />3. Implements the eBPF Prog dynamic link function (future function). | Performance tracing          |
-| KRSI (lsm + eBPF)    | 5.7                    | Customizable security policies during kernel running                                                                                                                                                          | Security                     |
-| Ring  buffer         | 5.8                    | A ring buffer is shared between CPUs to provide cross-CPU event order-preserving recording. It is used to replace buffers such as perf and ftrace.                                                            | Tracing/Performance analysis |
+| **Feature**            | **First Available In**| **Function Description**                                                | **Application Scenarios** |
+| -------------------- | ------------ | ------------------------------------------------------------ | ------------- |
+| Tc-bpf               | 4.1          | eBPF reconstructs kernel traffic classification.                                          | Networking |
+| XDP                  | 4.8          | Network data plane programming technology (for L2/L3 services)                   | Networking         |
+| Cgroup socket        | 4.10         | The socket in the cgroup allows the eBPF logic to be extended.                              | Container         |
+| AF_XDP               | 4.18         | Original network packets are directly sent to the user mode (similar to DPDK).                          | Networking         |
+| Sockmap              | 4.20         | Sockmap supports short circuit processing.                                              | Container         |
+| Device  JIT          | 4.20         | JIT/ISA decoupling. The host can compile ISA instructions of a specified device form.            | Heterogeneous programming     |
+| Cgroup sysctl        | 5.2          | The system invoking permission can be controlled in a cgroup.                                | Container         |
+| Struct ops  Prog ext | 5.3          | The kernel logic and eBPF Prog can be dynamically replaced.                  | Framework basics     |
+| Bpf trampoline       | 5.5          | 1. Replaces K(ret)probe in the kernel for better performance. <br />2. Used in eBPF Prog to solve the eBPF Prog debugging problem. <br />3. Implements the eBPF Prog dynamic link function (future function). | Performance tracing     |
+| KRSI (lsm + eBPF) | 5.7          | Customizable security policies during kernel running                                    | Security         |
+| Ring  buffer         | 5.8          | A ring buffer is shared between CPUs to provide cross-CPU event order-preserving recording. It is used to replace buffers such as perf and ftrace. | Tracing/Performance analysis|
 
 Note: The BPF community is still developing rapidly. For details about more advanced features, see the kernel community.
 
