@@ -50,7 +50,7 @@ const scheduleList = [
     time: '10:55-11:05',
     agenda: '欧拉走进行业，走向世界',
     guests: '熊伟',
-    title: '欧拉社区技术委员会委员',
+    title: '欧拉开源社区技术委员会委员',
   },
   {
     time: '11:05-11:20',
