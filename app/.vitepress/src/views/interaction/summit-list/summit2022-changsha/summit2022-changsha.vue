@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import AppContext from '@/components/AppContent.vue';
 import { useCommon } from '@/stores/common';
+
+import AppContext from '@/components/AppContent.vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
+
 import SummitBanner from '@/assets/category/summit/summit2022-changsha/summit-banner.png';
-import SummitBannerMo from '@/assets/category/summit/summit2022-changsha/summit-banner-mo.png';
+import SummitBannerMo from '@/assets/category/summit/summit2022-changsha/summit-banner_mo.png';
 import cooperation from '@/assets/category/summit/summit2022-changsha/cooperation.png';
 import cooperationDark from '@/assets/category/summit/summit2022-changsha/cooperation-dark.png';
 import schedule from '@/assets/category/summit/summit2022-changsha/schedule.png';
 import scheduleDark from '@/assets/category/summit/summit2022-changsha/schedule-dark.png';
 import IconTime from '~icons/app/icon-time.svg';
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 const screenWidth = useWindowResize();
 const commonStore = useCommon();
@@ -30,7 +33,7 @@ const scheduleList = [
   {
     time: '10:10-10:15',
     agenda: '基金会理事长致辞',
-    guests: '孙文龙（待确认）',
+    guests: '孙文龙',
   },
   {
     time: '10:15-10:20',
@@ -89,6 +92,19 @@ const scheduleList = [
   <div class="banner-box">
     <img :src="SummitBanner" class="banner" />
     <img :src="SummitBannerMo" class="banner banner-mo" />
+    <div class="btn-warper">
+      <a
+        target="_blank"
+        href="https://wx.vzan.com/live/page/79AC53DBFC5436AC4716DE0D9AA85D5B?topicid=1224869310&shauid=LhgDaMCuY3kvTXNHvA7Ndg**&vprid=0&sharetstamp=1663939231852"
+      >
+        <OButton animation class="home-banner-btn">
+          观看直播
+          <template #suffixIcon
+            ><OIcon><IconArrowRight /></OIcon
+          ></template>
+        </OButton>
+      </a>
+    </div>
   </div>
   <AppContext :mobile-top="40">
     <div class="middle">
@@ -180,6 +196,7 @@ const scheduleList = [
 .banner-box {
   display: flex;
   justify-content: center;
+  position: relative;
   .banner {
     width: 100%;
     text-align: center;
@@ -196,11 +213,57 @@ const scheduleList = [
       height: 126px;
     }
   }
+  .btn-warper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding: 0 var(--o-spacing-h2);
+    transform: translateX(-50%);
+    max-width: 1504px;
+    width: 100%;
+    height: 100%;
+    .home-banner-btn {
+      position: absolute;
+      bottom: var(--o-spacing-h2);
+      border-color: #fff;
+      color: #fff;
+    }
+    @media (max-width: 1440px) {
+      padding: 0 var(--o-spacing-h4);
+    }
+    @media (max-width: 1080px) {
+      padding: 0 var(--o-spacing-h5);
+      .home-banner-btn {
+        bottom: var(--o-spacing-h5);
+        padding: 4px 12px 4px 16px;
+        line-height: 22px;
+        font-size: 14px;
+        .o-icon {
+          font-size: 14px;
+        }
+      }
+    }
+    @media (max-width: 768px) {
+      .home-banner-btn {
+        bottom: var(--o-spacing-h8);
+      }
+    }
+    @media screen and (max-width: 768px) {
+    }
+  }
+  // .o-botton {
+  //   position: absolute;
+  // }
   .banner-mo {
     display: none;
     @media screen and (max-width: 768px) {
       display: block;
     }
+  }
+}
+.dark {
+  .banner {
+    filter: brightness(0.8) grayscale(0.2) contrast(1.2);
   }
 }
 .middle {
