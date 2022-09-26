@@ -11,13 +11,13 @@ import AppContent from '@/components/AppContent.vue';
 
 import { getSalon } from '@/api/api-sig';
 
-import IconCalendar from '~icons/app/icon-calendar.svg';
-import IconHome from '~icons/app/icon-home.svg';
 import banner from '@/assets/banner/banner-interaction.png';
-
 import illustration from '@/assets/illustrations/salon.png';
 import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
+
+import IconCalendar from '~icons/app/icon-calendar.svg';
+import IconHome from '~icons/app/icon-home.svg';
 
 interface LATEST_ACTIVITY {
   IS_MINI: number;
