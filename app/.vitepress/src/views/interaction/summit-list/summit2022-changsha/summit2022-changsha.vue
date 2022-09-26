@@ -1,14 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import AppContext from '@/components/AppContent.vue';
+import { useCommon } from '@/stores/common';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import SummitBanner from '@/assets/category/summit/summit2022-changsha/summit-banner.png';
+import SummitBannerMo from '@/assets/category/summit/summit2022-changsha/summit-banner-mo.png';
 import cooperation from '@/assets/category/summit/summit2022-changsha/cooperation.png';
+import cooperationDark from '@/assets/category/summit/summit2022-changsha/cooperation-dark.png';
 import schedule from '@/assets/category/summit/summit2022-changsha/schedule.png';
+import scheduleDark from '@/assets/category/summit/summit2022-changsha/schedule-dark.png';
 import IconTime from '~icons/app/icon-time.svg';
 
 const screenWidth = useWindowResize();
+const commonStore = useCommon();
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
+const cooperationImg = computed(() =>
+  commonStore.theme === 'dark' ? cooperationDark : cooperation
+);
+const scheduleImg = computed(() =>
+  commonStore.theme === 'dark' ? scheduleDark : schedule
+);
 
 const location: any = 'top';
 const scheduleList = [
@@ -75,11 +86,11 @@ const scheduleList = [
 </script>
 
 <template>
-  <img :src="SummitBanner" class="banner" />
+  <img :src="isMobile ? SummitBannerMo : SummitBanner" class="banner" />
   <AppContext :mobile-top="16">
     <div class="middle">
       <div class="middle-top">
-        <img :src="schedule" class="headline" />
+        <img :src="scheduleImg" class="headline" />
         <div v-show="!isMobile" class="middle-top-context">
           <OTable :data="scheduleList">
             <el-table-column width="200">
@@ -90,7 +101,7 @@ const scheduleList = [
                 </div>
               </template>
             </el-table-column>
-            <el-table-column width="600">
+            <el-table-column>
               <template #default="scope">
                 <p class="agenda">{{ scope.row.agenda }}</p>
               </template>
@@ -127,7 +138,7 @@ const scheduleList = [
         </div>
       </div>
       <div class="middle-bottom">
-        <img :src="cooperation" class="headline" />
+        <img :src="cooperationImg" class="headline" />
         <div class="middle-bottom-context">
           <p class="title">指导单位</p>
           <p class="details">
@@ -160,6 +171,7 @@ const scheduleList = [
   margin-top: var(--o-spacing-h2);
   @media (max-width: 768px) {
     height: 38px;
+    margin-top: var(--o-spacing-h5);
   }
 }
 .banner {
@@ -181,6 +193,7 @@ const scheduleList = [
     background-color: var(--o-color-bg2);
     margin-bottom: var(--o-spacing-h2);
     padding-bottom: var(--o-spacing-h1);
+    box-shadow: var(--o-shadow-l1);
     @media (max-width: 768px) {
       padding-bottom: var(--o-spacing-h5);
     }
@@ -190,6 +203,13 @@ const scheduleList = [
       @media (max-width: 1080px) {
         padding: 0px var(--o-spacing-h3);
       }
+      :deep(.el-table tbody tr:hover > td) {
+        background-color: var(--o-color-bg2) !important;
+      }
+      :deep(.el-table__inner-wrapper::before) {
+        width: 0px;
+        height: 0px;
+      }
       :deep(.el-table__header-wrapper) {
         display: none;
       }
@@ -198,6 +218,7 @@ const scheduleList = [
       }
       .active-time {
         display: flex;
+        align-items: center;
         .clock {
           height: 24px;
           width: 24px;
@@ -205,7 +226,7 @@ const scheduleList = [
         }
         p {
           font-weight: normal;
-          color: var(--o-color-neutral5);
+          color: var(--o-color-text4);
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
         }
@@ -214,18 +235,18 @@ const scheduleList = [
         font-size: var(--o-font-size-h6);
         font-weight: normal;
         color: var(--o-color-text1);
-        line-height: var(--o-line-height-text);
+        line-height: var(--o-line-height-h6);
       }
       .guests {
         font-size: var(--o-font-size-h6);
         font-weight: normal;
         color: var(--o-color-text1);
-        line-height: var(--o-line-height-text);
+        line-height: var(--o-line-height-h6);
       }
       .title {
         font-size: var(--o-font-size-h8);
         font-weight: normal;
-        color: var(--o-color-neutral5);
+        color: var(--o-color-text4);
         line-height: var(--o-line-height-h8);
       }
     }
@@ -234,15 +255,21 @@ const scheduleList = [
       padding: 0 var(--o-spacing-h5);
       :deep(.el-timeline-item__timestamp) {
         color: var(--o-color-brand1);
-        font-size: 10px;
+        font-size: var(--o-font-size-tip);
         font-weight: 400;
-        line-height: 16px;
+        line-height: var(--o-line-height-tip);
       }
       :deep(.el-timeline-item__node) {
         background-color: var(--o-color-brand1);
       }
       :deep(.el-timeline-item__tail) {
         border-left: 2px dashed var(--o-color-brand1);
+      }
+      :deep(.el-timeline-item__wrapper) {
+        padding-left: var(--o-spacing-h5);
+      }
+      :deep(.el-timeline-item__timestamp) {
+        margin-bottom: 0px;
       }
       &-item {
         .agenda {
@@ -255,10 +282,10 @@ const scheduleList = [
         .context-box {
           margin-top: var(--o-spacing-h8);
           display: flex;
-          font-size: 10px;
+          font-size: var(--o-font-size-tip);
           font-weight: 400;
-          color: var(--o-color-neutral5);
-          line-height: 16px;
+          color: var(--o-color-text4);
+          line-height: var(--o-line-height-tip);
           .guests {
             width: 100px;
           }
@@ -269,6 +296,7 @@ const scheduleList = [
   &-bottom {
     margin: 0 auto;
     background-color: var(--o-color-bg2);
+    box-shadow: var(--o-shadow-l1);
     &-context {
       padding: 0px 80px;
       margin-top: var(--o-spacing-h2);
@@ -293,7 +321,7 @@ const scheduleList = [
         }
       }
       .details {
-        color: var(--o-color-neutral5);
+        color: var(--o-color-text4);
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-h8);
         margin-bottom: var(--o-spacing-h3);
