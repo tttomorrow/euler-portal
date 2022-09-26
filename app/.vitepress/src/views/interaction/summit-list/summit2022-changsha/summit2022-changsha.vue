@@ -27,16 +27,7 @@ const scheduleImg = computed(() =>
 const location: any = 'top';
 const scheduleList = [
   {
-    time: '10:00-10:10',
-    agenda: '领导致辞',
-  },
-  {
-    time: '10:10-10:15',
-    agenda: '基金会理事长致辞',
-    guests: '孙文龙',
-  },
-  {
-    time: '10:15-10:20',
+    time: '10:00-10:20',
     agenda: '领导致辞',
   },
   {
@@ -45,43 +36,43 @@ const scheduleList = [
   },
   {
     time: '10:30-10:45',
-    agenda: '院士演讲',
+    agenda: '中国开源创新的新境界',
     guests: '王怀民',
     title: '中国科学院院士',
   },
   {
     time: '10:45-10:55',
-    agenda: 'openEuler志高远 开源汇智创未来',
+    agenda: '欧拉志高远，开源汇智创未来',
     guests: '江大勇',
-    title: 'opeEuler社区理事长',
+    title: '欧拉开源社区理事长',
   },
   {
     time: '10:55-11:05',
-    agenda: 'openEuler走进行业，走向世界',
+    agenda: '欧拉走进行业，走向世界',
     guests: '熊伟',
-    title: 'openEuler社区技术委员会委员',
+    title: '欧拉社区技术委员会委员',
   },
   {
     time: '11:05-11:20',
-    agenda: '携手openEuler ，共推操作系统产业新发展',
+    agenda: '携手欧拉 ，共推操作系统产业新发展',
     guests: '刘文清',
     title: '麒麟信安总裁',
   },
   {
-    time: '11:20-11:30',
+    time: '11:20-11:25',
+    agenda: '意向签约仪式',
+  },
+  {
+    time: '11:25-11:35',
     agenda: '欧拉行业用户实践分享',
   },
   {
-    time: '11:30-11:35',
-    agenda: '湖南欧拉商业企业意向签约仪式',
-  },
-  {
     time: '11:35-11:40',
-    agenda: '欧拉技术创新与产业发展联盟发起仪式',
+    agenda: '湖南欧拉技术创新与产业发展联盟发起仪式',
   },
   {
     time: '11:40-11:50',
-    agenda: 'openEuler-开源雨林可信认证项目',
+    agenda: '欧拉开源治理工程能力分享',
     guests: '高琨',
     title: '华为2012实验室专家',
   },
