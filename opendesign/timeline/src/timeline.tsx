@@ -19,7 +19,7 @@ export default defineComponent({
     // 命中的tab
     const activeTab = ref(5);
     // 最左与最右阈值
-    const leftThreshold: string = '2021-01';
+    const leftThreshold: string = '2020-10';
     const rightThreshold: Ref<string> = ref('');
     // 时间线列表赋值
     const changeDate = (year: number, month: number): Array<string> => {
@@ -57,14 +57,17 @@ export default defineComponent({
         ? new Date(modelValue.value)
         : new Date();
       const modelYear = modelDate.getFullYear();
+      const _modelYear =
+        modelDate.getFullYear() === 2020 ? 2021 : modelDate.getFullYear();
       const modelMonth =
-        modelYear === 2021 && modelDate.getMonth() + 1 < 6
-          ? 6
+        (modelYear === 2021 && modelDate.getMonth() + 1 < 3) ||
+        modelYear === 2020
+          ? 3
           : modelDate.getMonth() + 1;
       const year = new Date().getFullYear();
       const month = new Date().getMonth() + 1;
       rightThreshold.value = year + '-' + (month >= 10 ? month : '0' + month);
-      timeList.value = changeDate(modelYear, modelMonth);
+      timeList.value = changeDate(_modelYear, modelMonth);
       emit('update:modelValue', timeList.value[activeTab.value]);
     };
     // 点击时间线tab
