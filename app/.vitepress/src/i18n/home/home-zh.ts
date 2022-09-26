@@ -137,8 +137,8 @@ export default {
       IMG_HOVER: summitHover,
       IMG_DARK: summitDark,
       IMG_DARK_HOVER: summitDarkHover,
-      DSSCRIPTIVE: '2022 开放原子开源峰会',
-      LINK: 'https://openatom.cn/summit',
+      DSSCRIPTIVE: '湖南欧拉操作系统生态大会',
+      LINK: '/zh/interaction/summit-list/summit2022-changsha/',
     },
   ],
   IMG_CAROUSE: {

@@ -86,8 +86,10 @@ const scheduleList = [
 </script>
 
 <template>
-  <img :src="isMobile ? SummitBannerMo : SummitBanner" class="banner" />
-  <AppContext :mobile-top="16">
+  <div class="banner-box">
+    <img :src="isMobile ? SummitBannerMo : SummitBanner" class="banner" />
+  </div>
+  <AppContext :mobile-top="40">
     <div class="middle">
       <div class="middle-top">
         <img :src="scheduleImg" class="headline" />
@@ -174,17 +176,23 @@ const scheduleList = [
     margin-top: var(--o-spacing-h5);
   }
 }
-.banner {
-  width: 100%;
-  height: 380px;
-  @media (max-width: 1550px) {
-    height: 300px;
-  }
-  @media (max-width: 1080px) {
-    height: 200px;
-  }
-  @media (max-width: 768px) {
-    height: 126px;
+.banner-box {
+  display: flex;
+  justify-content: center;
+  .banner {
+    width: 100%;
+    text-align: center;
+    object-fit: cover;
+    height: 380px;
+    @media (max-width: 1550px) {
+      height: 300px;
+    }
+    @media (max-width: 1080px) {
+      height: 200px;
+    }
+    @media (max-width: 768px) {
+      height: 126px;
+    }
   }
 }
 .middle {
