@@ -1,12 +1,12 @@
-import review1 from '../../assets/category/meetup/1.png';
-import review2 from '../../assets/category/meetup/2.png';
-import review3 from '../../assets/category/meetup/3.png';
-import review4 from '../../assets/category/meetup/4.png';
-import review5 from '../../assets/category/meetup/5.png';
-import review6 from '../../assets/category/meetup/6.png';
-import review7 from '../../assets/category/meetup/7.png';
-import review8 from '../../assets/category/meetup/8.png';
-import review9 from '../../assets/category/meetup/9.png';
+import review1 from '@/assets/category/salon/1.png';
+import review2 from '@/assets/category/salon/2.png';
+import review3 from '@/assets/category/salon/3.png';
+import review4 from '@/assets/category/salon/4.png';
+import review5 from '@/assets/category/salon/5.png';
+import review6 from '@/assets/category/salon/6.png';
+import review7 from '@/assets/category/salon/7.png';
+import review8 from '@/assets/category/salon/8.png';
+import review9 from '@/assets/category/salon/9.png';
 
 export default {
   cn: {

@@ -11,7 +11,6 @@ import logo_dark from '@/assets/logo_dark.png';
 
 import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 import IconTime from '~icons/app/icon-time.svg';
-//import IconMapPin from '~icons/app/icon-map-pin.svg';
 
 import { getActivityDetail } from '@/api/api-calendar';
 import { useCommon } from '@/stores/common';

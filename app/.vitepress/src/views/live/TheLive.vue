@@ -11,12 +11,12 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
 import illustration from '@/assets/illustrations/live.png';
-import cardBg_light from '@/assets/category/interaction/live/light-crad-bg.png';
-import cardBg_light_mo from '@/assets/category/interaction/live/light-crad-bg-mobile.png';
-import cardBg_dark from '@/assets/category/interaction/live/dark-crad-bg.png';
-import cardBg_dark_mo from '@/assets/category/interaction/live/dark-crad-bg-mobile.png';
-import cardBg_light_mo_extension from '@/assets/category/interaction/live/bg-extension-light.png';
-import cardBg_dark_mo_extension from '@/assets/category/interaction/live/bg-extension-dark.png';
+import cardBg_light from '@/assets/category/live/card-bg_light.png';
+import cardBg_light_mo from '@/assets/category/live/card-bg_light_mobile.png';
+import cardBg_dark from '@/assets/category/live/card-bg_dark.png';
+import cardBg_dark_mo from '@/assets/category/live/card-bg_dark_mobile.png';
+import cardBg_light_mo_extension from '@/assets/category/live/bg-extension_light.png';
+import cardBg_dark_mo_extension from '@/assets/category/live/bg-extension_dark.png';
 
 import IconRight from '~icons/app/icon-arrow-right.svg';
 import IconUser from '~icons/app/icon-user.svg';

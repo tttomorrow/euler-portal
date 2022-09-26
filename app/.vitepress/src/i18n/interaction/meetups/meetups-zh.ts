@@ -1,4 +1,4 @@
-import salon from '../../../data/salon/salon';
+import salon from '@/data/salon/salon';
 export default {
   MEETUPS: {
     MEETUPS: '沙龙',
