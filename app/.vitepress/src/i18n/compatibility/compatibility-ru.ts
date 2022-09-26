@@ -145,7 +145,8 @@ export default {
         DESCRIPTION_1:
           'After the issue is created, you can perform the compatibility test. The openEuler team provides the compatibility test framework and user guide that help you complete the test.',
         A_TEXT: 'Click here to obtain the user guide.',
-        A_HREF: '/category/support/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
+        A_HREF:
+          '/category/support/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
         DOWNLOAD_NAME: 'openEuler硬件兼容性测试工具使用指南.pdf',
       },
       {
