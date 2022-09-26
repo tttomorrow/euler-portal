@@ -87,7 +87,8 @@ const scheduleList = [
 
 <template>
   <div class="banner-box">
-    <img :src="isMobile ? SummitBannerMo : SummitBanner" class="banner" />
+    <img :src="SummitBanner" class="banner" />
+    <img :src="SummitBannerMo" class="banner banner-mo" />
   </div>
   <AppContext :mobile-top="40">
     <div class="middle">
@@ -191,7 +192,14 @@ const scheduleList = [
       height: 200px;
     }
     @media (max-width: 768px) {
+      display: none;
       height: 126px;
+    }
+  }
+  .banner-mo {
+    display: none;
+    @media screen and (max-width: 768px) {
+      display: block;
     }
   }
 }
