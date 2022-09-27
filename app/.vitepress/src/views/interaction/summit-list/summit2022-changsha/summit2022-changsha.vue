@@ -155,11 +155,11 @@ const scheduleList = [
             中共湖南省委网络安全和信息化委员会办公室、湖南省工业和信息化厅、湖南省人民政府国有资产监督管理委员会、湖南湘江新区管委会、开放原子开源基金会
           </p>
           <p class="title">支持单位</p>
-          <p class="details">中国软件行业协会、中国计算机学会开源发展委员会</p>
-          <p class="title">主办单位</p>
           <p class="details">
-            长沙市工业和信息化局、长沙信息产业园管理委员会、openEuler社区
+            中国软件行业协会、中国计算机学会开源发展委员会、openEuler社区
           </p>
+          <p class="title">主办单位</p>
+          <p class="details">长沙市工业和信息化局、长沙信息产业园管理委员会</p>
           <p class="title">承办单位</p>
           <p class="details">湖南麒麟信安科技股份有限公司、华为技术有限公司</p>
           <p class="title">协办单位</p>
