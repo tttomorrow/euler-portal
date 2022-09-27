@@ -25,7 +25,7 @@ const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
 const { lang } = useData();
 const all = computed(() => {
   if (lang.value === 'en') {
-    return 'ALL';
+    return 'All';
   } else if (lang.value === 'ru') {
     return 'ВСЕ';
   } else {

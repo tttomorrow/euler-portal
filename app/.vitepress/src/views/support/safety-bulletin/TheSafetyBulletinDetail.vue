@@ -9,8 +9,6 @@ import { DetailParams } from '@/shared/@types/type-support';
 
 import IconChevronRight from '~icons/app/icon-chevron-right.svg';
 
-import type { AxiosResponse } from '@/shared/axios';
-
 const i18n = useI18n();
 const router = useRouter();
 const { lang } = useData();
@@ -24,7 +22,7 @@ const queryData: DetailParams = reactive({
 
 function getSecurityDetailInfo(data: any) {
   try {
-    getSecurityDetail(data).then((res: AxiosResponse) => {
+    getSecurityDetail(data).then((res: any) => {
       if (res) {
         detailData.value = res;
         cveIdList.value = res.cveId.split(';');
@@ -56,13 +54,13 @@ onMounted(() => {
   <div class="wrapper">
     <div class="breadcrumb">
       <p class="last-page" @click="goBackPage">
-        {{ i18n.security.SECURITY_ADVISORIES }}
+        {{ i18n.safetyBulletin.SECURITY_ADVISORIES }}
       </p>
       <span class="separtor">
         <OIcon><IconChevronRight /></OIcon>
       </span>
       <p class="current-page">
-        {{ i18n.security.SECURITY_ADVISORIES_DETAIL }}
+        {{ i18n.safetyBulletin.SECURITY_ADVISORIES_DETAIL }}
       </p>
     </div>
 
@@ -70,11 +68,11 @@ onMounted(() => {
       <p class="bulletin-name">{{ detailData.securityNoticeNo }}</p>
       <div class="bulletin-intro">
         <div>
-          <span>{{ i18n.security.SYNOPSIS }}:</span>
+          <span>{{ i18n.safetyBulletin.SYNOPSIS }}:</span>
           <p>{{ detailData.summary }}</p>
         </div>
         <div>
-          <span>{{ i18n.security.RELEASE_DATE }}:</span>
+          <span>{{ i18n.safetyBulletin.RELEASE_DATE }}:</span>
           <p>{{ detailData.announcementTime }}</p>
         </div>
       </div>
@@ -84,11 +82,11 @@ onMounted(() => {
     <div class="tabs-container">
       <OTabs class="o-tabs">
         <div class="wrapper1">
-          <OTabPane :label="i18n.security.OVERVIEW">
+          <OTabPane :label="i18n.safetyBulletin.OVERVIEW">
             <div class="tab-content">
               <div class="tab-content-item">
                 <h5 class="tab-content-item-title">
-                  {{ i18n.security.BRIEF_INTRODUCTION }}
+                  {{ i18n.safetyBulletin.BRIEF_INTRODUCTION }}
                 </h5>
                 <p class="tab-content-item-text">
                   {{ detailData.introduction }}
@@ -96,7 +94,7 @@ onMounted(() => {
               </div>
               <div class="tab-content-item">
                 <h5 class="tab-content-item-title">
-                  {{ i18n.security.SEVERITY }}
+                  {{ i18n.safetyBulletin.SEVERITY }}
                 </h5>
                 <p class="tab-content-item-text">
                   {{ detailData.type }}
@@ -104,7 +102,7 @@ onMounted(() => {
               </div>
               <div class="tab-content-item">
                 <h5 class="tab-content-item-title">
-                  {{ i18n.security.THEME }}
+                  {{ i18n.safetyBulletin.THEME }}
                 </h5>
                 <p class="tab-content-item-text">
                   {{ detailData.subject }}
@@ -112,7 +110,7 @@ onMounted(() => {
               </div>
               <div class="tab-content-item">
                 <h5 class="tab-content-item-title">
-                  {{ i18n.security.DESCRIPTION }}
+                  {{ i18n.safetyBulletin.DESCRIPTION }}
                 </h5>
                 <p class="tab-content-item-text">
                   {{ detailData.description }}
@@ -120,7 +118,7 @@ onMounted(() => {
               </div>
               <div class="tab-content-item">
                 <h5 class="tab-content-item-title">
-                  {{ i18n.security.AFFECTED_COMPONENTS }}
+                  {{ i18n.safetyBulletin.AFFECTED_COMPONENTS }}
                 </h5>
                 <p class="tab-content-item-text">
                   {{ detailData.affectedComponent }}
@@ -128,7 +126,7 @@ onMounted(() => {
               </div>
               <div class="tab-content-item">
                 <h5 class="tab-content-item-title">
-                  {{ i18n.security.CVE }}
+                  {{ i18n.safetyBulletin.CVE }}
                 </h5>
                 <p
                   v-for="(item, index) in cveIdList"
@@ -141,7 +139,7 @@ onMounted(() => {
               </div>
               <div class="tab-content-item">
                 <h5 class="tab-content-item-title">
-                  {{ i18n.security.REFERENCE_DOCUMENTS }}
+                  {{ i18n.safetyBulletin.REFERENCE_DOCUMENTS }}
                 </h5>
                 <div
                   v-for="item in detailData.referenceList"
@@ -154,7 +152,7 @@ onMounted(() => {
             </div>
           </OTabPane>
 
-          <OTabPane :label="i18n.security.UPDATED_PACKAGES">
+          <OTabPane :label="i18n.safetyBulletin.UPDATED_PACKAGES">
             <div class="tab-content">
               <div
                 v-for="item in detailData.packageHelperList"

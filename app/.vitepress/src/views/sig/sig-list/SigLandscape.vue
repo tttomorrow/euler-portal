@@ -1,112 +1,94 @@
 <script setup lang="ts">
 import { useData, useRouter } from 'vitepress';
-import { useI18n } from '@/i18n';
+import { onMounted, ref } from 'vue';
+
+import SigLandscapeFeature from './SigLandscapeFeature.vue';
+
+import { getSigLandscape } from '@/api/api-sig';
+
+import { GroupInfo } from '@/shared/@types/type-sig';
 
 const configData = useData();
 const router = useRouter();
-const i18n = useI18n();
 const language = configData.lang;
 
 const toSigDetail = (name: string): void => {
   router.go(`/${language.value}/sig/sig-detail/?name=${name}`);
 };
+
+const landscapeInfo = ref<GroupInfo[]>([]);
+
+onMounted(async () => {
+  try {
+    landscapeInfo.value = await getSigLandscape();
+  } catch (err: any) {
+    throw new Error(err);
+  }
+});
 </script>
 
 <template>
   <div class="landscape">
     <div
-      v-for="item in i18n.sig.SIG_LANDSCAPE"
-      :key="item.CATEGORY_NAME"
-      class="sig-category-wrapper"
+      v-for="group in landscapeInfo"
+      :key="group.groupName"
+      class="landscape-group"
     >
-      <h2>{{ item.CATEGORY_NAME }}</h2>
-      <ul class="sig-category-list">
-        <li
-          v-for="subItem in item.SUB_LIST"
-          :key="subItem.SUB_CATEGORY_NAME"
-          class="sig-category-item"
-          :style="{ borderColor: subItem.COLOR }"
-        >
-          <h3 :style="{ backgroundColor: subItem.COLOR }">
-            {{ subItem.SUB_CATEGORY_NAME }}
-          </h3>
-          <ul class="sig-list">
-            <li
-              v-for="followItem in subItem.LIST"
-              :key="followItem.NAME"
-              :style="{ borderColor: subItem.COLOR }"
-              :class="followItem.IS_WIDER ? 'wider' : ''"
-              @click="toSigDetail(followItem.NAME)"
-            >
-              {{ followItem.NAME }}
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <p class="landscape-group-title">{{ group.groupName }}</p>
+      <SigLandscapeFeature
+        :info="group?.features"
+        @sig-click="toSigDetail"
+      ></SigLandscapeFeature>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .landscape {
-  max-width: 1120px;
-  margin: var(--o-spacing-h2) auto;
-  .sig-category-wrapper {
-    margin-bottom: var(--o-spacing-h1);
-    h2 {
-      font-size: var(--o-font-size-h5);
-      line-height: var(--o-line-height-h7);
-      color: var(--o-color-text1);
-      font-weight: normal;
-      margin-bottom: var(--o-spacing-h2);
-      text-align: center;
+  margin-top: var(--o-spacing-h2);
+
+  .landscape-group {
+    & + .landscape-group {
+      margin-top: var(--o-spacing-h2);
     }
-    .sig-category-list {
-      column-count: 2;
-      column-gap: 20px;
-      @media (max-width: 780px) {
-        column-count: 1;
-        margin: 0 var(--o-spacing-h3);
-      }
-      .sig-category-item {
-        break-inside: avoid;
-        border: 1px solid;
-        border-radius: 4px;
-        margin-bottom: var(--o-spacing-h4);
-        h3 {
-          font-size: var(--o-font-size-h8);
-          line-height: var(--o-line-height-h7);
-          color: var(--o-color-text2);
-          font-weight: normal;
-          text-align: center;
-          line-height: var(--o-line-height-h3);
+
+    .landscape-group-title {
+      font-size: var(--o-font-size-h7);
+      line-height: var(--o-line-height7);
+      margin-bottom: var(--o-spacing-h4);
+      color: var(--o-color-text1);
+    }
+
+    &:nth-child(2) {
+      :deep(.landscape-feature .landscape-feature-item) {
+        &:nth-child(1) {
+          .feature-item-title {
+            background-color: #8e583d;
+          }
         }
-        .sig-list {
-          padding: 20px 10px 20px 20px;
-          margin-bottom: unset;
-          column-count: unset;
-          column-gap: unset;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          @media (max-width: 768px) {
-            padding: 10px 10px;
+        &:nth-child(2) {
+          .feature-item-title {
+            background-color: #73c0de;
           }
-          li {
-            flex-shrink: 0;
-            width: 162px;
-            text-align: center;
-            color: var(--o-color-text1);
-            font-size: var(--o-font-size-text);
-            line-height: var(--o-line-height-h5);
-            height: var(--o-line-height-h5);
-            border: 1px solid;
-            border-radius: 4px;
-            margin: 0 10px 10px 0;
-            cursor: pointer;
+        }
+        &:nth-child(3) {
+          .feature-item-title {
+            background-color: #cec79a;
           }
-          .wider {
-            width: 248px;
+        }
+        &:nth-child(4) {
+          .feature-item-title {
+            background-color: #4c3e72;
+          }
+        }
+        &:nth-child(5) {
+          .feature-item-title {
+            background-color: #19647e;
+          }
+        }
+        &:nth-child(6) {
+          .feature-item-title {
+            background-color: #c44e4e;
           }
         }
       }

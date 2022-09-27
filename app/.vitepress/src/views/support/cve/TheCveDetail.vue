@@ -109,35 +109,35 @@ onMounted(() => {
   <AppContent :mobile-top="16">
     <div class="breadcrumb">
       <p class="last-page" @click="goBackPage">
-        {{ i18n.security.CVE }}
+        {{ i18n.cve.CVE }}
       </p>
       <span class="separtor"
         ><o-icon><icon-chevron></icon-chevron></o-icon
       ></span>
-      <p class="current-page">{{ i18n.security.CVE_DETAIL }}</p>
+      <p class="current-page">{{ i18n.cve.CVE_DETAIL }}</p>
     </div>
     <div class="cve-head">
       <p class="cve-name">{{ cveDetailData.cveId }}</p>
       <div class="cve-intro">
         <div>
-          <span>{{ i18n.security.RELEASE_DATE }}:</span>
+          <span>{{ i18n.cve.RELEASE_DATE }}:</span>
           <p>{{ cveDetailData.announcementTime }}</p>
         </div>
         <div>
-          <span>{{ i18n.security.MODIFIED_TIME }}: </span>
+          <span>{{ i18n.cve.MODIFIED_TIME }}: </span>
           <p>{{ cveDetailData.updateTime }}</p>
         </div>
       </div>
     </div>
     <div class="cve-detail-body">
       <div class="detail-item">
-        <h2 class="detail-item-title">{{ i18n.security.SYNOPSIS }}</h2>
+        <h2 class="detail-item-title">{{ i18n.cve.SYNOPSIS }}</h2>
         <p class="detail-item-content">
           {{ cveDetailData.summary }}
         </p>
       </div>
       <div class="detail-item">
-        <h2 class="detail-item-title">{{ i18n.security.METRICS_V3 }}</h2>
+        <h2 class="detail-item-title">{{ i18n.cve.METRICS_V3 }}</h2>
         <OTable class="pc-list" :data="cvssList" style="width: 100%">
           <OTableColumn label="" prop="cate"> </OTableColumn>
           <OTableColumn label="NVD" prop="NVD"> </OTableColumn>
@@ -146,18 +146,17 @@ onMounted(() => {
       </div>
       <div class="detail-item">
         <h2 class="detail-item-title">
-          {{ i18n.security.AFFECTED_PRODUCTS }}
+          {{ i18n.cve.AFFECTED_PRODUCTS }}
         </h2>
 
         <OTable class="affect-list" :data="affectedProductList">
-          <OTableColumn :label="i18n.security.PRODUCT" prop="productName">
+          <OTableColumn :label="i18n.cve.PRODUCT" prop="productName">
           </OTableColumn>
-          <OTableColumn :label="i18n.security.PACKAGE" prop="packageName">
+          <OTableColumn :label="i18n.cve.PACKAGE" prop="packageName">
           </OTableColumn>
-          <OTableColumn :label="i18n.security.STATUS" prop="status">
-          </OTableColumn>
+          <OTableColumn :label="i18n.cve.STATUS" prop="status"> </OTableColumn>
 
-          <el-table-column :label="i18n.security.SECURITY_ADVISORIES">
+          <el-table-column :label="i18n.cve.SECURITY_ADVISORIES">
             <template #default="scope">
               <span
                 class="detail-page"
@@ -168,7 +167,7 @@ onMounted(() => {
             </template>
           </el-table-column>
 
-          <OTableColumn :label="i18n.security.RELEASE_DATE" prop="releaseTime">
+          <OTableColumn :label="i18n.cve.RELEASE_DATE" prop="releaseTime">
           </OTableColumn>
         </OTable>
         <ul class="mobile-list">
@@ -179,16 +178,16 @@ onMounted(() => {
           >
             <ul>
               <li>
-                <span>{{ i18n.security.PRODUCT }}:</span>{{ item.productName }}
+                <span>{{ i18n.cve.PRODUCT }}:</span>{{ item.productName }}
               </li>
               <li>
-                <span>{{ i18n.security.PACKAGE }}:</span>{{ item.packageName }}
+                <span>{{ i18n.cve.PACKAGE }}:</span>{{ item.packageName }}
               </li>
               <li>
-                <span>{{ i18n.security.STATUS }}:</span>{{ item.status }}
+                <span>{{ i18n.cve.STATUS }}:</span>{{ item.status }}
               </li>
               <li>
-                <span>{{ i18n.security.SECURITY_ADVISORIES }}:</span
+                <span>{{ i18n.cve.SECURITY_ADVISORIES }}:</span
                 ><a
                   class="detail-link"
                   @click="toDetail(item.securityNoticeNo)"
@@ -196,8 +195,7 @@ onMounted(() => {
                 >
               </li>
               <li>
-                <span>{{ i18n.security.RELEASE_DATE }}:</span
-                >{{ item.releaseTime }}
+                <span>{{ i18n.cve.RELEASE_DATE }}:</span>{{ item.releaseTime }}
               </li>
             </ul>
           </li>
