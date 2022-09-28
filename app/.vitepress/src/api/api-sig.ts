@@ -50,3 +50,11 @@ export function querySigUserContribute(params: object) {
   const url = '/query/sig/usercontribute';
   return request.get(url, { params }).then((res: AxiosResponse) => res.data);
 }
+
+/**
+ * sig landscape
+ */
+export function getSigLandscape() {
+  const url = '/query/sig/scoreAll?community=openeuler';
+  return request.get(url).then((res: AxiosResponse) => res.data);
+}
