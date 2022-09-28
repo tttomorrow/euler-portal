@@ -1,112 +1,264 @@
 <script setup lang="ts">
 import { useData, useRouter } from 'vitepress';
-import { useI18n } from '@/i18n';
+import { onMounted, ref } from 'vue';
+import { getSigLandscape } from '@/api/api-sig';
 
 const configData = useData();
 const router = useRouter();
-const i18n = useI18n();
 const language = configData.lang;
 
 const toSigDetail = (name: string): void => {
   router.go(`/${language.value}/sig/sig-detail/?name=${name}`);
 };
+
+const landscapeInfo = ref({});
+
+onMounted(async () => {
+  try {
+    const res = await getSigLandscape();
+    const info: any = [];
+    for (let i = 0, len = res.data?.length; i < len; i++) {
+      const item = res.data[i];
+      if (item.group === '' && item.feature === '') {
+        continue;
+      }
+
+      if (
+        !info.find((group: any) => {
+          return group.groupName === item.group;
+        })
+      ) {
+        info.push({
+          groupName: item.group,
+          features: [],
+        });
+      }
+
+      const groupInfo = info.find((group: any) => {
+        return group.groupName === item.group;
+      });
+
+      if (
+        !groupInfo?.features.find((feature: any) => {
+          return feature.featureName === item.feature;
+        })
+      ) {
+        groupInfo?.features.push({
+          featureName: item.feature,
+          sigs: [],
+        });
+      }
+
+      const featureInfo = groupInfo?.features.find((feature: any) => {
+        return feature.featureName === item.feature;
+      });
+      featureInfo.sigs.push(item.sig_names);
+    }
+    info.sort((b: any, a: any) => {
+      return a.features.length - b.features.length;
+    });
+    info.forEach((group: any) => {
+      group.features.sort((b: any, a: any) => {
+        return a.sigs.length - b.sigs.length;
+      });
+      group.features.forEach((feature: any) => {
+        feature.sigs.sort((b: any, a: any) => {
+          return b.localeCompare(a);
+        });
+      });
+    });
+
+    landscapeInfo.value = info;
+  } catch (err: any) {
+    throw new Error(err);
+  }
+});
 </script>
 
 <template>
   <div class="landscape">
     <div
-      v-for="item in i18n.sig.SIG_LANDSCAPE"
-      :key="item.CATEGORY_NAME"
-      class="sig-category-wrapper"
+      v-for="group in landscapeInfo"
+      :key="group.groupName"
+      class="landscape-group"
     >
-      <h2>{{ item.CATEGORY_NAME }}</h2>
-      <ul class="sig-category-list">
-        <li
-          v-for="subItem in item.SUB_LIST"
-          :key="subItem.SUB_CATEGORY_NAME"
-          class="sig-category-item"
-          :style="{ borderColor: subItem.COLOR }"
+      <p class="landscape-group-title">{{ group?.groupName }}</p>
+      <div class="landscape-feature">
+        <div
+          v-for="feature in group?.features"
+          :key="feature.featureName"
+          class="landscape-feature-item"
         >
-          <h3 :style="{ backgroundColor: subItem.COLOR }">
-            {{ subItem.SUB_CATEGORY_NAME }}
-          </h3>
-          <ul class="sig-list">
+          <div class="feature-item-title">{{ feature.featureName }}</div>
+          <ul class="feature-item-sig">
             <li
-              v-for="followItem in subItem.LIST"
-              :key="followItem.NAME"
-              :style="{ borderColor: subItem.COLOR }"
-              :class="followItem.IS_WIDER ? 'wider' : ''"
-              @click="toSigDetail(followItem.NAME)"
+              v-for="sig in feature.sigs"
+              :key="sig"
+              class="sig-item"
+              @click="toSigDetail(sig)"
             >
-              {{ followItem.NAME }}
+              {{ sig }}
             </li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .landscape {
-  max-width: 1120px;
-  margin: var(--o-spacing-h2) auto;
-  .sig-category-wrapper {
-    margin-bottom: var(--o-spacing-h1);
-    h2 {
-      font-size: var(--o-font-size-h5);
-      line-height: var(--o-line-height-h7);
-      color: var(--o-color-text1);
-      font-weight: normal;
-      margin-bottom: var(--o-spacing-h2);
-      text-align: center;
+  margin-top: var(--o-spacing-h2);
+
+  .landscape-group {
+    & + .landscape-group {
+      margin-top: var(--o-spacing-h2);
     }
-    .sig-category-list {
-      column-count: 2;
-      column-gap: 20px;
-      @media (max-width: 780px) {
-        column-count: 1;
-        margin: 0 var(--o-spacing-h3);
-      }
-      .sig-category-item {
-        break-inside: avoid;
-        border: 1px solid;
-        border-radius: 4px;
-        margin-bottom: var(--o-spacing-h4);
-        h3 {
-          font-size: var(--o-font-size-h8);
-          line-height: var(--o-line-height-h7);
-          color: var(--o-color-text2);
-          font-weight: normal;
-          text-align: center;
-          line-height: var(--o-line-height-h3);
+
+    .landscape-group-title {
+      font-size: var(--o-font-size-h7);
+      line-height: var(--o-line-height7);
+      margin-bottom: var(--o-spacing-h4);
+      color: var(--o-color-text1);
+    }
+
+    .landscape-feature {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      column-gap: var(--o-spacing-h6);
+      .landscape-feature-item {
+        &:nth-child(1) {
+          .feature-item-title {
+            background-color: #7f6bbe;
+          }
         }
-        .sig-list {
-          padding: 20px 10px 20px 20px;
-          margin-bottom: unset;
-          column-count: unset;
-          column-gap: unset;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          @media (max-width: 768px) {
-            padding: 10px 10px;
+        &:nth-child(2) {
+          .feature-item-title {
+            background-color: #4d7dff;
           }
-          li {
-            flex-shrink: 0;
-            width: 162px;
+        }
+        &:nth-child(3) {
+          .feature-item-title {
+            background-color: #db7c61;
+          }
+        }
+        &:nth-child(4) {
+          .feature-item-title {
+            background-color: #8e9aaf;
+          }
+        }
+        &:nth-child(5) {
+          .feature-item-title {
+            background-color: #505d75;
+          }
+        }
+        &:nth-child(6) {
+          .feature-item-title {
+            background-color: #2a9d8f;
+          }
+        }
+        &:nth-child(7) {
+          .feature-item-title {
+            background-color: #fec456;
+          }
+        }
+
+        .feature-item-title {
+          padding: 18px;
+          font-size: var(--o-font-size-h8);
+          line-height: var(--o-line-height-h8);
+          color: var(--o-color-white);
+          text-align: center;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .feature-item-sig {
+          margin-top: var(--o-spacing-h5);
+          .sig-item {
+            & + .sig-item {
+              margin-top: var(--o-spacing-h5);
+            }
+
             text-align: center;
-            color: var(--o-color-text1);
+            padding: 0 23px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: var(--o-font-size-text);
-            line-height: var(--o-line-height-h5);
-            height: var(--o-line-height-h5);
-            border: 1px solid;
-            border-radius: 4px;
-            margin: 0 10px 10px 0;
+            line-height: var(--o-line-height-text);
+            color: #002fa7;
+            border: 1px solid #002fa7;
+            background-color: #ffffff;
+            transition: all 0.3s;
             cursor: pointer;
+
+            &:hover {
+              background: #002fa7;
+              color: #ffffff;
+              transform: scale(1.05, 1.05);
+            }
           }
-          .wider {
-            width: 248px;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      .landscape-feature {
+        .landscape-feature-item {
+          &:nth-child(1) {
+            .feature-item-title {
+              background-color: #8e583d;
+            }
+          }
+          &:nth-child(2) {
+            .feature-item-title {
+              background-color: #73c0de;
+            }
+          }
+          &:nth-child(3) {
+            .feature-item-title {
+              background-color: #cec79a;
+            }
+          }
+          &:nth-child(4) {
+            .feature-item-title {
+              background-color: #4c3e72;
+            }
+          }
+          &:nth-child(5) {
+            .feature-item-title {
+              background-color: #19647e;
+            }
+          }
+          &:nth-child(6) {
+            .feature-item-title {
+              background-color: #c44e4e;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark {
+  .landscape-group {
+    .landscape-feature {
+      .landscape-feature-item {
+        .feature-item-sig {
+          .sig-item {
+            color: #ffffff;
+            background: #383838;
+            border: 1px solid #b2b2b2;
+
+            &:hover {
+              background: #406fe7;
+              color: #ffffff;
+              border-color: #406fe7;
+            }
           }
         }
       }
