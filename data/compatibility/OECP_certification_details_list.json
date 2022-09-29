@@ -8,7 +8,7 @@
         "arch": "x86_64",
         "details": "详细信息",
         "friendly_link": "https://www.turbolinux.com.cn/",
-        "os_download_link": "http://download.turbolinux.com.cn:8012/tles16-x86_64-dvd.iso",
+        "os_download_link": "https://www.turbolinux.com.cn",
         "checksum": "480a16e6f63f35f94d1d2a87fbc05c3a",
         "base_openeuler_version": "openEuler 22.03",
         "tools_result": [
@@ -81,7 +81,7 @@
         "arch": "aarch64",
         "details": "详细信息",
         "friendly_link": "https://www.turbolinux.com.cn/",
-        "os_download_link": "http://download.turbolinux.com.cn:8011/tles16-aarch64-dvd.iso",
+        "os_download_link": "https://www.turbolinux.com.cn",
         "checksum": "efdb8b3983db6d85cd73322ce817a320",
         "base_openeuler_version": "openEuler 22.03",
         "tools_result": [
