@@ -14,6 +14,7 @@ export interface CveQuery {
   lang?: string;
   testOrganization?: string;
   osvName?: string;
+  cardType?: string;
 }
 export interface DetailParams {
   securityNoticeNo: string;

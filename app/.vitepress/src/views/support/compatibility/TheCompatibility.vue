@@ -31,6 +31,7 @@ import {
   getTestOrganizations,
   getCpu,
   getSoftFilter,
+  getDriveTypes,
 } from '@/api/api-security';
 
 const screenWidth = useWindowResize();
@@ -41,7 +42,7 @@ const { lang } = useData();
 
 const all = computed(() => {
   if (lang.value === 'en') {
-    return 'ALL';
+    return 'All';
   } else if (lang.value === 'ru') {
     return 'ВСЕ';
   } else {
@@ -54,6 +55,7 @@ const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const activeIndex2 = ref(0);
 const activeIndex3 = ref(0);
+const activeIndex4 = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const architectureSelect = ref<string[]>([`${all.value}`]);
@@ -61,6 +63,7 @@ const osOptions = ref<string[]>([`${all.value}`]);
 const cpuList = ref<string[]>([`${all.value}`]);
 const softType = ref<string[]>([`${all.value}`]);
 const osLists = ref<string[]>([`${all.value}`]);
+const typeLists = ref<string[]>([`${all.value}`]);
 
 const activeName = ref('1');
 const testOrganizationsLists = ref<string[]>([`${all.value}`]);
@@ -71,6 +74,7 @@ const osName = ref('');
 const architehture = ref('');
 const cpuName = ref('');
 const typeName = ref('');
+const driveType = ref('');
 
 const filterData = ref<FilterList[]>([
   {
@@ -108,6 +112,7 @@ const queryData: CveQuery = reactive({
   os: '',
   testOrganization: '',
   type: '',
+  cardType: '',
   lang: `${lang.value}`,
 });
 
@@ -210,6 +215,8 @@ const initQueryData = () => {
   queryData.keyword = '';
   queryData.cpu = '';
   queryData.os = '';
+  queryData.cardType = '';
+
   searchContent.value = '';
   activeIndex1.value = 0;
   activeIndex.value = 0;
@@ -222,6 +229,7 @@ const initQueryData = () => {
 
 const handleClick = () => {
   initQueryData();
+
   nextTick(() => {
     initData(queryData);
   });
@@ -269,6 +277,14 @@ const optionTagClick = (i: number, item: string) => {
   initData(queryData);
 };
 
+const driveTypeClick = (i: number, item: string) => {
+  activeIndex4.value = i;
+  queryData.cardType = item === '全部' ? '' : item;
+  driveType.value = item;
+
+  initData(queryData);
+};
+
 function cpuTagClick(index: number, item: string) {
   activeIndex2.value = index;
   queryData.cpu = item === '全部' ? '' : item;
@@ -305,9 +321,16 @@ const goBackPage = () => {
   }
 };
 
+function driveTypeSelected(val: string) {
+  queryData.cardType = val === '全部' ? '' : val;
+  activeIndex4.value = typeLists.value.indexOf(val);
+  initMobileData(queryData);
+}
+
 function osNameSelected(val: string) {
   queryData.os = val === '全部' ? '' : val;
   activeIndex.value = osOptions.value.indexOf(val);
+
   initMobileData(queryData);
 }
 
@@ -344,6 +367,19 @@ const go = (id: number) => {
 
 onMounted(() => {
   getCompatibilityData(queryData);
+
+  try {
+    getDriveTypes(lang.value).then((res: any) => {
+      if (res.success) {
+        res.result.forEach((item: string) => {
+          typeLists.value.push(item);
+        });
+      }
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+
   try {
     driverArchitectureOptions({ lang: `${lang.value}` }).then((res: any) => {
       res.result.forEach((item: string) => {
@@ -363,6 +399,7 @@ onMounted(() => {
   } catch (e: any) {
     throw new Error(e);
   }
+
   try {
     driverOSOptions({ lang: `${lang.value}` }).then((res: any) => {
       res.result.forEach((item: string) => {
@@ -382,6 +419,7 @@ onMounted(() => {
   } catch (e: any) {
     throw new Error(e);
   }
+
   try {
     getTestOrganizations().then((res: any) => {
       res.result.testOrganizations.forEach((item: string) => {
@@ -391,6 +429,7 @@ onMounted(() => {
   } catch (e: any) {
     throw new Error(e);
   }
+
   try {
     getCpu({ lang: `${lang.value}` }).then((res: any) => {
       res.result.forEach((item: string) => {
@@ -573,6 +612,22 @@ onMounted(() => {
                 checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
                 @click="optionTagClick(index, item)"
+              >
+                {{ item }}
+              </OTag>
+            </TagFilter>
+
+            <TagFilter
+              :show="false"
+              :label="i18n.compatibility.DRIVETYPE"
+              checkable
+            >
+              <OTag
+                v-for="(item, index) in typeLists"
+                :key="'tag' + index"
+                checkable
+                :type="activeIndex4 === index ? 'primary' : 'text'"
+                @click="driveTypeClick(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -1020,6 +1075,7 @@ onMounted(() => {
                 {{ item }}
               </OOption>
             </OSelect>
+
             <OSelect
               v-model="architehture"
               :placeholder="i18n.compatibility.ARCHITECTURE"
@@ -1027,6 +1083,22 @@ onMounted(() => {
             >
               <OOption
                 v-for="item in architectureSelect"
+                :key="item"
+                :class="item"
+                :label="item"
+                :value="item"
+              >
+                {{ item }}
+              </OOption>
+            </OSelect>
+
+            <OSelect
+              v-model="driveType"
+              :placeholder="i18n.compatibility.DRIVETYPE"
+              @change="driveTypeSelected"
+            >
+              <OOption
+                v-for="item in typeLists"
                 :key="item"
                 :class="item"
                 :label="item"

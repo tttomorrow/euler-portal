@@ -104,7 +104,7 @@ watch(queryData, () => getCveLists(queryData));
   <BannerLevel2
     :background-image="banner"
     background-text="SUPPORT"
-    :title="i18n.security.CVE"
+    :title="i18n.cve.CVE"
     subtitle=""
     :illustration="illustration"
   />
@@ -112,15 +112,15 @@ watch(queryData, () => getCveLists(queryData));
     <div class="o-search">
       <OSearch
         v-model="searchContent"
-        :placeholder="i18n.security.INPUT_CVE_ID"
+        :placeholder="i18n.cve.INPUT_CVE_ID"
         @change="searchValchange"
       ></OSearch>
     </div>
 
     <div class="filter-card">
-      <TagFilter :label="i18n.security.STATUS" :show="false">
+      <TagFilter :label="i18n.cve.STATUS" :show="false">
         <OTag
-          v-for="(item, index) in i18n.security.CATEGORY_LIST"
+          v-for="(item, index) in i18n.cve.CATEGORY_LIST"
           :key="'tag' + index"
           checkable
           :type="activeIndex === index ? 'primary' : 'text'"
@@ -134,7 +134,7 @@ watch(queryData, () => getCveLists(queryData));
     <div class="filter-mobile">
       <div class="filter">
         <div
-          v-for="(item, index) in i18n.security.CATEGORY_LIST"
+          v-for="(item, index) in i18n.cve.CATEGORY_LIST"
           :key="item"
           :class="activeIndex === index ? 'selected' : ''"
           class="filter-item"
@@ -146,7 +146,7 @@ watch(queryData, () => getCveLists(queryData));
     </div>
 
     <OTable class="pc-list" :data="tableData" style="width: 100%">
-      <el-table-column :label="i18n.security.CVE" width="160">
+      <el-table-column :label="i18n.cve.CVE" width="160">
         <template #default="scope">
           <span
             class="detail-page"
@@ -156,41 +156,38 @@ watch(queryData, () => getCveLists(queryData));
         </template>
       </el-table-column>
 
+      <OTableColumn :label="i18n.cve.SYNOPSIS" prop="summary"></OTableColumn>
       <OTableColumn
-        :label="i18n.security.SYNOPSIS"
-        prop="summary"
-      ></OTableColumn>
-      <OTableColumn
-        :label="i18n.security.CVSS_SCORE"
+        :label="i18n.cve.CVSS_SCORE"
         prop="cvsssCoreOE"
         width="150"
       ></OTableColumn>
       <OTableColumn
         width="180"
-        :label="i18n.security.RELEASE_DATE"
+        :label="i18n.cve.RELEASE_DATE"
         prop="updateTime"
       ></OTableColumn>
       <OTableColumn
         width="180"
-        :label="i18n.security.MODIFIED_TIME"
+        :label="i18n.cve.MODIFIED_TIME"
         prop="updateTime"
       ></OTableColumn>
       <OTableColumn
         width="120"
-        :label="i18n.security.PACKAGE"
+        :label="i18n.cve.PACKAGE"
         prop="packageName"
       ></OTableColumn>
       <OTableColumn
-        :label="i18n.security.STATUS"
+        :label="i18n.cve.STATUS"
         prop="status"
         width="100"
       ></OTableColumn>
-      <el-table-column :label="i18n.security.OPERATION" width="100">
+      <el-table-column :label="i18n.cve.OPERATION" width="100">
         <template #default="scope">
           <span
             class="detail-page"
             @click="goCveDetail(scope.row.cveId, scope.row.packageName)"
-            >{{ i18n.security.DETAIL }}</span
+            >{{ i18n.cve.DETAIL }}</span
           >
         </template>
       </el-table-column>
@@ -200,30 +197,29 @@ watch(queryData, () => getCveLists(queryData));
       <li v-for="item in tableData" :key="item.cveId" class="item">
         <ul>
           <li>
-            <span>{{ i18n.security.CVE }}:</span>{{ item.cveId }}
+            <span>{{ i18n.cve.CVE }}:</span>{{ item.cveId }}
           </li>
           <li>
-            <span>{{ i18n.security.SYNOPSIS }}:</span>{{ item.summary }}
+            <span>{{ i18n.cve.SYNOPSIS }}:</span>{{ item.summary }}
           </li>
           <li>
-            <span>{{ i18n.security.CVSS_SCORE }}:</span>{{ item.cvsssCoreOE }}
+            <span>{{ i18n.cve.CVSS_SCORE }}:</span>{{ item.cvsssCoreOE }}
           </li>
           <li>
-            <span>{{ i18n.security.RELEASE_DATE }}:</span
-            >{{ item.announcementTime }}
+            <span>{{ i18n.cve.RELEASE_DATE }}:</span>{{ item.announcementTime }}
           </li>
           <li>
-            <span>{{ i18n.security.MODIFIED_TIME }}:</span>{{ item.updateTime }}
+            <span>{{ i18n.cve.MODIFIED_TIME }}:</span>{{ item.updateTime }}
           </li>
           <li>
-            <span>{{ i18n.security.STATUS }}:</span>{{ item.status }}
+            <span>{{ i18n.cve.STATUS }}:</span>{{ item.status }}
           </li>
           <li>
-            <span>{{ i18n.security.OPERATION }}:</span
+            <span>{{ i18n.cve.OPERATION }}:</span
             ><a
               class="detail-page"
               @click="goCveDetail(item.cveId, item.packageName)"
-              >{{ i18n.security.DETAIL }}</a
+              >{{ i18n.cve.DETAIL }}</a
             >
           </li>
         </ul>

@@ -12,6 +12,7 @@ import AppContent from '@/components/AppContent.vue';
 const { lang } = useData();
 const i18n = useI18n();
 const router = useRouter();
+
 const configurationInfo: ConfigurationInfo = ref({});
 const detailAapterList: any = ref([]);
 

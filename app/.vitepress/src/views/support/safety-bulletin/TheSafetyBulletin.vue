@@ -127,7 +127,7 @@ watch(queryData, () => getSecurityLists(queryData));
   <BannerLevel2
     :background-image="banner"
     background-text="SUPPORT"
-    :title="i18n.security.SECURITY_ADVISORIES"
+    :title="i18n.safetyBulletin.SECURITY_ADVISORIES"
     subtitle=""
     :illustration="satetyBulletin"
   />
@@ -136,7 +136,7 @@ watch(queryData, () => getSecurityLists(queryData));
       <div class="input-container">
         <OSearch
           v-model="inputName"
-          :placeholder="i18n.security.SEARCH"
+          :placeholder="i18n.safetyBulletin.SEARCH"
           @change="searchValchange"
         ></OSearch>
       </div>
@@ -144,9 +144,9 @@ watch(queryData, () => getSecurityLists(queryData));
       <OCard class="filter-card">
         <template #header>
           <div class="card-header">
-            <TagFilter :label="i18n.security.SEVERITY" :show="false">
+            <TagFilter :label="i18n.safetyBulletin.SEVERITY" :show="false">
               <OTag
-                v-for="(item, index) in i18n.security.SEVERITY_LIST"
+                v-for="(item, index) in i18n.safetyBulletin.SEVERITY_LIST"
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex === index ? 'primary' : 'text'"
@@ -158,7 +158,7 @@ watch(queryData, () => getSecurityLists(queryData));
           </div>
         </template>
         <div class="card-body">
-          <TagFilter :show="false" :label="i18n.security.YEAR">
+          <TagFilter :show="false" :label="i18n.safetyBulletin.YEAR">
             <OTag
               v-for="(item, index) in years"
               :key="'tag' + index"
@@ -166,7 +166,7 @@ watch(queryData, () => getSecurityLists(queryData));
               :type="activeIndex1 === index ? 'primary' : 'text'"
               @click="yearTagClick(index, item)"
             >
-              {{ item === '' ? i18n.security.ALL : item }}
+              {{ item === '' ? i18n.safetyBulletin.ALL : item }}
             </OTag>
           </TagFilter>
         </div>
@@ -175,7 +175,7 @@ watch(queryData, () => getSecurityLists(queryData));
       <div class="filter-mobile">
         <div class="filter">
           <div
-            v-for="(item, index) in i18n.security.SEVERITY_LIST"
+            v-for="(item, index) in i18n.safetyBulletin.SEVERITY_LIST"
             :key="item"
             :class="activeIndex === index ? 'selected' : ''"
             class="filter-item"
@@ -192,7 +192,7 @@ watch(queryData, () => getSecurityLists(queryData));
             <template #title>
               <o-icon><icon-calendar></icon-calendar></o-icon>
               <span class="selected-year">{{
-                selectedYear === '' ? i18n.security.ALL : selectedYear
+                selectedYear === '' ? i18n.safetyBulletin.ALL : selectedYear
               }}</span>
             </template>
             <div class="years">
@@ -203,7 +203,7 @@ watch(queryData, () => getSecurityLists(queryData));
                 :class="selectedYear === item ? 'selected' : ''"
                 @click="selectYear(index, item)"
               >
-                {{ item === '' ? i18n.security.ALL : item }}
+                {{ item === '' ? i18n.safetyBulletin.ALL : item }}
               </p>
             </div>
           </el-collapse-item>
@@ -213,7 +213,7 @@ watch(queryData, () => getSecurityLists(queryData));
       <OTable class="pc-list" :data="tableData" style="width: 100%">
         <el-table-column>
           <template #header>
-            <span>{{ i18n.security.ADVISORY }}</span>
+            <span>{{ i18n.safetyBulletin.ADVISORY }}</span>
           </template>
           <template #default="scope">
             <span
@@ -225,26 +225,26 @@ watch(queryData, () => getSecurityLists(queryData));
           </template>
         </el-table-column>
         <OTableColumn
-          :label="i18n.security.SYNOPSIS"
+          :label="i18n.safetyBulletin.SYNOPSIS"
           prop="summary"
         ></OTableColumn>
         <OTableColumn
           width="160"
-          :label="i18n.security.SEVERITY"
+          :label="i18n.safetyBulletin.SEVERITY"
           prop="type"
         ></OTableColumn>
         <OTableColumn
-          :label="i18n.security.AFFECTED_PRODUCTS"
+          :label="i18n.safetyBulletin.AFFECTED_PRODUCTS"
           prop="affectedProduct"
           width="400"
         ></OTableColumn>
         <OTableColumn
-          :label="i18n.security.AFFECTED_COMPONENTS"
+          :label="i18n.safetyBulletin.AFFECTED_COMPONENTS"
           width="160"
           prop="affectedComponent"
         ></OTableColumn>
         <OTableColumn
-          :label="i18n.security.RELEASE_DATE"
+          :label="i18n.safetyBulletin.RELEASE_DATE"
           width="160"
           prop="announcementTime"
         ></OTableColumn>
@@ -254,25 +254,25 @@ watch(queryData, () => getSecurityLists(queryData));
         <li v-for="item in tableData" :key="item.securityNoticeNo" class="item">
           <ul>
             <li @click="jumpBulletinDetail(item.securityNoticeNo)">
-              <span>{{ i18n.security.ADVISORY }}:</span
+              <span>{{ i18n.safetyBulletin.ADVISORY }}:</span
               ><span class="notice">{{ item.securityNoticeNo }}</span>
             </li>
             <li>
-              <span>{{ i18n.security.OVERVIEW }}:</span>{{ item.summary }}
+              <span>{{ i18n.safetyBulletin.OVERVIEW }}:</span>{{ item.summary }}
             </li>
             <li>
-              <span>{{ i18n.security.SEVERITY }}:</span>{{ item.type }}
+              <span>{{ i18n.safetyBulletin.SEVERITY }}:</span>{{ item.type }}
             </li>
             <li>
-              <span>{{ i18n.security.AFFECTED_PRODUCTS }}:</span
+              <span>{{ i18n.safetyBulletin.AFFECTED_PRODUCTS }}:</span
               >{{ item.affectedProduct }}
             </li>
             <li>
-              <span>{{ i18n.security.AFFECTED_COMPONENTS }}:</span
+              <span>{{ i18n.safetyBulletin.AFFECTED_COMPONENTS }}:</span
               >{{ item.affectedComponent }}
             </li>
             <li>
-              <span>{{ i18n.security.RELEASE_DATE }}:</span
+              <span>{{ i18n.safetyBulletin.RELEASE_DATE }}:</span
               >{{ item.announcementTime }}
             </li>
             <li></li>
