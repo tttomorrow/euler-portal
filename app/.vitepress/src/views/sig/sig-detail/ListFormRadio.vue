@@ -35,7 +35,7 @@ const form = ref(
           :key="list.id"
           border
           :label="list.value"
-          class="sig-detail-radio"
+          class="list-radio"
           @change="changeRadio(item, list)"
           >{{ list.label }}</el-radio
         >
@@ -48,32 +48,30 @@ const form = ref(
 </template>
 
 <style lang="scss" scoped>
-.sig-detail-radio {
-  :deep(.el-radio) {
-    border-radius: 0;
-    margin-right: 12px;
-    border: 1px solid transparent;
-    height: 28px;
-    padding: 0 12px;
+:deep(.list-radio) {
+  border-radius: 0;
+  margin-right: 12px;
+  border: 1px solid transparent;
+  height: 28px;
+  padding: 0 12px;
 
+  .el-radio__label {
+    color: var(--o-color-neutral5);
+    font-weight: normal;
+    padding: 0;
+  }
+
+  .el-radio__input {
+    display: none;
+  }
+
+  &.is-checked {
     .el-radio__label {
-      color: var(--o-color-neutral5);
-      font-weight: normal;
-      padding: 0;
+      color: var(--o-color-brand1);
     }
-
-    .el-radio__input {
-      display: none;
-    }
-
-    &.is-checked {
-      .el-radio__label {
-        color: var(--o-color-brand1);
-      }
-    }
-    &.is-checked {
-      border-color: var(--o-color-brand1);
-    }
+  }
+  &.is-checked {
+    border-color: var(--o-color-brand1);
   }
 }
 
