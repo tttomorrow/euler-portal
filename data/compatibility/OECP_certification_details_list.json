@@ -1,5 +1,151 @@
 [
     {
+        "os_version":"Kylin-Server-10-SP2-x86_64.iso",
+        "osv_name": "麒麟软件有限公司",
+        "total_result": "pass",
+        "type": "服务器",
+        "date": "2022/09/30",
+        "arch": "x86_64",
+        "details": "详细信息",
+        "friendly_link": "https://www.kylinos.cn/",
+        "os_download_link": "https://www.kylinos.cn/",
+        "checksum": "b57e18dfa818e3337a0c54605aa48a10",
+        "base_openeuler_version": "openEuler 20.03 LTS SP1",
+        "tools_result": [
+            {
+                "name": "core_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "KABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "ABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "service_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "kernel_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ],
+        "platform_result":[
+            {
+                "name": "repo",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "base_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "performance_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "running_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ]
+    },
+    {
+        "os_version":"Kylin-Server-10-SP2-aarch64.iso",
+        "osv_name": "麒麟软件有限公司",
+        "total_result": "pass",
+        "type": "服务器",
+        "date": "2022/09/30",
+        "arch": "aarch64",
+        "details": "详细信息",
+        "friendly_link": "https://www.kylinos.cn/",
+        "os_download_link": "https://www.kylinos.cn/",
+        "checksum": "46396bdf9cff3bc8baa823254ef8009b",
+        "base_openeuler_version": "openEuler 20.03 LTS SP1",
+        "tools_result": [
+            {
+                "name": "core_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "KABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "ABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "service_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "kernel_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ],
+        "platform_result":[
+            {
+                "name": "repo",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "base_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "performance_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "running_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ]
+    },
+
+
+    {
         "os_version":"turbolinux-16-LTS-x86_64-dvd.iso",
         "osv_name": "北京拓林思软件有限公司",
         "total_result": "pass",
