@@ -237,6 +237,12 @@ export default {
           PATH: 'https://radiatest.openeuler.org',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
+        {
+          NAME: 'NestOS',
+          ID: 'NestOS',
+          PATH: 'https://nestos.test.osinfra.cn/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: ['atune', 'bishengjdk', 'isula', 'secgear', 'stratovirt'],
     },
