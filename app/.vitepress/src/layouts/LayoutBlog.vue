@@ -24,6 +24,19 @@ const blogInfo = {
   <div class="markdown">
     <AppMdHead :frontmatter="frontmatter" />
     <Content />
+    <hr />
+    <div class="copyright">
+      {{ i18n.interaction.COPYRIGHT_1 }}
+      <a
+        target="_blank"
+        href="https://creativecommons.org/licenses/by-sa/4.0/legalcode"
+        >CC-BY-SA 4.0</a
+      >
+      {{ i18n.interaction.COPYRIGHT_2 }}
+    </div>
+    <div class="disclaimer">
+      {{ i18n.interaction.DISCLAIMER }}
+    </div>
   </div>
 </template>
 
@@ -49,6 +62,25 @@ const blogInfo = {
   }
   @media (max-width: 768px) {
     padding-top: 16px;
+  }
+}
+.disclaimer,
+.copyright {
+  font-size: var(--o-font-size-h8);
+  line-height: var(--o-line-height-h8);
+  color: var(--o-color-brand1);
+  a {
+    text-decoration: underline;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
+  }
+}
+.disclaimer {
+  margin-top: var(--o-spacing-h6);
+  @media screen and (max-width: 768px) {
+    margin-top: var(--o-spacing-h8);
   }
 }
 </style>

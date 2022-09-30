@@ -547,27 +547,29 @@ const moblieCurrentChange = (val: string) => {
           <div class="blog-list-item-title">
             <p>{{ item.title }}</p>
           </div>
-          <div class="blog-list-item-info">
-            <div class="infodetail">
-              <OIcon class="icon"><IconUser /></OIcon>
-              <p v-for="aut in item.author" :key="aut">
-                {{ aut }}
-              </p>
-            </div>
-            <div class="infodetail">
-              <OIcon class="icon"><IconCalendar /></OIcon>
-              <p>
-                {{ item.archives }}
-              </p>
-            </div>
-            <!-- <div class="infodetail">
+          <div class="blog-list-body">
+            <div class="blog-list-item-info">
+              <div class="infodetail">
+                <OIcon class="icon"><IconUser /></OIcon>
+                <p v-for="aut in item.author" :key="aut">
+                  {{ aut }}
+                </p>
+              </div>
+              <div class="infodetail">
+                <OIcon class="icon"><IconCalendar /></OIcon>
+                <p>
+                  {{ item.archives }}
+                </p>
+              </div>
+              <!-- <div class="infodetail">
               <OIcon class="icon"><IconBrowse /></OIcon>
               <p>{{userCaseData.BROWSE}}{{ item.browsetimes }}{{userCaseData.TIMES}}</p>
               <p>{{ userCaseData.BROWSE }}10{{ userCaseData.TIMES }}</p>
             </div> -->
-          </div>
-          <div class="blog-list-item-content">
-            <p>{{ item.summary }}</p>
+            </div>
+            <div class="blog-list-item-content">
+              <p>{{ item.summary }}</p>
+            </div>
           </div>
           <div class="blog-list-item-tags">
             <OTag
@@ -619,6 +621,10 @@ const moblieCurrentChange = (val: string) => {
   -webkit-box-orient: vertical;
 }
 :deep(.el-card__body) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   padding: var(--o-spacing-h2);
 }
 
@@ -627,8 +633,6 @@ const moblieCurrentChange = (val: string) => {
   @media (max-width: 767px) {
     font-size: var(--o-font-size-text);
   }
-  // font-size: var(--o-font-size-tip);
-  // transform: scale(.5);
 }
 
 .post-btn {
@@ -685,8 +689,8 @@ const moblieCurrentChange = (val: string) => {
       background-repeat: no-repeat;
       cursor: pointer;
       &-title {
+        flex: 1;
         font-size: var(--o-font-size-h7);
-        margin-bottom: var(--o-spacing-h3); // 32px
         color: var(--o-color-text1);
 
         p {
@@ -757,7 +761,7 @@ const moblieCurrentChange = (val: string) => {
     display: none;
   }
   :deep(.el-card__body) {
-    padding: var(--o-spacing-h4);
+    padding: var(--o-spacing-h3);
     height: 100%;
   }
 }

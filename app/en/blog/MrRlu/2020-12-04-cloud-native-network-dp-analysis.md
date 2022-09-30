@@ -1,6 +1,7 @@
 ---
 title: 'Analysis of the Cloud Native Network Data Plane Acceleration Solution'
 date: 2020-12-04
+category: blog 
 tags: 
     - Cloud native network
     - eBPF
@@ -334,14 +335,14 @@ Solution: Nginx performance optimization
 
 We here summarize the performance optimization solutions for each scenario and the software vendors that are suitable for providing such technical solutions.
 
-| Scenario           | Acceleration Solution                           | Applicable Software Vendor| Key Technology|
-| --------------- | ----------------------------------- | ---------------- | -------- |
-| Intra-pod communication acceleration  | User-mode CNI                          | OS and base software    | AF_XDP   |
-| Inter-pod communication acceleration  | VNF powered by XDP                  | OS and base software    | XDP      |
-| Inter-node communication acceleration | VNF powered by DPDK                 | ISV              | DPDK     |
-| Kubernetes network policy acceleration| Network policy based on K8s identifier | ISV              | CNI      |
-|                 | iptables powered by eBPF            | OS and base software    | eBPF     |
-| Service mesh acceleration   | SocketMap                           | OS and base software    | eBPF     |
-| Service access acceleration| IPVS                               | This solution is not recommended.    |          |
-|                 | iptables powered by eBPF            | OS and base software    | eBPF     |
-| Ingress acceleration    | Nginx performance optimization                      | OS and base software    | Nginx   |
+| Scenario                               | Acceleration Solution                  | Applicable Software Vendor        | Key Technology |
+| -------------------------------------- | -------------------------------------- | --------------------------------- | -------------- |
+| Intra-pod communication acceleration   | User-mode CNI                          | OS and base software              | AF_XDP         |
+| Inter-pod communication acceleration   | VNF powered by XDP                     | OS and base software              | XDP            |
+| Inter-node communication acceleration  | VNF powered by DPDK                    | ISV                               | DPDK           |
+| Kubernetes network policy acceleration | Network policy based on K8s identifier | ISV                               | CNI            |
+|                                        | iptables powered by eBPF               | OS and base software              | eBPF           |
+| Service mesh acceleration              | SocketMap                              | OS and base software              | eBPF           |
+| Service access acceleration            | IPVS                                   | This solution is not recommended. |                |
+|                                        | iptables powered by eBPF               | OS and base software              | eBPF           |
+| Ingress acceleration                   | Nginx performance optimization         | OS and base software              | Nginx          |
