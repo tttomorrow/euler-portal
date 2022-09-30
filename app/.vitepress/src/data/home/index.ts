@@ -16,8 +16,8 @@ export default {
       {
         pcBanner: newEdition_pc_zh,
         moBanner: newEdition_mo_zh,
-        link: '/zh/interaction/summit-list/summit2022-changsha/',
-        btn: '查看详情',
+        // link: '',
+        // btn: '查看详情',
         id: 'newEdition',
         targetTap: 1,
       },

@@ -41,8 +41,8 @@ const homeBanner = computed(() => {
 });
 
 // banner跳转事件
-const jump = (item: any) => {
-  if (flag.value) {
+const jumpTo = (item: any) => {
+  if (flag.value && item.link) {
     if (item.targetTap === 1) {
       window.open(item.link, '_blank');
     } else {
@@ -67,7 +67,7 @@ const jump = (item: any) => {
     @swiper="onSwiper"
   >
     <swiper-slide v-for="item in homeBanner" :key="item.link">
-      <a class="banner-panel" @click="jump(item)">
+      <a class="banner-panel" @click="jumpTo(item)">
         <div
           class="banner-panel-cover"
           :style="{
