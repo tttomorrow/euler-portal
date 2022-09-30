@@ -47,28 +47,33 @@ const form = ref(
 </template>
 
 <style lang="scss" scoped>
-.el-radio {
+:deep(.el-radio) {
   border-radius: 0;
   margin-right: 12px;
   border: 1px solid transparent;
   height: 28px;
   padding: 0 12px;
-  :deep(.el-radio__label) {
+
+  .el-radio__label {
     color: var(--o-color-neutral5);
     font-weight: normal;
     padding: 0;
   }
-  &.is-checked:deep(.el-radio__label) {
-    color: var(--o-color-brand1);
+
+  .el-radio__input {
+    display: none;
+  }
+
+  &.is-checked {
+    .el-radio__label {
+      color: var(--o-color-brand1);
+    }
   }
   &.is-checked {
     border-color: var(--o-color-brand1);
   }
-
-  :deep(.el-radio__input) {
-    display: none;
-  }
 }
+
 .line {
   border-bottom: 1px solid var(--o-color-division1);
   margin-bottom: 18px;
