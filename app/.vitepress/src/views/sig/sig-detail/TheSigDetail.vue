@@ -8,7 +8,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import MobileRepositoryList from './MobileRepositoryList.vue';
-// import ContributList from './ContributList.vue';
+import ContributList from './ContributList.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import IconEmail from '~icons/app/icon-mail.svg';
@@ -407,14 +407,14 @@ onMounted(() => {
           </AppPaginationMo>
         </div>
       </div>
-      <!-- <div class="repository">
+      <div class="repository">
         <h5>
           {{ `${sigDetailName} ${sigDetail.USER_CONTRIBUTOR}` }}
         </h5>
         <div class="repository-filter">
           <ContributList :sig="sigDetailName"></ContributList>
         </div>
-      </div> -->
+      </div>
       <div class="recent-event">
         <h5>{{ sigDetail.LATEST_DYNAMIC }}</h5>
         <div class="dynamic">
@@ -648,6 +648,9 @@ onMounted(() => {
         .repository-pagin {
           margin-top: var(--o-spacing-h5);
         }
+      }
+      @media screen and (max-width: 768px) {
+        display: none;
       }
     }
     .recent-event {
