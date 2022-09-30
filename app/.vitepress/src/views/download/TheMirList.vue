@@ -162,7 +162,7 @@ onMounted(async () => {
       <el-table-column
         prop="name"
         :label="i18n.download.MIRROR_ALL.NAME"
-        width="350"
+        width="450"
         class-name="mirror-name"
       >
         <template #default="scope">

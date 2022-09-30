@@ -1,7 +1,9 @@
+import newEdition_pc_en from '@/assets/category/home/banner/banner22.09_pc_en.png';
+import newEdition_pc_zh from '@/assets/category/home/banner/banner22.09_pc_zh.png';
+import newEdition_mo_en from '@/assets/category/home/banner/banner22.09_mo_en.png';
+import newEdition_mo_zh from '@/assets/category/home/banner/banner22.09_mo_zh.png';
 import summitImg_pc from '@/assets/category/home/banner/banner-summit_pc.png';
 import summitImg_mo from '@/assets/category/home/banner/banner-summit_mo.png';
-import ossImg_pc from '@/assets/category/home/banner/banner-oss_pc.jpg';
-import ossImg_mo from '@/assets/category/home/banner/banner-oss_mo.jpg';
 import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png';
 import liveImg_mo from '@/assets/category/home/banner/banner-contribution_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
@@ -12,15 +14,14 @@ export default {
   HOMEBANNER: {
     zh: [
       {
-        pcBanner: summitImg_pc,
-        moBanner: summitImg_mo,
-        link: '/zh/interaction/summit-list/summit2022-changsha/',
+        pcBanner: newEdition_pc_zh,
+        moBanner: newEdition_mo_zh,
         targetTap: 1,
       },
       {
-        pcBanner: ossImg_pc,
-        moBanner: ossImg_mo,
-        link: 'https://mp.weixin.qq.com/s/CGgvaj9lL3kW6nsU-kY9Ww',
+        pcBanner: summitImg_pc,
+        moBanner: summitImg_mo,
+        link: '/zh/interaction/summit-list/summit2022-changsha/',
         targetTap: 1,
       },
       {
@@ -41,9 +42,8 @@ export default {
     ],
     en: [
       {
-        pcBanner: ossImg_pc,
-        moBanner: ossImg_mo,
-        link: 'https://mp.weixin.qq.com/s/CGgvaj9lL3kW6nsU-kY9Ww',
+        pcBanner: newEdition_pc_en,
+        moBanner: newEdition_mo_en,
         targetTap: 1,
       },
       {
@@ -58,9 +58,8 @@ export default {
     ],
     ru: [
       {
-        pcBanner: ossImg_pc,
-        moBanner: ossImg_mo,
-        link: 'https://mp.weixin.qq.com/s/CGgvaj9lL3kW6nsU-kY9Ww',
+        pcBanner: newEdition_pc_en,
+        moBanner: newEdition_mo_en,
         targetTap: 1,
       },
       {
