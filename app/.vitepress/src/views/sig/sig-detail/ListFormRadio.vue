@@ -49,16 +49,17 @@ const form = ref(
 
 <style lang="scss" scoped>
 :deep(.list-radio) {
-  border-radius: 0;
+  // TODO:样式重叠
+  border-radius: 0 !important;
   margin-right: 12px;
-  border: 1px solid transparent;
-  height: 28px;
-  padding: 0 12px;
+  border: 1px solid transparent !important;
+  height: 28px !important;
+  padding: 0 12px !important;
 
   .el-radio__label {
-    color: var(--o-color-neutral5);
-    font-weight: normal;
-    padding: 0;
+    color: var(--o-color-neutral5) !important;
+    font-weight: normal !important;
+    padding: 0 !important;
   }
 
   .el-radio__input {
@@ -67,11 +68,11 @@ const form = ref(
 
   &.is-checked {
     .el-radio__label {
-      color: var(--o-color-brand1);
+      color: var(--o-color-brand1) !important;
     }
   }
   &.is-checked {
-    border-color: var(--o-color-brand1);
+    border-color: var(--o-color-brand1) !important;
   }
 }
 
