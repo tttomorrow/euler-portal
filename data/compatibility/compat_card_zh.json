@@ -10999,5 +10999,43 @@
     "chipModel": "TAI",
     "item": "",
     "downloadLink": "inbox"
+},
+{
+    "vendorID": "8086",
+    "deviceID": "1522",
+    "svID": "8086",
+    "ssID": "00a4",
+    "architecture": "aarch64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "igb",
+    "version": "5.11.4",
+    "type": "NIC",
+    "date": "2022.09.28",
+    "sha256": "fcb0309f1894507f6bd8a2fab19b03e816c2aad204b82ff3b96ff97a8b1806e3",
+    "driverSize": "366K",
+    "chipVendor": "Intel",
+    "boardModel": "I350-F2",
+    "chipModel": "I350",
+    "item": "06310058",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/igb-5.11.4.tar.gz"
+},
+{
+    "vendorID": "8086",
+    "deviceID": "1522",
+    "svID": "8086",
+    "ssID": "00a4",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "igb",
+    "version": "5.11.4",
+    "type": "NIC",
+    "date": "2022.09.28",
+    "sha256": "fcb0309f1894507f6bd8a2fab19b03e816c2aad204b82ff3b96ff97a8b1806e3",
+    "driverSize": "366K",
+    "chipVendor": "Intel",
+    "boardModel": "I350-F2",
+    "chipModel": "I350",
+    "item": "06310058",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/igb-5.11.4.tar.gz"
 }
 ]
