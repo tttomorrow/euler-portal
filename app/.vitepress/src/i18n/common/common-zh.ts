@@ -256,7 +256,7 @@ export default {
         {
           NAME: 'NestOS',
           ID: 'NestOS',
-          PATH: 'https://nestos.test.osinfra.cn/',
+          PATH: 'https://nestos.openeuler.org/',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
