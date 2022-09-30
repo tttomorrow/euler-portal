@@ -127,7 +127,7 @@ onMounted(async () => {
               </div>
               <div class="room-item-right">
                 <div class="room-top">
-                  <a :href="item.path" target="_blank" :title="item.title">
+                  <a :href="item.path" :title="item.title">
                     {{ item.title }}
                   </a>
                   <p>
@@ -140,12 +140,7 @@ onMounted(async () => {
                   </p>
                 </div>
                 <div class="room-bottom">
-                  <a
-                    class="word-hover"
-                    target="_blank"
-                    :title="item.summary"
-                    :href="item.path"
-                  >
+                  <a class="word-hover" :title="item.summary" :href="item.path">
                     {{ item.summary }}
                   </a>
                 </div>
@@ -160,12 +155,7 @@ onMounted(async () => {
                   <span v-show="item.author.length !== index2 + 1">、</span>
                 </span>
               </p>
-              <a
-                class="word-hover"
-                target="_blank"
-                :title="item.summary"
-                :href="item.path"
-              >
+              <a class="word-hover" :title="item.summary" :href="item.path">
                 {{ item.summary }}
               </a>
             </div>
@@ -202,7 +192,7 @@ onMounted(async () => {
               </div>
               <div class="room-item-right">
                 <div class="room-top">
-                  <a :href="item.path" target="_blank" :title="item.title">
+                  <a :href="item.path" :title="item.title">
                     {{ item.title }}
                   </a>
                   <p>
@@ -215,12 +205,7 @@ onMounted(async () => {
                   </p>
                 </div>
                 <div class="room-bottom">
-                  <a
-                    class="word-hover"
-                    target="_blank"
-                    :title="item.summary"
-                    :href="item.path"
-                  >
+                  <a class="word-hover" :title="item.summary" :href="item.path">
                     {{ item.summary }}
                   </a>
                 </div>
@@ -235,12 +220,7 @@ onMounted(async () => {
                   <span v-show="item.author.length !== index2 + 1">、</span>
                 </span>
               </p>
-              <a
-                class="word-hover"
-                target="_blank"
-                :title="item.summary"
-                :href="item.path"
-              >
+              <a class="word-hover" :title="item.summary" :href="item.path">
                 {{ item.summary }}
               </a>
             </div>
