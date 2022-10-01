@@ -16,8 +16,8 @@ export default {
       {
         pcBanner: newEdition_pc_zh,
         moBanner: newEdition_mo_zh,
-        // link: '',
-        // btn: '查看详情',
+        link: 'https://mp.weixin.qq.com/s/pvp_drAo3Vzg11MjRqbXwg',
+        btn: '查看详情',
         id: 'newEdition',
         targetTap: 1,
       },
