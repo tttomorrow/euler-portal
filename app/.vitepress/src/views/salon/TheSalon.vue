@@ -10,6 +10,7 @@ import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import { getSalon } from '@/api/api-sig';
+import SALON_CONFIG from '@/data/salon/salon';
 
 import banner from '@/assets/banner/banner-interaction.png';
 import illustration from '@/assets/illustrations/salon.png';
@@ -22,11 +23,12 @@ import IconHome from '~icons/app/icon-home.svg';
 interface LATEST_ACTIVITY {
   IS_MINI: number;
   ID: number | string;
-  date: string;
-  activity_img: string;
-  address: string;
-  synopsis: string;
-  [propName: string]: string | number;
+  MEETUPS_DATE: string;
+  MEETUPS_IMG: string;
+  MEETUPS_TITLE: string;
+  MEETUPS_DES: string;
+  ADDRESS: string;
+  [propName: string]: any;
 }
 // system variable
 const commonStore = useCommon();
@@ -35,6 +37,7 @@ const i18n = useI18n();
 const salonData = computed(() => i18n.value.interaction.MEETUPSLIST);
 const router = useRouter();
 const screenWidth = useWindowResize();
+const configData = computed(() => SALON_CONFIG.cn.MEETUPS_LIST);
 
 // define variable
 
@@ -45,9 +48,6 @@ const thisMonth: number | string =
   nowDate.getMonth() + 1 >= 10
     ? nowDate.getMonth() + 1
     : '0' + (nowDate.getMonth() + 1);
-const today: number | string =
-  nowDate.getDate() >= 10 ? nowDate.getDate() : '0' + nowDate.getDate();
-const currentDay: string = thisYear + '-' + thisMonth + '-' + today;
 // 当前导航栏
 const activeName = ref('first');
 // 本月及以后最新活动列表
@@ -61,7 +61,7 @@ const newsList = computed(() => {
   if (screenWidth.value > 768) {
     const showList: Ref<Array<LATEST_ACTIVITY>> = ref([]);
     allReviewList.value.forEach((item: LATEST_ACTIVITY) => {
-      if (item.date.slice(0, 7) === timeLineDate.value) {
+      if (item.MEETUPS_DATE.slice(0, 7) === timeLineDate.value) {
         showList.value.push(item);
       }
     });
@@ -82,18 +82,26 @@ const goDetail = (item: { IS_MINI: any; ID: any }) => {
 };
 
 onMounted(async () => {
+  configData.value.forEach((item: any) => {
+    item.MEETUPS_DES = item.MEETUPS_DESC[0];
+    item.ADDRESS = item.MEETINGS_INFO.ADDRESS_UP;
+    if (new Date(item.MEETUPS_DATE).getTime() >= nowDate.getTime()) {
+      latestList.value.push(item);
+    } else {
+      allReviewList.value.push(item);
+    }
+  });
   try {
     const responeData = await getSalon();
     responeData.forEach((item: LATEST_ACTIVITY) => {
       item.IS_MINI = 1;
       item.ID = item.id;
-      item.activity_img = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`;
-      if (
-        item.date === currentDay ||
-        (Number(item.date.slice(0, 4)) >= Number(thisYear) &&
-          Number(item.date.slice(5, 7)) >= Number(thisMonth) &&
-          Number(item.date.slice(8, 10)) > Number(today))
-      ) {
+      item.MEETUPS_DATE = item.date;
+      item.MEETUPS_TITLE = item.title;
+      item.MEETUPS_DES = item.synopsis;
+      item.ADDRESS = item.address;
+      item.MEETUPS_IMG = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`;
+      if (new Date(item.date).getTime() >= nowDate.getTime()) {
         latestList.value.push(item);
       } else {
         allReviewList.value.push(item);
@@ -131,20 +139,22 @@ onMounted(async () => {
             shadow="hover"
             @click="goDetail(item)"
           >
-            <div v-if="item.activity_img" class="salon-latest-card-img">
-              <img :src="item.activity_img" alt="" />
-              <span>{{ item.title }}</span>
+            <div v-if="item.MEETUPS_IMG" class="salon-latest-card-img">
+              <img :src="item.MEETUPS_IMG" alt="" />
+              <span>{{ item.MEETUPS_TITLE }}</span>
             </div>
             <div v-else class="salon-latest-card-img">
-              <p class="salon-latest-card-img-span">{{ item.title }}</p>
+              <p class="salon-latest-card-img-span">{{ item.MEETUPS_TITLE }}</p>
             </div>
             <!-- <div class="openeuler">
-              <p>openEuler</p>
-            </div> -->
-            <span class="salon-latest-card-synopsis">{{ item.synopsis }}</span>
+                <p>openEuler</p>
+              </div> -->
+            <span class="salon-latest-card-synopsis">{{
+              item.MEETUPS_DES
+            }}</span>
             <div class="salon-latest-card-info">
               <IconCalendar class="salon-latest-card-icon"></IconCalendar>
-              <span>{{ item.date }}</span>
+              <span>{{ item.MEETUPS_DATE }}</span>
             </div>
           </OCard>
         </div>
@@ -185,37 +195,37 @@ onMounted(async () => {
             @click="goDetail(item)"
           >
             <div class="salon-review-card-title">
-              {{ item.title }}
+              {{ item.MEETUPS_TITLE }}
             </div>
-            <div v-if="item.activity_img" class="salon-review-card-img">
-              <img :src="item.activity_img" alt="" />
-              <span v-if="item.IS_MINI">{{ item.title }}</span>
+            <div v-if="item.MEETUPS_IMG" class="salon-review-card-img">
+              <img :src="item.MEETUPS_IMG" alt="" />
+              <span v-if="item.IS_MINI">{{ item.MEETUPS_TITLE }}</span>
             </div>
             <div
               v-else
               class="salon-review-card-desc"
-              :title="item.synopsis ? item.synopsis : ''"
+              :title="item.MEETUPS_DES ? item.MEETUPS_DES : ''"
             >
-              {{ item.synopsis ? item.synopsis : '' }}
+              {{ item.MEETUPS_DES ? item.MEETUPS_DES : '' }}
             </div>
             <div class="salon-review-card-bottom">
               <div class="salon-review-card-mobile">
                 <div class="salon-review-card-mobile-title">
-                  {{ item.title }}
+                  {{ item.MEETUPS_TITLE }}
                 </div>
                 <div
                   class="salon-review-card-mobile-desc"
-                  :title="item.synopsis ? item.synopsis : ''"
+                  :title="item.MEETUPS_DES ? item.MEETUPS_DES : ''"
                 >
-                  {{ item.synopsis ? item.synopsis : '' }}
+                  {{ item.MEETUPS_DES ? item.MEETUPS_DES : '' }}
                 </div>
               </div>
               <div class="salon-review-card-info">
                 <IconCalendar class="salon-review-card-icon"></IconCalendar>
-                <span>{{ item.date }}</span>
+                <span>{{ item.MEETUPS_DATE }}</span>
                 <IconHome class="home salon-review-card-icon"></IconHome>
-                <span class="address" :title="item.address">
-                  {{ item.address }}</span
+                <span class="address" :title="item.ADDRESS">
+                  {{ item.ADDRESS }}</span
                 >
               </div>
             </div>
