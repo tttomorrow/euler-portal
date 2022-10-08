@@ -15,21 +15,22 @@ import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, '../dist'),
+    cssCodeSplit: true,
   },
   publicDir: path.resolve(__dirname, './.vitepress/public'),
   resolve: {
     alias: {
       '@/': `${path.resolve(__dirname, './.vitepress/src')}/`,
-      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
     },
   },
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: `@use "@/shared/styles/element-var.scss" as *;`,
-  //     },
-  //   },
-  // },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        charset: false,
+        // additionalData: `@use "@/shared/styles/element-var.scss" as *;`,
+      },
+    },
+  },
   plugins: [
     vueJsx({}),
     Icons({
@@ -85,7 +86,6 @@ export default defineConfig({
       },
       '/api-euler': {
         target: 'https://www.openeuler.org',
-        // target: 'https://openeuler.test.osinfra.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-euler/, ''),
       },

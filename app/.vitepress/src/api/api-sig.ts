@@ -52,7 +52,7 @@ export function querySigUserContribute(params: object) {
  * 获取sig landscape
  * @returns {Promise<GroupInfo[]>}
  */
-export function getSigLandscape() {
+export function getSigLandscape(): Promise<GroupInfo[]> {
   const url = '/query/sig/scoreAll?community=openeuler';
   return request.get(url).then((res: AxiosResponse) => {
     const data = res.data?.data;
