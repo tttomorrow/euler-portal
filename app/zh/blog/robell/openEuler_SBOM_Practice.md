@@ -1,20 +1,20 @@
 ---
 title: 基于SBOM的开源社区软件供应链安全解决方案
-date: 2022-09-13
+date: 2022-09-30
 tags:
     - SBOM
     - Vulnerability Management
     - Due Diligence
     - Dependencies
+    - License
+    - PURL
     - 依赖分析
     - 漏洞排查
     - 漏洞感知
-    - 合规检查
-    - License分析
-archives: 22022-09-13
-author: Robell Liu
-summary: 本文主要介绍openEuler开源社区落地SBOM、支持开源软件漏洞分钟级排查与感知、License合规等实践
-
+    - 合规
+archives: 2022-09-30
+author: robellliu
+summary: 本文主要介绍openEuler/MindSpore/openGauss开源社区落地SBOM的实践，实现基于SBOM的开源软件漏洞分钟级排查与感知、License合规等功能。
 ---
 
 # 1 软件供应链安全面临的挑战和难点
