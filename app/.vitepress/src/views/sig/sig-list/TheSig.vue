@@ -5,7 +5,6 @@ import { useI18n } from '@/i18n';
 import AppContext from '@/components/AppContent.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import SigList from './SigList.vue';
-import SigBoard from './SigBoard.vue';
 import SigLandscape from './SigLandscape.vue';
 
 import { getSigList } from '@/api/api-sig';
@@ -57,9 +56,6 @@ onMounted(() => {
       <OTabs>
         <OTabPane label="SIG List">
           <SigList v-if="oldSigList.length" :old-sig-list="oldSigList" />
-        </OTabPane>
-        <OTabPane label="SIG Board" lazy>
-          <SigBoard :sig-list="oldSigList" />
         </OTabPane>
         <OTabPane label="SIG Landscape">
           <SigLandscape />

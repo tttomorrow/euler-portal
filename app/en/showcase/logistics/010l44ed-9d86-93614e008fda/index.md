@@ -4,8 +4,8 @@ category: showcase
 industry: Logistics
 company: China Post
 summary: OA System Porting
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/logistics.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/logistics.png
 ---
 
 ## **Scenarios**

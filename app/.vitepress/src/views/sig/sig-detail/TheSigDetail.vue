@@ -8,6 +8,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import MobileRepositoryList from './MobileRepositoryList.vue';
+import ContributList from './ContributList.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import IconEmail from '~icons/app/icon-mail.svg';
@@ -406,13 +407,21 @@ onMounted(() => {
           </AppPaginationMo>
         </div>
       </div>
+      <div class="repository">
+        <h5>
+          {{ `${sigDetailName} ${sigDetail.USER_CONTRIBUTOR}` }}
+        </h5>
+        <div class="repository-filter">
+          <ContributList :sig="sigDetailName"></ContributList>
+        </div>
+      </div>
       <div class="recent-event">
         <h5>{{ sigDetail.LATEST_DYNAMIC }}</h5>
         <div class="dynamic">
           <div class="item">
             <div class="header">
               <span class="left">{{ sigDetail.BLOG }}</span>
-              <a class="right">
+              <a :href="'/' + lang + '/interaction/blog-list/'" class="right">
                 <span>{{ sigDetail.MORE }}</span>
                 <OIcon class="icon-more">
                   <IconChevronRight />
@@ -433,7 +442,7 @@ onMounted(() => {
           <div class="item">
             <div class="header">
               <span class="left">{{ sigDetail.NEWS }}</span>
-              <a class="right">
+              <a :href="'/' + lang + '/interaction/news-list/'" class="right">
                 <span>{{ sigDetail.MORE }}</span>
                 <OIcon class="icon-more">
                   <IconChevronRight />
@@ -444,7 +453,7 @@ onMounted(() => {
               <li class="empty">
                 {{ sigDetail.NEWS_EMPTY
                 }}<a
-                  href="https://gitee.com/openeuler/website-v2/blob/master/web-ui/docs/zh/interaction/post-news/README.md"
+                  :href="'/' + lang + '/interaction/post-news/'"
                   target="_blank"
                   >{{ sigDetail.NEWS_EMPTY3 }}</a
                 >{{ sigDetail.NEWS_EMPTY4 }}
@@ -639,6 +648,9 @@ onMounted(() => {
         .repository-pagin {
           margin-top: var(--o-spacing-h5);
         }
+      }
+      @media screen and (max-width: 768px) {
+        display: none;
       }
     }
     .recent-event {

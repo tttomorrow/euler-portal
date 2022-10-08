@@ -4,8 +4,8 @@ category: showcase
 industry: Оператор
 company: China Mobile
 summary: Беспроблемная миграция ОС, на которой работают базовые сервисные системы
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/provider.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/provider.png
 ---
 
 ## **Сценарий**

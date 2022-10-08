@@ -4,6 +4,7 @@ import {
   radioGroupProps,
   RadioGroupProps,
 } from './radio-group-types';
+import './radio-group.scss';
 
 export default defineComponent({
   name: 'ORadioGroup',

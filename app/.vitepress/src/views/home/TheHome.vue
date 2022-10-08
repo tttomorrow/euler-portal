@@ -4,6 +4,7 @@ import { useData } from 'vitepress';
 import AOS from 'aos';
 
 import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -11,17 +12,17 @@ import HomeBanner from './HomeBanner.vue';
 import HomeCarousel from './HomeCarousel.vue';
 import HomePlayground from './HomePlayground.vue';
 import HomeNav from './HomeNav.vue';
-import PublishLink from './PublishLink.vue';
-import SourceLink from './SourceLink.vue';
 import HomeNews from './HomeNews.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import AppContent from '@/components/AppContent.vue';
+import LinkPanel from '@/components/LinkPanel.vue';
 
 import { getMeetingData, getActivityData } from '@/api/api-calendar';
 import { getSortData } from '@/api/api-search';
 import { TableData } from '@/shared/@types/type-calendar';
 
 const { lang } = useData();
+const commonStore = useCommon();
 
 const calendarData = ref<TableData[]>([
   {
@@ -146,8 +147,19 @@ onUnmounted(() => {
       </div>
     </ClientOnly>
     <HomePlayground />
-    <PublishLink />
-    <SourceLink />
+    <h3>
+      {{ i18n.home.HOME_SOURCE.SOURCE_PUBLISH_TITLE }}
+    </h3>
+    <p class="rank-tip">{{ i18n.home.RANK_TIP }}</p>
+    <LinkPanel
+      :linkList="i18n.home.HOME_SOURCE_EDITION"
+      :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
+    ></LinkPanel>
+    <h3>{{ i18n.home.HOME_SOURCE.SOURCE_LINK_TITLE }}</h3>
+    <LinkPanel
+      :linkList="i18n.home.FRIENDSHIP_LINK_LIST"
+      :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
+    ></LinkPanel>
   </AppContent>
 </template>
 
@@ -171,5 +183,11 @@ h3 {
     margin-top: var(--o-spacing-h2);
     margin-bottom: var(--o-spacing-h5);
   }
+}
+.rank-tip {
+  text-align: center;
+  font-size: var(--o-font-size-tip);
+  font-weight: 400;
+  color: var(--o-color-text1);
 }
 </style>

@@ -5,7 +5,11 @@ const attrs = useAttrs();
 </script>
 
 <template>
-  <ElInput class="o-input" v-bind="attrs" disabled></ElInput>
+  <ElInput class="o-input" v-bind="attrs">
+    <template #prefix>
+      <slot name="prefix"></slot>
+    </template>
+  </ElInput>
 </template>
 
 <style lang="scss">

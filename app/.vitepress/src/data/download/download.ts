@@ -2,6 +2,27 @@ export default {
   zh: {
     DOWNLOAD_LIST: [
       {
+        NAME: 'openEuler 22.09',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.09/',
+        DESC: 'openEuler 22.09 充分释放多样性算力，持续深化全场景创新，打造极致迁移能力，实现欧拉鸿蒙互联互通。',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/zh/docs/22.09/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/zh/docs/22.09/docs/Installation/installation.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        LIFE_CYCLE_URL: '/zh/other/lifecycle/',
+        WEBSITE_SELECT: '/zh/mirror/select/?version=22.09',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.09/embedded_img/',
+        MANUFACTURER: 'openEuler社区',
+        PUBLISH_DATE: '2022/09',
+        LTS: false,
+      },
+      {
         NAME: 'openEuler 22.03 LTS',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/',
         DESC: 'openEuler 22.03-LTS 是基于5.10内核构建，实现了服务器、云、边缘和嵌入式的全场景支持',
@@ -10,7 +31,6 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/22.03_LTS/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=22.03-LTS',
@@ -276,6 +296,28 @@ export default {
   en: {
     DOWNLOAD_LIST: [
       {
+        NAME: 'openEuler 22.09',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.09/',
+        DESC: 'Unleashing diversified computing power, openEuler 22.09 innovates versatile scenarios, builds optimal porting capability, and interconnects with OpenHarmony.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/22.09/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/22.09/docs/Installation/installation.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        LIFE_CYCLE_URL: '/en/other/lifecycle/',
+        WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
+        SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.09/embedded_img/',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2022/09',
+        LTS: false,
+      },
+      {
         NAME: 'openEuler 22.03 LTS',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/',
         DESC: 'openEuler 22.03-LTS is based on the 5.10 kernel and supports all scenarios of server, cloud, edge and embedded',
@@ -285,7 +327,6 @@ export default {
           'https://docs.openeuler.org/en/docs/22.03_LTS/docs/Installation/installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS',
         SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
@@ -541,6 +582,28 @@ export default {
   ru: {
     DOWNLOAD_LIST: [
       {
+        NAME: 'openEuler 22.09',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.09/',
+        DESC: 'Unleashing diversified computing power, openEuler 22.09 innovates versatile scenarios, builds optimal porting capability, and interconnects with OpenHarmony.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/22.09/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/22.09/docs/Installation/installation.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        LIFE_CYCLE_URL: '/en/other/lifecycle/',
+        WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
+        SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.09/embedded_img/',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2022/09',
+        LTS: false,
+      },
+      {
         NAME: 'openEuler 22.03 LTS',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/',
         DESC: 'openEuler 22.03-LTS is based on the 5.10 kernel and supports all scenarios of server, cloud, edge and embedded',
@@ -550,7 +613,6 @@ export default {
           'https://docs.openeuler.org/en/docs/22.03_LTS/docs/Installation/installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS',
         SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',

@@ -54,7 +54,6 @@ const searchCount = computed(() => {
 const searchResultList: any = ref([]);
 // 接收软件包数据
 const searchRpmList: any = ref([]);
-const isShow = ref(false);
 // 总数据数量
 const total = computed(() => {
   return searchNumber.value[currentIndex.value]
@@ -68,7 +67,12 @@ const totalPage = computed(() => {
 
 // 点击搜索框的删除图标
 function donShowSearchBox() {
+  searchResultList.value = '';
   searchInput.value = '';
+  searchRpmList.value = '';
+  searchNumber.value.map((item: any) => {
+    item.doc_count = 0;
+  });
 }
 // 点击数据的类型导航
 function setCurrentType(index: number, type: string) {
@@ -115,11 +119,9 @@ function searchDataAll() {
       if (res.status === 200 && res.obj.records[0]) {
         searchResultList.value = res.obj.records;
         pageShow.value = true;
-        isShow.value = false;
       } else {
         searchResultList.value = [];
         pageShow.value = false;
-        isShow.value = true;
       }
     });
   } catch (error: any) {
@@ -214,7 +216,7 @@ onMounted(() => {
           </li>
         </ul>
         <div class="content-box">
-          <ul v-show="!isShow" class="content-list">
+          <ul v-if="searchResultList.length" class="content-list">
             <li v-for="(item, index) in searchResultList" :key="item.id">
               <!-- eslint-disable-next-line -->
               <h3 @click="goLink(item, index)" v-html="item.title"></h3>
@@ -226,7 +228,7 @@ onMounted(() => {
               </p>
             </li>
           </ul>
-          <NotFound v-if="isShow" />
+          <NotFound v-else />
         </div>
         <div v-if="totalPage > 1 && pageShow" class="page-box">
           <ClientOnly>

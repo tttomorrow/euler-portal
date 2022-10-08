@@ -55,7 +55,7 @@ LibcarePlus 制作热补丁的基本原理是基于汇编级指令比较技术�
 
 热补丁加/卸载的基本原理如下图所示：
 
-<div align=center>
+<div style="text-align:center">
 
 <img src="./004.png">
 

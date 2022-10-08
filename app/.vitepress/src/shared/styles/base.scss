@@ -50,6 +50,7 @@ img {
 }
 
 a {
+  cursor: pointer;
   color: var(--o-color-link1);
   text-decoration: none;
   &:hover {

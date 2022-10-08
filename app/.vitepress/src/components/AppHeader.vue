@@ -146,6 +146,7 @@ onUnmounted(() => {
 const goHome = () => {
   toBody.value = false;
   mobileMenuIcon.value = false;
+  documentElement.classList.remove('overflow');
   router.go(`/${lang.value}/`);
 };
 
@@ -276,48 +277,47 @@ const jumpToUserZone = () => {
         </div>
       </div>
       <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"   -->
-      <teleport v-if="toBody" to="body">
-        <div
-          class="mobile-menu"
-          :class="{ active: mobileMenuIcon }"
-          @click="handleMenuLayer($event)"
-        >
-          <div class="mobile-menu-side">
-            <div class="mobile-nav">
+      <div
+        v-if="toBody"
+        class="mobile-menu"
+        :class="{ active: mobileMenuIcon }"
+        @click="handleMenuLayer($event)"
+      >
+        <div class="mobile-menu-side">
+          <div class="mobile-nav">
+            <a
+              v-for="item in navRouter"
+              :key="item.ID"
+              class="link"
+              :class="{
+                active: activeNav === item.ID,
+              }"
+              @click.stop="goMobile(item)"
+              >{{ item.NAME }}</a
+            >
+          </div>
+          <div class="mobile-tools">
+            <AppTheme />
+            <AppLanguage
+              :show="langShow"
+              @language-click="mobileMenuIcon = false"
+            />
+          </div>
+        </div>
+        <transition name="menu-sub">
+          <div v-if="mobileChildMenu.length > 0" class="mobile-menu-content">
+            <div class="mobile-menu-list">
               <a
-                v-for="item in navRouter"
+                v-for="item in mobileChildMenu"
                 :key="item.ID"
                 class="link"
-                :class="{
-                  active: activeNav === item.ID,
-                }"
-                @click.stop="goMobile(item)"
+                @click="goMobileSubList(item)"
                 >{{ item.NAME }}</a
               >
             </div>
-            <div class="mobile-tools">
-              <AppTheme />
-              <AppLanguage
-                :show="langShow"
-                @language-click="mobileMenuIcon = false"
-              />
-            </div>
           </div>
-          <transition name="menu-sub">
-            <div v-if="mobileChildMenu.length > 0" class="mobile-menu-content">
-              <div class="mobile-menu-list">
-                <a
-                  v-for="item in mobileChildMenu"
-                  :key="item.ID"
-                  class="link"
-                  @click="goMobileSubList(item)"
-                  >{{ item.NAME }}</a
-                >
-              </div>
-            </div>
-          </transition>
-        </div>
-      </teleport>
+        </transition>
+      </div>
       <div class="opt-user">
         <el-dropdown v-if="token">
           <div class="el-dropdown-link opt-info">

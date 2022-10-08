@@ -4,8 +4,8 @@ category: showcase
 industry: 其他
 company: 华润集团
 summary: 创新云专区项目
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/others.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/others.png
 ---
 
 ## 应用场景

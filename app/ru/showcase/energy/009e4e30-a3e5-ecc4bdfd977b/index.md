@@ -4,8 +4,8 @@ category: showcase
 industry: Энергетика
 company: State Grid Corporation of China
 summary: Инновации ОС для интеллектуальной строительной площадки Bowei на интеллектуальной подстанции в Хэбэе
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/energy.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/energy.png
 ---
 
 ## **Сценарий**

@@ -28,7 +28,7 @@ export function firstToUpper(str: string): string {
 
 /**
  * 是否是浏览器环境
- * @returns boolean
+ * @returns {String}
  */
 export function isBrowser(): boolean {
   return typeof global === 'undefined';
@@ -36,7 +36,7 @@ export function isBrowser(): boolean {
 
 /**
  * 获取今日日期 2222-01-09
- * @returns string
+ * @returns {String}
  */
 export function getNowFormatDate() {
   const date = new Date();
@@ -88,11 +88,3 @@ export function addSearchBuriedData(search_key: string, num = 20) {
     }, 500);
   }
 }
-
-/**
- * 判断是否是移动端
- * @returns boolean
- */
-// export const testIsPhone = () => {
-//   return /Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent);
-// };

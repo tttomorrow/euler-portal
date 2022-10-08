@@ -7,7 +7,7 @@ export default {
   COOKIE_LEGAL_TEXT_OTHER:
     'в том числе на передачу данных, указанных в Политике, третьим лицам (статистическим службам сети Интернет), в соответствии с ',
   COOKIE_LEGAL_LINK_TEXT: 'Политикой в отношении файлов cookie ',
-  COOKIE_LEGAL_LINK_TEXT_OTHER: 'Пользовательским соглашением >',
+  COOKIE_LEGAL_LINK_TEXT_OTHER: 'Пользовательским соглашением.',
   NAV_ROUTER: {
     DOWNLOAD: 'Загрузить',
     ISO: 'Software Packages',
@@ -130,7 +130,8 @@ export default {
         {
           NAME: 'Сертификация',
           ID: 'certification',
-          PATH: '/community/certification-services/',
+          PATH: 'https://www.openeuler.org/en/community/certification-services/',
+          IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
       CLASS: ['conduct', 'certification-services'],
@@ -210,6 +211,12 @@ export default {
           NAME: 'radiaTest',
           ID: 'radiaTest',
           PATH: 'https://radiatest.openeuler.org',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'NestOS',
+          ID: 'NestOS',
+          PATH: 'https://nestos.openeuler.org/',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],

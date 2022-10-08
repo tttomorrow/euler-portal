@@ -4,8 +4,8 @@ category: showcase
 industry: Энергетика
 company: China Southern Power Grid
 summary: Беспроблемное портирование ОС и обновление системы для информационных систем
-banner: /img/showcase/case-detail-bg.jpg
-img: /img/showcase/energy.png
+banner: /category/showcase/case-detail-bg.jpg
+img: /category/showcase/energy.png
 ---
 
 ## **Сценарий**

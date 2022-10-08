@@ -2,7 +2,7 @@
 title: '沙龙'
 ---
 <script setup lang="ts">
-    import TheSalon from '@/views/interaction/salon-list/TheSalon.vue'
+    import TheSalon from '@/views/salon/TheSalon.vue'
 </script>
 
 <TheSalon />
