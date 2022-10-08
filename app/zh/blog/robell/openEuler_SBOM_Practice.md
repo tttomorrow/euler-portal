@@ -1,5 +1,6 @@
 ---
 title: 基于SBOM的开源社区软件供应链安全解决方案
+category: blog
 date: 2022-09-30
 tags:
     - SBOM
@@ -134,7 +135,7 @@ Replacement:
 > [https://semver.org/lang/zh-CN/](https://semver.org/lang/zh-CN/)
 
 区间版本号（version ranges）的示例：
-![range_version.PNG](./range_version.PNG)
+![range_version.png](./range_version.png)
 
 - **依赖软件作用域范围、依赖类型**
 
@@ -216,7 +217,7 @@ SBOM是一种正式标准化的、机器可读的元数据，它唯一地标识�
 - **场景**：软件供应链安全管理、安全漏洞管理、安全应急响应，高可信安全应用管理
 - **用途**：能帮助软件生产商、购买者和运营商更高效的识别软件成分、排查License风险/合规风险/安全漏洞影响风险、履行义务声明等
 
-![sbom_usage.PNG](./sbom_usage.PNG)
+![sbom_usage.png](./sbom_usage.png)
 
 ## 2.3 为什么一定是SBOM？
 
