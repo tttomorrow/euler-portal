@@ -68,19 +68,13 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/certification/, ''),
       },
       '/api-search': {
-        // target: 'https://doc-search.openeuler.org',
-        target: 'https://doc-search.test.osinfra.cn',
+        target: 'https://doc-search.openeuler.org',
+        // target: 'https://doc-search.test.osinfra.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-search/, ''),
       },
-      '/api-approve/': {
-        target: 'https://cvesa.test.osinfra.cn/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-approve/, ''),
-      },
       '/api/': {
         target: 'https://api.openeuler.org',
-        // target: 'http://119.8.32.82',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
