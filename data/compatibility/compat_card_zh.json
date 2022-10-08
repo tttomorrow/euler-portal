@@ -11037,5 +11037,24 @@
     "chipModel": "I350",
     "item": "06310058",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/igb-5.11.4.tar.gz"
+},
+{
+    "vendorID": "8086",
+    "deviceID": "1521",
+    "svID": "1dcf",
+    "ssID": "0308",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "igb",
+    "version": "5.10.0-60.18.0.50.oe2203.x86_64",
+    "type": "NIC",
+    "date": "2022.09.27",
+    "sha256": "a33f68b678cee5fafa4d326ae5dce67f7822bb19d953e56e3632681190629a36",
+    "driverSize": "413KB",
+    "chipVendor": "Intel",
+    "boardModel": "32DB16",
+    "chipModel": "I350",
+    "item": "",
+    "downloadLink": "inbox"
 }
 ]
