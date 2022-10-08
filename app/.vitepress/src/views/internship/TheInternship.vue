@@ -426,7 +426,7 @@ onUnmounted(() => {
                 <p>
                   <span>{{ item.TEXT[1] }}</span>
                   <a
-                    href="@/assets/category/internship/doc/导师实习评语.docx"
+                    href="/category/internship/导师实习评语.txt"
                     download
                     title="下载实习评语"
                     >{{ item.TEXT[2] }}</a
@@ -434,7 +434,7 @@ onUnmounted(() => {
                 </p>
                 <p>
                   <a
-                    href="@/assets/category/internship/doc/实习报告模板.docx"
+                    href="/category/internship/实习报告模板.docx"
                     download
                     title="下载报告模板"
                     >{{ item.TEXT[3] }}</a
@@ -449,7 +449,7 @@ onUnmounted(() => {
                 >
                   <slot v-if="index === 1 && index1 === 3">
                     <a
-                      href="@/assets/category/internship/doc/实习报告模板.docx"
+                      href="/category/internship/实习报告模板.docx"
                       download
                       title="下载报告模板"
                       >{{ item1 }}</a
@@ -458,14 +458,14 @@ onUnmounted(() => {
                   <span v-else>{{ item1 }}</span>
                 </p>
               </div>
-              <div class="supplement" v-if="item.SUPPLEMENT_LINK">
+              <div v-if="item.SUPPLEMENT_LINK" class="supplement">
                 {{ item.SUPPLEMENT[0] }}
                 <a :href="item.SUPPLEMENT_LINK" target="_blank">{{
                   item.SUPPLEMENT[1]
                 }}</a>
                 {{ item.SUPPLEMENT[2] }}
               </div>
-              <div class="supplement" v-else>
+              <div v-else class="supplement">
                 {{ item.SUPPLEMENT }}
               </div>
             </div>

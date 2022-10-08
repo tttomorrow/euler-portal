@@ -414,7 +414,7 @@
     "chipVendor": "Avago",
     "boardModel": "SR150-M",
     "chipModel": "SAS3408",
-    "item": "03024JNF",
+    "item": "03024JNF/03033FAT",
     "downloadLink": "inbox"
   },
   {
@@ -433,7 +433,7 @@
     "chipVendor": "Avago",
     "boardModel": "SR150-M",
     "chipModel": "SAS3408",
-    "item": "03024JNF",
+    "item": "03024JNF/03033FAT",
     "downloadLink": "inbox"
   },
   {
@@ -548,25 +548,6 @@
     "boardModel": "TM210",
     "chipModel": "HNS GE/10GE/25GE",
     "item": "03025VYQ",
-    "downloadLink": "inbox"
-  },
-  {
-    "vendorID": "1000",
-    "deviceID": "0017",
-    "svID": "19e5",
-    "ssID": "d213",
-    "architecture": "aarch64",
-    "os": "openEuler 20.03 LTS SP1",
-    "driverName": "megaraid_sas",
-    "version": "07.706.03.00-rc1",
-    "type": "RAID",
-    "date": "2021.07.11",
-    "sha256": "4C5D1B8BFF927AAADF5D6AFC162F91CE0445A417",
-    "driverSize": "103.4K",
-    "chipVendor": "Avago",
-    "boardModel": "SR150-M",
-    "chipModel": "SAS3408",
-    "item": "03033FAT",
     "downloadLink": "inbox"
   },
   {
@@ -1631,7 +1612,7 @@
       "boardModel": "9440-8i",
       "chipModel": "SAS3408",
       "item": "02312QWY",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/aarch64/Packages/RAID-3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-aarch64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/aarch64/Packages/kmod-megaraid_sas-07.714.04.00-aarch64.rpm"
     },
     {
       "vendorID": "19e5",
@@ -1916,7 +1897,7 @@
       "boardModel": "SR230-M",
       "chipModel": "SAS-3 3008",
       "item": "03024RLG",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "1000",
@@ -1935,7 +1916,7 @@
       "boardModel": "9361-8i",
       "chipModel": "SAS-3 3108",
       "item": "02312FFX",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "1000",
@@ -1954,7 +1935,7 @@
       "boardModel": "RU430C",
       "chipModel": "SAS-3 3108",
       "item": "02311DPA",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "1000",
@@ -1973,7 +1954,7 @@
       "boardModel": "SR430C-M",
       "chipModel": "SAS-3 3108",
       "item": "02311PCJ",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "1000",
@@ -1992,7 +1973,7 @@
       "boardModel": "9440-8i",
       "chipModel": "SAS3408",
       "item": "02312QWY",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "1000",
@@ -2011,7 +1992,7 @@
       "boardModel": "RU450C-M",
       "chipModel": "SAS3508",
       "item": "03024MCK",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "1000",
@@ -2030,7 +2011,7 @@
       "boardModel": "SR450C-M",
       "chipModel": "SAS3508",
       "item": "03033EFT",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "1000",
@@ -2049,7 +2030,7 @@
       "boardModel": "SP460C-M",
       "chipModel": "SAS3516",
       "item": "03024JNE",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "15b3",
@@ -2619,7 +2600,7 @@
       "boardModel": "SP460C-M",
       "chipModel": "SAS3516",
       "item": "02313CYV/02312CRG",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/aarch64/Packages/RAID-3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-aarch64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/aarch64/Packages/kmod-megaraid_sas-07.714.04.00-aarch64.rpm"
     },
     {
       "vendorID": "8088",
@@ -2809,7 +2790,7 @@
       "boardModel": "9440-8i",
       "chipModel": "SAS3408",
       "item": "02312QWY",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/aarch64/Packages/RAID-3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-aarch64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/aarch64/Packages/kmod-megaraid_sas-07.714.04.00-aarch64.rpm"
     },
     {
       "vendorID": "1000",
@@ -2828,7 +2809,7 @@
       "boardModel": "9440-8i",
       "chipModel": "SAS3408",
       "item": "02312QWY",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "15b3",
@@ -2885,7 +2866,7 @@
       "boardModel": "SP460C-M",
       "chipModel": "SAS3516",
       "item": "03024JNE",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "1000",
@@ -2904,7 +2885,7 @@
       "boardModel": "RU430C",
       "chipModel": "SAS-3 3108",
       "item": "02311DPA",
-      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+      "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
     },
     {
       "vendorID": "19e5",
@@ -3436,25 +3417,6 @@
       "boardModel": "EXL710QDA2G1P5",
       "chipModel": "XL710",
       "item": "O6310146",
-      "downloadLink": "inbox"
-  },
-  {
-      "vendorID": "15b3",
-      "deviceID": "1007",
-      "svID": "15b3",
-      "ssID": "0006",
-      "architecture": "aarch64",
-      "os": "openEuler 20.03 LTS SP3",
-      "driverName": "mlx4_core",
-      "version": "4.0.0",
-      "type": "NIC",
-      "date": "2021.12.16",
-      "sha256": "33BD5FB6C92F8EAD78666F3EEF3D7FBC6116CEC1",
-      "driverSize": "237K",
-      "chipVendor": "Mellanox",
-      "boardModel": "MCX314A-BCCT",
-      "chipModel": "ConnectX-3 Pro",
-      "item": "02313BTV",
       "downloadLink": "inbox"
   },
   {
@@ -6761,7 +6723,7 @@
     "boardModel": "SR430C",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -6780,7 +6742,7 @@
     "boardModel": "SR430C-ML",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -6799,7 +6761,7 @@
     "boardModel": "SR630C-ME",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -6818,7 +6780,7 @@
     "boardModel": "SR430C",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -6837,7 +6799,7 @@
     "boardModel": "SR430C-ML",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -6856,7 +6818,7 @@
     "boardModel": "SR630C-ME",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -6932,7 +6894,7 @@
     "boardModel": "SR530C-M",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -6951,7 +6913,7 @@
     "boardModel": "SR630C-M",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -7008,7 +6970,7 @@
     "boardModel": "SR530C-M",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -7027,7 +6989,7 @@
     "boardModel": "SR630C-M",
     "chipModel": "SAS-3 3108",
     "item": "",
-    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/RAID-3004iMR_3108_3408iMR_3416iMR_3508_3516-openEuler20.03-megaraid_sas-07.714.04.00-1-x86_64.rpm"
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.714.04.00-1-x86_64.rpm"
   },
   {
     "vendorID": "1000",
@@ -10158,7 +10120,7 @@
     "date": "2022.08.24",
     "sha256": "",
     "driverSize": "",
-    "chipVendor": "Dera",
+    "chipVendor": "DERA",
     "boardModel": "DERAS32TGR03T8WT",
     "chipModel": "S5239",
     "item": "",
@@ -11018,5 +10980,81 @@
     "chipModel": "Atlas 300V Pro",
     "item": "02313SHF/02314BCJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
+},
+{
+    "vendorID": "1d78",
+    "deviceID": "1512",
+    "svID": "1d78",
+    "ssID": "5118",
+    "architecture": "aarch64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "nvme",
+    "version": "1.0",
+    "type": "SSD",
+    "date": "2022.09.26",
+    "sha256": "23e5b75cfedf792ab9bbd7be40a1c7ac461f9dd1720c2c305565f0017fd7a616",
+    "driverSize": "82K",
+    "chipVendor": "DERA",
+    "boardModel": "P34YTR-08T0U-ST",
+    "chipModel": "TAI",
+    "item": "",
+    "downloadLink": "inbox"
+},
+{
+    "vendorID": "8086",
+    "deviceID": "1522",
+    "svID": "8086",
+    "ssID": "00a4",
+    "architecture": "aarch64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "igb",
+    "version": "5.11.4",
+    "type": "NIC",
+    "date": "2022.09.28",
+    "sha256": "fcb0309f1894507f6bd8a2fab19b03e816c2aad204b82ff3b96ff97a8b1806e3",
+    "driverSize": "366K",
+    "chipVendor": "Intel",
+    "boardModel": "I350-F2",
+    "chipModel": "I350",
+    "item": "06310058",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/igb-5.11.4.tar.gz"
+},
+{
+    "vendorID": "8086",
+    "deviceID": "1522",
+    "svID": "8086",
+    "ssID": "00a4",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "igb",
+    "version": "5.11.4",
+    "type": "NIC",
+    "date": "2022.09.28",
+    "sha256": "fcb0309f1894507f6bd8a2fab19b03e816c2aad204b82ff3b96ff97a8b1806e3",
+    "driverSize": "366K",
+    "chipVendor": "Intel",
+    "boardModel": "I350-F2",
+    "chipModel": "I350",
+    "item": "06310058",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/igb-5.11.4.tar.gz"
+},
+{
+    "vendorID": "8086",
+    "deviceID": "1521",
+    "svID": "1dcf",
+    "ssID": "0308",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "igb",
+    "version": "5.10.0-60.18.0.50.oe2203.x86_64",
+    "type": "NIC",
+    "date": "2022.09.27",
+    "sha256": "a33f68b678cee5fafa4d326ae5dce67f7822bb19d953e56e3632681190629a36",
+    "driverSize": "413KB",
+    "chipVendor": "Intel",
+    "boardModel": "32DB16",
+    "chipModel": "I350",
+    "item": "",
+    "downloadLink": "inbox"
 }
 ]

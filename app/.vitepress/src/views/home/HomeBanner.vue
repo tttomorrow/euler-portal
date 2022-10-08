@@ -41,8 +41,8 @@ const homeBanner = computed(() => {
 });
 
 // banner跳转事件
-const jump = (item: any) => {
-  if (flag.value) {
+const jumpTo = (item: any) => {
+  if (flag.value && item.link) {
     if (item.targetTap === 1) {
       window.open(item.link, '_blank');
     } else {
@@ -67,7 +67,7 @@ const jump = (item: any) => {
     @swiper="onSwiper"
   >
     <swiper-slide v-for="item in homeBanner" :key="item.link">
-      <a class="banner-panel" @click="jump(item)">
+      <a class="banner-panel" @click="jumpTo(item)">
         <div
           class="banner-panel-cover"
           :style="{
@@ -93,7 +93,12 @@ const jump = (item: any) => {
                 >
               </p>
             </div>
-            <div v-if="item.btn" data-aos="fade-up" class="action">
+            <div
+              v-if="item.btn"
+              :class="item.id === 'newEdition' ? 'new-edition' : ''"
+              data-aos="fade-up"
+              class="action"
+            >
               <OButton animation class="home-banner-btn">
                 {{ item.btn }}
                 <template #suffixIcon
@@ -215,6 +220,15 @@ html[lang='zh'] {
             color: var(--o-color-yellow5);
           }
         }
+        @media screen and (max-width: 824px) {
+          margin-top: 0;
+        }
+      }
+      .new-edition {
+        margin-top: 200px;
+        display: flex;
+        justify-content: center;
+        transition: none;
         @media screen and (max-width: 824px) {
           margin-top: 0;
         }

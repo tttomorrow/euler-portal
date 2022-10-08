@@ -204,6 +204,20 @@ export function getBusinessSoftwareList(params: cveQuery) {
 }
 
 /**
+ * 调用接口获取兼容性列表-板卡类型筛选条件
+ * @name getDriveTypes
+ */
+export function getDriveTypes(lang: string) {
+  const url = `/api-approve/cve-security-notice-server/drivercomp/getType?lang=${lang}`;
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
  * 调用接口获取兼容性列表-开源软件筛选条件
  * @name getSoftFilter
  */
