@@ -204,10 +204,7 @@ function search() {
 // }
 const jumpToUserZone = () => {
   const language = lang.value === 'zh' ? 'zh' : 'en';
-  window.open(
-    `https://jldibemigdfj.authing.cn/u?app_id=62679eab0b22b146d2ea0a3a&lang=${language}`,
-    '_blank'
-  );
+  router.go(`/${language}/usercenter/`);
 };
 </script>
 

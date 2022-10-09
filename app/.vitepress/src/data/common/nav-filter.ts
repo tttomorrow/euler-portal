@@ -145,4 +145,8 @@ export default [
     name: 'approve',
     lang: ['zh'],
   },
+  {
+    name: 'usercenter',
+    lang: ['zh', 'en'],
+  },
 ];
