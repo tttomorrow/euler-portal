@@ -203,7 +203,7 @@ function search() {
         <OIcon v-else class="icon"><IconCancel /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
-      <clientOnly>
+      <ClientOnly>
         <div v-if="isShowBox" class="header-search">
           <div class="header-search-box">
             <OSearch
@@ -237,7 +237,7 @@ function search() {
             </div>
           </div>
         </div>
-      </clientOnly>
+      </ClientOnly>
       <!-- 移动端搜索按钮 -->
       <div v-if="!isShowBox" class="mobile-search">
         <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
