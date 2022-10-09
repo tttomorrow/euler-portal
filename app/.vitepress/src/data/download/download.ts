@@ -45,6 +45,18 @@ export default {
         LTS: true,
       },
       {
+        NAME: '统信服务器操作系统V20',
+        DOWNLOAD_URL: ' https://www.chinauos.com/resource/download-server',
+        DESC: '统信服务器操作系统（UnionTech OS Server）是统信操作系统（统信UOS）产品家族中面向服务器端运行环境的版本，是一款用于构建信息化基础设施环境的平台级软件。该操作系统基于Linux 稳定内核研发，集成了资源管理、运维管理、和 DDE 桌面环境等标准系统组件，服务管理、中间件、WEB 服务、办公服务等应用服务组件，国密算法、安全审计等安全服务组件，虚拟化、容器、云平台、人工智能、大数据、可视化运维、集群运维、智能调优、和迁移助手等高级服务组件。产品主要面向于我国党政军、企事业单位、教育机构，以及普通的企业型用户，着重解决客户在信息化基础建设过程中，服务端基础设施的安装部署、运行维护、应用支撑等需求。',
+        RELEASE_DESC_URL:
+          'https://doc.chinauos.com/content/E34Dd38BplouMytzXa9-',
+        SEEK_HELP_URL: ' http://bbs.chinauos.com/',
+        GET_ISO_URL: ' https://www.chinauos.com/resource/download-server',
+        MANUFACTURER: '统信软件技术有限公司',
+        PUBLISH_DATE: '2022/03',
+        LTS: false,
+      },
+      {
         NAME: 'openEuler 20.03 LTS SP3',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/',
         DESC: 'openEuler 20.03 LTS SP3 是openEuler 20.03 LTS的补丁版本，生命周期与LTS版本相同',
@@ -59,6 +71,20 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2021/12',
         LTS: true,
+      },
+      {
+        NAME: 'BCLinux for Euler V21.10',
+        DOWNLOAD_URL: 'https://mirrors.cmecloud.cn/bclinux/oe21.10/',
+        DESC: 'BC-Linux for Euler 是中国移动自主研发，以OpenEuler社区操作系统为基础，借助开源社区的开放优势，通过定制化手段研发的企业级Linux操作系统，具备专业化、本地化的Linux开发和运维服务能力，能充分满足顾客对于云计算和大数据通用场景、边缘计算、虚拟化及容器和PaaS业务场景需求。',
+        RELEASE_DESC_URL:
+          'https://ecloud.10086.cn/op-help-center/doc/article/41432',
+        INSTALL_GUIDENCE_URL:
+          'https://ecloud.10086.cn/op-help-center/doc/article/54482',
+        SEEK_HELP_URL: 'https://ecloud.10086.cn/home/about/contact',
+        GET_ISO_URL: 'https://mirrors.cmecloud.cn/bclinux/oe21.10/ISO/',
+        MANUFACTURER: '中国移动云能中心',
+        PUBLISH_DATE: '2021/10',
+        LTS: false,
       },
       {
         NAME: 'openEuler 21.09',
