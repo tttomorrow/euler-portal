@@ -195,13 +195,6 @@ function search() {
   // router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
-
-// 点击关闭cookies使用提示
-// const { isShowTip } = toRefs(props);
-// const emit2 = defineEmits(['click-close']);
-// function clickClose() {
-//   emit2('click-close');
-// }
 const jumpToUserZone = () => {
   const language = lang.value === 'zh' ? 'zh' : 'en';
   router.go(`/${language}/usercenter/`);
