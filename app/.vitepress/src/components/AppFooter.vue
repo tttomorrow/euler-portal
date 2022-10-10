@@ -528,8 +528,10 @@ $color: #fff;
           }
         }
       }
-      @media (max-width: 1100px) {
+      @media (max-width: 1400px) {
         justify-content: center;
+      }
+      @media (max-width: 1100px) {
         margin-top: 24px;
       }
     }

@@ -152,12 +152,12 @@ onUnmounted(() => {
     </h3>
     <p class="rank-tip">{{ i18n.home.RANK_TIP }}</p>
     <LinkPanel
-      :linkList="i18n.home.HOME_SOURCE_EDITION"
+      :link-list="i18n.home.HOME_SOURCE_EDITION"
       :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
     ></LinkPanel>
     <h3>{{ i18n.home.HOME_SOURCE.SOURCE_LINK_TITLE }}</h3>
     <LinkPanel
-      :linkList="i18n.home.FRIENDSHIP_LINK_LIST"
+      :link-list="i18n.home.FRIENDSHIP_LINK_LIST"
       :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
     ></LinkPanel>
   </AppContent>
