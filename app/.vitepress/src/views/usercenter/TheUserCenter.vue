@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, onUnmounted } from 'vue';
 import NotFound from '@/NotFound.vue';
-import { getUserAuth } from '@/shared/login';
+import { getUserAuth, refreshInfo } from '@/shared/login';
 import { useCommon } from '@/stores/common';
 import { useData } from 'vitepress';
 
@@ -9,7 +9,7 @@ const { token } = getUserAuth();
 const commonStore = useCommon();
 const { lang } = useData();
 const iframeIns = ref();
-const iframeUri = 'https://openeuler-usercenter.test.osinfra.cn/#/user';
+const iframeUri = 'https://openeuler-usercenter.test.osinfra.cn/user';
 const sendMsg = () => {
   // 向该窗口发送消息
   const data = {
@@ -30,12 +30,36 @@ const sendMsg = () => {
     iframeIns.value.contentWindow.postMessage(data, iframeUri);
   }
 };
+const sendRefreshMsg = () => {
+  // 向该窗口发送刷新消息
+  const data = {
+    token,
+    theme: commonStore.theme,
+    lang: lang.value,
+  };
+  if (iframeIns.value) {
+    iframeIns.value.contentWindow.postMessage(data, iframeUri);
+  }
+};
+// 接收iframe信息
+const receiveMsg = () => {
+  window.addEventListener('message', handleMessage);
+};
+const handleMessage = (e: { data: { key: string } }) => {
+  if (e?.data?.key === 'refresh') {
+    refreshInfo();
+  }
+};
 onMounted(() => {
   sendMsg();
+  receiveMsg();
+});
+onUnmounted(() => {
+  window.removeEventListener('message', handleMessage);
 });
 watch(
   () => [commonStore.theme, lang.value],
-  () => sendMsg()
+  () => sendRefreshMsg()
 );
 </script>
 
