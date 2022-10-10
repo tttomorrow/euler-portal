@@ -27,7 +27,6 @@ const sendMsg = () => {
         iframeIns.value.contentWindow.postMessage(data, iframeUri);
       };
     }
-    iframeIns.value.contentWindow.postMessage(data, iframeUri);
   }
 };
 const sendRefreshMsg = () => {
