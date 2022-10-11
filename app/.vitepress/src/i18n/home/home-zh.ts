@@ -301,11 +301,10 @@ export default {
       IMG_DARK: xfusionLogo_dark,
     },
     {
-      LINK: 'http://www.chinaredflag.cn/',
-      IMG: zhongkehongqi,
-      IMG_DARK: zhongkehongqiLogo_dark,
+      LINK: 'https://www.fhss.com.cn/',
+      IMG: fenhuoLogo,
+      IMG_DARK: fenhuoLogo_dark,
     },
-
     {
       LINK: 'https://www.kyland.com.cn/',
       IMG: intewellLogo,
@@ -378,9 +377,9 @@ export default {
       IMG_DARK: zhongkefangdeLogo_dark,
     },
     {
-      LINK: 'https://www.fhss.com.cn/',
-      IMG: fenhuoLogo,
-      IMG_DARK: fenhuoLogo_dark,
+      LINK: 'http://www.chinaredflag.cn/',
+      IMG: zhongkehongqi,
+      IMG_DARK: zhongkehongqiLogo_dark,
     },
   ],
   FRIENDSHIP_LINK_LIST: [

@@ -62,6 +62,8 @@ import zhongkechuangdaLogo from '../../assets/category/home/link/zhongkeLogo.png
 import zhongkechuangdaLogo_dark from '../../assets/category/home/dark/link/zhongkeLogo_dark.png';
 import xfusion from '../../assets/category/home/link/xfusion.png';
 import xfusionLogo_dark from '../../assets/category/home/dark/link/xfusion_dark.png';
+import fenhuoLogo from '../../assets/category/home/link/fenhuo_light.png';
+import fenhuoLogo_dark from '../../assets/category/home/dark/link/fenhuo_dark.png';
 
 import mulan from '../../assets/category/home/link/mulan.png';
 import mulanLogo_dark from '../../assets/category/home/dark/link/mulan_dark.png';
@@ -356,11 +358,10 @@ export default {
       IMG_DARK: xfusionLogo_dark,
     },
     {
-      LINK: 'http://www.chinaredflag.cn/',
-      IMG: zhongkehongqi,
-      IMG_DARK: zhongkehongqiLogo_dark,
+      LINK: 'https://www.fhss.com.cn/',
+      IMG: fenhuoLogo,
+      IMG_DARK: fenhuoLogo_dark,
     },
-
     {
       LINK: 'https://www.kyland.com.cn/',
       IMG: intewellLogo,
@@ -431,6 +432,11 @@ export default {
       LINK: 'http://www.nfs-china.com/index.html',
       IMG: zhongkefangde,
       IMG_DARK: zhongkefangdeLogo_dark,
+    },
+    {
+      LINK: 'http://www.chinaredflag.cn/',
+      IMG: zhongkehongqi,
+      IMG_DARK: zhongkehongqiLogo_dark,
     },
   ],
   FRIENDSHIP_LINK_LIST: [
