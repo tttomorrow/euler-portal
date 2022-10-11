@@ -1,5 +1,8 @@
 // import newEdition_pc_en from '@/assets/category/home/banner/banner22.09_pc_en.png';
 // import newEdition_mo_en from '@/assets/category/home/banner/banner22.09_mo_en.png';
+
+import september_mo from '@/assets/category/home/banner/september_mo.png';
+import september_pc from '@/assets/category/home/banner/september_pc.png';
 import newEdition_pc_zh from '@/assets/category/home/banner/banner22.09_pc_zh.png';
 import newEdition_mo_zh from '@/assets/category/home/banner/banner22.09_mo_zh.png';
 import summitImg_pc from '@/assets/category/home/banner/banner-summit_pc.png';
@@ -13,6 +16,14 @@ export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
+      {
+        pcBanner: september_pc,
+        moBanner: september_mo,
+        link: 'https://mp.weixin.qq.com/s/_OfgOYOaIiFF39I5PVMxWQ',
+        desc: ['openEuler社区', '2022年9月运作月报'],
+        id: 'september',
+        targetTap: 1,
+      },
       {
         pcBanner: newEdition_pc_zh,
         moBanner: newEdition_mo_zh,
