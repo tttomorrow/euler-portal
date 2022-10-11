@@ -23,6 +23,21 @@ export default {
         LTS: false,
       },
       {
+        NAME: '北京凝思软件股份有限公司',
+        DOWNLOAD_URL: 'https://www.linx-info.com/download/os/6.0.99/',
+        DESC: '凝思安全操作系统欧拉版V6.0.99基于openEuler 20.03 LTS SP3 开发，内置凝思固域安全子系统，具有高可靠、高安全、高性能和高兼容等特性，能够保障生产系统和关键业务系统的安全稳定运行。',
+        RELEASE_DESC_URL:
+          'https://www.linx-info.com/#/ServiceAndSupport/DocumentDownload',
+        INSTALL_GUIDENCE_URL:
+          'https://www.linx-info.com/#/ServiceAndSupport/DocumentDownload',
+        SEEK_HELP_URL:
+          'https://www.linx-info.com/#/ServiceAndSupport/CommonQuestions',
+        GET_ISO_URL: 'https://www.linx-info.com/download/os/6.0.99/x86_64/',
+        MANUFACTURER: '北京凝思软件股份有限公司',
+        PUBLISH_DATE: '2022/08',
+        LTS: false,
+      },
+      {
         NAME: 'openEuler 22.03 LTS',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/',
         DESC: 'openEuler 22.03-LTS 是基于5.10内核构建，实现了服务器、云、边缘和嵌入式的全场景支持',
