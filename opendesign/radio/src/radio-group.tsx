@@ -13,9 +13,9 @@ export default defineComponent({
   setup(props: RadioGroupProps, { emit, slots }) {
     const { modelValue, disabled } = toRefs(props);
 
-    const onChange = (val: string | number | boolean, e: Event) => {
+    const onChange = (val: string | number | boolean) => {
       emit('update:modelValue', val);
-      emit('change', val, e);
+      emit('change', val);
     };
 
     // 注入

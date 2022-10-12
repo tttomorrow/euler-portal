@@ -79,6 +79,7 @@ const jumpTo = (item: any) => {
           <div
             v-if="item.title !== ''"
             class="banner-panel-content flex-column"
+            :class="item.id === 'september' ? 'september' : ''"
           >
             <div data-aos="fade-down" class="box">
               <p class="title">
@@ -95,7 +96,7 @@ const jumpTo = (item: any) => {
             </div>
             <div
               v-if="item.btn"
-              :class="item.id === 'newEdition' ? 'new-edition' : ''"
+              :class="[item.id === 'newEdition' ? 'new-edition' : '']"
               data-aos="fade-up"
               class="action"
             >
@@ -179,6 +180,7 @@ html[lang='zh'] {
       .box {
         color: $banner-color;
       }
+
       .desc {
         @media screen and (min-width: 1439px) {
           // max-width: 500px;
@@ -233,11 +235,6 @@ html[lang='zh'] {
           margin-top: 0;
         }
       }
-      // .liveBanner {
-      //   @media screen and (max-width: 768px) {
-      //     display: none;
-      //   }
-      // }
       @media screen and (max-width: 1440px) {
         padding: 0 16px;
       }
@@ -246,6 +243,24 @@ html[lang='zh'] {
         justify-content: space-between;
         box-sizing: border-box;
         text-align: center;
+      }
+    }
+    .september {
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+      .desc {
+        margin: 0;
+        text-align: center;
+        font-size: 48px;
+        @media screen and (max-width: 768px) {
+          display: flex;
+          flex-direction: column;
+          font-size: 20px;
+          .inline-desc:nth-child(2) {
+            margin-top: var(--o-spacing-h6);
+          }
+        }
       }
     }
 
