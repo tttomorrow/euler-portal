@@ -1,13 +1,13 @@
 import type { App } from 'vue';
 import Checkbox from './src/checkbox';
-// import RadioGroup from './src/radio-group';
+import CheckboxGroup from './src/checkbox-group';
 
 Checkbox.install = function (app: App) {
   app.component(Checkbox.name, Checkbox);
 };
 
-// RadioGroup.install = function (app: App) {
-//   app.component(RadioGroup.name, RadioGroup);
-// };
+CheckboxGroup.install = function (app: App) {
+  app.component(CheckboxGroup.name, CheckboxGroup);
+};
 
-export { Checkbox };
+export { Checkbox, CheckboxGroup };
