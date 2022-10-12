@@ -16,6 +16,7 @@ const sendMsg = () => {
     token,
     theme: commonStore.theme,
     lang: lang.value,
+    source: 'usercenter',
   };
   if (iframeIns.value) {
     if (iframeIns.value.attachEvent) {
@@ -35,6 +36,7 @@ const sendRefreshMsg = () => {
     token,
     theme: commonStore.theme,
     lang: lang.value,
+    source: 'usercenter',
   };
   if (iframeIns.value) {
     iframeIns.value.contentWindow.postMessage(data, iframeUri);
