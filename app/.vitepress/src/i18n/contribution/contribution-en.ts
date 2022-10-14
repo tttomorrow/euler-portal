@@ -1,9 +1,13 @@
+import contributionMap_light_en from '@/assets/category/contribution/contribution-map_light_en.png';
+import contributionMap_dark_en from '@/assets/category/contribution/contribution-map_dark_en.png';
+import contributionMap_light_en_mobile from '@/assets/category/contribution/contribution-map_light_en_mobile.png';
+import contributionMap_dark_en_mobile from '@/assets/category/contribution/contribution-map_dark_en_mobile.png';
 export default {
   DOWLOAD_PDF_URL: '/category/contribution/openeuler-trail-chess-en.pdf',
-  BACKGROUND_IMG_H5:
-    ' https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E8%B4%A1%E7%8C%AE%E5%9C%B0%E5%9B%BE/webtrailchess_zh_mo.png',
-  BACKGROUND_IMG:
-    'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E8%B4%A1%E7%8C%AE%E5%9C%B0%E5%9B%BE/webtrailchess_zh.png',
+  BACKGROUND_IMG_H5: contributionMap_light_en_mobile,
+  BACKGROUND_IMG: contributionMap_light_en,
+  BACKGROUND_IMG_H5_DARK: contributionMap_dark_en_mobile,
+  BACKGROUND_IMG_DARK: contributionMap_dark_en,
   LOOK_DESC: 'View Details',
   LOOK_MAP: 'Contribution Map',
   PRINT_MAP: 'Download',
@@ -129,11 +133,11 @@ export default {
       BLANK: true,
     },
     {
-      URL: '/en/sig/sig-list/sig-detail/?name=TC',
+      URL: '/en/sig/sig-detail/?name=TC',
       BLANK: true,
     },
     {
-      URL: 'https://gitee.com/openeuler/community/blob/master/community-membership_cn.md',
+      URL: 'https://gitee.com/openeuler/community/blob/master/community-membership.md',
       BLANK: true,
     },
   ],

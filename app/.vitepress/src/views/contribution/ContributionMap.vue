@@ -1,15 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useRouter } from 'vitepress';
+import { useRouter, useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
 
-import contributionMap_light_zh from '@/assets/category/contribution/contribution-map_light_zh.png';
-import contributionMap_dark_zh from '@/assets/category/contribution/contribution-map_dark_zh.png';
-import contributionMap_light_zh_mobile from '@/assets/category/contribution/contribution-map_light_zh_mobile.png';
-import contributionMap_dark_zh_mobile from '@/assets/category/contribution/contribution-map_dark_zh_mobile.png';
-
+const { lang } = useData();
 const i18n = useI18n();
 const commonStore = useCommon();
 const router = useRouter();
@@ -26,14 +22,24 @@ const goLink = (url: string, isBlank: boolean) => {
 </script>
 <template>
   <div class="content-map">
-    <div class="content-map-img">
-      <img v-show="!isDark" :src="contributionMap_light_zh" />
-      <img v-show="isDark" :src="contributionMap_dark_zh" />
+    <div :class="lang === 'zh' ? 'content-map-img' : 'content-map-img-en'">
+      <img v-show="!isDark" :src="i18n.contribution.BACKGROUND_IMG" />
+      <img v-show="isDark" :src="i18n.contribution.BACKGROUND_IMG_DARK" />
+      <img
+        v-show="!isDark && lang === 'en'"
+        :src="i18n.contribution.BACKGROUND_IMG_H5"
+        class="map-mo-en"
+      />
+      <img
+        v-show="isDark && lang === 'en'"
+        :src="i18n.contribution.BACKGROUND_IMG_H5_DARK"
+        class="map-mo-en"
+      />
       <!-- 定位的空标签 -->
       <div
         v-for="(item, index) in i18n.contribution.LINK_LIST"
         :key="index"
-        class="link"
+        :class="lang === 'zh' ? 'link' : 'link-en'"
         @click="goLink(item.URL, item.BLANK)"
       ></div>
       <a
@@ -43,9 +49,12 @@ const goLink = (url: string, isBlank: boolean) => {
         >{{ i18n.contribution.PRINT_MAP }}</a
       >
     </div>
-    <div class="content-map-mobile-img">
-      <img v-show="!isDark" :src="contributionMap_light_zh_mobile" />
-      <img v-show="isDark" :src="contributionMap_dark_zh_mobile" />
+    <div
+      class="content-map-mobile-img"
+      :class="lang === 'zh' ? '' : 'content-map-mobile-img-en'"
+    >
+      <img v-show="!isDark" :src="i18n.contribution.BACKGROUND_IMG_H5" />
+      <img v-show="isDark" :src="i18n.contribution.BACKGROUND_IMG_H5_DARK" />
       <div
         v-for="(item, index) in i18n.contribution.LINK_LIST"
         :key="index"
@@ -62,6 +71,7 @@ const goLink = (url: string, isBlank: boolean) => {
   padding-bottom: var(--o-spacing-h1);
   &-img {
     width: 1416px;
+    min-height: 650px;
     position: relative;
     display: block;
     margin: 0 auto;
@@ -100,6 +110,37 @@ const goLink = (url: string, isBlank: boolean) => {
     }
     @media screen and (min-width: 1280px) and (max-width: 1439px) {
       width: 1254px;
+    }
+  }
+  &-img-en {
+    position: relative;
+    width: 1416px;
+    min-height: 650px;
+    margin: 0 auto;
+    text-align: center;
+    .content-map-print {
+      display: none;
+    }
+    @media screen and (max-width: 1264px) {
+      width: 375px;
+    }
+    img {
+      width: 1034px;
+      padding: var(--o-spacing-h1) 0;
+      @media screen and (max-width: 1264px) {
+        display: none;
+      }
+    }
+    .map-mo-en {
+      position: relative;
+      display: none;
+      margin: 0 auto;
+      padding-top: 0;
+      margin-top: var(--o-spacing-h2);
+      width: 317px;
+      @media screen and (max-width: 1264px) {
+        display: block;
+      }
     }
   }
   &-print {
@@ -902,6 +943,9 @@ const goLink = (url: string, isBlank: boolean) => {
       width: 100%;
     }
   }
+  &-mobile-img-en {
+    display: none;
+  }
   .mobile-link {
     position: absolute;
     display: block;
@@ -1099,6 +1143,375 @@ const goLink = (url: string, isBlank: boolean) => {
     height: 1%;
     left: 26.4%;
     top: 92%;
+  }
+  .link-en {
+    cursor: pointer;
+    position: absolute;
+  }
+  .link-en:nth-of-type(1) {
+    width: 40px;
+    height: 60px;
+    top: 255px;
+    left: 320px;
+    @media screen and (max-width: 1264px) {
+      top: 197px;
+      left: 112px;
+    }
+  }
+  .link-en:nth-of-type(2) {
+    width: 40px;
+    height: 60px;
+    top: 255px;
+    left: 380px;
+    @media screen and (max-width: 1264px) {
+      top: 197px;
+      left: 172px;
+    }
+  }
+  .link-en:nth-of-type(3) {
+    width: 40px;
+    height: 60px;
+    top: 255px;
+    left: 452px;
+    @media screen and (max-width: 1264px) {
+      top: 197px;
+      left: 232px;
+    }
+  }
+  .link-en:nth-of-type(4) {
+    width: 40px;
+    height: 60px;
+    top: 255px;
+    left: 506px;
+    @media screen and (max-width: 1264px) {
+      top: 197px;
+      left: 290px;
+    }
+  }
+  .link-en:nth-of-type(5) {
+    width: 240px;
+    height: 48px;
+    top: 393px;
+    left: 318px;
+    @media screen and (max-width: 1264px) {
+      width: 218px;
+      height: 41px;
+      top: 320px;
+      left: 110px;
+    }
+  }
+  .link-en:nth-of-type(6) {
+    width: 116px;
+    height: 48px;
+    top: 447px;
+    left: 318px;
+    @media screen and (max-width: 1264px) {
+      width: 90px;
+      height: 46px;
+      top: 365px;
+      left: 110px;
+    }
+  }
+  .link-en:nth-of-type(7) {
+    width: 118px;
+    height: 48px;
+    top: 447px;
+    left: 440px;
+    @media screen and (max-width: 1264px) {
+      width: 218px;
+      height: 41px;
+      top: 415px;
+      left: 108px;
+      z-index: 88;
+    }
+  }
+  .link-en:nth-of-type(8) {
+    width: 240px;
+    height: 48px;
+    top: 500px;
+    left: 318px;
+    @media screen and (max-width: 1264px) {
+      width: 121px;
+      height: 46px;
+      top: 365px;
+      left: 208px;
+    }
+  }
+  .link-en:nth-of-type(9) {
+    width: 240px;
+    height: 48px;
+    top: 555px;
+    left: 318px;
+
+    @media screen and (max-width: 1264px) {
+      width: 218px;
+      height: 40px;
+      top: 464px;
+      left: 108px;
+    }
+  }
+  .link-en:nth-of-type(10) {
+    width: 240px;
+    height: 48px;
+    top: 610px;
+    left: 318px;
+
+    @media screen and (max-width: 1264px) {
+      width: 218px;
+      height: 41px;
+      top: 510px;
+      left: 108px;
+    }
+  }
+  .link-en:nth-of-type(11) {
+    width: 240px;
+    height: 60px;
+    top: 664px;
+    left: 318px;
+    @media screen and (max-width: 1264px) {
+      width: 218px;
+      height: 54px;
+      top: 560px;
+      left: 108px;
+    }
+  }
+  .link-en:nth-of-type(12) {
+    width: 260px;
+    height: 24px;
+    top: 905px;
+    left: 222px;
+    @media screen and (max-width: 1264px) {
+      width: 210px;
+      height: 24px;
+      top: 700px;
+      left: 116px;
+    }
+  }
+  .link-en:nth-of-type(13) {
+    width: 72px;
+    height: 45px;
+    top: 962px;
+    left: 222px;
+    @media screen and (max-width: 1264px) {
+      width: 60px;
+      top: 757px;
+      left: 116px;
+    }
+  }
+  .link-en:nth-of-type(14) {
+    width: 82px;
+    height: 45px;
+    top: 962px;
+    left: 311px;
+    @media screen and (max-width: 1264px) {
+      width: 67px;
+      top: 757px;
+      left: 191px;
+    }
+  }
+  .link-en:nth-of-type(15) {
+    width: 71px;
+    height: 45px;
+    top: 962px;
+    left: 410px;
+    @media screen and (max-width: 1264px) {
+      width: 60px;
+      top: 757px;
+      left: 272px;
+    }
+  }
+  .link-en:nth-of-type(16) {
+    width: 64px;
+    height: 80px;
+    top: 920px;
+    left: 750px;
+    @media screen and (max-width: 1264px) {
+      top: 940px;
+      left: 127px;
+    }
+  }
+  .link-en:nth-of-type(17) {
+    width: 64px;
+    height: 80px;
+    top: 920px;
+    left: 859px;
+    @media screen and (max-width: 1264px) {
+      top: 940px;
+      left: 245px;
+    }
+  }
+  .link-en:nth-of-type(18) {
+    width: 64px;
+    height: 80px;
+    top: 920px;
+    left: 974px;
+    @media screen and (max-width: 1264px) {
+      top: 1020px;
+      left: 127px;
+    }
+  }
+  .link-en:nth-of-type(19) {
+    width: 64px;
+    height: 80px;
+    top: 920px;
+    left: 1080px;
+    @media screen and (max-width: 1264px) {
+      top: 1020px;
+      left: 245px;
+    }
+  }
+  .link-en:nth-of-type(20) {
+    width: 60px;
+    height: 85px;
+    top: 758px;
+    left: 1005px;
+    @media screen and (max-width: 1264px) {
+      top: 1220px;
+      left: 127px;
+    }
+  }
+  .link-en:nth-of-type(21) {
+    width: 60px;
+    height: 85px;
+    top: 758px;
+    left: 1091px;
+    @media screen and (max-width: 1264px) {
+      top: 1220px;
+      left: 242px;
+    }
+  }
+  .link-en:nth-of-type(22) {
+    width: 135px;
+    height: 24px;
+    top: 601px;
+    left: 743px;
+    @media screen and (max-width: 1264px) {
+      width: 128px;
+      height: 14px;
+      top: 1422px;
+      left: 108px;
+    }
+  }
+  .link-en:nth-of-type(23) {
+    width: 89px;
+    height: 16px;
+    top: 601px;
+    left: 889px;
+    @media screen and (max-width: 1264px) {
+      width: 86px;
+      height: 16px;
+      top: 1422px;
+      left: 251px;
+    }
+  }
+  .link-en:nth-of-type(24) {
+    width: 109px;
+    height: 18px;
+    top: 640px;
+    left: 1044px;
+    @media screen and (max-width: 1264px) {
+      width: 104px;
+      height: 14px;
+      left: 190px;
+      top: 1500px;
+    }
+  }
+  .link-en:nth-of-type(25) {
+    width: 187px;
+    height: 18px;
+    top: 640px;
+    left: 750px;
+    @media screen and (max-width: 1264px) {
+      width: 183px;
+      height: 14px;
+      left: 112px;
+      top: 1470px;
+    }
+  }
+  .link-en:nth-of-type(26) {
+    width: 75px;
+    height: 18px;
+    top: 640px;
+    left: 955px;
+    @media screen and (max-width: 1264px) {
+      width: 70px;
+      height: 14px;
+      left: 112px;
+      top: 1500px;
+    }
+  }
+  .link-en:nth-of-type(27) {
+    width: 43px;
+    height: 17px;
+    top: 684px;
+    left: 924px;
+    @media screen and (max-width: 1264px) {
+      width: 36px;
+      height: 14px;
+      left: 112px;
+      top: 1545px;
+    }
+  }
+  .link-en:nth-of-type(28) {
+    width: 159px;
+    height: 18px;
+    top: 684px;
+    left: 744px;
+    @media screen and (max-width: 1264px) {
+      width: 156;
+      height: 14px;
+      top: 1520px;
+      left: 112px;
+    }
+  }
+  .link-en:nth-of-type(29) {
+    width: 176px;
+    height: 18px;
+    top: 601px;
+    left: 987px;
+    @media screen and (max-width: 1264px) {
+      width: 172px;
+      height: 14px;
+      left: 112px;
+      top: 1445px;
+    }
+  }
+  .link-en:nth-of-type(30) {
+    width: 168px;
+    height: 18px;
+    top: 684px;
+    left: 989px;
+    @media screen and (max-width: 1264px) {
+      width: 166px;
+      height: 14px;
+      left: 161px;
+      top: 1545px;
+    }
+  }
+
+  .link-en:nth-of-type(31) {
+    width: 124px;
+    height: 14px;
+    top: 281px;
+    left: 848px;
+    @media screen and (max-width: 1264px) {
+      width: 115px;
+      height: 16px;
+      top: 1770px;
+      left: 112px;
+    }
+  }
+  .link-en:nth-of-type(32) {
+    width: 104px;
+    height: 14px;
+    top: 187px;
+    left: 854px;
+    @media screen and (max-width: 1264px) {
+      width: 96px;
+      height: 16px;
+      top: 1670px;
+      left: 112px;
+    }
   }
 }
 </style>

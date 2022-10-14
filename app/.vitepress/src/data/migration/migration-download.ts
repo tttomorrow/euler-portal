@@ -41,7 +41,7 @@ export default [
     },
     doc: {
       name: 'x2openEuler使用指南',
-      link: 'https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/thirdparty_migration/x2openEuler用户指南.html',
+      link: 'https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/thirdparty_migration/x2openEuler-Userguide.html',
     },
   },
   {
