@@ -173,7 +173,7 @@ const getcontributeValue = (item: any) => {
 };
 // 跳转个人详情
 const goToUser = (data: string) => {
-  const url = 'https://datastatopeneuler.test.osinfra.cn';
+  const url = 'https://datastat.openeuler.org';
   const path = `/${lang.value}/user/${data}`;
   window.open(url + path, '_blank');
 };

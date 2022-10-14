@@ -352,6 +352,8 @@ onMounted(() => {
           }
         }
         &-text {
+          white-space: pre-wrap;
+          text-align: justify;
           font-size: var(--o-font-size-text);
           font-weight: 400;
           color: var(--o-color-text1);

@@ -29,6 +29,10 @@ export default defineComponent({
     };
 
     const onChange = () => {
+      if (isDisabled.value) {
+        return;
+      }
+
       const val = props.value;
       radioGroupInjection?.onChange(val);
       emit('update:modelValue', val);
