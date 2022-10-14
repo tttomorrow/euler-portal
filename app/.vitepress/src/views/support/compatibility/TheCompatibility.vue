@@ -16,9 +16,9 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import type {
   CveQuery,
   FilterList,
-  // CompatibilityList,
-  // BoardCardList,
-  // BusinessSoftWareList,
+  CompatibilityList,
+  BoardCardList,
+  BusinessSoftWareList,
 } from '@/shared/@types/type-support';
 
 import {
@@ -116,11 +116,10 @@ const queryData: CveQuery = reactive({
   lang: `${lang.value}`,
 });
 
-// const tableData = ref<
-//   CompatibilityList[] | BoardCardList[] | BusinessSoftWareList[]
-// >([]);
-// TODO:约束多个数据
-const tableData = ref<any>([]);
+const tableData = ref<
+  CompatibilityList[] | BoardCardList[] | BusinessSoftWareList[]
+>([]);
+// const tableData = ref<any>([]);
 
 // 整机
 const getCompatibilityData = (data: CveQuery) => {

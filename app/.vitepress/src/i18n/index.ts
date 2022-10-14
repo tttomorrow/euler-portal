@@ -4,7 +4,6 @@ import { useData } from 'vitepress';
 import sig from './sig';
 import download from './download';
 import brand from './brand';
-// import security from './security';
 import home from './home';
 import common from './common';
 import mooc from './learn';
@@ -16,13 +15,11 @@ import stratovirt from './minisite/stratovirt';
 import showcase from './showcase';
 import interaction from './interaction';
 import live from './interaction/live';
-// import compatibility from './compatibility';
 import summit from './interaction/summit';
 import filter from './filter';
 import contribution from './contribution';
 import mailing from './mailing';
 import search from './search';
-// import approve from './approve';
 import osv from './support/osv';
 import compatibility from './support/compatibility';
 import cve from './support/cve';
@@ -33,7 +30,6 @@ const i18n: { [key: string]: any } = {
     sig: sig.zh,
     download: download.zh,
     brand: brand.zh,
-    // security: security.zh,
     home: home.zh,
     common: common.zh,
     mooc: mooc.zh,
@@ -59,7 +55,6 @@ const i18n: { [key: string]: any } = {
     sig: sig.en,
     download: download.en,
     brand: brand.en,
-    // security: security.en,
     home: home.en,
     common: common.en,
     atune: atune.en,
@@ -84,7 +79,6 @@ const i18n: { [key: string]: any } = {
     sig: sig.ru,
     download: download.ru,
     brand: brand.ru,
-    // security: security.ru,
     home: home.ru,
     common: common.ru,
     atune: atune.ru,

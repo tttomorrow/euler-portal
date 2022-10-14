@@ -4,7 +4,7 @@ import { useRouter, useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
 
-import { CveQuery } from '@/shared/@types/type-support';
+import { CveQuery, OsvList } from '@/shared/@types/type-support';
 import { getOsName, getOsType, getOsTableData } from '@/api/api-security';
 
 import AppContent from '@/components/AppContent.vue';
@@ -36,7 +36,7 @@ const all = computed(() => {
 const inputName = ref('');
 const osNames = ref([`${all.value}`]);
 const osTypes = ref([`${all.value}`]);
-const osvList = ref<any>([]); //:TODO:约束
+const osvList = ref<OsvList[]>([]);
 const activeIndex = ref(0);
 const activeIndex1 = ref(0);
 const total = ref(0);
@@ -142,6 +142,7 @@ onMounted(() => {
   }
   getOsTableList(queryData);
 });
+
 watch(queryData, () => getOsTableList(queryData));
 </script>
 <template>

@@ -227,7 +227,7 @@ watch(queryData, () => getCveLists(queryData));
     </ul>
 
     <div v-if="totalPage === 0" class="empty-status">
-      {{ i18n.compatibility.EMPTY_SEARCH_RESULT }}
+      {{ i18n.cve.EMPTY_SEARCH_RESULT }}
     </div>
 
     <ClientOnly>
