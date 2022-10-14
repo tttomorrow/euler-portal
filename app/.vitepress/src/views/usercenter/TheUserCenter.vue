@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, onUnmounted } from 'vue';
 import NotFound from '@/NotFound.vue';
-import { getUserAuth, refreshInfo } from '@/shared/login';
+import { getUserAuth, refreshInfo, showGuard } from '@/shared/login';
 import { useCommon } from '@/stores/common';
 import { useData } from 'vitepress';
+import { useI18n } from '@/i18n';
 
+const i18n = useI18n();
 const { token } = getUserAuth();
 const commonStore = useCommon();
 const { lang } = useData();
@@ -72,7 +74,14 @@ watch(
     :src="iframeUri"
     frameborder="0"
   ></iframe>
-  <NotFound v-else></NotFound>
+  <NotFound v-else>
+    <template #title>
+      <p>
+        {{ i18n.common.PLEASE }}
+        <a @click="showGuard()">{{ i18n.common.LOGIN }}</a> !
+      </p>
+    </template>
+  </NotFound>
 </template>
 
 <style lang="scss" scoped>

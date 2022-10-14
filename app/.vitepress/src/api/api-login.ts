@@ -11,7 +11,7 @@ import type { AxiosResponse } from '@/shared/axios';
 export function queryCourse(params: object) {
   const url = '/authing/user/permission';
   return request
-    .get(url, { params, global: true })
+    .get(url, { params, global: true, $doException: true })
     .then((res: AxiosResponse) => res.data);
 }
 /**
