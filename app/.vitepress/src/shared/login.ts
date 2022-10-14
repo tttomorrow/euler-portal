@@ -14,7 +14,7 @@ const LOGIN_KEYS = {
 function setCookie(cname: string, cvalue: string, exdays: number) {
   const d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  const expires = `expires=${d.toUTCString()}; path=/`;
+  const expires = `expires=${d.toUTCString()}; path=/; domain=.test.osinfra.cn`;
   document.cookie = `${cname}=${cvalue}; ${expires}`;
 }
 function getCookie(cname: string) {
