@@ -8,7 +8,7 @@ tags:
 archives: 2022-10-13
 author:
   - openEuler
-summary:混合部署的从核启停依赖 UEFI 第三方固件支持 PSCI 标准实现，本文介绍如何使树莓派 4B 支持 UEFI，并可通过 SD 卡或网络启动 openEuler Embedded。
+summary: 混合部署的从核启停依赖 UEFI 第三方固件支持 PSCI 标准实现，本文介绍如何使树莓派 4B 支持 UEFI，并可通过 SD 卡或网络启动 openEuler Embedded。
 ---
 
 混合部署的从核启停依赖 UEFI 第三方固件支持 PSCI 标准实现，本文介绍如何使树莓派 4B 支持 UEFI，并可通过 SD 卡或网络启动 openEuler Embedded。
