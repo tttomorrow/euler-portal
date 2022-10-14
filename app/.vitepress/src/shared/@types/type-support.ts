@@ -110,10 +110,6 @@ export interface SoftWareList {
   uninstall: string;
   version: string;
 }
-export interface BusinessSoftWareQuery {
-  pageSize: number;
-  pageNo: number;
-}
 export interface PlatFormAndServerModel {
   platformName: string;
   serverProvider: string;
@@ -131,46 +127,16 @@ export interface BusinessSoftWareList {
   testOrganization: string;
   type: string;
 }
+
+export interface BusinessSoftWareQuery {
+  pageSize: number;
+  pageNo: number;
+}
 export interface FilterList {
   select: string[];
   title: string;
 }
-// export interface SafetyBulletinDatail {
-//   affectedComponent?: string;
-//   affectedProduct?: string;
-//   announcementTime: string;
-//   cveId?: string;
-//   cveList?: [];
-//   cvrf?: null;
-//   description?: string;
-//   id?: number;
-//   introduction?: string;
-//   packageHelperList?: PackageHelperList[];
-//   packageList?: ReferenceList[];
-//   packageName?: string;
-//   referenceDocuments?: string;
-//   referenceList?: [];
-//   revisionHistory?: string;
-//   securityNoticeNo: string;
-//   subject: string;
-//   summary: string;
-//   type?: string;
-//   updateTime?: string;
-// }
 
-// export interface ReferenceList {
-//   id: number;
-//   securityNoticeNo: string;
-//   type: string;
-//   updateTime: string;
-//   url: string;
-// }
-// export interface PackageHelperList {
-//   child: [];
-//   packageName: string;
-//   productName: string;
-//   sha256: string;
-// }
 export interface ConfigurationInfo {
   architecture: string;
   biosUefi: string;
@@ -243,25 +209,20 @@ export interface DetailQuery {
   id: string;
 }
 
-// export interface BulletinDetail {
-//   affectedComponent: string;
-//   affectedProduct?: string;
-//   announcementTime: string;
-//   cveId?: string;
-//   cveList?: [];
-//   cvrf?: null;
-//   description: string;
-//   id?: number;
-//   introduction: string;
-//   packageHelperList: object[];
-//   packageList?: [];
-//   packageName?: string;
-//   referenceDocuments?: string;
-//   referenceList: object[];
-//   revisionHistory?: string;
-//   securityNoticeNo: string;
-//   subject: string;
-//   summary: string;
-//   type: string;
-//   updateTime?: string;
-// }
+export interface OsvList {
+  arch: string;
+  baseOpeneulerVersion?: string;
+  checksum?: string;
+  date: string;
+  details: string;
+  friendlyLink: string;
+  id: number;
+  osDownloadLink: string;
+  osVersion: string;
+  osvName: string;
+  platformResult?: object[];
+  toolsResult?: object[];
+  totalResult?: string;
+  type: string;
+  updateTime?: string;
+}

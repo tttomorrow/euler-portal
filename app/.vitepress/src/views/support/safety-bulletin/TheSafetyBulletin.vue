@@ -316,7 +316,6 @@ watch(queryData, () => getSecurityLists(queryData));
   margin: 0 auto;
   .input-container {
     @media screen and (max-width: 768px) {
-      // display: none;
       margin-bottom: var(--o-spacing-h5);
     }
     :deep(.o-search) {
@@ -361,10 +360,6 @@ watch(queryData, () => getSecurityLists(queryData));
       background-color: var(--o-color-bg2);
       color: var(--o-color-text1);
       &-item {
-        // margin-top: var(--o-spacing-h8);
-        // &:first-child {
-        //   margin-top: 0;
-        // }
         padding: 2px 0;
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-h8);

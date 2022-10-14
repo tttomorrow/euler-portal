@@ -200,7 +200,6 @@ onMounted(() => {
     justify-content: center;
     height: 48px;
     @media screen and (max-width: 768px) {
-      // margin: var(--o-spacing-h5) 0 0 0;
       height: 38px;
       background-color: var(--o-color-bg2);
     }
@@ -212,8 +211,6 @@ onMounted(() => {
   background-color: var(--o-color-bg1);
   padding: 0 44px;
   @media screen and (max-width: 768px) {
-    // background-color: var(--o-color-bg1);
-    // margin: var(--o-spacing-h5) 0 var(--o-spacing-h2) 0;
     margin: 16px 0 0;
     padding: 0;
   }
@@ -223,8 +220,6 @@ onMounted(() => {
   margin: 0 auto var(--o-spacing-h1);
   background-color: var(--o-color-bg1);
   @media screen and (max-width: 768px) {
-    // background-color: var(--o-color-bg1);
-    // margin: var(--o-spacing-h5) 0 var(--o-spacing-h2) 0;
     margin: 16px 0 40px;
   }
 }
@@ -357,6 +352,8 @@ onMounted(() => {
           }
         }
         &-text {
+          white-space: pre-wrap;
+          text-align: justify;
           font-size: var(--o-font-size-text);
           font-weight: 400;
           color: var(--o-color-text1);

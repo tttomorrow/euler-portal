@@ -17,8 +17,7 @@ const queryData: DetailQuery = reactive({
 });
 
 const approveList: any = ref({});
-// TODO:约束变量
-const toolList: any = ref([
+const toolList = ref([
   {
     key: 'core_pkg',
     name: i18n.value.approve.TOOL_NAME.CORE_PKG,
@@ -63,7 +62,7 @@ const toolList: any = ref([
   },
 ]);
 
-const platformList: any = ref([
+const platformList = ref([
   {
     key: 'repo',
     name: i18n.value.approve.PLATFORM_NAME.REPO,
