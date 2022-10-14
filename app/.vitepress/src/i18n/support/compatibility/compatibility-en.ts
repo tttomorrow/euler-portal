@@ -5,7 +5,8 @@ export default {
   SOFTWARE: '开源软件',
   BUSINESS_SOFTWARE: '商业软件',
   SOFTWARETYPE: '软件类型',
-  DRIVETYPE: '板卡类型',
+  // DRIVETYPE: '板卡类型',
+  DRIVETYPE: 'Type',
   ADAPTIVE: '操作系统',
   CPU: 'CPU',
   OS: 'OS',
@@ -104,9 +105,9 @@ export default {
     ITEM_ARR: [
       {
         ID: '01',
-        TITLE: '申请加入openEuler社区（0.5天）',
+        TITLE: 'Apply to join the openEuler community (0.5d).',
         DESCRIPTION_1:
-          '您需要在Gitee平台申请加入openEuler社区，成为组织成员。申请地址：',
+          'You need to apply to join the openEuler community on the Gitee platform to become a member of the organization. Application address:',
         A_TEXT:
           'https://github.com/GeorgeCao-hw/georgedoc/blob/master/openEuler-Infra-FAQ.md',
         DESCRIPTION_2: '。',
@@ -119,8 +120,8 @@ export default {
         A_TEXT: 'oecompatibility@openeuler.org',
         DESCRIPTION_2:
           '). The email subject must contain "Apply for a Hardware Compatibility Test". After receiving the email, the sig team of openEuler will contact you and sign an agreement with you offline.',
-        DESCRIPTION_3: 'tips：如果没有签署CLA，请先签署：',
-        A_TEXT2: 'https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZXVsZXI=',
+        // DESCRIPTION_3: 'tips：如果没有签署CLA，请先签署：',
+        // A_TEXT2: 'https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZXVsZXI=',
       },
       {
         ID: '03',
@@ -133,7 +134,7 @@ export default {
       },
       {
         ID: '04',
-        TITLE: 'Create an issue.',
+        TITLE: 'Create an issue(0.5d).',
         DESCRIPTION_1:
           'After signing the agreement, create an issue under the oec-hardware project in the openEuler community (',
         A_TEXT: 'https://gitee.com/openeuler/oec-hardware',
@@ -142,17 +143,18 @@ export default {
       },
       {
         ID: '05',
-        TITLE: 'Perform the compatibility test.',
+        TITLE: 'Perform the compatibility test(10d).',
         DESCRIPTION_1:
           'After the issue is created, you can perform the compatibility test. The openEuler team provides the compatibility test framework and user guide that help you complete the test.',
-        A_TEXT: 'Click here to obtain the user guide.',
-        A_HREF:
-          '/category/support/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
-        DOWNLOAD_NAME: 'openEuler硬件兼容性测试工具使用指南.pdf',
+        A_TEXT_2: 'Click here to obtain the user guide.',
+        A_HREF: 'https://gitee.com/src-openeuler/oec-hardware/releases',
+        // A_HREF_2:
+        //   '/category/support/compatibility/openEuler硬件兼容性测试工具使用指南.pdf',
+        // DOWNLOAD_NAME: 'openEuler硬件兼容性测试工具使用指南.pdf',
       },
       {
         ID: '06',
-        TITLE: 'Submit the result for review.',
+        TITLE: 'Submit the result for review(2d).',
         DESCRIPTION_1:
           'After the compatibility test is completed and passed, update the test result to the issue. Send the test result to the public mailbox as instructed by the user guide. Send the application for reviewing the compatibility result to ',
         A_TEXT2: '',
@@ -163,7 +165,7 @@ export default {
       },
       {
         ID: '07',
-        TITLE: 'Release the result.',
+        TITLE: 'Release the result(2d).',
         DESCRIPTION_1:
           'The openEuler team will review the submitted result and add the hardware to the ',
         A_TEXT: 'Compatibility List',
@@ -181,7 +183,7 @@ export default {
     ITEM_ARR: [
       {
         ID: '01',
-        TITLE: 'Create an issue.',
+        TITLE: '创建issue.',
         DESCRIPTION_1: '您需要在openEuler社区（',
         A_TEXT: 'https://gitee.com/openeuler/oec-application',
         DESCRIPTION_2:
