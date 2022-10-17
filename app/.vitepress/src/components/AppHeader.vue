@@ -311,11 +311,7 @@ const jumpToUserZone = () => {
       <div class="opt-user">
         <el-dropdown v-if="token">
           <div class="el-dropdown-link opt-info">
-            <img
-              :src="guardAuthClient.photo"
-              :alt="guardAuthClient.username || 'LogOut'"
-              class="img"
-            />
+            <img :src="guardAuthClient.photo" class="img" />
             <p class="opt-name">{{ guardAuthClient.username }}</p>
           </div>
           <template #dropdown>
