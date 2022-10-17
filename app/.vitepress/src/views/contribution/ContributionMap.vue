@@ -118,10 +118,10 @@ const goLink = (url: string, isBlank: boolean) => {
     min-height: 650px;
     margin: 0 auto;
     text-align: center;
-    .content-map-print {
-      display: none;
-    }
     @media screen and (max-width: 1264px) {
+      .content-map-print {
+        display: none;
+      }
       width: 375px;
     }
     img {
@@ -1212,7 +1212,7 @@ const goLink = (url: string, isBlank: boolean) => {
       left: 110px;
     }
   }
-  .link-en:nth-of-type(7) {
+  .link-en:nth-of-type(8) {
     width: 118px;
     height: 48px;
     top: 447px;
@@ -1225,7 +1225,7 @@ const goLink = (url: string, isBlank: boolean) => {
       z-index: 88;
     }
   }
-  .link-en:nth-of-type(8) {
+  .link-en:nth-of-type(7) {
     width: 240px;
     height: 48px;
     top: 500px;

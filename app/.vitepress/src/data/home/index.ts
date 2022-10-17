@@ -1,12 +1,8 @@
 // import newEdition_pc_en from '@/assets/category/home/banner/banner22.09_pc_en.png';
 // import newEdition_mo_en from '@/assets/category/home/banner/banner22.09_mo_en.png';
 
-import september_mo from '@/assets/category/home/banner/september_mo.png';
-import september_pc from '@/assets/category/home/banner/september_pc.png';
 import newEdition_pc_zh from '@/assets/category/home/banner/banner22.09_pc_zh.png';
 import newEdition_mo_zh from '@/assets/category/home/banner/banner22.09_mo_zh.png';
-import summitImg_pc from '@/assets/category/home/banner/banner-summit_pc.png';
-import summitImg_mo from '@/assets/category/home/banner/banner-summit_mo.png';
 import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png';
 import liveImg_mo from '@/assets/category/home/banner/banner-contribution_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
@@ -17,27 +13,12 @@ export default {
   HOMEBANNER: {
     zh: [
       {
-        pcBanner: september_pc,
-        moBanner: september_mo,
-        link: 'https://mp.weixin.qq.com/s/_OfgOYOaIiFF39I5PVMxWQ',
-        desc: ['openEuler社区', '2022年9月运作月报'],
-        id: 'september',
-        targetTap: 1,
-      },
-      {
         pcBanner: newEdition_pc_zh,
         moBanner: newEdition_mo_zh,
         link: 'https://mp.weixin.qq.com/s/pvp_drAo3Vzg11MjRqbXwg',
         btn: '查看详情',
         id: 'newEdition',
         targetTap: 1,
-      },
-      {
-        pcBanner: summitImg_pc,
-        moBanner: summitImg_mo,
-        link: 'https://mp.weixin.qq.com/s/c39TJYsR9b-TA6mYh6ehOg',
-        targetTap: 1,
-        id: '',
       },
       {
         pcBanner: liveImg_pc,
