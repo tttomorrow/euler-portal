@@ -10695,8 +10695,8 @@
     "chipModel": "Atlas 300I(Model 3010)",
     "item": "",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/a300-3010-pid-251560253/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d100",
     "svID": "0200",
@@ -10714,8 +10714,8 @@
     "chipModel": "Atlas 300I(Model 3010)",
     "item": "",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/a300-3010-pid-251560253/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d801",
     "svID": "0200",
@@ -10733,8 +10733,8 @@
     "chipModel": "Atlas 300I(Model 9000)",
     "item": "",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/a300t-9000-pid-250702906/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d801",
     "svID": "0200",
@@ -10752,8 +10752,8 @@
     "chipModel": "Atlas 300I(Model 9000)",
     "item": "",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/a300t-9000-pid-250702906/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d500",
     "svID": "0200",
@@ -10771,8 +10771,8 @@
     "chipModel": "Atlas 300I Pro",
     "item": "02313FUJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d500",
     "svID": "0200",
@@ -10790,8 +10790,8 @@
     "chipModel": "Atlas 300I Pro",
     "item": "02313FUJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d500",
     "svID": "0200",
@@ -10809,8 +10809,8 @@
     "chipModel": "Atlas 300V Pro",
     "item": "02313SHF/02314BCJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d500",
     "svID": "0200",
@@ -10828,8 +10828,8 @@
     "chipModel": "Atlas 300V Pro",
     "item": "02313SHF/02314BCJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d801",
     "svID": "0200",
@@ -10847,8 +10847,8 @@
     "chipModel": "Atlas 300I(Model 9000)",
     "item": "",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/a300t-9000-pid-250702906/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d801",
     "svID": "0200",
@@ -10866,8 +10866,8 @@
     "chipModel": "Atlas 300I(Model 9000)",
     "item": "",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/a300t-9000-pid-250702906/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d500",
     "svID": "0200",
@@ -10885,8 +10885,8 @@
     "chipModel": "Atlas 300I Pro",
     "item": "02313FUJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d500",
     "svID": "0200",
@@ -10904,8 +10904,8 @@
     "chipModel": "Atlas 300I Pro",
     "item": "02313FUJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d500",
     "svID": "0200",
@@ -10923,8 +10923,8 @@
     "chipModel": "Atlas 300V Pro",
     "item": "02313SHF/02314BCJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
-},
-{
+  },
+  {
     "vendorID": "19e5",
     "deviceID": "d500",
     "svID": "0200",
@@ -10942,8 +10942,8 @@
     "chipModel": "Atlas 300V Pro",
     "item": "02313SHF/02314BCJ",
     "downloadLink": "https://support.huawei.com/enterprise/zh/ascend-computing/atlas-300i-pro-pid-251052354/software"
-},
-{
+  },
+  {
     "vendorID": "1d78",
     "deviceID": "1512",
     "svID": "1d78",
@@ -10961,8 +10961,8 @@
     "chipModel": "TAI",
     "item": "",
     "downloadLink": "inbox"
-},
-{
+  },
+  {
     "vendorID": "8086",
     "deviceID": "1522",
     "svID": "8086",
@@ -10980,8 +10980,8 @@
     "chipModel": "I350",
     "item": "06310058",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/igb-5.11.4.tar.gz"
-},
-{
+  },
+  {
     "vendorID": "8086",
     "deviceID": "1522",
     "svID": "8086",
@@ -10999,8 +10999,8 @@
     "chipModel": "I350",
     "item": "06310058",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/igb-5.11.4.tar.gz"
-},
-{
+  },
+  {
     "vendorID": "8086",
     "deviceID": "1521",
     "svID": "1dcf",
@@ -11018,8 +11018,8 @@
     "chipModel": "I350",
     "item": "",
     "downloadLink": "inbox"
-},
-{
+  },
+  {
     "vendorID": "8086",
     "deviceID": "159b",
     "svID": "8086",
@@ -11037,8 +11037,8 @@
     "chipModel": "E810-XXV",
     "item": "06310219",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/ice-1.9.11.tar.gz"
-},
-{
+  },
+  {
     "vendorID": "8086",
     "deviceID": "159b",
     "svID": "8086",
@@ -11056,5 +11056,24 @@
     "chipModel": "E810-XXV",
     "item": "06310219",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/ice-1.9.11.tar.gz"
-}
+  },
+  {
+    "vendorID": "8086",
+    "deviceID": "159b",
+    "svID": "8086",
+    "ssID": "0003",
+    "architecture": "x86_64",
+    "os": "openEuler 20.03 LTS SP3",
+    "driverName": "ice",
+    "version": "1.9.11",
+    "type": "NIC",
+    "date": "2022.10.14",
+    "sha256": "1c7640e81ba489321c6b29024517851f927291eb2e1c5c292ef5a74a6462f064",
+    "driverSize": "1.2MB",
+    "chipVendor": "Intel",
+    "boardModel": "E810-XXV-2",
+    "chipModel": "E810-XXV",
+    "item": "06310219",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/ice-1.9.11.tar.gz"
+  }
 ]
