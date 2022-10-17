@@ -15,18 +15,18 @@ summary: openEuler 社区SIG组成员管理方案细节。
 通过和多个sig组讨论，并报TC确认，openEuler社区SIG组成员角色做如下划分：
 | 角色 | 定位 |
 |--|--|
-| Maintainer | 定位是SIG组的牵引者、规划者，努力做好SIG组的发展和演进；负责定期组织SIG组会议、并代表SIG组向社区展示SIG组情况；|
-| Committer| SIG组部分仓库的看护者；作为这部分仓库的第一责任人；	Committer也是SIG组Maintainer的后备力量；|
+| Maintainer | 定位是SIG组的牵引者、规划者，努力做好SIG组的发展和演进；</br> 负责定期组织SIG组会议、并代表SIG组向社区展示SIG组情况； </br> Maintainer 是按sig组指定的，权限覆盖sig的所有代码仓，所有增加到sig的代码仓都默认获得权限；|
+| Committer| SIG组部分仓库的看护者；作为这部分仓库的第一责任人；</br> Committer也是SIG组Maintainer的后备力量； </br> Committer 配置需要在sig-info.yaml中指定仓库的，权限覆盖yaml中明确的部分代码仓，权限默认不会扩展；|
 |Contributor|SIG组部分仓库的重要贡献者，也是这部分仓库Committer的后备力量；通常也是这部分代码仓库问题主要修复者和代码开发者；|
 |Developer|社区最广泛的代码贡献者；在社区长期贡献可自荐或被推荐为仓库Contributor，甚至Committer；|
-|RepoAdmin|1.社区部分自研代码仓库需要git push权限，会对这些仓库设置Admin权限；通常是SIG组maintainer兼任，对这部分仓库的代码合入全量负责；|
+|RepoAdmin|社区部分自研代码仓库需要git push权限，会对这些仓库设置Admin权限；</br> 通常是SIG组maintainer兼任，对这部分仓库的代码合入全量负责；|
 
 ## SIG组成员权责划分
 根据不同角色，在社区（特别是在gitee代码托管平台）承担不同的权责：
 |SIG成员角色|sig_info.yaml记录| 代码提交 |通过评论approve合入|直接git push合入 |
 |--|--|--|--|--|
-| Maintainer | ✔️ | ✔️ | ✔️[全部仓库] |❌|
-| Committer| ✔️ |✔️  | ✔️ [部分仓库] | ❌ |
+| Maintainer | ✔️ | ✔️ | ✔️[sig组所有仓库] |❌|
+| Committer| ✔️ |✔️  | ✔️ [指定仓库] | ❌ |
 | Contributor| ✔️ |✔️ |❌ |❌  |
 | Developer| ❌ | ✔️ | ❌ |  ❌|
 | Repo_Admin| ✔️ | ✔️ | ✔️ [部分仓库] | ✔️[部分仓库]  |
