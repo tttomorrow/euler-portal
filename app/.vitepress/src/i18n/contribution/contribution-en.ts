@@ -117,19 +117,19 @@ export default {
       BLANK: true,
     },
     {
-      URL: 'https://gitee.com/openeuler/QA/blob/master/%E7%A4%BE%E5%8C%BA%E6%B5%8B%E8%AF%95%E4%BD%93%E7%B3%BB%E4%BB%8B%E7%BB%8D.md',
+      URL: 'https://gitee.com/openeuler/QA/blob/master/community-developer-test-contribution-guide.md',
       BLANK: true,
     },
     {
-      URL: 'https://gitee.com/openeuler/community/blob/master/zh/contributors/packaging.md',
+      URL: 'https://gitee.com/openeuler/community/blob/master/en/contributors/packaging.md',
       BLANK: true,
     },
     {
-      URL: 'https://gitee.com/openeuler/community/blob/master/zh/contributors/non-code-contributions.md',
+      URL: 'https://gitee.com/openeuler/community/blob/master/en/contributors/non-code-contributions.md',
       BLANK: true,
     },
     {
-      URL: 'https://gitee.com/openeuler/security-committee/blob/master/security-disclosure.md',
+      URL: 'https://gitee.com/openeuler/security-committee/blob/master/security-disclosure-en.md',
       BLANK: true,
     },
     {
