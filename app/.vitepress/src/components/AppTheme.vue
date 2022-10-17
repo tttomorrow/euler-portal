@@ -16,10 +16,7 @@ const changeTheme = () => {
   commonStore.theme = theme;
   localStorage.setItem(APPEARANCE_KEY, theme);
 };
-const handleSwitchChange = (val: string) => {
-  console.log(val);
-  commonStore.theme = val;
-};
+
 onMounted(() => {
   const theme = localStorage.getItem(APPEARANCE_KEY);
   commonStore.theme = theme === 'dark' ? 'dark' : 'light';
@@ -54,7 +51,6 @@ watch(
         inactive-text="light"
         inactive-value="light"
         active-color="#002fa7"
-        @change="handleSwitchChange"
       />
     </div>
   </div>
