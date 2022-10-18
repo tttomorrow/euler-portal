@@ -96,7 +96,12 @@ const jumpTo = (item: any) => {
             </div>
             <div
               v-if="item.btn"
-              :class="[item.id === 'newEdition' ? 'new-edition' : '']"
+              :class="[
+                item.id === 'newEdition' || item.id === 'meetingUp'
+                  ? 'new-edition'
+                  : '',
+                item.id === 'meetingUp' ? 'meeting-up' : '',
+              ]"
               data-aos="fade-up"
               class="action"
             >
@@ -227,12 +232,19 @@ html[lang='zh'] {
         }
       }
       .new-edition {
-        margin-top: 200px;
+        margin-top: 230px;
         display: flex;
         justify-content: center;
         transition: none;
         @media screen and (max-width: 824px) {
           margin-top: 0;
+        }
+      }
+      .meeting-up {
+        @media screen and (max-width: 824px) {
+          .o-button {
+            display: none;
+          }
         }
       }
       @media screen and (max-width: 1440px) {
