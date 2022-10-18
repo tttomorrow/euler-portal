@@ -117,7 +117,7 @@ onMounted(() => {
     justify-content: space-between;
     min-height: 280px;
     @media screen and (max-width: 1439px) {
-      padding: 0 24px;
+      padding: 0 16px;
     }
 
     @media screen and (max-width: 1080px) {

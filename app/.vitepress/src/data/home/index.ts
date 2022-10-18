@@ -1,6 +1,8 @@
 // import newEdition_pc_en from '@/assets/category/home/banner/banner22.09_pc_en.png';
 // import newEdition_mo_en from '@/assets/category/home/banner/banner22.09_mo_en.png';
 
+import meetingUp_pc from '@/assets/category/home/banner/meetingup_pc.png';
+import meetingUp_mo from '@/assets/category/home/banner/meetingup_mo.png';
 import newEdition_pc_zh from '@/assets/category/home/banner/banner22.09_pc_zh.png';
 import newEdition_mo_zh from '@/assets/category/home/banner/banner22.09_mo_zh.png';
 import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png';
@@ -12,6 +14,14 @@ export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
+      {
+        pcBanner: meetingUp_pc,
+        moBanner: meetingUp_mo,
+        link: 'https://mp.weixin.qq.com/s/61b0H_UTBIKsp1cT-X9Peg',
+        btn: '了解更多',
+        id: 'meetingUp',
+        targetTap: 1,
+      },
       {
         pcBanner: newEdition_pc_zh,
         moBanner: newEdition_mo_zh,
