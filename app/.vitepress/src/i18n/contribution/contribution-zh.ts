@@ -1,9 +1,14 @@
+import contributionMap_light_zh from '@/assets/category/contribution/contribution-map_light_zh.png';
+import contributionMap_dark_zh from '@/assets/category/contribution/contribution-map_dark_zh.png';
+import contributionMap_light_zh_mobile from '@/assets/category/contribution/contribution-map_light_zh_mobile.png';
+import contributionMap_dark_zh_mobile from '@/assets/category/contribution/contribution-map_dark_zh_mobile.png';
+
 export default {
   DOWLOAD_PDF_URL: '/category/contribution/openeuler-trail-chess-zh.pdf',
-  BACKGROUND_IMG_H5:
-    ' https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E8%B4%A1%E7%8C%AE%E5%9C%B0%E5%9B%BE/webtrailchess_zh_mo.png',
-  BACKGROUND_IMG:
-    'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E8%B4%A1%E7%8C%AE%E5%9C%B0%E5%9B%BE/webtrailchess_zh.png',
+  BACKGROUND_IMG_H5: contributionMap_light_zh_mobile,
+  BACKGROUND_IMG: contributionMap_light_zh,
+  BACKGROUND_IMG_H5_DARK: contributionMap_dark_zh_mobile,
+  BACKGROUND_IMG_DARK: contributionMap_dark_zh,
   LOOK_DESC: '查看文字版攻略',
   LOOK_MAP: '贡献攻略地图',
   PRINT_MAP: '打印攻略地图',
@@ -129,7 +134,7 @@ export default {
       BLANK: true,
     },
     {
-      URL: '/zh/sig/sig-list/sig-detail/?name=TC',
+      URL: '/zh/sig/sig-detail/?name=TC',
       BLANK: true,
     },
     {

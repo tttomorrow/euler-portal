@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { useCommon } from '@/stores/common';
 
 import IconSun from '~icons/app/icon-sun-outline.svg';
@@ -11,8 +11,6 @@ const APPEARANCE_KEY = 'vitepress-theme-appearance';
 const commonStore = useCommon();
 
 const isLight = computed(() => (commonStore.theme === 'light' ? true : false));
-const mobileTheme = ref(!isLight.value);
-
 const changeTheme = () => {
   const theme = commonStore.theme === 'dark' ? 'light' : 'dark';
   commonStore.theme = theme;
@@ -47,11 +45,12 @@ watch(
     </div>
     <div class="theme-box-mobile">
       <OSwitch
-        v-model="mobileTheme"
+        v-model="commonStore.theme"
         active-text="dark"
+        active-value="dark"
         inactive-text="light"
+        inactive-value="light"
         active-color="#002fa7"
-        @click.stop="changeTheme"
       />
     </div>
   </div>
