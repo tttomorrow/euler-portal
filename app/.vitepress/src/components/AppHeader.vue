@@ -309,22 +309,16 @@ const jumpToUserZone = () => {
         </transition>
       </div>
       <div class="opt-user">
-        <el-dropdown v-if="token">
+        <div v-if="token">
           <div class="el-dropdown-link opt-info">
             <img :src="guardAuthClient.photo" class="img" />
             <p class="opt-name">{{ guardAuthClient.username }}</p>
           </div>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item @click="jumpToUserZone()">{{
-                i18n.common.USER_CENTER
-              }}</el-dropdown-item>
-              <el-dropdown-item @click="logout()">{{
-                i18n.common.LOGOUT
-              }}</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
+          <ul class="menu-list">
+            <li @click="jumpToUserZone()">{{ i18n.common.USER_CENTER }}</li>
+            <li @click="logout()">{{ i18n.common.LOGOUT }}</li>
+          </ul>
+        </div>
         <div v-else class="login" @click="showGuard()">
           <OIcon class="icon">
             <IconLogin />
@@ -676,6 +670,10 @@ const jumpToUserZone = () => {
 }
 .opt-user {
   margin-left: 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
   .opt-info {
     display: flex;
     align-items: center;
@@ -685,8 +683,13 @@ const jumpToUserZone = () => {
       border-radius: 50%;
       cursor: pointer;
       vertical-align: middle;
+      @media (max-width: 1100px) {
+        width: 28px;
+        height: 28px;
+      }
     }
     .opt-name {
+      color: var(--o-color-text1);
       margin-left: 8px;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -695,6 +698,47 @@ const jumpToUserZone = () => {
       line-height: var(--o-line-height-h8);
       @media (max-width: 1100px) {
         display: none;
+      }
+    }
+  }
+  &:hover {
+    .menu-list {
+      display: block;
+    }
+  }
+  .menu-list {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    @media (max-width: 1100px) {
+      top: 48px;
+      left: -60px;
+    }
+    background: var(--o-color-bg2);
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: var(--o-shadow-l1);
+    min-width: 78px;
+    li {
+      line-height: var(--o-line-height-h3);
+      text-align: center;
+      font-size: var(--o-font-size-text);
+      color: var(--o-color-text1);
+      border-bottom: 1px solid var(--o-color-division1);
+      padding: 0 var(--o-spacing-h5);
+      &:last-child {
+        border-bottom: 0 none;
+      }
+
+      &:hover {
+        background: var(--o-color-brand1);
+        color: var(--o-color-text2);
+      }
+      &.active {
+        color: var(--o-color-brand1);
+        background: none;
+        cursor: default;
       }
     }
   }
