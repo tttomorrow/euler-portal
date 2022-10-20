@@ -94,13 +94,18 @@ export function getCodeByUrl(community = 'openeuler') {
       community,
       redirect: `${window?.location?.origin}${window?.location?.pathname}`,
     };
-    queryToken(param).then((res) => {
-      const { data = {} } = res;
-      const { token = '', photo = '', username = '' } = data;
-      saveUserAuth(token, photo, username);
-      deleteUrlCode(query);
-      window.parent.window.location.reload();
-    });
+    queryToken(param)
+      .then((res) => {
+        const { data = {} } = res;
+        const { token = '', photo = '', username = '' } = data;
+        saveUserAuth(token, photo, username);
+        deleteUrlCode(query);
+        window.parent.window.location.reload();
+      })
+      .catch(() => {
+        deleteUrlCode(query);
+        window.parent.window.location.reload();
+      });
   }
 }
 
