@@ -81,6 +81,12 @@ import zhongke from '../../assets/category/home/link/zhongke.png';
 import zhongkeLogo_dark from '../../assets/category/home/dark/link/zhongke_dark.png';
 import authing from '../../assets/category/home/link/authing.png';
 import authingLogo_dark from '../../assets/category/home/dark/link/authing_dark.png';
+import openGauss from '../../assets/category/home/link/logo-opengauss.png';
+import openGauss_dark from '../../assets/category/home/dark/link/logo-opengauss_dark.png';
+import openLookeng from '../../assets/category/home/link/logo-openlookeng.png';
+import openLookeng_dark from '../../assets/category/home/dark/link/logo-openlookeng_dark.png';
+import mindSpore from '../../assets/category/home/link/logo-mindspore.png';
+import mindSpore_dark from '../../assets/category/home/dark/link/logo-mindspore_dark.png';
 
 import finance from '../../assets/category/home/case/finance.svg';
 import financeDark from '../../assets/category/home/dark/case/finance.svg';
@@ -479,6 +485,21 @@ export default {
       LINK: 'https://www.authing.cn/',
       IMG: authing,
       IMG_DARK: authingLogo_dark,
+    },
+    {
+      LINK: 'https://www.opengauss.org/en/',
+      IMG: openGauss,
+      IMG_DARK: openGauss_dark,
+    },
+    {
+      LINK: 'https://openlookeng.io/en/',
+      IMG: openLookeng,
+      IMG_DARK: openLookeng_dark,
+    },
+    {
+      LINK: 'https://www.mindspore.cn/en/',
+      IMG: mindSpore,
+      IMG_DARK: mindSpore_dark,
     },
   ],
   MORE: 'Read More',
