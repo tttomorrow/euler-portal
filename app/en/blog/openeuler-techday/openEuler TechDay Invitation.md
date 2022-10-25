@@ -1,4 +1,15 @@
-openEuler TechDay Invitation
+---
+title: 'openEuler TechDay Invitation'
+category: blog
+date: 2022-10-25
+tags:
+    - openEuler
+    - Techday
+archives: 2022-10
+author:
+  - openEuler Techday
+summary: openEuler techDay invitation.
+---
 
 openEuler is a new member of the Linux ecosystem, which aims to create an open, diversify, architecture-inclusive software ecosystem that caters to the needs of the community.
 
