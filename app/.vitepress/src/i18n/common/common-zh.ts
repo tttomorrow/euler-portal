@@ -168,6 +168,12 @@ export default {
           PATH: 'https://datastat.openeuler.org/zh/overview',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
+        {
+          NAME: 'QuickIssue',
+          ID: 'QuickIssue',
+          PATH: 'https://quickissue.openeuler.org/zh/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: ['contribution', 'conduct', 'mailing-list', 'certification'],
     },

@@ -159,6 +159,7 @@ export default {
   HOME_INTRODUCE: {
     INTRO_TITLE: 'The Most Innovative Open Source Community',
     INTRO_HEAD: 'Начните свой путь в openEuler',
+    MOOC_URL: 'https://moocstudio.openeuler.org/en',
     INTRO_DESCRIPTION:
       'Как открытое сообщество, openEuler работает с глобальными разработчиками, чтобы создать открытую, разнообразную и интегрированную с архитектурой экосистему программного обеспечения, которая поддерживает многопроцессорную архитектуру и охватывает весь спектр цифровых средств. openEuler стремится к эффективности корпоративной цифровой инфраструктуры и развитию экосистемы приложений.',
     INTRO_IMG_URL: '',

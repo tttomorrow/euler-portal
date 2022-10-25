@@ -61,7 +61,7 @@ onMounted(() => {
         </div>
         <a
           class="lets-play"
-          href="https://moocstudio.openeuler.sh/"
+          :href="i18n.home.HOME_INTRODUCE.MOOC_URL"
           target="_blank"
         >
           <img :src="letsPlay" alt="" />
