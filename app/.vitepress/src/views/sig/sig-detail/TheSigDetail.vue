@@ -162,7 +162,7 @@ function turnPage(option: string) {
   }
 }
 function setDefaultImage(e: any) {
-  if (e?.target?.scr) {
+  if (e?.target) {
     e.target.src = 'https://gitee.com/assets/no_portrait.png';
   }
 }
@@ -239,8 +239,8 @@ onMounted(() => {
             <div class="member-img">
               <img
                 :src="item.avatar_url"
-                @error="setDefaultImage($event)"
                 :alt="item.name"
+                @error="setDefaultImage($event)"
               />
             </div>
             <p class="name">{{ item.gitee_id }}</p>
