@@ -1,8 +1,10 @@
 // import newEdition_pc_en from '@/assets/category/home/banner/banner22.09_pc_en.png';
 // import newEdition_mo_en from '@/assets/category/home/banner/banner22.09_mo_en.png';
 
-import meetingUp_pc from '@/assets/category/home/banner/meetingup_pc.png';
-import meetingUp_mo from '@/assets/category/home/banner/meetingup_mo.png';
+import docsBug_pc from '@/assets/category/home/banner/docs-bug_pc.png';
+import docsBug_mo from '@/assets/category/home/banner/docs-bug_mo.png';
+import techDay_pc from '@/assets/category/home/banner/tech-day_pc.png';
+import techDay_mo from '@/assets/category/home/banner/tech-day_mo.png';
 import newEdition_pc_zh from '@/assets/category/home/banner/banner22.09_pc_zh.png';
 import newEdition_mo_zh from '@/assets/category/home/banner/banner22.09_mo_zh.png';
 import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png';
@@ -15,11 +17,13 @@ export default {
   HOMEBANNER: {
     zh: [
       {
-        pcBanner: meetingUp_pc,
-        moBanner: meetingUp_mo,
-        link: 'https://mp.weixin.qq.com/s/61b0H_UTBIKsp1cT-X9Peg',
+        pcBanner: docsBug_pc,
+        moBanner: docsBug_mo,
+        link: 'https://docs-bug.openeuler.sh/',
         btn: '了解更多',
-        id: 'meetingUp',
+        id: 'docsBug',
+        title: 'openEuler文档有奖捉虫',
+        desc: ['捉虫大战，震撼来袭，就等你来'],
         targetTap: 1,
       },
       {
@@ -49,13 +53,12 @@ export default {
       },
     ],
     en: [
-      // {
-      //   pcBanner: newEdition_pc_en,
-      //   moBanner: newEdition_mo_en,
-      //   btn: 'Explore More',
-      //   id: 'newEdition',
-      //   targetTap: 1,
-      // },
+      {
+        pcBanner: techDay_pc,
+        moBanner: techDay_mo,
+        link: `https://www.openeuler.org/en/blog/openeuler-techday/openEuler%20TechDay%20Invitation.html`,
+        targetTap: 1,
+      },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,

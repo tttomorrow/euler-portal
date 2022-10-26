@@ -133,11 +133,11 @@ const language = configData.lang;
       &-left {
         display: flex;
         margin-right: var(--o-spacing-h4);
-        height: 204px;
+        min-height: 204px;
         @media (max-width: 1080px) {
           margin-right: 0px;
           margin-bottom: var(--o-spacing-h5);
-          height: 120px;
+          min-height: 120px;
         }
       }
       &-left-ruf {
@@ -159,11 +159,11 @@ const language = configData.lang;
         margin-top: 80px;
         display: flex;
         margin-right: var(--o-spacing-h4);
-        height: 204px;
+        min-height: 204px;
         @media (max-width: 1080px) {
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
-          height: 120px;
+          min-height: 120px;
         }
       }
       &-right-f {

@@ -100,7 +100,7 @@ const jumpTo = (item: any) => {
                 item.id === 'newEdition' || item.id === 'meetingUp'
                   ? 'new-edition'
                   : '',
-                item.id === 'meetingUp' ? 'meeting-up' : '',
+                item.id === 'docsBug' ? 'meeting-up' : '',
               ]"
               data-aos="fade-up"
               class="action"

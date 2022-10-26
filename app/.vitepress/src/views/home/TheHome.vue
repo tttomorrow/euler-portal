@@ -143,7 +143,11 @@ onUnmounted(() => {
         class="home-calendar"
       >
         <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
-        <AppCalendar :table-data="calendarData" data-aos="fade-up" />
+        <AppCalendar
+          id="meeting"
+          :table-data="calendarData"
+          data-aos="fade-up"
+        />
       </div>
     </ClientOnly>
     <HomePlayground />
