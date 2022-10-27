@@ -16,6 +16,7 @@ const attrs = useAttrs();
   --o-card-font-color: var(--o-color-text1);
   --o-card-bg-color: var(--o-color-fill2);
   --o-card-division-color: var(--o-color-division1);
+  --o-card-bg-color_hover: var(--o-color-fill2_hover);
 
   &.el-card {
     color: var(--o-card-font-color);
@@ -34,6 +35,7 @@ const attrs = useAttrs();
       &:focus {
         @media screen and (min-width: 1100px) {
           box-shadow: var(--o-shadow-l2_hover);
+          background-color: var(--o-card-bg-color_hover);
         }
       }
     }
