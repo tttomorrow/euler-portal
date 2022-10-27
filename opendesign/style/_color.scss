@@ -39,7 +39,7 @@
   --o-color-red7: #ff7873;
   --o-color-red8: #ff928d;
   --o-color-red9: #ffaba6;
-  --o-color-red10: #ffd2af;
+  --o-color-red10: #fabab8;
 
   // 黄色
   --o-color-yellow1: #754c01;
@@ -122,9 +122,7 @@
   --o-color-brand3: var(--o-color-kleinblue4); // 确认
   --o-color-brand4: var(--o-color-kleinblue6); // 特殊场景
   --o-color-brand5: var(--o-color-kleinblue10); // 一般禁用
-  --o-color-brand6: var(
-    --o-color-kleinblue10
-  ); // 文字禁用，暂和一般禁用保持一致
+  --o-color-brand6: var(--o-color-kleinblue10); // 文字禁用，暂和一般禁用保持一致
 
   // 文字颜色
   --o-color-text1: var(--o-color-black); // 强调/正文标题 黑色
@@ -160,22 +158,10 @@
   --o-color-division1: var(--o-color-neutral11);
 
   // 填充色，用于阴影容器背景
-  --o-color-fill1: var(
-    --o-color-white
-  ); // SL1 一级投影容器背景，应用于默认状态的卡片、楼层、导航栏、组件里局部投影背景等
-  --o-color-fill2: var(
-    --o-color-white
-  ); // SL2 二级投影容器背景，应用于卡片、组件里局部投影等
-  --o-color-fill2_hover: var(
-    --o-color-white
-  ); // SL2-hover 升起投影容器背景，应用于悬停状态的卡片等，是SL2的激活态
-  --o-color-fill3: var(
-    --o-color-white
-  ); // SL3 三级投影容器背景，应用于一级投影上的卡片、组件等
-  --o-color-fill4: var(
-    --o-color-white
-  ); // SL4 覆盖阴影容器背景，应用于信息提示【tips、活动进入按钮等】等投影容器
-  --o-color-fill5: var(
-    --o-color-white
-  ); // SL5 弹出阴影容器背景，应用于模态弹窗投影
+  --o-color-fill1: var(--o-color-white); // SL1 一级投影容器背景，应用于默认状态的卡片、楼层、导航栏、组件里局部投影背景等
+  --o-color-fill2: var(--o-color-white); // SL2 二级投影容器背景，应用于卡片、组件里局部投影等
+  --o-color-fill2_hover: var(--o-color-white); // SL2-hover 升起投影容器背景，应用于悬停状态的卡片等，是SL2的激活态
+  --o-color-fill3: var(--o-color-white); // SL3 三级投影容器背景，应用于一级投影上的卡片、组件等
+  --o-color-fill4: var(--o-color-white); // SL4 覆盖阴影容器背景，应用于信息提示【tips、活动进入按钮等】等投影容器
+  --o-color-fill5: var(--o-color-white); // SL5 弹出阴影容器背景，应用于模态弹窗投影
 }

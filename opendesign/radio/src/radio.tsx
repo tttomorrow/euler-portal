@@ -57,7 +57,13 @@ export default defineComponent({
 
     return () => {
       return (
-        <label class={['o-radio', isChecked.value ? 'o-radio-checked' : '']}>
+        <label
+          class={[
+            'o-radio',
+            isChecked.value ? 'o-radio-checked' : '',
+            isDisabled.value ? 'o-radio-disabled' : '',
+          ]}
+        >
           <input
             type="radio"
             disabled={isDisabled.value}
