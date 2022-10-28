@@ -144,19 +144,19 @@ Definition：developer entry in the OWNERS file owned by each SIG
 
 ### Responsibility and Privilege
 
-- Review PR：Review the PR submitted by contributor. The review can refer to 编程建议 and 安全编程规范.
+- Review PR：Review the PR submitted by contributor. The review can refer to community coding suggestions and [openEuler Secure Coding Guide](https://gitee.com/openeuler/security-committee/blob/master/guide/SecureCoding_en.md).
 
-- Distribute and deal with problems:Please refer to 问题处理流程 .
+- Distribute and deal with problems:Please refer to [Issue Submission and Handling Guide](https://gitee.com/openeuler/community/blob/master/en/contributors/issue-submit.md).
 - Tracking dependency issues：In the development branch, software package's dependencies in the SIG may be broken due to the software package updates in other SIG. At this time, the Committer will receive an alert. Then, the committer should try to rebuild the software package. Because dependency problem may prevent users from updating the system, the build team will also participates in rebuilding packages that have dependency issues, but the Maintainer should not rely on these works.
-- Notify SIG that may be affected due to interface changes：Because other SIGs or projects rely on software package of this SIG, changes to the package interface may affect them. Maintainer should review the dependency impact caused by decision changes. Then Maintainer should announce and send alert emails of API or ABI changes. Those work should be completed at least one week before the change occurs, and all SIGs that may be affected should be notified. For detailed informationes please refer to 接口变更通知流程.
-- Update and maintain package version：Follow the startegy of 软件包更新质量控制策略 and complete the package update.
+- Notify SIG that may be affected due to interface changes：Because other SIGs or projects rely on software package of this SIG, changes to the package interface may affect them. Maintainer should review the dependency impact caused by decision changes. Then Maintainer should announce and send alert emails of API or ABI changes. Those work should be completed at least one week before the change occurs, and all SIGs that may be affected should be notified. For detailed informationes please refer to [API Change Notification Process]().
+- Update and maintain package version：Follow the startegy of [Software Package Update Quality Control Policies]() and complete the package update.
 - Collaborate with upstream community, including:
 
   - Push all changes to upstream community
 
   - Participate in upstream community mailing list
   - Get the account of the Bug Tracker of the upstream community, and track the important bugs of the upstream community
-  - Push serious errors to upstream community for help For further information, please refer to 上游社区软件包管理建议
+  - Push serious errors to upstream community for help For further information, please refer to [ Upstream Software Package Management Suggestions]()
 
 - Collaborate with test team including:
 
@@ -180,7 +180,7 @@ Definition：developer entry in the OWNERS file owned by openEuler SIG.
 - Being familiar with code repo
 - Could be self-nominated or nominated by sub-project Maintainer, and there is no objection from other sub-project Maintainers.
 
-### 责任与权力
+### Responsibility and Power
 
 - Work out technical roadmap for SIG project：Including planning the SIG technical direction, roadmap, solution of software architecture evolution
 

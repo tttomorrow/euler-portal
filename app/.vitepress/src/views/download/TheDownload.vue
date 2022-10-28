@@ -175,6 +175,9 @@ onMounted(() => {
     :title="i18n.download.OUTSIDE_TITLE"
     :illustration="illustration"
   />
+  <span style="display: none">
+    {{ i18n.download.WHITE_PAPER }}
+  </span>
   <AppContent :mobile-top="16" class="download">
     <!-- PC筛选 -->
     <ClientOnly>
