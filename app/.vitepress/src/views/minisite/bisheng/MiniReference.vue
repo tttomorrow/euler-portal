@@ -32,7 +32,7 @@ const goLink = (path: string) => {
       :outside-title="referenceObj.TITLE_OUTSIDE"
     />
     <div class="reference-list">
-      <docs-list
+      <OContainer
         v-for="(item, index) in referenceObj.LINK_LIST"
         :key="index"
         :level-index="2"
@@ -53,7 +53,7 @@ const goLink = (path: string) => {
           </OButton>
         </div>
         <div class="img"></div>
-      </docs-list>
+      </OContainer>
     </div>
   </div>
 </template>
