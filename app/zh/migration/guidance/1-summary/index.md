@@ -1,5 +1,13 @@
 ---
-title: 迁移概述
+title: openEuler迁移概述
+titleTemplate: 服务器操作系统迁移 | openEuler社区官网
+head:
+  - - meta
+    - name: description
+      content: openEuler迁移支持Java类业务应用、C语言类业务应用、Python类业务应用及CentOS迁移方案，可根据业务系统的情况 ，确定对应的迁移场景，制定迁移方案和实施。想要了解更多系统迁移相关信息，欢迎访问openEuler官网。
+  - - meta
+    - name: keywords
+      content: openEuler迁移,CentOS迁移方案,资料搬迁,CentOS搬迁方案,云服务器迁移方案,操作系统替换
 category: migration
 ---
 
