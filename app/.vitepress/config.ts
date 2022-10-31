@@ -1,4 +1,5 @@
 import type { UserConfig } from 'vitepress';
+import sitemapZh from './sitemap/sitemap-zh';
 
 const config: UserConfig = {
   base: '/',
@@ -35,14 +36,7 @@ const config: UserConfig = {
         src: '/allow_sensor/sensors.js',
       },
     ],
-    [
-      'meta',
-      {
-        name: 'keywords',
-        content:
-          'openEuler, 操作系统, 开放, 生态, 开源, Linux 开源, OS, open, ecosystem, open source, Linux open source',
-      },
-    ],
+
     [
       'meta',
       {
@@ -59,25 +53,66 @@ const config: UserConfig = {
       title: 'openEuler',
       description:
         'openEuler 是一个开源、免费的 Linux 发行版平台，将通过开放的社区形式与全球的开发者共同构建一个开放、多元和架构包容的软件生态体系。同时，openEuler 也是一个创新的平台，鼓励任何人在该平台上提出新想法、开拓新思路、实践新方案。',
+      head: [
+        [
+          'meta',
+          {
+            name: 'keywords',
+            content:
+              'openEuler,开源Linux系统,linux开源社区,开源社区,Linux迁移,EulerOS',
+          },
+        ],
+      ],
     },
     '/zh/': {
       lang: 'zh',
       title: 'openEuler',
       description:
         'openEuler 是一个开源、免费的 Linux 发行版平台，将通过开放的社区形式与全球的开发者共同构建一个开放、多元和架构包容的软件生态体系。同时，openEuler 也是一个创新的平台，鼓励任何人在该平台上提出新想法、开拓新思路、实践新方案。',
+      head: [
+        [
+          'meta',
+          {
+            name: 'keywords',
+            content:
+              'openEuler,开源Linux系统,linux开源社区,开源社区,Linux迁移,EulerOS',
+          },
+        ],
+      ],
     },
     '/en/': {
       lang: 'en',
       title: 'openEuler',
       description:
         'openEuler is an open source, free Linux distribution platform. The platform provides an open community for global developers to build an open, diversified, and architecture-inclusive software ecosystem. openEuler is also an innovative platform that encourages everyone to propose new ideas, explore new approaches, and practice new solutions.',
+      head: [
+        [
+          'meta',
+          {
+            name: 'keywords',
+            content:
+              'openEuler, 操作系统, 开放, 生态, 开源, Linux 开源, OS, open, ecosystem, open source, Linux open source',
+          },
+        ],
+      ],
     },
     '/ru/': {
       lang: 'ru',
       title: 'openEuler',
       description:
         'openEuler is an open source, free Linux distribution platform. The platform provides an open community for global developers to build an open, diversified, and architecture-inclusive software ecosystem. openEuler is also an innovative platform that encourages everyone to propose new ideas, explore new approaches, and practice new solutions.',
+      head: [
+        [
+          'meta',
+          {
+            name: 'keywords',
+            content:
+              'openEuler, 操作系统, 开放, 生态, 开源, Linux 开源, OS, open, ecosystem, open source, Linux open source',
+          },
+        ],
+      ],
     },
+    ...sitemapZh,
   },
   markdown: {
     config(md) {
