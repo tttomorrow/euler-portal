@@ -264,6 +264,7 @@ const handleNodeClick = (node: any) => {
   z-index: 99;
   font-size: 24px;
   color: var(--o-color-text1);
+  cursor: pointer;
 }
 .nav-tree {
   position: fixed;
