@@ -7,6 +7,7 @@ tags:
     - SIG组成员管理
 archives: 2022-04
 author: georgecao
+sig: Infrastructure
 summary: openEuler 社区SIG组成员管理方案细节。
 ---
 
