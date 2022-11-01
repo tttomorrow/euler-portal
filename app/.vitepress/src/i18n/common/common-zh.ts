@@ -307,7 +307,7 @@ export default {
         {
           NAME: '迁移专区',
           ID: 'migration',
-          PATH: '/migration/download/',
+          PATH: '/migration/background/',
         },
       ],
       CLASS: [

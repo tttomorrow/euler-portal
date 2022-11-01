@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
-
 import caseInfo from '@/data/migration/migration-case';
-
-const { frontmatter } = useData();
 </script>
 
 <template>
   <div class="migration-transplantation">
-    <h1>{{ frontmatter.title }}</h1>
     <p class="migration-transplantation-desc">
-      随着数字化转型深入，操作系统正在向支持多样性计算、支持全场景的方向发展，在进行操作系统升级时，企业面临以下挑战：硬件兼容性、软件兼容性、升级后系统环境如何快速恢复？升级后如何能够更好发挥系统性能？openEuler
-      作为一款面向数字基础设施的开源操作系统，最优支持多样性计算，满足服务器、云、边缘和嵌入式全场景。针对企业在升级操作系统时的需求，推出这份升级指南，助力企业简单、平稳、高效进行操作系统升级。
+      操作系统迁移时，软件也需要同步适配移植，openEuler提供如下这些典型软件移植指南供参考。
     </p>
     <div class="migration-transplantation-content">
       <a
@@ -36,7 +30,7 @@ const { frontmatter } = useData();
     line-height: var(--o-line-height-h7);
     font-weight: 300;
     margin-top: 0;
-    margin-bottom: var(--o-spacing-h1);
+    margin-bottom: var(--o-spacing-h2);
     @media screen and (max-width: 768px) {
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);

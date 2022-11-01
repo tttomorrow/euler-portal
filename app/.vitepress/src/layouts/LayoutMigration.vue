@@ -35,6 +35,11 @@ const isCustomLayout = computed(() => {
   return frontmatter.value['custom-layout'];
 });
 
+const isGuidance = computed(() => {
+  return frontmatter.value.title === '迁移方案';
+});
+console.log(isGuidance.value);
+
 watch(
   () => {
     const routeList = router.route.path.split('/');
@@ -150,7 +155,7 @@ const handleNodeClick = (node: any) => {
   <div class="migration-wrapper migration-markdown">
     <Content
       class="migration-content"
-      :class="{ 'custom-layout': isCustomLayout }"
+      :class="{ 'custom-layout': isCustomLayout, guidance: isGuidance }"
     />
   </div>
 </template>
@@ -180,6 +185,9 @@ const handleNodeClick = (node: any) => {
   }
 }
 
+.guidance {
+  max-width: 1132px !important;
+}
 .migration-title {
   font-size: var(--o-font-size-h5);
   line-height: var(--o-line-height-h5);

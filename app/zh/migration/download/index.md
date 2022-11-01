@@ -1,15 +1,15 @@
 ---
-title: openEuler迁移专区
-titleTemplate: Linux服务器系统迁移 | openEuler社区官网
+title: 'openEuler下载'
+category: migration
+custom-layout: true
+titleTemplate: 欧拉系统ISO镜像 | openEuler社区官网
 head:
   - - meta
     - name: description
-      content: openEuler迁移专区为您提供专业化的服务器系统迁移方案，及CentOS迁移操作系统迁移工具，助力企业简单、平稳、高效进行操作系统升级及操作系统迁移。想要了解更多系统迁移相关信息，欢迎访问openEuler官网。
-#   - - meta
-#     - name: keywords
-#       content: openEuler迁移,Linux迁移,Linux服务器迁移,系统迁移工具,服务器迁移方案,CentOS迁移
-category: migration
-custom-layout: true
+      content: 欧拉操作系统(openEuler, 简称“欧拉”)是面向数字基础设施的操作系统,支持服务器、云计算、边缘计算、嵌入式等应用场景,支持多样性计算,致力于提供安全、稳定、易用的开源服务器Linux操作系统。欢迎访问openEuler官网，下载使用。
+  # - - meta
+  #   - name: keywords
+  #     content: openEuler下载,openEuler镜像下载,欧拉系统ISO镜像,openEuler社区官网,openEuler镜像,开源Linux系统
 ---
 
 <script setup lang="ts">

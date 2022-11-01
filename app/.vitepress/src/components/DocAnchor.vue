@@ -17,10 +17,13 @@ function goAnchor() {
   const scrollTop =
     document.body.scrollTop || document.documentElement.scrollTop;
   anchorList.value = document.querySelectorAll('.migration-content h2');
+
   const topArr: number[] = [];
+
   anchorList.value.forEach((item: HTMLElement) => {
     topArr.push(item.offsetTop + item.clientHeight);
   });
+  
   for (let i = 0; i < topArr.length; i++) {
     if (scrollTop - 100 <= topArr[i]) {
       activeIndex.value = i;
@@ -69,11 +72,11 @@ watch(
   top: calc(10% + 80px);
   right: 0;
   width: 200px;
-  @media screen and (max-width: 1614px) {
+  @media screen and (max-width: 1830px) {
     display: none;
   }
   .anchor-link {
-    display: block;
+    display: block !important;
     cursor: pointer;
     color: var(--o-color-text4);
     line-height: var(--o-line-height-text);

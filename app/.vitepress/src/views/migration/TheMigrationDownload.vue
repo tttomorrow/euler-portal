@@ -1,65 +1,105 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
-
 import downloadInfo from '@/data/migration/migration-download';
 
-const { frontmatter } = useData();
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
+
+function handleGetSoftWare() {
+  window.open(
+    'https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/x2openEuler/'
+  );
+}
+
+function handleUserGuide() {
+  window.open(
+    'https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/thirdparty_migration/x2openEuler-Userguide.html'
+  );
+}
+
+function handleGetVideo() {
+  window.open(
+    'https://www.bilibili.com/video/BV1TR4y1o7cX/?is_story_h5=false&p=1&share_from=ugc&share_medium=android&share_plat=android&share_session_id=2d0cb5be-8f2d-4271-b749-5f37452ec983&share_source=COPY&share_tag=s_i&timestamp=1665209080&unique_k=622RHPA'
+  );
+}
 </script>
 
 <template>
   <div class="migration-download">
-    <h1>{{ frontmatter.title }}</h1>
-    <p class="migration-download-desc">
-      随着数字化转型深入，操作系统正在向支持多样性计算、支持全场景的方向发展，在进行操作系统升级时，企业面临以下挑战：硬件兼容性、软件兼容性、升级后系统环境如何快速恢复？升级后如何能够更好发挥系统性能？openEuler
-      作为一款面向数字基础设施的开源操作系统，最优支持多样性计算，满足服务器、云、边缘和嵌入式全场景。针对企业在升级操作系统时的需求，推出这份升级指南，助力企业简单、平稳、高效进行操作系统升级。
-    </p>
     <div class="migration-download-content">
-      <OCard v-for="item in downloadInfo" :key="item.name" shadow="hover">
-        <div class="download-card">
-          <div class="card-top">
-            <div class="card-title">{{ item.name }}</div>
-            <div class="card-text">
-              <div class="migration-description">
-                {{ item.description }}
+      <div v-for="item in downloadInfo" :key="item.name">
+        <h2>{{ item.name }}</h2>
+
+        <p class="download-desc">{{ item.description }}</p>
+
+        <OCard shadow="hover">
+          <div class="card-box">
+            <div class="card-box-left">
+              <img
+                src="@/assets/illustrations/migration/download-card-left.png"
+                alt=""
+              />
+              <div class="card-info">
+                <span class="name">{{ item.name }}</span>
+                <span class="version">{{ item.version }}</span>
               </div>
-              <div class="migration-summary">
-                {{ item.summary }}
+            </div>
+
+            <div class="card-box-right">
+              <div class="card-btn">
+                <OButton
+                  animation
+                  size="mini"
+                  class="home-banner-btn"
+                  @click="handleGetSoftWare"
+                >
+                  {{ item.source.name }}
+                  <template #suffixIcon
+                    ><OIcon><IconArrowRight /></OIcon
+                  ></template>
+                </OButton>
+
+                <OButton
+                  animation
+                  size="mini"
+                  class="home-banner-btn"
+                  @click="handleUserGuide"
+                >
+                  {{ item.doc.name }}
+                  <template #suffixIcon
+                    ><OIcon><IconArrowRight /></OIcon
+                  ></template>
+                </OButton>
+
+                <OButton
+                  animation
+                  size="mini"
+                  class="home-banner-btn"
+                  @click="handleGetVideo"
+                >
+                  {{ item.video.name }}
+                  <template #suffixIcon
+                    ><OIcon><IconArrowRight /></OIcon
+                  ></template>
+                </OButton>
               </div>
+              <img
+                src="@/assets/illustrations/migration/download-card-right.png"
+                alt=""
+              />
             </div>
           </div>
-          <div class="card-bottom">
-            <div class="migration-version">
-              <span>版本信息：</span>
-              <span :style="{ marginLeft: '8px' }"> {{ item.version }}</span>
-            </div>
-            <div class="migration-link">
-              <p class="migration-link-source">
-                <span>软件下载</span>
-                <a
-                  :style="{ marginLeft: '8px' }"
-                  :href="item.source?.link"
-                  target="_blank"
-                  >{{ item.source?.name }}</a
-                >
-              </p>
-              <p class="migration-link-doc">
-                <span>文档：</span>
-                <a
-                  :style="{ marginLeft: '8px' }"
-                  :href="item.doc?.link"
-                  target="_blank"
-                  >{{ item.doc?.name }}</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-      </OCard>
+        </OCard>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-card) {
+  margin-top: var(--o-spacing-h3);
+  .el-card__body {
+    padding: 0;
+  }
+}
 .migration-download {
   color: var(--o-color-text1);
 
@@ -91,113 +131,52 @@ const { frontmatter } = useData();
   }
 
   .migration-download-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: var(--o-spacing-h4);
-    column-gap: var(--o-spacing-h4);
-
-    @media screen and (max-width: 1080px) {
-      grid-template-columns: repeat(1, 1fr);
+    .download-desc {
+      font-size: var(--o-font-size-text);
+      font-weight: 400;
+      color: var(--o-color-neutral5);
+      line-height: var(--o-line-height-text);
     }
 
-    .download-card {
+    .card-box {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      min-height: 316px;
-      @media screen and (max-width: 1080px) {
-        min-height: 200px;
-      }
 
-      @media screen and (max-width: 768px) {
-        min-height: auto;
-      }
-
-      .card-top {
+      &-left {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        .card-title {
-          font-size: var(--o-font-size-h5);
-          line-height: var(--o-line-height-h5);
-          font-weight: 500;
+        align-items: center;
+        padding: 23px 0 15px 25px;
+
+        img {
+          width: 109px;
+          height: 74px;
+          margin-right: var(--o-spacing-h4);
         }
-        .card-text {
-          margin-top: var(--o-spacing-h5);
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-          color: var(--o-color-text4);
 
-          @media screen and (max-width: 768px) {
-            font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-height-tip);
-            margin-top: var(--o-spacing-h10);
-          }
-
-          .migration-summary {
-            margin-top: var(--o-spacing-h8);
-
-            @media screen and (max-width: 768px) {
-              margin-top: var(--o-spacing-h10);
-            }
+        .card-info {
+          font-size: var(--o-font-size-h5);
+          font-weight: 500;
+          color: var(--o-color-text1);
+          line-height: var(--o-line-height-h5);
+          .name {
+            margin-right: var(--o-spacing-h6);
           }
         }
       }
-      .card-bottom {
-        margin-top: var(--o-spacing-h6);
-        @media screen and (max-width: 1080px) {
-          margin-top: var(--o-spacing-h4);
+
+      &-right {
+        display: flex;
+        img {
+          width: 123px;
+          height: 95px;
+          align-self: flex-end;
         }
-        .migration-version {
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-          color: var(--o-color-text4);
-
-          @media screen and (max-width: 768px) {
-            font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-height-tip);
-          }
-        }
-
-        .migration-link {
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-          color: var(--o-color-text4);
-          margin-top: var(--o-spacing-h5);
-          display: flex;
-          justify-content: space-between;
-          @media screen and (max-width: 1280px) {
-            flex-direction: column;
-          }
-          @media screen and (max-width: 1080px) {
-            flex-direction: row;
-          }
-
-          @media screen and (max-width: 768px) {
-            flex-direction: column;
-            margin-top: var(--o-spacing-h8);
-            font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-height-tip);
-          }
-
-          .migration-link-source {
-            display: inline-block;
-          }
-
-          .migration-link-doc {
-            margin-left: var(--o-spacing-h3);
-            display: inline-block;
-            @media screen and (max-width: 1280px) {
-              margin-left: 0;
-              margin-top: var(--o-spacing-h8);
-            }
-            @media screen and (max-width: 1080px) {
-              margin-left: var(--o-spacing-h3);
-              margin-top: 0;
-            }
-            @media screen and (max-width: 768px) {
-              margin-left: 0;
-              margin-top: var(--o-spacing-h8);
+        .card-btn {
+          align-self: center;
+          .o-button {
+            margin-right: var(--o-spacing-h4);
+            &:last-child {
+              margin-right: var(--o-spacing-h3);
             }
           }
         }
