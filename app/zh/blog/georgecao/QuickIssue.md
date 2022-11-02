@@ -72,7 +72,7 @@ QuickIssue服务正如其名，希望能为使用者和开发者提供更便捷�
 ### 查询issue
 这里会展示openEuler社区所有的issue信息，包括归属于各个SIG组，处于各种状态，不同提交者的提交的issue全集。
 
-<img src=./pictures/query_issue.png width=700 height=460/>>
+<img src=./pictures/query_issue.png width=700 height=460/>
 
 QuickIssue针对不同的使用场景提供了较为便捷的筛选功能，可以按照自己需求定向查找。
 如果需要查找通过邮件提交的issue，可以在提交人一栏输入邮箱前半段筛选。出于保护提交人邮箱数据隐私的目的，提交人一栏记录的是提交人邮箱的一部分信息。

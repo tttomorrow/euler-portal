@@ -1,6 +1,6 @@
 export default [
   {
-    label: 'MySQL 5.7.21 移植案例',
+    label: 'MySQL 5.7.21 移植指南',
     link: '/zh/blog/randy1568/MySQL 5-7-21-migrate-guide.html',
   },
   {

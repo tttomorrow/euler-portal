@@ -1,18 +1,25 @@
 ---
-title: 用户案例
+title: 最佳实践
 category: migration
 ---
 
-# 用户案例
+目前 openEuler 提供主流场景的迁移实践，包含大数据、分布式存储、虚拟化、容器、数据库软件，已经成功支撑多个行业用户完成迁移工作。各场景的迁移实践可[联系我们](/zh/migration/implement-guide/)获取。
 
-为了减少操作系统迁移对业务的感知，浙江移动还在容器云底层增加了麒麟欧拉版操作系统的容器集群，并将应用重新发布至创新操作系统集群，实现应用在双平面的统一构建、统一编排、统一调度和统一运行。同时，浙江移动还集成了欧拉容器引擎 iSulad，把容器应用的启动速度相比 Docker 提升了 50%以上。
+[天翼云全场景业务无缝迁移至基于 openEuler 的自研操作系统 CTyunOS](https://baijiahao.baidu.com/s?id=1744113308957850456)
 
-<img src="./move.png">
-<br>
-<br>
+<img class="image" src="./system.png">
 
-相关新闻：
-<br>
-[http://www.cnii.com.cn/rmydb/202109/t20210923_311404.html](http://www.cnii.com.cn/rmydb/202109/t20210923_311404.html)
-<br>
-[https://www.ithome.com/0/573/057.html](https://www.ithome.com/0/573/057.html)
+[浙江移动完成了 openEuler 的大规模迁移部署](https://www.cnii.com.cn/rmydb/202109/t20210923_311404.html)
+
+<img class="image bottom" src="./move.png">
+
+<style>
+    .image{
+        width: 815px;
+        height: 440px;
+        margin: 20px 0;
+    }
+    .bottom{
+        margin-bottom: 0;
+    }
+</style>
