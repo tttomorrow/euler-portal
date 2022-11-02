@@ -82,9 +82,10 @@ export default {
           IS_OPEN_WINDOW: 1,
         },
         {
-          NAME: 'МООК',
-          ID: 'mooc',
-          PATH: '/learn/mooc/',
+          NAME: 'MoocStudio',
+          ID: 'MoocStudio',
+          PATH: 'https://moocstudio.openeuler.org/en/',
+          IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
       CLASS: ['learn'],

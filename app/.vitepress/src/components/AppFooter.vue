@@ -3,6 +3,7 @@ import { computed, toRefs } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
+import { useCommon } from '@/stores/common';
 
 import LogoFooter from '@/assets/footer/footer-logo2.png';
 import LogoFooter1 from '@/assets/footer-logo1.png';
@@ -33,6 +34,10 @@ import CodeImgZgz from '@/assets/footer/code-zgz.png';
 
 import IconCancel from '~icons/app/icon-cancel.svg';
 
+// quick-issue
+import QuickIssue_Light from '@/assets/footer/quick-issue_light.png';
+import QuickIssue_Dark from '@/assets/footer/quick-issue_dark.png';
+
 const props = defineProps({
   isCookieTip: {
     type: Boolean,
@@ -43,7 +48,6 @@ const props = defineProps({
 const { lang, frontmatter } = useData();
 const i18n = useI18n();
 const router = useRouter();
-
 // 友情链接
 const linksData = {
   zh: [
@@ -280,6 +284,20 @@ function clickClose() {
           </div>
         </div>
       </AppContent>
+    </div>
+    <div v-show="lang === 'zh'" class="quick-issue">
+      <a href="https://quickissue.openeuler.org/zh/" target="_blank">
+        <img
+          v-show="useCommon().theme === 'light'"
+          :src="QuickIssue_Light"
+          alt=""
+        />
+        <img
+          v-show="useCommon().theme === 'dark'"
+          :src="QuickIssue_Dark"
+          alt=""
+        />
+      </a>
     </div>
   </div>
 </template>
@@ -590,6 +608,27 @@ $color: #fff;
     font-size: var(--o-font-size-text);
     @media (max-width: 1400px) {
       font-size: var(--o-font-size-tip);
+    }
+  }
+  .quick-issue {
+    position: fixed;
+    display: flex;
+    bottom: 120px;
+    right: 50px;
+    z-index: 10;
+    @media screen and (max-width: 1780px) {
+      display: none;
+    }
+    img {
+      width: 128px;
+    }
+    .icon {
+      cursor: pointer;
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      font-size: 20px;
+      color: var(--o-color-text1);
     }
   }
 }

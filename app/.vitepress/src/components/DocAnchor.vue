@@ -23,7 +23,7 @@ function goAnchor() {
   anchorList.value.forEach((item: HTMLElement) => {
     topArr.push(item.offsetTop + item.clientHeight);
   });
-  
+
   for (let i = 0; i < topArr.length; i++) {
     if (scrollTop - 100 <= topArr[i]) {
       activeIndex.value = i;

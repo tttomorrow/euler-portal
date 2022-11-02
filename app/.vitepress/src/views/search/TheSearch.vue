@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue';
-import { useData, useRouter } from 'vitepress';
+import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import { getSearchData, getSearchCount, getSearchRpm } from '@/api/api-search';
 
@@ -16,7 +16,6 @@ const screenWidth = useWindowResize();
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
 
 const { lang, site } = useData();
-const router = useRouter();
 const i18n = useI18n();
 // 当前选择类型
 const currentIndex = ref(0);
@@ -142,10 +141,10 @@ function searchAll() {
 }
 // 设置搜索结果的跳转路径
 function goLink(data: any, index: number) {
-  const { type, path } = data;
-  const search_result_url = '/' + lang.value + '/' + path;
+  let { path } = data;
+  let search_result_url = '/' + lang.value + '/' + path;
   const searchKeyObj = {
-    search_tag: type,
+    search_tag: data.type,
     search_rank_num: pageSize.value * (currentPage.value - 1) + (index + 1),
     search_result_total_num: total.value,
     search_result_url: location.origin + search_result_url,
@@ -158,15 +157,20 @@ function goLink(data: any, index: number) {
     ...((window as any)['addSearchBuriedData'] || {}),
     ...searchKeyObj,
   };
-  if (type === 'docs') {
+  if (data.type === 'docs') {
+    // hugo 编译 路由空格会被替换为 -
+    path = path.replaceAll(' ', '-');
     const url =
       site.value.themeConfig.docsUrl + '/' + lang.value + '/' + path + '.html';
     sensorObj.search_result_url = url;
     sensors.setProfile(sensorObj);
-    window.open(url, '_blank');
+    window.open(encodeURI(url), '_blank');
   } else {
     sensors.setProfile(sensorObj);
-    router.go(search_result_url);
+    data.type === 'other'
+      ? ''
+      : (search_result_url = `${search_result_url}.html`);
+    window.open(search_result_url);
   }
 }
 // 移动端上下翻页事件
@@ -221,10 +225,21 @@ onMounted(() => {
               <!-- eslint-disable-next-line -->
               <h3 @click="goLink(item, index)" v-html="item.title"></h3>
               <!-- eslint-disable-next-line -->
-              <p class="detail" v-html="item.textContent"></p>
+
+              <!-- eslint-disable-next-line -->
+              <p
+                class="detail"
+                @click="goLink(item, index)"
+                v-html="item.textContent"
+              ></p>
+              <!-- eslint-disable-next-line -->
               <p class="from">
                 <span>{{ i18n.search.form }}</span>
                 <span>{{ i18n.search.tagList[item.type] }}</span>
+              </p>
+              <p v-if="item.version" class="from version">
+                <span>{{ i18n.search.version }}</span>
+                <span>{{ item.version }}</span>
               </p>
             </li>
           </ul>
@@ -436,7 +451,8 @@ onMounted(() => {
               }
             }
             .detail {
-              margin-top: 17px;
+              cursor: pointer;
+              margin-top: 16px;
               font-size: var(--o-font-size-text);
               line-height: var(--o-line-height-text);
               color: var(--o-color-text1);
@@ -461,6 +477,9 @@ onMounted(() => {
                 line-height: var(--o-line-height-tip);
                 color: var(--o-color-text4);
               }
+            }
+            .version {
+              margin-top: var(--o-spacing-h8);
             }
           }
         }

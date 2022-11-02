@@ -4,7 +4,7 @@ export default {
   RELEASE_DESC: 'Release Notes',
   SERVER_IMAGE: 'Server Image',
   CLOUD_IMAGE: 'Cloud Image',
-  EDGE_IMAGE: 'Edeg Image',
+  EDGE_IMAGE: 'Edge Image',
   EMBEDDEN_IMAGE: 'Embedded Image',
   INSTALL_GUIDENCE: 'Installation Guide',
   SEEK_HELP: 'Seek Help',
