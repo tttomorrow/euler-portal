@@ -11607,5 +11607,43 @@
     "chipModel": "82599ES",
     "item": "03030WSQ",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/ixgbe-5.16.5.tar.gz"
+  },
+  {
+    "vendorID": "8086",
+    "deviceID": "10fb",
+    "svID": "19e5",
+    "ssID": "d111",
+    "architecture": "aarch64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "ixgbe",
+    "version": "5.16.5",
+    "type": "NIC",
+    "date": "2022.11.01",
+    "sha256": "a6c97c4ad725b6b62c5590c38646e4cf88b0975ed9adb33115f9ba1c46fd8da2",
+    "driverSize": "514K",
+    "chipVendor": "Intel",
+    "boardModel": "SP310",
+    "chipModel": "82599ES",
+    "item": "03030WSQ",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/ixgbe-5.16.5.tar.gz"
+  },
+  {
+    "vendorID": "8086",
+    "deviceID": "10fb",
+    "svID": "19e5",
+    "ssID": "d111",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "ixgbe",
+    "version": "5.16.5",
+    "type": "NIC",
+    "date": "2022.11.01",
+    "sha256": "a6c97c4ad725b6b62c5590c38646e4cf88b0975ed9adb33115f9ba1c46fd8da2",
+    "driverSize": "514K",
+    "chipVendor": "Intel",
+    "boardModel": "SP310",
+    "chipModel": "82599ES",
+    "item": "03030WSQ",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/ixgbe-5.16.5.tar.gz"
   }
 ]
