@@ -38,7 +38,6 @@ const isCustomLayout = computed(() => {
 const isGuidance = computed(() => {
   return frontmatter.value.title === '迁移方案';
 });
-console.log(isGuidance.value);
 
 watch(
   () => {

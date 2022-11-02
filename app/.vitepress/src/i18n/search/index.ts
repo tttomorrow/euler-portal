@@ -11,6 +11,7 @@ export default {
       migration: '迁移',
     },
     no: '未有',
+    version: '版本：',
     relative: '相关软件包',
   },
   en: {
@@ -24,6 +25,7 @@ export default {
       other: 'other',
     },
     no: 'No',
+    version: 'version:',
     relative: 'Related software package',
   },
   ru: {
@@ -35,6 +37,7 @@ export default {
       docs: 'Документы',
     },
     no: 'нет',
+    version: 'версия:',
     relative: 'Сопутствующий пакет программного обеспечения',
   },
 };
