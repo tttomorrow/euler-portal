@@ -5,7 +5,8 @@ custom-layout: true
 ---
 
 <script setup lang="ts">
-    import DocAnchor from '@/components/DocAnchor.vue'
+  import DocAnchor from '@/components/DocAnchor.vue'
+  import IconBook from '~icons/app/icon-book.svg';
 </script>
 
 <DocAnchor/>
@@ -53,6 +54,7 @@ x2openEuler 能够在升级前进行如下三个方面的评估，并生成兼�
 <div class="instruction">
     <div class="content">
       <div class="title">
+        <o-icon><icon-book></icon-book></o-icon>
         <p>说明</p>
       </div>
       <div class="description">
@@ -112,6 +114,7 @@ x2openEuler 能够在升级前进行如下三个方面的评估，并生成兼�
 <div class="instruction">
     <div class="content">
       <div class="title">
+        <o-icon><icon-book></icon-book></o-icon>
         <p>说明</p>
       </div>
       <div class="description">
@@ -183,17 +186,23 @@ openEuler 为用户提供两种迁移路径：
         .content {
             padding: 20px;
             .title {
-                p {
-                    font-size: 16px;
-                    color: #000000;
-                    line-height: 26px;
-                }
+              display: flex;
+              align-items: center;
+              .o-icon{
+                font-size: 24px;
+                margin-right: 6px;
+              }
+              p {
+                  font-size: 16px;
+                  color: #000000;
+                  line-height: 26px;
+              }
             }
         }
         .description {
-            font-size: 14px;
-            color: #36383d;
-            line-height: 24px;
+          font-size: 14px;
+          color: #36383d;
+          line-height: 24px;
         }
     }
 </style>
