@@ -30,6 +30,6 @@ export default [
   },
   {
     label: '联系我们',
-    link: 'concact',
+    link: 'contact',
   },
 ];
