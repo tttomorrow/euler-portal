@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import faqInfo from '@/data/migration/migration-faq';
+import IconBook from '~icons/app/icon-book.svg';
 </script>
 
 <template>
@@ -7,6 +8,7 @@ import faqInfo from '@/data/migration/migration-faq';
     <div class="instruction">
       <div class="content">
         <div class="title">
+          <o-icon><icon-book></icon-book></o-icon>
           <p>{{ faqInfo.instruction.title }}</p>
         </div>
         <div class="description">
@@ -45,23 +47,47 @@ import faqInfo from '@/data/migration/migration-faq';
     display: flex;
     background: rgba(254, 229, 184, 0.2);
     width: 85%;
-    border-left: 6px solid #feb32a;
+    border-left: 6px solid var(--o-color-yellow5);
     border-radius: 8px 0px 0px 8px;
 
     .content {
       padding: 20px;
+      @media screen and (max-width: 768px) {
+        padding: 12px;
+      }
       .title {
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+          margin-bottom: var(--o-spacing-h8);
+        }
+        .o-icon {
+          font-size: var(--o-font-size-h5);
+          margin-right: var(--o-spacing-h8);
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-h7);
+          }
+        }
         p {
-          font-size: 16px;
-          color: #000000;
-          line-height: 26px;
+          font-size: var(--o-font-size-h8);
+          color: var(--o-color-text1);
+          line-height: var(--o-line-height-h6);
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            margin: 0;
+          }
         }
       }
 
       .description {
-        font-size: 14px;
-        color: #36383d;
-        line-height: 24px;
+        font-size: var(--o-font-size-text);
+        color: var(--o-color-text-secondary);
+        line-height: var(--o-line-height-text);
+        @media screen and (max-width: 768px) {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+        }
       }
     }
   }
@@ -69,22 +95,22 @@ import faqInfo from '@/data/migration/migration-faq';
   .question-answer {
     margin-top: 20px;
     .question {
-      font-size: 14px;
+      font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: #555555;
-      line-height: 22px;
+      color: var(--o-color-neutral5);
+      line-height: var(--o-line-height-text);
     }
 
     .answer {
       display: flex;
       align-items: center;
-      background: #fff;
-      border-left: 2px solid #002fa7;
+      background: var(--o-color-bg2);
+      border-left: 2px solid var9--o-color-border3;
       .answer-text {
-        font-size: 14px;
+        font-size: var(--o-font-size-text);
         font-weight: 400;
-        color: #555555;
-        line-height: 22px;
+        color: var(--o-color-neutral5);
+        line-height: var(--o-line-height-text);
         padding: 16px;
         display: inline;
       }

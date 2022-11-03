@@ -184,24 +184,42 @@ openEuler 为用户提供两种迁移路径：
         margin-bottom: 8px;
         .content {
             padding: 20px;
+            @media screen and (max-width:768px){
+              padding: 12px;
+            } 
             .title {
               display: flex;
               align-items: center;
+              @media screen and (max-width:768px){
+                margin-bottom: var(--o-spacing-h8);
+              } 
               .o-icon{
                 font-size: 24px;
                 margin-right: 6px;
+                @media screen and (max-width:768px){
+                  font-size: var(--o-font-size-h7);
+                } 
               }
               p {
-                  font-size: 16px;
-                  color: #000000;
-                  line-height: 26px;
+                font-size: var(--o-font-size-h8);
+                color: #000000;
+                line-height: var(--o-line-height-h8);
+                @media screen and (max-width:768px){
+                  font-size: var(--o-font-size-text);
+                  line-height: var(--o-line-height-text);
+                  margin: 0;
+                } 
               }
             }
         }
         .description {
-          font-size: 14px;
+          font-size: var(--o-font-size-text);
           color: #36383d;
-          line-height: 24px;
+          line-height: var(--o-line-height-text);
+          @media screen and (max-width:768px){
+            font-size: var(--o-font-size-tip);
+            line-height: var(--o-line-height-tip);
+          }
         }
     }
 </style>
