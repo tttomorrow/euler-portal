@@ -36,18 +36,30 @@ const { lang } = useData();
 
 .advantage-middle {
   margin-top: var(--o-spacing-h4);
-  display: grid;
-  grid-template-columns: 32% 32% 32%;
-  grid-column-gap: 1.5%;
-
+  display: flex;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    margin-top: var(--o-spacing-h6);
+  }
   .card {
+    flex: 1;
     padding: var(--o-spacing-h4) var(--o-spacing-h3);
     background: var(--o-color-bg2);
     box-shadow: var(--o-shadow-l1);
     display: flex;
     flex-direction: column;
+    // margin-top: var(--o-spacing-h4);
+    // @media screen and (max-width: 768px) {
+    //   margin: var(--o-spacing-h6);
+    // }
+    &:nth-child(2) {
+      margin: 0 var(--o-spacing-h4);
+      @media screen and (max-width: 768px) {
+        margin: var(--o-spacing-h6) 0;
+      }
+    }
     img {
-      width: 142px;
+      // max-width: 142px;
       align-self: center;
     }
     p {
@@ -56,6 +68,9 @@ const { lang } = useData();
       color: var(--o-color-neutral5);
       line-height: var(--o-line-height-text);
       margin-top: var(--o-spacing-h4);
+      @media screen and (max-width: 768px) {
+        margin-top: var(--o-spacing-h6);
+      }
     }
   }
 }
@@ -66,5 +81,8 @@ const { lang } = useData();
   color: var(--o-color-neutral5);
   line-height: var(--o-line-height-text);
   margin-top: var(--o-spacing-h4);
+  @media screen and (max-width: 768px) {
+    margin-top: var(--o-spacing-h6);
+  }
 }
 </style>

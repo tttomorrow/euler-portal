@@ -24,12 +24,22 @@ openEuler 小助手：备注“迁移”进入技术交流群，可在群内直�
     .contact {
         display: flex;
         margin-top: var(--o-spacing-h2);
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: var(--o-spacing-h4);
+        }
         .official{
             margin-right: 100px;
+            @media screen and (max-width: 768px) {
+                margin-right: 0;
+                margin-bottom: var(--o-spacing-h4);
+            }
         }
         img {
-            width: 200px;
-            height: 200px;
+            max-width: 200px;
+            width: 100%;
         }
         p {
             font-size: var(--o-font-size-h6);

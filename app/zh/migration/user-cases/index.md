@@ -16,7 +16,6 @@ category: migration
 <style>
     .image{
         width: 815px;
-        height: 440px;
         margin: 20px 0;
     }
     .bottom{

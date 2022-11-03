@@ -72,7 +72,7 @@ watch(
   top: calc(10% + 80px);
   right: 0;
   width: 200px;
-  @media screen and (max-width: 1830px) {
+  @media screen and (max-width: 1750px) {
     display: none;
   }
   .anchor-link {

@@ -141,12 +141,16 @@ function handleGetVideo() {
     .card-box {
       display: flex;
       justify-content: space-between;
-
+      @media screen and (max-width: 1410px) {
+        flex-direction: column;
+      }
       &-left {
         display: flex;
         align-items: center;
         padding: 23px 0 15px 25px;
-
+        @media screen and (max-width: 440px) {
+          padding: 23px 0 15px 20px;
+        }
         img {
           width: 109px;
           height: 74px;
@@ -158,6 +162,10 @@ function handleGetVideo() {
           font-weight: 500;
           color: var(--o-color-text1);
           line-height: var(--o-line-height-h5);
+          @media screen and (max-width: 1410px) {
+            font-size: var(--o-font-size-h7);
+            line-height: var(--o-line-height-h7);
+          }
           .name {
             margin-right: var(--o-spacing-h6);
           }
@@ -166,17 +174,37 @@ function handleGetVideo() {
 
       &-right {
         display: flex;
+        position: relative;
+        // @media screen and (max-width: 1410px) {
+        //   align-self: end;
+        // }
         img {
           width: 123px;
           height: 95px;
-          align-self: flex-end;
+          // align-self: flex-end;
+          position: absolute;
+          right: 2px;
+          bottom: 0;
         }
         .card-btn {
           align-self: center;
+          z-index: 10;
+          margin-right: 120px;
+          @media screen and (max-width: 1410px) {
+            padding: 15px 0 23px 20px;
+            margin-right: 0;
+          }
+
           .o-button {
             margin-right: var(--o-spacing-h4);
+            @media screen and (max-width: 440px) {
+              margin-right: 5px;
+            }
             &:last-child {
               margin-right: var(--o-spacing-h3);
+              @media screen and (max-width: 440px) {
+                margin-right: 5px;
+              }
             }
           }
         }
