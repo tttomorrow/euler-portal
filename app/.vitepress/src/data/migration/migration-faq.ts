@@ -122,7 +122,7 @@ export default {
           link: 'https://www.openeuler.org/zh/compatibility/hardware/',
         },
         {
-          text: '可参，加入openEuler社区兼容性SIG组，或openEuler创新中心，可进行兼容性测试。兼容性测试不需要额外支付费用。目前openEuler社区硬件兼容性测试已与创新中心对接，用户可以通过社区的考',
+          text: '可参，加入openEuler社区兼容性SIG组，或openEuler创新中心，可进行兼容性测试。兼容性测试不需要额外支付费用。目前openEuler社区硬件兼容性测试已与创新中心对接，用户可以通过社区的',
           isLink: false,
           link: '',
         },
