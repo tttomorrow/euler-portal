@@ -8,7 +8,7 @@ tags:
 archives: 2022-08
 author:
   - openEuler
-summary: As cloud services and hardware resources become increasingly diversified, higher management requirements are imposed on cloud native systems, such as resource utilization optimization (see "openEuler Resource Utilization Optimization (1): Overview"<sup>[1]</sup>), service quality assurance, black-box optimization, and heterogeneous computing efficiency improvement. The Rubik hybrid deployment solution is developed to help run a hybrid deployment system of diversified services and computing powers in the optimal state. This solution includes multi-layer optimization technologies such as cluster-aware scheduling, single-node hybrid deployment engine (Rubik), and kernel isolation. This article briefly introduces the Rubik hybrid deployment engine.
+summary: "As cloud services and hardware resources become increasingly diversified, higher management requirements are imposed on cloud native systems, such as resource utilization optimization (see 'openEuler Resource Utilization Optimization (1): Overview'<sup>[1]</sup>), service quality assurance, black-box optimization, and heterogeneous computing efficiency improvement. The Rubik hybrid deployment solution is developed to help run a hybrid deployment system of diversified services and computing powers in the optimal state. This solution includes multi-layer optimization technologies such as cluster-aware scheduling, single-node hybrid deployment engine (Rubik), and kernel isolation. This article briefly introduces the Rubik hybrid deployment engine."
 ---
 
 ## Overview

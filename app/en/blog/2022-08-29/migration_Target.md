@@ -10,7 +10,7 @@ tags:
 archives: 2022-08
 author:
   - openEuler
-summary: With the deepening of digital transformation, operating systems are evolving towards supporting diversified computing and various scenarios. During digital transformation, enterprises face rigid demands for OS migration. Due to differences between OSs, enterprises face three problems when migrating OSs: how to handle software and hardware compatibility issues, how to quickly restore the system environment, and how to maximize the system performance. To meet enterprises' requirements for OS migration, we write this migration guide to help enterprises migrate OSs in a simple, stable, and efficient manner.  
+summary: "With the deepening of digital transformation, operating systems are evolving towards supporting diversified computing and various scenarios. During digital transformation, enterprises face rigid demands for OS migration. Due to differences between OSs, enterprises face three problems when migrating OSs: how to handle software and hardware compatibility issues, how to quickly restore the system environment, and how to maximize the system performance. To meet enterprises' requirements for OS migration, we write this migration guide to help enterprises migrate OSs in a simple, stable, and efficient manner."  
 ---
 
 ## Overview
