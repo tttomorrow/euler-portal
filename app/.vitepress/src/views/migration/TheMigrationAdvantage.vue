@@ -59,7 +59,7 @@ const { lang } = useData();
       }
     }
     img {
-      // max-width: 142px;
+      max-width: 142px;
       align-self: center;
     }
     p {

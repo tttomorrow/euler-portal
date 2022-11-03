@@ -10,7 +10,11 @@ category: migration
 
 <DocAnchor/>
 
-## 迁移概述
+<div calss='guidance' style='max-width: 1132px;'>
+
+
+<h2 id='迁移概述' style="margin-top:0;">迁移概述</h2>
+
 
 openEuler 提供端到端的迁移方案，包括成立迁移保障组织、迁移分析、方案设计、移植适配、迁移实施和测试上线六个阶段，同时通过 x2openEuler 工具的迁移评估和原地升级技术，将繁琐的迁移过程简化，实现了全场景业务的“简单、平稳、高效”的迁移。
 
@@ -170,7 +174,12 @@ openEuler 为用户提供两种迁移路径：
 
 安全漏洞更新维护是业务上线后面临的主要问题和风险之一。[openEuler 成立了安全委员会、制定了严格的漏洞处理流程，让您安全无忧。](https://www.openeuler.org/zh/security/vulnerability-reporting/)
 
+</div>
+
 <style lang="scss" scoped>
+  .guidance {
+      max-width: 1132px;
+  }
     img {
         margin-top: 12px;
         width: 1024px;

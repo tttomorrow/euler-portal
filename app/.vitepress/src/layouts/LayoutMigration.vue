@@ -157,7 +157,6 @@ const handleNodeClick = (node: any) => {
 .migration-content {
   max-width: 1380px;
   margin: 0 auto;
-
   @media screen and (max-width: 768px) {
     background-color: var(--o-color-bg2);
     padding: 24px 16px 16px 16px;
@@ -175,7 +174,7 @@ const handleNodeClick = (node: any) => {
 }
 
 .guidance {
-  max-width: 1132px !important;
+  max-width: 1132px;
 }
 .migration-title {
   font-size: var(--o-font-size-h5);

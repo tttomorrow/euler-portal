@@ -524,7 +524,7 @@ export default {
       IMG_HOVER: migrateHover,
       IMG_DARK: migrateDark,
       IMG_DARK_HOVER: migrateDarkHover,
-      LINK: '/zh/migration/download/',
+      LINK: '/zh/migration/background/',
     },
     {
       TITLE: 'Opensource Internship',

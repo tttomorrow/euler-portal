@@ -26,7 +26,7 @@ function handleGetVideo() {
   <div class="migration-download">
     <div class="migration-download-content">
       <div v-for="item in downloadInfo" :key="item.name">
-        <h2>{{ item.name }}</h2>
+        <h2 :id="item.name" style="margin-top: 0">{{ item.name }}</h2>
 
         <p class="download-desc">{{ item.description }}</p>
 
