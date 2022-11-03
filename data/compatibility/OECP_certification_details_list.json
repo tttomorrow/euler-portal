@@ -1,88 +1,16 @@
 [
     {
-        "os_version": "linxos-6.0.99-arm64-DVD.iso",
-        "osv_name": "北京凝思软件股份有限公司",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/10/17",
-        "arch": "aarch64",
-        "details": "详细信息",
-        "friendly_link": "https://www.linx-info.com/",
-        "os_download_link": "https://www.linx-info.com/",
-        "checksum": "fc3ae6fad991fb875ace45b12170b282",
-        "base_openeuler_version": "openEuler20.03 LTS SP3",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result": [
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-    {
-        "os_version": "KylinSec-Server-3.4-5A-x86_64.iso",
-        "osv_name": "湖南麒麟信安科技股份有限公司",
+        "os_version": "bclinux-21.10-x86_64.iso",
+        "osv_name": "中移（苏州）软件技术有限公司",
         "total_result": "pass",
         "type": "服务器",
         "date": "2022/10/17",
         "arch": "x86_64",
         "details": "详细信息",
-        "friendly_link": "http://www.kylinsec.com.cn/",
-        "os_download_link": "http://www.kylinsec.com.cn/",
-        "checksum": "f0775ffacef48ccbc623d3fcb0937450",
-        "base_openeuler_version": "openEuler20.03 LTS SP3",
+        "friendly_link": "https://ecloud.10086.cn/",
+        "os_download_link": "https://ecloud.10086.cn/",
+        "checksum": "5b043c69c7b747b5031c6569c161eae8",
+        "base_openeuler_version": "openEuler20.03 LTS SP2",
         "tools_result": [
             {
                 "name": "core_pkg",
@@ -144,89 +72,17 @@
         ]
     },
     {
-        "os_version": "KylinSec-Server-3.4-5A-aarch64.iso",
-        "osv_name": "湖南麒麟信安科技股份有限公司",
+        "os_version": "ArchforceEuler-22.09-LTS-aarch64-dvd.iso",
+        "osv_name": "深圳华锐分布式技术股份有限公司",
         "total_result": "pass",
         "type": "服务器",
         "date": "2022/10/17",
         "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "http://www.kylinsec.com.cn/",
-        "os_download_link": "http://www.kylinsec.com.cn/",
-        "checksum": "382cec39ebe659a6fdb35d6d165972b1",
-        "base_openeuler_version": "openEuler20.03 LTS SP3",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result": [
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-    {
-        "os_version": "ctyunos-2.0.1-aarch64-dvd.iso",
-        "osv_name": "天翼云科技有限公司",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/10/17",
-        "arch": "aarch64",
-        "details": "详细信息",
-        "friendly_link": "https://www.ctyun.cn/",
-        "os_download_link": "https://www.ctyun.cn/",
-        "checksum": "a6ae22186e49967a40e690b3eccee6e2",
-        "base_openeuler_version": "openEuler 20.03 LTS SP1",
+        "friendly_link": "http://www.archforce.cn/",
+        "os_download_link": "http://www.archforce.cn/",
+        "checksum": "ad3c3727ea5c012ed15872864908f4ac",
+        "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
                 "name": "core_pkg",
