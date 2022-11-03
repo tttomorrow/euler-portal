@@ -44,7 +44,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: '/zh/migration/download/',
+        link: '/zh/migration/background/',
         targetTap: 1,
         id: '',
         title: '一起迁移吧',
@@ -62,7 +62,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: `/zh/migration/download/`,
+        link: `/zh/migration/background/`,
         targetTap: 1,
         id: '',
         title: 'Start Porting Now!',
@@ -81,7 +81,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: `/zh/migration/download/`,
+        link: `/zh/migration/background/`,
         id: '',
         targetTap: 1,
         title: 'Start Porting Now!',

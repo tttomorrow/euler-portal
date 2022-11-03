@@ -72,6 +72,15 @@ watch(
   top: calc(10% + 80px);
   right: 0;
   width: 200px;
+  &::after {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 100%;
+    left: 0;
+    bottom: -100%;
+    background-color: var(--o-color-bg4);
+  }
   @media screen and (max-width: 1750px) {
     display: none;
   }
@@ -81,17 +90,17 @@ watch(
     color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
-    border-left: 2px solid var(--o-color-bg4);
+    border-left: 1px solid var(--o-color-bg4);
     &:hover {
       color: var(--o-color-text1);
     }
     &-inner {
-      padding: 4px var(--o-spacing-h6);
+      padding: 8px var(--o-spacing-h6);
     }
   }
   .active-link {
     color: var(--o-color-brand1);
-    border-left: 2px solid var(--o-color-brand1);
+    border-left: 1px solid var(--o-color-brand1);
   }
 }
 </style>
