@@ -1,7 +1,6 @@
 ---
 title: 迁移方案
 category: migration
-custom-layout: true
 ---
 
 <script setup lang="ts">
@@ -15,7 +14,7 @@ custom-layout: true
 
 openEuler 提供端到端的迁移方案，包括成立迁移保障组织、迁移分析、方案设计、移植适配、迁移实施和测试上线六个阶段，同时通过 x2openEuler 工具的迁移评估和原地升级技术，将繁琐的迁移过程简化，实现了全场景业务的“简单、平稳、高效”的迁移。
 
-[下载](/zh/migration/download/)是一款将源操作系统迁移到目标操作系统的迁移工具套件，具有批量化原地升级能力，当前支持将源 OS 升级至 openEuler 20.03。为解决客户升级操作系统过程中人工投入大、准确率低、无法批量化处理导致整体效率低下的痛点，x2openEuler 工具提供简单易用的操作界面，您可以批量添加待升级节点进行迁移分析，设计迁移方案并对兼容性问题进行迁移适配，最后对已适配的待升级节点批量升级，实现端到端的无感迁移。
+[x2openEuler](/zh/migration/download/)是一款将源操作系统迁移到目标操作系统的迁移工具套件，具有批量化原地升级能力，当前支持将源 OS 升级至 openEuler 20.03。为解决客户升级操作系统过程中人工投入大、准确率低、无法批量化处理导致整体效率低下的痛点，x2openEuler 工具提供简单易用的操作界面，您可以批量添加待升级节点进行迁移分析，设计迁移方案并对兼容性问题进行迁移适配，最后对已适配的待升级节点批量升级，实现端到端的无感迁移。
 
 ## 迁移流程
 
@@ -103,7 +102,7 @@ x2openEuler 能够在升级前进行如下三个方面的评估，并生成兼�
 
 ## 迁移适配
 
-在迁移分析阶段生成的 x2openEuler 兼容性报告中详细列出了需要适配的软件，请根据报告详情进行适配，并在迁移后的新系统上重新部署。典型软件移植适配可参考 6 移植案例。
+在迁移分析阶段生成的 x2openEuler 兼容性报告中详细列出了需要适配的软件，请根据报告详情进行适配，并在迁移后的新系统上重新部署。典型软件移植适配可参考[移植案例](/zh/migration/transplantation-cases/)。
 
 - 软件适配
 
@@ -159,7 +158,7 @@ openEuler 为用户提供两种迁移路径：
 
 <img src="./implementation.png" style="margin-bottom: 20px"/>
 
-建议用户优先使用 x2openEuler 工具对软件的兼容性进行评估，根据业务需求选择不同的迁移路径。在制定好整体的搬迁方案后，即可开始进行业务迁移，根据 x2openEuler 兼容性报告，完全兼容的业务使用 x2openEuler 工具直接进行原地升级，最大程度保留原有业务和配置不变。原地升级可参考[x2openEuler 用户指南](https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/thirdparty_migration/x2openEuler-Userguide.html)进行操作。适配迁移包括停止业务、备份隔离、系统部署、配置同步、应用部署、业务割接等步骤，请 8 联系我们提供详细的技术指导。
+建议用户优先使用 x2openEuler 工具对软件的兼容性进行评估，根据业务需求选择不同的迁移路径。在制定好整体的搬迁方案后，即可开始进行业务迁移，根据 x2openEuler 兼容性报告，完全兼容的业务使用 x2openEuler 工具直接进行原地升级，最大程度保留原有业务和配置不变。原地升级可参考[x2openEuler 用户指南](https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/thirdparty_migration/x2openEuler-Userguide.html)进行操作。适配迁移包括停止业务、备份隔离、系统部署、配置同步、应用部署、业务割接等步骤，请联系我们提供详细的技术指导。
 
 <img src="./upgrade.png"/>
 

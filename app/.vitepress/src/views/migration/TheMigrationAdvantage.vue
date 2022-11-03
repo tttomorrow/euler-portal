@@ -18,7 +18,7 @@ const { lang } = useData();
 
     <div class="advantage-bottom">
       <span>{{ advantageInfo.tips.text_1 }}</span>
-      <a :href="'/' + lang + '/migration/implement-guide/'">{{
+      <a :href="'/' + lang + '/migration/concact/'">{{
         advantageInfo.tips.text_2
       }}</a>
       <span>{{ advantageInfo.tips.text_3 }}</span>

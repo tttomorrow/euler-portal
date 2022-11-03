@@ -76,17 +76,7 @@ const handleTitleClick = (link: string) => {
 };
 
 const handleNodeClick = (node: any) => {
-  if (node.link === 'guidance') {
-    return;
-  } else if (
-    node.link.indexOf('-') !== -1 &&
-    node.link.indexOf('-cases') === -1 &&
-    node.link.indexOf('-guide') === -1
-  ) {
-    router.go(`/${lang.value}/migration/guidance/${node.link}/`);
-  } else {
-    router.go(`/${lang.value}/migration/${node.link}/`);
-  }
+  router.go(`/${lang.value}/migration/${node.link}/`);
   toggleMenu(false);
 };
 </script>
@@ -97,7 +87,7 @@ const handleNodeClick = (node: any) => {
     <div class="migration-sidebar-toc">
       <template v-for="item in tocInfo" :key="item.label">
         <DocSideBarMenu
-          v-if="item.children && item.children.length"
+          v-if="item && item.children && item.children.length"
           :info="item"
           :active-id="activeId"
           @item-click="handleItemClick"

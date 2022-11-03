@@ -43,12 +43,12 @@ const tdks = {
       'openEuler迁移背景,开源服务器操作系统,Centos系统迁移,服务器系统迁移,Linux迁移,服务器安装linux系统',
   },
   // 迁移概述
-  '/zh/migration/guidance/1-summary/': {
-    description:
-      'openEuler迁移支持Java类业务应用、C语言类业务应用、Python类业务应用及CentOS迁移方案，可根据业务系统的情况 ，确定对应的迁移场景，制定迁移方案和实施。想要了解更多系统迁移相关信息，欢迎访问openEuler官网。',
-    keywords:
-      'openEuler迁移,CentOS迁移方案,资料搬迁,CentOS搬迁方案,云服务器迁移方案,操作系统替换',
-  },
+  // '/zh/migration/guidance/1-summary/': {
+  //   description:
+  //     'openEuler迁移支持Java类业务应用、C语言类业务应用、Python类业务应用及CentOS迁移方案，可根据业务系统的情况 ，确定对应的迁移场景，制定迁移方案和实施。想要了解更多系统迁移相关信息，欢迎访问openEuler官网。',
+  //   keywords:
+  //     'openEuler迁移,CentOS迁移方案,资料搬迁,CentOS搬迁方案,云服务器迁移方案,操作系统替换',
+  // },
   // 移植案例
   '/zh/migration/transplantation-cases/': {
     description:
