@@ -156,6 +156,7 @@ export default {
           NAME: 'Statistics',
           ID: 'statistics',
           PATH: 'https://datastat.openeuler.org/en/overview',
+          TEST_PATH: 'https://datastatopeneuler.test.osinfra.cn/en/overview',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],

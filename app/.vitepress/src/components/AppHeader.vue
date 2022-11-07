@@ -23,6 +23,7 @@ interface NavItem {
   PATH: string;
   ID: string;
   CHILDREN: NavItem;
+  TEST_PATH?: string;
   IS_OPEN_WINDOW?: number;
   IS_OPEN_MINISITE_WINDOW?: string;
 }
@@ -89,6 +90,10 @@ const goMobileSubList = (item: NavItem) => {
     return;
   }
   if (item.IS_OPEN_MINISITE_WINDOW) {
+    if (location?.host?.includes('test') && item.TEST_PATH) {
+      window.open(item.TEST_PATH);
+      return;
+    }
     window.open(item.PATH);
     return;
   }
