@@ -31,7 +31,11 @@ const goLink = (path: string) => {
     <div class="docs-wraper">
       <div class="document">
         <div class="docs-list">
-          <div v-for="(item, index) in dataList" :key="index" class="item">
+          <OContainer
+            v-for="(item, index) in dataList"
+            :key="index"
+            class="item"
+          >
             <div class="item-content">
               <div v-if="item.THEME" class="item-theme">{{ item.THEME }}</div>
               <div v-if="item.DESC" class="item-desc">{{ item.DESC }}</div>
@@ -61,7 +65,7 @@ const goLink = (path: string) => {
               "
             ></div>
             <img v-if="item.IMG" class="item-img" :src="item.IMG" alt="" />
-          </div>
+          </OContainer>
         </div>
       </div>
     </div>
@@ -131,8 +135,6 @@ const goLink = (path: string) => {
       .item {
         height: 192px;
         padding: var(--o-spacing-h2) 0 var(--o-spacing-h2) var(--o-spacing-h2);
-        background-color: var(--o-color-bg2);
-        box-shadow: var(--o-shadow-l2);
         font-size: var(--o-font-size-h7);
         color: var(--o-color-text1);
         line-height: var(--o-line-height-h6);

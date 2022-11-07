@@ -21,7 +21,7 @@ const i18n = useI18n();
     />
     <AppContent>
       <div class="mooc-content">
-        <OContainer class="hover-box">
+        <OContainer class="mooc-item">
           <div class="left">
             <img :src="i18n.mooc.MOOC.MOOC_COURSE[0].IMG" alt="" />
           </div>
@@ -62,7 +62,7 @@ const i18n = useI18n();
     height: 30px;
   }
   .mooc-content {
-    .hover-box {
+    .mooc-item {
       display: flex;
 
       @media (max-width: 975px) {
@@ -81,12 +81,9 @@ const i18n = useI18n();
         }
       }
       .right {
-        // min-width: 420px;
         padding: var(--o-spacing-h2);
         position: relative;
-        background-color: var(--o-color-bg2);
         flex-grow: 1;
-        box-shadow: var(--o-shadow1);
         @media (max-width: 768px) {
           padding: var(--o-spacing-h5);
         }

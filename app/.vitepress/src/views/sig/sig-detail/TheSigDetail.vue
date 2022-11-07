@@ -80,9 +80,7 @@ function getSigMembers() {
         sigMemberData.value = data;
         const { maintainer_info } = data || [];
         if (maintainer_info) {
-          const memberCurLen =
-            maintainer_info.length > 4 ? 4 : maintainer_info.length;
-          memberList.value = maintainer_info.slice(0, memberCurLen);
+          memberList.value = maintainer_info;
         }
       }
     });
@@ -163,6 +161,11 @@ function turnPage(option: string) {
     currentPage.value = currentPage.value + 1;
   }
 }
+function setDefaultImage(e: any) {
+  if (e?.target) {
+    e.target.src = 'https://gitee.com/assets/no_portrait.png';
+  }
+}
 onMounted(() => {
   function GetUrlParam(paraName: any) {
     const url = document.location.toString();
@@ -235,8 +238,9 @@ onMounted(() => {
           <li v-for="item in memberList" :key="item.gitee_id">
             <div class="member-img">
               <img
-                src="https://gitee.com/assets/no_portrait.png"
+                :src="item.avatar_url"
                 :alt="item.name"
+                @error="setDefaultImage($event)"
               />
             </div>
             <p class="name">{{ item.gitee_id }}</p>

@@ -79,7 +79,7 @@ const jumpTo = (item: any) => {
           <div
             v-if="item.title !== ''"
             class="banner-panel-content flex-column"
-            :class="item.id === 'september' ? 'september' : ''"
+            :class="item.id === 'docsBug' ? 'docs-bug' : ''"
           >
             <div data-aos="fade-down" class="box">
               <p class="title">
@@ -100,7 +100,7 @@ const jumpTo = (item: any) => {
                 item.id === 'newEdition' || item.id === 'meetingUp'
                   ? 'new-edition'
                   : '',
-                item.id === 'meetingUp' ? 'meeting-up' : '',
+                item.id === 'docsBug' ? 'meeting-up' : '',
               ]"
               data-aos="fade-up"
               class="action"
@@ -257,22 +257,9 @@ html[lang='zh'] {
         text-align: center;
       }
     }
-    .september {
-      padding: 0;
-      justify-content: center;
-      align-items: center;
-      .desc {
-        margin: 0;
-        text-align: center;
-        font-size: 48px;
-        @media screen and (max-width: 768px) {
-          display: flex;
-          flex-direction: column;
-          font-size: 20px;
-          .inline-desc:nth-child(2) {
-            margin-top: var(--o-spacing-h6);
-          }
-        }
+    .docs-bug {
+      @media screen and (max-width: 768px) {
+        padding-top: 40px;
       }
     }
 

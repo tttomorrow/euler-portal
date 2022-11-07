@@ -76,24 +76,6 @@ onMounted(async () => {
     pageSize: 4,
   };
   try {
-    const responeData = await getSortData(paramsCase);
-    caseData.value = responeData;
-  } catch (e: any) {
-    throw new Error(e);
-  }
-  try {
-    const responeData = await getSortData(paramsNews);
-    newsData.value = responeData;
-  } catch (e: any) {
-    throw new Error(e);
-  }
-  try {
-    const responeData = await getSortData(paramsBlog);
-    blogData.value = responeData;
-  } catch (e: any) {
-    throw new Error(e);
-  }
-  try {
     Promise.all([getActivityData(), getMeetingData()]).then((res) => {
       res[0].tableData.forEach((item: any) => {
         item.timeData.map((item2: any) => {
@@ -111,6 +93,24 @@ onMounted(async () => {
         return prev;
       }, []);
     });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    const responeData = await getSortData(paramsCase);
+    caseData.value = responeData;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    const responeData = await getSortData(paramsNews);
+    newsData.value = responeData;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+  try {
+    const responeData = await getSortData(paramsBlog);
+    blogData.value = responeData;
   } catch (e: any) {
     throw new Error(e);
   }
@@ -143,7 +143,11 @@ onUnmounted(() => {
         class="home-calendar"
       >
         <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
-        <AppCalendar :table-data="calendarData" data-aos="fade-up" />
+        <AppCalendar
+          id="meeting"
+          :table-data="calendarData"
+          data-aos="fade-up"
+        />
       </div>
     </ClientOnly>
     <HomePlayground />

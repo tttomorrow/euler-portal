@@ -798,6 +798,7 @@ const iconMenuShow = computed(() => {
         z-index: 99;
         font-size: 24px;
         color: var(--o-color-text1);
+        cursor: pointer;
       }
       .mobile-menu {
         width: 100%;

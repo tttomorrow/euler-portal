@@ -93,6 +93,12 @@ export default {
           PATH: 'https://training-assessment.osinfra.cn/',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
+        {
+          NAME: 'MoocStudio',
+          ID: 'MoocStudio',
+          PATH: 'https://moocstudio.openeuler.org/zh',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: ['learn', 'internship', 'learning'],
     },
@@ -166,6 +172,12 @@ export default {
           NAME: '贡献看板',
           ID: 'statistics',
           PATH: 'https://datastat.openeuler.org/zh/overview',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
+        {
+          NAME: 'QuickIssue',
+          ID: 'QuickIssue',
+          PATH: 'https://quickissue.openeuler.org/zh/',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
@@ -301,7 +313,7 @@ export default {
         {
           NAME: '迁移专区',
           ID: 'migration',
-          PATH: '/migration/download/',
+          PATH: '/migration/background/',
         },
       ],
       CLASS: [

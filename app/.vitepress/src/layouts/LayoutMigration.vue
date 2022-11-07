@@ -35,6 +35,10 @@ const isCustomLayout = computed(() => {
   return frontmatter.value['custom-layout'];
 });
 
+const isGuidance = computed(() => {
+  return frontmatter.value.title === '迁移方案';
+});
+
 watch(
   () => {
     const routeList = router.route.path.split('/');
@@ -72,17 +76,7 @@ const handleTitleClick = (link: string) => {
 };
 
 const handleNodeClick = (node: any) => {
-  if (node.link === 'guidance') {
-    return;
-  } else if (
-    node.link.indexOf('-') !== -1 &&
-    node.link.indexOf('-cases') === -1 &&
-    node.link.indexOf('-guide') === -1
-  ) {
-    router.go(`/${lang.value}/migration/guidance/${node.link}/`);
-  } else {
-    router.go(`/${lang.value}/migration/${node.link}/`);
-  }
+  router.go(`/${lang.value}/migration/${node.link}/`);
   toggleMenu(false);
 };
 </script>
@@ -93,7 +87,7 @@ const handleNodeClick = (node: any) => {
     <div class="migration-sidebar-toc">
       <template v-for="item in tocInfo" :key="item.label">
         <DocSideBarMenu
-          v-if="item.children && item.children.length"
+          v-if="item && item.children && item.children.length"
           :info="item"
           :active-id="activeId"
           @item-click="handleItemClick"
@@ -150,7 +144,7 @@ const handleNodeClick = (node: any) => {
   <div class="migration-wrapper migration-markdown">
     <Content
       class="migration-content"
-      :class="{ 'custom-layout': isCustomLayout }"
+      :class="{ 'custom-layout': isCustomLayout, guidance: isGuidance }"
     />
   </div>
 </template>
@@ -163,7 +157,6 @@ const handleNodeClick = (node: any) => {
 .migration-content {
   max-width: 1380px;
   margin: 0 auto;
-
   @media screen and (max-width: 768px) {
     background-color: var(--o-color-bg2);
     padding: 24px 16px 16px 16px;
@@ -180,6 +173,9 @@ const handleNodeClick = (node: any) => {
   }
 }
 
+.guidance {
+  max-width: 1132px;
+}
 .migration-title {
   font-size: var(--o-font-size-h5);
   line-height: var(--o-line-height-h5);
@@ -264,6 +260,7 @@ const handleNodeClick = (node: any) => {
   z-index: 99;
   font-size: 24px;
   color: var(--o-color-text1);
+  cursor: pointer;
 }
 .nav-tree {
   position: fixed;

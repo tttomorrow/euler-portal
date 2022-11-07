@@ -1,6 +1,6 @@
 export default [
   {
-    label: 'MySQL 5.7.21 移植案例',
+    label: 'MySQL 5.7.21 移植指南',
     link: '/zh/blog/randy1568/MySQL 5-7-21-migrate-guide.html',
   },
   {
@@ -48,7 +48,7 @@ export default [
     link: '/zh/blog/randy1568/Varnish 6-2-0-porting-guide.html',
   },
   {
-    label: 'X86硬件兼容性移迁指南',
+    label: 'X86硬件兼容性移植指南',
     link: '/zh/blog/randy1568/x86-Hardware-Compatibility-Assessment-and-Porting-Guide.html',
   },
   {

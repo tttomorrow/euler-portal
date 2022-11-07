@@ -1,4 +1,5 @@
 import type { UserConfig } from 'vitepress';
+import sitemapZh from './sitemap/sitemap-zh';
 
 const config: UserConfig = {
   base: '/',
@@ -18,6 +19,14 @@ const config: UserConfig = {
       },
     ],
     [
+      'meta',
+      {
+        name: 'keywords',
+        content:
+          'openEuler,开源Linux系统,linux开源社区,开源社区,Linux迁移,EulerOS',
+      },
+    ],
+    [
       'script',
       {
         src: '/js/analytics.js',
@@ -33,14 +42,6 @@ const config: UserConfig = {
       'script',
       {
         src: '/allow_sensor/sensors.js',
-      },
-    ],
-    [
-      'meta',
-      {
-        name: 'keywords',
-        content:
-          'openEuler, 操作系统, 开放, 生态, 开源, Linux 开源, OS, open, ecosystem, open source, Linux open source',
       },
     ],
     [
@@ -71,13 +72,34 @@ const config: UserConfig = {
       title: 'openEuler',
       description:
         'openEuler is an open source, free Linux distribution platform. The platform provides an open community for global developers to build an open, diversified, and architecture-inclusive software ecosystem. openEuler is also an innovative platform that encourages everyone to propose new ideas, explore new approaches, and practice new solutions.',
+      head: [
+        [
+          'meta',
+          {
+            name: 'keywords',
+            content:
+              'openEuler, 操作系统, 开放, 生态, 开源, Linux 开源, OS, open, ecosystem, open source, Linux open source',
+          },
+        ],
+      ],
     },
     '/ru/': {
       lang: 'ru',
       title: 'openEuler',
       description:
         'openEuler is an open source, free Linux distribution platform. The platform provides an open community for global developers to build an open, diversified, and architecture-inclusive software ecosystem. openEuler is also an innovative platform that encourages everyone to propose new ideas, explore new approaches, and practice new solutions.',
+      head: [
+        [
+          'meta',
+          {
+            name: 'keywords',
+            content:
+              'openEuler, 操作系统, 开放, 生态, 开源, Linux 开源, OS, open, ecosystem, open source, Linux open source',
+          },
+        ],
+      ],
     },
+    ...sitemapZh,
   },
   markdown: {
     config(md) {
