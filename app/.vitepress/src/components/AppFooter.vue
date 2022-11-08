@@ -48,6 +48,7 @@ const props = defineProps({
 const { lang, frontmatter } = useData();
 const i18n = useI18n();
 const router = useRouter();
+
 // 友情链接
 const linksData = {
   zh: [
@@ -137,7 +138,6 @@ const linksData = {
     },
   ],
 };
-
 const footerLinks = computed(() => {
   if (lang.value === 'en') {
     return linksData.en;
@@ -182,6 +182,11 @@ const isMigration = computed(() => {
     frontmatter.value.category === 'migration' ||
     router.route.path.split('/')[2] === 'migration'
   );
+});
+const quickIssueUrl = computed(() => {
+  return isMigration.value
+    ? 'https://quickissue.openeuler.org/zh/new-issues/?c2lnPXNpZy1NaWdyYXRpb24mcmVwbz1vcGVuZXVsZXIvbWlncmF0aW9uLWFzc2lzdGFudCZyZXBvX2lkPTE1OTI4MzA0JnR5cGU96L+B56e75o+Q5LyYJnRpdGxlPVvmkKzov4Fd'
+    : 'https://quickissue.openeuler.org/zh/issues/';
 });
 
 // 点击关闭cookies使用提示
@@ -286,7 +291,7 @@ function clickClose() {
       </AppContent>
     </div>
     <div v-show="lang === 'zh'" class="quick-issue">
-      <a href="https://quickissue.openeuler.org/zh/" target="_blank">
+      <a :href="quickIssueUrl" target="_blank">
         <img
           v-show="useCommon().theme === 'light'"
           :src="QuickIssue_Light"
@@ -616,7 +621,7 @@ $color: #fff;
     bottom: 120px;
     right: 50px;
     z-index: 10;
-    @media screen and (max-width: 1780px) {
+    @media screen and (max-width: 1430px) {
       display: none;
     }
     img {

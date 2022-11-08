@@ -78,7 +78,7 @@ watch(
     width: 1px;
     height: 100%;
     left: 0;
-    bottom: -100%;
+    bottom: -50%;
     background-color: var(--o-color-bg4);
   }
   @media screen and (max-width: 1750px) {

@@ -105,7 +105,7 @@ import IconBook from '~icons/app/icon-book.svg';
       display: flex;
       align-items: center;
       background: var(--o-color-bg2);
-      border-left: 2px solid var9--o-color-border3;
+      border-left: 2px solid var(--o-color-border3);
       .answer-text {
         font-size: var(--o-font-size-text);
         font-weight: 400;

@@ -160,6 +160,7 @@ onMounted(async () => {
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    overflow: hidden;
     @media (max-width: 768px) {
       justify-content: center;
     }
