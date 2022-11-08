@@ -1,8 +1,16 @@
 ---
 title: MySQL 5.7.21 移植指南（openEuler 20.03 LTS SP1）
-category: blog 
+titleTemplate: 数据库移植方案 | openEuler社区官网
+head:
+  - - meta
+    - name: description
+      content: 本文主要用于指导在openEuler 20.03 sp1 操作系统上部署mysql数据库。本案例使用x86_64架构虚拟机，通过评估工具x2openEuler评估MySQL 5.7.21软件移植到openEuler操作系统的兼容性，再实施数据搬迁。想要了解更多数据库移植相关内容，欢迎访问openEuler官网。
+  # - - meta
+  #   - name: keywords
+  #     content: 数据库迁移方案,Mysql数据库迁移,mysql数据库集群,mysql数据迁移工具,mysql移植方案,迁移工具
+category: blog
 date: 2022-01-05
-tags: 
+tags:
     - MySQL
     - Migrate Case
 sig: sig-Compatibility-Infra
