@@ -240,6 +240,10 @@
   }
 }
 
+.dark .markdown img {
+  filter: brightness(80%) grayscale(20%) contrast(1.2);
+}
+
 /**
  * 法律声明 && 隐私政策
  **/

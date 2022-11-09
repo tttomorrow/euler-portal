@@ -26,8 +26,8 @@ import caseInfo from '@/data/migration/migration-case';
 
   .migration-transplantation-desc {
     color: var(--o-color-text1);
-    font-size: var(--o-font-size-h7);
-    line-height: var(--o-line-height-h7);
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
     font-weight: 300;
     margin-top: 0;
     margin-bottom: var(--o-spacing-h2);

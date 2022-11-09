@@ -231,3 +231,7 @@
     color: var(--o-color-text1);
   }
 }
+
+.dark .migration-markdown img {
+  filter: brightness(80%) grayscale(20%) contrast(1.2);
+}

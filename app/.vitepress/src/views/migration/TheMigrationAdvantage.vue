@@ -30,7 +30,7 @@ const { lang } = useData();
 .advantage-top {
   font-size: var(--o-font-size-text);
   font-weight: 400;
-  color: var(--o-color-neutral5);
+  color: var(--o-color-text4);
   line-height: var(--o-line-height-text);
 }
 
@@ -65,7 +65,7 @@ const { lang } = useData();
     p {
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--o-color-neutral5);
+      color: var(--o-color-text4);
       line-height: var(--o-line-height-text);
       margin-top: var(--o-spacing-h4);
       @media screen and (max-width: 768px) {
@@ -78,7 +78,7 @@ const { lang } = useData();
 .advantage-bottom {
   font-size: var(--o-font-size-text);
   font-weight: 400;
-  color: var(--o-color-neutral5);
+  color: var(--o-color-text4);
   line-height: var(--o-line-height-text);
   margin-top: var(--o-spacing-h4);
   @media screen and (max-width: 768px) {
