@@ -3,22 +3,15 @@ import downloadInfo from '@/data/migration/migration-download';
 
 import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
-function handleGetSoftWare() {
-  window.open(
-    'https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/x2openEuler/'
-  );
+interface LinkItem {
+  name: string;
+  link: string;
 }
 
-function handleUserGuide() {
-  window.open(
-    'https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/thirdparty_migration/x2openEuler-Userguide.html'
-  );
-}
-
-function handleGetVideo() {
-  window.open(
-    'https://www.bilibili.com/video/BV1TR4y1o7cX/?is_story_h5=false&p=1&share_from=ugc&share_medium=android&share_plat=android&share_session_id=2d0cb5be-8f2d-4271-b749-5f37452ec983&share_source=COPY&share_tag=s_i&timestamp=1665209080&unique_k=622RHPA'
-  );
+function handleClick(item: LinkItem) {
+  if (item.link) {
+    window.open(item.link);
+  }
 }
 </script>
 
@@ -46,36 +39,24 @@ function handleGetVideo() {
             <div class="card-box-right">
               <div class="card-btn">
                 <OButton
+                  v-for="buttons in item.sourceLinks"
+                  :key="buttons"
                   animation
                   size="mini"
                   class="home-banner-btn"
-                  @click="handleGetSoftWare"
+                  :class="buttons.softLinks?.length ? 'hover' : ''"
+                  @click="buttons.link && handleClick(buttons)"
                 >
-                  {{ item.source.name }}
-                  <template #suffixIcon
-                    ><OIcon><IconArrowRight /></OIcon
-                  ></template>
-                </OButton>
-
-                <OButton
-                  animation
-                  size="mini"
-                  class="home-banner-btn"
-                  @click="handleUserGuide"
-                >
-                  {{ item.doc.name }}
-                  <template #suffixIcon
-                    ><OIcon><IconArrowRight /></OIcon
-                  ></template>
-                </OButton>
-
-                <OButton
-                  animation
-                  size="mini"
-                  class="home-banner-btn"
-                  @click="handleGetVideo"
-                >
-                  {{ item.video.name }}
+                  {{ buttons.name }}
+                  <ul v-if="buttons.softLinks?.length">
+                    <li
+                      v-for="buttonItem in buttons.softLinks"
+                      :key="buttonItem.link"
+                      @click="handleClick(buttonItem)"
+                    >
+                      {{ buttonItem.name }}
+                    </li>
+                  </ul>
                   <template #suffixIcon
                     ><OIcon><IconArrowRight /></OIcon
                   ></template>
@@ -96,6 +77,7 @@ function handleGetVideo() {
 <style lang="scss" scoped>
 :deep(.el-card) {
   margin-top: var(--o-spacing-h3);
+  overflow: visible;
   .el-card__body {
     padding: 0;
   }
@@ -196,7 +178,32 @@ function handleGetVideo() {
           }
 
           .o-button {
+            position: relative;
             margin-right: var(--o-spacing-h4);
+            ul {
+              display: none;
+              position: absolute;
+              top: 15px;
+              left: 50%;
+              z-index: 1;
+              width: 160px;
+              padding: var(--o-spacing-h5) 0;
+              background-color: var(--o-color-bg2);
+              border: 1px solid var(--o-color-brand1);
+              li {
+                cursor: pointer;
+                display: block;
+                margin: 0;
+                padding: var(--o-spacing-h8) 0;
+                list-style: none;
+                text-align: center;
+                line-height: var(--o-line-height-h6);
+                color: var(--o-color-text1);
+              }
+              li:hover {
+                color: var(--o-color-brand1);
+              }
+            }
             @media screen and (max-width: 440px) {
               margin-right: 5px;
             }
@@ -204,6 +211,20 @@ function handleGetVideo() {
               margin-right: var(--o-spacing-h3);
               @media screen and (max-width: 440px) {
                 margin-right: 5px;
+              }
+            }
+          }
+          .hover {
+            .o-icon {
+              transform: rotate(90deg) translateY(-3px);
+            }
+            &:hover {
+              :deep(.suffix-icon) {
+                transform: none;
+              }
+
+              ul {
+                display: block;
               }
             }
           }

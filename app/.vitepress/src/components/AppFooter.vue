@@ -238,11 +238,7 @@ function clickClose() {
             <img class="show-pc" :src="LogoFooter" alt="" />
             <img class="show-mo" :src="LogoFooter1" alt="" />
             <p>
-              <a
-                class="email"
-                :href="'mailto:' + i18n.common.FOOTER.MAIL"
-                target="_blank"
-              >
+              <a class="email" :href="'mailto:' + i18n.common.FOOTER.MAIL">
                 {{ i18n.common.FOOTER.MAIL }}
               </a>
             </p>

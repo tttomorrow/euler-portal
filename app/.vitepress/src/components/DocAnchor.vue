@@ -80,17 +80,20 @@ watch(
     left: 0;
     bottom: -50%;
     background-color: var(--o-color-bg4);
+    z-index: 0;
   }
   @media screen and (max-width: 1750px) {
     display: none;
   }
   .anchor-link {
-    display: block !important;
+    position: relative;
     cursor: pointer;
+    display: block !important;
     color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
     font-size: var(--o-font-size-text);
     border-left: 1px solid var(--o-color-bg4);
+    z-index: 1;
     &:hover {
       color: var(--o-color-text1);
     }
