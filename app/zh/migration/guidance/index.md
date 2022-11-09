@@ -211,7 +211,7 @@ openEuler 为用户提供两种迁移路径：
               }
               p {
                 font-size: var(--o-font-size-h8);
-                color: #000000;
+                color: var(--o-color-text1);
                 line-height: var(--o-line-height-h8);
                 @media screen and (max-width:768px){
                   font-size: var(--o-font-size-text);
@@ -223,7 +223,7 @@ openEuler 为用户提供两种迁移路径：
         }
         .description {
           font-size: var(--o-font-size-text);
-          color: #36383d;
+          color: var(--o-color-text4);
           line-height: var(--o-line-height-text);
           @media screen and (max-width:768px){
             font-size: var(--o-font-size-tip);

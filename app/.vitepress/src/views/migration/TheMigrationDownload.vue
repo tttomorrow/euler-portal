@@ -134,7 +134,7 @@ function handleGetVideo() {
     .download-desc {
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--o-color-neutral5);
+      color: var(--o-color-text4);
       line-height: var(--o-line-height-text);
     }
 
