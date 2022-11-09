@@ -422,17 +422,17 @@ watch(windowWidth, () => {
             </div>
             <div class="address-text">
               <p>{{ i18n.interaction.MEETUPSLIST.ADDRESS }}</p>
-              <p v-if="detailObj?.address">
+              <p>
                 {{ detailObj?.address }}
               </p>
-              <p>{{ i18n.interaction.MEETUPSLIST.LIVE_ADDRESS }}</p>
-              <p v-if="detailObj?.detail_address && activityId !== '70'">
-                {{ detailObj?.detail_address }}
+              <p v-if="detailObj?.detail_address.includes('http')">
+                {{ i18n.interaction.MEETUPSLIST.LIVE_ADDRESS }}
               </p>
               <p v-else>
-                <a href="http://live.bilibili.com/22290444" target="_blank"
-                  >http://live.bilibili.com/22290444</a
-                >
+                {{ i18n.interaction.MEETUPSLIST.DETAIL_ADDRESS }}
+              </p>
+              <p>
+                {{ detailObj?.detail_address }}
               </p>
             </div>
             <div class="scan-qrcode">
@@ -531,7 +531,7 @@ watch(windowWidth, () => {
 .tab-box-mobile {
   background-color: var(--o-color-bg2);
   display: none;
-  z-index: 99;
+  z-index: 2;
   width: 100%;
   align-items: flex-end;
   justify-content: center;
@@ -749,7 +749,7 @@ watch(windowWidth, () => {
     display: flex;
     top: 80px;
     width: 100%;
-    z-index: 99;
+    z-index: 2;
     position: static;
     align-items: flex-end;
     justify-content: center;
@@ -912,7 +912,7 @@ watch(windowWidth, () => {
       background: var(--o-color-bg2);
       box-shadow: var(--o-shadow-l1);
       border-bottom: 3px solid var(--o-color-brand1);
-      z-index: 10;
+      z-index: 1;
       @media (max-width: 1080px) {
         flex-flow: column;
         justify-content: center;

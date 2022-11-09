@@ -63,9 +63,9 @@ import illustration from '@/assets/illustrations/contribution.png';
 
 您可以了解并参与丰富多彩的社区活动：
 
-- [Meeting](/zh/#meeting)：查看官网首页 SIG 公开例会日程安排，可参与你感兴趣的会议
-- [Meetups](/zh/interaction/salon-list/)
-- [直播](/zh/interaction/live-list/)
+- [Meeting](https://www.openeuler.org/zh/#meeting)：查看官网首页 SIG 公开例会日程安排，可参与你感兴趣的会议
+- [Meetups](https://www.openeuler.org/zh/interaction/salon-list/)
+- [直播](https://www.openeuler.org/zh/interaction/live-list/)
 - [峰会](https://www.openeuler.org/zh/interaction/summit-list/summit2021/)
 
 ### 3.2 找到您想参与的 SIG

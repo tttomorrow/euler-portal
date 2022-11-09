@@ -10,6 +10,7 @@ export default {
     MORE_VIDEO: '更多视频',
     DETAIL_QRCODE_TEXT: '扫码报名',
     LIVE_ADDRESS: '直播链接',
+    DETAIL_ADDRESS: '详细地址',
     ADDRESS: '地址',
     LEARN_MORE: '了解更多',
     INSIDENAME: 'CONNECT',
