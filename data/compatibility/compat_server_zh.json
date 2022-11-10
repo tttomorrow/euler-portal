@@ -3037,7 +3037,7 @@
         "ssID": "0000",
         "architecture": "x86_64",
         "os": "openEuler 20.03 LTS SP1",
-        "driverName": "i40en",
+        "driverName": "i40e",
         "version": "5.4.0",
         "type": "NIC",
         "date": "2021/10/13",
