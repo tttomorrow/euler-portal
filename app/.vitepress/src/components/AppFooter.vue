@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
+import { computed, ref, toRefs } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
@@ -37,6 +37,11 @@ import IconCancel from '~icons/app/icon-cancel.svg';
 // quick-issue
 import QuickIssue_Light from '@/assets/footer/quick-issue_light.png';
 import QuickIssue_Dark from '@/assets/footer/quick-issue_dark.png';
+
+// 问卷调查
+import Investigation_Light from '@/assets/footer/investigation.png';
+import Investigation_Dark from '@/assets/footer/investigation_dark.png';
+import Close_Light from '@/assets/footer/close.png';
 
 const props = defineProps({
   isCookieTip: {
@@ -162,6 +167,8 @@ const footerCodeList = [
   },
 ];
 
+const isShow = ref(true);
+
 const handleNavClick = (path: string) => {
   if (path.startsWith('https:')) {
     window.open(path, '_blank');
@@ -194,6 +201,9 @@ const { isCookieTip } = toRefs(props);
 const emit2 = defineEmits(['click-close']);
 function clickClose() {
   emit2('click-close');
+}
+function clickWindow() {
+  isShow.value = false;
 }
 </script>
 
@@ -296,6 +306,26 @@ function clickClose() {
         <img
           v-show="useCommon().theme === 'dark'"
           :src="QuickIssue_Dark"
+          alt=""
+        />
+      </a>
+    </div>
+    <div v-show="lang === 'zh' && isShow" class="investigation quick-issue">
+      <a href="https://huaweicompute.wjx.cn/vm/QVCXm3l.aspx# " target="_blank">
+        <img
+          v-show="useCommon().theme === 'light'"
+          :src="Investigation_Light"
+          alt=""
+        />
+        <img
+          :src="Close_Light"
+          alt=""
+          class="icon"
+          @click.stop.prevent="clickWindow()"
+        />
+        <img
+          v-show="useCommon().theme === 'dark'"
+          :src="Investigation_Dark"
           alt=""
         />
       </a>
@@ -623,12 +653,22 @@ $color: #fff;
     img {
       width: 128px;
     }
+  }
+  .investigation {
+    left: 50px;
+    right: inherit;
+    @media screen and (max-width: 1430px) {
+      display: block;
+      bottom: 50px;
+      // left: 50%;
+      // transform: translateX(-50%);
+    }
     .icon {
       cursor: pointer;
       position: absolute;
-      right: -20px;
-      top: -20px;
-      font-size: 20px;
+      right: -10px;
+      top: -10px;
+      width: 20px;
       color: var(--o-color-text1);
     }
   }
