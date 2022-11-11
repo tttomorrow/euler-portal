@@ -202,7 +202,10 @@ function search() {
 }
 const jumpToUserZone = () => {
   const language = lang.value === 'zh' ? 'zh' : 'en';
-  router.go(`/${language}/usercenter/`);
+  window.open(
+    `https://openeuler-usercenter.test.osinfra.cn/${language}/user`,
+    '_black'
+  );
 };
 </script>
 

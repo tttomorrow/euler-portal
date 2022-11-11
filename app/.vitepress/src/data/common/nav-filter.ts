@@ -146,10 +146,6 @@ export default [
     lang: ['zh'],
   },
   {
-    name: 'usercenter',
-    lang: ['zh', 'en'],
-  },
-  {
     name: 'search',
     lang: ['zh', 'en', 'ru'],
   },
