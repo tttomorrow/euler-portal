@@ -1,8 +1,11 @@
 // import newEdition_pc_en from '@/assets/category/home/banner/banner22.09_pc_en.png';
 // import newEdition_mo_en from '@/assets/category/home/banner/banner22.09_mo_en.png';
 
-import docsBug_pc from '@/assets/category/home/banner/docs-bug_pc.png';
-import docsBug_mo from '@/assets/category/home/banner/docs-bug_mo.png';
+import prize_en_pc from '@/assets/category/home/banner/prize_en_pc.png';
+import prize_en_mo from '@/assets/category/home/banner/prize_en_mo.png';
+import prize_zh_pc from '@/assets/category/home/banner/prize_zh_pc.png';
+import prize_zh_mo from '@/assets/category/home/banner/prize_zh_mo.png';
+
 import techDay_pc from '@/assets/category/home/banner/tech-day_pc.png';
 import techDay_mo from '@/assets/category/home/banner/tech-day_mo.png';
 import newEdition_pc_zh from '@/assets/category/home/banner/banner22.09_pc_zh.png';
@@ -17,14 +20,24 @@ export default {
   HOMEBANNER: {
     zh: [
       {
-        pcBanner: docsBug_pc,
-        moBanner: docsBug_mo,
-        link: 'https://docs-bug.openeuler.sh/',
+        pcBanner: prize_zh_pc,
+        moBanner: prize_zh_mo,
+        link: 'https://mp.weixin.qq.com/s/a8ff7y6u4KADVg2npQQtyg',
+        title: 'openEuler 开源操作系统荣获',
+        desc: ['2022世界互联网领先科技成就奖'],
         btn: '了解更多',
-        id: 'docsBug',
-        title: 'openEuler文档有奖捉虫',
-        desc: ['捉虫大战，震撼来袭，就等你来'],
+        id: 'prize',
         targetTap: 1,
+      },
+      {
+        pcBanner: migrationImg_pc,
+        moBanner: migrationImg_mo,
+        link: '/zh/migration/background/',
+        targetTap: 1,
+        id: '',
+        title: 'openEuler迁移专区全面升级',
+        desc: ['助您平滑高效的迁移操作系统'],
+        btn: '了解更多',
       },
       {
         pcBanner: newEdition_pc_zh,
@@ -41,18 +54,13 @@ export default {
         targetTap: 1,
         id: '',
       },
-      {
-        pcBanner: migrationImg_pc,
-        moBanner: migrationImg_mo,
-        link: '/zh/migration/background/',
-        targetTap: 1,
-        id: '',
-        title: '一起迁移吧',
-        desc: ['手把手教你把操作系统替换成openEuler'],
-        btn: '了解更多',
-      },
     ],
     en: [
+      {
+        pcBanner: prize_en_pc,
+        moBanner: prize_en_mo,
+        targetTap: 1,
+      },
       {
         pcBanner: techDay_pc,
         moBanner: techDay_mo,

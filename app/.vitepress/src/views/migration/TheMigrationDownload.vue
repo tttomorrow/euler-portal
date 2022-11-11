@@ -184,12 +184,15 @@ function handleClick(item: LinkItem) {
               display: none;
               position: absolute;
               top: 15px;
-              left: 50%;
+              left: 60%;
               z-index: 1;
               width: 160px;
               padding: var(--o-spacing-h5) 0;
               background-color: var(--o-color-bg2);
               border: 1px solid var(--o-color-brand1);
+              @media screen and (max-width: 768px) {
+                top: -120px;
+              }
               li {
                 cursor: pointer;
                 display: block;
