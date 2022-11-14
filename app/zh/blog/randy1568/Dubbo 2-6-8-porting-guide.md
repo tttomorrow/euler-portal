@@ -8,6 +8,7 @@ head:
   # - - meta
   #   - name: keywords
   #     content: Dubbo移植方案,迁移步骤,服务器迁移方案,服务器迁移,系统迁移工具,迁移工具
+category: blog
 date: 2021-12-29
 tags:
   - Dubbo
