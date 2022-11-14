@@ -1,5 +1,5 @@
 ---
-title: 'openEuler镜像'
+title: openEuler镜像
 titleTemplate: Linux操作系统镜像 | openEuler社区官网
 head:
   - - meta
