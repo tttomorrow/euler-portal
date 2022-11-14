@@ -131,6 +131,12 @@ const tdks = {
     keywords:
       'flask移植方案,迁移步骤,服务器迁移方案,服务器迁移,系统迁移工具,迁移工具',
   },
+  '/zh/blog/randy1568/HAProxy 1-9-0-porting-guide': {
+    description:
+      '本文主要用于指导在openEuler 20.03 sp1 服务器操作系统上迁移部署HAProxy 1.9.0。想要了解更多服务器迁移相关内容，欢迎访问openEuler官网。',
+    keywords:
+      'HAProxy移植方案,迁移步骤,服务器迁移方案,服务器迁移,系统迁移工具,迁移工具',
+  },
   '/zh/blog/randy1568/Iok 2.1.3-porting-guide': {
     description:
       '本文主要用于指导在openEuler 20.03 sp1 服务器操作系统上迁移部署Iok 2.1.3。想要了解更多服务器迁移相关内容，欢迎访问openEuler官网。',
