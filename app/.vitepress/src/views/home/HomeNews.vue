@@ -138,8 +138,10 @@ onMounted(async () => {
                     <span
                       v-for="(authorName, index2) in item.author"
                       :key="authorName"
-                      >{{ authorName }}
-                      <span v-show="item.author.length !== index2 + 1">, </span>
+                      >{{ authorName
+                      }}<span v-show="item.author.length !== index2 + 1"
+                        >,&nbsp;</span
+                      >
                     </span>
                   </p>
                 </div>
@@ -160,8 +162,10 @@ onMounted(async () => {
                 <span
                   v-for="(authorName, index2) in item.author"
                   :key="authorName"
-                  >{{ authorName }}
-                  <span v-show="item.author.length !== index2 + 1">、</span>
+                  >{{ authorName
+                  }}<span v-show="item.author.length !== index2 + 1"
+                    >,&nbsp;</span
+                  >
                 </span>
               </p>
               <a
@@ -217,8 +221,10 @@ onMounted(async () => {
                     <span
                       v-for="(authorName, index2) in item.author"
                       :key="authorName"
-                      >{{ authorName }}
-                      <span v-show="item.author.length !== index2 + 1">、</span>
+                      >{{ authorName
+                      }}<span v-show="item.author.length !== index2 + 1"
+                        >,&nbsp;</span
+                      >
                     </span>
                   </p>
                 </div>
@@ -239,8 +245,10 @@ onMounted(async () => {
                 <span
                   v-for="(authorName, index2) in item.author"
                   :key="authorName"
-                  >{{ authorName }}
-                  <span v-show="item.author.length !== index2 + 1">、</span>
+                  >{{ authorName
+                  }}<span v-show="item.author.length !== index2 + 1"
+                    >,&nbsp;</span
+                  >
                 </span>
               </p>
               <a
