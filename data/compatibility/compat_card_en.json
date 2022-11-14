@@ -12806,5 +12806,43 @@
     "chipModel": "ConnectX-4 Lx",
     "item": "06310183",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS/contrib/drivers/source/Packages/MLNX_OFED_LINUX-5.8-1.0.1.1-openeuler22.03-aarch64.tgz"
+  },
+  {
+    "vendorID": "8086",
+    "deviceID": "1521",
+    "svID": "1dcf",
+    "ssID": "0308",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "igb",
+    "version": "",
+    "type": "NIC",
+    "date": "2022/10/25",
+    "sha256": "7aaf89fad3eae542e505379cef9e6fb9ad65be587f0993f4de63a50ca9b93229",
+    "driverSize": "542KB",
+    "chipVendor": "Intel",
+    "boardModel": "65MA32",
+    "chipModel": "I350",
+    "item": "",
+    "downloadLink": "inbox"
+  },
+  {
+    "vendorID": "1000",
+    "deviceID": "00e2",
+    "svID": "1000",
+    "ssID": "4000",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "megaraid_sas",
+    "version": "07.714.04.00-rc1",
+    "type": "RAID",
+    "date": "2022/10/24",
+    "sha256": "abf3ad2595702e635fb07be307414d9df4baccd8ad1a1c369d28be61a46c93b6",
+    "driverSize": "343KB",
+    "chipVendor": "Broadcom",
+    "boardModel": "9361-16i",
+    "chipModel": "SAS3916",
+    "item": "",
+    "downloadLink": "inbox"
   }
 ]
