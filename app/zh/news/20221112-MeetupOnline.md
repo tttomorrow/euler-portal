@@ -4,7 +4,7 @@ date: '2022-11-04'
 category: news
 tags:
   - meetup
-banner: 'img/banners/20221104Meetup.jpg'
+banner: 'img/banners/20221104Meetup.png'
 author:
   - openEuler
 summary: '11月10日，openEuler Meetup Online——分布式存储与大数据技术来啦，来自openEuler SDS SIG和bigdata SIG的8位大咖讲师将带来分布式存储及大数据领域关键技术的分享。'
