@@ -1,13 +1,13 @@
 ---
 title: openEuler 第三方软件包镜像源 Oepkgs 仓库介绍
-date: '2022-12-03'
+date: '2022-11-12'
 category: blog
 tags:
   - oepkgs
   - 第三方软件包镜像源
   - 软件所仓库
 sig: Compatibility-Infra
-archives: '2022-12'
+archives: '2022-11'
 author:
   - Li Ping
 summary: 介绍一下 openEuler 的第三方软件包镜像源 Oepkgs 仓库，包括 Oepkgs 的仓库地址，Oepkgs上的软件包查询入口，软件包的源码仓库，以及如何将软件包加进Oepkgs仓库
