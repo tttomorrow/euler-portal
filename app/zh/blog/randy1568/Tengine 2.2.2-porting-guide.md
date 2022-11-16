@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything of the tengine 2.2.2 porting case
 ---
 
-# Tengine 2.2.2 移植指南
-
 # 介绍
 
 #### 简要介绍
@@ -43,7 +41,7 @@ Tengine是由淘宝网发起的Web服务器项目。它在Nginx的基础上，�
 
 #### 操作系统要求
 
-| 项目       | 版本                               |
+| 项目      | 版本                              |
 | --------- | --------------------------------- |
 | openEuler | openEuler 20.03 LTS SP1 aarch64   |
 | Kernel    | 4.19.90-2003.4.0.0036.oe1.aarch64 |

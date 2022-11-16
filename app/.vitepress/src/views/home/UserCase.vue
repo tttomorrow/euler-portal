@@ -142,6 +142,7 @@ onUnmounted(() => {
                       ? item.ACTIVE_URL
                       : item.URL
                   "
+                  :alt="`${item.TYPE}`"
                 />
                 <div class="case-mobile-word">
                   {{ item.TYPE }}
@@ -175,10 +176,14 @@ onUnmounted(() => {
                 class="case-img-box"
                 :class="active === index ? 'active' : ''"
               >
-                <img :src="imgUrl(item)" alt="" class="nav-item-icon" />
+                <img
+                  :src="imgUrl(item)"
+                  :alt="`${item.TYPE}`"
+                  class="nav-item-icon"
+                />
                 <img
                   :src="imgUrlHover(item)"
-                  alt=""
+                  :alt="`${item.TYPE}`"
                   class="nav-item-icon-hover"
                 />
               </div>
@@ -192,8 +197,9 @@ onUnmounted(() => {
               v-for="item2 in caseData &&
               caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
               :key="item2.summary"
+              :href="item2.path.replace(/(index)$/g, '')"
+              target="_blank"
               class="user-card"
-              @click="handleGo(item2.path)"
             >
               <div class="user-title">{{ item2.company }}</div>
               <div class="user-word">{{ item2.summary }}</div>

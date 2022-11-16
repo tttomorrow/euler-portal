@@ -264,7 +264,7 @@ function search() {
       >
         <div class="mobile-menu-side">
           <div class="mobile-nav">
-            <a
+            <div
               v-for="item in navRouter"
               :key="item.ID"
               class="link"
@@ -272,8 +272,9 @@ function search() {
                 active: activeNav === item.ID,
               }"
               @click.stop="goMobile(item)"
-              >{{ item.NAME }}</a
             >
+              {{ item.NAME }}
+            </div>
           </div>
           <div class="mobile-tools">
             <AppTheme />
@@ -286,13 +287,14 @@ function search() {
         <transition name="menu-sub">
           <div v-if="mobileChildMenu.length > 0" class="mobile-menu-content">
             <div class="mobile-menu-list">
-              <a
+              <div
                 v-for="item in mobileChildMenu"
                 :key="item.ID"
                 class="link"
                 @click="goMobileSubList(item)"
-                >{{ item.NAME }}</a
               >
+                {{ item.NAME }}
+              </div>
             </div>
           </div>
         </transition>

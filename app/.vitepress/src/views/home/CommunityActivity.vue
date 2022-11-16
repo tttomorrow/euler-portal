@@ -120,6 +120,7 @@ onMounted(async () => {
                   ? item.ROUND_IMG_DARK
                   : item.ROUND_IMG
               "
+              alt="background-img"
               class="round-img"
             />
 
