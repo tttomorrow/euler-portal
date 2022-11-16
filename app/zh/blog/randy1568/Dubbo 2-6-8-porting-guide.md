@@ -19,8 +19,6 @@ author: randy1568
 summary: Just about everything you'll need to  migrate the Dubbo 2.6.8
 ---
 
-# Dubbo 2.6.8 移植指南（openEuler 20.03 LTS SP1)
-
 ## 介绍
 
 ### 简要介绍

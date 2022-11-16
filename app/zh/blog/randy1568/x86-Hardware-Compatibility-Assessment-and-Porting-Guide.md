@@ -12,8 +12,6 @@ author: randy1568
 summary: Just about everything you'll need to  evaluate the compatibility of X86 hardware（Hi1822&3408raid）
 ---
 
-# X86硬件兼容性移迁指南(openEuler 20.03 LTS SP1)
-
 [TOC]
 
 # 案例环境
@@ -22,21 +20,21 @@ summary: Just about everything you'll need to  evaluate the compatibility of X86
 
 硬件如下表所示
 
-项目 | 说明 
------ | ----- 
-服务器 | 2288H V5 
-CPU | Inter(R) Xeon(R) Gold 6266C CPU @ 3.00GHz 
-NIC卡 | CX5（CX5网卡是mellanox公司生产的一款网卡） 
-RIAD卡 | LTS SAS 3108（3108raid卡是华为生产的一款raid卡） 
+| 项目   | 说明                                             |
+| ------ | ------------------------------------------------ |
+| 服务器 | 2288H V5                                         |
+| CPU    | Inter(R) Xeon(R) Gold 6266C CPU @ 3.00GHz        |
+| NIC卡  | CX5（CX5网卡是mellanox公司生产的一款网卡）       |
+| RIAD卡 | LTS SAS 3108（3108raid卡是华为生产的一款raid卡） |
 
 ## 操作系统
 
 操作系统如下所示
 
-项目 | 说明 |
------ | ----- | 
-Centos Linux | 7.9.2009（Core)  
-Kernel | 3.10.0  x86_64  
+| 项目         | 说明            |
+| ------------ | --------------- |
+| Centos Linux | 7.9.2009（Core) |
+| Kernel       | 3.10.0  x86_64  |
 
 检查当前系统版本信息
 cat /etc/os-release

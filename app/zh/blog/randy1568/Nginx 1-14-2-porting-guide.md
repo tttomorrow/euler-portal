@@ -19,8 +19,6 @@ author: randy1568
 summary: Just about everything you'll need to  migrate the Nginx 1.14.2
 ---
 
-# Nginx 1.14.2 移植指南（openEuler 20.03 LTS SP1）
-
 # 介绍
 
 ## 简要介绍

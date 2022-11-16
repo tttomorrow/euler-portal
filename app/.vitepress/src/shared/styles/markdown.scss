@@ -115,6 +115,7 @@
     margin-bottom: var(--o-spacing-h8);
     font-size: var(--o-font-size-text);
     font-weight: normal;
+    word-break: break-all;
     color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
     @media screen and (max-width: 768px) {
@@ -183,16 +184,19 @@
     width: 100%;
   }
 
-  a[href^='#'] {
-    display: none;
-  }
-  // div[class*='language-'] {
-  //   position: relative;
-  //   margin: 8px 0;
-  //   background-color: var(--o-color-bg1);
-  //   box-shadow: var(--o-shadow-l1);
-  //   overflow-x: auto;
+  // a[href^='#'] {
+  //   display: none;
   // }
+  div[class*='language-'] {
+    // position: relative;
+    // margin: 8px 0;
+    // background-color: var(--o-color-bg1);
+    // box-shadow: var(--o-shadow-l1);
+    // overflow-x: auto;
+    pre {
+      background-color: #272822;
+    }
+  }
   code,
   pre {
     text-align: left;

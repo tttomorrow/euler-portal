@@ -67,7 +67,7 @@ const jumpTo = (item: any) => {
     @swiper="onSwiper"
   >
     <swiper-slide v-for="item in homeBanner" :key="item.link">
-      <a class="banner-panel" @click="jumpTo(item)">
+      <div class="banner-panel" @click="jumpTo(item)">
         <div
           class="banner-panel-cover"
           :style="{
@@ -111,9 +111,9 @@ const jumpTo = (item: any) => {
               </OButton>
             </div>
           </div>
-          <img v-else class="isH5show" :src="item.moBanner" alt="" />
+          <img v-else class="isH5show" :src="item.moBanner" :alt="item.title" />
         </div>
-      </a>
+      </div>
     </swiper-slide>
   </swiper>
 </template>

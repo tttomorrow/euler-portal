@@ -19,8 +19,6 @@ author: randy1568
 summary: Just about everything you'll need to  migrate the Memcached 1.5.12
 ---
 
-# Memcached 1.5.12 移植指南
-
 ## 介绍
 
 #### 简要介绍

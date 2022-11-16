@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useData } from 'vitepress';
 import { computed } from 'vue';
 import { useI18n } from '@/i18n';
 
@@ -8,7 +9,7 @@ defineProps({
     default: () => [],
   },
 });
-
+const { lang } = useData();
 const i18n = useI18n();
 
 const sigDetail = computed(() => {
@@ -28,9 +29,9 @@ const sigDetail = computed(() => {
         {{ item.repo }}
       </a>
       <p>Maintainer:</p>
-      <p>{{ item.maintainers.join('、') }}</p>
+      <p>{{ item.maintainers.join(lang === 'zh' ? '、' : ',&nbsp;') }}</p>
       <p>Committer:</p>
-      <p>{{ item.gitee_id.join('、') }}</p>
+      <p>{{ item.gitee_id.join(lang === 'zh' ? '、' : ',&nbsp;') }}</p>
     </div>
   </div>
 </template>

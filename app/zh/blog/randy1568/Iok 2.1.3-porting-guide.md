@@ -19,8 +19,6 @@ author: randy1568
 summary: Just about everything you'll need to  migrate the lok 2.1.3
 ---
 
-# Iok 2.1.3 移植指南 (openEuler 20.03 LTS SP1)
-
 ## 简介
 
 > Iok 是一款在屏幕上显示印度语言的键盘映射应用

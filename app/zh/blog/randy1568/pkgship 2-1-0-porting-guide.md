@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything you'll need to  migrate the pkgship 2.1.0
 ---
 
-# pkgship 2.1.0 移植指南 (openEuler 20.03 LTS SP1)
-
 ## 简介
 
 >pkgship是一款管理OS软件包依赖关系，提供依赖和被依赖关系完整图谱的查询工具，pkgship提供软件包依赖查询、生命周期管理、补丁查询等功能。

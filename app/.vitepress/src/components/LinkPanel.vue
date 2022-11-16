@@ -31,7 +31,6 @@ const props = withDefaults(
 <style scoped lang="scss">
 .picture-panel {
   display: grid;
-  padding-top: var(--o-spacing-h4);
   grid-template-columns: repeat(v-bind('props.row'), minmax(82px, 1fr));
   column-gap: 0;
   row-gap: 0;
@@ -52,7 +51,6 @@ const props = withDefaults(
     }
   }
   @media screen and (max-width: 1416px) {
-    padding-top: var(--o-spacing-h8);
     grid-template-columns: repeat(v-bind('(props.row)-1'), minmax(82px, 270px));
     justify-content: center;
     .link-item {
