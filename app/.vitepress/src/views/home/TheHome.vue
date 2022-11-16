@@ -188,7 +188,8 @@ h3 {
     margin-bottom: var(--o-spacing-h5);
   }
 }
-.business {
+
+html[lang='zh'] .business {
   margin-bottom: 0;
 }
 .rank-tip {
