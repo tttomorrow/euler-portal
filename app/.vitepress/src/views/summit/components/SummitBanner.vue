@@ -74,6 +74,9 @@ function clickButton(link: string) {
 </template>
 
 <style lang="scss" scoped>
+.dark .summit-banner {
+  filter: brightness(0.8) grayscale(0.2) contrast(1.2);
+}
 .summit-banner {
   height: 380px;
   background: no-repeat center/cover;

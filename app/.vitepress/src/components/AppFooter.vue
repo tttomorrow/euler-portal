@@ -205,6 +205,9 @@ function clickClose() {
 function clickWindow() {
   isShow.value = false;
 }
+
+// 控制issue浮窗在峰会页面不显示
+const isFloShow = computed(() => !router.route.path.includes('summit-list'));
 </script>
 
 <template>
@@ -296,7 +299,7 @@ function clickWindow() {
         </div>
       </AppContent>
     </div>
-    <div v-show="lang === 'zh'" class="quick-issue">
+    <div v-show="lang === 'zh' && isFloShow" class="quick-issue">
       <a :href="quickIssueUrl" target="_blank">
         <img
           v-show="useCommon().theme === 'light'"
@@ -310,7 +313,10 @@ function clickWindow() {
         />
       </a>
     </div>
-    <div v-show="lang === 'zh' && isShow" class="investigation quick-issue">
+    <div
+      v-show="lang === 'zh' && isShow && isFloShow"
+      class="investigation quick-issue"
+    >
       <a href="https://huaweicompute.wjx.cn/vm/QVCXm3l.aspx# " target="_blank">
         <img
           v-show="useCommon().theme === 'light'"
