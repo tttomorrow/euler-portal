@@ -58,6 +58,9 @@ const bannerInfo = {
   </AppContext>
 </template>
 <style scoped lang="scss">
+.dark img {
+  filter: brightness(0.8) grayscale(0.2) contrast(1.2);
+}
 .detail {
   font-size: var(--o-font-size-h6);
   line-height: var(--o-line-height-h6);
