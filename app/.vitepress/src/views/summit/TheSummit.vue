@@ -18,11 +18,7 @@ const liveImg = computed(() =>
 );
 const bannerInfo = {
   pc_banner: banner,
-  pc_text: '',
   mo_banner: bannerMo,
-  mo_text: '',
-  link: '',
-  button: '',
 };
 </script>
 <template>
@@ -124,6 +120,8 @@ const bannerInfo = {
 
   .link-box {
     margin-top: var(--o-spacing-h3);
+    display: grid;
+    grid-template-columns: repeat(1, 290px);
     @media screen and (max-width: 768px) {
       margin-top: var(--o-spacing-h6);
     }
