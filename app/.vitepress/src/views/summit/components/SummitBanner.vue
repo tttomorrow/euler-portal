@@ -117,7 +117,9 @@ function clickButton(link: string) {
     }
   }
   @media (max-width: 767px) {
-    height: 320px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
 }
 </style>

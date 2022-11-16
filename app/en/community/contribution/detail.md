@@ -65,7 +65,7 @@ Learn about and participate in a variety of community activities.
 - [Meeting](https://www.openeuler.org/en/#meeting)：View the public meeting schedule of Special Interest Groups (SIGs) on the openEuler homepage and join the meetings you are interested in.
 - [Meetups](https://www.openeuler.org/en/interaction/salon-list/)
 - [Live](https://www.openeuler.org/en/interaction/live-list/)
-- [Summit](https://www.openeuler.org/en/interaction/summit-list/summit2021/)
+- [Summit](https://www.openeuler.org/zh/interaction/summit-list/summit2021/)
 
 ### 3.2 Find the SIGs to Participate In
 
