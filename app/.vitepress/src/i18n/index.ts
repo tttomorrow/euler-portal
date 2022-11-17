@@ -15,7 +15,6 @@ import stratovirt from './minisite/stratovirt';
 import showcase from './showcase';
 import interaction from './interaction';
 import live from './interaction/live';
-import summit from './interaction/summit';
 import filter from './filter';
 import contribution from './contribution';
 import mailing from './mailing';
@@ -45,7 +44,6 @@ const i18n: { [key: string]: any } = {
     compatibility: compatibility.zh,
     cve: cve.zh,
     safetyBulletin: safetyBulletin.zh,
-    summit: summit.zh,
     filter: filter.zh,
     contribution: contribution.zh,
     mailing: mailing.zh,
@@ -69,7 +67,6 @@ const i18n: { [key: string]: any } = {
     compatibility: compatibility.en,
     cve: cve.en,
     safetyBulletin: safetyBulletin.en,
-    summit: summit.en,
     filter: filter.en,
     contribution: contribution.en,
     mailing: mailing.en,
@@ -93,7 +90,6 @@ const i18n: { [key: string]: any } = {
     compatibility: compatibility.ru,
     cve: cve.ru,
     safetyBulletin: safetyBulletin.ru,
-    summit: summit.ru,
     filter: filter.ru,
     contribution: contribution.ru,
     mailing: mailing.ru,

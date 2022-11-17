@@ -151,7 +151,7 @@ onUnmounted(() => {
       </div>
     </ClientOnly>
     <HomePlayground />
-    <h3 class="business">
+    <h3 class="partner">
       {{ i18n.home.HOME_SOURCE.SOURCE_PUBLISH_TITLE }}
     </h3>
     <p class="rank-tip">{{ i18n.home.RANK_TIP }}</p>
@@ -189,7 +189,7 @@ h3 {
   }
 }
 
-html[lang='zh'] .business {
+html[lang='zh'] .partner {
   margin-bottom: 0;
 }
 .rank-tip {
