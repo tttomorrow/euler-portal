@@ -44,7 +44,7 @@ const summitData = {
     title: '精彩回顾',
     list: [
       {
-        name: 'openEuler Summit 2022 ChangSha',
+        name: '湖南欧拉操作系统生态大会',
         link: '/zh/interaction/summit-list/summit2022-changsha/',
         target: '_self',
       },

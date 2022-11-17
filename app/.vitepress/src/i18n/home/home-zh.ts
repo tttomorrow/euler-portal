@@ -145,8 +145,8 @@ export default {
       IMG_HOVER: summitHover,
       IMG_DARK: summitDark,
       IMG_DARK_HOVER: summitDarkHover,
-      DSSCRIPTIVE: '北京欧拉操作系统生态大会',
-      LINK: '/zh/interaction/summit-list/summit2022/',
+      DSSCRIPTIVE: '湖南欧拉操作系统生态大会',
+      LINK: '/zh/interaction/summit-list/summit2022-changsha/',
     },
   ],
   IMG_CAROUSE: {
