@@ -46,7 +46,7 @@ const summitData = {
       {
         name: '湖南欧拉操作系统生态大会',
         link: '/zh/interaction/summit-list/summit2022-changsha/',
-        target: '_self',
+        target: '_blank',
       },
       {
         name: 'openEuler Developer Day 2022',
@@ -213,6 +213,7 @@ const summitData = {
     width: 318px;
     flex-wrap: wrap;
     @media screen and (max-width: 768px) {
+      width: 172px;
       margin-top: var(--o-spacing-h6);
     }
     a {
