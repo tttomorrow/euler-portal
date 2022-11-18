@@ -7312,7 +7312,7 @@
       },
       {
         "vendorID": "1000",
-        "deviceID": "00e2",
+        "deviceID": "10e2",
         "svID": "1000",
         "ssID": "4000",
         "architecture": "x86_64",
@@ -7323,8 +7323,8 @@
         "date": "2022/10/24",
         "sha256": "abf3ad2595702e635fb07be307414d9df4baccd8ad1a1c369d28be61a46c93b6",
         "driverSize": "343KB",
-        "chipVendor": "Broadcom",
-        "boardModel": "9361-16i",
+        "chipVendor": "Avago",
+        "boardModel": "9560-16i",
         "chipModel": "SAS3916",
         "downloadLink": "inbox"
       }
