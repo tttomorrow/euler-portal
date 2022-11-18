@@ -41,7 +41,7 @@ const imgUrlHover = computed(
         <h4 class="nav-title">
           {{ item.TITLE }}
         </h4>
-        <p class="nav-descriptive">{{ item.DSSCRIPTIVE }}</p>
+        <p class="nav-description">{{ item.DSSCRIPTIVE }}</p>
       </div>
     </div>
   </div>
@@ -94,7 +94,7 @@ const imgUrlHover = computed(
       //   color: var(--o-color-text1);
       //   font-size: var(--o-font-size-h7);
       // }
-      .nav-descriptive {
+      .nav-description {
         line-height: var(--o-line-height-text);
         font-size: var(--o-font-size-text);
         color: var(--o-color-text4);
@@ -111,7 +111,7 @@ const imgUrlHover = computed(
         }
         .nav-text {
           .nav-title,
-          .nav-descriptive {
+          .nav-description {
             color: var(--o-color-brand1);
           }
         }
@@ -152,7 +152,7 @@ const imgUrlHover = computed(
         .nav-title-en {
           text-align: center;
         }
-        .nav-descriptive {
+        .nav-description {
           display: none;
           text-align: left;
         }

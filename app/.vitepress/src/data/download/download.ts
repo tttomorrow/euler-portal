@@ -212,9 +212,39 @@ export default {
         LTS: true,
       },
       {
-        NAME: '麒麟信安 Kylinsec',
+        NAME: '麒麟信安 Kylinsec V3.5.1',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.5-1/',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
+        RELEASE_DESC_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/kylinsecpages3.5.1.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/KYJS-KY3.5.1-Server-SUM-V1.0.pdf',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '麒麟信安 Kylinsec',
+        PUBLISH_DATE: '',
+        LTS: false,
+      },
+      {
+        NAME: '麒麟信安 Kylinsec V3.4-5',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-5/',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
+        RELEASE_DESC_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/kylinsecpages-3.4-5.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/KYJS-KY3.4-5-SUM-V1.0.pdf',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-5/isos/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '麒麟信安 Kylinsec',
+        PUBLISH_DATE: '',
+        LTS: false,
+      },
+      {
+        NAME: '麒麟信安 Kylinsec V3.4-4',
         DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
-        DESC: '暂无描述',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
         RELEASE_DESC_URL:
           'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
         INSTALL_GUIDENCE_URL:
