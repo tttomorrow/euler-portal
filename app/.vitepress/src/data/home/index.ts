@@ -14,11 +14,20 @@ import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png
 import liveImg_mo from '@/assets/category/home/banner/banner-contribution_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
 import migrationImg_mo from '@/assets/category/home/banner/migration_mo.png';
+import summit_pc from '@/assets/category/home/banner/summit_pc.jpg';
+import summit_mo from '@/assets/category/home/banner/summit_mo.png';
 
 export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
+      {
+        pcBanner: summit_pc,
+        moBanner: summit_mo,
+        link: '/zh/interaction/summit-list/summit2022/',
+        id: '',
+        targetTap: 1,
+      },
       {
         pcBanner: prize_zh_pc,
         moBanner: prize_zh_mo,
