@@ -1,5 +1,5 @@
 ﻿---
-title: Embedded SIG | 多 OS 混合部署框架
+title: Embedded SIG | 多 OS 混合部署框架 | linux服务器操作系统 | openEuler社区官网
 date: 2022-06-28
 category: blog
 tags:

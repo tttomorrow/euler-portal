@@ -1,5 +1,5 @@
 ---
-title: Build bishengJDK-rpm package
+title: Build bishengJDK-rpm package | linux服务器操作系统 | openEuler社区官网
 category: blog 
 date: 2021-06-06
 tags: 

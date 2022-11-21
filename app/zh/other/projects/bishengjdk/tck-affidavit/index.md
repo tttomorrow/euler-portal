@@ -1,5 +1,5 @@
 ---
-title: "毕昇 JDK"
+title: 毕昇 JDK
 ---
 
 <div class="markdown tck-affidavit">

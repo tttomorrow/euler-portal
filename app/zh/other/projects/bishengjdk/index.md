@@ -1,5 +1,5 @@
 ---
-title: '毕昇 JDK'
+title: 毕昇JDK | OpenJDK | openEuler社区官网
 ---
 
 <script setup lang="ts">
