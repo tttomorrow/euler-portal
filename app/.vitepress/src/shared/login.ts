@@ -170,12 +170,13 @@ function createClient(community = 'openeuler', url?: string) {
 const scopeConfig = {
   scope: 'openid profile username',
 };
-export function showGuard(community = 'openeuler') {
-  const client = createClient(community);
-  // 构造 OIDC 授权登录 URL
-  const url = client.buildAuthorizeUrl(scopeConfig);
-  const { loginIframeSrc } = useStoreData();
-  loginIframeSrc.value = url;
+export function showGuard() {
+  // const client = createClient(community);
+  // // 构造 OIDC 授权登录 URL
+  // const url = client.buildAuthorizeUrl(scopeConfig);
+  // const { loginIframeSrc } = useStoreData();
+  // loginIframeSrc.value = url;
+  location.href = `https://openeuler-usercenter.test.osinfra.cn/login?client_id=62679eab0b22b146d2ea0a3a&redirect_uri=${location.href}`;
 }
 
 export function goToOtherServices(name: string, uri?: string) {
