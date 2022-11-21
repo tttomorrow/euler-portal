@@ -105,6 +105,22 @@ export function getPop(params: any) {
 }
 
 /**
+ * 联想搜索
+ * @name getRelevant
+ * @param {}
+ * @return  Array
+ */
+export function getRelevant(params: any) {
+  const url = `/api-search/search/sugg`;
+  return request
+    .post(url, params)
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
  * 首页数据卡片筛选
  * @name getStatistic
  * @param {}

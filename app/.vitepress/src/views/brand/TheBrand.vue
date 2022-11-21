@@ -161,7 +161,7 @@ list.value = initList();
           <a :href="ppt.LINK" target="_blank" download>
             <img :src="ppt.URL" alt="" />
             <div class="ppt-word">
-              模板{{ index + 1 < 10 ? '0' + (index + 1) : index + 1 }}
+              {{ i18n.brand.PPT_TEMPLATES[index] }}
             </div>
           </a>
         </OCard>

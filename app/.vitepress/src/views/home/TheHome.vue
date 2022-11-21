@@ -151,7 +151,7 @@ onUnmounted(() => {
       </div>
     </ClientOnly>
     <HomePlayground />
-    <h3>
+    <h3 class="partner">
       {{ i18n.home.HOME_SOURCE.SOURCE_PUBLISH_TITLE }}
     </h3>
     <p class="rank-tip">{{ i18n.home.RANK_TIP }}</p>
@@ -188,10 +188,18 @@ h3 {
     margin-bottom: var(--o-spacing-h5);
   }
 }
+
+html[lang='zh'] .partner {
+  margin-bottom: 0;
+}
 .rank-tip {
+  margin: var(--o-spacing-h5) 0 var(--o-spacing-h4);
   text-align: center;
   font-size: var(--o-font-size-tip);
   font-weight: 400;
   color: var(--o-color-text1);
+  @media screen and (max-width: 768px) {
+    margin: var(--o-spacing-h7) 0 var(--o-spacing-h6);
+  }
 }
 </style>

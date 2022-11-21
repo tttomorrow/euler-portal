@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
+import { computed, ref, toRefs } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
@@ -38,6 +38,11 @@ import IconCancel from '~icons/app/icon-cancel.svg';
 import QuickIssue_Light from '@/assets/footer/quick-issue_light.png';
 import QuickIssue_Dark from '@/assets/footer/quick-issue_dark.png';
 
+// 问卷调查
+import Investigation_Light from '@/assets/footer/investigation.png';
+import Investigation_Dark from '@/assets/footer/investigation_dark.png';
+import Close_Light from '@/assets/footer/close.png';
+
 const props = defineProps({
   isCookieTip: {
     type: Boolean,
@@ -48,6 +53,7 @@ const props = defineProps({
 const { lang, frontmatter } = useData();
 const i18n = useI18n();
 const router = useRouter();
+
 // 友情链接
 const linksData = {
   zh: [
@@ -137,7 +143,6 @@ const linksData = {
     },
   ],
 };
-
 const footerLinks = computed(() => {
   if (lang.value === 'en') {
     return linksData.en;
@@ -162,6 +167,8 @@ const footerCodeList = [
   },
 ];
 
+const isShow = ref(true);
+
 const handleNavClick = (path: string) => {
   if (path.startsWith('https:')) {
     window.open(path, '_blank');
@@ -183,6 +190,11 @@ const isMigration = computed(() => {
     router.route.path.split('/')[2] === 'migration'
   );
 });
+const quickIssueUrl = computed(() => {
+  return isMigration.value
+    ? 'https://quickissue.openeuler.org/zh/new-issues/?c2lnPXNpZy1NaWdyYXRpb24mcmVwbz1vcGVuZXVsZXIvbWlncmF0aW9uLWFzc2lzdGFudCZyZXBvX2lkPTE1OTI4MzA0JnR5cGU96L+B56e75o+Q5LyYJnRpdGxlPVvmkKzov4Fd'
+    : 'https://quickissue.openeuler.org/zh/issues/';
+});
 
 // 点击关闭cookies使用提示
 const { isCookieTip } = toRefs(props);
@@ -190,6 +202,12 @@ const emit2 = defineEmits(['click-close']);
 function clickClose() {
   emit2('click-close');
 }
+function clickWindow() {
+  isShow.value = false;
+}
+
+// 控制issue浮窗在峰会页面不显示
+const isFloShow = computed(() => !router.route.path.includes('summit-list'));
 </script>
 
 <template>
@@ -233,11 +251,7 @@ function clickClose() {
             <img class="show-pc" :src="LogoFooter" alt="" />
             <img class="show-mo" :src="LogoFooter1" alt="" />
             <p>
-              <a
-                class="email"
-                :href="'mailto:' + i18n.common.FOOTER.MAIL"
-                target="_blank"
-              >
+              <a class="email" :href="'mailto:' + i18n.common.FOOTER.MAIL">
                 {{ i18n.common.FOOTER.MAIL }}
               </a>
             </p>
@@ -285,8 +299,8 @@ function clickClose() {
         </div>
       </AppContent>
     </div>
-    <div v-show="lang === 'zh'" class="quick-issue">
-      <a href="https://quickissue.openeuler.org/zh/" target="_blank">
+    <div v-show="lang === 'zh' && isFloShow" class="quick-issue">
+      <a :href="quickIssueUrl" target="_blank">
         <img
           v-show="useCommon().theme === 'light'"
           :src="QuickIssue_Light"
@@ -295,6 +309,29 @@ function clickClose() {
         <img
           v-show="useCommon().theme === 'dark'"
           :src="QuickIssue_Dark"
+          alt=""
+        />
+      </a>
+    </div>
+    <div
+      v-show="lang === 'zh' && isShow && isFloShow"
+      class="investigation quick-issue"
+    >
+      <a href="https://huaweicompute.wjx.cn/vm/QVCXm3l.aspx# " target="_blank">
+        <img
+          v-show="useCommon().theme === 'light'"
+          :src="Investigation_Light"
+          alt=""
+        />
+        <img
+          :src="Close_Light"
+          alt=""
+          class="icon"
+          @click.stop.prevent="clickWindow()"
+        />
+        <img
+          v-show="useCommon().theme === 'dark'"
+          :src="Investigation_Dark"
           alt=""
         />
       </a>
@@ -616,18 +653,28 @@ $color: #fff;
     bottom: 120px;
     right: 50px;
     z-index: 10;
-    @media screen and (max-width: 1780px) {
+    @media screen and (max-width: 1430px) {
       display: none;
     }
     img {
       width: 128px;
     }
+  }
+  .investigation {
+    left: 50px;
+    right: inherit;
+    @media screen and (max-width: 1430px) {
+      display: block;
+      bottom: 50px;
+      // left: 50%;
+      // transform: translateX(-50%);
+    }
     .icon {
       cursor: pointer;
       position: absolute;
-      right: -20px;
-      top: -20px;
-      font-size: 20px;
+      right: -10px;
+      top: -10px;
+      width: 20px;
       color: var(--o-color-text1);
     }
   }

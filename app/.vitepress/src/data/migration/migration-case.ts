@@ -61,10 +61,10 @@ export default [
   },
   {
     label: 'tornado 4.2.1 移植指南',
-    link: '/zh/blog/randy1568/MySQL 5-7-21-migrate-guide.html',
+    link: '/zh/blog/randy1568/tornado 4-2-1-porting-guide.html',
   },
   {
     label: 'pkgship 2.1.0 移植指南',
-    link: '/zh/blog/randy1568/MySQL 5-7-21-migrate-guide.html',
+    link: '/zh/blog/randy1568/pkgship 2-1-0-porting-guide.html',
   },
 ];

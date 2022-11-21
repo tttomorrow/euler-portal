@@ -1,30 +1,30 @@
 export default {
-  BRAND: 'Бренд',
+  BRAND: 'Brand',
   WORDS: [
-    'openEuler是由开放原子开源基金会（OpenAtom Foundation）孵化及运营的开源项目，开放原子开源基金会享有openEuler的商标权益。在使用本页面的所有openEuler商标前，请查阅',
-    '《开放原子开源基金会品牌使用指南》',
-    ',确保在本指南中说明的可使用情形下使用',
-    '如要在上述指南中说明的须经开放原子开源基金会许可的情形下使用，请向',
+    'openEuler is an open source project incubated and operated by the OpenAtom Foundation. The OpenAtom Foundation reserves trademark rights of openEuler. Before using any openEuler trademarks on this page, please see the',
+    'OpenAtom Foundation Brand Use Guidelines.',
+    'Trademarks must be used in accordance with the guidelines with prior permission from the OpenAtom Foundation.',
+    'To apply for use of openEuler trademarks, submit your application to',
     'trademarks@openeuler.sh',
-    '邮箱提交申请，申请通过后方可使用。',
-    '申请方式。',
-    '当您在实际使用openEuler品牌商标时，请注意遵循',
-    '《openEuler项目商标使用规范》 。',
+    'by referring to',
+    'Application Guide for Use of openEuler Trademarks.',
+    'When using the openEuler trademarks, comply with the ',
+    'openEuler Trademark Usage Specifications.',
   ],
   WORDS_LINK: [
     'https://openatom.cn/brandguide',
     'mailto:trademarks@openeuler.sh',
-    '/data/brand/openEuler商标使用申请方式.docx',
+    '/data/brand/Application Guide for Use of openEuler Trademarks.docx',
     '/data/brand/openEuler商标使用规范.pdf',
   ],
   WORDS_FAQ: [
-    '商标使用FAQ：关于上述商标使用如有疑问',
-    'trademarks@openeuler.sh',
-    '咨询 。',
+    'For any questions regarding the use of above trademarks, contact ',
+    'trademarks@openeuler.sh.',
   ],
   FAQ_LINK: 'mailto:trademarks@openeuler.sh',
   MOBILETITLE: 'Trademark',
   PPT_TEXT: 'PPT Templates',
+  PPT_TEMPLATES: ['Template 1', 'Template 2'],
   PICTURE_TITLE: [
     'Стандартный',
     'Черно-белый',
@@ -127,7 +127,8 @@ export default {
       LINK: 'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/openEuler_PPT_White.pptx',
     },
   ],
-  PROJECT_TITLE: 'openEuler社区开源创新项目商标',
+  PROJECT_TITLE:
+    'openEuler Community Open Source Innovation Project Trademarks',
   PROJECT_LIST: [
     {
       TITLE: 'A-Tune',

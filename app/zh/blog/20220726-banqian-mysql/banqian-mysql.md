@@ -1,5 +1,13 @@
 ﻿---
 title: 操作系统迁移实战之在openEuler上部署MySQL数据库
+titleTemplate: 数据库迁移方案 | openEuler社区官网
+head:
+  - - meta
+    - name: description
+      content: 本文主要用于在 openEuler 20.03 sp1 操作系统上部署 MySQL 数据库。本次实践主要使用 x86_64 架构虚拟机，通过评估工具 x2openEuler 评估 MySQL 5.7.21 软件移植到 openEuler 操作系统的兼容性，再实施数据搬迁。想要了解更多数据库迁移相关内容，欢迎访问openEuler官网。
+  # - - meta
+  #   - name: keywords
+  #     content: 数据库迁移方案,Mysql数据库迁移,mysql数据库集群,mysql数据迁移工具,mysql移植方案,迁移工具
 date: 2022-07-26
 category: blog
 tags:

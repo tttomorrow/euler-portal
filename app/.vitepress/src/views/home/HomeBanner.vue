@@ -67,7 +67,7 @@ const jumpTo = (item: any) => {
     @swiper="onSwiper"
   >
     <swiper-slide v-for="item in homeBanner" :key="item.link">
-      <a class="banner-panel" @click="jumpTo(item)">
+      <div class="banner-panel" @click="jumpTo(item)">
         <div
           class="banner-panel-cover"
           :style="{
@@ -79,7 +79,7 @@ const jumpTo = (item: any) => {
           <div
             v-if="item.title !== ''"
             class="banner-panel-content flex-column"
-            :class="item.id === 'docsBug' ? 'docs-bug' : ''"
+            :class="item.id === 'prize' ? 'prize' : ''"
           >
             <div data-aos="fade-down" class="box">
               <p class="title">
@@ -97,10 +97,8 @@ const jumpTo = (item: any) => {
             <div
               v-if="item.btn"
               :class="[
-                item.id === 'newEdition' || item.id === 'meetingUp'
-                  ? 'new-edition'
-                  : '',
-                item.id === 'docsBug' ? 'meeting-up' : '',
+                item.id === 'newEdition' ? 'new-edition' : '',
+                item.id === 'prize' ? 'prize' : '',
               ]"
               data-aos="fade-up"
               class="action"
@@ -113,9 +111,9 @@ const jumpTo = (item: any) => {
               </OButton>
             </div>
           </div>
-          <img v-else class="isH5show" :src="item.moBanner" alt="" />
+          <img v-else class="isH5show" :src="item.moBanner" :alt="item.title" />
         </div>
-      </a>
+      </div>
     </swiper-slide>
   </swiper>
 </template>
@@ -215,10 +213,6 @@ html[lang='zh'] {
           line-height: var(--o-line-height-text);
         }
       }
-      //  .experts {
-      //     display: inline-block;
-      //   }
-
       .action {
         margin-top: var(--o-spacing-h3);
         .o-icon {
@@ -240,13 +234,14 @@ html[lang='zh'] {
           margin-top: 0;
         }
       }
-      .meeting-up {
-        @media screen and (max-width: 824px) {
-          .o-button {
+      .prize {
+        .home-banner-btn {
+          @media screen and (max-width: 824px) {
             display: none;
           }
         }
       }
+
       @media screen and (max-width: 1440px) {
         padding: 0 16px;
       }
@@ -257,9 +252,10 @@ html[lang='zh'] {
         text-align: center;
       }
     }
-    .docs-bug {
-      @media screen and (max-width: 768px) {
-        padding-top: 40px;
+    .prize {
+      .title,
+      .desc {
+        visibility: hidden;
       }
     }
 

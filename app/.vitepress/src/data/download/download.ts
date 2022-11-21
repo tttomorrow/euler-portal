@@ -186,6 +186,16 @@ export default {
         LTS: false,
       },
       {
+        NAME: '银河麒麟高级服务器操作系统V10',
+        DOWNLOAD_URL: 'https://kylinos.cn/scheme/server/1.html',
+        DESC: '银河麒麟高级服务器操作系统V10是针对企业级关键业务，适应虚拟化、云计算、大数据、工业互联网时代对主机系统可靠性、安全性、性能、扩展性和实时性等需求，依据CMMI5级标准研制的提供内生本质安全、云原生支持、自主平台深入优化、 高性能、易管理的新一代自主服务器操作系统，同源支持飞腾、鲲鹏、龙芯、申威、海光、兆芯等自主平台；应用于政府、金融、教育、财税、公安、审计、交通、医疗、制造等领域。基于银河麒麟高级服务器操作系统，用户可轻松构建数据中心、高可用集群和负载均衡集群、虚拟化应用服务、分布式文件系统等，并实现对虚拟数据中心的跨物理系统、虚拟机集群进行统一的监控和管理。 银河麒麟高级服务器操作系统支持云原生应用，满足企业当前数据中心及下一代的虚拟化(含Docker容器)、大数据、云服务的需求，为用户提供融合、统一、自主创新的基础软件平台及灵活的管理服务。',
+        INSTALL_GUIDENCE_URL: 'https://kylinos.cn/scheme/server/1.html',
+        GET_ISO_URL: 'https://kylinos.cn/scheme/server/1.html',
+        MANUFACTURER: '麒麟软件有限公司',
+        PUBLISH_DATE: '2020/07',
+        LTS: false,
+      },
+      {
         NAME: 'openEuler 20.03 LTS',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS/',
         DESC: 'openEuler 20.03 LTS 版本是满足开放场景的标准发行版，生命周期四年。',
@@ -202,9 +212,39 @@ export default {
         LTS: true,
       },
       {
-        NAME: '麒麟信安 Kylinsec',
+        NAME: '麒麟信安 Kylinsec V3.5.1',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.5-1/',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
+        RELEASE_DESC_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/kylinsecpages3.5.1.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/KYJS-KY3.5.1-Server-SUM-V1.0.pdf',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '麒麟信安 Kylinsec',
+        PUBLISH_DATE: '',
+        LTS: false,
+      },
+      {
+        NAME: '麒麟信安 Kylinsec V3.4-5',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-5/',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
+        RELEASE_DESC_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/kylinsecpages-3.4-5.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/KYJS-KY3.4-5-SUM-V1.0.pdf',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-5/isos/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '麒麟信安 Kylinsec',
+        PUBLISH_DATE: '',
+        LTS: false,
+      },
+      {
+        NAME: '麒麟信安 Kylinsec V3.4-4',
         DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
-        DESC: '暂无描述',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
         RELEASE_DESC_URL:
           'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
         INSTALL_GUIDENCE_URL:
@@ -218,14 +258,14 @@ export default {
       },
       {
         NAME: 'HopeEdge',
-        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/',
+        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/HopeEdge/',
         DESC: '物联网边缘计算操作系统HopeEdge是基于openEuler构建的、面向IoT场景的边缘计算操作系统，具备轻量安全、自主创新、高效互联、快速部署四大关键特性；提供设备管理、数据采集、云边协同、人工智能等功能。',
         RELEASE_DESC_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_ReleaseNote.pdf',
         INSTALL_GUIDENCE_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
+          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_Installation_Guide.pdf',
         SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeEdge/',
         LIFE_CYCLE_URL: '',
         MANUFACTURER: '江苏润和',
         PUBLISH_DATE: '2020/07',
@@ -278,8 +318,8 @@ export default {
         DOWNLOAD_URL: 'http://download.turbolinux.com.cn:8011/',
         DESC: ' 拓林思企业级服务器操作系统是一款基于openEuler操作系统打造的针对AArch64处理器架构的操作系统发行版，适用于数据库、云计算、大数据、分布式计算等多种应用场景，为客户提供安全、可靠的解决系统方案，为各类应用提供标准、稳定的运行环境。',
         INSTALL_GUIDENCE_URL:
-          'http://download.turbolinux.com.cn:8011/docs/TurboLinux15-Aarch64-Installation.pdf',
-        SEEK_HELP_URL: 'http://forum.turbolinux.com.cn/ ',
+          'http://download.turbolinux.com.cn:8011/docs/TurboLinux16-Installation-AArch64.pdf',
+        SEEK_HELP_URL: 'http://forum.turbolinux.com.cn/',
         GET_ISO_URL: 'http://download.turbolinux.com.cn:8011/',
         MANUFACTURER: 'TurboLinux',
         PUBLISH_DATE: '2020/04',
@@ -293,27 +333,25 @@ export default {
         NAME: '同源OS 8.1欧拉发行版',
         DOWNLOAD_URL: 'http://repo.tongyuanos.com/TongyuanOS8.1-euler/',
         DESC: '内核源码来自于欧拉开源社区中，其它软件包来自于CentOS8.1的aarch64版，完全兼容CentOS8.1，产品发布物为标准启动安装ISO。',
-        INSTALL_GUIDENCE_URL:
-          'http://repo.tongyuanos.com/TongyuanOS8.1-euler/8.1/%e5%90%8c%e6%ba%90OS%208.1%e6%ac%a7%e6%8b%89%e5%8f%91%e8%a1%8c%e7%89%88%e5%bf%ab%e9%80%9f%e5%ae%89%e8%a3%85%e6%8c%87%e5%8d%971.0.docx',
+        INSTALL_GUIDENCE_URL: 'http://repo.tongyuanos.com/TongyuanOS8.1-euler/',
         SEEK_HELP_URL: 'mailto:youliang.wu@tongyuanos.com',
         GET_ISO_URL: 'http://repo.tongyuanos.com/TongyuanOS8.1-euler/',
         MANUFACTURER: '同源OS',
         PUBLISH_DATE: '2020/04',
         LIFE_CYCLE_URL: '',
-        RELEASE_DESC_URL:
-          'http://repo.tongyuanos.com/TongyuanOS8.1-euler/8.1/%e5%90%8c%e6%ba%90OS%208.1%e6%ac%a7%e6%8b%89%e5%8f%91%e8%a1%8c%e7%89%88%e5%8f%91%e8%a1%8c%e6%b3%a8%e8%ae%b0-release-notes.docx',
+        RELEASE_DESC_URL: 'http://repo.tongyuanos.com/TongyuanOS8.1-euler/',
         LTS: false,
       },
       {
         NAME: 'HopeStage',
-        DOWNLOAD_URL: 'http://download.hopeinfra.com/HopeStage/ISO/',
+        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
         DESC: '企业级通用操作系统HopeStage是基于openEuler构建的企业级Linux操作系统，具备高效、稳定、安全的特性，致力于为企业级的数据库、大数据、云计算、人工智能平台提供安全稳定的运行基础。',
         RELEASE_DESC_URL:
-          'http://download.hopeinfra.com/HopeStage/References/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
         INSTALL_GUIDENCE_URL:
-          'http://download.hopeinfra.com/HopeStage/References/HopeStage_Installation_Guide.pdf',
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
         SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://download.hopeinfra.com/HopeStage/ISO/',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
         LIFE_CYCLE_URL: '',
         MANUFACTURER: '江苏润和',
         PUBLISH_DATE: '2020/09',
@@ -522,11 +560,11 @@ export default {
         DESC: 'HopeEdge Linux for Edge Computing is an edge computing operating system based on openEuler, which is oriented to IoT scenarios. It has four key characteristics: lightweight security, independent innovation, efficient interconnection and rapid deployment. HopeEdge also provides equipment management, data acquisition, cloud-edge collaboration, artificial intelligence and other characteristics.',
         DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/',
         RELEASE_DESC_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_ReleaseNote.pdf',
         INSTALL_GUIDENCE_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
+          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_Installation_Guide.pdf',
         SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeEdge/',
         LIFE_CYCLE_URL: '',
         MANUFACTURER: 'HOPERUN',
         PUBLISH_DATE: '2020/07',
@@ -579,7 +617,7 @@ export default {
         DOWNLOAD_URL: 'http://download.turbolinux.com.cn:8011/',
         DESC: 'Turbolinux Enterprise Server 15 (TLES15) is the enterprise commercial Linux distribution based on the openEuler community, designed for the AArch64 processor architecture.',
         INSTALL_GUIDENCE_URL:
-          'http://download.turbolinux.com.cn:8011/docs/TurboLinux15-Aarch64-Installation.pdf',
+          'http://download.turbolinux.com.cn:8011/docs/TurboLinux16-Installation-AArch64.pdf',
         SEEK_HELP_URL: 'http://forum.turbolinux.com.cn/ ',
         GET_ISO_URL: 'http://download.turbolinux.com.cn:8011/',
         MANUFACTURER: 'TurboLinux',
@@ -592,14 +630,14 @@ export default {
       },
       {
         NAME: 'HopeStage',
-        DOWNLOAD_URL: 'http://download.hopeinfra.com/HopeStage/ISO/',
+        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
         DESC: 'HopeStage Enterprise Linux is an enterprise-level Linux operating system based on openEuler, which has the advantages of high efficiency, stability and security. HopeStage is committed to providing a safe and stable operating basis for enterprise-level databases, big data, cloud computing and artificial intelligence platforms.',
         RELEASE_DESC_URL:
-          'http://download.hopeinfra.com/HopeStage/References/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
         INSTALL_GUIDENCE_URL:
-          'http://download.hopeinfra.com/HopeStage/References/HopeStage_Installation_Guide.pdf',
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
         SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://download.hopeinfra.com/HopeStage/ISO/',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
         LIFE_CYCLE_URL: '',
         MANUFACTURER: 'HOPERUN',
         PUBLISH_DATE: '2020/09',
@@ -792,11 +830,11 @@ export default {
         DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/',
         DESC: 'HopeEdge Linux for Edge Computing is an edge computing operating system based on openEuler, which is oriented to IoT scenarios. It has four key characteristics: lightweight security, independent innovation, efficient interconnection and rapid deployment. HopeEdge also provides equipment management, data acquisition, cloud-edge collaboration, artificial intelligence and other characteristics.',
         RELEASE_DESC_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_ReleaseNote.pdf',
         INSTALL_GUIDENCE_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
+          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_Installation_Guide.pdf',
         SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeEdge/',
         LIFE_CYCLE_URL: '',
         MANUFACTURER: 'HOPERUN',
         PUBLISH_DATE: '2020/07',
@@ -849,7 +887,7 @@ export default {
         DOWNLOAD_URL: 'http://download.turbolinux.com.cn:8011/',
         DESC: 'Turbolinux Enterprise Server 15 (TLES15) is the enterprise commercial Linux distribution based on the openEuler community, designed for the AArch64 processor architecture.',
         INSTALL_GUIDENCE_URL:
-          'http://download.turbolinux.com.cn:8011/docs/TurboLinux15-Aarch64-Installation.pdf',
+          'http://download.turbolinux.com.cn:8011/docs/TurboLinux16-Installation-AArch64.pdf',
         SEEK_HELP_URL: 'http://forum.turbolinux.com.cn/ ',
         GET_ISO_URL: 'http://download.turbolinux.com.cn:8011/',
         MANUFACTURER: 'TurboLinux',
@@ -862,14 +900,14 @@ export default {
       },
       {
         NAME: 'HopeStage',
-        DOWNLOAD_URL: 'http://download.hopeinfra.com/HopeStage/ISO/',
+        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
         DESC: 'HopeStage Enterprise Linux is an enterprise-level Linux operating system based on openEuler, which has the advantages of high efficiency, stability and security. HopeStage is committed to providing a safe and stable operating basis for enterprise-level databases, big data, cloud computing and artificial intelligence platforms.',
         RELEASE_DESC_URL:
-          'http://download.hopeinfra.com/HopeStage/References/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
         INSTALL_GUIDENCE_URL:
-          'http://download.hopeinfra.com/HopeStage/References/HopeStage_Installation_Guide.pdf',
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
         SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://download.hopeinfra.com/HopeStage/ISO/',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
         LIFE_CYCLE_URL: '',
         MANUFACTURER: 'HOPERUN',
         PUBLISH_DATE: '2020/09',

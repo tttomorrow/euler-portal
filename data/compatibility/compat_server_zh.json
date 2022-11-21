@@ -3037,7 +3037,7 @@
         "ssID": "0000",
         "architecture": "x86_64",
         "os": "openEuler 20.03 LTS SP1",
-        "driverName": "i40en",
+        "driverName": "i40e",
         "version": "5.4.0",
         "type": "NIC",
         "date": "2021/10/13",
@@ -7267,6 +7267,65 @@
         "chipVendor": "Avago",
         "boardModel": "9361-8i",
         "chipModel": "SAS-3 3108",
+        "downloadLink": "inbox"
+      }
+    ]
+  },
+  {
+    "hardwareFactory": "中科可控",
+    "hardwareModel": "X7840H0",
+    "osVersion": "openEuler 22.03 LTS",
+    "architecture": "x86_64",
+    "date": "2022/11/08",
+    "friendlyLink": "http://www.cancon.com.cn",
+    "compatibilityConfiguration": {
+        "productInformation": "http://www.cancon.com.cn",
+        "certificationTime": "2022/11/08",
+        "commitID": "",
+        "mainboardModel": "65MA32",
+        "biosUefi": "CDSH051013",
+        "cpu": "Hygon 3",
+        "ram": "32*32G DIMMs",
+        "portsBusTypes": "x16 PCIE",
+        "videoAdapter": "ASPEED Technology, Inc. ASPEED Graphics Family (rev 41)",
+        "hostBusAdapter": "Chengdu Haiguang IC Design Co., Ltd. PSPCCP Command DMA Processor",
+        "hardDiskDrive": "建兴 ER2-GD240 240G M.2 SATA 6G R SSD"
+    },
+    "boardCards": [
+      {
+        "vendorID": "8086",
+        "deviceID": "1521",
+        "svID": "1dcf",
+        "ssID": "0308",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS",
+        "driverName": "igb",
+        "version": "",
+        "type": "NIC",
+        "date": "2022/10/25",
+        "sha256": "7aaf89fad3eae542e505379cef9e6fb9ad65be587f0993f4de63a50ca9b93229",
+        "driverSize": "542KB",
+        "chipVendor": "Intel",
+        "boardModel": "65MA32",
+        "chipModel": "I350",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "1000",
+        "deviceID": "10e2",
+        "svID": "1000",
+        "ssID": "4000",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS",
+        "driverName": "megaraid_sas",
+        "version": "07.714.04.00-rc1",
+        "type": "RAID",
+        "date": "2022/10/24",
+        "sha256": "abf3ad2595702e635fb07be307414d9df4baccd8ad1a1c369d28be61a46c93b6",
+        "driverSize": "343KB",
+        "chipVendor": "Avago",
+        "boardModel": "9560-16i",
+        "chipModel": "SAS3916",
         "downloadLink": "inbox"
       }
     ]

@@ -11,8 +11,6 @@ author: randy1568
 summary: Just about everything of the Squid 4.8 Porting Case
 ---
 
-# Squid 4.8 移植指南（openEuler 20.03 LTS SP1）
-
 # 介绍
 
 #### 简要介绍
@@ -37,13 +35,13 @@ Squid cache（简称为Squid）是一个流行的代理服务器和Web缓存服�
 | 项目     | 说明                          |
 | -------- | ----------------------------- |
 | 服务器   | TaiShan 200服务器（型号2280） |
-| CPU      | 鲲鹏920 5250处理器         |
-| 内存      | 内存 >= 8G                |
+| CPU      | 鲲鹏920 5250处理器            |
+| 内存     | 内存 >= 8G                    |
 | 磁盘分区 | 对磁盘分区无要求              |
 
 #### 操作系统要求
 
-| 项目       | 版本                               |
+| 项目      | 版本                              |
 | --------- | --------------------------------- |
 | openEuler | openEuler 20.03 LTS SP1 aarch64   |
 | Kernel    | 4.19.90-2003.4.0.0036.oe1.aarch64 |

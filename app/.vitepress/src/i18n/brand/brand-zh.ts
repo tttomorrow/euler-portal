@@ -33,6 +33,7 @@ export default {
     'Monochrome',
     'Black',
   ],
+  PPT_TEMPLATES: ['模板01', '模板02'],
   VERTICAL_LEFT_IMAGE: [
     {
       STYLE: 'JPG',

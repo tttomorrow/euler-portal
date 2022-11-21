@@ -361,10 +361,10 @@ onMounted(() => {
                 target="_blank"
                 :href="`https://gitee.com/${item}`"
               >
-                {{ item }}
-                <span v-show="index !== scope.row.maintainers.length - 1"
-                  >、</span
-                >
+                {{ item
+                }}<span v-show="index !== scope.row.maintainers.length - 1">{{
+                  lang === 'zh' ? '、' : ',&nbsp;'
+                }}</span>
               </a>
             </template>
           </el-table-column>
@@ -376,8 +376,10 @@ onMounted(() => {
                 target="_blank"
                 :href="`https://gitee.com/${item}`"
               >
-                {{ item }}
-                <span v-show="index !== scope.row.gitee_id.length - 1">、</span>
+                {{ item
+                }}<span v-show="index !== scope.row.gitee_id.length - 1">{{
+                  lang === 'zh' ? '、' : ',&nbsp;'
+                }}</span>
               </a>
             </template>
           </el-table-column>

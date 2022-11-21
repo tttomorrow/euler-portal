@@ -120,6 +120,7 @@ onMounted(async () => {
                   ? item.ROUND_IMG_DARK
                   : item.ROUND_IMG
               "
+              alt="background-img"
               class="round-img"
             />
 
@@ -160,6 +161,7 @@ onMounted(async () => {
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    overflow: hidden;
     @media (max-width: 768px) {
       justify-content: center;
     }

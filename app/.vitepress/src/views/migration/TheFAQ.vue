@@ -82,7 +82,7 @@ import IconBook from '~icons/app/icon-book.svg';
 
       .description {
         font-size: var(--o-font-size-text);
-        color: var(--o-color-text-secondary);
+        color: var(--o-color-text4);
         line-height: var(--o-line-height-text);
         @media screen and (max-width: 768px) {
           font-size: var(--o-font-size-tip);
@@ -97,7 +97,7 @@ import IconBook from '~icons/app/icon-book.svg';
     .question {
       font-size: var(--o-font-size-text);
       font-weight: 400;
-      color: var(--o-color-neutral5);
+      color: var(--o-color-text4);
       line-height: var(--o-line-height-text);
     }
 
@@ -105,11 +105,11 @@ import IconBook from '~icons/app/icon-book.svg';
       display: flex;
       align-items: center;
       background: var(--o-color-bg2);
-      border-left: 2px solid var9--o-color-border3;
+      border-left: 2px solid var(--o-color-border3);
       .answer-text {
         font-size: var(--o-font-size-text);
         font-weight: 400;
-        color: var(--o-color-neutral5);
+        color: var(--o-color-text4);
         line-height: var(--o-line-height-text);
         padding: 16px;
         display: inline;

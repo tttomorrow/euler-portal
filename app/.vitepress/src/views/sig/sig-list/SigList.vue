@@ -436,11 +436,11 @@ onMounted(() => {
                 class="sig-maintainer-item"
               >
                 <a :href="'https://gitee.com/' + item" target="_blank"
-                  >{{ item }}
-                  <i v-show="index !== scope.row.maintainers.length - 1"
-                    >、</i
-                  ></a
-                >
+                  >{{ item
+                  }}<i v-show="index !== scope.row.maintainers.length - 1"
+                    >{{ language === 'zh' ? '、' : ',&nbsp;' }}
+                  </i>
+                </a>
               </div>
             </div>
           </div>
@@ -563,7 +563,7 @@ onMounted(() => {
                   <span
                     v-show="nameIndex !== item.maintainers.length - 1"
                     class="mo-item-maintainer"
-                    >、</span
+                    >{{ language === 'zh' ? '、' : ',' }}</span
                   >
                 </div>
               </div>

@@ -1,87 +1,15 @@
 [
     {
-        "os_version": "bclinux-21.10-x86_64.iso",
-        "osv_name": "中移（苏州）软件技术有限公司",
+        "os_version": "fusionos-22-everything-aarch64.iso",
+        "osv_name": "超聚变数字技术有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2022/10/17",
-        "arch": "x86_64",
-        "details": "详细信息",
-        "friendly_link": "https://ecloud.10086.cn/",
-        "os_download_link": "https://ecloud.10086.cn/",
-        "checksum": "5b043c69c7b747b5031c6569c161eae8",
-        "base_openeuler_version": "openEuler20.03 LTS SP2",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result": [
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-    {
-        "os_version": "ArchforceEuler-22.09-LTS-aarch64-dvd.iso",
-        "osv_name": "深圳华锐分布式技术股份有限公司",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/10/17",
+        "date": "2022/11/4",
         "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "http://www.archforce.cn/",
-        "os_download_link": "http://www.archforce.cn/",
-        "checksum": "ad3c3727ea5c012ed15872864908f4ac",
+        "friendly_link": "https://www.xfusion.com/",
+        "os_download_link": "https://www.xfusion.com/",
+        "checksum": "d066de3ad8d79c5dcb23c19d73037317",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
@@ -143,4 +71,5 @@
             }
         ]
     }
+    
 ]

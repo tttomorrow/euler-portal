@@ -130,8 +130,7 @@ export default {
         {
           NAME: '峰会',
           ID: 'summit',
-          PATH: 'https://www.openeuler.org/zh/interaction/summit-list/devday2022/',
-          IS_OPEN_MINISITE_WINDOW: 1,
+          PATH: '/interaction/summit-list/summit2022/',
         },
       ],
       CLASS: ['news', 'blog', 'live', 'salon'],

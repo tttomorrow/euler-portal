@@ -554,8 +554,9 @@ const moblieCurrentChange = (val: string) => {
             <div class="blog-list-item-info">
               <div class="infodetail">
                 <OIcon class="icon"><IconUser /></OIcon>
-                <p v-for="aut in item.author" :key="aut">
-                  {{ aut }}
+                <p v-for="(aut, index2) in item.author" :key="aut">
+                  {{ aut
+                  }}<span v-show="item.author.length !== index2 + 1">,</span>
                 </p>
               </div>
               <div class="infodetail">
