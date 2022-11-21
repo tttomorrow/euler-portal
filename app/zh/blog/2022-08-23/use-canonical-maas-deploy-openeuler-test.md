@@ -1,5 +1,5 @@
 ﻿---
-title: 使用Canonical MAAS 部署openEuler测试
+title: 使用Canonical MAAS 部署openEuler测试 | linux服务器操作系统 | openEuler社区官网
 category: blog
 date: 2022-08-23
 tags:

@@ -1,5 +1,5 @@
 ---
-title: 'A-Tune'
+title: A-Tune | AI智能优化引擎 | openEuler社区官网
 ---
 
 <script setup lang="ts">
