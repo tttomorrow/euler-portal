@@ -11,10 +11,9 @@ const LOGIN_KEYS = {
   USER_INFO: '_U_I_',
 };
 
-function setCookie(cname: string, cvalue: string, exdays: number) {
-  const d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  const expires = `expires=${d.toUTCString()}; path=/; domain=.test.osinfra.cn`;
+function setCookie(cname: string, cvalue: string, isDelete?: boolean) {
+  const deleteStr = isDelete ? 'max-age=0; ' : '';
+  const expires = `${deleteStr}path=/; domain=.test.osinfra.cn`;
   document.cookie = `${cname}=${cvalue}; ${expires}`;
 }
 function getCookie(cname: string) {
@@ -29,7 +28,7 @@ function getCookie(cname: string) {
   return '';
 }
 function deleteCookie(cname: string) {
-  setCookie(cname, 'null', -1);
+  setCookie(cname, 'null', true);
 }
 
 // 存储用户id及token，用于下次登录
@@ -40,8 +39,8 @@ export function saveUserAuth(code = '', photo = '', username = '') {
     deleteCookie('_Y_G_');
   } else {
     const str = JSON.stringify({ photo, username });
-    setCookie(LOGIN_KEYS.USER_TOKEN, code, 1);
-    setCookie(LOGIN_KEYS.USER_INFO, str, 1);
+    setCookie(LOGIN_KEYS.USER_TOKEN, code);
+    setCookie(LOGIN_KEYS.USER_INFO, str);
   }
 }
 
@@ -171,11 +170,6 @@ const scopeConfig = {
   scope: 'openid profile username',
 };
 export function showGuard() {
-  // const client = createClient(community);
-  // // 构造 OIDC 授权登录 URL
-  // const url = client.buildAuthorizeUrl(scopeConfig);
-  // const { loginIframeSrc } = useStoreData();
-  // loginIframeSrc.value = url;
   location.href = `https://openeuler-usercenter.test.osinfra.cn/login?redirect_uri=${location.href}`;
 }
 

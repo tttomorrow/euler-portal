@@ -11,13 +11,11 @@ import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
 
 import categories from '@/data/common/category';
-import { getCodeByUrl, setStoreData, useStoreData } from './shared/login';
+import { setStoreData } from './shared/login';
 
 const { frontmatter } = useData();
 
-getCodeByUrl();
 setStoreData();
-const { loginIframeSrc } = useStoreData();
 
 const compMapping: {
   [name: string]: Component;
@@ -51,27 +49,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="!loginIframeSrc">
-    <AppHeader />
-    <main>
-      <component :is="comp" v-if="isCustomLayout"></component>
-      <Content v-else />
-    </main>
-    <AppFooter :is-cookie-tip="isCookieTip" @click-close="clickCookieClose" />
-  </div>
-  <iframe
-    v-else
-    :src="loginIframeSrc"
-    class="login-iframe"
-    frameborder="0"
-  ></iframe>
+  <AppHeader />
+  <main>
+    <component :is="comp" v-if="isCustomLayout"></component>
+    <Content v-else />
+  </main>
+  <AppFooter :is-cookie-tip="isCookieTip" @click-close="clickCookieClose" />
 </template>
 
 <style lang="scss" scoped>
-.login-iframe {
-  width: 100%;
-  height: 100vh;
-}
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

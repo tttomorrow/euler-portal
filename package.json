@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "dev": "vitepress dev app",
+    "dev": "vitepress dev app --host 192.168.1.252",
     "build": "vitepress build app",
     "lint": "eslint \"app/.vitepress/src/**/*.{js,ts,vue,jsx,tsx}\"",
     "fix": "eslint --fix \"app/.vitepress/src/**/*.{js,ts,vue,jsx,tsx}\"",
@@ -50,7 +50,7 @@
   },
   "lint-staged": {
     "app/.vitepress/src/**/*.{js,ts,vue,jsx,tsx}": [
-      "pnpm lint"
+      "pnpm fix"
     ]
   }
 }
