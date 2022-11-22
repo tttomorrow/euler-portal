@@ -1,5 +1,13 @@
 ﻿---
-title: 使用Canonical MAAS 部署openEuler测试 | linux服务器操作系统 | openEuler社区官网
+title: 使用Canonical MAAS 部署openEuler测试 | linux服务器操作系统
+titleTemplate:  openEuler社区官网
+head:
+  - - meta
+    - name: description
+      content:  Canonical 的 MAAS（Metal as a Service）是一款用于服务器自动发现、配置的远程操作系统安装、部署工具，可以将物理服务器转换为类似于虛拟机资源，实现物理物理服务器的自助服务，远程访问。 MAAS 目前支持 Ubuntu、CentOS、RHEL、Windows、ESXI 和自定义镜像的部署。当在数据中心管理成百上千的物理服务器，比如云、HPC 场景时，使用 MAAS 是减少运维成本的最佳选择之一。想要了解更多信息，欢迎访问openEuler官网。
+  # - - meta
+  #   - name: keywords
+  #     content: 操作系统迁移,操作系统替换,服务器系统迁移软件,服务器系统迁移工具,Centos系统迁移,迁移步骤
 category: blog
 date: 2022-08-23
 tags:
