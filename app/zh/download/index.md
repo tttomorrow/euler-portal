@@ -1,6 +1,6 @@
 ---
-title: "openEuler下载"
-titleTemplate: 欧拉系统ISO镜像 | openEuler社区官网
+title: "openEuler下载 | 欧拉系统ISO镜像"
+titleTemplate: openEuler社区官网
 head:
   - - meta
     - name: description
