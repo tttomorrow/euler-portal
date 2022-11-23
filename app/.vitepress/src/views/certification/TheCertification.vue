@@ -36,7 +36,7 @@ function clickMore(type: number, link = '') {
         size="nomral"
         @click="clickMore(1)"
       >
-        {{ i18n.certification.more }}
+        {{ i18n.certification.download }}
         <template #suffixIcon>
           <OIcon class="bannericon"><IconRight /></OIcon>
         </template>
