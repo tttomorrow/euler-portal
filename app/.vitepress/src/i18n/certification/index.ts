@@ -6,7 +6,7 @@ export default {
     title: 'openEuler 证书',
     detail:
       'openEuler-HCIA /openEuler-HCIP/openEuler-HCIE 认证是 openEuler 社区承认的不同等级的能力认证，如果您有兴趣获取相应证书，可点击下列项目进行报名培训与认证考试，通过考试后，您即可同步获得对应等级的证书。',
-    more: '了解更多',
+    download: '证书下载',
     cardList: [
       {
         ill: hcia,
