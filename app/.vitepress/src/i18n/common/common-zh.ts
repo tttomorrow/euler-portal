@@ -164,8 +164,8 @@ export default {
         {
           NAME: 'HCIX认证',
           ID: 'certification-services',
-          PATH: '/community/certification-services/',
-          // IS_OPEN_MINISITE_WINDOW: 1,
+          PATH: 'https://v1.openeuler.org/zh/community/certification-services/search.html',
+          IS_OPEN_MINISITE_WINDOW: 1,
         },
         {
           NAME: '贡献看板',

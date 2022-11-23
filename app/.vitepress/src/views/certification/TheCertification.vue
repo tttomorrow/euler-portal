@@ -15,7 +15,7 @@ const i18n = useI18n();
 const router = useRouter();
 function clickMore(type: number, link = '') {
   if (type === 1) {
-    router.go('/zh/community/certification-services/search/');
+    router.go('/zh/community/certification-services/search.html');
   } else if (link) {
     window.open(link, '_blank');
   }
