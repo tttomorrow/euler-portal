@@ -24,7 +24,9 @@ const i18n = useI18n();
 const { lang } = useData();
 const commonStore = useCommon();
 
-const language = computed(() => (lang.value === 'zh' ? 'zh_CN' : 'en_US'));
+const language = computed(() =>
+  lang.value === 'zh' ? 'zh_CN' : lang.value === 'en' ? 'en_US' : 'ru_RU'
+);
 const notFoundImg = computed(() =>
   commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
 );
@@ -48,7 +50,11 @@ const emailReg = new RegExp(
 );
 const resend = computed(() => (lang.value === 'zh' ? '重新发送' : 'Resend'));
 const send = computed(() =>
-  lang.value === 'zh' ? '发送验证码' : 'Send a verification code'
+  lang.value === 'zh'
+    ? '发送验证码'
+    : lang.value === 'en'
+    ? 'Send a verification code'
+    : 'Отправить проверочный код'
 );
 const countSecond = ref(60);
 const buttonText = ref('');
@@ -449,6 +455,7 @@ function clickPopover() {
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
             color: #ff8d4d;
+            margin-top: var(--o-spacing-h8);
             @media screen and (max-width: 840px) {
               display: none;
             }

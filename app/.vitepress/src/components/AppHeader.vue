@@ -105,16 +105,16 @@ watch(
   (val: string) => {
     roterPath.value = val;
     // 语言过滤
-    navFilterConfig.forEach((item) => {
-      if (val.includes('certification-services')) {
-        langShow.value = ['zh', 'en'];
-      } else if (val.includes(item.name)) {
-        langShow.value = item.lang;
+    for (let i = 0; i < navFilterConfig.length; i++) {
+      if (val.includes(navFilterConfig[i].name)) {
+        langShow.value = navFilterConfig[i].lang;
+        break;
       }
       if (val === `/${lang.value}/`) {
         langShow.value = ['zh', 'en', 'ru'];
+        break;
       }
-    });
+    }
   },
   { immediate: true }
 );
