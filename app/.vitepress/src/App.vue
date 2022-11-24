@@ -15,8 +15,6 @@ import { setStoreData } from './shared/login';
 
 const { frontmatter } = useData();
 
-setStoreData();
-
 const compMapping: {
   [name: string]: Component;
 } = {
@@ -45,6 +43,7 @@ function clickCookieClose() {
 onMounted(() => {
   const show = localStorage.getItem('euler-cookie');
   isCookieTip.value = show ? false : true;
+  setStoreData();
 });
 </script>
 
