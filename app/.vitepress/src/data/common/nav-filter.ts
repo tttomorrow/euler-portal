@@ -62,10 +62,6 @@ export default [
     lang: ['zh', 'en'],
   },
   {
-    name: 'certification-services',
-    lang: ['zh'],
-  },
-  {
     name: 'statistics',
     lang: ['zh', 'en'],
   },
