@@ -1,6 +1,6 @@
 ---
-title: openEuler迁移背景
-titleTemplate: 服务器系统迁移方案 | openEuler社区官网
+title: openEuler迁移背景 | 服务器系统迁移方案
+titleTemplate: openEuler社区官网
 head:
   - - meta
     - name: description

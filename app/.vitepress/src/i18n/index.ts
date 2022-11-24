@@ -23,6 +23,7 @@ import osv from './support/osv';
 import compatibility from './support/compatibility';
 import cve from './support/cve';
 import safetyBulletin from './support/safety-bulletin';
+import certification from './certification';
 
 const i18n: { [key: string]: any } = {
   zh: {
@@ -48,6 +49,7 @@ const i18n: { [key: string]: any } = {
     contribution: contribution.zh,
     mailing: mailing.zh,
     search: search.zh,
+    certification: certification.zh,
   },
   en: {
     sig: sig.en,
@@ -71,6 +73,7 @@ const i18n: { [key: string]: any } = {
     contribution: contribution.en,
     mailing: mailing.en,
     search: search.en,
+    certification: certification.en,
   },
   ru: {
     sig: sig.ru,
@@ -94,6 +97,7 @@ const i18n: { [key: string]: any } = {
     contribution: contribution.ru,
     mailing: mailing.ru,
     search: search.ru,
+    certification: certification.ru,
   },
 };
 

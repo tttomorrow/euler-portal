@@ -1,5 +1,13 @@
 ---
-title: Build bishengJDK-rpm package
+title: Build bishengJDK-rpm package | linux服务器操作系统
+titleTemplate:  openEuler社区官网
+head:
+  - - meta
+    - name: description
+      content:  bishengJDK是Huawei内部OpenJDK定制版Huawei JDK的开源版本，是一个高性能、可用于生产环境的OpenJDK发行版。HuaweiJDK运行在华为内部500多个产品上，HuaweiJDK团队积累了丰富的开发经验，解决了业务实际运行中遇到的多个问题，并在ARM架构上进行了性能优化，毕昇JDK运行在大数据等场景下可以获得更好的性能。想要了解更多信息，欢迎访问openEuler官网。
+  # - - meta
+  #   - name: keywords
+  #     content: bishengJDK,资料搬迁,迁移无中断,替换操作系统,云服务器迁移,服务器迁移工具
 category: blog 
 date: 2021-06-06
 tags: 

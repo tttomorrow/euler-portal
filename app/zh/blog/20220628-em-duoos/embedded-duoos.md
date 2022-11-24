@@ -1,5 +1,13 @@
 ﻿---
-title: Embedded SIG | 多 OS 混合部署框架
+title: Embedded SIG | 多 OS 混合部署框架 | linux服务器操作系统
+titleTemplate:  openEuler社区官网
+head:
+  - - meta
+    - name: description
+      content:  在嵌入式场景中，虽然 Linux 已经得到了广泛应用，但并不能覆盖所有需求，例如高实时、高可靠、高安全的场合。这些场合往往是实时操作系统的用武之地。有些应用场景需要 Linux 的管理能力、丰富的生态又需要实时操作系统的高实时、高可靠、高安全，那么一种典型的设计是采用一颗性能较强的处理器运行 Linux 负责富功能。想要了解更多信息，欢迎访问openEuler官网。 
+  # - - meta
+  #   - name: keywords
+  #     content: Linux迁移,开源Linux系统,Linux系统迁移,linux服务器操作系统,linux开源社区,linux系统移植
 date: 2022-06-28
 category: blog
 tags:
