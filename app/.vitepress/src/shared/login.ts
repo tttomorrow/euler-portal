@@ -14,12 +14,18 @@ const LOGIN_KEYS = {
 function setCookie(cname: string, cvalue: string, isDelete?: boolean) {
   const deleteStr = isDelete ? 'max-age=0; ' : '';
   const expires = `${deleteStr}path=/; domain=.test.osinfra.cn`;
-  const a = `${cname}=${cvalue}; ${expires}`;
-  a;
+  try {
+    document.cookie = `${cname}=${cvalue}; ${expires}`;
+  } catch {}
 }
 function getCookie(cname: string) {
   const name = `${cname}=`;
-  const ca: any = [];
+  let ca: any = [];
+  try {
+    ca = document.cookie.split(';');
+  } catch {
+    ca = [];
+  }
   for (let i = 0; i < ca.length; i++) {
     const c = ca[i].trim();
     if (c.indexOf(name) === 0) {
