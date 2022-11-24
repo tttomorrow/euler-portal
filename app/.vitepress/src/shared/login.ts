@@ -36,7 +36,6 @@ export function saveUserAuth(code = '', photo = '', username = '') {
   if (!code) {
     deleteCookie(LOGIN_KEYS.USER_TOKEN);
     deleteCookie(LOGIN_KEYS.USER_INFO);
-    deleteCookie('_Y_G_');
   } else {
     const str = JSON.stringify({ photo, username });
     setCookie(LOGIN_KEYS.USER_TOKEN, code);

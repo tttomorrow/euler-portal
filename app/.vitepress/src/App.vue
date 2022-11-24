@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import type { Component } from 'vue';
+import { Component, nextTick } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
@@ -40,10 +40,12 @@ function clickCookieClose() {
   isCookieTip.value = false;
   localStorage.setItem('euler-cookie', 'false');
 }
-setStoreData();
 onMounted(() => {
   const show = localStorage.getItem('euler-cookie');
   isCookieTip.value = show ? false : true;
+  nextTick(() => {
+    setStoreData();
+  });
 });
 </script>
 
