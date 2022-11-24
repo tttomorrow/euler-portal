@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import AppContent from '@/components/AppContent.vue';
 import { useI18n } from '@/i18n';
+import { useCommon } from '@/stores/common';
 import { useRouter, useData } from 'vitepress';
 
 import {
@@ -10,18 +10,29 @@ import {
   downloadCard,
 } from '@/api/api-certification';
 
+import successTipImg from '@/assets/category/certification/success-tip.png';
 import IconChevron from '~icons/app/icon-chevron-right.svg';
 import IconRequired from '~icons/app/icon-required.svg';
+
+import notFoundImg_light from '@/assets/illustrations/404.png';
+import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
+
 import OInput from 'opendesign/input/OInput.vue';
+import AppContent from '@/components/AppContent.vue';
 
 const i18n = useI18n();
 const { lang } = useData();
+const commonStore = useCommon();
+
 const language = computed(() => (lang.value === 'zh' ? 'zh_CN' : 'en_US'));
+const notFoundImg = computed(() =>
+  commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
+);
 const router = useRouter();
 const isBreadShow = computed(() => (lang.value === 'zh' ? true : false));
 // 证书的选择控制
 const chooseList = ref([false, false]);
-// 面包屑及查询或下载显示控制
+// 查询或下载显示控制
 const isDownloadShow = ref(false);
 // 邮箱
 const emailInput = ref('');
@@ -83,7 +94,6 @@ function getCode(params: string, lang: string) {
         successTip.value = false;
         codeSuccess.value = false;
         identification.value = '';
-        resultTip.value = i18n.value.certification.moreErrorTip;
         throw new Error(error);
       });
   } else {
@@ -140,7 +150,7 @@ function SendCode(identification: string, codeInput: string) {
 }
 // 面包屑点击事件
 function goBackPage() {
-  const i = router.route.path.replace('/search', '');
+  const i = router.route.path.replace('search.html', '');
   router.go(i);
 }
 // 证书点击选择事件
@@ -148,10 +158,15 @@ function clickChoose(index: number) {
   chooseList.value[index] = !chooseList.value[index];
 }
 // 下载事件处理
+// 是否下载成功
+const downTip = ref(false);
+// 判断下载链接是否失效
+const disabledTip = ref('');
 function download(paString: string) {
   downloadCard(paString, language.value)
     .then((res) => {
       if (res.success) {
+        disabledTip.value = '';
         function dataURLtoBlob(dataurl: any) {
           const arr = dataurl.split(','),
             mime = arr[0].match(/:(.*?);/)[1],
@@ -178,8 +193,9 @@ function download(paString: string) {
         document.body.appendChild(downloadElement);
         downloadElement.click();
         document.body.removeChild(downloadElement);
+        downTip.value = true;
       } else {
-        console.log('下载错误');
+        disabledTip.value = res.message;
       }
     })
     .catch((error: any) => {
@@ -187,19 +203,35 @@ function download(paString: string) {
     });
 }
 // 点击下载按钮
+const showIcon = ref(false);
+const existChoose = ref(false);
 function clickDownload() {
-  if (chooseList.value[0]) {
-    download(paList.value[0]);
+  if (!showIcon.value) {
+    showIcon.value = true;
+    return;
   }
-  if (chooseList.value[1]) {
-    download(paList.value[1]);
+  existChoose.value = true;
+  chooseList.value.forEach((item, index) => {
+    if (item) {
+      download(paList.value[index]);
+      existChoose.value = false;
+    }
+  });
+  if (existChoose.value) {
+    setTimeout(() => {
+      existChoose.value = false;
+    }, 500);
   }
+}
+// 点击关闭弹出的蒙层
+function clickPopover() {
+  downTip.value = false;
 }
 </script>
 
 <template>
   <AppContent>
-    <div v-if="isBreadShow" class="breadcrumb">
+    <div class="breadcrumb">
       <p class="last-page" @click="goBackPage">
         {{ i18n.certification.title }}
       </p>
@@ -277,14 +309,18 @@ function clickDownload() {
       :class="isBreadShow ? '' : 'false'"
     >
       <h2>{{ i18n.certification.certificateDownload }}</h2>
-      <div class="certificate-box">
+      <div v-if="disabledTip === ''" class="certificate-box">
         <div class="certificate-item-box" :class="'box-' + dataList.length">
           <div
             v-for="(item, index) in dataList"
             :key="item.iconUrl"
             class="item"
-            :class="chooseList[index] ? 'checked' : ''"
-            @click="clickChoose(index)"
+            :class="{
+              checked: chooseList[index],
+              down: showIcon,
+              shakeShow: existChoose,
+            }"
+            @click="showIcon ? clickChoose(index) : ''"
           >
             <div class="choose-img"></div>
             <div class="item-img">
@@ -297,10 +333,23 @@ function clickDownload() {
           </div>
         </div>
         <OButton size="small" @click="clickDownload">{{
-          i18n.certification.certificateDownload
+          showIcon
+            ? i18n.certification.certificateDownload2
+            : i18n.certification.certificateDownload
         }}</OButton>
       </div>
+      <div v-else class="nofound">
+        <img class="nofound-img" :src="notFoundImg" alt="404" />
+        <p class="nofound-text">
+          {{ disabledTip }}
+        </p>
+      </div>
     </div>
+    <transition name="tip">
+      <div v-show="downTip" class="popover" @click="clickPopover">
+        <img :src="successTipImg" alt="" />
+      </div>
+    </transition>
   </AppContent>
 </template>
 
@@ -309,8 +358,9 @@ function clickDownload() {
   color: var(--o-color-text1);
   background: var(--o-color-bg1);
   display: flex;
-  @media screen and (max-width: 768px) {
-    display: none;
+  margin-bottom: var(--o-spacing-h2);
+  @media screen and (max-width: 840px) {
+    margin-bottom: var(--o-spacing-h5);
   }
   .last-page {
     font-size: var(--o-font-size-tip);
@@ -334,7 +384,7 @@ function clickDownload() {
 }
 .certificate-search {
   margin-top: var(--o-spacing-h2);
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 840px) {
     margin-top: 0;
   }
   h2 {
@@ -343,7 +393,7 @@ function clickDownload() {
     color: var(--o-color-text1);
     text-align: center;
     font-weight: 300;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 840px) {
       font-size: var(--o-font-size-h7);
       line-height: var(--o-line-height-h7);
     }
@@ -353,7 +403,7 @@ function clickDownload() {
     width: 100%;
     background-color: var(--o-color-bg2);
     padding: var(--o-spacing-h2) 0;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 840px) {
       margin-top: var(--o-spacing-h7);
       padding: var(--o-spacing-h5);
       min-width: 328px;
@@ -363,7 +413,7 @@ function clickDownload() {
       margin: 0 auto;
       .email-box {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         max-width: 536px;
         .left {
           display: flex;
@@ -386,7 +436,7 @@ function clickDownload() {
           position: relative;
           max-width: 400px;
           flex-grow: 1;
-          @media screen and (max-width: 768px) {
+          @media screen and (max-width: 840px) {
             .o-input {
               height: 24px;
               font-size: var(--o-font-size-tip);
@@ -396,24 +446,23 @@ function clickDownload() {
             width: 206px;
           }
           .tip {
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            transform: translateY(100%);
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
             color: #ff8d4d;
-            @media screen and (max-width: 768px) {
-              bottom: -6px;
+            @media screen and (max-width: 840px) {
+              display: none;
             }
           }
         }
       }
       .code-box {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         max-width: 536px;
-        margin-top: 54px;
+        margin-top: 28px;
+        @media screen and (max-width: 840px) {
+          margin-top: 40px;
+        }
         .left {
           display: flex;
           align-items: center;
@@ -435,7 +484,7 @@ function clickDownload() {
           position: relative;
           max-width: 400px;
           flex-grow: 1;
-          @media screen and (max-width: 768px) {
+          @media screen and (max-width: 840px) {
             padding-right: 88px;
             .o-input {
               height: 24px;
@@ -456,7 +505,7 @@ function clickDownload() {
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
             color: #ff8d4d;
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 840px) {
               bottom: -6px;
             }
           }
@@ -477,7 +526,7 @@ function clickDownload() {
             padding-left: 16px;
             padding-right: 16px;
             justify-content: center;
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 840px) {
               height: 24px !important;
               right: 0px;
               transform: none;
@@ -497,14 +546,14 @@ function clickDownload() {
         max-width: 536px;
         margin-top: var(--o-spacing-h2);
         text-align: center;
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 840px) {
           margin-top: var(--o-spacing-h2);
         }
         .o-button {
           padding-top: 7px;
           padding-bottom: 7px;
           height: 36px;
-          @media screen and (max-width: 768px) {
+          @media screen and (max-width: 840px) {
             height: 24px;
             color: var(--o-color-white);
             background-color: var(--o-color-brand1);
@@ -517,7 +566,7 @@ function clickDownload() {
 }
 .certificate-download {
   margin-top: var(--o-spacing-h2);
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 840px) {
     margin-top: 0;
   }
   h2 {
@@ -565,24 +614,7 @@ function clickDownload() {
           height: 98px;
           display: flex;
         }
-        .choose-img {
-          width: 24px;
-          height: 24px;
-          background-image: url(@/assets/category/certification/unchoose.png);
-          background-repeat: no-repeat;
-          background-size: 100% 100%;
-          position: absolute;
-          left: 16px;
-          top: 16px;
-          z-index: 9;
-          @media screen and (max-width: 1100px) {
-            width: 16px;
-            height: 16px;
-            left: auto;
-            right: 8px;
-            top: 8px;
-          }
-        }
+
         .item-img {
           background-color: var(--o-color-bg4);
           padding: 14px 0 10px;
@@ -632,10 +664,58 @@ function clickDownload() {
           }
         }
       }
-      .checked {
-        border: 1px solid var(--o-color-brand1);
+      .down {
+        cursor: pointer;
         .choose-img {
-          background-image: url(@/assets/category/certification/choose.png);
+          width: 24px;
+          height: 24px;
+          background-image: url(@/assets/category/certification/unchoose.png);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          left: 16px;
+          top: 16px;
+          z-index: 9;
+          @media screen and (max-width: 1100px) {
+            width: 16px;
+            height: 16px;
+            left: auto;
+            right: 8px;
+            top: 8px;
+          }
+        }
+        &.checked {
+          border: 1px solid var(--o-color-brand1);
+          .choose-img {
+            background-image: url(@/assets/category/certification/choose.png);
+          }
+        }
+      }
+      .shakeShow {
+        animation: shake 0.1s infinite;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(5px);
+        }
+        10% {
+          transform: translateX(5px);
+        }
+        15%,
+        25%,
+        35% {
+          transform: translateX(-5px);
+        }
+        20%,
+        30%,
+        40%,
+        50% {
+          transform: translateX(-5px);
+        }
+        55%,
+        90% {
+          transform: translateX(5px);
         }
       }
     }
@@ -653,19 +733,82 @@ function clickDownload() {
         grid-template-columns: repeat(1, 1fr);
       }
     }
+    .o-button {
+      margin-top: var(--o-spacing-h2);
+      @media screen and (max-width: 1100px) {
+        font-size: var(--o-font-size-tip);
+        height: 24px;
+        line-height: 24px;
+        background-color: var(--o-color-brand1);
+        color: var(--o-color-white);
+      }
+    }
   }
-  .o-button {
-    margin-top: var(--o-spacing-h2);
-    @media screen and (max-width: 1100px) {
-      font-size: var(--o-font-size-tip);
-      height: 24px;
-      line-height: 24px;
-      background-color: var(--o-color-brand1);
-      color: var(--o-color-white);
+  .nofound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: var(--o-font-size-h6);
+    color: var(--o-color-text1);
+    padding: var(--o-spacing-h2) 0;
+    min-height: calc(100vh - 339px);
+    .nofound-text {
+      margin-top: var(--o-spacing-h5);
+      font-size: var(--o-font-size-h7);
+    }
+    .nofound-img {
+      height: 300px;
+    }
+    @media screen and (max-width: 840px) {
+      padding-top: var(--o-spacing-h2);
+      font-size: var(--o-font-size-text);
+      .nofound-img {
+        max-height: 232px;
+      }
+      .nofound-text {
+        margin-top: var(--o-spacing-h6);
+        font-size: var(--o-font-size-tip);
+      }
     }
   }
 }
 .false {
   margin-top: 0;
+}
+.popover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--o-color-bg6);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @media screen and (max-width: 1100px) {
+    align-items: flex-start;
+    padding-top: 20vh;
+  }
+  img {
+    width: 40vw;
+    @media screen and (max-width: 1100px) {
+      width: 80vw;
+    }
+  }
+}
+.tip-enter-from,
+.tip-leave-to {
+  opacity: 0;
+}
+.tip-enter-active,
+.tip-leave-active {
+  transition: all 0.5s;
+}
+.tip-enter-to,
+.tip-leave-from {
+  opacity: 1;
 }
 </style>

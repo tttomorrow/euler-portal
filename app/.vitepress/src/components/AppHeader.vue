@@ -106,7 +106,9 @@ watch(
     roterPath.value = val;
     // 语言过滤
     navFilterConfig.forEach((item) => {
-      if (val.includes(item.name)) {
+      if (val.includes('certification-services')) {
+        langShow.value = ['zh', 'en'];
+      } else if (val.includes(item.name)) {
         langShow.value = item.lang;
       }
       if (val === `/${lang.value}/`) {

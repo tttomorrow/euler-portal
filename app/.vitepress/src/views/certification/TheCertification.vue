@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useRouter } from 'vitepress';
+import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -13,9 +13,10 @@ import IconRight from '~icons/app/icon-arrow-right.svg';
 
 const i18n = useI18n();
 const router = useRouter();
+const { lang } = useData();
 function clickMore(type: number, link = '') {
   if (type === 1) {
-    router.go('/zh/community/certification-services/search.html');
+    router.go(`/${lang.value}/community/certification-services/search.html`);
   } else if (link) {
     window.open(link, '_blank');
   }
@@ -48,7 +49,7 @@ function clickMore(type: number, link = '') {
       {{ i18n.certification.detail }}
     </div>
     <div class="card-box">
-      <div
+      <OCard
         v-for="item in i18n.certification.cardList"
         :key="item.professional"
         class="card-item"
@@ -73,7 +74,7 @@ function clickMore(type: number, link = '') {
             </template>
           </OButton>
         </div>
-      </div>
+      </OCard>
     </div>
   </AppContent>
 </template>
@@ -148,9 +149,14 @@ function clickMore(type: number, link = '') {
     grid-template-columns: repeat(1, 1fr);
   }
   .card-item {
-    box-shadow: var(--o-shadow-l2);
     &:hover {
       box-shadow: var(--o-shadow-l2_hover);
+      @media screen and (max-width: 1100px) {
+        box-shadow: var(--o-shadow-l2);
+      }
+    }
+    :deep(.el-card__body) {
+      padding: 0;
     }
     .item-head {
       width: 100%;

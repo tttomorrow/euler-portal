@@ -73,6 +73,7 @@ const i18n: { [key: string]: any } = {
     contribution: contribution.en,
     mailing: mailing.en,
     search: search.en,
+    certification: certification.en,
   },
   ru: {
     sig: sig.ru,
