@@ -40,10 +40,10 @@ function clickCookieClose() {
   isCookieTip.value = false;
   localStorage.setItem('euler-cookie', 'false');
 }
-setStoreData();
 onMounted(() => {
   const show = localStorage.getItem('euler-cookie');
   isCookieTip.value = show ? false : true;
+  setStoreData();
 });
 </script>
 
