@@ -18,7 +18,12 @@ function setCookie(cname: string, cvalue: string, isDelete?: boolean) {
 }
 function getCookie(cname: string) {
   const name = `${cname}=`;
-  const ca = document.cookie.split(';');
+  let ca: any = [];
+  try {
+    ca = document.cookie.split(';');
+  } catch {
+    ca = [];
+  }
   for (let i = 0; i < ca.length; i++) {
     const c = ca[i].trim();
     if (c.indexOf(name) === 0) {
