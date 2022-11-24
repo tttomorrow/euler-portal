@@ -1,5 +1,5 @@
 ---
-title: 'openEuler-HCIX 证书'
+title: 'сертификаты openEuler-HCIX'
 ---
 
 <script setup lang="ts">

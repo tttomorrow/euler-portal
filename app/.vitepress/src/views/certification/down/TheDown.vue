@@ -14,7 +14,9 @@ const i18n = useI18n();
 const { lang } = useData();
 const commonStore = useCommon();
 
-const language = computed(() => (lang.value === 'zh' ? 'zh_CN' : 'en_US'));
+const language = computed(() =>
+  lang.value === 'zh' ? 'zh_CN' : lang.value === 'en' ? 'en_US' : 'ru_RU'
+);
 const notFoundImg = computed(() =>
   commonStore.theme === 'light' ? notFoundImg_light : notFoundImg_dark
 );

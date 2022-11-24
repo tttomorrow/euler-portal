@@ -97,6 +97,7 @@ const i18n: { [key: string]: any } = {
     contribution: contribution.ru,
     mailing: mailing.ru,
     search: search.ru,
+    certification: certification.ru,
   },
 };
 
