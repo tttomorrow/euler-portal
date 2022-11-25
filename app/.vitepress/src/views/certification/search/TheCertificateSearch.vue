@@ -425,6 +425,10 @@ function clickPopover() {
           display: flex;
           align-items: center;
           width: 136px;
+          height: 38px;
+          @media screen and (max-width: 840px) {
+            height: 24px;
+          }
           @media screen and (max-width: 468px) {
             width: 90px;
           }
@@ -449,7 +453,7 @@ function clickPopover() {
             }
           }
           @media screen and (max-width: 410px) {
-            width: 206px;
+            max-width: 223px;
           }
           .tip {
             font-size: var(--o-font-size-tip);
@@ -474,10 +478,13 @@ function clickPopover() {
           display: flex;
           align-items: center;
           width: 136px;
+          height: 38px;
+          @media screen and (max-width: 840px) {
+            height: 24px;
+          }
           @media screen and (max-width: 468px) {
             width: 90px;
           }
-
           .o-icon {
             font-size: var(--o-font-size-h5);
           }
