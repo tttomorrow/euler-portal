@@ -326,7 +326,7 @@ const jumpToUserZone = () => {
           </div>
         </transition>
       </div>
-      <div class="opt-user">
+      <div v-if="lang !== 'ru'" class="opt-user">
         <div v-if="token">
           <div class="el-dropdown-link opt-info">
             <img :src="guardAuthClient.photo" class="img" />
