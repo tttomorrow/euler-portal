@@ -7329,5 +7329,83 @@
         "downloadLink": "inbox"
       }
     ]
+  },
+  {
+    "hardwareFactory": "长城科技",
+    "hardwareModel": "擎天EF860",
+    "osVersion": "openEuler 22.03 LTS",
+    "architecture": "aarch64",
+    "date": "2022/09/08",
+    "friendlyLink": "www.greatwall.com.cn",
+    "boardCards": [
+      {
+        "vendorID": "1000",
+        "deviceID": "005d",
+        "svID": "1000",
+        "ssID": "9361",
+        "architecture": "aarch64",
+        "os": "openEuler 22.03 LTS",
+        "driverName": "megaraid_sas",
+        "version": "07.714.04.00-rc1",
+        "type": "RAID",
+        "date": "2022/09/08",
+        "sha256": "abf3ad2595702e635fb07be307414d9df4baccd8ad1a1c369d28be61a46c93b6",
+        "driverSize": "343KB",
+        "chipVendor": "Avago",
+        "boardModel": "9361-8i",
+        "chipModel": "SAS-3 3108",
+        "item": "",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "15b3",
+        "deviceID": "1015",
+        "svID": "15b3",
+        "ssID": "0047",
+        "architecture": "aarch64",
+        "os": "openEuler 22.03 LTS",
+        "driverName": "mlx5_core",
+        "version": "5.0-0",
+        "type": "NIC",
+        "date": "2022/09/08",
+        "sha256": "7AD641C060E2EACBEE0BAA5F79FE5B90ADBBFDAB",
+        "driverSize": "1.7M",
+        "chipVendor": "Mellanox",
+        "boardModel": "MCX4621A-ACAB",
+        "chipModel": "ConnectX-4 Lx",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "15b3",
+        "deviceID": "1017",
+        "svID": "15b3",
+        "ssID": "0052",
+        "architecture": "aarch64",
+        "os": "openEuler 22.03 LTS",
+        "driverName": "mlx5_core",
+        "version": "5.0-0",
+        "type": "NIC",
+        "date": "2022/09/08",
+        "sha256": "7AD641C060E2EACBEE0BAA5F79FE5B90ADBBFDAB",
+        "driverSize": "1.7M",
+        "chipVendor": "Mellanox",
+        "boardModel": "MCX562A-ACAB",
+        "chipModel": "ConnectX-5",
+        "downloadLink": "inbox"
+      }
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "www.greatwall.com.cn",
+      "certificationTime": "2022/09/08",
+      "commitID": "",
+      "mainboardModel": "",
+      "biosUefi": "",
+      "cpu": "S2500",
+      "ram": "12*32G DIMMs ",
+      "portsBusTypes": "",
+      "videoAdapter": "ASPEED Technology, Inc. ASPEED Graphics Family",
+      "hostBusAdapter": "AVAGO MR9361-8i",
+      "hardDiskDrive": ""
+    }
   }
 ]
