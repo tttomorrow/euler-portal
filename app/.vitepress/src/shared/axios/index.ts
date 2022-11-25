@@ -12,7 +12,7 @@ import handleError from './handleError';
 import setConfig from './setConfig';
 import { ElLoading, ElMessage } from 'element-plus';
 import { LoadingInstance } from 'element-plus/lib/components/loading/src/loading';
-import { getUserAuth, tokenFailIndicateLogin } from '../login';
+import { tokenFailIndicateLogin } from '../login';
 
 interface RequestConfig<D = any> extends AxiosRequestConfig {
   data?: D;
@@ -108,14 +108,6 @@ const requestInterceptorId = request.interceptors.request.use(
       });
       // }
     });
-    // 使用token
-    const { token } = getUserAuth();
-    if (token && !config.headers!.authorization) {
-      const to = {
-        token,
-      };
-      config.headers!.token = token;
-    }
     return config;
   },
   (err: AxiosError) => {
