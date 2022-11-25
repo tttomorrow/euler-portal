@@ -156,6 +156,7 @@ export default {
           NAME: 'Statistics',
           ID: 'statistics',
           PATH: 'https://datastat.openeuler.org/en/overview',
+          TEST_PATH: 'https://datastatopeneuler.test.osinfra.cn/en/overview',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
@@ -311,6 +312,10 @@ export default {
   ],
   LANG: 'English',
   LANG_LIST: ['中文', 'English', 'Русский'],
+  USER_CENTER: 'User Center',
+  LOGOUT: 'Logout',
+  PLEASE: 'Please',
+  LOGIN: 'login',
   GITTE: 'Source code',
   CODE: 'CODE',
   FOOTER: {

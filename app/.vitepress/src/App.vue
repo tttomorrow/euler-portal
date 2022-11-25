@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import type { Component } from 'vue';
+import { Component } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
@@ -11,6 +11,7 @@ import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
 
 import categories from '@/data/common/category';
+import { setStoreData } from './shared/login';
 
 const { frontmatter } = useData();
 
@@ -42,6 +43,7 @@ function clickCookieClose() {
 onMounted(() => {
   const show = localStorage.getItem('euler-cookie');
   isCookieTip.value = show ? false : true;
+  setStoreData();
 });
 </script>
 

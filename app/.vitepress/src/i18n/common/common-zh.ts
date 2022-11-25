@@ -171,6 +171,7 @@ export default {
           NAME: '贡献看板',
           ID: 'statistics',
           PATH: 'https://datastat.openeuler.org/zh/overview',
+          TEST_PATH: 'https://datastatopeneuler.test.osinfra.cn/zh/overview',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
         {
@@ -351,6 +352,10 @@ export default {
   ],
   LANG: '中文',
   LANG_LIST: ['中文', 'English', 'Русский'],
+  USER_CENTER: '个人中心',
+  LOGOUT: '退出登录',
+  PLEASE: '请先',
+  LOGIN: '登录',
   GITTE: '源码',
   CODE: '代码',
   FOOTER: {

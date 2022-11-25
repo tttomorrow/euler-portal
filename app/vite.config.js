@@ -102,6 +102,10 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-certification/, ''),
       },
+      '/authing/': {
+        target: 'https://omapi.osinfra.cn/',
+        changeOrigin: true,
+      },
     },
   },
 });

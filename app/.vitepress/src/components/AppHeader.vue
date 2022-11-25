@@ -4,6 +4,13 @@ import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
 import { getPop } from '@/api/api-search';
+import {
+  showGuard,
+  logout,
+  useStoreData,
+  getUserAuth,
+  isTestENV,
+} from '../shared/login';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
@@ -15,15 +22,20 @@ import logo_dark from '@/assets/logo_dark.svg';
 import IconSearch from '~icons/app/icon-search.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconMenu from '~icons/app/icon-menu.svg';
+import IconLogin from '~icons/app/icon-login.svg';
 
 interface NavItem {
   NAME: string;
   PATH: string;
   ID: string;
   CHILDREN: NavItem;
+  TEST_PATH?: string;
   IS_OPEN_WINDOW?: number;
   IS_OPEN_MINISITE_WINDOW?: string;
 }
+
+const { token } = getUserAuth();
+const { guardAuthClient } = useStoreData();
 
 const router = useRouter();
 const { lang, theme } = useData();
@@ -84,6 +96,10 @@ const goMobileSubList = (item: NavItem) => {
     return;
   }
   if (item.IS_OPEN_MINISITE_WINDOW) {
+    if (isTestENV() && item.TEST_PATH) {
+      window.open(item.TEST_PATH);
+      return;
+    }
     window.open(item.PATH);
     return;
   }
@@ -192,17 +208,26 @@ function search() {
   // router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
   donShowSearchBox();
 }
+const jumpToUserZone = () => {
+  const language = lang.value === 'zh' ? 'zh' : 'en';
+  const origin = isTestENV()
+    ? 'https://openeuler-usercenter.test.osinfra.cn'
+    : 'https://id.openeuler.org';
+  window.open(`${origin}/${language}/profile`, '_black');
+};
 </script>
 
 <template>
   <header class="app-header">
     <div class="app-header-body">
       <!-- 移动端菜单图标 -->
-      <div class="mobile-menu-icon" @click="mobileMenuPanel">
-        <OIcon v-if="!mobileMenuIcon" class="icon">
+      <div class="mobile-menu-icon">
+        <OIcon v-if="!mobileMenuIcon" class="icon" @click="mobileMenuPanel">
           <IconMenu />
         </OIcon>
-        <OIcon v-else class="icon"><IconCancel /></OIcon>
+        <OIcon v-else class="icon" @click="mobileMenuPanel"
+          ><IconCancel
+        /></OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <ClientOnly>
@@ -301,6 +326,23 @@ function search() {
           </div>
         </transition>
       </div>
+      <div class="opt-user">
+        <div v-if="token">
+          <div class="el-dropdown-link opt-info">
+            <img :src="guardAuthClient.photo" class="img" />
+            <p class="opt-name">{{ guardAuthClient.username }}</p>
+          </div>
+          <ul class="menu-list">
+            <li @click="jumpToUserZone()">{{ i18n.common.USER_CENTER }}</li>
+            <li @click="logout()">{{ i18n.common.LOGOUT }}</li>
+          </ul>
+        </div>
+        <div v-else class="login" @click="showGuard()">
+          <OIcon class="icon">
+            <IconLogin />
+          </OIcon>
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -362,6 +404,7 @@ function search() {
   display: none;
   margin-right: var(--o-spacing-h5);
   @media (max-width: 1100px) {
+    flex: 1;
     display: block;
   }
   .icon {
@@ -642,5 +685,87 @@ function search() {
 .menu-sub-leave {
   opacity: 1;
   left: -100%;
+}
+.opt-user {
+  margin-left: 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  .opt-info {
+    display: flex;
+    align-items: center;
+    .img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      vertical-align: middle;
+      @media (max-width: 1100px) {
+        width: 28px;
+        height: 28px;
+      }
+    }
+    .opt-name {
+      color: var(--o-color-text1);
+      margin-left: 8px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 72px;
+      line-height: var(--o-line-height-h8);
+      @media (max-width: 1100px) {
+        display: none;
+      }
+    }
+  }
+  &:hover {
+    .menu-list {
+      display: block;
+    }
+  }
+  .menu-list {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    @media (max-width: 1100px) {
+      top: 48px;
+      left: -60px;
+    }
+    background: var(--o-color-bg2);
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: var(--o-shadow-l1);
+    min-width: 78px;
+    li {
+      line-height: var(--o-line-height-h3);
+      text-align: center;
+      font-size: var(--o-font-size-text);
+      color: var(--o-color-text1);
+      border-bottom: 1px solid var(--o-color-division1);
+      padding: 0 var(--o-spacing-h5);
+      &:last-child {
+        border-bottom: 0 none;
+      }
+
+      &:hover {
+        background: var(--o-color-brand1);
+        color: var(--o-color-text2);
+      }
+      &.active {
+        color: var(--o-color-brand1);
+        background: none;
+        cursor: default;
+      }
+    }
+  }
+}
+.login {
+  .icon {
+    font-size: var(--o-font-size-h6);
+    color: var(--e-color-text1);
+    cursor: pointer;
+  }
 }
 </style>
