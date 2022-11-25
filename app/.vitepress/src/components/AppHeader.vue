@@ -4,7 +4,13 @@ import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
 import { getPop } from '@/api/api-search';
-import { showGuard, logout, useStoreData, getUserAuth } from '../shared/login';
+import {
+  showGuard,
+  logout,
+  useStoreData,
+  getUserAuth,
+  isTestENV,
+} from '../shared/login';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
@@ -90,7 +96,7 @@ const goMobileSubList = (item: NavItem) => {
     return;
   }
   if (item.IS_OPEN_MINISITE_WINDOW) {
-    if (location?.host?.includes('test') && item.TEST_PATH) {
+    if (isTestENV() && item.TEST_PATH) {
       window.open(item.TEST_PATH);
       return;
     }
@@ -204,10 +210,10 @@ function search() {
 }
 const jumpToUserZone = () => {
   const language = lang.value === 'zh' ? 'zh' : 'en';
-  window.open(
-    `https://openeuler-usercenter.test.osinfra.cn/${language}/user`,
-    '_black'
-  );
+  const origin = isTestENV()
+    ? 'https://openeuler-usercenter.test.osinfra.cn'
+    : 'https://id.openeuler.org';
+  window.open(`${origin}/${language}/profile`, '_black');
 };
 </script>
 

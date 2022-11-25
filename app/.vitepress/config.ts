@@ -96,7 +96,7 @@ const config: UserConfig = {
     //   '/en/': i18n.en,
     //   '/ru/': i18n.ru,
     // },
-    docsUrl: 'https://openeuler-doc-zh2.test.osinfra.cn',
+    docsUrl: 'https://docs.openeuler.org',
   },
 };
 export default config;

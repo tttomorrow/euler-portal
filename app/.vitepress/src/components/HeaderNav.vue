@@ -3,6 +3,7 @@ import { ref, watch } from 'vue';
 import { useRouter, useData } from 'vitepress';
 
 import { debounce } from 'lodash';
+import { isTestENV } from '@/shared/login';
 
 defineProps({
   navItems: {
@@ -40,7 +41,7 @@ const goPath = (item: NavItem) => {
     return;
   }
   if (item.IS_OPEN_MINISITE_WINDOW) {
-    if (location?.host?.includes('test') && item.TEST_PATH) {
+    if (isTestENV() && item.TEST_PATH) {
       window.open(item.TEST_PATH);
       return;
     }

@@ -13,8 +13,9 @@ const LOGIN_KEYS = {
 
 function setCookie(cname: string, cvalue: string, isDelete?: boolean) {
   const deleteStr = isDelete ? 'max-age=0; ' : '';
-  const expires = `${deleteStr}path=/; domain=.test.osinfra.cn`;
   try {
+    const domain = isTestENV() ? '.test.osinfra.cn' : '.openeuler.org';
+    const expires = `${deleteStr}path=/; domain=${domain}`;
     document.cookie = `${cname}=${cvalue}; ${expires}`;
   } catch {}
 }
@@ -176,7 +177,10 @@ const scopeConfig = {
   scope: 'openid profile username',
 };
 export function showGuard() {
-  location.href = `https://openeuler-usercenter.test.osinfra.cn/login?redirect_uri=${location.href}`;
+  const origin = isTestENV()
+    ? 'https://openeuler-usercenter.test.osinfra.cn'
+    : 'https://id.openeuler.org';
+  location.href = `${origin}/login?redirect_uri=${location.href}`;
 }
 
 export function goToOtherServices(name: string, uri?: string) {
@@ -265,4 +269,15 @@ export function getLanguage() {
     lang: 'en',
     language: 'en-US',
   };
+}
+
+// 判断测试环境,true为测试环境
+export function isTestENV(): boolean {
+  let bool = false;
+  try {
+    bool = location?.host?.includes('test');
+  } catch {
+    bool = false;
+  }
+  return bool;
 }
