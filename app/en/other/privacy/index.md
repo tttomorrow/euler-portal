@@ -135,6 +135,6 @@ Our services are open only to enterprises and individuals over the age of 14.
 If you want to contact us or exercise your rights, please contact us at **<contact@openeuler.io>**.
 
 
-Last updated: Oct, 2022
+Last updated: Nov, 2022
 
 </div>
