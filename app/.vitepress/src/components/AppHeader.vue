@@ -4,13 +4,7 @@ import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
 import { getPop } from '@/api/api-search';
-import {
-  showGuard,
-  logout,
-  useStoreData,
-  getUserAuth,
-  isTestENV,
-} from '../shared/login';
+import { showGuard, logout, useStoreData, getUserAuth } from '../shared/login';
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
@@ -29,7 +23,6 @@ interface NavItem {
   PATH: string;
   ID: string;
   CHILDREN: NavItem;
-  TEST_PATH?: string;
   IS_OPEN_WINDOW?: number;
   IS_OPEN_MINISITE_WINDOW?: string;
 }
@@ -96,10 +89,6 @@ const goMobileSubList = (item: NavItem) => {
     return;
   }
   if (item.IS_OPEN_MINISITE_WINDOW) {
-    if (isTestENV() && item.TEST_PATH) {
-      window.open(item.TEST_PATH);
-      return;
-    }
     window.open(item.PATH);
     return;
   }
@@ -210,9 +199,7 @@ function search() {
 }
 const jumpToUserZone = () => {
   const language = lang.value === 'zh' ? 'zh' : 'en';
-  const origin = isTestENV()
-    ? 'https://openeuler-usercenter.test.osinfra.cn'
-    : 'https://id.openeuler.org';
+  const origin = 'https://id.openeuler.org';
   window.open(`${origin}/${language}/profile`, '_black');
 };
 </script>

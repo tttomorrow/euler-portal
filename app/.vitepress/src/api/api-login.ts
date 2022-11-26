@@ -23,22 +23,7 @@ export function queryCourse(params: object) {
     })
     .then((res: AxiosResponse) => res.data);
 }
-/**
- * 获取授权token链接
- */
-export function queryToken(params: object) {
-  const url = '/authing/token/apply';
-  const { token } = getUserAuth();
-  return request
-    .get(url, {
-      params,
-      global: true,
-      headers: {
-        token,
-      },
-    })
-    .then((res: AxiosResponse) => res.data);
-}
+
 /**
  * 获取idtoken用于退出
  */

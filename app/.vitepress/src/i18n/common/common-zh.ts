@@ -171,7 +171,6 @@ export default {
           NAME: '贡献看板',
           ID: 'statistics',
           PATH: 'https://datastat.openeuler.org/zh/overview',
-          TEST_PATH: 'https://datastatopeneuler.test.osinfra.cn/zh/overview',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
         {
