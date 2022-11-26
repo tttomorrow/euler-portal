@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { Component } from 'vue';
+import type { Component } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';

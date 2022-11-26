@@ -4,7 +4,7 @@ import { useCommon } from '@/stores/common';
 
 import AppContext from '@/components/AppContent.vue';
 
-import banner from '@/assets/category/summit/summit2022/banner.jpg';
+import banner from '@/assets/category/summit/summit2022/banner.png';
 import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
