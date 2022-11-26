@@ -14,7 +14,7 @@ import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png
 import liveImg_mo from '@/assets/category/home/banner/banner-contribution_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
 import migrationImg_mo from '@/assets/category/home/banner/migration_mo.png';
-import summit_pc from '@/assets/category/home/banner/summit_pc.jpg';
+import summit_pc from '@/assets/category/home/banner/summit_pc.png';
 import summit_mo from '@/assets/category/home/banner/summit_mo.png';
 
 export default {
