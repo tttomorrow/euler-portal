@@ -11,7 +11,7 @@ export default {
       ill: hcia,
       name: 'openEuler-HCIA',
       professional: 'Certified Engineer',
-      more: 'view more',
+      more: 'View more',
       link: 'https://e.huawei.com/en/talent/#/cert/product-details?certifiedProductId=383&amp%3BauthenticationLevel=CTYPE_CARE_HCIA&amp%3BtechnicalField=PSC&amp%3Bversion=1.0',
     },
     {
