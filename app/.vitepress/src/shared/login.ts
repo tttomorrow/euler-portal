@@ -14,7 +14,7 @@ const LOGIN_KEYS = {
 function setCookie(cname: string, cvalue: string, isDelete?: boolean) {
   const deleteStr = isDelete ? 'max-age=0; ' : '';
   try {
-    const domain = isTestENV() ? '.test.osinfra.cn' : '.openeuler.org';
+    const domain = '.openeuler.org';
     const expires = `${deleteStr}path=/; domain=${domain}`;
     document.cookie = `${cname}=${cvalue}; ${expires}`;
   } catch {}
@@ -160,12 +160,6 @@ function createClient(community = 'openeuler', url?: string) {
         url || `${window?.location?.origin}${window?.location?.pathname}`,
       lang: lang.language,
     },
-    openeulerPlayground: {
-      appId: '6219de6da01da1ce012db473',
-      appHost: 'https://openeuler.authing.cn',
-      redirectUri: 'https://moocstudio.openeuler.sh/',
-      lang: lang.language,
-    },
   };
   if (obj[community]) {
     return new AuthenticationClient(obj[community]);
@@ -177,9 +171,7 @@ const scopeConfig = {
   scope: 'openid profile username',
 };
 export function showGuard() {
-  const origin = isTestENV()
-    ? 'https://openeuler-usercenter.test.osinfra.cn'
-    : 'https://id.openeuler.org';
+  const origin = 'https://id.openeuler.org';
   location.href = `${origin}/login?redirect_uri=${location.href}`;
 }
 
@@ -269,15 +261,4 @@ export function getLanguage() {
     lang: 'en',
     language: 'en-US',
   };
-}
-
-// 判断测试环境,true为测试环境
-export function isTestENV(): boolean {
-  let bool = false;
-  try {
-    bool = location?.host?.includes('test');
-  } catch {
-    bool = false;
-  }
-  return bool;
 }
