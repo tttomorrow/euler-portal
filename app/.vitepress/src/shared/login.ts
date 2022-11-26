@@ -1,4 +1,4 @@
-import { queryCourse, queryToken, queryIDToken } from '../api/api-login';
+import { queryCourse, queryIDToken } from '../api/api-login';
 import { useCounter } from '../stores/counter';
 import { storeToRefs } from 'pinia';
 import { AuthenticationClient } from 'authing-js-sdk';
@@ -92,72 +92,13 @@ export function goToHome() {
   window?.location?.reload();
 }
 
-export function getCodeByUrl(community = 'openeuler') {
-  const query = getUrlParam();
-  if (query.code && query.state) {
-    const param = {
-      code: query.code,
-      permission: 'sigRead',
-      community,
-      redirect: `${window?.location?.origin}${window?.location?.pathname}`,
-    };
-    queryToken(param)
-      .then((res) => {
-        const { data = {} } = res;
-        const { token = '', photo = '', username = '' } = data;
-        saveUserAuth(token, photo, username);
-        deleteUrlCode(query);
-        window.parent.window.location.reload();
-      })
-      .catch(() => {
-        deleteUrlCode(query);
-        window.parent.window.location.reload();
-      });
-  }
-}
-
-// 删除url上的code
-function deleteUrlCode(query: IObject) {
-  const arr = Object.entries(query);
-  let url = location.origin + location.pathname;
-  if (arr.length > 2) {
-    const _arr = arr.filter((item) => !['code', 'state'].includes(item[0]));
-    const search = _arr.reduce((pre, next) => {
-      pre += `${next[0]}=${next[1]}`;
-      return pre;
-    }, '?');
-    url += search;
-  }
-  history.replaceState(null, '', url);
-}
-
-function getUrlParam(url = window?.location?.search) {
-  const param = {} as IObject;
-  const arr = url.split('?');
-  if (arr[1]) {
-    const _arr = arr[1].split('&') || [];
-    _arr.forEach((item) => {
-      const it = item.split('=');
-      if (it.length === 2) {
-        const obj = {
-          [it[0]]: it[1],
-        };
-        Object.assign(param, obj);
-      }
-    });
-  }
-  return param;
-}
-
 function createClient(community = 'openeuler', url?: string) {
   const lang = getLanguage();
   const obj: IObject = {
     openeuler: {
-      // appId: '62845f26b7dbf20f7890c0ad',
       appId: '62679eab0b22b146d2ea0a3a',
       appHost: 'https://datastat.authing.cn',
-      redirectUri:
-        url || `${window?.location?.origin}${window?.location?.pathname}`,
+      redirectUri: url || 'https://id.openeuler.org/login',
       lang: lang.language,
     },
   };
@@ -166,20 +107,9 @@ function createClient(community = 'openeuler', url?: string) {
   }
   return new AuthenticationClient(obj.openeuler);
 }
-// scope配置，设置登录后用户返回信息
-const scopeConfig = {
-  scope: 'openid profile username',
-};
 export function showGuard() {
   const origin = 'https://id.openeuler.org';
   location.href = `${origin}/login?redirect_uri=${location.href}`;
-}
-
-export function goToOtherServices(name: string, uri?: string) {
-  const client = createClient(name, uri);
-  // 构造 OIDC 授权登录 URL
-  const url = client.buildAuthorizeUrl(scopeConfig);
-  return url;
 }
 
 // token失效跳转首页
