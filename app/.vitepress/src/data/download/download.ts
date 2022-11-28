@@ -12,6 +12,7 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
+        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2209.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=22.09',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/',
