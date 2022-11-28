@@ -10,7 +10,7 @@ import { getUserAuth } from '@/shared/login';
  * 获取授权的相关回调链接
  */
 export function queryCourse(params: object) {
-  const url = '/authing/user/permission';
+  const url = '/oneid/user/permission';
   const { token } = getUserAuth();
   return request
     .get(url, {
@@ -28,7 +28,7 @@ export function queryCourse(params: object) {
  * 获取idtoken用于退出
  */
 export function queryIDToken() {
-  const url = '/authing/logout';
+  const url = '/oneid/logout';
   const { token } = getUserAuth();
   return request
     .get(url, {
