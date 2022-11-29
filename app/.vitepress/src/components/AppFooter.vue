@@ -5,43 +5,43 @@ import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
 import { useCommon } from '@/stores/common';
 
-import LogoFooter from '@/assets/footer/footer-logo2.png';
-import LogoFooter1 from '@/assets/footer-logo1.png';
-import LogoAtom from '@/assets/footer/atom-logo.png';
-import FooterBg from '@/assets/footer/footer-bg.png';
-import FooterBgMo from '@/assets/footer/footer-bg-mo.png';
+import LogoFooter from '@/assets/common/footer/footer-logo2.png';
+import LogoFooter1 from '@/assets/common/footer/footer-logo1.png';
+import LogoAtom from '@/assets/common/footer/atom-logo.png';
+import FooterBg from '@/assets/common/footer/footer-bg.png';
+import FooterBgMo from '@/assets/common/footer/footer-bg-mo.png';
 
 // 中文友情链接
-import LogoBilibili from '@/assets/footer/bilibili.png';
-import LogoInfoq from '@/assets/footer/infoq.png';
-import LogoJuejin from '@/assets/footer/juejin.png';
-import LogoOschina from '@/assets/footer/oschina.png';
-import LogoCsdn from '@/assets/footer/csdn.png';
-import Logo51cto from '@/assets/footer/51cto.png';
+import LogoBilibili from '@/assets/common/footer/bilibili.png';
+import LogoInfoq from '@/assets/common/footer/infoq.png';
+import LogoJuejin from '@/assets/common/footer/juejin.png';
+import LogoOschina from '@/assets/common/footer/oschina.png';
+import LogoCsdn from '@/assets/common/footer/csdn.png';
+import Logo51cto from '@/assets/common/footer/51cto.png';
 
 // 英文、俄文友情链接
-import LogoRedditSquare from '@/assets/footer/reddit-square@2x.png';
-import LogoBilibili2 from '@/assets/footer/bilibili@2x.png';
-import LogoLinkedin from '@/assets/footer/linkedin@2x.png';
-import LogoYoutube from '@/assets/footer/youtube@2x.png';
-import LogoTwitter from '@/assets/footer/twitter@2x.png';
+import LogoRedditSquare from '@/assets/common/footer/reddit-square@2x.png';
+import LogoBilibili2 from '@/assets/common/footer/bilibili@2x.png';
+import LogoLinkedin from '@/assets/common/footer/linkedin@2x.png';
+import LogoYoutube from '@/assets/common/footer/youtube@2x.png';
+import LogoTwitter from '@/assets/common/footer/twitter@2x.png';
 
 // 公众号、小助手
-import CodeTitleXzs from '@/assets/footer/img-xzs.png';
-import CodeTitleGzh from '@/assets/footer/img-gzh.png';
-import CodeImgXzs from '@/assets/footer/code-xzs.png';
-import CodeImgZgz from '@/assets/footer/code-zgz.png';
+import CodeTitleXzs from '@/assets/common/footer/img-xzs.png';
+import CodeTitleGzh from '@/assets/common/footer/img-gzh.png';
+import CodeImgXzs from '@/assets/common/footer/code-xzs.png';
+import CodeImgZgz from '@/assets/common/footer/code-zgz.png';
 
 import IconCancel from '~icons/app/icon-cancel.svg';
 
 // quick-issue
-import QuickIssue_Light from '@/assets/footer/quick-issue_light.png';
-import QuickIssue_Dark from '@/assets/footer/quick-issue_dark.png';
+import QuickIssue_Light from '@/assets/common/footer/quick-issue_light.png';
+import QuickIssue_Dark from '@/assets/common/footer/quick-issue_dark.png';
 
 // 问卷调查
-import Investigation_Light from '@/assets/footer/investigation.png';
-import Investigation_Dark from '@/assets/footer/investigation_dark.png';
-import Close_Light from '@/assets/footer/close.png';
+import Investigation_Light from '@/assets/common/footer/investigation.png';
+import Investigation_Dark from '@/assets/common/footer/investigation_dark.png';
+import Close_Light from '@/assets/common/footer/close.png';
 
 const props = defineProps({
   isCookieTip: {
