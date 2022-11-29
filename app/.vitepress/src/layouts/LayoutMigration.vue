@@ -14,8 +14,8 @@ import IconChevronDown from '~icons/app/icon-chevron-down.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconCatalog from '~icons/mooc/catalog.svg';
 
-import logo_light from '@/assets/logo.png';
-import logo_dark from '@/assets/logo_dark.png';
+import logo_light from '@/assets/common/header/logo.png';
+import logo_dark from '@/assets/common/header/logo_dark.png';
 
 const { lang, frontmatter } = useData();
 const commonStore = useCommon();

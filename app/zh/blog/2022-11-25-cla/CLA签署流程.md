@@ -25,19 +25,19 @@ CLA 是 Contributor License Agreement 的缩写，一般翻译为贡献者许可
 
 ![images](./images/1.jpg)
 
-</center> 选择签署不同的CLA-企业签署
+ <p align=center>选择签署不同的CLA-企业签署</p>
 
 2.2 企业签署人在签署页面点击 签署企业 CLA 按钮进入到签署页面填写签署表单，在填写完公司邮箱后，点击获取验证码后，公司邮箱会受到一封包含验证码的邮件，填写在表单后提交完成签署的第一步。
 
 ![images](./images/2.png)
 
-</center> 企业签署CLA的表单
+ <p align=center>企业签署CLA的表单</p>
 
 2.3 公司邮箱会收到一封带有 PDF 附件的邮件，PDF 的内容包含了之前 2.2 步骤签署的 CLA 内容，请打印 PDF 文件并加盖公司公章。
 
 ![images](./images/3.png)
 
-</center> 企业收到CLA文件签名部分的范本
+ <p align=center>企业收到CLA文件签名部分的范本</p>
 
 2.4 将加盖公章的 CLA 协议文件扫描为 PDF 文件，作为附件回复 2.2 步骤收到的邮件完成企业签署 CLA 。
 
@@ -45,7 +45,7 @@ CLA 是 Contributor License Agreement 的缩写，一般翻译为贡献者许可
 
 ![images](./images/4.png)
 
-</center> 签署成功通知邮件
+ <p align=center> 签署成功通知邮件</p>
 
 #### 3. 企业员工贡献前需要签署员工 CLA 
 
@@ -55,19 +55,19 @@ CLA 是 Contributor License Agreement 的缩写，一般翻译为贡献者许可
 
 ![images](./images/5.jpg)
 
-</center> 选择签署不同的CLA-企业员工签署
+ <p align=center> 选择签署不同的CLA-企业员工签署</p>
 
 3.2 企业员工在签署时应使用企业邮箱签署，在填写完公司邮箱后，点击获取验证码后，公司邮箱会受到一封包含验证码的邮件，填写在表单后提交完成签署。
 
 ![images](./images/6.png)
 
-</center> 企业员工签署CLA表单
+ <p align=center>  企业员工签署CLA表单</p>
 
 3.3 签署后会自动通知该企业的 CLA 贡献系统管理员，由系统管理员确定是否容许该员工是否可以进行贡献。系统管理员部分的工作参考 4.3 章节。
 
 ![images](./images/7.png)
 
-</center> 企业CLA的管理员收到通知邮件的范本
+ <p align=center> 企业CLA的管理员收到通知邮件的范本</p>
 
 #### 4. 企业员工 CLA 贡献管理系统使用说明
 
@@ -75,31 +75,32 @@ CLA 是 Contributor License Agreement 的缩写，一般翻译为贡献者许可
 
 ![images](./images/8.jpg)
 
-</center> 企业员工CLA贡献管理系统登录
+ <p align=center>企业员工CLA贡献管理系统登录</p>
+ 
 
 页面会跳转到包含登录用户名和密码输入表单的登录页面，输入后点登录按钮进入到管理员页面
 
 ![images](./images/9.png)
 
-</center> 企业员工CLA贡献管理系统登录
+<p align=center>企业员工CLA贡献管理系统登录</p>
 
 4.2 超级管理员进入到系统后，需要创建系统管理员来进行管理。超级管理员在 CLA 系统的主要工作是创建和删除系统管理员，当系统管理员被创建后，他的邮箱将受到一封通知邮件。超级管理员和系统管理员两者之间的区别请参考 ***5.1 openEuler 企业员工 CLA 管理系统的超级管理员和系统管理员的区别***
 
 ![images](./images/10.png)
 
-</center> 超级管理员工作界面-创建或者删除系统管理员
+<p align=center>超级管理员工作界面-创建或者删除系统管理员</p>
 
 4.3 系统管理员登录后会看到当前已经签署 CLA 且未激活的员工列表，根据实际情况选择激活员工向 openEuler 社区贡献的权限或者删除员工的贡献请求。
 
 ![images](./images/11.png)
 
-</center>  企业员工未激活列表页面
+<p align=center> 企业员工未激活列表页面</p>
 
 在已经激活的员工列表界面，可以通过点击按钮将员工设为未激活的状态。
 
 ![images](./images/12.png)
 
-</center> 企业员工激活列表页面
+<p align=center> 企业员工激活列表页面</p>
 
 #### 5. openEuler 社区 CLA 系统相关问题
 

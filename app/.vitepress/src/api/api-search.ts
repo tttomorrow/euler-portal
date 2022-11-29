@@ -128,7 +128,7 @@ export function getRelevant(params: any) {
  */
 
 export function getStatistic() {
-  const url = '/api-euler/api/search/statistics?type=openEuler';
+  const url = '/api-omapi/query/all?community=openEuler';
   return request
     .get(url, {
       headers: {

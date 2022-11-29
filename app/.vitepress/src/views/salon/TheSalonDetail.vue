@@ -6,8 +6,8 @@ import AMapLoader from '@amap/amap-jsapi-loader';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppContent from '@/components/AppContent.vue';
 
-import logo_light from '@/assets/logo.png';
-import logo_dark from '@/assets/logo_dark.png';
+import logo_light from '@/assets/common/header/logo.png';
+import logo_dark from '@/assets/common/header/logo_dark.png';
 
 import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 import IconTime from '~icons/app/icon-time.svg';

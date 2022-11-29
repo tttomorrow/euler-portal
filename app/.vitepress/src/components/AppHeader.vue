@@ -10,8 +10,8 @@ import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
 import navFilterConfig from '@/data/common/nav-filter';
 
-import logo_light from '@/assets/logo.svg';
-import logo_dark from '@/assets/logo_dark.svg';
+import logo_light from '@/assets/common/header/logo.svg';
+import logo_dark from '@/assets/common/header/logo_dark.svg';
 
 import IconSearch from '~icons/app/icon-search.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';

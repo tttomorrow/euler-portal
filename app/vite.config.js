@@ -88,9 +88,10 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/mail/, ''),
       },
-      '/query/': {
+      '/api-omapi/': {
         target: 'https://omapi.osinfra.cn/',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-omapi/, ''),
       },
       '/ip-api/': {
         target: 'http://ip-api.com/json/',
