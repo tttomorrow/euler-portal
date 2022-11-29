@@ -1,5 +1,5 @@
-import { queryCourse, queryIDToken } from '../api/api-login';
-import { useCounter } from '../stores/counter';
+import { queryPermission, queryIDToken } from '../api/api-login';
+import { useLogin } from '../stores/login';
 import { storeToRefs } from 'pinia';
 import { AuthenticationClient } from 'authing-js-sdk';
 
@@ -124,8 +124,8 @@ export function tokenFailIndicateLogin() {
  * @callback store 将store返回，使用解构赋值接受
  */
 export function useStoreData() {
-  const counter = useCounter();
-  const stores = storeToRefs(counter);
+  const login = useLogin();
+  const stores = storeToRefs(login);
   return stores;
 }
 
@@ -141,7 +141,7 @@ export function refreshInfo(community = 'openeuler') {
     const { guardAuthClient } = useStoreData();
     // 优先取存储的photo
     guardAuthClient.value = { username, photo };
-    queryCourse({ community }).then((res) => {
+    queryPermission({ community }).then((res) => {
       const { data } = res;
       if (Object.prototype.toString.call(data) === '[object Object]') {
         guardAuthClient.value = data;
@@ -156,7 +156,7 @@ export function isLogined() {
   return new Promise((resolve, reject) => {
     const { token } = getUserAuth();
     if (token) {
-      queryCourse({ community: 'openeuler' })
+      queryPermission({ community: 'openeuler' })
         .then((res) => {
           const { data } = res;
           if (data) {
