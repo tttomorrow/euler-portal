@@ -5,11 +5,15 @@
 import { request } from '@/shared/axios';
 import type { AxiosResponse } from '@/shared/axios';
 import { getUserAuth } from '@/shared/login';
+import { ElMessage } from 'element-plus';
 
 /**
  * 获取授权的相关回调链接
  */
-export function queryCourse(params: object) {
+type queryPermissionParams = {
+  community: string;
+}
+export function queryPermission(params: queryPermissionParams) {
   const url = '/oneid/user/permission';
   const { token } = getUserAuth();
   return request
@@ -21,7 +25,16 @@ export function queryCourse(params: object) {
         token,
       },
     })
-    .then((res: AxiosResponse) => res.data);
+    .then((res: AxiosResponse) => res.data)
+    .catch((err) => {
+      const message = err?.response?.data?.message || ''
+      if (message !== 'token expires') {
+        ElMessage({
+          type: 'error',
+          message: err.message,
+        });
+      }
+    });
 }
 
 /**
@@ -32,9 +45,19 @@ export function queryIDToken() {
   const { token } = getUserAuth();
   return request
     .get(url, {
+      $doException: true,
       headers: {
         token,
       },
     })
-    .then((res: AxiosResponse) => res.data);
+    .then((res: AxiosResponse) => res.data)
+    .catch((err) => {
+      const message = err?.response?.data?.message || ''
+      if (message !== 'token expires') {
+        ElMessage({
+          type: 'error',
+          message: err.message,
+        });
+      }
+    });
 }
