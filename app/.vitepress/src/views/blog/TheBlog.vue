@@ -4,6 +4,7 @@ import { useRouter, useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
 import useWindowResize from '@/components/hooks/useWindowResize';
+import seoConfig from '@/data/common/seo';
 
 import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
@@ -433,6 +434,7 @@ const moblieCurrentChange = (val: string) => {
 </script>
 
 <template>
+  <SeoBox :seo-data="seoConfig[lang]?.blogList" />
   <BannerLevel2
     :background-image="banner"
     background-text="INTERACTION"

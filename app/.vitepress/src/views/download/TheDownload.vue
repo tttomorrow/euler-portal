@@ -4,6 +4,7 @@ import { useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
+import seoConfig from '@/data/common/seo';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import AppContent from '@/components/AppContent.vue';
@@ -169,6 +170,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <SeoBox :seo-data="seoConfig[lang]?.download" />
   <BannerLevel2
     :background-image="banner"
     background-text="DOWNLOAD"
