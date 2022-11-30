@@ -56,6 +56,8 @@ const activeIndex1 = ref(0);
 const activeIndex2 = ref(0);
 const activeIndex3 = ref(0);
 const activeIndex4 = ref(0);
+const activeIndex5 = ref(0);
+const activeIndex6 = ref(0);
 const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const architectureSelect = ref<string[]>([`${all.value}`]);
@@ -75,6 +77,7 @@ const architehture = ref('');
 const cpuName = ref('');
 const typeName = ref('');
 const driveType = ref('');
+const dataSourceList = ref<string[]>(['社区发行版', '商业发行版']);
 
 const filterData = ref<FilterList[]>([
   {
@@ -114,6 +117,7 @@ const queryData: CveQuery = reactive({
   type: '',
   cardType: '',
   lang: `${lang.value}`,
+  dataSource: '',
 });
 
 const tableData = ref<
@@ -170,7 +174,8 @@ const getSoftwareData = (data: CveQuery) => {
 const getBusinessSoftwareData = (data: CveQuery) => {
   try {
     getBusinessSoftwareList(data).then((res: any) => {
-      tableData.value = res.result;
+      total.value = res.result.totalNum;
+      tableData.value = res.result.data;
     });
   } catch (e: any) {
     throw new Error(e);
@@ -215,6 +220,7 @@ const initQueryData = () => {
   queryData.cpu = '';
   queryData.os = '';
   queryData.cardType = '';
+  queryData.dataSource = 'assessment';
 
   searchContent.value = '';
   activeIndex1.value = 0;
@@ -304,6 +310,18 @@ const handleCurrentChange = (val: number) => {
 
 function searchValchange() {
   queryData.keyword = searchContent.value;
+  initData(queryData);
+}
+
+function searchTestOrganization(i: number, item: string) {
+  activeIndex5.value = i;
+  queryData.testOrganization = item === '全部' ? '' : item;
+  initData(queryData);
+}
+
+function searchDataSource(i: number, item: string) {
+  activeIndex6.value = i;
+  queryData.dataSource = item === '商业发行版' ? 'upload' : 'assessment';
   initData(queryData);
 }
 
@@ -788,7 +806,7 @@ onMounted(() => {
         :label="i18n.compatibility.BUSINESS_SOFTWARE"
         name="4"
       >
-        <!-- <OSearch
+        <OSearch
           v-model="searchContent"
           class="o-search"
           @change="searchValchange"
@@ -796,12 +814,13 @@ onMounted(() => {
         <OCard class="filter-card">
           <template #header>
             <div class="card-header">
-              <TagFilter :label="i18n.compatibility.ADAPTIVE" :show="false">
+              <TagFilter :label="i18n.compatibility.DATA_SOURCE" :show="false">
                 <OTag
-                  v-for="(item, index) in osOptions"
+                  v-for="(item, index) in dataSourceList"
                   :key="'tag' + index"
-                  :type="activeIndex === index ? 'primary' : 'text'"
-                  @click="tagClick(index, item)"
+                  checkable
+                  :type="activeIndex6 === index ? 'primary' : 'text'"
+                  @click="searchDataSource(index, item)"
                 >
                   {{ item }}
                 </OTag>
@@ -816,14 +835,14 @@ onMounted(() => {
               <OTag
                 v-for="(item, index) in testOrganizationsLists"
                 :key="'tag' + index"
-                :type="activeIndex1 === index ? 'primary' : 'text'"
-                @click="optionTagClick(index, item)"
+                :type="activeIndex5 === index ? 'primary' : 'text'"
+                @click="searchTestOrganization(index, item)"
               >
                 {{ item }}
               </OTag>
             </TagFilter>
           </div>
-        </OCard> -->
+        </OCard>
         <OTable class="pc-list" :data="tableData" style="width: 100%">
           <OTableColumn
             :label="
@@ -836,6 +855,11 @@ onMounted(() => {
           <OTableColumn
             :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.VERSION"
             prop="productVersion"
+            width="120"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SOFTWARETYPE"
+            prop="type"
             width="120"
           ></OTableColumn>
           <OTableColumn
@@ -853,6 +877,7 @@ onMounted(() => {
             :label="
               i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SERVER_NAME
             "
+            width="120"
           >
             <template #default="scope">
               <div
@@ -915,6 +940,8 @@ onMounted(() => {
           <a href="#" @click="goBackPage">{{
             i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TITLE
           }}</a>
+          <br/>
+          {{ i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TEXT_2 }}
         </p>
       </div>
     </AppContent>
@@ -1419,6 +1446,8 @@ onMounted(() => {
             <a href="#" @click="goBackPage">{{
               i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TITLE
             }}</a>
+            <br/>
+            {{ i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TEXT_2 }}
           </p>
         </el-collapse-item>
       </el-collapse>
