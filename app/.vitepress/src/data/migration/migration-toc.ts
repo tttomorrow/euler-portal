@@ -1,7 +1,7 @@
 export default [
   {
     label: '迁移专区',
-    link: 'portal',
+    link: 'migration',
   },
   {
     label: '背景',

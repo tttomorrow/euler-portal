@@ -72,24 +72,21 @@ const handleItemClick = (link: string) => {
 };
 
 const handleTitleClick = (link: string) => {
-  router.go(`/${lang.value}/migration/${link}/`);
+  link === 'migration'
+    ? router.go(`/${lang.value}/migration/`)
+    : router.go(`/${lang.value}/migration/${link}/`);
 };
 
 const handleNodeClick = (node: any) => {
-  router.go(`/${lang.value}/migration/${node.link}/`);
+  node.link === 'migration'
+    ? router.go(`/${lang.value}/migration/`)
+    : router.go(`/${lang.value}/migration/${node.link}/`);
   toggleMenu(false);
 };
 </script>
 
 <template>
   <DocSideBar v-if="screenWidth > 1100">
-    <!-- <p
-      class="migration-title"
-      :class="{ active: 'portal' === activeId }"
-      @click="handleTitleClick('portal')"
-    >
-      迁移专区
-    </p> -->
     <div class="migration-sidebar-toc">
       <template v-for="(item, index) in tocInfo" :key="item.label">
         <DocSideBarMenu
