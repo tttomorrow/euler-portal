@@ -1,8 +1,13 @@
 <script setup lang="ts">
+import { useData } from 'vitepress';
+import seoConfig from '@/data/common/seo';
 import caseInfo from '@/data/migration/migration-case';
+
+const { lang } = useData();
 </script>
 
 <template>
+  <SeoBox :seo-data="seoConfig[lang]?.migrationCase" />
   <div class="migration-transplantation">
     <p class="migration-transplantation-desc">
       操作系统迁移时，软件也需要同步适配移植，openEuler提供如下这些典型软件移植指南供参考。

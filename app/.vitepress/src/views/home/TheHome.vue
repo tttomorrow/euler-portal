@@ -5,6 +5,7 @@ import AOS from 'aos';
 
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
+import seoConfig from '@/data/common/seo';
 
 import UserCase from './UserCase.vue';
 import CommunityActivity from './CommunityActivity.vue';
@@ -124,6 +125,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <SeoBox :seo-data="seoConfig[lang]?.home" />
   <HomeBanner />
   <AppContent>
     <OContainer data-aos="fade-up" class="home-nav" :level-index="1"

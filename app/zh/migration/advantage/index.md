@@ -13,7 +13,7 @@ custom-layout: true
 ---
 
 <script setup lang="ts">
-  import TheMigrationAdvantage from "@/views/migration/TheMigrationAdvantage.vue"
+  import TheMigrationAdvantage from "@/views/migration/TheMigrationAdvantage.vue";
 </script>
 
 <TheMigrationAdvantage />

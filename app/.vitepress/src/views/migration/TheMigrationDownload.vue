@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import downloadInfo from '@/data/migration/migration-download';
+import { useData } from 'vitepress';
+import seoConfig from '@/data/common/seo';
 
+import downloadInfo from '@/data/migration/migration-download';
 import IconArrowRight from '~icons/app/icon-arrow-right.svg';
+
+const { lang } = useData();
 
 interface LinkItem {
   name: string;
@@ -16,6 +20,7 @@ function handleClick(item: LinkItem) {
 </script>
 
 <template>
+  <SeoBox :seo-data="seoConfig[lang]?.migrationDownload" />
   <div class="migration-download">
     <div class="migration-download-content">
       <div v-for="item in downloadInfo" :key="item.name">

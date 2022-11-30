@@ -1,5 +1,6 @@
 import type { App } from 'vue';
 import { createPinia } from 'pinia';
+import { SeoBox } from '@/components/seo';
 
 import 'aos/dist/aos.css';
 import '@/shared/styles/element-plus/index.scss';
@@ -19,6 +20,7 @@ export default {
       // @ts-ignore
       global.window = {};
     }
+    app.use(SeoBox as any);
     app.use(createPinia());
     app.use(ElementPlus);
     app.use(OpenDesign);

@@ -193,13 +193,7 @@ const handleGo = (path: string) => {
     &-transition {
       max-height: 64px;
       max-width: 36px;
-      margin: auto 64px;
-      @media screen and (max-width: 1410px) {
-        margin: auto 40px;
-      }
-      @media screen and (max-width: 1210px) {
-        margin: auto 20px;
-      }
+      margin: auto 24px;
       @media screen and (max-width: 768px) {
         display: none;
       }
@@ -260,6 +254,7 @@ const handleGo = (path: string) => {
         }
       }
       .title-center {
+        white-space: nowrap;
         justify-content: center;
       }
 
@@ -267,6 +262,9 @@ const handleGo = (path: string) => {
         max-width: 200px;
         max-height: 150px;
         margin: auto;
+        @media screen and (max-width: 1610px) {
+          max-width: 150px;
+        }
         @media screen and (max-width: 1410px) {
           max-width: 120px;
           max-height: 100px;
@@ -303,6 +301,9 @@ const handleGo = (path: string) => {
         font-size: var(--o-font-size-h7);
         font-weight: 500;
         line-height: var(--o-line-height-h8);
+        @media screen and (max-width: 1610px) {
+          font-size: var(--o-font-size-h8);
+        }
         @media screen and (max-width: 768px) {
           margin: 4px 0 0 0;
           font-size: var(--o-font-size-text);

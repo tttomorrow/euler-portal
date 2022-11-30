@@ -22,6 +22,7 @@ rebase example:<br>
 <img src=./pictures/rebase-git.png>
 
 <br>
+
 ### 2.squash merge: 
 扁平化分支合并，将所有的提交合并为一个以PR的title为changelog的新的提交，然后合并到目标分支上.<br>
 squash example: <br>

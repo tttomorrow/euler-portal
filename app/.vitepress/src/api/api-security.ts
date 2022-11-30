@@ -189,14 +189,14 @@ export function getSoftwareList(params: cveQuery) {
  * @name businessSoftwareList
  */
 export function getBusinessSoftwareList(params: cveQuery) {
-  let queryData = {
+  const queryData = {
     pageSize: params['pages'].size,
     pageNo: params['pages'].page,
     testOrganization: params.testOrganization,
     osName: params.os,
     keyword: params.keyword,
     dataSource: new Array(params.dataSource),
-    productType: new Array("软件")
+    productType: new Array('软件'),
   };
   const url = ` /certification/software/communityChecklist`;
   return request

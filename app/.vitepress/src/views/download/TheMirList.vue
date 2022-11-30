@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, Ref, ref } from 'vue';
+import { useData } from 'vitepress';
+
 import { ElMessage } from 'element-plus';
-// TODO:useClipboard
 import { useI18n } from '@/i18n';
+import seoConfig from '@/data/common/seo';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
@@ -36,6 +38,7 @@ interface MirrorMsg {
   area?: boolean;
 }
 
+const { lang } = useData();
 const tableData: Ref<MirrorMsg[]> = ref([]);
 
 const mapData: Ref<MapMsg[]> = ref([]);
@@ -139,6 +142,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <SeoBox :seo-data="seoConfig[lang]?.mirrorList" />
   <BannerLevel2
     :background-image="banner"
     background-text="DOWNLOAD"

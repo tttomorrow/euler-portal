@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
+import seoConfig from '@/data/common/seo';
 
 import advantageInfo from '@/data/migration/migration-advantage';
 const { lang } = useData();
@@ -7,6 +8,7 @@ const { lang } = useData();
 
 <template>
   <div>
+    <SeoBox :seo-data="(seoConfig as any)[lang]?.migrationAdvantage" />
     <div class="advantage-top">{{ advantageInfo.description }}</div>
 
     <div class="advantage-middle">

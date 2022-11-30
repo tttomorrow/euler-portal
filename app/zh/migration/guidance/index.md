@@ -14,7 +14,13 @@ category: migration
 <script setup lang="ts">
   import DocAnchor from '@/components/DocAnchor.vue'
   import IconBook from '~icons/app/icon-book.svg';
+  import { useData } from 'vitepress';
+  import seoConfig from '@/data/common/seo';
+
+  const { lang } = useData();
 </script>
+
+<SeoBox :seo-data="seoConfig[lang]?.migrationBackground" />
 
 <DocAnchor/>
 
