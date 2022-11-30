@@ -211,7 +211,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
 </script>
 
 <template>
-  <div class="footer" :class="{ migration: isMigration }">
+  <footer class="footer" :class="{ migration: isMigration }">
     <!-- 隐私政策 -->
     <div
       v-if="isCookieTip"
@@ -336,7 +336,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
         />
       </a>
     </div>
-  </div>
+  </footer>
 </template>
 
 <style lang="scss" scoped>

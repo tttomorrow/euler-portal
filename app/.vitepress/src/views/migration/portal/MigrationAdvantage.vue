@@ -22,15 +22,10 @@ const handleGo = (path: string) => {
         <div class="advantage">
           <div class="advantage-item">
             <img :src="portalInfo.advantage.cardTopLeft.url" />
-            <div class="item-right">
+            <div class="item-right title-center">
               <p>{{ portalInfo.advantage.cardTopLeft.title01 }}</p>
               <p>{{ portalInfo.advantage.cardTopLeft.title02 }}</p>
-              <span
-                :style="{
-                  color: isDark ? 'var(--o-color-white)' : '',
-                }"
-                >{{ portalInfo.advantage.cardTopLeft.description }}</span
-              >
+              <span>{{ portalInfo.advantage.cardTopLeft.description }}</span>
             </div>
           </div>
           <img
@@ -48,12 +43,7 @@ const handleGo = (path: string) => {
               <p v-show="portalInfo.advantage.cardTopRight.title02 != ''">
                 {{ portalInfo.advantage.cardTopRight.title02 }}
               </p>
-              <span
-                :style="{
-                  color: isDark ? 'var(--o-color-white)' : '',
-                }"
-                >{{ portalInfo.advantage.cardTopRight.description }}</span
-              >
+              <span>{{ portalInfo.advantage.cardTopRight.description }}</span>
             </div>
           </div>
         </div>
@@ -65,7 +55,7 @@ const handleGo = (path: string) => {
               v-for="item in isDark
                 ? portalInfo.advantage.benefit.dark
                 : portalInfo.advantage.benefit.light"
-              :key="item"
+              :key="item.link"
               class="benefit-item"
               @click="handleGo(item.link)"
             >
@@ -226,15 +216,12 @@ const handleGo = (path: string) => {
     &-item {
       display: flex;
       flex-direction: row;
-      justify-items: left;
       @media screen and (max-width: 768px) {
         flex-direction: column;
-        justify-items: center;
       }
       .item-right {
         display: flex;
         flex-direction: column;
-        justify-items: center;
         margin-left: 31px;
         @media screen and (max-width: 1410px) {
           margin: auto 20px;
@@ -257,20 +244,23 @@ const handleGo = (path: string) => {
           }
         }
         span {
+          margin-top: var(--o-spacing-h5);
           font-size: var(--o-font-size-text);
           font-weight: 400;
           text-align: left;
           white-space: pre-line;
-          color: var(--o-color-neutral5);
+          color: var(--o-color-text4);
           line-height: var(--o-line-height-text);
-          margin-top: var(--o-spacing-h5);
           @media screen and (max-width: 768px) {
-            text-align: center;
             margin-top: 4px;
+            text-align: center;
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
           }
         }
+      }
+      .title-center {
+        justify-content: center;
       }
 
       img {
@@ -329,7 +319,8 @@ const handleGo = (path: string) => {
       @media screen and (max-width: 768px) {
         display: flex;
         flex-direction: row;
-        justify-items: center;
+        align-items: center;
+        justify-content: space-around;
         margin: 8px 11px;
       }
       &-column {
@@ -338,16 +329,15 @@ const handleGo = (path: string) => {
           margin: auto;
           width: 90%;
           height: 1px;
-          background: var(--o-color-neutral11);
+          background: var(--o-color-division1);
           margin-top: 12px;
           margin-bottom: 12px;
         }
       }
       .border-box-column {
-        margin: auto;
         height: 157px;
         width: 1px;
-        background: var(--o-color-neutral11);
+        background: var(--o-color-division1);
       }
     }
   }
