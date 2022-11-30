@@ -16,18 +16,27 @@ summary: openEuler 社区仓库PR合入方式指导。
 ### 1.rebase merge:
 变基合并，将所有的提交都合并到目标分支，且在目标仓库的目标分支的changelog中不包含pull request的任何信息.<br>
 rebase example:<br>
-![rebase](https://gitee.com/openeuler/openEuler-portal/raw/master/app/zh/blog/wanghaosq/pictures/rebase.png)
-![rebase-git](https://gitee.com/openeuler/openEuler-portal/raw/master/app/zh/blog/wanghaosq/pictures/rebase-git.png)
+
+<img src=./pictures/rebase.png>
+
+<img src=./pictures/rebase-git.png>
+
 <br>
 ### 2.squash merge: 
 扁平化分支合并，将所有的提交合并为一个以PR的title为changelog的新的提交，然后合并到目标分支上.<br>
 squash example: <br>
-![squash](https://gitee.com/openeuler/openEuler-portal/raw/master/app/zh/blog/wanghaosq/pictures/squash.png)
-![squash-git](https://gitee.com/openeuler/openEuler-portal/raw/master/app/zh/blog/wanghaosq/pictures/squash-git.png)<br>
+
+<img src=./pictures/squash.png>
+
+<img src=./pictures/squash-git.png>
+
 ### 3.default merge: 
 合并分支（默认方式），将所有提交以及新创建一个以PR的title为changelog的提交均合并到目标分支上.
-![default](https://gitee.com/openeuler/openEuler-portal/raw/master/app/zh/blog/wanghaosq/pictures/default.png)
-![default-git](https://gitee.com/openeuler/openEuler-portal/raw/master/app/zh/blog/wanghaosq/pictures/default-git.png)<br>
+
+<img src=./pictures/default.png>
+
+<img src=./pictures/default-git.png>
+
 tips: examples中的测试用例均为有两个提交的PR，测试了三种不同的合入方式<br>
 ## 二、单一仓库文件增加merge_method字段配置方式
 当前Gitee平台对PR的合入方式提供了三种：***merge***， ***rebase merge***， ***squash merge***，***merge***是默认的合入方式，可不用进行单独配置。
