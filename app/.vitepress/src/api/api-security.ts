@@ -189,14 +189,18 @@ export function getSoftwareList(params: cveQuery) {
  * @name businessSoftwareList
  */
 export function getBusinessSoftwareList(params: cveQuery) {
-  const osName = params.os ? `&osName=${params.os}` : '';
-  const testOrganization = params.testOrganization
-    ? `&testOrganization=${params.testOrganization}`
-    : '';
-  const keyword = params.keyword ? `&keyword=${params.keyword}` : '';
-  const url = ` /certification/software/communityChecklist?pageSize=${params.pages.size}&pageNo=${params.pages.page}${testOrganization}${osName}${keyword}`;
+  let queryData = {
+    pageSize: params['pages'].size,
+    pageNo: params['pages'].page,
+    testOrganization: params.testOrganization,
+    osName: params.os,
+    keyword: params.keyword,
+    dataSource: new Array(params.dataSource),
+    productType: new Array("软件")
+  };
+  const url = ` /certification/software/communityChecklist`;
   return request
-    .get(url)
+    .post(url, queryData)
     .then((res: AxiosResponse) => res.data)
     .catch((e: any) => {
       throw new Error(e);

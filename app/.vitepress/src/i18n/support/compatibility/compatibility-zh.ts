@@ -19,6 +19,7 @@ export default {
   LINK: 'link',
   BUSINESS_TESTING_ORGANIZATION: '测试机构',
   EMPTY_SEARCH_RESULT: '未搜索到结果',
+  DATA_SOURCE: '数据来源',
   HARDWARE_TABLE_COLUMN: {
     VENDOR: '硬件厂家',
     MODEL: '硬件型号',
@@ -45,6 +46,7 @@ export default {
   BUSINESS_SOFTWARE_TABLE_COLUMN: {
     ARCHITECTURE: '架构',
     SOFTWARENAME: '软件名称',
+    SOFTWARETYPE: '软件类型',
     VERSION: '版本',
     VENDOR: '厂家名称',
     SYSTEM: '操作系统',
@@ -219,5 +221,6 @@ export default {
     DISCRIPTION_CONTENT:
       'openEuler提供了一系列的工具、文档和操作流程帮助用户进行软件的兼容性技术测评。如果您需要对某款软件展开兼容性测评，可参考下文进行。',
     PROCESS_TITLE: '兼容性技术测评流程',
+    TEXT_2: '商业发行版操作系统的软件兼容数据由对应的操作系统厂商提供，openEuler社区仅做数据展示，相关事宜请咨询操作系统厂商',
   },
 };
