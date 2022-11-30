@@ -4,7 +4,7 @@ import { useCommon } from '@/stores/common';
 
 import AppContext from '@/components/AppContent.vue';
 
-import banner from '@/assets/category/summit/summit2022/banner.png';
+import banner from '@/assets/category/summit/summit2022/banner.jpg';
 import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
@@ -168,6 +168,7 @@ const summitData = {
   }
 
   .content-item {
+    width: 100%;
     @media screen and (max-width: 768px) {
       text-align: center;
     }
@@ -175,6 +176,7 @@ const summitData = {
       display: inline-block;
       width: 100%;
       img {
+        width: 100%;
         @media screen and (max-width: 490px) {
           width: 100%;
         }
