@@ -858,7 +858,9 @@ onMounted(() => {
             width="120"
           ></OTableColumn>
           <OTableColumn
-            :label="i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SOFTWARETYPE"
+            :label="
+              i18n.compatibility.BUSINESS_SOFTWARE_TABLE_COLUMN.SOFTWARETYPE
+            "
             prop="type"
             width="120"
           ></OTableColumn>
@@ -940,7 +942,7 @@ onMounted(() => {
           <a href="#" @click="goBackPage">{{
             i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TITLE
           }}</a>
-          <br/>
+          <br />
           {{ i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TEXT_2 }}
         </p>
       </div>
@@ -1446,7 +1448,7 @@ onMounted(() => {
             <a href="#" @click="goBackPage">{{
               i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TITLE
             }}</a>
-            <br/>
+            <br />
             {{ i18n.compatibility.BUSINESS_SOFTWARE_OEC_DETAIL.TEXT_2 }}
           </p>
         </el-collapse-item>

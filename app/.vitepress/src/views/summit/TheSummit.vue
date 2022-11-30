@@ -158,10 +158,6 @@ const summitData = {
   margin: var(--o-spacing-h2) auto 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  @media screen and (max-width: 1470px) {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 948px;
-  }
   @media screen and (max-width: 968px) {
     grid-template-columns: repeat(1, 1fr);
     max-width: 474px;
