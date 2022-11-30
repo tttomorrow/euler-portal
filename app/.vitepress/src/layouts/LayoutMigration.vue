@@ -14,8 +14,8 @@ import IconChevronDown from '~icons/app/icon-chevron-down.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconCatalog from '~icons/mooc/catalog.svg';
 
-import logo_light from '@/assets/common/header/logo.png';
-import logo_dark from '@/assets/common/header/logo_dark.png';
+import logo_light from '@/assets/logo.png';
+import logo_dark from '@/assets/logo_dark.png';
 
 const { lang, frontmatter } = useData();
 const commonStore = useCommon();
@@ -83,7 +83,13 @@ const handleNodeClick = (node: any) => {
 
 <template>
   <DocSideBar v-if="screenWidth > 1100">
-    <p class="migration-title">迁移专区</p>
+    <p
+      class="migration-title"
+      :class="{ active: 'portal' === activeId }"
+      @click="handleTitleClick('portal')"
+    >
+      迁移专区
+    </p>
     <div class="migration-sidebar-toc">
       <template v-for="item in tocInfo" :key="item.label">
         <DocSideBarMenu
@@ -184,6 +190,26 @@ const handleNodeClick = (node: any) => {
   margin-bottom: var(--o-spacing-h8);
   margin-top: 0;
   color: var(--o-color-white);
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    width: calc(100% - 80px);
+    height: 1px;
+    background-color: var(--o-color-neutral11);
+    content: '';
+    background-color: #ffffff;
+    opacity: 0.1;
+  }
+
+  &:hover {
+    color: #feb32a;
+  }
+
+  &.active {
+    color: #feb32a;
+  }
 }
 
 .migration-sidebar-toc {
