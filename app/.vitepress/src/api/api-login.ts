@@ -12,7 +12,7 @@ import { ElMessage } from 'element-plus';
  */
 type queryPermissionParams = {
   community: string;
-}
+};
 export function queryPermission(params: queryPermissionParams) {
   const url = '/oneid/user/permission';
   const { token } = getUserAuth();
@@ -27,7 +27,7 @@ export function queryPermission(params: queryPermissionParams) {
     })
     .then((res: AxiosResponse) => res.data)
     .catch((err) => {
-      const message = err?.response?.data?.message || ''
+      const message = err?.response?.data?.message || '';
       if (message !== 'token expires') {
         ElMessage({
           type: 'error',
@@ -52,7 +52,7 @@ export function queryIDToken() {
     })
     .then((res: AxiosResponse) => res.data)
     .catch((err) => {
-      const message = err?.response?.data?.message || ''
+      const message = err?.response?.data?.message || '';
       if (message !== 'token expires') {
         ElMessage({
           type: 'error',
