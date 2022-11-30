@@ -41,7 +41,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: '/zh/migration/portal/',
+        link: '/zh/migration/',
         targetTap: 1,
         id: '',
         title: 'openEuler迁移专区全面升级',
@@ -79,7 +79,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: `/zh/migration/portal/`,
+        link: `/zh/migration/`,
         targetTap: 1,
         id: '',
         title: 'Start Porting Now!',
@@ -98,7 +98,7 @@ export default {
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
-        link: `/zh/migration/portal/`,
+        link: `/zh/migration/`,
         id: '',
         targetTap: 1,
         title: 'Start Porting Now!',

@@ -308,7 +308,7 @@ export default {
       IMG_HOVER: migrateHover,
       IMG_DARK: migrateDark,
       IMG_DARK_HOVER: migrateDarkHover,
-      LINK: '/zh/migration/portal/',
+      LINK: '/zh/migration/',
     },
     {
       TITLE: 'Open Source Promotion Plan',

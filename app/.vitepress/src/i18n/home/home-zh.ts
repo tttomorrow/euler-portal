@@ -128,7 +128,7 @@ export default {
       IMG_HOVER: migrateHover,
       IMG_DARK: migrateDark,
       IMG_DARK_HOVER: migrateDarkHover,
-      LINK: 'migration/portal/',
+      LINK: 'migration/',
     },
     {
       TITLE: '开源实习',
