@@ -20,7 +20,7 @@ const isDark = computed(() => (commonStore.theme === 'dark' ? true : false));
           <div class="help-box-tips">
             <div
               v-for="item in portalInfo.help.tips"
-              :key="item"
+              :key="item.link"
               class="tips-context"
             >
               <span
@@ -28,7 +28,9 @@ const isDark = computed(() => (commonStore.theme === 'dark' ? true : false));
                   color: isDark ? 'var(--o-color-white)' : '',
                 }"
                 >{{ item.textLeft
-                }}<a :href="'/' + lang + item.link">{{ item.linkText }}</a
+                }}<a :href="'/' + lang + item.link" target="_blank">{{
+                  item.linkText
+                }}</a
                 >{{ item.textRight }}</span
               >
             </div>

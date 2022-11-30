@@ -18,7 +18,7 @@ const handleGo = (path: string) => {
         <div class="guide-box">
           <a
             v-for="item in portalInfo.guide.list"
-            :key="item"
+            :key="item.link"
             :href="item.link"
             target="_blank"
             class="guide-box-item"

@@ -14,8 +14,8 @@ import IconChevronDown from '~icons/app/icon-chevron-down.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconCatalog from '~icons/mooc/catalog.svg';
 
-import logo_light from '@/assets/logo.png';
-import logo_dark from '@/assets/logo_dark.png';
+import logo_light from '@/assets/common/header/logo.png';
+import logo_dark from '@/assets/common/header/logo_dark.png';
 
 const { lang, frontmatter } = useData();
 const commonStore = useCommon();
@@ -83,15 +83,15 @@ const handleNodeClick = (node: any) => {
 
 <template>
   <DocSideBar v-if="screenWidth > 1100">
-    <p
+    <!-- <p
       class="migration-title"
       :class="{ active: 'portal' === activeId }"
       @click="handleTitleClick('portal')"
     >
       迁移专区
-    </p>
+    </p> -->
     <div class="migration-sidebar-toc">
-      <template v-for="item in tocInfo" :key="item.label">
+      <template v-for="(item, index) in tocInfo" :key="item.label">
         <DocSideBarMenu
           v-if="item && item.children && item.children.length"
           :info="item"
@@ -101,7 +101,10 @@ const handleNodeClick = (node: any) => {
         <p
           v-else
           class="sidebar-title"
-          :class="{ active: item.link === activeId }"
+          :class="[
+            { active: item.link === activeId },
+            index === 0 ? 'migration-title' : '',
+          ]"
           @click="handleTitleClick(item.link)"
         >
           {{ item.label }}
@@ -182,39 +185,10 @@ const handleNodeClick = (node: any) => {
 .guidance {
   max-width: 1132px;
 }
-.migration-title {
-  font-size: var(--o-font-size-h5);
-  line-height: var(--o-line-height-h5);
-  position: fixed;
-  left: 40px;
-  margin-bottom: var(--o-spacing-h8);
-  margin-top: 0;
-  color: var(--o-color-white);
-  cursor: pointer;
-
-  &::before {
-    position: absolute;
-    top: 0;
-    width: calc(100% - 80px);
-    height: 1px;
-    background-color: var(--o-color-neutral11);
-    content: '';
-    background-color: #ffffff;
-    opacity: 0.1;
-  }
-
-  &:hover {
-    color: #feb32a;
-  }
-
-  &.active {
-    color: #feb32a;
-  }
-}
 
 .migration-sidebar-toc {
   height: 100%;
-  margin-top: 40px;
+  margin-top: 24px;
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 0px;
@@ -267,6 +241,17 @@ const handleNodeClick = (node: any) => {
   &.active {
     color: #feb32a;
   }
+}
+
+.migration-title {
+  font-size: var(--o-font-size-h5);
+  line-height: var(--o-line-height-h5);
+  // position: fixed;
+  // left: 40px;
+  // margin-bottom: var(--o-spacing-h8);
+  // margin-top: 0;
+  // color: var(--o-color-white);
+  // cursor: pointer;
 }
 
 .migration-wrapper {

@@ -1,5 +1,9 @@
 export default [
   {
+    label: '迁移专区',
+    link: 'portal',
+  },
+  {
     label: '背景',
     link: 'background',
   },
