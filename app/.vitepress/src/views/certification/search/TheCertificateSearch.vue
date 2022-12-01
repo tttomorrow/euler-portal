@@ -10,7 +10,6 @@ import {
   downloadCard,
 } from '@/api/api-certification';
 
-import successTipImg from '@/assets/category/certification/success-tip.png';
 import IconChevron from '~icons/app/icon-chevron-right.svg';
 import IconRequired from '~icons/app/icon-required.svg';
 
@@ -20,10 +19,19 @@ import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
 import OInput from 'opendesign/input/OInput.vue';
 import AppContent from '@/components/AppContent.vue';
 
+import hcia from '@/assets/category/certification/hcia.png';
+import hcie from '@/assets/category/certification/hcie.png';
+import hcip from '@/assets/category/certification/hcip.png';
+
 const i18n = useI18n();
 const { lang } = useData();
 const commonStore = useCommon();
 
+const imgList: any = {
+  OECA: hcia,
+  OECP: hcip,
+  OECE: hcie,
+};
 const language = computed(() =>
   lang.value === 'zh' ? 'zh_CN' : lang.value === 'en' ? 'en_US' : 'ru_RU'
 );
@@ -163,9 +171,6 @@ function goBackPage() {
 function clickChoose(index: number) {
   chooseList.value[index] = !chooseList.value[index];
 }
-// 下载事件处理
-// 是否下载成功
-const downTip = ref(false);
 // 判断下载链接是否失效
 const disabledTip = ref('');
 function download(paString: string) {
@@ -199,7 +204,6 @@ function download(paString: string) {
         document.body.appendChild(downloadElement);
         downloadElement.click();
         document.body.removeChild(downloadElement);
-        downTip.value = true;
       } else {
         disabledTip.value = res.message;
       }
@@ -228,10 +232,6 @@ function clickDownload() {
       existChoose.value = false;
     }, 500);
   }
-}
-// 点击关闭弹出的蒙层
-function clickPopover() {
-  downTip.value = false;
 }
 </script>
 
@@ -330,7 +330,7 @@ function clickPopover() {
           >
             <div class="choose-img"></div>
             <div class="item-img">
-              <img :src="'/' + item.iconUrl" alt="" />
+              <img :src="imgList[item.title[0]]" alt="" />
             </div>
             <div class="item-text">
               <p class="title">{{ item.title[0] }}</p>
@@ -351,11 +351,6 @@ function clickPopover() {
         </p>
       </div>
     </div>
-    <transition name="tip">
-      <div v-show="downTip" class="popover" @click="clickPopover">
-        <img :src="successTipImg" alt="" />
-      </div>
-    </transition>
   </AppContent>
 </template>
 
@@ -789,40 +784,5 @@ function clickPopover() {
 }
 .false {
   margin-top: 0;
-}
-.popover {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--o-color-bg6);
-  z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  @media screen and (max-width: 1100px) {
-    align-items: flex-start;
-    padding-top: 20vh;
-  }
-  img {
-    width: 40vw;
-    @media screen and (max-width: 1100px) {
-      width: 80vw;
-    }
-  }
-}
-.tip-enter-from,
-.tip-leave-to {
-  opacity: 0;
-}
-.tip-enter-active,
-.tip-leave-active {
-  transition: all 0.5s;
-}
-.tip-enter-to,
-.tip-leave-from {
-  opacity: 1;
 }
 </style>
