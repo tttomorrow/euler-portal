@@ -92,13 +92,13 @@ export function goToHome() {
   window?.location?.reload();
 }
 
-function createClient(community = 'openeuler', url?: string) {
+function createClient(community = 'openeuler', url = import.meta.env.VITE_LOGIN_ORIGIN) {
   const lang = getLanguage();
   const obj: IObject = {
     openeuler: {
       appId: '62679eab0b22b146d2ea0a3a',
       appHost: 'https://datastat.authing.cn',
-      redirectUri: url || import.meta.env.VITE_LOGIN_ORIGIN,
+      redirectUri: url,
       lang: lang.language,
     },
   };
