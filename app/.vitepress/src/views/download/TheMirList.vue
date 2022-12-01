@@ -152,7 +152,7 @@ onMounted(async () => {
   <AppContent class="mirror-list">
     <p>
       {{ i18n.download.MIRROR_ALL.CONTENT[0] }}
-      <a href="mailto:admin@openeuler.io">
+      <a href="mailto:mirrors@openeuler.sh">
         {{ i18n.download.MIRROR_ALL.CONTENT[1] }}</a
       >.
     </p>
