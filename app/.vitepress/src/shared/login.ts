@@ -14,7 +14,7 @@ const LOGIN_KEYS = {
 function setCookie(cname: string, cvalue: string, isDelete?: boolean) {
   const deleteStr = isDelete ? 'max-age=0; ' : '';
   try {
-    const domain = '.openeuler.org';
+    const domain = import.meta.env.VITE_COOKIE_DOMAIN;
     const expires = `${deleteStr}path=/; domain=${domain}`;
     document.cookie = `${cname}=${cvalue}; ${expires}`;
   } catch {}
@@ -98,7 +98,7 @@ function createClient(community = 'openeuler', url?: string) {
     openeuler: {
       appId: '62679eab0b22b146d2ea0a3a',
       appHost: 'https://datastat.authing.cn',
-      redirectUri: url || 'https://id.openeuler.org/login',
+      redirectUri: url || import.meta.env.VITE_LOGIN_ORIGIN,
       lang: lang.language,
     },
   };
@@ -108,7 +108,7 @@ function createClient(community = 'openeuler', url?: string) {
   return new AuthenticationClient(obj.openeuler);
 }
 export function showGuard() {
-  const origin = 'https://id.openeuler.org';
+  const origin = import.meta.env.VITE_LOGIN_ORIGIN;
   location.href = `${origin}/login?redirect_uri=${location.href}`;
 }
 
