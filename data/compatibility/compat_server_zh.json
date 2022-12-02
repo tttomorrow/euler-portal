@@ -7407,5 +7407,47 @@
       "hostBusAdapter": "AVAGO MR9361-8i",
       "hardDiskDrive": ""
     }
+  },
+  {
+    "hardwareFactory": "浙江大华",
+    "hardwareModel": "EVS51",
+    "osVersion": "openEuler 22.03 LTS",
+    "architecture": "x86_64",
+    "date": "2022/11/30",
+    "friendlyLink": "https://www.dahuatech.com/",
+    "boardCards": [
+      {
+        "vendorID": "8086",
+        "deviceID": "1539",
+        "svID": "8086",
+        "ssID": "0000",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS",
+        "driverName": "igb",
+        "version": "",
+        "type": "NIC",
+        "date": "2022/11/30",
+        "sha256": "7aaf89fad3eae542e505379cef9e6fb9ad65be587f0993f4de63a50ca9b93229",
+        "driverSize": "542KB",
+        "chipVendor": "Intel",
+        "boardModel": "",
+        "chipModel": "i211",
+        "item": "",
+        "downloadLink": "inbox"
+      }
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "https://www.dahuatech.com/product/info/1101.html",
+      "certificationTime": "2022/11/30",
+      "commitID": "I63YQ3",
+      "mainboardModel": "",
+      "biosUefi": "EVS51.T01.00.60",
+      "cpu": "tigerlake",
+      "ram": "12*4G DIMMs ",
+      "portsBusTypes": "PCI Express x1 * 4,PCI Express x4 * 1",
+      "videoAdapter": "Intel Corporation Device 9a78",
+      "hostBusAdapter": "",
+      "hardDiskDrive": "TS128GMTE652T2"
+    }
   }
 ]
