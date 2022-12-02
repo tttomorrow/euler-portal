@@ -15,6 +15,10 @@ import { setStoreData } from './shared/login';
 
 const { frontmatter } = useData();
 
+const isBigEvent = computed(() => {
+  return !!frontmatter.value.bigEvent;
+});
+
 const compMapping: {
   [name: string]: Component;
 } = {
@@ -48,12 +52,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppHeader />
-  <main>
+  <AppHeader :class="{ 'big-event': isBigEvent }" />
+  <main :class="{ 'big-event': isBigEvent }">
     <component :is="comp" v-if="isCustomLayout"></component>
     <Content v-else />
   </main>
-  <AppFooter :is-cookie-tip="isCookieTip" @click-close="clickCookieClose" />
+  <AppFooter
+    :is-cookie-tip="isCookieTip"
+    @click-close="clickCookieClose"
+    :class="{ 'big-event': isBigEvent }"
+  />
 </template>
 
 <style lang="scss" scoped>
