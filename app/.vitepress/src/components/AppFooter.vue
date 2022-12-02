@@ -198,9 +198,9 @@ const quickIssueUrl = computed(() => {
 
 // 点击关闭cookies使用提示
 const { isCookieTip } = toRefs(props);
-const emit2 = defineEmits(['click-close']);
-function clickClose() {
-  emit2('click-close');
+const emits = defineEmits(['cookie-click']);
+function onCookieClick() {
+  emits('cookie-click');
 }
 function clickWindow() {
   isShow.value = false;
@@ -234,7 +234,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
           i18n.common.COOKIE_LEGAL_LINK_TEXT_OTHER
         }}</a>
       </template>
-      <OIcon class="icon" @click="clickClose"><IconCancel /></OIcon>
+      <OIcon class="icon" @click="onCookieClick"><IconCancel /></OIcon>
     </div>
     <AppContent :pc-top="0" :mobile-top="0">
       <div class="atom">
