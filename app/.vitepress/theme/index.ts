@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import { createPinia } from 'pinia';
-import { SeoBox } from '@/components/seo';
+import { SeoBox } from '@/components/seo-box';
 
 import 'aos/dist/aos.css';
 import '@/shared/styles/element-plus/index.scss';

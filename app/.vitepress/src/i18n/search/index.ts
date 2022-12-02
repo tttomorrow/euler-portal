@@ -13,6 +13,7 @@ export default {
     no: '未有',
     version: '版本：',
     relative: '相关软件包',
+    suggest: '您是不是在寻找：',
   },
   en: {
     form: 'from:',

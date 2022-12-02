@@ -17,6 +17,7 @@ import { tokenFailIndicateLogin } from '../login';
 interface RequestConfig<D = any> extends AxiosRequestConfig {
   data?: D;
   $doException?: boolean; // 是否弹出错误提示框
+  $noLoading?: boolean; // 是否出现loading框
   global?: boolean; // 是否为全局请求， 全局请求在清除请求池时，不清除
 }
 
@@ -89,7 +90,7 @@ const requestInterceptorId = request.interceptors.request.use(
         background: 'transparent',
       });
     }
-    loadingCount++;
+    config.$noLoading ? '' : loadingCount++;
     // 存储请求信息
     // request.config = Object.assign({}, config);
     // 定义取消请求

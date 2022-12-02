@@ -84,6 +84,7 @@ export function getSearchRpm(params: any) {
   const url = `/api-euler/api/repo/search`;
   return request
     .get(url, {
+      $noLoading: true,
       headers: {
         authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
       },
