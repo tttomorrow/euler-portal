@@ -15,10 +15,6 @@ import { setStoreData } from './shared/login';
 
 const { frontmatter } = useData();
 
-const isBigEvent = computed(() => {
-  return !!frontmatter.value.bigEvent;
-});
-
 const compMapping: {
   [name: string]: Component;
 } = {
@@ -44,23 +40,11 @@ function clickCookieClose() {
   isCookieTip.value = false;
   localStorage.setItem('euler-cookie', 'false');
 }
+
 onMounted(() => {
   const show = localStorage.getItem('euler-cookie');
   isCookieTip.value = show ? false : true;
   setStoreData();
-  watch(
-    () => {
-      return isBigEvent.value;
-    },
-    (val) => {
-      if (val) {
-        document.getElementsByTagName('html')[0].classList.add('big-event');
-      } else {
-        document.getElementsByTagName('html')[0].classList.remove('big-event');
-      }
-    },
-    { immediate: true }
-  );
 });
 </script>
 
