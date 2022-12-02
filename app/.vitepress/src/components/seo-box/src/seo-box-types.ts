@@ -1,4 +1,4 @@
-import { ExtractDefaultPropTypes, PropType } from 'vue';
+import { PropType } from 'vue';
 
 interface SeoItem {
   level: number;
@@ -11,5 +11,3 @@ export const seoProps = {
     default: [],
   },
 };
-
-export type TimelineProps = ExtractDefaultPropTypes<typeof seoProps>;

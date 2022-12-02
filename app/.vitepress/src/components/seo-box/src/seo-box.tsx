@@ -1,6 +1,6 @@
 import { toRefs, defineComponent, h } from 'vue';
-import { seoProps } from './seo-types';
-import './seo.scss';
+import { seoProps } from './seo-box-types';
+import './seo-box.scss';
 
 export default defineComponent({
   name: 'SeoBox',
