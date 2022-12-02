@@ -9,7 +9,6 @@ import AppContent from '@/components/AppContent.vue';
 
 import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
-import successTipImg from '@/assets/category/certification/success-tip.png';
 const i18n = useI18n();
 const { lang } = useData();
 const commonStore = useCommon();
@@ -22,8 +21,6 @@ const notFoundImg = computed(() =>
 );
 const disabledTip = ref('');
 // 下载事件处理
-// 是否下载成功
-const downTip = ref(false);
 function download(paString: string) {
   downloadCard(paString, language.value)
     .then((res) => {
@@ -55,7 +52,6 @@ function download(paString: string) {
         document.body.appendChild(downloadElement);
         downloadElement.click();
         document.body.removeChild(downloadElement);
-        downTip.value = true;
       } else {
         disabledTip.value = res.message;
       }
@@ -74,10 +70,6 @@ function getQueryString(name: string) {
   }
   return '';
 }
-// 点击关闭弹出的蒙层
-function clickPopover() {
-  downTip.value = false;
-}
 onMounted(() => {
   download(getQueryString('PA'));
 });
@@ -91,11 +83,6 @@ onMounted(() => {
         {{ disabledTip }}
       </p>
     </div>
-    <transition name="tip">
-      <div v-show="downTip" class="popover" @click="clickPopover">
-        <img :src="successTipImg" alt="" />
-      </div>
-    </transition>
   </AppContent>
 </template>
 <style lang="scss" scoped>
@@ -137,40 +124,5 @@ h2 {
       font-size: var(--o-font-size-tip);
     }
   }
-}
-.popover {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--o-color-bg6);
-  z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  @media screen and (max-width: 1100px) {
-    align-items: flex-start;
-    padding-top: 20vh;
-  }
-  img {
-    width: 40vw;
-    @media screen and (max-width: 1100px) {
-      width: 80vw;
-    }
-  }
-}
-.tip-enter-from,
-.tip-leave-to {
-  opacity: 0;
-}
-.tip-enter-active,
-.tip-leave-active {
-  transition: all 0.5s;
-}
-.tip-enter-to,
-.tip-leave-from {
-  opacity: 1;
 }
 </style>

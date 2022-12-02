@@ -91,15 +91,15 @@ const summitData = {
   <AppContext>
     <div class="detail">{{ summitData.detail }}</div>
     <div class="content">
-      <div
+      <a
         v-for="item in summitData.contentList"
         :key="item.link"
         class="content-item"
+        :href="item.link"
+        target="_blank"
       >
-        <a :href="item.link" target="_blank">
-          <img :src="item.img" :alt="item.name" />
-        </a>
-      </div>
+        <img :src="item.img" :alt="item.name" />
+      </a>
     </div>
     <div class="previous">
       <div class="previous-title">
@@ -158,25 +158,25 @@ const summitData = {
   margin: var(--o-spacing-h2) auto 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: var(--o-spacing-h4);
   @media screen and (max-width: 968px) {
     grid-template-columns: repeat(1, 1fr);
     max-width: 474px;
+    gap: var(--o-spacing-h5);
   }
-
   .content-item {
     width: 100%;
-    @media screen and (max-width: 768px) {
-      text-align: center;
-    }
-    a {
-      display: inline-block;
-      width: 100%;
-      img {
-        width: 100%;
-        @media screen and (max-width: 490px) {
-          width: 100%;
-        }
+    display: block;
+    width: 100%;
+    box-shadow: var(--o-shadow-l2);
+    &:hover {
+      box-shadow: var(--o-shadow-l2_hover);
+      @media screen and (max-width: 1100px) {
+        box-shadow: var(--o-shadow-l2);
       }
+    }
+    img {
+      width: 100%;
     }
   }
 }
