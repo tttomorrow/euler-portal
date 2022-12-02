@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
 import type { Component } from 'vue';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
@@ -48,20 +48,29 @@ onMounted(() => {
   const show = localStorage.getItem('euler-cookie');
   isCookieTip.value = show ? false : true;
   setStoreData();
+  watch(
+    () => {
+      return isBigEvent.value;
+    },
+    (val) => {
+      if (val) {
+        document.getElementsByTagName('html')[0].classList.add('big-event');
+      } else {
+        document.getElementsByTagName('html')[0].classList.remove('big-event');
+      }
+    },
+    { immediate: true }
+  );
 });
 </script>
 
 <template>
-  <AppHeader :class="{ 'big-event': isBigEvent }" />
-  <main :class="{ 'big-event': isBigEvent }">
+  <AppHeader />
+  <main>
     <component :is="comp" v-if="isCustomLayout"></component>
     <Content v-else />
   </main>
-  <AppFooter
-    :is-cookie-tip="isCookieTip"
-    @click-close="clickCookieClose"
-    :class="{ 'big-event': isBigEvent }"
-  />
+  <AppFooter :is-cookie-tip="isCookieTip" @click-close="clickCookieClose" />
 </template>
 
 <style lang="scss" scoped>
