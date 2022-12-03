@@ -198,9 +198,9 @@ const quickIssueUrl = computed(() => {
 
 // 点击关闭cookies使用提示
 const { isCookieTip } = toRefs(props);
-const emits = defineEmits(['cookie-click']);
+const emits = defineEmits(['click-cookie']);
 function onCookieClick() {
-  emits('cookie-click');
+  emits('click-cookie');
 }
 function clickWindow() {
   isShow.value = false;

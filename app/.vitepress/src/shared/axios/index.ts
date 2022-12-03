@@ -90,7 +90,7 @@ const requestInterceptorId = request.interceptors.request.use(
         background: 'transparent',
       });
     }
-    config.$noLoading ? '' : loadingCount++;
+    (config as RequestConfig).$noLoading ? '' : loadingCount++;
     // 存储请求信息
     // request.config = Object.assign({}, config);
     // 定义取消请求
@@ -121,12 +121,13 @@ const requestInterceptorId = request.interceptors.request.use(
  */
 const responseInterceptorId = request.interceptors.response.use(
   (response: AxiosResponse) => {
-    loadingCount--;
+    const { config } = response;
+    (config as RequestConfig).$noLoading ? '' : loadingCount--;
+
     if (loadingCount === 0 && loadingInstance) {
       loadingInstance.close();
       loadingInstance = null;
     }
-    const { config } = response;
     // 请求完成，移除请求池
     if (config.url) {
       pendingPool.delete(config.url);
