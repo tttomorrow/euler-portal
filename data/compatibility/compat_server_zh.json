@@ -1,7 +1,7 @@
 [
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 2280E)",
+    "hardwareModel": "TaiShan 200 2280E",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "aarch64",
     "date": "2020/12/04",
@@ -119,7 +119,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 2280E)",
+    "hardwareModel": "TaiShan 200 2280E",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/12/04",
@@ -237,7 +237,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "Fusionserver 2288H V5",
+    "hardwareModel": "2288H V5",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2020/12/21",
@@ -298,7 +298,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "Fusionserver 2288H V5",
+    "hardwareModel": "2288H V5",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "x86_64",
     "date": "2020/12/21",
@@ -359,7 +359,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 2280)",
+    "hardwareModel": "TaiShan 200 2280",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/11/26",
@@ -496,7 +496,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器 (型号 5280)(VE)",
+    "hardwareModel": "TaiShan 200 5280 VE",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/11/26",
@@ -633,7 +633,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 1280)",
+    "hardwareModel": "TaiShan 200 1280",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/08/17",
@@ -694,7 +694,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 2180)",
+    "hardwareModel": "TaiShan 200 2180",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/04/27",
@@ -755,7 +755,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 2280)",
+    "hardwareModel": "TaiShan 200 2280",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "aarch64",
     "date": "2020/03/28",
@@ -873,7 +873,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 5280)",
+    "hardwareModel": "TaiShan 200 5280",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "aarch64",
     "date": "2020/04/29",
@@ -934,7 +934,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200K 服务器(型号 2180K)",
+    "hardwareModel": "TaiShan 200K 2180K",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/04/27",
@@ -995,7 +995,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200K 服务器(型号 2280K)",
+    "hardwareModel": "TaiShan 200K 2280K",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/04/27",
@@ -1056,7 +1056,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200K 服务器(型号 5280K)",
+    "hardwareModel": "TaiShan 200K 5280K",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/10/28",
@@ -1117,7 +1117,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200K 服务器(型号 5290K)",
+    "hardwareModel": "TaiShan 200K 5290K",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/06/17",
@@ -1159,7 +1159,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 1288H V5",
+    "hardwareModel": "1288H V5",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "x86_64",
     "date": "2021/02/04",
@@ -1220,7 +1220,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 2288C V5",
+    "hardwareModel": "2288C V5",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "x86_64",
     "date": "2020/11/16",
@@ -1262,7 +1262,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 2488H V5",
+    "hardwareModel": "2488H V5",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "x86_64",
     "date": "2021/01/18",
@@ -1304,7 +1304,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 2488H V6",
+    "hardwareModel": "2488H V6",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "x86_64",
     "date": "2020/11/26",
@@ -1346,7 +1346,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 5288 V5",
+    "hardwareModel": "5288 V5",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "x86_64",
     "date": "2021/02/04",
@@ -1388,7 +1388,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 5885H V5",
+    "hardwareModel": "5885H V5",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "x86_64",
     "date": "2021/02/04",
@@ -1430,7 +1430,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 1288H V5",
+    "hardwareModel": "1288H V5",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2021/03/03",
@@ -1491,7 +1491,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 2288C V5",
+    "hardwareModel": "2288C V5",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2021/03/03",
@@ -1533,7 +1533,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 2488H V5",
+    "hardwareModel": "2488H V5",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2021/02/04",
@@ -1575,7 +1575,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 5288 V5",
+    "hardwareModel": "5288 V5",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2021/03/03",
@@ -1617,7 +1617,7 @@
   },
   {
     "hardwareFactory": "超聚变",
-    "hardwareModel": "FusionServer 5885H V5",
+    "hardwareModel": "5885H V5",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2021/01/29",
@@ -3763,7 +3763,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 2280)",
+    "hardwareModel": "TaiShan 200 2280",
     "osVersion": "openEuler 20.03 LTS SP3",
     "architecture": "aarch64",
     "date": "2021/12/13",
@@ -3824,7 +3824,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 2280)",
+    "hardwareModel": "TaiShan 200 2280",
     "osVersion": "openEuler 22.03 LTS",
     "architecture": "aarch64",
     "date": "2022/03/01",
@@ -4737,7 +4737,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 1280)",
+    "hardwareModel": "TaiShan 200 1280",
     "osVersion": "openEuler 22.03 LTS",
     "architecture": "aarch64",
     "date": "2022/03/01",
@@ -4779,7 +4779,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 5280)",
+    "hardwareModel": "TaiShan 200 5280",
     "osVersion": "openEuler 22.03 LTS",
     "architecture": "aarch64",
     "date": "2022/03/01",
@@ -4821,7 +4821,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 1280)",
+    "hardwareModel": "TaiShan 200 1280",
     "osVersion": "openEuler 20.03 LTS SP3",
     "architecture": "aarch64",
     "date": "2021/12/13",
@@ -4863,7 +4863,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 5280)",
+    "hardwareModel": "TaiShan 200 5280",
     "osVersion": "openEuler 20.03 LTS SP3",
     "architecture": "aarch64",
     "date": "2021/12/13",
@@ -4905,7 +4905,7 @@
   },
   {
     "hardwareFactory": "华为",
-    "hardwareModel": "TaiShan 200 服务器(型号 1280)",
+    "hardwareModel": "TaiShan 200 1280",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "aarch64",
     "date": "2020/12/04",
