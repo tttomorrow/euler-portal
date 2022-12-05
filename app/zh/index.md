@@ -8,7 +8,6 @@ head:
   # - - meta
   #   - name: keywords
   #     content: openEuler,开源Linux系统,linux开源社区,开源社区,Linux迁移,EulerOS
-bigEvent: true
 ---
 
 <script setup lang="ts">
