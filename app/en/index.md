@@ -1,6 +1,5 @@
 ---
 title: 'openEuler'
-bigEvent: true
 ---
 
 <script setup lang="ts">
