@@ -16,14 +16,14 @@ const debounceEvent = _.throttle(goAnchor, 300, {
 function goAnchor() {
   const scrollTop =
     document.body.scrollTop || document.documentElement.scrollTop;
-  anchorList.value = document.querySelectorAll('.migration-content h2');
+  anchorList.value = document.querySelectorAll('.migration-content  h2');
 
   const topArr: number[] = [];
-
-  anchorList.value.forEach((item: HTMLElement) => {
-    topArr.push(item.offsetTop + item.clientHeight);
+  anchorList.value = Array.from(anchorList.value).filter((item: any) => {
+    return item.className !== 'for-seo'
+      ? topArr.push(item.offsetTop + item.clientHeight)
+      : '';
   });
-
   for (let i = 0; i < topArr.length; i++) {
     if (scrollTop - 100 <= topArr[i]) {
       activeIndex.value = i;
