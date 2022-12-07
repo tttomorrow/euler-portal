@@ -231,9 +231,9 @@ onMounted(() => {
           <li
             v-for="suggest in suggestList"
             :key="suggest"
-            v-html="suggest"
             class="suggest"
             @click="handleSelect(suggest)"
+            v-html="suggest"
           ></li>
         </ul>
       </div>

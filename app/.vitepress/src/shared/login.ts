@@ -92,7 +92,10 @@ export function goToHome() {
   window?.location?.reload();
 }
 
-function createClient(community = 'openeuler', url = import.meta.env.VITE_LOGIN_ORIGIN) {
+function createClient(
+  community = 'openeuler',
+  url = import.meta.env.VITE_LOGIN_ORIGIN
+) {
   const lang = getLanguage();
   const obj: IObject = {
     openeuler: {

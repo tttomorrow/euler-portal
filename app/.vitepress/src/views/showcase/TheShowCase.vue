@@ -212,6 +212,7 @@ onMounted(() => {
       v-model="keyWord"
       class="search"
       :placeholder="userCaseData.placeHolder"
+      :clearable="true"
       @change="searchCase"
     ></OSearch>
     <div class="tag-box" :class="isTopNavMo ? 'tag-top' : ''">
@@ -262,6 +263,7 @@ onMounted(() => {
         </div>
         <div class="card-type-img">
           <img :src="item.img" alt="" />
+          <p class="type">{{ item.industry }}</p>
         </div>
       </OCard>
     </div>
@@ -369,7 +371,7 @@ onMounted(() => {
     }
   }
   .case-number {
-    margin-top: var(--o-spacing-h2);
+    margin-top: var(--o-spacing-h4);
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
     color: var(--o-color-text1);
@@ -464,6 +466,12 @@ onMounted(() => {
             width: 80px;
             height: 80px;
           }
+        }
+        .type {
+          text-align: center;
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+          color: #ad9cd3;
         }
       }
     }
