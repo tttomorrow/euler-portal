@@ -568,7 +568,7 @@ const moblieCurrentChange = (val: string) => {
                   {{ item.archives }}
                 </p>
               </div>
-              <div class="infodetail">
+              <div v-if="false" class="infodetail">
                 <OIcon class="icon"><IconBrowse /></OIcon>
                 <p>
                   {{ userCaseData.BROWSE }}{{ item.views
