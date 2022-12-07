@@ -35,7 +35,7 @@ const comp = computed(() => {
 });
 
 // cookies使用提示
-const isCookieTip = ref(true);
+const isCookieTip = ref(false);
 function handleClickCookie() {
   isCookieTip.value = false;
   localStorage.setItem('euler-cookie', 'false');
