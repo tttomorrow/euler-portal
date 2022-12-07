@@ -1,33 +1,20 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { useI18n } from '@/i18n';
 
 import BannerLevel3 from '@/components/BannerLevel3.vue';
-import BreadCrumbs from '@/components/BreadCrumbs.vue';
 
-const { frontmatter, lang } = useData();
-const i18n = useI18n();
-const blogInfo = {
-  link: `/${lang.value}/showcase/`,
-  name: i18n.value.showcase.bannerTitle,
-};
+import banner from '@/assets/category/showcase/case-detail-bg.jpg';
+
+const { frontmatter } = useData();
 </script>
 
 <template>
   <div class="layout">
     <BannerLevel3
-      v-if="frontmatter.banner"
-      :background-image="frontmatter.banner"
+      :background-image="banner"
       :title="frontmatter.title"
-      :subtitle="frontmatter.subtitle"
+      :subtitle="frontmatter.summary"
     />
-    <div class="bread">
-      <BreadCrumbs
-        :bread1="blogInfo.name"
-        :bread2="frontmatter.title"
-        :link1="blogInfo.link"
-      />
-    </div>
     <Content class="markdown" />
   </div>
 </template>
@@ -41,6 +28,15 @@ const blogInfo = {
       width: 100%;
     }
   }
+}
+:deep(.banner-level3) {
+  .wrap .banner-text {
+    width: 100%;
+  }
+}
+
+:deep(h2:nth-of-type(1)) {
+  margin-top: 0;
 }
 .bread {
   padding-top: 40px;

@@ -319,11 +319,9 @@ const handleNodeClick = (node: any) => {
   :deep(.el-tree-node__expand-icon.expanded) {
     transform: rotate(180deg);
   }
-  :deep(
-      .el-tree--highlight-current
-        .el-tree-node.is-current
-        > .el-tree-node__content
-    ) {
+  :deep(.el-tree--highlight-current
+      .el-tree-node.is-current
+      > .el-tree-node__content) {
     background-color: var(--o-color-bg4);
   }
   // :deep(.el-tree-node:nth-of-type(1)
@@ -337,11 +335,9 @@ const handleNodeClick = (node: any) => {
   :deep(.el-tree-node__children .is-current .el-tree-node__label) {
     color: var(--o-color-brand1);
   }
-  :deep(
-      .el-tree--highlight-current
-        .el-tree-node.is-current
-        > .el-tree-node__content
-    ) {
+  :deep(.el-tree--highlight-current
+      .el-tree-node.is-current
+      > .el-tree-node__content) {
     background-color: transparent;
   }
   :deep(.el-tree-node__children) {
