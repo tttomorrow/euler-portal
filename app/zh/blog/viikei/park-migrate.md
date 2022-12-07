@@ -1,5 +1,3 @@
----
-
 title: "软通动力助力某园区解决方案完成CentOS项目迁移"
 date: 2022-12-07
 category: blog
@@ -10,12 +8,6 @@ sig: sig-Compatibility-Infra
 archives: 2022-12
 author: viikei
 summary: "详细介绍了软通动力将某园区解决方案从CentOS迁移到openEuler操作系统的整体迁移流程。"
-
----
-
-# 软通动力助力某园区解决方案完成CentOS项目迁移
-
-
 
 ## 迁移背景
 
