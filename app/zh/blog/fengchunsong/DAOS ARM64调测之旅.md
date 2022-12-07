@@ -1,12 +1,12 @@
 ---
 title: DAOS ARM64调测之旅
 category: blog 
-date: 
+date: 2022-06-27
 tags:
-    - 
-archives: 
-author: 
-summary: 
+    - DAOS
+archives: 2022-06
+author:  fengchunsong
+summary:  从IO500榜单上了解到，前10名有一半是DAOS，这是什么样一款存储软件，能如此优秀？从HDD到SSD，仅仅是性能提升、延迟降低，从SSD到SCM，不仅仅是性能提升，还支持按字节事务性访问，异常后回滚。SCM不带DMA，访问过程消耗大量的CPU资源，从软件架构上优化，就是想办法减少拷贝过程，诞生了RDMA零拷贝；从硬件上优化，intel推出了DSA加速器。DAOS+SCM新架构值得在ARM64上尝试。
 ---
 
 ## 背景概述

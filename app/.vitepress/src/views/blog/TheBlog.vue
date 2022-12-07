@@ -16,11 +16,11 @@ import banner from '@/assets/banner/banner-interaction.png';
 import blogIllustration from '@/assets/illustrations/blog.png';
 import IconCalendar from '~icons/app/icon-calendar.svg';
 import IconUser from '~icons/app/icon-user.svg';
-// import IconBrowse from '~icons/app/icon-browse.svg';
+import IconBrowse from '~icons/app/icon-browse.svg';
 import IconRight from '~icons/app/icon-arrow-right.svg';
 import IconSearch from '~icons/app/icon-search.svg';
 
-import { getSortData, getTagsData } from '@/api/api-search';
+import { getTagsData, sortBlogData } from '@/api/api-search';
 
 interface BlogData {
   archives: string;
@@ -36,6 +36,7 @@ interface BlogData {
   textContent: string;
   title: string;
   type: string;
+  views: number;
 }
 
 interface ParamsType {
@@ -144,7 +145,7 @@ const getTagsList = () => {
 };
 // 获取列表数据
 const getListData = (params: ParamsType) => {
-  getSortData(params)
+  sortBlogData(params)
     .then((res) => {
       if (res.obj.count === 0) {
         isShowData.value = false;
@@ -567,11 +568,13 @@ const moblieCurrentChange = (val: string) => {
                   {{ item.archives }}
                 </p>
               </div>
-              <!-- <div class="infodetail">
-              <OIcon class="icon"><IconBrowse /></OIcon>
-              <p>{{userCaseData.BROWSE}}{{ item.browsetimes }}{{userCaseData.TIMES}}</p>
-              <p>{{ userCaseData.BROWSE }}10{{ userCaseData.TIMES }}</p>
-            </div> -->
+              <div class="infodetail">
+                <OIcon class="icon"><IconBrowse /></OIcon>
+                <p>
+                  {{ userCaseData.BROWSE }}{{ item.views
+                  }}{{ userCaseData.TIMES }}
+                </p>
+              </div>
             </div>
             <div class="blog-list-item-content">
               <p>{{ item.summary }}</p>
