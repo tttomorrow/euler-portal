@@ -1,3 +1,18 @@
+---
+
+title: "软通动力助力某园区解决方案完成CentOS项目迁移"
+date: 2022-12-07
+category: blog
+tags:
+​    - 园区解决方案迁移实践案例
+​    - 重装迁移
+sig: sig-Compatibility-Infra
+archives: 2022-12
+author: viikei
+summary: "详细介绍了软通动力将某园区解决方案从CentOS迁移到openEuler操作系统的整体迁移流程。"
+
+---
+
 # 软通动力助力某园区解决方案完成CentOS项目迁移
 
 
@@ -87,7 +102,7 @@
 
 根据客户长期诉求和整体调研信息，本次的迁移方案采用重装替换，包括操作系统跨架构替换和业务软件的适配重装，并将原有业务数据恢复至新装系统。
 
-![image-20220914111347393](.\images\park-migrate-1.png)
+![image-20220914111347393](./images/park-migrate-1.png)
 
 
 
@@ -127,11 +142,11 @@
 
 
 
-![park-migrate-5](.\images\park-migrate-5.png)
+![park-migrate-5](./images/park-migrate-5.png)
 
-![park-migrate-6](.\images\park-migrate-6.png)
+![park-migrate-6](./images/park-migrate-6.png)
 
-![park-migrate-7](.\images\park-migrate-7.png)
+![park-migrate-7](./images/park-migrate-7.png)
 
 
 
@@ -159,9 +174,9 @@
 
 ## 业务上线
 
-![park-migrate-3](.\images\park-migrate-3.png)
+![park-migrate-3](./images/park-migrate-3.png)
 
-![image-20221205190231472](.\images\park-migrate-4.png)
+![image-20221205190231472](./images/park-migrate-4.png)
 
 
 
@@ -171,7 +186,7 @@
 
 软通动力助力某园区解决方案迁移成功后，业务系统运行稳定，稳定性方面和原有系统无明显差异，但在性能和部署时间上有所提升，完全满足江苏南京某社区的迁移后使用要求，本次迁移的成功为后续多个行业的核心业务迁移积累了丰富的宝贵经验。
 
-![image-20220914161956197](.\images\park-migrate-2.png)
+![image-20220914161956197](./images/park-migrate-2.png)
 
 **奋而敢为，软通助力。未来，软通动力将在数字化赋能过程中以服务客户为本，质量至上的原则服务于基础设施，助力更多的企业快速数字化转型和业务拓展。**
 
