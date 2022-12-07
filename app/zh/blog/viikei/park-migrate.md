@@ -4,8 +4,8 @@ title: "软通动力助力某园区解决方案完成CentOS项目迁移"
 date: 2022-12-07
 category: blog
 tags:
-​    - 园区解决方案迁移实践案例
-​    - 重装迁移
+  - 园区解决方案迁移实践案例
+  - 重装迁移
 sig: sig-Compatibility-Infra
 archives: 2022-12
 author: viikei
