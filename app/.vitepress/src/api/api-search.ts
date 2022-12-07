@@ -58,6 +58,11 @@ export function getSortData(params: SortParams) {
   return request.post(url, params).then((res: AxiosResponse) => res.data);
 }
 
+export function sortBlogData(params: SortParams) {
+  const url = '/api-search/search/sort/blog';
+  return request.post(url, params).then((res: AxiosResponse) => res.data);
+}
+
 export function getTagsData(params: TagsParams) {
   const url = '/api-search/search/tags';
   return request.post(url, params).then((res: AxiosResponse) => res.data);
@@ -85,6 +90,7 @@ export function getSearchRpm(params: any) {
   return request
     .get(url, {
       $noLoading: true,
+      $doException: true,
       headers: {
         authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
       },

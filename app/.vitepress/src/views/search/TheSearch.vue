@@ -512,6 +512,15 @@ onMounted(() => {
               font-size: var(--o-font-size-text);
               line-height: var(--o-line-height-text);
               color: var(--o-color-text1);
+              height: 110px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-overflow: -webkit-ellipsis-lastline;
+              display: -webkit-box;
+              -webkit-line-clamp: 5;
+              line-clamp: 5;
+              -webkit-box-orient: vertical;
+
               :deep(span) {
                 color: var(--o-color-brand1);
               }
