@@ -20,7 +20,7 @@ const landscapeInfo = ref<GroupInfo[]>([]);
 
 onMounted(async () => {
   try {
-    landscapeInfo.value = await getSigLandscape();
+    landscapeInfo.value = await getSigLandscape(language.value);
   } catch (err: any) {
     throw new Error(err);
   }
