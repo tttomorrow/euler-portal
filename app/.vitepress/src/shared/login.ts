@@ -8,7 +8,6 @@ interface IObject<T = any> {
 }
 const LOGIN_KEYS = {
   USER_TOKEN: '_U_T_',
-  USER_INFO: '_U_I_',
 };
 
 function setCookie(cname: string, cvalue: string, isDelete?: boolean) {
@@ -40,35 +39,22 @@ function deleteCookie(cname: string) {
 }
 
 // 存储用户id及token，用于下次登录
-export function saveUserAuth(code = '', photo = '', username = '') {
+export function saveUserAuth(code = '') {
   if (!code) {
     deleteCookie(LOGIN_KEYS.USER_TOKEN);
-    deleteCookie(LOGIN_KEYS.USER_INFO);
   } else {
-    const str = JSON.stringify({ photo, username });
     setCookie(LOGIN_KEYS.USER_TOKEN, code);
-    setCookie(LOGIN_KEYS.USER_INFO, str);
   }
 }
 
 // 获取用户id及token
 export function getUserAuth() {
   const token = getCookie(LOGIN_KEYS.USER_TOKEN) || '';
-  const str = getCookie(LOGIN_KEYS.USER_INFO) || '';
-  let obj: IObject = {};
-  try {
-    obj = JSON.parse(str);
-  } catch {
-    obj = {};
-  }
-  const { photo = '', username = '' } = obj;
   if (!token) {
     saveUserAuth();
   }
   return {
     token,
-    photo,
-    username,
   };
 }
 
@@ -139,16 +125,14 @@ export function setStoreData(community = 'openeuler') {
 
 // 刷新后重新请求登录用户信息
 export function refreshInfo(community = 'openeuler') {
-  const { token, username, photo } = getUserAuth();
+  const { token } = getUserAuth();
   if (token) {
     const { guardAuthClient } = useStoreData();
-    // 优先取存储的photo
-    guardAuthClient.value = { username, photo };
     queryPermission({ community }).then((res) => {
       const { data } = res;
       if (Object.prototype.toString.call(data) === '[object Object]') {
         guardAuthClient.value = data;
-        saveUserAuth(token, data.photo, data.username);
+        saveUserAuth(token);
       }
     });
   }
