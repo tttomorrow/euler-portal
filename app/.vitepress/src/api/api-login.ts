@@ -28,7 +28,7 @@ export function queryPermission(params: queryPermissionParams) {
     .then((res: AxiosResponse) => res.data)
     .catch((err) => {
       const message = err?.response?.data?.message || '';
-      if (message !== 'token expires') {
+      if (message && message !== 'token expires') {
         ElMessage({
           type: 'error',
           message: err.message,
@@ -53,7 +53,7 @@ export function queryIDToken() {
     .then((res: AxiosResponse) => res.data)
     .catch((err) => {
       const message = err?.response?.data?.message || '';
-      if (message !== 'token expires') {
+      if (message && message !== 'token expires') {
         ElMessage({
           type: 'error',
           message: err.message,
