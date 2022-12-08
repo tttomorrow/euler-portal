@@ -14,7 +14,7 @@ type queryPermissionParams = {
   community: string;
 };
 export function queryPermission(params: queryPermissionParams) {
-  const url = '/api-omapi/user/permission';
+  const url = '/api-omapi/oneid/user/permission';
   const { token } = getUserAuth();
   return request
     .get(url, {
@@ -41,7 +41,7 @@ export function queryPermission(params: queryPermissionParams) {
  * 获取idtoken用于退出
  */
 export function queryIDToken() {
-  const url = '/api-omapi/logout';
+  const url = '/api-omapi/oneid/logout';
   const { token } = getUserAuth();
   return request
     .get(url, {
