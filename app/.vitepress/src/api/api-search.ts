@@ -86,7 +86,7 @@ export function getSearchCount(params: any) {
     });
 }
 export function getSearchRpm(params: any) {
-  const url = `/api-euler/api/repo/search`;
+  const url = '/api-node/repo/search';
   return request
     .get(url, {
       $noLoading: true,
