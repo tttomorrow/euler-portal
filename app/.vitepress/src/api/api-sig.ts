@@ -6,7 +6,7 @@ interface LIST_PARAMS {
   pageSize: number;
 }
 export function getSigList() {
-  const url = `/api-euler/api-sig/sigs/`;
+  const url = `/api/meetings/sigs/`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 export function getCompleteList(params?: LIST_PARAMS) {
@@ -34,7 +34,7 @@ export function getSigRepositoryList(params: object) {
   return request.get(url, { params }).then((res: AxiosResponse) => res.data);
 }
 export function getSalon() {
-  const url = '/api-euler/api-sig/activities/';
+  const url = '/api/meetings/activities/';
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 

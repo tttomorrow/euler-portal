@@ -46,7 +46,7 @@ export function getActivityData() {
  * @return {Object} 活动数据
  */
 export function getActivityDetail(id: string) {
-  const url = `/api-euler/api-sig/activity/${id}/`;
+  const url = `/api/meetings/activity/${id}/`;
   return request
     .get(url, {})
     .then((res: AxiosResponse) => res.data)

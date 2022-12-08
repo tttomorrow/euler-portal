@@ -526,6 +526,8 @@ onMounted(() => {
               }
               @media (max-width: 768px) {
                 margin-top: 4px;
+                -webkit-line-clamp: 6;
+                line-clamp: 6;
                 font-size: var(--o-font-size-tip);
                 line-height: var(--o-line-height-tip);
                 color: var(--o-color-text4);
