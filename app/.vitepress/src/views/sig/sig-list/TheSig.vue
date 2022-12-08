@@ -12,6 +12,8 @@ import { getSigList } from '@/api/api-sig';
 import banner from '@/assets/banner/banner-sig.png';
 import illustration from '@/assets/illustrations/sig-list.png';
 
+// sig 列表数据 邮件字段采用/api/meetings 接口数据，其余字段采用 omapi
+
 interface SIGLIST {
   group_name: string;
   home_page: string;

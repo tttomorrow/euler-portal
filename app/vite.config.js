@@ -57,15 +57,14 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      '/compatibility': {
+      '/compatibility/': {
         target: 'https://api-proxy.openeuler.isrc.ac.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/compatibility/, ''),
       },
-      '/certification': {
-        target: 'https://openeuler.shanhaitujian.cn/certification',
+      '/certification/': {
+        target: 'https://openeuler.shanhaitujian.cn/',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/certification/, ''),
       },
       '/api-search': {
         target: 'https://doc-search.openeuler.org',
@@ -83,11 +82,6 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-euler/, ''),
       },
-      '/mail': {
-        target: 'https://www.openeuler.org/api/mail',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/mail/, ''),
-      },
       '/api-omapi/': {
         target: 'https://omapi.osinfra.cn/',
         changeOrigin: true,
@@ -102,10 +96,6 @@ export default defineConfig({
         target: 'https://ccs.openeuler.org/ccs/base/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-certification/, ''),
-      },
-      '/oneid/': {
-        target: 'https://omapi.osinfra.cn/',
-        changeOrigin: true,
       },
     },
   },
