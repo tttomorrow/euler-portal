@@ -140,12 +140,12 @@ const responseInterceptorId = request.interceptors.response.use(
       loadingInstance.close();
     }
     const { config } = err;
-    if (!(config as RequestConfig).$doException) {
-      ElMessage({
-        type: 'error',
-        message: err.toString(),
-      });
-    }
+    // if (!(config as RequestConfig).$doException) {
+    //   ElMessage({
+    //     type: 'error',
+    //     message: err.toString(),
+    //   });
+    // }
     // 非取消请求发生异常，同样将请求移除请求池
     if (!axios.isCancel(err) && config.url) {
       pendingPool.delete(config.url);
