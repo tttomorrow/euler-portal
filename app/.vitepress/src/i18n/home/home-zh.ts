@@ -58,6 +58,8 @@ import intewellLogo from '../../assets/category/home/link/intewellLogo.png';
 import intewellLogo_dark from '../../assets/category/home/dark/link/intewellLogo_dark.png';
 import linsiLogo from '../../assets/category/home/link/linsiLogo.png';
 import linsiLogo_dark from '../../assets/category/home/dark/link/linsiLogo_dark.png';
+import ruantongLogo from '../../assets/category/home/link/ruantong_light.png';
+import ruantongLogo_dark from '../../assets/category/home/dark/link/ruantong_dark.png';
 import zhongkechuangdaLogo from '../../assets/category/home/link/zhongkeLogo.png';
 import zhongkechuangdaLogo_dark from '../../assets/category/home/dark/link/zhongkeLogo_dark.png';
 import xfusion from '../../assets/category/home/link/xfusion.png';
@@ -371,6 +373,11 @@ export default {
       LINK: 'http://www.iscas.ac.cn/',
       IMG: iscas,
       IMG_DARK: iscasLogo_dark,
+    },
+    {
+      LINK: 'https://www.isoftstone.com/',
+      IMG: ruantongLogo,
+      IMG_DARK: ruantongLogo_dark,
     },
 
     {
