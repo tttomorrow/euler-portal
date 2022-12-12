@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useCommon } from '@/stores/common';
+import AOS from 'aos';
 
 import AppContext from '@/components/AppContent.vue';
-// import SummitSchedule from './components/SummitSchedule.vue';
+import SummitSchedule from './components/SummitSchedule.vue';
+import LinkPanel from '@/components/LinkPanel.vue';
 
 import banner from '@/assets/category/summit/summit2022/banner.jpg';
 import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
@@ -12,8 +14,32 @@ import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
 import show from '@/assets/category/summit/summit2022/show.png';
 import sponsor from '@/assets/category/summit/summit2022/sponsor.png';
 import topic from '@/assets/category/summit/summit2022/topic.png';
+import atom from '@/assets/category/summit/summit2022/logo/atom.png';
+import atomDark from '@/assets/category/summit/summit2022/logo/atom-dark.png';
+import csia from '@/assets/category/summit/summit2022/logo/csia.png';
+import csiaDark from '@/assets/category/summit/summit2022/logo/csia-dark.png';
+import euler from '@/assets/category/summit/summit2022/logo/euler.png';
+import eulerDark from '@/assets/category/summit/summit2022/logo/euler-dark.png';
+import fusion from '@/assets/category/summit/summit2022/logo/fusion.png';
+import fusionDark from '@/assets/category/summit/summit2022/logo/fusion-dark.png';
+import huawei from '@/assets/category/summit/summit2022/logo/huawei.png';
+import huaweiDark from '@/assets/category/summit/summit2022/logo/huawei-dark.png';
+import iscas from '@/assets/category/summit/summit2022/logo/iscas.png';
+import iscasDark from '@/assets/category/summit/summit2022/logo/iscas-dark.png';
+import kylinsec from '@/assets/category/summit/summit2022/logo/kylinsec.png';
+import kylinsecDark from '@/assets/category/summit/summit2022/logo/kylinsec-dark.png';
+import qilin from '@/assets/category/summit/summit2022/logo/qilin.png';
+import qilinDark from '@/assets/category/summit/summit2022/logo/qilin-dark.png';
+import runhe from '@/assets/category/summit/summit2022/logo/runhe.png';
+import runheDark from '@/assets/category/summit/summit2022/logo/runhe-dark.png';
+import stone from '@/assets/category/summit/summit2022/logo/stone.png';
+import stoneDark from '@/assets/category/summit/summit2022/logo/stone-dark.png';
+import tongxin from '@/assets/category/summit/summit2022/logo/tongxin.png';
+import tongxinDark from '@/assets/category/summit/summit2022/logo/tongxin-dark.png';
+import zhongguan from '@/assets/category/summit/summit2022/logo/zhongguan.png';
+import zhongguanDark from '@/assets/category/summit/summit2022/logo/zhongguan-dark.png';
 
-// import IconTime from '~icons/app/icon-time.svg';
+import IconTime from '~icons/app/icon-time.svg';
 
 const commonStore = useCommon();
 const liveImg = computed(() =>
@@ -59,7 +85,7 @@ const summitData: any = {
               },
               {
                 time: '10:10 - 10:20',
-                desc: 'openEuler十大领先商业实践颁奖',
+                desc: '2022年度openEuler领先商业实践颁奖',
               },
               {
                 time: '10:20 - 10:28',
@@ -82,12 +108,12 @@ const summitData: any = {
                 desc: 'openEuler主题演讲：共创开源新模式 ，共启欧拉新征程',
               },
               {
-                time: '11:05 - 11:25',
-                desc: '操作系统实践案例分享',
+                time: '11:05 - 11:35',
+                desc: 'openEuler用户实践案例分享',
               },
               {
-                time: '11:25 - 11:30',
-                desc: '操作系统人才发展加速计划发布',
+                time: '11:35 - 11:40',
+                desc: 'openEuler&openGauss人才发展加速计划2022年度颁奖',
               },
             ],
           },
@@ -134,27 +160,27 @@ const summitData: any = {
             // time: '上午',
             children: [
               {
-                time: '09:30 - 09:35',
-                desc: '基金会领导致辞',
+                time: '09:30 - 09:40',
+                desc: '领导致辞',
               },
               {
-                time: '09:35 - 09:45',
+                time: '09:40 - 09:50',
                 desc: ' openEuler社区进展主题演讲',
               },
               {
-                time: '09:45 - 09:50',
+                time: '09:50 - 09:55',
                 desc: 'openEuler社区理事会换届升级仪式',
               },
               {
-                time: '09:50 - 10:40',
+                time: '09:55 - 10:40',
                 desc: '技术创新、重磅发布、场景演示',
               },
               {
-                time: '10 :40-11 :25',
+                time: '10:40 - 11:40',
                 desc: 'openEuler商用案例实践分享',
               },
               {
-                time: '11:25 - 11:30',
+                time: '11:40 - 11:45',
                 desc: 'openEuler2022年度开源贡献之星颁奖',
               },
             ],
@@ -273,6 +299,88 @@ const summitData: any = {
       // },
     ],
   },
+  partner: {
+    title: '共建单位',
+    partnerList: [
+      {
+        subTitle: '操作系统产业峰会 2022 主办单位',
+        logoList: [
+          {
+            IMG: atom,
+            IMG_DARK: atomDark,
+          },
+          {
+            IMG: csia,
+            IMG_DARK: csiaDark,
+          },
+          {
+            IMG: zhongguan,
+            IMG_DARK: zhongguanDark,
+          },
+        ],
+      },
+      {
+        subTitle: 'openEuler Summit 2022 主办单位',
+        logoList: [
+          {
+            IMG: atom,
+            IMG_DARK: atomDark,
+          },
+          {
+            IMG: euler,
+            IMG_DARK: eulerDark,
+          },
+        ],
+      },
+      {
+        subTitle: 'openEuler Summit 2022 战略合作单位',
+        logoList: [
+          {
+            IMG: huawei,
+            IMG_DARK: huaweiDark,
+          },
+        ],
+      },
+      {
+        subTitle: 'openEuler Summit 2022 联合主办单位',
+        logoList: [
+          {
+            IMG: qilin,
+            IMG_DARK: qilinDark,
+          },
+          {
+            IMG: tongxin,
+            IMG_DARK: tongxinDark,
+          },
+          {
+            IMG: kylinsec,
+            IMG_DARK: kylinsecDark,
+          },
+          {
+            IMG: fusion,
+            IMG_DARK: fusionDark,
+          },
+        ],
+      },
+      {
+        subTitle: 'openEuler Summit 2022 协办单位',
+        logoList: [
+          {
+            IMG: iscas,
+            IMG_DARK: iscasDark,
+          },
+          {
+            IMG: stone,
+            IMG_DARK: stoneDark,
+          },
+          {
+            IMG: runhe,
+            IMG_DARK: runheDark,
+          },
+        ],
+      },
+    ],
+  },
   previous: {
     title: '精彩回顾',
     list: [
@@ -309,9 +417,17 @@ const summitData: any = {
     ],
   },
 };
-// const tabType = ref(['main', 'main', 'main']);
-// const otherTabType = ref([0, 0, 0]);
+const tabType = ref(['main', 'main', 'main']);
+const otherTabType = ref([0, 0, 0]);
 // const timeContent = ref(0);
+onMounted(() => {
+  AOS.init({
+    offset: 50,
+    duration: 800,
+    delay: 100,
+    once: true,
+  });
+});
 </script>
 <template>
   <div class="banner">
@@ -337,12 +453,13 @@ const summitData: any = {
         <img :src="item.img" :alt="item.name" />
       </a>
     </div>
-    <!-- <div class="agenda">
+    <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
       <div
         v-for="(item, index) in summitData.agenda.meetingList"
         :key="item.daytime"
         class="agenda-item"
+        data-aos="fade-up"
       >
         <h4 class="meetingtitle">
           {{ item.daytime }}
@@ -391,8 +508,24 @@ const summitData: any = {
           </div>
         </OContainer>
       </div>
-    </div> -->
-    <div class="previous">
+    </div>
+    <div class="partner">
+      <h3 class="partner-title">
+        {{ summitData.partner.title }}
+      </h3>
+      <div
+        v-for="item in summitData.partner.partnerList"
+        :key="item.subTitle"
+        class="partner-item"
+      >
+        <h4>{{ item.subTitle }}</h4>
+        <LinkPanel
+          :link-list="item.logoList"
+          :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
+        ></LinkPanel>
+      </div>
+    </div>
+    <div class="previous" data-aos="fade-up">
       <div class="previous-title">
         <h3>{{ summitData.previous.title }}</h3>
         <img :src="liveImg" alt="live" />
@@ -617,6 +750,88 @@ const summitData: any = {
           }
         }
         // 消除分论坛分类的选中状态 end
+      }
+    }
+  }
+}
+.partner {
+  margin-top: var(--o-spacing-h2);
+  @media screen and (max-width: 768px) {
+    margin-top: var(--o-spacing-h4);
+  }
+  h3 {
+    text-align: center;
+    font-size: var(--o-font-size-h3);
+    line-height: var(--o-line-height-h3);
+    color: var(--o-color-text1);
+    font-weight: 300;
+    @media (max-width: 767px) {
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
+    }
+  }
+  .partner-item {
+    margin-top: var(--o-spacing-h2);
+    @media screen and (max-width: 768px) {
+      margin-top: var(--o-spacing-h4);
+    }
+    &:nth-of-type(1),
+    &:nth-of-type(5) {
+      margin-top: 20px;
+      @media screen and (max-width: 768px) {
+        margin-top: var(--o-spacing-h5);
+      }
+      .picture-panel {
+        max-width: 1053px;
+        grid-template-columns: repeat(3, minmax(82px, 1fr));
+        @media screen and (max-width: 768px) {
+          grid-template-columns: repeat(2, minmax(82px, 1fr));
+        }
+      }
+    }
+    &:nth-of-type(2) {
+      .picture-panel {
+        max-width: 702px;
+        grid-template-columns: repeat(2, minmax(82px, 1fr));
+      }
+    }
+    &:nth-of-type(3) {
+      .picture-panel {
+        max-width: 351px;
+        grid-template-columns: repeat(1, minmax(82px, 1fr));
+      }
+    }
+    &:nth-of-type(4) {
+      .picture-panel {
+        @media screen and (max-width: 1416px) {
+          max-width: 1053px;
+          grid-template-columns: repeat(3, minmax(82px, 1fr));
+        }
+        @media screen and (max-width: 768px) {
+          grid-template-columns: repeat(2, minmax(82px, 1fr));
+        }
+      }
+    }
+    h4 {
+      font-size: var(--o-font-size-h5);
+      line-height: var(--o-line-height-h5);
+      color: var(--o-color-text1);
+      font-weight: 400;
+      text-align: center;
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+      }
+    }
+    .picture-panel {
+      margin-top: var(--o-spacing-h4);
+      margin-left: auto;
+      margin-right: auto;
+      @media screen and (max-width: 768px) {
+        margin-top: var(--o-spacing-h5);
+      }
+      :deep(a) {
+        cursor: default;
       }
     }
   }
