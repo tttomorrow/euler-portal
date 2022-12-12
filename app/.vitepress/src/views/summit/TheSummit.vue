@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useCommon } from '@/stores/common';
 
 import AppContext from '@/components/AppContent.vue';
-import SummitSchedule from './components/SummitSchedule.vue';
+// import SummitSchedule from './components/SummitSchedule.vue';
 
 import banner from '@/assets/category/summit/summit2022/banner.jpg';
 import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
@@ -13,7 +13,7 @@ import show from '@/assets/category/summit/summit2022/show.png';
 import sponsor from '@/assets/category/summit/summit2022/sponsor.png';
 import topic from '@/assets/category/summit/summit2022/topic.png';
 
-import IconTime from '~icons/app/icon-time.svg';
+// import IconTime from '~icons/app/icon-time.svg';
 
 const commonStore = useCommon();
 const liveImg = computed(() =>
@@ -309,8 +309,8 @@ const summitData: any = {
     ],
   },
 };
-const tabType = ref(['main', 'main', 'main']);
-const otherTabType = ref([0, 0, 0]);
+// const tabType = ref(['main', 'main', 'main']);
+// const otherTabType = ref([0, 0, 0]);
 // const timeContent = ref(0);
 </script>
 <template>
@@ -337,7 +337,7 @@ const otherTabType = ref([0, 0, 0]);
         <img :src="item.img" :alt="item.name" />
       </a>
     </div>
-    <div class="agenda">
+    <!-- <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
       <div
         v-for="(item, index) in summitData.agenda.meetingList"
@@ -356,8 +356,6 @@ const otherTabType = ref([0, 0, 0]);
             <template #label>
               <div class="timeTabs">
                 {{ itemList.type }}
-                <!-- <span class="taber-top"> {{ itemList.type }}</span>
-                <span class="taber-bottom"> {{ itemList.time }}</span> -->
               </div>
             </template>
           </el-tab-pane>
@@ -388,13 +386,12 @@ const otherTabType = ref([0, 0, 0]);
                     summitData.agenda.meetingList[index].list[1].duration
                   }}
                 </p>
-                <!-- <SummitSchedule :options="itemList.children" /> -->
               </OTabPane>
             </OTabs>
           </div>
         </OContainer>
       </div>
-    </div>
+    </div> -->
     <div class="previous">
       <div class="previous-title">
         <h3>{{ summitData.previous.title }}</h3>
@@ -537,19 +534,6 @@ const otherTabType = ref([0, 0, 0]);
           font-size: var(--o-font-size-tip);
           padding: 0 var(--o-spacing-h6);
         }
-        // .taber-bottom {
-        //   border-top: 1px solid var(--o-color-border2);
-        //   font-size: 20px;
-        //   line-height: 36px;
-        //   display: block;
-        //   @media (max-width: 1100px) {
-        //     font-size: 14px;
-        //     line-height: 32px;
-        //   }
-        // }
-        // @media (max-width: 1100px) {
-        //   width: 88px;
-        // }
       }
 
       .is-active .timeTabs {
