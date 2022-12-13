@@ -799,6 +799,15 @@ onMounted(() => {
       .picture-panel {
         max-width: 351px;
         grid-template-columns: repeat(1, minmax(82px, 1fr));
+        @media screen and (max-width: 650px) {
+          max-width: 100%;
+        }
+        :deep(a) {
+          @media screen and (max-width: 650px) {
+            width: 50%;
+            margin: 0 auto;
+          }
+        }
       }
     }
     &:nth-of-type(4) {
