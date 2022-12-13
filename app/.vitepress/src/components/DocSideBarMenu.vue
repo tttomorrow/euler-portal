@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import IconChevronRight from '~icons/app/icon-chevron-right.svg';
+import IconArrowTraingleRight from '~icons/app/icon-arrow-traingle-right.svg';
 
 const props = defineProps({
   info: {
@@ -60,7 +60,7 @@ const leave = (el: HTMLUListElement) => {
       @click="toggleVisible(!isOpen)"
     >
       {{ info.label }}
-      <OIcon class="menu-title-icon"> <IconChevronRight /></OIcon>
+      <OIcon class="menu-title-icon"> <IconArrowTraingleRight /></OIcon>
     </div>
     <transition
       name="menu"

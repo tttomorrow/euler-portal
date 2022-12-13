@@ -1,7 +1,8 @@
 /**
  * 迁移专区
  **/
-.migration-markdown {
+.migration-markdown,
+.about-markdown {
   height: 100%;
   padding: 64px 120px;
   margin-left: 300px;
@@ -14,15 +15,18 @@
     margin-left: 0px;
     padding: 16px 16px 40px 16px;
   }
-  & > *:first-child {
-    margin-top: 0 !important;
-  }
-  --o-color-table: var(--o-color-border2); // 表格边框
+
   @media (max-width: 768px) {
     padding: var(--o-spacing-h5);
     margin-top: var(--o-spacing-h5);
     margin-bottom: var(--o-spacing-h2);
   }
+
+  & > *:first-child {
+    margin-top: 0 !important;
+  }
+  --o-color-table: var(--o-color-border2); // 表格边框
+
   ol,
   ul {
     list-style: inherit;
