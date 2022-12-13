@@ -7,10 +7,11 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 
 import DocSideBar from '@/components/DocSideBar.vue';
 import DocSideBarMenu from '@/components/DocSideBarMenu.vue';
+import DocAnchor from '@/components/DocAnchor.vue';
 
 const screenWidth = useWindowResize();
 const router = useRouter();
-const { lang, frontmatter } = useData();
+const { lang } = useData();
 
 const routeList = router.route.path.split('/');
 const activeId = ref(routeList[routeList.length - 2]);
@@ -34,7 +35,7 @@ watch(
   <!-- PC侧边导航栏 -->
   <DocSideBar v-if="screenWidth > 1100">
     <div class="aboout-sidebar-toc">
-      <template v-for="(item, index) in tocInfo" :key="item.label">
+      <template v-for="item in tocInfo" :key="item.label">
         <DocSideBarMenu
           v-if="item && item.children && item.children.length"
           :info="item"
@@ -56,6 +57,7 @@ watch(
 
   <!-- 内容区域 -->
   <div class="about-wrapper about-markdown">
+    <DocAnchor />
     <Content class="about-content" />
   </div>
 </template>
