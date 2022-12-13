@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useData, useRouter } from 'vitepress';
 
 import tocInfo from '@/data/about-us/about-us-toc';
@@ -16,13 +16,23 @@ const routeList = router.route.path.split('/');
 const activeId = ref(routeList[routeList.length - 2]);
 
 const handleItemClick = (link: string) => {
-  router.go(`/${lang.value}/migration/guidance/${link}/`);
+  router.go(`/${lang.value}/community/${link}/`);
 };
+
+watch(
+  () => {
+    const routeList = router.route.path.split('/');
+    return routeList[routeList.length - 2];
+  },
+  (val) => {
+    activeId.value = val;
+  }
+);
 </script>
 
 <template>
   <!-- PC侧边导航栏 -->
-  <DocSideBar>
+  <DocSideBar v-if="screenWidth > 1100">
     <div class="aboout-sidebar-toc">
       <template v-for="(item, index) in tocInfo" :key="item.label">
         <DocSideBarMenu
