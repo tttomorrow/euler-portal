@@ -11,9 +11,6 @@ import banner from '@/assets/category/summit/summit2022/banner.jpg';
 import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
-import show from '@/assets/category/summit/summit2022/show.png';
-import sponsor from '@/assets/category/summit/summit2022/sponsor.png';
-import topic from '@/assets/category/summit/summit2022/topic.png';
 import atom from '@/assets/category/summit/summit2022/logo/atom.png';
 import atomDark from '@/assets/category/summit/summit2022/logo/atom-dark.png';
 import csia from '@/assets/category/summit/summit2022/logo/csia.png';
@@ -52,23 +49,6 @@ const bannerInfo = {
 const summitData: any = {
   detail:
     'openEuler Summit 是由欧拉开源社区发起并举办的年度开源操作系统峰会。openEuler专注核心技术和全场景能力创新，构建多样性计算支持最佳的基础软件能力。充分释放开源协作的创新活力，通过开源开放，不断探索科技创新的边界，驱动物理世界与数字世界的深度融合。openEuler与社区伙伴持续构建自循环、自发展的上下游产业链。通过商业验证，提升市场占有率，成为数字基础设施的坚实底座。社区贡献者、行业用户、合作伙伴在 openEuler Summit 汇聚，驱动无止境的创新与拓展，闪耀数字时代星辰大海。',
-  contentList: [
-    {
-      name: '议题征集',
-      img: topic,
-      link: 'https://shimo.im/forms/uIUX7mRmooIOrGqz/fill',
-    },
-    {
-      name: '赞助征集',
-      img: sponsor,
-      link: 'https://shimo.im/forms/5EPLjgVMwpMZqAmL/fill',
-    },
-    {
-      name: '展示征集',
-      img: show,
-      link: 'https://shimo.im/forms/bczTg4tGRAAqYdJD/fill',
-    },
-  ],
   agenda: {
     title: '会议日程',
     meetingList: [
@@ -442,17 +422,6 @@ onMounted(() => {
 
   <AppContext>
     <div class="detail">{{ summitData.detail }}</div>
-    <div class="call-content">
-      <a
-        v-for="item in summitData.contentList"
-        :key="item.link"
-        class="content-item"
-        :href="item.link"
-        target="_blank"
-      >
-        <img :src="item.img" :alt="item.name" />
-      </a>
-    </div>
     <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
       <div
@@ -576,32 +545,6 @@ onMounted(() => {
   @media screen and (max-width: 768px) {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
-  }
-}
-.call-content {
-  margin: var(--o-spacing-h2) auto 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--o-spacing-h4);
-  @media screen and (max-width: 968px) {
-    grid-template-columns: repeat(1, 1fr);
-    max-width: 474px;
-    gap: var(--o-spacing-h5);
-  }
-  .content-item {
-    width: 100%;
-    display: block;
-    width: 100%;
-    box-shadow: var(--o-shadow-l2);
-    &:hover {
-      box-shadow: var(--o-shadow-l2_hover);
-      @media screen and (max-width: 1100px) {
-        box-shadow: var(--o-shadow-l2);
-      }
-    }
-    img {
-      width: 100%;
-    }
   }
 }
 .agenda {
