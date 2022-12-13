@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, toRefs } from 'vue';
+import { computed, toRefs } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
@@ -39,9 +39,9 @@ import QuickIssue_Light from '@/assets/common/footer/quick-issue_light.png';
 import QuickIssue_Dark from '@/assets/common/footer/quick-issue_dark.png';
 
 // 问卷调查
-import Investigation_Light from '@/assets/common/footer/investigation.png';
-import Investigation_Dark from '@/assets/common/footer/investigation_dark.png';
-import Close_Light from '@/assets/common/footer/close.png';
+// import Investigation_Light from '@/assets/common/footer/investigation.png';
+// import Investigation_Dark from '@/assets/common/footer/investigation_dark.png';
+// import Close_Light from '@/assets/common/footer/close.png';
 
 const props = defineProps({
   isCookieTip: {
@@ -167,7 +167,7 @@ const footerCodeList = [
   },
 ];
 
-const isShow = ref(true);
+// const isShow = ref(true);
 
 const handleNavClick = (path: string) => {
   if (path.startsWith('https:')) {
@@ -202,9 +202,9 @@ const emits = defineEmits(['click-cookie']);
 function onCookieClick() {
   emits('click-cookie');
 }
-function clickWindow() {
-  isShow.value = false;
-}
+// function clickWindow() {
+//   isShow.value = false;
+// }
 
 // 控制issue浮窗在峰会页面不显示
 const isFloShow = computed(() => !router.route.path.includes('summit-list'));
@@ -313,7 +313,8 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
         />
       </a>
     </div>
-    <div
+    <!-- 问卷调查下线 -->
+    <!-- <div
       v-show="lang === 'zh' && isShow && isFloShow"
       class="investigation quick-issue"
     >
@@ -335,7 +336,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
           alt=""
         />
       </a>
-    </div>
+    </div> -->
   </footer>
 </template>
 
