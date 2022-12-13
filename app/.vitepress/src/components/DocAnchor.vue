@@ -4,6 +4,13 @@ import { useRoute } from 'vitepress';
 
 import _ from 'lodash';
 
+const props = defineProps({
+  className: {
+    type: String,
+    default: 'h2',
+  },
+})
+
 const route = useRoute();
 
 const activeIndex = ref(0);
@@ -16,7 +23,7 @@ const debounceEvent = _.throttle(goAnchor, 300, {
 function goAnchor() {
   const scrollTop =
     document.body.scrollTop || document.documentElement.scrollTop;
-  anchorList.value = document.querySelectorAll('.migration-content  h2');
+  anchorList.value = document.querySelectorAll(props.className);
 
   const topArr: number[] = [];
   anchorList.value = Array.from(anchorList.value).filter((item: any) => {
