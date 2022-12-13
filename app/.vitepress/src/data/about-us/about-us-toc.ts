@@ -17,4 +17,14 @@ export default [
       },
     ],
   },
+  {
+    label: '联系我们',
+    link: '',
+    children: [
+      {
+        label: '邮件列表',
+        link: 'mailing-list',
+      },
+    ],
+  },
 ];

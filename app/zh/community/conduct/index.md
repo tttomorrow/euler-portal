@@ -1,31 +1,8 @@
 ---
 title: '行为守则'
+category: about-us
 ---
 
-<script setup lang="ts">
-import { computed } from 'vue';
-import BannerLevel2 from '@/components/BannerLevel2.vue'
-import useWindowResize from '@/components/hooks/useWindowResize';
-
-import banner from '@/assets/banner/banner-community.png';
-import illustration from '@/assets/illustrations/conduct.png';
-
-const screenWidth = useWindowResize();
-const isMobile = computed(() => {
-  return screenWidth.value <= 768 ? true : false;
-});
-</script>
-
-<ClientOnly>
-  <BannerLevel2
-    :background-image="banner"
-    background-text="COMMUNITY"
-    title="行为守则"
-    :illustration="illustration"
-  />
-</ClientOnly>
-
-<div class="markdown" :style="['margin-top:var(--o-spacing-h1)', isMobile ? 'margin-top:var(--o-spacing-h2)' : '']">
 
 openEuelr社区遵守开源社区<a href="https://www.contributor-covenant.org/" target="_blank">《贡献者公约》</a>V1.4中规定的行为守则，请参考<a href="https://www.contributor-covenant.org/zh-cn/version/1/4/code-of-conduct/" target="_blank">V1.4版本</a>
 
@@ -75,4 +52,3 @@ openEuelr社区遵守开源社区<a href="https://www.contributor-covenant.org/"
 
 未切实遵守或执行本行为标准的项目维护人员，经项目负责人或其他成员决议，可能被暂时或永久地剥夺参与本项目的资格。
 
-</div>

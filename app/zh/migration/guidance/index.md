@@ -12,7 +12,7 @@ category: migration
 ---
 
 <script setup lang="ts">
-  import DocAnchor from '@/components/DocAnchor.vue'
+  import DocAnchor from '@/components/DocAnchor.vue';
   import IconBook from '~icons/app/icon-book.svg';
   import { useData } from 'vitepress';
   import seoConfig from '@/data/common/seo';
