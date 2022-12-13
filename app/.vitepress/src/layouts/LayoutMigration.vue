@@ -86,6 +86,7 @@ const handleNodeClick = (node: any) => {
 </script>
 
 <template>
+  <!-- PC侧边导航栏 -->
   <DocSideBar v-if="screenWidth > 1100">
     <div class="migration-sidebar-toc">
       <template v-for="(item, index) in tocInfo" :key="item.label">
@@ -110,7 +111,8 @@ const handleNodeClick = (node: any) => {
     </div>
   </DocSideBar>
 
-  <div v-else class="detail-mobile">
+  <!-- 移动端导航栏 -->
+  <template v-else>
     <OIcon v-show="IconMenuShow" class="catalog" @click="toggleMenu(true)"
       ><IconCatalog
     /></OIcon>
@@ -146,7 +148,9 @@ const handleNodeClick = (node: any) => {
         </div>
       </ODrawer>
     </ClientOnly>
-  </div>
+  </template>
+
+  <!-- 内容区域 -->
   <div class="migration-wrapper migration-markdown">
     <Content
       class="migration-content"
@@ -160,116 +164,6 @@ const handleNodeClick = (node: any) => {
   background-color: var(--o-color-bg4);
 }
 
-.migration-content {
-  max-width: 1380px;
-  margin: 0 auto;
-  @media screen and (max-width: 768px) {
-    background-color: var(--o-color-bg2);
-    padding: 24px 16px 16px 16px;
-    box-shadow: var(--o-shadow-l1);
-  }
-}
-
-.custom-layout {
-  @media screen and (max-width: 768px) {
-    background-color: var(--o-color-bg1);
-    box-shadow: var(--o-shadow-sl1);
-    padding: 0;
-    box-shadow: none;
-  }
-}
-
-.guidance {
-  max-width: 1132px;
-}
-
-.migration-sidebar-toc {
-  height: 100%;
-  margin-top: 24px;
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: var(--o-color-division);
-    background-clip: content-box;
-  }
-
-  &::-webkit-scrollbar-track {
-    border-radius: 0;
-    box-shadow: none;
-    background: var(--o-color-bg1);
-  }
-
-  .sidebar-title:first-child {
-    &::before {
-      display: none;
-    }
-  }
-}
-
-.sidebar-title {
-  position: relative;
-  padding: 0 40px;
-  font-size: var(--o-font-size-text);
-  height: 70px;
-  line-height: 70px;
-  color: var(--o-color-white);
-  cursor: pointer;
-
-  &::before {
-    position: absolute;
-    top: 0;
-    width: calc(100% - 80px);
-    height: 1px;
-    background-color: var(--o-color-neutral11);
-    content: '';
-    background-color: #ffffff;
-    opacity: 0.1;
-  }
-
-  &:hover {
-    color: #feb32a;
-  }
-
-  &.active {
-    color: #feb32a;
-  }
-}
-
-.migration-title {
-  font-size: var(--o-font-size-h5);
-  line-height: var(--o-line-height-h5);
-  // position: fixed;
-  // left: 40px;
-  // margin-bottom: var(--o-spacing-h8);
-  // margin-top: 0;
-  // color: var(--o-color-white);
-  // cursor: pointer;
-}
-
-.migration-wrapper {
-  .migration-content {
-    max-width: 1380px;
-    margin: 0 auto;
-  }
-
-  .migration-markdown {
-    margin: 0;
-  }
-}
-.catalog {
-  position: fixed;
-  top: 12px;
-  left: 48px;
-  z-index: 99;
-  font-size: 24px;
-  color: var(--o-color-text1);
-  cursor: pointer;
-}
 .nav-tree {
   position: fixed;
   left: 0;
@@ -356,6 +250,107 @@ const handleNodeClick = (node: any) => {
   :deep(.el-tree-node .el-tree-node__content) {
     padding: 19px var(--o-spacing-h5) !important;
     justify-content: space-between;
+  }
+}
+
+.catalog {
+  position: fixed;
+  top: 12px;
+  left: 48px;
+  z-index: 99;
+  font-size: 24px;
+  color: var(--o-color-text1);
+  cursor: pointer;
+}
+
+.custom-layout {
+  @media screen and (max-width: 768px) {
+    background-color: var(--o-color-bg1);
+    box-shadow: var(--o-shadow-sl1);
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+.guidance {
+  max-width: 1132px;
+}
+
+.migration-sidebar-toc {
+  height: 100%;
+  margin-top: 24px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: var(--o-color-division);
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--o-color-bg1);
+  }
+
+  .sidebar-title:first-child {
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.sidebar-title {
+  position: relative;
+  padding: 0 40px;
+  font-size: var(--o-font-size-text);
+  height: 70px;
+  line-height: 70px;
+  color: var(--o-color-white);
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    width: calc(100% - 80px);
+    height: 1px;
+    background-color: var(--o-color-neutral11);
+    content: '';
+    background-color: #ffffff;
+    opacity: 0.1;
+  }
+
+  &:hover {
+    color: #feb32a;
+  }
+
+  &.active {
+    color: #feb32a;
+  }
+}
+
+.migration-title {
+  font-size: var(--o-font-size-h5);
+  line-height: var(--o-line-height-h5);
+}
+
+.migration-wrapper {
+  .migration-content {
+    max-width: 1380px;
+    margin: 0 auto;
+    @media screen and (max-width: 768px) {
+      background-color: var(--o-color-bg2);
+      padding: 24px 16px 16px 16px;
+      box-shadow: var(--o-shadow-l1);
+    }
+  }
+
+  .migration-markdown {
+    margin: 0;
   }
 }
 </style>
