@@ -5,15 +5,15 @@ export default [
     children: [
       {
         label: '社区章程',
-        link: '',
+        link: 'charter',
       },
       {
         label: '选举条例',
-        link: '',
+        link: 'vote',
       },
       {
         label: '行为守则',
-        link: '',
+        link: 'conduct',
       },
     ],
   },
