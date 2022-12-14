@@ -62,11 +62,7 @@ const isCustomLayout = computed(() => {
   <!-- 内容区域 -->
   <div
     class="about-wrapper"
-    :class="
-      !router.route.path.includes('mailing-list')
-        ? 'about-markdown'
-        : 'components-wrapper'
-    "
+    :class="isCustomLayout ? 'components-wrapper' : 'about-markdown'"
   >
     <DocAnchor />
     <Content class="about-content" />
