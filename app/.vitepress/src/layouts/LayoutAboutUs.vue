@@ -139,12 +139,12 @@ const handleNodeClick = (node: any) => {
   </template>
 
   <!-- 内容区域 -->
-  <div
-    class="about-wrapper"
-    :class="isCustomLayout ? 'components-wrapper' : 'about-markdown'"
-  >
-    <DocAnchor />
-    <Content class="about-content" />
+  <div class="about-wrapper" :class="{ 'about-markdown': !isCustomLayout }">
+    <DocAnchor class="about-anchor" />
+    <Content
+      class="about-content"
+      :class="{ 'custom-layout': isCustomLayout }"
+    />
   </div>
 </template>
 
@@ -331,12 +331,18 @@ const handleNodeClick = (node: any) => {
   }
 
   .about-anchor {
-    right: 120px;
+    // right: 120px;
+    // @media screen and (max-width: 1280px) {
+    //   right: 0;
+    // }
   }
   .about-content {
-    max-width: calc(100% - 200px);
+    max-width: 1380px;
+    padding-right: 200px;
+    margin: 0 auto;
+
     @media screen and (max-width: 1100px) {
-      max-width: max-content;
+      padding-right: 0;
     }
     @media screen and (max-width: 768px) {
       background-color: var(--o-color-bg2);
@@ -356,32 +362,6 @@ const handleNodeClick = (node: any) => {
         box-shadow: none;
       }
     }
-  }
-}
-.components-wrapper {
-  height: 100%;
-  padding: 64px 120px;
-  margin-left: 300px;
-  background-color: var(--o-color-bg1);
-  .about-content {
-    max-width: 1380px;
-  }
-  @media screen and (max-width: 1750px) {
-    padding: 40px 40px;
-  }
-  @media screen and (max-width: 1280px) {
-    padding: 24px 24px;
-  }
-
-  @media screen and (max-width: 1100px) {
-    margin-left: 0px;
-    padding: 16px 16px 40px 16px;
-  }
-
-  @media (max-width: 768px) {
-    padding: var(--o-spacing-h5);
-    margin-top: var(--o-spacing-h5);
-    margin-bottom: var(--o-spacing-h2);
   }
 }
 </style>
@@ -409,7 +389,7 @@ const handleNodeClick = (node: any) => {
   h5,
   h6 {
     color: var(--o-color-text1);
-    font-weight: 500;
+    font-weight: bold;
 
     a {
       display: none;

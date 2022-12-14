@@ -3,6 +3,8 @@ title: 社区章程
 category: about-us
 ---
 
+# openEuler项目群开源治理制度
+
 ## 第一章　总则
 
 ### 第一条 项目群名称
