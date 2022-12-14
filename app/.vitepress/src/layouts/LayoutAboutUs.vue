@@ -128,7 +128,6 @@ watch(
 .about-wrapper {
   .about-content {
     max-width: 1380px;
-    margin: 0 auto;
     @media screen and (max-width: 768px) {
       background-color: var(--o-color-bg2);
       padding: 24px 16px 16px 16px;
