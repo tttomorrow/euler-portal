@@ -56,7 +56,14 @@ watch(
   <!-- 移动端导航栏 -->
 
   <!-- 内容区域 -->
-  <div class="about-wrapper about-markdown">
+  <div
+    class="about-wrapper"
+    :class="
+      !router.route.path.includes('mailing-list')
+        ? 'about-markdown'
+        : 'components-wrapper'
+    "
+  >
     <DocAnchor />
     <Content class="about-content" />
   </div>
@@ -127,7 +134,10 @@ watch(
 
 .about-wrapper {
   .about-content {
-    max-width: 1380px;
+    max-width: calc(100% - 200px);
+    @media screen and (max-width: 1100px) {
+      max-width: max-content;
+    }
     @media screen and (max-width: 768px) {
       background-color: var(--o-color-bg2);
       padding: 24px 16px 16px 16px;
@@ -137,6 +147,32 @@ watch(
 
   .about-markdown {
     margin: 0;
+  }
+}
+.components-wrapper {
+  height: 100%;
+  padding: 64px 120px;
+  margin-left: 300px;
+  background-color: var(--o-color-bg1);
+  .about-content {
+    max-width: 1380px;
+  }
+  @media screen and (max-width: 1750px) {
+    padding: 40px 40px;
+  }
+  @media screen and (max-width: 1280px) {
+    padding: 24px 24px;
+  }
+
+  @media screen and (max-width: 1100px) {
+    margin-left: 0px;
+    padding: 16px 16px 40px 16px;
+  }
+
+  @media (max-width: 768px) {
+    padding: var(--o-spacing-h5);
+    margin-top: var(--o-spacing-h5);
+    margin-bottom: var(--o-spacing-h2);
   }
 }
 </style>
