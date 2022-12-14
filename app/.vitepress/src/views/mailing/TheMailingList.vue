@@ -72,13 +72,13 @@ const isMobile = computed(() => {
 <template>
   <div class="application about-wrapper">
     <BannerLevel2
-      v-if="lang!=='zh'"
+      v-if="lang !== 'zh'"
       :background-image="banner"
       background-text="COMMUNITY"
       :title="i18n.mailing.MAILING_LIST.TITLE"
       :illustration="illustration"
     />
-    <AppContent :class="lang==='zh'?'about-us':''">
+    <AppContent :class="lang === 'zh' ? 'about-us' : ''">
       <div class="middle">
         <div class="middle-process-box">
           <div
@@ -377,17 +377,19 @@ const isMobile = computed(() => {
         @media (max-width: 768px) {
           margin-right: 0px;
           margin-bottom: var(--o-spacing-h5);
+          justify-content: center;
           height: fit-content;
           min-height: 0;
         }
       }
       &-right {
-        margin-top: 100px;
         display: flex;
+        margin-top: 100px;
         margin-right: 0px;
         min-height: 204px;
         z-index: 4;
         @media (max-width: 768px) {
+          justify-content: center;
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
           height: fit-content;
