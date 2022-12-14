@@ -132,7 +132,7 @@ const isMobile = computed(() => {
                   >
                     <span>{{ item.LEFT.INDEX }}</span>
                   </div>
-                  <div>
+                  <div class="middle-item-text">
                     <span
                       v-if="item.LEFT.LEFT_CIRCLE"
                       style="font-size: 22px"
@@ -186,7 +186,7 @@ const isMobile = computed(() => {
                   >
                     <span>{{ item.RIGHT.INDEX }}</span>
                   </div>
-                  <div>
+                  <div class="middle-item-text">
                     <span
                       v-if="item.RIGHT.RIGHT_CIRCLE"
                       style="font-size: 22px"
@@ -428,24 +428,25 @@ const isMobile = computed(() => {
         }
       }
       &-infoconfig {
+        display: flex;
+        align-items: center;
         width: 100%;
         max-width: 456px;
         background-color: var(--o-color-bg2);
-        @media (max-width: 1440px) {
-        }
-        @media (max-width: 1366px) {
-        }
-        @media (max-width: 1280px) {
-        }
-        @media (max-width: 1080px) {
+        .middle-item-text {
+          display: flex;
+          height: 78px;
+          align-items: center;
+          span {
+            margin-left: 0;
+          }
         }
         span {
           color: var(--o-color-black);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           float: left;
-          margin: 0 var(--o-spacing-h4) var(--o-spacing-h4) 59px;
-          position: relative;
+          margin: 0 var(--o-spacing-h4) 0 59px;
           bottom: var(--o-spacing-h4);
           @media (max-width: 768px) {
             font-size: var(--o-font-size-tip);
@@ -473,8 +474,8 @@ const isMobile = computed(() => {
           border-radius: 50%;
           background-color: var(--o-color-kleinblue5);
           position: relative;
-          top: 50%;
-          transform: translate(-50%, -50%);
+          // top: 50%;
+          transform: translate(-50%);
           @media (max-width: 768px) {
             height: 38px;
             width: 38px;
