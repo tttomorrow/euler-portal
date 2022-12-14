@@ -35,10 +35,6 @@ const isCustomLayout = computed(() => {
   return frontmatter.value['custom-layout'];
 });
 
-const isGuidance = computed(() => {
-  return frontmatter.value.title === '迁移方案';
-});
-
 watch(
   () => {
     const routeList = router.route.path.split('/');
@@ -154,7 +150,7 @@ const handleNodeClick = (node: any) => {
   <div class="migration-wrapper migration-markdown">
     <Content
       class="migration-content"
-      :class="{ 'custom-layout': isCustomLayout, guidance: isGuidance }"
+      :class="{ 'custom-layout': isCustomLayout }"
     />
   </div>
 </template>
@@ -218,11 +214,6 @@ const handleNodeClick = (node: any) => {
       > .el-tree-node__content) {
     background-color: var(--o-color-bg4);
   }
-  // :deep(.el-tree-node:nth-of-type(1)
-  //     > .el-tree-node__content
-  //     > .el-tree-node__expand-icon) {
-  //   display: none;
-  // }
   :deep(.el-tree-node__children .el-tree-node__expand-icon) {
     display: none;
   }
@@ -261,15 +252,6 @@ const handleNodeClick = (node: any) => {
   font-size: 24px;
   color: var(--o-color-text1);
   cursor: pointer;
-}
-
-.custom-layout {
-  @media screen and (max-width: 768px) {
-    background-color: var(--o-color-bg1);
-    box-shadow: var(--o-shadow-sl1);
-    padding: 0;
-    box-shadow: none;
-  }
 }
 
 .guidance {
@@ -346,6 +328,15 @@ const handleNodeClick = (node: any) => {
       background-color: var(--o-color-bg2);
       padding: 24px 16px 16px 16px;
       box-shadow: var(--o-shadow-l1);
+    }
+
+    &.custom-layout {
+      @media screen and (max-width: 768px) {
+        background-color: var(--o-color-bg1);
+        box-shadow: var(--o-shadow-l1);
+        padding: 0;
+        box-shadow: none;
+      }
     }
   }
 

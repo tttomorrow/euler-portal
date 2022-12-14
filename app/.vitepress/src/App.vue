@@ -67,13 +67,13 @@ onMounted(() => {
 
 main {
   position: relative;
-  min-height: calc(100vh - 339px);
+  min-height: calc(100vh - 259px);
   background-color: var(--o-color-bg1);
-  margin-top: 80px;
+  padding-top: 80px;
   overflow: hidden;
 
   @media (max-width: 1100px) {
-    margin-top: 48px;
+    padding-top: 48px;
   }
 }
 </style>
