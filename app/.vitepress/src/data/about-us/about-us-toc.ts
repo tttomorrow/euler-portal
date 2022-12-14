@@ -12,7 +12,7 @@ export default [
         link: 'vote',
       },
       {
-        label: '行为守则',
+        label: '行为准则',
         link: 'conduct',
       },
     ],
