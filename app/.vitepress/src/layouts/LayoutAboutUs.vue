@@ -9,9 +9,24 @@ import DocSideBar from '@/components/DocSideBar.vue';
 import DocSideBarMenu from '@/components/DocSideBarMenu.vue';
 import DocAnchor from '@/components/DocAnchor.vue';
 
+import IconChevronDown from '~icons/app/icon-chevron-down.svg';
+import IconCancel from '~icons/app/icon-cancel.svg';
+import IconCatalog from '~icons/mooc/catalog.svg';
+
+import logo_light from '@/assets/common/header/logo.png';
+import logo_dark from '@/assets/common/header/logo_dark.png';
+
+import { useCommon } from '@/stores/common';
+
 const screenWidth = useWindowResize();
 const router = useRouter();
 const { lang, frontmatter } = useData();
+const commonStore = useCommon();
+
+const defaultProps = ref({
+  children: 'children',
+  label: 'label',
+});
 
 const routeList = router.route.path.split('/');
 const activeId = ref(routeList[routeList.length - 2]);
@@ -33,6 +48,33 @@ watch(
 const isCustomLayout = computed(() => {
   return frontmatter.value['custom-layout'];
 });
+
+const isIconShown = computed(() => {
+  return commonStore.iconMenuShow;
+});
+
+const logo = computed(() => {
+  return commonStore.theme === 'light' ? logo_light : logo_dark;
+});
+
+// 控制移动端二级导航展开收起
+const isShowMenu = ref(false);
+// 移动端点击控制目录的显示或隐藏
+const toggleMenu = (flag: boolean) => {
+  isShowMenu.value = flag;
+};
+
+// 返回首页
+const goHome = () => {
+  router.go(`/${lang.value}/`);
+};
+
+const handleNodeClick = (node: any) => {
+  if (node.link) {
+    router.go(`/${lang.value}/community/${node.link}/`);
+    toggleMenu(false);
+  }
+};
 </script>
 
 <template>
@@ -58,6 +100,43 @@ const isCustomLayout = computed(() => {
   </DocSideBar>
 
   <!-- 移动端导航栏 -->
+  <template v-else>
+    <OIcon v-show="isIconShown" class="catalog" @click="toggleMenu(true)"
+      ><IconCatalog
+    /></OIcon>
+    <ClientOnly>
+      <ODrawer
+        v-model="isShowMenu"
+        direction="ltr"
+        size="268px"
+        :show-close="false"
+      >
+        <div class="nav-tree">
+          <div class="nav-top">
+            <img
+              class="logo"
+              :src="logo"
+              alt="openEuler logo"
+              @click="goHome"
+            />
+            <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
+          </div>
+          <OTree
+            ref="tree"
+            node-key="migration"
+            :data="tocInfo"
+            accordion
+            :props="defaultProps"
+            :highlight-current="true"
+            :icon="IconChevronDown"
+            :current-node-key="activeId"
+            @node-click="handleNodeClick"
+          >
+          </OTree>
+        </div>
+      </ODrawer>
+    </ClientOnly>
+  </template>
 
   <!-- 内容区域 -->
   <div
@@ -70,6 +149,104 @@ const isCustomLayout = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-tree-node__content:hover) {
+  background-color: var(--o-color-bg4);
+}
+
+.nav-tree {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 268px;
+  height: 100vh;
+  background: var(--o-color-bg2);
+  box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 999;
+  .nav-top {
+    width: 100%;
+    background: var(--o-color-bg2);
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--o-color-text1);
+    padding: var(--o-spacing-h5);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      height: 24px;
+      cursor: pointer;
+    }
+    :deep(.o-icon) {
+      padding: 12px;
+      cursor: pointer;
+      font-size: var(--o-font-size-h5);
+    }
+  }
+  :deep(.el-tree) {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--o-color-bg2);
+  }
+
+  :deep(.el-icon.el-tree-node__expand-icon.is-leaf) {
+    display: none;
+  }
+  :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
+    order: 2;
+    padding: 12px;
+    font-size: var(--o-font-size-h8);
+    color: var(--o-color-text1);
+  }
+  :deep(.el-tree-node__expand-icon.expanded) {
+    transform: rotate(180deg);
+  }
+  :deep(.el-tree--highlight-current
+      .el-tree-node.is-current
+      > .el-tree-node__content) {
+    background-color: var(--o-color-bg4);
+  }
+  :deep(.el-tree-node__children .el-tree-node__expand-icon) {
+    display: none;
+  }
+  :deep(.el-tree-node__children .is-current .el-tree-node__label) {
+    color: var(--o-color-brand1);
+  }
+  :deep(.el-tree--highlight-current
+      .el-tree-node.is-current
+      > .el-tree-node__content) {
+    background-color: transparent;
+  }
+  :deep(.el-tree-node__children) {
+    background-color: var(--o-color-bg1);
+  }
+  :deep(.el-tree .el-tree-node__label) {
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--o-color-text1);
+  }
+  :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-wrap;
+  }
+  :deep(.el-tree-node .el-tree-node__content) {
+    padding: 19px var(--o-spacing-h5) !important;
+    justify-content: space-between;
+  }
+}
+
+.catalog {
+  position: fixed;
+  top: 12px;
+  left: 48px;
+  z-index: 99;
+  font-size: 24px;
+  color: var(--o-color-text1);
+  cursor: pointer;
+}
+
 .about-sidebar-toc {
   height: 100%;
   margin-top: 24px;

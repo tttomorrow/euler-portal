@@ -1,6 +1,6 @@
 export default [
   {
-    label: '条约与规定',
+    label: '政策和规则',
     link: '',
     children: [
       {
