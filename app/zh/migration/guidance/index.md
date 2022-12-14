@@ -24,7 +24,7 @@ category: migration
 
 <DocAnchor/>
 
-<div calss='guidance' style='max-width: 1132px;'>
+<div class='guidance' >
 
 <h2 id='迁移概述' style="margin-top:0;">迁移概述</h2>
 
@@ -190,7 +190,10 @@ openEuler 为用户提供两种迁移路径：
 
 <style lang="scss" scoped>
   .guidance {
-      max-width: 1132px;
+    max-width: calc(100% - 200px);
+    @media screen and (max-width: 1100px) {
+      max-width: max-content;
+    }
   }
     img {
         margin-top: 12px;

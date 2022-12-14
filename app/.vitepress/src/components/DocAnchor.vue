@@ -9,7 +9,7 @@ const props = defineProps({
     type: String,
     default: 'h2',
   },
-})
+});
 
 const route = useRoute();
 
@@ -67,7 +67,7 @@ watch(
       class="anchor-link"
     >
       <div class="anchor-link-inner">
-        {{ item.id }}
+        {{ item.id.split('-')[1] || item.id }}
       </div>
     </a>
   </div>
@@ -90,7 +90,7 @@ watch(
     background-color: var(--o-color-bg4);
     z-index: 0;
   }
-  @media screen and (max-width: 1750px) {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
   .anchor-link {
@@ -103,7 +103,7 @@ watch(
     border-left: 1px solid var(--o-color-bg4);
     z-index: 1;
     &:hover {
-      color: var(--o-color-text1);
+      color: var(--o-color-brand1);
     }
     &-inner {
       padding: 8px var(--o-spacing-h6);

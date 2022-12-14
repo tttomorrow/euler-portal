@@ -6,8 +6,11 @@
   padding: 64px 120px;
   margin-left: 300px;
   background-color: var(--o-color-bg1);
+  @media screen and (max-width: 1750px) {
+    padding: 40px 40px;
+  }
   @media screen and (max-width: 1280px) {
-    padding: 64px 60px;
+    padding: 24px 24px;
   }
 
   @media screen and (max-width: 1100px) {
