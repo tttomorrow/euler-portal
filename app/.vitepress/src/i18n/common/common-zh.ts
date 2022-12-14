@@ -20,7 +20,7 @@ export default {
     SUMMIT: '峰会',
     COMMUNITY: '社区',
     CONTRIBUTION: '贡献攻略',
-    CONVENTION: '行为守则',
+    CONVENTION: '行为准则',
     MAILINGLIST: '邮件列表',
     CERTIFICATION: '个人认证',
     TALENT: '人才评测',
