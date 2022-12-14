@@ -3,7 +3,7 @@ title: 选举条例
 category: about-us
 ---
 
-# openEuler 项目群选举管理条例
+# openEuler项目群选举管理条例
 
 ## 第一章　总则
 
@@ -43,7 +43,7 @@ category: about-us
 - (5)维护选举过程中的选举秩序，对有违公正选举的言论和行为提出警告并予以禁止，情节严重的可给予取消选举或候选资格的处罚；
 - (6)接受并回答选举人和参选人提出的与选举事宜相关的质询。
 
-## 第二章　 openEuler 委员会提名委员会
+## 第二章　openEuler委员会提名委员会
 
 为保证 openEuler 委员会换届选举时 openEuler 委员会主席足够优秀和胜任，设立 openEuler 委员会提名委员会。
 
@@ -67,9 +67,9 @@ category: about-us
 
 5、openEuler 委员会主席选举结束后，本届 openEuler 委员会提名委员会工作完成，即告解散。
 
-## 第三章　 openEuler 委员会主席选举机制和副主席产生机制
+## 第三章　openEuler委员会主席选举机制和副主席产生机制
 
-### 第五条 openEuler 委员会选举职位的设立及人数
+### 第五条 openEuler委员会选举职位的设立及人数
 
 1、openEuler 委员会应选职位为：openEuler 委员会主席；
 
