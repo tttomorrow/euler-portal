@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import IconTime from '~icons/app/icon-time.svg';
 defineProps({
   options: {
@@ -8,16 +9,32 @@ defineProps({
     },
   },
 });
+const indexShow: any = ref(-1);
+function changeIndexShow(index: number) {
+  indexShow.value = index;
+}
 </script>
 
 <template>
   <div class="dateList">
-    <div v-for="subitem in options" :key="subitem.time" class="dataItem">
+    <div
+      v-for="(subitem, index) in options"
+      :key="subitem.time"
+      class="dataItem"
+      :class="{
+        'show-detail': indexShow === index,
+      }"
+    >
       <span class="time"><IconTime />{{ subitem.time }}</span>
-      <span class="desc">{{ subitem.desc }}</span>
-      <div v-if="subitem.post" class="box">
+      <span
+        class="desc"
+        :class="indexShow === index ? 'show-more' : ''"
+        @click="changeIndexShow(index as any)"
+        >{{ subitem.desc }}</span
+      >
+      <div v-if="subitem.name" class="box">
         <span class="name">{{ subitem.name }} </span>
-        <span class="post">{{ subitem.post }} </span>
+        <span v-if="subitem.post" class="post">{{ subitem.post }} </span>
       </div>
       <div v-else class="db">
         <div v-for="option in subitem.option" :key="option.name" class="inline">
@@ -28,8 +45,27 @@ defineProps({
           </div>
         </div>
       </div>
+      <div class="detail">
+        <p>
+          <span>议题名称：</span><span>{{ subitem.desc }}</span>
+        </p>
+        <p v-if="subitem.detail">
+          <span>议题简介：</span><span>{{ subitem.detail }}</span>
+        </p>
+        <p>
+          <span>姓名：</span><span>{{ subitem.name }}</span>
+        </p>
+        <p v-if="subitem.post">
+          <span>职位：</span><span>{{ subitem.post }}</span>
+        </p>
+      </div>
     </div>
   </div>
+  <div
+    v-show="indexShow !== -1 && options[0].detail"
+    class="mask"
+    @click="changeIndexShow(-1)"
+  ></div>
 </template>
 
 <style lang="scss" scoped>
@@ -41,7 +77,10 @@ defineProps({
   transition: all 0.25s ease;
   align-items: center;
   min-height: 64px;
-
+  position: relative;
+  @media screen and (max-width: 1328px) {
+    grid-template-columns: 500px auto;
+  }
   @media screen and (max-width: 1100px) {
     grid-template-columns: 80px auto;
     padding: 6px 0;
@@ -88,12 +127,14 @@ defineProps({
     color: var(--o-color-text1);
     display: inline-block;
     margin-right: 36px;
+    cursor: pointer;
     @media (max-width: 1100px) {
       margin-right: 0;
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
     }
   }
+
   .name {
     width: 100px;
     display: inline-block;
@@ -151,7 +192,67 @@ defineProps({
     margin-right: 40px;
     display: inline-block;
   }
+  .detail {
+    width: 75%;
+    padding: var(--o-spacing-h2);
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    background-color: var(--o-color-bg2);
+    box-shadow: var(--o-shadow-l4);
+    max-height: 170px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none; /* Chrome Safari */
+    }
+    // display: none;
+    p {
+      & + p {
+        margin-top: var(--o-spacing-h8);
+      }
+      span {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        color: var(--o-color-text1);
+      }
+    }
+  }
+  &:nth-last-of-type(1) {
+    .detail {
+      top: -208px;
+    }
+  }
+  &:nth-last-of-type(2) {
+    .detail {
+      top: -168px;
+    }
+  }
+  &:nth-last-of-type(3) {
+    .detail {
+      top: -188px;
+    }
+  }
+  &:nth-last-of-type(4) {
+    .detail {
+      top: 80px;
+    }
+  }
 }
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+// .show-detail {
+//   .detail {
+//     display: block;
+//   }
+// }
 
 .dateList .sub-container .dataItem {
   grid-template-columns: 192px auto 96px 410px;

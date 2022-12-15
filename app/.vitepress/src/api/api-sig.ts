@@ -50,7 +50,7 @@ export function querySigUserContribute(params: object) {
  * 获取sig landscape
  * @returns {Promise<GroupInfo[]>}
  */
-export function getSigLandscape(lang:string): Promise<GroupInfo[]> {
+export function getSigLandscape(lang: string): Promise<GroupInfo[]> {
   const url = '/api-omapi/query/sig/scoreAll?community=openeuler';
   return request.get(url).then((res: AxiosResponse) => {
     const data = res.data?.data;
@@ -58,7 +58,9 @@ export function getSigLandscape(lang:string): Promise<GroupInfo[]> {
     for (let i = 0, len = data.length; i < len; i++) {
       const item = data[i];
 
-      lang === 'zh' ? '':(item.group = item.en_group , item.feature = item.en_feature);
+      lang === 'zh'
+        ? ''
+        : ((item.group = item.en_group), (item.feature = item.en_feature));
       if (item.group === '' && item.feature === '') {
         continue;
       }
