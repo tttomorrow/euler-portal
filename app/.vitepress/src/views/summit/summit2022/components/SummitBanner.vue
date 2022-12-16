@@ -12,11 +12,13 @@ import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
 import banner from '@/assets/category/summit/summit2022/banner.jpg';
 import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
+import bannerSummitKv from '@/assets/category/summit/summit2022/summit-kv.jpg';
+import bannerSummitKvMo from '@/assets/category/summit/summit2022/summit-kv-mo.png';
 
 const summitBanner = [
   {
-    pcBanner: banner,
-    moBanner: bannerMo,
+    pcBanner: bannerSummitKv,
+    moBanner: bannerSummitKvMo,
     link: '',
     id: '',
     targetTap: 1,
@@ -155,7 +157,7 @@ html[lang='zh'] {
 }
 
 .summit-banner {
-  height: 480px;
+  height: 380px;
   position: relative;
   .banner-panel {
     position: absolute;
@@ -302,7 +304,7 @@ html[lang='zh'] {
 
 :deep(.swiper-pagination) {
   width: 1416px !important;
-  bottom: 84px;
+  bottom: 40px;
   left: 50% !important;
   transform: translateX(-50%);
   text-align: left;
@@ -326,7 +328,7 @@ html[lang='zh'] {
   }
   @media screen and (max-width: 1100px) {
     width: 100% !important;
-    bottom: 72px;
+    // bottom: 72px;
     .swiper-pagination-bullet {
       width: 20px !important;
       margin: 0 4px 0 0;
