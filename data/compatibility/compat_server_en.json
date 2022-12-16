@@ -1,7 +1,7 @@
 [
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server(Model 2280E)",
+    "hardwareModel": "TaiShan 200 2280E",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "aarch64",
     "date": "2020/12/04",
@@ -119,7 +119,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server(Model 2280E)",
+    "hardwareModel": "TaiShan 200 2280E",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/12/04",
@@ -359,7 +359,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server(Model 2280)",
+    "hardwareModel": "TaiShan 200 2280",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/11/26",
@@ -496,7 +496,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server (Model 5280)(VE)",
+    "hardwareModel": "TaiShan 200 5280",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/11/26",
@@ -633,7 +633,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server(Model 1280)",
+    "hardwareModel": "TaiShan 200 1280",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/08/17",
@@ -694,7 +694,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server(Model 2180)",
+    "hardwareModel": "TaiShan 200 2180",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/04/27",
@@ -755,7 +755,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server(Model 2280)",
+    "hardwareModel": "TaiShan 200 2280",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "aarch64",
     "date": "2020/03/28",
@@ -873,7 +873,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server(Model 5280)",
+    "hardwareModel": "TaiShan 200 5280",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "aarch64",
     "date": "2020/04/29",
@@ -934,7 +934,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200K Server(Model 2180K)",
+    "hardwareModel": "TaiShan 200K 2180K",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/04/27",
@@ -995,7 +995,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200K Server(Model 2280K)",
+    "hardwareModel": "TaiShan 200K 2280K",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/04/27",
@@ -1056,7 +1056,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200K Server(Model 5280K)",
+    "hardwareModel": "TaiShan 200K 5280K",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/10/28",
@@ -1117,7 +1117,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200K Server(Model 5290K)",
+    "hardwareModel": "TaiShan 200K 5290K",
     "osVersion": "openEuler 20.03 LTS",
     "architecture": "aarch64",
     "date": "2020/06/17",
@@ -3763,7 +3763,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 (Model 2280)",
+    "hardwareModel": "TaiShan 200 2280",
     "osVersion": "openEuler 20.03 LTS SP3",
     "architecture": "aarch64",
     "date": "2021/12/13",
@@ -3824,7 +3824,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 (Model 2280)",
+    "hardwareModel": "TaiShan 200 2280",
     "osVersion": "openEuler 22.03 LTS",
     "architecture": "aarch64",
     "date": "2022/03/01",
@@ -4737,7 +4737,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 (Model 1280)",
+    "hardwareModel": "TaiShan 200 1280",
     "osVersion": "openEuler 22.03 LTS",
     "architecture": "aarch64",
     "date": "2022/03/01",
@@ -4779,7 +4779,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 (Model 5280)",
+    "hardwareModel": "TaiShan 200 5280",
     "osVersion": "openEuler 22.03 LTS",
     "architecture": "aarch64",
     "date": "2022/03/01",
@@ -4821,7 +4821,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 (Model 1280)",
+    "hardwareModel": "TaiShan 200 1280",
     "osVersion": "openEuler 20.03 LTS SP3",
     "architecture": "aarch64",
     "date": "2021/12/13",
@@ -4863,7 +4863,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 (Model 5280)",
+    "hardwareModel": "TaiShan 200 5280",
     "osVersion": "openEuler 20.03 LTS SP3",
     "architecture": "aarch64",
     "date": "2021/12/13",
@@ -4905,7 +4905,7 @@
   },
   {
     "hardwareFactory": "Huawei",
-    "hardwareModel": "TaiShan 200 Server(Model 1280)",
+    "hardwareModel": "TaiShan 200 1280",
     "osVersion": "openEuler 20.03 LTS SP1",
     "architecture": "aarch64",
     "date": "2020/12/04",
@@ -7448,6 +7448,189 @@
       "videoAdapter": "Intel Corporation Device 9a78",
       "hostBusAdapter": "",
       "hardDiskDrive": "TS128GMTE652T2"
+    }
+  },
+  {
+    "hardwareFactory": "xFusion",
+    "hardwareModel": "2288H V5",
+    "osVersion": "openEuler 22.03 LTS SP1",
+    "architecture": "x86_64",
+    "date": "2022/12/08",
+    "friendlyLink": "https://support.xfusion.com/support/#/zh/rack-servers/2288h-v5-pid-21872244/document",
+    "boardCards": [
+      {
+        "vendorID": "15b3",
+        "deviceID": "1015",
+        "svID": "15b3",
+        "ssID": "0004",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "mlx5_core",
+        "version": "5.0-0",
+        "type": "NIC",
+        "date": "2022/12/08",
+        "sha256": "4cfe6d345c8d00ec0c7bb82e0c6af6b79709adae73043532e55251f1b2732200",
+        "driverSize": "419K",
+        "chipVendor": "Mellanox",
+        "boardModel": "MCX4121A-XCAT",
+        "chipModel": "ConnectX-4 Lx",
+        "item": "06310161",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "1000",
+        "deviceID": "005d",
+        "svID": "19e5",
+        "ssID": "d207",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "megaraid_sas",
+        "version": "07.714.04.00-rc1",
+        "type": "raid",
+        "date": "2022/12/08",
+        "sha256": "c6ea2a1f8dfbaa76d572802b0f6ccf085727a887acbf93a4f03c5dfbf653397d",
+        "driverSize": "74K",
+        "chipVendor": "Broadcom",
+        "boardModel": "SR430C-M",
+        "chipModel": "SAS-3 3108",
+        "item": "02311PCJ",
+        "downloadLink": "inbox"
+      }	  
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "https://support.xfusion.com/support/#/zh/rack-servers/2288h-v5-pid-21872244/document",
+      "certificationTime": "2022/12/08",
+      "commitID": "",
+      "mainboardModel": "BC11SPSCD",
+      "biosUefi": "7.0(U47)",
+      "cpu": "cascade",
+      "ram": "12*32G DIMMs ",
+      "portsBusTypes": "x16 PCI Express 3 x16",
+      "videoAdapter": "Hi1710",
+      "hostBusAdapter": "Intel Corporation C620 Series Chipset Family SPI Controller",
+      "hardDiskDrive": "SAMSUNG MZ7LH1T9"
+    }
+  },
+  {
+    "hardwareFactory": "Huawei",
+    "hardwareModel": "TaiShan 200 2280",
+    "osVersion": "openEuler 22.03 LTS SP1",
+    "architecture": "aarch64",
+    "date": "2022/12/10",
+    "friendlyLink": "https://e.huawei.com/cn/products/servers/taishan-server",
+    "boardCards": [
+      {
+        "vendorID": "8086",
+        "deviceID": "1583",
+        "svID": "8086",
+        "ssID": "0002",
+        "architecture": "aarch64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "mlx5_core",
+        "version": "5.0-0",
+        "type": "NIC",
+        "date": "2022/12/10",
+        "sha256": "0c2544e1a30909ef0b36e358cb71f32b3f1ddd0c750f0b3d9fc3d9114c810c99",
+        "driverSize": "161K",
+        "chipVendor": "Intel",
+        "boardModel": "XL710-Q2",
+        "chipModel": "XL710",
+        "item": "06310146",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "1000",
+        "deviceID": "00af",
+        "svID": "19e5",
+        "ssID": "d225",
+        "architecture": "aarch64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "mpt3sas",
+        "version": "35.100.00.00",
+        "type": "raid",
+        "date": "2022/12/10",
+        "sha256": "eeb0f009a376533be70bb03e8a38782ab3e992777c9bdde004ca1dab7872a00d",
+        "driverSize": "117K",
+        "chipVendor": "Broadcom",
+        "boardModel": "SP150IT-M",
+        "chipModel": "SAS3408",
+        "item": "02312HFD",
+        "downloadLink": "inbox"
+      }	  
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "https://e.huawei.com/cn/products/servers/taishan-server",
+      "certificationTime": "2022/12/10",
+      "commitID": "",
+      "mainboardModel": "BC82AMDD",
+      "biosUefi": "1.93(u75)",
+      "cpu": "Kunpeng-920",
+      "ram": "4*32G DIMMs",
+      "portsBusTypes": "x16 PCI Express x16",
+      "videoAdapter": "Hi1710",
+      "hostBusAdapter": "Huawei Technologies Co., Ltd. HiSilicon SAS 3.0 HBA",
+      "hardDiskDrive": "ST8000NM0055-1RM"
+    }
+  },
+  {
+    "hardwareFactory": "Huawei",
+    "hardwareModel": "S902X20",
+    "osVersion": "openEuler 22.03 LTS SP1",
+    "architecture": "aarch64",
+    "date": "2022/12/10",
+    "friendlyLink": "https://e.huawei.com/cn/products/servers/kunpeng/server-board/kunpeng-server-board",
+    "boardCards": [
+      {
+        "vendorID": "19e5",
+        "deviceID": "1822",
+        "svID": "19e5",
+        "ssID": "d136",
+        "architecture": "aarch64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "hinic",
+        "version": "2.3.2.17",
+        "type": "NIC",
+        "date": "2022/12/10",
+        "sha256": "1038d87a917b3c51f25d3b4ef129f06e0d8651b5f2c6f27ae7cef82cd8a261fb",
+        "driverSize": "160K",
+        "chipVendor": "Huawei",
+        "boardModel": "SP580",
+        "chipModel": "Hi1822",
+        "item": "02312QRP",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "1000",
+        "deviceID": "0016",
+        "svID": "1000",
+        "ssID": "9461",
+        "architecture": "aarch64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "megaraid_sas",
+        "version": "07.714.04.00-rc1",
+        "type": "raid",
+        "date": "2022/12/10",
+        "sha256": "c6cc46b9f11685e13538b15ee65dbbdcdfb27d5e0cda96d562d1504c4d3db6e7",
+        "driverSize": "68K",
+        "chipVendor": "Broadcom",
+        "boardModel": "9460-8i",
+        "chipModel": "SAS3508",
+        "item": "",
+        "downloadLink": "inbox"
+      }	  
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "https://e.huawei.com/cn/products/servers/kunpeng/server-board/kunpeng-server-board",
+      "certificationTime": "2022/12/10",
+      "commitID": "",
+      "mainboardModel": "",
+      "biosUefi": "0.18(u6330)",
+      "cpu": "S2500",
+      "ram": "8*32G DIMMS",
+      "portsBusTypes": "X8 PCI Express 3 X16",
+      "videoAdapter": "Hi1710",
+      "hostBusAdapter": "PEX 8619 16-lane",
+      "hardDiskDrive": "MR9460-8i"
     }
   }
 ]
