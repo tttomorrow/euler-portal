@@ -286,9 +286,7 @@ html[lang='zh'] {
   @media screen and (max-width: 824px) {
     height: 300px;
   }
-}
-
-:deep(.swiper-pagination) {
+  :deep(.swiper-pagination) {
   width: 1416px !important;
   bottom: 84px;
   left: 50% !important;
@@ -327,6 +325,9 @@ html[lang='zh'] {
     bottom: 24px;
   }
 }
+}
+
+
 :deep(.swiper-button-prev) {
   width: 32px;
   height: 32px;
