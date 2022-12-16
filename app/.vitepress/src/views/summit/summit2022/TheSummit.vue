@@ -6,10 +6,10 @@ import AOS from 'aos';
 import AppContext from '@/components/AppContent.vue';
 import SummitSchedule from './components/SummitSchedule.vue';
 import LinkPanel from '@/components/LinkPanel.vue';
-// import SummitBanner from './components/SummitBanner.vue';
+import SummitBanner from './components/SummitBanner.vue';
 
-import banner from '@/assets/category/summit/summit2022/banner.jpg';
-import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
+// import banner from '@/assets/category/summit/summit2022/banner.jpg';
+// import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
 import atom from '@/assets/category/summit/summit2022/logo/atom.png';
@@ -45,10 +45,10 @@ const commonStore = useCommon();
 const liveImg = computed(() =>
   commonStore.theme === 'light' ? liveLight : liveDark
 );
-const bannerInfo = {
-  pc_banner: banner,
-  mo_banner: bannerMo,
-};
+// const bannerInfo = {
+//   pc_banner: banner,
+//   mo_banner: bannerMo,
+// };
 const summitData: any = {
   detail: [
     '数字经济成为全球经济增长的主引擎，数字经济的快速发展，带来数字化、智能化的巨大发展机遇。操作系统作为数字基础设施的底座，已经成为推动产业数字化、智能化发展的核心力量。操作系统产业峰会2022旨在聚集全产业链力量，聚焦基础软件核心能力构建，引领基础软件持续创新，加快实现高水平科技自立自强。',
@@ -264,13 +264,6 @@ const summitData: any = {
                             1: 介绍Linux内核安全性模块(LSM)的设计、历史和发展
                             2: openEuler在对内核安全性方面的增强与加固
                             3: 在openEuler实现数据完整性的一种实现设计方法`,
-                  },
-                  {
-                    time: '11',
-                    desc: '毒酒：跨平台操作系统供应链安全',
-                    name: ['吴鹤意'],
-                    post: ['深信服安全专家'],
-                    detail: ``,
                   },
                   {
                     time: '12',
@@ -491,7 +484,7 @@ const summitData: any = {
                   },
                   {
                     time: '5',
-                    desc: '科东Intewell国产自主嵌入式实时操作系统，助力智能制造',
+                    desc: '科东Intewell自主嵌入式实时操作系统，助力智能制造',
                     name: ['毛响林'],
                     post: ['科东（广州）软件科技有限公司副总经理'],
                     detail: '',
@@ -924,7 +917,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="banner">
+  <!-- <div class="banner">
     <div
       class="summit-banner-pc"
       :style="`background-image:url(${bannerInfo.pc_banner}) ;`"
@@ -932,8 +925,8 @@ onMounted(() => {
     <div class="summit-banner-mo">
       <img :src="bannerInfo.mo_banner" alt="" />
     </div>
-  </div>
-  <!-- <SummitBanner/> -->
+  </div> -->
+  <SummitBanner />
   <AppContext>
     <div v-for="item in summitData.detail" :key="item" class="detail">
       {{ item }}
@@ -1037,28 +1030,28 @@ onMounted(() => {
 .dark .banner {
   filter: brightness(0.8) grayscale(0.2) contrast(1.2);
 }
-.banner {
-  width: 100%;
-  .summit-banner-pc {
-    height: 380px;
-    margin: 0 auto;
-    background: no-repeat center/cover;
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
-  .summit-banner-mo {
-    display: none;
+// .banner {
+//   width: 100%;
+//   .summit-banner-pc {
+//     height: 380px;
+//     margin: 0 auto;
+//     background: no-repeat center/cover;
+//     @media screen and (max-width: 768px) {
+//       display: none;
+//     }
+//   }
+//   .summit-banner-mo {
+//     display: none;
 
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      display: block;
-      img {
-        width: 100%;
-      }
-    }
-  }
-}
+//     @media screen and (max-width: 768px) {
+//       width: 100%;
+//       display: block;
+//       img {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
 .detail {
   font-size: var(--o-font-size-h6);
   line-height: var(--o-line-height-h6);
@@ -1270,6 +1263,9 @@ onMounted(() => {
               display: block;
             }
           }
+        }
+        :deep(.desc) {
+          cursor: pointer;
         }
 
         // 消除分论坛分类的选中状态 start
