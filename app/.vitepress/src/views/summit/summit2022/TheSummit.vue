@@ -7,6 +7,7 @@ import AppContext from '@/components/AppContent.vue';
 import SummitSchedule from './components/SummitSchedule.vue';
 import LinkPanel from '@/components/LinkPanel.vue';
 import SummitBanner from './components/SummitBanner.vue';
+// import SummitLive from './components/SummitLive.vue';
 
 // import banner from '@/assets/category/summit/summit2022/banner.jpg';
 // import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
@@ -54,7 +55,47 @@ const summitData: any = {
     '数字经济成为全球经济增长的主引擎，数字经济的快速发展，带来数字化、智能化的巨大发展机遇。操作系统作为数字基础设施的底座，已经成为推动产业数字化、智能化发展的核心力量。操作系统产业峰会2022旨在聚集全产业链力量，聚焦基础软件核心能力构建，引领基础软件持续创新，加快实现高水平科技自立自强。',
     'openEuler Summit 是由欧拉开源社区发起并举办的年度开源操作系统峰会。openEuler专注核心技术和全场景能力创新，构建多样性计算支持最佳的基础软件能力。充分释放开源协作的创新活力，通过开源开放，不断探索科技创新的边界，驱动物理世界与数字世界的深度融合。openEuler与社区伙伴持续构建自循环、自发展的上下游产业链。通过商业验证，提升市场占有率，成为数字基础设施的坚实底座。社区贡献者、行业用户、合作伙伴在 openEuler Summit 汇聚，驱动无止境的创新与拓展，闪耀数字时代星辰大海。',
   ],
-
+  liver: {
+    title: '峰会直播',
+    liveData: [
+      {
+        liveId: 11185,
+        liveTestId: 11190,
+        id: 0,
+        name: 'openEuler开发者大会主论坛',
+      },
+      {
+        liveId: 11187,
+        liveTestId: 11192,
+        id: 1,
+        name: '麒麟软件',
+      },
+      {
+        liveId: 11189,
+        liveTestId: 11194,
+        id: 2,
+        name: '麒麟信安',
+      },
+      {
+        liveId: 11186,
+        liveTestId: 11191,
+        id: 3,
+        name: '统信软件',
+      },
+      {
+        liveId: 11188,
+        liveTestId: 11193,
+        id: 4,
+        name: '软通动力',
+      },
+      {
+        liveId: 11188,
+        liveTestId: 11193,
+        id: 5,
+        name: '中科创达',
+      },
+    ],
+  },
   agenda: {
     title: '会议日程',
     meetingList: [
@@ -107,7 +148,7 @@ const summitData: any = {
             type: '下午：分论坛',
             id: 'other',
             duration: '14:00 - 17:00',
-            detail: '',
+            time: '28',
             children: [
               {
                 id: 0,
@@ -133,6 +174,59 @@ const summitData: any = {
                 id: 4,
                 name: '中科创达',
                 desc: 'openEuler Summit 2022',
+                detail: '',
+                title: '开放融合创新 崛起数智行业',
+                children: [
+                  {
+                    time: '14:00 - 14:05',
+                    desc: '欧拉社区领导致辞',
+                    name: ['熊伟'],
+                    post: ['开放原子开源基金会TOC委员'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:05 - 14:20',
+                    desc: 'KubeEdge SIG Networking的进展与未来规划',
+                    name: ['王杰章'],
+                    post: ['华为（高级工程师）'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:20 - 14:40',
+                    desc: '边缘计算助力企业数字化转型',
+                    name: ['张硕'],
+                    post: ['中科创达新业务战略产品总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:40 - 15:00',
+                    desc: '多云边缘协同计算',
+                    name: ['路广'],
+                    post: ['VMWare研发总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:00 - 15:20',
+                    desc: '地平线机器人与生态构建',
+                    name: ['程飞'],
+                    post: ['地平线机器人事业部方案交付负责人'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:20 - 15:40',
+                    desc: 'EMQ 基于分布式云的 IIoT 解决方案',
+                    name: ['金发华'],
+                    post: ['EMQ 联合创始人兼CPO'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:40 - 16:00',
+                    desc: '欧拉与机器人应用',
+                    name: ['李建华'],
+                    post: ['中科创达机器人资深架构师'],
+                    detail: '',
+                  },
+                ],
               },
             ],
           },
@@ -175,7 +269,7 @@ const summitData: any = {
           {
             type: '下午：分论坛',
             id: 'other',
-            // time: '下午',
+            time: '29',
             duration: '14:00 - 17:00',
             children: [
               {
@@ -931,6 +1025,14 @@ onMounted(() => {
     <div v-for="item in summitData.detail" :key="item" class="detail">
       {{ item }}
     </div>
+    <!-- <div class="liver">
+      <h3 class="titleBar">{{ summitData.liver.title }}</h3>
+      <ClientOnly
+        ><SummitLive
+          :live-data="summitData.liver.liveData"
+          class-name="odd2022"
+      /></ClientOnly>
+    </div> -->
     <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
       <div
@@ -976,13 +1078,15 @@ onMounted(() => {
                 :label="itemList.name"
                 :name="itemList.id"
               >
-                <p v-if="index === 0" class="other-text">
+                <p v-if="index === 0 && !itemList.children" class="other-text">
                   <IconTime />{{
                     summitData.agenda.meetingList[index].list[1].duration
                   }}
                 </p>
+                <h4 v-if="index === 0 && itemList.title" class="other-title">
+                  主题： {{ itemList.title }}
+                </h4>
                 <SummitSchedule
-                  v-if="index === 1"
                   :options="itemList.children"
                   :detail="itemList.detail"
                 />
@@ -1061,6 +1165,23 @@ onMounted(() => {
     line-height: var(--o-line-height-text);
   }
 }
+.liver {
+  margin-top: var(--o-spacing-h1);
+  @media (max-width: 767px) {
+    margin-top: var(--o-spacing-h2);
+  }
+  h3 {
+    text-align: center;
+    font-size: var(--o-font-size-h3);
+    line-height: var(--o-line-height-h3);
+    color: var(--o-color-text1);
+    font-weight: 300;
+    margin-bottom: var(--o-spacing-h2);
+    @media (max-width: 767px) {
+      margin-bottom: var(--o-spacing-h4);
+    }
+  }
+}
 .agenda {
   margin-top: var(--o-spacing-h1);
   @media (max-width: 767px) {
@@ -1087,20 +1208,20 @@ onMounted(() => {
         display: none;
       }
       // 暂时取消第一天的分会选中状态
-      .other {
-        :deep(.o-tabs) {
-          .el-tabs__active-bar {
-            display: none;
-          }
-          .is-active {
-            color: var(--o-color-text1);
-          }
-          .el-tabs__item:hover {
-            color: var(--o-color-text1);
-            cursor: default;
-          }
-        }
-      }
+      // .other {
+      //   :deep(.o-tabs) {
+      //     .el-tabs__active-bar {
+      //       display: none;
+      //     }
+      //     .is-active {
+      //       color: var(--o-color-text1);
+      //     }
+      //     .el-tabs__item:hover {
+      //       color: var(--o-color-text1);
+      //       cursor: default;
+      //     }
+      //   }
+      // }
     }
     // 暂时隐藏时间
     &:nth-of-type(2) {
@@ -1115,7 +1236,7 @@ onMounted(() => {
             padding-left: 80px;
           }
           @media screen and (max-width: 1100px) {
-            padding-left: 100px;
+            padding-left: 0;
             grid-template-columns: 348px;
             .box {
               grid-column-start: 1;
@@ -1252,6 +1373,22 @@ onMounted(() => {
           }
           svg {
             margin-right: var(--o-spacing-h8);
+          }
+        }
+        .other-title {
+          margin: 24px auto;
+          color: var(--o-color-text1);
+          font-size: var(--o-font-size-h7);
+          line-height: var(--o-line-height-h7);
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: normal;
+          @media (max-width: 1100px) {
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            margin: 16px 0;
           }
         }
         :deep(.dateList) {
