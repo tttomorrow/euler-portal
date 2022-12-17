@@ -94,12 +94,15 @@ function changeIndexShow(index: number) {
   .dataItem {
     display: grid;
     grid-template-columns: 192px 500px 445px;
-    border-bottom: 1px solid var(--o-color-border2);
+    // border-bottom: 1px solid var(--o-color-border2);
     padding: 20px 0;
     transition: all 0.25s ease;
     align-items: center;
     min-height: 64px;
     position: relative;
+    & + .dataItem {
+      border-top: 1px solid var(--o-color-border2);
+    }
     @media screen and (max-width: 1328px) {
       grid-template-columns: 500px auto;
     }
@@ -109,10 +112,6 @@ function changeIndexShow(index: number) {
       min-height: 36px;
       position: static;
     }
-    &:nth-last-of-type(1) {
-      border-bottom: none;
-    }
-
     &:hover {
       background-color: var(--o-color-bg4);
     }
