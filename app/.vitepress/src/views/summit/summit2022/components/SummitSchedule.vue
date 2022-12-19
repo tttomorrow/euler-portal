@@ -115,13 +115,18 @@ function changeIndexShow(index: number) {
     &:hover {
       background-color: var(--o-color-bg4);
     }
-    .box div {
-      display: flex;
-      align-items: center;
+    .box {
       @media screen and (max-width: 1100px) {
-        grid-column-start: 2;
         grid-column-end: 3;
-        display: block;
+      }
+      div {
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 1100px) {
+          grid-column-start: 2;
+          grid-column-end: 3;
+          display: block;
+        }
       }
     }
     .db {
