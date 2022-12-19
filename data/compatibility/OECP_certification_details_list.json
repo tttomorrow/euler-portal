@@ -1,16 +1,16 @@
 [
     {
-        "os_version": "BCLinux-for-Euler-21.10-dvd-aarch64-220620.iso",
-        "osv_name": "中移（苏州）软件技术有限公司",
+        "os_version": "turbolinux-15-SP3-everything-x86_64-dvd.iso",
+        "osv_name": "北京拓林思软件有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2022/12/2",
-        "arch": "aarch64",
+        "date": "2022/12/19",
+        "arch": "X86",
         "details": "详细信息",
-        "friendly_link": "https://ecloud.10086.cn/",
-        "os_download_link": "https://ecloud.10086.cn/",
-        "checksum": "c4c92454d544177aff3a2aa4255cda44",
-        "base_openeuler_version": "openEuler 20.03 LTS SP2",
+        "friendly_link": "https://www.turbolinux.com.cn/",
+        "os_download_link": "https://www.turbolinux.com.cn/",
+        "checksum": "4b639158722eb72955b4c3dbdb6d91a2",
+        "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
                 "name": "core_pkg",
@@ -73,17 +73,17 @@
     },
 
     {
-        "os_version": "EulerOS-V2.0SP10-aarch64-dvd.iso",
-        "osv_name": "华为技术有限公司",
+        "os_version": "turbolinux-15-SP3-everything-aarch64-dvd.iso",
+        "osv_name": "北京拓林思软件有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2022/12/2",
+        "date": "2022/12/19",
         "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "http://www.huawei.com/",
-        "os_download_link": "http://www.huawei.com/",
-        "checksum": "23b1ecb3fb0a9c793769ffdb9cf388f2",
-        "base_openeuler_version": "openEuler 20.03 LTS SP1",
+        "friendly_link": "https://www.turbolinux.com.cn/",
+        "os_download_link": "https://www.turbolinux.com.cn/",
+        "checksum": "115fe842bff443986ac95f6d4aec1f52",
+        "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
                 "name": "core_pkg",
