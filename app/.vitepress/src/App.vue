@@ -9,6 +9,7 @@ import LayoutBlog from '@/layouts/LayoutBlog.vue';
 import LayoutNews from '@/layouts/LayoutNews.vue';
 import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
+import LayoutAboutUs from '@/layouts/LayoutAboutUs.vue';
 
 import categories from '@/data/common/category';
 import { setStoreData } from './shared/login';
@@ -22,6 +23,7 @@ const compMapping: {
   news: LayoutNews,
   showcase: LayoutShowcase,
   migration: LayoutMigration,
+  'about-us': LayoutAboutUs,
 };
 
 const isCustomLayout = computed(() => {
@@ -65,13 +67,13 @@ onMounted(() => {
 
 main {
   position: relative;
-  min-height: calc(100vh - 339px);
+  min-height: calc(100vh - 259px);
   background-color: var(--o-color-bg1);
-  margin-top: 80px;
+  padding-top: 80px;
   overflow: hidden;
 
   @media (max-width: 1100px) {
-    margin-top: 48px;
+    padding-top: 48px;
   }
 }
 </style>

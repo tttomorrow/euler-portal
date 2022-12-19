@@ -35,10 +35,6 @@ const isCustomLayout = computed(() => {
   return frontmatter.value['custom-layout'];
 });
 
-const isGuidance = computed(() => {
-  return frontmatter.value.title === '迁移方案';
-});
-
 watch(
   () => {
     const routeList = router.route.path.split('/');
@@ -86,6 +82,7 @@ const handleNodeClick = (node: any) => {
 </script>
 
 <template>
+  <!-- PC侧边导航栏 -->
   <DocSideBar v-if="screenWidth > 1100">
     <div class="migration-sidebar-toc">
       <template v-for="(item, index) in tocInfo" :key="item.label">
@@ -110,7 +107,8 @@ const handleNodeClick = (node: any) => {
     </div>
   </DocSideBar>
 
-  <div v-else class="detail-mobile">
+  <!-- 移动端导航栏 -->
+  <template v-else>
     <OIcon v-show="IconMenuShow" class="catalog" @click="toggleMenu(true)"
       ><IconCatalog
     /></OIcon>
@@ -146,11 +144,13 @@ const handleNodeClick = (node: any) => {
         </div>
       </ODrawer>
     </ClientOnly>
-  </div>
+  </template>
+
+  <!-- 内容区域 -->
   <div class="migration-wrapper migration-markdown">
     <Content
       class="migration-content"
-      :class="{ 'custom-layout': isCustomLayout, guidance: isGuidance }"
+      :class="{ 'custom-layout': isCustomLayout }"
     />
   </div>
 </template>
@@ -160,23 +160,98 @@ const handleNodeClick = (node: any) => {
   background-color: var(--o-color-bg4);
 }
 
-.migration-content {
-  max-width: 1380px;
-  margin: 0 auto;
-  @media screen and (max-width: 768px) {
+.nav-tree {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 268px;
+  height: 100vh;
+  background: var(--o-color-bg2);
+  box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 999;
+  .nav-top {
+    width: 100%;
+    background: var(--o-color-bg2);
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--o-color-text1);
+    padding: var(--o-spacing-h5);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      height: 24px;
+      cursor: pointer;
+    }
+    :deep(.o-icon) {
+      padding: 12px;
+      cursor: pointer;
+      font-size: var(--o-font-size-h5);
+    }
+  }
+  :deep(.el-tree) {
+    width: 100%;
+    overflow: hidden;
     background-color: var(--o-color-bg2);
-    padding: 24px 16px 16px 16px;
-    box-shadow: var(--o-shadow-l1);
+  }
+
+  :deep(.el-icon.el-tree-node__expand-icon.is-leaf) {
+    display: none;
+  }
+  :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
+    order: 2;
+    padding: 12px;
+    font-size: var(--o-font-size-h8);
+    color: var(--o-color-text1);
+  }
+  :deep(.el-tree-node__expand-icon.expanded) {
+    transform: rotate(180deg);
+  }
+  :deep(.el-tree--highlight-current
+      .el-tree-node.is-current
+      > .el-tree-node__content) {
+    background-color: var(--o-color-bg4);
+  }
+  :deep(.el-tree-node__children .el-tree-node__expand-icon) {
+    display: none;
+  }
+  :deep(.el-tree-node__children .is-current .el-tree-node__label) {
+    color: var(--o-color-brand1);
+  }
+  :deep(.el-tree--highlight-current
+      .el-tree-node.is-current
+      > .el-tree-node__content) {
+    background-color: transparent;
+  }
+  :deep(.el-tree-node__children) {
+    background-color: var(--o-color-bg1);
+  }
+  :deep(.el-tree .el-tree-node__label) {
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--o-color-text1);
+  }
+  :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-wrap;
+  }
+  :deep(.el-tree-node .el-tree-node__content) {
+    padding: 19px var(--o-spacing-h5) !important;
+    justify-content: space-between;
   }
 }
 
-.custom-layout {
-  @media screen and (max-width: 768px) {
-    background-color: var(--o-color-bg1);
-    box-shadow: var(--o-shadow-sl1);
-    padding: 0;
-    box-shadow: none;
-  }
+.catalog {
+  position: fixed;
+  top: 12px;
+  left: 48px;
+  z-index: 99;
+  font-size: 24px;
+  color: var(--o-color-text1);
+  cursor: pointer;
 }
 
 .guidance {
@@ -243,119 +318,30 @@ const handleNodeClick = (node: any) => {
 .migration-title {
   font-size: var(--o-font-size-h5);
   line-height: var(--o-line-height-h5);
-  // position: fixed;
-  // left: 40px;
-  // margin-bottom: var(--o-spacing-h8);
-  // margin-top: 0;
-  // color: var(--o-color-white);
-  // cursor: pointer;
 }
 
 .migration-wrapper {
   .migration-content {
     max-width: 1380px;
     margin: 0 auto;
+    @media screen and (max-width: 768px) {
+      background-color: var(--o-color-bg2);
+      padding: 24px 16px 16px 16px;
+      box-shadow: var(--o-shadow-l1);
+    }
+
+    &.custom-layout {
+      @media screen and (max-width: 768px) {
+        background-color: var(--o-color-bg1);
+        box-shadow: var(--o-shadow-l1);
+        padding: 0;
+        box-shadow: none;
+      }
+    }
   }
 
   .migration-markdown {
     margin: 0;
-  }
-}
-.catalog {
-  position: fixed;
-  top: 12px;
-  left: 48px;
-  z-index: 99;
-  font-size: 24px;
-  color: var(--o-color-text1);
-  cursor: pointer;
-}
-.nav-tree {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 268px;
-  height: 100vh;
-  background: var(--o-color-bg2);
-  box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  z-index: 999;
-  .nav-top {
-    width: 100%;
-    background: var(--o-color-bg2);
-    font-size: 14px;
-    line-height: 22px;
-    color: var(--o-color-text1);
-    padding: var(--o-spacing-h5);
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .logo {
-      height: 24px;
-      cursor: pointer;
-    }
-    :deep(.o-icon) {
-      padding: 12px;
-      cursor: pointer;
-      font-size: var(--o-font-size-h5);
-    }
-  }
-  :deep(.el-tree) {
-    width: 100%;
-    overflow: hidden;
-    background-color: var(--o-color-bg2);
-  }
-
-  :deep(.el-icon.el-tree-node__expand-icon.is-leaf) {
-    display: none;
-  }
-  :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
-    order: 2;
-    padding: 12px;
-    font-size: var(--o-font-size-h8);
-    color: var(--o-color-text1);
-  }
-  :deep(.el-tree-node__expand-icon.expanded) {
-    transform: rotate(180deg);
-  }
-  :deep(.el-tree--highlight-current
-      .el-tree-node.is-current
-      > .el-tree-node__content) {
-    background-color: var(--o-color-bg4);
-  }
-  // :deep(.el-tree-node:nth-of-type(1)
-  //     > .el-tree-node__content
-  //     > .el-tree-node__expand-icon) {
-  //   display: none;
-  // }
-  :deep(.el-tree-node__children .el-tree-node__expand-icon) {
-    display: none;
-  }
-  :deep(.el-tree-node__children .is-current .el-tree-node__label) {
-    color: var(--o-color-brand1);
-  }
-  :deep(.el-tree--highlight-current
-      .el-tree-node.is-current
-      > .el-tree-node__content) {
-    background-color: transparent;
-  }
-  :deep(.el-tree-node__children) {
-    background-color: var(--o-color-bg1);
-  }
-  :deep(.el-tree .el-tree-node__label) {
-    font-size: 14px;
-    line-height: 16px;
-    color: var(--o-color-text1);
-  }
-  :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
-    font-size: 14px;
-    line-height: 20px;
-    white-space: pre-wrap;
-  }
-  :deep(.el-tree-node .el-tree-node__content) {
-    padding: 19px var(--o-spacing-h5) !important;
-    justify-content: space-between;
   }
 }
 </style>

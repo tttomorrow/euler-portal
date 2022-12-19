@@ -190,6 +190,9 @@ const isMigration = computed(() => {
     router.route.path.split('/')[2] === 'migration'
   );
 });
+const isAbout = computed(() => {
+  return frontmatter.value.category === 'about-us';
+});
 const quickIssueUrl = computed(() => {
   return isMigration.value
     ? 'https://quickissue.openeuler.org/zh/new-issues/?c2lnPXNpZy1NaWdyYXRpb24mcmVwbz1vcGVuZXVsZXIvbWlncmF0aW9uLWFzc2lzdGFudCZyZXBvX2lkPTE1OTI4MzA0JnR5cGU96L+B56e75o+Q5LyYJnRpdGxlPVvmkKzov4Fd'
@@ -211,7 +214,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
 </script>
 
 <template>
-  <footer class="footer" :class="{ migration: isMigration }">
+  <footer class="footer" :class="{ 'is-doc': isMigration || isAbout }">
     <!-- 隐私政策 -->
     <div
       v-if="isCookieTip"
@@ -344,7 +347,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
 $color: #fff;
 .footer {
   background: var(--o-color-greyblack1);
-  &.migration {
+  &.is-doc {
     margin-left: 300px;
     @media (max-width: 1100px) {
       margin-left: 0;
