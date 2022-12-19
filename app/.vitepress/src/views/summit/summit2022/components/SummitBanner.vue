@@ -5,16 +5,41 @@ import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper';
 import 'swiper/swiper.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 import 'swiper/components/pagination/pagination.min.css';
-import { useData } from 'vitepress';
-import HOME_CONFIG from '@/data/home';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
+import banner from '@/assets/category/summit/summit2022/banner.jpg';
+import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
+import bannerSummitKv from '@/assets/category/summit/summit2022/summit-kv.jpg';
+import bannerSummitKvMo from '@/assets/category/summit/summit2022/summit-kv-mo.png';
+
+const summitBanner = [
+  {
+    pcBanner: bannerSummitKv,
+    moBanner: bannerSummitKvMo,
+    link: '',
+    id: '',
+    targetTap: 1,
+    title: '',
+    desc: '',
+    btn: '',
+  },
+  {
+    pcBanner: banner,
+    moBanner: bannerMo,
+    link: '',
+    id: '',
+    targetTap: 1,
+    title: '',
+    desc: '',
+    btn: '',
+  },
+];
+
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-const { lang } = useData();
 const flag = ref();
 const onSwiper = (swiper: any) => {
   swiper.el.onmouseout = function () {
@@ -28,17 +53,6 @@ const onSwiper = (swiper: any) => {
   flag.value = computed(() => swiper.animating);
 };
 const windowWidth = ref(useWindowResize());
-
-// 判断语言 banner
-const homeBanner = computed(() => {
-  if (lang.value === 'en') {
-    return HOME_CONFIG.HOMEBANNER.en;
-  } else if (lang.value === 'ru') {
-    return HOME_CONFIG.HOMEBANNER.ru;
-  } else {
-    return HOME_CONFIG.HOMEBANNER.zh;
-  }
-});
 
 // banner跳转事件
 const jumpTo = (item: any) => {
@@ -54,7 +68,7 @@ const jumpTo = (item: any) => {
 
 <template>
   <swiper
-    class="home-banner"
+    class="summit-banner"
     :loop="true"
     :pagination="{
       clickable: true,
@@ -66,7 +80,7 @@ const jumpTo = (item: any) => {
     :navigation="true"
     @swiper="onSwiper"
   >
-    <swiper-slide v-for="item in homeBanner" :key="item.link">
+    <swiper-slide v-for="item in summitBanner" :key="item.link">
       <div class="banner-panel" @click="jumpTo(item)">
         <div
           class="banner-panel-cover"
@@ -103,7 +117,7 @@ const jumpTo = (item: any) => {
               data-aos="fade-up"
               class="action"
             >
-              <OButton animation class="home-banner-btn">
+              <OButton animation class="summit-banner-btn">
                 {{ item.btn }}
                 <template #suffixIcon
                   ><OIcon><IconArrowRight /></OIcon
@@ -132,7 +146,7 @@ html[lang='zh'] {
 .dark .banner-panel-cover {
   filter: brightness(80%) grayscale(20%) contrast(1.2);
 }
-.home-banner-btn {
+.summit-banner-btn {
   border-color: $banner-color !important;
   color: $banner-color !important;
   @media screen and (max-width: 824px) {
@@ -142,8 +156,8 @@ html[lang='zh'] {
   }
 }
 
-.home-banner {
-  height: 480px;
+.summit-banner {
+  height: 380px;
   position: relative;
   .banner-panel {
     position: absolute;
@@ -235,7 +249,7 @@ html[lang='zh'] {
         }
       }
       .prize {
-        .home-banner-btn {
+        .summit-banner-btn {
           @media screen and (max-width: 824px) {
             display: none;
           }
@@ -288,7 +302,7 @@ html[lang='zh'] {
   }
   :deep(.swiper-pagination) {
   width: 1416px !important;
-  bottom: 84px;
+  bottom: 40px;
   left: 50% !important;
   transform: translateX(-50%);
   text-align: left;
@@ -312,7 +326,7 @@ html[lang='zh'] {
   }
   @media screen and (max-width: 1100px) {
     width: 100% !important;
-    bottom: 72px;
+    // bottom: 72px;
     .swiper-pagination-bullet {
       width: 20px !important;
       margin: 0 4px 0 0;
@@ -326,7 +340,6 @@ html[lang='zh'] {
   }
 }
 }
-
 
 :deep(.swiper-button-prev) {
   width: 32px;
