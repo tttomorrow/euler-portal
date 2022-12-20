@@ -173,8 +173,8 @@ const summitData: any = {
                   {
                     time: '14:05 - 14:10',
                     desc: '欧拉社区领导致辞',
-                    name: [''],
-                    post: [''],
+                    name: ['江大勇'],
+                    post: ['欧拉社区董事长'],
                     detail: '',
                   },
                   {
@@ -187,8 +187,8 @@ const summitData: any = {
                   {
                     time: '14:30 - 14:50',
                     desc: 'openEulor与统信联合创新应用实践',
-                    name: [''],
-                    post: [''],
+                    name: ['管延杰'],
+                    post: ['欧拉社区技术专家'],
                     detail: '',
                   },
                   {
@@ -560,7 +560,7 @@ const summitData: any = {
                   },
                   {
                     time: '4',
-                    desc: 'openEuler对AMD第四代EPYC平台的支持',
+                    desc: '芯突破 新领域 - AMD 第四代EPYC处理器的全面支持',
                     name: ['谢昊成'],
                     post: ['amd工程师'],
                     detail: '介绍openEuler对AMD第四代EPYC平台的支持',
