@@ -748,6 +748,13 @@ const summitData: any = {
                             2、介绍嵌入式系统版本定制系统
                             3、介绍在电网安全运维网关项目上的挑战和解决方案"`,
                   },
+                  {
+                    time: '7',
+                    desc: '基于 openEuler 的工业机器人操作系统及探索应用',
+                    name: ['牛建伟'],
+                    post: ['北京航空航天大学教授/博士生导师'],
+                    detail: `研发一套自主可控、实时性高、稳定性强的智能机器人操作系统开放平台，对我国机器人产品生态建设具有重要意义。北京航空航天大学基于openEuler embeded操作系统探索建立一套稳定性强、跨平台的工业机器人智能机器人操作系统，适配相关工业协议，同时配备机器人控制、调试、模拟仿真等环境工具，降低机器人应用研发难度。`,
+                  },
                 ],
               },
               {
@@ -959,73 +966,6 @@ const summitData: any = {
           },
         ],
       },
-      // {
-      //   daytime: '12月29日 (openGauss Summit 2022)',
-      //   list: [
-      //     {
-      //       type: '主论坛',
-      //       id: 'main',
-      //       time: '上午',
-      //       children: [
-      //         {
-      //           time: '09:30 - 09:35',
-      //           desc: '院士致辞',
-      //         },
-      //         {
-      //           time: '09:35 - 09:45',
-      //           desc: 'openGauss社区进展主题演讲',
-      //         },
-      //         {
-      //           time: '09:45 - 09:50',
-      //           desc: 'openGauss社区理事会升级仪式',
-      //         },
-      //         {
-      //           time: '09:50 - 10:10',
-      //           desc: 'openGauss技术创新主题演讲',
-      //         },
-      //         {
-      //           time: '10:10 - 10:25',
-      //           desc: '中国移动移动创新实践及成果发布仪式',
-      //         },
-      //         {
-      //           time: '10:25 - 10:55',
-      //           desc: '产学研联合创新、openGauss创新孵化成果分享',
-      //         },
-      //         {
-      //           time: '10:55 - 11:55',
-      //           desc: '伙伴与用户应用实践联合演讲',
-      //         },
-      //         {
-      //           time: '11:55 - 12:00',
-      //           desc: 'openGauss社区活动发布仪式',
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       type: '分论坛',
-      //       id: 'other',
-      //       time: '下午',
-      //       duration: '14:00 - 16:00',
-      //       children: [
-      //         {
-      //           id: 0,
-      //           name: '海量数据',
-      //           desc: 'openEuler Summit 2022',
-      //         },
-      //         {
-      //           id: 1,
-      //           name: '云和恩墨',
-      //           desc: 'openEuler Summit 2022',
-      //         },
-      //         {
-      //           id: 2,
-      //           name: '南大通用',
-      //           desc: 'openEuler Summit 2022',
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
     ],
   },
   partner: {
@@ -1193,7 +1133,7 @@ onMounted(() => {
         class="agenda-item"
         data-aos="fade-up"
       >
-        <h4 class="meetingtitle">
+        <h4 class="meeting-title">
           {{ item.daytime }}
         </h4>
         <OTabs v-model="tabType[index]" class="schedule-tabs">
@@ -1312,6 +1252,9 @@ onMounted(() => {
   font-size: var(--o-font-size-h6);
   line-height: var(--o-line-height-h6);
   color: var(--o-color-text1);
+  font-weight: 300;
+  text-align: justify;
+  text-indent: 2em;
   @media screen and (max-width: 768px) {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
@@ -1378,7 +1321,7 @@ onMounted(() => {
     // 暂时隐藏时间
     &:nth-of-type(2) {
       .other {
-        :deep(.dataItem) {
+        :deep(.data-item) {
           grid-template-columns: 600px 445px;
           padding-left: 192px;
           @media screen and (max-width: 1328px) {
@@ -1417,7 +1360,7 @@ onMounted(() => {
       }
     }
     // 暂时隐藏时间
-    .meetingtitle {
+    .meeting-title {
       font-weight: 400;
       color: var(--o-color-text1);
       font-size: var(--o-font-size-h6);
@@ -1543,7 +1486,7 @@ onMounted(() => {
             margin: 16px 0;
           }
         }
-        :deep(.dateList) {
+        :deep(.data-list) {
           .detail {
             display: none;
           }

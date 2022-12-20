@@ -22,11 +22,11 @@ function changeIndexShow(index: number) {
 </script>
 
 <template>
-  <div class="dateList">
+  <div class="data-list">
     <div
       v-for="(subitem, index) in options"
       :key="subitem.time"
-      class="dataItem"
+      class="data-item"
       :class="{
         'show-detail': indexShow === index,
       }"
@@ -38,7 +38,7 @@ function changeIndexShow(index: number) {
         @click="changeIndexShow(index as any)"
         >{{ subitem.desc }}</span
       >
-      <div v-if="subitem.name" class="box">
+      <div v-if="subitem.name" class="name-box">
         <div v-for="(item, indexName) in subitem.name" :key="item">
           <span class="name">{{ item }} </span>
           <span v-if="subitem.post[indexName]" class="post"
@@ -87,11 +87,11 @@ function changeIndexShow(index: number) {
 </template>
 
 <style lang="scss" scoped>
-.dateList {
+.data-list {
   @media screen and (max-width: 1100px) {
     position: relative;
   }
-  .dataItem {
+  .data-item {
     display: grid;
     grid-template-columns: 192px 580px 445px;
     // border-bottom: 1px solid var(--o-color-border2);
@@ -100,11 +100,11 @@ function changeIndexShow(index: number) {
     align-items: center;
     min-height: 64px;
     position: relative;
-    & + .dataItem {
+    & + .data-item {
       border-top: 1px solid var(--o-color-border2);
     }
     @media screen and (max-width: 1328px) {
-      grid-template-columns: 500px auto;
+      grid-template-columns: 192px 450px 400px;
     }
     @media screen and (max-width: 1100px) {
       grid-template-columns: 80px auto;
@@ -115,7 +115,7 @@ function changeIndexShow(index: number) {
     &:hover {
       background-color: var(--o-color-bg4);
     }
-    .box {
+    .name-box {
       @media screen and (max-width: 1100px) {
         grid-column-end: 3;
       }
@@ -304,7 +304,7 @@ function changeIndexShow(index: number) {
 //   }
 // }
 
-.dateList .sub-container .dataItem {
+.data-list .sub-container .data-item {
   grid-template-columns: 192px auto 96px 410px;
 }
 </style>
