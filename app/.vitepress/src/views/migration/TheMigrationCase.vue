@@ -10,7 +10,10 @@ const { lang } = useData();
   <SeoBox :seo-data="seoConfig[lang]?.migrationCase" />
   <div class="migration-transplantation">
     <p class="migration-transplantation-desc">
-      操作系统迁移时，软件也需要同步适配移植，openEuler提供如下这些典型软件移植指南供参考。
+      操作系统迁移时，软件也需要同步适配移植，openEuler提供如下这些典型软件移植指南供参考。如果您也想贡献移植案例，请参考<a
+        href="/zh/migration/contribution/"
+        >贡献攻略</a
+      >。
     </p>
     <div class="migration-transplantation-content">
       <a
@@ -41,6 +44,9 @@ const { lang } = useData();
       line-height: var(--o-line-height-text);
       margin-bottom: var(--o-spacing-h4);
     }
+  }
+  .migration-contribution {
+    margin-top: var(--o-spacing-h2);
   }
 
   h1 {
