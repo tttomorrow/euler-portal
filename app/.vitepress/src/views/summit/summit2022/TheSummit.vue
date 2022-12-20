@@ -1114,8 +1114,8 @@ onMounted(() => {
   </div> -->
   <SummitBanner />
   <AppContext>
-    <div v-for="item in summitData.detail" :key="item" class="detail">
-      {{ item }}
+    <div class="detail">
+      <p v-for="item in summitData.detail" :key="item">{{ item }}</p>
     </div>
     <!-- <div class="liver">
       <h3 class="titleBar">{{ summitData.liver.title }}</h3>
@@ -1249,15 +1249,20 @@ onMounted(() => {
 //   }
 // }
 .detail {
-  font-size: var(--o-font-size-h6);
-  line-height: var(--o-line-height-h6);
-  color: var(--o-color-text1);
-  font-weight: 300;
-  text-align: justify;
-  text-indent: 2em;
-  @media screen and (max-width: 768px) {
-    font-size: var(--o-font-size-text);
-    line-height: var(--o-line-height-text);
+  p {
+    font-size: var(--o-font-size-h6);
+    line-height: var(--o-line-height-h6);
+    color: var(--o-color-text1);
+    font-weight: 300;
+    text-align: justify;
+    text-indent: 2em;
+    @media screen and (max-width: 768px) {
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+    }
+    & + p {
+      margin-top: var(--o-spacing-h6);
+    }
   }
 }
 .liver {

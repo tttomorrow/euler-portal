@@ -87,6 +87,11 @@ function clickDownBtn() {
     color: var(--o-color-text1);
     background-color: var(--o-color-bg2);
     box-shadow: var(--o-shadow-l2);
+    @media (max-width: 1100px) {
+      padding: var(--o-spacing-h5) var(--o-spacing-h6);
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+    }
   }
   .rule {
     margin-top: var(--o-spacing-h1);
