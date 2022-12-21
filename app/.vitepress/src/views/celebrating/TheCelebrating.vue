@@ -64,7 +64,7 @@ function clickDownBtn() {
   if (guardAuthClient.value.photo) {
     setDownData();
     isTipShow.value = true;
-    window.open(data.down.link);
+    window.open(data.down.link, '_self');
   } else {
     showGuard();
   }
