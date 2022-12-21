@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import { showGuard, useStoreData, getUserAuth } from '@/shared/login';
+import { showGuard, useStoreData } from '@/shared/login';
 import { useCommon } from '@/stores/common';
 
 import AppContext from '@/components/AppContent.vue';
@@ -15,7 +15,7 @@ import downIllImg1Dark from '@/assets/category/celebrating/down-ill1-dark.png';
 import downIllImg2Dark from '@/assets/category/celebrating/down-ill2-dark.png';
 import succeedTipImg from '@/assets/category/celebrating/succeed-tip.png';
 
-const { token } = getUserAuth();
+// const { token } = getUserAuth();
 const { guardAuthClient } = useStoreData();
 const commonStore = useCommon();
 const downIllImg1 = computed(() =>
@@ -54,14 +54,14 @@ const isTipShow = ref(false);
 function setDownData() {
   const sensors = (window as any)['sensorsDataAnalytic201505'];
   sensors?.setProfile({
-    userName: guardAuthClient.username || '',
+    userName: guardAuthClient.value.username || '',
     profileType: 'Download',
     downloadLink: data.down.link,
     date: new Date().getTime(),
   });
 }
 function clickDownBtn() {
-  if (token) {
+  if (guardAuthClient.value.photo) {
     setDownData();
     isTipShow.value = true;
     window.open(data.down.link);
