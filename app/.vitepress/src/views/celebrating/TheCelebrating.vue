@@ -257,7 +257,7 @@ function clickMask() {
     position: relative;
     @media (max-width: 1100px) {
       padding: var(--o-spacing-h5) var(--o-spacing-h6);
-      margin-top: var(--o-spacing-h3);
+      margin-top: var(--o-spacing-h5);
       display: block;
     }
     .left {
@@ -314,6 +314,9 @@ function clickMask() {
     width: 100%;
     margin-top: var(--o-spacing-h4);
     box-shadow: var(--o-shadow-l2);
+    @media (max-width: 1100px) {
+      margin-top: var(--o-spacing-h5);
+      }
     img {
       width: 100%;
     }
