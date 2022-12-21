@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import AOS from 'aos';
 
-import liveActiveBg from '@/assets/category/summit/live-active-bg.png';
+// import liveActiveBg from '@/assets/category/summit/live-active-bg.png';
 
 interface RENDERDATA {
   id: number;
@@ -75,7 +75,7 @@ onMounted(async () => {
 });
 
 // 背景
-const ActiveBg = `url(${liveActiveBg})`;
+// const ActiveBg = `url(${liveActiveBg})`;
 
 const liveRoom = ref(
   isTest.value ? renderData[0].liveTestId : renderData[0].liveId
@@ -215,7 +215,7 @@ const selectliveChange = (val: number): void => {
       }
 
       .link-active {
-        background: v-bind('ActiveBg') no-repeat center/cover;
+        background: var(--o-color-brand1);
         p {
           color: #fff;
         }
