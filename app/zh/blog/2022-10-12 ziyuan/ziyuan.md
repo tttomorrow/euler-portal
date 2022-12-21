@@ -6,7 +6,7 @@ tags:
   - 服务器
   - 运维
   - 网络
-archives: 2022-10-13
+archives: 2022-10
 author:
   - openEuler
 summary: 本文详细介绍并分享关于提升 CPU 资源隔离的混部技术细节。

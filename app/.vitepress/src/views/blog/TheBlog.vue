@@ -554,7 +554,10 @@ const moblieCurrentChange = (val: string) => {
             <p>{{ item.title }}</p>
           </div>
           <div class="blog-list-body">
-            <div class="blog-list-item-info">
+            <div
+              class="blog-list-item-info"
+              :class="lang === 'en' ? 'en-blog-list' : ''"
+            >
               <div class="infodetail">
                 <OIcon class="icon"><IconUser /></OIcon>
                 <p v-for="(aut, index2) in item.author" :key="aut">
@@ -571,8 +574,8 @@ const moblieCurrentChange = (val: string) => {
               <div class="infodetail">
                 <OIcon class="icon"><IconBrowse /></OIcon>
                 <p>
-                  {{ userCaseData.BROWSE }}{{ item.views
-                  }}{{ userCaseData.TIMES }}
+                  {{ userCaseData.BROWSE }} {{ item.views }}
+                  {{ userCaseData.TIMES }}
                 </p>
               </div>
             </div>
@@ -730,6 +733,12 @@ const moblieCurrentChange = (val: string) => {
           flex-direction: row;
           align-items: center;
           margin-right: var(--o-spacing-h3);
+        }
+      }
+      .en-blog-list {
+        justify-content: space-between;
+        .infodetail {
+          margin: 0;
         }
       }
       &-content {
