@@ -13,7 +13,7 @@ tags:
     - 漏洞排查
     - 漏洞感知
     - 合规
-archives: 2022-09-30
+archives: 2022-09
 author: robellliu
 summary: 本文主要介绍openEuler/MindSpore/openGauss开源社区落地SBOM的实践，实现基于SBOM的开源软件漏洞分钟级排查与感知、License合规等功能。
 ---
