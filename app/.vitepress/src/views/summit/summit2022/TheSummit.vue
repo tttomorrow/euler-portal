@@ -204,10 +204,116 @@ const summitData: any = {
               {
                 id: 0,
                 name: '麒麟软件',
+                detail: '',
+                children: [
+                  {
+                    time: '14:00 - 14:10',
+                    desc: '欧拉社区领导致辞',
+                    name: [''],
+                    post: [''],
+                    detail: '',
+                  },
+                  {
+                    time: '14:10 - 14:30',
+                    desc: '夯实算力底座，赋能产业升级',
+                    name: ['杨汇成'],
+                    post: ['麒麟软件有限公司产品与社区发展中心副总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:30 - 14:45',
+                    desc: '开源时代下的OK组合',
+                    name: ['熊伟'],
+                    post: ['openEuler社区技术委员会委员'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:45 - 15:00',
+                    desc: '价值替代，生态共融，共铸数智化转型新未来',
+                    name: ['李绍文'],
+                    post: [
+                      '用友网络科技股份有限公司集团信创技术管理委员会组长',
+                    ],
+                    detail: '',
+                  },
+                  {
+                    time: '15:00 - 15:15',
+                    desc: '携手麒麟，筑牢网信安全根基',
+                    name: ['周华涛'],
+                    post: ['奇安信科技集团股份有限公司保密信创总体部总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:15 - 15:30',
+                    desc: '承上启下，共建网信新生态——FlyingServer，打造网信精品应用中间件',
+                    name: ['刘海平'],
+                    post: ['亚信科技（中国）有限公司研发中心平台产品线总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:30 - 15:45',
+                    desc: '星环大数据 & 麒麟操作系统联合解决方案',
+                    name: ['张雷'],
+                    post: ['星环信息科技（上海）股份有限公司生态合作总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:45 - 16:00',
+                    desc: '夯实安全基础，共创保险数字化未来',
+                    name: ['张正'],
+                    post: ['中科软科技股份有限公司技术总监'],
+                    detail: '',
+                  },
+                ],
               },
               {
                 id: 1,
                 name: '麒麟信安',
+                detail: '',
+                children: [
+                  {
+                    time: '14:00 - 14:15',
+                    desc: '领导致辞',
+                    name: ['任启', '邱成峰'],
+                    post: ['麒麟信安高级副总裁', 'openEuler社区秘书长'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:15 - 14:35',
+                    desc: '麒麟信安操作系统发展现状与路线规划',
+                    name: ['石勇'],
+                    post: ['麒麟信安操作系统产品总监、openEuler技术委员会委员'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:35 - 14:55',
+                    desc: '欧拉发展规划',
+                    name: ['管延杰'],
+                    post: ['欧拉社区技术专家'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:55 - 15:15',
+                    desc: '湖南欧拉生态建设概况与发展规划',
+                    name: ['刘华杰'],
+                    post: ['湖南欧拉生态创新中心BD负责人'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:15 - 15:35',
+                    desc: '创新不止 云化提速——麒麟信安云技术创新与应用实践',
+                    name: ['徐鹏'],
+                    post: ['麒麟信安售前方案总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:35 - 15:55',
+                    desc: '原地替换 应用透明——麒麟信安操作系统CentOS迁移方案技术实践',
+                    name: ['高洪鹤'],
+                    post: ['麒麟信安技术专家、openEuler用户委员会委员'],
+                    detail: '',
+                  },
+                ],
               },
               {
                 id: 2,
@@ -288,8 +394,8 @@ const summitData: any = {
                   {
                     time: '14:00 - 14:05',
                     desc: '欧拉社区领导致辞',
-                    name: ['邱成锋'],
-                    post: ['openEuler社区秘书长'],
+                    name: [''],
+                    post: [''],
                     detail: '',
                   },
                   {
@@ -368,15 +474,15 @@ const summitData: any = {
                   {
                     time: '16:05 - 16:20',
                     desc: '基于openEuler的医疗HIS系统迁移案例',
-                    name: ['陈晟'],
-                    post: ['陕西远鑫信息总经理'],
+                    name: ['侯纪伟'],
+                    post: ['陕西远鑫销售总监'],
                     detail: '',
                   },
                   {
                     time: '16:20 - 16:35',
                     desc: '基于openEuler的客户数据中心解决方案迁移案例',
-                    name: ['张念'],
-                    post: ['异次元（西安）运营总监'],
+                    name: ['贺莉娜'],
+                    post: ['异次元售前解决方案总监'],
                     detail: '',
                   },
                 ],
@@ -517,7 +623,7 @@ const summitData: any = {
                   },
                   {
                     time: '4',
-                    desc: '《ebpf-linux内核安全的双刃剑》',
+                    desc: 'eBPF-Linux内核安全的双刃剑',
                     name: ['曹佩庆'],
                     post: ['统信软件研发经理'],
                     detail:
@@ -540,7 +646,7 @@ const summitData: any = {
                       '内存容量越来越大，多样化的内存介质引入，单机下内存故障随之增加，同时，arm64服务器广泛在云&数据中心的应用，内存的故障处理在arm64架构下越来越重要，本次Topic介绍arm64 RAS处理及华为在arm64可靠性里面的相关工作，包括arm64 内存镜像，arm64 machine check safe等。内存镜像相当于一份内存中的数据有两份拷贝，如果系统检测到不可恢复的内存错误，那么内存控制器会从镜像区域同步一份，避免数据丢失。Linux内核一般会将内核以及驱动使用的数据做内存镜像，避免因为内存错误导致内核panic，该特性已成功推社区。machine check safe在uaccess等场景下内核态触发不可恢复内存错误时，通过杀死受影响的用户态进程同时隔离错误页面的处理机制，避免内核panic，该特性目前正在推送社区中。',
                   },
                   {
-                    time: '8',
+                    time: '7',
                     desc: '探秘 Intel Trust Domain Extensions(TDX) 技术',
                     name: ['杜凡'],
                     post: ['Intel系统软件架构师'],
@@ -548,7 +654,7 @@ const summitData: any = {
                       'Intel Trust Domain Extensions(TDX) 作为硬件辅助TEE的技术，提供虚拟机层面的内存及CPU状态的机密性和完整性的保障。Intel TDX 技术巧妙得扩展MKTME和VMX 两大基础技术底座，引入SEAM 模式，以SEAM模式的软件载体TDX Module 作为安全防护的关键支点，同时有增加的方便升级的优势。Intel TDX 作为机密计算领域的主要方向之一，在云环境中，阻断恶意攻击，保护终端用户数据的安全性，对敏感业务向云端迁移提供支撑。本议题阐述Intel TDX整体的架构，探寻其底层技术逻辑。',
                   },
                   {
-                    time: '9',
+                    time: '8',
                     desc: '基于eBPF技术的网络会话监控技术与实践',
                     name: ['卢刚'],
                     post: ['湖南麒麟信安科技股份有限公司操作系统架构师'],
@@ -559,7 +665,7 @@ const summitData: any = {
                             3、	介绍该监控审计技术的特性，包括：协议类型TCP或UDP、本地IP地址、本地端口、对端IP地址、对端端口、进程和网络会话字节数等。"`,
                   },
                   {
-                    time: '10',
+                    time: '9',
                     desc: '数据完整性在openEuler上的实现',
                     name: ['赵磊'],
                     post: ['江苏润和软件股份有限公司专家级工程师'],
@@ -568,6 +674,13 @@ const summitData: any = {
                             1: 介绍Linux内核安全性模块(LSM)的设计、历史和发展
                             2: openEuler在对内核安全性方面的增强与加固
                             3: 在openEuler实现数据完整性的一种实现设计方法`,
+                  },
+                  {
+                    time: '10',
+                    desc: '下一代互联标准Compute Express Link(CXL)简介',
+                    name: ['施爱春'],
+                    post: ['Intel软件工程师'],
+                    detail: `Compute Express Link(CXL)是下一代高带宽低延迟的开放互联标准，为高性能异构计算在不同场景的应用而量身打造。本议题主要介绍CXL规范，Linux内核实现及应用场景。`,
                   },
                 ],
               },
@@ -611,7 +724,7 @@ const summitData: any = {
                   },
                   {
                     time: '4',
-                    desc: '芯突破 新领域 - AMD 第四代EPYC处理器的全面支持',
+                    desc: '芯突破 新领域 - AMD 第四代EPYC处理器全面支持openEuler',
                     name: ['谢昊成'],
                     post: ['amd工程师'],
                     detail: '介绍openEuler对AMD第四代EPYC平台的支持',
@@ -735,10 +848,10 @@ const summitData: any = {
                   },
                   {
                     time: '9',
-                    desc: '基于openEuler的ODK移植和应用实践',
+                    desc: '基于openEuler的OKD移植和应用实践',
                     name: ['田利军'],
                     post: ['统信软件高级研发工程师'],
-                    detail: `ODK是OpenShift上游和社区版本，在金融，智能制造等行业有较多的使用场景，我们基于openEuler完成了对OKD的移植并提供DevOps实践和CI/CD，构建安全可靠的全栈容器云。`,
+                    detail: `OKD是OpenShift上游和社区版本，在金融，智能制造等行业有较多的使用场景，我们基于openEuler完成了对OKD的移植并提供DevOps实践和CI/CD，构建安全可靠的全栈容器云。`,
                   },
                 ],
               },
@@ -1730,7 +1843,7 @@ onMounted(() => {
 }
 .celebrating-img {
   position: fixed;
-  left: 50px;
+  left: 12px;
   bottom: 120px;
   cursor: pointer;
   z-index: 10;
