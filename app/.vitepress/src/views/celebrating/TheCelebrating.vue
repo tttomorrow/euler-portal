@@ -276,6 +276,10 @@ function clickMask() {
         line-height: var(--o-line-height-h5);
         color: var(--o-color-text1);
         font-weight: 500;
+        @media (max-width: 1100px) {
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-line-height-text);
+        }
       }
     }
     .right {
@@ -290,6 +294,7 @@ function clickMask() {
         padding: 9px 55px;
         color: #fff;
         @media (max-width: 1100px) {
+          margin-right: 0px;
           padding: 3px 14px;
           font-size: var(--o-font-size-tip);
         }
@@ -300,6 +305,9 @@ function clickMask() {
       position: absolute;
       right: var(--o-spacing-h2);
       bottom: 0;
+      @media (max-width: 1100px) {
+        right: 5vw;
+      }
     }
   }
   .gift {

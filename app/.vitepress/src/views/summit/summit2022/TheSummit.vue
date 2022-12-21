@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
+import { useRouter } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import AOS from 'aos';
 
@@ -9,8 +10,6 @@ import LinkPanel from '@/components/LinkPanel.vue';
 import SummitBanner from './components/SummitBanner.vue';
 // import SummitLive from './components/SummitLive.vue';
 
-// import banner from '@/assets/category/summit/summit2022/banner.jpg';
-// import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
 import atom from '@/assets/category/summit/summit2022/logo/atom.png';
@@ -39,10 +38,12 @@ import zhongguan from '@/assets/category/summit/summit2022/logo/zhongguan.png';
 import zhongguanDark from '@/assets/category/summit/summit2022/logo/zhongguan-dark.png';
 import intel from '@/assets/category/summit/summit2022/logo/intel.png';
 import intelDark from '@/assets/category/summit/summit2022/logo/intel-dark.png';
+import celebratingEntryImg from '@/assets/category/summit/summit2022/celebrating-entry.png';
 
 import IconTime from '~icons/app/icon-time.svg';
 
 const commonStore = useCommon();
+const router = useRouter();
 const liveImg = computed(() =>
   commonStore.theme === 'light' ? liveLight : liveDark
 );
@@ -60,7 +61,7 @@ const summitData: any = {
     liveData1: [
       {
         liveId: 12257,
-        liveTestId: 12260,
+        liveTestId: 12250,
         id: 0,
         name: '操作系统产业峰会',
       },
@@ -1142,6 +1143,9 @@ const summitData: any = {
 };
 const tabType = ref(['main', 'main', 'main']);
 const otherTabType = ref([0, 0, 0]);
+function clickEntry() {
+  router.go('/zh/celebrating/');
+}
 // const timeContent = ref(0);
 onMounted(() => {
   AOS.init({
@@ -1153,15 +1157,6 @@ onMounted(() => {
 });
 </script>
 <template>
-  <!-- <div class="banner">
-    <div
-      class="summit-banner-pc"
-      :style="`background-image:url(${bannerInfo.pc_banner}) ;`"
-    ></div>
-    <div class="summit-banner-mo">
-      <img :src="bannerInfo.mo_banner" alt="" />
-    </div>
-  </div> -->
   <SummitBanner />
   <AppContext>
     <div class="detail">
@@ -1169,16 +1164,12 @@ onMounted(() => {
     </div>
     <!-- <div class="liver">
       <h3 class="titleBar">{{ summitData.liver.title }}</h3>
-      <ClientOnly
-        ><SummitLive
+      <ClientOnly>
+        <SummitLive
           :live-data="summitData.liver.liveData1"
           class-name="odd2022"
-      />
-      <SummitLive
-          :live-data="summitData.liver.liveData2"
-          class-name="odd2022"
-      />
-    </ClientOnly>
+        />
+      </ClientOnly>
     </div> -->
     <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
@@ -1273,6 +1264,13 @@ onMounted(() => {
           >{{ item.name }}</a
         >
       </div>
+    </div>
+    <div class="celebrating-img" @click="clickEntry">
+      <img
+        :src="celebratingEntryImg"
+        alt=""
+        title="下载体验openEuler&#10;赢开源三周年纪念礼包！"
+      />
     </div>
   </AppContext>
 </template>
@@ -1727,6 +1725,19 @@ onMounted(() => {
           margin-top: var(--o-spacing-h8);
         }
       }
+    }
+  }
+}
+.celebrating-img {
+  position: fixed;
+  left: 50px;
+  bottom: 120px;
+  cursor: pointer;
+  z-index: 10;
+  img {
+    height: 79px;
+    @media screen and (max-width: 768px) {
+      height: 59px;
     }
   }
 }

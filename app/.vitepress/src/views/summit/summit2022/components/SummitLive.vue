@@ -48,6 +48,8 @@ function creatUserId(liveId: number) {
   userName = returnId;
   liveUrl.value = `https://vhall.huawei.com/v2/watch/${liveId}?lang=zh&thirdId=${userName}`;
 }
+const state = ref(-1);
+const height = ref(800);
 function messageEvent() {
   window.addEventListener(
     'message',
@@ -58,10 +60,24 @@ function messageEvent() {
       } catch (e) {
         data = event.data;
       }
-      console.log('收到' + event.origin + '消息:' + data);
+      // data.state=2,直播结束
+      setHeight(data);
+      console.log(state.value, '收到', data);
+      // console.log('收到' + event.origin + '消息:' + data);
     },
     false
   );
+  // 移动600
+  // state=0,
+  // export const getH = (domWidth, cutVal = 352) => {
+  // const Width = domWidth || document.body.getBoundingClientRect().width
+  // const playerBoxW = Width - cutVal
+  // const playerBoxH = playerBoxW / 16 * 9 + 40 + 'px'
+  // return playerBoxH}
+
+  // export const sendMessage = (domWidth, cutVal, targetOrigin = origin) => {
+  // const Height = getH(domWidth, cutVal)
+  // top.postMessage(Height, '*')}
 }
 onMounted(async () => {
   AOS.init({
@@ -70,7 +86,9 @@ onMounted(async () => {
     delay: 100,
   });
   isTest.value = window.location.host.includes('test.osinfra');
-  creatUserId(isTest.value ? renderData[0].liveTestId : renderData[0].liveId);
+  creatUserId(
+    isTest.value ? renderData[0].liveTestId : renderData[0].liveTestId
+  );
   messageEvent();
 });
 
@@ -78,11 +96,20 @@ onMounted(async () => {
 // const ActiveBg = `url(${liveActiveBg})`;
 
 const liveRoom = ref(
-  isTest.value ? renderData[0].liveTestId : renderData[0].liveId
+  isTest.value ? renderData[0].liveTestId : renderData[0].liveTestId
 );
 const selectliveChange = (val: number): void => {
   creatUserId(val);
 };
+// 判断是手机端还是pc端
+function setHeight(data: any) {
+  const Width = document.body.getBoundingClientRect().width;
+  if (Width < 768 && state.value === 0) {
+    height.value = 600;
+  } else if (Width > 768 && data.height) {
+    height.value = data.height;
+  }
+}
 </script>
 
 <template>
@@ -104,7 +131,7 @@ const selectliveChange = (val: number): void => {
     </div>
     <iframe
       ref="livePage"
-      height="740"
+      :height="height"
       allow="camera *;microphone *;"
       border="0"
       scolling="no"
