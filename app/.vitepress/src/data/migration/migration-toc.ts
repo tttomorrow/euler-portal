@@ -29,6 +29,10 @@ export default [
     link: 'transplantation-cases',
   },
   {
+    label: '贡献攻略',
+    link: 'contribution',
+  },
+  {
     label: 'FAQ',
     link: 'faq',
   },

@@ -469,7 +469,7 @@ function initSensor() {
     server_url: 'https://omapi.osinfra.cn/query/track?community=openEuler',
     use_client_time:true,
     // 调试时开启
-    // show_log: true,
+    show_log: false,
     send_type:'image',
     is_track_single_page: function(){
       return window['sensorsCustomBuriedData'];
@@ -498,7 +498,7 @@ function startSensor(num) {
     // 重试最大次数
     return;
   }
-  if (sensors && window['returnCitySN']) {
+  if (sensors) {
     initSensor();
   } else {
     setTimeout(() => {

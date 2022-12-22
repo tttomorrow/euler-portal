@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
+import { useRouter } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import AOS from 'aos';
 
@@ -7,9 +8,8 @@ import AppContext from '@/components/AppContent.vue';
 import SummitSchedule from './components/SummitSchedule.vue';
 import LinkPanel from '@/components/LinkPanel.vue';
 import SummitBanner from './components/SummitBanner.vue';
+// import SummitLive from './components/SummitLive.vue';
 
-// import banner from '@/assets/category/summit/summit2022/banner.jpg';
-// import bannerMo from '@/assets/category/summit/summit2022/banner-mo.png';
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
 import atom from '@/assets/category/summit/summit2022/logo/atom.png';
@@ -38,10 +38,12 @@ import zhongguan from '@/assets/category/summit/summit2022/logo/zhongguan.png';
 import zhongguanDark from '@/assets/category/summit/summit2022/logo/zhongguan-dark.png';
 import intel from '@/assets/category/summit/summit2022/logo/intel.png';
 import intelDark from '@/assets/category/summit/summit2022/logo/intel-dark.png';
+import celebratingEntryImg from '@/assets/category/summit/summit2022/celebrating-entry.png';
 
 import IconTime from '~icons/app/icon-time.svg';
 
 const commonStore = useCommon();
+const router = useRouter();
 const liveImg = computed(() =>
   commonStore.theme === 'light' ? liveLight : liveDark
 );
@@ -54,7 +56,97 @@ const summitData: any = {
     '数字经济成为全球经济增长的主引擎，数字经济的快速发展，带来数字化、智能化的巨大发展机遇。操作系统作为数字基础设施的底座，已经成为推动产业数字化、智能化发展的核心力量。操作系统产业峰会2022旨在聚集全产业链力量，聚焦基础软件核心能力构建，引领基础软件持续创新，加快实现高水平科技自立自强。',
     'openEuler Summit 是由欧拉开源社区发起并举办的年度开源操作系统峰会。openEuler专注核心技术和全场景能力创新，构建多样性计算支持最佳的基础软件能力。充分释放开源协作的创新活力，通过开源开放，不断探索科技创新的边界，驱动物理世界与数字世界的深度融合。openEuler与社区伙伴持续构建自循环、自发展的上下游产业链。通过商业验证，提升市场占有率，成为数字基础设施的坚实底座。社区贡献者、行业用户、合作伙伴在 openEuler Summit 汇聚，驱动无止境的创新与拓展，闪耀数字时代星辰大海。',
   ],
-
+  liver: {
+    title: '峰会直播',
+    liveData1: [
+      {
+        liveId: 12257,
+        liveTestId: 12250,
+        id: 0,
+        name: '操作系统产业峰会',
+      },
+      {
+        liveId: 12263,
+        liveTestId: 12271,
+        id: 1,
+        name: '麒麟软件',
+      },
+      {
+        liveId: 12264,
+        liveTestId: 12272,
+        id: 2,
+        name: '麒麟信安',
+      },
+      {
+        liveId: 12286,
+        liveTestId: 12279,
+        id: 3,
+        name: '统信软件',
+      },
+      {
+        liveId: 12287,
+        liveTestId: 12280,
+        id: 4,
+        name: '软通动力',
+      },
+      {
+        liveId: 12265,
+        liveTestId: 12273,
+        id: 5,
+        name: '中科创达',
+      },
+    ],
+    liveData2: [
+      {
+        liveId: 12258,
+        liveTestId: 12261,
+        id: 0,
+        name: 'openEuelr Summit',
+      },
+      {
+        liveId: 12266,
+        liveTestId: 12274,
+        id: 1,
+        name: '内核分论坛',
+      },
+      {
+        liveId: 12267,
+        liveTestId: 12275,
+        id: 2,
+        name: '虚拟化&云原生分论坛',
+      },
+      {
+        liveId: 12288,
+        liveTestId: 12281,
+        id: 3,
+        name: '多样性计算&编译器分论坛',
+      },
+      {
+        liveId: 12289,
+        liveTestId: 12282,
+        id: 4,
+        name: '嵌入式&ROS分论坛',
+      },
+      {
+        liveId: 12290,
+        liveTestId: 12283,
+        id: 5,
+        name: '迁移&运维分论坛',
+      },
+      {
+        liveId: 12291,
+        liveTestId: 12284,
+        id: 5,
+        name: 'RISC-V分论坛',
+      },
+      {
+        liveId: 12268,
+        liveTestId: 12276,
+        id: 5,
+        name: 'RISC-V分论坛',
+      },
+    ],
+  },
   agenda: {
     title: '会议日程',
     meetingList: [
@@ -107,32 +199,350 @@ const summitData: any = {
             type: '下午：分论坛',
             id: 'other',
             duration: '14:00 - 17:00',
-            detail: '',
+            time: '28',
             children: [
               {
                 id: 0,
                 name: '麒麟软件',
-                desc: 'openEuler Summit 2022',
+                detail: '',
+                children: [
+                  {
+                    time: '14:00 - 14:10',
+                    desc: '欧拉社区领导致辞',
+                    name: [''],
+                    post: [''],
+                    detail: '',
+                  },
+                  {
+                    time: '14:10 - 14:30',
+                    desc: '夯实算力底座，赋能产业升级',
+                    name: ['杨汇成'],
+                    post: ['麒麟软件有限公司产品与社区发展中心副总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:30 - 14:45',
+                    desc: '开源时代下的OK组合',
+                    name: ['熊伟'],
+                    post: ['openEuler社区技术委员会委员'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:45 - 15:00',
+                    desc: '价值替代，生态共融，共铸数智化转型新未来',
+                    name: ['李绍文'],
+                    post: [
+                      '用友网络科技股份有限公司集团信创技术管理委员会组长',
+                    ],
+                    detail: '',
+                  },
+                  {
+                    time: '15:00 - 15:15',
+                    desc: '携手麒麟，筑牢网信安全根基',
+                    name: ['周华涛'],
+                    post: ['奇安信科技集团股份有限公司保密信创总体部总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:15 - 15:30',
+                    desc: '承上启下，共建网信新生态——FlyingServer，打造网信精品应用中间件',
+                    name: ['刘海平'],
+                    post: ['亚信科技（中国）有限公司研发中心平台产品线总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:30 - 15:45',
+                    desc: '星环大数据 & 麒麟操作系统联合解决方案',
+                    name: ['张雷'],
+                    post: ['星环信息科技（上海）股份有限公司生态合作总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:45 - 16:00',
+                    desc: '夯实安全基础，共创保险数字化未来',
+                    name: ['张正'],
+                    post: ['中科软科技股份有限公司技术总监'],
+                    detail: '',
+                  },
+                ],
               },
               {
                 id: 1,
                 name: '麒麟信安',
-                desc: 'openEuler Summit 2022',
+                detail: '',
+                children: [
+                  {
+                    time: '14:00 - 14:15',
+                    desc: '领导致辞',
+                    name: ['任启', '邱成峰'],
+                    post: ['麒麟信安高级副总裁', 'openEuler社区秘书长'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:15 - 14:35',
+                    desc: '麒麟信安操作系统发展现状与路线规划',
+                    name: ['石勇'],
+                    post: ['麒麟信安操作系统产品总监、openEuler技术委员会委员'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:35 - 14:55',
+                    desc: '欧拉发展规划',
+                    name: ['管延杰'],
+                    post: ['欧拉社区技术专家'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:55 - 15:15',
+                    desc: '湖南欧拉生态建设概况与发展规划',
+                    name: ['刘华杰'],
+                    post: ['湖南欧拉生态创新中心BD负责人'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:15 - 15:35',
+                    desc: '创新不止 云化提速——麒麟信安云技术创新与应用实践',
+                    name: ['徐鹏'],
+                    post: ['麒麟信安售前方案总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:35 - 15:55',
+                    desc: '原地替换 应用透明——麒麟信安操作系统CentOS迁移方案技术实践',
+                    name: ['高洪鹤'],
+                    post: ['麒麟信安技术专家、openEuler用户委员会委员'],
+                    detail: '',
+                  },
+                ],
               },
               {
                 id: 2,
                 name: '统信软件',
-                desc: 'openEuler Summit 2022',
+                detail: '',
+                children: [
+                  {
+                    time: '14:00 - 14:05',
+                    desc: '欢迎致辞',
+                    name: ['张木梁'],
+                    post: ['统信软件生态中心副总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:05 - 14:10',
+                    desc: '欧拉社区领导致辞',
+                    name: ['江大勇'],
+                    post: ['欧拉社区董事长'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:10 - 14:30',
+                    desc: '统信基于Cent OS停服的迁移实践',
+                    name: ['李小平'],
+                    post: ['统信软件服务器产线产品市场总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:30 - 14:50',
+                    desc: 'openEulor与统信联合创新应用实践',
+                    name: ['管延杰'],
+                    post: ['欧拉社区技术专家'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:50 - 15:05',
+                    desc: '打造数智化算力底座，合作共赢算力新时代',
+                    name: ['邓忠良'],
+                    post: ['同方计算机有限公司副总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:05 - 15:20',
+                    desc: 'GBase 8c多模多态分布式数据库基于华为生态的创新实践分享',
+                    name: ['李凯'],
+                    post: ['南大通用GBase 8c产品总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:20 - 15:35',
+                    desc: '共享共建基础软件生态，开源协作夯实数字化底座',
+                    name: ['李洪巍'],
+                    post: ['北京宝兰德软件股份有限公司副总经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:35 - 15:50',
+                    desc: '基于UOS的网信银行网点渠道建设探索',
+                    name: ['李思佳'],
+                    post: ['赞同科技渠道产品总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:50 - 16:05',
+                    desc: '软通动力携手统信，共荣基础软件生态',
+                    name: ['刘合领'],
+                    post: ['软通动力欧拉服务经理'],
+                    detail: '',
+                  },
+                ],
               },
               {
                 id: 3,
                 name: '软通动力',
-                desc: 'openEuler Summit 2022',
+                detail: '',
+                title: '',
+                children: [
+                  {
+                    time: '14:00 - 14:05',
+                    desc: '欧拉社区领导致辞',
+                    name: [''],
+                    post: [''],
+                    detail: '',
+                  },
+                  {
+                    time: '14:05 - 14:10',
+                    desc: '欢迎致辞',
+                    name: ['黄颖'],
+                    post: ['软通动力董事'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:10 - 14:25',
+                    desc: '基于欧拉开源根技术，打造操作系统新生态',
+                    name: ['熊伟'],
+                    post: ['openEuler社区技术委员会委员'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:25 - 14:40',
+                    desc: '躬身入局，共创欧拉未来',
+                    name: ['马骏'],
+                    post: ['软通动力openEuler研究中心主任'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:40 - 14:45',
+                    desc: '软通动力携手客户与伙伴共建欧拉生态，加速产品和服务推广',
+                    name: ['软通动力、客户、伙伴'],
+                    post: [''],
+                    detail: '',
+                  },
+                  {
+                    time: '14:45 - 15:00',
+                    desc: '携手openEuler，为中国数字时代提供更多可能',
+                    name: ['杨宗伟'],
+                    post: ['软通动力openEuler研究中心专家'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:00 - 15:15',
+                    desc: '欧拉一站式服务解决方案，助力行业根深叶茂',
+                    name: ['王军'],
+                    post: ['软通动力助理副总裁'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:15 - 15:30',
+                    desc: '软通动力&海量数据，加速基础软件创新',
+                    name: ['杨敦峰', '李成鹏'],
+                    post: [
+                      '海量数据生态发展部总经理',
+                      '软通动力欧拉生态技术总监',
+                    ],
+                    detail: '',
+                  },
+                  {
+                    time: '15:30 - 15:45',
+                    desc: '统信携手软通动力，共建生态繁荣',
+                    name: ['李小平'],
+                    post: ['统信软件服务器产线产品市场总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:45 - 15:50',
+                    desc: '软通动力与统信战略合作签署仪式',
+                    name: ['石丰', '王军'],
+                    post: ['统信软件服务中心总经理', '软通动力助理副总裁'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:50 - 16:05',
+                    desc: '欧拉服务工具链iTools实践分享',
+                    name: ['刘刚'],
+                    post: ['软通动力欧拉生态经理'],
+                    detail: '',
+                  },
+                  {
+                    time: '16:05 - 16:20',
+                    desc: '基于openEuler的医疗HIS系统迁移案例',
+                    name: ['侯纪伟'],
+                    post: ['陕西远鑫销售总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '16:20 - 16:35',
+                    desc: '基于openEuler的客户数据中心解决方案迁移案例',
+                    name: ['贺莉娜'],
+                    post: ['异次元售前解决方案总监'],
+                    detail: '',
+                  },
+                ],
               },
               {
                 id: 4,
                 name: '中科创达',
-                desc: 'openEuler Summit 2022',
+                detail: '',
+                title: '开放融合创新 崛起数智行业',
+                children: [
+                  {
+                    time: '14:00 - 14:05',
+                    desc: '欧拉社区领导致辞',
+                    name: ['熊伟'],
+                    post: ['开放原子开源基金会TOC委员'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:05 - 14:20',
+                    desc: 'KubeEdge SIG Networking的进展与未来规划',
+                    name: ['王杰章'],
+                    post: ['华为（高级工程师）'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:20 - 14:40',
+                    desc: '边缘计算助力企业数字化转型',
+                    name: ['张硕'],
+                    post: ['中科创达新业务战略产品总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:40 - 15:00',
+                    desc: '多云边缘协同计算',
+                    name: ['路广'],
+                    post: ['VMWare研发总监'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:00 - 15:20',
+                    desc: '地平线机器人与生态构建',
+                    name: ['程飞'],
+                    post: ['地平线机器人事业部方案交付负责人'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:20 - 15:40',
+                    desc: 'EMQ 基于分布式云的 IIoT 解决方案',
+                    name: ['金发华'],
+                    post: ['EMQ 联合创始人兼CPO'],
+                    detail: '',
+                  },
+                  {
+                    time: '15:40 - 16:00',
+                    desc: '欧拉与机器人应用',
+                    name: ['李建华'],
+                    post: ['中科创达机器人资深架构师'],
+                    detail: '',
+                  },
+                ],
               },
             ],
           },
@@ -175,7 +585,7 @@ const summitData: any = {
           {
             type: '下午：分论坛',
             id: 'other',
-            // time: '下午',
+            time: '29',
             duration: '14:00 - 17:00',
             children: [
               {
@@ -213,7 +623,7 @@ const summitData: any = {
                   },
                   {
                     time: '4',
-                    desc: '《ebpf-linux内核安全的双刃剑》',
+                    desc: 'eBPF-Linux内核安全的双刃剑',
                     name: ['曹佩庆'],
                     post: ['统信软件研发经理'],
                     detail:
@@ -236,7 +646,7 @@ const summitData: any = {
                       '内存容量越来越大，多样化的内存介质引入，单机下内存故障随之增加，同时，arm64服务器广泛在云&数据中心的应用，内存的故障处理在arm64架构下越来越重要，本次Topic介绍arm64 RAS处理及华为在arm64可靠性里面的相关工作，包括arm64 内存镜像，arm64 machine check safe等。内存镜像相当于一份内存中的数据有两份拷贝，如果系统检测到不可恢复的内存错误，那么内存控制器会从镜像区域同步一份，避免数据丢失。Linux内核一般会将内核以及驱动使用的数据做内存镜像，避免因为内存错误导致内核panic，该特性已成功推社区。machine check safe在uaccess等场景下内核态触发不可恢复内存错误时，通过杀死受影响的用户态进程同时隔离错误页面的处理机制，避免内核panic，该特性目前正在推送社区中。',
                   },
                   {
-                    time: '8',
+                    time: '7',
                     desc: '探秘 Intel Trust Domain Extensions(TDX) 技术',
                     name: ['杜凡'],
                     post: ['Intel系统软件架构师'],
@@ -244,7 +654,7 @@ const summitData: any = {
                       'Intel Trust Domain Extensions(TDX) 作为硬件辅助TEE的技术，提供虚拟机层面的内存及CPU状态的机密性和完整性的保障。Intel TDX 技术巧妙得扩展MKTME和VMX 两大基础技术底座，引入SEAM 模式，以SEAM模式的软件载体TDX Module 作为安全防护的关键支点，同时有增加的方便升级的优势。Intel TDX 作为机密计算领域的主要方向之一，在云环境中，阻断恶意攻击，保护终端用户数据的安全性，对敏感业务向云端迁移提供支撑。本议题阐述Intel TDX整体的架构，探寻其底层技术逻辑。',
                   },
                   {
-                    time: '9',
+                    time: '8',
                     desc: '基于eBPF技术的网络会话监控技术与实践',
                     name: ['卢刚'],
                     post: ['湖南麒麟信安科技股份有限公司操作系统架构师'],
@@ -255,7 +665,7 @@ const summitData: any = {
                             3、	介绍该监控审计技术的特性，包括：协议类型TCP或UDP、本地IP地址、本地端口、对端IP地址、对端端口、进程和网络会话字节数等。"`,
                   },
                   {
-                    time: '10',
+                    time: '9',
                     desc: '数据完整性在openEuler上的实现',
                     name: ['赵磊'],
                     post: ['江苏润和软件股份有限公司专家级工程师'],
@@ -266,11 +676,11 @@ const summitData: any = {
                             3: 在openEuler实现数据完整性的一种实现设计方法`,
                   },
                   {
-                    time: '12',
-                    desc: '银河麒麟操作系统在能源行业实践',
-                    name: ['陈智明'],
-                    post: ['麒麟软件有限公司产品社区中心总监'],
-                    detail: `银河麒麟高级服务器操作系统作为底层支撑，为DcS+SIS系统的运营提供了高效、稳定、安全的运行环境，在完美承载业务压力的同时还通过软件自研的安全架构在操作系统层筑下一道坚实壁垒`,
+                    time: '10',
+                    desc: '下一代互联标准Compute Express Link(CXL)简介',
+                    name: ['施爱春'],
+                    post: ['Intel软件工程师'],
+                    detail: `Compute Express Link(CXL)是下一代高带宽低延迟的开放互联标准，为高性能异构计算在不同场景的应用而量身打造。本议题主要介绍CXL规范，Linux内核实现及应用场景。`,
                   },
                 ],
               },
@@ -314,7 +724,7 @@ const summitData: any = {
                   },
                   {
                     time: '4',
-                    desc: 'openEuler对AMD第四代EPYC平台的支持',
+                    desc: '芯突破 新领域 - AMD 第四代EPYC处理器全面支持openEuler',
                     name: ['谢昊成'],
                     post: ['amd工程师'],
                     detail: '介绍openEuler对AMD第四代EPYC平台的支持',
@@ -438,10 +848,10 @@ const summitData: any = {
                   },
                   {
                     time: '9',
-                    desc: '基于openEuler的ODK移植和应用实践',
+                    desc: '基于openEuler的OKD移植和应用实践',
                     name: ['田利军'],
                     post: ['统信软件高级研发工程师'],
-                    detail: `ODK是OpenShift上游和社区版本，在金融，智能制造等行业有较多的使用场景，我们基于openEuler完成了对OKD的移植并提供DevOps实践和CI/CD，构建安全可靠的全栈容器云。`,
+                    detail: `OKD是OpenShift上游和社区版本，在金融，智能制造等行业有较多的使用场景，我们基于openEuler完成了对OKD的移植并提供DevOps实践和CI/CD，构建安全可靠的全栈容器云。`,
                   },
                 ],
               },
@@ -501,6 +911,13 @@ const summitData: any = {
                             1、介绍嵌入式系统的特性,主要包括以openEuer为供应链、支持wayland、支持双系统升级、安全特性等
                             2、介绍嵌入式系统版本定制系统
                             3、介绍在电网安全运维网关项目上的挑战和解决方案"`,
+                  },
+                  {
+                    time: '7',
+                    desc: '基于 openEuler 的工业机器人操作系统及探索应用',
+                    name: ['牛建伟'],
+                    post: ['北京航空航天大学教授/博士生导师'],
+                    detail: `研发一套自主可控、实时性高、稳定性强的智能机器人操作系统开放平台，对我国机器人产品生态建设具有重要意义。北京航空航天大学基于openEuler embeded操作系统探索建立一套稳定性强、跨平台的工业机器人智能机器人操作系统，适配相关工业协议，同时配备机器人控制、调试、模拟仿真等环境工具，降低机器人应用研发难度。`,
                   },
                 ],
               },
@@ -646,15 +1063,15 @@ const summitData: any = {
                     time: '1',
                     desc: 'openEuler社区基础设施新服务及未来展望',
                     name: ['李超然'],
-                    post: [''],
+                    post: ['openEuler Infra SIG开发者'],
                     detail:
-                      '介绍openEuler社区技术设施最新上线的众多服务、使用方法以及如何提升开发者效率与体验；展望未来1年openEuler社区基础设施的规划。',
+                      '社区基础设施是支撑openEuler社区开发工作正常开展的重要基石，openEuler社区基础设施团队通过收集社区诉求，不断革新改进，在确保社区开发工作稳定的同时上线了众多方便、好用的全新开发者服务，包括欧拉统一账号系统、QuickIssue、Forum等社区支撑系统，同时完成了openEuler WSL移植，openEuler lxc移植等相关工作，可以很好的提升开发者的开发效率；本议题将为开发者介绍这些新服务的具体情况以及基础设施团队未来的规划。',
                   },
                   {
                     time: '2',
                     desc: 'openEuler开发体验-开发工具链',
                     name: ['杜开田'],
-                    post: [''],
+                    post: ['openEuler 兼容性 SIG Maintainer'],
                     detail:
                       '介绍openEuler开发者工具链最新进展和规划，为openEuler开发者提供高效、便捷的开发体验。',
                   },
@@ -669,10 +1086,10 @@ const summitData: any = {
                   {
                     time: '4',
                     desc: '北京航空航天大学openEuler合作实践',
-                    name: ['朱玲'],
-                    post: [''],
+                    name: ['孙海龙', '王域杰'],
+                    post: ['北京航空航天大学教授', '北京航空航天大学学生'],
                     detail:
-                      '分享北京航空航天大学与openEuler社区技术合作运作经验，从科研、教学、社区回馈等维度进行介绍，展示openEuler社区与高校、科研院所合作的样板。',
+                      '"开源软件在软件技术生态体系中发挥着举足轻重的作用，围绕开源软件的科研和教学工作得到越来越广泛的关注。近年来，openEuler在技术研发、市场推广和开源生态建设方面取得了巨大成功，已成为国内外广泛关注的开源基础软件之一。本报告主要介绍结合openEuler所开展的开源软件方面的科研与教学工作的思路与实践，主要包括泛在操作系统开源生态相关研究以及面向北航本科生的《开源软件开发导论》课程实践。同时，来自北航的学生将结合自身经验为大家分享从认识开源到参与openEuler社区syscare项目进行开源实践的经历和收获。"',
                   },
                   {
                     time: '5',
@@ -680,7 +1097,7 @@ const summitData: any = {
                     name: ['优秀SIG组代表'],
                     post: '',
                     detail:
-                      'openEuler社区优秀SIG组代表分享社区SIG组运作经验，为社区SIG组提供指导。',
+                      'openEuler社区的开发工作以SIG组的方式进行开展，目前openEuler社区有99个SIG组，技术方向涵盖内核、云计算、云原生、AI、嵌入式、DPU等众多热点技术方向；openEuler社区的创新和发展离不开众多社区SIG组Maintainer、Committer及普通开发者的贡献；同时，社区SIG组的运作和发展并非易事，本议题将邀请openEuler Summit 2022荣获优秀SIG组的Maintainer代表分享SIG组运作以及如何为开发者提供更优质的开发体验的相关经验。',
                   },
                   {
                     time: '6',
@@ -705,7 +1122,7 @@ const summitData: any = {
                     name: ['社区开发者/TC'],
                     post: [''],
                     detail:
-                      '开发者体验反馈线上交流会，收集社区开发者对openEuler社区开发体验的意见与建议，改进社区开发流程，提升开发者体验与效率。',
+                      '社区开发者是openEuler社区长期发展的基石，开发者体验的提升一直是openEuler社区最为重视的一环，本议题为在线的开放讨论，社区开发者基于自身参与社区贡献的感受与建议，线上对话TC委员与社区Maintainer零距离交流。通过了解社区开发者的需求，让社区更贴近开发者，联接更加紧密，让开发者的开发体验更佳，繁荣欧拉生态。',
                   },
                 ],
               },
@@ -713,73 +1130,6 @@ const summitData: any = {
           },
         ],
       },
-      // {
-      //   daytime: '12月29日 (openGauss Summit 2022)',
-      //   list: [
-      //     {
-      //       type: '主论坛',
-      //       id: 'main',
-      //       time: '上午',
-      //       children: [
-      //         {
-      //           time: '09:30 - 09:35',
-      //           desc: '院士致辞',
-      //         },
-      //         {
-      //           time: '09:35 - 09:45',
-      //           desc: 'openGauss社区进展主题演讲',
-      //         },
-      //         {
-      //           time: '09:45 - 09:50',
-      //           desc: 'openGauss社区理事会升级仪式',
-      //         },
-      //         {
-      //           time: '09:50 - 10:10',
-      //           desc: 'openGauss技术创新主题演讲',
-      //         },
-      //         {
-      //           time: '10:10 - 10:25',
-      //           desc: '中国移动移动创新实践及成果发布仪式',
-      //         },
-      //         {
-      //           time: '10:25 - 10:55',
-      //           desc: '产学研联合创新、openGauss创新孵化成果分享',
-      //         },
-      //         {
-      //           time: '10:55 - 11:55',
-      //           desc: '伙伴与用户应用实践联合演讲',
-      //         },
-      //         {
-      //           time: '11:55 - 12:00',
-      //           desc: 'openGauss社区活动发布仪式',
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       type: '分论坛',
-      //       id: 'other',
-      //       time: '下午',
-      //       duration: '14:00 - 16:00',
-      //       children: [
-      //         {
-      //           id: 0,
-      //           name: '海量数据',
-      //           desc: 'openEuler Summit 2022',
-      //         },
-      //         {
-      //           id: 1,
-      //           name: '云和恩墨',
-      //           desc: 'openEuler Summit 2022',
-      //         },
-      //         {
-      //           id: 2,
-      //           name: '南大通用',
-      //           desc: 'openEuler Summit 2022',
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
     ],
   },
   partner: {
@@ -906,6 +1256,9 @@ const summitData: any = {
 };
 const tabType = ref(['main', 'main', 'main']);
 const otherTabType = ref([0, 0, 0]);
+function clickEntry() {
+  router.go('/zh/celebrating/');
+}
 // const timeContent = ref(0);
 onMounted(() => {
   AOS.init({
@@ -917,20 +1270,20 @@ onMounted(() => {
 });
 </script>
 <template>
-  <!-- <div class="banner">
-    <div
-      class="summit-banner-pc"
-      :style="`background-image:url(${bannerInfo.pc_banner}) ;`"
-    ></div>
-    <div class="summit-banner-mo">
-      <img :src="bannerInfo.mo_banner" alt="" />
-    </div>
-  </div> -->
   <SummitBanner />
   <AppContext>
-    <div v-for="item in summitData.detail" :key="item" class="detail">
-      {{ item }}
+    <div class="detail">
+      <p v-for="item in summitData.detail" :key="item">{{ item }}</p>
     </div>
+    <!-- <div class="liver">
+      <h3 class="titleBar">{{ summitData.liver.title }}</h3>
+      <ClientOnly>
+        <SummitLive
+          :live-data="summitData.liver.liveData1"
+          class-name="odd2022"
+        />
+      </ClientOnly>
+    </div> -->
     <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
       <div
@@ -939,7 +1292,7 @@ onMounted(() => {
         class="agenda-item"
         data-aos="fade-up"
       >
-        <h4 class="meetingtitle">
+        <h4 class="meeting-title">
           {{ item.daytime }}
         </h4>
         <OTabs v-model="tabType[index]" class="schedule-tabs">
@@ -976,13 +1329,15 @@ onMounted(() => {
                 :label="itemList.name"
                 :name="itemList.id"
               >
-                <p v-if="index === 0" class="other-text">
+                <p v-if="index === 0 && !itemList.children" class="other-text">
                   <IconTime />{{
                     summitData.agenda.meetingList[index].list[1].duration
                   }}
                 </p>
+                <!-- <h4 v-if="index === 0 && itemList.title" class="other-title">
+                  主题： {{ itemList.title }}
+                </h4> -->
                 <SummitSchedule
-                  v-if="index === 1"
                   :options="itemList.children"
                   :detail="itemList.detail"
                 />
@@ -1023,6 +1378,13 @@ onMounted(() => {
         >
       </div>
     </div>
+    <div class="celebrating-img" @click="clickEntry">
+      <img
+        :src="celebratingEntryImg"
+        alt=""
+        title="下载体验openEuler&#10;赢开源三周年纪念礼包！"
+      />
+    </div>
   </AppContext>
 </template>
 <style scoped lang="scss">
@@ -1053,12 +1415,43 @@ onMounted(() => {
 //   }
 // }
 .detail {
-  font-size: var(--o-font-size-h6);
-  line-height: var(--o-line-height-h6);
-  color: var(--o-color-text1);
-  @media screen and (max-width: 768px) {
-    font-size: var(--o-font-size-text);
-    line-height: var(--o-line-height-text);
+  p {
+    font-size: var(--o-font-size-h6);
+    line-height: var(--o-line-height-h6);
+    color: var(--o-color-text1);
+    font-weight: 300;
+    text-align: justify;
+    text-indent: 2em;
+    @media screen and (max-width: 768px) {
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+    }
+    & + p {
+      margin-top: var(--o-spacing-h6);
+    }
+  }
+}
+.liver {
+  margin-top: var(--o-spacing-h1);
+  @media (max-width: 767px) {
+    margin-top: var(--o-spacing-h2);
+  }
+  h3 {
+    text-align: center;
+    font-size: var(--o-font-size-h3);
+    line-height: var(--o-line-height-h3);
+    color: var(--o-color-text1);
+    font-weight: 300;
+    margin-bottom: var(--o-spacing-h2);
+    @media (max-width: 767px) {
+      margin-bottom: var(--o-spacing-h4);
+    }
+  }
+  .live-room {
+    margin-top: var(--o-spacing-h2);
+    @media (max-width: 767px) {
+      margin-top: var(--o-spacing-h4);
+    }
   }
 }
 .agenda {
@@ -1087,25 +1480,25 @@ onMounted(() => {
         display: none;
       }
       // 暂时取消第一天的分会选中状态
-      .other {
-        :deep(.o-tabs) {
-          .el-tabs__active-bar {
-            display: none;
-          }
-          .is-active {
-            color: var(--o-color-text1);
-          }
-          .el-tabs__item:hover {
-            color: var(--o-color-text1);
-            cursor: default;
-          }
-        }
-      }
+      // .other {
+      //   :deep(.o-tabs) {
+      //     .el-tabs__active-bar {
+      //       display: none;
+      //     }
+      //     .is-active {
+      //       color: var(--o-color-text1);
+      //     }
+      //     .el-tabs__item:hover {
+      //       color: var(--o-color-text1);
+      //       cursor: default;
+      //     }
+      //   }
+      // }
     }
     // 暂时隐藏时间
     &:nth-of-type(2) {
       .other {
-        :deep(.dataItem) {
+        :deep(.data-item) {
           grid-template-columns: 600px 445px;
           padding-left: 192px;
           @media screen and (max-width: 1328px) {
@@ -1115,7 +1508,7 @@ onMounted(() => {
             padding-left: 80px;
           }
           @media screen and (max-width: 1100px) {
-            padding-left: 100px;
+            padding-left: 0;
             grid-template-columns: 348px;
             .box {
               grid-column-start: 1;
@@ -1144,7 +1537,7 @@ onMounted(() => {
       }
     }
     // 暂时隐藏时间
-    .meetingtitle {
+    .meeting-title {
       font-weight: 400;
       color: var(--o-color-text1);
       font-size: var(--o-font-size-h6);
@@ -1254,7 +1647,23 @@ onMounted(() => {
             margin-right: var(--o-spacing-h8);
           }
         }
-        :deep(.dateList) {
+        .other-title {
+          margin: 24px auto;
+          color: var(--o-color-text1);
+          font-size: var(--o-font-size-h7);
+          line-height: var(--o-line-height-h7);
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: normal;
+          @media (max-width: 1100px) {
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            margin: 16px 0;
+          }
+        }
+        :deep(.data-list) {
           .detail {
             display: none;
           }
@@ -1429,6 +1838,19 @@ onMounted(() => {
           margin-top: var(--o-spacing-h8);
         }
       }
+    }
+  }
+}
+.celebrating-img {
+  position: fixed;
+  left: 12px;
+  bottom: 120px;
+  cursor: pointer;
+  z-index: 10;
+  img {
+    height: 79px;
+    @media screen and (max-width: 768px) {
+      height: 59px;
     }
   }
 }
