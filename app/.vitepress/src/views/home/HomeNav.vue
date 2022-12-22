@@ -30,10 +30,10 @@ const imgUrlHover = computed(
       @click="handleGo(item.LINK)"
     >
       <div class="nav-icon">
-        <img :src="imgUrl(item)" :alt="item.TITLE" class="nav-item-icon" />
+        <img :src="imgUrl(item)" alt="openEuler" class="nav-item-icon" />
         <img
           :src="imgUrlHover(item)"
-          :alt="item.TITLE"
+          alt="openEuler"
           class="nav-item-icon-hover"
         />
       </div>

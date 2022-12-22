@@ -256,19 +256,22 @@ const jumpToUserZone = () => {
       <div v-if="!isShowBox" class="mobile-search">
         <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
       </div>
-      <div v-show="!isShowBox" class="header-content">
-        <div class="header-nav">
-          <HeaderNav :nav-items="navRouter" />
-        </div>
-        <div class="header-tool">
-          <div class="header-tool-search">
-            <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
+      <ClientOnly>
+        <div v-show="!isShowBox" class="header-content">
+          <div class="header-nav">
+            <HeaderNav :nav-items="navRouter" />
           </div>
-          <!-- 中英文切换 -->
-          <AppLanguage :show="langShow" />
-          <AppTheme />
+          <div class="header-tool">
+            <div class="header-tool-search">
+              <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
+            </div>
+            <!-- 中英文切换 -->
+            <AppLanguage :show="langShow" />
+            <AppTheme />
+          </div>
         </div>
-      </div>
+      </ClientOnly>
+
       <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"   -->
       <div
         v-if="toBody"

@@ -64,7 +64,7 @@ onMounted(() => {
           :href="i18n.home.HOME_INTRODUCE.MOOC_URL"
           target="_blank"
         >
-          <img :src="letsPlay" alt="playground-bg" />
+          <img :src="letsPlay" alt="openEuler" />
         </a>
       </div>
     </div>
