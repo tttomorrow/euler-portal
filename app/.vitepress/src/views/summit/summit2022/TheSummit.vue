@@ -272,10 +272,17 @@ const summitData: any = {
                 detail: '',
                 children: [
                   {
-                    time: '14:00 - 14:15',
-                    desc: '领导致辞',
-                    name: ['任启', '邱成峰'],
-                    post: ['麒麟信安高级副总裁', 'openEuler社区秘书长'],
+                    time: '14:00 - 14:10',
+                    desc: '致辞',
+                    name: ['任启'],
+                    post: ['麒麟信安高级副总裁'],
+                    detail: '',
+                  },
+                  {
+                    time: '14:10 - 14:15',
+                    desc: '欧拉社区领导致辞',
+                    name: ['邱成峰'],
+                    post: ['openEuler社区秘书长'],
                     detail: '',
                   },
                   {
