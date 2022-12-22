@@ -58,6 +58,7 @@ const summitData: any = {
   ],
   liver: {
     title: '峰会直播',
+    date: ['28', '29'],
     liveData1: [
       {
         liveId: 12257,
@@ -1261,8 +1262,9 @@ const summitData: any = {
     ],
   },
 };
-const tabType = ref(['main', 'main', 'main']);
-const otherTabType = ref([0, 0, 0]);
+const tabType = ref(['main', 'main']);
+// const time = ref('28');
+const otherTabType = ref([0, 0]);
 function clickEntry() {
   router.go('/zh/celebrating/');
 }
@@ -1284,6 +1286,36 @@ onMounted(() => {
     </div>
     <!-- <div class="liver">
       <h3 class="titleBar">{{ summitData.liver.title }}</h3>
+      <div>
+        <OTabs v-model="time" class="schedule-tabs">
+          <el-tab-pane
+            v-for="item in summitData.liver.date"
+            :key="item"
+            :name="item"
+          >
+            <template #label>
+              <div class="timeTabs">
+                {{ item }}日直播
+              </div>
+            </template>
+          </el-tab-pane>
+        </OTabs>
+        <OContainer :level-index="1">
+          <ClientOnly>
+            <SummitLive
+              v-if="time === '28'"
+              :live-data="summitData.liver.liveData1"
+              class-name="odd2022"
+            />
+            <SummitLive
+              v-if="time === '29'"
+              :live-data="summitData.liver.liveData2"
+              class-name="odd2022"
+            />
+          </ClientOnly>
+        </OContainer>
+      </div>
+
       <ClientOnly>
         <SummitLive
           :live-data="summitData.liver.liveData1"
@@ -1399,28 +1431,6 @@ onMounted(() => {
 .dark .banner {
   filter: brightness(0.8) grayscale(0.2) contrast(1.2);
 }
-// .banner {
-//   width: 100%;
-//   .summit-banner-pc {
-//     height: 380px;
-//     margin: 0 auto;
-//     background: no-repeat center/cover;
-//     @media screen and (max-width: 768px) {
-//       display: none;
-//     }
-//   }
-//   .summit-banner-mo {
-//     display: none;
-
-//     @media screen and (max-width: 768px) {
-//       width: 100%;
-//       display: block;
-//       img {
-//         width: 100%;
-//       }
-//     }
-//   }
-// }
 .detail {
   p {
     font-size: var(--o-font-size-h6);
@@ -1459,6 +1469,33 @@ onMounted(() => {
     @media (max-width: 767px) {
       margin-top: var(--o-spacing-h4);
     }
+  }
+  :deep(.o-container-level1) {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  :deep(.el-tabs__item) {
+    padding: 0 !important;
+  }
+  :deep(.el-tabs__nav-scroll) {
+    display: flex;
+  }
+  :deep(.el-tabs__nav) {
+    float: none !important;
+    display: inline-block;
+    margin: 0 auto;
+  }
+  :deep(.el-tabs__active-bar) {
+    display: none;
+  }
+  .timeTabs {
+    padding: 0 var(--o-spacing-h5);
+    line-height: 38px;
+  }
+  .is-active .timeTabs {
+    color: #fff;
+    background: var(--o-color-brand1);
+    border-color: var(--o-color-brand2);
   }
 }
 .agenda {

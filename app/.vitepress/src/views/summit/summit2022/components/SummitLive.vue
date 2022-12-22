@@ -50,6 +50,13 @@ function creatUserId(liveId: number) {
 }
 const state = ref(-1);
 const height = ref(800);
+function setHeight(data: any) {
+  if (data.height === 'auto') {
+    height.value = 550;
+  } else if (data.height) {
+    height.value = parseInt(data.height);
+  }
+}
 function messageEvent() {
   window.addEventListener(
     'message',
@@ -60,6 +67,7 @@ function messageEvent() {
       } catch (e) {
         data = event.data;
       }
+
       // data.state=2,直播结束
       setHeight(data);
       console.log(state.value, '收到', data);
@@ -67,17 +75,6 @@ function messageEvent() {
     },
     false
   );
-  // 移动600
-  // state=0,
-  // export const getH = (domWidth, cutVal = 352) => {
-  // const Width = domWidth || document.body.getBoundingClientRect().width
-  // const playerBoxW = Width - cutVal
-  // const playerBoxH = playerBoxW / 16 * 9 + 40 + 'px'
-  // return playerBoxH}
-
-  // export const sendMessage = (domWidth, cutVal, targetOrigin = origin) => {
-  // const Height = getH(domWidth, cutVal)
-  // top.postMessage(Height, '*')}
 }
 onMounted(async () => {
   AOS.init({
@@ -101,15 +98,6 @@ const liveRoom = ref(
 const selectliveChange = (val: number): void => {
   creatUserId(val);
 };
-// 判断是手机端还是pc端
-function setHeight(data: any) {
-  const Width = document.body.getBoundingClientRect().width;
-  if (Width < 768 && state.value === 0) {
-    height.value = 600;
-  } else if (Width > 768 && data.height) {
-    height.value = data.height;
-  }
-}
 </script>
 
 <template>
