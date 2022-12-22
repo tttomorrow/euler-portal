@@ -1,4 +1,14 @@
-
+---
+title: openEuler社区开源项目：CPDS（容器故障检测系统）介绍
+category: blog
+date: 2022-12-16
+tags:
+  - openEuler
+archives: 2022-12
+author:
+  - openEuler
+summary: 容器故障检测系统 CPDS (Container Problem Detect System) 是由北京凝思软件股份有限公司（以下简称“凝思软件”）设计并开发的容器集群故障检测系统，该软件系统实现了对容器TOP故障、亚健康状态的监测与识别。
+---
 
 容器故障检测系统 CPDS (Container Problem Detect System) 是由北京凝思软件股份有限公司（以下简称“凝思软件”）设计并开发的容器集群故障检测系统，该软件系统实现了对容器TOP故障、亚健康状态的监测与识别。
 
