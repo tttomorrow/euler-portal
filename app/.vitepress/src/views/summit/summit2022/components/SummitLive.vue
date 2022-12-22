@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import AOS from 'aos';
 
-import liveActiveBg from '@/assets/category/summit/live-active-bg.png';
+import liveActiveBg from '@/assets/category/summit/summit2022/live-active-bg.png';
 
 interface RENDERDATA {
   id: number;
@@ -48,6 +48,15 @@ function creatUserId(liveId: number) {
   userName = returnId;
   liveUrl.value = `https://vhall.huawei.com/v2/watch/${liveId}?lang=zh&thirdId=${userName}`;
 }
+const state = ref(-1);
+const height = ref(800);
+function setHeight(data: any) {
+  if (data.height === 'auto') {
+    height.value = 550;
+  } else if (data.height) {
+    height.value = parseInt(data.height);
+  }
+}
 function messageEvent() {
   window.addEventListener(
     'message',
@@ -58,7 +67,11 @@ function messageEvent() {
       } catch (e) {
         data = event.data;
       }
-      console.log('收到' + event.origin + '消息:' + data);
+
+      // data.state=2,直播结束
+      setHeight(data);
+      console.log(state.value, '收到', data);
+      // console.log('收到' + event.origin + '消息:' + data);
     },
     false
   );
@@ -70,7 +83,9 @@ onMounted(async () => {
     delay: 100,
   });
   isTest.value = window.location.host.includes('test.osinfra');
-  creatUserId(isTest.value ? renderData[0].liveTestId : renderData[0].liveId);
+  creatUserId(
+    isTest.value ? renderData[0].liveTestId : renderData[0].liveTestId
+  );
   messageEvent();
 });
 
@@ -78,7 +93,7 @@ onMounted(async () => {
 const ActiveBg = `url(${liveActiveBg})`;
 
 const liveRoom = ref(
-  isTest.value ? renderData[0].liveTestId : renderData[0].liveId
+  isTest.value ? renderData[0].liveTestId : renderData[0].liveTestId
 );
 const selectliveChange = (val: number): void => {
   creatUserId(val);
@@ -104,7 +119,7 @@ const selectliveChange = (val: number): void => {
     </div>
     <iframe
       ref="livePage"
-      height="740"
+      :height="height"
       allow="camera *;microphone *;"
       border="0"
       scolling="no"
