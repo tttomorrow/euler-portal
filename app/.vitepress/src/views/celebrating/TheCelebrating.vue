@@ -54,14 +54,14 @@ const isTipShow = ref(false);
 function setDownData() {
   const sensors = (window as any)['sensorsDataAnalytic201505'];
   sensors?.setProfile({
-    userName: guardAuthClient.value.username || '',
+    userName: guardAuthClient.value.username,
     profileType: 'Download',
     downloadLink: data.down.link,
     date: new Date().getTime(),
   });
 }
 function clickDownBtn() {
-  if (guardAuthClient.value.photo) {
+  if (guardAuthClient.value.photo && guardAuthClient.value.username) {
     setDownData();
     isTipShow.value = true;
     window.open(data.down.link, '_self');
@@ -316,7 +316,7 @@ function clickMask() {
     box-shadow: var(--o-shadow-l2);
     @media (max-width: 1100px) {
       margin-top: var(--o-spacing-h5);
-      }
+    }
     img {
       width: 100%;
     }
