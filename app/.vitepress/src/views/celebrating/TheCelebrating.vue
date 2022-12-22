@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { showGuard, useStoreData } from '@/shared/login';
 import { useCommon } from '@/stores/common';
+import { getUrlParams } from '@/shared/utils';
 
 import AppContext from '@/components/AppContent.vue';
 
@@ -72,6 +73,25 @@ function clickDownBtn() {
 function clickMask() {
   isTipShow.value = false;
 }
+// 判断是否通过广告进入并埋点
+function setAdvertisedData() {
+  const sensors = (window as any)['sensorsDataAnalytic201505'];
+  const { href } = window.location;
+  if (href.includes('?utm_source')) {
+    const paramsArr = getUrlParams(href);
+    sensors?.setProfile({
+      ...(window as any)['sensorsCustomBuriedData'],
+      profileType: 'fromAdvertised',
+      origin: href,
+      ...paramsArr,
+    });
+  }
+}
+onMounted(() => {
+  setTimeout(() => {
+    setAdvertisedData();
+  }, 300);
+});
 </script>
 
 <template>
