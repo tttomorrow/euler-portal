@@ -24,10 +24,10 @@ onMounted(() => {
       '(prefers-color-scheme: dark)'
     ).matches;
     theme = prefereDark ? 'dark' : 'light';
-    localStorage.setItem(APPEARANCE_KEY, theme);
+  } else {
+    theme = localStorage.getItem(APPEARANCE_KEY);
   }
 
-  theme = localStorage.getItem(APPEARANCE_KEY);
   commonStore.theme = theme === 'dark' ? 'dark' : 'light';
 });
 
@@ -38,8 +38,7 @@ watch(
   (val) => {
     const documentElement = document.documentElement;
     val === 'light' && documentElement.classList.remove('dark');
-    val === 'dark' && documentElement.classList.add(val);
-    localStorage.setItem(APPEARANCE_KEY, val);
+    val === 'dark' && documentElement.classList.add('dark');
   }
 );
 </script>
