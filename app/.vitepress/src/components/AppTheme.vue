@@ -18,7 +18,16 @@ const changeTheme = () => {
 };
 
 onMounted(() => {
-  const theme = localStorage.getItem(APPEARANCE_KEY);
+  let theme;
+  if (!localStorage.getItem(APPEARANCE_KEY)) {
+    const prefereDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
+    theme = prefereDark ? 'dark' : 'light';
+    localStorage.setItem(APPEARANCE_KEY, theme);
+  }
+
+  theme = localStorage.getItem(APPEARANCE_KEY);
   commonStore.theme = theme === 'dark' ? 'dark' : 'light';
 });
 
