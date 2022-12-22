@@ -301,3 +301,10 @@
     margin-bottom: --o-spacing-h8;
   }
 }
+.legal-privacy h3 {
+  font-size: var(--o-font-size-text);
+  letter-spacing: 0;
+  line-height: var(--o-line-height-text);
+  font-weight: 700;
+  margin: var(--o-spacing-h8) 0;
+}

@@ -57,7 +57,7 @@ const handleGo = (path: string) => {
             <div class="carousel-pc-img">
               <img
                 :src="i18n.home.IMG_CAROUSE.LIST[active]?.IMG_URL"
-                :alt="i18n.home.IMG_CAROUSE.LIST[active]?.TITLE"
+                alt="openEuler"
               />
             </div>
           </div>
@@ -101,7 +101,7 @@ const handleGo = (path: string) => {
           <div class="carousel-mobile-img">
             <img
               :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL"
-              :alt="i18n.home.IMG_CAROUSE.LIST[index]?.TITLE"
+              alt="openEuler"
             />
           </div>
         </OCollapseItem>

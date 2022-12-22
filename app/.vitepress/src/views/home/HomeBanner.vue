@@ -111,7 +111,7 @@ const jumpTo = (item: any) => {
               </OButton>
             </div>
           </div>
-          <img v-else class="isH5show" :src="item.moBanner" :alt="item.title" />
+          <img v-else class="isH5show" :src="item.moBanner" alt="openEuler" />
         </div>
       </div>
     </swiper-slide>

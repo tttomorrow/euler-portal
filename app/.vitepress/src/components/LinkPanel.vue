@@ -19,11 +19,15 @@ const props = withDefaults(
       v-for="item in props.linkList"
       :key="item.LINK"
       :href="item.LINK"
+      rel="nofollow"
       data-aos="fade-up"
       target="_blank"
       class="link-item"
     >
-      <img :src="attrs.theme === 'light' ? item.IMG : item.IMG_DARK" alt="" />
+      <img
+        :src="attrs.theme === 'light' ? item.IMG : item.IMG_DARK"
+        alt="openEuler"
+      />
     </a>
   </div>
 </template>
