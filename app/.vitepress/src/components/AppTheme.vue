@@ -11,10 +11,15 @@ const APPEARANCE_KEY = 'vitepress-theme-appearance';
 const commonStore = useCommon();
 
 const isLight = computed(() => (commonStore.theme === 'light' ? true : false));
+
 const changeTheme = () => {
   const theme = commonStore.theme === 'dark' ? 'light' : 'dark';
   commonStore.theme = theme;
   localStorage.setItem(APPEARANCE_KEY, theme);
+};
+
+const changeThemeMobile = () => {
+  localStorage.setItem(APPEARANCE_KEY, commonStore.theme);
 };
 
 onMounted(() => {
@@ -59,6 +64,7 @@ watch(
         inactive-text="light"
         inactive-value="light"
         active-color="#002fa7"
+        @click="changeThemeMobile"
       />
     </div>
   </div>
