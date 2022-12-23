@@ -142,7 +142,7 @@ onUnmounted(() => {
                       ? item.ACTIVE_URL
                       : item.URL
                   "
-                  :alt="`${item.TYPE}`"
+                  alt="openEuler"
                 />
                 <div class="case-mobile-word">
                   {{ item.TYPE }}
@@ -178,12 +178,12 @@ onUnmounted(() => {
               >
                 <img
                   :src="imgUrl(item)"
-                  :alt="`${item.TYPE}`"
+                  alt="openEuler"
                   class="nav-item-icon"
                 />
                 <img
                   :src="imgUrlHover(item)"
-                  :alt="`${item.TYPE}`"
+                  alt="openEuler"
                   class="nav-item-icon-hover"
                 />
               </div>

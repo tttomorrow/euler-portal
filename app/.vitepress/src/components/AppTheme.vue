@@ -11,14 +11,28 @@ const APPEARANCE_KEY = 'vitepress-theme-appearance';
 const commonStore = useCommon();
 
 const isLight = computed(() => (commonStore.theme === 'light' ? true : false));
+
 const changeTheme = () => {
   const theme = commonStore.theme === 'dark' ? 'light' : 'dark';
   commonStore.theme = theme;
   localStorage.setItem(APPEARANCE_KEY, theme);
 };
 
+const changeThemeMobile = () => {
+  localStorage.setItem(APPEARANCE_KEY, commonStore.theme);
+};
+
 onMounted(() => {
-  const theme = localStorage.getItem(APPEARANCE_KEY);
+  let theme;
+  if (!localStorage.getItem(APPEARANCE_KEY)) {
+    const prefereDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
+    theme = prefereDark ? 'dark' : 'light';
+  } else {
+    theme = localStorage.getItem(APPEARANCE_KEY);
+  }
+
   commonStore.theme = theme === 'dark' ? 'dark' : 'light';
 });
 
@@ -29,8 +43,7 @@ watch(
   (val) => {
     const documentElement = document.documentElement;
     val === 'light' && documentElement.classList.remove('dark');
-    val === 'dark' && documentElement.classList.add(val);
-    localStorage.setItem(APPEARANCE_KEY, val);
+    val === 'dark' && documentElement.classList.add('dark');
   }
 );
 </script>
@@ -51,6 +64,7 @@ watch(
         inactive-text="light"
         inactive-value="light"
         active-color="#002fa7"
+        @click="changeThemeMobile"
       />
     </div>
   </div>

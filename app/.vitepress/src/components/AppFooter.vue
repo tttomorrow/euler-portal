@@ -190,6 +190,9 @@ const isMigration = computed(() => {
     router.route.path.split('/')[2] === 'migration'
   );
 });
+const isAbout = computed(() => {
+  return frontmatter.value.category === 'about-us';
+});
 const quickIssueUrl = computed(() => {
   return isMigration.value
     ? 'https://quickissue.openeuler.org/zh/new-issues/?c2lnPXNpZy1NaWdyYXRpb24mcmVwbz1vcGVuZXVsZXIvbWlncmF0aW9uLWFzc2lzdGFudCZyZXBvX2lkPTE1OTI4MzA0JnR5cGU96L+B56e75o+Q5LyYJnRpdGxlPVvmkKzov4Fd'
@@ -211,7 +214,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
 </script>
 
 <template>
-  <footer class="footer" :class="{ migration: isMigration }">
+  <footer class="footer" :class="{ 'is-doc': isMigration || isAbout }">
     <!-- 隐私政策 -->
     <div
       v-if="isCookieTip"
@@ -240,7 +243,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
       <div class="atom">
         <p class="atom-text">{{ i18n.common.FOOTER.ATOM_TEXT }}</p>
         <a href="https://openatom.cn/home" target="_blank">
-          <img :src="LogoAtom" class="atom-logo" alt="" />
+          <img :src="LogoAtom" class="atom-logo" alt="openEuler" />
         </a>
       </div>
     </AppContent>
@@ -248,8 +251,8 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
       <AppContent :pc-top="0" :mobile-top="0">
         <div class="inner">
           <div class="footer-logo">
-            <img class="show-pc" :src="LogoFooter" alt="" />
-            <img class="show-mo" :src="LogoFooter1" alt="" />
+            <img class="show-pc" :src="LogoFooter" alt="openEuler" />
+            <img class="show-mo" :src="LogoFooter1" alt="openEuler" />
             <p>
               <a class="email" :href="'mailto:' + i18n.common.FOOTER.MAIL">
                 {{ i18n.common.FOOTER.MAIL }}
@@ -277,9 +280,9 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
                 class="code-pop"
                 href="javascript:;"
               >
-                <img :src="item.img" class="code-img" alt="" />
+                <img :src="item.img" class="code-img" alt="openEuler" />
                 <div class="code-layer">
-                  <img :src="item.code" alt="" />
+                  <img :src="item.code" alt="openEuler" />
                   <p class="txt">{{ item.label }}</p>
                 </div>
               </a>
@@ -289,10 +292,11 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
                 v-for="item in footerLinks"
                 :key="item.id"
                 :href="item.path"
+                rel="nofollow"
                 class="links-logo"
                 target="_blank"
               >
-                <img :src="item.logo" alt="" />
+                <img :src="item.logo" alt="openEuler" />
               </a>
             </div>
           </div>
@@ -304,39 +308,15 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
         <img
           v-show="useCommon().theme === 'light'"
           :src="QuickIssue_Light"
-          alt=""
+          alt="openEuler"
         />
         <img
           v-show="useCommon().theme === 'dark'"
           :src="QuickIssue_Dark"
-          alt=""
+          alt="openEuler"
         />
       </a>
     </div>
-    <!-- 问卷调查下线 -->
-    <!-- <div
-      v-show="lang === 'zh' && isShow && isFloShow"
-      class="investigation quick-issue"
-    >
-      <a href="https://huaweicompute.wjx.cn/vm/QVCXm3l.aspx# " target="_blank">
-        <img
-          v-show="useCommon().theme === 'light'"
-          :src="Investigation_Light"
-          alt=""
-        />
-        <img
-          :src="Close_Light"
-          alt=""
-          class="icon"
-          @click.stop.prevent="clickWindow()"
-        />
-        <img
-          v-show="useCommon().theme === 'dark'"
-          :src="Investigation_Dark"
-          alt=""
-        />
-      </a>
-    </div> -->
   </footer>
 </template>
 
@@ -344,7 +324,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
 $color: #fff;
 .footer {
   background: var(--o-color-greyblack1);
-  &.migration {
+  &.is-doc {
     margin-left: 300px;
     @media (max-width: 1100px) {
       margin-left: 0;

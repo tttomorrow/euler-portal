@@ -93,10 +93,12 @@
 
   h4 {
     margin-top: var(--o-spacing-h4);
+    margin-bottom: var(--o-spacing-h5);
     font-size: var(--o-font-size-h8);
     line-height: var(--o-font-size-h8);
     @media screen and (max-width: 768px) {
       margin-top: var(--o-spacing-h6);
+      margin-bottom: var(--o-spacing-h7);
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
     }
@@ -298,4 +300,11 @@
     font-weight: 700;
     margin-bottom: --o-spacing-h8;
   }
+}
+.legal-privacy h3 {
+  font-size: var(--o-font-size-text);
+  letter-spacing: 0;
+  line-height: var(--o-line-height-text);
+  font-weight: 700;
+  margin: var(--o-spacing-h8) 0;
 }

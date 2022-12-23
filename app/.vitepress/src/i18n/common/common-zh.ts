@@ -20,7 +20,7 @@ export default {
     SUMMIT: '峰会',
     COMMUNITY: '社区',
     CONTRIBUTION: '贡献攻略',
-    CONVENTION: '行为守则',
+    CONVENTION: '行为准则',
     MAILINGLIST: '邮件列表',
     CERTIFICATION: '个人认证',
     TALENT: '人才评测',
@@ -141,20 +141,25 @@ export default {
       ID: 'community',
       CHILDREN: [
         {
+          NAME: '关于我们',
+          ID: 'about-us',
+          PATH: '/community/charter/',
+        },
+        {
           NAME: '贡献攻略',
           ID: 'contribution',
           PATH: '/community/contribution/',
         },
-        {
-          NAME: '行为守则',
-          ID: 'convention',
-          PATH: '/community/conduct/',
-        },
-        {
-          NAME: '邮件列表',
-          ID: 'mailing-list',
-          PATH: '/community/mailing-list/',
-        },
+        // {
+        //   NAME: '行为守则',
+        //   ID: 'convention',
+        //   PATH: '/community/conduct/',
+        // },
+        // {
+        //   NAME: '邮件列表',
+        //   ID: 'mailing-list',
+        //   PATH: '/community/mailing-list/',
+        // },
         {
           NAME: '人才评定',
           ID: 'talent-assessment',

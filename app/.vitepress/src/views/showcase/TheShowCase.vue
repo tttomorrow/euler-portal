@@ -110,21 +110,26 @@ function goDetail(link: string, item: any, index: number) {
     search_result_total_num: total.value,
     search_result_url: location.origin + search_result_url,
   };
-  const sensors = (window as any)['sensorsDataAnalytic201505'];
-  const searchResult = keyWord.value
-    ? (window as any)['addSearchBuriedData'] || {}
-    : {
-        search_key: '',
-        search_event_id: '',
-      };
-  sensors.setProfile({
-    profileType: 'selectSearchResult',
-    ...(item || {}),
-    ...((window as any)['sensorsCustomBuriedData'] || {}),
-    ...searchResult,
-    ...searchKeyObj,
-  });
-  window.open(search_result_url);
+  try {
+    const sensors = (window as any)['sensorsDataAnalytic201505'];
+    const searchResult = keyWord.value
+      ? (window as any)['addSearchBuriedData'] || {}
+      : {
+          search_key: '',
+          search_event_id: '',
+        };
+    sensors.setProfile({
+      profileType: 'selectSearchResult',
+      ...(item || {}),
+      ...((window as any)['sensorsCustomBuriedData'] || {}),
+      ...searchResult,
+      ...searchKeyObj,
+    });
+  } catch (error: any) {
+    throw Error(error);
+  } finally {
+    window.open(search_result_url);
+  }
 }
 // 设置当前tag的所有案例
 function setCurrentCaseListAll() {

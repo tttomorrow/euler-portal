@@ -70,14 +70,15 @@ const isMobile = computed(() => {
 </script>
 
 <template>
-  <div class="application">
+  <div class="application about-wrapper">
     <BannerLevel2
+      v-if="lang !== 'zh'"
       :background-image="banner"
       background-text="COMMUNITY"
       :title="i18n.mailing.MAILING_LIST.TITLE"
       :illustration="illustration"
     />
-    <AppContent>
+    <AppContent :class="lang === 'zh' ? 'about-us' : ''">
       <div class="middle">
         <div class="middle-process-box">
           <div
@@ -131,7 +132,7 @@ const isMobile = computed(() => {
                   >
                     <span>{{ item.LEFT.INDEX }}</span>
                   </div>
-                  <div>
+                  <div class="middle-item-text">
                     <span
                       v-if="item.LEFT.LEFT_CIRCLE"
                       style="font-size: 22px"
@@ -185,7 +186,7 @@ const isMobile = computed(() => {
                   >
                     <span>{{ item.RIGHT.INDEX }}</span>
                   </div>
-                  <div>
+                  <div class="middle-item-text">
                     <span
                       v-if="item.RIGHT.RIGHT_CIRCLE"
                       style="font-size: 22px"
@@ -311,22 +312,27 @@ const isMobile = computed(() => {
 
 <style lang="scss" scoped>
 .application {
+  .about-us {
+    margin: 0;
+    padding: 0;
+  }
   .middle {
     margin-top: 22px;
     &-process-box {
       position: relative;
     }
     .lower-box {
-      max-width: 1504px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       position: absolute;
+      width: calc(100% - 300px);
+      max-width: 730px;
       left: 25%;
       z-index: 3;
       .big-bg {
         margin: auto;
-        width: 730px;
+        width: 100%;
         height: 170px;
         border-width: 2px;
         border-style: dashed;
@@ -336,7 +342,7 @@ const isMobile = computed(() => {
       }
       .small-bg {
         margin: auto;
-        width: 730px;
+        width: 100%;
         min-height: 102px;
         border-width: 2px;
         border-style: dashed;
@@ -347,7 +353,7 @@ const isMobile = computed(() => {
     }
     .upper-box {
       background-color: rgba(255, 255, 255, 0);
-      @media (max-width: 780px) {
+      @media (max-width: 768px) {
         margin-top: -22px;
       }
     }
@@ -358,38 +364,42 @@ const isMobile = computed(() => {
       margin-top: -22px;
       justify-content: space-between;
       background-color: rgba(255, 255, 255, 0);
-      @media (max-width: 780px) {
+      @media (max-width: 768px) {
         min-height: 0px;
         display: block;
         margin-top: var(--o-spacing-h5);
       }
       &-left {
         display: flex;
-        height: 204px;
-        margin-right: 0px;
+        min-height: 204px;
+        margin-right: 24px;
         z-index: 4;
-        @media (max-width: 780px) {
+        @media (max-width: 768px) {
           margin-right: 0px;
           margin-bottom: var(--o-spacing-h5);
-          height: 86px;
+          justify-content: center;
+          height: fit-content;
+          min-height: 0;
         }
       }
       &-right {
-        margin-top: 100px;
         display: flex;
+        margin-top: 100px;
         margin-right: 0px;
-        height: 204px;
+        min-height: 204px;
         z-index: 4;
-        @media (max-width: 780px) {
+        @media (max-width: 768px) {
+          justify-content: center;
           margin-right: 0px;
           margin-top: var(--o-spacing-h5);
-          height: 86px;
+          height: fit-content;
+          min-height: 0;
         }
       }
       &-right-1 {
         margin-top: 102px;
         z-index: 4;
-        @media (max-width: 780px) {
+        @media (max-width: 768px) {
           margin-top: 0px;
         }
       }
@@ -412,35 +422,33 @@ const isMobile = computed(() => {
           @media (max-width: 1080px) {
             height: 80px;
           }
-          @media (max-width: 780px) {
+          @media (max-width: 768px) {
             width: 60px;
           }
         }
       }
       &-infoconfig {
-        width: 456px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 456px;
         background-color: var(--o-color-bg2);
-        @media (max-width: 1440px) {
-          width: 430px;
-        }
-        @media (max-width: 1366px) {
-          width: 370px;
-        }
-        @media (max-width: 1280px) {
-          width: 350px;
-        }
-        @media (max-width: 1080px) {
-          width: 300px;
+        .middle-item-text {
+          display: flex;
+          height: 78px;
+          align-items: center;
+          span {
+            margin-left: 0;
+          }
         }
         span {
           color: var(--o-color-black);
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           float: left;
-          margin: 0 var(--o-spacing-h4) var(--o-spacing-h4) 59px;
-          position: relative;
+          margin: 0 var(--o-spacing-h4) 0 59px;
           bottom: var(--o-spacing-h4);
-          @media (max-width: 780px) {
+          @media (max-width: 768px) {
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-tip);
             margin: 0 var(--o-spacing-h6) var(--o-spacing-h10) 30px;
@@ -454,7 +462,7 @@ const isMobile = computed(() => {
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-h8);
           bottom: var(--o-spacing-h4);
-          @media (max-width: 780px) {
+          @media (max-width: 768px) {
             font-size: var(--o-font-size-tip);
             line-height: var(--o-line-height-text);
           }
@@ -466,9 +474,9 @@ const isMobile = computed(() => {
           border-radius: 50%;
           background-color: var(--o-color-kleinblue5);
           position: relative;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          @media (max-width: 780px) {
+          // top: 50%;
+          transform: translate(-50%);
+          @media (max-width: 768px) {
             height: 38px;
             width: 38px;
             border: 2px solid var(--o-color-white);
@@ -484,7 +492,7 @@ const isMobile = computed(() => {
             right: 36%;
             transform: translate(-50%, -50%);
             font-weight: 500;
-            @media (max-width: 780px) {
+            @media (max-width: 768px) {
               font-size: var(--o-font-size-text);
               margin: auto;
               left: 50%;
@@ -497,7 +505,7 @@ const isMobile = computed(() => {
   }
   .mail-table {
     margin-top: var(--o-spacing-h1);
-    @media (max-width: 780px) {
+    @media (max-width: 768px) {
       margin-top: var(--o-spacing-h2);
     }
     :deep(.mirror-list-header) {
@@ -506,7 +514,7 @@ const isMobile = computed(() => {
       color: var(--o-color-text1);
       line-height: 54px;
       padding: 0 !important;
-      @media (max-width: 780px) {
+      @media (max-width: 768px) {
         font-size: var(--o-font-size-text);
       }
       .cell {
@@ -516,7 +524,7 @@ const isMobile = computed(() => {
       &:first-child {
         .cell {
           padding-left: var(--o-spacing-h2);
-          @media (max-width: 780px) {
+          @media (max-width: 768px) {
             padding-left: var(--o-spacing-h6);
           }
         }
@@ -525,7 +533,7 @@ const isMobile = computed(() => {
       &:last-child {
         .cell {
           padding-right: var(--o-spacing-h2);
-          @media (max-width: 780px) {
+          @media (max-width: 768px) {
             padding-right: var(--o-spacing-h6);
           }
         }
@@ -534,7 +542,7 @@ const isMobile = computed(() => {
     :deep(.mirror-list-row) {
       padding: 0 !important;
       line-height: 22px;
-      @media (max-width: 780px) {
+      @media (max-width: 768px) {
         font-size: var(--o-font-size-tip);
       }
       .cell {
@@ -544,7 +552,7 @@ const isMobile = computed(() => {
       &:first-child {
         .cell {
           padding-left: var(--o-spacing-h2);
-          @media (max-width: 780px) {
+          @media (max-width: 768px) {
             padding-left: var(--o-spacing-h6);
           }
         }
@@ -553,7 +561,7 @@ const isMobile = computed(() => {
       &:last-child {
         .cell {
           padding-right: var(--o-spacing-h2);
-          @media (max-width: 780px) {
+          @media (max-width: 768px) {
             padding-right: var(--o-spacing-h6);
           }
         }

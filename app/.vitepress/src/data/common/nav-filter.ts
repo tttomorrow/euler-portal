@@ -149,4 +149,12 @@ export default [
     name: 'search',
     lang: ['zh', 'en', 'ru'],
   },
+  {
+    name:'charter',
+    lang:['zh']
+  },
+  {
+    name:'vote',
+    lang:['zh']
+  }
 ];
