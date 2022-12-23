@@ -1,88 +1,15 @@
 [
     {
-        "os_version": "turbolinux-15-SP3-everything-x86_64-dvd.iso",
-        "osv_name": "北京拓林思软件有限公司",
+        "os_version": "FusionOS-22_everything_aarch64.iso",
+        "osv_name": "超聚变数字技术有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2022/12/19",
-        "arch": "X86",
-        "details": "详细信息",
-        "friendly_link": "https://www.turbolinux.com.cn/",
-        "os_download_link": "https://www.turbolinux.com.cn/",
-        "checksum": "4b639158722eb72955b4c3dbdb6d91a2",
-        "base_openeuler_version": "openEuler 20.03 LTS SP3",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result": [
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-
-    {
-        "os_version": "turbolinux-15-SP3-everything-aarch64-dvd.iso",
-        "osv_name": "北京拓林思软件有限公司",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/12/19",
+        "date": "2022/12/22",
         "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "https://www.turbolinux.com.cn/",
-        "os_download_link": "https://www.turbolinux.com.cn/",
-        "checksum": "115fe842bff443986ac95f6d4aec1f52",
+        "friendly_link": "https://www.xfusion.com/",
+        "os_download_link": "https://www.xfusion.com/",
+        "checksum": "fae5159643f221ebf1035f90a95e949b",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
@@ -144,18 +71,89 @@
             }
         ]
     },
-
     {
-        "os_version": "linxos-6.0-el20.03-sp3-arm64-DVD.iso",
-        "osv_name": "北京凝思软件股份有限公司",
+        "os_version": "FusionOS-22_everything_x86-64.iso",
+        "osv_name": "超聚变数字技术有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2022/12/2",
+        "date": "2022/12/22",
+        "arch": "x86",
+        "details": "详细信息",
+        "friendly_link": "https://www.xfusion.com/",
+        "os_download_link": "https://www.xfusion.com/",
+        "checksum": "1f6e4d82bc389165a39e90046ecf71ed",
+        "base_openeuler_version": "openEuler 20.03 LTS SP3",
+        "tools_result": [
+            {
+                "name": "core_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "KABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "ABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "service_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "kernel_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ],
+        "platform_result": [
+            {
+                "name": "repo",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "base_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "performance_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "running_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ]
+    },
+    {
+        "os_version": "pegaspegasus-server-v1.0-arm64-1123.iso",
+        "osv_name": "南方电网数字电网集团",
+        "total_result": "pass",
+        "type": "服务器",
+        "date": "2022/12/22",
         "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "http://www.linx-info.com/",
-        "os_download_link": "http://www.linx-info.com/",
-        "checksum": "9fdeff087ec56100073ac6c572620570",
+        "friendly_link": "https://www.csg.cn/",
+        "os_download_link": "https://www.csg.cn/",
+        "checksum": "8be1a7f35d80bd61ddaea241c21d1f5e",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
@@ -219,234 +217,16 @@
     },
 
     {
-        "os_version": "linxos-6.0-el20.03-sp3-x86_64-DVD.iso",
-        "osv_name": "北京凝思软件股份有限公司",
+        "os_version": "pegasus-server-v1.0-arm64-alpha.iso",
+        "osv_name": "南方电网数字电网集团",
         "total_result": "pass",
         "type": "服务器",
         "date": "2022/12/2",
         "arch": "x86",
         "details": "详细信息",
-        "friendly_link": "http://www.linx-info.com/",
-        "os_download_link": "http://www.linx-info.com/",
-        "checksum": "0a7d0e2cde9c6a014dee833345b03c64",
-        "base_openeuler_version": "openEuler 20.03 LTS SP3",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result": [
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-    {
-        "os_version": "ISSEL-22-LTS-x86_64-dvd.iso",
-        "osv_name": "软通动力信息技术（集团）股份有限公司",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/12/2",
-        "arch": "x86",
-        "details": "详细信息",
-        "friendly_link": "https://www.isoftstone.com/",
-        "os_download_link": "https://www.isoftstone.com/",
-        "checksum": "2aa7979fcd4a6551172ab937997892ca",
-        "base_openeuler_version": "openEuler 22.03 LTS",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result": [
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-
-    {
-        "os_version": "Kylin-Server-V10-SP3-General-Release-2211-ARM64.iso",
-        "osv_name": "麒麟软件有限公司",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/12/2",
-        "arch": "aarch64",
-        "details": "详细信息",
-        "friendly_link": "https://www.kylinos.cn",
-        "os_download_link": "https://www.kylinos.cn",
-        "checksum": "9c62d6277f7a1838539933508dc7b67e",
-        "base_openeuler_version": "openEuler 20.03 LTS SP3",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result": [
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-
-    {
-        "os_version": "Kylin-Server-V10-SP3-General-Release-2211-X86_64.iso",
-        "osv_name": "麒麟软件有限公司",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/12/2",
-        "arch": "X86",
-        "details": "详细信息",
-        "friendly_link": "https://www.kylinos.cn",
-        "os_download_link": "https://www.kylinos.cn",
-        "checksum": "597617fb66b44d9ecb1ae9d0612ee34a",
+        "friendly_link": "https://www.csg.cn/",
+        "os_download_link": "https://www.csg.cn/",
+        "checksum": "f37593b4b15d0224c8841b4d62445c45",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
@@ -508,5 +288,6 @@
             }
         ]
     }
+
 
 ]
