@@ -9,6 +9,7 @@ import SummitSchedule from './components/SummitSchedule.vue';
 import LinkPanel from '@/components/LinkPanel.vue';
 import SummitBanner from './components/SummitBanner.vue';
 // import SummitLive from './components/SummitLive.vue';
+// import SummitGuests from './components/SummitGuests.vue';
 
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
@@ -47,10 +48,6 @@ const router = useRouter();
 const liveImg = computed(() =>
   commonStore.theme === 'light' ? liveLight : liveDark
 );
-// const bannerInfo = {
-//   pc_banner: banner,
-//   mo_banner: bannerMo,
-// };
 const summitData: any = {
   detail: [
     '数字经济成为全球经济增长的主引擎，数字经济的快速发展，带来数字化、智能化的巨大发展机遇。操作系统作为数字基础设施的底座，已经成为推动产业数字化、智能化发展的核心力量。操作系统产业峰会2022旨在聚集全产业链力量，聚焦基础软件核心能力构建，引领基础软件持续创新，加快实现高水平科技自立自强。',
@@ -108,43 +105,43 @@ const summitData: any = {
         liveId: 12266,
         liveTestId: 12274,
         id: 1,
-        name: '内核分论坛',
-      },
-      {
-        liveId: 12267,
-        liveTestId: 12275,
-        id: 2,
-        name: '虚拟化&云原生分论坛',
+        name: 'Linux 内核',
       },
       {
         liveId: 12288,
         liveTestId: 12281,
+        id: 2,
+        name: '多样性计算&编译器',
+      },
+      {
+        liveId: 12267,
+        liveTestId: 12275,
         id: 3,
-        name: '多样性计算&编译器分论坛',
+        name: '虚拟化&云原生',
       },
       {
         liveId: 12289,
         liveTestId: 12282,
         id: 4,
-        name: '嵌入式&ROS分论坛',
-      },
-      {
-        liveId: 12290,
-        liveTestId: 12283,
-        id: 5,
-        name: '迁移&运维分论坛',
+        name: '嵌入式&ROS',
       },
       {
         liveId: 12291,
         liveTestId: 12284,
         id: 5,
-        name: 'RISC-V分论坛',
+        name: 'RISC-V',
+      },
+      {
+        liveId: 12290,
+        liveTestId: 12283,
+        id: 6,
+        name: '迁移&运维',
       },
       {
         liveId: 12268,
         liveTestId: 12276,
-        id: 5,
-        name: 'RISC-V分论坛',
+        id: 7,
+        name: '用户&开发者体验',
       },
     ],
   },
@@ -402,15 +399,15 @@ const summitData: any = {
                   {
                     time: '14:00 - 14:05',
                     desc: '欧拉社区领导致辞',
-                    name: [''],
-                    post: [''],
+                    name: ['熊冠霖'],
+                    post: ['开放原子开源基金会秘书长'],
                     detail: '',
                   },
                   {
                     time: '14:05 - 14:10',
                     desc: '欢迎致辞',
-                    name: ['黄颖'],
-                    post: ['软通动力董事'],
+                    name: ['高培'],
+                    post: ['软通动力副总裁'],
                     detail: '',
                   },
                   {
@@ -1140,6 +1137,16 @@ const summitData: any = {
       },
     ],
   },
+  guest: {
+    title: '演讲嘉宾',
+    guestList: [
+      {
+        img: euler,
+        name: '李战怀',
+        position: ['中国计算机学会', '数据库专委会主任'],
+      },
+    ],
+  },
   partner: {
     title: '共建单位',
     partnerList: [
@@ -1268,7 +1275,6 @@ const otherTabType = ref([0, 0]);
 function clickEntry() {
   router.go('/zh/celebrating/');
 }
-// const timeContent = ref(0);
 onMounted(() => {
   AOS.init({
     offset: 50,
@@ -1294,9 +1300,7 @@ onMounted(() => {
             :name="item"
           >
             <template #label>
-              <div class="timeTabs">
-                {{ item }}日直播
-              </div>
+              <div class="timeTabs">{{ item }}日直播</div>
             </template>
           </el-tab-pane>
         </OTabs>
@@ -1306,11 +1310,13 @@ onMounted(() => {
               v-if="time === '28'"
               :live-data="summitData.liver.liveData1"
               class-name="odd2022"
+              class="summit-kv-box"
             />
             <SummitLive
               v-if="time === '29'"
               :live-data="summitData.liver.liveData2"
               class-name="odd2022"
+              class="summit-box"
             />
           </ClientOnly>
         </OContainer>
@@ -1379,6 +1385,15 @@ onMounted(() => {
         </OContainer>
       </div>
     </div>
+    <!-- <div class="guest">
+      <h3 class="guest-title">{{ summitData.guest.title }}</h3>
+      <SummitGuests
+        :lecturer-list="summitData.guest.guestList"
+        shape="circle"
+        :web-columns-num="4"
+        :mobile-columns-num="2"
+      />
+    </div> -->
     <div class="partner">
       <h3 class="partner-title">
         {{ summitData.partner.title }}
@@ -1489,6 +1504,22 @@ onMounted(() => {
     color: #fff;
     background: var(--o-color-brand1);
     border-color: var(--o-color-brand2);
+  }
+  .summit-kv-box {
+    :deep(.live-room-web-itembox.odd2022) {
+      grid-template-columns: repeat(5, 1fr);
+      .link-main {
+        grid-column: 1/6;
+      }
+    }
+  }
+  .summit-box {
+    :deep(.live-room-web-itembox.odd2022) {
+      grid-template-columns: repeat(7, 1fr);
+      .link-main {
+        grid-column: 1/8;
+      }
+    }
   }
 }
 .agenda {
@@ -1739,6 +1770,23 @@ onMounted(() => {
       :deep(.detail) {
         display: none;
       }
+    }
+  }
+}
+.guest {
+  margin-top: var(--o-spacing-h1);
+  @media (max-width: 767px) {
+    margin-top: var(--o-spacing-h2);
+  }
+  h3 {
+    text-align: center;
+    font-size: var(--o-font-size-h3);
+    line-height: var(--o-line-height-h3);
+    color: var(--o-color-text1);
+    font-weight: 300;
+    @media (max-width: 767px) {
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
     }
   }
 }

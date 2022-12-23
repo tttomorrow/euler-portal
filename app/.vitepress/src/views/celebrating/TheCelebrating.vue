@@ -54,11 +54,15 @@ const isTipShow = ref(false);
 // 设置下载埋点
 function setDownData() {
   const sensors = (window as any)['sensorsDataAnalytic201505'];
+  const { href } = window.location;
+  const paramsArr = getUrlParams(href);
   sensors?.setProfile({
     userName: guardAuthClient.value.username,
     profileType: 'Download',
     downloadLink: data.down.link,
     date: new Date().getTime(),
+    origin: href,
+    ...paramsArr,
   });
 }
 function clickDownBtn() {
