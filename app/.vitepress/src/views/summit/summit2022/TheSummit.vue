@@ -1315,13 +1315,6 @@ onMounted(() => {
           </ClientOnly>
         </OContainer>
       </div>
-
-      <ClientOnly>
-        <SummitLive
-          :live-data="summitData.liver.liveData1"
-          class-name="odd2022"
-        />
-      </ClientOnly>
     </div> -->
     <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
@@ -1575,6 +1568,11 @@ onMounted(() => {
             display: block;
             &:hover {
               color: var(--o-color-brand1);
+            }
+          }
+          .name-box {
+            @media screen and (max-width: 1100px) {
+              grid-column-end: auto !important;
             }
           }
         }
