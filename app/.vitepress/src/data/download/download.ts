@@ -289,15 +289,13 @@ export default {
       },
       {
         NAME: '普华服务器操作系统v5.1',
-        DOWNLOAD_URL: 'http://www.i-soft.com.cn/service/download.html?cat=57',
+        DOWNLOAD_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
         DESC: '暂无描述',
-        RELEASE_DESC_URL:
-          'http://www.i-soft.com.cn/service/download.html?cat=57',
-        INSTALL_GUIDENCE_URL:
-          'http://www.i-soft.com.cn/service/download.html?cat=57',
+        RELEASE_DESC_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+        INSTALL_GUIDENCE_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
         SEEK_HELP_URL:
           'https://p.qiao.baidu.com/cps4/chatIndex?siteToken=9a45f9cee67affa160b6addd06e07a8d&speedLogId=160067949693727da_1600679496937_87121&eid=30746007&reqParam=%7B%22from%22%3A0%2C%22sid%22%3A%22-100%22%2C%22tid%22%3A%22-1%22%2C%22ttype%22%3A1%2C%22siteId%22%3A%2215215804%22%2C%22userId%22%3A%2230746007%22%2C%22pageId%22%3A0%7D ',
-        GET_ISO_URL: 'http://www.i-soft.com.cn/service/download.html?cat=57',
+        GET_ISO_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
         LIFE_CYCLE_URL: '',
         MANUFACTURER: '普华软件',
         PUBLISH_DATE: '',
