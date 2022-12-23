@@ -62,7 +62,7 @@ const resolveDate = (date: any) => {
 
       &:not(:first-child)::before {
         content: ',';
-        padding-left: 4px;
+        padding-right: 4px;
       }
     }
     .date {

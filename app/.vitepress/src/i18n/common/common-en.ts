@@ -158,6 +158,12 @@ export default {
           PATH: 'https://datastat.openeuler.org/en/overview',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
+        {
+          NAME: 'QuickIssue',
+          ID: 'QuickIssue',
+          PATH: 'https://quickissue.openeuler.org/en/issues/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: [
         'contribution',

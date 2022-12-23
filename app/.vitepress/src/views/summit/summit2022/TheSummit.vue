@@ -9,6 +9,7 @@ import SummitSchedule from './components/SummitSchedule.vue';
 import LinkPanel from '@/components/LinkPanel.vue';
 import SummitBanner from './components/SummitBanner.vue';
 import SummitLive from './components/SummitLive.vue';
+// import SummitGuests from './components/SummitGuests.vue';
 
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
@@ -398,15 +399,15 @@ const summitData: any = {
                   {
                     time: '14:00 - 14:05',
                     desc: '欧拉社区领导致辞',
-                    name: [''],
-                    post: [''],
+                    name: ['熊冠霖'],
+                    post: ['开放原子开源基金会秘书长'],
                     detail: '',
                   },
                   {
                     time: '14:05 - 14:10',
                     desc: '欢迎致辞',
-                    name: ['黄颖'],
-                    post: ['软通动力董事'],
+                    name: ['高培'],
+                    post: ['软通动力副总裁'],
                     detail: '',
                   },
                   {
@@ -1136,6 +1137,16 @@ const summitData: any = {
       },
     ],
   },
+  guest: {
+    title: '演讲嘉宾',
+    guestList: [
+      {
+        img: euler,
+        name: '李战怀',
+        position: ['中国计算机学会', '数据库专委会主任'],
+      },
+    ],
+  },
   partner: {
     title: '共建单位',
     partnerList: [
@@ -1374,6 +1385,15 @@ onMounted(() => {
         </OContainer>
       </div>
     </div>
+    <!-- <div class="guest">
+      <h3 class="guest-title">{{ summitData.guest.title }}</h3>
+      <SummitGuests
+        :lecturer-list="summitData.guest.guestList"
+        shape="circle"
+        :web-columns-num="4"
+        :mobile-columns-num="2"
+      />
+    </div> -->
     <div class="partner">
       <h3 class="partner-title">
         {{ summitData.partner.title }}
@@ -1750,6 +1770,23 @@ onMounted(() => {
       :deep(.detail) {
         display: none;
       }
+    }
+  }
+}
+.guest {
+  margin-top: var(--o-spacing-h1);
+  @media (max-width: 767px) {
+    margin-top: var(--o-spacing-h2);
+  }
+  h3 {
+    text-align: center;
+    font-size: var(--o-font-size-h3);
+    line-height: var(--o-line-height-h3);
+    color: var(--o-color-text1);
+    font-weight: 300;
+    @media (max-width: 767px) {
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
     }
   }
 }

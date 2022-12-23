@@ -120,7 +120,7 @@ onMounted(async () => {
                   ? item.ROUND_IMG_DARK
                   : item.ROUND_IMG
               "
-              alt="background-img"
+              alt="openEuler"
               class="round-img"
             />
 

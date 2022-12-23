@@ -7632,5 +7632,66 @@
       "hostBusAdapter": "PEX 8619 16-lane",
       "hardDiskDrive": "MR9460-8i"
     }
+  },
+  {
+    "hardwareFactory": "中科可控",
+    "hardwareModel": "R6230HA",
+    "osVersion": "openEuler 22.03 LTS SP1",
+    "architecture": "x86_64",
+    "date": "2022/12/19",
+    "friendlyLink": "http://www.cancon.com.cn",
+    "boardCards": [
+      {
+        "vendorID": "15b3",
+        "deviceID": "1015",
+        "svID": "15b3",
+        "ssID": "0003",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "mlx5_core",
+        "version": "5.0-0",
+        "type": "NIC",
+        "date": "2022/12/19",
+        "sha256": "4cfe6d345c8d00ec0c7bb82e0c6af6b79709adae73043532e55251f1b2732200",
+        "driverSize": "418KB",
+        "chipVendor": "Mellanox",
+        "boardModel": "MCX4121A-ACAT",
+        "chipModel": "ConnectX-4 Lx",
+        "item": "06310106",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "1000",
+        "deviceID": "005d",
+        "svID": "1000",
+        "ssID": "9a61",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "megaraid_sas",
+        "version": "07.714.04.00-rc1",
+        "type": "RAID",
+        "date": "2022/12/19",
+        "sha256": "c6ea2a1f8dfbaa76d572802b0f6ccf085727a887acbf93a4f03c5dfbf653397d",
+        "driverSize": "73KB",
+        "chipVendor": "Avago",
+        "boardModel": "SR430C-M",
+        "chipModel": "SAS-3 3108",
+        "item": "02311PCJ",
+        "downloadLink": "inbox"
+      }
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "http://www.cancon.com.cn",
+      "certificationTime": "2022/12/19",
+      "commitID": "",
+      "mainboardModel": "",
+      "biosUefi": "0BH1001010",
+      "cpu": "Hygon 2",
+      "ram": "16*32G RDIMMs",
+      "portsBusTypes": "x16 PCI Express",
+      "videoAdapter": "ASPEED Technology, Inc. ASPEED Graphics Family",
+      "hostBusAdapter": "",
+      "hardDiskDrive": "AVAGO JBOD"
+    }
   }
 ]

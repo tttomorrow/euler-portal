@@ -12,23 +12,35 @@ The OpenAtom Foundation (hereinafter referred to as "we", "us", or "foundation")
 
 ## 1. How We Collect and Process Your Personal Data
 
-We generally do not require your personal data if you only browse the general content of the openEuler community (hereinafter referred to as "community"). We will collect your personal data accordingly in the following circumstances:
+If you only browse the general content of the openEuler community website (hereinafter referred to as "this website"), we usually do not require you to provide personal data. However, we will collect your personal data in the following cases:
 
-(a) Account Service. The openEuler community provides the openEuler community account service for unified identity and permission management. When you register an openEuler community account, we will use the account service to collect your email address or mobile number for identity verification and your Gitee or GitHub account for permission management of the community code hosting platform. In community activities, we will use the preceding personal data to verify your identity in the community and collect statistics based on the information so that we can understand the operating status of the openEuler community platform.
+(a) Account Service. The openEuler community provides the openEuler community account service for unified identity and permission management. When you register an openEuler community account, we will collect your email address or mobile number for identity verification and your Gitee or GitHub account for permission management of the community code hosting platform. In community activities, we will use the preceding personal data to verify your identity in the community and collect statistics based on the data so that we can understand the operating status of the openEuler community platform.
 
-(b) Mail Subscription. When you use our mail subscription service, we will collect your <u>**email address and name (optional)**</u>. We will provide you with the email subscription service through this email address to facilitate your participation in discussions in the community.
+(b) Forum Service. The forum service provides you with the following functions. We will process the data required for providing the functions. If you do not provide the required data, your experience may be affected when you use the functions of the forum service.
 
-(c) Service Optimization. For the purpose of operating the community and providing better services, we will collect and record your <u>**IP address, access source, number of visits to the community, stay duration, access timestamp, browser type, and server type and version**</u> to identify your activities on the website. We may use third-party web analytics tools (Baidu Statistics, Google Analytics) to capture information about the use of our website and collect statistics based on the information so that we can understand the operating status of the community. Web analytics tool providers will use cookies and other technologies to capture data about your activities on our website and provide us with anonymized data of your activities on our website. No website user can identify such information.
+Login and identity authentication: You can use an openEuler community account to log in to the forum service. We will use the user name, nickname, and email address of your openEuler community account to authenticate your identity and manage your data.
+ 
+User center: After login, your openEuler community account user name will be displayed on the User Center page.
+You can also set the nickname, profile picture, and signature used in this forum on the Account page. The nickname, profile picture, and signature will be stored and displayed on the User Center page.
+ 
+Data publishing and interaction: The forum service provides you with data publishing and interaction services. Therefore, we will collect and process your published content, images, audios, videos, documents, comments, likes, favorites, and reports, and your nickname and profile picture will also be used and displayed.
+To promote exchanges and interactions, we will collect statistics on and display your posts, likes, follows, and favorites on the User Center page. Your favorites are visible only to yourself by default, but you can set them to be visible to other users. To keep the preceding data up to date and display them to you, we will collect and use your data, including your posts, comments, likes, favorites, and follows.
+ 
+Product operations and maintenance: To provide you with rich product experience, improve product operations policies, ensure stable product running, and ensure network security according to laws and regulations, we will collect your login account information, device hardware information, operating system settings, network information (such as IP addresses), network operator information, your browsing or touching records in this forum, and error messages.
 
-(d) Contributor License Agreement ("CLA") Signing. When signing the CLA ([<u>learn more</u>](https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZXVsZXI=)) before contribution, you need to submit required personal data to the CLA signing system. We will acquire such personal data to verify whether you have signed the CLA, and to conduct relevant statistical analysis to generate a community contribution dashboard. After receiving your signed CLA in PDF format sent to **<cla@public.openeuler.org>** through the CLA signing system, we will archive the CLA containing your personal data as a proof of your grants of rights over your contributions to the community. If you sign an individual or employee CLA, we will collect your Gitee ID, name, and email address from the CLA to verify your Gitee account and contact you. If you sign a corporation CLA, we will collect your name, position, corporation name, and email address from the CLA to verify your identity with the corporation and contact you.
+(c) Mail Subscription. When you use our mail subscription service, we will collect your <u>**email address and name (optional)**</u>. We will provide you with the email subscription service through this email address to facilitate your participation in discussions in the community.
 
-(e) Talent Assessment. After you pass the openEuler community talent assessment test, we will collect your name, email address, test partner, test score, and certification level from our test partners to generate the openEuler community talent certificate for you. In addition, we acquire such data to conduct relevant statistical analysis about talent development of the community.
+(d) Service Optimization. For the purpose of operating the community and providing better services, we will collect and record your <u>**IP address, access source, number of visits to the community, stay duration, access timestamp, browser type, and server type and version**</u> to identify your activities on the website. We may use third-party web analytics tools (Baidu Statistics, Google Analytics) to capture information about the use of our website and collect statistics based on the information so that we can understand the operating status of the community. Web analytics tool providers will use cookies and other technologies to capture data about your activities on our website and provide us with anonymized data of your activities on our website. No website user can identify such information.
 
-(f) MOOCStudio. To verify your identity and ensure platform security as well as proper resource usage, you must register an openEuler community account to experience the MOOCStudio. We will collect your email address for identity verification and conduct statistical analysis for the purpose of operating openEuler MOOCStudio.
+(e) Contributor License Agreement ("CLA") Signing. When signing the CLA ([<u>learn more</u>](https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZXVsZXI=)) before contribution, you need to submit required personal data to the CLA signing system. We will acquire such personal data to verify whether you have signed the CLA, and to conduct relevant statistical analysis to generate a community contribution dashboard. After receiving your signed CLA in PDF format sent to **<cla@public.openeuler.org>** through the CLA signing system, we will archive the CLA containing your personal data as a proof of your grants of rights over your contributions to the community. If you sign an individual or employee CLA, we will collect your Gitee ID, name, and email address from the CLA to verify your Gitee account and contact you. If you sign a corporation CLA, we will collect your name, position, corporation name, and email address from the CLA to verify your identity with the corporation and contact you.
 
-(g) Content Release. When you participate in community meetings, live broadcasts, blogs, community activities, contribution in the open source community, or newsgroups, your user name and the information you publish will be visible to the community and the public. If you are a SIG member of the openEuler community, we will request your Gitee information for posting on our website.
+(f) Talent Assessment. After you pass the openEuler community talent assessment test, we will collect your name, email address, test partner, test score, and certification level from our test partners to generate the openEuler community talent certificate for you. In addition, we acquire such data to conduct relevant statistical analysis about talent development of the community.
 
-(h) Quick Issue Creation. When you use the QuickIssue service of the openEuler community to submit an issue, you will need to provide an email address, and a verification email will be sent to the email address you provided to verify the validity of the email address. After an issue is created, some information about your email address will be displayed in the description area on the issue page and in the submitter information of the QuickIssue dashboard.
+(g) MOOCStudio. To verify your identity and ensure platform security as well as proper resource usage, you must register an openEuler community account to experience the MOOCStudio. We will collect your email address for identity verification and conduct statistical analysis for the purpose of operating openEuler MOOCStudio.
+
+(h) Content Release. When you participate in community meetings, live broadcasts, blogs, community activities, contribution in the open source community, or newsgroups, your user name and the information you publish will be visible to the community and the public. If you are a SIG member of the openEuler community, we will request your Gitee information for posting on our website.
+
+(i) Quick Issue Creation. When you use the QuickIssue service of the openEuler community to submit an issue, you will need to provide an email address, and a verification email will be sent to the email address you provided to verify the validity of the email address. After an issue is created, some information about your email address will be displayed in the description area on the issue page and in the submitter information of the QuickIssue dashboard.
 
 We may also supplement the personal data we collect from you with additional personal data we receive from third parties, including other platforms, communities, or legal and public channels within the scope of your authorization and consent. We promise to process your personal data in strict accordance with applicable laws and regulations. Please read the privacy statements and user agreements of the third parties carefully. If your personal data provided by a third party is required for using related services of the community, but you refuse to allow the third party to collect, use, transfer, or share your personal data when the third party provides services, you may not be able to use related services of the community. For example, when you use an authorized third-party account to log in to the community, we will obtain your personal data from the third party with your consent.
 
@@ -112,7 +124,24 @@ You should understand that the CLA is a legally binding document signed by you o
 
 You can change the scope of your authorization for us to collect your personal data or withdraw your authorization. However, your decision to withdraw your consent or authorization does not affect any previous processing of personal data based on your authorization.
 
+### 6.1 Data Access
+You can log in to the user center using an openEuler community account using the browser on your local PC or mobile device to access your personal data.
+You can click the profile picture and choose Summary in the upper right corner of the forum to access your posts, likes, favorites, browsing history, and other personal data.
  
+### 6.2 Data Correction
+You can log in to the user center using an openEuler community account and choose User Center > Info to view and correct your personal data.
+You have the right to update or modify your personal data processed by us when you need to or find any errors with it. You can view and correct your personal data by clicking the profile picture and choose Preferences in the upper right corner of the forum.
+ 
+### 6.3 Data Deletion
+You can log in to the user center using an openEuler community account and choose User Center > Info or Identity to delete basic information about your openEuler community account or unbind your Gitee or GitHub account.
+You can manage your personal data on the corresponding service page. You can delete data you published during interactions, such as comments and posts. You can also contact the administrator to anonymize the data.
+ 
+### 6.4 Revocation of Consent
+If you have any further requests, questions, comments, or suggestions regarding your rights as a data subject, please contact us using the contact information provided in the "Contacting Us" section of this Statement.
+ 
+### 6.5 Deletion
+You can log in to the openEuler community and choose User Center > Security > Delete to delete your openEuler community account.
+If you request us to delete your personal data of the openEuler forum service, you can log in to the forum service and use the deletion function in the user center to delete the personal data, topics, replies, and drafts in the account immediately.
 
 ## 7. Where Your Personal Data Is Stored
 
@@ -120,7 +149,6 @@ We provide products and services for you through our global resources and server
 
 Jurisdictions where such personal data is stored may have laws that protect personal data to varying degrees or may not have personal data protection laws. We will ensure that your personal data is protected by applicable laws and regulations as well as this Statement.
 
- 
 
 ## 8. How This Statement Is Updated
 
@@ -135,6 +163,6 @@ Our services are open only to enterprises and individuals over the age of 14.
 If you want to contact us or exercise your rights, please contact us at **<contact@openeuler.io>**.
 
 
-Last updated: Nov, 2022
+Last updated: Dec, 2022
 
 </div>

@@ -4,6 +4,13 @@ import { useRoute } from 'vitepress';
 
 import _ from 'lodash';
 
+const props = defineProps({
+  className: {
+    type: String,
+    default: 'h2',
+  },
+});
+
 const route = useRoute();
 
 const activeIndex = ref(0);
@@ -16,7 +23,7 @@ const debounceEvent = _.throttle(goAnchor, 300, {
 function goAnchor() {
   const scrollTop =
     document.body.scrollTop || document.documentElement.scrollTop;
-  anchorList.value = document.querySelectorAll('.migration-content  h2');
+  anchorList.value = document.querySelectorAll(props.className);
 
   const topArr: number[] = [];
   anchorList.value = Array.from(anchorList.value).filter((item: any) => {
@@ -60,7 +67,10 @@ watch(
       class="anchor-link"
     >
       <div class="anchor-link-inner">
-        {{ item.id }}
+        {{
+          item.id.split('-').splice(1, item.id.split('-').length).join('-') ||
+          item.id
+        }}
       </div>
     </a>
   </div>
@@ -72,6 +82,7 @@ watch(
   top: calc(10% + 80px);
   right: 0;
   width: 200px;
+  z-index: 999;
   &::after {
     position: absolute;
     content: '';
@@ -82,7 +93,7 @@ watch(
     background-color: var(--o-color-bg4);
     z-index: 0;
   }
-  @media screen and (max-width: 1750px) {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
   .anchor-link {
@@ -95,7 +106,7 @@ watch(
     border-left: 1px solid var(--o-color-bg4);
     z-index: 1;
     &:hover {
-      color: var(--o-color-text1);
+      color: var(--o-color-brand1);
     }
     &-inner {
       padding: 8px var(--o-spacing-h6);
