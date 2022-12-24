@@ -48,7 +48,7 @@ function creatUserId(liveId: number) {
   userName = returnId;
   liveUrl.value = `https://vhall.huawei.com/v2/watch/${liveId}?lang=zh&thirdId=${userName}`;
 }
-const state = ref(-1);
+// const state = ref(-1);
 const height = ref(800);
 function setHeight(data: any) {
   if (data.height === 'auto') {
@@ -70,7 +70,7 @@ function messageEvent() {
 
       // data.state=2,直播结束
       setHeight(data);
-      console.log(state.value, '收到', data);
+      // console.log(state.value, '收到', data);
       // console.log('收到' + event.origin + '消息:' + data);
     },
     false
@@ -83,18 +83,14 @@ onMounted(async () => {
     delay: 100,
   });
   isTest.value = window.location.host.includes('test.osinfra');
-  creatUserId(
-    isTest.value ? renderData[0].liveTestId : renderData[0].liveTestId
-  );
+  creatUserId(isTest.value ? renderData[0].liveTestId : renderData[0].liveId);
   messageEvent();
 });
 
 // 背景
 const ActiveBg = `url(${liveActiveBg})`;
 
-const liveRoom = ref(
-  isTest.value ? renderData[0].liveTestId : renderData[0].liveTestId
-);
+const liveRoom = ref(renderData[0].name);
 const selectliveChange = (val: number): void => {
   creatUserId(val);
 };

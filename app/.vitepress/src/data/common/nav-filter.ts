@@ -150,11 +150,11 @@ export default [
     lang: ['zh', 'en', 'ru'],
   },
   {
-    name:'charter',
-    lang:['zh']
+    name: 'charter',
+    lang: ['zh'],
   },
   {
-    name:'vote',
-    lang:['zh']
-  }
+    name: 'vote',
+    lang: ['zh'],
+  },
 ];

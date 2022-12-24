@@ -8,8 +8,8 @@ import AppContext from '@/components/AppContent.vue';
 import SummitSchedule from './components/SummitSchedule.vue';
 import LinkPanel from '@/components/LinkPanel.vue';
 import SummitBanner from './components/SummitBanner.vue';
-// import SummitLive from './components/SummitLive.vue';
-// import SummitGuests from './components/SummitGuests.vue';
+import SummitLive from './components/SummitLive.vue';
+import SummitGuests from './components/SummitGuests.vue';
 
 import liveLight from '@/assets/category/summit/summit2022/live.png';
 import liveDark from '@/assets/category/summit/summit2022/live-dark.png';
@@ -41,6 +41,36 @@ import intel from '@/assets/category/summit/summit2022/logo/intel.png';
 import intelDark from '@/assets/category/summit/summit2022/logo/intel-dark.png';
 import celebratingEntryImg from '@/assets/category/summit/summit2022/celebrating-entry.png';
 
+import caopeiqing from '@/assets/category/summit/summit2022/guests/caopeiqing.png';
+import chenyahan from '@/assets/category/summit/summit2022/guests/chenyahan.png';
+import chenzhengsheng from '@/assets/category/summit/summit2022/guests/chenzhengsheng.png';
+import danxiaoqiang from '@/assets/category/summit/summit2022/guests/danxiaoqiang.png';
+import guohao from '@/assets/category/summit/summit2022/guests/guohao.png';
+import huyadi from '@/assets/category/summit/summit2022/guests/huyadi.png';
+import liaowei from '@/assets/category/summit/summit2022/guests/liaowei.png';
+import liukuo from '@/assets/category/summit/summit2022/guests/liukuo.png';
+import liweiwei from '@/assets/category/summit/summit2022/guests/liweiwei.png';
+import luyan from '@/assets/category/summit/summit2022/guests/luyan.png';
+import maoxianglin from '@/assets/category/summit/summit2022/guests/maoxianglin.png';
+import qihao from '@/assets/category/summit/summit2022/guests/qihao.png';
+import sunshouxin from '@/assets/category/summit/summit2022/guests/sunshouxin.png';
+import qinyungao from '@/assets/category/summit/summit2022/guests/qinyungao.png';
+import tanggeliang from '@/assets/category/summit/summit2022/guests/tanggeliang.png';
+import tangzhongrui from '@/assets/category/summit/summit2022/guests/tangzhongrui.png';
+import tianlijun from '@/assets/category/summit/summit2022/guests/tianlijun.png';
+import wangkefeng from '@/assets/category/summit/summit2022/guests/wangkefeng.png';
+import xiehaocheng from '@/assets/category/summit/summit2022/guests/xiehaocheng.png';
+import xuxiaozhou from '@/assets/category/summit/summit2022/guests/xuxiaozhou.png';
+import yanxiaobing from '@/assets/category/summit/summit2022/guests/yanxiaobing.png';
+import zengzhaorong from '@/assets/category/summit/summit2022/guests/zengzhaorong.png';
+import zhangheng from '@/assets/category/summit/summit2022/guests/zhangheng.png';
+import zhangxuzhou from '@/assets/category/summit/summit2022/guests/zhangxuzhou.png';
+import zhangzhibo from '@/assets/category/summit/summit2022/guests/zhangzhibo.png';
+import zhaolei from '@/assets/category/summit/summit2022/guests/zhaolei.png';
+import shiaichun from '@/assets/category/summit/summit2022/guests/shiaichun.png';
+import zhoutongqing from '@/assets/category/summit/summit2022/guests/zhoutongqing.png';
+import zhukeqian from '@/assets/category/summit/summit2022/guests/zhukeqian.png';
+
 import IconTime from '~icons/app/icon-time.svg';
 
 const commonStore = useCommon();
@@ -59,7 +89,7 @@ const summitData: any = {
     liveData1: [
       {
         liveId: 12257,
-        liveTestId: 12250,
+        liveTestId: 12260,
         id: 0,
         name: '操作系统产业峰会',
       },
@@ -661,8 +691,8 @@ const summitData: any = {
                   {
                     time: '8',
                     desc: '基于eBPF技术的网络会话监控技术与实践',
-                    name: ['卢刚'],
-                    post: ['湖南麒麟信安科技股份有限公司操作系统架构师'],
+                    name: ['秦云高'],
+                    post: ['湖南麒麟信安科技股份有限公司资深内核开发工程师'],
                     detail: `"简单介绍eBPF技术的背景，并基于openEuler 20.03 LTS版本进行网络会话监控、数据采集、统计和审计。
                             主要分享：
                             1、 简单介绍eBPF技术的背景
@@ -1083,7 +1113,7 @@ const summitData: any = {
                   {
                     time: '3',
                     desc: '基础软件人才与服务发展规划',
-                    name: ['孙虎'],
+                    name: ['赵立超'],
                     post: ['华为技术有限公司服务Fellow'],
                     detail: `1.	人才发展规划：a)	高校人才播种；b)	社区人才培育和评定
                             2.	服务能力构建规划：a)	服务能力；b)	服务工具；c)社区服务论坛`,
@@ -1098,14 +1128,6 @@ const summitData: any = {
                   },
                   {
                     time: '5',
-                    desc: '优秀SIG组运作经验分享',
-                    name: ['优秀SIG组代表'],
-                    post: '',
-                    detail:
-                      'openEuler社区的开发工作以SIG组的方式进行开展，目前openEuler社区有99个SIG组，技术方向涵盖内核、云计算、云原生、AI、嵌入式、DPU等众多热点技术方向；openEuler社区的创新和发展离不开众多社区SIG组Maintainer、Committer及普通开发者的贡献；同时，社区SIG组的运作和发展并非易事，本议题将邀请openEuler Summit 2022荣获优秀SIG组的Maintainer代表分享SIG组运作以及如何为开发者提供更优质的开发体验的相关经验。',
-                  },
-                  {
-                    time: '6',
                     desc: 'openEuler合规风险的治理实践',
                     name: ['郑志鹏'],
                     post: [
@@ -1114,7 +1136,7 @@ const summitData: any = {
                     detail: 'openEuler合规风险的治理实践。',
                   },
                   {
-                    time: '7',
+                    time: '6',
                     desc: 'openEuler社区License准入体系在维信金科开源合规治理中的应用',
                     name: ['许渊聪'],
                     post: ['openEuler合规sig maintainer/维信金科合规负责人'],
@@ -1122,7 +1144,7 @@ const summitData: any = {
                       'openEuler社区License准入体系在维信金科开源合规治理中的应用。',
                   },
                   {
-                    time: '8',
+                    time: '7',
                     desc: '欧拉Talk-开发者体验反馈大会',
                     name: ['社区开发者/TC'],
                     post: [''],
@@ -1141,9 +1163,149 @@ const summitData: any = {
     title: '演讲嘉宾',
     guestList: [
       {
-        img: euler,
-        name: '李战怀',
-        position: ['中国计算机学会', '数据库专委会主任'],
+        img: huyadi,
+        name: '胡亚弟',
+        position: ['天翼云科技有限公司技术专家'],
+      },
+      {
+        img: sunshouxin,
+        name: '孙守鑫',
+        position: ['天翼云科技有限公司高级后端开发工程师'],
+      },
+      {
+        img: zengzhaorong,
+        name: '曾昭荣',
+        position: ['Intel Cloud Software Engineer'],
+      },
+      {
+        img: caopeiqing,
+        name: '曹佩庆',
+        position: ['统信软件研发经理'],
+      },
+      {
+        img: tanggeliang,
+        name: '唐葛亮',
+        position: ['SUSE Euler OS专家'],
+      },
+      {
+        img: wangkefeng,
+        name: '王克锋',
+        position: ['华为高级软件工程师'],
+      },
+      {
+        img: qinyungao,
+        name: '秦云高',
+        position: ['湖南麒麟信安科技股份有限公司资深内核开发工程师'],
+      },
+      {
+        img: zhaolei,
+        name: '赵磊',
+        position: ['江苏润和软件股份有限公司专家级工程师'],
+      },
+      {
+        img: shiaichun,
+        name: '施爱春',
+        position: ['Intel软件工程师'],
+      },
+      {
+        img: xiehaocheng,
+        name: '谢昊成',
+        position: ['amd工程师'],
+      },
+      {
+        img: danxiaoqiang,
+        name: '淡孝强',
+        position: ['希姆计算编译工具链团队总监'],
+      },
+      {
+        img: chenzhengsheng,
+        name: '陈争胜',
+        position: ['深圳市遇贤微电子有限公司首席架构师'],
+      },
+      {
+        img: tangzhongrui,
+        name: '汤中睿',
+        position: ['中国移动云能力中心软件开发工程师'],
+      },
+      {
+        img: zhangzhibo,
+        name: '张智博',
+        position: ['SUSE'],
+      },
+      {
+        img: qihao,
+        name: '祁浩',
+        position: ['中国移动云能力中心软件开发工程师'],
+      },
+      {
+        img: liukuo,
+        name: '刘阔',
+        position: ['麒麟软件有限公司高级研发工程师'],
+      },
+      {
+        img: zhoutongqing,
+        name: '周同庆',
+        position: ['湖南麒麟信安科技股份有限公司测试工程师'],
+      },
+      {
+        img: zhukeqian,
+        name: '朱科潜',
+        position: ['华为企业通信技术有限公司软件研发工程师'],
+      },
+      {
+        img: tianlijun,
+        name: '田利军',
+        position: ['统信软件高级研发工程师'],
+      },
+      {
+        img: zhangheng,
+        name: '张珩',
+        position: ['中国科学院软件研究所副研究员'],
+      },
+      {
+        img: guohao,
+        name: '郭皓',
+        position: ['麒麟软件技术专家'],
+      },
+      {
+        img: maoxianglin,
+        name: '毛响林',
+        position: ['科东（广州）软件科技有限公司副总经理'],
+      },
+      {
+        img: liaowei,
+        name: '廖卫',
+        position: ['湖南麒麟信安科技股份有限公司操作系统产品线版本经理'],
+      },
+      {
+        img: zhangxuzhou,
+        name: '张旭舟',
+        position: ['openEuler RISC-V SIG maintainer'],
+      },
+      {
+        img: chenyahan,
+        name: '陆亚涵',
+        position: ['软件所智能软件研究中心工程师'],
+      },
+      {
+        img: liweiwei,
+        name: '李威威',
+        position: ['中科院软件研究所软件工程师'],
+      },
+      {
+        img: luyan,
+        name: '陆言',
+        position: ['同济大学学生'],
+      },
+      {
+        img: yanxiaobing,
+        name: '颜小兵',
+        position: ['华为工程师'],
+      },
+      {
+        img: xuxiaozhou,
+        name: '徐小舟',
+        position: ['华为软件工程师'],
       },
     ],
   },
@@ -1270,7 +1432,7 @@ const summitData: any = {
   },
 };
 const tabType = ref(['main', 'main']);
-// const time = ref('28');
+const time = ref('28');
 const otherTabType = ref([0, 0]);
 function clickEntry() {
   router.go('/zh/celebrating/');
@@ -1290,7 +1452,7 @@ onMounted(() => {
     <div class="detail">
       <p v-for="item in summitData.detail" :key="item">{{ item }}</p>
     </div>
-    <!-- <div class="liver">
+    <div class="liver">
       <h3 class="titleBar">{{ summitData.liver.title }}</h3>
       <div>
         <OTabs v-model="time" class="schedule-tabs">
@@ -1321,7 +1483,7 @@ onMounted(() => {
           </ClientOnly>
         </OContainer>
       </div>
-    </div> -->
+    </div>
     <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
       <div
@@ -1385,7 +1547,7 @@ onMounted(() => {
         </OContainer>
       </div>
     </div>
-    <!-- <div class="guest">
+    <div class="guest">
       <h3 class="guest-title">{{ summitData.guest.title }}</h3>
       <SummitGuests
         :lecturer-list="summitData.guest.guestList"
@@ -1393,7 +1555,7 @@ onMounted(() => {
         :web-columns-num="4"
         :mobile-columns-num="2"
       />
-    </div> -->
+    </div>
     <div class="partner">
       <h3 class="partner-title">
         {{ summitData.partner.title }}
@@ -1470,6 +1632,8 @@ onMounted(() => {
     margin-bottom: var(--o-spacing-h2);
     @media (max-width: 767px) {
       margin-bottom: var(--o-spacing-h4);
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
     }
   }
   .live-room {
@@ -1497,8 +1661,17 @@ onMounted(() => {
     display: none;
   }
   .timeTabs {
-    padding: 0 var(--o-spacing-h5);
+    display: inline-block;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--o-color-border2);
+    color: var(--o-color-text1);
+    width: 120px;
+    text-align: center;
+    background: var(--o-color-bg2);
+    font-size: var(--o-font-size-text);
     line-height: 38px;
+    padding: 0 var(--o-spacing-h5);
   }
   .is-active .timeTabs {
     color: #fff;
@@ -1511,6 +1684,12 @@ onMounted(() => {
       .link-main {
         grid-column: 1/6;
       }
+      .link + .link {
+        &.link-active {
+          background: url(@/assets/category/summit/summit2022/middle-active-bg.png)
+            no-repeat center/cover;
+        }
+      }
     }
   }
   .summit-box {
@@ -1518,6 +1697,12 @@ onMounted(() => {
       grid-template-columns: repeat(7, 1fr);
       .link-main {
         grid-column: 1/8;
+      }
+      .link + .link {
+        &.link-active {
+          background: url(@/assets/category/summit/summit2022/small-active-bg.png)
+            no-repeat center/cover;
+        }
       }
     }
   }
