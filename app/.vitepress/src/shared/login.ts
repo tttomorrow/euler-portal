@@ -98,7 +98,8 @@ function createClient(
 }
 export function showGuard() {
   const origin = import.meta.env.VITE_LOGIN_ORIGIN;
-  location.href = `${origin}/login?redirect_uri=${location.href}`;
+  const { lang } = getLanguage();
+  location.href = `${origin}/login?redirect_uri=${location.href}&lang=${lang}`;
 }
 
 // token失效跳转首页
