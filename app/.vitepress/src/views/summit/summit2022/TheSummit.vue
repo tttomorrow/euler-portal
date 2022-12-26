@@ -61,6 +61,7 @@ import tianlijun from '@/assets/category/summit/summit2022/guests/tianlijun.png'
 import wangkefeng from '@/assets/category/summit/summit2022/guests/wangkefeng.png';
 import xiehaocheng from '@/assets/category/summit/summit2022/guests/xiehaocheng.png';
 import xuxiaozhou from '@/assets/category/summit/summit2022/guests/xuxiaozhou.png';
+import yanxiaobing from '@/assets/category/summit/summit2022/guests/yanxiaobing.png';
 import zengzhaorong from '@/assets/category/summit/summit2022/guests/zengzhaorong.png';
 import zhangheng from '@/assets/category/summit/summit2022/guests/zhangheng.png';
 import zhangxuzhou from '@/assets/category/summit/summit2022/guests/zhangxuzhou.png';
@@ -69,44 +70,6 @@ import zhaolei from '@/assets/category/summit/summit2022/guests/zhaolei.png';
 import shiaichun from '@/assets/category/summit/summit2022/guests/shiaichun.png';
 import zhoutongqing from '@/assets/category/summit/summit2022/guests/zhoutongqing.png';
 import zhukeqian from '@/assets/category/summit/summit2022/guests/zhukeqian.png';
-
-import anchuanxu from '@/assets/category/summit/summit2022/guests/anchuanxu.png';
-import dufan from '@/assets/category/summit/summit2022/guests/dufan.png';
-import dukaitian from '@/assets/category/summit/summit2022/guests/dukaitian.png';
-import guozhanxin from '@/assets/category/summit/summit2022/guests/guozhanxin.png';
-import lichaoran from '@/assets/category/summit/summit2022/guests/lichaoran.png';
-import liuheling from '@/assets/category/summit/summit2022/guests/liuheling.png';
-import lixing from '@/assets/category/summit/summit2022/guests/lixing.png';
-import niujianwei from '@/assets/category/summit/summit2022/guests/niujianwei.png';
-import sunhailong from '@/assets/category/summit/summit2022/guests/sunhailong.png';
-import tianjun from '@/assets/category/summit/summit2022/guests/tianjun.png';
-import wangyujie from '@/assets/category/summit/summit2022/guests/wangyujie.png';
-import weigang from '@/assets/category/summit/summit2022/guests/weigang.png';
-import wumingchuan from '@/assets/category/summit/summit2022/guests/wumingchuan.png';
-import wuzhangjin from '@/assets/category/summit/summit2022/guests/wuzhangjin.png';
-import xuyuanchong from '@/assets/category/summit/summit2022/guests/xuyuanchong.png';
-import yangzhao from '@/assets/category/summit/summit2022/guests/yangzhao.png';
-import yuanlinsi from '@/assets/category/summit/summit2022/guests/yuanlinsi.png';
-import zhanghailiang from '@/assets/category/summit/summit2022/guests/zhanghailiang.png';
-import zhangxianyi from '@/assets/category/summit/summit2022/guests/zhangxianyi.png';
-import zhaolichao from '@/assets/category/summit/summit2022/guests/zhaolichao.png';
-import zhoulei from '@/assets/category/summit/summit2022/guests/zhoulei.png';
-import zhengzhipeng from '@/assets/category/summit/summit2022/guests/zhengzhipeng.png';
-
-import fengguanlin from '@/assets/category/summit/summit2022/guests/fengguanlin.png';
-import hannaiping from '@/assets/category/summit/summit2022/guests/hannaiping.png';
-import jiangdayong from '@/assets/category/summit/summit2022/guests/jiangdayong.png';
-import jiangzhenhua from '@/assets/category/summit/summit2022/guests/jiangzhenhua.png';
-import liushuyuan from '@/assets/category/summit/summit2022/guests/liushuyuan.png';
-import lizhenglin from '@/assets/category/summit/summit2022/guests/lizhenglin.png';
-import qiuchengfeng from '@/assets/category/summit/summit2022/guests/qiuchengfeng.png';
-import sunwenlong from '@/assets/category/summit/summit2022/guests/sunwenlong.png';
-import wanglin from '@/assets/category/summit/summit2022/guests/wanglin.png';
-import wufengguang from '@/assets/category/summit/summit2022/guests/wufengguang.png';
-import xiongwei from '@/assets/category/summit/summit2022/guests/xiongwei.png';
-import yangxiaocheng from '@/assets/category/summit/summit2022/guests/yangxiaocheng.png';
-import zhangshuai from '@/assets/category/summit/summit2022/guests/zhangshuai.png';
-import zhouyi from '@/assets/category/summit/summit2022/guests/zhouyi.png';
 
 import IconTime from '~icons/app/icon-time.svg';
 
@@ -223,76 +186,40 @@ const summitData: any = {
             id: 'main',
             children: [
               {
-                time: '9:30 - 9:35',
-                desc: '工信部领导致辞',
-                name: ['工业和信息化部党组成员、副部长'],
-                post: [''],
-              },
-              {
-                time: '9:35 - 9:40',
-                desc: '华为领导致辞',
-                name: ['汪涛'],
-                post: ['华为常务董事、ICT基础设施业务管理委员会主任'],
-              },
-              {
-                time: '9:40 - 9:45',
-                desc: '2022年度openEuler领先商业实践颁奖',
-                name: ['倪光南'],
-                post: ['中国工程院院士、openEuler开源社区顾问专家委员会委员'],
-              },
-              {
-                time: '9:50 - 10:00',
-                desc: '引领多样性计算的未来',
-                name: ['倪光南'],
-                post: ['中国工程院院士、openEuler开源社区顾问专家委员会委员'],
-              },
-              {
                 time: '10:00 - 10:10',
-                desc: '操作系统发展之未来',
-                name: ['梅宏'],
-                post: ['中国科学院院士'],
+                desc: '开场致辞',
               },
               {
                 time: '10:10 - 10:20',
-                desc: '强根铸魂，加速中国操作系统发展',
-                name: ['廖湘科'],
-                post: ['中国工程院院士'],
+                desc: '2022年度openEuler领先商业实践颁奖',
               },
               {
-                time: '10:20 - 10:30',
-                desc: '中国开源的崛起',
-                name: ['王怀民'],
-                post: ['中国科学院院士'],
+                time: '10:20 - 10:28',
+                desc: '院士发言：引领多样性计算的未来',
               },
               {
-                time: '10:30 - 10:40',
-                desc: '立根铸魂 崛起数智时代',
-                name: ['江大勇'],
-                post: ['openEuler社区理事长'],
+                time: '10:28 - 10:36',
+                desc: '院士发言：未来操作系统发展之路',
               },
               {
-                time: '10:40 - 10:50',
-                desc: '天元操作系统，共筑移动云新一代算网基座',
-                name: ['高同庆'],
-                post: ['中国移动通信集团有限公司副总经理'],
+                time: '10:36 - 10:44',
+                desc: '院士主题报告：基础软件根技术的创新与发展',
               },
               {
-                time: '10:50 - 11:00',
-                desc: '共筑算力发展新生态 共建数字经济强引擎',
-                name: ['梁宝俊'],
-                post: ['中国联合网络通信集团有限公司副总经理'],
+                time: '10:44 - 10:52',
+                desc: '院士主题报告：中国开源的崛起',
               },
               {
-                time: '11:00 - 11:10',
-                desc: '引领云计算科技创新 共筑天翼云数字底座',
-                name: ['李峻'],
-                post: ['中国电信集团有限公司副总经理'],
+                time: '10:52 - 11:05',
+                desc: 'openEuler主题演讲：共创开源新模式 ，共启欧拉新征程',
               },
               {
-                time: '11:10 - 11:15',
+                time: '11:05 - 11:35',
+                desc: 'openEuler用户实践案例分享',
+              },
+              {
+                time: '11:35 - 11:40',
                 desc: 'openEuler&openGauss人才发展加速计划2022年度颁奖',
-                name: [''],
-                post: [''],
               },
             ],
           },
@@ -395,9 +322,9 @@ const summitData: any = {
                   },
                   {
                     time: '14:35 - 14:55',
-                    desc: '共建欧拉开源根技术 打造操作系统新生态',
+                    desc: '欧拉发展规划',
                     name: ['管延杰'],
-                    post: ['openEuler兼容性SIG maintainer'],
+                    post: ['欧拉社区技术专家'],
                     detail: '',
                   },
                   {
@@ -665,85 +592,28 @@ const summitData: any = {
             // time: '上午',
             children: [
               {
-                time: '09:30 - 09:35',
-                desc: '基金会领导致辞',
-                name: ['冯冠霖'],
-                post: ['开放原子开源基金会秘书长'],
+                time: '09:30 - 09:40',
+                desc: '领导致辞',
               },
               {
-                time: '09:35 - 09:45',
-                desc: 'openEuler项目群成立暨 新一届openEuler委员会亮相',
-                name: ['邱成锋', '孙文龙'],
-                post: ['openEuler 社区秘书长', '开放原子开源基金会理事长'],
+                time: '09:40 - 09:50',
+                desc: ' openEuler社区进展主题演讲',
               },
               {
-                time: '09:45 - 09:55',
-                desc: '激发原创力量 逐梦数智未来',
-                name: ['江大勇'],
-                post: ['openEuler社区理事长'],
+                time: '09:50 - 09:55',
+                desc: 'openEuler社区理事会换届升级仪式',
               },
               {
-                time: '09:55 - 10:10',
-                desc: '纵深创新 走向世界 openEuler技术发展前瞻',
-                name: ['熊伟'],
-                post: ['openEuler技术委员会委员、开放原子开源基金会TOC委员'],
+                time: '09:55 - 10:40',
+                desc: '技术创新、重磅发布、场景演示',
               },
               {
-                time: '10:10 - 10:30',
-                desc: 'openEuler&Friends 3.0 全场景联合创新展示',
-                name: [''],
-                post: [''],
-              },
-              {
-                time: '10:30 - 10:40',
-                desc: '面向全场景的操作系统构建服务发布',
-                name: ['吴峰光'],
-                post: ['openEuler技术委员会委员'],
-              },
-              {
-                time: '10:40 - 10:50',
-                desc: '中国服务器操作系统行业市场调研报告',
-                name: ['杨晓骋'],
-                post: ['沙利文咨询合伙人兼董事总经理'],
-              },
-              {
-                time: '10:50 - 11:00',
-                desc: '大型国有银行与麒麟软件联合创新实践',
-                name: ['李震宁'],
-                post: ['麒麟软件有限公司副总裁'],
-              },
-              {
-                time: '11:00 - 11:10',
-                desc: '统信助力天翼云打造创新云服务产品与方案',
-                name: ['王麟'],
-                post: ['天翼云基础架构事业部操作系统方向研发专家'],
-              },
-              {
-                time: '11:10 - 11:20',
-                desc: '国产操作系统在新一代新能源集控系统应用实践',
-                name: ['周毅', '刘曙元'],
-                post: [
-                  '湖南麒麟信安科技股份有限公司副总裁',
-                  '国能信控互联网技术有限公司副总经理',
-                ],
-              },
-              {
-                time: '11:20 - 11:30',
-                desc: '超聚变助力联通云公司在算力网络的创新与实践',
-                name: ['姜振华'],
-                post: ['超聚变操作系统总经理'],
-              },
-              {
-                time: '11:30 - 11:40',
-                desc: '新浪微博基于openEuler在离线混部方案实践',
-                name: ['张帅'],
-                post: ['新浪微博技术专家'],
+                time: '10:40 - 11:40',
+                desc: 'openEuler商用案例实践分享',
               },
               {
                 time: '11:40 - 11:45',
-                desc: '“欧拉之星”颁奖典礼 年度最佳openEuler开发者贡献奖',
-                name: ['韩乃平'],
-                post: ['openEuler社区副理事长'],
+                desc: 'openEuler2022年度开源贡献之星颁奖',
               },
             ],
           },
@@ -1168,8 +1038,8 @@ const summitData: any = {
                   {
                     time: '1',
                     desc: 'openEuler社区安全漏洞治理',
-                    name: ['魏刚'],
-                    post: ['openEuler社区安全委员会主席'],
+                    name: ['颜小兵'],
+                    post: ['华为工程师'],
                     detail: 'openEuler社区安全漏洞治理框架、运作方式等',
                   },
                   {
@@ -1287,336 +1157,153 @@ const summitData: any = {
   },
   guest: {
     title: '演讲嘉宾',
-    guestListMain: {
-      title: 'openEuler Summit 2022主论坛嘉宾',
-      guestList: [
-        {
-          img: sunwenlong,
-          name: '孙文龙',
-          position: ['开放原子开源基金会理事长'],
-        },
-        {
-          img: fengguanlin,
-          name: '冯冠霖',
-          position: ['开放原子开源基金会秘书长'],
-        },
-        {
-          img: jiangdayong,
-          name: '江大勇',
-          position: ['openEuler社区理事长'],
-        },
-        {
-          img: hannaiping,
-          name: '韩乃平',
-          position: ['openEuler社区副理事长'],
-        },
-        {
-          img: yangxiaocheng,
-          name: '杨晓骋',
-          position: ['沙利文咨询合伙人兼董事总经理'],
-        },
-        {
-          img: lizhenglin,
-          name: '李震宁',
-          position: ['麒麟软件有限公司副总裁'],
-        },
-        {
-          img: wanglin,
-          name: '王麟',
-          position: ['天翼云基础架构事业部操作系统方向研发专家'],
-        },
-        {
-          img: zhouyi,
-          name: '周毅',
-          position: ['湖南麒麟信安科技股份有限公司副总裁'],
-        },
-        {
-          img: liushuyuan,
-          name: '刘曙元',
-          position: ['国能信控互联网技术有限公司副总经理'],
-        },
-        {
-          img: jiangzhenhua,
-          name: '姜振华',
-          position: ['超聚变操作系统总经理'],
-        },
-        {
-          img: zhangshuai,
-          name: '张帅',
-          position: ['新浪微博技术专家'],
-        },
-        {
-          img: xiongwei,
-          name: '熊伟',
-          position: ['openEuler技术委员会委员、开放原子开源基金会TOC委员'],
-        },
-        {
-          img: wufengguang,
-          name: '吴峰光',
-          position: ['openEuler技术委员会委员'],
-        },
-        {
-          img: qiuchengfeng,
-          name: '邱成锋',
-          position: ['openEuler社区秘书长'],
-        },
-      ],
-    },
-    guestListSub: {
-      title: 'openEuler Summit 2022分论坛嘉宾',
-      guestList: [
-        {
-          img: huyadi,
-          name: '胡亚弟',
-          position: ['天翼云科技有限公司技术专家'],
-        },
-        {
-          img: sunshouxin,
-          name: '孙守鑫',
-          position: ['天翼云科技有限公司高级后端开发工程师'],
-        },
-        {
-          img: zengzhaorong,
-          name: '曾昭荣',
-          position: ['Intel Cloud Software Engineer'],
-        },
-        {
-          img: caopeiqing,
-          name: '曹佩庆',
-          position: ['统信软件研发经理'],
-        },
-        {
-          img: tanggeliang,
-          name: '唐葛亮',
-          position: ['SUSE Euler OS专家'],
-        },
-        {
-          img: wangkefeng,
-          name: '王克锋',
-          position: ['华为高级软件工程师'],
-        },
-        {
-          img: qinyungao,
-          name: '秦云高',
-          position: ['湖南麒麟信安科技股份有限公司资深内核开发工程师'],
-        },
-        {
-          img: zhaolei,
-          name: '赵磊',
-          position: ['江苏润和软件股份有限公司专家级工程师'],
-        },
-        {
-          img: shiaichun,
-          name: '施爱春',
-          position: ['Intel软件工程师'],
-        },
-        {
-          img: xiehaocheng,
-          name: '谢昊成',
-          position: ['amd工程师'],
-        },
-        {
-          img: danxiaoqiang,
-          name: '淡孝强',
-          position: ['希姆计算编译工具链团队总监'],
-        },
-        {
-          img: chenzhengsheng,
-          name: '陈争胜',
-          position: ['深圳市遇贤微电子有限公司首席架构师'],
-        },
-        {
-          img: tangzhongrui,
-          name: '汤中睿',
-          position: ['中国移动云能力中心软件开发工程师'],
-        },
-        {
-          img: zhangzhibo,
-          name: '张智博',
-          position: ['SUSE'],
-        },
-        {
-          img: qihao,
-          name: '祁浩',
-          position: ['中国移动云能力中心软件开发工程师'],
-        },
-        {
-          img: liukuo,
-          name: '刘阔',
-          position: ['麒麟软件有限公司高级研发工程师'],
-        },
-        {
-          img: zhoutongqing,
-          name: '周同庆',
-          position: ['湖南麒麟信安科技股份有限公司测试工程师'],
-        },
-        {
-          img: zhukeqian,
-          name: '朱科潜',
-          position: ['华为企业通信技术有限公司软件研发工程师'],
-        },
-        {
-          img: tianlijun,
-          name: '田利军',
-          position: ['统信软件高级研发工程师'],
-        },
-        {
-          img: zhangheng,
-          name: '张珩',
-          position: ['中国科学院软件研究所副研究员'],
-        },
-        {
-          img: guohao,
-          name: '郭皓',
-          position: ['麒麟软件技术专家'],
-        },
-        {
-          img: maoxianglin,
-          name: '毛响林',
-          position: ['科东（广州）软件科技有限公司副总经理'],
-        },
-        {
-          img: liaowei,
-          name: '廖卫',
-          position: ['湖南麒麟信安科技股份有限公司操作系统产品线版本经理'],
-        },
-        {
-          img: zhangxuzhou,
-          name: '张旭舟',
-          position: ['openEuler RISC-V SIG maintainer'],
-        },
-        {
-          img: chenyahan,
-          name: '陆亚涵',
-          position: ['软件所智能软件研究中心工程师'],
-        },
-        {
-          img: liweiwei,
-          name: '李威威',
-          position: ['中科院软件研究所软件工程师'],
-        },
-        {
-          img: luyan,
-          name: '陆言',
-          position: ['同济大学学生'],
-        },
-        {
-          img: weigang,
-          name: '魏刚',
-          position: ['openEuler社区安全委员会主席'],
-        },
-        {
-          img: xuxiaozhou,
-          name: '徐小舟',
-          position: ['华为软件工程师'],
-        },
-        {
-          img: dufan,
-          name: '杜凡',
-          position: ['Intel系统软件架构师'],
-        },
-        {
-          img: zhoulei,
-          name: '周磊',
-          position: ['华为技术有限公司毕昇JDK高级技术专家'],
-        },
-        {
-          img: tianjun,
-          name: '田俊',
-          position: ['Intel Arch SIG Maintainer'],
-        },
-        {
-          img: lixing,
-          name: '李星',
-          position: ['龙芯中科技术股份有限公司软件工程师'],
-        },
-        {
-          img: yuanlinsi,
-          name: '袁林思',
-          position: ['深圳云豹智能有限公司软件总监'],
-        },
-        {
-          img: wumingchuan,
-          name: '伍明川',
-          position: ['华为技术有限公司高级工程师'],
-        },
-        {
-          img: anchuanxu,
-          name: '安传旭',
-          position: ['中科院软件所sig-ROS maintainer'],
-        },
-        {
-          img: guozhanxin,
-          name: '郭占鑫',
-          position: ['上海睿赛德电子科技有限公司RT-Thread 社区负责人'],
-        },
-        {
-          img: niujianwei,
-          name: '牛建伟',
-          position: ['北京航空航天大学教授/博士生导师'],
-        },
-        {
-          img: zhangxianyi,
-          name: '张先轶',
-          position: ['澎峰科技CEO'],
-        },
-        {
-          img: wuzhangjin,
-          name: '吴章金',
-          position: ['儒码科技CEO'],
-        },
-        {
-          img: yangzhao,
-          name: '杨昭',
-          position: ['华为软件工程师'],
-        },
-        {
-          img: liuheling,
-          name: '刘合领',
-          position: ['软通动力基础软件服务经理'],
-        },
-        {
-          img: zhanghailiang,
-          name: '张海亮',
-          position: ['超聚变数字技术有限公司操作系统架构师'],
-        },
-        {
-          img: lichaoran,
-          name: '李超然',
-          position: ['openEuler Infra SIG开发者'],
-        },
-        {
-          img: dukaitian,
-          name: '杜开田',
-          position: ['openEuler 兼容性 SIG Maintainer'],
-        },
-        {
-          img: zhaolichao,
-          name: '赵立超',
-          position: ['华为技术有限公司人才与服务 sig maintainer'],
-        },
-        {
-          img: sunhailong,
-          name: '孙海龙',
-          position: ['北京航空航天大学教授'],
-        },
-        {
-          img: wangyujie,
-          name: '王域杰',
-          position: ['北京航空航天大学学生'],
-        },
-        {
-          img: zhengzhipeng,
-          name: '郑志鹏',
-          position: ['openEuler合规sig maintainer/开源管理中心高级工程师'],
-        },
-        {
-          img: xuyuanchong,
-          name: '许渊聪',
-          position: ['openEuler合规sig maintainer/维信金科合规负责人'],
-        },
-      ],
-    },
+    guestList: [
+      {
+        img: huyadi,
+        name: '胡亚弟',
+        position: ['天翼云科技有限公司技术专家'],
+      },
+      {
+        img: sunshouxin,
+        name: '孙守鑫',
+        position: ['天翼云科技有限公司高级后端开发工程师'],
+      },
+      {
+        img: zengzhaorong,
+        name: '曾昭荣',
+        position: ['Intel Cloud Software Engineer'],
+      },
+      {
+        img: caopeiqing,
+        name: '曹佩庆',
+        position: ['统信软件研发经理'],
+      },
+      {
+        img: tanggeliang,
+        name: '唐葛亮',
+        position: ['SUSE Euler OS专家'],
+      },
+      {
+        img: wangkefeng,
+        name: '王克锋',
+        position: ['华为高级软件工程师'],
+      },
+      {
+        img: qinyungao,
+        name: '秦云高',
+        position: ['湖南麒麟信安科技股份有限公司资深内核开发工程师'],
+      },
+      {
+        img: zhaolei,
+        name: '赵磊',
+        position: ['江苏润和软件股份有限公司专家级工程师'],
+      },
+      {
+        img: shiaichun,
+        name: '施爱春',
+        position: ['Intel软件工程师'],
+      },
+      {
+        img: xiehaocheng,
+        name: '谢昊成',
+        position: ['amd工程师'],
+      },
+      {
+        img: danxiaoqiang,
+        name: '淡孝强',
+        position: ['希姆计算编译工具链团队总监'],
+      },
+      {
+        img: chenzhengsheng,
+        name: '陈争胜',
+        position: ['深圳市遇贤微电子有限公司首席架构师'],
+      },
+      {
+        img: tangzhongrui,
+        name: '汤中睿',
+        position: ['中国移动云能力中心软件开发工程师'],
+      },
+      {
+        img: zhangzhibo,
+        name: '张智博',
+        position: ['SUSE'],
+      },
+      {
+        img: qihao,
+        name: '祁浩',
+        position: ['中国移动云能力中心软件开发工程师'],
+      },
+      {
+        img: liukuo,
+        name: '刘阔',
+        position: ['麒麟软件有限公司高级研发工程师'],
+      },
+      {
+        img: zhoutongqing,
+        name: '周同庆',
+        position: ['湖南麒麟信安科技股份有限公司测试工程师'],
+      },
+      {
+        img: zhukeqian,
+        name: '朱科潜',
+        position: ['华为企业通信技术有限公司软件研发工程师'],
+      },
+      {
+        img: tianlijun,
+        name: '田利军',
+        position: ['统信软件高级研发工程师'],
+      },
+      {
+        img: zhangheng,
+        name: '张珩',
+        position: ['中国科学院软件研究所副研究员'],
+      },
+      {
+        img: guohao,
+        name: '郭皓',
+        position: ['麒麟软件技术专家'],
+      },
+      {
+        img: maoxianglin,
+        name: '毛响林',
+        position: ['科东（广州）软件科技有限公司副总经理'],
+      },
+      {
+        img: liaowei,
+        name: '廖卫',
+        position: ['湖南麒麟信安科技股份有限公司操作系统产品线版本经理'],
+      },
+      {
+        img: zhangxuzhou,
+        name: '张旭舟',
+        position: ['openEuler RISC-V SIG maintainer'],
+      },
+      {
+        img: chenyahan,
+        name: '陆亚涵',
+        position: ['软件所智能软件研究中心工程师'],
+      },
+      {
+        img: liweiwei,
+        name: '李威威',
+        position: ['中科院软件研究所软件工程师'],
+      },
+      {
+        img: luyan,
+        name: '陆言',
+        position: ['同济大学学生'],
+      },
+      {
+        img: yanxiaobing,
+        name: '颜小兵',
+        position: ['华为工程师'],
+      },
+      {
+        img: xuxiaozhou,
+        name: '徐小舟',
+        position: ['华为软件工程师'],
+      },
+    ],
   },
   partner: {
     title: '共建单位',
@@ -1795,84 +1482,71 @@ onMounted(() => {
     </div>
     <div class="agenda">
       <h3>{{ summitData.agenda.title }}</h3>
-      <div class="agenda-content">
-        <div
-          v-for="(item, index) in summitData.agenda.meetingList"
-          :key="item.daytime"
-          class="agenda-item"
-          data-aos="fade-up"
-        >
-          <h4 class="meeting-title">
-            {{ item.daytime }}
-          </h4>
-          <OTabs v-model="tabType[index]" class="schedule-tabs">
-            <el-tab-pane
-              v-for="itemList in summitData.agenda.meetingList[0].list"
-              :key="itemList.id"
-              :name="itemList.id"
-            >
-              <template #label>
-                <div class="timeTabs">
-                  {{ itemList.type }}
-                </div>
-              </template>
-            </el-tab-pane>
-          </OTabs>
-          <OContainer :level-index="1">
-            <div
-              class="schedule-item"
-              :class="{ isShow: tabType[index] === 'main' }"
-            >
-              <SummitSchedule
-                :options="summitData.agenda.meetingList[index].list[0].children"
-              />
-            </div>
-            <div
-              class="schedule-item other"
-              :class="{ isShow: tabType[index] === 'other' }"
-            >
-              <OTabs v-model="otherTabType[index]" class="other-tabs">
-                <OTabPane
-                  v-for="itemList in summitData.agenda.meetingList[index]
-                    .list[1].children"
-                  :key="itemList.id"
-                  :label="itemList.name"
-                  :name="itemList.id"
-                >
-                  <p
-                    v-if="index === 0 && !itemList.children"
-                    class="other-text"
-                  >
-                    <IconTime />{{
-                      summitData.agenda.meetingList[index].list[1].duration
-                    }}
-                  </p>
-                  <!-- <h4 v-if="index === 0 && itemList.title" class="other-title">
+      <div
+        v-for="(item, index) in summitData.agenda.meetingList"
+        :key="item.daytime"
+        class="agenda-item"
+        data-aos="fade-up"
+      >
+        <h4 class="meeting-title">
+          {{ item.daytime }}
+        </h4>
+        <OTabs v-model="tabType[index]" class="schedule-tabs">
+          <el-tab-pane
+            v-for="itemList in summitData.agenda.meetingList[0].list"
+            :key="itemList.id"
+            :name="itemList.id"
+          >
+            <template #label>
+              <div class="timeTabs">
+                {{ itemList.type }}
+              </div>
+            </template>
+          </el-tab-pane>
+        </OTabs>
+        <OContainer :level-index="1">
+          <div
+            class="schedule-item"
+            :class="{ isShow: tabType[index] === 'main' }"
+          >
+            <SummitSchedule
+              :options="summitData.agenda.meetingList[index].list[0].children"
+            />
+          </div>
+          <div
+            class="schedule-item other"
+            :class="{ isShow: tabType[index] === 'other' }"
+          >
+            <OTabs v-model="otherTabType[index]" class="other-tabs">
+              <OTabPane
+                v-for="itemList in summitData.agenda.meetingList[index].list[1]
+                  .children"
+                :key="itemList.id"
+                :label="itemList.name"
+                :name="itemList.id"
+              >
+                <p v-if="index === 0 && !itemList.children" class="other-text">
+                  <IconTime />{{
+                    summitData.agenda.meetingList[index].list[1].duration
+                  }}
+                </p>
+                <!-- <h4 v-if="index === 0 && itemList.title" class="other-title">
                   主题： {{ itemList.title }}
                 </h4> -->
-                  <SummitSchedule
-                    :options="itemList.children"
-                    :detail="itemList.detail"
-                  />
-                </OTabPane>
-              </OTabs>
-            </div>
-          </OContainer>
-        </div>
+                <SummitSchedule
+                  :options="itemList.children"
+                  :detail="itemList.detail"
+                />
+              </OTabPane>
+            </OTabs>
+          </div>
+        </OContainer>
       </div>
     </div>
     <div class="guest">
       <h3 class="guest-title">{{ summitData.guest.title }}</h3>
-      <h4>{{ summitData.guest.guestListMain.title }}</h4>
       <SummitGuests
-        :lecturer-list="summitData.guest.guestListMain.guestList"
-        shape="circle"
-        :web-columns-num="4"
-        :mobile-columns-num="2"
-      />
-      <h4>{{ summitData.guest.guestListSub.title }}</h4>
-      <SummitGuests
-        :lecturer-list="summitData.guest.guestListSub.guestList"
+        :lecturer-list="summitData.guest.guestList"
         shape="circle"
         :web-columns-num="4"
         :mobile-columns-num="2"
@@ -2045,244 +1719,237 @@ onMounted(() => {
       line-height: var(--o-line-height-h8);
     }
   }
-  .agenda-content {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    .agenda-item {
-      margin-top: var(--o-spacing-h2);
-      width: 100%;
-      @media (max-width: 767px) {
-        margin-top: var(--o-spacing-h4);
+  .agenda-item {
+    margin-top: var(--o-spacing-h2);
+    @media (max-width: 767px) {
+      margin-top: var(--o-spacing-h4);
+    }
+    &:nth-of-type(1) {
+      .el-tabs__active-bar {
+        display: none;
       }
-      &:nth-of-type(1) {
-        // order: 2;
+      // 暂时取消第一天的分会选中状态
+      // .other {
+      //   :deep(.o-tabs) {
+      //     .el-tabs__active-bar {
+      //       display: none;
+      //     }
+      //     .is-active {
+      //       color: var(--o-color-text1);
+      //     }
+      //     .el-tabs__item:hover {
+      //       color: var(--o-color-text1);
+      //       cursor: default;
+      //     }
+      //   }
+      // }
+    }
+    // 暂时隐藏时间
+    &:nth-of-type(2) {
+      .other {
+        :deep(.data-item) {
+          grid-template-columns: 600px 445px;
+          padding-left: 192px;
+          @media screen and (max-width: 1328px) {
+            grid-template-columns: 500px 445px;
+          }
+          @media screen and (max-width: 1320px) {
+            padding-left: 80px;
+          }
+          @media screen and (max-width: 1100px) {
+            padding-left: 0;
+            grid-template-columns: 348px;
+            .box {
+              grid-column-start: 1;
+              grid-column-end: 2;
+            }
+          }
+          @media screen and (max-width: 820px) {
+            padding-left: 2vw;
+          }
+          @media screen and (max-width: 420px) {
+            grid-template-columns: auto;
+          }
+          .show-more {
+            color: var(--o-color-brand1);
+          }
+          .time {
+            display: none;
+          }
+          .desc {
+            display: block;
+            &:hover {
+              color: var(--o-color-brand1);
+            }
+          }
+          .name-box {
+            @media screen and (max-width: 1100px) {
+              grid-column-end: auto !important;
+            }
+          }
+        }
+      }
+    }
+    // 暂时隐藏时间
+    .meeting-title {
+      font-weight: 400;
+      color: var(--o-color-text1);
+      font-size: var(--o-font-size-h6);
+      line-height: var(--o-line-height-h6);
+      text-align: center;
+      margin-bottom: 24px;
+      @media (max-width: 767px) {
+        margin-bottom: 12px;
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+      }
+    }
+    .schedule-tabs {
+      text-align: center;
+      margin-top: 24px;
+      :deep(.el-tabs__nav) {
+        float: none;
+        display: inline-block;
         .el-tabs__active-bar {
           display: none;
         }
-        // 暂时取消第一天的分会选中状态
-        // .other {
-        //   :deep(.o-tabs) {
-        //     .el-tabs__active-bar {
-        //       display: none;
-        //     }
-        //     .is-active {
-        //       color: var(--o-color-text1);
-        //     }
-        //     .el-tabs__item:hover {
-        //       color: var(--o-color-text1);
-        //       cursor: default;
-        //     }
-        //   }
-        // }
-      }
-      // 暂时隐藏时间
-      &:nth-of-type(2) {
-        .other {
-          :deep(.data-item) {
-            grid-template-columns: 600px 445px;
-            padding-left: 192px;
-            @media screen and (max-width: 1328px) {
-              grid-template-columns: 500px 445px;
-            }
-            @media screen and (max-width: 1320px) {
-              padding-left: 80px;
-            }
-            @media screen and (max-width: 1100px) {
-              padding-left: 0;
-              grid-template-columns: 348px;
-              .box {
-                grid-column-start: 1;
-                grid-column-end: 2;
-              }
-            }
-            @media screen and (max-width: 820px) {
-              padding-left: 2vw;
-            }
-            @media screen and (max-width: 420px) {
-              grid-template-columns: auto;
-            }
-            .show-more {
-              color: var(--o-color-brand1);
-            }
-            .time {
-              display: none;
-            }
-            .desc {
-              display: block;
-              &:hover {
-                color: var(--o-color-brand1);
-              }
-            }
-            .name-box {
-              @media screen and (max-width: 1100px) {
-                grid-column-end: auto !important;
-              }
-            }
-          }
+        .el-tabs__item {
+          padding: 0;
         }
       }
-      // 暂时隐藏时间
-      .meeting-title {
-        font-weight: 400;
+      .timeTabs {
+        display: inline-block;
+        margin: 0 0 24px;
+        cursor: pointer;
+        border: 1px solid var(--o-color-border2);
         color: var(--o-color-text1);
-        font-size: var(--o-font-size-h6);
-        line-height: var(--o-line-height-h6);
+        width: 120px;
         text-align: center;
-        margin-bottom: 24px;
-        @media (max-width: 767px) {
-          margin-bottom: 12px;
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
+        background: var(--o-color-bg2);
+        font-size: var(--o-font-size-text);
+        line-height: 38px;
+        padding: 0 var(--o-spacing-h5);
+        @media (max-width: 1100px) {
+          font-size: var(--o-font-size-tip);
+          padding: 0 var(--o-spacing-h6);
         }
       }
-      .schedule-tabs {
-        text-align: center;
-        margin-top: 24px;
+
+      .is-active .timeTabs {
+        color: #fff;
+        background: var(--o-color-brand1);
+        border-color: var(--o-color-brand2);
+      }
+      .other-tabs {
+        margin-bottom: 24px;
         :deep(.el-tabs__nav) {
           float: none;
           display: inline-block;
-          .el-tabs__active-bar {
-            display: none;
-          }
-          .el-tabs__item {
-            padding: 0;
-          }
-        }
-        .timeTabs {
-          display: inline-block;
-          margin: 0 0 24px;
-          cursor: pointer;
-          border: 1px solid var(--o-color-border2);
-          color: var(--o-color-text1);
-          width: 120px;
-          text-align: center;
-          background: var(--o-color-bg2);
-          font-size: var(--o-font-size-text);
-          line-height: 38px;
-          padding: 0 var(--o-spacing-h5);
           @media (max-width: 1100px) {
-            font-size: var(--o-font-size-tip);
-            padding: 0 var(--o-spacing-h6);
+            line-height: 44px;
           }
         }
-
-        .is-active .timeTabs {
-          color: #fff;
-          background: var(--o-color-brand1);
-          border-color: var(--o-color-brand2);
-        }
-        .other-tabs {
-          margin-bottom: 24px;
-          :deep(.el-tabs__nav) {
-            float: none;
-            display: inline-block;
+        :deep(.el-tabs__header) {
+          text-align: center;
+          .el-tabs__item {
             @media (max-width: 1100px) {
-              line-height: 44px;
-            }
-          }
-          :deep(.el-tabs__header) {
-            text-align: center;
-            .el-tabs__item {
-              @media (max-width: 1100px) {
-                font-size: var(--o-font-size-tip);
-                line-height: var(--o-line-height-tip);
-              }
+              font-size: var(--o-font-size-tip);
+              line-height: var(--o-line-height-tip);
             }
           }
         }
       }
-      .schedule-item {
-        display: none;
-        padding: 24px;
-        @media (max-width: 1100px) {
-          padding: 16px;
+    }
+    .schedule-item {
+      display: none;
+      padding: 24px;
+      @media (max-width: 1100px) {
+        padding: 16px;
+      }
+      &.isShow {
+        display: block;
+      }
+      &.other {
+        :deep(.el-tabs__nav-scroll) {
+          text-align: center;
         }
-        &.isShow {
-          display: block;
+        :deep(.el-tabs__content) {
+          overflow: visible;
         }
-        &.other {
-          :deep(.el-tabs__nav-scroll) {
-            text-align: center;
+        :deep(.el-tabs__nav) {
+          float: none;
+          display: inline-block;
+          @media (max-width: 1100px) {
+            line-height: 44px;
           }
-          :deep(.el-tabs__content) {
-            overflow: visible;
+        }
+        .other-text {
+          margin: 24px auto 0 auto;
+          color: var(--o-color-text1);
+          font-size: var(--o-font-size-h7);
+          line-height: var(--o-line-height-h7);
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          @media (max-width: 1100px) {
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            margin: 16px 0;
           }
-          :deep(.el-tabs__nav) {
-            float: none;
-            display: inline-block;
-            @media (max-width: 1100px) {
-              line-height: 44px;
-            }
+          svg {
+            margin-right: var(--o-spacing-h8);
           }
-          .other-text {
-            margin: 24px auto 0 auto;
-            color: var(--o-color-text1);
-            font-size: var(--o-font-size-h7);
-            line-height: var(--o-line-height-h7);
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            @media (max-width: 1100px) {
-              font-size: var(--o-font-size-text);
-              line-height: var(--o-line-height-text);
-              margin: 16px 0;
-            }
-            svg {
-              margin-right: var(--o-spacing-h8);
-            }
+        }
+        .other-title {
+          margin: 24px auto;
+          color: var(--o-color-text1);
+          font-size: var(--o-font-size-h7);
+          line-height: var(--o-line-height-h7);
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: normal;
+          @media (max-width: 1100px) {
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            margin: 16px 0;
           }
-          .other-title {
-            margin: 24px auto;
-            color: var(--o-color-text1);
-            font-size: var(--o-font-size-h7);
-            line-height: var(--o-line-height-h7);
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: normal;
-            @media (max-width: 1100px) {
-              font-size: var(--o-font-size-text);
-              line-height: var(--o-line-height-text);
-              margin: 16px 0;
-            }
+        }
+        :deep(.data-list) {
+          .detail {
+            display: none;
           }
-          :deep(.data-list) {
+          .show-detail {
             .detail {
-              display: none;
-            }
-            .show-detail {
-              .detail {
-                display: block;
-              }
+              display: block;
             }
           }
-          :deep(.desc) {
-            cursor: pointer;
-          }
-
-          // 消除分论坛分类的选中状态 start
-          // :deep(.o-tabs) {
-          //   &.el-tabs .el-tabs__nav-wrap .el-tabs__item {
-          //     &.is-active {
-          //       color: var(--o-color-text1);
-          //     }
-          //     &.is-top {
-          //       &:hover {
-          //         color: var(--o-color-text1);
-          //         cursor: default;
-          //       }
-          //     }
-          //   }
-
-          // }
-          // 消除分论坛分类的选中状态 end
         }
-        :deep(.detail) {
-          display: none;
+        :deep(.desc) {
+          cursor: pointer;
         }
+
+        // 消除分论坛分类的选中状态 start
+        // :deep(.o-tabs) {
+        //   &.el-tabs .el-tabs__nav-wrap .el-tabs__item {
+        //     &.is-active {
+        //       color: var(--o-color-text1);
+        //     }
+        //     &.is-top {
+        //       &:hover {
+        //         color: var(--o-color-text1);
+        //         cursor: default;
+        //       }
+        //     }
+        //   }
+
+        // }
+        // 消除分论坛分类的选中状态 end
+      }
+      :deep(.detail) {
+        display: none;
       }
     }
   }
@@ -2301,19 +1968,6 @@ onMounted(() => {
     @media (max-width: 767px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
-    }
-  }
-  h4 {
-    margin-top: 20px;
-    font-size: var(--o-font-size-h5);
-    line-height: var(--o-line-height-h5);
-    color: var(--o-color-text1);
-    font-weight: 400;
-    text-align: center;
-    @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-      margin-top: var(--o-spacing-h5);
     }
   }
 }
