@@ -63,7 +63,7 @@ export default [
   },
   {
     name: 'certification-services',
-    lang: ['zh', 'en', 'ru'],
+    lang: ['en', 'ru'],
   },
   {
     name: 'statistics',
