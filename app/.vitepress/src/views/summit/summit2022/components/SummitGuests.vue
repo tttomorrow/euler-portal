@@ -89,18 +89,20 @@ onMounted(() => {
 }
 .lecturer-list {
   margin: var(--o-spacing-h2) auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  // grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   @media (max-width: 780px) {
+    display: grid;
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
   }
   &-item {
-    width: 180px;
-    margin: 0 auto;
+    width: 354px;
     @media (max-width: 780px) {
       width: 100%;
+      margin: 0 auto;
     }
     &-square {
       display: block;
