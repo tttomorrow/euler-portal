@@ -39,6 +39,10 @@ squash example: <br>
 <img src=./pictures/default-git.png>
 
 tips: examples中的测试用例均为有两个提交的PR，测试了三种不同的合入方式<br>
+
+三种合入方式图解对比:</br>
+<img src=./pictures/three-merge-methods.png>
+
 ## 二、单一仓库文件增加merge_method字段配置方式
 当前Gitee平台对PR的合入方式提供了三种：***merge***， ***rebase merge***， ***squash merge***，***merge***是默认的合入方式，可不用进行单独配置。
 
