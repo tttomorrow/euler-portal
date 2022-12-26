@@ -1,5 +1,5 @@
-// import newEdition_pc_en from '@/assets/category/home/banner/banner22.09_pc_en.png';
-// import newEdition_mo_en from '@/assets/category/home/banner/banner22.09_mo_en.png';
+import birthday_pc from '@/assets/category/home/banner/euler-birthday_pc.png';
+import birthday_mo from '@/assets/category/home/banner/euler-birthday_mo.png';
 
 import prize_en_pc from '@/assets/category/home/banner/prize_en_pc.png';
 import prize_en_mo from '@/assets/category/home/banner/prize_en_mo.png';
@@ -34,6 +34,13 @@ export default {
         pcBanner: summit_pc,
         moBanner: summit_mo,
         link: '/zh/interaction/summit-list/summit2022/',
+        id: '',
+        targetTap: 1,
+      },
+      {
+        pcBanner: birthday_pc,
+        moBanner: birthday_mo,
+        link: '/zh/news/20221223-%E4%B8%89%E5%91%A8%E5%B9%B4.html',
         id: '',
         targetTap: 1,
       },
@@ -97,13 +104,6 @@ export default {
       },
     ],
     ru: [
-      // {
-      //   pcBanner: newEdition_pc_en,
-      //   moBanner: newEdition_mo_en,
-      //   btn: 'Explore More',
-      //   id: 'newEdition',
-      //   targetTap: 1,
-      // },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
