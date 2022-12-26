@@ -143,6 +143,24 @@ onMounted(() => {
         <img :src="giftImg" alt="" class="gift-pc" />
         <img :src="giftImgMo" alt="" class="gift-mo" />
       </div>
+      <!-- <div class="award">
+        <OTable class="pc-list" :data="tableData" style="width: 100%">
+          <OTableColumn
+            :label="i18n.cve.SYNOPSIS"
+            prop="summary"
+          ></OTableColumn>
+          <OTableColumn
+            :label="i18n.cve.CVSS_SCORE"
+            prop="cvsssCoreOE"
+            width="150"
+          ></OTableColumn>
+          <OTableColumn
+            width="180"
+            :label="i18n.cve.RELEASE_DATE"
+            prop="updateTime"
+          ></OTableColumn>
+        </OTable>
+      </div> -->
     </div>
   </AppContext>
   <div v-if="isTipShow" class="tip">

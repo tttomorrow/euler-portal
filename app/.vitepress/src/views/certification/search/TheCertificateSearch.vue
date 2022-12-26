@@ -237,7 +237,7 @@ function clickDownload() {
 
 <template>
   <AppContent>
-    <div class="breadcrumb">
+    <div v-if="lang !== 'zh'" class="breadcrumb">
       <p class="last-page" @click="goBackPage">
         {{ i18n.certification.title }}
       </p>

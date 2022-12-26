@@ -178,6 +178,11 @@ export default {
           PATH: 'https://quickissue.openeuler.org/zh/',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
+        // {
+        //   NAME: '荣誉墙',
+        //   ID: 'honor',
+        //   PATH: '/community/honor/',
+        // },
       ],
       CLASS: ['contribution', 'conduct', 'mailing-list', 'certification'],
     },

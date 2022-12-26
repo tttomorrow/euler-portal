@@ -213,7 +213,6 @@ const selectliveChange = (val: number): void => {
         display: grid;
         align-items: center;
         border: 1px solid var(--o-color-brand1);
-        border-radius: 2px;
         p {
           color: var(--o-color-text1);
           font-size: var(--o-font-size-h7);
