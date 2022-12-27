@@ -737,8 +737,8 @@ const summitData: any = {
               {
                 time: '09:35 - 09:45',
                 desc: 'openEuler项目群成立暨 新一届openEuler委员会亮相',
-                name: ['邱成锋', '孙文龙'],
-                post: ['openEuler 社区秘书长', '开放原子开源基金会理事长'],
+                name: ['孙文龙', '邱成锋'],
+                post: ['开放原子开源基金会理事长', 'openEuler社区秘书长'],
               },
               {
                 time: '09:45 - 09:55',
@@ -1293,7 +1293,7 @@ const summitData: any = {
                 children: [
                   {
                     time: '13:30 - 13:50',
-                    desc: 'openEuler社区基础设施新服务及未来展望',
+                    desc: 'openEuler社区基础设施上新分享',
                     name: ['李超然'],
                     post: ['openEuler Infra SIG开发者'],
                     detail:
@@ -1349,7 +1349,7 @@ const summitData: any = {
                   },
                   {
                     time: '15:50 - 16:10',
-                    desc: '欧拉Talk-开发者体验反馈大会',
+                    desc: '欧拉Talk · 开发者面对面',
                     name: ['社区开发者/TC'],
                     post: [''],
                     detail:
@@ -1526,7 +1526,7 @@ const summitData: any = {
         {
           img: wuyanjun,
           name: '武延军',
-          position: ['湖南麒麟信安科技股份有限公司备份'],
+          position: ['openEuler社区副理事长 中国科学院软件研究所副所长'],
         },
         {
           img: zhanglei,
