@@ -1,4 +1,4 @@
-\---
+---
 
 title: 熊伟博士带你了解如何向 openEuler 社区提交一个好 PR
 
@@ -8,19 +8,19 @@ category: blog
 
 tags:
 
-  \- openEuler
+  - openEuler
 
-  \- PR
+  - PR
 
 archives: '2022-12'
 
 author:
 
-  \- xiongwei
+  - xiongwei
 
 summary: 在开源的世界里，PR 是质量保证体系的基石，是大规模协作开发的基石，是社区历史的记录，因此一个好的PR是至关重要的。让我们跟随 openEuler 技术委员会委员熊伟博士，一起学习如何提交一个优秀的PR，开启成为一个成功码农的开源之旅吧。
 
-\---
+---
 
 
 
