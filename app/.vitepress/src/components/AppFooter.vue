@@ -359,6 +359,8 @@ $color: #fff;
       font-size: 12px;
       line-height: 20px;
       display: inline-block;
+      padding-left: 12px;
+      padding-right: 12px;
       &.ru {
         line-height: 10px;
         height: auto;
