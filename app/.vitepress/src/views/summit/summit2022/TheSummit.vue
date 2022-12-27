@@ -41,6 +41,27 @@ import intel from '@/assets/category/summit/summit2022/logo/intel.png';
 import intelDark from '@/assets/category/summit/summit2022/logo/intel-dark.png';
 import celebratingEntryImg from '@/assets/category/summit/summit2022/celebrating-entry.png';
 
+import bes from '@/assets/category/summit/summit2022/logo/bes.png';
+import besDark from '@/assets/category/summit/summit2022/logo/bes-dark.png';
+import ccf from '@/assets/category/summit/summit2022/logo/ccf.png';
+import ccfDark from '@/assets/category/summit/summit2022/logo/ccf-dark.png';
+import intewell from '@/assets/category/summit/summit2022/logo/intewell.png';
+import intewellDark from '@/assets/category/summit/summit2022/logo/intewell-dark.png';
+import lvse from '@/assets/category/summit/summit2022/logo/lvse.png';
+import lvseDark from '@/assets/category/summit/summit2022/logo/lvse-dark.png';
+import phytium from '@/assets/category/summit/summit2022/logo/phytium.png';
+import phytiumDark from '@/assets/category/summit/summit2022/logo/phytium-dark.png';
+import shopen from '@/assets/category/summit/summit2022/logo/shopen.png';
+import shopenDark from '@/assets/category/summit/summit2022/logo/shopen-dark.png';
+import tongtech from '@/assets/category/summit/summit2022/logo/tongtech.png';
+import tongtechDark from '@/assets/category/summit/summit2022/logo/tongtech-dark.png';
+import ysemi from '@/assets/category/summit/summit2022/logo/ysemi.png';
+import ysemiDark from '@/assets/category/summit/summit2022/logo/ysemi-dark.png';
+import ccb from '@/assets/category/summit/summit2022/logo/ccb.png';
+import ccbDark from '@/assets/category/summit/summit2022/logo/ccb-dark.png';
+import turbolinux from '@/assets/category/summit/summit2022/logo/turbolinux.png';
+import turbolinuxDark from '@/assets/category/summit/summit2022/logo/turbolinux-dark.png';
+
 import caopeiqing from '@/assets/category/summit/summit2022/guests/caopeiqing.png';
 import chenyahan from '@/assets/category/summit/summit2022/guests/chenyahan.png';
 import chenzhengsheng from '@/assets/category/summit/summit2022/guests/chenzhengsheng.png';
@@ -108,7 +129,40 @@ import yangxiaocheng from '@/assets/category/summit/summit2022/guests/yangxiaoch
 import zhangshuai from '@/assets/category/summit/summit2022/guests/zhangshuai.png';
 import zhouyi from '@/assets/category/summit/summit2022/guests/zhouyi.png';
 
-import exhibitionImg from '@/assets/category/summit/summit2022/exhibition.png';
+import baoyungang from '@/assets/category/summit/summit2022/guests/baoyungang.png';
+import christophersimmons from '@/assets/category/summit/summit2022/guests/christophersimmons.png';
+import fengguanlin01 from '@/assets/category/summit/summit2022/guests/fengguanlin01.png';
+import gaotongqing from '@/assets/category/summit/summit2022/guests/gaotongqing.png';
+import jiangdayong01 from '@/assets/category/summit/summit2022/guests/jiangdayong01.png';
+import jimzemlin from '@/assets/category/summit/summit2022/guests/jimzemlin.png';
+import jonathanbryce from '@/assets/category/summit/summit2022/guests/jonathanbryce.png';
+import liangbaojun from '@/assets/category/summit/summit2022/guests/liangbaojun.png';
+import liaoxiangke from '@/assets/category/summit/summit2022/guests/liaoxiangke.png';
+import lijun from '@/assets/category/summit/summit2022/guests/lijun.png';
+import liujingjuan from '@/assets/category/summit/summit2022/guests/liujingjuan.png';
+import meihong from '@/assets/category/summit/summit2022/guests/meihong.png';
+import mengjianyi from '@/assets/category/summit/summit2022/guests/mengjianyi.png';
+import niguangnan from '@/assets/category/summit/summit2022/guests/niguangnan.png';
+import panyan from '@/assets/category/summit/summit2022/guests/panyan.png';
+import pengjianying from '@/assets/category/summit/summit2022/guests/pengjianying.png';
+import priyankasharma from '@/assets/category/summit/summit2022/guests/priyankasharma.png';
+import qiuchengfeng01 from '@/assets/category/summit/summit2022/guests/qiuchengfeng01.png';
+import sunwenlong01 from '@/assets/category/summit/summit2022/guests/sunwenlong01.png';
+import wanghuaimin from '@/assets/category/summit/summit2022/guests/wanghuaimin.png';
+import wangtao from '@/assets/category/summit/summit2022/guests/wangtao.png';
+import wuyanjun from '@/assets/category/summit/summit2022/guests/wuyanjun.png';
+import xiongwei01 from '@/assets/category/summit/summit2022/guests/xiongwei01.png';
+import xutao from '@/assets/category/summit/summit2022/guests/xutao.png';
+import zhangxianyi01 from '@/assets/category/summit/summit2022/guests/zhangxianyi01.png';
+import zhanglei from '@/assets/category/summit/summit2022/guests/zhanglei.png';
+import caizhimin from '@/assets/category/summit/summit2022/guests/caizhimin.png';
+import gaopei from '@/assets/category/summit/summit2022/guests/gaopei.png';
+import lipeiyuan from '@/assets/category/summit/summit2022/guests/lipeiyuan.png';
+import zhangshenju from '@/assets/category/summit/summit2022/guests/zhangshenju.png';
+import zhongxin from '@/assets/category/summit/summit2022/guests/zhongxin.png';
+import liuwenqing from '@/assets/category/summit/summit2022/guests/liuwenqing.png';
+
+// import exhibitionImg from '@/assets/category/summit/summit2022/exhibition.png';
 
 import IconTime from '~icons/app/icon-time.svg';
 
@@ -168,7 +222,7 @@ const summitData: any = {
         liveId: 12258,
         liveTestId: 12261,
         id: 0,
-        name: 'openEuelr Summit',
+        name: 'openEuler Summit',
       },
       {
         liveId: 12266,
@@ -227,8 +281,8 @@ const summitData: any = {
               {
                 time: '9:30 - 9:35',
                 desc: '工信部领导致辞',
-                name: ['工业和信息化部党组成员、副部长'],
-                post: [''],
+                name: ['王江平'],
+                post: ['工业和信息化部党组成员、副部长'],
               },
               {
                 time: '9:35 - 9:40',
@@ -238,6 +292,12 @@ const summitData: any = {
               },
               {
                 time: '9:40 - 9:45',
+                desc: '基金会领导致辞',
+                name: ['孙文龙'],
+                post: ['开放原子开源基金会理事长'],
+              },
+              {
+                time: '9:45 - 9:50',
                 desc: '2022年度openEuler领先商业实践颁奖',
                 name: ['倪光南'],
                 post: ['中国工程院院士、openEuler开源社区顾问专家委员会委员'],
@@ -280,15 +340,15 @@ const summitData: any = {
               },
               {
                 time: '10:50 - 11:00',
-                desc: '共筑算力发展新生态 共建数字经济强引擎',
-                name: ['梁宝俊'],
-                post: ['中国联合网络通信集团有限公司副总经理'],
-              },
-              {
-                time: '11:00 - 11:10',
                 desc: '引领云计算科技创新 共筑天翼云数字底座',
                 name: ['李峻'],
                 post: ['中国电信集团有限公司副总经理'],
+              },
+              {
+                time: '11:00 - 11:10',
+                desc: '共筑算力发展新生态 共建数字经济强引擎',
+                name: ['梁宝俊'],
+                post: ['中国联合网络通信集团有限公司副总经理'],
               },
               {
                 time: '11:10 - 11:15',
@@ -325,9 +385,11 @@ const summitData: any = {
                   },
                   {
                     time: '14:30 - 14:45',
-                    desc: '开源时代下的OK组合',
+                    desc: '强强联合，共筑开源产业根基',
                     name: ['熊伟'],
-                    post: ['openEuler社区技术委员会委员'],
+                    post: [
+                      'openEuler社区技术委员会委员、开放原子开源基金会TOC委员',
+                    ],
                     detail: '',
                   },
                   {
@@ -453,7 +515,7 @@ const summitData: any = {
                   },
                   {
                     time: '14:30 - 14:50',
-                    desc: 'openEulor与统信联合创新应用实践',
+                    desc: '共建欧拉开源根技术 打造操作系统新生态',
                     name: ['管延杰'],
                     post: ['欧拉社区技术专家'],
                     detail: '',
@@ -467,7 +529,7 @@ const summitData: any = {
                   },
                   {
                     time: '15:05 - 15:20',
-                    desc: 'GBase 8c多模多态分布式数据库基于华为生态的创新实践分享',
+                    desc: 'GBase 8c多模多态分布式数据库基于国产生态的创新实践分享',
                     name: ['李凯'],
                     post: ['南大通用GBase 8c产品总监'],
                     detail: '',
@@ -614,7 +676,7 @@ const summitData: any = {
                     time: '14:05 - 14:20',
                     desc: 'KubeEdge SIG Networking的进展与未来规划',
                     name: ['王杰章'],
-                    post: ['华为（高级工程师）'],
+                    post: ['华为云高级工程师'],
                     detail: '',
                   },
                   {
@@ -628,7 +690,7 @@ const summitData: any = {
                     time: '14:40 - 15:00',
                     desc: '多云边缘协同计算',
                     name: ['路广'],
-                    post: ['VMWare研发总监'],
+                    post: ['VMware研发总监'],
                     detail: '',
                   },
                   {
@@ -731,7 +793,7 @@ const summitData: any = {
               },
               {
                 time: '11:20 - 11:30',
-                desc: '超聚变助力联通云公司在算力网络的创新与实践',
+                desc: '超聚变助力联通云在算力网络的创新与实践',
                 name: ['姜振华'],
                 post: ['超聚变操作系统总经理'],
               },
@@ -745,7 +807,7 @@ const summitData: any = {
                 time: '11:40 - 11:45',
                 desc: '“欧拉之星”颁奖典礼 年度最佳openEuler开发者贡献奖',
                 name: ['韩乃平'],
-                post: ['openEuler社区副理事长'],
+                post: ['openEuler社区副理事长、麒麟软件有限公司高级副总经理'],
               },
             ],
           },
@@ -762,7 +824,7 @@ const summitData: any = {
                 detail: 'exit',
                 children: [
                   {
-                    time: '1',
+                    time: '13:30 - 13:50',
                     desc: '数据中心服务器以太网链路聚合与高可用',
                     name: ['胡亚弟', '孙守鑫'],
                     post: [
@@ -773,7 +835,7 @@ const summitData: any = {
                       '本议题讲述各种linux bonding的基本工作原理，实现。 对于多种bond模式在DC场景下进行比较，分析。同时，介绍工作中遇到的相关问题及针对问题所做的一些优化。其中优化工作分为两部分，一个是开发bond6针对ipv6报文接收方向的负载均衡功能。另一个是修复bond6的vlan子接口加入Linux bridge之后丢包的问题。最后根据bond口的应用经验，提出一些应用建议。',
                   },
                   {
-                    time: '2',
+                    time: '13:50 - 14:10',
                     desc: '移动云高性能远程调用框架eRPC在Gazelle上的最佳实践与应用',
                     name: ['薛传宇'],
                     post: ['中移（苏州）软件技术有限公司 软件开发工程师'],
@@ -781,7 +843,7 @@ const summitData: any = {
                       'eRPC作为一款高性能远程调用框架，目前主要落地应用于移动云极速云盘产品。在eRPC技术选型阶段，RDMA虽然有更好的时延和iops性能，但是存在的大规模组网难，成本高等难题。故我们选择用户态TCP作为下一步主攻方向。凭借Gazelle提供的用户态TCP传输能力，eRPC已达到TCP翻倍的iops与时延性能。将更好助力移动云算力网络进一步发展。',
                   },
                   {
-                    time: '3',
+                    time: '14:10 - 14:30',
                     desc: '云环境下欧拉开源操作系统的无缝内核热升级',
                     name: ['曾昭荣'],
                     post: ['Intel Cloud Software Engineer'],
@@ -789,7 +851,7 @@ const summitData: any = {
                       '云环境中经常因为安全性等原因需要更新或升级系统的内核，目前的一些方案比如热补丁，热迁移等等都有一些局限性。我们这里基于openEuler操作系统提出一套新的技术方案，即利用kexec快速重启内核，同时将虚拟机状态维持在内存中，所有的直通设备也保持活跃的状态，重启后从内存中直接恢复虚拟机，并直接连接活跃的原有直通设备，以期达到更好的服务中断时间以及成功率。',
                   },
                   {
-                    time: '4',
+                    time: '14:30 - 14:50',
                     desc: 'eBPF-Linux内核安全的双刃剑',
                     name: ['曹佩庆'],
                     post: ['统信软件研发经理'],
@@ -797,7 +859,7 @@ const summitData: any = {
                       '结合当前ebpf技术在linux内核中的应用分析说明不当的ebpf应用会引入的安全风险和危害举例说明合适的ebpf技术给linux平台下内核开发和系统/容器安全带来的益处探讨如何更好的用好ebpf这把“双刃剑”',
                   },
                   {
-                    time: '5',
+                    time: '14:50 - 15:10',
                     desc: 'MPTCP BPF包调度器的实现',
                     name: ['唐葛亮'],
                     post: ['SUSE Euler OS专家'],
@@ -805,7 +867,7 @@ const summitData: any = {
                       '本人实现的MPTCP BPF包调度器是今年Linux内核中MPTCP协议栈上的一个新特性，允许用户通过BPF来为MPTCP提供自定义的包调度器。该实现包含20多个内核代码补丁。本议题向大家展示该特性是如何一步一步实现的。',
                   },
                   {
-                    time: '6',
+                    time: '15:10 - 15:30',
                     desc: 'ARM64 内存可靠性增强',
                     name: ['王克锋'],
                     post: ['华为高级软件工程师'],
@@ -813,7 +875,7 @@ const summitData: any = {
                       '内存容量越来越大，多样化的内存介质引入，单机下内存故障随之增加，同时，arm64服务器广泛在云&数据中心的应用，内存的故障处理在arm64架构下越来越重要，本次Topic介绍arm64 RAS处理及华为在arm64可靠性里面的相关工作，包括arm64 内存镜像，arm64 machine check safe等。内存镜像相当于一份内存中的数据有两份拷贝，如果系统检测到不可恢复的内存错误，那么内存控制器会从镜像区域同步一份，避免数据丢失。Linux内核一般会将内核以及驱动使用的数据做内存镜像，避免因为内存错误导致内核panic，该特性已成功推社区。machine check safe在uaccess等场景下内核态触发不可恢复内存错误时，通过杀死受影响的用户态进程同时隔离错误页面的处理机制，避免内核panic，该特性目前正在推送社区中。',
                   },
                   {
-                    time: '7',
+                    time: '15:30 - 15:50',
                     desc: '探秘 Intel Trust Domain Extensions(TDX) 技术',
                     name: ['杜凡'],
                     post: ['Intel系统软件架构师'],
@@ -821,7 +883,7 @@ const summitData: any = {
                       'Intel Trust Domain Extensions(TDX) 作为硬件辅助TEE的技术，提供虚拟机层面的内存及CPU状态的机密性和完整性的保障。Intel TDX 技术巧妙得扩展MKTME和VMX 两大基础技术底座，引入SEAM 模式，以SEAM模式的软件载体TDX Module 作为安全防护的关键支点，同时有增加的方便升级的优势。Intel TDX 作为机密计算领域的主要方向之一，在云环境中，阻断恶意攻击，保护终端用户数据的安全性，对敏感业务向云端迁移提供支撑。本议题阐述Intel TDX整体的架构，探寻其底层技术逻辑。',
                   },
                   {
-                    time: '8',
+                    time: '15:50 - 16:10',
                     desc: '基于eBPF技术的网络会话监控技术与实践',
                     name: ['秦云高'],
                     post: ['湖南麒麟信安科技股份有限公司资深内核开发工程师'],
@@ -832,7 +894,7 @@ const summitData: any = {
                             3、	介绍该监控审计技术的特性，包括：协议类型TCP或UDP、本地IP地址、本地端口、对端IP地址、对端端口、进程和网络会话字节数等。"`,
                   },
                   {
-                    time: '9',
+                    time: '16:10 - 16:30',
                     desc: '数据完整性在openEuler上的实现',
                     name: ['赵磊'],
                     post: ['江苏润和软件股份有限公司专家级工程师'],
@@ -843,7 +905,7 @@ const summitData: any = {
                             3: 在openEuler实现数据完整性的一种实现设计方法`,
                   },
                   {
-                    time: '10',
+                    time: '16:30 - 16:50',
                     desc: '下一代互联标准Compute Express Link(CXL)简介',
                     name: ['施爱春'],
                     post: ['Intel软件工程师'],
@@ -858,7 +920,7 @@ const summitData: any = {
                 detail: 'exit',
                 children: [
                   {
-                    time: '1',
+                    time: '13:30 - 13:50',
                     desc: '毕昇JDK新特性分享',
                     name: ['周磊'],
                     post: ['华为技术有限公司毕昇JDK高级技术专家'],
@@ -866,7 +928,7 @@ const summitData: any = {
                       '毕昇JDK是华为内部OpenJDK定制版Huawei JDK的开源版本，是一款高性能、可用于生产环境的OpenJDK发行版；毕昇JDK团队基于鲲鹏架构持续优化，不断给客户带来更有竞争力的JDK软件竞争力，本期主要介绍两个新特性：Dynamic CDS特性和ZGC TBI优化，在springboot场景收益明显。',
                   },
                   {
-                    time: '2',
+                    time: '13:50 - 14:10',
                     desc: '英特尔第四代至强可扩展处理器赋能openEuler领先技术发展',
                     name: ['田俊'],
                     post: ['Intel Arch SIG Maintainer'],
@@ -874,7 +936,7 @@ const summitData: any = {
                       'Intel在下一代Sapphire Rapids平台上引入了众多业界领先的技术和特性，同时Intel也正在参与和大力推进openEuler对多样性计算生态的支持。本话题将总体为大家更新openEuler平台在对Intel下一代平台和新技术支持上的进展，同时也会重点介绍未来平台的一些主要功能和特性，包括AMX，DSA, IAA，Scalable IOV，CXL 1.1等新技术以及应用场景等。',
                   },
                   {
-                    time: '3',
+                    time: '14:10 - 14:30',
                     desc: '全场景全流程的自动反馈优化',
                     name: ['李彦成'],
                     post: ['华为技术有限公司软件工程师'],
@@ -882,7 +944,7 @@ const summitData: any = {
                       '随着计算继续向云上移动，微小的数据中心应用性能优化也能够带来大量经济效益。通常，单个数据中心计算节点执行的任务类型相对固定，作为底座的操作系统和基础库并未考虑特定应用场景，存在优化空间。通过从业务开发至部署阶段全流程，从用户态应用、内核到运行时库全场景的反馈优化，实现结合具体业务场景，深度释放数据中心算力。同时，提供多种优化特性和工具，实现不同场景下打造极致性能和极简应用的优化能力。帮助开发者了解谷歌、Meta等世界一流云服务企业如何利用反馈编译优化实现场景化优化目标，也为相关开发者系统性介绍openEuler系统上反馈编译优化现状、能力和未来规划。',
                   },
                   {
-                    time: '4',
+                    time: '14:30 - 14:50',
                     desc: '欧拉开源操作系统上LoongArch架构支持',
                     name: ['李星'],
                     post: ['龙芯中科技术股份有限公司软件工程师'],
@@ -890,14 +952,14 @@ const summitData: any = {
                       '介绍欧拉支持LoongArch架构的工作，主要从底层来介绍，如我们的指令集、ABI、内核、GCC、LLVM等在欧拉开源操作系统上的支持。',
                   },
                   {
-                    time: '4',
+                    time: '14:50 - 15:10',
                     desc: '芯突破 新领域 - AMD 第四代EPYC处理器全面支持openEuler',
                     name: ['谢昊成'],
                     post: ['amd工程师'],
                     detail: '介绍openEuler对AMD第四代EPYC平台的支持',
                   },
                   {
-                    time: '5',
+                    time: '15:10 - 15:30',
                     desc: '基于LLVM编译openEuler嵌入式软件包的探索与实践',
                     name: ['赵川峰'],
                     post: ['华为技术有限公司主任工程师'],
@@ -905,7 +967,7 @@ const summitData: any = {
                       'LLVM项目凭借其良好的架构、友好的Licence，近年来社区活跃度增加明显，越来越多的软件项目迁移到LLVM编译器构建。本议题首先简单介绍LLVM编译器项目架构特点和业界OS采用LLVM编译的已有实践，然后介绍编译openEuler嵌入式镜像软件包上的探索及最新进展，最后介绍一下这项工作的后续工作思路。',
                   },
                   {
-                    time: '6',
+                    time: '15:30 - 15:50',
                     desc: '基于 DPU 的异构编程解决方案',
                     name: ['袁林思'],
                     post: ['深圳云豹智能有限公司软件总监'],
@@ -913,7 +975,7 @@ const summitData: any = {
                       '传统的编程以面向 CPU 通用处理器和主存为主，基于 x86/arm 指令集完成编程；而面向 DPU 编程时，将面对一个全新的硬件架构。DPU 引入更多的硬件加速引擎，甚至集成不同指令集的多个处理器，如何高效利用 DPU 的硬件能力的同时，降低用户的开发门槛及复杂度，本 topic 分享一种解决思路并通过一个实例来做一个演示',
                   },
                   {
-                    time: '7',
+                    time: '15:50 - 16:10',
                     desc: '编译器插件框架',
                     name: ['伍明川'],
                     post: ['华为技术有限公司高级工程师'],
@@ -921,7 +983,7 @@ const summitData: any = {
                             GCC和LLVM各自提供自己的插件式开发能力，但是缺少面向插件工具的维护性和兼容性等公共能力。同时，面对各种不同算力，用户需要一种便捷的面向算力的编译优化配置方法，并为多样算力的优化配置提供除开源之外的第二种选择。本议题帮助开发者了解编译器插件工具开发的行业现状，为基于编译能力的相关工具开发者介绍一种新的便捷开发方法。`,
                   },
                   {
-                    time: '8',
+                    time: '16:10 - 16:30',
                     desc: '开源指令集RISC架构处理器与开源生态共生共荣',
                     name: ['刘德启'],
                     post: ['合芯科技有限公司CTO & 研发副总裁'],
@@ -929,7 +991,7 @@ const summitData: any = {
                             公司和OpenEuler社区开展合作，参与相关sig工作组，全力打造基于开源指令集RISC架构处理器，推进以OpenEuler为基础的全栈国产化高端服务器解决方案。`,
                   },
                   {
-                    time: '9',
+                    time: '16:30 - 16:50',
                     desc: '编译器视角的DSA架构可编程性',
                     name: ['淡孝强'],
                     post: ['希姆计算编译工具链团队总监'],
@@ -937,7 +999,7 @@ const summitData: any = {
                       '从编译器视角展开，从ISA设计，内存，带宽设计，并行并发设计等维度，探讨DSA架构与可编程性，AI编译的紧密关系。',
                   },
                   {
-                    time: '10',
+                    time: '16:50 - 17:10',
                     desc: '基于新一代ARMv9 N2核和欧拉OS的软硬件协同优化',
                     name: ['陈争胜'],
                     post: ['深圳市遇贤微电子有限公司首席架构师'],
@@ -953,42 +1015,42 @@ const summitData: any = {
                 detail: 'exit',
                 children: [
                   {
-                    time: '1',
+                    time: '13:30 - 13:50',
                     desc: '移动云天元轻量级Hypervisor与StratoVirt最佳实践',
                     name: ['汤中睿'],
                     post: ['中国移动云能力中心软件开发工程师'],
                     detail: `（1）相关产品及平台简介 a）移动云BC-EV虚拟化产品简介。 b）StratoVirt虚拟化平台简介。（2）基于StratoVirt的移动云天元轻量级Hypervisor内存底噪、启动时间以及其它功能、兼容性等数据展示及情况介绍。（3）StratoVirt支持自由时钟特性开发及功能展示。`,
                   },
                   {
-                    time: '2',
+                    time: '13:50 - 14:10',
                     desc: '推动容器网络发展 创造数据计算价值',
                     name: ['李冬'],
                     post: ['中科驭数HADOS软件开发平台产品总监'],
                     detail: `随着云原生技术的发展以及市场需求的演进，Serverless架构以及FaaS、BaaS领域蓬勃发展，对云原生的网络、存储解决方案提出了更加苛刻的性能需求。中科驭数依托深厚的技术积累、打造出基于DPU底座的云原生网络与服务网格加速卸载方案，助力多行业的基础设施架构转型。`,
                   },
                   {
-                    time: '3',
+                    time: '14:10 - 14:30',
                     desc: '使用Rancher管理面向openEuler的Kubernetes发行版',
                     name: ['张智博'],
                     post: ['SUSE'],
                     detail: `Rancher是一款专注于Kubernetes多集群管理的开源产品，且一直深耕Kubernetes发行版领域，向业内输出了RKE、RKE2、K3s等产品，并兼容多种操作系统和云环境。openEuler作为一支飞速发展的生态力量，亦在Rancher的产品兼容范围内。同时，基于openEuler打造的一套Kubernetes发行版，也进入了Rancher的产品矩阵。依托Rancher的产品基本能力，结合openEuler的生态，给企业客户提供面向多云部署多样性Kubernetes集群的能力。`,
                   },
                   {
-                    time: '4',
+                    time: '14:30 - 14:50',
                     desc: '基于openEuler的可信虚拟化技术探索和实践',
                     name: ['祁浩'],
                     post: ['中国移动云能力中心软件开发工程师'],
                     detail: `在国家大力推动网络安全、商用密码技术的背景和趋势下，国内各行业纷纷开始加强信息安全建设，探索改造原有IT系统，对软硬件产品自主可控与安全的需求日益增强。我们基于openEuler的可信虚拟化技术探索和实践，构建国产化全栈云能力，为用户提供更加安全可信的云主机。`,
                   },
                   {
-                    time: '5',
+                    time: '14:50 - 15:10',
                     desc: '容器云业务与云底座操作系统运维一致性实践',
                     name: ['刘阔'],
                     post: ['麒麟软件有限公司高级研发工程师'],
                     detail: `云原生领域主要采用容器技术与容器编排技术实现业务发布、运维，与底层环境高度解耦，但同时带来了运维技术栈不统一，运维平台重复建设等问题。NestOS作为云底座操作系统，实现业务与底座操作系统运维的一致性，本议题将对其进行简要介绍和演示。`,
                   },
                   {
-                    time: '6',
+                    time: '15:10 - 15:30',
                     desc: '基于openEuler的云桌面性能问题定位提升实践',
                     name: ['周同庆'],
                     post: ['湖南麒麟信安科技股份有限公司测试工程师'],
@@ -999,14 +1061,14 @@ const summitData: any = {
                             3、云桌面使用卡顿级别评测`,
                   },
                   {
-                    time: '7',
+                    time: '15:30 - 15:50',
                     desc: '基于openEuler构建全栈云原生中间件服务平台',
-                    name: ['李志鹏'],
-                    post: ['东方通产品拓展部总经理'],
+                    name: ['刘大全'],
+                    post: ['北京东方通科技股份有限公司技术咨询专家'],
                     detail: `中间件技术和产品随着IT技术和架构的发展而演进。当前云原生技术发展迅速并已被逐渐应用在多个行业领域的生产系统，对于云原生中间件的需求也与日俱增。东方通凭借多年中间件领域的技术积累，以及云原生业务场景下对于中间件的需求，基于openEuler系统打造了面向云原生的中间件服务平台，提供微服务应用运行时支撑、文件传输服务等多类中间件服务能力，助力客户构建云原生模式的业务系统。`,
                   },
                   {
-                    time: '8',
+                    time: '15:50 - 16:10',
                     desc: 'openEuler虚机混部基于移动苏研大云的最佳实践',
                     name: ['朱科潜'],
                     post: ['华为企业通信技术有限公司软件研发工程师'],
@@ -1015,11 +1077,18 @@ const summitData: any = {
                             相关成果已经联合中移动苏研完成技术验证，包含详细的数据和演示视频，可在大会联合展示。`,
                   },
                   {
-                    time: '9',
+                    time: '16:10 - 16:30',
                     desc: '基于openEuler的OKD移植和应用实践',
                     name: ['田利军'],
                     post: ['统信软件高级研发工程师'],
                     detail: `OKD是OpenShift上游和社区版本，在金融，智能制造等行业有较多的使用场景，我们基于openEuler完成了对OKD的移植并提供DevOps实践和CI/CD，构建安全可靠的全栈容器云。`,
+                  },
+                  {
+                    time: '16:30 - 16:50',
+                    desc: 'Qemu Dirty Limit Feature',
+                    name: ['黄勇'],
+                    post: ['天翼云科技有限公司高级后端开发工程师'],
+                    detail: `DirtyLimit是天翼云在虚拟机迁移加速技术上的创新尝试，使用户迁移速度与计算性能兼得，大幅提升用户系统迁移体验，议题主要介绍DirtyLimit的实现原理和测试结果。`,
                   },
                 ],
               },
@@ -1030,14 +1099,14 @@ const summitData: any = {
                 detail: 'exit',
                 children: [
                   {
-                    time: '1',
+                    time: '13:30 - 13:50',
                     desc: '2022 sig-ROS发展图鉴',
                     name: ['安传旭'],
                     post: ['中科院软件所sig-ROS maintainer'],
                     detail: '2022年sig-ROS所做工作的汇报，以及后续的展望。',
                   },
                   {
-                    time: '2',
+                    time: '13:50 - 14:10',
                     desc: 'openEuler ROS 发展的技术展望',
                     name: ['张珩'],
                     post: ['中国科学院软件研究所副研究员'],
@@ -1045,7 +1114,7 @@ const summitData: any = {
                       '通过对openEuler ROS的发展历程以及应用领域的梳理，研讨ROS发展的核心技术发展；并围绕各类核心组件技术（含ROS分布式通信、定位导航以及可视化）分析openEuler ROS的技术发展前景，展望openEuler ROS发展。',
                   },
                   {
-                    time: '3',
+                    time: '14:10 - 14:30',
                     desc: '小而美的嵌入式操作系统 RT-Thread',
                     name: ['郭占鑫'],
                     post: ['上海睿赛德电子科技有限公司RT-Thread 社区负责人'],
@@ -1053,7 +1122,7 @@ const summitData: any = {
                       '先简单介绍嵌入式操作系统 RT-Thread 的情况，包括基础特性和发展现状，然后分享 RT-Thread 5.0 的最新进展，包括 Arduino 兼容层的支持，以及 RT-Thread 和 openeuler Embedded 混合部署。',
                   },
                   {
-                    time: '4',
+                    time: '14:30 - 14:50',
                     desc: '基于openEuler系统的Jailhouse研究、实践及创新',
                     name: ['郭皓'],
                     post: ['麒麟软件技术专家'],
@@ -1061,7 +1130,7 @@ const summitData: any = {
                       '首先介绍jailhouse是什么、优势及适用场景；其次介绍jailhouse虚拟化原理；最后再介绍麒麟软件基于欧拉开源操作系统对Jailhouse软件目前的研究及创新。',
                   },
                   {
-                    time: '5',
+                    time: '14:50 - 15:10',
                     desc: '科东Intewell自主嵌入式实时操作系统，助力智能制造',
                     name: ['毛响林'],
                     post: ['科东（广州）软件科技有限公司副总经理'],
@@ -1069,7 +1138,7 @@ const summitData: any = {
                       'Intewell是科东软件自主研发的工业实时操作系统，源于20年以上行业应用“道系统”，采用微内核架构，支持虚拟化技术，有高实时特性。科东Intewell操作系统拥有丰富的行业应用经验，荣获首届工信部工业互联网大赛一等奖，世界人工智能大会“湛卢奖”技术创新奖等多项业界权威大奖。',
                   },
                   {
-                    time: '6',
+                    time: '15:10 - 15:30',
                     desc: '基于openEuler Embedded的嵌入式系统特性和电网应用',
                     name: ['廖卫'],
                     post: [
@@ -1082,7 +1151,7 @@ const summitData: any = {
                             3、介绍在电网安全运维网关项目上的挑战和解决方案"`,
                   },
                   {
-                    time: '7',
+                    time: '15:30 - 15:50',
                     desc: '基于 openEuler 的工业机器人操作系统及探索应用',
                     name: ['牛建伟'],
                     post: ['北京航空航天大学教授/博士生导师'],
@@ -1097,7 +1166,7 @@ const summitData: any = {
                 detail: 'exit',
                 children: [
                   {
-                    time: '1',
+                    time: '13:30 - 13:50',
                     desc: 'openEuler RISC-V的进展和展望',
                     name: ['张旭舟'],
                     post: ['openEuler RISC-V SIG maintainer'],
@@ -1105,7 +1174,7 @@ const summitData: any = {
                       'openEuler 在RISC-V上已经快速持续迭代了两年时间并且已经进行了多次版本发布，随着RISC-V生态的快速发展，openEuler RISC-V 所支持的软件包、特性不断丰富，此次议题对于当前的进展和展望进行介绍。',
                   },
                   {
-                    time: '2',
+                    time: '13:50 - 14:10',
                     desc: 'openEuler的参考发行版',
                     name: ['王弈桥'],
                     post: ['学生'],
@@ -1113,7 +1182,7 @@ const summitData: any = {
                       'Eulaceura 是将 RISC-V 架构纳入第一级支持范围的 openEuler 发行版。在这里我将分享因何原因而产生了这样一个新的发行，介绍 RISC-V 架构下的运作状况，和开发过程中的一些经验和思考。',
                   },
                   {
-                    time: '3',
+                    time: '14:10 - 14:30',
                     desc: 'RISC-V计算软件栈介绍',
                     name: ['张先轶'],
                     post: ['澎峰科技CEO'],
@@ -1121,7 +1190,7 @@ const summitData: any = {
                       '高性能的异构计算软件栈作为底层硬件和上层应用的桥梁，可以扩展芯片的应用范围，提升计算性能。国际主流芯片公司都投入大量资源建设异构计算软件栈，例如Intel oneAPI，NVIDIA CUDA等。本报告将介绍澎峰的PerfXAPI异构计算软件栈在RISC-V的适配和优化工作，特别是底层计算库RVCL项目。',
                   },
                   {
-                    time: '4',
+                    time: '14:30 - 14:50',
                     desc: 'Backporting for OpenJDK8',
                     name: ['章翔'],
                     post: ['中科院软件所工程师'],
@@ -1129,14 +1198,14 @@ const summitData: any = {
                       '此次分享主要介绍OpenJDK8移植RISC64的过程，包括移植的进展和产出，对于接触移植工作的新人来说，更为实际的是分享移植工作所带来的经验，希望能为新人做移植工作带来一些帮助。',
                   },
                   {
-                    time: '5',
+                    time: '14:50 - 15:10',
                     desc: '移植SpiderMonkey到RISC64',
                     name: ['陆亚涵'],
                     post: ['软件所智能软件研究中心工程师'],
                     detail: '关于移植SpiderMonkey到RISC64上的心得',
                   },
                   {
-                    time: '6',
+                    time: '15:10 - 15:30',
                     desc: '即时开展 RISC-V openEuler Linux 内核开发',
                     name: ['吴章金'],
                     post: ['儒码科技CEO'],
@@ -1144,15 +1213,15 @@ const summitData: any = {
                       '泰晓社区近期为 Linux Lab 开源项目新增了 openEuler Linux 内核开发支持，可以极速开展这块的开发，本次分享对此进行介绍。',
                   },
                   {
-                    time: '7',
+                    time: '15:30 - 15:50',
                     desc: '2022年QEMU和Spike开源进展',
-                    name: ['李威威'],
+                    name: ['刘阳'],
                     post: ['中科院软件研究所软件工程师'],
                     detail:
                       '对2022年RISC-V QEMU和Spike社区的开源进展进行介绍。',
                   },
                   {
-                    time: '8',
+                    time: '15:50 - 16:10',
                     desc: 'RISC-V 如何迈向高性能计算',
                     name: ['陆言'],
                     post: ['同济大学学生'],
@@ -1168,14 +1237,14 @@ const summitData: any = {
                 detail: 'exit',
                 children: [
                   {
-                    time: '1',
+                    time: '13:30 - 13:50',
                     desc: 'openEuler社区安全漏洞治理',
                     name: ['魏刚'],
                     post: ['openEuler社区安全委员会主席'],
                     detail: 'openEuler社区安全漏洞治理框架、运作方式等',
                   },
                   {
-                    time: '2',
+                    time: '13:50 - 14:10',
                     desc: 'sysMaster：重新定义服务管理，秒级启动、保障系统24小时在线',
                     name: ['徐小舟'],
                     post: ['华为软件工程师'],
@@ -1183,7 +1252,7 @@ const summitData: any = {
                       '一套超轻量、高可靠性的服务管理程序集合，旨在改进传统的init守护进程。使用Rust语言编写，引入1+1+N架构和可靠性框架，支持自身故障快速检测和自愈，从而提升OS稳定性和业务可靠性。',
                   },
                   {
-                    time: '3',
+                    time: '14:10 - 14:30',
                     desc: '超聚变知识引擎，为智能运维提供核心动能',
                     name: ['吴江涛'],
                     post: ['超聚变数字技术有限公司操作系统架构师'],
@@ -1191,15 +1260,15 @@ const summitData: any = {
                       '超聚变知识引擎（以下简称“知识引擎”）是一个智能化的知识管理系统，将专家知识经验的体系化和数字化，提供面向人和面向机器两种模式的知识应用服务，实现多领域、综合知识在系统中的高效分析和执行闭环。',
                   },
                   {
-                    time: '4',
-                    desc: 'PilotGo 4：openEuler社区原生插件式运维平台',
+                    time: '14:30 - 14:50',
+                    desc: 'PilotGo ：openEuler社区原生插件式运维平台',
                     name: ['杨昭'],
                     post: ['麒麟软件有限公司高级软件工程师'],
                     detail:
                       'PilotGo是openEuler社区原生孵化的运维管理平台，提供大规模集群的主机监控告警、软件包安装升级管理及批量运维操作等功能，保障业务系统安全、稳定运行。同时提供插件机制，对接多种业务场景集群，提供无感知的运维平台切换。',
                   },
                   {
-                    time: '5',
+                    time: '14:50 - 15:10',
                     desc: '软通动力openEuler迁移实践分享',
                     name: ['刘合领'],
                     post: ['软通动力基础软件服务经理'],
@@ -1208,7 +1277,7 @@ const summitData: any = {
                             案例分享`,
                   },
                   {
-                    time: '6',
+                    time: '15:10 - 15:30',
                     desc: '超聚变操作系统迁移思考及实践介绍',
                     name: ['张海亮'],
                     post: ['超聚变数字技术有限公司操作系统架构师'],
@@ -1223,7 +1292,7 @@ const summitData: any = {
                 detail: 'exit',
                 children: [
                   {
-                    time: '1',
+                    time: '13:30 - 13:50',
                     desc: 'openEuler社区基础设施新服务及未来展望',
                     name: ['李超然'],
                     post: ['openEuler Infra SIG开发者'],
@@ -1231,7 +1300,7 @@ const summitData: any = {
                       '社区基础设施是支撑openEuler社区开发工作正常开展的重要基石，openEuler社区基础设施团队通过收集社区诉求，不断革新改进，在确保社区开发工作稳定的同时上线了众多方便、好用的全新开发者服务，包括欧拉统一账号系统、QuickIssue、Forum等社区支撑系统，同时完成了openEuler WSL移植，openEuler lxc移植等相关工作，可以很好的提升开发者的开发效率；本议题将为开发者介绍这些新服务的具体情况以及基础设施团队未来的规划。',
                   },
                   {
-                    time: '2',
+                    time: '13:50 - 14:10',
                     desc: 'openEuler开发体验-开发工具链',
                     name: ['杜开田'],
                     post: ['openEuler 兼容性 SIG Maintainer'],
@@ -1239,7 +1308,14 @@ const summitData: any = {
                       '介绍openEuler开发者工具链最新进展和规划，为openEuler开发者提供高效、便捷的开发体验。',
                   },
                   {
-                    time: '3',
+                    time: '14:10 - 14:30',
+                    desc: '统一构建功能及使用介绍',
+                    name: ['段鹏杰'],
+                    post: ['统一构建系统工程师'],
+                    detail: `统一构建是openEuler社区在2022年主力打造的构建系统，其承担着 提升构建效率，支持软件包定制，镜像定制，面向全场景的使命。本次主要对统一构建系统的基本功能及使用进行讲解，并对后续正在开发的特性进行介绍。`,
+                  },
+                  {
+                    time: '14:30 - 14:50',
                     desc: '基础软件人才与服务发展规划',
                     name: ['赵立超'],
                     post: ['华为技术有限公司人才与服务 sig maintainer'],
@@ -1247,7 +1323,7 @@ const summitData: any = {
                             2.	服务能力构建规划：a)	服务能力；b)	服务工具；c)社区服务论坛`,
                   },
                   {
-                    time: '4',
+                    time: '14:50 - 15:10',
                     desc: '北京航空航天大学openEuler合作实践',
                     name: ['孙海龙', '王域杰'],
                     post: ['北京航空航天大学教授', '北京航空航天大学学生'],
@@ -1255,7 +1331,7 @@ const summitData: any = {
                       '"开源软件在软件技术生态体系中发挥着举足轻重的作用，围绕开源软件的科研和教学工作得到越来越广泛的关注。近年来，openEuler在技术研发、市场推广和开源生态建设方面取得了巨大成功，已成为国内外广泛关注的开源基础软件之一。本报告主要介绍结合openEuler所开展的开源软件方面的科研与教学工作的思路与实践，主要包括泛在操作系统开源生态相关研究以及面向北航本科生的《开源软件开发导论》课程实践。同时，来自北航的学生将结合自身经验为大家分享从认识开源到参与openEuler社区syscare项目进行开源实践的经历和收获。"',
                   },
                   {
-                    time: '5',
+                    time: '15:10 - 15:30',
                     desc: 'openEuler合规风险的治理实践',
                     name: ['郑志鹏'],
                     post: [
@@ -1264,15 +1340,15 @@ const summitData: any = {
                     detail: 'openEuler合规风险的治理实践。',
                   },
                   {
-                    time: '6',
-                    desc: 'openEuler社区License准入体系在维信金科开源合规治理中的应用',
+                    time: '15:30 - 15:50',
+                    desc: 'OpenEuler社区License准入体系在维信金科开源合规治理中的应用',
                     name: ['许渊聪'],
                     post: ['openEuler合规sig maintainer/维信金科合规负责人'],
                     detail:
                       'openEuler社区License准入体系在维信金科开源合规治理中的应用。',
                   },
                   {
-                    time: '7',
+                    time: '15:50 - 16:10',
                     desc: '欧拉Talk-开发者体验反馈大会',
                     name: ['社区开发者/TC'],
                     post: [''],
@@ -1289,6 +1365,136 @@ const summitData: any = {
   },
   guest: {
     title: '演讲嘉宾',
+    guestListKv: {
+      title: '操作系统产业峰会嘉宾',
+      guestList: [
+        {
+          img: niguangnan,
+          name: '倪光南 ',
+          position: ['中国工程院院士'],
+        },
+        {
+          img: meihong,
+          name: '梅宏',
+          position: ['中国科学院院士'],
+        },
+        {
+          img: liaoxiangke,
+          name: '廖湘科',
+          position: ['中国工程院院士'],
+        },
+        {
+          img: wanghuaimin,
+          name: '王怀民',
+          position: ['中国科学院院士'],
+        },
+        {
+          img: wangtao,
+          name: '汪涛',
+          position: ['华为常务董事、ICT基础 设施业务管理委员会主任'],
+        },
+        {
+          img: sunwenlong01,
+          name: '孙文龙',
+          position: ['开放原子开源基金会理事长'],
+        },
+        {
+          img: gaotongqing,
+          name: '高同庆',
+          position: ['中国移动通信集团 有限公司副总经理'],
+        },
+        {
+          img: liangbaojun,
+          name: '梁宝俊',
+          position: ['中国联合网络通信集团有限公司 副总经理'],
+        },
+        {
+          img: lijun,
+          name: '李峻',
+          position: ['中国电信集团有限公司 副总经理'],
+        },
+        {
+          img: jiangdayong01,
+          name: '江大勇',
+          position: ['openEuler社区理事长'],
+        },
+        {
+          img: panyan,
+          name: '潘妍',
+          position: ['国家工业信息安全发展 研究中心 软件所所长'],
+        },
+        {
+          img: wuyanjun,
+          name: '武延军',
+          position: ['openEuler社区副理事长 中国科学院软件研究所副所长'],
+        },
+        {
+          img: baoyungang,
+          name: '包云岗',
+          position: ['中国科学院计算所副所长'],
+        },
+        {
+          img: jimzemlin,
+          name: 'Jim Zemlin',
+          position: ['Executive Director Linux Foundation'],
+        },
+        {
+          img: priyankasharma,
+          name: 'Priyanka Sharma',
+          position: ['CNCF General Manager'],
+        },
+        {
+          img: jonathanbryce,
+          name: 'Jonathan Bryce',
+          position: ['Executive Director, OpenInfra Foundation'],
+        },
+        {
+          img: christophersimmons,
+          name: 'Christopher  S. Simmons 博士',
+          position: ['OpenHPC TSC Chair'],
+        },
+        {
+          img: mengjianyi,
+          name: '孟建熠',
+          position: ['平头哥半导体 有限公司副总裁'],
+        },
+        {
+          img: pengjianying,
+          name: '彭剑英',
+          position: ['芯来科技 CEO'],
+        },
+        {
+          img: xutao,
+          name: '徐滔',
+          position: ['赛昉科技创始人兼CEO'],
+        },
+        {
+          img: zhangxianyi01,
+          name: '张先轶',
+          position: ['澎峰(北京)科技有限公司 创始人&CEO'],
+        },
+        {
+          img: fengguanlin01,
+          name: '冯冠霖',
+          position: ['开放原子开源 基金会秘书长'],
+        },
+        {
+          img: liujingjuan,
+          name: '刘京娟',
+          position: ['开放原子开源 基金会副秘书长'],
+        },
+        {
+          img: qiuchengfeng01,
+          name: '邱成锋',
+          position: ['openEuler社区秘书长'],
+        },
+        {
+          img: xiongwei01,
+          name: '熊伟',
+          position: ['openEuler 社区技术委员会委员'],
+        },
+      ],
+    },
     guestListMain: {
       title: 'openEuler Summit 2022主论坛嘉宾',
       guestList: [
@@ -1310,7 +1516,52 @@ const summitData: any = {
         {
           img: hannaiping,
           name: '韩乃平',
-          position: ['openEuler社区副理事长'],
+          position: ['openEuler社区副理事长、麒麟软件有限公司高级副总经理'],
+        },
+        {
+          img: liuwenqing,
+          name: '刘文清',
+          position: ['湖南麒麟信安科技股份有限公司总裁'],
+        },
+        {
+          img: wuyanjun,
+          name: '武延军',
+          position: ['湖南麒麟信安科技股份有限公司备份'],
+        },
+        {
+          img: zhanglei,
+          name: '张磊',
+          position: ['统信软件高级副总经理、CTO'],
+        },
+        {
+          img: caizhimin,
+          name: '蔡志旻',
+          position: ['润和软件云计算事业部总经理'],
+        },
+        {
+          img: gaopei,
+          name: '高培',
+          position: ['软通动力信息技术（集团）股份有限公司副总裁'],
+        },
+        {
+          img: jiangzhenhua,
+          name: '姜振华',
+          position: ['超聚变操作系统总经理'],
+        },
+        {
+          img: lipeiyuan,
+          name: '李培源',
+          position: ['中国电信云计算分公司产品管理专家'],
+        },
+        {
+          img: zhangshenju,
+          name: '张胜举',
+          position: ['中国移动云能力中心IaaS产品部副总经理'],
+        },
+        {
+          img: zhongxin,
+          name: '钟忻',
+          position: ['联通数科云计算事业部基础研发部总监'],
         },
         {
           img: yangxiaocheng,
@@ -1338,14 +1589,14 @@ const summitData: any = {
           position: ['国能信控互联网技术有限公司副总经理'],
         },
         {
-          img: jiangzhenhua,
-          name: '姜振华',
-          position: ['超聚变操作系统总经理'],
-        },
-        {
           img: zhangshuai,
           name: '张帅',
           position: ['新浪微博技术专家'],
+        },
+        {
+          img: qiuchengfeng,
+          name: '邱成锋',
+          position: ['openEuler社区秘书长'],
         },
         {
           img: xiongwei,
@@ -1356,11 +1607,6 @@ const summitData: any = {
           img: wufengguang,
           name: '吴峰光',
           position: ['openEuler技术委员会委员'],
-        },
-        {
-          img: qiuchengfeng,
-          name: '邱成锋',
-          position: ['openEuler社区秘书长'],
         },
       ],
     },
@@ -1635,6 +1881,14 @@ const summitData: any = {
             IMG_DARK: csiaDark,
           },
           {
+            IMG: ccf,
+            IMG_DARK: ccfDark,
+          },
+          {
+            IMG: lvse,
+            IMG_DARK: lvseDark,
+          },
+          {
             IMG: zhongguan,
             IMG_DARK: zhongguanDark,
           },
@@ -1654,7 +1908,7 @@ const summitData: any = {
         ],
       },
       {
-        subTitle: 'openEuler Summit 2022 战略合作单位',
+        subTitle: 'openEuler Summit 2022 战略共建单位',
         logoList: [
           {
             IMG: huawei,
@@ -1663,7 +1917,7 @@ const summitData: any = {
         ],
       },
       {
-        subTitle: 'openEuler Summit 2022 联合主办单位',
+        subTitle: 'openEuler Summit 2022 联合共建单位',
         logoList: [
           {
             IMG: qilin,
@@ -1684,7 +1938,7 @@ const summitData: any = {
         ],
       },
       {
-        subTitle: 'openEuler Summit 2022 协办单位',
+        subTitle: 'openEuler Summit 2022 协办共建单位',
         logoList: [
           {
             IMG: iscas,
@@ -1701,6 +1955,43 @@ const summitData: any = {
           {
             IMG: intel,
             IMG_DARK: intelDark,
+          },
+        ],
+      },
+      {
+        subTitle: 'openEuler Summit 2022 支持共建单位',
+        logoList: [
+          {
+            IMG: phytium,
+            IMG_DARK: phytiumDark,
+          },
+          {
+            IMG: bes,
+            IMG_DARK: besDark,
+          },
+          {
+            IMG: intewell,
+            IMG_DARK: intewellDark,
+          },
+          {
+            IMG: ysemi,
+            IMG_DARK: ysemiDark,
+          },
+          {
+            IMG: tongtech,
+            IMG_DARK: tongtechDark,
+          },
+          {
+            IMG: ccb,
+            IMG_DARK: ccbDark,
+          },
+          {
+            IMG: shopen,
+            IMG_DARK: shopenDark,
+          },
+          {
+            IMG: turbolinux,
+            IMG_DARK: turbolinuxDark,
           },
         ],
       },
@@ -1863,14 +2154,21 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="exhibition">
+    <!-- <div class="exhibition">
       <h3>线上展厅</h3>
       <div class="exhibition-img">
-        <img :src="exhibitionImg" alt="">
+        <img :src="exhibitionImg" alt="" />
       </div>
-    </div>
+    </div> -->
     <div class="guest">
       <h3 class="guest-title">{{ summitData.guest.title }}</h3>
+      <h4>{{ summitData.guest.guestListKv.title }}</h4>
+      <SummitGuests
+        :lecturer-list="summitData.guest.guestListKv.guestList"
+        shape="circle"
+        :web-columns-num="4"
+        :mobile-columns-num="2"
+      />
       <h4>{{ summitData.guest.guestListMain.title }}</h4>
       <SummitGuests
         :lecturer-list="summitData.guest.guestListMain.guestList"
@@ -2084,53 +2382,6 @@ onMounted(() => {
         //   }
         // }
       }
-      // 暂时隐藏时间
-      &:nth-of-type(2) {
-        .other {
-          :deep(.data-item) {
-            grid-template-columns: 600px 445px;
-            padding-left: 192px;
-            @media screen and (max-width: 1328px) {
-              grid-template-columns: 500px 445px;
-            }
-            @media screen and (max-width: 1320px) {
-              padding-left: 80px;
-            }
-            @media screen and (max-width: 1100px) {
-              padding-left: 0;
-              grid-template-columns: 348px;
-              .box {
-                grid-column-start: 1;
-                grid-column-end: 2;
-              }
-            }
-            @media screen and (max-width: 820px) {
-              padding-left: 2vw;
-            }
-            @media screen and (max-width: 420px) {
-              grid-template-columns: auto;
-            }
-            .show-more {
-              color: var(--o-color-brand1);
-            }
-            .time {
-              display: none;
-            }
-            .desc {
-              display: block;
-              &:hover {
-                color: var(--o-color-brand1);
-              }
-            }
-            .name-box {
-              @media screen and (max-width: 1100px) {
-                grid-column-end: auto !important;
-              }
-            }
-          }
-        }
-      }
-      // 暂时隐藏时间
       .meeting-title {
         font-weight: 400;
         color: var(--o-color-text1);
@@ -2295,9 +2546,9 @@ onMounted(() => {
     }
   }
 }
-.exhibition{
+.exhibition {
   width: 100%;
-    margin-top: var(--o-spacing-h1);
+  margin-top: var(--o-spacing-h1);
   @media (max-width: 767px) {
     margin-top: var(--o-spacing-h2);
   }
@@ -2314,7 +2565,7 @@ onMounted(() => {
       line-height: var(--o-line-height-h8);
     }
   }
-  img{
+  img {
     width: 100%;
   }
 }
@@ -2374,13 +2625,6 @@ onMounted(() => {
       @media screen and (max-width: 768px) {
         margin-top: var(--o-spacing-h5);
       }
-      .picture-panel {
-        max-width: 1053px;
-        grid-template-columns: repeat(3, minmax(82px, 1fr));
-        @media screen and (max-width: 768px) {
-          grid-template-columns: repeat(2, minmax(82px, 1fr));
-        }
-      }
     }
     &:nth-of-type(2) {
       .picture-panel {
@@ -2403,8 +2647,10 @@ onMounted(() => {
         }
       }
     }
+    &:nth-of-type(1),
     &:nth-of-type(4),
-    &:nth-of-type(5) {
+    &:nth-of-type(5),
+    &:nth-of-type(6) {
       .picture-panel {
         @media screen and (max-width: 1416px) {
           max-width: 1053px;
