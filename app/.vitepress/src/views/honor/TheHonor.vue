@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useCommon } from '@/stores/common';
+import { ref } from 'vue';
+// import { useCommon } from '@/stores/common';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
@@ -28,10 +28,10 @@ import IconChecked from '~icons/app/icon-checked.svg';
 import IconUnchecked from '~icons/app/icon-unchecked.svg';
 import IconRight from '~icons/app/icon-arrow-right.svg';
 
-const commonStore = useCommon();
-const isDark = computed(() => {
-  return commonStore.theme === 'dark' ? true : false;
-});
+// const commonStore = useCommon();
+// const isDark = computed(() => {
+//   return commonStore.theme === 'dark' ? true : false;
+// });
 const honorData = {
   title: '社区荣誉',
   detailBtn: '了解详情',
@@ -302,7 +302,7 @@ function clickDetail(index: number) {
               <OIcon class="detail-icon"><IconRight /></OIcon>
             </template>
           </OButton>
-          <img :src="bgImg" alt="" />
+          <img class="bg-right" :src="bgImg" alt="" />
           <div
             v-if="isShow === index"
             class="certificate"
@@ -331,10 +331,10 @@ function clickDetail(index: number) {
               <OIcon class="detail-icon"><IconRight /></OIcon>
             </template>
           </OButton>
-          <img v-if="!isDark" :src="bgImg" alt="" />
+          <img class="bg-right" :src="bgImg" alt="" />
         </OCard>
       </div>
-      <div class="award-box">
+      <div v-show="thisYear === '2022'" class="award-box">
         <h2 v-for="item in honorData.award.title" :key="item">{{ item }}</h2>
         <div class="award-personal">
           <h5>{{ honorData.award.personal.title }}</h5>
@@ -512,12 +512,14 @@ function clickDetail(index: number) {
       }
       p {
         max-width: 200px;
+        min-height: 52px;
         font-size: var(--o-font-size-h7);
         line-height: var(--o-line-height-h7);
         color: var(--o-color-text1);
         font-weight: 500;
         @media (max-width: 768px) {
           max-width: 100%;
+          min-height: auto;
           font-size: var(--o-font-size-text);
           line-height: var(--o-line-height-text);
         }
@@ -536,7 +538,7 @@ function clickDetail(index: number) {
           font-size: 16px;
         }
       }
-      img {
+      .bg-right {
         position: absolute;
         width: 36px;
         right: 0;
@@ -557,11 +559,12 @@ function clickDetail(index: number) {
         justify-content: center;
         align-items: center;
         img {
-          width: 50%;
+          height: 72vh;
           position: relative;
-        }
-        .img0 {
-          width: 30%;
+          @media (max-width: 768px) {
+            width: 80%;
+            height: auto;
+          }
         }
       }
     }
