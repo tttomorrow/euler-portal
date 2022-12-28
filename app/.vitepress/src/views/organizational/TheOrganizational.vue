@@ -54,17 +54,7 @@ const organizationalData = {
       title: '2023-2024 年 openEuler 委员会',
       list: [
         {
-          title: '委员',
-          personalList: [
-            {
-              img: jiangdayong,
-              name: '江大勇',
-              position: ['华为技术有限公司'],
-            },
-          ],
-        },
-        {
-          title: '委员',
+          title: '主席',
           personalList: [
             {
               img: jiangdayong,
