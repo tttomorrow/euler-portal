@@ -131,17 +131,23 @@ onMounted(() => {
         }
       }
     }
+    // &:nth-of-type(1){
+    //   margin-top: 20px;
+    // }
     p {
       font-size: var(--o-spacing-h5);
       color: var(--o-color-brand1);
       text-align: center;
-      margin-top: 20px;
+      margin-top: 8px;
       @media (max-width: 780px) {
-        margin-top: 10px;
+        margin-top: 6px;
       }
     }
     &-title {
-      margin-bottom: var(--o-spacing-h4);
+      margin-bottom: var(--o-spacing-h8);
+      &:nth-last-of-type(1) {
+        margin-bottom: var(--o-spacing-h4);
+      }
       p {
         color: var(--o-color-text1);
         font-size: var(--o-font-size-text);
@@ -153,7 +159,7 @@ onMounted(() => {
         }
       }
       @media (max-width: 780px) {
-        margin-bottom: var(--o-spacing-h7);
+        margin-bottom: 0;
       }
     }
   }

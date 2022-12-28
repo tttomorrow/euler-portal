@@ -1,5 +1,13 @@
 export default [
   {
+    label: '组织架构',
+    link: 'organizational',
+  },
+  {
+    label: '成员单位',
+    link: 'member',
+  },
+  {
     label: '政策和规则',
     link: '',
     children: [

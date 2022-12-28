@@ -231,7 +231,7 @@ const honorData = {
     },
   },
   notice:
-    '注：根据openEuler社区评奖规则，依据2021年12月1日 ~ 2022年11月30日的贡献进行评选，且展示不分先后顺序',
+    '注：根据openEuler社区评奖规则，依据2021年12月1日 ~ 2022年11月30日的贡献进行评选，且展示不分先后顺序。',
 };
 const thisYear = ref('2022');
 const isShow = ref(-1);
@@ -334,7 +334,7 @@ function clickDetail(index: number) {
           <img class="bg-right" :src="bgImg" alt="" />
         </OCard>
       </div>
-      <!-- <div v-show="thisYear === '2022'" class="award-box">
+      <div v-show="thisYear === '2022'" class="award-box">
         <h2 v-for="item in honorData.award.title" :key="item">{{ item }}</h2>
         <div class="award-personal">
           <h5>{{ honorData.award.personal.title }}</h5>
@@ -395,7 +395,7 @@ function clickDetail(index: number) {
             </OCard>
           </div>
         </div>
-      </div> -->
+      </div>
       <p class="notice">{{ honorData.notice }}</p>
     </div>
   </AppContent>

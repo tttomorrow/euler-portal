@@ -162,7 +162,7 @@ import zhangshenju from '@/assets/category/summit/summit2022/guests/zhangshenju.
 import zhongxin from '@/assets/category/summit/summit2022/guests/zhongxin.png';
 import liuwenqing from '@/assets/category/summit/summit2022/guests/liuwenqing.png';
 
-// import exhibitionImg from '@/assets/category/summit/summit2022/exhibition.png';
+import exhibitionImg from '@/assets/category/summit/summit2022/exhibition.png';
 
 import IconTime from '~icons/app/icon-time.svg';
 
@@ -1363,6 +1363,83 @@ const summitData: any = {
       },
     ],
   },
+  exhibition: {
+    title: '线上展厅',
+    linkList: [
+      {
+        name: 'openEule开源操作系统整体介绍',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/1-openEule开源操作系统整体介绍.mp4',
+      },
+      {
+        name: '完备的嵌入式生态',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/02-创新技术-完备的嵌入式生态.mp4',
+      },
+      {
+        name: '混合关键性系统',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/03-创新技术-混合关键性系统.mp4',
+      },
+      {
+        name: '高精度智能地理巡检',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/04-创新技术-高精度智能地理巡检.mp4',
+      },
+      {
+        name: '极致可靠的系统服务管理方案',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/05-创新技术-极致可靠的系统服务管理方案.mp4',
+      },
+      {
+        name: '业务无感的系统热修复',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/06-创新技术-业务无感的系统热修复.mp4',
+      },
+      {
+        name: '安全高效的可信云主机',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/07-创新技术-安全高效的可信云主机.mp4',
+      },
+      {
+        name: '高效迁移方案',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/08-创新技术-高效迁移方案.mp4',
+      },
+      {
+        name: '云上资源利用率倍增',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/09-创新技术-云上资源利用率倍增.mp4',
+      },
+      {
+        name: '原声CICD解决方案',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/10-创新技术-原声CICD解决方案.mp4',
+      },
+      {
+        name: 'openEuler开源社区',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/12-openEuler开源社区.mp4',
+      },
+      {
+        name: '麒麟软件',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/13-麒麟软件-银河麒麟高级服务器操作系统V10高性能高安全高可用.mp4',
+      },
+      {
+        name: '统信软件',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/14-统信软件-统信服务器操作系统创新生态.mp4',
+      },
+      {
+        name: '麒麟信安',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/15-麒麟信安-openEuler生态多场景应用的优选.mp4',
+      },
+      {
+        name: '超聚变',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/16-超聚变-可信多样性算力操作系统.mp4',
+      },
+      {
+        name: '中科院软件所',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/17-中科院软件所-傲空间 一个真正属于您的数字空间.mp4',
+      },
+      {
+        name: '润和软件',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/19-润和软件-企业级安全操作系统服务器版.mp4',
+      },
+      {
+        name: '中科创达',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/20-中科创达-工业分布式软总线智能管理系统.mp4',
+      },
+    ],
+  },
   guest: {
     title: '演讲嘉宾',
     guestListKv: {
@@ -2034,11 +2111,22 @@ const summitData: any = {
   },
 };
 const tabType = ref(['main', 'main']);
-const time = ref('28');
+const time = ref('29');
 const otherTabType = ref([0, 0]);
 function clickEntry() {
   router.go('/zh/celebrating/');
 }
+// video 事件
+const videoDialog = ref(false);
+const videoLink = ref('');
+const handleCloseVideo = () => {
+  videoDialog.value = false;
+  videoLink.value = '';
+};
+const videoClickBtn = (path: string) => {
+  videoLink.value = path;
+  videoDialog.value = true;
+};
 onMounted(() => {
   AOS.init({
     offset: 50,
@@ -2154,12 +2242,37 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <!-- <div class="exhibition">
-      <h3>线上展厅</h3>
+    <div class="exhibition">
+      <h3>{{ summitData.exhibition.title }}</h3>
       <div class="exhibition-img">
         <img :src="exhibitionImg" alt="" />
+        <a
+          v-for="item in summitData.exhibition.linkList"
+          :key="item.name"
+          href="#"
+          :name="item.name"
+          @click="videoClickBtn(item.link)"
+        ></a>
+        <div v-if="videoDialog" class="video-box">
+          <ODialog
+            v-model="videoDialog"
+            :before-close="handleCloseVideo"
+            :show-close="false"
+            lock-scroll
+            close-on-press-escape
+            close-on-click-modal
+            destroy-on-close
+            width="800px"
+          >
+            <div class="video-center">
+              <video class="exhibition-video" width="100%" controls autoplay>
+                <source :src="videoLink" />
+              </video>
+            </div>
+          </ODialog>
+        </div>
       </div>
-    </div> -->
+    </div>
     <div class="guest">
       <h3 class="guest-title">{{ summitData.guest.title }}</h3>
       <h4>{{ summitData.guest.guestListKv.title }}</h4>
@@ -2362,7 +2475,7 @@ onMounted(() => {
         margin-top: var(--o-spacing-h4);
       }
       &:nth-of-type(1) {
-        // order: 2;
+        order: 2;
         .el-tabs__active-bar {
           display: none;
         }
@@ -2549,6 +2662,7 @@ onMounted(() => {
 .exhibition {
   width: 100%;
   margin-top: var(--o-spacing-h1);
+  position: relative;
   @media (max-width: 767px) {
     margin-top: var(--o-spacing-h2);
   }
@@ -2565,8 +2679,251 @@ onMounted(() => {
       line-height: var(--o-line-height-h8);
     }
   }
-  img {
-    width: 100%;
+  .exhibition-img {
+    position: relative;
+    img {
+      width: 100%;
+      @media (max-width: 1416px) {
+        height: 52.2vw;
+      }
+    }
+    a {
+      position: absolute;
+      &:nth-of-type(1) {
+        top: 0;
+        width: 15%;
+        height: 7%;
+        left: 10%;
+        @media screen and (max-width: 1416px) {
+          top: 0.5vw;
+          width: 14%;
+          height: 3vw;
+          left: 10vw;
+        }
+      }
+      &:nth-of-type(2) {
+        top: 46%;
+        width: 11%;
+        height: 4%;
+        left: 29%;
+        @media screen and (max-width: 1416px) {
+          top: 24.1vw;
+          width: 11%;
+          height: 2vw;
+          left: 28vw;
+        }
+      }
+      &:nth-of-type(3) {
+        top: 35%;
+        width: 10%;
+        height: 4%;
+        left: 49%;
+        @media screen and (max-width: 1416px) {
+          top: 18.1vw;
+          width: 10%;
+          height: 2vw;
+          left: 47vw;
+        }
+      }
+      &:nth-of-type(4) {
+        top: 22%;
+        width: 12%;
+        height: 4%;
+        left: 75.6%;
+        @media screen and (max-width: 1416px) {
+          top: 11.5vw;
+          width: 12%;
+          height: 2vw;
+          left: 73vw;
+        }
+      }
+      &:nth-of-type(5) {
+        top: 22%;
+        width: 16%;
+        height: 4%;
+        left: 58.2%;
+        @media screen and (max-width: 1416px) {
+          top: 11.5vw;
+          width: 15%;
+          height: 2vw;
+          left: 56vw;
+        }
+      }
+      &:nth-of-type(6) {
+        top: 41%;
+        width: 12%;
+        height: 4%;
+        left: 8%;
+        @media screen and (max-width: 1416px) {
+          top: 21.4vw;
+          width: 13%;
+          height: 2vw;
+          left: 7vw;
+        }
+      }
+      &:nth-of-type(7) {
+        top: 25%;
+        width: 12%;
+        height: 4%;
+        left: 30%;
+        @media screen and (max-width: 1416px) {
+          top: 13.1vw;
+          width: 13%;
+          height: 2vw;
+          left: 28vw;
+        }
+      }
+      &:nth-of-type(8) {
+        top: 0.6%;
+        width: 10%;
+        height: 4%;
+        left: 51%;
+        @media screen and (max-width: 1416px) {
+          top: 0.1vw;
+          width: 9%;
+          height: 2.4vw;
+          left: 49.6vw;
+        }
+      }
+      &:nth-of-type(9) {
+        top: 0.6%;
+        width: 11%;
+        height: 4%;
+        left: 32.6%;
+        @media screen and (max-width: 1416px) {
+          top: 0.1vw;
+          width: 12%;
+          height: 2.4vw;
+          left: 31.6vw;
+        }
+      }
+      &:nth-of-type(10) {
+        top: 0.6%;
+        width: 13%;
+        height: 4%;
+        left: 67.6%;
+        @media screen and (max-width: 1416px) {
+          top: 0.1vw;
+          width: 12%;
+          height: 2.4vw;
+          left: 65.6vw;
+        }
+      }
+      &:nth-of-type(11) {
+        top: 58.6%;
+        width: 13%;
+        height: 4%;
+        left: 73.6%;
+        @media screen and (max-width: 1416px) {
+          top: 30.6vw;
+          width: 12%;
+          height: 2vw;
+          left: 71vw;
+        }
+      }
+      &:nth-of-type(12) {
+        top: 66.6%;
+        width: 17%;
+        height: 9%;
+        left: 17.6%;
+        @media screen and (max-width: 1416px) {
+          top: 35.1vw;
+          width: 15%;
+          height: 4vw;
+          left: 18vw;
+        }
+      }
+      &:nth-of-type(13) {
+        top: 66.6%;
+        width: 17%;
+        height: 9%;
+        left: 37.6%;
+        @media screen and (max-width: 1416px) {
+          top: 35.1vw;
+          width: 16%;
+          height: 4vw;
+          left: 37vw;
+        }
+      }
+      &:nth-of-type(14) {
+        top: 66.6%;
+        width: 17%;
+        height: 9%;
+        left: 57.6%;
+        @media screen and (max-width: 1416px) {
+          top: 35.1vw;
+          width: 16%;
+          height: 4vw;
+          left: 56vw;
+        }
+      }
+      &:nth-of-type(15) {
+        top: 66.6%;
+        width: 17%;
+        height: 9%;
+        left: 77.6%;
+        @media screen and (max-width: 1416px) {
+          top: 35.1vw;
+          width: 16%;
+          height: 4vw;
+          left: 76vw;
+        }
+      }
+      &:nth-of-type(16) {
+        top: 82.6%;
+        width: 17%;
+        height: 9%;
+        left: 16.6%;
+        @media screen and (max-width: 1416px) {
+          top: 43.3vw;
+          width: 16%;
+          height: 4vw;
+          left: 17vw;
+        }
+      }
+      &:nth-of-type(17) {
+        top: 82.6%;
+        width: 17%;
+        height: 9%;
+        left: 57.6%;
+        @media screen and (max-width: 1416px) {
+          top: 43.3vw;
+          width: 16%;
+          height: 4vw;
+          left: 56vw;
+        }
+      }
+      &:nth-of-type(18) {
+        top: 82.6%;
+        width: 17%;
+        height: 9%;
+        left: 77.6%;
+        @media screen and (max-width: 1416px) {
+          top: 43.3vw;
+          width: 16%;
+          height: 4vw;
+          left: 76vw;
+        }
+      }
+    }
+    .video-box {
+      :deep(.el-dialog__header) {
+        display: none;
+      }
+      :deep(.el-dialog__body) {
+        padding: 0;
+      }
+      .exhibition-video {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+      }
+      :deep(.el-dialog) {
+        @media screen and (max-width: 875px) {
+          width: 90% !important;
+        }
+      }
+    }
   }
 }
 .guest {
