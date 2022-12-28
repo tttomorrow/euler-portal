@@ -172,11 +172,11 @@ export default {
           PATH: 'https://datastat.openeuler.org/zh/overview',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
-        // {
-        //   NAME: '社区荣誉',
-        //   ID: 'honor',
-        //   PATH: '/community/honor/',
-        // },
+        {
+          NAME: '社区荣誉',
+          ID: 'honor',
+          PATH: '/community/honor/',
+        },
       ],
       CLASS: ['contribution', 'conduct', 'mailing-list', 'certification'],
     },
