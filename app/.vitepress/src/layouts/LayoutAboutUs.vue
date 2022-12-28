@@ -49,6 +49,11 @@ const isCustomLayout = computed(() => {
   return frontmatter.value['custom-layout'];
 });
 
+// 控制右侧锚点导航隐藏
+const isHidden = computed(() => {
+  return frontmatter.value['anchor'];
+});
+
 const isIconShown = computed(() => {
   return commonStore.iconMenuShow;
 });
@@ -92,6 +97,7 @@ const handleNodeClick = (node: any) => {
           v-else
           class="sidebar-title"
           :class="[{ active: item.link === activeId }]"
+          @click="handleItemClick(item.link)"
         >
           {{ item.label }}
         </p>
@@ -140,7 +146,7 @@ const handleNodeClick = (node: any) => {
 
   <!-- 内容区域 -->
   <div class="about-wrapper" :class="{ 'about-markdown': !isCustomLayout }">
-    <DocAnchor class="about-anchor" />
+    <DocAnchor class="about-anchor" :class="isHidden ? 'is-hidden' : ''" />
     <Content
       class="about-content"
       :class="{ 'custom-layout': isCustomLayout }"
@@ -335,6 +341,9 @@ const handleNodeClick = (node: any) => {
     // @media screen and (max-width: 1280px) {
     //   right: 0;
     // }
+  }
+  .is-hidden {
+    display: none;
   }
   .about-content {
     max-width: 1380px;

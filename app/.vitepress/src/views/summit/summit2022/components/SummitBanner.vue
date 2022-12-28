@@ -17,8 +17,8 @@ import bannerSummitKvMo from '@/assets/category/summit/summit2022/summit-kv-mo.p
 
 const summitBanner = [
   {
-    pcBanner: bannerSummitKv,
-    moBanner: bannerSummitKvMo,
+    pcBanner: banner,
+    moBanner: bannerMo,
     link: '',
     id: '',
     targetTap: 1,
@@ -27,8 +27,8 @@ const summitBanner = [
     btn: '',
   },
   {
-    pcBanner: banner,
-    moBanner: bannerMo,
+    pcBanner: bannerSummitKv,
+    moBanner: bannerSummitKvMo,
     link: '',
     id: '',
     targetTap: 1,
