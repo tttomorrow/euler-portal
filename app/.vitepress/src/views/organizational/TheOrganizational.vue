@@ -505,6 +505,7 @@ onUnmounted(() => {
         line-height: var(--o-line-height-h7);
         color: var(--o-color-text1);
         font-weight: 500;
+        margin-bottom: 16px;
       }
       .lecturer-list {
         margin: 0 auto;
@@ -554,21 +555,24 @@ onUnmounted(() => {
     margin-top: var(--o-spacing-h2);
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 76px;
-    @media (max-width: 1796px) {
+    gap: 32px;
+    @media screen and (max-width: 1830px) {
       grid-template-columns: repeat(5, 1fr);
     }
-    @media (max-width: 1645px) {
+    @media screen and (max-width: 1696px) {
       grid-template-columns: repeat(4, 1fr);
     }
-    @media (max-width: 1465px) {
+    @media screen and (max-width: 1520px) {
       grid-template-columns: repeat(3, 1fr);
     }
-    @media (max-width: 1175px) {
+    @media screen and (max-width: 1348px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    @media (max-width: 1068px) {
+    @media screen and (max-width: 1099px) {
       grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (max-width: 816px) {
+      grid-template-columns: repeat(3, 1fr);
     }
     @media (max-width: 780px) {
       margin-top: var(--o-spacing-h5);
