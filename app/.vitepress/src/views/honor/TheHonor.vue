@@ -334,7 +334,7 @@ function clickDetail(index: number) {
           <img class="bg-right" :src="bgImg" alt="" />
         </OCard>
       </div>
-      <div v-show="thisYear === '2022'" class="award-box">
+      <!-- <div v-show="thisYear === '2022'" class="award-box">
         <h2 v-for="item in honorData.award.title" :key="item">{{ item }}</h2>
         <div class="award-personal">
           <h5>{{ honorData.award.personal.title }}</h5>
@@ -395,7 +395,7 @@ function clickDetail(index: number) {
             </OCard>
           </div>
         </div>
-      </div>
+      </div> -->
       <p class="notice">{{ honorData.notice }}</p>
     </div>
   </AppContent>
@@ -488,7 +488,7 @@ function clickDetail(index: number) {
 .content {
   margin-top: var(--o-spacing-h3);
   @media (max-width: 768px) {
-    margin-top: var(--o-spacing-h5);
+    margin-top: 0;
   }
   .certificate-box {
     display: grid;
@@ -852,6 +852,9 @@ function clickDetail(index: number) {
   }
   .content .award-box .award-team .team-box .team-item {
     background-image: url(/.vitepress/src/assets/category/honor/bg3-dark.png);
+  }
+  img {
+    filter: brightness(80%) grayscale(20%) contrast(1.2);
   }
 }
 </style>
