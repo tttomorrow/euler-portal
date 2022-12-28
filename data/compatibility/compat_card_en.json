@@ -15530,5 +15530,24 @@
     "chipModel": "SAS-3 3108",
     "item": "",
     "downloadLink": "inbox"
+  },
+  {
+    "vendorID": "1000",
+    "deviceID": "0017",
+    "svID": "19e5",
+    "ssID": "d213",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS SP1",
+    "driverName": "megaraid_sas",
+    "version": "07.714.04.00-rc1",
+    "type": "RAID",
+    "date": "2022.11.26",
+    "sha256": "22b36be68ffbfdf24f39a418a76bc9a301471b794d596f49600d731bc91b0cab",
+    "driverSize": "74K",
+    "chipVendor": "Avago",
+    "boardModel": "SR150-M",
+    "chipModel": "SAS3408",
+    "item": "03033FAT",
+    "downloadLink": "inbox"
   }
 ]
