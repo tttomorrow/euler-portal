@@ -7911,7 +7911,7 @@
       "commitID": "",
       "mainboardModel": "H12DSG-O-CPU",
       "biosUefi": "2.4",
-      "cpu": "AMD MILAN",
+      "cpu": "AMD 米兰",
       "ram": "16*16G DIMMS",
       "portsBusTypes": "X16 PCI Express 4 X16",
       "videoAdapter": "ASPEED Graphics Family",
@@ -7926,7 +7926,7 @@
     "architecture": "x86_64",
     "date": "2022/12/23",
     "friendlyLink": "https://support.xfusion.com/support/#/zh/home",
-    "boardCards": "",
+    "boardCards": [],
     "compatibilityConfiguration": {
       "productInformation": "https://support.xfusion.com/support/#/zh/home",
       "certificationTime": "2022/12/23",
