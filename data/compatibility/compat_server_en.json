@@ -7926,7 +7926,7 @@
     "architecture": "x86_64",
     "date": "2022/12/23",
     "friendlyLink": "https://support.xfusion.com/support/#/zh/home",
-    "boardCards": "",
+    "boardCards": [],
     "compatibilityConfiguration": {
       "productInformation": "https://support.xfusion.com/support/#/zh/home",
       "certificationTime": "2022/12/23",
