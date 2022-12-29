@@ -66,6 +66,7 @@ export default [
       {
         img_light: qilinSoft_light,
         img_dark: qilinSoft_dark,
+        noIcon: true,
       },
       {
         img_light: tongxin_light,
@@ -166,6 +167,7 @@ export default [
       {
         img_light: iscas_light,
         img_dark: iscas_dark,
+        noIcon: true,
       },
     ],
   },
