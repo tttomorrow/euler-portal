@@ -23,7 +23,7 @@ const config: UserConfig = {
       {
         name: 'keywords',
         content:
-          'openEuler,开源Linux系统,linux开源社区,开源社区,Linux迁移,EulerOS',
+          'openEuler,开源Linux系统,linux开源社区,开源社区,Linux迁移,openEuler社区官网',
       },
     ],
     [
