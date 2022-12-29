@@ -6,7 +6,7 @@ anchor: true
 ---
 
 <script setup lang="ts">
-  import TheOrganizational from "@/views/organizational/TheOrganizational.vue"
+  import TheOrganization from "@/views/organization/TheOrganization.vue"
 </script>
 
-<TheOrganizational />
+<TheOrganization />

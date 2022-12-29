@@ -1431,6 +1431,10 @@ const summitData: any = {
         link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/17-中科院软件所-傲空间 一个真正属于您的数字空间.mp4',
       },
       {
+        name: '软通动力',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/18-软通动力-欧拉一站式服务解决方案_1.mp4',
+      },
+      {
         name: '润和软件',
         link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/19-润和软件-企业级安全操作系统服务器版.mp4',
       },
@@ -2697,8 +2701,8 @@ onMounted(() => {
         @media screen and (max-width: 1416px) {
           top: 0.5vw;
           width: 14%;
-          height: 3vw;
-          left: 10vw;
+          height: 2.5vw;
+          left: 10%;
         }
       }
       &:nth-of-type(2) {
@@ -2710,7 +2714,7 @@ onMounted(() => {
           top: 24.1vw;
           width: 11%;
           height: 2vw;
-          left: 28vw;
+          left: 29%;
         }
       }
       &:nth-of-type(3) {
@@ -2722,7 +2726,7 @@ onMounted(() => {
           top: 18.1vw;
           width: 10%;
           height: 2vw;
-          left: 47vw;
+          left: 49%;
         }
       }
       &:nth-of-type(4) {
@@ -2732,9 +2736,9 @@ onMounted(() => {
         left: 75.6%;
         @media screen and (max-width: 1416px) {
           top: 11.5vw;
-          width: 12%;
+          width: 11%;
           height: 2vw;
-          left: 73vw;
+          left: 76%;
         }
       }
       &:nth-of-type(5) {
@@ -2744,9 +2748,9 @@ onMounted(() => {
         left: 58.2%;
         @media screen and (max-width: 1416px) {
           top: 11.5vw;
-          width: 15%;
+          width: 16%;
           height: 2vw;
-          left: 56vw;
+          left: 58%;
         }
       }
       &:nth-of-type(6) {
@@ -2756,9 +2760,9 @@ onMounted(() => {
         left: 8%;
         @media screen and (max-width: 1416px) {
           top: 21.4vw;
-          width: 13%;
+          width: 12%;
           height: 2vw;
-          left: 7vw;
+          left: 8%;
         }
       }
       &:nth-of-type(7) {
@@ -2768,9 +2772,9 @@ onMounted(() => {
         left: 30%;
         @media screen and (max-width: 1416px) {
           top: 13.1vw;
-          width: 13%;
+          width: 12%;
           height: 2vw;
-          left: 28vw;
+          left: 30%;
         }
       }
       &:nth-of-type(8) {
@@ -2782,7 +2786,7 @@ onMounted(() => {
           top: 0.1vw;
           width: 9%;
           height: 2.4vw;
-          left: 49.6vw;
+          left: 51.6%;
         }
       }
       &:nth-of-type(9) {
@@ -2794,7 +2798,7 @@ onMounted(() => {
           top: 0.1vw;
           width: 12%;
           height: 2.4vw;
-          left: 31.6vw;
+          left: 31.6%;
         }
       }
       &:nth-of-type(10) {
@@ -2804,9 +2808,9 @@ onMounted(() => {
         left: 67.6%;
         @media screen and (max-width: 1416px) {
           top: 0.1vw;
-          width: 12%;
+          width: 13%;
           height: 2.4vw;
-          left: 65.6vw;
+          left: 67.6%;
         }
       }
       &:nth-of-type(11) {
@@ -2818,7 +2822,7 @@ onMounted(() => {
           top: 30.6vw;
           width: 12%;
           height: 2vw;
-          left: 71vw;
+          left: 74%;
         }
       }
       &:nth-of-type(12) {
@@ -2830,7 +2834,7 @@ onMounted(() => {
           top: 35.1vw;
           width: 15%;
           height: 4vw;
-          left: 18vw;
+          left: 18.4%;
         }
       }
       &:nth-of-type(13) {
@@ -2842,7 +2846,7 @@ onMounted(() => {
           top: 35.1vw;
           width: 16%;
           height: 4vw;
-          left: 37vw;
+          left: 38%;
         }
       }
       &:nth-of-type(14) {
@@ -2854,7 +2858,7 @@ onMounted(() => {
           top: 35.1vw;
           width: 16%;
           height: 4vw;
-          left: 56vw;
+          left: 58.4%;
         }
       }
       &:nth-of-type(15) {
@@ -2866,7 +2870,7 @@ onMounted(() => {
           top: 35.1vw;
           width: 16%;
           height: 4vw;
-          left: 76vw;
+          left: 78.4%;
         }
       }
       &:nth-of-type(16) {
@@ -2878,10 +2882,22 @@ onMounted(() => {
           top: 43.3vw;
           width: 16%;
           height: 4vw;
-          left: 17vw;
+          left: 17.4%;
         }
       }
       &:nth-of-type(17) {
+        top: 82.6%;
+        width: 17%;
+        height: 9%;
+        left: 37.6%;
+        @media screen and (max-width: 1416px) {
+          top: 43.3vw;
+          width: 16%;
+          height: 4vw;
+          left: 38%;
+        }
+      }
+      &:nth-of-type(18) {
         top: 82.6%;
         width: 17%;
         height: 9%;
@@ -2890,10 +2906,10 @@ onMounted(() => {
           top: 43.3vw;
           width: 16%;
           height: 4vw;
-          left: 56vw;
+          left:58.4%;
         }
       }
-      &:nth-of-type(18) {
+      &:nth-of-type(19) {
         top: 82.6%;
         width: 17%;
         height: 9%;
@@ -2902,7 +2918,7 @@ onMounted(() => {
           top: 43.3vw;
           width: 16%;
           height: 4vw;
-          left: 76vw;
+          left: 78.4%;
         }
       }
     }

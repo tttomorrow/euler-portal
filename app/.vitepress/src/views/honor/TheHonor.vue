@@ -215,7 +215,7 @@ const honorData = {
         {
           name: 'SIG Compiler',
           detail: [
-            '孵化gcc多版本、A-FOT、bishengjdk-17、bishengjdk-riscv等项目，支持多样性算力生态，包括intel SPR特性、龙芯LoongArch支持等',
+            '孵化gcc多版本、A-FOT、bishengjdk-17、bishengjdk-riscv等项目，支持多样性算力生态，包括intel SPR特性、龙芯LoongArch支持等。',
             '完成4个openJDK版本发布，完成KAE Provider、dynamic CDS等特性，支持大数据领域应用性能提升10%，且多数项目已经商用落地。',
           ],
           link: 'https://www.openeuler.org/zh/sig/sig-detail/?name=Compiler',
@@ -334,7 +334,7 @@ function clickDetail(index: number) {
           <img class="bg-right" :src="bgImg" alt="" />
         </OCard>
       </div>
-      <!-- <div v-show="thisYear === '2022'" class="award-box">
+      <div v-show="thisYear === '2022'" class="award-box">
         <h2 v-for="item in honorData.award.title" :key="item">{{ item }}</h2>
         <div class="award-personal">
           <h5>{{ honorData.award.personal.title }}</h5>
@@ -395,7 +395,7 @@ function clickDetail(index: number) {
             </OCard>
           </div>
         </div>
-      </div> -->
+      </div>
       <p class="notice">{{ honorData.notice }}</p>
     </div>
   </AppContent>

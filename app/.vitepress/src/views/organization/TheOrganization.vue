@@ -1,54 +1,54 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 
-import OrganizationlGuests from './OrganizationlGuests.vue';
+import OrganizationGuests from './OrganizationGuests.vue';
 
-import emailImg from '@/assets/category/organizationl/email.png';
-import IconGit from '@/assets/category/organizationl/icon-git.svg';
+import emailImg from '@/assets/category/organization/email.png';
+import IconGit from '@/assets/category/organization/icon-git.svg';
 
-import caizhimin from '@/assets/category/organizationl/caizhimin.png';
-import gaopei from '@/assets/category/organizationl/gaopei.png';
-import hannaiping from '@/assets/category/organizationl/hannaiping.png';
-import jiangdayong from '@/assets/category/organizationl/jiangdayong.png';
-import jiangzhenhua from '@/assets/category/organizationl/jiangzhenhua.png';
-import lipeiyuan from '@/assets/category/organizationl/lipeiyuan.png';
-import liuwenqing from '@/assets/category/organizationl/liuwenqing.png';
-import liuyanfei from '@/assets/category/organizationl/liuyanfei.png';
-import qiuchengfeng from '@/assets/category/organizationl/qiuchengfeng.png';
-import wuyanjun from '@/assets/category/organizationl/wuyanjun.png';
-import zhanglei from '@/assets/category/organizationl/zhanglei.png';
-import zhangshenju from '@/assets/category/organizationl/zhangshenju.png';
-import zhongxin from '@/assets/category/organizationl/zhongxin.png';
+import caizhimin from '@/assets/category/organization/caizhimin.png';
+import gaopei from '@/assets/category/organization/gaopei.png';
+import hannaiping from '@/assets/category/organization/hannaiping.png';
+import jiangdayong from '@/assets/category/organization/jiangdayong.png';
+import jiangzhenhua from '@/assets/category/organization/jiangzhenhua.png';
+import lipeiyuan from '@/assets/category/organization/lipeiyuan.png';
+import liuwenqing from '@/assets/category/organization/liuwenqing.png';
+import liuyanfei from '@/assets/category/organization/liuyanfei.png';
+import qiuchengfeng from '@/assets/category/organization/qiuchengfeng.png';
+import wuyanjun from '@/assets/category/organization/wuyanjun.png';
+import zhanglei from '@/assets/category/organization/zhanglei.png';
+import zhangshenju from '@/assets/category/organization/zhangshenju.png';
+import zhongxin from '@/assets/category/organization/zhongxin.png';
 
-import huxinwei from '@/assets/category/organizationl/huxinwei.png';
-import biannaimeng from '@/assets/category/organizationl/biannaimeng.png';
-import caozhi from '@/assets/category/organizationl/caozhi.png';
-import chenqide from '@/assets/category/organizationl/chenqide.png';
-import houjian from '@/assets/category/organizationl/houjian.png';
-import hufeng from '@/assets/category/organizationl/hufeng.png';
-import huyadi from '@/assets/category/organizationl/huyadi.png';
-import liyongqiang from '@/assets/category/organizationl/liyongqiang.png';
-import liushouyong from '@/assets/category/organizationl/liushouyong.png';
-import renwei from '@/assets/category/organizationl/renwei.png';
-import shiyong from '@/assets/category/organizationl/shiyong.png';
-import tianjun from '@/assets/category/organizationl/tianjun.png';
-import wangjianmin from '@/assets/category/organizationl/wangjianmin.png';
-import wanglingzhuo from '@/assets/category/organizationl/wanglingzhuo.png';
-import wangzhigang from '@/assets/category/organizationl/wangzhigang.png';
-import weigang from '@/assets/category/organizationl/weigang.png';
-import wufengguang from '@/assets/category/organizationl/wufengguang.png';
-import xiexiuqi from '@/assets/category/organizationl/xiexiuqi.png';
-import xiongwei from '@/assets/category/organizationl/xiongwei.png';
-import yeqinglong from '@/assets/category/organizationl/yeqinglong.png';
+import huxinwei from '@/assets/category/organization/huxinwei.png';
+import biannaimeng from '@/assets/category/organization/biannaimeng.png';
+import caozhi from '@/assets/category/organization/caozhi.png';
+import chenqide from '@/assets/category/organization/chenqide.png';
+import houjian from '@/assets/category/organization/houjian.png';
+import hufeng from '@/assets/category/organization/hufeng.png';
+import huyadi from '@/assets/category/organization/huyadi.png';
+import liyongqiang from '@/assets/category/organization/liyongqiang.png';
+import liushouyong from '@/assets/category/organization/liushouyong.png';
+import renwei from '@/assets/category/organization/renwei.png';
+import shiyong from '@/assets/category/organization/shiyong.png';
+import tianjun from '@/assets/category/organization/tianjun.png';
+import wangjianmin from '@/assets/category/organization/wangjianmin.png';
+import wanglingzhuo from '@/assets/category/organization/wanglingzhuo.png';
+import wangzhigang from '@/assets/category/organization/wangzhigang.png';
+import weigang from '@/assets/category/organization/weigang.png';
+import wufengguang from '@/assets/category/organization/wufengguang.png';
+import xiexiuqi from '@/assets/category/organization/xiexiuqi.png';
+import xiongwei from '@/assets/category/organization/xiongwei.png';
+import yeqinglong from '@/assets/category/organization/yeqinglong.png';
 
-import huotaiwen from '@/assets/category/organizationl/huotaiwen.png';
-import liaoxiangke from '@/assets/category/organizationl/liaoxiangke.png';
-import lusouqun from '@/assets/category/organizationl/lusouqun.png';
-import niguangnan from '@/assets/category/organizationl/niguangnan.png';
-import wanghuaimin from '@/assets/category/organizationl/wanghuaimin.png';
-import zhouminghui from '@/assets/category/organizationl/zhouminghui.png';
+import huotaiwen from '@/assets/category/organization/huotaiwen.png';
+import liaoxiangke from '@/assets/category/organization/liaoxiangke.png';
+import lusouqun from '@/assets/category/organization/lusouqun.png';
+import niguangnan from '@/assets/category/organization/niguangnan.png';
+import wanghuaimin from '@/assets/category/organization/wanghuaimin.png';
+import zhouminghui from '@/assets/category/organization/zhouminghui.png';
 
-const organizationalData = {
+const organizationData:any = {
   memberList: [
     {
       title: '2023-2024 年 openEuler 委员会',
@@ -146,7 +146,7 @@ const organizationalData = {
       ],
     },
     {
-      title: 'openEuler技术委员会',
+      title: 'openEuler 技术委员会',
       list: [
         {
           img: huxinwei,
@@ -356,41 +356,41 @@ onUnmounted(() => {
 <template>
   <ul class="nav-right">
     <li
-      v-for="(item, index) in organizationalData.memberList"
+      v-for="(item, index) in organizationData.memberList"
       :key="item.title"
     >
       <a
-        :href="'#' + organizationalData.idList[index]"
+        :href="'#' + organizationData.idList[index]"
         :class="activeIndex === index ? 'active' : ''"
         >{{ item.title }}</a
       >
     </li>
   </ul>
   <div class="council">
-    <h2 :id="organizationalData.idList[0]">
-      {{ organizationalData.memberList[0].title }}
+    <h2 :id="organizationData.idList[0]">
+      {{ organizationData.memberList[0].title }}
     </h2>
     <div class="council-list">
       <div
-        v-for="item in organizationalData.memberList[0].list"
+        v-for="item in organizationData.memberList[0].list"
         :key="item.title"
         class="council-item"
       >
         <h4>{{ item.title }}</h4>
-        <OrganizationlGuests
+        <OrganizationGuests
           :lecturer-list="item.personalList"
           shape="circle"
           :web-columns-num="6"
           :mobile-columns-num="2"
-        ></OrganizationlGuests>
+        ></OrganizationGuests>
       </div>
     </div>
-    <h2 :id="organizationalData.idList[1]" class="council-technology">
-      {{ organizationalData.memberList[1].title }}
+    <h2 :id="organizationData.idList[1]" class="council-technology">
+      {{ organizationData.memberList[1].title }}
     </h2>
     <ul class="council-list list-technology">
       <li
-        v-for="(item, index) in organizationalData.memberList[1].list"
+        v-for="(item, index) in organizationData.memberList[1].list"
         :key="index"
         data-aos="fade-up"
       >
@@ -411,18 +411,18 @@ onUnmounted(() => {
         </p>
       </li>
     </ul>
-    <h2 :id="organizationalData.idList[2]" class="council-counselor">
-      {{ organizationalData.memberList[2].title }}
+    <h2 :id="organizationData.idList[2]" class="council-counselor">
+      {{ organizationData.memberList[2].title }}
     </h2>
     <div class="council-list">
-      <OrganizationlGuests
-        :lecturer-list="organizationalData.memberList[2].list"
+      <OrganizationGuests
+        :lecturer-list="organizationData.memberList[2].list"
         shape="circle"
         :web-columns-num="6"
         :mobile-columns-num="2"
-      ></OrganizationlGuests>
+      ></OrganizationGuests>
     </div>
-    <p class="notice">{{ organizationalData.notice }}</p>
+    <p class="notice">{{ organizationData.notice }}</p>
   </div>
 </template>
 
