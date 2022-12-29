@@ -48,7 +48,7 @@ import niguangnan from '@/assets/category/organization/niguangnan.png';
 import wanghuaimin from '@/assets/category/organization/wanghuaimin.png';
 import zhouminghui from '@/assets/category/organization/zhouminghui.png';
 
-const organizationData:any = {
+const organizationData: any = {
   memberList: [
     {
       title: '2023-2024 年 openEuler 委员会',
@@ -355,10 +355,7 @@ onUnmounted(() => {
 
 <template>
   <ul class="nav-right">
-    <li
-      v-for="(item, index) in organizationData.memberList"
-      :key="item.title"
-    >
+    <li v-for="(item, index) in organizationData.memberList" :key="item.title">
       <a
         :href="'#' + organizationData.idList[index]"
         :class="activeIndex === index ? 'active' : ''"

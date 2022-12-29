@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-// import { useCommon } from '@/stores/common';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
@@ -28,10 +27,6 @@ import IconChecked from '~icons/app/icon-checked.svg';
 import IconUnchecked from '~icons/app/icon-unchecked.svg';
 import IconRight from '~icons/app/icon-arrow-right.svg';
 
-// const commonStore = useCommon();
-// const isDark = computed(() => {
-//   return commonStore.theme === 'dark' ? true : false;
-// });
 const honorData = {
   title: '社区荣誉',
   detailBtn: '了解详情',
