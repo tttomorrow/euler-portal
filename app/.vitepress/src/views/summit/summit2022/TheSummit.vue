@@ -1403,8 +1403,8 @@ const summitData: any = {
         link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/09-创新技术-云上资源利用率倍增.mp4',
       },
       {
-        name: '原声CICD解决方案',
-        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/10-创新技术-原声CICD解决方案.mp4',
+        name: '原生CICD解决方案',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/10-创新技术-原生CICD解决方案.mp4',
       },
       {
         name: 'openEuler开源社区',
@@ -1432,7 +1432,7 @@ const summitData: any = {
       },
       {
         name: '软通动力',
-        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/18-软通动力-欧拉一站式服务解决方案_1.mp4',
+        link: 'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com:443/openeuler/obsi-openeuler-onlineVideo/18-软通动力-欧拉一站式服务解决方案.mp4',
       },
       {
         name: '润和软件',
@@ -2906,7 +2906,7 @@ onMounted(() => {
           top: 43.3vw;
           width: 16%;
           height: 4vw;
-          left:58.4%;
+          left: 58.4%;
         }
       }
       &:nth-of-type(19) {

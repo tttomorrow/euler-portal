@@ -10,8 +10,6 @@ import techDay_pc from '@/assets/category/home/banner/tech-day_pc.png';
 import techDay_mo from '@/assets/category/home/banner/tech-day_mo.png';
 import newEdition_pc_zh from '@/assets/category/home/banner/banner22.09_pc_zh.png';
 import newEdition_mo_zh from '@/assets/category/home/banner/banner22.09_mo_zh.png';
-import liveImg_pc from '@/assets/category/home/banner/banner-contribution_pc.png';
-import liveImg_mo from '@/assets/category/home/banner/banner-contribution_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
 import migrationImg_mo from '@/assets/category/home/banner/migration_mo.png';
 import summit_pc from '@/assets/category/home/banner/summit.jpg';
@@ -71,13 +69,6 @@ export default {
         btn: '查看详情',
         id: 'newEdition',
         targetTap: 1,
-      },
-      {
-        pcBanner: liveImg_pc,
-        moBanner: liveImg_mo,
-        link: 'https://mp.weixin.qq.com/s/UeDpgGGQJX2mJQOMXvVibA',
-        targetTap: 1,
-        id: '',
       },
     ],
     en: [
