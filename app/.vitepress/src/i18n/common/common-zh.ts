@@ -143,7 +143,7 @@ export default {
         {
           NAME: '关于我们',
           ID: 'about-us',
-          PATH: '/community/organizational/',
+          PATH: '/community/organization/',
         },
         {
           NAME: '贡献攻略',

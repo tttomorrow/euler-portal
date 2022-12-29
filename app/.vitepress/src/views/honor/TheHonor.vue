@@ -334,7 +334,7 @@ function clickDetail(index: number) {
           <img class="bg-right" :src="bgImg" alt="" />
         </OCard>
       </div>
-      <div v-show="thisYear === '2022'" class="award-box">
+      <!-- <div v-show="thisYear === '2022'" class="award-box">
         <h2 v-for="item in honorData.award.title" :key="item">{{ item }}</h2>
         <div class="award-personal">
           <h5>{{ honorData.award.personal.title }}</h5>
@@ -395,7 +395,7 @@ function clickDetail(index: number) {
             </OCard>
           </div>
         </div>
-      </div>
+      </div> -->
       <p class="notice">{{ honorData.notice }}</p>
     </div>
   </AppContent>

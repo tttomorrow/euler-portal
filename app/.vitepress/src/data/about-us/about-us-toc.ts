@@ -1,7 +1,7 @@
 export default [
   {
     label: '组织架构',
-    link: 'organizational',
+    link: 'organization',
   },
   {
     label: '成员单位',
