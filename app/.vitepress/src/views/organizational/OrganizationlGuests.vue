@@ -1,43 +1,13 @@
 <script setup lang="ts">
 import AOS from 'aos';
-import { computed, onMounted } from 'vue';
+import { onMounted } from 'vue';
 
-const props = defineProps({
+defineProps({
   lecturerList: {
     type: Object,
     required: true,
     default: () => null,
   },
-  shape: {
-    type: String,
-    default: 'circle',
-  },
-  webColumnsNum: {
-    type: Number,
-    default: 4,
-  },
-  mobileColumnsNum: {
-    type: Number,
-    default: 2,
-  },
-});
-
-const summitStyle = computed(() => {
-  return {
-    '--shape': props.shape,
-    '--webColumnsNum':
-      props.webColumnsNum < 1
-        ? 4
-        : props.webColumnsNum > 8
-        ? 8
-        : props.webColumnsNum,
-    '--mobileColumnsNum':
-      props.mobileColumnsNum < 1
-        ? 1
-        : props.mobileColumnsNum > 2
-        ? 2
-        : props.mobileColumnsNum,
-  };
 });
 onMounted(() => {
   AOS.init({
@@ -49,38 +19,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="lecturer-list" :style="(summitStyle as any)">
-    <div
-      v-for="item in lecturerList"
-      :key="item.NAME"
-      data-aos="fade-zoom-in"
-      class="lecturer-list-item"
-    >
-      <slot name="img">
-        <div
-          :class="
-            summitStyle['--shape'] === 'square'
-              ? 'lecturer-list-item-square'
-              : 'lecturer-list-item-circle'
-          "
-        >
-          <img :src="item.img" />
-        </div>
-      </slot>
-      <slot name="name">
-        <p>{{ item.name }}</p>
-      </slot>
-      <slot name="title">
-        <div
-          v-for="titleItem in item.position"
-          :key="titleItem"
-          class="lecturer-list-item-title"
-        >
-          <p>{{ titleItem }}</p>
-        </div>
-      </slot>
-    </div>
-  </div>
+  <ul class="council-lis list-technologyt">
+    <li v-for="(item, index) in lecturerList" :key="index" data-aos="fade-up">
+      <img class="avatar" :src="item.img" :alt="item.name" />
+      <p class="personal-name">{{ item.name }}</p>
+      <p
+        v-for="itemPost in item.position"
+        :key="itemPost"
+        class="personal-post"
+      >
+        {{ itemPost }}
+      </p>
+    </li>
+  </ul>
 </template>
 
 <style scoped lang="scss">
@@ -91,7 +42,7 @@ onMounted(() => {
   margin: var(--o-spacing-h2) auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 76px;
+  gap: 24px;
   @media (max-width: 1796px) {
     grid-template-columns: repeat(5, 1fr);
   }
@@ -165,7 +116,58 @@ onMounted(() => {
         }
       }
       @media (max-width: 780px) {
-        margin-bottom: var(--o-spacing-h7);
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+.council-lis {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 32px;
+  @media screen and (max-width: 1830px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media screen and (max-width: 1696px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 1520px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 1348px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 1099px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 816px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 768px) {
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  li {
+    text-align: center;
+    img {
+      width: 100px;
+      margin-bottom: 8px;
+    }
+    .personal-name {
+      font-size: var(--o-font-size-h8);
+      color: var(--o-color-text1);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .personal-post {
+      margin-top: 4px;
+      font-size: var(--o-font-size-tip);
+      color: var(--o-color-text4);
+      text-align: center;
+      line-height: var(--o-line-height-tip);
+      + .personal-post {
+        margin-top: 0;
       }
     }
   }
