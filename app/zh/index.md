@@ -1,6 +1,6 @@
 ---
 title: openEuler
-titleTemplate: openEuler社区官网
+titleTemplate: 开源社区 | openEuler社区官网
 head:
   - - meta
     - name: description
