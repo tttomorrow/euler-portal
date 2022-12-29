@@ -7719,7 +7719,7 @@
         "boardModel": "SF400HT",
         "chipModel": "WX1860AL4",
         "item": "",
-        "downloadLink": "inbox"
+        "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS-SP1/contrib/drivers/source/Packages/ngbe-1.2.3.tar.gz"
       },
       {
         "vendorID": "1000",
@@ -7869,7 +7869,7 @@
       "commitID": "I4YJ3Z",
       "mainboardModel": "P3SKA-N4I",
       "biosUefi": "ZX-MA-SR658Z-V201",
-      "cpu": "KH-30000",
+      "cpu": "KH-37800D",
       "ram": "4*16G DIMMs",
       "portsBusTypes": "PCIE",
       "videoAdapter": "1A03/2000",
@@ -7917,6 +7917,28 @@
       "videoAdapter": "ASPEED Graphics Family",
       "hostBusAdapter": "Marvell Technology Group Ltd. 88SE9230 PCIe SATA 6Gb/s",
       "hardDiskDrive": "KCD61LUL3T84__1"
+    }
+  },
+  {
+    "hardwareFactory": "超聚变",
+    "hardwareModel": "2288H V7",
+    "osVersion": "openEuler 22.03 LTS SP1",
+    "architecture": "x86_64",
+    "date": "2022/12/23",
+    "friendlyLink": "https://support.xfusion.com/support/#/zh/home",
+    "boardCards": "",
+    "compatibilityConfiguration": {
+      "productInformation": "https://support.xfusion.com/support/#/zh/home",
+      "certificationTime": "2022/12/23",
+      "commitID": "I67QF7",
+      "mainboardModel": "BC15MBSA",
+      "biosUefi": "2.00.31 (U6216)",
+      "cpu": "SPR",
+      "ram": "2*64G DIMMS",
+      "portsBusTypes": "Express 5 x16",
+      "videoAdapter": "Hi1710",
+      "hostBusAdapter": "",
+      "hardDiskDrive": "SAMSUNG MZ7L3480 204Q"
     }
   }
 ]

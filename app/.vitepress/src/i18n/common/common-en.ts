@@ -158,12 +158,6 @@ export default {
           PATH: 'https://datastat.openeuler.org/en/overview',
           IS_OPEN_MINISITE_WINDOW: 1,
         },
-        {
-          NAME: 'QuickIssue',
-          ID: 'QuickIssue',
-          PATH: 'https://quickissue.openeuler.org/en/issues/',
-          IS_OPEN_MINISITE_WINDOW: 1,
-        },
       ],
       CLASS: [
         'contribution',
@@ -191,6 +185,12 @@ export default {
           NAME: 'Roles',
           ID: 'roles',
           PATH: '/sig/role-description/',
+        },
+        {
+          NAME: 'QuickIssue',
+          ID: 'QuickIssue',
+          PATH: 'https://quickissue.openeuler.org/en/issues/',
+          IS_OPEN_MINISITE_WINDOW: 1,
         },
       ],
       CLASS: ['sig-list', 'sig-guidance', 'role-description'],

@@ -21,6 +21,7 @@ import { Drawer } from './drawer';
 import { Switch } from './switch';
 import { Collapse, CollapseItem } from './collapse';
 import { Container } from './container';
+import { Dialog } from './dialog';
 
 const components = [
   Button,
@@ -47,6 +48,7 @@ const components = [
   Collapse,
   CollapseItem,
   Container,
+  Dialog,
 ];
 export default {
   install(app: App): void {
