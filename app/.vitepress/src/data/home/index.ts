@@ -22,15 +22,15 @@ export default {
   HOMEBANNER: {
     zh: [
       {
-        pcBanner: summit_pc,
-        moBanner: summit_mo,
+        pcBanner: summit_kv_pc,
+        moBanner: summit_kv_mo,
         link: '/zh/interaction/summit-list/summit2022/',
         id: '',
         targetTap: 1,
       },
       {
-        pcBanner: summit_kv_pc,
-        moBanner: summit_kv_mo,
+        pcBanner: summit_pc,
+        moBanner: summit_mo,
         link: '/zh/interaction/summit-list/summit2022/',
         id: '',
         targetTap: 1,
