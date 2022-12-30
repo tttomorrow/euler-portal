@@ -720,7 +720,7 @@ export default {
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',
-        EDGE_IMAGE: 'https://repo.openeuler.org/22.03_LTS_SP1/edge_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/',
         EMBEDDEN_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/',
         MANUFACTURER: 'openEuler community',
