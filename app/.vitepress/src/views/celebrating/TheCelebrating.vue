@@ -38,6 +38,47 @@ const data = {
       '•  奖品为Celebrating 3 years of openEuler定制礼包一份，获奖名单将于12月30日在本页面公示，并邮件提示中奖者。',
     ],
   },
+  nameList: [
+    'Mrdong_123',
+    'zyddyz',
+    'kirchhoff',
+    'shawncn',
+    'DingliZhang',
+    'ftboy',
+    'riscv',
+    'lilong',
+    'WangTsing-Yan',
+    'yinxx',
+    'alonglang ',
+    'zlx_sd',
+    'HWLB',
+    'Vien_Sky',
+    'liuming3',
+    'J123456',
+    'jieXu',
+    'liuqiang',
+    'szuor8dtrf0yeb17',
+    'SmallPegasus',
+    'love67890',
+    'victorcheung',
+    'Camp186',
+    'xkp',
+    'BaiMax',
+    'fanzhicheng',
+    'huwei3',
+    'xychong123',
+    'rectifyingcircuit',
+    'A13522806615',
+    'xiaoshaeCrocodile',
+    'wessonhuang ',
+    'cen195',
+    'jimmyyu',
+    'duyiwei7w',
+    'Brace',
+    'khdkskho',
+    'YINJIAYI',
+    'khdkskho',
+  ],
   down: {
     title: '即刻体验openEuler',
     btn: '下载赢好礼',
@@ -143,24 +184,23 @@ onMounted(() => {
         <img :src="giftImg" alt="" class="gift-pc" />
         <img :src="giftImgMo" alt="" class="gift-mo" />
       </div>
-      <!-- <div class="award">
-        <OTable class="pc-list" :data="tableData" style="width: 100%">
-          <OTableColumn
-            :label="i18n.cve.SYNOPSIS"
-            prop="summary"
-          ></OTableColumn>
-          <OTableColumn
-            :label="i18n.cve.CVSS_SCORE"
-            prop="cvsssCoreOE"
-            width="150"
-          ></OTableColumn>
-          <OTableColumn
-            width="180"
-            :label="i18n.cve.RELEASE_DATE"
-            prop="updateTime"
-          ></OTableColumn>
-        </OTable>
-      </div> -->
+      <div class="award">
+        <h3>中奖名单</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>序号</th>
+              <th>中奖人</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in data.nameList" :key="item">
+              <td>{{ index + 1 }}</td>
+              <td>{{ item }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </AppContext>
   <div v-if="isTipShow" class="tip">
@@ -371,6 +411,74 @@ onMounted(() => {
       display: none;
       @media (max-width: 768px) {
         display: inline-block;
+      }
+    }
+  }
+  .award {
+    width: 100%;
+    margin-top: var(--o-spacing-h1);
+    @media (max-width: 1100px) {
+      margin-top: var(--o-spacing-h2);
+    }
+    h3 {
+      font-size: var(--o-font-size-h3);
+      line-height: var(--o-line-height-h3);
+      color: var(--o-color-text1);
+      font-weight: 300;
+      text-align: center;
+      @media (max-width: 1100px) {
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
+      }
+    }
+    table {
+      width: 100%;
+      margin-top: var(--o-spacing-h2);
+      border-collapse: collapse;
+      text-align: center;
+      @media (max-width: 1100px) {
+        margin-top: var(--o-spacing-h5);
+      }
+      thead {
+        tr {
+          height: 48px;
+          color: #fff;
+          background-color: var(--o-color-brand1);
+          @media (max-width: 1100px) {
+            height: 32px;
+          }
+          th {
+            padding: 15px 0;
+            text-align: center;
+            border: 1px solid var(--o-color-brand1);
+            font-size: var(--o-font-size-h8);
+            @media (max-width: 1100px) {
+              font-size: var(--o-font-size-tip);
+              padding: 0;
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          height: 48px;
+          overflow: hidden;
+          transition: 0.2s;
+          color: var(--o-color-text1);
+          @media (max-width: 1100px) {
+            height: 32px;
+          }
+          td {
+            padding: 15px 0;
+            text-align: center;
+            border: 1px solid var(--o-color-brand1);
+            font-size: var(--o-font-size-h8);
+            @media (max-width: 1100px) {
+              font-size: var(--o-font-size-tip);
+              padding: 0;
+            }
+          }
+        }
       }
     }
   }

@@ -2151,7 +2151,7 @@ onMounted(() => {
       <div>
         <OTabs v-model="isLiverShow" class="schedule-tabs">
           <el-tab-pane
-            v-for="item,index in summitData.liver.date"
+            v-for="(item, index) in summitData.liver.date"
             :key="index"
             :name="index"
           >
