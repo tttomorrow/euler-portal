@@ -177,14 +177,14 @@ const summitData: any = {
     'openEuler Summit 是由欧拉开源社区发起并举办的年度开源操作系统峰会。openEuler专注核心技术和全场景能力创新，构建多样性计算支持最佳的基础软件能力。充分释放开源协作的创新活力，通过开源开放，不断探索科技创新的边界，驱动物理世界与数字世界的深度融合。openEuler与社区伙伴持续构建自循环、自发展的上下游产业链。通过商业验证，提升市场占有率，成为数字基础设施的坚实底座。社区贡献者、行业用户、合作伙伴在 openEuler Summit 汇聚，驱动无止境的创新与拓展，闪耀数字时代星辰大海。',
   ],
   liver: {
-    title: '峰会直播',
-    date: ['28', '29'],
+    title: '精彩回顾',
+    date: ['12月28日', '12月29日'],
     liveData1: [
       {
         liveId: 12257,
         liveTestId: 12260,
         id: 0,
-        name: '操作系统产业峰会',
+        name: '操作系统产业峰会2022',
       },
       {
         liveId: 12263,
@@ -222,7 +222,7 @@ const summitData: any = {
         liveId: 12258,
         liveTestId: 12261,
         id: 0,
-        name: 'openEuler Summit',
+        name: 'openEuler Summit 2022',
       },
       {
         liveId: 12266,
@@ -2115,7 +2115,7 @@ const summitData: any = {
   },
 };
 const tabType = ref(['main', 'main']);
-const time = ref('29');
+const isLiverShow = ref(0);
 const otherTabType = ref([0, 0]);
 function clickEntry() {
   router.go('/zh/celebrating/');
@@ -2149,27 +2149,27 @@ onMounted(() => {
     <div class="liver">
       <h3 class="titleBar">{{ summitData.liver.title }}</h3>
       <div>
-        <OTabs v-model="time" class="schedule-tabs">
+        <OTabs v-model="isLiverShow" class="schedule-tabs">
           <el-tab-pane
-            v-for="item in summitData.liver.date"
-            :key="item"
-            :name="item"
+            v-for="item,index in summitData.liver.date"
+            :key="index"
+            :name="index"
           >
             <template #label>
-              <div class="timeTabs">{{ item }}日直播</div>
+              <div class="timeTabs">{{ item }}</div>
             </template>
           </el-tab-pane>
         </OTabs>
         <OContainer :level-index="1">
           <ClientOnly>
             <SummitLive
-              v-if="time === '28'"
+              v-if="isLiverShow === 0"
               :live-data="summitData.liver.liveData1"
               class-name="odd2022"
               class="summit-kv-box"
             />
             <SummitLive
-              v-if="time === '29'"
+              v-if="isLiverShow === 1"
               :live-data="summitData.liver.liveData2"
               class-name="odd2022"
               class="summit-box"
@@ -2479,7 +2479,6 @@ onMounted(() => {
         margin-top: var(--o-spacing-h4);
       }
       &:nth-of-type(1) {
-        order: 2;
         .el-tabs__active-bar {
           display: none;
         }
