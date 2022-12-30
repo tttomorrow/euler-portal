@@ -16,11 +16,20 @@ import summit_pc from '@/assets/category/home/banner/summit.jpg';
 import summit_mo from '@/assets/category/home/banner/summit-mo.png';
 import summit_kv_pc from '@/assets/category/home/banner/summit-kv.jpg';
 import summit_kv_mo from '@/assets/category/home/banner/summit-kv-mo.png';
+// import year_pc from '@/assets/category/home/banner/openeuler-year.jpg';
+// import year_mo from '@/assets/category/home/banner/openeuler-year-mo.png';
 
 export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
+      // {
+      //   pcBanner: year_pc,
+      //   moBanner: year_mo,
+      //   link: '',
+      //   id: '',
+      //   targetTap: 1,
+      // },
       {
         pcBanner: summit_kv_pc,
         moBanner: summit_kv_mo,
@@ -72,6 +81,13 @@ export default {
       },
     ],
     en: [
+      // {
+      //   pcBanner: year_pc,
+      //   moBanner: year_mo,
+      //   link: '',
+      //   id: '',
+      //   targetTap: 1,
+      // },
       {
         pcBanner: prize_en_pc,
         moBanner: prize_en_mo,
@@ -95,6 +111,13 @@ export default {
       },
     ],
     ru: [
+      // {
+      //   pcBanner: year_pc,
+      //   moBanner: year_mo,
+      //   link: '',
+      //   id: '',
+      //   targetTap: 1,
+      // },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,

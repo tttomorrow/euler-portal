@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useData } from 'vitepress';
 import AOS from 'aos';
 
@@ -21,6 +21,9 @@ import LinkPanel from '@/components/LinkPanel.vue';
 import { getMeetingData, getActivityData } from '@/api/api-calendar';
 import { getSortData } from '@/api/api-search';
 import { TableData } from '@/shared/@types/type-calendar';
+
+import yearEnImg from '@/assets/category/home/euler-year-en.png';
+import yearZhImg from '@/assets/category/home/euler-year-zh.png';
 
 const { lang } = useData();
 const commonStore = useCommon();
@@ -47,6 +50,19 @@ const i18n = useI18n();
 const caseData = ref(undefined);
 const newsData = ref(undefined);
 const blogData = ref(undefined);
+const yearImg: any = computed(() => {
+  return lang.value === 'zh' ? yearZhImg : yearEnImg;
+});
+const isSummaryShow = ref(true);
+const yearLink = computed(() => {
+  return lang.value === 'zh'
+    ? 'https://summary.openeuler.org/zh/2022/'
+    : 'https://summary-en.openeuler.org/en/2022/';
+});
+function clickClose() {
+  isSummaryShow.value = false;
+  sessionStorage.setItem('summary-tips', 'false');
+}
 onMounted(async () => {
   const body = document.querySelector('body');
   if (body) {
@@ -115,6 +131,8 @@ onMounted(async () => {
   } catch (e: any) {
     throw new Error(e);
   }
+  const summaryShow = sessionStorage.getItem('summary-tips');
+  isSummaryShow.value = summaryShow ? false : true;
 });
 onUnmounted(() => {
   const body = document.querySelector('body');
@@ -167,9 +185,51 @@ onUnmounted(() => {
       :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
     ></LinkPanel>
   </AppContent>
+  <div v-if="isSummaryShow && lang !== 'ru'" class="smmary-code">
+    <a :href="yearLink" target="_blank">
+      <img class="code" :src="yearImg" alt="扫描二维码" />
+    </a>
+    <a class="close" :class="lang==='en'?'close-en':''" @click="clickClose()"></a>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.smmary-code {
+  position: fixed;
+  left: 1vw;
+  top: 65vh;
+  z-index: 99;
+
+  .code {
+    width: 141px;
+    cursor: pointer;
+    @media screen and (max-width: 1100px) {
+      width: 85px;
+    }
+  }
+  .close {
+    position: absolute;
+    display: inline-block;
+    right: 20px;
+    top: 15px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    @media screen and (max-width: 1100px) {
+      right: 13px;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+    }
+  }
+  .close-en{
+     right: 4px;
+    @media screen and (max-width: 1100px) {
+      right: 0px;
+    }
+  }
+}
 .home-nav {
   position: relative;
   z-index: 10;
