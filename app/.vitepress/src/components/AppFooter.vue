@@ -633,7 +633,7 @@ $color: #fff;
   .quick-issue {
     position: fixed;
     display: flex;
-    bottom: 120px;
+    top: 80vh;
     right: 50px;
     z-index: 10;
     @media screen and (max-width: 1430px) {

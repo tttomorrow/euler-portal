@@ -197,7 +197,7 @@ onUnmounted(() => {
 .smmary-code {
   position: fixed;
   left: 1vw;
-  top: 65vh;
+  top: 80vh;
   z-index: 99;
 
   .code {
