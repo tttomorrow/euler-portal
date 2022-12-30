@@ -12,17 +12,18 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
-        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-sp1.pdf',
+        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-SP1.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',
-        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/',
+        EDGE_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/',
         EMBEDDEN_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/',
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2022/12',
         LTS: true,
-      },        
+      },
       {
         NAME: 'openEuler 22.09',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.09/',
@@ -400,7 +401,7 @@ export default {
       {
         NAME: 'openEuler 22.03 LTS SP1',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/',
-        DESC: 'openEuler openEuler 22.03 LTS SP1 is the patch version of openEuler 22.03 LTS, and both versions have the same lifecycle.',       
+        DESC: 'openEuler openEuler 22.03 LTS SP1 is the patch version of openEuler 22.03 LTS, and both versions have the same lifecycle.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:
@@ -408,17 +409,18 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
-        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-sp1.pdf',
+        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-SP1.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',
-        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/',
+        EDGE_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/',
         EMBEDDEN_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/',
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2022/12',
         LTS: true,
-      },          
+      },
       {
         NAME: 'openEuler 22.09',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.09/',
@@ -708,7 +710,7 @@ export default {
       {
         NAME: 'openEuler 22.03 LTS SP1',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/',
-        DESC: 'openEuler 22.03 LTS SP1 — это версия патча openEuler 22.03 LTS, и обе версии имеют одинаковый жизненный цикл.',     
+        DESC: 'openEuler 22.03 LTS SP1 — это версия патча openEuler 22.03 LTS, и обе версии имеют одинаковый жизненный цикл.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:
@@ -716,17 +718,18 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
-        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-sp1.pdf',
+        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-SP1.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',
-        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/',
+        EDGE_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/',
         EMBEDDEN_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/',
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2022/12',
         LTS: true,
-      },         
+      },
       {
         NAME: 'openEuler 22.09',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.09/',
