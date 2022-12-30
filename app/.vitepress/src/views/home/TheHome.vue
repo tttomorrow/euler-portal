@@ -53,7 +53,7 @@ const blogData = ref(undefined);
 const yearImg: any = computed(() => {
   return lang.value === 'zh' ? yearZhImg : yearEnImg;
 });
-const isSummaryShow = ref(true);
+const isSummaryShow = ref(false);
 const yearLink = computed(() => {
   return lang.value === 'zh'
     ? 'https://summary.openeuler.org/zh/2022/'
