@@ -81,13 +81,13 @@ export default {
       },
     ],
     en: [
-      // {
-      //   pcBanner: year_pc,
-      //   moBanner: year_mo,
-      //   link: '',
-      //   id: '',
-      //   targetTap: 1,
-      // },
+      {
+        pcBanner: year_pc,
+        moBanner: year_mo,
+        link: '',
+        id: '',
+        targetTap: 1,
+      },
       {
         pcBanner: prize_en_pc,
         moBanner: prize_en_mo,
@@ -111,13 +111,13 @@ export default {
       },
     ],
     ru: [
-      // {
-      //   pcBanner: year_pc,
-      //   moBanner: year_mo,
-      //   link: '',
-      //   id: '',
-      //   targetTap: 1,
-      // },
+      {
+        pcBanner: year_pc,
+        moBanner: year_mo,
+        link: '',
+        id: '',
+        targetTap: 1,
+      },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
