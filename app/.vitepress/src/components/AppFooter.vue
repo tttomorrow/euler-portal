@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
+import { computed, toRefs, ref } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
@@ -202,18 +202,18 @@ const floatImg = computed(() => {
   return isDark.value ? floatDark : floatLight;
 });
 
-// const floatData = ref([
-//   {
-//     img: IconCode,
-//     text: 'Quick Issue',
-//     link: quickIssueUrl,
-//   },
-//   {
-//     img: IconHelp,
-//     text: '欧拉 小智',
-//     link: 'https://qa-robot.openeuler.org/',
-//   },
-// ]);
+const floatData = ref([
+  {
+    img: IconCode,
+    text: 'Quick Issue',
+    link: quickIssueUrl,
+  },
+  {
+    img: IconHelp,
+    text: '欧拉 小智',
+    link: 'https://qa-robot.openeuler.org/',
+  },
+]);
 
 // 点击关闭cookies使用提示
 const { isCookieTip } = toRefs(props);
@@ -324,24 +324,19 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
       class="float-right"
       :class="isDark ? 'dark-nav' : ''"
     >
-      <a
-        href=""
+      <div
         class="nav-item"
-        target="_blank"
         :style="{ backgroundImage: `url(${floatImg})` }"
-      >
-      </a>
-      <a :href="quickIssueUrl" class="nav-item" target="_blank">
-        <OIcon><IconCode /></OIcon>
-        <div class="text">Quick Issue</div>
-      </a>
+      ></div>
       <a
-        href="https://qa-robot.openeuler.org/"
+        v-for="item in floatData"
+        :href="item.link"
+        :key="item.link"
         class="nav-item"
         target="_blank"
       >
-        <OIcon><IconHelp /></OIcon>
-        <div class="text">欧拉 小智</div>
+        <OIcon><component :is="item.img"></component> </OIcon>
+        <div class="text">{{ item.text }}</div>
       </a>
     </div>
   </footer>
@@ -664,6 +659,7 @@ $color: #fff;
     top: 70vh;
     right: 50px;
     z-index: 10;
+    box-shadow: var(--o-shadow-l1);
     .nav-item {
       display: flex;
       align-items: center;
@@ -672,9 +668,12 @@ $color: #fff;
       width: 50px;
       height: 50px;
       background-color: var(--o-color-bg2);
+      background-size: cover;
+      font-size: 12px;
+      line-height: 18px;
       color: var(--o-color-text1);
-      box-shadow: var(--o-container-shadow-level1);
       .text {
+        word-spacing: 100vw;
         display: none;
       }
       .o-icon {
