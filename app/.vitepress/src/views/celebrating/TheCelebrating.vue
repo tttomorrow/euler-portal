@@ -77,7 +77,6 @@ const data = {
     'Brace',
     'khdkskho',
     'YINJIAYI',
-    'khdkskho',
   ],
   down: {
     title: '即刻体验openEuler',
