@@ -189,7 +189,11 @@ onUnmounted(() => {
     <a :href="yearLink" target="_blank">
       <img class="code" :src="yearImg" alt="扫描二维码" />
     </a>
-    <a class="close" :class="lang==='en'?'close-en':''" @click="clickClose()"></a>
+    <a
+      class="close"
+      :class="lang === 'en' ? 'close-en' : ''"
+      @click="clickClose()"
+    ></a>
   </div>
 </template>
 
@@ -197,7 +201,7 @@ onUnmounted(() => {
 .smmary-code {
   position: fixed;
   left: 1vw;
-  top: 80vh;
+  top: 70vh;
   z-index: 99;
 
   .code {
@@ -223,8 +227,8 @@ onUnmounted(() => {
       height: 8px;
     }
   }
-  .close-en{
-     right: 4px;
+  .close-en {
+    right: 4px;
     @media screen and (max-width: 1100px) {
       right: 0px;
     }
