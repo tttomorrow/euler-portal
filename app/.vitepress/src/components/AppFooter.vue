@@ -32,22 +32,23 @@ import CodeTitleGzh from '@/assets/common/footer/img-gzh.png';
 import CodeImgXzs from '@/assets/common/footer/code-xzs.png';
 import CodeImgZgz from '@/assets/common/footer/code-zgz.png';
 
+// float
+import floatLight from '@/assets/common/footer/float_light.png';
+import floatDark from '@/assets/common/footer/float_dark.png';
+
 import IconCancel from '~icons/app/icon-cancel.svg';
-
-// quick-issue
-import QuickIssue_Light from '@/assets/common/footer/quick-issue_light.png';
-import QuickIssue_Dark from '@/assets/common/footer/quick-issue_dark.png';
-
-// 问卷调查
-// import Investigation_Light from '@/assets/common/footer/investigation.png';
-// import Investigation_Dark from '@/assets/common/footer/investigation_dark.png';
-// import Close_Light from '@/assets/common/footer/close.png';
+import IconCode from '~icons/app/icon-code.svg';
+import IconHelp from '~icons/app/icon-help.svg';
 
 const props = defineProps({
   isCookieTip: {
     type: Boolean,
     default: false,
   },
+});
+
+const isDark = computed(() => {
+  return useCommon().theme === 'dark' ? true : false;
 });
 
 const { lang, frontmatter } = useData();
@@ -167,8 +168,6 @@ const footerCodeList = [
   },
 ];
 
-// const isShow = ref(true);
-
 const handleNavClick = (path: string) => {
   if (path.startsWith('https:')) {
     window.open(path, '_blank');
@@ -199,15 +198,29 @@ const quickIssueUrl = computed(() => {
     : 'https://quickissue.openeuler.org/zh/issues/';
 });
 
+const floatImg = computed(() => {
+  return isDark.value ? floatDark : floatLight;
+});
+
+// const floatData = ref([
+//   {
+//     img: IconCode,
+//     text: 'Quick Issue',
+//     link: quickIssueUrl,
+//   },
+//   {
+//     img: IconHelp,
+//     text: '欧拉 小智',
+//     link: 'https://qa-robot.openeuler.org/',
+//   },
+// ]);
+
 // 点击关闭cookies使用提示
 const { isCookieTip } = toRefs(props);
 const emits = defineEmits(['click-cookie']);
 function onCookieClick() {
   emits('click-cookie');
 }
-// function clickWindow() {
-//   isShow.value = false;
-// }
 
 // 控制issue浮窗在峰会页面不显示
 const isFloShow = computed(() => !router.route.path.includes('summit-list'));
@@ -288,6 +301,9 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
               </a>
             </div>
             <div class="footer-links" :class="{ iszh: lang === 'zh' }">
+              <div class="footer-top">
+                <img src="" alt="" />
+              </div>
               <a
                 v-for="item in footerLinks"
                 :key="item.id"
@@ -303,18 +319,29 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
         </div>
       </AppContent>
     </div>
-    <div v-show="lang === 'zh' && isFloShow" class="quick-issue">
-      <a :href="quickIssueUrl" target="_blank">
-        <img
-          v-show="useCommon().theme === 'light'"
-          :src="QuickIssue_Light"
-          alt="openEuler"
-        />
-        <img
-          v-show="useCommon().theme === 'dark'"
-          :src="QuickIssue_Dark"
-          alt="openEuler"
-        />
+    <div
+      v-show="lang === 'zh' && isFloShow"
+      class="float-right"
+      :class="isDark ? 'dark-nav' : ''"
+    >
+      <a
+        href=""
+        class="nav-item"
+        target="_blank"
+        :style="{ backgroundImage: `url(${floatImg})` }"
+      >
+      </a>
+      <a :href="quickIssueUrl" class="nav-item" target="_blank">
+        <OIcon><IconCode /></OIcon>
+        <div class="text">Quick Issue</div>
+      </a>
+      <a
+        href="https://qa-robot.openeuler.org/"
+        class="nav-item"
+        target="_blank"
+      >
+        <OIcon><IconHelp /></OIcon>
+        <div class="text">欧拉 小智</div>
       </a>
     </div>
   </footer>
@@ -630,17 +657,51 @@ $color: #fff;
       font-size: var(--o-font-size-tip);
     }
   }
-  .quick-issue {
+  .float-right {
     position: fixed;
     display: flex;
-    top: 80vh;
+    flex-direction: column;
+    top: 70vh;
     right: 50px;
     z-index: 10;
-    @media screen and (max-width: 1430px) {
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--o-color-bg2);
+      color: var(--o-color-text1);
+      box-shadow: var(--o-container-shadow-level1);
+      .text {
+        display: none;
+      }
+      .o-icon {
+        font-size: 24px;
+      }
+      &:hover {
+        color: var(--o-color-white);
+        background-color: var(--o-color-black);
+        .o-icon {
+          display: none;
+        }
+        .text {
+          display: block;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1200px) {
       display: none;
     }
-    img {
-      width: 128px;
+  }
+  .dark-nav {
+    .nav-item {
+      &:hover {
+        background-color: var(--o-color-white);
+        color: var(--o-color-black);
+      }
     }
   }
   .investigation {
