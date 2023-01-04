@@ -222,6 +222,8 @@ const initQueryData = () => {
   queryData.cardType = '';
   queryData.dataSource = 'assessment';
 
+  currentPage.value = 1;
+
   searchContent.value = '';
   activeIndex1.value = 0;
   activeIndex.value = 0;
