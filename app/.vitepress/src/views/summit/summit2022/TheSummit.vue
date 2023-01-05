@@ -113,7 +113,7 @@ import zhangxianyi from '@/assets/category/summit/summit2022/guests/zhangxianyi.
 import zhaolichao from '@/assets/category/summit/summit2022/guests/zhaolichao.png';
 import zhoulei from '@/assets/category/summit/summit2022/guests/zhoulei.png';
 import zhengzhipeng from '@/assets/category/summit/summit2022/guests/zhengzhipeng.png';
-
+import zhangxiang from '@/assets/category/summit/summit2022/guests/zhangxiang.png';
 import fengguanlin from '@/assets/category/summit/summit2022/guests/fengguanlin.png';
 import hannaiping from '@/assets/category/summit/summit2022/guests/hannaiping.png';
 import jiangdayong from '@/assets/category/summit/summit2022/guests/jiangdayong.png';
@@ -1888,6 +1888,11 @@ const summitData: any = {
           img: zhangxianyi,
           name: '张先轶',
           position: ['澎峰科技', 'CEO'],
+        },
+        {
+          img: zhangxiang,
+          name: '章翔',
+          position: ['中科院软件所工程师'],
         },
         {
           img: wuzhangjin,
