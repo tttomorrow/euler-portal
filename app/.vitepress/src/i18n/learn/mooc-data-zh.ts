@@ -15,9 +15,9 @@ export default {
           key: 'introduction0',
           introduction: [
             '欢迎学习HCIA-openEuler华为认证openEuler工程师在线课程。',
-            'OpenEuler是一个开源免费的Linux发行版系统，通过开放的社区形式与全球的开发者共同构建一个开放、多元和架构包容的软件生态体系。openEuler同时是一个创新的系统，倡导客户在系统上提出创新想法、开拓新思路、实践新方案。',
+            'openEuler是一个开源免费的Linux发行版系统，通过开放的社区形式与全球的开发者共同构建一个开放、多元和架构包容的软件生态体系。openEuler同时是一个创新的系统，倡导客户在系统上提出创新想法、开拓新思路、实践新方案。',
             'HCIA-openEuler华为认证openEuler工程师在线课程定位于培养和认证具备企业数据中心核心操作系统基础操作与管理能力的工程师。',
-            '通过HCIA-OpenEuler V1.0 认证，您将掌握openEuler操作系统基础命令，掌握openEuler用户管理、网络管理、权限管理，掌握shell基础知识；具备企业数据中心核心操作系统基础操作与管理能力；能够胜任Linux系统运维工程师等岗位。',
+            '通过HCIA-openEuler V1.0 认证，您将掌握openEuler操作系统基础命令，掌握openEuler用户管理、网络管理、权限管理，掌握shell基础知识；具备企业数据中心核心操作系统基础操作与管理能力；能够胜任Linux系统运维工程师等岗位。',
             '本次课程我们首先需要系统地了解openEuler是什么，对openEuler进行初步的了解。',
             '然后会依次学习并了解：',
             '1、操作系统发展史',
