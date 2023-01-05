@@ -114,7 +114,7 @@ export default {
       {
         NAME: 'BCLinux for Euler V21.10',
         DOWNLOAD_URL: 'https://mirrors.cmecloud.cn/bclinux/oe21.10/',
-        DESC: 'BC-Linux for Euler 是中国移动自主研发，以OpenEuler社区操作系统为基础，借助开源社区的开放优势，通过定制化手段研发的企业级Linux操作系统，具备专业化、本地化的Linux开发和运维服务能力，能充分满足顾客对于云计算和大数据通用场景、边缘计算、虚拟化及容器和PaaS业务场景需求。',
+        DESC: 'BC-Linux for Euler 是中国移动自主研发，以openEuler社区操作系统为基础，借助开源社区的开放优势，通过定制化手段研发的企业级Linux操作系统，具备专业化、本地化的Linux开发和运维服务能力，能充分满足顾客对于云计算和大数据通用场景、边缘计算、虚拟化及容器和PaaS业务场景需求。',
         RELEASE_DESC_URL:
           'https://ecloud.10086.cn/op-help-center/doc/article/41432',
         INSTALL_GUIDENCE_URL:
