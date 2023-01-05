@@ -1,15 +1,87 @@
 [
     {
-        "os_version": "FusionOS-22_everything_aarch64.iso",
-        "osv_name": "超聚变数字技术有限公司",
+        "os_version": "uniontechos-server-20-1050u1e-amd64.iso",
+        "osv_name": "统信软件技术有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2022/12/22",
+        "date": "2023/1/5",
+        "arch": "x86_64",
+        "details": "详细信息",
+        "friendly_link": "https://www.uniontech.com/",
+        "os_download_link": "https://www.uniontech.com/",
+        "checksum": "d705a914fefb5c7cdc6207ed9d11802e",
+        "base_openeuler_version": "openEuler 20.03 LTS SP3",
+        "tools_result": [
+            {
+                "name": "core_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "KABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "ABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "service_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "kernel_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ],
+        "platform_result": [
+            {
+                "name": "repo",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "base_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "performance_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "running_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ]
+    },
+    {
+        "os_version": "uniontechos-server-20-1050u1e-arm64.iso",
+        "osv_name": "统信软件技术有限公司",
+        "total_result": "pass",
+        "type": "服务器",
+        "date": "2023/1/5",
         "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "https://www.xfusion.com/",
-        "os_download_link": "https://www.xfusion.com/",
-        "checksum": "fae5159643f221ebf1035f90a95e949b",
+        "friendly_link": "https://www.uniontech.com/",
+        "os_download_link": "https://www.uniontech.com/",
+        "checksum": "10fb37e38161e7184b7945ee94d595bd",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
@@ -72,88 +144,16 @@
         ]
     },
     {
-        "os_version": "FusionOS-22_everything_x86-64.iso",
-        "osv_name": "超聚变数字技术有限公司",
+        "os_version": "dasos-e2.1.0-arm64.iso",
+        "osv_name": "杭州安恒信息技术股份有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2022/12/22",
-        "arch": "x86",
-        "details": "详细信息",
-        "friendly_link": "https://www.xfusion.com/",
-        "os_download_link": "https://www.xfusion.com/",
-        "checksum": "1f6e4d82bc389165a39e90046ecf71ed",
-        "base_openeuler_version": "openEuler 20.03 LTS SP3",
-        "tools_result": [
-            {
-                "name": "core_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_pkg",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "KABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "ABI",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "service_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "soft_config",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "kernel_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ],
-        "platform_result": [
-            {
-                "name": "repo",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "base_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "performance_test",
-                "percent": "NA",
-                "result": "pass"
-            },
-            {
-                "name": "running_config",
-                "percent": "NA",
-                "result": "pass"
-            }
-        ]
-    },
-    {
-        "os_version": "pegaspegasus-server-v1.0-arm64-1123.iso",
-        "osv_name": "南方电网数字电网集团",
-        "total_result": "pass",
-        "type": "服务器",
-        "date": "2022/12/22",
+        "date": "2023/1/5",
         "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "https://www.csg.cn/",
-        "os_download_link": "https://www.csg.cn/",
-        "checksum": "8be1a7f35d80bd61ddaea241c21d1f5e",
+        "friendly_link": "https://www.dbappsecurity.com.cn/",
+        "os_download_link": "https://www.dbappsecurity.com.cn/",
+        "checksum": "c7f34578e1cc8561a159c36792fdca3c",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
@@ -215,18 +215,161 @@
             }
         ]
     },
-
     {
-        "os_version": "pegasus-server-v1.0-arm64-alpha.iso",
-        "osv_name": "南方电网数字电网集团",
+        "os_version": "dasos-e2.1.0-x86_64.iso ",
+        "osv_name": "杭州安恒信息技术股份有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2022/12/2",
-        "arch": "x86",
+        "date": "2023/1/5",
+        "arch": "x86_64",
         "details": "详细信息",
-        "friendly_link": "https://www.csg.cn/",
-        "os_download_link": "https://www.csg.cn/",
-        "checksum": "f37593b4b15d0224c8841b4d62445c45",
+        "friendly_link": "https://www.dbappsecurity.com.cn/",
+        "os_download_link": "https://www.dbappsecurity.com.cn/",
+        "checksum": "d3ca5ea8f7d9f38e50180ca4ea71fd56",
+        "base_openeuler_version": "openEuler 20.03 LTS SP3",
+        "tools_result": [
+            {
+                "name": "core_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "KABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "ABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "service_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "kernel_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ],
+        "platform_result": [
+            {
+                "name": "repo",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "base_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "performance_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "running_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ]
+    },
+    {
+        "os_version": "KylinSec-Server-3.4-5A-2212-081050-x86_64.iso ",
+        "osv_name": "湖南麒麟信安科技股份有限公司",
+        "total_result": "pass",
+        "type": "服务器",
+        "date": "2023/1/5",
+        "arch": "x86_64",
+        "details": "详细信息",
+        "friendly_link": "http://www.kylinsec.com.cn/",
+        "os_download_link": "http://www.kylinsec.com.cn/",
+        "checksum": "e75fe8bf8817a2da9c425417aaaf3451",
+        "base_openeuler_version": "openEuler 20.03 LTS SP3",
+        "tools_result": [
+            {
+                "name": "core_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "KABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "ABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "service_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "kernel_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ],
+        "platform_result": [
+            {
+                "name": "repo",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "base_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "performance_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "running_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ]
+    },
+    {
+        "os_version": "KylinSec-Server-3.4-5A-2212-081050-aarch64.iso",
+        "osv_name": "湖南麒麟信安科技股份有限公司",
+        "total_result": "pass",
+        "type": "服务器",
+        "date": "2023/1/5",
+        "arch": "aarch64",
+        "details": "详细信息",
+        "friendly_link": "http://www.kylinsec.com.cn/",
+        "os_download_link": "http://www.kylinsec.com.cn/",
+        "checksum": "22bad7b5e8c84728fc72dadc2405d647",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
@@ -288,6 +431,4 @@
             }
         ]
     }
-
-
 ]
