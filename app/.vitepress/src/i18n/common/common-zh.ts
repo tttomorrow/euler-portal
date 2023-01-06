@@ -132,6 +132,12 @@ export default {
           ID: 'summit',
           PATH: '/interaction/summit-list/summit2022/',
         },
+        {
+          NAME: '论坛',
+          ID: 'forum',
+          PATH: 'https://forum.openeuler.org/',
+          IS_OPEN_MINISITE_WINDOW: 1,
+        },
       ],
       CLASS: ['news', 'blog', 'live', 'salon'],
     },

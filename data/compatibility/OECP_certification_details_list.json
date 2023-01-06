@@ -1,15 +1,15 @@
 [
     {
-        "os_version": "uniontechos-server-20-1050u1e-amd64.iso",
-        "osv_name": "统信软件技术有限公司",
+        "os_version": "BCLinux-for-Euler-21.10-dvd-x86_64-221128.iso",
+        "osv_name": "中移（苏州）软件技术有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2023/1/5",
+        "date": "2023/1/6",
         "arch": "x86_64",
         "details": "详细信息",
-        "friendly_link": "https://www.uniontech.com/",
-        "os_download_link": "https://www.uniontech.com/",
-        "checksum": "d705a914fefb5c7cdc6207ed9d11802e",
+        "friendly_link": "https://ecloud.10086.cn/",
+        "os_download_link": "https://ecloud.10086.cn/",
+        "checksum": "715526aab48b1dc647a37d238330aef2",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
@@ -72,16 +72,16 @@
         ]
     },
     {
-        "os_version": "uniontechos-server-20-1050u1e-arm64.iso",
-        "osv_name": "统信软件技术有限公司",
+        "os_version": "BCLinux-for-Euler-21.10-dvd-aarch64-221128.iso",
+        "osv_name": "中移（苏州）软件技术有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2023/1/5",
+        "date": "2023/1/6",
         "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "https://www.uniontech.com/",
-        "os_download_link": "https://www.uniontech.com/",
-        "checksum": "10fb37e38161e7184b7945ee94d595bd",
+        "friendly_link": "https://ecloud.10086.cn/",
+        "os_download_link": "https://ecloud.10086.cn/",
+        "checksum": "aed00d2c16bb391c62b90a6a71a12040",
         "base_openeuler_version": "openEuler 20.03 LTS SP3",
         "tools_result": [
             {
