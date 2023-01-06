@@ -199,7 +199,7 @@ helm --kubeconfig /etc/rancher/rfo/rfo.yml ls --all-namespaces
 
 RFO 基于 RKE2 进行重新打包制作而成，具有 RKE2 所有的功能特点，吸取了开发和维护轻量级 Kubernetes 发行版 K3s 的经验教训，并将其应用于构建一个具有 K3s 易用性的企业级发行版。这意味着，RFO 在最简单的情况下是一个单一的二进制文件，需要在所有参与 Kubernetes 集群的节点上安装和配置。一旦启动，RFO 就能够引导和监督每个节点上的角色合适的 agent，同时从网络上获取所需的内容。以下为 RFO 架构示意图：
 
-![1](images/1.png)
+![1](./images/1.png)
 
 RFO系统架构
 
@@ -207,7 +207,7 @@ RFO系统架构
 
 以下组件为 RFO 在项目中使用的 Kubernetes 组件，其中大部分经过重新打包并使用 openEuler base image 进行分发
 
-![2](images/2.png)
+![2](./images/2.png)
 
 在使用 install.sh 脚本进行安装时，rfo 将会以 linux system service 的方式安装到系统中，使用 systemd 作为 RFO Supervisor。其余方式（包括下载 rfo binary 直接启动）并不推荐，某些场景下会没有 RFO Supervisor 角色监控 RFO 运行状态，导致 kubelet 等程序常驻后台运行。
 
@@ -265,7 +265,7 @@ spec:
 注意：HelmChart spec.set 值覆盖 HelmChart 和 HelmChartConfig spec.valuesContent设置。
 
 
-例如对上文例子中的 Grafana helm chart 进行自定义 Grafana image 的 tag，可以创建一个 Kubernetes 资源文件，并用以下内容填充它，并使用 kubectl apply -f <manifest filename> 进行应用：
+例如对上文例子中的 Grafana helm chart 进行自定义 Grafana image 的 tag，可以创建一个 Kubernetes 资源文件，并用以下内容填充它，并使用 `kubectl apply -f <manifest filename>` 进行应用：
 
 ````
 apiVersion: helm.cattle.io/v1
