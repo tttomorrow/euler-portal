@@ -316,28 +316,30 @@ const jumpToUserZone = () => {
           </div>
         </transition>
       </div>
-      <div v-if="lang !== 'ru'" class="opt-user">
-        <div v-if="token">
-          <div class="el-dropdown-link opt-info">
-            <img
-              v-if="guardAuthClient.photo"
-              :src="guardAuthClient.photo"
-              class="img"
-            />
-            <div v-else class="img"></div>
-            <p class="opt-name">{{ guardAuthClient.username }}</p>
+      <ClientOnly>
+        <div v-if="lang !== 'ru'" class="opt-user">
+          <div v-if="token">
+            <div class="el-dropdown-link opt-info">
+              <img
+                v-if="guardAuthClient.photo"
+                :src="guardAuthClient.photo"
+                class="img"
+              />
+              <div v-else class="img"></div>
+              <p class="opt-name">{{ guardAuthClient.username }}</p>
+            </div>
+            <ul class="menu-list">
+              <li @click="jumpToUserZone()">{{ i18n.common.USER_CENTER }}</li>
+              <li @click="logout()">{{ i18n.common.LOGOUT }}</li>
+            </ul>
           </div>
-          <ul class="menu-list">
-            <li @click="jumpToUserZone()">{{ i18n.common.USER_CENTER }}</li>
-            <li @click="logout()">{{ i18n.common.LOGOUT }}</li>
-          </ul>
+          <div v-else class="login" @click="showGuard()">
+            <OIcon class="icon">
+              <IconLogin />
+            </OIcon>
+          </div>
         </div>
-        <div v-else class="login" @click="showGuard()">
-          <OIcon class="icon">
-            <IconLogin />
-          </OIcon>
-        </div>
-      </div>
+      </ClientOnly>
     </div>
   </header>
 </template>
@@ -740,6 +742,7 @@ const jumpToUserZone = () => {
       color: var(--o-color-text1);
       border-bottom: 1px solid var(--o-color-division1);
       padding: 0 var(--o-spacing-h5);
+      white-space: nowrap;
       &:last-child {
         border-bottom: 0 none;
       }
