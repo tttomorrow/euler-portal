@@ -409,7 +409,6 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
-        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-SP1.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',
@@ -434,6 +433,7 @@ export default {
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
         SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        WHITE_PAPER: '/whitepaper/en/openEuler-22.09 Technical White Paper.pdf',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/',
         EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/edge_img/',
@@ -741,6 +741,7 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
+        WHITE_PAPER: '/whitepaper/en/openEuler-22.09 Technical White Paper.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
         SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
         CLOUD_IMAGE:

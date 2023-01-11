@@ -23,12 +23,18 @@ function handleClick(item: LinkItem) {
   <SeoBox :seo-data="seoConfig[lang]?.migrationDownload" />
   <div class="migration-download">
     <div class="migration-download-content">
-      <div v-for="item in downloadInfo" :key="item.name">
-        <h2 :id="item.name" style="margin-top: 0">{{ item.name }}</h2>
+      <div>
+        <h2 :id="downloadInfo.name" style="margin-top: 0">
+          {{ downloadInfo.name }}
+        </h2>
 
-        <p class="download-desc">{{ item.description }}</p>
+        <p class="download-desc">{{ downloadInfo.description }}</p>
 
-        <OCard shadow="hover">
+        <OCard
+          v-for="item in downloadInfo.versionList"
+          shadow="hover"
+          :key="item.version"
+        >
           <div class="card-box">
             <div class="card-box-left">
               <img
@@ -36,7 +42,7 @@ function handleClick(item: LinkItem) {
                 alt=""
               />
               <div class="card-info">
-                <span class="name">{{ item.name }}</span>
+                <span class="name">{{ downloadInfo.name }}</span>
                 <span class="version">{{ item.version }}</span>
               </div>
             </div>
