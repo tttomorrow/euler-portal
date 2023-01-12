@@ -25,7 +25,7 @@ const langOptions = [
 
 // 选择语言
 const emits = defineEmits(['language-click']);
-const mobileChaneLanguage = (newlang: string) => {
+const chaneLanguageMobile = (newlang: string) => {
   chaneLanguage(newlang);
   emits('language-click');
 };
@@ -103,7 +103,7 @@ watch(
       v-for="item in langList"
       :key="item.id"
       :class="{ active: lang === item.id }"
-      @click.stop="mobileChaneLanguage(item.id)"
+      @click.stop="chaneLanguageMobile(item.id)"
       >{{ item.label }}</span
     >
   </div>

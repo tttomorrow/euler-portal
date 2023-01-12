@@ -25,19 +25,19 @@ const props = defineProps({
 });
 const contributionSelectBox = ref([
   {
-    color: 'bgColor-maintainer',
+    color: 'bg-color-maintainer',
     isSelected: true,
     label: 'Maintainer',
     key: 'maintainers',
   },
   {
-    color: 'bgColor-committer',
+    color: 'bg-color-committer',
     isSelected: true,
     label: 'Committer',
     key: 'committers',
   },
   {
-    color: 'bgColor-contributor',
+    color: 'bg-color-contributor',
     isSelected: true,
     label: 'Contributor',
     key: 'contributor',
@@ -196,13 +196,13 @@ const turnPage = (option: string) => {
 </script>
 <template>
   <div>
-    <div class="theSecondForm">
+    <div class="second-form">
       <ListFormRadio
         :option="lastformOption"
         @get-contribute-info="getContributeInfo($event)"
       >
         <template #searchInput>
-          <div class="searchInput">
+          <div class="search-box">
             <OInput
               v-model="searchInput"
               :trigger-on-focus="false"
@@ -232,7 +232,7 @@ const turnPage = (option: string) => {
       >
         <div
           class="box"
-          :class="value.isSelected ? value.color : 'bgColor-cancel'"
+          :class="value.isSelected ? value.color : 'bg-color-cancel'"
         ></div>
         <span :class="value.isSelected ? '' : 'color-cancel'">{{
           value.label
@@ -275,13 +275,13 @@ const turnPage = (option: string) => {
                   class="usertypecolorbox"
                   :class="
                     scope.row.usertype === 'maintainers'
-                      ? 'bgColor-maintainer'
-                      : 'bgColor-contributor'
+                      ? 'bg-color-maintainer'
+                      : 'bg-color-contributor'
                   "
                 ></span>
                 <span
                   v-show="scope.row.usertype === 'committers'"
-                  class="usertypecolorbox bgColor-committer"
+                  class="usertypecolorbox bg-color-committer"
                 ></span>
                 <span
                   class="num"
@@ -440,23 +440,23 @@ const turnPage = (option: string) => {
     font-weight: 300;
   }
 }
-.searchInput {
+.search-box {
   width: 100%;
   margin: 10px 0 20px;
   .search-icon {
     font-size: 20px;
   }
 }
-.bgColor-maintainer {
+.bg-color-maintainer {
   background-color: var(--o-color-brand1);
 }
-.bgColor-committer {
+.bg-color-committer {
   background-color: var(--o-color-yellow5);
 }
-.bgColor-contributor {
+.bg-color-contributor {
   background-color: #4aaead;
 }
-.bgColor-cancel {
+.bg-color-cancel {
   background-color: var(--o-color-neutral10);
 }
 .color-cancel {

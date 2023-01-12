@@ -28,12 +28,12 @@ const isTest = ref(false);
 const liveUrl = ref('');
 const renderData: Array<RENDERDATA> = props.liveData as any;
 const roomId = ref(0);
-const tabLiveRoom = (item: RENDERDATA, index: number): void => {
+const setLiveRoom = (item: RENDERDATA, index: number): void => {
   roomId.value = index;
-  creatUserId(isTest.value ? item.liveTestId : item.liveId);
+  createUserId(isTest.value ? item.liveTestId : item.liveId);
 };
 
-function creatUserId(liveId: number) {
+function createUserId(liveId: number) {
   let digit = Math.round(Math.random() * 10);
   digit > 3 ? digit : (digit = 3);
 
@@ -83,7 +83,7 @@ onMounted(async () => {
     delay: 100,
   });
   isTest.value = window.location.host.includes('test.osinfra');
-  creatUserId(isTest.value ? renderData[0].liveTestId : renderData[0].liveId);
+  createUserId(isTest.value ? renderData[0].liveTestId : renderData[0].liveId);
   messageEvent();
 });
 
@@ -91,20 +91,15 @@ onMounted(async () => {
 const ActiveBg = `url(${liveActiveBg})`;
 
 const liveRoom = ref(renderData[0].name);
-const selectliveChange = (val: number): void => {
-  creatUserId(val);
+const changeLive = (val: number): void => {
+  createUserId(val);
 };
 </script>
 
 <template>
   <div class="live-room">
     <div class="select-room">
-      <OSelect
-        v-model="liveRoom"
-        clearable
-        filterable
-        @change="selectliveChange"
-      >
+      <OSelect v-model="liveRoom" clearable filterable @change="changeLive">
         <OOption
           v-for="item in renderData"
           :key="item.id"
@@ -135,7 +130,7 @@ const selectliveChange = (val: number): void => {
             roomId === index ? 'link-active' : '',
             index === 0 ? 'link-main' : ' ',
           ]"
-          @click="tabLiveRoom(item, index)"
+          @click="setLiveRoom(item, index)"
         >
           <p class="name">{{ item.name }}</p>
           <p v-if="className === 'odd2022' && index !== 0" class="sub">

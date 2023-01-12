@@ -202,11 +202,11 @@ function initMap(lng: number, lat: number) {
     });
 }
 
-function dayTabClick(e: any) {
+function clickDayTab(e: any) {
   dayTabIndex.value = e.index;
 }
 
-function TabClick(e: any) {
+function clickTab(e: any) {
   tabIndex.value = e.index - 0;
   handleScroll(e.index - 0);
 }
@@ -266,7 +266,7 @@ watch(windowWidth, () => {
       </h2>
     </div>
     <div id="tab2" class="tab-box-mobile">
-      <OTabs v-model="tabShow" @tab-click="TabClick">
+      <OTabs v-model="tabShow" @tab-click="clickTab">
         <OTabPane
           v-for="(item, index) in tabTitle"
           :key="index"
@@ -317,7 +317,7 @@ watch(windowWidth, () => {
               animation
               target="_blank"
               class="btn-detail"
-              @click="TabClick({ index: 2 })"
+              @click="clickTab({ index: 2 })"
             >
               {{ i18n.interaction.MEETUPSLIST.LEARN_MORE }}
               <template #suffixIcon>
@@ -328,7 +328,7 @@ watch(windowWidth, () => {
         </div>
 
         <div id="tab" class="tab-box">
-          <OTabs v-model="tabShow" @tab-click="TabClick">
+          <OTabs v-model="tabShow" @tab-click="clickTab">
             <OTabPane
               v-for="(item, index) in tabTitle"
               :key="index"
@@ -344,7 +344,7 @@ watch(windowWidth, () => {
         <div class="agenda detail-card">
           <h1 id="agenda" class="detail-title">{{ tabTitle[1] }}</h1>
           <div v-if="betweenDate.length" class="tab-box-time">
-            <OTabs v-model="dayTabShow" @tab-click="dayTabClick">
+            <OTabs v-model="dayTabShow" @tab-click="clickDayTab">
               <OTabPane
                 v-for="(item, index) in betweenDate"
                 :key="index"

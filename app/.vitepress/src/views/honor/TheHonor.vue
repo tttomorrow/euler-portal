@@ -229,7 +229,7 @@ const honorData = {
     '注：根据openEuler社区评奖规则，依据2021年12月1日 ~ 2022年11月30日的贡献进行评选，且展示不分先后顺序。',
 };
 const thisYear = ref('2022');
-const isShow = ref(-1);
+const showNumber = ref(-1);
 function useClickTab(year: string) {
   thisYear.value = year;
 }
@@ -237,7 +237,7 @@ function clickBtn(link: string) {
   window.open(link);
 }
 function clickDetail(index: number) {
-  isShow.value = index;
+  showNumber.value = index;
 }
 </script>
 
@@ -299,7 +299,7 @@ function clickDetail(index: number) {
           </OButton>
           <img class="bg-right" :src="bgImg" alt="" />
           <div
-            v-if="isShow === index"
+            v-if="showNumber === index"
             class="certificate"
             @click="clickDetail(-1)"
           >

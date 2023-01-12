@@ -86,7 +86,7 @@ const goLink = (path: string) => {
                 animation
                 type="text"
                 size="small"
-                class="button"
+                class="more-button"
                 @click="goLink(i.LINK)"
               >
                 {{ i.TEXT }}
@@ -288,7 +288,7 @@ const goLink = (path: string) => {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        .button {
+        .more-button {
           padding: 0 !important;
           margin-right: var(--o-spacing-h5);
           svg {

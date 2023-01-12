@@ -24,7 +24,7 @@ const { currentPage, totalPage } = toRefs(props);
 const inputNumber = ref(1);
 const emit = defineEmits(['turn-page', 'jump-page']);
 // 将翻页时间传递给父组件
-const handleCurrentChange = (option: string) => {
+const turnPage = (option: string) => {
   emit('turn-page', option);
   document.documentElement.scrollTop = 0;
 };
@@ -67,7 +67,7 @@ function jumpPage(e: any) {
     <span
       class="prev"
       :class="currentPage === 1 ? 'disable-button' : ''"
-      @click="handleCurrentChange('prev')"
+      @click="turnPage('prev')"
       >{{ i18n.common.PREV }}</span
     >
     <span class="page-number">
@@ -85,7 +85,7 @@ function jumpPage(e: any) {
     <span
       class="next"
       :class="currentPage === totalPage ? 'disable-button' : ''"
-      @click="handleCurrentChange('next')"
+      @click="turnPage('next')"
       >{{ i18n.common.NEXT }}</span
     >
     <OIcon

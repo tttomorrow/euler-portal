@@ -42,7 +42,7 @@ const form = ref(
       </el-radio-group>
     </div>
   </div>
-  <div class="searchInput">
+  <div class="search-box">
     <slot name="searchInput"></slot>
   </div>
 </template>
@@ -89,7 +89,7 @@ const form = ref(
     margin-right: 24px;
   }
 }
-.searchInput {
+.search-box {
   margin-left: 85px;
 }
 </style>

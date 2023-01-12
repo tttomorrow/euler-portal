@@ -38,7 +38,7 @@ const goLink = (path: string) => {
         :level-index="2"
         class="item"
       >
-        <div class="link">
+        <div class="item-link">
           <OButton
             animation
             type="text"
@@ -52,7 +52,7 @@ const goLink = (path: string) => {
             </template>
           </OButton>
         </div>
-        <div class="img"></div>
+        <div class="item-img"></div>
       </OContainer>
     </div>
   </div>
@@ -72,7 +72,7 @@ const goLink = (path: string) => {
       color: var(--o-color-text1);
       line-height: var(--o-height-h6);
       position: relative;
-      .link {
+      .item-link {
         z-index: 2;
         position: absolute;
         top: 37px;
@@ -86,7 +86,7 @@ const goLink = (path: string) => {
           }
         }
       }
-      .img {
+      .item-img {
         z-index: 1;
         position: absolute;
         top: -24px;
@@ -104,12 +104,12 @@ const goLink = (path: string) => {
       grid-row-gap: var(--o-spacing-h5);
       .item {
         height: 54px;
-        .link {
+        .item-link {
           top: 16px;
           left: 8px;
           bottom: 16px;
         }
-        .img {
+        .item-img {
           width: 130px;
           height: 81px;
           top: -14px;

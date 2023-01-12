@@ -70,12 +70,12 @@ buttonText.value = send.value;
 // 接收证书信息
 const paList: any = ref([]);
 // 成功获取验证码后再次获取需等待60s
-function waitSend() {
-  const waitSendtimer = setInterval(() => {
+function handleWaitingEvent() {
+  const setWaitingTime = setInterval(() => {
     countSecond.value--;
     buttonText.value = resend.value + '（' + countSecond.value + '）';
     if (countSecond.value === 0) {
-      clearInterval(waitSendtimer);
+      clearInterval(setWaitingTime);
       resultTip.value = '';
       codeSuccess.value = false;
       buttonText.value = send.value;
@@ -94,7 +94,7 @@ function getCode(params: string, lang: string) {
       .then((res) => {
         resultTip.value = res.message;
         if (res.success) {
-          waitSend();
+          handleWaitingEvent();
           identification.value = res.data.identification;
           codeSuccess.value = true;
           successTip.value = true;
@@ -117,7 +117,7 @@ function getCode(params: string, lang: string) {
 // 接收证书信息
 const dataList: any = ref([]);
 // 输入验证码后点击确认
-function SendCode(identification: string, codeInput: string) {
+function clickConfirmation(identification: string, codeInput: string) {
   if (emailInput.value && codeInput) {
     if (identification === '') {
       resultTip.value =
@@ -163,17 +163,17 @@ function SendCode(identification: string, codeInput: string) {
   }
 }
 // 面包屑点击事件
-function goBackPage() {
+function clickBreadcrumb() {
   const i = router.route.path.replace('search.html', '');
   router.go(i);
 }
 // 证书点击选择事件
-function clickChoose(index: number) {
+function selectCertification(index: number) {
   chooseList.value[index] = !chooseList.value[index];
 }
 // 判断下载链接是否失效
 const disabledTip = ref('');
-function download(paString: string) {
+function downloadCertification(paString: string) {
   downloadCard(paString, language.value)
     .then((res) => {
       if (res.success) {
@@ -215,7 +215,7 @@ function download(paString: string) {
 // 点击下载按钮
 const showIcon = ref(false);
 const existChoose = ref(false);
-function clickDownload() {
+function handleDownloadingEvent() {
   if (!showIcon.value) {
     showIcon.value = true;
     return;
@@ -223,7 +223,7 @@ function clickDownload() {
   existChoose.value = true;
   chooseList.value.forEach((item, index) => {
     if (item) {
-      download(paList.value[index]);
+      downloadCertification(paList.value[index]);
       existChoose.value = false;
     }
   });
@@ -238,7 +238,7 @@ function clickDownload() {
 <template>
   <AppContent>
     <div v-if="lang !== 'zh'" class="breadcrumb">
-      <p class="last-page" @click="goBackPage">
+      <p class="last-page" @click="clickBreadcrumb">
         {{ i18n.certification.title }}
       </p>
       <span class="separtor">
@@ -302,7 +302,7 @@ function clickDownload() {
           <div class="button-box">
             <OButton
               size="small"
-              @click="SendCode(identification, codeInput)"
+              @click="clickConfirmation(identification, codeInput)"
               >{{ i18n.certification.sure }}</OButton
             >
           </div>
@@ -326,7 +326,7 @@ function clickDownload() {
               down: showIcon,
               shakeShow: existChoose,
             }"
-            @click="showIcon ? clickChoose(index) : ''"
+            @click="showIcon ? selectCertification(index) : ''"
           >
             <div class="choose-img"></div>
             <div class="item-img">
@@ -338,7 +338,7 @@ function clickDownload() {
             </div>
           </div>
         </div>
-        <OButton size="small" @click="clickDownload">{{
+        <OButton size="small" @click="handleDownloadingEvent">{{
           showIcon
             ? i18n.certification.certificateDownload2
             : i18n.certification.certificateDownload

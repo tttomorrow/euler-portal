@@ -56,27 +56,27 @@ const queryData: CveQuery = reactive({
   osvName: '',
 });
 
-function osNameSelected(val: string) {
+function selectOsName(val: string) {
   queryData.osvName = val === '全部' ? '' : val;
   activeIndex.value = osNames.value.indexOf(val);
 }
 
-function osTypeSelected(val: string) {
+function selectOsType(val: string) {
   queryData.type = val === '全部' ? '' : val;
   activeIndex1.value = osTypes.value.indexOf(val);
 }
 
-const tagClick = (i: number, name: string) => {
+const clickTag = (i: number, name: string) => {
   activeIndex.value = i;
   osName.value = name;
   queryData.osvName = name === '全部' ? '' : name;
 };
 
-function searchValchange() {
+function changeSearchVal() {
   queryData.keyword = inputName.value;
 }
 
-const typeTagClick = (i: number, type: string) => {
+const clickTypeTag = (i: number, type: string) => {
   queryData.type = type === '全部' ? '' : type;
   osType.value = type;
   activeIndex1.value = i;
@@ -92,7 +92,7 @@ const handleCurrentChange = (val: number) => {
   currentPage.value = val;
 };
 
-const go = (id: number) => {
+const goApproveInfo = (id: number) => {
   router.go(`${router.route.path}approve-info/?id=${JSON.stringify(id)}`);
 };
 
@@ -166,7 +166,7 @@ watch(queryData, () => getOsTableList(queryData));
           <OSelect
             v-model="osName"
             :placeholder="i18n.approve.SELECT_COMPANY"
-            @change="osNameSelected"
+            @change="selectOsName"
           >
             <OOption
               v-for="item in osNames"
@@ -181,7 +181,7 @@ watch(queryData, () => getOsTableList(queryData));
           <OSelect
             v-model="osType"
             :placeholder="i18n.approve.TABLE_COLUMN.TYPE"
-            @change="osTypeSelected"
+            @change="selectOsType"
           >
             <OOption
               v-for="item in osTypes"
@@ -199,7 +199,7 @@ watch(queryData, () => getOsTableList(queryData));
         v-model="inputName"
         class="search"
         :placeholder="i18n.approve.SEARCH_PLACEHOLDER"
-        @change="searchValchange"
+        @change="changeSearchVal"
       ></OSearch
     ></ClientOnly>
 
@@ -212,7 +212,7 @@ watch(queryData, () => getOsTableList(queryData));
               :key="'tag' + index"
               checkable
               :type="activeIndex === index ? 'primary' : 'text'"
-              @click="tagClick(index, item)"
+              @click="clickTag(index, item)"
             >
               {{ item }}
             </OTag>
@@ -226,7 +226,7 @@ watch(queryData, () => getOsTableList(queryData));
             :key="'tag' + index"
             checkable
             :type="activeIndex1 === index ? 'primary' : 'text'"
-            @click="typeTagClick(index, item)"
+            @click="clickTypeTag(index, item)"
           >
             {{ item }}
           </OTag>
@@ -257,7 +257,7 @@ watch(queryData, () => getOsTableList(queryData));
 
       <el-table-column :label="i18n.approve.TABLE_COLUMN.DETAILS" width="220">
         <template #default="scope">
-          <span class="link" @click="go(scope.row.id)">{{
+          <span class="link" @click="goApproveInfo(scope.row.id)">{{
             scope.row.details
           }}</span>
         </template>
@@ -301,7 +301,9 @@ watch(queryData, () => getOsTableList(queryData));
           </li>
           <li>
             <span>{{ i18n.approve.TABLE_COLUMN.DETAILS }}:</span
-            ><span class="link" @click="go(item.id)">{{ item.details }}</span>
+            ><span class="link" @click="goApproveInfo(item.id)">{{
+              item.details
+            }}</span>
           </li>
           <li>
             <span>{{ i18n.approve.TABLE_COLUMN.LINK }}:</span

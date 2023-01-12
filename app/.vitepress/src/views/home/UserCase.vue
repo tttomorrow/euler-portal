@@ -23,7 +23,7 @@ const props = defineProps({
   },
 });
 
-const handleGo = (path: string) => {
+const jumpTo = (path: string) => {
   window.open(path.replace(/(index)$/g, ''), '_blank');
 };
 
@@ -155,7 +155,7 @@ onUnmounted(() => {
               v-for="user in caseData && caseData[item.TYPE]"
               :key="user.company"
               class="user-card"
-              @click="handleGo(user.path)"
+              @click="jumpTo(user.path)"
             >
               <div class="user-title">{{ user.company }}</div>
               <div class="user-word">{{ user.summary }}</div>
@@ -210,7 +210,7 @@ onUnmounted(() => {
               animation
               type="text"
               class="case-more-item"
-              @click="handleGo(i18n.home.USER_CASE.VIEW_MORE_LINK)"
+              @click="jumpTo(i18n.home.USER_CASE.VIEW_MORE_LINK)"
             >
               {{ i18n.home.USER_CASE.VIEW_MORE }}
               <template #suffixIcon>

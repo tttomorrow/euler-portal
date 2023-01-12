@@ -59,7 +59,7 @@ const yearLink = computed(() => {
     ? 'https://summary.openeuler.org/zh/2022/'
     : 'https://summary-en.openeuler.org/en/2022/';
 });
-function clickClose() {
+function closeSummaryTips() {
   isSummaryShow.value = false;
   sessionStorage.setItem('summary-tips', 'false');
 }
@@ -192,7 +192,7 @@ onUnmounted(() => {
     <a
       class="close"
       :class="lang === 'en' ? 'close-en' : ''"
-      @click="clickClose()"
+      @click="closeSummaryTips()"
     ></a>
   </div>
 </template>

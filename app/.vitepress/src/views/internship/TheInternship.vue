@@ -247,7 +247,7 @@ const tabIndex = ref(0);
 function changeTabIndex(index: number) {
   tabIndex.value = index;
 }
-const scroTop = () => {
+const handleScrollEvent = () => {
   const scrollTop =
     document.body.scrollTop || document.documentElement.scrollTop;
   if (scrollTop < 270 || scrollTop > 7200) {
@@ -275,10 +275,10 @@ const scroTop = () => {
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', scroTop);
+  window.addEventListener('scroll', handleScrollEvent);
 });
 onUnmounted(() => {
-  window.removeEventListener('scroll', scroTop);
+  window.removeEventListener('scroll', handleScrollEvent);
 });
 </script>
 
@@ -335,7 +335,6 @@ onUnmounted(() => {
                 >实习任务
                 <OIcon><IconArrowRight /></OIcon>
               </OButton>
-              <!-- <OButton class="task-btn"> 实习任务 </OButton> -->
             </a>
             <a href="https://openlookeng.io/" target="_blank">
               <OButton class="detail-btn">
@@ -361,7 +360,6 @@ onUnmounted(() => {
                 >实习任务
                 <OIcon><IconArrowRight /></OIcon>
               </OButton>
-              <!-- <OButton class="task-btn"> 实习任务 </OButton> -->
             </a>
             <a href="https://opengauss.org" target="_blank">
               <OButton class="detail-btn">
@@ -396,7 +394,6 @@ onUnmounted(() => {
                 <span>实习任务</span>
                 <OIcon><IconArrowRight /></OIcon>
               </OButton>
-              <!-- <OButton class="task-btn"> 实习任务 </OButton> -->
             </a>
             <a href="https://www.mindspore.cn/" target="_blank">
               <OButton class="detail-btn">

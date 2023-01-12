@@ -125,7 +125,12 @@ const jumpTo = (item: any) => {
               </OButton>
             </div>
           </div>
-          <img v-else class="isH5show" :src="item.moBanner" :alt="item.title" />
+          <img
+            v-else
+            class="show-mobile"
+            :src="item.moBanner"
+            :alt="item.title"
+          />
         </div>
       </div>
     </swiper-slide>
@@ -280,7 +285,7 @@ html[lang='zh'] {
       width: 100%;
       height: 100%;
     }
-    .isH5show {
+    .show-mobile {
       display: none;
       object-fit: cover;
       width: 100%;

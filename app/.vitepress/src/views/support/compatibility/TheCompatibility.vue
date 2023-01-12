@@ -266,14 +266,14 @@ const initData = (params: CveQuery) => {
   }
 };
 
-const tagClick = (i: number, item: string) => {
+const clickTag = (i: number, item: string) => {
   activeIndex.value = i;
   osName.value = item;
   queryData.os = item === '全部' ? '' : item;
   initData(queryData);
 };
 
-const optionTagClick = (i: number, item: string) => {
+const clickOptionTag = (i: number, item: string) => {
   activeIndex1.value = i;
   if (activeName.value === 'fourth') {
     queryData.testOrganization = item === '全部' ? '' : item;
@@ -284,7 +284,7 @@ const optionTagClick = (i: number, item: string) => {
   initData(queryData);
 };
 
-const driveTypeClick = (i: number, item: string) => {
+const clickDriveType = (i: number, item: string) => {
   activeIndex4.value = i;
   queryData.cardType = item === '全部' ? '' : item;
   driveType.value = item;
@@ -292,7 +292,7 @@ const driveTypeClick = (i: number, item: string) => {
   initData(queryData);
 };
 
-function cpuTagClick(index: number, item: string) {
+function clickCpuTag(index: number, item: string) {
   activeIndex2.value = index;
   queryData.cpu = item === '全部' ? '' : item;
   cpuName.value = item === '全部' ? '' : item;
@@ -310,7 +310,7 @@ const handleCurrentChange = (val: number) => {
   initData(queryData);
 };
 
-function searchValchange() {
+function changeSearchVal() {
   queryData.keyword = searchContent.value;
   initData(queryData);
 }
@@ -340,47 +340,47 @@ const goBackPage = () => {
   }
 };
 
-function driveTypeSelected(val: string) {
+function selectDriveType(val: string) {
   queryData.cardType = val === '全部' ? '' : val;
   activeIndex4.value = typeLists.value.indexOf(val);
   initMobileData(queryData);
 }
 
-function osNameSelected(val: string) {
+function selectOsName(val: string) {
   queryData.os = val === '全部' ? '' : val;
   activeIndex.value = osOptions.value.indexOf(val);
 
   initMobileData(queryData);
 }
 
-function architehtureSelected(val: string) {
+function selectArchitehture(val: string) {
   queryData.architecture = val === '全部' ? '' : val;
   activeIndex1.value = architectureSelect.value.indexOf(val);
   architehture.value = val;
   initMobileData(queryData);
 }
 
-function cpuSelected(val: string) {
+function selectCpu(val: string) {
   queryData.cpu = cpuName.value = val === '全部' ? '' : val;
   activeIndex2.value = cpuList.value.indexOf(val);
   cpuName.value = val;
   initMobileData(queryData);
 }
 
-function softTypeClick(i: number, val: string) {
+function clickSoftType(i: number, val: string) {
   queryData.type = val === '全部' ? '' : val;
   activeIndex3.value = i;
   typeName.value = val;
   initMobileData(queryData);
 }
 
-function typeSelected(val: string) {
+function selectType(val: string) {
   activeIndex3.value = softType.value.indexOf(val);
   queryData.type = typeName.value = val === '全部' ? '' : val;
   initMobileData(queryData);
 }
 
-const go = (id: number) => {
+const goSoftwareInfo = (id: number) => {
   router.go(`${router.route.path}software-info/?id=${id}`);
 };
 
@@ -493,7 +493,7 @@ onMounted(() => {
           v-model="searchContent"
           class="o-search"
           :placeholder="i18n.compatibility.HARDWARE_SEARCH_PLACEHOLDER"
-          @change="searchValchange"
+          @change="changeSearchVal"
         ></OSearch>
 
         <OCard class="filter-card">
@@ -505,7 +505,7 @@ onMounted(() => {
                   :key="'tag' + index"
                   checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
-                  @click="tagClick(index, item)"
+                  @click="clickTag(index, item)"
                 >
                   {{ item }}
                 </OTag>
@@ -519,7 +519,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
-                @click="optionTagClick(index, item)"
+                @click="clickOptionTag(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -530,7 +530,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex2 === index ? 'primary' : 'text'"
-                @click="cpuTagClick(index, item)"
+                @click="clickCpuTag(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -574,10 +574,14 @@ onMounted(() => {
             width="220"
           >
             <template #default="scope">
-              <span class="hardware-info" @click="go(scope.row.id)">{{
-                i18n.compatibility.HARDWARE_TABLE_COLUMN
-                  .COMPATIBILITY_CONFIGURATION2
-              }}</span>
+              <span
+                class="hardware-info"
+                @click="goSoftwareInfo(scope.row.id)"
+                >{{
+                  i18n.compatibility.HARDWARE_TABLE_COLUMN
+                    .COMPATIBILITY_CONFIGURATION2
+                }}</span
+              >
             </template>
           </el-table-column>
           <el-table-column
@@ -601,7 +605,7 @@ onMounted(() => {
           v-model="searchContent"
           class="o-search"
           :placeholder="i18n.compatibility.DRIVE_SEARCH_PLACEHOLDER"
-          @change="searchValchange"
+          @change="changeSearchVal"
         ></OSearch>
         <OCard class="filter-card">
           <template #header>
@@ -612,7 +616,7 @@ onMounted(() => {
                   :key="'tag' + index"
                   checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
-                  @click="tagClick(index, item)"
+                  @click="clickTag(index, item)"
                 >
                   {{ item }}
                 </OTag>
@@ -630,7 +634,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
-                @click="optionTagClick(index, item)"
+                @click="clickOptionTag(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -646,7 +650,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex4 === index ? 'primary' : 'text'"
-                @click="driveTypeClick(index, item)"
+                @click="clickDriveType(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -709,7 +713,7 @@ onMounted(() => {
           v-model="searchContent"
           class="o-search"
           :placeholder="i18n.compatibility.SOFTWARE_SEARCH_PLACEHOLDER"
-          @change="searchValchange"
+          @change="changeSearchVal"
         ></OSearch>
         <OCard class="filter-card">
           <template #header>
@@ -720,7 +724,7 @@ onMounted(() => {
                   :key="'tag' + index"
                   checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
-                  @click="tagClick(index, item)"
+                  @click="clickTag(index, item)"
                 >
                   {{ item }}
                 </OTag>
@@ -734,7 +738,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex3 === index ? 'primary' : 'text'"
-                @click="softTypeClick(index, item)"
+                @click="clickSoftType(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -746,7 +750,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
-                @click="optionTagClick(index, item)"
+                @click="clickOptionTag(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -811,7 +815,7 @@ onMounted(() => {
         <OSearch
           v-model="searchContent"
           class="o-search"
-          @change="searchValchange"
+          @change="changeSearchVal"
         ></OSearch>
         <OCard class="filter-card">
           <template #header>
@@ -960,13 +964,13 @@ onMounted(() => {
               v-model="searchContent"
               class="o-search"
               :placeholder="i18n.compatibility.HARDWARE_SEARCH_PLACEHOLDER"
-              @change="searchValchange"
+              @change="changeSearchVal"
             ></OSearch>
 
             <OSelect
               v-model="osName"
               :placeholder="i18n.compatibility.OS"
-              @change="osNameSelected"
+              @change="selectOsName"
             >
               <OOption
                 v-for="item in osOptions"
@@ -981,7 +985,7 @@ onMounted(() => {
             <OSelect
               v-model="architehture"
               :placeholder="i18n.compatibility.ARCHITECTURE"
-              @change="architehtureSelected"
+              @change="selectArchitehture"
             >
               <OOption
                 v-for="item in architectureSelect"
@@ -996,7 +1000,7 @@ onMounted(() => {
             <OSelect
               v-model="cpuName"
               :placeholder="i18n.compatibility.CPU"
-              @change="cpuSelected"
+              @change="selectCpu"
             >
               <OOption
                 v-for="item in cpuList"
@@ -1049,7 +1053,7 @@ onMounted(() => {
                         .COMPATIBILITY_CONFIGURATION
                     }}:
                   </span>
-                  <a class="friendly-link" @click="go(item.id)">{{
+                  <a class="friendly-link" @click="goSoftwareInfo(item.id)">{{
                     i18n.compatibility.HARDWARE_TABLE_COLUMN
                       .COMPATIBILITY_CONFIGURATION2
                   }}</a>
@@ -1087,13 +1091,13 @@ onMounted(() => {
               v-model="searchContent"
               class="o-search"
               :placeholder="i18n.compatibility.DRIVE_SEARCH_PLACEHOLDER"
-              @change="searchValchange"
+              @change="changeSearchVal"
             ></OSearch>
 
             <OSelect
               v-model="osName"
               :placeholder="i18n.compatibility.OS"
-              @change="osNameSelected"
+              @change="selectOsName"
             >
               <OOption
                 v-for="item in osOptions"
@@ -1109,7 +1113,7 @@ onMounted(() => {
             <OSelect
               v-model="architehture"
               :placeholder="i18n.compatibility.ARCHITECTURE"
-              @change="architehtureSelected"
+              @change="selectArchitehture"
             >
               <OOption
                 v-for="item in architectureSelect"
@@ -1125,7 +1129,7 @@ onMounted(() => {
             <OSelect
               v-model="driveType"
               :placeholder="i18n.compatibility.DRIVETYPE"
-              @change="driveTypeSelected"
+              @change="selectDriveType"
             >
               <OOption
                 v-for="item in typeLists"
@@ -1238,13 +1242,13 @@ onMounted(() => {
               v-model="searchContent"
               class="o-search"
               :placeholder="i18n.compatibility.SOFTWARE_SEARCH_PLACEHOLDER"
-              @change="searchValchange"
+              @change="changeSearchVal"
             ></OSearch>
             <!-- 架构 -->
             <OSelect
               v-model="architehture"
               :placeholder="i18n.compatibility.ARCHITECTURE"
-              @change="architehtureSelected"
+              @change="selectArchitehture"
             >
               <OOption
                 v-for="item in architectureSelect"
@@ -1260,7 +1264,7 @@ onMounted(() => {
             <OSelect
               v-model="typeName"
               :placeholder="i18n.compatibility.SOFTWARETYPE"
-              @change="typeSelected"
+              @change="selectType"
             >
               <OOption
                 v-for="item in softType"
@@ -1276,7 +1280,7 @@ onMounted(() => {
             <OSelect
               v-model="osName"
               :placeholder="i18n.compatibility.OS"
-              @change="osNameSelected"
+              @change="selectOsName"
             >
               <OOption
                 v-for="item in osLists"

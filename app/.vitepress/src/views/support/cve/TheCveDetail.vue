@@ -5,7 +5,7 @@ import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import { getCveDetail, getAffectedProduct } from '@/api/api-security';
-import { CveDetailCvss, AffectProduct } from '@/shared/type-support';
+import { CveDetailCvss, AffectProduct } from '@/shared/@types/type-support';
 
 import AppContent from '@/components/AppContent.vue';
 
@@ -24,7 +24,7 @@ function goBackPage() {
   router.go(`${router.route.path.substring(0, i)}`);
 }
 
-function toDetail(id: string) {
+function goDetail(id: string) {
   const url = router.route.path.replace('cve', 'safety-bulletin');
 
   router.go(url + `?id=${id}`);
@@ -190,7 +190,7 @@ onMounted(() => {
                 <span>{{ i18n.cve.SECURITY_ADVISORIES }}:</span
                 ><a
                   class="detail-link"
-                  @click="toDetail(item.securityNoticeNo)"
+                  @click="goDetail(item.securityNoticeNo)"
                   >{{ item.securityNoticeNo }}</a
                 >
               </li>

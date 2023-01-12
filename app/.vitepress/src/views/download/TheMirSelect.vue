@@ -40,7 +40,7 @@ const ipAndAsn: Ref<string[]> = ref([]);
 
 const versionPath: Ref<string[]> = ref([]);
 
-const GetUrlParam = (paraName: string) => {
+const getUrlParam = (paraName: string) => {
   const url = document.location.toString();
   const arrObj = url.split('?');
   if (arrObj.length > 1) {
@@ -132,7 +132,7 @@ const initMap = (data: any[]) => {
 
 onMounted(async () => {
   try {
-    const responeData = await selectMirror(GetUrlParam('version'));
+    const responeData = await selectMirror(getUrlParam('version'));
     initTable(responeData);
     mapData.value = initMap(responeData?.MirrorList);
   } catch (e: any) {

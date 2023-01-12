@@ -283,7 +283,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
                 >{{ link.NAME }}</a
               >
             </div>
-            <p class="copyright">{{ i18n.common.FOOTER.COPY_RIGHT }}</p>
+            <p class="copy-right">{{ i18n.common.FOOTER.COPY_RIGHT }}</p>
           </div>
           <div class="footer-right">
             <div v-if="lang === 'zh'" class="code-box">
@@ -330,8 +330,8 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
       ></div>
       <a
         v-for="item in floatData"
-        :href="item.link"
         :key="item.link"
+        :href="item.link"
         class="nav-item"
         target="_blank"
       >
@@ -487,7 +487,7 @@ $color: #fff;
     }
   }
 
-  .copyright {
+  .copy-right {
     font-size: var(--o-font-size-text);
     color: $color;
     margin-top: var(--o-spacing-h5);

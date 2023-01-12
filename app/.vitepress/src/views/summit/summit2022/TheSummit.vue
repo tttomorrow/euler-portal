@@ -2161,7 +2161,7 @@ onMounted(() => {
             :name="index"
           >
             <template #label>
-              <div class="timeTabs">{{ item }}</div>
+              <div class="time-tabs">{{ item }}</div>
             </template>
           </el-tab-pane>
         </OTabs>
@@ -2202,7 +2202,7 @@ onMounted(() => {
               :name="itemList.id"
             >
               <template #label>
-                <div class="timeTabs">
+                <div class="time-tabs">
                   {{ itemList.type }}
                 </div>
               </template>
@@ -2410,7 +2410,7 @@ onMounted(() => {
   :deep(.el-tabs__active-bar) {
     display: none;
   }
-  .timeTabs {
+  .time-tabs {
     display: inline-block;
     margin: 0;
     cursor: pointer;
@@ -2423,7 +2423,7 @@ onMounted(() => {
     line-height: 38px;
     padding: 0 var(--o-spacing-h5);
   }
-  .is-active .timeTabs {
+  .is-active .time-tabs {
     color: #fff;
     background: var(--o-color-brand1);
     border-color: var(--o-color-brand2);
@@ -2487,21 +2487,6 @@ onMounted(() => {
         .el-tabs__active-bar {
           display: none;
         }
-        // 暂时取消第一天的分会选中状态
-        // .other {
-        //   :deep(.o-tabs) {
-        //     .el-tabs__active-bar {
-        //       display: none;
-        //     }
-        //     .is-active {
-        //       color: var(--o-color-text1);
-        //     }
-        //     .el-tabs__item:hover {
-        //       color: var(--o-color-text1);
-        //       cursor: default;
-        //     }
-        //   }
-        // }
       }
       .meeting-title {
         font-weight: 400;
@@ -2529,7 +2514,7 @@ onMounted(() => {
             padding: 0;
           }
         }
-        .timeTabs {
+        .time-tabs {
           display: inline-block;
           margin: 0 0 24px;
           cursor: pointer;
@@ -2547,7 +2532,7 @@ onMounted(() => {
           }
         }
 
-        .is-active .timeTabs {
+        .is-active .time-tabs {
           color: #fff;
           background: var(--o-color-brand1);
           border-color: var(--o-color-brand2);

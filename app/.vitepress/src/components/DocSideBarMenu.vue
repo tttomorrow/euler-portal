@@ -32,8 +32,8 @@ const toggleVisible = (flag: boolean | undefined) => {
     isOpen.value = flag;
   }
 };
-
-const onClick = (id: string) => {
+// 导航点击事件
+const clickMenuItem = (id: string) => {
   emit('item-click', id);
 };
 
@@ -75,7 +75,7 @@ const leave = (el: HTMLUListElement) => {
           :key="item.link"
           class="menu-item"
           :class="{ active: activeId === item.link }"
-          @click="onClick(item.link)"
+          @click="clickMenuItem(item.link)"
         >
           {{ item.label }}
         </li>

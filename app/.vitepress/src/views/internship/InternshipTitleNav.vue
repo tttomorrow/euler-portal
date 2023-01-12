@@ -21,13 +21,14 @@ const props = defineProps({
     default: false,
   },
 });
-const { currentIndex, dataList, internship } = toRefs(props);
+const { currentIndex, internship } = toRefs(props);
+const dataList: any = ref(props.dataList);
 const show = ref(true);
 const close = () => {
   show.value = false;
 };
 
-const gotop = () => {
+const goTop = () => {
   const { body } = document;
   body.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
@@ -37,9 +38,9 @@ const gotop = () => {
   <div class="title-nav" :class="{ internship: internship }">
     <div class="box-line" :class="{ 'internship-line': internship }">
       <img
-        class="gotop"
+        class="go-top"
         src="@/assets/category/internship/top.png"
-        @click="gotop"
+        @click="goTop"
       />
     </div>
     <div class="nav-text" :class="{ 'internship-nav': internship }">
@@ -125,7 +126,7 @@ const gotop = () => {
         cursor: default;
         z-index: 6;
       }
-      .gotop {
+      .go-top {
         width: 32px;
         height: 32px;
         position: absolute;

@@ -31,7 +31,7 @@ watch(isPlay, () => {
   if (isPlay.value === true) {
     ctrlObj.value.element.play();
     realTimeUpdate.value = setInterval(() => {
-      progressBar();
+      handleProgressBar();
     }, 200);
     emit('playStatus', true);
   } else {
@@ -56,7 +56,7 @@ onMounted(() => {
 onUnmounted(() => {
   clearInterval(realTimeUpdate.value);
 });
-function progressBar() {
+function handleProgressBar() {
   const duration = ctrlObj.value.element.duration; //  获取视频总长度
   const currentTime = ctrlObj.value.element.currentTime; //  获取当前播放时间
   let ratio = parseFloat(currentTime / duration + '');
