@@ -15,6 +15,12 @@ import flexIcon from '@/assets/category/minisite/stratovirt/icon-flex.png';
 import withIcon from '@/assets/category/minisite/stratovirt/icon-with.png';
 import extendIcon from '@/assets/category/minisite/stratovirt/icon-extend.png';
 import strengthenIcon from '@/assets/category/minisite/stratovirt/icon-strengthen.png';
+import safetyIconDark from '@/assets/category/minisite/stratovirt/icon-safety_dark.png';
+import lowNoiseIconDark from '@/assets/category/minisite/stratovirt/icon-low-noise_dark.png';
+import flexIconDark from '@/assets/category/minisite/stratovirt/icon-flex_dark.png';
+import withIconDark from '@/assets/category/minisite/stratovirt/icon-with_dark.png';
+import extendIconDark from '@/assets/category/minisite/stratovirt/icon-extend_dark.png';
+import strengthenIconDark from '@/assets/category/minisite/stratovirt/icon-strengthen_dark.png';
 
 import grainImg from '@/assets/category/minisite/stratovirt/stratovirt-grain.png';
 
@@ -70,31 +76,37 @@ export default {
     CHARACTER_LIST: [
       {
         IMG: safetyIcon,
+        IMG_DARK: safetyIconDark,
         TITLE: '强安全性',
         DESC: '采用Rust语言，支持seccomp，实现多租户安全隔离',
       },
       {
         IMG: lowNoiseIcon,
+        IMG_DARK: lowNoiseIconDark,
         TITLE: '轻量低噪',
         DESC: '采用极简设备模型时，启动时间<50ms，内存底噪<4M，支持Serverless负载',
       },
       {
         IMG: flexIcon,
+        IMG_DARK: flexIconDark,
         TITLE: '极速伸缩',
         DESC: '毫秒级设备扩缩能力，为轻量化负载提供灵活的资源伸缩能力',
       },
       {
         IMG: withIcon,
+        IMG_DARK: withIconDark,
         TITLE: '软硬协同',
         DESC: '同时支持x86的VT和鲲鹏的Kunpeng-V，实现多体系硬件加速',
       },
       {
         IMG: extendIcon,
+        IMG_DARK: extendIconDark,
         TITLE: '高扩展性',
         DESC: '设备模型可扩展，支持PCI等复杂设备规范，实现标准虚拟机',
       },
       {
         IMG: strengthenIcon,
+        IMG_DARK: strengthenIconDark,
         TITLE: '异构增强',
         DESC: '除支持常用的硬件SR-IOV直通方案，结合昇腾软件定义能力，实现更灵活异构算力分配',
       },

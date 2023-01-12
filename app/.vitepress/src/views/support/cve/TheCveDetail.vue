@@ -214,6 +214,7 @@ onMounted(() => {
   color: var(--o-color-text1);
   background: var(--o-color-bg1);
   display: flex;
+  margin-bottom: 0;
   @media screen and (max-width: 768px) {
     margin-bottom: var(--o-spacing-h5);
   }
