@@ -15,12 +15,6 @@ const commonStore = useCommon();
 const isDark = computed(() => {
   return commonStore.theme === 'dark' ? true : false;
 });
-const changeImg = function (url: string) {
-  if (isDark.value) {
-    const getLightImg = url.split('.png');
-    return getLightImg[0] + '_dark.png';
-  }
-};
 </script>
 
 <template>
@@ -44,7 +38,7 @@ const changeImg = function (url: string) {
         "
       >
         <img v-if="!isDark" :src="item.IMG" alt="" />
-        <img v-else :src="changeImg(item.IMG)" alt="" />
+        <img v-else :src="item.IMG_DARK" alt="" />
         <div class="item-info">
           <div class="content-item-title">{{ item.TITLE }}</div>
           <div class="content-item-desc">{{ item.DESC }}</div>
