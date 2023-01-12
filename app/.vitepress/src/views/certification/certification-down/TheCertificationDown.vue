@@ -21,12 +21,12 @@ const notFoundImg = computed(() =>
 );
 const disabledTip = ref('');
 // 下载事件处理
-function download(paString: string) {
+function downloadCertification(paString: string) {
   downloadCard(paString, language.value)
     .then((res) => {
       if (res.success) {
         disabledTip.value = '';
-        function dataURLtoBlob(dataurl: any) {
+        function handleUrlToBlob(dataurl: any) {
           const arr = dataurl.split(','),
             mime = arr[0].match(/:(.*?);/)[1],
             bstr = atob(arr[1]);
@@ -37,14 +37,14 @@ function download(paString: string) {
           }
           return new Blob([u8arr], { type: mime });
         }
-        function blobToFile(theBlob: any, fileName: any) {
+        function handleBlobToFile(theBlob: any, fileName: any) {
           theBlob.lastModifiedDate = new Date();
           theBlob.name = fileName;
           return theBlob;
         }
         const str = 'data:application/pdf;base64,' + res.data.data;
-        const blob = dataURLtoBlob(str);
-        const file = blobToFile(blob, 'zs');
+        const blob = handleUrlToBlob(str);
+        const file = handleBlobToFile(blob, 'zs');
         const href = URL.createObjectURL(file);
         const downloadElement = document.createElement('a');
         downloadElement.href = href;
@@ -61,7 +61,7 @@ function download(paString: string) {
     });
 }
 // 获取url里面携带的PA参数
-function getQueryString(name: string) {
+function getUrlArguments(name: string) {
   const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
   const r = window.location.search.slice(1).match(reg);
 
@@ -71,7 +71,7 @@ function getQueryString(name: string) {
   return '';
 }
 onMounted(() => {
-  download(getQueryString('PA'));
+  downloadCertification(getUrlArguments('PA'));
 });
 </script>
 <template>

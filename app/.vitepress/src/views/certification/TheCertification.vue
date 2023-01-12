@@ -39,7 +39,7 @@ function clickMore(type: number, link = '') {
       >
         {{ i18n.certification.download }}
         <template #suffixIcon>
-          <OIcon class="bannericon"><IconRight /></OIcon>
+          <OIcon class="banner-icon"><IconRight /></OIcon>
         </template>
       </OButton>
     </template>
@@ -70,7 +70,7 @@ function clickMore(type: number, link = '') {
           >
             {{ item.more }}
             <template #suffixIcon>
-              <OIcon class="bannericon"><IconRight /></OIcon>
+              <OIcon class="banner-icon"><IconRight /></OIcon>
             </template>
           </OButton>
         </div>
@@ -117,7 +117,7 @@ function clickMore(type: number, link = '') {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
   }
-  .bannericon {
+  .banner-icon {
     color: var(--o-color-brand2);
     @media (max-width: 767px) {
       font-size: var(--o-font-size-text);

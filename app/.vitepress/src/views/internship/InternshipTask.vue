@@ -185,7 +185,7 @@ const TASK = {
   SIG_DETAIL: 'SIG详情',
 };
 
-const go = (path: string) => {
+const jumpTo = (path: string) => {
   if (path && !path.includes('http')) {
     router.go(path);
   } else if (path.includes('http')) {
@@ -205,7 +205,7 @@ const go = (path: string) => {
         :key="index"
         class="item"
       >
-        <p class="item-name" @click="go(item.NAME_LINK)">
+        <p class="item-name" @click="jumpTo(item.NAME_LINK)">
           {{ item.NAME }}
         </p>
         <div class="item-intriduce" :class="{ more: item.more }">
@@ -216,7 +216,7 @@ const go = (path: string) => {
             v-if="item.TASK"
             type="primary"
             class="task-link"
-            @click="go(item.TASK)"
+            @click="jumpTo(item.TASK)"
             >{{ TASK.INTERNSHIP_TASK }}
             <OIcon><IconArrowRight /></OIcon>
           </OButton>
@@ -225,7 +225,7 @@ const go = (path: string) => {
             type="text"
             placement="right"
             class="sig-detail"
-            @click="go(item.GITEE)"
+            @click="jumpTo(item.GITEE)"
           >
             <span>{{ TASK.SIG_DETAIL }}</span>
             <OIcon><IconArrowRight /></OIcon>

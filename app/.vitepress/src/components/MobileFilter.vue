@@ -39,7 +39,7 @@ const options = ref<any>([]); // 传给父组件
 const attrs = useAttrs();
 // 筛选抽屉
 const isDrawerOpen = ref(false);
-const showscreen = () => {
+const toggleDrawerOpen = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
 const handOptions = computed(() => {
@@ -51,7 +51,7 @@ const handOptions = computed(() => {
 });
 options.value = handOptions.value.value;
 // 选择标签
-const clickOption = (title: string, option: string) => {
+const selectTag = (title: string, option: string) => {
   // 单选
   if (attrs.single) {
     options.value.forEach((item: any) => {
@@ -115,7 +115,7 @@ const delTag = (data: string) => {
   });
 };
 // 选择全部(sele数组返回空)
-const allClick = (val: any) => {
+const selectAll = (val: any) => {
   for (let i = 0; i < options.value.length; i++) {
     if (options.value[i].title === val.title) options.value[i].sele.length = 0;
     for (let x = 0; x < tagitems.value.length; x++) {
@@ -160,7 +160,7 @@ const allHighLight = (val: any) => {
 <template>
   <div class="o-screen" v-bind="attrs">
     <div class="o-screen-header">
-      <div class="o-screen-header-button" @click="showscreen">
+      <div class="o-screen-header-button" @click="toggleDrawerOpen">
         {{ userCaseData.FILTER }}
         <div class="o-screen-header-button-icon">
           <OIcon class="icon"><IconFilter /></OIcon>
@@ -205,7 +205,7 @@ const allHighLight = (val: any) => {
                 :class="{ active: allHighLight(item) }"
                 type="primary"
                 checkable
-                @click="allClick(item)"
+                @click="selectAll(item)"
                 >{{ userCaseData.ALL }}</OTag
               >
               <OTag
@@ -216,7 +216,7 @@ const allHighLight = (val: any) => {
                 checkable
                 :checked="btnCheck(item, sele)"
                 :class="{ active: btnHighLight(sele) }"
-                @click="clickOption(item.title, sele)"
+                @click="selectTag(item.title, sele)"
                 >{{ sele }}</OTag
               >
             </div>

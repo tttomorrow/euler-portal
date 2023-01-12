@@ -85,7 +85,7 @@ const initBlogData = (datas: any) => {
   blogList.value = blogData;
 };
 
-const handleGo = (path: string) => {
+const jumpTo = (path: string) => {
   window.open(path, '_blank');
 };
 
@@ -185,7 +185,7 @@ onMounted(async () => {
             animation
             type="text"
             class="statistics-button"
-            @click="handleGo('interaction/blog-list/')"
+            @click="jumpTo('interaction/blog-list/')"
           >
             {{ i18n.home.USER_CASE.VIEW_MORE }}
             <template #suffixIcon>
@@ -267,7 +267,7 @@ onMounted(async () => {
             animation
             type="text"
             class="statistics-button"
-            @click="handleGo('interaction/news-list/')"
+            @click="jumpTo('interaction/news-list/')"
           >
             {{ i18n.home.USER_CASE.VIEW_MORE }}
             <template #suffixIcon>

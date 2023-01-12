@@ -167,7 +167,7 @@ function setDefaultImage(e: any) {
   }
 }
 onMounted(() => {
-  function GetUrlParam(paraName: any) {
+  function getUrlParam(paraName: any) {
     const url = document.location.toString();
     const arrObj = url.split('?');
     if (arrObj.length > 1) {
@@ -184,7 +184,7 @@ onMounted(() => {
       return '';
     }
   }
-  sigDetailName.value = GetUrlParam('name');
+  sigDetailName.value = getUrlParam('name');
   getSigDetails();
   getOldEmail();
   getSigMembers();

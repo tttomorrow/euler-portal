@@ -5,10 +5,12 @@ import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
 import { getPop } from '@/api/api-search';
 import { showGuard, logout, useStoreData, getUserAuth } from '../shared/login';
+import navFilterConfig from '@/data/common/nav-filter';
+
 import HeaderNav from './HeaderNav.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
-import navFilterConfig from '@/data/common/nav-filter';
+import HeaderSearch from './HeaderSearch.vue';
 
 import logo_light from '@/assets/common/header/logo.svg';
 import logo_dark from '@/assets/common/header/logo_dark.svg';
@@ -56,7 +58,7 @@ const mobileMenuPanel = () => {
     mobileMenuIcon.value = !mobileMenuIcon.value;
     documentElement.classList.toggle('overflow');
     activeNav.value = '';
-    moudleItem();
+    handleDefaultSelectedMobile();
   }, 200);
 };
 
@@ -70,7 +72,7 @@ const handleMenuLayer = (e: any) => {
 };
 
 // 移动端一级导航事件
-const goMobile = (item: NavItem) => {
+const goFirstNavMobile = (item: NavItem) => {
   mobileChildMenu.value = [];
   if (Object.prototype.hasOwnProperty.call(item, 'CHILDREN')) {
     mobileChildMenu.value = item.CHILDREN;
@@ -83,7 +85,7 @@ const goMobile = (item: NavItem) => {
 };
 
 // 移动端二级导航事件
-const goMobileSubList = (item: NavItem) => {
+const goSubNavMobile = (item: NavItem) => {
   if (item.IS_OPEN_WINDOW) {
     window.open(theme.value.docsUrl + item.PATH);
     return;
@@ -124,7 +126,7 @@ watch(
   { immediate: true }
 );
 // 移动端默认选中、二级菜单
-const moudleItem = () => {
+const handleDefaultSelectedMobile = () => {
   navRouter.value.forEach((item: any) => {
     item.CLASS.forEach((el: any) => {
       if (roterPath.value.includes(el)) {
@@ -138,7 +140,7 @@ const moudleItem = () => {
 const toBody = ref(false);
 onMounted(() => {
   toBody.value = true;
-  moudleItem();
+  handleDefaultSelectedMobile();
 });
 onUnmounted(() => {
   toBody.value = false;
@@ -162,9 +164,9 @@ const showSearchBox = () => {
 
 // 搜索抽屉
 const popList = ref<string[]>([]);
-const isShowDrawer = ref(false);
+const isShowDrawer = ref(true);
 const showDrawer = () => {
-  isShowDrawer.value = true;
+  // isShowDrawer.value = true;
   //热搜
   const params = `lang=${lang.value}`;
   getPop(params).then((res) => {
@@ -175,33 +177,22 @@ const showDrawer = () => {
     }
   });
 };
-const topSearchClick = (val: string) => {
-  searchInput.value = val;
-  search();
-};
-const donShowSearchBox = () => {
+// 关闭搜索框
+const closeSearchBox = () => {
   isShowBox.value = false;
-  isShowDrawer.value = false;
   searchInput.value = '';
   popList.value = [];
   commonStore.iconMenuShow = true;
 };
 // 搜索内容
 const searchInput = ref<string>('');
-// 搜索事件
-function search() {
-  window.open(
-    `/${lang.value}/other/search/?search=${searchInput.value}`,
-    '_self'
-  );
-  // router.go(`/${lang.value}/other/search/?search=${searchInput.value}`);
-  donShowSearchBox();
-}
 const jumpToUserZone = () => {
   const language = lang.value === 'zh' ? 'zh' : 'en';
   const origin = import.meta.env.VITE_LOGIN_ORIGIN;
   window.open(`${origin}/${language}/profile`, '_black');
 };
+// 搜索组件跳转链接
+const searchLink = `/${lang.value}/other/search/`;
 </script>
 
 <template>
@@ -218,39 +209,15 @@ const jumpToUserZone = () => {
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <ClientOnly>
-        <div v-if="isShowBox" class="header-search">
-          <div class="header-search-box">
-            <OSearch
-              v-model="searchInput"
-              :placeholder="searchValue.PLEACHOLDER"
-              @change="search"
-              @focus="showDrawer"
-            >
-              <template #suffix>
-                <OIcon class="close" @click="donShowSearchBox"
-                  ><IconCancel
-                /></OIcon>
-              </template>
-            </OSearch>
-          </div>
-          <div v-show="isShowDrawer" class="drawer">
-            <div class="hots">
-              <div class="hots-title">
-                <p class="hots-text">{{ searchValue.TOPSEARCH }}</p>
-              </div>
-              <div class="hots-list">
-                <OTag
-                  v-for="item in popList"
-                  :key="item"
-                  type="text"
-                  class="hots-list-item"
-                  @click="topSearchClick(item)"
-                  >{{ item }}</OTag
-                >
-              </div>
-            </div>
-          </div>
-        </div>
+        <HeaderSearch
+          v-if="isShowBox"
+          :placeholder="searchValue.PLEACHOLDER"
+          :pop-list="popList"
+          :link="searchLink"
+          :is-show-drawer="isShowDrawer"
+          @click-close="closeSearchBox"
+          @focus-input="showDrawer"
+        />
       </ClientOnly>
       <!-- 移动端搜索按钮 -->
       <div v-if="!isShowBox" class="mobile-search">
@@ -288,7 +255,7 @@ const jumpToUserZone = () => {
               :class="{
                 active: activeNav === item.ID,
               }"
-              @click.stop="goMobile(item)"
+              @click.stop="goFirstNavMobile(item)"
             >
               {{ item.NAME }}
             </div>
@@ -308,7 +275,7 @@ const jumpToUserZone = () => {
                 v-for="item in mobileChildMenu"
                 :key="item.ID"
                 class="link"
-                @click="goMobileSubList(item)"
+                @click="goSubNavMobile(item)"
               >
                 {{ item.NAME }}
               </div>
@@ -323,9 +290,9 @@ const jumpToUserZone = () => {
               <img
                 v-if="guardAuthClient.photo"
                 :src="guardAuthClient.photo"
-                class="img"
+                class="user-img"
               />
-              <div v-else class="img"></div>
+              <div v-else class="user-img"></div>
               <p class="opt-name">{{ guardAuthClient.username }}</p>
             </div>
             <ul class="menu-list">
@@ -454,83 +421,6 @@ const jumpToUserZone = () => {
   .icon {
     font-size: 22px;
     color: var(--o-color-text1);
-  }
-}
-.header-search {
-  position: relative;
-  width: 900px;
-  margin-left: var(--o-spacing-h2);
-  @media (max-width: 1100px) {
-    :deep(.o-search) {
-      --o-search-height: 28px;
-    }
-    margin-left: 0;
-    z-index: 2;
-    position: fixed;
-    width: calc(100vw - 32px);
-    left: 16px;
-    right: 16px;
-  }
-
-  &-box {
-    .close {
-      cursor: pointer;
-      color: var(--o-color-text1);
-    }
-  }
-  .drawer {
-    position: absolute;
-    height: auto;
-    width: 100%;
-    margin-top: 21px;
-    box-shadow: var(--o-shadow-l4);
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(5px);
-    padding: var(--o-spacing-h3);
-
-    @media (max-width: 1100px) {
-      background: rgba(255, 255, 255, 1);
-      backdrop-filter: blur(0px);
-      margin-top: 8px;
-      left: -16px;
-      right: 0;
-      width: 100vw;
-      padding: var(--o-spacing-h5);
-    }
-    .hots {
-      &-title {
-        font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-height-tip);
-        color: var(--o-color-text1);
-      }
-      &-list {
-        &-item {
-          margin-top: var(--o-spacing-h5);
-          margin-right: var(--o-spacing-h5);
-          background-color: var(--o-color-bg4);
-          color: var(--o-color-text-secondary);
-          cursor: pointer;
-          @media (max-width: 1100px) {
-            font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-height-tip);
-          }
-        }
-      }
-    }
-    @media (max-width: 768px) {
-      .hots-list-item {
-        margin-right: var(--o-spacing-h8);
-      }
-    }
-  }
-}
-
-.dark {
-  .drawer {
-    background: rgba($color: #2e2e2e, $alpha: 0.9);
-    @media screen and (max-width: 1439px) {
-      background: rgba($color: #2e2e2e, $alpha: 1);
-    }
   }
 }
 
@@ -692,7 +582,7 @@ const jumpToUserZone = () => {
   .opt-info {
     display: flex;
     align-items: center;
-    .img {
+    .user-img {
       width: 32px;
       height: 32px;
       border-radius: 50%;

@@ -72,7 +72,7 @@ const totalPage = computed(() => {
 const suggestList = ref([]);
 
 // 点击搜索框的删除图标
-function donShowSearchBox() {
+function clearSearchInput() {
   searchResultList.value = '';
   searchInput.value = '';
   searchRpmList.value = '';
@@ -91,7 +91,7 @@ function setCurrentType(index: number, type: string) {
   currentPage.value = 1;
   searchDataAll();
 }
-function searRpm() {
+function searchRpm() {
   try {
     getSearchRpm({ keyword: searchInput.value }).then((res) => {
       if (res.status === 200) {
@@ -150,7 +150,7 @@ function searchAll() {
     currentPage.value = 1;
     searchCountAll();
     searchDataAll();
-    searRpm();
+    searchRpm();
   }
 }
 function handleSelect(val: string) {
@@ -222,7 +222,7 @@ onMounted(() => {
         @change="searchAll"
       >
         <template #suffix>
-          <OIcon class="close" @click="donShowSearchBox"><IconCancel /></OIcon>
+          <OIcon class="close" @click="clearSearchInput"><IconCancel /></OIcon>
         </template>
       </OSearch>
       <div v-show="suggestList.length" class="suggest-list-box">

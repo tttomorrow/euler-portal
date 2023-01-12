@@ -332,7 +332,7 @@ const organizationData: any = {
 const activeIndex = ref(0);
 // 滚动激活导航
 const navRef: any = ref([]);
-const scroTop = () => {
+const handleScrollEvent = () => {
   const scrollTop =
     document.body.scrollTop || document.documentElement.scrollTop;
   const activeList: Array<number> = [];
@@ -346,10 +346,10 @@ const scroTop = () => {
 
 onMounted(() => {
   navRef.value = document.querySelectorAll('h2');
-  window.addEventListener('scroll', scroTop);
+  window.addEventListener('scroll', handleScrollEvent);
 });
 onUnmounted(() => {
-  window.removeEventListener('scroll', scroTop);
+  window.removeEventListener('scroll', handleScrollEvent);
 });
 </script>
 

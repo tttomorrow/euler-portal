@@ -30,7 +30,7 @@ const isDark = computed(() => {
       :special-component="!!frameObj.TAB"
     />
     <!-- 上下布局 -->
-    <div v-if="layout === 'upAndDown'" class="framework-upanddown">
+    <div v-if="layout === 'upAndDown'" class="framework-up-down">
       <!-- PC 端 -->
       <div class="pc">
         <!-- 有选项卡 -->
@@ -90,9 +90,9 @@ const isDark = computed(() => {
       </div>
     </div>
     <!-- 左右布局 -->
-    <div v-if="layout === 'leftAndRight'" class="framework-leftandright">
+    <div v-if="layout === 'leftAndRight'" class="framework-left-right">
       <div class="info">
-        <div class="info__desc__wrapper">
+        <div class="info-desc-wrapper">
           <div class="desc">
             <p class="desc-title">{{ frameObj.DESC_LIST[0] }}</p>
             <div v-for="(item, index) in frameObj.DESC_LIST" :key="index">
@@ -106,7 +106,7 @@ const isDark = computed(() => {
             ></div>
           </div>
         </div>
-        <div class="img">
+        <div class="framework-img">
           <img v-if="isDark" :src="frameObj.FRAMEWORK_IMG_DARK" alt="" />
           <img v-else :src="frameObj.FRAMEWORK_IMG" alt="" />
         </div>
@@ -118,7 +118,7 @@ const isDark = computed(() => {
 <style lang="scss" scoped>
 .framework-box {
   width: 100%;
-  .framework-upanddown {
+  .framework-up-down {
     margin: 0 auto;
     max-width: 1416px;
     position: relative;
@@ -155,7 +155,7 @@ const isDark = computed(() => {
       }
     }
   }
-  .framework-leftandright {
+  .framework-left-right {
     width: 100%;
     margin: 0 auto;
     .info {
@@ -194,7 +194,7 @@ const isDark = computed(() => {
           height: 282px;
         }
       }
-      .img {
+      .framework-img {
         flex: 1;
         background-color: var(--o-color-bg2);
         margin-left: var(--o-spacing-h6);
@@ -210,7 +210,7 @@ const isDark = computed(() => {
     @media screen and (min-width: 1440px) {
       max-width: 1416px;
       .info {
-        .img {
+        .framework-img {
           img {
             width: 364px;
           }
@@ -219,7 +219,7 @@ const isDark = computed(() => {
     }
     @media screen and (min-width: 1080px) and (max-width: 1439px) {
       .info {
-        .img {
+        .framework-img {
           img {
             width: 350px;
           }
@@ -244,7 +244,7 @@ const isDark = computed(() => {
             padding: var(--o-spacing-h8) 0;
           }
         }
-        .img {
+        .framework-img {
           img {
             width: 250px;
           }
@@ -281,7 +281,7 @@ const isDark = computed(() => {
             background-position: bottom;
           }
         }
-        .img {
+        .framework-img {
           padding: var(--o-spacing-h5);
           margin-top: var(--o-spacing-h5);
           margin-left: 0;

@@ -207,7 +207,7 @@ const selectMethod = () => {
   getListData(params);
 };
 
-const timeChange = () => {
+const changeTime = () => {
   selectMethod();
   if (selectTimeVal.value !== '') {
     const wantauthor = {
@@ -270,7 +270,7 @@ const timeChange = () => {
     });
   }
 };
-const authorChange = () => {
+const changeAuthor = () => {
   selectMethod();
   if (selectAuthorVal.value !== '') {
     const wantarchive = {
@@ -331,7 +331,7 @@ const authorChange = () => {
     });
   }
 };
-const tagsChange = () => {
+const changeTags = () => {
   selectMethod();
   if (selectTagsVal.value !== '') {
     const wantarchive = {
@@ -400,7 +400,7 @@ onMounted(() => {
   getTagsList();
 });
 // 页数改变
-const currentChange = (val: number) => {
+const changeCurrentPage = (val: number) => {
   const params: ParamsType = {
     category: 'blog',
     lang: lang.value,
@@ -413,23 +413,23 @@ const currentChange = (val: number) => {
   getListData(params);
 };
 
-const postBlog = () => {
+const goPostBlog = () => {
   router.go(`/${lang.value}/interaction/post-blog/`);
 };
 // 计算总页数
 const pageTotal = computed(() =>
   Math.ceil(paginationData.value.total / paginationData.value.pagesize)
 );
-const moblieCurrentChange = (val: string) => {
+const changeCurrentPageMoblie = (val: string) => {
   if (val === 'prev' && paginationData.value.currentpage > 1) {
     paginationData.value.currentpage = paginationData.value.currentpage - 1;
-    currentChange(paginationData.value.currentpage);
+    changeCurrentPage(paginationData.value.currentpage);
   } else if (
     val === 'next' &&
     paginationData.value.currentpage < pageTotal.value
   ) {
     paginationData.value.currentpage = paginationData.value.currentpage + 1;
-    currentChange(paginationData.value.currentpage);
+    changeCurrentPage(paginationData.value.currentpage);
   }
 };
 </script>
@@ -448,11 +448,11 @@ const moblieCurrentChange = (val: string) => {
         type="outline"
         animation
         size="nomral"
-        @click="postBlog"
+        @click="goPostBlog"
       >
         {{ userCaseData.STRATEGY }}
         <template #suffixIcon>
-          <OIcon class="bannericon"><IconRight /></OIcon>
+          <OIcon class="right-icon"><IconRight /></OIcon>
         </template>
       </OButton>
     </template>
@@ -468,7 +468,7 @@ const moblieCurrentChange = (val: string) => {
               filterable
               clearable
               :placeholder="userCaseData.ALL"
-              @change="timeChange"
+              @change="changeTime"
             >
               <template #prefix>
                 <OIcon>
@@ -492,7 +492,7 @@ const moblieCurrentChange = (val: string) => {
               filterable
               clearable
               :placeholder="userCaseData.ALL"
-              @change="authorChange"
+              @change="changeAuthor"
             >
               <template #prefix>
                 <OIcon>
@@ -516,7 +516,7 @@ const moblieCurrentChange = (val: string) => {
               filterable
               clearable
               :placeholder="userCaseData.ALL"
-              @change="tagsChange"
+              @change="changeTags"
             >
               <template #prefix>
                 <OIcon>
@@ -588,7 +588,7 @@ const moblieCurrentChange = (val: string) => {
               v-for="tag in item.tags"
               :key="tag"
               type="secondary"
-              class="tagitem"
+              class="tag-item"
               >{{ tag }}</OTag
             >
           </div>
@@ -604,8 +604,8 @@ const moblieCurrentChange = (val: string) => {
             layout="sizes, prev, pager, next, slot, jumper"
             :total="paginationData.total"
             :page-sizes="[3, 6, 9]"
-            @current-change="currentChange"
-            @size-change="currentChange(1)"
+            @current-change="changeCurrentPage"
+            @size-change="changeCurrentPage(1)"
           >
             <span class="pagination-slot"
               >{{ paginationData.currentpage }}/{{ pageTotal }}</span
@@ -615,7 +615,7 @@ const moblieCurrentChange = (val: string) => {
         <AppPaginationMo
           :current-page="paginationData.currentpage"
           :total-page="pageTotal"
-          @turn-page="moblieCurrentChange"
+          @turn-page="changeCurrentPageMoblie"
         >
         </AppPaginationMo>
       </div>
@@ -640,7 +640,7 @@ const moblieCurrentChange = (val: string) => {
   padding: var(--o-spacing-h2);
 }
 
-.bannericon {
+.right-icon {
   color: var(--o-color-brand2);
   @media (max-width: 767px) {
     font-size: var(--o-font-size-text);
@@ -756,7 +756,7 @@ const moblieCurrentChange = (val: string) => {
         height: 24px;
         flex-wrap: wrap;
         overflow: hidden;
-        .tagitem {
+        .tag-item {
           font-size: var(--o-spacing-h6);
           margin-right: var(--o-spacing-h8);
           color: var(--o-color-black);
@@ -819,7 +819,7 @@ const moblieCurrentChange = (val: string) => {
       -webkit-line-clamp: 1;
     }
   }
-  .tagitem {
+  .tag-item {
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
   }

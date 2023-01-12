@@ -72,7 +72,7 @@ const videoBgShow = ref(true);
 onMounted(() => {
   const { $refs } = (getCurrentInstance() as any).proxy;
   refs = $refs;
-  getMenu();
+  getContent();
   teacherList.value = menuData.value[0].teacher;
   allNode.value = getCoursePath(menuData.value);
   if (useWindowResize().value > 1400) {
@@ -104,7 +104,7 @@ function setCheckedNode() {
   refs.tree.tree.setCurrentKey(currentNode.value.key);
 }
 // 读取要渲染的课程内容数据
-function getMenu() {
+function getContent() {
   const listData = moocData.value.MOOC_DATA.COURSE_LIST;
   listData.forEach((item: any) => {
     menuData.value = item.NAV_DATA;
@@ -137,7 +137,7 @@ function getCoursePath(menuData: any) {
   return allNode.value;
 }
 // 点击视频播放按钮播放视频并隐藏该按钮,option:webBtn(pc端操作)、mobileBtn(移动端操作)
-function playmoocVideo(option: string) {
+function playMoocVideo(option: string) {
   videoBgShow.value = false;
   if (option === 'webBtn') {
     refs.playctrlEle.isPlay = true;
@@ -348,7 +348,7 @@ const iconMenuShow = computed(() => {
             <div
               v-if="!isNowPlay"
               class="play-btn"
-              @click="playmoocVideo('mobileBtn')"
+              @click="playMoocVideo('mobileBtn')"
             ></div>
           </div>
           <div class="mobile-menu">
@@ -457,7 +457,7 @@ const iconMenuShow = computed(() => {
               <div
                 v-if="!isNowPlay"
                 class="play-btn"
-                @click="playmoocVideo('webBtn')"
+                @click="playMoocVideo('webBtn')"
               ></div>
             </div>
             <div class="crtl-btn">

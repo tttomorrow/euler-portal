@@ -19,7 +19,7 @@ const roundNumber = ref([
     ROUND_VALUE: 0,
   },
 ]);
-const handleGo = (path: string) => {
+const jumpTo = (path: string) => {
   window.open(path, '_blank');
 };
 
@@ -94,7 +94,7 @@ onMounted(async () => {
             animation
             type="text"
             class="community-detail"
-            @click="handleGo(i18n.home.COMMUNITY_ACTIVITY.CARD.LINK)"
+            @click="jumpTo(i18n.home.COMMUNITY_ACTIVITY.CARD.LINK)"
           >
             {{ i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS }}
             <template #suffixIcon>

@@ -6,7 +6,7 @@ import { computed } from 'vue';
 const i18n = useI18n();
 const commonStore = useCommon();
 
-const handleGo = (path: string) => {
+const jumpTo = (path: string) => {
   window.open(path, '_blank');
 };
 
@@ -27,7 +27,7 @@ const imgUrlHover = computed(
       v-for="item in i18n.home.HOME_NAV"
       :key="item.LINK"
       class="nav-item"
-      @click="handleGo(item.LINK)"
+      @click="jumpTo(item.LINK)"
     >
       <div class="nav-icon">
         <img :src="imgUrl(item)" alt="openEuler" class="nav-item-icon" />

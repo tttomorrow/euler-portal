@@ -24,7 +24,7 @@ const handleChangeActiveMobile = (activeNames: any) => {
   }
 };
 
-const handleGo = (path: string) => {
+const jumpTo = (path: string) => {
   window.open(path, '_blank');
 };
 </script>
@@ -66,7 +66,7 @@ const handleGo = (path: string) => {
               animation
               type="text"
               class="carousel-pc-button-item"
-              @click="handleGo(i18n.home.IMG_CAROUSE.TRY_URL)"
+              @click="jumpTo(i18n.home.IMG_CAROUSE.TRY_URL)"
             >
               <template #suffixIcon>
                 <IconArrowRight

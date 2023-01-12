@@ -36,7 +36,7 @@ const changePage = (val: number, pagesize: number) => {
 };
 
 const showLiveList = ref(data.value.slice(0, 6));
-const totoBLink = (url: string) => {
+const jumpTo = (url: string) => {
   url === ''
     ? ElMessage({
         message: i18n.value.live.LINKTIPS,
@@ -131,7 +131,7 @@ function turnPage(option: string) {
                         ? 'var(--o-color-white)'
                         : '',
                   }"
-                  @click="totoBLink(live.FORMERLYLINK)"
+                  @click="jumpTo(live.FORMERLYLINK)"
                   >{{ i18n.live.REPLAYVIEW }}
                   <template #suffixIcon>
                     <OIcon class="live-button-icon"><IconRight /></OIcon>

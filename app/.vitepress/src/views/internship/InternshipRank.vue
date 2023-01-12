@@ -10,7 +10,7 @@ interface RankType {
   rank?: string;
 }
 
-const showAll = ref(false);
+const isShowAll = ref(false);
 const isExent = ref(false);
 const isRank = ref(true);
 
@@ -18,13 +18,13 @@ const rankInfo: any = ref();
 const rankTop: any = ref();
 const renderData: any = ref();
 
-const RANK = {
-  FIRST: '第一名',
-  SECOND: '第二名',
-  THIRD: '第三名',
-  SCORE: '积分',
-  VIEW_ALL: '查看全部',
-  PACK_UP: '收起全部',
+const rank = {
+  first: '第一名',
+  second: '第二名',
+  third: '第三名',
+  score: '积分',
+  viewAll: '查看全部',
+  packUp: '收起全部',
 };
 
 // 获取数据
@@ -40,7 +40,7 @@ async function getTokenQuery() {
       } else {
         isRank.value = true;
         const info = res.UserPoints;
-        info.length > 10 ? (showAll.value = true) : '';
+        info.length > 10 ? (isShowAll.value = true) : '';
         info.sort((a: any, b: any) => {
           return b.integralValue - a.integralValue;
         });
@@ -96,7 +96,7 @@ onMounted(() => {
             </a>
             <div class="score">
               {{ item.integralValue }}
-              <span>{{ RANK.SCORE }}</span>
+              <span>{{ rank.score }}</span>
             </div>
             <div
               class="rank-box"
@@ -106,9 +106,9 @@ onMounted(() => {
                 { third: +index === 2 },
               ]"
             >
-              <span v-if="+index === 1">{{ RANK.SECOND }}</span>
-              <span v-if="+index === 0">{{ RANK.FIRST }}</span>
-              <span v-if="+index === 2">{{ RANK.THIRD }}</span>
+              <span v-if="+index === 1">{{ rank.second }}</span>
+              <span v-if="+index === 0">{{ rank.first }}</span>
+              <span v-if="+index === 2">{{ rank.third }}</span>
             </div>
           </div>
         </div>
@@ -126,19 +126,19 @@ onMounted(() => {
             </div>
             <div class="rank-right">
               <div class="score">{{ item.integralValue }}</div>
-              <span>{{ RANK.SCORE }}</span>
+              <span>{{ rank.score }}</span>
             </div>
           </div>
         </div>
-        <div v-if="showAll" class="view-all">
+        <div v-if="isShowAll" class="view-all">
           <a v-if="!isExent" @click="extend()">
-            {{ RANK.VIEW_ALL }}
+            {{ rank.viewAll }}
             <div>
               <img src="@/assets/category/internship/right.svg" alt="" />
             </div>
           </a>
           <a v-else @click="extend()">
-            {{ RANK.PACK_UP }}
+            {{ rank.packUp }}
             <div>
               <img
                 class="arrow"

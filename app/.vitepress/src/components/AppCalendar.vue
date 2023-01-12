@@ -124,7 +124,7 @@ function changeTab(tab: TabsPaneContext) {
   }
 }
 
-function meetClick(day: string, event: Event) {
+function setMeetingDay(day: string, event: Event) {
   if (new Date(day.replace(/-/g, '/')).getTime() / 1000 < 1610380800) {
     event.stopPropagation();
     return;
@@ -270,7 +270,7 @@ const watchData = watch(
             <div
               class="out-box"
               :class="{ 'be-active': getMeetTimes(data.day) }"
-              @click="meetClick(data.day, $event)"
+              @click="setMeetingDay(data.day, $event)"
             >
               <div class="day-box">
                 <p
@@ -328,7 +328,7 @@ const watchData = watch(
                     <div
                       class="out-box"
                       :class="{ 'be-active': getMeetTimes(data.day) }"
-                      @click="meetClick(data.day, $event)"
+                      @click="setMeetingDay(data.day, $event)"
                     >
                       <div class="day-box">
                         <p
