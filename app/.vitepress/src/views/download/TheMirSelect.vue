@@ -251,9 +251,11 @@ onMounted(async () => {
         </div>
       </OCard>
     </div>
-    <div class="official-source">
+    <p class="tip-title">
       You can also download desired ISO files from our official mirror source
       at:
+    </p>
+    <div class="official-source">
       <a target="_blank" :href="`https://repo.openeuler.org/${versionPath}`">{{
         `https://repo.openeuler.org/${versionPath}`
       }}</a>
@@ -447,7 +449,7 @@ onMounted(async () => {
     }
   }
   @media (max-width: 1100px) {
-    padding: 0 var(--o-spacing-h5);
+    padding: var(--o-spacing-h8) var(--o-spacing-h5);
   }
   p {
     font-size: var(--o-font-size-h7);
@@ -497,17 +499,23 @@ onMounted(async () => {
     text-overflow: ellipsis;
   }
 }
+.tip-title {
+  margin-top: var(--o-spacing-h2);
+  @media screen and (max-width: 768px) {
+    margin-top: var(--o-spacing-h4);
+  }
+}
 .official-source {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 24px;
-  margin-bottom: 0;
   background-color: var(--o-color-bg2);
   padding: 14px 40px;
   box-shadow: var(--o-shadow-l1);
   @media screen and (max-width: 768px) {
+    margin-bottom: var(--o-spacing-h4);
     padding: 16px;
+    font-size: 12px;
   }
 }
 </style>

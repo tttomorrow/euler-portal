@@ -27,7 +27,7 @@ export default {
   BTNRESET: '重置',
   DOWNLOAD_LIST: data.zh.DOWNLOAD_LIST,
   MIRROR_SELECT: {
-    TITLE: 'ISO',
+    TITLE: '获取 ISO',
     RANK: 'Rank：',
     NAME: 'Mirror Name：',
     URL: 'URL：',

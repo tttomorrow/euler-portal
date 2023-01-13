@@ -20,7 +20,7 @@ export default {
   DOWNLOAD_LIST: data.ru.DOWNLOAD_LIST,
   PAGINATION: ['已显示', '条记录/共', '条', '加载更多'],
   MIRROR_SELECT: {
-    TITLE: 'ISO',
+    TITLE: 'Получить ISO',
     RANK: 'Rank：',
     NAME: 'Mirror Name：',
     URL: 'URL：',

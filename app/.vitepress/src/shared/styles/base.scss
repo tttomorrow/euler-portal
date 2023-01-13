@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  // background: var(--theme-page-bg);
+  scroll-behavior: smooth;
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
