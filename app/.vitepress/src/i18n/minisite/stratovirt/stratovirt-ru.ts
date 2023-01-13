@@ -15,6 +15,12 @@ import flexIcon from '@/assets/category/minisite/stratovirt/icon-flex.png';
 import withIcon from '@/assets/category/minisite/stratovirt/icon-with.png';
 import extendIcon from '@/assets/category/minisite/stratovirt/icon-extend.png';
 import strengthenIcon from '@/assets/category/minisite/stratovirt/icon-strengthen.png';
+import safetyIconDark from '@/assets/category/minisite/stratovirt/icon-safety_dark.png';
+import lowNoiseIconDark from '@/assets/category/minisite/stratovirt/icon-low-noise_dark.png';
+import flexIconDark from '@/assets/category/minisite/stratovirt/icon-flex_dark.png';
+import withIconDark from '@/assets/category/minisite/stratovirt/icon-with_dark.png';
+import extendIconDark from '@/assets/category/minisite/stratovirt/icon-extend_dark.png';
+import strengthenIconDark from '@/assets/category/minisite/stratovirt/icon-strengthen_dark.png';
 
 import grainImg from '@/assets/category/minisite/stratovirt/stratovirt-grain.png';
 
@@ -73,31 +79,37 @@ export default {
     CHARACTER_LIST: [
       {
         IMG: safetyIcon,
+        IMG_DARK: safetyIconDark,
         TITLE: 'Улучшенная безопасность',
         DESC: 'В решении StratoVirt используется язык Rust и поддерживаются функции seccomp для изоляции клиентов-арендаторов.',
       },
       {
         IMG: lowNoiseIcon,
+        IMG_DARK: lowNoiseIconDark,
         TITLE: 'Облегченное решение с низким уровнем помех',
         DESC: 'Запуск устройства упрощенной модели в течение 50 мс и показатель Noise Floor памяти менее 4 МБ. Поддерживается безсерверная нагрузка.',
       },
       {
         IMG: flexIcon,
+        IMG_DARK: flexIconDark,
         TITLE: 'Быстрое масштабирование',
         DESC: 'StratoVirt поддерживает масштабирование устройства за считанные миллисекунды, гибкие возможности расширения ресурсов для легких нагрузок.',
       },
       {
         IMG: withIcon,
+        IMG_DARK: withIconDark,
         TITLE: 'Взаимодействие программного и аппаратного обеспечения',
         DESC: 'Аппаратное ускорение на базе мультисистемной платформы за счет поддержки x86 VT и Kunpeng-V.',
       },
       {
         IMG: extendIcon,
+        IMG_DARK: extendIconDark,
         TITLE: 'Высокая степень масштабируемости',
         DESC: 'Модель устройства можно расширить для поддержки таких сложных спецификаций, как PCI, и реализации стандартных виртуальных машин.',
       },
       {
         IMG: strengthenIcon,
+        IMG_DARK: strengthenIconDark,
         TITLE: 'Улучшенное распределение гетерогенных ресурсов',
         DESC: 'Помимо общего решения аппаратного сквозного доступа SR-IOV, используется функционал определения программного обеспечения Ascend, который позволяет гибче распределять гетерогенные вычислительные ресурсы.',
       },
