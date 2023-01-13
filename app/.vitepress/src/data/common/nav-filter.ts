@@ -157,4 +157,12 @@ export default [
     name: 'vote',
     lang: ['zh'],
   },
+  {
+    name: 'member',
+    lang: ['zh'],
+  },
+  {
+    name: 'organization',
+    lang: ['zh'],
+  },
 ];
