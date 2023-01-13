@@ -15,6 +15,12 @@ import flexIcon from '@/assets/category/minisite/stratovirt/icon-flex.png';
 import withIcon from '@/assets/category/minisite/stratovirt/icon-with.png';
 import extendIcon from '@/assets/category/minisite/stratovirt/icon-extend.png';
 import strengthenIcon from '@/assets/category/minisite/stratovirt/icon-strengthen.png';
+import safetyIconDark from '@/assets/category/minisite/stratovirt/icon-safety_dark.png';
+import lowNoiseIconDark from '@/assets/category/minisite/stratovirt/icon-low-noise_dark.png';
+import flexIconDark from '@/assets/category/minisite/stratovirt/icon-flex_dark.png';
+import withIconDark from '@/assets/category/minisite/stratovirt/icon-with_dark.png';
+import extendIconDark from '@/assets/category/minisite/stratovirt/icon-extend_dark.png';
+import strengthenIconDark from '@/assets/category/minisite/stratovirt/icon-strengthen_dark.png';
 
 import grainImg from '@/assets/category/minisite/stratovirt/stratovirt-grain.png';
 
@@ -73,31 +79,37 @@ export default {
     CHARACTER_LIST: [
       {
         IMG: safetyIcon,
+        IMG_DARK: safetyIconDark,
         TITLE: 'Enhanced Security',
         DESC: 'StratoVirt uses the Rust language and supports seccomp to implement security isolation between multiple tenants.',
       },
       {
         IMG: lowNoiseIcon,
+        IMG_DARK: lowNoiseIconDark,
         TITLE: 'Lightweight and Low Noise',
         DESC: 'The simplified device model offers a startup time of under 50 ms, and a memory noise floor less than 4 MB. Serverless load is supported.',
       },
       {
         IMG: flexIcon,
+        IMG_DARK: flexIconDark,
         TITLE: 'Fast Scaling',
         DESC: 'StratoVirt supports device scaling within milliseconds, providing flexible resource scaling capabilities for lightweight loads.',
       },
       {
         IMG: withIcon,
+        IMG_DARK: withIconDark,
         TITLE: 'Software and Hardware Collaboration',
         DESC: 'StratoVirt supports x86 VT and Kunpeng-V to implement multi-system hardware acceleration.',
       },
       {
         IMG: extendIcon,
+        IMG_DARK: extendIconDark,
         TITLE: 'High Scalability',
         DESC: 'The device model can be extended to support complex device specifications such as PCI and implement standard VMs.',
       },
       {
         IMG: strengthenIcon,
+        IMG_DARK: strengthenIconDark,
         TITLE: 'Enhanced Heterogeneity',
         DESC: 'In addition to the common hardware SR-IOV passthrough solution, the Ascend software definition capability is used to implement more flexible allocation of heterogeneous computing power.',
       },
