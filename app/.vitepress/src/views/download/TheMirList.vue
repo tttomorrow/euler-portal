@@ -8,7 +8,7 @@ import seoConfig from '@/data/common/seo';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
-import MapContainer from './MapContainer.vue';
+// import MapContainer from './MapContainer.vue';
 
 import IconCpoy from '~icons/app/icon-copy.svg';
 import banner from '@/assets/banner/banner-download.png';
@@ -277,9 +277,9 @@ onMounted(async () => {
         </div>
       </OCard>
     </div>
-    <div class="mirror-map">
+    <!-- <div class="mirror-map">
       <MapContainer :map-data="mapData"></MapContainer>
-    </div>
+    </div> -->
   </AppContent>
   <div class="input-box">
     <!-- 用于复制RSNC的值 -->
