@@ -312,10 +312,10 @@ const isMobile = computed(() => {
 
 <style lang="scss" scoped>
 .application {
-  .about-us {
-    margin: 0;
-    padding: 0;
-  }
+  // .about-us {
+  //   margin: 0;
+  //   padding: 0;
+  // }
   .middle {
     margin-top: 22px;
     &-process-box {
