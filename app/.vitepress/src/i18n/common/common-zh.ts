@@ -156,16 +156,11 @@ export default {
           ID: 'contribution',
           PATH: '/community/contribution/',
         },
-        // {
-        //   NAME: '行为守则',
-        //   ID: 'convention',
-        //   PATH: '/community/conduct/',
-        // },
-        // {
-        //   NAME: '邮件列表',
-        //   ID: 'mailing-list',
-        //   PATH: '/community/mailing-list/',
-        // },
+        {
+          NAME: '邮件列表',
+          ID: 'mailing-list',
+          PATH: '/community/mailing-list/',
+        },
         {
           NAME: '人才评定',
           ID: 'talent-assessment',
