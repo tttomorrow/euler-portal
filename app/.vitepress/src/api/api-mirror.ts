@@ -25,7 +25,7 @@ export const selectMirror = (version: string) => {
   // 线上环境不使用代理，使用代理会导致 ip地址不准确
   let url = '';
   url =
-    process.env.NODE_ENV === 'development'
+    window.location.host !== 'www.openeuler.org'
       ? `/api/mirrors/openEuler-${version}/ISO/`
       : `https://api.openeuler.org/mirrors/openEuler-${version}/ISO/`;
   return request.get(url).then((res: AxiosResponse) => res.data);

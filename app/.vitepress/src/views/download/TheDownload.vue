@@ -57,14 +57,6 @@ const isDrawerOpen = ref(false);
 const handleToggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
 };
-// const resetDrawer = () => {
-//   activeManufacturer.value = [];
-//   manufacturerAll.value = true;
-//   activePublish.value = [];
-//   publishAll.value = true;
-//   activeLTS.value = false;
-//   ListFilter();
-// };
 
 //数据筛选
 const tagManufacturer: Ref<string[]> = ref([]);
@@ -152,12 +144,23 @@ const urlStyle = computed(() => {
 
 onMounted(() => {
   const temp = i18n.value.download.DOWNLOAD_LIST;
-  const manufacturer = temp.map((item: any) => item.MANUFACTURER);
+  const manufacturer = temp.map((item: any) => {
+    if (!item.MANUFACTURER.includes('openEuler')) {
+      return item.MANUFACTURER;
+    }
+  });
+  const eulerFac = temp.map((item: any) => {
+    if (item.MANUFACTURER.includes('openEuler')) {
+      return item.MANUFACTURER;
+    }
+  });
   tagManufacturer.value = Array.from(new Set(manufacturer));
   tagManufacturer.value.sort((a, b) => {
     return a.localeCompare(b);
   });
+  tagManufacturer.value.unshift(...(new Set(eulerFac) as any));
   tagManufacturer.value.unshift(i18n.value.download.ALL_DATA);
+  tagManufacturer.value = tagManufacturer.value.filter((b) => b);
   const publishDate = temp
     .map((item: any) => item.PUBLISH_DATE)
     .filter((item: any) => {
@@ -377,60 +380,79 @@ onMounted(() => {
             {{ download.DESC }}
           </div>
           <div :class="urlStyle">
-            <div v-if="download.SEEK_HELP_URL ? true : false">
-              <a target="_blank" :href="download.SEEK_HELP_URL">
-                {{ i18n.download.SEEK_HELP }}
-              </a>
+            <div class="line-class">
+              <span class="class-title">{{
+                i18n.download.DOWNLOAD_CLASS
+              }}</span>
+              <div class="download-class">
+                <div v-if="download.GET_ISO_URL">
+                  <a
+                    target="_blank"
+                    :href="download.WEBSITE_SELECT || download.GET_ISO_URL"
+                  >
+                    {{ i18n.download.GET_ISO }}
+                  </a>
+                </div>
+                <div v-if="download.SERVER_IMAGE">
+                  <a target="_blank" :href="download.SERVER_IMAGE">
+                    {{ i18n.download.SERVER_IMAGE }}
+                  </a>
+                </div>
+                <div v-if="download.CLOUD_IMAGE">
+                  <a target="_blank" :href="download.CLOUD_IMAGE">
+                    {{ i18n.download.CLOUD_IMAGE }}
+                  </a>
+                </div>
+                <div v-if="download.EDGE_IMAGE">
+                  <a target="_blank" :href="download.EDGE_IMAGE">
+                    {{ i18n.download.EDGE_IMAGE }}
+                  </a>
+                </div>
+                <div v-if="download.EMBEDDEN_IMAGE">
+                  <a target="_blank" :href="download.EMBEDDEN_IMAGE">
+                    {{ i18n.download.EMBEDDEN_IMAGE }}
+                  </a>
+                </div>
+              </div>
             </div>
-            <div v-if="download.GET_ISO_URL ? true : false">
-              <a target="_blank" :href="download.GET_ISO_URL">
-                {{ i18n.download.GET_ISO }}
-              </a>
+            <div class="line-class">
+              <span class="class-title">{{ i18n.download.DOCS_CLASS }}</span>
+              <div class="docs-class">
+                <div v-if="download.RELEASE_DESC_URL">
+                  <a target="_blank" :href="download.RELEASE_DESC_URL">
+                    {{ i18n.download.RELEASE_DESC }}
+                  </a>
+                </div>
+                <div v-if="download.INSTALL_GUIDENCE_URL">
+                  <a target="_blank" :href="download.INSTALL_GUIDENCE_URL">
+                    {{ i18n.download.INSTALL_GUIDENCE }}
+                  </a>
+                </div>
+                <div v-if="download.WHITE_PAPER">
+                  <a target="_blank" :href="download.WHITE_PAPER">
+                    {{ i18n.download.WHITE_PAPER }}
+                  </a>
+                </div>
+              </div>
             </div>
-            <div v-if="download.LIFE_CYCLE_URL ? true : false">
-              <a target="_blank" :href="download.LIFE_CYCLE_URL">
-                {{ i18n.download.LIFE_CYCLE }}
-              </a>
-            </div>
-            <div v-if="download.RELEASE_DESC_URL ? true : false">
-              <a target="_blank" :href="download.RELEASE_DESC_URL">
-                {{ i18n.download.RELEASE_DESC }}
-              </a>
-            </div>
-            <div v-if="download.INSTALL_GUIDENCE_URL ? true : false">
-              <a target="_blank" :href="download.INSTALL_GUIDENCE_URL">
-                {{ i18n.download.INSTALL_GUIDENCE }}
-              </a>
-            </div>
-            <div v-if="download.WHITE_PAPER ? true : false">
-              <a target="_blank" :href="download.WHITE_PAPER">
-                {{ i18n.download.WHITE_PAPER }}
-              </a>
-            </div>
-            <div v-if="download.WEBSITE_SELECT ? true : false">
-              <a target="_blank" :href="download.WEBSITE_SELECT">
-                {{ i18n.download.WEBSITE_SELECT }}
-              </a>
-            </div>
-            <div v-if="download.SERVER_IMAGE ? true : false">
-              <a target="_blank" :href="download.SERVER_IMAGE">
-                {{ i18n.download.SERVER_IMAGE }}
-              </a>
-            </div>
-            <div v-if="download.CLOUD_IMAGE ? true : false">
-              <a target="_blank" :href="download.CLOUD_IMAGE">
-                {{ i18n.download.CLOUD_IMAGE }}
-              </a>
-            </div>
-            <div v-if="download.EDGE_IMAGE ? true : false">
-              <a target="_blank" :href="download.EDGE_IMAGE">
-                {{ i18n.download.EDGE_IMAGE }}
-              </a>
-            </div>
-            <div v-if="download.EMBEDDEN_IMAGE ? true : false">
-              <a target="_blank" :href="download.EMBEDDEN_IMAGE">
-                {{ i18n.download.EMBEDDEN_IMAGE }}
-              </a>
+            <div class="line-class">
+              <span
+                class="class-title"
+                v-if="download.SEEK_HELP_URL || download.LIFE_CYCLE_URL"
+                >{{ i18n.download.GUIDANCE_CLASS }}</span
+              >
+              <div class="guidance-class">
+                <div v-if="download.SEEK_HELP_URL">
+                  <a target="_blank" :href="download.SEEK_HELP_URL">
+                    {{ i18n.download.SEEK_HELP }}
+                  </a>
+                </div>
+                <div v-if="download.LIFE_CYCLE_URL">
+                  <a target="_blank" :href="download.LIFE_CYCLE_URL">
+                    {{ i18n.download.LIFE_CYCLE }}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -778,15 +800,25 @@ onMounted(() => {
     }
   }
 }
-
+.line-class {
+  display: flex;
+  .class-title {
+    flex-shrink: 0;
+  }
+  .download-class,
+  .docs-class,
+  .guidance-class {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+}
 .url-list-zh {
   margin-top: var(--o-spacing-h4);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
-  @media (max-width: 768px) {
-    grid-gap: var(--o-spacing-h8);
-  }
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  font-size: 14px;
 
   a {
     font-size: var(--o-font-size-text);
@@ -800,9 +832,10 @@ onMounted(() => {
 
 .url-list-en {
   margin-top: var(--o-spacing-h4);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  font-size: 14px;
   @media (max-width: 768px) {
     grid-gap: var(--o-spacing-h8);
   }
@@ -819,9 +852,10 @@ onMounted(() => {
 
 .url-list-ru {
   margin-top: var(--o-spacing-h4);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: var(--o-spacing-h5) var(--o-spacing-h8);
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  font-size: 14px;
   @media (max-width: 768px) {
     grid-gap: var(--o-spacing-h8);
   }

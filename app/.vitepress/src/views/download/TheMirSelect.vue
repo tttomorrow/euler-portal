@@ -4,7 +4,7 @@ import { useI18n } from '@/i18n';
 import { selectMirror } from '@/api/api-mirror';
 
 import BannerLevel3 from '@/components/BannerLevel3.vue';
-import MapContainer from './MapContainer.vue';
+// import MapContainer from './MapContainer.vue';
 import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner/banner-download.png';
@@ -251,9 +251,16 @@ onMounted(async () => {
         </div>
       </OCard>
     </div>
-    <div class="mirror-map">
-      <MapContainer :map-data="mapData"></MapContainer>
+    <div class="official-source">
+      You can also download desired ISO files from our official mirror source
+      at:
+      <a target="_blank" :href="`https://repo.openeuler.org/${versionPath}`">{{
+        `https://repo.openeuler.org/${versionPath}`
+      }}</a>
     </div>
+    <!-- <div class="mirror-map">
+      <MapContainer :map-data="mapData"></MapContainer>
+    </div> -->
   </AppContent>
 </template>
 <style lang="scss" scoped>
@@ -466,8 +473,7 @@ onMounted(async () => {
     align-items: center;
     img {
       margin-right: var(--o-spacing-h10);
-      width: var(--o-line-height-text);
-      height: var(--o-line-height-text);
+      width: 24px;
     }
   }
   .mirror-select-rsnc {
@@ -489,6 +495,19 @@ onMounted(async () => {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+}
+.official-source {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 24px;
+  margin-bottom: 0;
+  background-color: var(--o-color-bg2);
+  padding: 14px 40px;
+  box-shadow: var(--o-shadow-l1);
+  @media screen and (max-width: 768px) {
+    padding: 16px;
   }
 }
 </style>

@@ -16,6 +16,9 @@ export default {
   OUTSIDE_TITLE: 'ISO',
   MANUFACTURER: 'Vendor',
   WHITE_PAPER: 'White Paper',
+  DOWNLOAD_CLASS: 'Images：',
+  DOCS_CLASS: 'Documentation：',
+  GUIDANCE_CLASS: 'Community Guides：',
   PUBLISH_DATE: 'Date of Release',
   WEBSITE_SELECT: 'Selected Mirrors',
   COPY_SUCCESSFULLY: 'copied successfully.',
@@ -24,7 +27,7 @@ export default {
   BTNRESET: 'Reset',
   DOWNLOAD_LIST: data.en.DOWNLOAD_LIST,
   MIRROR_SELECT: {
-    TITLE: 'Selected Mirrors',
+    TITLE: 'ISO',
     RANK: 'Rank：',
     NAME: 'Mirror Name：',
     URL: 'URL：',
