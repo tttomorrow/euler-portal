@@ -512,7 +512,7 @@ onMounted(() => {
               font-size: var(--o-font-size-text);
               line-height: var(--o-line-height-text);
               color: var(--o-color-text1);
-              height: 110px;
+              max-height: 110px;
               overflow: hidden;
               text-overflow: ellipsis;
               text-overflow: -webkit-ellipsis-lastline;
