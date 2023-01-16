@@ -171,7 +171,7 @@ const filterRepositoryList = () => {
   }
 };
 
-const currentChange = (val: number) => {
+const changeCurrent = (val: number) => {
   const params = {
     page: val,
     pageSize: paginationData.value.pageSize,
@@ -184,7 +184,7 @@ const currentChange = (val: number) => {
     getSigList(params);
   }
 };
-const sizeChange = (val: number) => {
+const changeSize = (val: number) => {
   const params = {
     page: paginationData.value.currentPage,
     pageSize: val,
@@ -229,7 +229,7 @@ function turnPage(option: string) {
   ) {
     paginationData.value.currentPage = paginationData.value.currentPage + 1;
   }
-  currentChange(paginationData.value.currentPage);
+  changeCurrent(paginationData.value.currentPage);
 }
 function replaceMail() {
   props.oldSigList.forEach((oldMail) => {
@@ -476,8 +476,8 @@ onMounted(() => {
           :background="true"
           :hide-on-single-page="paginationShow"
           layout="sizes, prev, pager, next, slot, jumper"
-          @current-change="currentChange"
-          @size-change="sizeChange"
+          @current-change="changeCurrent"
+          @size-change="changeSize"
         >
           <span
             >{{ paginationData.currentPage }}/{{

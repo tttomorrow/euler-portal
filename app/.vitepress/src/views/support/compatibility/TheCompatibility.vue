@@ -266,14 +266,14 @@ const initData = (params: CveQuery) => {
   }
 };
 
-const clickTag = (i: number, item: string) => {
+const selectTypeTag = (i: number, item: string) => {
   activeIndex.value = i;
   osName.value = item;
   queryData.os = item === '全部' ? '' : item;
   initData(queryData);
 };
 
-const clickOptionTag = (i: number, item: string) => {
+const selectOptionTag = (i: number, item: string) => {
   activeIndex1.value = i;
   if (activeName.value === 'fourth') {
     queryData.testOrganization = item === '全部' ? '' : item;
@@ -505,7 +505,7 @@ onMounted(() => {
                   :key="'tag' + index"
                   checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
-                  @click="clickTag(index, item)"
+                  @click="selectTypeTag(index, item)"
                 >
                   {{ item }}
                 </OTag>
@@ -519,7 +519,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
-                @click="clickOptionTag(index, item)"
+                @click="selectOptionTag(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -616,7 +616,7 @@ onMounted(() => {
                   :key="'tag' + index"
                   checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
-                  @click="clickTag(index, item)"
+                  @click="selectTypeTag(index, item)"
                 >
                   {{ item }}
                 </OTag>
@@ -634,7 +634,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
-                @click="clickOptionTag(index, item)"
+                @click="selectOptionTag(index, item)"
               >
                 {{ item }}
               </OTag>
@@ -724,7 +724,7 @@ onMounted(() => {
                   :key="'tag' + index"
                   checkable
                   :type="activeIndex === index ? 'primary' : 'text'"
-                  @click="clickTag(index, item)"
+                  @click="selectTypeTag(index, item)"
                 >
                   {{ item }}
                 </OTag>
@@ -750,7 +750,7 @@ onMounted(() => {
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex1 === index ? 'primary' : 'text'"
-                @click="clickOptionTag(index, item)"
+                @click="selectOptionTag(index, item)"
               >
                 {{ item }}
               </OTag>

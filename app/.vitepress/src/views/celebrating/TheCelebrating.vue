@@ -105,7 +105,7 @@ function setDownData() {
     ...paramsArr,
   });
 }
-function clickDownBtn() {
+function onDownBtnClick() {
   if (guardAuthClient.value.photo && guardAuthClient.value.username) {
     setDownData();
     isTipShow.value = true;
@@ -114,7 +114,7 @@ function clickDownBtn() {
     showGuard();
   }
 }
-function clickMask() {
+function onMaskClick() {
   isTipShow.value = false;
 }
 // 判断是否通过广告进入并埋点
@@ -173,7 +173,7 @@ onMounted(() => {
             class="down-btn"
             type="primary"
             animation
-            @click="clickDownBtn"
+            @click="onDownBtnClick"
             >{{ data.down.btn }}</OButton
           >
         </div>
@@ -210,7 +210,7 @@ onMounted(() => {
         <a :href="data.tip.courseLink" target="_blank">{{ data.tip.course }}</a>
       </div>
     </div>
-    <div class="mask" @click="clickMask"></div>
+    <div class="mask" @click="onMaskClick"></div>
   </div>
 </template>
 

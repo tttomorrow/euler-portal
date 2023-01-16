@@ -43,7 +43,7 @@ function handleSearchEvent() {
   hiddenSearchBox();
 }
 // 点击热搜标签
-const clickTopSearchItem = (val: any) => {
+const onTopSearchItemClick = (val: any) => {
   searchInput.value = val;
   handleSearchEvent();
 };
@@ -76,7 +76,7 @@ const topSearch = computed(() =>
             :key="item"
             type="text"
             class="hots-list-item"
-            @click="clickTopSearchItem(item)"
+            @click="onTopSearchItemClick(item)"
             >{{ item }}</OTag
           >
         </div>

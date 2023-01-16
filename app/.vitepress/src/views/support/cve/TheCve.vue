@@ -63,7 +63,7 @@ function getCveLists(data: CveQuery) {
   }
 }
 
-const tagClick = (i: number, category: string) => {
+const selectTypetag = (i: number, category: string) => {
   activeIndex.value = i;
   queryData.status = category;
 };
@@ -124,7 +124,7 @@ watch(queryData, () => getCveLists(queryData));
           :key="'tag' + index"
           checkable
           :type="activeIndex === index ? 'primary' : 'text'"
-          @click="tagClick(index, item.LABEL)"
+          @click="selectTypetag(index, item.LABEL)"
         >
           {{ item.NAME }}
         </OTag>
@@ -138,7 +138,7 @@ watch(queryData, () => getCveLists(queryData));
           :key="item"
           :class="activeIndex === index ? 'selected' : ''"
           class="filter-item"
-          @click="tagClick(index, item.LABEL)"
+          @click="selectTypetag(index, item.LABEL)"
         >
           {{ item.NAME }}
         </div>

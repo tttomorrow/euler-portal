@@ -168,7 +168,7 @@ const footerCodeList = [
   },
 ];
 
-const handleNavClick = (path: string) => {
+const onNavClick = (path: string) => {
   if (path.startsWith('https:')) {
     window.open(path, '_blank');
   } else {
@@ -279,7 +279,7 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
                 :key="link.URL"
                 href="javascript:;"
                 class="link"
-                @click="handleNavClick(link.URL)"
+                @click="onNavClick(link.URL)"
                 >{{ link.NAME }}</a
               >
             </div>
