@@ -10,6 +10,7 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 
+import IconSubscribe from '~icons/app/icon-subscribe.svg';
 import IconGitee from '~icons/app/icon-gitee.svg';
 import IconSearch from '~icons/app/icon-search.svg';
 import IconHome from '~icons/app/icon-home.svg';
@@ -456,13 +457,24 @@ onMounted(() => {
       </el-table-column>
       <el-table-column :label="i18n.sig.SIG_LIST.MAIL">
         <template #default="scope">
-          <a
-            :href="'mailto:' + scope.row.mailing_list"
-            target="_blank"
-            class="sig-email"
-          >
-            {{ scope.row.mailing_list }}
-          </a>
+          <div class="sig-mail">
+            <a :href="'mailto:' + scope.row.mailing_list" class="sig-email">
+              {{ scope.row.mailing_list }}
+            </a>
+            <a
+              v-if="
+                scope.row.mailing_list?.split('@').length &&
+                scope.row.mailing_list?.split('@')[1] === 'openeuler.org'
+              "
+              class="subscribe-sig"
+              :href="`https://mailweb.openeuler.org/postorius/lists/${scope.row.mailing_list}/`"
+              target="_blank"
+            >
+              <OIcon class="icon">
+                <IconSubscribe />
+              </OIcon>
+            </a>
+          </div>
         </template>
       </el-table-column>
     </OTable>
@@ -514,12 +526,21 @@ onMounted(() => {
           </div>
           <div class="mo-item-text">
             <span class="mo-item-title">{{ i18n.sig.SIG_LIST.MAIL }}:</span>
-            <a
-              :href="'mailto:' + item.mailing_list"
-              target="_blank"
-              class="mo-item-mail"
-            >
+            <a :href="'mailto:' + item.mailing_list" class="mo-item-mail">
               {{ item.mailing_list }}
+            </a>
+            <a
+              v-if="
+                item.mailing_list?.split('@').length &&
+                item.mailing_list?.split('@')[1] === 'openeuler.org'
+              "
+              class="mo-subscribe-sig"
+              :href="`https://mailweb.openeuler.org/postorius/lists/${item.mailing_list}/`"
+              target="_blank"
+            >
+              <OIcon class="icon">
+                <IconSubscribe />
+              </OIcon>
             </a>
           </div>
           <div class="mo-item-text mo-item-repos">
@@ -592,10 +613,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .sig-table {
   margin-top: var(--o-spacing-h2);
-  // .o-icon {
-  //   display: flex;
-  //   align-items: center;
-  // }
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h4);
   }
@@ -610,6 +627,15 @@ onMounted(() => {
       display: flex;
       margin-left: var(--o-spacing-h8);
       align-items: center;
+    }
+  }
+  .sig-mail {
+    display: flex;
+    align-items: center;
+    .subscribe-sig {
+      display: flex;
+      align-items: center;
+      margin-left: var(--o-spacing-h8);
     }
   }
   .ellipsis {
@@ -709,13 +735,20 @@ onMounted(() => {
     padding: var(--o-spacing-h5);
     &-text {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: var(--o-spacing-h5);
       .mo-item-title {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         color: var(--o-color-text1);
         margin-right: var(--o-spacing-h7);
+      }
+      .mo-subscribe-sig {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+        font-size: 12px;
       }
       .sig-board-icon {
         height: var(--o-font-size-text);
