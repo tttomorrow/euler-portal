@@ -14,7 +14,7 @@ import IconRight from '~icons/app/icon-arrow-right.svg';
 const i18n = useI18n();
 const router = useRouter();
 const { lang } = useData();
-function clickMore(type: number, link = '') {
+function onMoreClick(type: number, link = '') {
   if (type === 1) {
     router.go(`/${lang.value}/community/certification-services/search.html`);
   } else if (link) {
@@ -35,7 +35,7 @@ function clickMore(type: number, link = '') {
         type="outline"
         animation
         size="nomral"
-        @click="clickMore(1)"
+        @click="onMoreClick(1)"
       >
         {{ i18n.certification.download }}
         <template #suffixIcon>
@@ -66,7 +66,7 @@ function clickMore(type: number, link = '') {
             type="outline"
             animation
             size="nomral"
-            @click="clickMore(2, item.link)"
+            @click="onMoreClick(2, item.link)"
           >
             {{ item.more }}
             <template #suffixIcon>

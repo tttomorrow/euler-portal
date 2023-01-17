@@ -2122,7 +2122,7 @@ const summitData: any = {
 const tabType = ref(['main', 'main']);
 const isLiverShow = ref(0);
 const otherTabType = ref([0, 0]);
-function clickEntry() {
+function onEntryClick() {
   router.go('/zh/celebrating/');
 }
 // video 事件
@@ -2337,7 +2337,7 @@ onMounted(() => {
         >
       </div>
     </div>
-    <div class="celebrating-img" @click="clickEntry">
+    <div class="celebrating-img" @click="onEntryClick">
       <img
         :src="celebratingEntryImg"
         alt=""

@@ -66,7 +66,7 @@ function selectOsType(val: string) {
   activeIndex1.value = osTypes.value.indexOf(val);
 }
 
-const clickTag = (i: number, name: string) => {
+const selectTypeTag = (i: number, name: string) => {
   activeIndex.value = i;
   osName.value = name;
   queryData.osvName = name === '全部' ? '' : name;
@@ -212,7 +212,7 @@ watch(queryData, () => getOsTableList(queryData));
               :key="'tag' + index"
               checkable
               :type="activeIndex === index ? 'primary' : 'text'"
-              @click="clickTag(index, item)"
+              @click="selectTypeTag(index, item)"
             >
               {{ item }}
             </OTag>

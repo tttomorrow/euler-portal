@@ -72,12 +72,12 @@ function getSecurityLists(data: CveQuery) {
   }
 }
 
-const clickTag = (i: number, type: string) => {
+const selectTag = (i: number, type: string) => {
   activeIndex.value = i;
   queryData.type = type;
 };
 
-const clickYearTag = (i: number, type: string) => {
+const onYearTagClick = (i: number, type: string) => {
   queryData.year = type;
   activeIndex1.value = i;
   selectedYear.value = type === '' ? '全部' : type;
@@ -150,7 +150,7 @@ watch(queryData, () => getSecurityLists(queryData));
                 :key="'tag' + index"
                 checkable
                 :type="activeIndex === index ? 'primary' : 'text'"
-                @click="clickTag(index, item.LABEL)"
+                @click="selectTag(index, item.LABEL)"
               >
                 {{ item.NAME }}
               </OTag>
@@ -164,7 +164,7 @@ watch(queryData, () => getSecurityLists(queryData));
               :key="'tag' + index"
               checkable
               :type="activeIndex1 === index ? 'primary' : 'text'"
-              @click="clickYearTag(index, item)"
+              @click="onYearTagClick(index, item)"
             >
               {{ item === '' ? i18n.safetyBulletin.ALL : item }}
             </OTag>
@@ -179,7 +179,7 @@ watch(queryData, () => getSecurityLists(queryData));
             :key="item"
             :class="activeIndex === index ? 'selected' : ''"
             class="filter-item"
-            @click="clickTag(index, item.LABEL)"
+            @click="selectTag(index, item.LABEL)"
           >
             {{ item.NAME }}
           </div>

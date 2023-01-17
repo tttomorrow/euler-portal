@@ -117,7 +117,7 @@ function getCode(params: string, lang: string) {
 // 接收证书信息
 const dataList: any = ref([]);
 // 输入验证码后点击确认
-function clickConfirmation(identification: string, codeInput: string) {
+function onConfirmationClick(identification: string, codeInput: string) {
   if (emailInput.value && codeInput) {
     if (identification === '') {
       resultTip.value =
@@ -163,7 +163,7 @@ function clickConfirmation(identification: string, codeInput: string) {
   }
 }
 // 面包屑点击事件
-function clickBreadcrumb() {
+function onBreadcrumbClick() {
   const i = router.route.path.replace('search.html', '');
   router.go(i);
 }
@@ -238,7 +238,7 @@ function handleDownloadingEvent() {
 <template>
   <AppContent>
     <div v-if="lang !== 'zh'" class="breadcrumb">
-      <p class="last-page" @click="clickBreadcrumb">
+      <p class="last-page" @click="onBreadcrumbClick">
         {{ i18n.certification.title }}
       </p>
       <span class="separtor">
@@ -302,7 +302,7 @@ function handleDownloadingEvent() {
           <div class="button-box">
             <OButton
               size="small"
-              @click="clickConfirmation(identification, codeInput)"
+              @click="onConfirmationClick(identification, codeInput)"
               >{{ i18n.certification.sure }}</OButton
             >
           </div>

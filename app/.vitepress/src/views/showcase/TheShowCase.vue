@@ -25,7 +25,7 @@ const userCaseData = computed(() => i18n.value.showcase);
 const currentTag = ref(userCaseData.value.tags[0]);
 
 const activeIndex = ref(0);
-const tagClick = (i: number, type: string) => {
+const selectTypeTag = (i: number, type: string) => {
   activeIndex.value = i;
   currentTag.value = type;
   filterCase();
@@ -227,7 +227,7 @@ onMounted(() => {
           :key="'tag' + index"
           checkable
           :type="activeIndex === index ? 'primary' : 'text'"
-          @click="tagClick(index, item)"
+          @click="selectTypeTag(index, item)"
         >
           {{ item }}
         </OTag>
@@ -238,7 +238,7 @@ onMounted(() => {
           :key="'tag' + index"
           checkable
           :type="activeIndex === index ? 'primary' : 'text'"
-          @click="tagClick(index, item)"
+          @click="selectTypeTag(index, item)"
         >
           {{ item }}
         </OTag>

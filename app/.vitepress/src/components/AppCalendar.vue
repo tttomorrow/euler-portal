@@ -99,7 +99,7 @@ const isLimit = ref(false);
 const windowWidth = ref(useWindowResize());
 
 // 活动会议筛选
-function changeTab(tab: TabsPaneContext) {
+function selectTab(tab: TabsPaneContext) {
   const index = Number(tab.index);
   renderData.value.timeData = [];
   try {
@@ -288,7 +288,7 @@ const watchData = watch(
       <div class="detail-list">
         <div class="right-title">
           <div class="title-list">
-            <OTabs v-model="tabType" @tab-click="changeTab">
+            <OTabs v-model="tabType" @tab-click="selectTab">
               <OTab-pane
                 v-for="item in titleList"
                 :key="item"

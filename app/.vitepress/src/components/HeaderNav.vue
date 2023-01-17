@@ -68,7 +68,7 @@ const toggleSubDebounced = debounce(
   }
 );
 // nav 点击事件
-const clickNavItem = (item: NavItem) => {
+const onNavItemClick = (item: NavItem) => {
   navActive.value = item.ID;
   isShow.value = true;
 };
@@ -95,7 +95,7 @@ const menuActiveFn = (item: any) => {
         @mouseenter="toggleSubDebounced(item)"
         @mouseleave="toggleSubDebounced(null)"
       >
-        <span @click="clickNavItem(item)">{{ item.NAME }} </span>
+        <span @click="onNavItemClick(item)">{{ item.NAME }} </span>
 
         <div v-if="isShow" class="sub-menu">
           <ul class="sub-menu-content">

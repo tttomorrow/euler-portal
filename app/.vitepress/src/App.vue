@@ -38,7 +38,7 @@ const comp = computed(() => {
 
 // cookies使用提示
 const isCookieTip = ref(false);
-function handleClickCookie() {
+function onCookieClick() {
   isCookieTip.value = false;
   localStorage.setItem('euler-cookie', 'false');
 }
@@ -56,7 +56,7 @@ onMounted(() => {
     <component :is="comp" v-if="isCustomLayout"></component>
     <Content v-else />
   </main>
-  <AppFooter :is-cookie-tip="isCookieTip" @click-cookie="handleClickCookie" />
+  <AppFooter :is-cookie-tip="isCookieTip" @click-cookie="onCookieClick" />
 </template>
 
 <style lang="scss" scoped>

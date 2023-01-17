@@ -25,12 +25,12 @@ const langOptions = [
 
 // 选择语言
 const emits = defineEmits(['language-click']);
-const chaneLanguageMobile = (newlang: string) => {
-  chaneLanguage(newlang);
+const changeLanguageMobile = (newlang: string) => {
+  changeLanguage(newlang);
   emits('language-click');
 };
 
-function chaneLanguage(newlang: string) {
+function changeLanguage(newlang: string) {
   if (lang.value === newlang) return;
   const { pathname, host, search } = window.location;
   const newHref = pathname.replace(`/${lang.value}/`, `/${newlang}/`);
@@ -92,7 +92,7 @@ watch(
         :key="item.id"
         class="lang-item"
         :class="{ active: lang === item.id }"
-        @click="chaneLanguage(item.id)"
+        @click="changeLanguage(item.id)"
       >
         {{ item.label }}
       </li>
@@ -103,7 +103,7 @@ watch(
       v-for="item in langList"
       :key="item.id"
       :class="{ active: lang === item.id }"
-      @click.stop="chaneLanguageMobile(item.id)"
+      @click.stop="changeLanguageMobile(item.id)"
       >{{ item.label }}</span
     >
   </div>

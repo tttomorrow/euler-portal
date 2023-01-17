@@ -96,7 +96,7 @@ const selectTag = (title: string, option: string) => {
   }
 };
 // 确定
-const handleConfirmClick = () => {
+const onConfirmClick = () => {
   isDrawerOpen.value = !isDrawerOpen.value;
   emit('filter', options.value);
 };
@@ -223,7 +223,7 @@ const allHighLight = (val: any) => {
           </div>
           <template #footer>
             <div class="o-screen-box-drawer-footer">
-              <OButton type="primary" @click="handleConfirmClick">{{
+              <OButton type="primary" @click="onConfirmClick">{{
                 userCaseData.SURE
               }}</OButton>
             </div>
