@@ -354,7 +354,7 @@ function handleDownloadingEvent() {
   </AppContent>
 </template>
 
-<style lang="scss" scpoed>
+<style lang="scss" scoped>
 .breadcrumb {
   color: var(--o-color-text1);
   background: var(--o-color-bg1);
