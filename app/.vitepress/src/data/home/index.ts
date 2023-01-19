@@ -25,7 +25,7 @@ export default {
       {
         pcBanner: annals_pc,
         moBanner: annals_mo,
-        link: '',
+        link: '/zh/news/2022年度报告/年度报告.html',
         id: '',
         targetTap: 1,
       },

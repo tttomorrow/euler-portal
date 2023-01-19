@@ -67,7 +67,11 @@ const jumpTo = (item: any) => {
     @swiper="onSwiper"
   >
     <swiper-slide v-for="item in homeBanner" :key="item.link">
-      <div class="banner-panel" @click="jumpTo(item)">
+      <div
+        class="banner-panel"
+        :class="{ 'is-link': item.link }"
+        @click="jumpTo(item)"
+      >
         <div
           class="banner-panel-cover"
           :style="{
@@ -155,7 +159,11 @@ html[lang='zh'] {
     width: 100%;
     height: 100%;
     opacity: 1;
-    transition: all 0.33s;
+    transition: all 0.3s;
+
+    &.is-link {
+      cursor: pointer;
+    }
     &-content {
       box-sizing: border-box;
       max-width: 1504px;
