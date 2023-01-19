@@ -32,7 +32,7 @@ export default {
       {
         pcBanner: forum_pc,
         moBanner: forum_mo,
-        link: '/zh/blog/20230118-luntan/luntan.html',
+        link: 'https://forum.openeuler.org/',
         id: '',
         targetTap: 1,
       },
