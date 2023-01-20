@@ -9,7 +9,7 @@ import year_mo from '@/assets/category/home/banner/openeuler-year_mo.png';
 import annals_pc from '@/assets/category/home/banner/annals_pc.jpg';
 import annals_mo from '@/assets/category/home/banner/annals_mo.png';
 import forum_pc from '@/assets/category/home/banner/forum_pc.jpg';
-import forum_mo from '@/assets/category/home/banner/forum_mo.png';
+import forum_mo from '@/assets/category/home/banner/forum_mo.jpg';
 
 export default {
   // 首页banner  targetTap:1 新页签打开
