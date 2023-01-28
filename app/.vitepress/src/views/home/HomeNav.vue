@@ -22,7 +22,7 @@ const imgUrlHover = computed(
 </script>
 
 <template>
-  <div class="home-nav">
+  <div class="home-nav" data-aos="fade-up">
     <div
       v-for="item in i18n.home.HOME_NAV"
       :key="item.LINK"
@@ -58,6 +58,7 @@ const imgUrlHover = computed(
   row-gap: 0;
   background: var(--o-color-bg2);
   z-index: 10;
+  box-shadow: var(--o-shadow-l1);
 
   .nav-item {
     cursor: pointer;

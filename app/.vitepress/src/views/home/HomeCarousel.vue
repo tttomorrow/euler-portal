@@ -30,47 +30,46 @@ const jumpTo = (path: string) => {
 </script>
 
 <template>
-  <div class="carousel">
+  <div class="home-carousel">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
     <OContainer data-aos="fade-up" class="carousel-container" :level-index="1">
       <div class="carousel-pc">
         <OCard
-          class="carousel-pc-card"
+          class="carousel-card-pc"
           shadow="never"
-          :style="{ padding: '0px' }"
         >
-          <div class="carousel-pc-content">
-            <div class="carousel-pc-list">
+          <div class="carousel-content-pc">
+            <div class="carousel-list-pc">
               <div
                 v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
                 :key="item.TITLE"
                 :class="[
-                  'carousel-pc-title',
+                  'carousel-title-pc',
                   active === index ? 'active' : '',
-                  lang !== 'zh' ? 'carousel-pc-en-title' : '',
+                  lang !== 'zh' ? 'carousel-title-pc-en' : '',
                 ]"
                 @click="handleChangeActive(index)"
               >
                 {{ item.TITLE }}
               </div>
             </div>
-            <div class="carousel-pc-img">
+            <div class="carousel-img-pc">
               <img
                 :src="i18n.home.IMG_CAROUSE.LIST[active]?.IMG_URL"
                 alt="openEuler"
               />
             </div>
           </div>
-          <div class="carousel-pc-button">
+          <div class="carousel-button-pc">
             <OButton
               animation
               type="text"
-              class="carousel-pc-button-item"
+              class="carousel-button-item-pc"
               @click="jumpTo(i18n.home.IMG_CAROUSE.TRY_URL)"
             >
               <template #suffixIcon>
                 <IconArrowRight
-                  class="carousel-pc-button-icon"
+                  class="carousel-button-icon-pc"
                 ></IconArrowRight>
               </template>
               {{ i18n.home.IMG_CAROUSE.BUTTON }}
@@ -89,16 +88,16 @@ const jumpTo = (path: string) => {
           v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
           :key="item.TITLE"
           :name="index"
-          class="carousel-mobile-card"
+          class="carousel-card-mobile"
         >
           <template #title>
-            <div class="carousel-mobile-content">
-              <div class="carousel-mobile-title">
+            <div class="carousel-content-mobile">
+              <div class="carousel-title-mobile">
                 {{ item.TITLE }}
               </div>
             </div>
           </template>
-          <div class="carousel-mobile-img">
+          <div class="carousel-img-mobile">
             <img
               :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL"
               alt="openEuler"
@@ -111,12 +110,12 @@ const jumpTo = (path: string) => {
 </template>
 
 <style lang="scss" scoped>
-.carousel {
+.home-carousel {
   :deep(.el-collapse) {
     border: none;
     background-color: var(--o-color-bg1);
   }
-  &-container {
+  .carousel-container {
     @media screen and (max-width: 1100px) {
       box-shadow: none;
     }
@@ -140,7 +139,7 @@ const jumpTo = (path: string) => {
     }
   }
 
-  &-mobile {
+  .carousel-mobile {
     margin-top: var(--o-spacing-h5);
     display: none;
     flex-flow: column;
@@ -148,7 +147,7 @@ const jumpTo = (path: string) => {
       display: flex;
     }
 
-    &-card {
+    .carousel-card-mobile {
       &:last-child :deep(.el-collapse-item__header)::after {
         display: none;
       }
@@ -190,14 +189,12 @@ const jumpTo = (path: string) => {
       }
     }
 
-    &-content {
+    .carousel-content-mobile {
       display: flex;
       flex-flow: row;
-      // justify-content: space-between;
-      // align-items: center;
     }
 
-    &-img {
+    .carousel-img-mobile {
       width: 100%;
       height: 100%;
 
@@ -208,7 +205,7 @@ const jumpTo = (path: string) => {
       }
     }
 
-    &-title {
+    .carousel-title-mobile {
       cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 500;
@@ -220,32 +217,32 @@ const jumpTo = (path: string) => {
       }
     }
 
-    &-icon {
+    .carousel-icon-mobile {
       font-size: var(--o-font-size-h8);
       color: var(--o-color-text4);
     }
   }
-  &-pc {
+  .carousel-pc {
     margin-top: var(--o-spacing-h2);
     display: block;
     @media screen and (max-width: 1100px) {
       display: none;
     }
 
-    &-card {
+    .carousel-card-pc {
       :deep(.el-card__body) {
         padding: var(--o-spacing-h1) var(--o-spacing-h1) var(--o-spacing-h2);
       }
     }
 
-    &-content {
+    .carousel-content-pc {
       display: flex;
       flex-flow: row;
       padding-bottom: var(--o-spacing-h2);
       border-bottom: 1px solid var(--o-color-division1);
     }
 
-    &-list {
+    .carousel-list-pc {
       display: flex;
       flex-flow: column;
       margin-right: var(--o-spacing-h1);
@@ -258,7 +255,7 @@ const jumpTo = (path: string) => {
       }
     }
 
-    &-img {
+    .carousel-img-pc {
       flex: 1;
       img {
         width: 100%;
@@ -267,7 +264,7 @@ const jumpTo = (path: string) => {
       }
     }
 
-    &-title {
+    .carousel-title-pc {
       cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 400;
@@ -282,13 +279,16 @@ const jumpTo = (path: string) => {
         }
       }
     }
-    &-en-title {
+    .active {
+      color: var(--o-color-brand1);
+    }
+    .carousel-title-pc-en {
       width: 266px;
     }
-    &-title:first-child {
+    .carousel-title-pc:first-child {
       padding-top: 0;
     }
-    &-button {
+    .carousel-button-pc {
       display: flex;
       padding-top: var(--o-spacing-h2);
       justify-content: center;
@@ -302,7 +302,7 @@ const jumpTo = (path: string) => {
         padding: 0;
       }
 
-      &-icon {
+      .carousel-button-icon-pc {
         color: var(--o-color-brand1);
         width: var(--o-font-size-h8);
         height: var(--o-font-size-h8);
@@ -326,9 +326,5 @@ const jumpTo = (path: string) => {
     border-left: none;
     border-bottom: 1px solid var(--o-color-division1);
   }
-}
-
-.active {
-  color: var(--o-color-brand1);
 }
 </style>
