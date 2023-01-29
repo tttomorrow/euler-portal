@@ -11,7 +11,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 const commonStore = useCommon();
 
 const i18n = useI18n();
-const community = ref();
+const communityRef = ref();
 const roundList: Ref<any[]> = ref([]);
 const isShowCommunity = ref(false);
 const roundNumber = ref([
@@ -66,7 +66,7 @@ onMounted(async () => {
       isShowCommunity.value = true;
       changeNum();
     });
-    community.value && observe.observe(community.value);
+    communityRef.value && observe.observe(communityRef.value);
   } catch (error: any) {
     throw new Error(error);
   }
@@ -74,34 +74,28 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="community" class="community">
+  <div ref="communityRef" class="home-community">
     <h3>{{ i18n.home.COMMUNITY_ACTIVITY.TITLE }}</h3>
     <div v-if="isShowCommunity" class="community-list">
-      <OContainer data-aos="fade-right">
-        <OCard
-          class="community-card"
-          :style="{ padding: '0px' }"
-          shadow="never"
-        >
-          <div class="community-title">
-            {{ i18n.home.COMMUNITY_ACTIVITY.CARD.TITLE }}
-          </div>
-          <div class="community-word">
-            {{ i18n.home.COMMUNITY_ACTIVITY.CARD.CONTENT }}
-          </div>
+      <OContainer data-aos="fade-right" class="community-card">
+        <div class="community-title">
+          {{ i18n.home.COMMUNITY_ACTIVITY.CARD.TITLE }}
+        </div>
+        <div class="community-word">
+          {{ i18n.home.COMMUNITY_ACTIVITY.CARD.CONTENT }}
+        </div>
 
-          <OButton
-            animation
-            type="text"
-            class="community-detail"
-            @click="jumpTo(i18n.home.COMMUNITY_ACTIVITY.CARD.LINK)"
-          >
-            {{ i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS }}
-            <template #suffixIcon>
-              <IconArrowRight class="community-detail-icon"></IconArrowRight>
-            </template>
-          </OButton>
-        </OCard>
+        <OButton
+          animation
+          type="text"
+          class="community-detail"
+          @click="jumpTo(i18n.home.COMMUNITY_ACTIVITY.CARD.LINK)"
+        >
+          {{ i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS }}
+          <template #suffixIcon>
+            <IconArrowRight class="community-detail-icon"></IconArrowRight>
+          </template>
+        </OButton>
       </OContainer>
       <OContainer
         :level-index="windowWidth > 768 ? 2 : 1"
@@ -136,8 +130,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.round {
-  &-card {
+  .round-card {
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -154,7 +147,7 @@ onMounted(async () => {
     }
   }
 
-  &-list {
+  .round-list {
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
@@ -166,7 +159,7 @@ onMounted(async () => {
       justify-content: center;
     }
   }
-  &-item {
+  .round-item {
     display: flex;
     flex-flow: column;
     flex-shrink: 0;
@@ -181,7 +174,7 @@ onMounted(async () => {
     }
   }
 
-  &-value {
+  .round-value {
     font-size: var(--o-font-size-h5);
     font-weight: 500;
     color: var(--o-color-text1);
@@ -195,7 +188,7 @@ onMounted(async () => {
     }
   }
 
-  &-title {
+  .round-title {
     font-size: var(--o-font-size-h7);
     font-weight: 400;
     color: var(--o-color-text1);
@@ -208,14 +201,13 @@ onMounted(async () => {
     }
   }
 
-  &-img {
+  .round-img {
     width: 48px;
     @media (max-width: 768px) {
       width: 40px;
     }
   }
-}
-.community {
+.home-community {
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h2);
     .o-container {
@@ -239,7 +231,7 @@ onMounted(async () => {
     }
   }
 
-  &-title {
+  .community-title {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
     color: var(--o-color-text1);
@@ -250,7 +242,7 @@ onMounted(async () => {
     }
   }
 
-  &-word {
+  .community-word {
     font-size: var(--o-font-size-text);
     font-weight: 400;
     color: var(--o-color-text4);
@@ -268,7 +260,7 @@ onMounted(async () => {
       line-height: var(--o-line-height-tip);
     }
   }
-  &-list {
+  .community-list {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: var(--o-spacing-h2);
@@ -281,7 +273,7 @@ onMounted(async () => {
     }
   }
 
-  &-detail {
+  .community-detail {
     font-size: var(--o-font-size-text);
     font-weight: 400;
     color: var(--o-color-text1);
@@ -299,7 +291,7 @@ onMounted(async () => {
       }
     }
 
-    &-icon {
+    .community-detail-icon {
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
       color: var(--o-color-brand1);
@@ -310,18 +302,15 @@ onMounted(async () => {
     }
   }
 
-  &-card {
+  .community-card {
     width: 100%;
     background-image: url('../../assets/category/home/round-bg.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
-
-    :deep(.el-card__body) {
-      padding: var(--o-spacing-h2);
-      @media (max-width: 768px) {
-        padding: var(--o-spacing-h5) var(--o-spacing-h6);
-      }
+    padding: var(--o-spacing-h2);
+    @media (max-width: 768px) {
+      padding: var(--o-spacing-h5) var(--o-spacing-h6);
     }
   }
 }

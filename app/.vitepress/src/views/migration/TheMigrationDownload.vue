@@ -32,8 +32,8 @@ function handleClick(item: LinkItem) {
 
         <OCard
           v-for="item in downloadInfo.versionList"
-          shadow="hover"
           :key="item.version"
+          shadow="hover"
         >
           <div class="card-box">
             <div class="card-box-left">

@@ -5,26 +5,11 @@ import type { AxiosResponse } from '@/shared/axios';
  * 通用筛选
  * @name getSortData
  * @param {
- * page:1,
- * pageSize:10,
- * lang:'zh',
- * category:'blog'
+ * page:number,
+ * pageSize:number,
+ * lang:string,
+ * category:string
  * }
- * @return  {
- * archives?:string,
- * articleName?: string,
- * author?:      string,
- * category?:    string,
- * date?:        string,
- * deleteType?:  string,
- * lang?:        string,
- * path?:        string,
- * summary?:     string;
- * tags?:        string[],
- * textContent?: string,
- * title?:       string,
- * type?:        string,
- *}
  */
 
 interface SortParams {
@@ -55,7 +40,12 @@ interface TagsParams {
 
 export function getSortData(params: SortParams) {
   const url = '/api-search/search/sort';
-  return request.post(url, params).then((res: AxiosResponse) => res.data);
+  return request
+    .post(url, params, { $ignoreLoading: true })
+    .then((res: AxiosResponse) => res.data)
+    .catch((err) => {
+      throw new Error(err);
+    });
 }
 
 export function sortBlogData(params: SortParams) {
@@ -89,7 +79,7 @@ export function getSearchRpm(params: any) {
   const url = '/api-node/repo/search';
   return request
     .get(url, {
-      $noLoading: true,
+      $ignoreLoading: true,
       $doException: true,
       headers: {
         authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
@@ -138,9 +128,7 @@ export function getStatistic() {
   const url = '/api-omapi/query/all?community=openEuler';
   return request
     .get(url, {
-      headers: {
-        authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
-      },
+      $ignoreLoading: true,
     })
     .then((res: AxiosResponse) => res.data);
 }

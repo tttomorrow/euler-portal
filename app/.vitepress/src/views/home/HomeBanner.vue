@@ -164,7 +164,7 @@ html[lang='zh'] {
     &.is-link {
       cursor: pointer;
     }
-    &-content {
+    .banner-panel-content {
       box-sizing: border-box;
       max-width: 1504px;
       margin: 0 auto;
@@ -242,13 +242,6 @@ html[lang='zh'] {
           margin-top: 0;
         }
       }
-      .prize {
-        .home-banner-btn {
-          @media screen and (max-width: 824px) {
-            display: none;
-          }
-        }
-      }
 
       @media screen and (max-width: 1440px) {
         padding: 0 16px;
@@ -260,14 +253,8 @@ html[lang='zh'] {
         text-align: center;
       }
     }
-    .prize {
-      .title,
-      .desc {
-        visibility: hidden;
-      }
-    }
 
-    &-cover {
+    .banner-panel-cover {
       background-position: 50%;
       background-repeat: no-repeat;
       background-size: cover;

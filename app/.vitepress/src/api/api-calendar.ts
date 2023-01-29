@@ -10,6 +10,7 @@ export function getMeetingData() {
   const url = '/api/meetings/meetingsdata/';
   return request
     .get(url, {
+      $ignoreLoading: true,
       headers: {
         authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
       },
@@ -29,6 +30,7 @@ export function getActivityData() {
   const url = '/api/meetings/activitiesdata/';
   return request
     .get(url, {
+      $ignoreLoading: true,
       headers: {
         authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
       },

@@ -437,8 +437,8 @@ onMounted(() => {
             </div>
             <div class="line-class">
               <span
-                class="class-title"
                 v-if="download.SEEK_HELP_URL || download.LIFE_CYCLE_URL"
+                class="class-title"
                 >{{ i18n.download.GUIDANCE_CLASS }}</span
               >
               <div class="guidance-class">

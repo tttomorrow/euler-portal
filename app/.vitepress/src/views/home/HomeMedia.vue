@@ -98,7 +98,7 @@ onMounted(async () => {
   <div
     data-aos="fade-up"
     data-aos-anchor-placement="center-bottom"
-    class="home-newsroom"
+    class="home-media"
   >
     <div class="title-list">
       <OTabs v-model="tabType">
@@ -111,7 +111,7 @@ onMounted(async () => {
       </OTabs>
     </div>
     <OContainer :level-index="1">
-      <div class="room-contain-new" :class="{ isShow: tabType === 'blog' }">
+      <div class="room-contain-media" :class="{ isShow: tabType === 'blog' }">
         <h4 class="type-title">
           {{ i18n.home.HOME_ROOMS.BLOG_NAME }}
         </h4>
@@ -180,21 +180,21 @@ onMounted(async () => {
           </div>
         </div>
 
-        <div class="statistics">
+        <div class="media-bottom">
           <OButton
             animation
             type="text"
-            class="statistics-button"
+            class="media-bottom-button"
             @click="jumpTo('interaction/blog-list/')"
           >
             {{ i18n.home.USER_CASE.VIEW_MORE }}
             <template #suffixIcon>
-              <IconArrowRight class="statistics-icon"></IconArrowRight>
+              <IconArrowRight class="media-bottom-icon"></IconArrowRight>
             </template>
           </OButton>
         </div>
       </div>
-      <div class="room-contain-new" :class="{ isShow: tabType === 'news' }">
+      <div class="room-contain-media" :class="{ isShow: tabType === 'news' }">
         <h4 class="type-title">
           {{ i18n.home.HOME_ROOMS.NEWS_NAME }}
         </h4>
@@ -262,16 +262,16 @@ onMounted(async () => {
             </div>
           </div>
         </div>
-        <div class="statistics">
+        <div class="media-bottom">
           <OButton
             animation
             type="text"
-            class="statistics-button"
+            class="media-bottom-button"
             @click="jumpTo('interaction/news-list/')"
           >
             {{ i18n.home.USER_CASE.VIEW_MORE }}
             <template #suffixIcon>
-              <IconArrowRight class="statistics-icon"></IconArrowRight>
+              <IconArrowRight class="media-bottom-icon"></IconArrowRight>
             </template>
           </OButton>
         </div>
@@ -288,26 +288,19 @@ onMounted(async () => {
     color: var(--o-color-brand1);
   }
 }
-.statistics {
+.media-bottom {
   display: flex;
-  padding-top: var(--o-spacing-h2);
+  margin-top: var(--o-spacing-h2);
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 1080px) {
-    padding-top: var(--o-spacing-h5);
+    margin-top: var(--o-spacing-h5);
   }
   @media screen and (max-width: 768px) {
-    padding: var(--o-spacing-h5) 0 var(--o-spacing-h10) 0;
+    margin: var(--o-spacing-h5) 0 var(--o-spacing-h10) 0;
     :deep(.o-button) {
       font-size: var(--o-font-size-tip) !important;
       line-height: var(--o-line-height-tip) !important;
-    }
-  }
-
-  &-button:hover {
-    color: var(--o-color-brand1);
-    @media screen and (max-width: 1416px) {
-      color: var(--o-color-text1);
     }
   }
 
@@ -315,7 +308,7 @@ onMounted(async () => {
     padding: 0;
   }
 
-  &-icon {
+  .media-bottom-icon {
     color: var(--o-color-brand1);
     width: var(--o-font-size-h8);
     height: var(--o-font-size-h8);
@@ -325,9 +318,9 @@ onMounted(async () => {
 .room-item-mo {
   display: none;
 }
-.home-newsroom {
+.home-media {
   margin: var(--o-spacing-h2) auto;
-  .room-contain-new {
+  .room-contain-media {
     display: none;
     padding: var(--o-spacing-h2);
     background-color: var(--o-color-bg2);
@@ -520,12 +513,6 @@ onMounted(async () => {
       justify-content: center;
     }
   }
-  // .el-tabs__item {
-  //   @media screen and (max-width: 768px) {
-  //     font-size: var(--o-font-size-text);
-  //     line-height: var(--o-line-height-text);
-  //   }
-  // }
   .el-tabs__nav-wrap::after {
     display: none;
   }
