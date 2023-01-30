@@ -110,7 +110,7 @@ export default {
     },
     {
       question:
-        'Q：openeuler 如何和硬件厂商的兼容性测试？兼容性测试是否需要额外的费用？',
+        'Q：openEuler 如何和硬件厂商的兼容性测试？兼容性测试是否需要额外的费用？',
       answers: [
         {
           text: '可参考',

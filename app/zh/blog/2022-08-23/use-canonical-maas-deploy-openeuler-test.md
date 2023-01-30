@@ -228,7 +228,7 @@ ubuntu@vm-k8s-w2:~/packer-maas/openeuler$ cat openeuler.json
 ubuntu@vm-k8s-w2:~/packer-maas/openeuler$
 ```
 
-“http/ openeuler.ks”则基于“rhel8.ks”并删除那些在 openeuler 下会失败的配置。其中最重要修改如下：
+“http/ openeuler.ks”则基于“rhel8.ks”并删除那些在 openEuler 下会失败的配置。其中最重要修改如下：
 
 ```shell
 ubuntu@vm-k8s-w2:~/packer-maas/openeuler$ cat -n http/openeuler.ks

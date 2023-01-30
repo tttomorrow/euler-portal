@@ -1119,7 +1119,7 @@ const summitData: any = {
                     name: ['郭占鑫'],
                     post: ['上海睿赛德电子科技有限公司RT-Thread 社区负责人'],
                     detail:
-                      '先简单介绍嵌入式操作系统 RT-Thread 的情况，包括基础特性和发展现状，然后分享 RT-Thread 5.0 的最新进展，包括 Arduino 兼容层的支持，以及 RT-Thread 和 openeuler Embedded 混合部署。',
+                      '先简单介绍嵌入式操作系统 RT-Thread 的情况，包括基础特性和发展现状，然后分享 RT-Thread 5.0 的最新进展，包括 Arduino 兼容层的支持，以及 RT-Thread 和 openEuler Embedded 混合部署。',
                   },
                   {
                     time: '14:30 - 14:50',
