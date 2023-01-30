@@ -7,7 +7,7 @@ import type { AxiosResponse } from '@/shared/axios';
  * @return {Array}
  */
 export function getMeetingData() {
-  const url = '/api/meetings/meetingsdata/';
+  const url = '/api-meeting/meetingsdata/';
   return request
     .get(url, {
       $ignoreLoading: true,
@@ -27,7 +27,7 @@ export function getMeetingData() {
  * @return {Array} 活动数据
  */
 export function getActivityData() {
-  const url = '/api/meetings/activitiesdata/';
+  const url = '/api-meeting/activitiesdata/';
   return request
     .get(url, {
       $ignoreLoading: true,
@@ -48,7 +48,7 @@ export function getActivityData() {
  * @return {Object} 活动数据
  */
 export function getActivityDetail(id: string) {
-  const url = `/api/meetings/activity/${id}/`;
+  const url = `/api-meeting/activity/${id}/`;
   return request
     .get(url, {})
     .then((res: AxiosResponse) => res.data)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
+import { computed, toRefs, ref } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
@@ -38,7 +38,8 @@ import floatDark from '@/assets/common/footer/float_dark.png';
 
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconCode from '~icons/app/icon-code.svg';
-import IconHelp  from '~icons/app/icon-help.svg';
+import IconRobot_light from '~icons/footer/icon-robot_light.svg';
+import IconRobot_dark from '~icons/footer/icon-robot_dark.svg';
 
 const props = defineProps({
   isCookieTip: {
@@ -202,20 +203,22 @@ const floatImg = computed(() => {
   return isDark.value ? floatDark : floatLight;
 });
 
-const floatData = [
+const floatData = ref([
   {
     img: IconCode,
-    id:'quickIssue',
+    id: 'quickIssue',
     text: 'Quick Issue',
-    link: quickIssueUrl.value,
+    link: quickIssueUrl,
   },
   {
-    img: IconHelp,
+    img: computed(() => {
+      return isDark.value ? IconRobot_dark : IconRobot_light;
+    }),
     text: '欧拉 小智',
-    id:'robot',
+    id: 'robot',
     link: 'https://qa-robot.openeuler.org/',
   },
-];
+]);
 
 // 点击关闭cookies使用提示
 const { isCookieTip } = toRefs(props);
@@ -334,7 +337,6 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
         v-for="item in floatData"
         :key="item.link"
         :href="item.link"
-        :class="item.id === 'robot'?'robot':''"
         class="nav-item"
         target="_blank"
       >

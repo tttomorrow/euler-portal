@@ -111,7 +111,7 @@ onMounted(async () => {
       </OTabs>
     </div>
     <OContainer :level-index="1">
-      <div class="room-contain-media" :class="{ isShow: tabType === 'blog' }">
+      <div class="room-contain-media" :class="{ 'is-visible': tabType === 'blog' }">
         <h4 class="type-title">
           {{ i18n.home.HOME_ROOMS.BLOG_NAME }}
         </h4>
@@ -194,7 +194,7 @@ onMounted(async () => {
           </OButton>
         </div>
       </div>
-      <div class="room-contain-media" :class="{ isShow: tabType === 'news' }">
+      <div class="room-contain-media" :class="{ 'is-visible': tabType === 'news' }">
         <h4 class="type-title">
           {{ i18n.home.HOME_ROOMS.NEWS_NAME }}
         </h4>
@@ -491,7 +491,7 @@ onMounted(async () => {
       }
     }
   }
-  .isShow {
+  .is-visible {
     display: block;
   }
 }

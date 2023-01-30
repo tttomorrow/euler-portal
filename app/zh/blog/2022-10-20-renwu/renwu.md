@@ -23,7 +23,7 @@ summary: 2022年10月初，openEuler Maintainer 姜逸坤接受Apache Spark PMC�
 
 ## 从多样性算力支持到Apache Spark核心贡献者
 
-penEuler 作为最优支持多样性算力的原生操作系统，支持x86、ARM、RISC-V、LoongArch、SW64 等多种处理器架构，而开源社区的应用软件多架构支持最初并不完善，应用软件的短板使得openEuler社区用户无法充分、便利地发挥多样性算力的最大价值。
+openEuler 作为最优支持多样性算力的原生操作系统，支持x86、ARM、RISC-V、LoongArch、SW64 等多种处理器架构，而开源社区的应用软件多架构支持最初并不完善，应用软件的短板使得openEuler社区用户无法充分、便利地发挥多样性算力的最大价值。
 
 早在2019年，逸坤所在团队就开始了开源社区的多架构支持工作，在Apache Spark社区，他与团队成员和Spark社区协作共同完成了ARM64架构的适配，并且在Apache Spark 3.0.0版本正式支持ARM64架构（SPARK-30057），为Spark社区添加了 ARM CI 确保Spark在ARM64平台持续可用（SPARK-29106）。
 
