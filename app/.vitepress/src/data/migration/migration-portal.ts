@@ -119,7 +119,7 @@ export default {
       },
       {
         name: '视频实操',
-        link: 'https://www.bilibili.com/video/BV1TR4y1o7cX/?is_story_h5=false&p=1&share_from=ugc&share_medium=android&share_plat=android&share_session_id=2d0cb5be-8f2d-4271-b749-5f37452ec983&share_source=COPY&share_tag=s_i&timestamp=1665209080&unique_k=622RHPA',
+        link: 'https://www.bilibili.com/video/BV1yR4y1b76k/?spm_id_from=333.999.0.0&vd_source=0aa547ea87e7a7505cf544eacc2236ac',
       },
     ],
     bgUrl: imgDownloadBG_dark,

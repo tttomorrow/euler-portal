@@ -132,7 +132,7 @@ SIG 就是 Special Interest Group 的缩写，openEuler 社区按照不同的 SI
   如果你有了一个很棒的 idea 想要在 openEuler 社区里实现，那么他可以依照下面的过程来深度参与到 openEuler 中。  
   1.在[TC 委员会的例会](https://www.openeuler.org/zh/sig/sig-detail/?id=21&name=TC&mail=dev%40openeuler.org)中申请一个开源项目；  
   2.如果 TC 委员会认为这是一个很好的 idea，并且认为值得去推进，那么我们会在[https://gitee.com/openeuler](https://gitee.com/openeuler)中建立一个 repo；  
-  3.这个项目在 openeuler 中持续开发和孵化，直到项目逐渐成熟，那么就可以在 src-openeuler 中建立一个仓，为该项目提供相关的 spec 文件，制作成为一个 rpm；  
+  3.这个项目在 openEuler 中持续开发和孵化，直到项目逐渐成熟，那么就可以在 src-openeuler 中建立一个仓，为该项目提供相关的 spec 文件，制作成为一个 rpm；  
   4.最终这个原创的开源项目会随着 openEuler 的发布版本走遍全世界，为世界人民所使用。
 
 ##### 3.3.5.检视代码

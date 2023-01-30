@@ -40,6 +40,7 @@ import wufengguang from '@/assets/category/organization/wufengguang.png';
 import xiexiuqi from '@/assets/category/organization/xiexiuqi.png';
 import xiongwei from '@/assets/category/organization/xiongwei.png';
 import yeqinglong from '@/assets/category/organization/yeqinglong.png';
+import zhaochuanfeng from '@/assets/category/organization/zhaochuanfeng.png';
 
 import huotaiwen from '@/assets/category/organization/huotaiwen.png';
 import liaoxiangke from '@/assets/category/organization/liaoxiangke.png';
@@ -47,6 +48,7 @@ import lusouqun from '@/assets/category/organization/lusouqun.png';
 import niguangnan from '@/assets/category/organization/niguangnan.png';
 import wanghuaimin from '@/assets/category/organization/wanghuaimin.png';
 import zhouminghui from '@/assets/category/organization/zhouminghui.png';
+
 
 const organizationData: any = {
   memberList: [
@@ -287,6 +289,13 @@ const organizationData: any = {
           post: '委员',
           email: 'yeqinglong@uniontech.com',
           gitee: 'yeqinglong01',
+        },
+        {
+          img: zhaochuanfeng,
+          name: '赵川峰',
+          post: '委员',
+          email: 'zhaochuanfeng@huawei.com',
+          gitee: 'cf-zhao',
         },
       ],
     },
