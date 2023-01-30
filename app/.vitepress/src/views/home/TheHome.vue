@@ -8,11 +8,11 @@ import { useCommon } from '@/stores/common';
 import seoConfig from '@/data/common/seo';
 
 import UserCase from './UserCase.vue';
-import CommunityActivity from './CommunityActivity.vue';
+import HomeTrend from './HomeTrend.vue';
 import HomeBanner from './HomeBanner.vue';
-import HomeCarousel from './HomeCarousel.vue';
+import HomeIntro from './HomeIntro.vue';
 import HomePlayground from './HomePlayground.vue';
-import HomeNav from './HomeNav.vue';
+import HomeDisplayZone from './HomeDisplayZone.vue';
 import HomeMedia from './HomeMedia.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import AppContent from '@/components/AppContent.vue';
@@ -118,10 +118,10 @@ onMounted(async () => {
   <SeoBox :seo-data="seoConfig[lang]?.home" />
   <HomeBanner />
   <AppContent>
-    <HomeNav />
-    <HomeCarousel />
+    <HomeDisplayZone />
+    <HomeIntro />
     <UserCase v-if="caseData?.obj" :case-data="caseData" />
-    <CommunityActivity />
+    <HomeTrend />
     <HomeMedia
       v-if="blogData?.obj && newsData?.obj"
       :blog-data="blogData"
@@ -156,7 +156,7 @@ onMounted(async () => {
       ></LinkPanel>
     </div>
   </AppContent>
-  <div v-if="isSummaryShow && lang !== 'ru'" class="smmary-code">
+  <div v-if="isSummaryShow && lang !== 'ru'" class="summary-code">
     <a :href="yearLink" target="_blank">
       <img class="code" :src="yearImg" alt="扫描二维码" />
     </a>
@@ -169,7 +169,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.smmary-code {
+.summary-code {
   position: fixed;
   left: 1vw;
   top: 70vh;

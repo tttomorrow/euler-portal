@@ -11,7 +11,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 const commonStore = useCommon();
 
 const i18n = useI18n();
-const communityRef = ref();
+const trendRef = ref();
 const roundList: Ref<any[]> = ref([]);
 const isShowCommunity = ref(false);
 const roundNumber = ref([
@@ -66,7 +66,7 @@ onMounted(async () => {
       isShowCommunity.value = true;
       changeNum();
     });
-    communityRef.value && observe.observe(communityRef.value);
+    trendRef.value && observe.observe(trendRef.value);
   } catch (error: any) {
     throw new Error(error);
   }
@@ -74,26 +74,26 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="communityRef" class="home-community">
+  <div ref="trendRef" class="home-trend">
     <h3>{{ i18n.home.COMMUNITY_ACTIVITY.TITLE }}</h3>
-    <div v-if="isShowCommunity" class="community-list">
-      <OContainer data-aos="fade-right" class="community-card">
-        <div class="community-title">
+    <div v-if="isShowCommunity" class="trend-list">
+      <OContainer data-aos="fade-right" class="trend-card">
+        <div class="trend-title">
           {{ i18n.home.COMMUNITY_ACTIVITY.CARD.TITLE }}
         </div>
-        <div class="community-word">
+        <div class="trend-word">
           {{ i18n.home.COMMUNITY_ACTIVITY.CARD.CONTENT }}
         </div>
 
         <OButton
           animation
           type="text"
-          class="community-detail"
+          class="trend-detail"
           @click="jumpTo(i18n.home.COMMUNITY_ACTIVITY.CARD.LINK)"
         >
           {{ i18n.home.COMMUNITY_ACTIVITY.CARD.VIEW_DETAILS }}
           <template #suffixIcon>
-            <IconArrowRight class="community-detail-icon"></IconArrowRight>
+            <IconArrowRight class="trend-detail-icon"></IconArrowRight>
           </template>
         </OButton>
       </OContainer>
@@ -207,7 +207,7 @@ onMounted(async () => {
       width: 40px;
     }
   }
-.home-community {
+.home-trend {
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h2);
     .o-container {
@@ -231,7 +231,7 @@ onMounted(async () => {
     }
   }
 
-  .community-title {
+  .trend-title {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
     color: var(--o-color-text1);
@@ -242,7 +242,7 @@ onMounted(async () => {
     }
   }
 
-  .community-word {
+  .trend-word {
     font-size: var(--o-font-size-text);
     font-weight: 400;
     color: var(--o-color-text4);
@@ -260,7 +260,7 @@ onMounted(async () => {
       line-height: var(--o-line-height-tip);
     }
   }
-  .community-list {
+  .trend-list {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: var(--o-spacing-h2);
@@ -273,7 +273,7 @@ onMounted(async () => {
     }
   }
 
-  .community-detail {
+  .trend-detail {
     font-size: var(--o-font-size-text);
     font-weight: 400;
     color: var(--o-color-text1);
@@ -291,7 +291,7 @@ onMounted(async () => {
       }
     }
 
-    .community-detail-icon {
+    .trend-detail-icon {
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
       color: var(--o-color-brand1);
@@ -302,7 +302,7 @@ onMounted(async () => {
     }
   }
 
-  .community-card {
+  .trend-card {
     width: 100%;
     background-image: url('../../assets/category/home/round-bg.png');
     background-size: contain;

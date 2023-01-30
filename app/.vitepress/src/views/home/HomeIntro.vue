@@ -30,46 +30,46 @@ const jumpTo = (path: string) => {
 </script>
 
 <template>
-  <div class="home-carousel">
+  <div class="home-intro">
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
-    <OContainer data-aos="fade-up" class="carousel-container" :level-index="1">
-      <div class="carousel-pc">
+    <OContainer data-aos="fade-up" class="intro-container" :level-index="1">
+      <div class="intro-pc">
         <OCard
-          class="carousel-card-pc"
+          class="intro-card-pc"
           shadow="never"
         >
-          <div class="carousel-content-pc">
-            <div class="carousel-list-pc">
+          <div class="intro-content-pc">
+            <div class="intro-list-pc">
               <div
                 v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
                 :key="item.TITLE"
                 :class="[
-                  'carousel-title-pc',
+                  'intro-title-pc',
                   active === index ? 'active' : '',
-                  lang !== 'zh' ? 'carousel-title-pc-en' : '',
+                  lang !== 'zh' ? 'intro-title-pc-en' : '',
                 ]"
                 @click="handleChangeActive(index)"
               >
                 {{ item.TITLE }}
               </div>
             </div>
-            <div class="carousel-img-pc">
+            <div class="intro-img-pc">
               <img
                 :src="i18n.home.IMG_CAROUSE.LIST[active]?.IMG_URL"
                 alt="openEuler"
               />
             </div>
           </div>
-          <div class="carousel-button-pc">
+          <div class="intro-button-pc">
             <OButton
               animation
               type="text"
-              class="carousel-button-item-pc"
+              class="intro-button-item-pc"
               @click="jumpTo(i18n.home.IMG_CAROUSE.TRY_URL)"
             >
               <template #suffixIcon>
                 <IconArrowRight
-                  class="carousel-button-icon-pc"
+                  class="intro-button-icon-pc"
                 ></IconArrowRight>
               </template>
               {{ i18n.home.IMG_CAROUSE.BUTTON }}
@@ -80,7 +80,7 @@ const jumpTo = (path: string) => {
 
       <OCollapse
         v-model="activeMobile"
-        class="carousel-mobile"
+        class="intro-mobile"
         accordion
         @change="handleChangeActiveMobile"
       >
@@ -88,16 +88,16 @@ const jumpTo = (path: string) => {
           v-for="(item, index) in i18n.home.IMG_CAROUSE.LIST"
           :key="item.TITLE"
           :name="index"
-          class="carousel-card-mobile"
+          class="intro-card-mobile"
         >
           <template #title>
-            <div class="carousel-content-mobile">
-              <div class="carousel-title-mobile">
+            <div class="intro-content-mobile">
+              <div class="intro-title-mobile">
                 {{ item.TITLE }}
               </div>
             </div>
           </template>
-          <div class="carousel-img-mobile">
+          <div class="intro-img-mobile">
             <img
               :src="i18n.home.IMG_CAROUSE.LIST[index]?.IMG_URL"
               alt="openEuler"
@@ -110,12 +110,12 @@ const jumpTo = (path: string) => {
 </template>
 
 <style lang="scss" scoped>
-.home-carousel {
+.home-intro {
   :deep(.el-collapse) {
     border: none;
     background-color: var(--o-color-bg1);
   }
-  .carousel-container {
+  .intro-container {
     @media screen and (max-width: 1100px) {
       box-shadow: none;
     }
@@ -139,7 +139,7 @@ const jumpTo = (path: string) => {
     }
   }
 
-  .carousel-mobile {
+  .intro-mobile {
     margin-top: var(--o-spacing-h5);
     display: none;
     flex-flow: column;
@@ -147,7 +147,7 @@ const jumpTo = (path: string) => {
       display: flex;
     }
 
-    .carousel-card-mobile {
+    .intro-card-mobile {
       &:last-child :deep(.el-collapse-item__header)::after {
         display: none;
       }
@@ -189,12 +189,12 @@ const jumpTo = (path: string) => {
       }
     }
 
-    .carousel-content-mobile {
+    .intro-content-mobile {
       display: flex;
       flex-flow: row;
     }
 
-    .carousel-img-mobile {
+    .intro-img-mobile {
       width: 100%;
       height: 100%;
 
@@ -205,7 +205,7 @@ const jumpTo = (path: string) => {
       }
     }
 
-    .carousel-title-mobile {
+    .intro-title-mobile {
       cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 500;
@@ -217,32 +217,32 @@ const jumpTo = (path: string) => {
       }
     }
 
-    .carousel-icon-mobile {
+    .intro-icon-mobile {
       font-size: var(--o-font-size-h8);
       color: var(--o-color-text4);
     }
   }
-  .carousel-pc {
+  .intro-pc {
     margin-top: var(--o-spacing-h2);
     display: block;
     @media screen and (max-width: 1100px) {
       display: none;
     }
 
-    .carousel-card-pc {
+    .intro-card-pc {
       :deep(.el-card__body) {
         padding: var(--o-spacing-h1) var(--o-spacing-h1) var(--o-spacing-h2);
       }
     }
 
-    .carousel-content-pc {
+    .intro-content-pc {
       display: flex;
       flex-flow: row;
       padding-bottom: var(--o-spacing-h2);
       border-bottom: 1px solid var(--o-color-division1);
     }
 
-    .carousel-list-pc {
+    .intro-list-pc {
       display: flex;
       flex-flow: column;
       margin-right: var(--o-spacing-h1);
@@ -255,7 +255,7 @@ const jumpTo = (path: string) => {
       }
     }
 
-    .carousel-img-pc {
+    .intro-img-pc {
       flex: 1;
       img {
         width: 100%;
@@ -264,7 +264,7 @@ const jumpTo = (path: string) => {
       }
     }
 
-    .carousel-title-pc {
+    .intro-title-pc {
       cursor: pointer;
       font-size: var(--o-font-size-h5);
       font-weight: 400;
@@ -282,13 +282,13 @@ const jumpTo = (path: string) => {
     .active {
       color: var(--o-color-brand1);
     }
-    .carousel-title-pc-en {
+    .intro-title-pc-en {
       width: 266px;
     }
-    .carousel-title-pc:first-child {
+    .intro-title-pc:first-child {
       padding-top: 0;
     }
-    .carousel-button-pc {
+    .intro-button-pc {
       display: flex;
       padding-top: var(--o-spacing-h2);
       justify-content: center;
@@ -302,7 +302,7 @@ const jumpTo = (path: string) => {
         padding: 0;
       }
 
-      .carousel-button-icon-pc {
+      .intro-button-icon-pc {
         color: var(--o-color-brand1);
         width: var(--o-font-size-h8);
         height: var(--o-font-size-h8);
