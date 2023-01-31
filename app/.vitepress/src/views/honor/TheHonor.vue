@@ -29,28 +29,29 @@ import IconRight from '~icons/app/icon-arrow-right.svg';
 
 const honorData = {
   title: '社区荣誉',
-  detailBtn: '了解详情',
+  readNews: '查看新闻',
+  viewCertificate: '查看证书',
   timeList: ['2021', '2022'],
   certificateList2021: [
     {
       name: '2021 软件产业发展十大事件',
-      link: 'https://mp.weixin.qq.com/s/miKEHQF-wLB4O_v9bepZiA',
+      link: '/zh/news/20220510-ruanjian.html',
     },
     {
       name: '2021 软件行业典型示范案例',
-      link: 'https://mp.weixin.qq.com/s/miKEHQF-wLB4O_v9bepZiA',
+      link: '/zh/news/20220510-ruanjian.html',
     },
     {
       name: '2021年软件行业卓越工程师',
-      link: 'https://mp.weixin.qq.com/s/miKEHQF-wLB4O_v9bepZiA',
+      link: '/zh/news/20220510-ruanjian.html',
     },
     {
       name: '可信开源社区评估认证',
-      link: 'https://mp.weixin.qq.com/s/LNjjqkrLnpBtYq2cOrHHrg',
+      link: '/zh/news/20210527-kexin.html',
     },
     {
       name: '中国软件行业优秀解决方案',
-      link: 'https://mp.weixin.qq.com/s/V4SOpfnNtpmbTXysK6xGag',
+      link: '/zh/news/20210409-hangye.html',
     },
   ],
   certificateList2022: [
@@ -61,12 +62,11 @@ const honorData = {
     },
     {
       name: '可信开源社区评估认证（先进级）',
-      link: 'https://mp.weixin.qq.com/s/c6NHSbH9U3qqVftgt88bhQ',
+      link: '/zh/news/20220520-kexin.html',
       certificate: certificateImg2,
     },
     {
       name: 'OSCAR尖峰开源项目及开源社区',
-      link: '',
       certificate: certificateImg3,
     },
   ],
@@ -290,9 +290,22 @@ function clickDetail(index: number) {
             type="text"
             animation
             size="nomral"
+            v-if="item.link"
+            @click="clickBtn(item.link)"
+          >
+            {{ honorData.readNews }}
+            <template #suffixIcon>
+              <OIcon class="detail-icon"><IconRight /></OIcon>
+            </template>
+          </OButton>
+          <OButton
+            class="detail-btn"
+            type="text"
+            animation
+            size="nomral"
             @click="clickDetail(index)"
           >
-            {{ honorData.detailBtn }}
+            {{ honorData.viewCertificate }}
             <template #suffixIcon>
               <OIcon class="detail-icon"><IconRight /></OIcon>
             </template>
@@ -321,7 +334,7 @@ function clickDetail(index: number) {
             size="nomral"
             @click="clickBtn(item.link)"
           >
-            {{ honorData.detailBtn }}
+            {{ honorData.readNews }}
             <template #suffixIcon>
               <OIcon class="detail-icon"><IconRight /></OIcon>
             </template>
