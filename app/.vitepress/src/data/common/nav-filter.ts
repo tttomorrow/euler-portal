@@ -165,4 +165,8 @@ export default [
     name: 'organization',
     lang: ['zh'],
   },
+  {
+    name: 'honor',
+    lang: ['zh'],
+  },
 ];
