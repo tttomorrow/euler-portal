@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import {
-  onMounted,
-  ref,
-  getCurrentInstance,
-  onUpdated,
-  computed,
-  onUnmounted,
-} from 'vue';
+import { onMounted, ref, onUpdated, computed, onUnmounted } from 'vue';
 import { useData, useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
@@ -15,10 +8,10 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import VideoCtrl from '@/components/VideoCtrl.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppContent from '@/components/AppContent.vue';
+import NavTree from '@/components/NavTree.vue';
 
 import IconArrowLeft from '~icons/app/icon-arrow-left.svg';
 import IconArrowRight from '~icons/app/icon-arrow-right.svg';
-import IconChevronDown from '~icons/app/icon-chevron-down.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconCatalog from '~icons/mooc/catalog.svg';
 
@@ -27,10 +20,17 @@ import logo_dark from '@/assets/common/header/logo_dark.png';
 import video_bg_light from '@/assets/category/mooc/video-bg-light.png';
 import video_bg_dark from '@/assets/category/mooc/video-bg-dark.png';
 
+import type {
+  TeacherItem,
+  NodeItem,
+  VideoObj,
+} from '@/shared/@types/type-mooc';
+
 const i18n = useI18n();
 const router = useRouter();
 const language = useData().lang;
 const commonStore = useCommon();
+const screenWidth = useWindowResize();
 
 const moocData = computed(() => i18n.value.mooc);
 
@@ -40,7 +40,7 @@ const defaultProps = ref({
   label: 'label',
 });
 // 导航栏目录数据
-const menuData: any = ref([]);
+const menuDataList: any = ref([]);
 // 当前选中节点内容
 const currentNode = ref({
   title: '',
@@ -49,17 +49,19 @@ const currentNode = ref({
   video: '',
   key: '',
 });
-const teacherList: any = ref([]);
-const introductionText = ref([]);
-const allNode: any = ref([]);
+const teacherList = ref<TeacherItem[]>([]);
+const introductionTextList = ref([]);
+const allNodeList = ref<NodeItem[]>([]);
 const courseH1 = ref('');
-const welcome = ref('');
+const welcomeStr = ref('');
 const courseIndex = ref(0);
 // 控制移动端二级导航展开收起
 const isShowMenu = ref(false);
-let refs: any = null;
+const treeRef: any = ref(null);
+const playctrlEleRef: any = ref(null);
+const videoMobileRef: any = ref(null);
 // 操作视频控制对象
-const ctrlObj: any = ref();
+const ctrlObj = ref<VideoObj>();
 // 确定介绍文字中的标题下标
 const listTitleIndex = ref(0);
 const logo = computed(() => {
@@ -70,12 +72,10 @@ const videoBg = computed(() => {
 });
 const videoBgShow = ref(true);
 onMounted(() => {
-  const { $refs } = (getCurrentInstance() as any).proxy;
-  refs = $refs;
   getContent();
-  teacherList.value = menuData.value[0].teacher;
-  allNode.value = getCoursePath(menuData.value);
-  if (useWindowResize().value > 1400) {
+  teacherList.value = menuDataList.value[0].teacher;
+  allNodeList.value = getCoursePath(menuDataList.value);
+  if (screenWidth.value > 1400) {
     ctrlObj.value = {
       element: document.getElementById('pc-video'),
       isShow: true,
@@ -88,10 +88,13 @@ onMounted(() => {
       barWidth: 432,
     };
   }
-
-  courseIndex.value =
-    JSON.parse(sessionStorage.getItem('courseIndex') || '0') * 1;
-  setCourseData(allNode.value[courseIndex.value]);
+  try {
+    courseIndex.value =
+      JSON.parse(sessionStorage.getItem('courseIndex') || '0') * 1;
+  } catch (error: any) {
+    throw Error(error);
+  }
+  setCourseData(allNodeList.value[courseIndex.value]);
 });
 onUpdated(() => {
   setCheckedNode();
@@ -101,15 +104,19 @@ function toggleMenu(flag: boolean) {
 }
 // 设置选中节点
 function setCheckedNode() {
-  refs.tree.tree.setCurrentKey(currentNode.value.key);
+  if (treeRef.value) {
+    treeRef.value.tree.tree.setCurrentKey(currentNode.value.key);
+  }
+
+  // refs.tree.tree.tree.setCurrentKey(currentNode.value.key);
 }
 // 读取要渲染的课程内容数据
 function getContent() {
   const listData = moocData.value.MOOC_DATA.COURSE_LIST;
   listData.forEach((item: any) => {
-    menuData.value = item.NAV_DATA;
+    menuDataList.value = item.NAV_DATA;
     courseH1.value = item.COURSE_H1;
-    welcome.value = item.WELCOME;
+    welcomeStr.value = item.WELCOME;
   });
 }
 // 控制视频的播放和暂停
@@ -122,32 +129,37 @@ function checkStatus(status: boolean) {
   }
 }
 // 导航栏点击事件
-function handleNodeClick(obj: any) {
-  setCourseData(obj);
+function handleNodeClick(obj: NodeItem) {
+  if (obj.introduction || obj.desc) {
+    if (screenWidth.value < 1100) {
+      toggleMenu(false);
+    }
+    setCourseData(obj);
+  }
 }
 // 读取所有文档节点
-function getCoursePath(menuData: any) {
-  menuData.forEach((item: any) => {
+function getCoursePath(menuDataList: any) {
+  menuDataList.forEach((item: any) => {
     if (item.children && item.children.length) {
       getCoursePath(item.children);
     } else {
-      allNode.value.push(item);
+      allNodeList.value.push(item);
     }
   });
-  return allNode.value;
+  return allNodeList.value;
 }
 // 点击视频播放按钮播放视频并隐藏该按钮,option:webBtn(pc端操作)、mobileBtn(移动端操作)
 function playMoocVideo(option: string) {
   videoBgShow.value = false;
   if (option === 'webBtn') {
-    refs.playctrlEle.isPlay = true;
+    playctrlEleRef.value.isPlay = true;
   } else if (option === 'mobileBtn') {
-    refs.mobileVideo.play();
+    videoMobileRef.value.play();
     isNowPlay.value = true;
   }
 }
 // 根据上下页操作改变激活节点及显示内容
-function getTitleAndIndex(arr: any, option: string) {
+function setTitleAndIndex(arr: any, option: string) {
   isNowPlay.value = false;
   arr.forEach((item: any, index: number) => {
     if (
@@ -168,7 +180,7 @@ function getTitleAndIndex(arr: any, option: string) {
 // 根据激活节点显示的内容obj(读取的数据)
 function setCourseData(obj: any) {
   if (obj.introduction) {
-    introductionText.value = obj.introduction;
+    introductionTextList.value = obj.introduction;
     currentNode.value.title = obj.label;
     currentNode.value.key = obj.key;
     currentNode.value.desc = '';
@@ -180,16 +192,18 @@ function setCourseData(obj: any) {
       currentNode.value.ppt = '';
     }
   } else if (obj.desc) {
-    introductionText.value = [];
+    introductionTextList.value = [];
     currentNode.value.title = obj.label;
     currentNode.value.ppt = obj.ppt_link;
     currentNode.value.desc = obj.desc;
     currentNode.value.video = obj.video_link;
     currentNode.value.key = obj.key;
-    refs.playctrlEle.isPlay = false;
-    refs.mobileVideo.isPlay = false;
+    if (playctrlEleRef.value) {
+      playctrlEleRef.value.isPlay = false;
+      playctrlEleRef.value.barPercentage = 0;
+    }
+    videoMobileRef.value ? (videoMobileRef.value.isPlay = false) : '';
     setCheckedNode();
-    refs.playctrlEle.barPercentage = 0;
     listTitleIndex.value = 0;
   } else {
     return false;
@@ -198,7 +212,7 @@ function setCourseData(obj: any) {
 }
 // 保存当前所在页面防止刷新从第一页渲染
 function setCourseIndex() {
-  allNode.value.forEach((item: any, index: number) => {
+  allNodeList.value.forEach((item: NodeItem, index: number) => {
     if (item.key === currentNode.value.key) {
       courseIndex.value = index;
       sessionStorage.setItem('courseIndex', JSON.stringify(courseIndex.value));
@@ -207,7 +221,7 @@ function setCourseIndex() {
 }
 // 设置介绍文字中的标题下标
 function setListTitleIndex() {
-  introductionText.value.forEach((item: string, index: number) => {
+  introductionTextList.value.forEach((item: string, index: number) => {
     if (item.indexOf('：') !== -1) {
       listTitleIndex.value = index;
       return;
@@ -216,22 +230,22 @@ function setListTitleIndex() {
 }
 // 上一页
 function previous() {
-  getTitleAndIndex(allNode.value, 'prev');
+  setTitleAndIndex(allNodeList.value, 'prev');
   videoBgShow.value = true;
-  currentNode.value.key = allNode.value[courseIndex.value].key;
-  setCourseData(allNode.value[courseIndex.value]);
+  currentNode.value.key = allNodeList.value[courseIndex.value].key;
+  setCourseData(allNodeList.value[courseIndex.value]);
 }
 // 下一页
 function next() {
-  getTitleAndIndex(allNode.value, 'next');
+  setTitleAndIndex(allNodeList.value, 'next');
   //最后一章则无下一篇
-  if (courseIndex.value === allNode.value.length - 1) {
+  if (courseIndex.value === allNodeList.value.length - 1) {
     return false;
   } else {
     videoBgShow.value = true;
-    currentNode.value.key = allNode.value[courseIndex.value].key;
+    currentNode.value.key = allNodeList.value[courseIndex.value].key;
   }
-  setCourseData(allNode.value[courseIndex.value]);
+  setCourseData(allNodeList.value[courseIndex.value]);
 }
 // 卸载时将文档位置回归到第一个
 onUnmounted(() => {
@@ -248,7 +262,7 @@ const iconMenuShow = computed(() => {
 <template>
   <AppContent :pc-top="40" :mobile-top="16">
     <div class="mooc-detail">
-      <div class="detail-mobile">
+      <div v-if="screenWidth < 1100" class="detail-mobile">
         <OIcon v-show="iconMenuShow" class="catalog" @click="toggleMenu(true)"
           ><IconCatalog
         /></OIcon>
@@ -269,17 +283,13 @@ const iconMenuShow = computed(() => {
                 />
                 <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
               </div>
-              <OTree
-                ref="tree"
-                node-key="key"
-                :data="menuData"
-                :props="defaultProps"
-                accordion
-                :highlight-current="true"
-                :icon="IconChevronDown"
+              <NavTree
+                ref="treeRef"
+                :node-key="'key'"
+                :data="menuDataList"
+                :default-props="defaultProps"
                 @node-click="handleNodeClick"
-              >
-              </OTree>
+              />
             </div>
           </ODrawer>
         </ClientOnly>
@@ -289,9 +299,9 @@ const iconMenuShow = computed(() => {
           link1="/zh/learn/mooc/"
           class="bread"
         />
-        <div class="mobile-content">
+        <div class="content-mobile">
           <h1>{{ courseH1 }}</h1>
-          <p class="entry-welcome">{{ welcome }}</p>
+          <p class="entry-welcome">{{ welcomeStr }}</p>
           <div class="infomation">
             <p :key="currentNode.title" class="title">
               {{ currentNode.title }}
@@ -311,9 +321,9 @@ const iconMenuShow = computed(() => {
               </OButton>
             </a>
           </div>
-          <div v-show="introductionText.length" class="text">
+          <div v-show="introductionTextList.length" class="text">
             <p
-              v-for="(item, index) in introductionText"
+              v-for="(item, index) in introductionTextList"
               :key="item"
               :class="[
                 courseIndex === 0 && index === 0 ? 'welcome' : '',
@@ -324,7 +334,7 @@ const iconMenuShow = computed(() => {
             </p>
             <div v-if="currentNode.key === 'introduction0'" class="teacher">
               <p>{{ moocData.MOOC.TEACHER_TEAM }}</p>
-              <div v-for="item in teacherList" :key="item" class="item">
+              <div v-for="item in teacherList" :key="item.name" class="item">
                 <img :src="item.img" alt="" />
                 <div>
                   <p>{{ item.position }}</p>
@@ -333,9 +343,9 @@ const iconMenuShow = computed(() => {
               </div>
             </div>
           </div>
-          <div v-show="!introductionText.length" class="video">
+          <div v-show="!introductionTextList.length" class="video">
             <video
-              ref="mobileVideo"
+              ref="videoMobileRef"
               :src="currentNode.video"
               loop
               style="width: 100%"
@@ -351,7 +361,7 @@ const iconMenuShow = computed(() => {
               @click="playMoocVideo('mobileBtn')"
             ></div>
           </div>
-          <div class="mobile-menu">
+          <div class="menu-mobile">
             <div class="prev" @click="previous">
               <OIcon><IconArrowLeft /></OIcon>
               <span>{{ moocData.MOOC.PREV_TEXT }}</span>
@@ -363,28 +373,24 @@ const iconMenuShow = computed(() => {
           </div>
         </div>
       </div>
-      <div class="detail-pc">
+      <div v-else class="detail-pc">
         <BreadCrumbs
           :bread1="moocData.MOOC.MOOC"
           :bread2="moocData.MOOC.MOOC_COURSE[0].TITLE"
           link1="/zh/learn/mooc/"
         />
         <h1>{{ courseH1 }}</h1>
-        <p class="entry-welcome">{{ welcome }}</p>
+        <p class="entry-welcome">{{ welcomeStr }}</p>
         <div class="content">
           <div class="article-nav fl">
             <div class="nav-top">{{ moocData.MOOC.MOOC_CATALOG }}</div>
-            <OTree
-              ref="tree"
-              node-key="key"
-              :data="menuData"
-              :props="defaultProps"
-              accordion
-              :highlight-current="true"
-              :icon="IconChevronDown"
+            <NavTree
+              ref="treeRef"
+              :node-key="'key'"
+              :data="menuDataList"
+              :default-props="defaultProps"
               @node-click="handleNodeClick"
-            >
-            </OTree>
+            />
           </div>
           <div class="article-detail fl">
             <div class="infomation">
@@ -407,9 +413,9 @@ const iconMenuShow = computed(() => {
                 <p class="desc">{{ currentNode.desc }}</p>
               </div>
             </div>
-            <div v-show="introductionText.length" class="text">
+            <div v-show="introductionTextList.length" class="text">
               <p
-                v-for="(item, index) in introductionText"
+                v-for="(item, index) in introductionTextList"
                 :key="item"
                 :class="[
                   courseIndex === 0 && index === 0 ? 'welcome' : '',
@@ -437,7 +443,7 @@ const iconMenuShow = computed(() => {
                 </div>
               </div>
             </div>
-            <div v-show="!introductionText.length" class="video">
+            <div v-show="!introductionTextList.length" class="video">
               <video
                 id="pc-video"
                 :src="currentNode.video"
@@ -450,7 +456,7 @@ const iconMenuShow = computed(() => {
                 :style="{ backgroundImage: 'url(' + videoBg + ')' }"
               ></div>
               <VideoCtrl
-                ref="playctrlEle"
+                ref="playctrlEleRef"
                 :ctrl-obj="ctrlObj"
                 @play-status="checkStatus"
               ></VideoCtrl>
@@ -481,14 +487,6 @@ const iconMenuShow = computed(() => {
   </AppContent>
 </template>
 <style lang="scss" scoped>
-:deep(.el-tree-node__content:hover) {
-  background-color: var(--o-color-bg4);
-}
-:deep(.el-tree-node) {
-  &:focus > .el-tree-node__content {
-    background-color: var(--o-color-bg4) !important;
-  }
-}
 .mooc-detail {
   width: 100%;
   .detail-pc {
@@ -535,67 +533,6 @@ const iconMenuShow = computed(() => {
           padding-left: var(--o-spacing-h4);
           font-weight: bold;
         }
-        :deep(.el-tree) {
-          width: 360px;
-          overflow: hidden;
-          background-color: var(--o-color-bg2);
-        }
-
-        :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
-          order: 2;
-          padding: 12px;
-          font-size: var(--o-font-size-h5);
-          color: var(--o-color-text1);
-        }
-        :deep(.el-tree-node__expand-icon.expanded) {
-          transform: rotate(180deg);
-        }
-        :deep(.el-tree-node:nth-of-type(1)
-            > .el-tree-node__content
-            > .el-tree-node__expand-icon) {
-          display: none;
-        }
-        :deep(.el-tree--highlight-current
-            .el-tree-node.is-current
-            > .el-tree-node__content) {
-          background-color: var(--o-color-bg4);
-        }
-        :deep(.el-tree-node__children .el-tree-node__expand-icon) {
-          display: none;
-        }
-        :deep(.el-tree-node__children) {
-          background-color: var(--o-color-bg1);
-        }
-        :deep(.el-tree-node__children .is-current .el-tree-node__content) {
-          background-color: transparent;
-          position: relative;
-          &::before {
-            content: '';
-            display: inline-block;
-            position: absolute;
-            left: 0;
-            width: 2px;
-            height: 60px;
-            background-color: var(--o-color-brand1);
-          }
-        }
-        :deep(.el-tree-node__content:hover) {
-          background-color: var(--o-color-bg4);
-        }
-        :deep(.el-tree .el-tree-node__label) {
-          font-size: 16px;
-          line-height: 16px;
-          color: var(--o-color-text1);
-        }
-        :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
-          font-size: 14px;
-          line-height: 20px;
-          white-space: pre-wrap;
-        }
-        :deep(.el-tree-node .el-tree-node__content) {
-          padding: 28px var(--o-spacing-h4) !important;
-          justify-content: space-between;
-        }
       }
       .article-detail {
         max-width: 864px;
@@ -626,7 +563,7 @@ const iconMenuShow = computed(() => {
               }
             }
           }
-          &-title {
+          .infomation-title {
             max-width: 864px;
             display: flex;
             justify-content: space-between;
@@ -782,14 +719,7 @@ const iconMenuShow = computed(() => {
     }
   }
   .detail-mobile {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .mooc-detail {
-    padding: 0;
-    .detail-mobile {
+    @media screen and (max-width: 1100px) {
       display: block;
       .catalog {
         position: fixed;
@@ -800,7 +730,7 @@ const iconMenuShow = computed(() => {
         color: var(--o-color-text1);
         cursor: pointer;
       }
-      .mobile-menu {
+      .menu-mobile {
         width: 100%;
         padding: var(--o-spacing-h5) 0 0 0;
         display: flex;
@@ -831,8 +761,7 @@ const iconMenuShow = computed(() => {
           }
         }
       }
-
-      .mobile-content {
+      .content-mobile {
         width: 100%;
         margin-top: var(--o-spacing-h5);
         padding: var(--o-spacing-h5);
@@ -943,15 +872,14 @@ const iconMenuShow = computed(() => {
             width: 100%;
             height: calc(100% - 32px);
             background-size: 100% 100%;
-            // background-image: url(@/assets/category/mooc/video-bg-light.png);
           }
         }
       }
     }
-    .detail-pc {
-      display: none;
-    }
   }
+}
+
+@media screen and (max-width: 1100px) {
   .nav-tree {
     position: fixed;
     left: 0;
@@ -982,58 +910,6 @@ const iconMenuShow = computed(() => {
         cursor: pointer;
         font-size: var(--o-font-size-h5);
       }
-    }
-    :deep(.el-tree) {
-      width: 100%;
-      overflow: hidden;
-      background-color: var(--o-color-bg2);
-    }
-    :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
-      order: 2;
-      padding: 12px;
-      font-size: var(--o-font-size-h8);
-      color: var(--o-color-text1);
-    }
-    :deep(.el-tree-node__expand-icon.expanded) {
-      transform: rotate(180deg);
-    }
-    :deep(.el-tree--highlight-current
-        .el-tree-node.is-current
-        > .el-tree-node__content) {
-      background-color: var(--o-color-bg4);
-    }
-    :deep(.el-tree-node:nth-of-type(1)
-        > .el-tree-node__content
-        > .el-tree-node__expand-icon) {
-      display: none;
-    }
-    :deep(.el-tree-node__children .el-tree-node__expand-icon) {
-      display: none;
-    }
-    :deep(.el-tree-node__children .is-current .el-tree-node__label) {
-      color: var(--o-color-brand1);
-    }
-    :deep(.el-tree--highlight-current
-        .el-tree-node.is-current
-        > .el-tree-node__content) {
-      background-color: transparent;
-    }
-    :deep(.el-tree-node__children) {
-      background-color: var(--o-color-bg1);
-    }
-    :deep(.el-tree .el-tree-node__label) {
-      font-size: 14px;
-      line-height: 16px;
-      color: var(--o-color-text1);
-    }
-    :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
-      font-size: 14px;
-      line-height: 20px;
-      white-space: pre-wrap;
-    }
-    :deep(.el-tree-node .el-tree-node__content) {
-      padding: 19px var(--o-spacing-h5) !important;
-      justify-content: space-between;
     }
   }
 }

@@ -8,8 +8,8 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 import DocSideBar from '@/components/DocSideBar.vue';
 import DocSideBarMenu from '@/components/DocSideBarMenu.vue';
 import DocAnchor from '@/components/DocAnchor.vue';
+import NavTree from '@/components/NavTree.vue';
 
-import IconChevronDown from '~icons/app/icon-chevron-down.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconCatalog from '~icons/mooc/catalog.svg';
 
@@ -127,7 +127,15 @@ const handleNodeClick = (node: any) => {
             />
             <OIcon @click="toggleMenu(false)"><IconCancel /></OIcon>
           </div>
-          <OTree
+          <NavTree
+            ref="tree"
+            :node-key="'migration'"
+            :data="tocInfo"
+            :default-props="defaultProps"
+            :current-node-key="activeId"
+            @node-click="handleNodeClick"
+          />
+          <!-- <OTree
             ref="tree"
             node-key="migration"
             :data="tocInfo"
@@ -138,7 +146,7 @@ const handleNodeClick = (node: any) => {
             :current-node-key="activeId"
             @node-click="handleNodeClick"
           >
-          </OTree>
+          </OTree> -->
         </div>
       </ODrawer>
     </ClientOnly>
@@ -155,10 +163,6 @@ const handleNodeClick = (node: any) => {
 </template>
 
 <style lang="scss" scoped>
-:deep(.el-tree-node__content:hover) {
-  background-color: var(--o-color-bg4);
-}
-
 .nav-tree {
   position: fixed;
   left: 0;
@@ -190,56 +194,14 @@ const handleNodeClick = (node: any) => {
       font-size: var(--o-font-size-h5);
     }
   }
-  :deep(.el-tree) {
-    width: 100%;
-    overflow: hidden;
-    background-color: var(--o-color-bg2);
-  }
 
   :deep(.el-icon.el-tree-node__expand-icon.is-leaf) {
     display: none;
-  }
-  :deep(.el-tree-node__content > .el-tree-node__expand-icon) {
-    order: 2;
-    padding: 12px;
-    font-size: var(--o-font-size-h8);
-    color: var(--o-color-text1);
-  }
-  :deep(.el-tree-node__expand-icon.expanded) {
-    transform: rotate(180deg);
-  }
-  :deep(.el-tree--highlight-current
-      .el-tree-node.is-current
-      > .el-tree-node__content) {
-    background-color: var(--o-color-bg4);
-  }
-  :deep(.el-tree-node__children .el-tree-node__expand-icon) {
-    display: none;
-  }
-  :deep(.el-tree-node__children .is-current .el-tree-node__label) {
-    color: var(--o-color-brand1);
-  }
-  :deep(.el-tree--highlight-current
-      .el-tree-node.is-current
-      > .el-tree-node__content) {
-    background-color: transparent;
-  }
-  :deep(.el-tree-node__children) {
-    background-color: var(--o-color-bg1);
   }
   :deep(.el-tree .el-tree-node__label) {
     font-size: 14px;
     line-height: 16px;
     color: var(--o-color-text1);
-  }
-  :deep(.el-tree .el-tree-node__children .el-tree-node__label) {
-    font-size: 14px;
-    line-height: 20px;
-    white-space: pre-wrap;
-  }
-  :deep(.el-tree-node .el-tree-node__content) {
-    padding: 19px var(--o-spacing-h5) !important;
-    justify-content: space-between;
   }
 }
 

@@ -136,9 +136,6 @@ const i18n = useI18n();
             &:hover .o-icon {
               transform: translateX(3px);
             }
-            &-type-primary {
-              color: #ffffff;
-            }
           }
         }
       }
