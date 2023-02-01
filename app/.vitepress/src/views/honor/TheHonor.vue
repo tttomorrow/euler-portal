@@ -535,6 +535,7 @@ function clickDetail(index: number) {
       .detail-btn {
         margin-top: 26px;
         padding-left: 0;
+        padding-bottom: 0;
         @media (max-width: 768px) {
           margin-top: 24px;
           font-size: var(--o-font-size-text);
@@ -703,13 +704,26 @@ function clickDetail(index: number) {
             }
             .detail {
               margin-top: var(--o-spacing-h5);
-              overflow: auto;
+              overflow-y: scroll;
               max-height: calc(100% - 48px);
               @media (max-width: 768px) {
                 margin-top: var(--o-spacing-h8);
               }
+              &::-webkit-scrollbar-track {
+                border-radius: 4px;
+                background-color: var(--o-color-bg2);
+                background-color: var(--o-color-brand1);
+
+              }
+
               &::-webkit-scrollbar {
-                display: none; /* Chrome Safari */
+                width: 6px;
+                background-color: var(--o-color-brand1);
+              }
+
+              &::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background: var(--o-color-division1);
               }
               p {
                 font-size: var(--o-font-size-text);
