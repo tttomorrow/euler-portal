@@ -15682,5 +15682,24 @@
     "chipModel": "E810-XXV",
     "item": "06310219",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-22.03-LTS-SP1/contrib/drivers/source/Packages/ice-1.10.1.2.2.tar.gz"
+  },
+  {
+    "vendorID": "8086",
+    "deviceID": "1521",
+    "svID": "1dcf",
+    "ssID": "0341",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS",
+    "driverName": "igb",
+    "version": "",
+    "type": "NIC",
+    "date": "2023.01.05",
+    "sha256": "7aaf89fad3eae542e505379cef9e6fb9ad65be587f0993f4de63a50ca9b93229",
+    "driverSize": "542KB",
+    "chipVendor": "Intel",
+    "boardModel": "I4C0N-M3",
+    "chipModel": "I350",
+    "item": "",
+    "downloadLink": "inbox"
   }
 ]
