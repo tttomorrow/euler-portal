@@ -4,7 +4,6 @@ import { useData } from 'vitepress';
 import { getUserCaseData } from '@/api/api-showcase';
 import { useI18n } from '@/i18n';
 
-// import useWindowResize from '@/components/hooks/useWindowResize';
 import useWindowScroll from '@/components/hooks/useWindowScroll';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
@@ -12,14 +11,15 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import TagFilter from '@/components/TagFilter.vue';
 import NotFound from '@/NotFound.vue';
 
+import IconDownload from '~icons/app/icon-download.svg';
 import banner from '@/assets/banner/banner-community.png';
 import search from '@/assets/illustrations/search.png';
 import { addSearchBuriedData } from '@/shared/utils';
 
-// import useCaseZh from '@/i18n/showcase/showcase.json';
 const keyWord = ref('');
 const i18n = useI18n();
 const { lang } = useData();
+
 const userCaseData = computed(() => i18n.value.showcase);
 // 当前选中的tag
 const currentTag = ref(userCaseData.value.tags[0]);
@@ -197,11 +197,13 @@ function getUrlParam() {
     currentTag.value = userCaseData.value.tags[activeIndex.value];
   }
 }
+const downloadCase = (path: string) => {
+  window.location.href = path;
+};
 // 获取所有案例及设置当前需要显示的案例
 onMounted(() => {
   getUrlParam();
   setCurrentCaseListAll();
-  // filterCase();
 });
 </script>
 
@@ -244,10 +246,25 @@ onMounted(() => {
         </OTag>
       </TagFilter>
     </div>
-    <p class="case-number">
-      {{ userCaseData.find1 }}{{ currentCaseListAll.length
-      }}{{ userCaseData.find2 }}
-    </p>
+
+    <div class="case-header">
+      <p class="case-number">
+        {{ userCaseData.find1 }} {{ currentCaseListAll.length
+        }} {{ userCaseData.find2 }}
+      </p>
+      <OButton
+        v-if="userCaseData.caseLink"
+        class="case-download"
+        @click="downloadCase(userCaseData.caseLink)"
+        type="outline"
+        size="mini"
+      >
+        {{ userCaseData.downloadCase }}
+        <template #suffixIcon>
+          <OIcon><IconDownload /></OIcon>
+        </template>
+      </OButton>
+    </div>
     <div class="case-list">
       <OCard
         v-for="(item, index) in currentCaseList"
@@ -375,19 +392,24 @@ onMounted(() => {
       z-index: 9;
     }
   }
-  .case-number {
+  .case-header {
     margin-top: var(--o-spacing-h4);
-    font-size: var(--o-font-size-tip);
-    line-height: var(--o-line-height-tip);
-    color: var(--o-color-text1);
+    display: flex;
+    justify-content: space-between;
     @media (max-width: 768px) {
       display: none;
     }
+    .case-number {
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      color: var(--o-color-text1);
+    }
   }
+
   .case-list {
     display: grid;
     width: 100%;
-    margin-top: var(--o-spacing-h2);
+    margin-top: var(--o-spacing-h3);
     grid-template-columns: repeat(3, 1fr);
     grid-gap: var(--o-spacing-h4);
     @media (max-width: 1280px) {

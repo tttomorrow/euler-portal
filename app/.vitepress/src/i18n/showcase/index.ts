@@ -1,5 +1,8 @@
 export default {
   zh: {
+    downloadCase: '下载案例',
+    caseLink:
+      'https://obs-transfer.obs.cn-north-4.myhuaweicloud.com/openeuler/obsi-openeuler-industry/openEuler%20industry%20user%20case%20collection.pdf',
     placeHolder: '搜索用户案例',
     bannerTitle: '用户案例',
     type: '案例类别',
