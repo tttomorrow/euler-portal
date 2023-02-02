@@ -10,12 +10,12 @@ const jumpTo = (path: string) => {
   window.open(path, '_blank');
 };
 
-const imgUrl = computed(() => (item: { IMG_DARK: any; IMG: any }) => {
+const getImgUrl = computed(() => (item: { IMG_DARK: string; IMG: string }) => {
   return commonStore.theme === 'dark' ? item.IMG_DARK : item.IMG;
 });
 
-const imgUrlHover = computed(
-  () => (item: { IMG_DARK_HOVER: any; IMG_HOVER: any }) => {
+const getImgUrlHover = computed(
+  () => (item: { IMG_DARK_HOVER: string; IMG_HOVER: string }) => {
     return commonStore.theme === 'dark' ? item.IMG_DARK_HOVER : item.IMG_HOVER;
   }
 );
@@ -30,9 +30,13 @@ const imgUrlHover = computed(
       @click="jumpTo(item.LINK)"
     >
       <div class="display-zone-icon">
-        <img :src="imgUrl(item)" alt="openEuler" class="display-zone-item-icon" />
         <img
-          :src="imgUrlHover(item)"
+          :src="getImgUrl(item)"
+          alt="openEuler"
+          class="display-zone-item-icon"
+        />
+        <img
+          :src="getImgUrlHover(item)"
           alt="openEuler"
           class="display-zone-item-icon-hover"
         />

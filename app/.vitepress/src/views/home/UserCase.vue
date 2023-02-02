@@ -52,12 +52,12 @@ const initData = (res: any) => {
   });
   caseData.value = result;
 };
-const imgUrl = computed(() => (item: { URL_DARK: any; URL: any }) => {
+const getImgUrl = computed(() => (item: { URL_DARK: string; URL: string }) => {
   return commonStore.theme === 'dark' ? item.URL_DARK : item.URL;
 });
 
-const imgUrlHover = computed(
-  () => (item: { ACTIVE_DARK_URL: any; ACTIVE_URL: any }) => {
+const getImgUrlHover = computed(
+  () => (item: { ACTIVE_DARK_URL: string; ACTIVE_URL: string }) => {
     return commonStore.theme === 'dark'
       ? item.ACTIVE_DARK_URL
       : item.ACTIVE_URL;
@@ -176,12 +176,12 @@ onUnmounted(() => {
                 :class="active === index ? 'active' : ''"
               >
                 <img
-                  :src="imgUrl(item)"
+                  :src="getImgUrl(item)"
                   alt="openEuler"
                   class="nav-item-icon"
                 />
                 <img
-                  :src="imgUrlHover(item)"
+                  :src="getImgUrlHover(item)"
                   alt="openEuler"
                   class="nav-item-icon-hover"
                 />
@@ -313,64 +313,64 @@ h3 {
     color: var(--o-color-text4);
   }
 }
-  .user-mobile {
-    background-color: var(--o-color-bg4);
-    > :nth-child(1) {
-      margin-top: 0px;
-    }
+.user-mobile {
+  background-color: var(--o-color-bg4);
+  > :nth-child(1) {
+    margin-top: 0px;
   }
-  .user-card {
-    cursor: pointer;
-    padding: var(--o-spacing-h5);
-    width: 100%;
-    height: 100%;
-    background: var(--o-color-bg1);
-    border: 1px solid rgba(0, 0, 0, 0);
+}
+.user-card {
+  cursor: pointer;
+  padding: var(--o-spacing-h5);
+  width: 100%;
+  height: 100%;
+  background: var(--o-color-bg1);
+  border: 1px solid rgba(0, 0, 0, 0);
 
-    @media (max-width: 1100px) {
-      background: var(--o-color-bg2);
-      margin-top: var(--o-spacing-h8);
-    }
-
-    @media (max-width: 768px) {
-      padding: var(--o-spacing-h8);
-    }
+  @media (max-width: 1100px) {
+    background: var(--o-color-bg2);
+    margin-top: var(--o-spacing-h8);
   }
 
-  .user-card:hover {
-    @media (min-width: 1100px) {
-      background-color: var(--o-color-bg2);
-      border: 1px solid var(--o-color-brand1);
-      transition: 0.3s all;
-    }
+  @media (max-width: 768px) {
+    padding: var(--o-spacing-h8);
   }
+}
 
-  .user-title {
-    font-size: var(--o-font-size-h7);
-    font-weight: 500;
-    color: var(--o-color-text1);
-    line-height: var(--o-line-height-h7);
-    @media (max-width: 768px) {
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-    }
+.user-card:hover {
+  @media (min-width: 1100px) {
+    background-color: var(--o-color-bg2);
+    border: 1px solid var(--o-color-brand1);
+    transition: 0.3s all;
   }
+}
 
-  .user-word {
+.user-title {
+  font-size: var(--o-font-size-h7);
+  font-weight: 500;
+  color: var(--o-color-text1);
+  line-height: var(--o-line-height-h7);
+  @media (max-width: 768px) {
     font-size: var(--o-font-size-text);
-    font-weight: 400;
-    color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
-    display: -webkit-box;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-line-clamp: 2; // 设置两行文字溢出
-    -webkit-box-orient: vertical;
-    @media (max-width: 768px) {
-      font-size: var(--o-font-size-tip);
-      line-height: var(--o-line-height-tip);
-    }
   }
+}
+
+.user-word {
+  font-size: var(--o-font-size-text);
+  font-weight: 400;
+  color: var(--o-color-text4);
+  line-height: var(--o-line-height-text);
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2; // 设置两行文字溢出
+  -webkit-box-orient: vertical;
+  @media (max-width: 768px) {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+  }
+}
 .case {
   display: block;
   @media (max-width: 1100px) {

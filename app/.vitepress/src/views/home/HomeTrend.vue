@@ -130,83 +130,83 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-  .round-card {
-    display: flex;
-    flex-flow: column;
+.round-card {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px;
+
+  :deep(.el-card__body) {
+    width: 100%;
+    padding: var(--o-spacing-h2);
+    @media (max-width: 768px) {
+      padding: var(--o-spacing-h4) 0 0 0;
+    }
+  }
+}
+
+.round-list {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: hidden;
+  @media (max-width: 768px) {
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 30px;
+  }
+}
+.round-item {
+  display: flex;
+  flex-flow: column;
+  flex-shrink: 0;
+  max-width: 110px;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 768px) {
+    width: 32%;
+    margin-bottom: var(--o-spacing-h4);
+  }
+}
 
-    :deep(.el-card__body) {
-      width: 100%;
-      padding: var(--o-spacing-h2);
-      @media (max-width: 768px) {
-        padding: var(--o-spacing-h4) 0 0 0;
-      }
-    }
+.round-value {
+  font-size: var(--o-font-size-h5);
+  font-weight: 500;
+  color: var(--o-color-text1);
+  line-height: var(--o-line-height-h5);
+  margin-top: var(--o-spacing-h5);
+  animation: scaleNumber 1s 2.5s;
+  @media (max-width: 768px) {
+    margin-top: var(--o-spacing-h10);
+    font-size: var(--o-font-size-text);
+    line-height: var(--o-line-height-text);
   }
+}
 
-  .round-list {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    overflow: hidden;
-    @media (max-width: 768px) {
-      justify-content: center;
-    }
+.round-title {
+  font-size: var(--o-font-size-h7);
+  font-weight: 400;
+  color: var(--o-color-text1);
+  line-height: var(--o-line-height-h7);
+  margin-top: var(--o-spacing-h8);
+  @media (max-width: 768px) {
+    margin-top: var(--o-spacing-h10);
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
   }
-  .round-item {
-    display: flex;
-    flex-flow: column;
-    flex-shrink: 0;
-    max-width: 110px;
-    width: 100%;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    @media (max-width: 768px) {
-      width: 32%;
-      margin-bottom: var(--o-spacing-h4);
-    }
-  }
+}
 
-  .round-value {
-    font-size: var(--o-font-size-h5);
-    font-weight: 500;
-    color: var(--o-color-text1);
-    line-height: var(--o-line-height-h5);
-    margin-top: var(--o-spacing-h5);
-    animation: scaleNumber 1s 2.5s;
-    @media (max-width: 768px) {
-      margin-top: var(--o-spacing-h10);
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-    }
+.round-img {
+  width: 48px;
+  @media (max-width: 768px) {
+    width: 40px;
   }
-
-  .round-title {
-    font-size: var(--o-font-size-h7);
-    font-weight: 400;
-    color: var(--o-color-text1);
-    line-height: var(--o-line-height-h7);
-    margin-top: var(--o-spacing-h8);
-    @media (max-width: 768px) {
-      margin-top: var(--o-spacing-h10);
-      font-size: var(--o-font-size-tip);
-      line-height: var(--o-line-height-tip);
-    }
-  }
-
-  .round-img {
-    width: 48px;
-    @media (max-width: 768px) {
-      width: 40px;
-    }
-  }
+}
 .home-trend {
   @media (max-width: 768px) {
     margin-top: var(--o-spacing-h2);
