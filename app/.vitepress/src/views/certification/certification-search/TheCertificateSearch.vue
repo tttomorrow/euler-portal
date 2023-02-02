@@ -11,7 +11,7 @@ import {
 } from '@/api/api-certification';
 
 import IconChevron from '~icons/app/icon-chevron-right.svg';
-import IconRequired from '~icons/app/icon-required.svg';
+import IconRequiredFields from '~icons/app/icon-required-fields.svg';
 
 import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
@@ -262,7 +262,7 @@ function handleDownloadingEvent() {
           <div class="email-box">
             <div class="left">
               <OIcon>
-                <IconRequired />
+                <IconRequiredFields />
               </OIcon>
               <span>{{ i18n.certification.email }}</span>
             </div>
@@ -278,7 +278,7 @@ function handleDownloadingEvent() {
           <div class="code-box">
             <div class="left">
               <OIcon>
-                <IconRequired />
+                <IconRequiredFields />
               </OIcon>
               <span>{{ i18n.certification.verificationCode }}</span>
             </div>
@@ -429,6 +429,7 @@ function handleDownloadingEvent() {
           }
 
           .o-icon {
+            color: red;
             font-size: var(--o-font-size-h5);
           }
           span {
@@ -481,6 +482,7 @@ function handleDownloadingEvent() {
             width: 90px;
           }
           .o-icon {
+            color: red;
             font-size: var(--o-font-size-h5);
           }
           span {
@@ -780,6 +782,11 @@ function handleDownloadingEvent() {
         font-size: var(--o-font-size-tip);
       }
     }
+  }
+}
+:deep(.el-input__wrapper) {
+  @media screen and (max-width: 840px) {
+    height: 24px;
   }
 }
 .false {
