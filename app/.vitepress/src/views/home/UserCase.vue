@@ -52,12 +52,12 @@ const initData = (res: any) => {
   });
   caseData.value = result;
 };
-const imgUrl = computed(() => (item: { URL_DARK: any; URL: any }) => {
+const getImgUrl = computed(() => (item: { URL_DARK: string; URL: string }) => {
   return commonStore.theme === 'dark' ? item.URL_DARK : item.URL;
 });
 
-const imgUrlHover = computed(
-  () => (item: { ACTIVE_DARK_URL: any; ACTIVE_URL: any }) => {
+const getImgUrlHover = computed(
+  () => (item: { ACTIVE_DARK_URL: string; ACTIVE_URL: string }) => {
     return commonStore.theme === 'dark'
       ? item.ACTIVE_DARK_URL
       : item.ACTIVE_URL;
@@ -176,12 +176,12 @@ onUnmounted(() => {
                 :class="active === index ? 'active' : ''"
               >
                 <img
-                  :src="imgUrl(item)"
+                  :src="getImgUrl(item)"
                   alt="openEuler"
                   class="nav-item-icon"
                 />
                 <img
-                  :src="imgUrlHover(item)"
+                  :src="getImgUrlHover(item)"
                   alt="openEuler"
                   class="nav-item-icon-hover"
                 />

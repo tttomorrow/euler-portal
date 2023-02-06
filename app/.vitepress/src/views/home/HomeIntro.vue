@@ -34,10 +34,7 @@ const jumpTo = (path: string) => {
     <h3>{{ i18n.home.IMG_CAROUSE.TITLE }}</h3>
     <OContainer data-aos="fade-up" class="intro-container" :level-index="1">
       <div class="intro-pc">
-        <OCard
-          class="intro-card-pc"
-          shadow="never"
-        >
+        <OCard class="intro-card-pc" shadow="never">
           <div class="intro-content-pc">
             <div class="intro-list-pc">
               <div
@@ -68,9 +65,7 @@ const jumpTo = (path: string) => {
               @click="jumpTo(i18n.home.IMG_CAROUSE.TRY_URL)"
             >
               <template #suffixIcon>
-                <IconArrowRight
-                  class="intro-button-icon-pc"
-                ></IconArrowRight>
+                <IconArrowRight class="intro-button-icon-pc"></IconArrowRight>
               </template>
               {{ i18n.home.IMG_CAROUSE.BUTTON }}
             </OButton>

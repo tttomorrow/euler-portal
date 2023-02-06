@@ -8,7 +8,6 @@ import seoConfig from '@/data/common/seo';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
-// import MapContainer from './MapContainer.vue';
 
 import IconCpoy from '~icons/app/icon-copy.svg';
 import banner from '@/assets/banner/banner-download.png';
@@ -277,91 +276,86 @@ onMounted(async () => {
         </div>
       </OCard>
     </div>
-    <!-- <div class="mirror-map">
-      <MapContainer :map-data="mapData"></MapContainer>
-    </div> -->
   </AppContent>
   <div class="input-box">
     <!-- 用于复制RSNC的值 -->
-    <input id="useCopy" type="text" />
+    <input id="use-copy" type="text" />
   </div>
 </template>
 <style lang="scss" scoped>
-.mirror {
-  &-map {
-    margin-top: var(--o-spacing-h2);
-    width: 100%;
-    height: 996px;
-    box-shadow: var(--o-shadow-l1);
-    @media (max-width: 768px) {
-      height: 50vh;
-    }
+.input-box #use-copy {
+  position: absolute;
+  opacity: 0;
+}
+.mirror-map {
+  margin-top: var(--o-spacing-h2);
+  width: 100%;
+  height: 996px;
+  box-shadow: var(--o-shadow-l1);
+  @media (max-width: 768px) {
+    height: 50vh;
   }
-  &-pc {
-    display: block;
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-  &-mobile {
-    > :nth-child(odd) {
-      background-color: var(--o-color-bg4);
-    }
-
+}
+.mirror-pc {
+  display: block;
+  @media (max-width: 768px) {
     display: none;
-    @media (max-width: 768px) {
-      display: block;
+  }
+}
+.mirror-mobile {
+  > :nth-child(odd) {
+    background-color: var(--o-color-bg4);
+  }
+
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+.mirror-card {
+  :deep(.el-card__body) {
+    padding: var(--o-spacing-h5);
+    :first-child .mirror-card-title,
+    :first-child .mirror-card-word {
+      margin-top: 0px;
     }
   }
-  &-card {
-    :deep(.el-card__body) {
-      padding: var(--o-spacing-h5);
-      :first-child .mirror-card-title,
-      :first-child .mirror-card-word {
-        margin-top: 0px;
-      }
-    }
 
-    &-content {
-      display: flex;
-      flex-flow: row;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+  &-content {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
-    &-title {
+  &-title {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+    color: var(--o-color-text4);
+    margin-right: var(--o-spacing-h10);
+    margin-top: var(--o-spacing-h8);
+  }
+
+  &-word {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+    color: var(--o-color-neutral8);
+    margin-top: var(--o-spacing-h8);
+    a {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      color: var(--o-color-text4);
-      margin-right: var(--o-spacing-h10);
       margin-top: var(--o-spacing-h8);
-    }
-
-    &-word {
-      font-size: var(--o-font-size-tip);
-      line-height: var(--o-line-height-tip);
-      color: var(--o-color-neutral8);
-      margin-top: var(--o-spacing-h8);
-      a {
-        font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-height-tip);
-        margin-top: var(--o-spacing-h8);
-        color: var(--o-color-brand1);
-      }
-    }
-
-    &-rsnc {
-      margin-top: var(--o-spacing-h8);
-      width: var(--o-font-size-h8);
-      height: var(--o-font-size-h8);
       color: var(--o-color-brand1);
     }
   }
-}
-.input-box #useCopy {
-  position: absolute;
-  opacity: 0;
+
+  &-rsnc {
+    margin-top: var(--o-spacing-h8);
+    width: var(--o-font-size-h8);
+    height: var(--o-font-size-h8);
+    color: var(--o-color-brand1);
+  }
 }
 
 .mirror-list {
@@ -528,17 +522,17 @@ onMounted(async () => {
     color: var(--o-color-brand1);
   }
 
-  &-img {
+  .mirror-list-img {
     height: 34px;
   }
-  &-rsnc {
+  .mirror-list-rsnc {
     cursor: pointer;
     color: var(--o-color-brand1);
     display: block;
     width: var(--o-line-height-h8);
     height: var(--o-line-height-h8);
   }
-  &-ftp {
+  .mirror-list-ftp {
     cursor: pointer;
     color: var(--o-color-brand1);
     display: block;
