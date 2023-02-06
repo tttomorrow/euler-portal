@@ -32,7 +32,7 @@ export default {
   ru: {
     form: 'От кого:',
     tagList: {
-      all: 'Все',
+      all: 'Bсе',
       blog: 'Блоги',
       news: 'Новости',
       docs: 'Документы',

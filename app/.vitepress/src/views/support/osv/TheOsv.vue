@@ -27,7 +27,7 @@ const all = computed(() => {
   if (lang.value === 'en') {
     return 'All';
   } else if (lang.value === 'ru') {
-    return 'ВСЕ';
+    return 'Bсе';
   } else {
     return '全部';
   }

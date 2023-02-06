@@ -10,6 +10,7 @@ export interface CveQuery {
   year?: string;
   architecture?: string;
   cpu?: string;
+  score?: string;
   os?: string;
   lang?: string;
   testOrganization?: string;

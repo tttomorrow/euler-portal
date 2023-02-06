@@ -5,7 +5,10 @@ import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import { getCveDetail, getAffectedProduct } from '@/api/api-security';
-import { CveDetailCvss, AffectProduct } from '@/shared/@types/type-support';
+import type {
+  CveDetailCvss,
+  AffectProduct,
+} from '@/shared/@types/type-support';
 
 import AppContent from '@/components/AppContent.vue';
 
@@ -15,7 +18,7 @@ const { lang } = useData();
 const i18n = useI18n();
 const router = useRouter();
 
-const cveDetailData: CveDetailCvss = ref({});
+const cveDetailData = ref<CveDetailCvss>();
 const affectedProductList = ref<AffectProduct[]>([]);
 const cvssList: any = ref([]);
 
@@ -26,7 +29,6 @@ function goBackPage() {
 
 function goDetail(id: string) {
   const url = router.route.path.replace('cve', 'safety-bulletin');
-
   router.go(url + `?id=${id}`);
 }
 
@@ -47,48 +49,48 @@ onMounted(() => {
       cvssList.value = [
         {
           cate: 'CVSS评分',
-          NVD: cveDetailData.value.cvsssCoreNVD,
-          openEuler: cveDetailData.value.cvsssCoreOE,
+          NVD: cveDetailData.value?.cvsssCoreNVD,
+          openEuler: cveDetailData.value?.cvsssCoreOE,
         },
         {
           cate: 'Attack Vector',
-          NVD: cveDetailData.value.attackVectorNVD,
-          openEuler: cveDetailData.value.attackVectorOE,
+          NVD: cveDetailData.value?.attackVectorNVD,
+          openEuler: cveDetailData.value?.attackVectorOE,
         },
         {
           cate: 'Attack Complexity',
-          NVD: cveDetailData.value.attackComplexityNVD,
-          openEuler: cveDetailData.value.attackComplexityOE,
+          NVD: cveDetailData.value?.attackComplexityNVD,
+          openEuler: cveDetailData.value?.attackComplexityOE,
         },
         {
           cate: 'Privileges Required',
-          NVD: cveDetailData.value.privilegesRequiredNVD,
-          openEuler: cveDetailData.value.privilegesRequiredOE,
+          NVD: cveDetailData.value?.privilegesRequiredNVD,
+          openEuler: cveDetailData.value?.privilegesRequiredOE,
         },
         {
           cate: 'User Interaction',
-          NVD: cveDetailData.value.userInteractionNVD,
-          openEuler: cveDetailData.value.userInteractionOE,
+          NVD: cveDetailData.value?.userInteractionNVD,
+          openEuler: cveDetailData.value?.userInteractionOE,
         },
         {
           cate: 'Scope',
-          NVD: cveDetailData.value.scopeNVD,
-          openEuler: cveDetailData.value.scopeOE,
+          NVD: cveDetailData.value?.scopeNVD,
+          openEuler: cveDetailData.value?.scopeOE,
         },
         {
           cate: 'Confidentiality',
-          NVD: cveDetailData.value.confidentialityNVD,
-          openEuler: cveDetailData.value.confidentialityOE,
+          NVD: cveDetailData.value?.confidentialityNVD,
+          openEuler: cveDetailData.value?.confidentialityOE,
         },
         {
           cate: 'Integrity',
-          NVD: cveDetailData.value.integrityNVD,
-          openEuler: cveDetailData.value.integrityOE,
+          NVD: cveDetailData.value?.integrityNVD,
+          openEuler: cveDetailData.value?.integrityOE,
         },
         {
           cate: 'Availability',
-          NVD: cveDetailData.value.availabilityNVD,
-          openEuler: cveDetailData.value.availabilityOE,
+          NVD: cveDetailData.value?.availabilityNVD,
+          openEuler: cveDetailData.value?.availabilityOE,
         },
       ];
     });
@@ -117,15 +119,15 @@ onMounted(() => {
       <p class="current-page">{{ i18n.cve.CVE_DETAIL }}</p>
     </div>
     <div class="cve-head">
-      <p class="cve-name">{{ cveDetailData.cveId }}</p>
+      <p class="cve-name">{{ cveDetailData?.cveId }}</p>
       <div class="cve-intro">
         <div>
           <span>{{ i18n.cve.RELEASE_DATE }}:</span>
-          <p>{{ cveDetailData.announcementTime }}</p>
+          <p>{{ cveDetailData?.announcementTime }}</p>
         </div>
         <div>
           <span>{{ i18n.cve.MODIFIED_TIME }}: </span>
-          <p>{{ cveDetailData.updateTime }}</p>
+          <p>{{ cveDetailData?.updateTime }}</p>
         </div>
       </div>
     </div>
@@ -133,7 +135,7 @@ onMounted(() => {
       <div class="detail-item">
         <h2 class="detail-item-title">{{ i18n.cve.SYNOPSIS }}</h2>
         <p class="detail-item-content">
-          {{ cveDetailData.summary }}
+          {{ cveDetailData?.summary }}
         </p>
       </div>
       <div class="detail-item">
