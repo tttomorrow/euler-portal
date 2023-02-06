@@ -14,6 +14,7 @@ import AppContent from '@/components/AppContent.vue';
 
 import banner from '@/assets/banner/banner-security.png';
 import illustration from '@/assets/illustrations/support/cve.png';
+import IconCalendar from '~icons/app/icon-calendar.svg';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -29,6 +30,11 @@ const total = ref(0);
 const layout = ref('sizes, prev, pager, next, slot, jumper');
 const searchContent = ref('');
 const activeIndex = ref(0);
+const years = ['', '2023', '2022', '2021', '2020'];
+const selectedYear = ref('');
+const activeScore = ref(0);
+const activeYear = ref(0);
+const activeNames = ref(['1']);
 
 const tableData = ref<CveLists[]>([
   {
@@ -49,6 +55,8 @@ const queryData: CveQuery = reactive({
   },
   keyword: '',
   status: '',
+  year: '',
+  score: '',
 });
 
 function getCveLists(data: CveQuery) {
@@ -94,6 +102,18 @@ function goCveDetail(id: string, name: string) {
   router.go(`${router.route.path}detail/?cveId=${id}&packageName=${name}`);
 }
 
+const selectScore = (i: number, type: string) => {
+  activeScore.value = i;
+  queryData.score = type;
+};
+
+const selectYear = (i: number, type: string) => {
+  queryData.year = type;
+  activeYear.value = i;
+  selectedYear.value = type === '' ? i18n.value.safetyBulletin.ALL : type;
+  activeNames.value = ['2'];
+};
+
 onMounted(() => {
   getCveLists(queryData);
 });
@@ -129,28 +149,119 @@ watch(queryData, () => getCveLists(queryData));
           {{ item.NAME }}
         </OTag>
       </TagFilter>
-    </div>
 
-    <div class="filter-mobile">
-      <div class="filter">
-        <div
-          v-for="(item, index) in i18n.cve.CATEGORY_LIST"
-          :key="item"
-          :class="activeIndex === index ? 'selected' : ''"
-          class="filter-item"
-          @click="selectTypetag(index, item.LABEL)"
+      <TagFilter :show="false" :label="i18n.safetyBulletin.YEAR">
+        <OTag
+          v-for="(item, index) in years"
+          :key="'tag' + index"
+          checkable
+          :type="activeYear === index ? 'primary' : 'text'"
+          @click="selectYear(index, item)"
+        >
+          {{ item === '' ? i18n.safetyBulletin.ALL : item }}
+        </OTag>
+      </TagFilter>
+      <TagFilter :label="i18n.cve.CVSS_SCORE" :show="false">
+        <OTag
+          v-for="(item, index) in i18n.cve.CVSS_LIST"
+          :key="'tag' + index"
+          :title="item.LABEL ? `${i18n.cve.CVSS_SCORE}: ${item.LABEL}` : ''"
+          checkable
+          :type="activeScore === index ? 'primary' : 'text'"
+          @click="selectScore(index, item.LABEL)"
         >
           {{ item.NAME }}
+        </OTag>
+      </TagFilter>
+    </div>
+    <ClientOnly>
+      <div class="filter-mobile">
+        <div class="filter">
+          <div
+            v-for="(item, index) in i18n.cve.CATEGORY_LIST"
+            :key="index"
+            :class="activeIndex === index ? 'selected' : ''"
+            class="filter-item"
+            @click="selectTypetag(index, item.LABEL)"
+          >
+            {{ item.NAME }}
+          </div>
+        </div>
+        <div class="filter">
+          <div
+            v-for="(item, index) in i18n.cve.CVSS_LIST"
+            :key="item.NAME"
+            :class="activeScore === index ? 'selected' : ''"
+            class="filter-item"
+            @click="selectScore(index, item.LABEL)"
+          >
+            {{ item.NAME }}
+          </div>
+        </div>
+        <div class="calendar-mobile">
+          <el-collapse v-model="activeNames">
+            <el-collapse-item name="1">
+              <template #title>
+                <o-icon><icon-calendar></icon-calendar></o-icon>
+                <span class="selected-year">{{
+                  selectedYear === '' ? i18n.safetyBulletin.ALL : selectedYear
+                }}</span>
+              </template>
+              <div class="years">
+                <p
+                  v-for="(item, index) in years"
+                  :key="index"
+                  class="years-item"
+                  :class="selectedYear === item ? 'selected' : ''"
+                  @click="selectYear(index, item)"
+                >
+                  {{ item === '' ? i18n.safetyBulletin.ALL : item }}
+                </p>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
         </div>
       </div>
-    </div>
-
+      <ul class="mobile-list">
+        <li v-for="(item, index) in tableData" :key="index" class="item">
+          <ul>
+            <li>
+              <span>{{ i18n.cve.CVE }}:</span>{{ item.cveId }}
+            </li>
+            <li>
+              <span>{{ i18n.cve.SYNOPSIS }}:</span>{{ item.summary }}
+            </li>
+            <li>
+              <span>{{ i18n.cve.CVSS_SCORE }}:</span>{{ item.cvsssCoreOE }}
+            </li>
+            <li>
+              <span>{{ i18n.cve.RELEASE_DATE }}:</span
+              >{{ item.announcementTime }}
+            </li>
+            <li>
+              <span>{{ i18n.cve.MODIFIED_TIME }}:</span>{{ item.updateTime }}
+            </li>
+            <li>
+              <span>{{ i18n.cve.STATUS }}:</span>{{ item.status }}
+            </li>
+            <li>
+              <span>{{ i18n.cve.OPERATION }}:</span
+              ><a
+                class="detail-page"
+                @click="goCveDetail(item.cveId, item.packageName)"
+                >{{ i18n.cve.DETAIL }}</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </ClientOnly>
     <OTable class="pc-list" :data="tableData" style="width: 100%">
       <el-table-column :label="i18n.cve.CVE" width="160">
         <template #default="scope">
           <span
             class="detail-page"
-            @click="goCveDetail(scope.row.cveId, scope.row.packageName)"
+            @click="goCveDetail(scope.row?.cveId, scope.row?.packageName)"
             >{{ scope.row.cveId }}</span
           >
         </template>
@@ -186,45 +297,12 @@ watch(queryData, () => getCveLists(queryData));
         <template #default="scope">
           <span
             class="detail-page"
-            @click="goCveDetail(scope.row.cveId, scope.row.packageName)"
-            >{{ i18n.cve.DETAIL }}</span
+            @click="goCveDetail(scope.row?.cveId, scope.row?.packageName)"
+            >{{ i18n.cve?.DETAIL }}</span
           >
         </template>
       </el-table-column>
     </OTable>
-
-    <ul class="mobile-list">
-      <li v-for="item in tableData" :key="item.cveId" class="item">
-        <ul>
-          <li>
-            <span>{{ i18n.cve.CVE }}:</span>{{ item.cveId }}
-          </li>
-          <li>
-            <span>{{ i18n.cve.SYNOPSIS }}:</span>{{ item.summary }}
-          </li>
-          <li>
-            <span>{{ i18n.cve.CVSS_SCORE }}:</span>{{ item.cvsssCoreOE }}
-          </li>
-          <li>
-            <span>{{ i18n.cve.RELEASE_DATE }}:</span>{{ item.announcementTime }}
-          </li>
-          <li>
-            <span>{{ i18n.cve.MODIFIED_TIME }}:</span>{{ item.updateTime }}
-          </li>
-          <li>
-            <span>{{ i18n.cve.STATUS }}:</span>{{ item.status }}
-          </li>
-          <li>
-            <span>{{ i18n.cve.OPERATION }}:</span
-            ><a
-              class="detail-page"
-              @click="goCveDetail(item.cveId, item.packageName)"
-              >{{ i18n.cve.DETAIL }}</a
-            >
-          </li>
-        </ul>
-      </li>
-    </ul>
 
     <div v-if="totalPage === 0" class="empty-status">
       {{ i18n.cve.EMPTY_SEARCH_RESULT }}
@@ -270,7 +348,6 @@ watch(queryData, () => getCveLists(queryData));
 .o-search {
   height: 48px;
   @media screen and (max-width: 768px) {
-    // display: none;
     height: 36px;
     margin-bottom: var(--o-spacing-h6);
   }
@@ -281,6 +358,11 @@ watch(queryData, () => getCveLists(queryData));
   padding: var(--o-spacing-h5) var(--o-spacing-h2);
   @media screen and (max-width: 768px) {
     display: none;
+  }
+  :deep(.tag-filter) {
+    .label {
+      width: 80px;
+    }
   }
 }
 .filter-mobile {
@@ -302,8 +384,8 @@ watch(queryData, () => getCveLists(queryData));
       cursor: pointer;
       flex: 1;
       text-align: center;
-      padding: var(--o-spacing-h9);
-      font-size: var(--o-font-size-text);
+      padding: var(--o-spacing-h9) 0;
+      font-size: var(--o-font-size-tip);
       font-weight: 400;
       color: var(--o-color-brand1);
       line-height: var(--o-line-height-text);
@@ -315,12 +397,63 @@ watch(queryData, () => getCveLists(queryData));
     }
   }
 }
+.calendar-mobile {
+  display: none;
+  margin: var(--o-spacing-h5) 0;
+  width: 100%;
+  background-color: var(--o-color-bg2);
+  .o-icon {
+    color: var(--o-color-text1);
+  }
+  .selected-year {
+    color: var(--o-color-text1);
+  }
+  :deep(.el-collapse) {
+    border: none;
+    .el-collapse-item__header {
+      background-color: var(--o-color-bg2);
+      padding: 0 8px;
+      border: none;
+      height: 36px;
+    }
+    .el-collapse-item__wrap {
+      border: none;
+    }
+    .el-collapse-item__content {
+      padding-bottom: 0;
+    }
+  }
+
+  .selected-year {
+    margin-left: 8px;
+  }
+  .years {
+    padding: 0 8px 8px;
+    background-color: var(--o-color-bg2);
+    color: var(--o-color-text1);
+    &-item {
+      padding: 2px 0;
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-h8);
+    }
+    .selected {
+      background-color: var(--o-color-bg4);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+}
 .empty-status {
+  display: none;
   text-align: center;
   font-size: var(--o-font-size-tip);
   color: var(--o-color-text4);
   line-height: var(--o-spacing-tip);
   padding: var(--o-spacing-h2) 0 var(--o-spacing-h5);
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 }
 .mobile-list {
   display: none;
