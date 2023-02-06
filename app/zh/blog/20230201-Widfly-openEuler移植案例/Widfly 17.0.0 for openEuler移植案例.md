@@ -1,4 +1,4 @@
-# Widfly 17.0.0 for openEuler移植案例
+# Widfly 17.0.0 for openEuler 22.03 LTS移植案例
 
 
 
@@ -29,7 +29,7 @@ WildFly 17.0.0.Final
 ## **安装依赖包**
 
 ```
- yum install -y gcc gcc-c++ openssl-devel java-1.8.0\*
+ yum install -y gcc gcc-c++ openssl-devel java-1.8.0*
 ```
 
 > ![](./images/image3.png)
@@ -121,7 +121,7 @@ WildFly 17.0.0.Final
 
 ```
  export M2_HOME=/root/apache-maven-3.8.2                               
- export PATH=\$PATH:\$JAVA_HOME/bin:\$M2_HOME/bin                      
+ export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin                      
 ```
 
 - 生效环境变量。
@@ -192,7 +192,7 @@ WildFly 17.0.0.Final
  cd /root                                                              
  mkdir wildfly-jar                                                    
  cd /root/wildfly-jar                                                  
- find . -name \"\*.jar\" -exec cp -rf {} /root/wildfly-jar/ \\;            
+ find . -name "*.jar" -exec cp -rf {} /root/wildfly-jar/ \;            
  cd /root                                                              
  tar -cvjf wildfly-jar.tar.gz wildfly-jar                              
 ```
