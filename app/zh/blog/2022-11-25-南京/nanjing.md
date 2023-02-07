@@ -50,10 +50,7 @@ summary: 2022年11月11日，以操作系统迁移为主题的openEuler Meetup �
 
 ### CentOS停服应对方案——统信软件
 
-<video width="100%" controls>
-    <source type="video/mp4"  
-    src="https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/Blog_video/%E9%BA%92%E9%BA%9F.mp4">
-</video>
+
 
 统信软件积极投入openEuler社区，推动社区蓬勃发展，基于openEuler开发的统信操作系统满足强安全、高可用、高性能、易维护、高可靠及自动化迁移等要求，对党政、金融、电信、能源、交通、电力、制造和教育等涉及国计民生的行业提供强有力的服务支撑。CentOS宣布停服后，企业应该怎么去应对？本次活动，统信软件工程师史书恒老师详细分享了统信CentOS停服后的应对方案。
 
