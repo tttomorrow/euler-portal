@@ -120,7 +120,7 @@ WildFly 17.0.0.Final
 - 在文件末尾加入以下内容后保存并退出。
 
 ```
- export M2_HOME=/root/apache-maven-3.8.2                               
+ export M2_HOME=/root/apache-maven-3.8.7                               
  export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin                      
 ```
 
