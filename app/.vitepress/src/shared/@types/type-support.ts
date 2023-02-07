@@ -30,7 +30,7 @@ export interface SecurityLists {
   type: string;
 }
 export interface CveLists {
-  announcementTime: string;
+  createTime: string;
   cveId: string;
   cvsssCoreOE: string;
   status: string;

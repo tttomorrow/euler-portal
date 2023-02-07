@@ -36,17 +36,7 @@ const activeScore = ref(0);
 const activeYear = ref(0);
 const activeNames = ref(['1']);
 
-const tableData = ref<CveLists[]>([
-  {
-    announcementTime: '',
-    cveId: '',
-    cvsssCoreOE: '',
-    status: '',
-    summary: '',
-    updateTime: '',
-    packageName: '',
-  },
-]);
+const tableData = ref<CveLists[]>([]);
 
 const queryData: CveQuery = reactive({
   pages: {
@@ -235,8 +225,7 @@ watch(queryData, () => getCveLists(queryData));
               <span>{{ i18n.cve.CVSS_SCORE }}:</span>{{ item.cvsssCoreOE }}
             </li>
             <li>
-              <span>{{ i18n.cve.RELEASE_DATE }}:</span
-              >{{ item.announcementTime }}
+              <span>{{ i18n.cve.RELEASE_DATE }}:</span>{{ item.createTime }}
             </li>
             <li>
               <span>{{ i18n.cve.MODIFIED_TIME }}:</span>{{ item.updateTime }}
@@ -276,7 +265,7 @@ watch(queryData, () => getCveLists(queryData));
       <OTableColumn
         width="180"
         :label="i18n.cve.RELEASE_DATE"
-        prop="updateTime"
+        prop="createTime"
       ></OTableColumn>
       <OTableColumn
         width="180"
