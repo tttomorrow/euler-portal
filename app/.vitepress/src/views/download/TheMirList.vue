@@ -41,7 +41,7 @@ const { lang } = useData();
 const tableData: Ref<MirrorMsg[]> = ref([]);
 
 const mapData: Ref<MapMsg[]> = ref([]);
-const inputDom: Ref<HTMLElement | null> = ref(null);
+const inputRef: Ref<HTMLElement | null> = ref(null);
 const initTable = (data: any[]) => {
   let result: MirrorMsg[] = [];
   data.forEach((item) => {
@@ -114,9 +114,9 @@ const tableRowClassName = ({ row }: any) => {
 
 async function handleCopyText(value: string | undefined) {
   if (!value) return;
-  if (inputDom.value) {
-    (inputDom.value as HTMLInputElement).value = value;
-    (inputDom.value as HTMLInputElement).select();
+  if (inputRef.value) {
+    (inputRef.value as HTMLInputElement).value = value;
+    (inputRef.value as HTMLInputElement).select();
     document.execCommand('copy');
   }
   ElMessage({
@@ -129,7 +129,6 @@ const listData = computed(() => {
   return tableData.value.filter((item) => typeof item.area === 'undefined');
 });
 onMounted(async () => {
-  inputDom.value = document.getElementById('useCopy');
   try {
     const responeData = await getAllMirror();
     tableData.value = initTable(responeData);
@@ -279,7 +278,7 @@ onMounted(async () => {
   </AppContent>
   <div class="input-box">
     <!-- 用于复制RSNC的值 -->
-    <input id="use-copy" type="text" />
+    <input ref="inputRef" id="use-copy" type="text" />
   </div>
 </template>
 <style lang="scss" scoped>
