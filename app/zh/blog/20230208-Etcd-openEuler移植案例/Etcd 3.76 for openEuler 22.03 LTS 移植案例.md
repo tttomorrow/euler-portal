@@ -283,11 +283,11 @@ ls /usr/local/etcd
 
 ## 故障排除
 
-[Not a git repository报错](#_Not a git repository 报错)
+[Not a git repository报错](#Not a git repository 报错)
 
-[no required module provides package报错](#_no required module provides package报错)
+[no required module provides package报错](#no required module provides package报错)
 
-[Need a single revision报错](#_Needed a single revision报错)
+[Need a single revision报错](#Needed a single revision报错)
 
 ### Not a git repository 报错
 
