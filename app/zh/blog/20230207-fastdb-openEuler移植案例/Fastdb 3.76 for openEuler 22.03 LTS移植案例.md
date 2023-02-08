@@ -1,4 +1,4 @@
-# Fastdb 3.76 for openEuler 20.03 移植案例
+# Fastdb 3.76 for openEuler 22.03 LTS 移植案例
 
 ## 介绍
 
@@ -23,7 +23,7 @@ FastDB 是高效的内存数据库系统，具备实时能力及便利的C++接�
 
   网卡                       Hi1822 网卡 4\*25G
 
-  环境版本               openEuler 20.03 LTS
+  环境版本               openEuler 22.03 LTS
 
 ## 源码编译安装和卸载
 
