@@ -49,7 +49,6 @@ import niguangnan from '@/assets/category/organization/niguangnan.png';
 import wanghuaimin from '@/assets/category/organization/wanghuaimin.png';
 import zhouminghui from '@/assets/category/organization/zhouminghui.png';
 
-
 const organizationData: any = {
   memberList: [
     {
@@ -111,7 +110,7 @@ const organizationData: any = {
             {
               img: lipeiyuan,
               name: '李培源',
-              position: ['中国电信股份有限公司云计算分公司'],
+              position: ['天翼云科技有限公司'],
             },
             {
               img: zhangshenju,
