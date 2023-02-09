@@ -355,28 +355,17 @@ AutoDockvina软件在移植过程中涉及到的相关软件安装规划路径�
 
 **步骤 1**  使用PuTTY工具，以root用户登录服务器。
 
-
-
 **步骤 2**  修改测试配置文件1iep_receptor_vina_box.txt:
 
     cd /usr/local/AutoDockvina/AutoDock-Vina-1.2.3/example/basic_docking/solution
     vi 1iep_receptor_vina_box.txt
 
+添加如下四行：
 
-
-文档修改前：
-
-
-
-![](images\pic2.png)
-
-
-
-文档修改后：
-
-
-
-![](images\pic3.png)
+    exhanstiveness = 32
+    cpu = 0
+    energy_range = 4
+    num_modes = 9
 
 具体参数解释：
 
