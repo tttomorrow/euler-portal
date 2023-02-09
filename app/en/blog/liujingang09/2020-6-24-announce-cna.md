@@ -19,7 +19,7 @@ The security committee of openEuler community is responsible for building commun
 
 #### Vulnerability management policy：
 
-                 https://www.openeuler.org/en/security.html
+https://www.openeuler.org/en/security/vulnerability-reporting/
 
 #### What is CVE?
 
