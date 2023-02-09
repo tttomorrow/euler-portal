@@ -11,7 +11,7 @@ author: RabeLi
 summary: "详细介绍了AutoDockvina-1.2.3软件移植到openEuler操作系统的具体操作步骤。"
 ---
 
-# 1.**软件介绍**
+# 1.软件介绍
 
 AutoDockvina是一款做分子对接的开源程序。它由Oleg Trott博士在Scripps研究所的分子图形实验室设计和实现的。与AutoDock相比，Vina大大提高了准确性，此外，Vina可以利用系统上的多个CPU或CPU内核来显著缩短运行时间。
 
@@ -23,7 +23,7 @@ AutoDockvina是一款做分子对接的开源程序。它由Oleg Trott博士在S
 
 开源协议：Apache License 2.0
 
-# 2.**环境要求**
+# 2.环境要求
 
 ## 2.1. 硬件要求如下表：
 
@@ -48,7 +48,7 @@ AutoDockvina是一款做分子对接的开源程序。它由Oleg Trott博士在S
 | openEuler | openEuler 20.03 SP3 | https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ |
 | Kernel    | 4.19.90             | https://gitee.com/openeuler/kernel                  |
 
-# 3.**移植规划**
+# 3.移植规划
 
 AutoDockvina软件在移植过程中涉及到的相关软件安装规划路径的用途及详细说明：
 
@@ -59,7 +59,7 @@ AutoDockvina软件在移植过程中涉及到的相关软件安装规划路径�
 | 3   | /usr/local/AutoDockVina/                                                   | AutoDock vina安装规划路径。 |                                                                                     |
 | 4   | /usr/local/AutoDockvina/AutoDock-Vina-1.2.3/example/basic_docking/solution | AutoDock vina测试规划路径。 |                                                                                     |
 
-# 4.**配置编译环境**
+# 4.配置编译环境
 
 前提条件：使用SFTP工具将各安装包上传至服务器对应目录下。
 
@@ -196,13 +196,13 @@ AutoDockvina软件在移植过程中涉及到的相关软件安装规划路径�
 
 ----结束
 
-## **4.2 安装依赖**
+## 4.2 安装依赖
 
 **步骤1**：yum安装依赖包:
 
     yum install -y libstdc++-static
 
-## **4.3 安装boost**
+## 4.3 安装boost
 
 **步骤 1** 使用PuTTY工具，以root用户登录服务器。
 **步骤 2** 创建按装包下载目录和安装目录：
@@ -264,7 +264,7 @@ AutoDockvina软件在移植过程中涉及到的相关软件安装规划路径�
 
     source /etc/profile
 
-# 5.**获取源码**
+# 5.获取源码
 
 **步骤 1** 下载AutoDockvina安装包“v1.2.3.tar.gz”。
 
@@ -272,7 +272,7 @@ AutoDockvina软件在移植过程中涉及到的相关软件安装规划路径�
 
 ---结束。
 
-# 6.**编译和安装**
+# 6.编译和安装
 
 **步骤 1**  使用PuTTY工具，以root用户登录服务器。
 **步骤 2**  安装依赖包：
@@ -351,7 +351,7 @@ AutoDockvina软件在移植过程中涉及到的相关软件安装规划路径�
 
 ----结束
 
-# 7.**运行和验证**
+# 7.运行和验证
 
 **步骤 1**  使用PuTTY工具，以root用户登录服务器。
 
@@ -391,7 +391,7 @@ AutoDockvina软件在移植过程中涉及到的相关软件安装规划路径�
 
 ----结束。
 
-# 8.**修订记录**
+# 8.修订记录
 
 | 发布日期       | 修订记录     |
 | ---------- | -------- |
