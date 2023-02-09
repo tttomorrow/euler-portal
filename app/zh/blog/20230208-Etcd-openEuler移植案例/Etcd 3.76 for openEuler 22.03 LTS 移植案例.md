@@ -1,32 +1,52 @@
-# Etcd 3.76 for openEuler 22.03 LTS 移植案例            
+---
+title: "Etcd-3.76-migrate"
+date: 2023-02-09
+category: blog
+tags:
+    - Etcd-3.76软件迁移移植案例
+    - 重装替换
+sig: sig-Compatibility-Infra
+archives: 2023-02
+author: bald
+summary: "详细介绍了Etcd-3.76软件移植到openEuler操作系统的具体操作步骤"
 
--------- ----------------------------------------------------- --------
-
-## 介绍
-
-Etcd是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需要由分布式系统或机器集群访问的数据。它可以优雅地处理网络分区期间的领导者选举，即使在领导者节点中也可以容忍机器故障。
-
-## 环境要求
-
-### 硬件要求
-
- 服务器名称  TaiShan 200服务器（型号2280） 
-
- 处理器      Kunpeng 920 5250                                       
-
- 内存大小   32GB 2666MHz \* 16                                      
-
- 网卡        1\*10GE                                                 
-
- 硬盘        OS：900GB SAS \* 2                                      
-
- DATA：3.2T ES3000 V3 \* 1                             
-
- 系统版本    OpenEuler 22.03 LTS
+---
 
 
 
-## 源码编译安装和卸载
+# 介绍
+
+Etcd是一个高度一致的分布式键值存储，它提供了一种可靠的方式来存储需 要由分布式 系统或机器集群访问的数据。它可以优雅地处理网络分区期间的领导者选举，即使在领导  者节点中也可以容忍机器故障。
+
+开发语言：C++ 
+
+一句话描述：共享配置和服务发现的分布式存储。
+
+建议的版本：Etcd-3.76
+
+# 环境要求
+
+## 硬件要求
+
+| 项目       | 说明                                        |
+| ---------- | ------------------------------------------- |
+| 服务器名称 | TaiShan 200服务器（型号2280）               |
+| 处理器     | Kunpeng 920 5250                            |
+| 内存大小   | 32GB 2666MHz * 16                           |
+| 网卡       | 1*10GE                                      |
+| 硬盘       | OS：900GB SAS * 2  DATA：3.2T ES3000 V3 * 1 |
+
+ 
+
+## 操作系统和软件要求
+
+| 项目          | 版本                    |
+| ------------- | ----------------------- |
+| **OpenEuler** | **OpenEuler 22.03 LTS** |
+
+
+
+# 源码编译安装和卸载
 
 [ 关闭防火墙](#关闭防火墙)
 
@@ -40,7 +60,7 @@ Etcd是一个高度一致的分布式键值存储，它提供了一种可靠的�
 
 [源码编译安装方式卸载](#源码编译安装卸载)
 
-### 关闭防火墙
+## 关闭防火墙
 
 说明：测试环境下通常会关闭防火墙以避免部分网络因素影响，视实际需求做配置。
 
@@ -62,7 +82,7 @@ systemctl disable firewalld.service
 systemctl status firewalld.service
 ```
 
-### 安装依赖包
+## 安装依赖包
 
 - 配置yum源及安装基础依赖包。
 
@@ -70,7 +90,7 @@ systemctl status firewalld.service
 yum -y install git gcc gcc-c++ vim*
 ```
 
-### 安装go环境
+## 安装go环境
 
 - 下载go源码，本例将源码报放在/home路径。
 
@@ -119,7 +139,7 @@ go version
 
 ![](./media/image3.png)
 
-### 源码编译安装
+## 源码编译安装
 
 - 下载etcd源码，本例将源码报放在/home路径。
 
@@ -179,7 +199,7 @@ ls /usr/local/etcd
 
 ![](./media/image6.png)
 
-### 验证Etcd
+## 验证Etcd
 
 - 启动Etcd。
 
@@ -259,7 +279,7 @@ pkill -9 etcd
 
 ![](./media/image14.png)
 
-### 卸载
+## 卸载
 
 - 卸载Etcd，如果正在运行，直接停止进程。
 
@@ -281,9 +301,9 @@ ls /usr/local/etcd
 
 
 
-## 故障排除
+# 故障排除
 
-### Not a git repository 报错
+## Not a git repository 报错
 
 - 问题现象描述
 
@@ -305,7 +325,7 @@ git init
 ./build
 ```
 
-### no required module provides package报错
+## no required module provides package报错
 
 - 问题现象描述
 
@@ -328,7 +348,7 @@ GO111MODULE模块未打开。
 go env -w GO111MODULE=auto
 ```
 
-### Needed a single revision报错
+## Needed a single revision报错
 
 - 问题现象描述
 
@@ -358,6 +378,10 @@ vim build
 ./build
 ```
 
+# 修订记录
 
+| 发布日期 | 修订记录       |
+| -------- | -------------- |
+| 2023-2-9 | 第一次正式发布 |
 
 -----------------------------------------------------------------------
