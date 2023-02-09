@@ -11,7 +11,9 @@ author: RabeLi
 summary: "详细介绍了RocksDB-6.10.2软件移植到openEuler操作系统的具体操作步骤"
 ---
 
-# 介绍
+# RocksDB  3.76 for openEuler 22.03 LTS移植案例
+
+## 介绍
 
 RocksDB 是一个来自Facebook 的可嵌入的支持持久化的 key-value存储系统，也可作为 C/S 模式下的存储数据库。RocksDB 基于LevelDB 构建。
 
@@ -30,9 +32,9 @@ RocksDB 是一个来自Facebook 的可嵌入的支持持久化的 key-value存�
 
 
 
-# 配置安装环境
+## 配置安装环境
 
-## yum安装依赖包
+### yum安装依赖包
 
 ```
 yum install -y vim gcc-c++ snappy snappy-devel zlib zlib-devel bzip2 bzip2-devel lz4 lz4-devel
@@ -40,7 +42,7 @@ yum install -y vim gcc-c++ snappy snappy-devel zlib zlib-devel bzip2 bzip2-devel
 
 
 
-## 源码安装zstd
+### 源码安装zstd
 
 **操作步骤**
 
@@ -96,7 +98,7 @@ export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/include
 
 
 
-## 源码安装cmake
+### 源码安装cmake
 
 说明：cmake版本最低要求为3.5.1，建议安装3.10.0版本。
 
@@ -168,7 +170,7 @@ cmake --version
 
 
 
-## 源码安装gflags
+### 源码安装gflags
 
 **操作步骤**
 
@@ -242,7 +244,7 @@ export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/include/gflags
 
 
 
-# 源码编译安装
+## 源码编译安装
 
 操作步骤
 
@@ -366,7 +368,7 @@ export PATH=$PATH:/usr/local/rocksdb/tools
 
 
 
-# 接口Get、Put、Delete、Merge验证
+## 接口Get、Put、Delete、Merge验证
 
 说明：
 
@@ -374,7 +376,7 @@ export PATH=$PATH:/usr/local/rocksdb/tools
 
 2.  通过代码简单验证merge接口的正常操作。
 
-## put接口
+### put接口
 
 - 创建数据库存储目录。
 
@@ -401,7 +403,7 @@ ldb --db=/home/rocksdb/rkdb1 scan
 
 
 
-## Get接口
+### Get接口
 
 - 读取数据。
 
@@ -422,7 +424,7 @@ ldb --db=/home/rocksdb/rkdb1 scan
 
 
 
-## Delete接口
+### Delete接口
 
 - 删除数据。
 
@@ -443,7 +445,7 @@ ldb --db=/home/rocksdb/rkdb1 scan
 
 
 
-## Merge接口
+### Merge接口
 
 - 进入"/home"目录。
 
@@ -613,11 +615,11 @@ ldb --db=/home/rocksdb/rkdb2 scan
 
 
 
-# 故障排除
+## 故障排除
 
 
 
-## cmake 版本未生效
+### cmake 版本未生效
 
 - 问题现象描述
 
@@ -653,7 +655,7 @@ cmake --version
 
 
 
-## 编译rocksdb提示Cannot allocate memory
+### 编译rocksdb提示Cannot allocate memory
 
 - 问题现象描述
 
