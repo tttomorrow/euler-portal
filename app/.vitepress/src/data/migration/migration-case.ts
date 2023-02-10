@@ -67,4 +67,8 @@ export default [
     label: 'pkgship 2.1.0 移植指南',
     link: '/zh/blog/randy1568/pkgship 2-1-0-porting-guide.html',
   },
+  {
+    label: 'Seqkit 2.2.0 移植指南',
+    link: '/zh/blog/RabeLi/SeqKit2.2.0/SeqKit-2.2.0-migrate.html',
+  },
 ];
