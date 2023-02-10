@@ -3,11 +3,11 @@ title: "RocksDB-6.10.2-migrate"
 date: 2023-02-08
 category: blog
 tags:
-    - RocksDB-6.10.2软件迁移移植案例
-    - 重装替换
+    - RocksDB
+    - porting Guide
 sig: sig-Compatibility-Infra
 archives: 2023-02
-author: RabeLi
+author: bald
 summary: "详细介绍了RocksDB-6.10.2软件移植到openEuler操作系统的具体操作步骤"
 ---
 
@@ -655,7 +655,7 @@ cmake --version
 
 
 
-### 编译rocksdb提示Cannot allocate memory
+### 编译RocksDB提示Cannot allocate memory
 
 - 问题现象描述
 
