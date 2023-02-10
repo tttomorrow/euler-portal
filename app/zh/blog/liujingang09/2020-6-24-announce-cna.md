@@ -21,7 +21,7 @@ openEuler 安全委员会一直致力于提升社区安全和隐私保护能力�
 
 #### openEuler 漏洞管理策略：
 
-https://www.openeuler.org/zh/security.html
+https://www.openeuler.org/zh/security/vulnerability-reporting/
 
 ### 关于 CVE
 
