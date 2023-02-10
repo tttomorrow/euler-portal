@@ -1,10 +1,10 @@
 ---
-title: "AutoDockvina-1.2.3-migrate"
+title: "AutoDockvina-1.2.3 移植指南（openEuler 20.03 LTS SP3）"
 date: 2023-02-09
 category: blog
 tags:
-    - AutoDockvina-1.2.3软件迁移移植案例
-    - 重装替换
+    - AutoDockvina
+    - Porting Guide
 sig: sig-Compatibility-Infra
 archives: 2023-02
 author: RabeLi

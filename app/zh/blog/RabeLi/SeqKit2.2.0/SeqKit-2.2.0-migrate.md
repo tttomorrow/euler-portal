@@ -1,10 +1,10 @@
 ---
-title: "Seqkit-2.2.0-migrate"
-date: 2023-02-08
+title: "Seqkit-2.2.0 移植指南（openEuler 20.03 LTS SP3）"
+date: 2023-02-10
 category: blog
 tags:
-    - Seqkit-2.2.0软件迁移移植案例
-    - 重装替换
+    - Seqkit
+    - Porting Guide
 sig: sig-Compatibility-Infra
 archives: 2023-02
 author: RabeLi
@@ -392,6 +392,7 @@ seqkit --help
 
 # 8.**修订记录**
 
-| 发布日期       | 修订记录     |
-| ---------- | -------- |
-| 2023-02-08 | 第一次正式发布。 |
+| 发布日期       | 修订记录                                 |
+| ---------- | ------------------------------------ |
+| 2023-02-08 | 第一次正式发布。                             |
+| 2023-02-10 | 第二次正式修订。 |
