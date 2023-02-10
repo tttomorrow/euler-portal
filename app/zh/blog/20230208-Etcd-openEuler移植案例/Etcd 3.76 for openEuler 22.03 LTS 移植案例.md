@@ -3,8 +3,8 @@ title: "Etcd-3.76-migrate"
 date: 2023-02-09
 category: blog
 tags:
-    - Etcd-3.76软件迁移移植案例
-    - 重装替换
+    - Etcd
+    - porting Guide
 sig: sig-Compatibility-Infra
 archives: 2023-02
 author: bald
