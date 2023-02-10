@@ -67,7 +67,11 @@ const jumpTo = (item: any) => {
     @swiper="onSwiper"
   >
     <swiper-slide v-for="item in homeBanner" :key="item.link">
-      <div class="banner-panel" @click="jumpTo(item)">
+      <div
+        class="banner-panel"
+        :class="{ 'is-link': item.link }"
+        @click="jumpTo(item)"
+      >
         <div
           class="banner-panel-cover"
           :style="{
@@ -155,8 +159,12 @@ html[lang='zh'] {
     width: 100%;
     height: 100%;
     opacity: 1;
-    transition: all 0.33s;
-    &-content {
+    transition: all 0.3s;
+
+    &.is-link {
+      cursor: pointer;
+    }
+    .banner-panel-content {
       box-sizing: border-box;
       max-width: 1504px;
       margin: 0 auto;
@@ -234,13 +242,6 @@ html[lang='zh'] {
           margin-top: 0;
         }
       }
-      .prize {
-        .home-banner-btn {
-          @media screen and (max-width: 824px) {
-            display: none;
-          }
-        }
-      }
 
       @media screen and (max-width: 1440px) {
         padding: 0 16px;
@@ -252,14 +253,8 @@ html[lang='zh'] {
         text-align: center;
       }
     }
-    .prize {
-      .title,
-      .desc {
-        visibility: hidden;
-      }
-    }
 
-    &-cover {
+    .banner-panel-cover {
       background-position: 50%;
       background-repeat: no-repeat;
       background-size: cover;

@@ -42,8 +42,7 @@ const handleChangeActiveMobile = (activeNames: any) => {
 
 const initData = (res: any) => {
   const result: any = {};
-
-  res.obj.records.forEach((item: { lang: string; industry: string }) => {
+  res?.obj?.records.forEach((item: { lang: string; industry: string }) => {
     if (typeof result[item.industry] === 'undefined') {
       result[item.industry] = [];
     }
@@ -53,12 +52,12 @@ const initData = (res: any) => {
   });
   caseData.value = result;
 };
-const imgUrl = computed(() => (item: { URL_DARK: any; URL: any }) => {
+const getImgUrl = computed(() => (item: { URL_DARK: string; URL: string }) => {
   return commonStore.theme === 'dark' ? item.URL_DARK : item.URL;
 });
 
-const imgUrlHover = computed(
-  () => (item: { ACTIVE_DARK_URL: any; ACTIVE_URL: any }) => {
+const getImgUrlHover = computed(
+  () => (item: { ACTIVE_DARK_URL: string; ACTIVE_URL: string }) => {
     return commonStore.theme === 'dark'
       ? item.ACTIVE_DARK_URL
       : item.ACTIVE_URL;
@@ -108,7 +107,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="case-main">
+  <div class="home-user-case">
     <h3>{{ i18n.home.USER_CASE.TITLE }}</h3>
     <OContainer
       ref="userCase"
@@ -125,14 +124,14 @@ onUnmounted(() => {
         <OCollapseItem
           v-for="(item, index) in i18n.home.USER_CASE.CASE_LIST"
           :key="item.TYPE"
-          class="case-mobile-list"
+          class="case-list-mobile"
           :name="index"
         >
           <template #title>
-            <div class="case-mobile-card-content">
-              <div class="case-mobile-title">
+            <div class="case-card-content-mobile">
+              <div class="case-title-mobile">
                 <img
-                  class="case-mobile-img"
+                  class="case-img-mobile"
                   :src="
                     commonStore.theme === 'dark'
                       ? index === activeMobile
@@ -144,7 +143,7 @@ onUnmounted(() => {
                   "
                   alt="openEuler"
                 />
-                <div class="case-mobile-word">
+                <div class="case-word-mobile">
                   {{ item.TYPE }}
                 </div>
               </div>
@@ -177,12 +176,12 @@ onUnmounted(() => {
                 :class="active === index ? 'active' : ''"
               >
                 <img
-                  :src="imgUrl(item)"
+                  :src="getImgUrl(item)"
                   alt="openEuler"
                   class="nav-item-icon"
                 />
                 <img
-                  :src="imgUrlHover(item)"
+                  :src="getImgUrlHover(item)"
                   alt="openEuler"
                   class="nav-item-icon-hover"
                 />
@@ -256,7 +255,7 @@ h3 {
     box-shadow: none;
   }
 
-  &-list {
+  .case-list-mobile {
     margin-top: var(--o-spacing-h4);
     @media (max-width: 768px) {
       margin-top: var(--o-spacing-h5);
@@ -271,14 +270,14 @@ h3 {
     }
   }
 
-  &-title {
+  .case-title-mobile {
     display: flex;
     flex-flow: row;
     justify-content: center;
     align-items: center;
   }
 
-  &-word {
+  .case-word-mobile {
     margin-left: var(--o-spacing-h8);
     font-size: var(--o-font-size-h5);
     line-height: var(--o-line-height-h5);
@@ -291,17 +290,17 @@ h3 {
     }
   }
 
-  &-img {
+  .case-img-mobile {
     width: 40px;
     height: 40px;
     color: var(--o-color-text1);
   }
 
-  &-card {
+  .case-card-mobile {
     margin-top: var(--o-spacing-h5);
     width: 100%;
     border-left: 2px solid var(--o-color-brand1);
-    &-content {
+    .case-card-content-mobile {
       display: flex;
       flex-flow: row;
       justify-content: space-between;
@@ -309,69 +308,67 @@ h3 {
     }
   }
 
-  &-icon {
+  .case-icon-mobile {
     font-size: var(--o-font-size-h8);
     color: var(--o-color-text4);
   }
 }
-.user {
-  &-mobile {
-    background-color: var(--o-color-bg4);
-    > :nth-child(1) {
-      margin-top: 0px;
-    }
+.user-mobile {
+  background-color: var(--o-color-bg4);
+  > :nth-child(1) {
+    margin-top: 0px;
   }
-  &-card {
-    cursor: pointer;
-    padding: var(--o-spacing-h5);
-    width: 100%;
-    height: 100%;
-    background: var(--o-color-bg1);
-    border: 1px solid rgba(0, 0, 0, 0);
+}
+.user-card {
+  cursor: pointer;
+  padding: var(--o-spacing-h5);
+  width: 100%;
+  height: 100%;
+  background: var(--o-color-bg1);
+  border: 1px solid rgba(0, 0, 0, 0);
 
-    @media (max-width: 1100px) {
-      background: var(--o-color-bg2);
-      margin-top: var(--o-spacing-h8);
-    }
-
-    @media (max-width: 768px) {
-      padding: var(--o-spacing-h8);
-    }
+  @media (max-width: 1100px) {
+    background: var(--o-color-bg2);
+    margin-top: var(--o-spacing-h8);
   }
 
-  &-card:hover {
-    @media (min-width: 1100px) {
-      background-color: var(--o-color-bg2);
-      border: 1px solid var(--o-color-brand1);
-      transition: 0.3s all;
-    }
+  @media (max-width: 768px) {
+    padding: var(--o-spacing-h8);
   }
+}
 
-  &-title {
-    font-size: var(--o-font-size-h7);
-    font-weight: 500;
-    color: var(--o-color-text1);
-    line-height: var(--o-line-height-h7);
-    @media (max-width: 768px) {
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-    }
+.user-card:hover {
+  @media (min-width: 1100px) {
+    background-color: var(--o-color-bg2);
+    border: 1px solid var(--o-color-brand1);
+    transition: 0.3s all;
   }
+}
 
-  &-word {
+.user-title {
+  font-size: var(--o-font-size-h7);
+  font-weight: 500;
+  color: var(--o-color-text1);
+  line-height: var(--o-line-height-h7);
+  @media (max-width: 768px) {
     font-size: var(--o-font-size-text);
-    font-weight: 400;
-    color: var(--o-color-text4);
     line-height: var(--o-line-height-text);
-    display: -webkit-box;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-line-clamp: 2; // 设置两行文字溢出
-    -webkit-box-orient: vertical;
-    @media (max-width: 768px) {
-      font-size: var(--o-font-size-tip);
-      line-height: var(--o-line-height-tip);
-    }
+  }
+}
+
+.user-word {
+  font-size: var(--o-font-size-text);
+  font-weight: 400;
+  color: var(--o-color-text4);
+  line-height: var(--o-line-height-text);
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2; // 设置两行文字溢出
+  -webkit-box-orient: vertical;
+  @media (max-width: 768px) {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
   }
 }
 .case {
@@ -380,7 +377,7 @@ h3 {
     display: none;
   }
 
-  &-main {
+  .case-main {
     :deep(.el-collapse) {
       border: none;
     }
@@ -390,7 +387,7 @@ h3 {
     }
   }
 
-  &-more {
+  .case-more {
     display: flex;
     padding-top: var(--o-spacing-h2);
     justify-content: center;
@@ -404,14 +401,14 @@ h3 {
       padding: 0;
     }
 
-    &-icon {
+    .case-more-icon {
       color: var(--o-color-brand1);
       width: var(--o-font-size-h8);
       height: var(--o-font-size-h8);
     }
   }
 
-  &-user {
+  .case-user {
     margin-top: var(--o-spacing-h2);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -420,21 +417,21 @@ h3 {
     border-bottom: 1px solid var(--o-color-division1);
   }
 
-  &-card {
+  .case-card {
     margin-top: var(--o-spacing-h2);
     width: 100%;
     padding: 20px;
     box-shadow: none !important;
   }
 
-  &-img {
+  .case-img {
     margin-top: var(--o-spacing-h5);
     width: 80px;
     height: 80px;
-    color: white;
+    color: var(--o-color-white);
   }
 
-  &-word {
+  .case-word {
     font-size: var(--o-font-size-h5);
     font-weight: 400;
     color: var(--o-color-text1);
@@ -442,12 +439,12 @@ h3 {
     margin-top: 2px;
   }
 
-  &-tab {
+  .case-tab {
     display: flex;
     flex-flow: row;
     justify-content: center;
     align-items: center;
-    &-item {
+    .case-tab-item {
       cursor: pointer;
       display: flex;
       flex-flow: column;

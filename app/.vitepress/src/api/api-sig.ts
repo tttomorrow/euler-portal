@@ -6,7 +6,7 @@ interface LIST_PARAMS {
   pageSize: number;
 }
 export function getSigList() {
-  const url = `/api/meetings/sigs/`;
+  const url = `/api-meeting/sigs/`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 export function getCompleteList(params?: LIST_PARAMS) {
@@ -22,7 +22,7 @@ export function getAllList() {
   return request.post(url).then((res: AxiosResponse) => res.data);
 }
 export function getSigDetail(id: string) {
-  const url = `/api/meetings/sigmeetingsdata/${id}/`;
+  const url = `/api-meeting/sigmeetingsdata/${id}/`;
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 export function getSigMember(params: object) {
@@ -34,7 +34,7 @@ export function getSigRepositoryList(params: object) {
   return request.get(url, { params }).then((res: AxiosResponse) => res.data);
 }
 export function getSalon() {
-  const url = '/api/meetings/activities/';
+  const url = '/api-meeting/activities/';
   return request.get(url).then((res: AxiosResponse) => res.data);
 }
 

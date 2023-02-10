@@ -42,6 +42,9 @@ export default defineConfig({
         mooc: FileSystemIconLoader(
           path.resolve(__dirname, './.vitepress/src/assets/category/mooc')
         ),
+        footer: FileSystemIconLoader(
+          path.resolve(__dirname, './.vitepress/src/assets/common/footer')
+        ),
       },
     }),
     // AutoImport({
@@ -71,6 +74,11 @@ export default defineConfig({
         // target: 'https://doc-search.test.osinfra.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-search/, ''),
+      },
+      '/api-meeting/': {
+        target: 'https://meetings.openeuler.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-meeting/, ''),
       },
       '/api/': {
         target: 'https://api.openeuler.org',

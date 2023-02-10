@@ -9,9 +9,9 @@ author: lifeng2221dd1
 summary: iSulad架构解析
 ---
 
-_作者简介：李峰， 具有多年容器、操作系统软件开发经验，对容器引擎、runtime 等领域有比较深入的研究与理解。深度参与 lxc、containers 等开源容器社区。现在担任 openeuler 轻量级容器引擎 iSulad 社区 maintainer。_
+_作者简介：李峰， 具有多年容器、操作系统软件开发经验，对容器引擎、runtime 等领域有比较深入的研究与理解。深度参与 lxc、containers 等开源容器社区。现在担任 openEuler 轻量级容器引擎 iSulad 社区 maintainer。_
 
-iSulad 是一种由 C/C++编程语言编写的容器引擎，当前已经在 openeuler 社区开源(https://gitee.com/openeuler/iSulad)。 当前主流的容器引擎 docker、containerd、cri-o 等均是由 GO 语言编写。随着边缘计算、物联网等嵌入式设备场景的不断兴起，在资源受限环境下，业务容器化的需求越来越强烈。由高级语言编写的容器引擎在底噪占用上的劣势越来越凸显。另外由于容器引擎对外接口的标准化，因此用 C/C++重写一个容器引擎成为了可能。iSulad 整体架构如下图所示。
+iSulad 是一种由 C/C++编程语言编写的容器引擎，当前已经在 openEuler 社区开源(https://gitee.com/openeuler/iSulad)。 当前主流的容器引擎 docker、containerd、cri-o 等均是由 GO 语言编写。随着边缘计算、物联网等嵌入式设备场景的不断兴起，在资源受限环境下，业务容器化的需求越来越强烈。由高级语言编写的容器引擎在底噪占用上的劣势越来越凸显。另外由于容器引擎对外接口的标准化，因此用 C/C++重写一个容器引擎成为了可能。iSulad 整体架构如下图所示。
 
 <img src="./2020-09-14-isulad-architecture-01.png" alt="iSulad" style="zoom:100%;" />
 

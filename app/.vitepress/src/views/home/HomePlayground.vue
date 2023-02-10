@@ -26,7 +26,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="out-box">
+  <div class="home-playground">
     <h3>{{ i18n.home.HOME_INTRODUCE.INTRO_HEAD }}</h3>
     <div ref="playground" class="playground" data-aos="fade-up">
       <div v-if="textBlock" class="left-code">

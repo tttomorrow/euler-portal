@@ -32,34 +32,12 @@ const props = defineProps({
 const commonStore = useCommon();
 let currentMeet = reactive<TableData>({
   date: '',
-  timeData: [
-    {
-      creator: '',
-      duration_time: '',
-      join_url: '',
-      etherpad: '',
-      startTime: '',
-      endTiem: '',
-      url: '',
-      id: '',
-    },
-  ],
+  timeData: [],
 });
 
 const renderData = ref<TableData>({
   date: '',
-  timeData: [
-    {
-      creator: '',
-      duration_time: '',
-      join_url: '',
-      startTime: '',
-      start_date: '',
-      endTiem: '',
-      url: '',
-      id: '',
-    },
-  ],
+  timeData: [],
 });
 
 const currentDay = ref('');
@@ -71,7 +49,8 @@ const i18n = {
   EMPTY_TEXT: '当日没有活动，敬请期待',
   LEARN_MORE: '了解更多',
 };
-
+// 日历展示时间限制
+const limitTime = '2021 年 1 月';
 const detailItem = [
   { text: '会议详情', key: 'detail', isLink: false },
   { text: '发起人', key: 'creator', isLink: false },
@@ -188,7 +167,7 @@ function getMeetTimes(day: string): number {
 }
 
 function selectDate(val: string, date: string) {
-  if (date === '2021 年 1 月' && val === 'prev-month') {
+  if (date === limitTime && val === 'prev-month') {
     isLimit.value = true;
     return;
   }
@@ -696,7 +675,7 @@ const watchData = watch(
         height: 44px;
       }
       tbody {
-        box-shadow: 0 1px 5px rgba(45, 47, 51, 0.1);
+        box-shadow: var(--o-shadow-l2);
       }
       .el-calendar-table__row {
         -moz-user-select: none; /*火狐*/
@@ -850,7 +829,7 @@ const watchData = watch(
       height: v-bind('calendarHeight');
       background-color: var(--o-color-bg2);
       overflow-y: scroll;
-      box-shadow: 0 1px 5px rgba(45, 47, 51, 0.1);
+      box-shadow: var(--o-shadow-l2);
       .el-collapse {
         border: none;
         --el-collapse-header-height: 96px;
@@ -933,7 +912,7 @@ const watchData = watch(
               white-space: nowrap;
               font-size: var(--o-font-size-h7);
               color: var(--o-color-text1);
-              line-height: var(--o-line-height-tip);
+              line-height: var(--o-line-height-h7);
             }
             .el-collapse-item__content {
               padding: 0 20px;
@@ -945,15 +924,6 @@ const watchData = watch(
               align-items: center;
               line-height: normal;
             }
-            // .introduce {
-            //   padding: 1px 7px;
-            //   display: -webkit-box;
-            //   -webkit-box-orient: vertical;
-            //   -webkit-line-clamp: 1;
-            //   overflow: hidden;
-            //   color: #fff;
-            //   background: linear-gradient(225deg, #feb32a 0%, #f6d365 100%);
-            // }
           }
           .more-detail {
             display: flex;
@@ -1159,7 +1129,6 @@ const watchData = watch(
   }
   .main-body {
     margin: 0 auto;
-    // width: 345px;
     align-items: center;
     flex-direction: column;
     background-color: var(--o-color-bg2);

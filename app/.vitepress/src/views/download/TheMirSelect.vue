@@ -266,73 +266,71 @@ onMounted(async () => {
   </AppContent>
 </template>
 <style lang="scss" scoped>
-.mirror {
-  &-map {
-    margin-top: var(--o-spacing-h2);
-    width: 100%;
-    height: 996px;
-    box-shadow: var(--o-shadow-l1);
-    @media (max-width: 768px) {
-      height: 50vh;
-    }
+.mirror-map {
+  margin-top: var(--o-spacing-h2);
+  width: 100%;
+  height: 996px;
+  box-shadow: var(--o-shadow-l1);
+  @media (max-width: 768px) {
+    height: 50vh;
   }
-  &-pc {
-    display: block;
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-  &-mobile {
-    > :nth-child(odd) {
-      background-color: var(--o-color-bg4);
-    }
-
+}
+.mirror-pc {
+  display: block;
+  @media (max-width: 768px) {
     display: none;
-    @media (max-width: 768px) {
-      display: block;
+  }
+}
+.mirror-mobile {
+  > :nth-child(odd) {
+    background-color: var(--o-color-bg4);
+  }
+
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+.mirror-card {
+  :deep(.el-card__body) {
+    padding: var(--o-spacing-h5);
+    :first-child .mirror-card-title,
+    :first-child .mirror-card-word {
+      margin-top: 0px;
     }
   }
-  &-card {
-    :deep(.el-card__body) {
-      padding: var(--o-spacing-h5);
-      :first-child .mirror-card-title,
-      :first-child .mirror-card-word {
-        margin-top: 0px;
-      }
-    }
 
-    &-content {
-      display: flex;
-      flex-flow: row;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-      img {
-        margin-top: var(--o-spacing-h8);
-        width: var(--o-line-height-tip);
-        margin-right: var(--o-spacing-h10);
-      }
-    }
-
-    &-title {
-      font-size: var(--o-font-size-tip);
-      line-height: var(--o-line-height-tip);
-      color: var(--o-color-text4);
+  .mirror-card-content {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    img {
+      margin-top: var(--o-spacing-h8);
+      width: var(--o-line-height-tip);
       margin-right: var(--o-spacing-h10);
-      margin-top: var(--o-spacing-h8);
     }
+  }
 
-    &-word {
+  .mirror-card-title {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+    color: var(--o-color-text4);
+    margin-right: var(--o-spacing-h10);
+    margin-top: var(--o-spacing-h8);
+  }
+
+  .mirror-card-word {
+    font-size: var(--o-font-size-tip);
+    line-height: var(--o-line-height-tip);
+    color: var(--o-color-neutral8);
+    margin-top: var(--o-spacing-h8);
+    a {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
-      color: var(--o-color-neutral8);
       margin-top: var(--o-spacing-h8);
-      a {
-        font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-height-tip);
-        margin-top: var(--o-spacing-h8);
-        color: var(--o-color-brand1);
-      }
+      color: var(--o-color-brand1);
     }
   }
 }

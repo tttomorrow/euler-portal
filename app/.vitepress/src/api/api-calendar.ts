@@ -7,9 +7,10 @@ import type { AxiosResponse } from '@/shared/axios';
  * @return {Array}
  */
 export function getMeetingData() {
-  const url = '/api/meetings/meetingsdata/';
+  const url = '/api-meeting/meetingsdata/';
   return request
     .get(url, {
+      $ignoreLoading: true,
       headers: {
         authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
       },
@@ -26,9 +27,10 @@ export function getMeetingData() {
  * @return {Array} 活动数据
  */
 export function getActivityData() {
-  const url = '/api/meetings/activitiesdata/';
+  const url = '/api-meeting/activitiesdata/';
   return request
     .get(url, {
+      $ignoreLoading: true,
       headers: {
         authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
       },
@@ -46,7 +48,7 @@ export function getActivityData() {
  * @return {Object} 活动数据
  */
 export function getActivityDetail(id: string) {
-  const url = `/api/meetings/activity/${id}/`;
+  const url = `/api-meeting/activity/${id}/`;
   return request
     .get(url, {})
     .then((res: AxiosResponse) => res.data)

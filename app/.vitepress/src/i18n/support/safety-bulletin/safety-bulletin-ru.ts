@@ -6,7 +6,7 @@ export default {
   SEARCH: 'Поиск',
   SEVERITY_LIST: [
     {
-      NAME: 'Все',
+      NAME: 'Bсе',
       LABEL: '',
     },
     {
@@ -27,7 +27,7 @@ export default {
     },
   ],
   YEAR: 'Год',
-  ALL: 'ВСЕ',
+  ALL: 'Bсе',
   ADVISORY: 'Консультант',
   CVE: 'CVE',
   SYNOPSIS: 'Синопсис',

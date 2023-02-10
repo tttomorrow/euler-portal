@@ -40,6 +40,7 @@ import wufengguang from '@/assets/category/organization/wufengguang.png';
 import xiexiuqi from '@/assets/category/organization/xiexiuqi.png';
 import xiongwei from '@/assets/category/organization/xiongwei.png';
 import yeqinglong from '@/assets/category/organization/yeqinglong.png';
+import zhaochuanfeng from '@/assets/category/organization/zhaochuanfeng.png';
 
 import huotaiwen from '@/assets/category/organization/huotaiwen.png';
 import liaoxiangke from '@/assets/category/organization/liaoxiangke.png';
@@ -109,7 +110,7 @@ const organizationData: any = {
             {
               img: lipeiyuan,
               name: '李培源',
-              position: ['中国电信股份有限公司云计算分公司'],
+              position: ['天翼云科技有限公司'],
             },
             {
               img: zhangshenju,
@@ -287,6 +288,13 @@ const organizationData: any = {
           post: '委员',
           email: 'yeqinglong@uniontech.com',
           gitee: 'yeqinglong01',
+        },
+        {
+          img: zhaochuanfeng,
+          name: '赵川峰',
+          post: '委员',
+          email: 'zhaochuanfeng@huawei.com',
+          gitee: 'cf-zhao',
         },
       ],
     },

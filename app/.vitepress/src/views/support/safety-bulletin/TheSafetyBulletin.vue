@@ -185,7 +185,6 @@ watch(queryData, () => getSecurityLists(queryData));
           </div>
         </div>
       </div>
-      <!-- v-model="activeNames" @change="handleChange -->
       <div class="calendar-mobile">
         <el-collapse v-model="activeNames">
           <el-collapse-item name="1">

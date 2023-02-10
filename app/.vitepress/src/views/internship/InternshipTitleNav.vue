@@ -75,7 +75,7 @@ const goTop = () => {
   </div>
 </template>
 
-<style lang="scss" scpoed>
+<style lang="scss" scoped>
 .title-nav {
   position: fixed;
   cursor: pointer;

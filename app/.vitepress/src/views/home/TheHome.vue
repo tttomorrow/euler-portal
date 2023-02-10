@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useData } from 'vitepress';
 import AOS from 'aos';
 
@@ -8,19 +8,21 @@ import { useCommon } from '@/stores/common';
 import seoConfig from '@/data/common/seo';
 
 import UserCase from './UserCase.vue';
-import CommunityActivity from './CommunityActivity.vue';
+import HomeTrend from './HomeTrend.vue';
 import HomeBanner from './HomeBanner.vue';
-import HomeCarousel from './HomeCarousel.vue';
+import HomeIntro from './HomeIntro.vue';
 import HomePlayground from './HomePlayground.vue';
-import HomeNav from './HomeNav.vue';
-import HomeNews from './HomeNews.vue';
+import HomeDisplayZone from './HomeDisplayZone.vue';
+import HomeMedia from './HomeMedia.vue';
 import AppCalendar from '@/components/AppCalendar.vue';
 import AppContent from '@/components/AppContent.vue';
 import LinkPanel from '@/components/LinkPanel.vue';
 
 import { getMeetingData, getActivityData } from '@/api/api-calendar';
 import { getSortData } from '@/api/api-search';
-import { TableData } from '@/shared/@types/type-calendar';
+
+import type { TableData } from '@/shared/@types/type-calendar';
+import type { SortResponse } from '@/shared/@types/type-search';
 
 import yearEnImg from '@/assets/category/home/euler-year-en.png';
 import yearZhImg from '@/assets/category/home/euler-year-zh.png';
@@ -28,28 +30,30 @@ import yearZhImg from '@/assets/category/home/euler-year-zh.png';
 const { lang } = useData();
 const commonStore = useCommon();
 
-const calendarData = ref<TableData[]>([
-  {
-    date: '',
-    timeData: [
-      {
-        creator: '',
-        duration_time: '',
-        join_url: '',
-        startTime: '',
-        start_date: '',
-        endTiem: '',
-        url: '',
-        id: '',
-      },
-    ],
-  },
-]);
+const calendarData = ref<TableData[]>([]);
 const i18n = useI18n();
 
-const caseData = ref(undefined);
-const newsData = ref(undefined);
-const blogData = ref(undefined);
+const caseData = ref<SortResponse>();
+const newsData = ref<SortResponse>();
+const blogData = ref<SortResponse>();
+const paramsCase = {
+  category: 'showcase',
+  lang: lang.value,
+  page: 1,
+  pageSize: 20,
+};
+const paramsNews = {
+  category: 'news',
+  lang: lang.value,
+  page: 1,
+  pageSize: 4,
+};
+const paramsBlog = {
+  category: 'blog',
+  lang: lang.value,
+  page: 1,
+  pageSize: 4,
+};
 const yearImg: any = computed(() => {
   return lang.value === 'zh' ? yearZhImg : yearEnImg;
 });
@@ -64,35 +68,14 @@ function closeSummaryTips() {
   sessionStorage.setItem('summary-tips', 'false');
 }
 onMounted(async () => {
-  const body = document.querySelector('body');
-  if (body) {
-    body.classList.add('home-loading');
-  }
   AOS.init({
     offset: 50,
     duration: 800,
     delay: 100,
     once: true,
   });
-  const paramsCase = {
-    category: 'showcase',
-    lang: lang.value,
-    page: 1,
-    pageSize: 100,
-  };
-  const paramsNews = {
-    category: 'news',
-    lang: lang.value,
-    page: 1,
-    pageSize: 4,
-  };
-  const paramsBlog = {
-    category: 'blog',
-    lang: lang.value,
-    page: 1,
-    pageSize: 4,
-  };
   try {
+    // 获取日历，会议、活动数据并合并
     Promise.all([getActivityData(), getMeetingData()]).then((res) => {
       res[0].tableData.forEach((item: any) => {
         item.timeData.map((item2: any) => {
@@ -114,31 +97,20 @@ onMounted(async () => {
     throw new Error(e);
   }
   try {
-    const responeData = await getSortData(paramsCase);
-    caseData.value = responeData;
-  } catch (e: any) {
-    throw new Error(e);
-  }
-  try {
-    const responeData = await getSortData(paramsNews);
-    newsData.value = responeData;
-  } catch (e: any) {
-    throw new Error(e);
-  }
-  try {
-    const responeData = await getSortData(paramsBlog);
-    blogData.value = responeData;
+    Promise.all([
+      getSortData(paramsCase),
+      getSortData(paramsNews),
+      getSortData(paramsBlog),
+    ]).then((res) => {
+      caseData.value = res[0];
+      newsData.value = res[1];
+      blogData.value = res[2];
+    });
   } catch (e: any) {
     throw new Error(e);
   }
   const summaryShow = sessionStorage.getItem('summary-tips');
   isSummaryShow.value = summaryShow ? false : true;
-});
-onUnmounted(() => {
-  const body = document.querySelector('body');
-  if (body) {
-    body.classList.remove('home-loading');
-  }
 });
 </script>
 
@@ -146,22 +118,17 @@ onUnmounted(() => {
   <SeoBox :seo-data="seoConfig[lang]?.home" />
   <HomeBanner />
   <AppContent>
-    <OContainer data-aos="fade-up" class="home-nav" :level-index="1"
-      ><HomeNav
-    /></OContainer>
-    <HomeCarousel />
-    <UserCase v-if="caseData" :case-data="caseData" />
-    <CommunityActivity />
-    <HomeNews
-      v-if="blogData && newsData"
+    <HomeDisplayZone />
+    <HomeIntro />
+    <UserCase v-if="caseData?.obj" :case-data="caseData" />
+    <HomeTrend />
+    <HomeMedia
+      v-if="blogData?.obj && newsData?.obj"
       :blog-data="blogData"
       :news-data="newsData"
     />
     <ClientOnly>
-      <div
-        v-if="lang === 'zh' && calendarData.length > 1"
-        class="home-calendar"
-      >
+      <div v-if="lang === 'zh' && calendarData?.length" class="home-calendar">
         <h3>{{ i18n.home.HOME_CALENDAR }}</h3>
         <AppCalendar
           id="meeting"
@@ -171,21 +138,25 @@ onUnmounted(() => {
       </div>
     </ClientOnly>
     <HomePlayground />
-    <h3 class="partner">
-      {{ i18n.home.HOME_SOURCE.SOURCE_PUBLISH_TITLE }}
-    </h3>
-    <p class="rank-tip">{{ i18n.home.RANK_TIP }}</p>
-    <LinkPanel
-      :link-list="i18n.home.HOME_SOURCE_EDITION"
-      :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
-    ></LinkPanel>
-    <h3>{{ i18n.home.HOME_SOURCE.SOURCE_LINK_TITLE }}</h3>
-    <LinkPanel
-      :link-list="i18n.home.FRIENDSHIP_LINK_LIST"
-      :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
-    ></LinkPanel>
+    <div class="home-source-publish">
+      <h3 class="partner">
+        {{ i18n.home.HOME_SOURCE.SOURCE_PUBLISH_TITLE }}
+      </h3>
+      <p class="rank-tip">{{ i18n.home.RANK_TIP }}</p>
+      <LinkPanel
+        :link-list="i18n.home.HOME_SOURCE_EDITION"
+        :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
+      ></LinkPanel>
+    </div>
+    <div class="home-friendship">
+      <h3>{{ i18n.home.HOME_SOURCE.SOURCE_LINK_TITLE }}</h3>
+      <LinkPanel
+        :link-list="i18n.home.FRIENDSHIP_LINK_LIST"
+        :theme="commonStore.theme === 'light' ? 'light' : 'dark'"
+      ></LinkPanel>
+    </div>
   </AppContent>
-  <div v-if="isSummaryShow && lang !== 'ru'" class="smmary-code">
+  <div v-if="isSummaryShow && lang !== 'ru'" class="summary-code">
     <a :href="yearLink" target="_blank">
       <img class="code" :src="yearImg" alt="扫描二维码" />
     </a>
@@ -198,7 +169,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.smmary-code {
+.summary-code {
   position: fixed;
   left: 1vw;
   top: 70vh;

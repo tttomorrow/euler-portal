@@ -37,8 +37,10 @@ import floatLight from '@/assets/common/footer/float_light.png';
 import floatDark from '@/assets/common/footer/float_dark.png';
 
 import IconCancel from '~icons/app/icon-cancel.svg';
-import IconCode from '~icons/app/icon-code.svg';
-import IconHelp from '~icons/app/icon-help.svg';
+import IconRobot_light from '~icons/footer/icon-robot_light.svg';
+import IconRobot_dark from '~icons/footer/icon-robot_dark.svg';
+import IconQuickIssue_light from '~icons/footer/icon-quickissue_light.svg';
+import IconQuickIssue_dark from '~icons/footer/icon-quickissue_dark.svg';
 
 const props = defineProps({
   isCookieTip: {
@@ -204,13 +206,19 @@ const floatImg = computed(() => {
 
 const floatData = ref([
   {
-    img: IconCode,
+    img: computed(() => {
+      return isDark.value ? IconQuickIssue_dark : IconQuickIssue_light;
+    }),
+    id: 'quickIssue',
     text: 'Quick Issue',
     link: quickIssueUrl,
   },
   {
-    img: IconHelp,
+    img: computed(() => {
+      return isDark.value ? IconRobot_dark : IconRobot_light;
+    }),
     text: '欧拉 小智',
+    id: 'robot',
     link: 'https://qa-robot.openeuler.org/',
   },
 ]);

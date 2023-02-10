@@ -148,7 +148,7 @@ export default {
           LINK: [
             {
               TEXT: 'Read more',
-              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/design/architecture_en.md',
+              LINK: 'https://gitee.com/openeuler/iSulad/blob/master/docs/design/architecture.md',
             },
           ],
           BACKGROUND: {

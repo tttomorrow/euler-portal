@@ -10,6 +10,7 @@ export interface CveQuery {
   year?: string;
   architecture?: string;
   cpu?: string;
+  score?: string;
   os?: string;
   lang?: string;
   testOrganization?: string;
@@ -29,7 +30,7 @@ export interface SecurityLists {
   type: string;
 }
 export interface CveLists {
-  announcementTime: string;
+  createTime: string;
   cveId: string;
   cvsssCoreOE: string;
   status: string;
