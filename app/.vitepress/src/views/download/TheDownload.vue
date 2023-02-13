@@ -89,6 +89,7 @@ const filterTagList = () => {
   total.value = result.length;
 
   filterList.value = result;
+  console.log(filterList.value);
   currentPage.value = 1;
 };
 const handlePublishClick = (item: string, all: number) => {

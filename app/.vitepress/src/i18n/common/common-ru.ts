@@ -113,7 +113,7 @@ export default {
         // {
         //   NAME: 'Семинары',
         //   ID: 'salon',
-        //   PATH: '/interaction/event-list/plan/',
+        //   PATH: '/interaction/salon-list/',
         // },
       ],
       CLASS: ['news', 'blog'],

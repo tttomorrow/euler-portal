@@ -77,7 +77,7 @@ export default {
       BLANK: true,
     },
     {
-      URL: '/en/interaction/event-list/plan/',
+      URL: '/en/interaction/salon-list/',
       BLANK: true,
     },
     {
