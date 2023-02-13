@@ -49,6 +49,16 @@ import niguangnan from '@/assets/category/organization/niguangnan.png';
 import wanghuaimin from '@/assets/category/organization/wanghuaimin.png';
 import zhouminghui from '@/assets/category/organization/zhouminghui.png';
 
+import liangbin from '@/assets/category/organization/brand/liangbin.png';
+import huangzhaowei from '@/assets/category/organization/brand/huangzhaowei.png';
+import kanglifeng from '@/assets/category/organization/brand/kanglifeng.png';
+import lina from '@/assets/category/organization/brand/lina.png';
+import lizhenning from '@/assets/category/organization/brand/lizhenning.png';
+import majun from '@/assets/category/organization/brand/majun.png';
+import wangxinhui from '@/assets/category/organization/brand/wangxinhui.png';
+import wendan from '@/assets/category/organization/brand/wendan.png';
+// import zhangyin from '@/assets/category/organization/brand/zhangyin.png';
+
 const organizationData: any = {
   memberList: [
     {
@@ -299,6 +309,59 @@ const organizationData: any = {
       ],
     },
     {
+      title: 'openEuler 品牌委员会',
+      list: [
+        {
+          img: liangbin,
+          name: '梁冰',
+          position: ['主席'],
+          email: 'liangbing11@huawei.com',
+        },
+        {
+          img: huangzhaowei,
+          name: '黄兆伟',
+          position: ['委员'],
+          email: 'huangzhaowei@xfusion.com',
+        },
+        {
+          img: kanglifeng,
+          name: '康丽锋',
+          position: ['委员'],
+          email: 'kanglifeng@uniontech.com',
+        },
+        {
+          img: lina,
+          name: '丽娜',
+          position: ['委员'],
+          email: 'li_na1@hoperun.com',
+        },
+        {
+          img: lizhenning,
+          name: '李震宁',
+          position: ['委员'],
+          email: 'lizhenning@kylinos.cn',
+        },
+        {
+          img: majun,
+          name: '马骏',
+          position: ['委员'],
+          email: 'junmacy@isoftstone.com',
+        },
+        {
+          img: wangxinhui,
+          name: '王鑫辉',
+          position: ['委员'],
+          email: 'wangxinhui@cmss.chinamobile.com',
+        },
+        {
+          img: wendan,
+          name: '文丹',
+          position: ['委员'],
+          email: 'wendan@kylinsec.com.cn',
+        },
+      ],
+    },
+    {
       title: 'openEuler 委员会顾问专家委员会',
       list: [
         {
@@ -334,7 +397,7 @@ const organizationData: any = {
       ],
     },
   ],
-  idList: ['委员会', '技术委员会', '顾问专家委员会'],
+  idList: ['委员会', '技术委员会', '品牌委员会', '顾问专家委员会'],
   notice: '注：按照姓名汉语拼音排序',
 };
 const activeIndex = ref(0);
@@ -422,6 +485,17 @@ onUnmounted(() => {
     <div class="council-list">
       <OrganizationGuests
         :lecturer-list="organizationData.memberList[2].list"
+        shape="circle"
+        :web-columns-num="6"
+        :mobile-columns-num="2"
+      ></OrganizationGuests>
+    </div>
+    <h2 :id="organizationData.idList[3]" class="council-counselor">
+      {{ organizationData.memberList[3].title }}
+    </h2>
+    <div class="council-list">
+      <OrganizationGuests
+        :lecturer-list="organizationData.memberList[3].list"
         shape="circle"
         :web-columns-num="6"
         :mobile-columns-num="2"
