@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AOS from 'aos';
 import { onMounted } from 'vue';
+import emailImg from '@/assets/category/organization/email.png';
 
 defineProps({
   lecturerList: {
@@ -30,6 +31,9 @@ onMounted(() => {
       >
         {{ itemPost }}
       </p>
+      <span v-if="item.email" class="mail">
+        <a :href="'mailto:' + item.email"><img :src="emailImg" /></a>
+      </span>
     </li>
   </ul>
 </template>
@@ -153,6 +157,13 @@ onMounted(() => {
     img {
       width: 100px;
       margin-bottom: 8px;
+    }
+    .mail {
+      img {
+        margin-top: 8px;
+        margin-bottom: 0;
+        width: 24px;
+      }
     }
     .personal-name {
       font-size: var(--o-font-size-h8);
