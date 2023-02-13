@@ -23,9 +23,9 @@ const props = defineProps({
 });
 const { currentIndex, internship } = toRefs(props);
 const dataList: any = ref(props.dataList);
-const show = ref(true);
-const close = () => {
-  show.value = false;
+const isCodeShow = ref(true);
+const closeCodeImg = () => {
+  isCodeShow.value = false;
 };
 
 const goTop = () => {
@@ -58,12 +58,12 @@ const goTop = () => {
       </ul>
     </div>
     <div class="qq-code">
-      <div v-show="show && internship" class="item">
+      <div v-show="isCodeShow && internship" class="item">
         <img
           class="close"
           src="@/assets/category/internship/x.png"
           alt=""
-          @click="close()"
+          @click="closeCodeImg()"
         />
         <img
           class="code"
@@ -83,7 +83,14 @@ const goTop = () => {
   right: 70px;
   z-index: 1000;
   display: block;
-
+  @media screen and (max-width: 1540px) {
+    display: none;
+  }
+  &.internship {
+    top: 140px;
+    right: 70px;
+    width: 100px;
+  }
   .box-line {
     .gif {
       width: 70px;
@@ -208,14 +215,5 @@ const goTop = () => {
       width: 90%;
     }
   }
-
-  @media screen and (max-width: 1540px) {
-    display: none;
-  }
-}
-.internship {
-  top: 140px;
-  right: 70px;
-  width: 100px;
 }
 </style>

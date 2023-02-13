@@ -210,9 +210,9 @@ const mindSporeTask = {
   ],
 };
 // 右侧导航
-const isShowNav = ref(false);
+const isNavShow = ref(false);
 const activeIndex = ref(0);
-const NAV_LIST = [
+const navList = [
   {
     key: '#introduce',
     name: '活动介绍',
@@ -247,34 +247,27 @@ const tabIndex = ref(0);
 function changeTabIndex(index: number) {
   tabIndex.value = index;
 }
+
+const navRef: any = ref([]);
 const handleScrollEvent = () => {
   const scrollTop =
     document.body.scrollTop || document.documentElement.scrollTop;
-  if (scrollTop < 270 || scrollTop > 7200) {
-    isShowNav.value = false;
+  const activeList: Array<number> = [];
+  navRef.value.forEach((item: any, index: number) => {
+    if (scrollTop + 100 > item.offsetTop) {
+      activeList.push(index);
+    }
+  });
+   if (scrollTop < 270) {
+    isNavShow.value = false;
   } else {
-    isShowNav.value = true;
+    isNavShow.value = true;
   }
-  if (scrollTop > 200 && scrollTop < 540) {
-    activeIndex.value = 0;
-  } else if (scrollTop > 540 && scrollTop < 1350) {
-    activeIndex.value = 1;
-  } else if (scrollTop > 1350 && scrollTop < 3000) {
-    activeIndex.value = 2;
-  } else if (scrollTop > 3000 && scrollTop < 4640) {
-    activeIndex.value = 3;
-  } else if (scrollTop > 4640 && scrollTop < 5065) {
-    activeIndex.value = 4;
-  } else if (scrollTop > 5065 && scrollTop < 5430) {
-    activeIndex.value = 5;
-  } else if (scrollTop > 5430) {
-    activeIndex.value = 6;
-  } else {
-    return false;
-  }
+  activeIndex.value = activeList[activeList.length - 1];
 };
 
 onMounted(() => {
+  navRef.value = document.querySelectorAll('.nav');
   window.addEventListener('scroll', handleScrollEvent);
 });
 onUnmounted(() => {
@@ -284,27 +277,27 @@ onUnmounted(() => {
 
 <template>
   <InternshipTitleNav
-    v-show="isShowNav"
+    v-show="isNavShow"
     class="titlenav"
     :current-index="activeIndex"
-    :data-list="NAV_LIST"
+    :data-list="navList"
     :internship="true"
   ></InternshipTitleNav>
   <InternshipBanner />
   <AppContent>
     <div class="intership-wrap">
-      <section id="introduce" class="panel introduce-card">
+      <section id="introduce" class="panel introduce-card nav">
         <p class="text">
           openEuler开源实习是openEuler社区和社区合作单位共同发起的线上实习项目，旨在鼓励在校学生积极参与开源社区，在实际的开源环境中提升实践能力，在社区中成长为优秀的开源人才。由社区提供实习任务，并提供导师辅导，学生通过实习申请后，可在社区领取任务，每完成一个任务可获得相应积分，积分累计达规定量后，可获得实习证明和实习工资。
         </p>
       </section>
-      <section id="step" class="panel">
+      <section id="step" class="panel nav">
         <div class="step-title title">
           <div class="title-img">申请步骤</div>
         </div>
         <InternshipStep />
       </section>
-      <section id="task" class="panel">
+      <section id="task" class="panel nav">
         <div class="task-title title">
           <div class="title-img">实习任务</div>
           <ul class="tab-list">
@@ -404,7 +397,7 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
-      <section id="integral" class="panel">
+      <section id="integral" class="panel nav">
         <div class="integral-title title">
           <div class="title-img">积分与激励规则</div>
         </div>
@@ -484,7 +477,7 @@ onUnmounted(() => {
         </div>
         <InternshipRank />
       </section>
-      <section id="rule" class="panel">
+      <section id="rule" class="panel nav">
         <div class="rule-title title">
           <div class="title-img">实习规则</div>
         </div>
@@ -513,7 +506,7 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
-      <section id="partner" class="panel">
+      <section id="partner" class="panel nav">
         <div class="warper">
           <div class="partner-title title">
             <div class="title-img">合作伙伴</div>
@@ -529,7 +522,8 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
-      <div id="help" class="help-title title">
+      <section id="help" class="panel nav">
+        <div class="help-title title">
         <div class="title-img">帮助咨询</div>
       </div>
       <div class="help-wrap">
@@ -550,6 +544,7 @@ onUnmounted(() => {
           </div>
         </section>
       </div>
+      </section>
     </div>
   </AppContent>
 </template>
@@ -1121,18 +1116,52 @@ onUnmounted(() => {
 .help-wrap {
   background: var(--o-color-bg2);
   padding: 40px 0;
+  @media (max-width: 1000px){
+    padding: 24px 16px;
+    .help-content {
+      flex-direction: column;
+      .help-left {
+        padding-right: 0;
+        p {
+          font-size: 14px;
+          line-height: 24px;
+          margin-bottom: 16px;
+          text-align: center;
+        }
+        .pc-number {
+          display: none;
+        }
+      }
+      .help-right {
+        display: block;
+        width: 100%;
+        text-align: center;
+        p {
+          margin: 24px auto 0;
+        }
+        img {
+          width: 172px;
+          margin: 0 auto;
+        }
+        .mo-number {
+          display: block;
+          color: var(--o-color-text4);
+          font-size: var(--o-font-size-text);
+          line-height: var(--o-font-size-text);
+        }
+      }
+    }
+  }
   .panel {
     margin-top: 0;
   }
 }
 .help-title {
   text-align: center;
-  margin: 60px 0;
   img {
     width: 180px;
   }
   @media (max-width: 1000px) {
-    margin: 40px 0 16px;
     img {
       width: auto;
       height: 24px;
@@ -1179,42 +1208,5 @@ onUnmounted(() => {
     }
   }
 }
-@media (max-width: 1000px) {
-  .help-wrap {
-    padding: 24px 16px;
-    .help-content {
-      flex-direction: column;
-      .help-left {
-        padding-right: 0;
-        p {
-          font-size: 14px;
-          line-height: 24px;
-          margin-bottom: 16px;
-          text-align: center;
-        }
-        .pc-number {
-          display: none;
-        }
-      }
-      .help-right {
-        display: block;
-        width: 100%;
-        text-align: center;
-        p {
-          margin: 24px auto 0;
-        }
-        img {
-          width: 172px;
-          margin: 0 auto;
-        }
-        .mo-number {
-          display: block;
-          color: var(--o-color-text4);
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-font-size-text);
-        }
-      }
-    }
-  }
-}
+
 </style>

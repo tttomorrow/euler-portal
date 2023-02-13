@@ -10,9 +10,9 @@ interface RankType {
   rank?: string;
 }
 
-const isShowAll = ref(false);
-const isExent = ref(false);
-const isRank = ref(true);
+const isAllVisible = ref(false);
+const isRankUnfold = ref(false);
+const isRankVisible = ref(true);
 
 const rankInfo: any = ref();
 const rankTop: any = ref();
@@ -28,19 +28,20 @@ const rank = {
 };
 
 // 获取数据
-async function getTokenQuery() {
+async function getRankData() {
   try {
     const data = {
       sort: '',
+      pageSize:10000,
     };
     const res = await getRank(data);
     if (res.code === 200) {
       if (res.UserPoints.length < 1) {
-        isRank.value = false;
+        isRankVisible.value = false;
       } else {
-        isRank.value = true;
+        isRankVisible.value = true;
         const info = res.UserPoints;
-        info.length > 10 ? (isShowAll.value = true) : '';
+        info.length > 10 ? (isAllVisible.value = true) : '';
         info.sort((a: any, b: any) => {
           return b.integralValue - a.integralValue;
         });
@@ -57,33 +58,32 @@ async function getTokenQuery() {
         rankTop.value = info.slice(0, 3);
       }
     } else {
-      isRank.value = false;
+      isRankVisible.value = false;
       throw new Error(res.status + ' ' + res.message);
     }
   } catch (error: any) {
     throw Error(error);
   }
 }
-
-const extend = () => {
-  if (isExent.value) {
+const toggleRankState = () => {
+  if (isRankUnfold.value) {
     renderData.value = rankInfo.value && rankInfo.value.slice(3, 10);
     window.location.href = '#rank';
   } else {
     renderData.value = rankInfo.value && rankInfo.value.slice(3);
   }
-  isExent.value = !isExent.value;
+  isRankUnfold.value = !isRankUnfold.value;
 };
 
 onMounted(() => {
-  getTokenQuery();
+  getRankData();
 });
 </script>
 
 <template>
   <div class="rank-border">
-    <div ref="rankContent" class="rank-content">
-      <div v-if="isRank" class="rank-box">
+    <div class="rank-content">
+      <div v-if="isRankVisible" class="rank-box">
         <div class="rank-top">
           <div
             v-for="(item, index) in rankTop"
@@ -130,21 +130,11 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div v-if="isShowAll" class="view-all">
-          <a v-if="!isExent" @click="extend()">
-            {{ rank.viewAll }}
+        <div v-if="isAllVisible" class="view-all">
+          <a @click="toggleRankState()">
+            {{ !isRankUnfold? rank.viewAll:rank.packUp }}
             <div>
-              <img src="@/assets/category/internship/right.svg" alt="" />
-            </div>
-          </a>
-          <a v-else @click="extend()">
-            {{ rank.packUp }}
-            <div>
-              <img
-                class="arrow"
-                src="@/assets/category/internship/right.svg"
-                alt=""
-              />
+              <img :class="{arrow:isRankUnfold}" src="@/assets/category/internship/right.svg" alt="" />
             </div>
           </a>
         </div>
@@ -176,6 +166,11 @@ onMounted(() => {
   padding: 30px 290px 25px;
   background-color: #fff2ee;
   transition: all 0.5s;
+  @media (max-width: 1000px) {
+    border-radius: 8px;
+    padding: 26px 15px 10px;
+    height: 100%;
+  }
   .rank-top {
     display: flex;
     justify-content: center;
@@ -188,6 +183,9 @@ onMounted(() => {
         font-size: 14px;
         color: rgba(0, 0, 0, 0.5);
         line-height: 16px;
+        @media (max-width: 1000px){
+          font-size: 12px;
+        }
       }
       .gitee-name:hover {
         color: #002fa7;
@@ -200,10 +198,17 @@ onMounted(() => {
         font-size: 18px;
         color: #ff644e;
         line-height: 16px;
+        @media (max-width: 1000px) {
+          margin: 10px 0;
+          font-size: 14px;
+        }
         span {
           padding-left: 10px;
           font-size: 14px;
           color: rgba(0, 0, 0, 0.5);
+          @media (max-width: 1000px){
+            font-size: 12px;
+          }
         }
       }
       .rank-box {
@@ -211,12 +216,21 @@ onMounted(() => {
         font-size: 24px;
         color: #ffffff;
         line-height: 24px;
+        @media (max-width: 1000px){
+          width: 92px;
+          font-size: 16px;
+          line-height: 24px;
+        }
       }
       .second {
         height: 66px;
         line-height: 66px;
         background: #5dc8ff;
         border: 1px solid #a4e1ff;
+        @media (max-width: 1000px){
+          height: 60px;
+          line-height: 60px;
+        }
       }
       .first {
         position: relative;
@@ -224,12 +238,20 @@ onMounted(() => {
         line-height: 104px;
         background: #ff7c56;
         border: 1px solid #a4e1ff;
+        @media (max-width: 1000px){
+          height: 85px;
+          line-height: 85px;
+        }
       }
       .third {
         height: 48px;
         line-height: 48px;
         background: #2e9afe;
         border: 1px solid #a4e1ff;
+        @media (max-width: 1000px){
+          height: 40px;
+          line-height: 40px;
+        }
       }
     }
   }
@@ -237,6 +259,9 @@ onMounted(() => {
     .rank-item:nth-of-type(1) {
       margin-top: 30px;
       border-top: 1px dashed #ff7c56;
+      @media (max-width: 1000px){
+          margin-top: 20px;
+        }
     }
     .rank-item {
       display: flex;
@@ -244,6 +269,10 @@ onMounted(() => {
       padding: 16px 0;
       margin-bottom: 10px;
       border-bottom: 1px dashed #ff7c56;
+      @media (max-width: 1000px){
+          padding: 14px 0;
+        margin: 0;
+        }
       .rank-left,
       .rank-right {
         display: flex;
@@ -251,12 +280,19 @@ onMounted(() => {
         .rank-class {
           font-size: 24px;
           color: #ff7c56;
+          @media (max-width: 1000px){
+          font-size: 16px;
+        }
         }
         .gitee-name {
           padding-left: 20px;
           font-size: 14px;
           color: rgba(0, 0, 0, 0.5);
           line-height: 16px;
+           @media (max-width: 1000px){
+          padding-left: 10px;
+            font-size: 12px;
+        }
         }
         .gitee-name:hover {
           color: #002fa7;
@@ -267,6 +303,9 @@ onMounted(() => {
           font-size: 18px;
           color: #ff644e;
           line-height: 16px;
+          @media (max-width: 1000px){
+          font-size: 14px;
+        }
         }
         span {
           padding-left: 30px;
@@ -274,6 +313,10 @@ onMounted(() => {
           font-size: 14px;
           color: rgba(0, 0, 0, 0.5);
           line-height: 16px;
+          @media (max-width: 1000px){
+          padding-left: 6px;
+            font-size: 12px;
+        }
         }
       }
     }
@@ -282,11 +325,15 @@ onMounted(() => {
     padding-top: 50px;
     margin-bottom: 20px;
     border-bottom: 1px dashed #ff7c56;
+    @media (max-width: 1000px){
+      padding-top: 30px;
+    }
   }
   .view-all {
     padding-top: 15px;
     font-size: 14px;
     @media (max-width: 1000px) {
+      padding-top: 20px;
       font-size: var(--o-font-size-tip);
     }
     a {
@@ -310,83 +357,6 @@ onMounted(() => {
           transform: rotate(-90deg);
         }
       }
-    }
-  }
-}
-@media (max-width: 1000px) {
-  .rank-content {
-    border-radius: 8px;
-    padding: 26px 15px 10px;
-    height: 100%;
-    .dash {
-      padding-top: 30px;
-    }
-    .rank-top {
-      .top-item {
-        .gitee-name {
-          font-size: 12px;
-          color: rgba(0, 0, 0, 0.5);
-        }
-        .score {
-          margin: 10px 0;
-          font-size: 14px;
-          span {
-            font-size: 12px;
-          }
-        }
-        .rank-box {
-          width: 92px;
-          font-size: 16px;
-          line-height: 24px;
-        }
-        .second {
-          height: 60px;
-          line-height: 60px;
-        }
-        .first {
-          height: 85px;
-          line-height: 85px;
-        }
-        .first::after {
-          top: -60px;
-        }
-        .third {
-          height: 40px;
-          line-height: 40px;
-        }
-      }
-    }
-    .rank-last {
-      .rank-item:nth-of-type(1) {
-        margin-top: 20px;
-      }
-      .rank-item {
-        padding: 14px 0;
-        margin: 0;
-        border-bottom: 1px dashed #ff7c56;
-        .rank-left,
-        .rank-right {
-          .rank-class {
-            font-size: 16px;
-          }
-          .gitee-name {
-            padding-left: 10px;
-            font-size: 12px;
-          }
-        }
-        .rank-right {
-          .score {
-            font-size: 14px;
-          }
-          span {
-            padding-left: 6px;
-            font-size: 12px;
-          }
-        }
-      }
-    }
-    .view-all {
-      padding-top: 20px;
     }
   }
 }
