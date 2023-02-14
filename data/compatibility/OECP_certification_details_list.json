@@ -1,16 +1,16 @@
 [
     {
-        "os_version": "iSoft-Server-OS-5.1-aarch64-202301060940.iso",
-        "osv_name": "普华基础软件股份有限公司",
+        "os_version": "HopeStage-V2.0-x86_64-dvd.iso",
+        "osv_name": "江苏润和软件股份有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2023/1/10",
-        "arch": "aarch64",
+        "date": "2023/2/14",
+        "arch": "x86_64",
         "details": "详细信息",
-        "friendly_link": "https://www.i-soft.com.cn/",
-        "os_download_link": "https://www.i-soft.com.cn/",
-        "checksum": "04396091b94706d6de51bdf963542726",
-        "base_openeuler_version": "openEuler 20.03 LTS SP1",
+        "friendly_link": "http://www.hoperun.com/",
+        "os_download_link": "http://www.hoperun.com/",
+        "checksum": "3c5c1abdff489118bfcd46f05d8a26e5",
+        "base_openeuler_version": "openEuler 22.03 LTS SP1",
         "tools_result": [
             {
                 "name": "core_pkg",
@@ -72,17 +72,17 @@
         ]
     },
     {
-        "os_version": "iSoft-Server-OS-5.1-x86_64-202301051728.iso",
-        "osv_name": "普华基础软件股份有限公司",
+        "os_version": "HopeStage-V2.0-aarch64-dvd.iso",
+        "osv_name": "江苏润和软件股份有限公司",
         "total_result": "pass",
         "type": "服务器",
-        "date": "2023/1/10",
-        "arch": "X86",
+        "date": "2023/2/14",
+        "arch": "aarch64",
         "details": "详细信息",
-        "friendly_link": "https://www.i-soft.com.cn/",
-        "os_download_link": "https://www.i-soft.com.cn/",
-        "checksum": "eb64757cfc21500f36333c219f52e0fd",
-        "base_openeuler_version": "openEuler 20.03 LTS SP2",
+        "friendly_link": "http://www.hoperun.com/",
+        "os_download_link": "http://www.hoperun.com/",
+        "checksum": "a1fb7568b2dc00de3cad2c293d01245d",
+        "base_openeuler_version": "openEuler 22.03 LTS SP1",
         "tools_result": [
             {
                 "name": "core_pkg",
@@ -142,5 +142,77 @@
                 "result": "pass"
             }
         ]
-    } 
+    },
+    {
+        "os_version": "EversecOS-20.03-20221103-x86_64-dvd.iso",
+        "osv_name": "恒安嘉新（北京）科技股份公司",
+        "total_result": "pass",
+        "type": "服务器",
+        "date": "2023/2/14",
+        "arch": "x86_64",
+        "details": "详细信息",
+        "friendly_link": "http://www.eversec.com.cn/",
+        "os_download_link": "http://www.eversec.com.cn/",
+        "checksum": "fb11ce138d1cb34b8b582d81fc3c8475",
+        "base_openeuler_version": "openEuler 20.03 LTS SP1",
+        "tools_result": [
+            {
+                "name": "core_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_pkg",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "KABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "ABI",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "service_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "soft_config",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "kernel_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ],
+        "platform_result": [
+            {
+                "name": "repo",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "base_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "performance_test",
+                "percent": "NA",
+                "result": "pass"
+            },
+            {
+                "name": "running_config",
+                "percent": "NA",
+                "result": "pass"
+            }
+        ]
+    }
 ]
