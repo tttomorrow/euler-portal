@@ -2,10 +2,6 @@ import techDay_pc from '@/assets/category/home/banner/tech-day_pc.png';
 import techDay_mo from '@/assets/category/home/banner/tech-day_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
 import migrationImg_mo from '@/assets/category/home/banner/migration_mo.png';
-import year_pc_en from '@/assets/category/home/banner/openeuler-year_en.jpg';
-import year_mo_en from '@/assets/category/home/banner/openeuler-year_mo_en.png';
-import year_pc from '@/assets/category/home/banner/openeuler-year_pc.jpg';
-import year_mo from '@/assets/category/home/banner/openeuler-year_mo.png';
 import annals_pc from '@/assets/category/home/banner/annals_pc.jpg';
 import annals_mo from '@/assets/category/home/banner/annals_mo.png';
 import forum_pc from '@/assets/category/home/banner/forum_pc.jpg';
@@ -15,13 +11,6 @@ export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
-      {
-        pcBanner: year_pc,
-        moBanner: year_mo,
-        link: '',
-        id: '',
-        targetTap: 1,
-      },
       {
         pcBanner: annals_pc,
         moBanner: annals_mo,
@@ -49,13 +38,6 @@ export default {
     ],
     en: [
       {
-        pcBanner: year_pc_en,
-        moBanner: year_mo_en,
-        link: '',
-        id: '',
-        targetTap: 1,
-      },
-      {
         pcBanner: techDay_pc,
         moBanner: techDay_mo,
         link: `https://www.openeuler.org/en/blog/openeuler-techday/openEuler%20TechDay%20Invitation.html`,
@@ -73,13 +55,6 @@ export default {
       },
     ],
     ru: [
-      {
-        pcBanner: year_pc_en,
-        moBanner: year_mo_en,
-        link: '',
-        id: '',
-        targetTap: 1,
-      },
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,

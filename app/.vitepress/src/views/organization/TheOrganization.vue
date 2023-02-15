@@ -57,7 +57,7 @@ import lizhenning from '@/assets/category/organization/brand/lizhenning.png';
 import majun from '@/assets/category/organization/brand/majun.png';
 import wangxinhui from '@/assets/category/organization/brand/wangxinhui.png';
 import wendan from '@/assets/category/organization/brand/wendan.png';
-// import zhangyin from '@/assets/category/organization/brand/zhangyin.png';
+import zhangyin from '@/assets/category/organization/brand/zhangyin.png';
 
 const organizationData: any = {
   memberList: [
@@ -358,6 +358,12 @@ const organizationData: any = {
           name: '文丹',
           position: ['委员'],
           email: 'wendan@kylinsec.com.cn',
+        },
+        {
+          img: zhangyin,
+          name: '张迎',
+          position: ['委员'],
+          email: 'zhangy1317@chinaunicom.cn',
         },
       ],
     },
