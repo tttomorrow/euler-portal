@@ -45,8 +45,8 @@ Here you can edit your blog.
 
 **站点使用了vitepress框架提供了更好的SEO，及更快的加载速度,但也有更严格的打包规则，以下规则非常重要我们建议你花几分钟阅读：**
 - md文件的文件名中禁止包含 **+** 号。
-- 图片命名禁止 **空格** 、且大小写敏感，建议统一使用小写命名加中划线链接。如 blog-example.png。
-- &lt;font&gt; &lt;/font&gt; &lt;center&gt; &lt;/center&gt; 属于已弃用标签，vitepress将再在支持，如有需要可以使用 &lt;div align=center&gt; &lt;/div&gt;。
+- 图片命名禁止 **空格** 、且大小写敏感，建议统一使用小写命名加中划线连接。如 blog-example.png。
+- &lt;font&gt; &lt;/font&gt; &lt;center&gt; &lt;/center&gt; 属于已弃用标签，vitepress将不再支持，如有需要可以使用 &lt;div align=center&gt; &lt;/div&gt;。
 - md中如需使用HTML标签，该标签需要闭合，如&lt;div&gt; &lt;/div&gt;。
 - 暂不支持 c++ 语言代码块，如果你有c++代码需要展示，请不要指定代码块语言，而是采用默认语言。
 - 如果您的博客中包含代码、文件路径、键名、命令请使用代码块将其包裹。
@@ -74,7 +74,7 @@ git checkout -b <branch-name>
 4. 创建工作路径
 
 如果你发表中文博客，工作路径是 `app/zh/blog` 。
-假设你要写一个英文博客：
+假设你要写一个中文博客：
 
 ```
 cd app/zh/blog

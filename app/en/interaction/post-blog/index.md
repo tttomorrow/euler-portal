@@ -45,7 +45,7 @@ Tips: you can copy `https://gitee.com/openeuler/openEuler-portal/blob/master/app
 
 ## Post your blog
 
-The blog posting follows the pull request of [Gitee](gitee.com).
+The blog posting follows the pull request of [Gitee](https://gitee.com/).
 
 1. Fork openEuler blog project <https://gitee.com/openeuler/openEuler-portal> to your own gitee. Refer to <http://git.mydoc.io/?t=153749> for detailed guidance.
 
@@ -66,7 +66,7 @@ git checkout -b <branch-name>
 
 And if you are going to post a blog in Chinese, the app/zh/blog is your work path.
 
-Assume that you are preparing a English blog.
+Assume that you are preparing an English blog.
 
 ```
 cd app/en/blog
