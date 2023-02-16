@@ -8,6 +8,7 @@ import AppFooter from '@/components/AppFooter.vue';
 import LayoutBlog from '@/layouts/LayoutBlog.vue';
 import LayoutNews from '@/layouts/LayoutNews.vue';
 import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
+import LayoutShoucaseRoute from '@/layouts/LayoutShoucaseRoute.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
 import LayoutAboutUs from '@/layouts/LayoutAboutUs.vue';
 
@@ -24,6 +25,7 @@ const compMapping: {
   showcase: LayoutShowcase,
   migration: LayoutMigration,
   'about-us': LayoutAboutUs,
+  'showcase-route': LayoutShoucaseRoute,
 };
 
 const isCustomLayout = computed(() => {

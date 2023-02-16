@@ -4,6 +4,7 @@ const categories: string[] = [
   'showcase',
   'migration',
   'about-us',
+  'showcase-route',
 ];
 
 export default categories;
