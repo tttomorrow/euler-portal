@@ -1,5 +1,5 @@
 ---
-title: openEuler迁移专区
+title: 迁移下载
 category: migration
 custom-layout: true
 titleTemplate: Linux服务器系统迁移 | openEuler社区官网

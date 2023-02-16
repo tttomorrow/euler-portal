@@ -97,7 +97,7 @@ export default {
       BLANK: true,
     },
     {
-      URL: 'https://gitee.com/openeuler/community/issues',
+      URL: 'https://quickissue.openeuler.org/en/issues/',
       BLANK: true,
     },
     {

@@ -209,6 +209,7 @@ onMounted(() => {
 
 <template>
   <BannerLevel2
+    v-if="lang !== 'zh'"
     :background-image="banner"
     background-text="COMMNUNITY"
     :title="userCaseData.bannerTitle"
@@ -249,8 +250,8 @@ onMounted(() => {
 
     <div class="case-header">
       <p class="case-number">
-        {{ userCaseData.find1 }} {{ currentCaseListAll.length
-        }} {{ userCaseData.find2 }}
+        {{ userCaseData.find1 }} {{ currentCaseListAll.length }}
+        {{ userCaseData.find2 }}
       </p>
       <OButton
         v-if="userCaseData.caseLink"
@@ -409,7 +410,7 @@ onMounted(() => {
   .case-list {
     display: grid;
     width: 100%;
-    margin-top: var(--o-spacing-h3);
+    margin-top: var(--o-spacing-h4);
     grid-template-columns: repeat(3, 1fr);
     grid-gap: var(--o-spacing-h4);
     @media (max-width: 1280px) {
@@ -446,7 +447,6 @@ onMounted(() => {
         }
         .detail {
           max-width: 256px;
-          max-height: 46px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
