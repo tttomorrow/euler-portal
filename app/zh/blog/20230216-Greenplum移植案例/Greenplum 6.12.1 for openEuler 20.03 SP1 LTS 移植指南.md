@@ -65,21 +65,15 @@ Greenplum是一个面向数据仓库应用的关系型数据库，因为有良�
 
 **步骤1 停止防火墙。**
 
------------------------------------------------------------------------
 ```
   systemctl stop firewalld.service
 ```
 
------------------------------------------------------------------------
-
 **步骤2 关闭防火墙。**
 
------------------------------------------------------------------------
 ```
   systemctl disable firewalld.service
 ```
-
------------------------------------------------------------------------
 
 ![](./media/image1.png)**说明**
 
@@ -261,7 +255,6 @@ fdisk /dev/sda
 
 **安装依赖包**
 
------------------------------------------------------------------------
 ```
 yum -y install cmake gcc gcc-c++ curl-devel bzip2-devel python python-devel openssl-devel readline-devel perl-ExtUtils-Embed libxml2-devel openldap-devel pam pam-devel perl-devel apr-devel libevent-devel libyaml libffi-devel libzstd-devel bison flex libyaml-devel libedit-devel flex-devel git autoconf automake libtool
 ```
@@ -789,7 +782,7 @@ vi /home/gpdb-6.12.1/src/backend/gporca/libgpos/include/gpos/utils.h
 make -j `nproc`
 ```
 
-![](./media/image34.png){width="6.38125in" height="2.09375in"}
+![](./media/image34.png)
 
 ```
  make install
