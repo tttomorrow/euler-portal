@@ -23,6 +23,48 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2022/12',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/arm32/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
         NAME: 'openEuler 22.09',
@@ -45,9 +87,56 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2022/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-22.09-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/embedded_img/arm64/aarch64-std/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/embedded_img/arm32/arm-std/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
-        NAME: '北京凝思软件股份有限公司',
+        NAME: '凝思安全操作系统V6.0',
         DOWNLOAD_URL: 'https://www.linx-info.com/download/os/el/',
         DESC: '凝思安全操作系统V6.0基于openEuler 20.03 LTS SP3 开发，内置凝思固域安全子系统，具有高可靠、高安全、高性能和高兼容等特性，能够保障生产系统和关键业务系统的安全稳定运行。',
         RELEASE_DESC_URL:
@@ -60,6 +149,18 @@ export default {
         MANUFACTURER: '北京凝思软件股份有限公司',
         PUBLISH_DATE: '2022/08',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://www.linx-info.com/download/os/el/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://www.linx-info.com/download/os/el/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 22.03 LTS',
@@ -82,6 +183,68 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2022/03',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-22.03-V1-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/loongarch/ISO/',
+            ARCH: 'LoongArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/power/ISO/',
+            ARCH: 'Power',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/sw_arch/openEuler-22.03-LTS/ISO/',
+            ARCH: 'SW64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/arm64/aarch64-std/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/arm32/arm-std/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
         NAME: '统信服务器操作系统V20',
@@ -94,6 +257,23 @@ export default {
         MANUFACTURER: '统信软件技术有限公司',
         PUBLISH_DATE: '2022/03',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://www.chinauos.com/resource/download-server',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://www.chinauos.com/resource/download-server',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://www.chinauos.com/resource/download-server',
+            ARCH: 'LoongArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS SP3',
@@ -110,6 +290,18 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2021/12',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'BCLinux for Euler V21.10',
@@ -124,6 +316,18 @@ export default {
         MANUFACTURER: '中国移动云能中心',
         PUBLISH_DATE: '2021/10',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.cmecloud.cn/bclinux/oe21.10/ISO/x86_64/release/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.cmecloud.cn/bclinux/oe21.10/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 21.09',
@@ -142,6 +346,18 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2021/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS SP2',
@@ -158,6 +374,18 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2021/07',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 21.03',
@@ -175,6 +403,18 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2021/03',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS SP1',
@@ -191,6 +431,18 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2020/12',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.09',
@@ -208,6 +460,18 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2020/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: '银河麒麟高级服务器操作系统V10',
@@ -234,6 +498,23 @@ export default {
         MANUFACTURER: 'openEuler社区',
         PUBLISH_DATE: '2020/03',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-20.03-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: '麒麟信安 Kylinsec V3.5.1',
@@ -249,6 +530,18 @@ export default {
         MANUFACTURER: '麒麟信安 Kylinsec',
         PUBLISH_DATE: '',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: '麒麟信安 Kylinsec V3.4-5',
@@ -264,6 +557,18 @@ export default {
         MANUFACTURER: '麒麟信安 Kylinsec',
         PUBLISH_DATE: '',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-5/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-5/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: '麒麟信安 Kylinsec V3.4-4',
@@ -279,6 +584,18 @@ export default {
         MANUFACTURER: '麒麟信安 Kylinsec',
         PUBLISH_DATE: '',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'HopeEdge',
@@ -294,6 +611,18 @@ export default {
         MANUFACTURER: '江苏润和',
         PUBLISH_DATE: '2020/07',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: '中科傲来服务器操作系统',
@@ -309,6 +638,18 @@ export default {
         MANUFACTURER: '中科院软件所',
         PUBLISH_DATE: '2020/05',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://eulixos.com/#/download',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://eulixos.com/#/download',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: '普华服务器操作系统v5.1',
@@ -323,6 +664,18 @@ export default {
         MANUFACTURER: '普华软件',
         PUBLISH_DATE: '',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler Preview',
@@ -331,8 +684,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://gitee.com/openeuler/RISC-V/blob/master/documents/Installing.md',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/RISC-V/issues',
-        GET_ISO_URL:
-          'https://repo.openeuler.org/openEuler-preview/RISC-V/Image/',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-preview/RISC-V/',
         MANUFACTURER: 'openEuler RISC-V SIG组',
         PUBLISH_DATE: '2020/09',
         LTS: false,
@@ -352,6 +704,13 @@ export default {
         RELEASE_DESC_URL:
           'http://www.turbolinux.com.cn/index.php/pages/cat_id/2.html',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://download.turbolinux.com.cn:8011/iso/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: '同源OS 8.1欧拉发行版',
@@ -380,6 +739,18 @@ export default {
         MANUFACTURER: '江苏润和',
         PUBLISH_DATE: '2020/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: '红旗Asianux服务器操作系统V8.1',
@@ -393,7 +764,21 @@ export default {
         MANUFACTURER: '中科红旗（北京）信息科技有限公司',
         PUBLISH_DATE: '2021/03',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
+    ],
+    SCENARIO_LIST: [
+      { KEY: '', VALUE: '全部' },
+      { KEY: 'SERVER', VALUE: '服务器' },
+      { KEY: 'EDGE_CLOUD', VALUE: '边缘计算' },
+      { KEY: 'CLOUD_COMPUTING', VALUE: '云原生' },
+      { KEY: 'EMBEDDED', VALUE: '嵌入式' },
     ],
   },
   en: {
@@ -419,6 +804,48 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2022/12',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/arm32/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
         NAME: 'openEuler 22.09',
@@ -442,6 +869,53 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2022/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-22.09-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/embedded_img/arm64/aarch64-std/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/embedded_img/arm32/arm-std/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
         NAME: 'openEuler 22.03 LTS',
@@ -464,6 +938,68 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2022/03',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-22.03-V1-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/loongarch/ISO/',
+            ARCH: 'LoongArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/power/ISO/',
+            ARCH: 'Power',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/sw_arch/openEuler-22.03-LTS/ISO/',
+            ARCH: 'SW64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/arm64/aarch64-std/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/arm32/arm-std/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS SP3',
@@ -481,6 +1017,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/12',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 21.09',
@@ -500,6 +1048,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS SP2',
@@ -517,6 +1077,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/07',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 21.03',
@@ -535,6 +1107,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/03',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS SP1',
@@ -552,6 +1136,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2020/12',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.09',
@@ -569,6 +1165,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2020/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS',
@@ -586,6 +1194,23 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2020/03',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-20.03-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'Kylinsec',
@@ -601,6 +1226,18 @@ export default {
         MANUFACTURER: 'Kylinsec',
         PUBLISH_DATE: '',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'HopeEdge',
@@ -616,6 +1253,18 @@ export default {
         MANUFACTURER: 'HOPERUN',
         PUBLISH_DATE: '2020/07',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'EulixOS Server',
@@ -631,6 +1280,18 @@ export default {
         MANUFACTURER: 'ISCAS',
         PUBLISH_DATE: '2020/05',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://eulixos.com/#/download',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://eulixos.com/#/download',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'iSoftServerOS-Kunpeng-5.1',
@@ -645,6 +1306,18 @@ export default {
         MANUFACTURER: 'iSoft',
         PUBLISH_DATE: '',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler Preview',
@@ -653,8 +1326,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://gitee.com/openeuler/RISC-V/blob/master/documents/Installing.md',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/RISC-V/issues',
-        GET_ISO_URL:
-          'https://repo.openeuler.org/openEuler-preview/RISC-V/Image/',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-preview/RISC-V/',
         MANUFACTURER: 'openEuler RISC-V SIG group',
         PUBLISH_DATE: '2020/09',
         LTS: false,
@@ -674,6 +1346,13 @@ export default {
         RELEASE_DESC_URL:
           'http://www.turbolinux.com.cn/index.php/pages/cat_id/2.html',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://download.turbolinux.com.cn:8011/iso/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'HopeStage',
@@ -689,6 +1368,18 @@ export default {
         MANUFACTURER: 'HOPERUN',
         PUBLISH_DATE: '2020/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'RedFlag Asianux Server - 8.1',
@@ -702,7 +1393,21 @@ export default {
         MANUFACTURER: 'Red Flag Asianux Server',
         PUBLISH_DATE: '2021/03',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
+    ],
+    SCENARIO_LIST: [
+      { KEY: '', VALUE: 'All' },
+      { KEY: 'SERVER', VALUE: 'Server' },
+      { KEY: 'EDGE_CLOUD', VALUE: 'Edge Cloud' },
+      { KEY: 'CLOUD_COMPUTING', VALUE: 'Cloud Computing' },
+      { KEY: 'EMBEDDED', VALUE: 'Embedded' },
     ],
   },
   ru: {
@@ -729,6 +1434,48 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2022/12',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/arm32/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
         NAME: 'openEuler 22.09',
@@ -752,6 +1499,53 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2022/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-22.09-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/embedded_img/arm64/aarch64-std/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/embedded_img/arm32/arm-std/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
         NAME: 'openEuler 22.03 LTS',
@@ -774,6 +1568,68 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2022/03',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-22.03-V1-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/loongarch/ISO/',
+            ARCH: 'LoongArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/power/ISO/',
+            ARCH: 'Power',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/sw_arch/openEuler-22.03-LTS/ISO/',
+            ARCH: 'SW64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/arm64/aarch64-std/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/arm32/arm-std/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
       },
       {
         NAME: 'openEuler 21.09',
@@ -793,6 +1649,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS SP2',
@@ -810,6 +1678,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/07',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 21.03',
@@ -829,6 +1709,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/03',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS SP1',
@@ -846,6 +1738,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2020/12',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.09',
@@ -863,6 +1767,18 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2020/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler 20.03 LTS',
@@ -880,6 +1796,23 @@ export default {
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2020/03',
         LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-20.03-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'Kylinsec',
@@ -895,6 +1828,18 @@ export default {
         MANUFACTURER: 'Kylinsec',
         PUBLISH_DATE: '',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'HopeEdge',
@@ -910,6 +1855,18 @@ export default {
         MANUFACTURER: 'HOPERUN',
         PUBLISH_DATE: '2020/07',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'EulixOS Server',
@@ -925,6 +1882,18 @@ export default {
         MANUFACTURER: 'ISCAS',
         PUBLISH_DATE: '2020/05',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://eulixos.com/#/download',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://eulixos.com/#/download',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'iSoftServerOS-Kunpeng-5.1',
@@ -939,6 +1908,18 @@ export default {
         MANUFACTURER: 'iSoft',
         PUBLISH_DATE: '',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'openEuler Preview',
@@ -947,8 +1928,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://gitee.com/openeuler/RISC-V/blob/master/documents/Installing.md',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/RISC-V/issues',
-        GET_ISO_URL:
-          'https://repo.openeuler.org/openEuler-preview/RISC-V/Image/',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-preview/RISC-V/',
         MANUFACTURER: 'openEuler RISC-V SIG group',
         PUBLISH_DATE: '2020/09',
         LTS: false,
@@ -968,6 +1948,13 @@ export default {
         RELEASE_DESC_URL:
           'http://www.turbolinux.com.cn/index.php/pages/cat_id/2.html',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://download.turbolinux.com.cn:8011/iso/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'HopeStage',
@@ -983,6 +1970,18 @@ export default {
         MANUFACTURER: 'HOPERUN',
         PUBLISH_DATE: '2020/09',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
       {
         NAME: 'RedFlag Asianux Server - 8.1',
@@ -996,7 +1995,21 @@ export default {
         MANUFACTURER: 'Red Flag Asianux Server',
         PUBLISH_DATE: '2021/03',
         LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
       },
+    ],
+    SCENARIO_LIST: [
+      { KEY: '', VALUE: 'All' },
+      { KEY: 'SERVER', VALUE: 'Server' },
+      { KEY: 'EDGE_CLOUD', VALUE: 'Edge Cloud' },
+      { KEY: 'CLOUD_COMPUTING', VALUE: 'Cloud Computing' },
+      { KEY: 'EMBEDDED', VALUE: 'Embedded' },
     ],
   },
 };

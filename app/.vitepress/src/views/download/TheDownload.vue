@@ -4,23 +4,19 @@ import { useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
 import { useCommon } from '@/stores/common';
-import seoConfig from '@/data/common/seo';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import type { DownloadData } from '@/shared/@types/type-download';
 
 import AppContent from '@/components/AppContent.vue';
 import TagFilter from '@/components/TagFilter.vue';
-import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import IconDownload from '~icons/app/icon-download.svg';
 import IconFilter from '~icons/app/icon-filter.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 
-import banner from '@/assets/banner/banner-download.png';
 import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
-import illustration from '@/assets/illustrations/iso.png';
 
 const { lang } = useData();
 const i18n = useI18n();
@@ -164,13 +160,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <SeoBox :seo-data="seoConfig[lang]?.download" />
-  <BannerLevel2
-    :background-image="banner"
-    background-text="DOWNLOAD"
-    :title="i18n.download.OUTSIDE_TITLE"
-    :illustration="illustration"
-  />
   <span style="display: none">
     {{ i18n.download.WHITE_PAPER }}
   </span>
@@ -683,7 +672,7 @@ onMounted(() => {
 
   .download-list {
     display: grid;
-    margin: var(--o-spacing-h2) auto;
+    margin: var(--o-spacing-h4) auto var(--o-spacing-h2);
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(3, 1fr);

@@ -11,7 +11,7 @@ head:
   #     content: openEuler下载,openEuler镜像下载,欧拉系统ISO镜像,openEuler社区官网,openEuler镜像,开源Linux系统
 ---
 <script setup lang="ts">
-  import TheDownload from "@/views/download/TheDownload.vue"
+  import TheArch from "@/views/download/TheArch.vue"
 </script>
 
-<TheDownload />
+<TheArch />
