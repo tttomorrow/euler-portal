@@ -16,4 +16,16 @@ export interface DownloadData {
   WEBSITE_SELECT: string;
   WHITE_PAPER: string;
   SERVER_IMAGE?: string;
+  DETAILED_LINK: {
+    SERVER?: ArchList[];
+    EDGE_CLOUD?: ArchList[];
+    CLOUD_COMPUTING?: ArchList[];
+    EMBEDDED?: ArchList[];
+    [key: string]: any;
+  };
+}
+export interface ArchList {
+  ARCH: string;
+  LINK: string;
+  [key: string]: string;
 }

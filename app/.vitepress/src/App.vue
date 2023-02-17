@@ -11,6 +11,7 @@ import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
 import LayoutShoucaseRoute from '@/layouts/LayoutShoucaseRoute.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
 import LayoutAboutUs from '@/layouts/LayoutAboutUs.vue';
+import LayoutDownload from './layouts/LayoutDownload.vue';
 
 import categories from '@/data/common/category';
 import { setStoreData } from './shared/login';
@@ -25,6 +26,7 @@ const compMapping: {
   showcase: LayoutShowcase,
   migration: LayoutMigration,
   'about-us': LayoutAboutUs,
+  download: LayoutDownload,
   'showcase-route': LayoutShoucaseRoute,
 };
 
