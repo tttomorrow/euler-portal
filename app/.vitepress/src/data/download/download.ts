@@ -2005,7 +2005,7 @@ export default {
       },
     ],
     SCENARIO_LIST: [
-      { KEY: '', VALUE: 'All' },
+      { KEY: '', VALUE: 'весь' },
       { KEY: 'SERVER', VALUE: 'Server' },
       { KEY: 'EDGE_CLOUD', VALUE: 'Edge Cloud' },
       { KEY: 'CLOUD_COMPUTING', VALUE: 'Cloud Computing' },
