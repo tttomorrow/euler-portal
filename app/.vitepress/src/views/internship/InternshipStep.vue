@@ -4,10 +4,9 @@ import step_1 from '@/assets/category/internship/step_1.png';
 import step_2 from '@/assets/category/internship/step_2.png';
 import step_3 from '@/assets/category/internship/step_3.png';
 import step_4 from '@/assets/category/internship/step_4.png';
-const stepActive = ref(0);
-
-function stepChange(index: number) {
-  stepActive.value = index;
+const activeStepIndex = ref(0);
+function setActiveStep(index: number) {
+  activeStepIndex.value = index;
 }
 
 const STEP = {
@@ -124,15 +123,15 @@ const STEP = {
         v-for="(item, index) in STEP.STEPNAV"
         :key="item.IMG"
         class="step-bar"
-        :class="{ stepActive: index == stepActive }"
-        @click="stepChange(index)"
+        :class="{ 'step-active': index === activeStepIndex }"
+        @click="setActiveStep(index)"
       >
         <img :src="item.IMG" alt="" />
         <p class="tit">{{ item.TEXT }}</p>
       </div>
     </div>
     <div class="step-body">
-      <div v-show="stepActive === 0" class="step-text">
+      <div v-show="activeStepIndex === 0" class="step-text">
         <img
           class="number"
           src="@/assets/category/internship/step_1.png"
@@ -167,7 +166,7 @@ const STEP = {
           </div>
         </div>
       </div>
-      <div v-show="stepActive === 1" class="step-text">
+      <div v-show="activeStepIndex === 1" class="step-text">
         <img
           class="number"
           src="@/assets/category/internship/step_2.png"
@@ -211,7 +210,7 @@ const STEP = {
           </div>
         </div>
       </div>
-      <div v-show="stepActive === 2" class="step-text">
+      <div v-show="activeStepIndex === 2" class="step-text">
         <img
           class="number"
           src="@/assets/category/internship/step_3.png"
@@ -258,7 +257,7 @@ const STEP = {
           </div>
         </div>
       </div>
-      <div v-show="stepActive === 3" class="step-text">
+      <div v-show="activeStepIndex === 3" class="step-text">
         <img
           class="number"
           src="@/assets/category/internship/step_4.png"
@@ -267,7 +266,7 @@ const STEP = {
         <div class="main-text">
           <h4>{{ STEP.STEP_FOUR.TITLE }}</h4>
           <p>{{ STEP.STEP_FOUR.P_TEXT1[0] }}</p>
-          <div class="attention firstAttention">
+          <div class="attention first-attention">
             <p v-for="item in STEP.STEP_FOUR.P_TEXT" :key="item">{{ item }}</p>
           </div>
           <p>
@@ -315,6 +314,9 @@ const STEP = {
   .step-content {
     border-radius: 8px 8px 8px 8px;
     background-color: rgb(93, 200, 255);
+    @media (max-width: 1000px) {
+      background: none;
+    }
     .step-nav {
       display: flex;
       @media (max-width: 1000px) {
@@ -346,7 +348,7 @@ const STEP = {
           }
         }
       }
-      .stepActive {
+      .step-active {
         height: 180px;
         margin-top: -20px;
         padding-top: 26px;
@@ -366,96 +368,11 @@ const STEP = {
       background: url(@/assets/category/internship/step-background.png)
         no-repeat;
       background-size: 100% 100%;
-      .number {
-        display: none;
-      }
-      .suspend {
-        padding: 10px 0 0 10px;
-      }
       @media (max-width: 1000px) {
-        padding: 0;
-      }
-      h4 {
-        margin-bottom: 10px;
-        font-size: 18px;
-        font-weight: normal;
-        color: #000000;
-        line-height: 24px;
-      }
-      p {
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.5);
-        line-height: 24px;
-        @media (max-width: 1000px) {
-          font-size: 12px;
-          a {
-            font-size: 12px;
-          }
-        }
-      }
-      .specialSpan {
-        padding-left: 10px;
-      }
-      .blue {
-        color: #0d8dff;
-      }
-      .orange {
-        color: #ff7f0d;
-      }
-      .attention {
-        margin: 10px 14px 0 35px;
-        .attention-title {
-          font-size: 14px;
-          color: #000000;
-          line-height: 24px;
-        }
-        .download {
-          display: inline-block;
-          margin-top: 10px;
-        }
-      }
-      .firstAttention {
-        margin-top: 0;
-      }
-      .black {
-        p {
-          position: relative;
-          padding-left: 12px;
-        }
-        p::before {
-          position: absolute;
-          top: 10px;
-          left: 0;
-          content: '';
-          height: 4px;
-          width: 4px;
-          background: rgba(0, 0, 0, 0.5);
-          border-radius: 50%;
-        }
-      }
-      .flow-chart {
-        margin-top: 8px;
-        padding-left: 35px;
-        .chart-mo {
-          display: none;
-        }
-        img {
-          width: 960px;
-        }
-      }
-    }
-    .step-body-en {
-      height: 485px;
-    }
-    @media (max-width: 1000px) {
-      background: none;
-      p::before {
-        display: none;
-      }
-      .step-body {
         background: none;
         height: 100%;
         font-size: 12px;
+        padding: 0;
         .step-text:nth-child(2) {
           .download {
             padding-bottom: 44px;
@@ -529,6 +446,81 @@ const STEP = {
           }
         }
       }
+      .number {
+        display: none;
+      }
+      .suspend {
+        padding: 10px 0 0 10px;
+      }
+
+      h4 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: normal;
+        color: #000000;
+        line-height: 24px;
+      }
+      p {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.5);
+        line-height: 24px;
+        @media (max-width: 1000px) {
+          font-size: 12px;
+          a {
+            font-size: 12px;
+          }
+        }
+      }
+      .blue {
+        color: #0d8dff;
+      }
+      .orange {
+        color: #ff7f0d;
+      }
+      .attention {
+        margin: 10px 14px 0 35px;
+        .attention-title {
+          font-size: 14px;
+          color: #000000;
+          line-height: 24px;
+        }
+        .download {
+          display: inline-block;
+          margin-top: 10px;
+        }
+      }
+      .first-attention {
+        margin-top: 0;
+      }
+      .black {
+        p {
+          position: relative;
+          padding-left: 12px;
+        }
+        p::before {
+          position: absolute;
+          top: 10px;
+          left: 0;
+          content: '';
+          height: 4px;
+          width: 4px;
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 50%;
+        }
+      }
+      .flow-chart {
+        margin-top: 8px;
+        padding-left: 35px;
+        .chart-mo {
+          display: none;
+        }
+        img {
+          width: 960px;
+        }
+      }
+    }
+    .step-body-en {
+      height: 485px;
     }
   }
 }
