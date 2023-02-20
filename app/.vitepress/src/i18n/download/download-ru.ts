@@ -11,7 +11,7 @@ export default {
   VERSION: 'Version',
   SCENARIO: 'Scenario',
   RELEASE_DATE: 'Release Date',
-  DOWNLOAD_LINK: 'download',
+  DOWNLOAD_LINK: 'Download',
   ARCHITECTURE: 'Architecture',
   SELECT: 'фильтр',
   ALL_DATA: 'весь',
