@@ -16,7 +16,7 @@ export default {
     NEWS: '新闻',
     BLOG: '博客',
     LIVE: '直播',
-    SALON: '沙龙',
+    SALON: '活动',
     SUMMIT: '峰会',
     COMMUNITY: '社区',
     CONTRIBUTION: '贡献攻略',
@@ -123,9 +123,9 @@ export default {
           PATH: '/interaction/live-list/',
         },
         {
-          NAME: '沙龙',
-          ID: 'salon',
-          PATH: '/interaction/salon-list/',
+          NAME: '活动',
+          ID: 'event',
+          PATH: '/interaction/event-list/',
         },
         {
           NAME: '峰会',

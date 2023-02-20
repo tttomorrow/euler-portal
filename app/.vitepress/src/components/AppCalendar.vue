@@ -177,7 +177,7 @@ function selectDate(val: string, date: string) {
 
 function goDetail(index: number) {
   window.open(
-    `/zh/interaction/salon-list/detail/?id=${renderData.value.timeData[index].id}`
+    `/zh/interaction/event-list/review/detail/?id=${renderData.value.timeData[index].id}&isMini=1`
   );
 }
 

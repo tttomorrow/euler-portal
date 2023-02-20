@@ -12,6 +12,7 @@ import LayoutShoucaseRoute from '@/layouts/LayoutShoucaseRoute.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
 import LayoutAboutUs from '@/layouts/LayoutAboutUs.vue';
 import LayoutDownload from './layouts/LayoutDownload.vue';
+import LayoutEvent from './layouts/LayoutEvent.vue';
 
 import categories from '@/data/common/category';
 import { setStoreData } from './shared/login';
@@ -28,6 +29,7 @@ const compMapping: {
   'about-us': LayoutAboutUs,
   download: LayoutDownload,
   'showcase-route': LayoutShoucaseRoute,
+  event: LayoutEvent,
 };
 
 const isCustomLayout = computed(() => {

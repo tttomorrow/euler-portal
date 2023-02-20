@@ -20,16 +20,20 @@ summary: 本博客介绍了两种退订openEuler邮件列表的方式
 
 -
   部分邮件带有退订指引的页脚，点击页脚的`test-leave@openeuler.org`即可编辑发送退订邮件, 邮件的标题和内容不限
+
   <img src='./2021-10-14-unsubscribe-mailing-list-05.png' width=750 alt='通过邮件页脚退订'>
   
   随后，你会收到一封test-bounces发送的退订成功告知邮件
+
   <img src='./2021-10-14-unsubscribe-mailing-list-03.png' width=750 alt='退订成功'>
 
 -
   你也可以使用订阅邮箱给test-leave@openeuler.org发送一封邮件，标题和内容不限
+
   <img src='./2021-10-14-unsubscribe-mailing-list-02.png' width=750 alt='发送退订邮件'>
 
   随后，你会收到一封test-bounces发送的退订成功告知邮件
+  
   <img src='./2021-10-14-unsubscribe-mailing-list-04.png' width=750 alt='退订成功'>
 
 
