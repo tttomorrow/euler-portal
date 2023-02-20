@@ -258,7 +258,7 @@ const handleScrollEvent = () => {
       activeList.push(index);
     }
   });
-   if (scrollTop < 270) {
+  if (scrollTop < 270) {
     isNavShow.value = false;
   } else {
     isNavShow.value = true;
@@ -524,26 +524,26 @@ onUnmounted(() => {
       </section>
       <section id="help" class="panel nav">
         <div class="help-title title">
-        <div class="title-img">帮助咨询</div>
-      </div>
-      <div class="help-wrap">
-        <section class="panel">
-          <div class="wrapper help-content">
-            <div class="help-left">
-              <p>
-                {{ HELP.INFO[0] }}
-                <a href="mailto:intern@openeuler.sh">{{ HELP.INFO[1] }}</a>
-              </p>
-              <p>{{ HELP.INFO[2] }}</p>
-              <p class="pc-number">{{ HELP.INFO[3] }}</p>
+          <div class="title-img">帮助咨询</div>
+        </div>
+        <div class="help-wrap">
+          <section class="panel">
+            <div class="wrapper help-content">
+              <div class="help-left">
+                <p>
+                  {{ HELP.INFO[0] }}
+                  <a href="mailto:intern@openeuler.sh">{{ HELP.INFO[1] }}</a>
+                </p>
+                <p>{{ HELP.INFO[2] }}</p>
+                <p class="pc-number">{{ HELP.INFO[3] }}</p>
+              </div>
+              <div class="help-right">
+                <img :src="HELP.ITEM.IMG" alt="" />
+                <p class="mo-number">{{ HELP.INFO[3] }}</p>
+              </div>
             </div>
-            <div class="help-right">
-              <img :src="HELP.ITEM.IMG" alt="" />
-              <p class="mo-number">{{ HELP.INFO[3] }}</p>
-            </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
       </section>
     </div>
   </AppContent>
@@ -1116,7 +1116,7 @@ onUnmounted(() => {
 .help-wrap {
   background: var(--o-color-bg2);
   padding: 40px 0;
-  @media (max-width: 1000px){
+  @media (max-width: 1000px) {
     padding: 24px 16px;
     .help-content {
       flex-direction: column;
@@ -1208,5 +1208,4 @@ onUnmounted(() => {
     }
   }
 }
-
 </style>

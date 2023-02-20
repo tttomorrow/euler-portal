@@ -286,11 +286,11 @@ function clickDetail(index: number) {
         >
           <p>{{ item.name }}</p>
           <OButton
+            v-if="item.link"
             class="detail-btn"
             type="text"
             animation
             size="nomral"
-            v-if="item.link"
             @click="clickBtn(item.link)"
           >
             {{ honorData.readNews }}
@@ -713,7 +713,6 @@ function clickDetail(index: number) {
                 border-radius: 4px;
                 background-color: var(--o-color-bg2);
                 background-color: var(--o-color-brand1);
-
               }
 
               &::-webkit-scrollbar {

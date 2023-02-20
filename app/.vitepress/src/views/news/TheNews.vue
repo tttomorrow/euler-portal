@@ -5,7 +5,7 @@ import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-import MobileFilter from '@/components/MobileFilter.vue';
+// import MobileFilter from '@/components/MobileFilter.vue';
 import NotFound from '@/NotFound.vue';
 import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
@@ -52,7 +52,7 @@ const sortParams = reactive({
 });
 // 新闻列表数据
 const newsCardData = ref<NewsData[]>([]);
-const isShowData = ref(false);
+const isDataShow = ref(false);
 const isPad = computed(() => (screenWidth.value <= 768 ? true : false));
 // const isMobile = computed(() => (screenWidth.value <= 500? true : false));
 
@@ -321,7 +321,7 @@ const getTagsList = () => {
         });
       })
       .catch((error: any) => {
-        isShowData.value = false;
+        isDataShow.value = false;
         throw new Error(error);
       });
   });
@@ -332,7 +332,7 @@ const getListData = (params: ParamsType) => {
   getSortData(params)
     .then((res) => {
       if (res.obj.count === 0) {
-        isShowData.value = false;
+        isDataShow.value = false;
       } else {
         paginationData.value.total = res.obj.count;
         paginationData.value.currentpage = res.obj.page;
@@ -344,41 +344,41 @@ const getListData = (params: ParamsType) => {
           }
           newsCardData.value[i].banner = '/' + newsCardData.value[i].banner;
         }
-        isShowData.value = true;
+        isDataShow.value = true;
       }
     })
     .catch((error: any) => {
-      isShowData.value = false;
+      isDataShow.value = false;
       throw new Error(error);
     });
 };
 
-const filterList = (val: any) => {
-  let paramsdate = '';
-  let paramsauthor = '';
-  let paramstag = '';
-  for (let i = 0; i < val.length; i++) {
-    if (val[i].title === '时间') {
-      paramsdate = val[i].sele[0];
-    }
-    if (val[i].title === '作者') {
-      paramsauthor = val[i].sele[0];
-    }
-    if (val[i].title === '标签') {
-      paramstag = val[i].sele[0];
-    }
-  }
-  const params = {
-    page: 1,
-    pageSize: 9,
-    lang: lang.value,
-    category: 'news',
-    archives: paramsdate,
-    author: paramsauthor,
-    tags: paramstag,
-  };
-  getListData(params);
-};
+// const filterList = (val: any) => {
+//   let paramsdate = '';
+//   let paramsauthor = '';
+//   let paramstag = '';
+//   for (let i = 0; i < val.length; i++) {
+//     if (val[i].title === '时间') {
+//       paramsdate = val[i].sele[0];
+//     }
+//     if (val[i].title === '作者') {
+//       paramsauthor = val[i].sele[0];
+//     }
+//     if (val[i].title === '标签') {
+//       paramstag = val[i].sele[0];
+//     }
+//   }
+//   const params = {
+//     page: 1,
+//     pageSize: 9,
+//     lang: lang.value,
+//     category: 'news',
+//     archives: paramsdate,
+//     author: paramsauthor,
+//     tags: paramstag,
+//   };
+//   getListData(params);
+// };
 
 onMounted(() => {
   getListData(sortParams);
@@ -421,9 +421,9 @@ const changeCurrentMoblie = (val: string) => {
   />
   <AppContent :mobile-top="16">
     <template v-if="true">
-      <div class="news-tag">
+      <!-- <div class="news-tag">
         <MobileFilter :data="selectData" :single="true" @filter="filterList" />
-      </div>
+      </div> -->
       <div class="news-select">
         <div class="news-select-item">
           <span class="news-select-item-title">{{ userCaseData.TIME }}</span>
@@ -499,7 +499,7 @@ const changeCurrentMoblie = (val: string) => {
         </div>
       </div>
     </template>
-    <template v-if="isShowData">
+    <template v-if="isDataShow">
       <div class="news-list">
         <OCard
           v-for="item in newsCardData"
@@ -512,17 +512,11 @@ const changeCurrentMoblie = (val: string) => {
             <img :src="item.banner" :alt="item.banner" />
           </div>
           <div class="news-info">
-            <div class="news-title">
-              <p>{{ item.title }}</p>
-            </div>
-            <div class="news-time">
-              <p>{{ item.date }}</p>
-            </div>
-            <div class="news-content">
-              <p>
-                {{ item.summary }}
-              </p>
-            </div>
+            <p class="news-title">{{ item.title }}</p>
+            <p class="news-time">{{ item.date }}</p>
+            <p class="news-content">
+              {{ item.summary }}
+            </p>
           </div>
         </OCard>
       </div>
@@ -571,6 +565,19 @@ const changeCurrentMoblie = (val: string) => {
 }
 :deep(.el-card__body) {
   padding: 0;
+  @media (max-width: 980px) {
+    display: flex;
+    flex-direction: row;
+  }
+  @media (max-width: 620px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 ::-webkit-scrollbar {
   display: none;
@@ -589,115 +596,27 @@ const changeCurrentMoblie = (val: string) => {
     line-height: var(--o-spacing-h4);
   }
 }
-.news {
-  &-tag {
-    display: none;
-  }
-  &-select {
-    display: flex;
-    flex-direction: row;
-    width: 1416px;
-    &-item {
-      display: flex;
-      align-items: center;
-      margin-right: var(--o-spacing-h1);
-      .o-icon {
-        font-size: var(--o-font-size-h7);
-        @media screen and (max-width: 768px) {
-          font-size: var(--o-font-size-h8);
-        }
-      }
-      &-title {
-        margin-right: var(--o-spacing-h5);
-        color: var(--o-color-text1);
-        font-size: var(--o-font-size-h7);
-      }
-    }
-  }
-  &-list {
-    max-width: 1448px;
-    margin: var(--o-spacing-h2) auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: var(--o-spacing-h4);
-    &-item {
-      justify-self: center;
-      align-self: center;
-      flex: 1;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-    }
-    &-item:hover {
-      .news-img img {
-        transform: scale(1.05);
-      }
-    }
-  }
-  &-img {
-    width: 100%;
-    height: 188px;
-    max-height: 188px;
-    object-fit: cover;
-    overflow: hidden;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-  }
-  &-info {
-    padding: var(--o-spacing-h4);
-    color: var(--o-color-text1);
-  }
-  &-title {
-    font-weight: 400;
-    height: 52px;
-    line-height: var(--o-line-height-h7);
-    font-size: var(--o-font-size-h7);
-    margin-bottom: var(--o-spacing-h10);
-    @include showline();
-    -webkit-line-clamp: 2;
-  }
-  &-time {
-    font-size: var(--o-font-size-text);
-    line-height: var(--o-line-height-text);
-  }
-  &-content {
-    margin-top: var(--o-spacing-h5);
-    @include showline();
-    -webkit-line-clamp: 2;
-    font-size: var(--o-font-size-text);
-    line-height: var(--o-line-height-text);
-  }
-}
 
-@media (max-width: 1450px) {
-  .news-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.news-tag {
+  display: none;
 }
-@media (max-width: 1100px) {
-  // .news-tag {
-  // display: block; // 暂时干掉移动筛选
-  // }
-  // .news-select {
-  //   display: none;
-  // }
-  .news-list {
-    margin-top: var(--o-spacing-h5);
-  }
-  .news-select {
+.news-select {
+  display: flex;
+  flex-direction: row;
+  width: 1416px;
+  @media (max-width: 1100px) {
     width: auto;
     display: flex;
     flex-direction: column;
-    &-item {
-      &-title {
-        width: 50px;
-        font-size: var(--o-font-size-h8);
-        line-height: var(--o-line-height-h8);
-      }
+  }
+  @media (max-width: 500px) {
+    display: none;
+  }
+  .news-select-item {
+    display: flex;
+    align-items: center;
+    margin-right: var(--o-spacing-h1);
+    @media (max-width: 1100px) {
       margin: 0;
       display: flex;
       flex-direction: row;
@@ -708,80 +627,130 @@ const changeCurrentMoblie = (val: string) => {
         width: 100%;
       }
     }
+    .o-icon {
+      font-size: var(--o-font-size-h7);
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-h8);
+      }
+    }
+    .news-select-item-title {
+      margin-right: var(--o-spacing-h5);
+      color: var(--o-color-text1);
+      font-size: var(--o-font-size-h7);
+      @media (max-width: 1100px) {
+        width: 50px;
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
+      }
+    }
   }
 }
-@media (max-width: 980px) {
-  .news-list {
+.news-list {
+  max-width: 1448px;
+  margin: var(--o-spacing-h2) auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: var(--o-spacing-h4);
+  @media (max-width: 1450px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 1100px) {
+    margin-top: var(--o-spacing-h5);
+  }
+  @media (max-width: 980px) {
     grid-template-columns: repeat(1, 1fr);
     margin-top: 0;
   }
-
-  :deep(.el-card__body) {
-    display: flex;
-    flex-direction: row;
-  }
-  .news-img,
-  .news-info {
-    flex: 1;
-  }
-}
-@media (max-width: 768px) {
-  .news-list {
+  @media (max-width: 768px) {
     margin-bottom: var(--o-spacing-h5);
     grid-gap: var(--o-spacing-h5);
   }
-  .pcpagination {
-    display: none;
-  }
-}
-@media (max-width: 620px) {
-  .news-list-item {
-    height: auto;
-  }
-
-  :deep(.el-card__body) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-@media (max-width: 500px) {
-  .news-list {
+  @media (max-width: 500px) {
     grid-template-columns: repeat(1, 1fr);
   }
-  :deep(.el-card__body) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .news-img {
-    height: 180px;
-  }
-  .news-info {
+  .news-list-item {
+    justify-self: center;
+    align-self: center;
+    flex: 1;
     width: 100%;
-    padding: var(--o-spacing-h6);
-  }
-  .news-title {
-    height: auto;
-    line-height: var(--o-line-height-text);
-    font-size: var(--o-font-size-text);
-    font-weight: 500;
-    @include showline();
-    -webkit-line-clamp: 1;
-    margin-bottom: var(--o-spacing-h8);
-  }
-  .news-time {
-    line-height: var(--o-line-height-tip);
-    font-size: var(--o-font-size-tip);
-    color: var(--o-color-neutral5);
-  }
-  .news-content {
-    line-height: var(--o-line-height-tip);
-    font-size: var(--o-font-size-tip);
-    color: var(--o-color-neutral5);
-  }
-  .news-select {
-    display: none;
+    height: 100%;
+    cursor: pointer;
+    &:hover {
+      .news-img img {
+        transform: scale(1.05);
+      }
+    }
+    @media (max-width: 620px) {
+      height: auto;
+    }
+    .news-img {
+      width: 100%;
+      height: 188px;
+      max-height: 188px;
+      object-fit: cover;
+      overflow: hidden;
+      @media (max-width: 980px) {
+        flex: 1;
+      }
+      @media (max-width: 500px) {
+        height: 180px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+    }
+    .news-info {
+      padding: var(--o-spacing-h4);
+      color: var(--o-color-text1);
+      @media (max-width: 980px) {
+        flex: 1;
+      }
+      @media (max-width: 500px) {
+        width: 100%;
+        padding: var(--o-spacing-h6);
+      }
+      .news-title {
+        font-weight: 400;
+        height: 52px;
+        line-height: var(--o-line-height-h7);
+        font-size: var(--o-font-size-h7);
+        margin-bottom: var(--o-spacing-h10);
+        @include showline();
+        -webkit-line-clamp: 2;
+        @media (max-width: 500px) {
+          height: auto;
+          line-height: var(--o-line-height-text);
+          font-size: var(--o-font-size-text);
+          font-weight: 500;
+          -webkit-line-clamp: 1;
+          margin-bottom: var(--o-spacing-h8);
+        }
+      }
+      .news-time {
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+        @media (max-width: 500px) {
+          line-height: var(--o-line-height-tip);
+          font-size: var(--o-font-size-tip);
+          color: var(--o-color-neutral5);
+        }
+      }
+      .news-content {
+        margin-top: var(--o-spacing-h5);
+        @include showline();
+        -webkit-line-clamp: 2;
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+        @media (max-width: 500px) {
+          line-height: var(--o-line-height-tip);
+          font-size: var(--o-font-size-tip);
+          color: var(--o-color-neutral5);
+        }
+      }
+    }
   }
 }
 </style>

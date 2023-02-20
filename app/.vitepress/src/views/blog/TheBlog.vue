@@ -21,33 +21,7 @@ import IconRight from '~icons/app/icon-arrow-right.svg';
 import IconSearch from '~icons/app/icon-search.svg';
 
 import { getTagsData, sortBlogData } from '@/api/api-search';
-
-interface BlogData {
-  archives: string;
-  articleName: string;
-  author: any;
-  category: string;
-  date: string;
-  deleteType: string;
-  lang: string;
-  path: string;
-  summary: string;
-  tags: string[];
-  textContent: string;
-  title: string;
-  type: string;
-  views: number;
-}
-
-interface ParamsType {
-  page: number;
-  pageSize: number;
-  lang: string;
-  category: string;
-  archives?: string;
-  author?: string;
-  tags?: string;
-}
+import type { BlogData, ParamsType } from '@/shared/@types/type-blog';
 
 const router = useRouter();
 const { lang } = useData();
@@ -57,7 +31,7 @@ const screenWidth = useWindowResize();
 
 const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
 
-const isShowData = ref(false);
+const isDataShown = ref(false);
 // 博客列表
 const sortParams = reactive({
   page: 1,
@@ -138,7 +112,7 @@ const getTagsList = () => {
         });
       })
       .catch((error: any) => {
-        isShowData.value = false;
+        isDataShown.value = false;
         throw new Error(error);
       });
   });
@@ -148,7 +122,7 @@ const getListData = (params: ParamsType) => {
   sortBlogData(params)
     .then((res) => {
       if (res.obj.count === 0) {
-        isShowData.value = false;
+        isDataShown.value = false;
       } else {
         paginationData.value.total = res.obj.count;
         paginationData.value.currentpage = res.obj.page;
@@ -162,11 +136,11 @@ const getListData = (params: ParamsType) => {
             i
           ].archives.substring(0, 7);
         }
-        isShowData.value = true;
+        isDataShown.value = true;
       }
     })
     .catch((error: any) => {
-      isShowData.value = false;
+      isDataShown.value = false;
       throw new Error(error);
     });
 };
@@ -541,7 +515,7 @@ const changeCurrentPageMoblie = (val: string) => {
         />
       </div> -->
     </template>
-    <template v-if="isShowData">
+    <template v-if="isDataShown">
       <div class="blog-list">
         <OCard
           v-for="item in blogCardData"
@@ -550,9 +524,9 @@ const changeCurrentPageMoblie = (val: string) => {
           class="blog-list-item"
           @click="toBlogContent(item.path)"
         >
-          <div class="blog-list-item-title">
-            <p>{{ item.title }}</p>
-          </div>
+          <p class="blog-list-item-title">
+            {{ item.title }}
+          </p>
           <div class="blog-list-body">
             <div
               class="blog-list-item-info"
@@ -579,9 +553,9 @@ const changeCurrentPageMoblie = (val: string) => {
                 </p>
               </div>
             </div>
-            <div class="blog-list-item-content">
-              <p>{{ item.summary }}</p>
-            </div>
+            <p class="blog-list-item-content">
+              {{ item.summary }}
+            </p>
           </div>
           <div class="blog-list-item-tags">
             <OTag
@@ -638,6 +612,15 @@ const changeCurrentPageMoblie = (val: string) => {
   justify-content: space-between;
   height: 100%;
   padding: var(--o-spacing-h2);
+  @media (max-width: 1100px) {
+    padding: var(--o-spacing-h3);
+    height: 100%;
+  }
+  @media (max-width: 415px) {
+    padding: var(--o-spacing-h6);
+    min-height: 152px;
+    max-height: 152px;
+  }
 }
 
 .right-icon {
@@ -664,172 +647,147 @@ const changeCurrentPageMoblie = (val: string) => {
   line-height: var(--o-spacing-h4);
 }
 
-.blog {
-  &-tag2 {
-    display: none;
-  }
-  &-select {
-    display: flex;
-    flex-direction: row;
-    width: 1416px;
-    &-item {
-      margin-right: var(--o-spacing-h1);
-      .o-icon {
-        font-size: var(--o-font-size-h7);
-        @media screen and (max-width: 768px) {
-          font-size: var(--o-font-size-h8);
-        }
-      }
-      &-title {
-        margin-right: var(--o-spacing-h5);
-        color: var(--o-color-text1);
-        font-size: var(--o-font-size-h7);
-        line-height: var(--o-line-height-h7);
-      }
-    }
-  }
-  &-list {
-    margin: var(--o-spacing-h2) auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: var(--o-spacing-h4);
-    &-item {
-      background-image: url(@/assets/interaction/bg.png);
-      min-height: 248px;
-      max-height: 248px;
-      background-position: right bottom;
-      background-repeat: no-repeat;
-      cursor: pointer;
-      &-title {
-        flex: 1;
-        font-size: var(--o-font-size-h7);
-        color: var(--o-color-text1);
-
-        p {
-          display: inline-block;
-          @include showline();
-          -webkit-line-clamp: 2;
-        }
-      }
-      &-info {
-        color: var(--o-color-text4);
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        .icon {
-          font-size: var(--o-font-size-h8);
-          display: inline-block;
-        }
-        p {
-          font-size: var(--o-font-size-tip);
-          display: inline-block;
-          margin-left: var(--o-spacing-h9);
-          line-height: var(--o-line-height-tip);
-          @include showline();
-          -webkit-line-clamp: 1;
-        }
-        .infodetail {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          margin-right: var(--o-spacing-h3);
-        }
-      }
-      .en-blog-list {
-        justify-content: space-between;
-        .infodetail {
-          margin: 0;
-        }
-      }
-      &-content {
-        font-size: var(--o-font-size-text);
-        line-height: var(--o-line-height-text);
-        margin-top: var(--o-spacing-h5);
-        height: 44px;
-        color: var(--o-color-text1);
-        @include showline();
-        -webkit-line-clamp: 2;
-      }
-      &-tags {
-        display: flex;
-        margin-top: var(--o-spacing-h7);
-        height: 24px;
-        flex-wrap: wrap;
-        overflow: hidden;
-        .tag-item {
-          font-size: var(--o-spacing-h6);
-          margin-right: var(--o-spacing-h8);
-          color: var(--o-color-black);
-          margin-bottom: var(--o-spacing-h10);
-        }
-      }
-    }
-  }
-}
-@media (max-width: 1100px) {
-  .blog-list {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: var(--o-spacing-h5);
-  }
-  .blog-tag2 {
+.blog-tag2 {
+  display: none;
+  @media (max-width: 1100px) {
     display: block;
     margin-left: var(--o-spacing-h5);
   }
-  .blog-select {
+}
+.blog-select {
+  display: flex;
+  flex-direction: row;
+  width: 1416px;
+  @media (max-width: 1100px) {
     display: none;
   }
-  :deep(.el-card__body) {
-    padding: var(--o-spacing-h3);
-    height: 100%;
+  .blog-select-item {
+    margin-right: var(--o-spacing-h1);
+    .o-icon {
+      font-size: var(--o-font-size-h7);
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-h8);
+      }
+    }
+    .blog-select-item-title {
+      margin-right: var(--o-spacing-h5);
+      color: var(--o-color-text1);
+      font-size: var(--o-font-size-h7);
+      line-height: var(--o-line-height-h7);
+    }
   }
 }
-@media (max-width: 768px) {
-  .blog-list {
+.blog-list {
+  margin: var(--o-spacing-h2) auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: var(--o-spacing-h4);
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: var(--o-spacing-h5);
+  }
+  @media (max-width: 768px) {
     margin-top: 0;
     margin-bottom: var(--o-spacing-h5);
     grid-template-columns: repeat(1, 1fr);
     grid-gap: var(--o-spacing-h5);
   }
-}
-@media (max-width: 415px) {
-  :deep(.el-card__body) {
-    padding: var(--o-spacing-h6);
-    min-height: 152px;
-    max-height: 152px;
-  }
   .blog-list-item {
-    min-height: 152px;
-    max-height: 152px;
-  }
-
-  .blog-list-item-content {
-    font-size: var(--o-font-size-tip);
-    line-height: var(--o-line-height-tip);
-    height: auto;
-    @include showline();
-    -webkit-line-clamp: 1;
-  }
-  .blog-list-item-title {
-    margin-bottom: var(--o-spacing-h5);
-    font-size: var(--o-font-size-text);
-    line-height: var(--o-line-height-text);
-    font-weight: 500;
-    p {
-      @include showline();
-      -webkit-line-clamp: 1;
+    background-image: url(@/assets/interaction/bg.png);
+    min-height: 248px;
+    max-height: 248px;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    @media (max-width: 415px) {
+      min-height: 152px;
+      max-height: 152px;
     }
-  }
-  .tag-item {
-    font-size: var(--o-font-size-tip);
-    line-height: var(--o-line-height-tip);
-  }
-  .blog-list-item-tags {
-    margin-top: var(--o-spacing-h5);
-  }
-}
-@media (max-width: 500px) {
-  .blog-select {
-    display: none;
+    .blog-list-item-title {
+      flex: 1;
+      font-size: var(--o-font-size-h7);
+      color: var(--o-color-text1);
+      @media (max-width: 415px) {
+        margin-bottom: var(--o-spacing-h5);
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+        font-weight: 500;
+      }
+      p {
+        display: inline-block;
+        @include showline();
+        -webkit-line-clamp: 2;
+        @media (max-width: 415px) {
+          -webkit-line-clamp: 1;
+        }
+      }
+    }
+    .blog-list-item-info {
+      color: var(--o-color-text4);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .icon {
+        font-size: var(--o-font-size-h8);
+        display: inline-block;
+      }
+      p {
+        font-size: var(--o-font-size-tip);
+        display: inline-block;
+        margin-left: var(--o-spacing-h9);
+        line-height: var(--o-line-height-tip);
+        @include showline();
+        -webkit-line-clamp: 1;
+      }
+      .infodetail {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: var(--o-spacing-h3);
+      }
+    }
+    .en-blog-list {
+      justify-content: space-between;
+      .infodetail {
+        margin: 0;
+      }
+    }
+    .blog-list-item-content {
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+      margin-top: var(--o-spacing-h5);
+      height: 44px;
+      color: var(--o-color-text1);
+      @include showline();
+      -webkit-line-clamp: 2;
+      @media (max-width: 415px) {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+        height: auto;
+        // @include showline();
+        -webkit-line-clamp: 1;
+      }
+    }
+    .blog-list-item-tags {
+      display: flex;
+      margin-top: var(--o-spacing-h7);
+      height: 24px;
+      flex-wrap: wrap;
+      overflow: hidden;
+      @media (max-width: 415px) {
+        margin-top: var(--o-spacing-h5);
+      }
+      .tag-item {
+        font-size: var(--o-spacing-h6);
+        margin-right: var(--o-spacing-h8);
+        color: var(--o-color-black);
+        margin-bottom: var(--o-spacing-h10);
+        @media (max-width: 415px) {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+        }
+      }
+    }
   }
 }
 </style>
