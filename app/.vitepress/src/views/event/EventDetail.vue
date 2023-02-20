@@ -1,10 +1,18 @@
 <script setup lang="ts">
 import { ref, shallowRef, onMounted, computed, onUnmounted, watch } from 'vue';
 import { useData } from 'vitepress';
+import { useI18n } from '@/i18n';
+
+import _ from 'lodash';
 
 import AMapLoader from '@amap/amap-jsapi-loader';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import AppContent from '@/components/AppContent.vue';
+
+import SALON_CONFIG from '@/data/salon/salon';
+
+import type { DetailDate } from '@/shared/@types/type-salon';
+import { getUrlParam, getBetweenDateStr } from '@/shared/utils';
 
 import logo_light from '@/assets/common/header/logo.png';
 import logo_dark from '@/assets/common/header/logo_dark.png';
@@ -14,44 +22,27 @@ import IconTime from '~icons/app/icon-time.svg';
 
 import { getActivityDetail } from '@/api/api-calendar';
 import { useCommon } from '@/stores/common';
-import { useI18n } from '@/i18n';
+
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 const windowWidth = ref(useWindowResize());
 
 const screenWidth = ref(1080);
 
+const isShowVideo = ref(false);
+
 const map: any = shallowRef(null);
 const { lang } = useData();
 const i18n = useI18n();
-
-interface detailDate {
-  title: string;
-  register_url: string;
-  longitude: number;
-  latitude: number;
-  start: string;
-  end: string;
-  poster: number;
-  date: string;
-  activity_type: number;
-  synopsis: string;
-  address: string;
-  posterImg: string;
-  enterprise: string;
-  schedules: string | undefined;
-  wx_code: string;
-  online_url: string;
-  detail_address: string;
-}
 
 interface flowPathList {
   THEME: string;
   TIME: string;
   SPEAKER: any;
 }
+const configData = _.cloneDeep(SALON_CONFIG.cn.MEETUPS_LIST);
 
-const detailObj = ref<detailDate>();
+const detailObj = ref<DetailDate>();
 const flowPathList = ref<any[]>([]);
 const tabTitle = ref([
   i18n.value.interaction.MEETUPSLIST.DETAIL_DESC,
@@ -70,9 +61,7 @@ const activityId = ref('');
 
 const handleScroll = (index: number) => {
   const element = document.getElementById(anchor.value[index]) as HTMLElement;
-
   if (element) {
-    // element.scrollIntoView(false);
     element.scrollIntoView({ behavior: 'smooth' });
   }
 };
@@ -81,100 +70,58 @@ const logo = computed(() => {
   return commonStore.theme === 'light' ? logo_light : logo_dark;
 });
 
-const getBetweenDateStr = (starDay: any, endDay: any) => {
-  const arr = [];
-  const dates = [];
-
-  // 设置两个日期UTC时间
-  const db = new Date(starDay);
-  const de = new Date(endDay);
-
-  // 获取两个日期GTM时间
-  const s = db.getTime() - 24 * 60 * 60 * 1000;
-  const d = de.getTime() - 24 * 60 * 60 * 1000;
-
-  // 获取到两个日期之间的每一天的毫秒数
-  for (let i = s; i <= d; ) {
-    i = i + 24 * 60 * 60 * 1000;
-    arr.push(parseInt(i.toString()));
-  }
-
-  // 获取每一天的时间  YY-MM-DD
-  for (const j in arr) {
-    const time = new Date(arr[j]);
-    const mouth =
-      time.getMonth() + 1 >= 10
-        ? time.getMonth() + 1
-        : '0' + (time.getMonth() + 1);
-    const day = time.getDate() >= 10 ? time.getDate() : '0' + time.getDate();
-    const YYMMDD = mouth + '月' + '-' + day + '日';
-    dates.push(YYMMDD);
-  }
-
-  return dates;
-};
-
-const GetUrlParam = (paraName: string) => {
-  const url = document.location.toString();
-  const arrObj = url.split('?');
-  if (arrObj.length > 1) {
-    const arrPara = arrObj[1].split('&');
-    let arr;
-    for (let i = 0; i < arrPara.length; i++) {
-      arr = arrPara[i].split('=');
-      if (arr !== null && arr[0] === paraName) {
-        return arr[1];
-      }
-    }
-    return '';
-  } else {
-    return '';
-  }
-};
-
 function getActivitiesData() {
-  activityId.value = GetUrlParam('id');
-  try {
-    getActivityDetail(activityId.value).then((res: detailDate) => {
-      //  线上活动不加载地图，不显示tab
-      res.activity_type === 2
-        ? (tabTitle.value = tabTitle.value.splice(0, 2))
-        : initMap(res.longitude, res.latitude);
-      res[
-        'posterImg'
-      ] = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${res.poster}.png`;
-      detailObj.value = res;
-      const arr: any = [];
-      if (res.start && res.end)
-        betweenDate.value = getBetweenDateStr(res.start, res.end);
-
-      if (betweenDate.value.length === 0) {
-        arr.push([]);
-        JSON.parse(res.schedules as string).forEach((item: any) => {
-          arr[0].push({
-            duration: `${item.start}-${item.end}`,
-            title: item.topic,
-            speakerList: item.speakerList,
-          });
-        });
-      } else {
-        JSON.parse(res.schedules as string).forEach(
-          (dayTime: any, index: number) => {
-            arr.push([]);
-            dayTime.forEach((item: any) => {
-              arr[index].push({
-                duration: `${item.start}-${item.end}`,
-                title: item.topic,
-                speakerList: item.speakerList,
-              });
+  activityId.value = getUrlParam('id');
+  if (getUrlParam('isMini')) {
+    try {
+      getActivityDetail(activityId.value).then((res: DetailDate) => {
+        //  线上活动不加载地图，不显示tab
+        !(res.latitude && res.longitude)
+          ? (tabTitle.value = tabTitle.value.splice(0, 2))
+          : initMap(res.longitude, res.latitude);
+        res[
+          'posterImg'
+        ] = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${res.poster}.png`;
+        detailObj.value = res;
+        const arr: any = [];
+        if (res.start && res.end)
+          betweenDate.value = getBetweenDateStr(res.start, res.end);
+        if (betweenDate.value.length === 0) {
+          arr.push([]);
+          JSON.parse(res.schedules as string).forEach((item: any) => {
+            arr[0].push({
+              duration: `${item.start}-${item.end}`,
+              title: item.topic,
+              speakerList: item.speakerList,
             });
-          }
-        );
+          });
+        } else {
+          JSON.parse(res.schedules as string).forEach(
+            (dayTime: any, index: number) => {
+              arr.push([]);
+              dayTime.forEach((item: any) => {
+                arr[index].push({
+                  duration: `${item.start}-${item.end}`,
+                  title: item.topic,
+                  speakerList: item.speakerList,
+                });
+              });
+            }
+          );
+        }
+        flowPathList.value = arr;
+      });
+    } catch (error: any) {
+      throw new Error(error);
+    }
+  } else {
+    tabTitle.value = tabTitle.value.splice(0, 2);
+    configData.forEach((item) => {
+      if (item.id === Number(activityId.value)) {
+        detailObj.value = item;
+        flowPathList.value.push(item.MEETUPS_FLOW_PATH);
       }
-      flowPathList.value = arr;
     });
-  } catch (error: any) {
-    throw new Error(error);
   }
 }
 
@@ -207,13 +154,13 @@ function clickDayTab(e: any) {
 }
 
 function clickTab(e: any) {
-  tabIndex.value = e.index - 0;
-  handleScroll(e.index - 0);
+  if (detailObj.value?.videoLink && !e.uid) {
+    isShowVideo.value = true;
+  } else {
+    tabIndex.value = e.index - 0;
+    handleScroll(e.index - 0);
+  }
 }
-
-// const handleGo = (path: string | undefined) => {
-//   if (path) window.open(path, '_blank');
-// };
 
 const scroll = () => {
   if (document.getElementById('tab') && document.getElementById('tab2')) {
@@ -259,7 +206,7 @@ watch(windowWidth, () => {
 </script>
 <template>
   <div v-if="detailObj">
-    <div v-if="detailObj && detailObj.posterImg" class="top-img-mobile">
+    <div class="top-img-mobile">
       <img :src="detailObj.posterImg" alt="" />
       <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
         {{ detailObj.title }}
@@ -276,20 +223,19 @@ watch(windowWidth, () => {
         ></OTabPane>
       </OTabs>
     </div>
-    <AppContent :pc-top="40" :mobile-top="12"
-      ><div class="calendar-detail">
+    <AppContent :pc-top="40" :mobile-top="12">
+      <div class="calendar-detail">
         <BreadCrumbs
           :bread1="i18n.interaction.MEETUPSLIST.MEETUPS"
           :bread2="detailObj?.title"
-          :link1="'/' + lang + '/interaction/salon-list/'"
+          :link1="'/' + lang + '/interaction/event-list/latest/'"
           class="bread"
         />
 
         <div class="top-content">
           <div
-            v-if="detailObj?.posterImg"
             class="top-left"
-            :style="{ backgroundImage: `url(${detailObj.posterImg})` }"
+            :style="{ backgroundImage: `url(${detailObj?.posterImg})` }"
           >
             <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
               {{ detailObj.title }}
@@ -317,7 +263,7 @@ watch(windowWidth, () => {
               animation
               target="_blank"
               class="btn-detail"
-              @click="clickTab({ index: 2 })"
+              @click="clickTab({ index: 1 })"
             >
               {{ i18n.interaction.MEETUPSLIST.LEARN_MORE }}
               <template #suffixIcon>
@@ -339,7 +285,16 @@ watch(windowWidth, () => {
         </div>
         <div class="synopsis detail-card">
           <h1 id="synopsis" class="detail-title">{{ tabTitle[0] }}</h1>
-          <p class="synopsis-body">{{ detailObj?.synopsis }}</p>
+          <template v-if="Array.isArray(detailObj?.synopsis)">
+            <p
+              class="synopsis-body"
+              v-for="item in detailObj?.synopsis"
+              :key="item"
+            >
+              {{ item }}
+            </p>
+          </template>
+          <p class="synopsis-body" v-else>{{ detailObj?.synopsis }}</p>
         </div>
         <div class="agenda detail-card">
           <h1 id="agenda" class="detail-title">{{ tabTitle[1] }}</h1>
@@ -412,7 +367,7 @@ watch(windowWidth, () => {
           </div>
         </div>
         <div
-          v-show="detailObj?.activity_type !== 2"
+          v-if="detailObj?.activity_type !== 2 && getUrlParam('isMini')"
           class="meet-message detail-card"
         >
           <h1 id="meet-message" class="detail-title">{{ tabTitle[2] }}</h1>
@@ -425,7 +380,7 @@ watch(windowWidth, () => {
               <p>
                 {{ detailObj?.address }}
               </p>
-              <p v-if="detailObj?.detail_address.includes('http')">
+              <p v-if="detailObj?.detail_address?.includes('http')">
                 {{ i18n.interaction.MEETUPSLIST.LIVE_ADDRESS }}
               </p>
               <p v-else>
@@ -443,32 +398,47 @@ watch(windowWidth, () => {
           <div class="map">
             <div id="container"></div>
           </div>
-        </div></div
-    ></AppContent>
+        </div>
+      </div>
+      <div class="video-box">
+        <ODialog
+          v-model="isShowVideo"
+          :show-close="false"
+          lock-scroll
+          close-on-press-escape
+          close-on-click-modal
+          destroy-on-close
+          width="800px"
+        >
+          <div class="video-center">
+            <video class="exhibition-video" width="100%" controls autoplay>
+              <source :src="detailObj?.videoLink" />
+            </video>
+          </div>
+        </ODialog>
+      </div>
+    </AppContent>
   </div>
-  <!-- <div v-else>
-    <div class="nofound">
-      <img class="img" :src="Img404" alt="404" />
-      <p>{{ lang === 'zh' ? '暂无数据！' : 'NotFound !' }}</p>
-    </div>
-  </div> -->
 </template>
 <style lang="scss" scoped>
-.nofound {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: var(--o-font-size-h6);
-  color: var(--o-color-text1);
-  padding: var(--o-spacing-h2) 0;
-  height: 100%;
-  .img {
-    max-width: 500px;
-    object-fit: cover;
+.video-box {
+  :deep(.el-dialog__header) {
+    display: none;
+  }
+  :deep(.el-dialog__body) {
+    padding: 0;
+  }
+  .exhibition-video {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+  :deep(.el-dialog) {
+    @media screen and (max-width: 875px) {
+      width: 90% !important;
+    }
   }
 }
-
 .time-line {
   display: none;
   @media (max-width: 768px) {
@@ -476,7 +446,7 @@ watch(windowWidth, () => {
     display: flex;
     flex-flow: column;
   }
-  &-left {
+  .time-line-left {
     display: flex;
     flex-flow: column;
     justify-content: start;
@@ -497,30 +467,30 @@ watch(windowWidth, () => {
     border-left: 2px var(--o-color-brand1) dashed;
   }
 
-  &-content {
+  .time-line-content {
     display: flex;
     flex-flow: row;
   }
 
-  &-right {
+  .time-line-right {
     padding-bottom: var(--o-spacing-h5);
   }
 
-  &-duration {
+  .time-line-duration {
     font-size: 10px;
     color: var(--o-color-brand1);
     line-height: 16px;
     margin-bottom: var(--o-spacing-h8);
   }
 
-  &-title {
+  .time-line-title {
     font-size: var(--o-font-size-tip);
     color: var(--o-color-text1);
     line-height: var(--o-line-height-tip);
     margin-bottom: var(--o-spacing-h8);
   }
 
-  &-name {
+  .time-line-name {
     font-size: 10px;
     color: var(--o-color-text4);
     line-height: 16px;
@@ -528,6 +498,7 @@ watch(windowWidth, () => {
     flex-flow: row;
   }
 }
+
 .tab-box-mobile {
   background-color: var(--o-color-bg2);
   display: none;

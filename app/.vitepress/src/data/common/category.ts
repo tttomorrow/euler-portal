@@ -6,6 +6,7 @@ const categories: string[] = [
   'about-us',
   'download',
   'showcase-route',
+  'event',
 ];
 
 export default categories;

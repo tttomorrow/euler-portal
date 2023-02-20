@@ -70,7 +70,7 @@ const tdks = {
     keywords: 'openEuler,openEuler博客,欧拉社区,开发者博客,开发者文档,迁移指南',
   },
   // 沙龙列表
-  '/zh/interaction/salon-list/': {
+  '/zh/interaction/event-list/': {
     description:
       'openEuler活动沙龙，为您提供关于openEuler官方发布的第一手开发者活动信息。想要了解更多相关信息，欢迎访问openEuler官网。',
     keywords:
@@ -216,12 +216,14 @@ const tdks = {
   '/zh/other/projects/isula/': {
     description:
       "iSula /'i.zu.la/，华为容器技术方案品牌。其原意是一种非常强大的蚂蚁，学术上称为“子弹蚁”，因为被它咬一口，犹如被子弹打到那般疼痛。iSula是世界上强大的昆虫之一。华为容器技术方案品牌因其“小个头、大能量”的含义而取名。想要了解更多信息，欢迎访问openEuler官网。",
-    keywords: 'openEuler,通用容器引擎,linux开源社区,开源社区,iSula,openEuler社区官网',
+    keywords:
+      'openEuler,通用容器引擎,linux开源社区,开源社区,iSula,openEuler社区官网',
   },
   '/zh/other/projects/secgear/': {
     description:
       'secGear是面向计算产业的机密计算安全应用开发套件，旨在方便开发者在不同的硬件设备上提供统一开发框架，让用户不感知底层各种机密计算架构和接口的差异，目前secGear支持Intel SGX硬件和ARM Trustzone(安全os支持iTrustee)。想要了解更多信息，欢迎访问openEuler官网。 ',
-    keywords: 'secGear,机密计算框架,openEuler,linux开源社区,开源社区,openEuler社区官网',
+    keywords:
+      'secGear,机密计算框架,openEuler,linux开源社区,开源社区,openEuler社区官网',
   },
   '/zh/other/projects/stratovirt/': {
     description:
