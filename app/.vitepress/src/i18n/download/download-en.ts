@@ -18,7 +18,7 @@ export default {
   OUTSIDE_TITLE: 'ISO',
   SCENARIO: 'Scenario',
   RELEASE_DATE: 'Release Date',
-  DOWNLOAD_LINK: 'download',
+  DOWNLOAD_LINK: 'Download',
   MANUFACTURER: 'Vendor',
   WHITE_PAPER: 'White Paper',
   DOWNLOAD_CLASS: 'Images：',
