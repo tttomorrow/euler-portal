@@ -7,6 +7,7 @@ import review6 from '@/assets/category/salon/6.png';
 import review7 from '@/assets/category/salon/7.png';
 import review8 from '@/assets/category/salon/8.png';
 import review9 from '@/assets/category/salon/9.png';
+import review10 from '@/assets/category/salon/10.png';
 
 export default {
   cn: {
@@ -900,6 +901,48 @@ export default {
       //   },
       //   meetingTag: '高校活动',
       // },
+      {
+        id: 29,
+        title: 'openEuler DPU Meetup',
+        date: '2023-01-16',
+        meetupsMonth: '',
+        visibleText: true,
+        windowOpen: '/zh/news/20230117-dupmeetup.html',
+        posterImg:
+          'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website1.png',
+        synopsis: [''],
+        MEETINGS_INFO: {
+          ADDRESS_UP: '北京',
+        },
+      },
+      {
+        id: 30,
+        title: 'FOSDEM’23',
+        date: '2023-02-4',
+        meetupsMonth: '',
+        posterImg: review10,
+        videoLink: ' https://b23.tv/2S4dQ0a',
+        synopsis: [
+          'FOSDEM是一个由志愿者组织的为期2天的活动，旨在促进开源软件的广泛使用。作为大型开发者盛会，FOSDEM为开源爱好者们提供了一个分享想法和协作的场所。该活动高度面向开发人员，汇聚了来自世界各地的约 8000 多名开发人员。',
+        ],
+        MEETINGS_INFO: {
+          ADDRESS_UP: '比利时布鲁塞尔',
+        },
+      },
+      {
+        id: 31,
+        title: 'openEuler Developer Day',
+        date: '2023-05',
+        meetupsMonth: '',
+        synopsis: [
+          'openEuler Developer Day是由开放原子开源基金会的 openEuler 社区发起的开发者大会。旨在推动 openEuler 在服务器，云计算、边缘计算和嵌入式四大场景的技术探索和创新。峰会拟在2023年5月举办，敬请期待。 \n\n点击回顾 openEuler Developer Day 2022',
+        ],
+        windowOpen:
+          'https://v1.openeuler.org/zh/interaction/summit-list/devday2022/',
+        MEETINGS_INFO: {
+          ADDRESS_UP: '北京',
+        },
+      },
     ],
   },
   en: {

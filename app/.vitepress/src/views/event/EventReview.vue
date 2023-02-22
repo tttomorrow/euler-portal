@@ -26,6 +26,7 @@ interface LatestActivity {
   title: string;
   synopsis: string;
   address: string;
+  windowOpen: string;
   [propName: string]: any;
 }
 // system variable
@@ -46,19 +47,27 @@ const latestList: Ref<Array<LatestActivity>> = ref([]);
 const allReviewList: Ref<Array<LatestActivity>> = ref([]);
 
 // 精彩回顾下展示列表
-const goDetail = (item: { isMiniProgram: number; id: number }) => {
-  let query = '';
-  if (item.isMiniProgram) {
-    query = 'id=' + item.id + '&isMini=1';
+const goDetail = (item: {
+  isMiniProgram: number;
+  id: number;
+  windowOpen: string;
+}) => {
+  if (item.windowOpen) {
+    window.open(item.windowOpen);
   } else {
-    query = 'id=' + item.id;
+    let query = '';
+    if (item.isMiniProgram) {
+      query = 'id=' + item.id + '&isMini=1';
+    } else {
+      query = 'id=' + item.id;
+    }
+    router.go(
+      '/' +
+        lang.value +
+        `/interaction/event-list/${routeArr[routeArr.length - 2]}/detail/?` +
+        query
+    );
   }
-  router.go(
-    '/' +
-      lang.value +
-      `/interaction/event-list/${routeArr[routeArr.length - 2]}/detail/?` +
-      query
-  );
 };
 // 精彩回顾页码
 const currentPage = ref(1);
@@ -100,6 +109,9 @@ onMounted(async () => {
         allReviewList.value.unshift(item);
       }
     });
+    allReviewList.value = allReviewList.value.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
   } catch (e: any) {
     throw new Error(e);
   }
@@ -123,7 +135,9 @@ onMounted(async () => {
             </div>
             <div v-if="item.posterImg" class="salon-review-card-img">
               <img :src="item.posterImg" alt="" />
-              <span v-if="item.isMiniProgram">{{ item.title }}</span>
+              <span v-if="item.isMiniProgram || item.visibleText">{{
+                item.title
+              }}</span>
             </div>
             <div
               v-else
