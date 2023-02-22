@@ -16,6 +16,7 @@ import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
 
 import IconCalendar from '~icons/app/icon-calendar.svg';
+import IconHome from '~icons/app/icon-home.svg';
 
 interface LatestActivity {
   isMiniProgram: number;
@@ -25,6 +26,7 @@ interface LatestActivity {
   title: string;
   synopsis: string;
   address: string;
+  windowOpen: string;
   [propName: string]: any;
 }
 // system variable
@@ -45,19 +47,27 @@ const latestList: Ref<Array<LatestActivity>> = ref([]);
 const allReviewList: Ref<Array<LatestActivity>> = ref([]);
 
 // 精彩回顾下展示列表
-const goDetail = (item: { isMiniProgram: number; id: number }) => {
-  let query = '';
-  if (item.isMiniProgram) {
-    query = 'id=' + item.id + '&isMini=1';
+const goDetail = (item: {
+  isMiniProgram: number;
+  id: number;
+  windowOpen: string;
+}) => {
+  if (item.windowOpen) {
+    window.open(item.windowOpen);
   } else {
-    query = 'id=' + item.id;
+    let query = '';
+    if (item.isMiniProgram) {
+      query = 'id=' + item.id + '&isMini=1';
+    } else {
+      query = 'id=' + item.id;
+    }
+    router.go(
+      '/' +
+        lang.value +
+        `/interaction/event-list/${routeArr[routeArr.length - 2]}/detail/?` +
+        query
+    );
   }
-  router.go(
-    '/' +
-      lang.value +
-      `/interaction/event-list/${routeArr[routeArr.length - 2]}/detail/?` +
-      query
-  );
 };
 // 精彩回顾页码
 
@@ -84,6 +94,9 @@ onMounted(async () => {
         allReviewList.value.unshift(item);
       }
     });
+    latestList.value = latestList.value.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
   } catch (e: any) {
     throw new Error(e);
   }
@@ -92,25 +105,50 @@ onMounted(async () => {
 <template>
   <AppContent class="salon-content">
     <main>
-      <div v-if="latestList && latestList.length" class="salon-latest">
+      <div v-if="latestList && latestList.length" class="salon-review">
         <OCard
           v-for="item in latestList"
           :key="item.id"
-          class="salon-card"
+          class="salon-review-card"
           shadow="hover"
           @click="goDetail(item)"
         >
-          <div v-if="item.posterImg" class="salon-card-img">
+          <div class="salon-review-card-title">
+            {{ item.title }}
+          </div>
+          <div v-if="item.posterImg" class="salon-review-card-img">
             <img :src="item.posterImg" alt="" />
-            <span>{{ item.title }}</span>
+            <span v-if="item.isMiniProgram || item.visibleText">{{
+              item.title
+            }}</span>
           </div>
-          <div v-else class="salon-card-img">
-            <p class="salon-card-img-span">{{ item.title }}</p>
+          <div
+            v-else
+            class="salon-review-card-desc"
+            :title="item.synopsis ? item.synopsis : ''"
+          >
+            {{ item.synopsis ? item.synopsis : '' }}
           </div>
-          <span class="salon-card-synopsis">{{ item.synopsis }}</span>
-          <div class="salon-card-info">
-            <IconCalendar class="salon-card-icon"></IconCalendar>
-            <span>{{ item.date }}</span>
+          <div class="salon-review-card-bottom">
+            <div class="salon-review-card-mobile">
+              <div class="salon-review-card-title-mobile">
+                {{ item.title }}
+              </div>
+              <div
+                class="salon-review-card-desc-mobile"
+                :title="item.synopsis ? item.synopsis : ''"
+              >
+                {{ item.synopsis ? item.synopsis : '' }}
+              </div>
+            </div>
+            <div class="salon-review-card-info">
+              <IconCalendar class="salon-review-card-icon"></IconCalendar>
+              <span>{{ item.date }}</span>
+              <IconHome class="home salon-review-card-icon"></IconHome>
+              <span class="address" :title="item.address">
+                {{ item.address }}</span
+              >
+            </div>
           </div>
         </OCard>
       </div>
@@ -134,13 +172,13 @@ onMounted(async () => {
   </AppContent>
 </template>
 
-<style scoped lang="scss">
-.o-pagination {
-  margin-top: var(--o-spacing-h2);
+<style lang="scss" scoped>
+.salon-tabs {
+  :deep(.el-tabs__active-bar) {
+    transition: none;
+  }
 }
-.pagination-h5 {
-  margin-top: var(--o-spacing-h4);
-}
+
 .nofound {
   display: flex;
   justify-content: center;
@@ -156,117 +194,13 @@ onMounted(async () => {
     margin-top: var(--o-spacing-h5);
   }
 }
-.salon-latest {
-  display: grid;
-  width: 100%;
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: var(--o-spacing-h2) var(--o-spacing-h4);
-  @media (max-width: 1080px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: var(--o-spacing-h5);
-  }
-  .salon-card {
-    cursor: pointer;
-    width: 100%;
-    :deep(.el-card__body) {
-      width: 100%;
-      display: flex;
-      flex-flow: column;
-      justify-content: space-between;
-      align-items: flex-start;
-      height: 100%;
-      padding: 0px;
-    }
-    .salon-card-img {
-      width: 100%;
-      height: 196px;
-      display: flex;
-      flex-flow: row;
-      justify-content: center;
-      align-items: center;
-      @media (max-width: 768px) {
-        height: 120px;
-      }
-      img {
-        object-fit: cover;
-        height: 196px;
-        width: 100%;
-        @media (max-width: 768px) {
-          height: 120px;
-        }
-      }
-      span {
-        position: absolute;
-        text-align: center;
-        font-size: var(--o-font-size-h6);
-        line-height: var(--o-line-height-h6);
-        color: #fff;
-        @media (max-width: 768px) {
-          font-size: var(--o-font-size-text);
-          line-height: var(--o-line-height-text);
-        }
-      }
-      p {
-        text-align: center;
-        font-size: var(--o-font-size-h6);
-        line-height: var(--o-line-height-h6);
-      }
-    }
-    .salon-card-synopsis {
-      height: 75px;
-      color: var(--o-color-text1);
-      font-weight: 400;
-      font-size: var(--o-font-size-h7);
-      line-height: var(--o-line-height-h7);
-      padding: var(--o-spacing-h4) var(--o-spacing-h4) 0px var(--o-spacing-h4);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      margin-bottom: var(--o-spacing-h5);
-      @media (max-width: 780px) {
-        height: 65px;
-        padding: var(--o-spacing-h6) var(--o-spacing-h6) 0px var(--o-spacing-h6);
-        margin-bottom: var(--o-spacing-h6);
-      }
-    }
-    .salon-card-info {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      margin-left: var(--o-spacing-h4);
-      margin-bottom: var(--o-spacing-h4);
-      span {
-        font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-height-tip);
-        font-weight: 400;
-        color: var(--o-color-text-secondary);
-      }
-      @media (max-width: 780px) {
-        margin-left: var(--o-spacing-h6);
-        margin-bottom: var(--o-spacing-h5);
-      }
-    }
-    .salon-card-icon {
-      height: 24px;
-      width: 24px;
-      color: var(--o-color-text4);
-      margin-right: var(--o-spacing-h9);
-      @media (max-width: 780px) {
-        height: 16px;
-        width: 16px;
-        color: var(--o-color-neutral8);
-        margin-right: var(--o-spacing-h10);
-      }
-    }
-  }
+.o-pagination {
+  margin-top: var(--o-spacing-h2);
 }
+.pagination-h5 {
+  margin-top: var(--o-spacing-h4);
+}
+
 .split-line {
   height: 1px;
   border: none;
@@ -379,8 +313,9 @@ onMounted(async () => {
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 7;
       word-break: break-all;
+      white-space: pre-wrap;
       @media (max-width: 768px) {
         display: none;
       }

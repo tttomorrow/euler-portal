@@ -79,6 +79,7 @@ function getActivitiesData() {
         !(res.latitude && res.longitude)
           ? (tabTitle.value = tabTitle.value.splice(0, 2))
           : initMap(res.longitude, res.latitude);
+
         res[
           'posterImg'
         ] = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${res.poster}.png`;
@@ -119,6 +120,9 @@ function getActivitiesData() {
     configData.forEach((item) => {
       if (item.id === Number(activityId.value)) {
         detailObj.value = item;
+        tabTitle.value = item.MEETUPS_FLOW_PATH
+          ? tabTitle.value.splice(0, 2)
+          : tabTitle.value.splice(0, 1);
         flowPathList.value.push(item.MEETUPS_FLOW_PATH);
       }
     });
@@ -155,7 +159,11 @@ function clickDayTab(e: any) {
 
 function clickTab(e: any) {
   if (detailObj.value?.videoLink && !e.uid) {
-    isShowVideo.value = true;
+    console.log(detailObj.value.videoLink.includes('bilibili'));
+
+    !detailObj.value.videoLink.endsWith('.mp4')
+      ? window.open(detailObj.value.videoLink)
+      : (isShowVideo.value = true);
   } else {
     tabIndex.value = e.index - 0;
     handleScroll(e.index - 0);
@@ -237,14 +245,18 @@ watch(windowWidth, () => {
             class="top-left"
             :style="{ backgroundImage: `url(${detailObj?.posterImg})` }"
           >
-            <h2 class="title" :class="{ 'poster-3': detailObj.poster === 3 }">
+            <h2
+              v-if="getUrlParam('isMini')"
+              class="title"
+              :class="{ 'poster-3': detailObj.poster === 3 }"
+            >
               {{ detailObj.title }}
             </h2>
           </div>
           <div class="top-right">
             <div class="top-right-head">
               <h2 class="title">{{ detailObj?.title }}</h2>
-              <p class="category">{{ detailObj?.enterprise }}</p>
+              <p class="category">{{ detailObj?.MEETINGS_INFO?.ADDRESS_UP }}</p>
               <p
                 v-if="
                   (!detailObj?.start && !detailObj?.end) ||
@@ -265,7 +277,7 @@ watch(windowWidth, () => {
               class="btn-detail"
               @click="clickTab({ index: 1 })"
             >
-              {{ i18n.interaction.MEETUPSLIST.LEARN_MORE }}
+              {{ i18n.interaction.MEETUPSLIST.EVENT_REVIEW }}
               <template #suffixIcon>
                 <IconArrowRight class="icon"></IconArrowRight>
               </template>
@@ -296,7 +308,7 @@ watch(windowWidth, () => {
           </template>
           <p class="synopsis-body" v-else>{{ detailObj?.synopsis }}</p>
         </div>
-        <div class="agenda detail-card">
+        <div v-if="tabTitle.length >= 2" class="agenda detail-card">
           <h1 id="agenda" class="detail-title">{{ tabTitle[1] }}</h1>
           <div v-if="betweenDate.length" class="tab-box-time">
             <OTabs v-model="dayTabShow" @tab-click="clickDayTab">

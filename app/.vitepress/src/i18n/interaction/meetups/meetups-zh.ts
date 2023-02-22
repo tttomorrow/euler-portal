@@ -16,6 +16,7 @@ export default {
     DETAIL_ADDRESS: '详细地址',
     ADDRESS: '地址',
     LEARN_MORE: '了解更多',
+    EVENT_REVIEW: '活动回顾',
     INSIDENAME: 'CONNECT',
     DEFAULT_IMG: '/img/meetups/default-address.png',
     MEETUPS_DATA: salon.cn.MEETUPS_LIST,

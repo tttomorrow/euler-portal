@@ -3,7 +3,7 @@ title: '活动详情'
 ---
 
 <script setup lang="ts">
-    import EventDetail from '@/views/event/EventDetail.vue'
+    import EventReviewDetail from '@/views/event/EventReviewDetail.vue'
 </script>
 
-<EventDetail />
+<EventReviewDetail />

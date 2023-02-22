@@ -5,6 +5,8 @@ import yearPlanImg_light from '@/assets/category/salon/year-plan_light.png';
 import yearPlanImg_dark from '@/assets/category/salon/year-plan_dark.png';
 import { useCommon } from '@/stores/common';
 
+import planLink from '@/data/salon/plan';
+
 const commonStore = useCommon();
 </script>
 <template>
@@ -17,8 +19,13 @@ const commonStore = useCommon();
           "
           alt=""
         />
-        <a class="marketing" href="mailto:marketing@openeuler.org"></a>
-        <a class="events" href="mailto:events@openeuler.sh"></a>
+        <a
+          v-for="plan in planLink"
+          :key="plan.url"
+          :href="plan.url"
+          :class="plan.className"
+          :target="plan.target || '_blank'"
+        ></a>
       </div>
     </div>
   </AppContent>
@@ -36,21 +43,39 @@ const commonStore = useCommon();
     img {
       width: 100%;
     }
-    .marketing,
-    .events {
+    a {
       display: inline-block;
-      cursor: pointer;
       position: absolute;
+    }
+    .events {
+      right: 0;
+      bottom: 75px;
+      height: 20px;
+      width: 140px;
+    }
+    .marketing {
       top: 258px;
       right: 0;
       width: 170px;
       height: 20px;
     }
-    .events {
-      top: inherit;
-      bottom: 70px;
+    .beijin-dpu {
+      width: 65px;
+      height: 70px;
+      top: 295px;
+      left: 170px;
+    }
+    .fosdem {
+      width: 85px;
+      height: 50px;
+      top: 190px;
+      left: 260px;
+    }
+    .internship {
+      width: 80px;
       height: 20px;
-      width: 140px;
+      bottom: 180px;
+      left: 755px;
     }
   }
 }
