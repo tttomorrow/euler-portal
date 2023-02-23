@@ -77,6 +77,18 @@ const commonStore = useCommon();
       bottom: 180px;
       left: 755px;
     }
+    .risc-v {
+      width: 85px;
+      height: 22px;
+      top: 345px;
+      left: 260px;
+    }
+    .embedded {
+      width: 95px;
+      height: 22px;
+      top: 370px;
+      left: 260px;
+    }
   }
 }
 </style>
