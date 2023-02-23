@@ -299,7 +299,7 @@ watch(windowWidth, () => {
           </template>
           <p class="synopsis-body" v-else>{{ detailObj?.synopsis }}</p>
         </div>
-        <div v-if="tabTitle.length > 2" class="agenda detail-card">
+        <div v-if="tabTitle.length >= 2" class="agenda detail-card">
           <h1 id="agenda" class="detail-title">{{ tabTitle[1] }}</h1>
           <div v-if="betweenDate.length" class="tab-box-time">
             <OTabs v-model="dayTabShow" @tab-click="clickDayTab">
