@@ -109,7 +109,7 @@ export default {
         DESCRIPTION_1:
           'You need to apply to join the openEuler community on the Gitee platform to become a member of the organization. Application address:',
         A_TEXT:
-          'https://github.com/GeorgeCao-hw/georgedoc/blob/master/openEuler-Infra-FAQ.md',
+          'https://gitee.com/openeuler/infrastructure/blob/master/docs/openEuler-Infra-FAQ.md',
         DESCRIPTION_2: '。',
       },
       {

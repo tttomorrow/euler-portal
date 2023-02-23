@@ -109,7 +109,7 @@ export default {
         DESCRIPTION_1:
           '您需要在Gitee平台申请加入openEuler社区，成为组织成员。申请地址：',
         A_TEXT:
-          'https://github.com/GeorgeCao-hw/georgedoc/blob/master/openEuler-Infra-FAQ.md',
+          'https://gitee.com/openeuler/infrastructure/blob/master/docs/openEuler-Infra-FAQ.md',
         DESCRIPTION_2: '。',
       },
       {
