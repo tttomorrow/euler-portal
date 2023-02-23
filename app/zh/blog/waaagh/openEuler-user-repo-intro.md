@@ -6,7 +6,6 @@ tags:
   - 用户软件仓库
   - rpm
   - oepkgs
-  - EulerMaker
   - infrastructure
   - OUR
 sig: sig-infrastructure
@@ -49,18 +48,15 @@ summary: "介绍openEuler用户软件仓"
 既然OUR中也包含了一个轻量级的构建系统，有同学可能想问，它和社区其他已有的构建系统是什么样的关系
 
 这里我们做了一个简单的功能对比：
-| 特性 | OUR | oepkg | EulerMaker |
-| -- | -- | -- | -- |
-| 支持自动从PyPi打包 | ✅ | ❌ | ❌|
-| 支持自动从RubyGem打包 | ✅ | ❌ | ❌ |
-| 支持个人仓库 | ✅ | ✅ | ✅ |
-| 支持公共仓库 | ❌ | ✅ | ✅ |
-| 源码托管| 自行托管| [src-oepkg组织](https://gitee.com/src-oepkgs)+自行托管 | [src-openeuler组织](https://gitee.com/src-openeuler)+自行托管 |
-| 支持全场景构建 | ❌ | ❌ | ✅ |
-| 支持镜像构建 | ❌ | ✅ | ✅ |
+| 特性 | OUR | oepkg |
+| -- | -- | -- | 
+| 支持自动从PyPi打包 | ✅ | ❌ |
+| 支持自动从RubyGem打包 | ✅ | ❌ |
+| 支持个人仓库 | ✅ | ✅ | 
+| 支持公共仓库 | ❌ | ✅ | 
+| 源码托管| 自行托管| [src-oepkg组织](https://gitee.com/src-oepkgs)+自行托管 |
 
-如果说从功能上，这些系统还有一些重叠，那么从服务的定位上，差异则更加明显：
-- EulerMaker：它是社区官方的构建系统，目标是支持全场景，多架构的软件包构建，侧重点是支撑复杂场景中的软件包构建
+虽然说从功能上，这些系统有一些重叠，但从服务的定位上，差异是明显的：
 - oepkg：作为openEuler官方仓库的补充，其目标是尽可能大量的将现有的软件包移植到openEuler生态中
 - OUR：更像是开发者的试验田，我们更专注于为开发者提供便利，OUR支持自动从pypi，rubygem（未来可以扩展更多的方式）打包软件包，支持通过webhook自动触发持续构建
 
