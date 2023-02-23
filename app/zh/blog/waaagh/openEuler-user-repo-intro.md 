@@ -40,7 +40,7 @@ summary: "介绍openEuler用户软件仓"
 - 支持用户独立发布软件包
 - 和社区版本相对独立
 
-按照以上描述，我们发现OUR诉求和[copr](https://github.com/fedora-copr/copr)的功能十分类似，在和copr的开发团队进行沟通后，发现copr社区的目标和我们较为一致，并且十分open，在提交一系列pr并得到快速合并后，我们打算使用copr构建我们第一版的OUR系统
+按照以上描述，我们将这个平台命名为OUR（openEuler User Repo），并且发现针对OUR的需求和[copr](https://github.com/fedora-copr/copr)的功能十分类似，在和copr的开发团队进行沟通后，我们发现copr社区的目标和我们较为一致，并且十分open，在提交一系列pr并得到快速合并后，我们打算使用copr构建我们第一版的OUR系统
 
 # OUR的定位
 我们将OUR作为开发者的个人仓库，类似于ubuntu的PPA，fedora的COPR，这个服务专注于为开发者提供便利，OUR支持自动从pypi，rubygem（未来可以扩展更多的方式）打包软件包，支持通过webhook自动触发持续构建，后续还将支持一键将个人仓库的软件包引入社区
