@@ -11,9 +11,6 @@ export function getMeetingData() {
   return request
     .get(url, {
       $ignoreLoading: true,
-      headers: {
-        authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
-      },
     })
     .then((res: AxiosResponse) => res.data)
     .catch((e: any) => {
@@ -31,9 +28,6 @@ export function getActivityData() {
   return request
     .get(url, {
       $ignoreLoading: true,
-      headers: {
-        authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
-      },
     })
     .then((res: AxiosResponse) => res.data)
     .catch((e: any) => {
@@ -50,7 +44,7 @@ export function getActivityData() {
 export function getActivityDetail(id: string) {
   const url = `/api-meeting/activity/${id}/`;
   return request
-    .get(url, {})
+    .get(url)
     .then((res: AxiosResponse) => res.data)
     .catch((e: any) => {
       throw new Error(e);

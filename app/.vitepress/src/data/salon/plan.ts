@@ -22,11 +22,11 @@ export default [
     className: 'internship',
   },
   {
-    url: '/zh/interaction/event-list/latest/detail/?id=84&isMini=1',
+    url: '/zh/interaction/event-list/detail/?id=84&isMini=1',
     className: 'embedded ',
   },
   {
-    url: '/zh/interaction/event-list/latest/detail/?id=80&isMini=1',
+    url: '/zh/interaction/event-list/detail/?id=80&isMini=1',
     className: 'risc-v ',
   },
 ];
