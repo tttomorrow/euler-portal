@@ -56,7 +56,7 @@ Software packages
 
 ## 3. Software Compatibility Assessment
 
-The openEuler community provides [x2openEuler](https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/stable/contrib/x2openEuler/noarch/Packages/) to evaluate software packages and interfaces of compiled binary programs, and determine whether application software needs to be adapted and whether any dependencies are needed. In addition, the tool checks whether prototypes of interfaces called by the software are different between the two OSs.
+The openEuler community provides [x2openEuler](https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/x2openEuler/) to evaluate software packages and interfaces of compiled binary programs, and determine whether application software needs to be adapted and whether any dependencies are needed. In addition, the tool checks whether prototypes of interfaces called by the software are different between the two OSs.
 
 Note: It is difficult to ensure that the binary program is completely compatible with the target OS once it has been compiled and therefore memory risks may occur. Since it is difficult to identify this problem through verification, it is therefore important to perform software compatibility evaluation prior to porting.
 
