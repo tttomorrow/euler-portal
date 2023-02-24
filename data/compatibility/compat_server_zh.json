@@ -8001,5 +8001,66 @@
       "hostBusAdapter": "Chengdu Haiguang IC Design Co., Ltd. PSPCCP Command DMA Processor",
       "hardDiskDrive": "GOKE  GGAZT032S3IMASS  Msata 32G SSD"
     }
+  },
+  {
+    "hardwareFactory": "中科曙光",
+    "hardwareModel": "FortFirm-H3651",
+    "osVersion": "openEuler 20.03 LTS SP3",
+    "architecture": "x86_64",
+    "date": "2023/02/09",
+    "friendlyLink": "http://www.sugon.com",
+    "boardCards": [
+      {
+        "vendorID": "1000",
+        "deviceID": "10e2",
+        "svID": "1000",
+        "ssID": "4010",
+        "architecture": "x86_64",
+        "os": "openEuler 20.03 LTS SP3",
+        "driverName": "megaraid_sas",
+        "version": "07.723.02.00",
+        "type": "RAID",
+        "date": "2023.01.14",
+        "sha256": "aae9e0715cf82c8ece264d64488ab4db3d2774221494243bbe21255ed83f11c2",
+        "driverSize": "343K",
+        "chipVendor": "Avago",
+        "boardModel": "9560-8i",
+        "chipModel": "SAS3908",
+        "item": "02314EQF",
+        "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/x86_64/Packages/kmod-megaraid_sas-07.723.02.00-1.x86_64.rpm"
+      },
+      {
+        "vendorID": "8086",
+        "deviceID": "1521",
+        "svID": "1dcf",
+        "ssID": "0341",
+        "architecture": "x86_64",
+        "os": "openEuler 20.03 LTS SP3",
+        "driverName": "igb",
+        "version": "5.4.0-k",
+        "type": "NIC",
+        "date": "2023.02.09",
+        "sha256": "6f3fb60209ae2d66912600bbf938f8a2a65d5ab32cc3372e1c5a1c10e56ece27",
+        "driverSize": "487K",
+        "chipVendor": "Intel",
+        "boardModel": "I4C0N-M3",
+        "chipModel": "I350",
+        "item": "",
+        "downloadLink": "inbox"
+      }
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "http://www.sugon.com",
+      "certificationTime": "2022/02/09",
+      "commitID": "",
+      "mainboardModel": "GSP-CH326-REV B02",
+      "biosUefi": "0AH2001207",
+      "cpu": "Hygon 2",
+      "ram": "4*32G DIMMS",
+      "portsBusTypes": "x8 PCIE",
+      "videoAdapter": "ASPEED Technology, Inc. ASPEED Graphics Family (rev 41)",
+      "hostBusAdapter": "Chengdu Haiguang IC Design Co., Ltd. PSPCCP Command DMA Processor",
+      "hardDiskDrive": "GOKE  GGAZT032S3IMASS  Msata 32G SSD"
+    }
   }
 ]
