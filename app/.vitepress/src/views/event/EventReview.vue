@@ -36,8 +36,6 @@ const router = useRouter();
 
 const configData = _.cloneDeep(SALON_CONFIG.cn.MEETUPS_LIST);
 
-const routeArr = router.route.path.split('/');
-
 // 所需日期
 const nowDate = new Date();
 
@@ -61,12 +59,7 @@ const goDetail = (item: {
     } else {
       query = 'id=' + item.id;
     }
-    router.go(
-      '/' +
-        lang.value +
-        `/interaction/event-list/${routeArr[routeArr.length - 2]}/detail/?` +
-        query
-    );
+    router.go('/' + lang.value + `/interaction/event-list/detail/?` + query);
   }
 };
 // 精彩回顾页码

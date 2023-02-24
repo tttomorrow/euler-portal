@@ -40,6 +40,13 @@ interface flowPathList {
   TIME: string;
   SPEAKER: any;
 }
+const isLatest = computed(() => {
+  if (detailObj.value?.date) {
+    return new Date(detailObj.value?.date).getTime() >= new Date().getTime();
+  } else {
+    return true;
+  }
+});
 const configData = _.cloneDeep(SALON_CONFIG.cn.MEETUPS_LIST);
 
 const detailObj = ref<DetailDate>();
@@ -159,8 +166,6 @@ function clickDayTab(e: any) {
 
 function clickTab(e: any) {
   if (detailObj.value?.videoLink && !e.uid) {
-    console.log(detailObj.value.videoLink.includes('bilibili'));
-
     !detailObj.value.videoLink.endsWith('.mp4')
       ? window.open(detailObj.value.videoLink)
       : (isShowVideo.value = true);
@@ -256,7 +261,11 @@ watch(windowWidth, () => {
           <div class="top-right">
             <div class="top-right-head">
               <h2 class="title">{{ detailObj?.title }}</h2>
-              <p class="category">{{ detailObj?.MEETINGS_INFO?.ADDRESS_UP }}</p>
+              <p class="category">
+                {{
+                  detailObj?.enterprise || detailObj?.MEETINGS_INFO?.ADDRESS_UP
+                }}
+              </p>
               <p class="time">
                 {{ detailObj.date }}
               </p>
@@ -268,7 +277,11 @@ watch(windowWidth, () => {
               class="btn-detail"
               @click="clickTab({ index: 1 })"
             >
-              {{ i18n.interaction.MEETUPSLIST.EVENT_REVIEW }}
+              {{
+                isLatest
+                  ? i18n.interaction.MEETUPSLIST.LEARN_MORE
+                  : i18n.interaction.MEETUPSLIST.EVENT_REVIEW
+              }}
               <template #suffixIcon>
                 <IconArrowRight class="icon"></IconArrowRight>
               </template>
