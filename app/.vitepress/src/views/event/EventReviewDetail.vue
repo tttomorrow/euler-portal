@@ -257,17 +257,8 @@ watch(windowWidth, () => {
             <div class="top-right-head">
               <h2 class="title">{{ detailObj?.title }}</h2>
               <p class="category">{{ detailObj?.MEETINGS_INFO?.ADDRESS_UP }}</p>
-              <p
-                v-if="
-                  (!detailObj?.start && !detailObj?.end) ||
-                  detailObj?.start === detailObj?.end
-                "
-                class="time"
-              >
-                {{ detailObj?.date }}
-              </p>
-              <p v-else class="time">
-                {{ detailObj.start }}-{{ detailObj.end }}
+              <p class="time">
+                {{ detailObj.date }}
               </p>
             </div>
             <OButton

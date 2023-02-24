@@ -71,7 +71,6 @@ export default defineConfig({
       },
       '/api-search': {
         target: 'https://doc-search.openeuler.org',
-        // target: 'https://doc-search.test.osinfra.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-search/, ''),
       },
@@ -98,6 +97,11 @@ export default defineConfig({
         target: 'https://omapi.osinfra.cn/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-omapi/, ''),
+      },
+      '/api-mail/': {
+        target: 'https://mailweb.openeuler.org/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-mail/, ''),
       },
       '/ip-api/': {
         target: 'http://ip-api.com/json/',

@@ -8,13 +8,9 @@ import type { AxiosResponse } from '@/shared/axios';
  */
 
 export function getAllMailing() {
-  const url = '/api-node/mail/list';
+  const url = '/api-mail/postorius/all_lists/';
   return request
-    .get(url, {
-      headers: {
-        authorization: 'Basic b3BlbmV1bGVyc2VydmVyOm9wZW5ldWxlcnNlcnZlckAxMjM0',
-      },
-    })
+    .get(url)
     .then((res: AxiosResponse) => res.data)
     .catch((e: any) => {
       throw new Error(e);

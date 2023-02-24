@@ -41,6 +41,7 @@ import IconRobot_light from '~icons/footer/icon-robot_light.svg';
 import IconRobot_dark from '~icons/footer/icon-robot_dark.svg';
 import IconQuickIssue_light from '~icons/footer/icon-quickissue_light.svg';
 import IconQuickIssue_dark from '~icons/footer/icon-quickissue_dark.svg';
+import IconChat from '~icons/footer/icon-chat.svg';
 
 const props = defineProps({
   isCookieTip: {
@@ -220,6 +221,12 @@ const floatData = ref([
     text: '欧拉 小智',
     id: 'robot',
     link: 'https://qa-robot.openeuler.org/',
+  },
+  {
+    img: IconChat,
+    text: '欧拉 论坛',
+    id: 'robot',
+    link: 'https://forum.openeuler.org/',
   },
 ]);
 
