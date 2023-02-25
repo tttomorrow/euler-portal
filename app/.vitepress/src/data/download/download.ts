@@ -331,14 +331,14 @@ export default {
       },
       {
         NAME: 'openEuler 21.09',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-21.09/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/',
         DESC: 'openEuler 21.09创新版是欧拉全新发布后的第一个社区版本，实现了全场景支持。增强服务器和云计算的特性，发布面向云原生的业务混部CPU调度算法、容器化操作系统KubeOS等关键技术；同时发布边缘和嵌入式版本。',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/zh/docs/21.09/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-21.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf',
@@ -348,12 +348,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -389,14 +389,14 @@ export default {
       },
       {
         NAME: 'openEuler 21.03',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-21.03/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/',
         DESC: 'openEuler 21.03 版本是满足开放场景的创新发行版，生命周期六个月。',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/zh/docs/21.03/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/21.03/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-21.03/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2103.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=21.03',
@@ -405,12 +405,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -446,14 +446,14 @@ export default {
       },
       {
         NAME: 'openEuler 20.09',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.09/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/',
         DESC: 'openEuler 20.09 版本是满足开放场景的创新发行版，生命周期六个月。',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/zh/docs/20.09/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/20.09/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2009.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=20.09',
@@ -462,12 +462,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -1032,7 +1032,7 @@ export default {
       },
       {
         NAME: 'openEuler 21.09',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-21.09/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/',
         DESC: 'openEuler 21.09 is an innovative version for all scenarios, including edge and embedded devices. It enhances server and cloud computing features, and incorporates key technologies including cloud-native scheduling algorithms for hybrid service deployments and the container operating system KubeOS.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/21.09/docs/Releasenotes/release_notes.html',
@@ -1040,7 +1040,7 @@ export default {
           'https://docs.openeuler.org/en/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-21.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-en.pdf',
@@ -1050,12 +1050,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -1092,7 +1092,7 @@ export default {
       },
       {
         NAME: 'openEuler 21.03',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-21.03/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/',
         DESC: 'The openEuler 21.03 version is an innovative release for open scenarios,with a lifecycle of six months.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/21.03/docs/Releasenotes/release_notes.html',
@@ -1100,7 +1100,7 @@ export default {
           'https://docs.openeuler.org/en/docs/21.03/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-21.03/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
         WHITE_PAPER: '/whitepaper/en/openEuler-21.03-Technical-White-Paper.pdf',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=21.03',
@@ -1109,12 +1109,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -1151,7 +1151,7 @@ export default {
       },
       {
         NAME: 'openEuler 20.09',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.09/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/',
         DESC: 'The openEuler 20.09 LTS version is an innovative release for open scenarios,with a lifecycle of six months.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/20.09/docs/Releasenotes/release_notes.html',
@@ -1159,7 +1159,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.09/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.09',
         MANUFACTURER: 'openEuler community',
@@ -1167,12 +1167,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -1633,7 +1633,7 @@ export default {
       },
       {
         NAME: 'openEuler 21.09',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-21.09/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/',
         DESC: 'openEuler 21.09 is an innovative version for all scenarios, including edge and embedded devices. It enhances server and cloud computing features, and incorporates key technologies including cloud-native scheduling algorithms for hybrid service deployments and the container operating system KubeOS.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/21.09/docs/Releasenotes/release_notes.html',
@@ -1641,7 +1641,7 @@ export default {
           'https://docs.openeuler.org/en/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-21.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-ru.pdf',
@@ -1651,12 +1651,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.09/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -1693,7 +1693,7 @@ export default {
       },
       {
         NAME: 'openEuler 21.03',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-21.03/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/',
         DESC: 'The openEuler 21.03 version is an innovative release for open scenarios,with a lifecycle of six months.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/21.03/docs/Releasenotes/release_notes.html',
@@ -1701,7 +1701,7 @@ export default {
           'https://docs.openeuler.org/en/docs/21.03/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-21.03/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WHITE_PAPER:
           '/whitepaper/ru/openEuler-21.03-Технический-информационный-документ.pdf',
@@ -1711,12 +1711,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-21.03/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -1753,7 +1753,7 @@ export default {
       },
       {
         NAME: 'openEuler 20.09',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.09/',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/',
         DESC: 'openEuler 20.09 LTS — это инновационный релиз для сценариев использования программного обеспечения с открытым исходным кодом с жизненным циклом шесть месяцев.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/20.09/docs/Releasenotes/release_notes.html',
@@ -1761,7 +1761,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.09/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WEBSITE_SELECT: '/ru/mirror/select/?version=20.09',
         MANUFACTURER: 'openEuler community',
@@ -1769,12 +1769,12 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/x86_64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-20.09/ISO/aarch64/',
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
