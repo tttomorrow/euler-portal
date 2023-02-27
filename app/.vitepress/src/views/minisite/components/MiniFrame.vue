@@ -202,8 +202,7 @@ const isDark = computed(() => {
         img {
           margin: 0 auto;
           display: block;
-          margin-top: var(--o-spacing-h3);
-          margin-bottom: var(--o-spacing-h3);
+          margin: 12px 88px 12px 156px;
         }
       }
     }
@@ -212,7 +211,7 @@ const isDark = computed(() => {
       .info {
         .framework-img {
           img {
-            width: 364px;
+            width: 452px;
           }
         }
       }

@@ -180,7 +180,6 @@ const goLink = (path: string) => {
         }
         &-img {
           width: 130px;
-          height: 130px;
           position: absolute;
           right: 30px;
           top: 30px;
