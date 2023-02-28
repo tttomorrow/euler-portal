@@ -32,7 +32,7 @@ async function getRankData() {
   try {
     const data = {
       sort: '',
-      pageSize:10000,
+      pageSize: 10000,
     };
     const res = await getRank(data);
     if (res.code === 200) {
@@ -132,9 +132,13 @@ onMounted(() => {
         </div>
         <div v-if="isAllVisible" class="view-all">
           <a @click="toggleRankState()">
-            {{ !isRankUnfold? rank.viewAll:rank.packUp }}
+            {{ !isRankUnfold ? rank.viewAll : rank.packUp }}
             <div>
-              <img :class="{arrow:isRankUnfold}" src="@/assets/category/internship/right.svg" alt="" />
+              <img
+                :class="{ arrow: isRankUnfold }"
+                src="@/assets/category/internship/right.svg"
+                alt=""
+              />
             </div>
           </a>
         </div>
@@ -183,7 +187,7 @@ onMounted(() => {
         font-size: 14px;
         color: rgba(0, 0, 0, 0.5);
         line-height: 16px;
-        @media (max-width: 1000px){
+        @media (max-width: 1000px) {
           font-size: 12px;
         }
       }
@@ -206,7 +210,7 @@ onMounted(() => {
           padding-left: 10px;
           font-size: 14px;
           color: rgba(0, 0, 0, 0.5);
-          @media (max-width: 1000px){
+          @media (max-width: 1000px) {
             font-size: 12px;
           }
         }
@@ -216,7 +220,7 @@ onMounted(() => {
         font-size: 24px;
         color: #ffffff;
         line-height: 24px;
-        @media (max-width: 1000px){
+        @media (max-width: 1000px) {
           width: 92px;
           font-size: 16px;
           line-height: 24px;
@@ -227,7 +231,7 @@ onMounted(() => {
         line-height: 66px;
         background: #5dc8ff;
         border: 1px solid #a4e1ff;
-        @media (max-width: 1000px){
+        @media (max-width: 1000px) {
           height: 60px;
           line-height: 60px;
         }
@@ -238,7 +242,7 @@ onMounted(() => {
         line-height: 104px;
         background: #ff7c56;
         border: 1px solid #a4e1ff;
-        @media (max-width: 1000px){
+        @media (max-width: 1000px) {
           height: 85px;
           line-height: 85px;
         }
@@ -248,7 +252,7 @@ onMounted(() => {
         line-height: 48px;
         background: #2e9afe;
         border: 1px solid #a4e1ff;
-        @media (max-width: 1000px){
+        @media (max-width: 1000px) {
           height: 40px;
           line-height: 40px;
         }
@@ -259,9 +263,9 @@ onMounted(() => {
     .rank-item:nth-of-type(1) {
       margin-top: 30px;
       border-top: 1px dashed #ff7c56;
-      @media (max-width: 1000px){
-          margin-top: 20px;
-        }
+      @media (max-width: 1000px) {
+        margin-top: 20px;
+      }
     }
     .rank-item {
       display: flex;
@@ -269,10 +273,10 @@ onMounted(() => {
       padding: 16px 0;
       margin-bottom: 10px;
       border-bottom: 1px dashed #ff7c56;
-      @media (max-width: 1000px){
-          padding: 14px 0;
+      @media (max-width: 1000px) {
+        padding: 14px 0;
         margin: 0;
-        }
+      }
       .rank-left,
       .rank-right {
         display: flex;
@@ -280,19 +284,19 @@ onMounted(() => {
         .rank-class {
           font-size: 24px;
           color: #ff7c56;
-          @media (max-width: 1000px){
-          font-size: 16px;
-        }
+          @media (max-width: 1000px) {
+            font-size: 16px;
+          }
         }
         .gitee-name {
           padding-left: 20px;
           font-size: 14px;
           color: rgba(0, 0, 0, 0.5);
           line-height: 16px;
-           @media (max-width: 1000px){
-          padding-left: 10px;
+          @media (max-width: 1000px) {
+            padding-left: 10px;
             font-size: 12px;
-        }
+          }
         }
         .gitee-name:hover {
           color: #002fa7;
@@ -303,9 +307,9 @@ onMounted(() => {
           font-size: 18px;
           color: #ff644e;
           line-height: 16px;
-          @media (max-width: 1000px){
-          font-size: 14px;
-        }
+          @media (max-width: 1000px) {
+            font-size: 14px;
+          }
         }
         span {
           padding-left: 30px;
@@ -313,10 +317,10 @@ onMounted(() => {
           font-size: 14px;
           color: rgba(0, 0, 0, 0.5);
           line-height: 16px;
-          @media (max-width: 1000px){
-          padding-left: 6px;
+          @media (max-width: 1000px) {
+            padding-left: 6px;
             font-size: 12px;
-        }
+          }
         }
       }
     }
@@ -325,7 +329,7 @@ onMounted(() => {
     padding-top: 50px;
     margin-bottom: 20px;
     border-bottom: 1px dashed #ff7c56;
-    @media (max-width: 1000px){
+    @media (max-width: 1000px) {
       padding-top: 30px;
     }
   }

@@ -76,34 +76,34 @@ const jumpTo = (path: string) => {
       grid-template-columns: repeat(2, 1fr);
       margin-top: 16px;
     }
-    @media screen and (min-width: 768px) and (max-width: 1440px){
+    @media screen and (min-width: 768px) and (max-width: 1440px) {
       grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+      gap: 16px;
     }
     @media (max-width: 780px) {
       grid-template-columns: repeat(1, 1fr);
       gap: 16px;
     }
-    @media (max-width: 1000px){
+    @media (max-width: 1000px) {
       .item:nth-child(n) {
-      width: 100%;
-      padding: 16px;
-      position: relative;
-      min-height: 160px;
-      .item-intriduce {
         width: 100%;
-        font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-height-tip);
-        margin-bottom: 0;
+        padding: 16px;
+        position: relative;
+        min-height: 160px;
+        .item-intriduce {
+          width: 100%;
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+          margin-bottom: 0;
+        }
+        .button-box {
+          justify-content: inherit;
+          gap: 16px;
+          position: absolute;
+          bottom: var(--o-spacing-h5);
+          left: var(--o-spacing-h5);
+        }
       }
-      .button-box {
-        justify-content: inherit;
-        gap: 16px;
-        position: absolute;
-        bottom: var(--o-spacing-h5);
-        left: var(--o-spacing-h5);
-      }
-    }
     }
     .item {
       padding: 40px;
@@ -216,5 +216,4 @@ const jumpTo = (path: string) => {
     }
   }
 }
-
 </style>

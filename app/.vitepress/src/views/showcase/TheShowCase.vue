@@ -256,9 +256,9 @@ onMounted(() => {
       <OButton
         v-if="userCaseData.caseLink"
         class="case-download"
-        @click="downloadCase(userCaseData.caseLink)"
         type="outline"
         size="mini"
+        @click="downloadCase(userCaseData.caseLink)"
       >
         {{ userCaseData.downloadCase }}
         <template #suffixIcon>
