@@ -32,6 +32,12 @@ const commonStore = useCommon();
 </template>
 
 <style scoped lang="scss">
+.salon-content {
+  padding-bottom: 40px;
+  @media screen and (max-width: 768px) {
+    padding-bottom: 24px;
+  }
+}
 .year-plan {
   color: var(--o-color-text1);
   overflow: auto;
