@@ -23,9 +23,10 @@ import AppContent from '@/components/AppContent.vue';
 
 <AppContent :pc-top = "0" :mobile-top="0">
 
-### 活动说明
 
 <div class="text-box">
+
+**活动说明**
 
 因为大家的辛勤付出，openEuler才能茁壮成长，我们鼓励所有为社区贡献的方式。欢迎与openEuler一起组织开发者活动！
 
