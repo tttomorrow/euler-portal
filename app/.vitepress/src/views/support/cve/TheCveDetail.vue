@@ -140,10 +140,15 @@ onMounted(() => {
       </div>
       <div class="detail-item">
         <h2 class="detail-item-title">{{ i18n.cve.METRICS_V3 }}</h2>
-        <OTable class="pc-list" :data="cvssList" style="width: 100%">
+        <OTable class="pc-list" :data="cvssList">
           <OTableColumn label="" prop="cate"> </OTableColumn>
-          <OTableColumn label="NVD" prop="NVD"> </OTableColumn>
-          <OTableColumn label="openEuler" prop="openEuler"> </OTableColumn>
+          <el-table-column label="NVD" prop="NVD">
+            <template #default="scope">
+              {{ scope.row.NVD === '0.0' ? '' : scope.row.NVD }}
+            </template>
+          </el-table-column>
+          <el-table-column label="openEuler" prop="openEuler">
+          </el-table-column>
         </OTable>
       </div>
       <div class="detail-item">

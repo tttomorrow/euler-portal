@@ -10,6 +10,7 @@ import fileIllustration from '@/assets/category/minisite/shared/illustration-fil
 import bookIllustration from '@/assets/category/minisite/shared/illustration-book.png';
 import glassIllustration from '@/assets/category/minisite/shared/illustration-glass.png';
 import newspapperIllustration from '@/assets/category/minisite/shared/illustration-newspapper.png';
+import scenarioIllustration from '@/assets/category/minisite/shared/illustration-scenario.png';
 
 export default {
   SECGEAR_BANNER_TEXT: [
@@ -88,7 +89,7 @@ export default {
       },
       {
         IMG: glassIllustration,
-        THEME: '工具Tool Usage用文档',
+        THEME: 'Tools Use Document',
         DESC: '',
         LINK: [
           {
@@ -109,6 +110,21 @@ export default {
           {
             TEXT: 'Read me',
             LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/secGear/%E6%8E%A5%E5%8F%A3%E5%8F%82%E8%80%83.md',
+          },
+        ],
+        BACKGROUND: {
+          IMG: docBg,
+          TYPE: 2,
+        },
+      },
+      {
+        IMG: scenarioIllustration,
+        THEME: 'Scenarios',
+        DESC: '',
+        LINK: [
+          {
+            TEXT: 'Read me',
+            LINK: 'https://gitee.com/openeuler/docs/blob/master/docs/zh/docs/secGear/%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.md',
           },
         ],
         BACKGROUND: {

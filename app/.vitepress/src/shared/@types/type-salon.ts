@@ -16,6 +16,7 @@ export interface DetailDate {
   schedules?: string;
   wx_code?: string;
   online_url?: string;
+  live_address?: string;
   detail_address?: string;
   TITLE_LIST?: string[];
   MEETUPS_MONTH?: string;

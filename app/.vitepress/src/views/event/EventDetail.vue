@@ -4,6 +4,7 @@ import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import _ from 'lodash';
+import { getNowFormatDate } from '@/shared/utils';
 
 import AMapLoader from '@amap/amap-jsapi-loader';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
@@ -29,7 +30,7 @@ const windowWidth = ref(useWindowResize());
 
 const screenWidth = ref(1080);
 
-const isShowVideo = ref(false);
+const isVideoVisible = ref(false);
 
 const map: any = shallowRef(null);
 const { lang } = useData();
@@ -42,7 +43,10 @@ interface flowPathList {
 }
 const isLatest = computed(() => {
   if (detailObj.value?.date) {
-    return new Date(detailObj.value?.date).getTime() >= new Date().getTime();
+    return (
+      new Date(detailObj.value?.date).getTime() >=
+      new Date(getNowFormatDate()).getTime()
+    );
   } else {
     return true;
   }
@@ -165,10 +169,14 @@ function clickDayTab(e: any) {
 }
 
 function clickTab(e: any) {
+  if (detailObj.value?.live_address) {
+    window.open(detailObj.value?.live_address);
+    return;
+  }
   if (detailObj.value?.videoLink && !e.uid) {
     !detailObj.value.videoLink.endsWith('.mp4')
       ? window.open(detailObj.value.videoLink)
-      : (isShowVideo.value = true);
+      : (isVideoVisible.value = true);
   } else {
     tabIndex.value = e.index - 0;
     handleScroll(e.index - 0);
@@ -418,7 +426,7 @@ watch(windowWidth, () => {
       </div>
       <div class="video-box">
         <ODialog
-          v-model="isShowVideo"
+          v-model="isVideoVisible"
           :show-close="false"
           lock-scroll
           close-on-press-escape

@@ -3,6 +3,7 @@ import { computed, onMounted, Ref, ref } from 'vue';
 import { useData, useRouter } from 'vitepress';
 
 import _ from 'lodash';
+import { getNowFormatDate } from '@/shared/utils';
 
 import { useCommon } from '@/stores/common';
 
@@ -37,7 +38,7 @@ const router = useRouter();
 const configData = _.cloneDeep(SALON_CONFIG.cn.MEETUPS_LIST);
 
 // 所需日期
-const nowDate = new Date();
+const nowDate = getNowFormatDate();
 
 // 本月及以后最新活动列表
 const latestList: Ref<Array<LatestActivity>> = ref([]);
@@ -84,7 +85,7 @@ onMounted(async () => {
   configData.forEach((item: any) => {
     item.synopsis = item.synopsis[0];
     item.address = item.MEETINGS_INFO.ADDRESS_UP;
-    if (new Date(item.date).getTime() >= nowDate.getTime()) {
+    if (new Date(item.date).getTime() >= new Date(nowDate).getTime()) {
       latestList.value.push(item);
     } else {
       allReviewList.value.unshift(item);
@@ -96,7 +97,7 @@ onMounted(async () => {
     responeData.forEach((item: LatestActivity) => {
       item.isMiniProgram = 1;
       item.posterImg = `https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/website-meetup/website${item.poster}.png`;
-      if (new Date(item.date).getTime() >= nowDate.getTime()) {
+      if (new Date(item.date).getTime() >= new Date(nowDate).getTime()) {
         latestList.value.push(item);
       } else {
         allReviewList.value.unshift(item);

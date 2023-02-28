@@ -28,5 +28,10 @@ export const selectMirror = (version: string) => {
     window.location.host !== 'www.openeuler.org'
       ? `/api/mirrors/openEuler-${version}/ISO/`
       : `https://api.openeuler.org/mirrors/openEuler-${version}/ISO/`;
-  return request.get(url).then((res: AxiosResponse) => res.data);
+  return request
+    .get(url)
+    .then((res: AxiosResponse) => res.data)
+    .catch((err) => {
+      console.log(err);
+    });
 };
