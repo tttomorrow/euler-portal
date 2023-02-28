@@ -5,7 +5,6 @@ category: blog
 tags:
   - 用户软件仓库
   - rpm
-  - oepkgs
   - infrastructure
   - EUR
 sig: sig-infrastructure
