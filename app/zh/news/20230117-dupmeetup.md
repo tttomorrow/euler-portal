@@ -5,7 +5,7 @@ category: news
 tags:
   - meetup
   - DPU
-banner: 'img/banners/image-0116'
+banner: 'img/banners/20230203anli.png'
 author: 'openEuler'
 summary: '回顾 | openEuler DPU Meetup'
 ---

@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { onMounted, Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
+
 import { selectMirror } from '@/api/api-mirror';
+
+import _ from 'lodash';
+import { getUrlParam } from '@/shared/utils';
+
+import type { DownloadData } from '@/shared/@types/type-download';
 
 import BannerLevel3 from '@/components/BannerLevel3.vue';
 // import MapContainer from './MapContainer.vue';
@@ -10,6 +16,10 @@ import AppContent from '@/components/AppContent.vue';
 import banner from '@/assets/banner/banner-download.png';
 
 const i18n = useI18n();
+
+const downloadData: DownloadData[] = _.cloneDeep(
+  i18n.value.download.DOWNLOAD_LIST
+);
 
 interface MapMsg {
   name: string;
@@ -40,23 +50,7 @@ const ipAndAsn: Ref<string[]> = ref([]);
 
 const versionPath: Ref<string[]> = ref([]);
 
-const getUrlParam = (paraName: string) => {
-  const url = document.location.toString();
-  const arrObj = url.split('?');
-  if (arrObj.length > 1) {
-    const arrPara = arrObj[1].split('&');
-    let arr;
-    for (let i = 0; i < arrPara.length; i++) {
-      arr = arrPara[i].split('=');
-      if (arr !== null && arr[0] === paraName) {
-        return arr[1];
-      }
-    }
-    return '';
-  } else {
-    return '';
-  }
-};
+const officeSource: Ref<string> = ref('');
 
 const compare = (temp: any[]) => {
   temp.sort(function (a, b) {
@@ -66,6 +60,9 @@ const compare = (temp: any[]) => {
 };
 
 const initTable = (responeData: any) => {
+  if (!responeData) {
+    return;
+  }
   area.value = responeData.ClientInfo.Country;
   ipAndAsn.value.push(responeData.IP);
   if (responeData.ClientInfo.ASName) {
@@ -108,6 +105,9 @@ const initTable = (responeData: any) => {
 };
 
 const initMap = (data: any[]) => {
+  if (!data) {
+    return;
+  }
   const result: MapMsg[] = [];
   data.forEach((item) => {
     const itemObj: MapMsg = {
@@ -130,11 +130,22 @@ const initMap = (data: any[]) => {
   return result;
 };
 
+const getOfficeSource = (data: DownloadData[], version: string) => {
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    if (item.GET_ISO_URL && item.GET_ISO_URL.includes(`${version}/`)) {
+      return item.GET_ISO_URL;
+    }
+  }
+  return `https://repo.openeuler.org`;
+};
+
 onMounted(async () => {
   try {
     const responeData = await selectMirror(getUrlParam('version'));
     initTable(responeData);
-    mapData.value = initMap(responeData?.MirrorList);
+    mapData.value = initMap(responeData?.MirrorList) || [];
+    officeSource.value = getOfficeSource(downloadData, getUrlParam('version'));
   } catch (e: any) {
     throw new Error(e);
   }
@@ -148,61 +159,70 @@ onMounted(async () => {
     :title="i18n.download.MIRROR_SELECT.TITLE"
   />
   <AppContent class="mirror-select">
-    <p>
-      {{ i18n.download.MIRROR_SELECT.CONTENT[0]
-      }}<span class="ip">{{ ipAndAsn.length ? ipAndAsn[0] : '' }}</span
-      >{{ i18n.download.MIRROR_SELECT.CONTENT[1] }}
-      <span class="asn">{{ ipAndAsn.length ? ipAndAsn[1] : '' }}</span
-      >{{ i18n.download.MIRROR_SELECT.CONTENT[2]
-      }}<span class="area">{{ area }}</span
-      >{{ i18n.download.MIRROR_SELECT.CONTENT[3] }}
-    </p>
-    <OTable
-      class="mirror-pc"
-      :data="tableData"
-      header-cell-class-name="mirror-select-header"
-      cell-class-name="mirror-select-row"
-    >
-      <el-table-column
-        type="index"
-        :label="i18n.download.MIRROR_SELECT.RANK"
-        width="110"
-      />
-      <el-table-column
-        :label="i18n.download.MIRROR_SELECT.NAME"
-        min-width="300"
+    <div v-if="tableData.length" class="mirror-table">
+      <p>
+        {{ i18n.download.MIRROR_SELECT.CONTENT[0]
+        }}<span class="ip">{{ ipAndAsn.length ? ipAndAsn[0] : '' }}</span
+        >{{ i18n.download.MIRROR_SELECT.CONTENT[1] }}
+        <span class="asn">{{ ipAndAsn.length ? ipAndAsn[1] : '' }}</span
+        >{{ i18n.download.MIRROR_SELECT.CONTENT[2]
+        }}<span class="area">{{ area }}</span
+        >{{ i18n.download.MIRROR_SELECT.CONTENT[3] }}
+      </p>
+      <OTable
+        class="mirror-pc"
+        :data="tableData"
+        header-cell-class-name="mirror-select-header"
+        cell-class-name="mirror-select-row"
       >
-        <template #default="scope">
-          <div class="mirror-select-name">
-            <img :src="scope.row.icon" class="mirror-select-img" /><span>{{
-              scope.row.name
-            }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column :label="i18n.download.MIRROR_SELECT.URL" min-width="400">
-        <template #default="scope">
-          <a :href="scope.row.url" target="_blank" class="mirror-select-link">{{
-            scope.row.url
-          }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column
-        :label="i18n.download.MIRROR_SELECT.COUNTRY"
-        prop="country"
-        min-width="80"
-      />
-      <el-table-column
-        :label="i18n.download.MIRROR_SELECT.CONTINENT"
-        prop="continent"
-        min-width="100"
-      />
-      <el-table-column
-        :label="i18n.download.MIRROR_SELECT.DISTANCE"
-        prop="distance"
-        min-width="160"
-      />
-    </OTable>
+        <el-table-column
+          type="index"
+          :label="i18n.download.MIRROR_SELECT.RANK"
+          width="110"
+        />
+        <el-table-column
+          :label="i18n.download.MIRROR_SELECT.NAME"
+          min-width="300"
+        >
+          <template #default="scope">
+            <div class="mirror-select-name">
+              <img :src="scope.row.icon" class="mirror-select-img" /><span>{{
+                scope.row.name
+              }}</span>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          :label="i18n.download.MIRROR_SELECT.URL"
+          min-width="400"
+        >
+          <template #default="scope">
+            <a
+              :href="scope.row.url"
+              target="_blank"
+              class="mirror-select-link"
+              >{{ scope.row.url }}</a
+            >
+          </template>
+        </el-table-column>
+        <el-table-column
+          :label="i18n.download.MIRROR_SELECT.COUNTRY"
+          prop="country"
+          min-width="80"
+        />
+        <el-table-column
+          :label="i18n.download.MIRROR_SELECT.CONTINENT"
+          prop="continent"
+          min-width="100"
+        />
+        <el-table-column
+          :label="i18n.download.MIRROR_SELECT.DISTANCE"
+          prop="distance"
+          min-width="160"
+        />
+      </OTable>
+    </div>
+
     <div class="mirror-mobile">
       <OCard
         v-for="(item, index) in tableData"
@@ -251,18 +271,18 @@ onMounted(async () => {
         </div>
       </OCard>
     </div>
-    <p class="tip-title">
-      You can also download desired ISO files from our official mirror source
-      at:
-    </p>
-    <div class="official-source">
-      <a target="_blank" :href="`https://repo.openeuler.org/${versionPath}`">{{
-        `https://repo.openeuler.org/${versionPath}`
-      }}</a>
+    <div class="mirror-official">
+      <p v-if="tableData.length" class="tip-title">
+        You can also download desired ISO files from our official mirror source
+        at:
+      </p>
+      <p v-else class="tip-title">
+        You can download desired ISO files from our official mirror source at:
+      </p>
+      <div class="official-source">
+        <a target="_blank" :href="officeSource">{{ officeSource }}</a>
+      </div>
     </div>
-    <!-- <div class="mirror-map">
-      <MapContainer :map-data="mapData"></MapContainer>
-    </div> -->
   </AppContent>
 </template>
 <style lang="scss" scoped>
@@ -290,6 +310,9 @@ onMounted(async () => {
   @media (max-width: 768px) {
     display: block;
   }
+}
+.mirror-table {
+  margin-bottom: var(--o-spacing-h2);
 }
 .mirror-card {
   :deep(.el-card__body) {
@@ -497,12 +520,7 @@ onMounted(async () => {
     text-overflow: ellipsis;
   }
 }
-.tip-title {
-  margin-top: var(--o-spacing-h2);
-  @media screen and (max-width: 768px) {
-    margin-top: var(--o-spacing-h4);
-  }
-}
+
 .official-source {
   display: flex;
   align-items: center;

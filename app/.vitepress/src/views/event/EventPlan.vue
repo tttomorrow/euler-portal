@@ -89,6 +89,12 @@ const commonStore = useCommon();
       top: 370px;
       left: 260px;
     }
+    .linaro-techday {
+      width: 100px;
+      height: 20px;
+      top: 220px;
+      left: 360px;
+    }
   }
 }
 </style>

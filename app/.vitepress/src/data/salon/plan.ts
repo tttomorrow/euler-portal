@@ -29,4 +29,8 @@ export default [
     url: '/zh/interaction/event-list/detail/?id=80&isMini=1',
     className: 'risc-v ',
   },
+  {
+    url: '/zh/interaction/event-list/detail/?id=87&isMini=1',
+    className: 'linaro-techday',
+  },
 ];

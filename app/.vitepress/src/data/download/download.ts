@@ -174,7 +174,7 @@ export default {
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=22.03-LTS',
-        SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/',
         EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/',
@@ -338,7 +338,8 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf',
@@ -396,7 +397,8 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/21.03/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2103.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=21.03',
@@ -453,7 +455,8 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/20.09/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2009.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=20.09',
@@ -929,7 +932,7 @@ export default {
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS',
-        SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/',
         EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/',
@@ -1040,7 +1043,8 @@ export default {
           'https://docs.openeuler.org/en/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-en.pdf',
@@ -1100,7 +1104,8 @@ export default {
           'https://docs.openeuler.org/en/docs/21.03/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
         WHITE_PAPER: '/whitepaper/en/openEuler-21.03-Technical-White-Paper.pdf',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=21.03',
@@ -1159,7 +1164,8 @@ export default {
           'https://docs.openeuler.org/en/docs/20.09/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.09',
         MANUFACTURER: 'openEuler community',
@@ -1559,7 +1565,7 @@ export default {
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS',
-        SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/',
         EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/',
@@ -1641,7 +1647,8 @@ export default {
           'https://docs.openeuler.org/en/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-ru.pdf',
@@ -1701,7 +1708,8 @@ export default {
           'https://docs.openeuler.org/en/docs/21.03/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WHITE_PAPER:
           '/whitepaper/ru/openEuler-21.03-Технический-информационный-документ.pdf',
@@ -1761,7 +1769,8 @@ export default {
           'https://docs.openeuler.org/en/docs/20.09/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WEBSITE_SELECT: '/ru/mirror/select/?version=20.09',
         MANUFACTURER: 'openEuler community',
