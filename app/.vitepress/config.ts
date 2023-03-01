@@ -97,6 +97,7 @@ const config: UserConfig = {
     //   '/ru/': i18n.ru,
     // },
     docsUrl: 'https://docs.openeuler.org',
+    forumUrl: 'https://forum.openeuler.org',
   },
 };
 export default config;

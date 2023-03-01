@@ -636,7 +636,7 @@ onMounted(() => {
       display: flex;
       align-items: center;
       margin-left: var(--o-spacing-h8);
-      font-size: var(--o-font-size-h8);
+      font-size: var(--o-font-size-h6);
     }
   }
   .ellipsis {
