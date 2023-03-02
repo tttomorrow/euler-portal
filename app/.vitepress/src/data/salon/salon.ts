@@ -929,20 +929,20 @@ export default {
           ADDRESS_UP: '比利时布鲁塞尔',
         },
       },
-      {
-        id: 31,
-        title: 'openEuler Developer Day',
-        date: '2023-05',
-        meetupsMonth: '',
-        synopsis: [
-          'openEuler Developer Day是由开放原子开源基金会的 openEuler 社区发起的开发者大会。旨在推动 openEuler 在服务器，云计算、边缘计算和嵌入式四大场景的技术探索和创新。峰会拟在2023年5月举办，敬请期待。 \n\n点击回顾 openEuler Developer Day 2022',
-        ],
-        windowOpen:
-          'https://v1.openeuler.org/zh/interaction/summit-list/devday2022/',
-        MEETINGS_INFO: {
-          ADDRESS_UP: '北京',
-        },
-      },
+      // {
+      //   id: 31,
+      //   title: 'openEuler Developer Day',
+      //   date: '2023-05',
+      //   meetupsMonth: '',
+      //   synopsis: [
+      //     'openEuler Developer Day是由开放原子开源基金会的 openEuler 社区发起的开发者大会。旨在推动 openEuler 在服务器，云计算、边缘计算和嵌入式四大场景的技术探索和创新。峰会拟在2023年5月举办，敬请期待。 \n\n点击回顾 openEuler Developer Day 2022',
+      //   ],
+      //   windowOpen:
+      //     'https://v1.openeuler.org/zh/interaction/summit-list/devday2022/',
+      //   MEETINGS_INFO: {
+      //     ADDRESS_UP: '北京',
+      //   },
+      // },
     ],
   },
   en: {

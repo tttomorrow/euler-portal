@@ -169,7 +169,7 @@ function clickDayTab(e: any) {
 }
 
 function clickTab(e: any) {
-  if (detailObj.value?.live_address) {
+  if (detailObj.value?.live_address && !e.uid) {
     window.open(detailObj.value?.live_address);
     return;
   }
