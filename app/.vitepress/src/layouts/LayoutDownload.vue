@@ -48,9 +48,9 @@ const tabsData = reactive({
   <div>
     <SeoBox :seo-data="seoConfig[lang]?.download" />
     <AppRouterTemplate
-      @click-tab="clickTab"
       :banner-data="bannerData"
       :tabs-data="tabsData"
+      @click-tab="clickTab"
     />
     <Content />
   </div>

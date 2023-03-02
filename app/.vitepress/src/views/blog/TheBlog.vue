@@ -10,7 +10,6 @@ import AppContent from '@/components/AppContent.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 import NotFound from '@/NotFound.vue';
-// import MobileFilter from '@/components/MobileFilter.vue';
 
 import banner from '@/assets/banner/banner-interaction.png';
 import blogIllustration from '@/assets/illustrations/blog.png';
@@ -45,17 +44,6 @@ const tagsParams = reactive({
   category: 'blog',
   want: '',
 });
-// 移动端数据
-// const tagsDataToChild = ref<any>([
-//   {
-//     title: '时间',
-//     select: [],
-//   },
-//   {
-//     title: '作者',
-//     select: [],
-//   },
-// ]);
 // pc端筛选数据
 const selectData = ref<any>([
   {
@@ -506,13 +494,6 @@ const changeCurrentPageMoblie = (val: string) => {
           </ClientOnly>
         </div>
       </div>
-      <!-- <div class="blog-tag2">
-        <MobileFilter
-          :data="tagsDataToChild"
-          :single="true"
-          @filter="listFilter"
-        />
-      </div> -->
     </template>
     <template v-if="isDataShown">
       <div class="blog-list">
@@ -584,13 +565,13 @@ const changeCurrentPageMoblie = (val: string) => {
               >{{ paginationData.currentpage }}/{{ pageTotal }}</span
             >
           </OPagination>
+          <AppPaginationMo
+            v-else
+            :current-page="paginationData.currentpage"
+            :total-page="pageTotal"
+            @turn-page="changeCurrentPageMoblie"
+          />
         </ClientOnly>
-        <AppPaginationMo
-          :current-page="paginationData.currentpage"
-          :total-page="pageTotal"
-          @turn-page="changeCurrentPageMoblie"
-        >
-        </AppPaginationMo>
       </div>
     </template>
     <NotFound v-else />
@@ -621,14 +602,6 @@ const changeCurrentPageMoblie = (val: string) => {
     max-height: 152px;
   }
 }
-
-.right-icon {
-  color: var(--o-color-brand2);
-  @media (max-width: 767px) {
-    font-size: var(--o-font-size-text);
-  }
-}
-
 .post-btn {
   color: var(--o-color-white);
   border-color: var(--o-color-white);
@@ -637,20 +610,11 @@ const changeCurrentPageMoblie = (val: string) => {
     font-size: var(--o-font-size-text);
     line-height: var(--o-line-height-text);
   }
-}
-
-.pagination-slot {
-  font-size: var(--o-font-size-text);
-  font-weight: 400;
-  color: var(--o-color-text1);
-  line-height: var(--o-spacing-h4);
-}
-
-.blog-tag2 {
-  display: none;
-  @media (max-width: 1100px) {
-    display: block;
-    margin-left: var(--o-spacing-h5);
+  .right-icon {
+    color: var(--o-color-brand2);
+    @media (max-width: 767px) {
+      font-size: var(--o-font-size-text);
+    }
   }
 }
 .blog-select {
@@ -706,19 +670,14 @@ const changeCurrentPageMoblie = (val: string) => {
       flex: 1;
       font-size: var(--o-font-size-h7);
       color: var(--o-color-text1);
+      @include showline();
+      -webkit-line-clamp: 2;
       @media (max-width: 415px) {
         margin-bottom: var(--o-spacing-h5);
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
         font-weight: 500;
-      }
-      p {
-        display: inline-block;
-        @include showline();
-        -webkit-line-clamp: 2;
-        @media (max-width: 415px) {
-          -webkit-line-clamp: 1;
-        }
+        -webkit-line-clamp: 1;
       }
     }
     .blog-list-item-info {
@@ -763,7 +722,6 @@ const changeCurrentPageMoblie = (val: string) => {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         height: auto;
-        // @include showline();
         -webkit-line-clamp: 1;
       }
     }
@@ -788,5 +746,11 @@ const changeCurrentPageMoblie = (val: string) => {
       }
     }
   }
+}
+.pagination-slot {
+  font-size: var(--o-font-size-text);
+  font-weight: 400;
+  color: var(--o-color-text1);
+  line-height: var(--o-spacing-h4);
 }
 </style>

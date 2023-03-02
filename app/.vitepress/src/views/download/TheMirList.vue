@@ -278,7 +278,7 @@ onMounted(async () => {
   </AppContent>
   <div class="input-box">
     <!-- 用于复制RSNC的值 -->
-    <input ref="inputRef" id="use-copy" type="text" />
+    <input id="use-copy" ref="inputRef" type="text" />
   </div>
 </template>
 <style lang="scss" scoped>

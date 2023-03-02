@@ -778,7 +778,7 @@ onMounted(() => {
       margin-bottom: 0;
     }
   }
-  .pagination-h5 {
+  .pagination-mobile {
     margin-top: var(--o-spacing-h5);
   }
   .mo-item-odd {

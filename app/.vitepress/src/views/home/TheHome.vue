@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useData } from 'vitepress';
 import AOS from 'aos';
 
@@ -23,9 +23,6 @@ import { getSortData } from '@/api/api-search';
 
 import type { TableData } from '@/shared/@types/type-calendar';
 import type { SortResponse } from '@/shared/@types/type-search';
-
-import yearEnImg from '@/assets/category/home/euler-year-en.png';
-import yearZhImg from '@/assets/category/home/euler-year-zh.png';
 
 const { lang } = useData();
 const commonStore = useCommon();
@@ -54,19 +51,7 @@ const paramsBlog = {
   page: 1,
   pageSize: 4,
 };
-const yearImg: any = computed(() => {
-  return lang.value === 'zh' ? yearZhImg : yearEnImg;
-});
-const isSummaryShow = ref(false);
-const yearLink = computed(() => {
-  return lang.value === 'zh'
-    ? 'https://summary.openeuler.org/zh/2022/'
-    : 'https://summary-en.openeuler.org/en/2022/';
-});
-function closeSummaryTips() {
-  isSummaryShow.value = false;
-  sessionStorage.setItem('summary-tips', 'false');
-}
+
 onMounted(async () => {
   AOS.init({
     offset: 50,
@@ -109,8 +94,6 @@ onMounted(async () => {
   } catch (e: any) {
     throw new Error(e);
   }
-  const summaryShow = sessionStorage.getItem('summary-tips');
-  isSummaryShow.value = summaryShow ? false : true;
 });
 </script>
 
@@ -156,55 +139,9 @@ onMounted(async () => {
       ></LinkPanel>
     </div>
   </AppContent>
-  <div v-if="isSummaryShow && lang !== 'ru'" class="summary-code">
-    <a :href="yearLink" target="_blank">
-      <img class="code" :src="yearImg" alt="扫描二维码" />
-    </a>
-    <a
-      class="close"
-      :class="lang === 'en' ? 'close-en' : ''"
-      @click="closeSummaryTips()"
-    ></a>
-  </div>
 </template>
 
 <style lang="scss" scoped>
-.summary-code {
-  position: fixed;
-  left: 1vw;
-  top: 70vh;
-  z-index: 99;
-
-  .code {
-    width: 141px;
-    cursor: pointer;
-    @media screen and (max-width: 1100px) {
-      width: 85px;
-    }
-  }
-  .close {
-    position: absolute;
-    display: inline-block;
-    right: 20px;
-    top: 15px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    cursor: pointer;
-    @media screen and (max-width: 1100px) {
-      right: 13px;
-      top: 10px;
-      width: 8px;
-      height: 8px;
-    }
-  }
-  .close-en {
-    right: 4px;
-    @media screen and (max-width: 1100px) {
-      right: 0px;
-    }
-  }
-}
 .home-nav {
   position: relative;
   z-index: 10;

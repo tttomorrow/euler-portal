@@ -311,14 +311,14 @@ watch(windowWidth, () => {
           <h1 id="synopsis" class="detail-title">{{ tabTitle[0] }}</h1>
           <template v-if="Array.isArray(detailObj?.synopsis)">
             <p
-              class="synopsis-body"
               v-for="item in detailObj?.synopsis"
               :key="item"
+              class="synopsis-body"
             >
               {{ item }}
             </p>
           </template>
-          <p class="synopsis-body" v-else>{{ detailObj?.synopsis }}</p>
+          <p v-else class="synopsis-body">{{ detailObj?.synopsis }}</p>
         </div>
         <div v-if="tabTitle.length >= 2" class="agenda detail-card">
           <h1 id="agenda" class="detail-title">{{ tabTitle[1] }}</h1>

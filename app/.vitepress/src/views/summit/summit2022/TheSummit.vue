@@ -2120,12 +2120,13 @@ const summitData: any = {
   },
 };
 const tabType = ref(['main', 'main']);
-const isLiverShow = ref(0);
+const isLiverShown = ref(0);
 const otherTabType = ref([0, 0]);
+// 点击周年浮窗
 function onEntryClick() {
   router.go('/zh/celebrating/');
 }
-// video 事件
+// 展厅的video 事件
 const videoDialog = ref(false);
 const videoLink = ref('');
 const handleCloseVideo = () => {
@@ -2152,9 +2153,9 @@ onMounted(() => {
       <p v-for="item in summitData.detail" :key="item">{{ item }}</p>
     </div>
     <div class="liver">
-      <h3 class="titleBar">{{ summitData.liver.title }}</h3>
+      <h3>{{ summitData.liver.title }}</h3>
       <div>
-        <OTabs v-model="isLiverShow" class="schedule-tabs">
+        <OTabs v-model="isLiverShown" class="schedule-tabs">
           <el-tab-pane
             v-for="(item, index) in summitData.liver.date"
             :key="index"
@@ -2168,13 +2169,13 @@ onMounted(() => {
         <OContainer :level-index="1">
           <ClientOnly>
             <SummitLive
-              v-if="isLiverShow === 0"
+              v-if="isLiverShown === 0"
               :live-data="summitData.liver.liveData1"
               class-name="odd2022"
               class="summit-kv-box"
             />
             <SummitLive
-              v-if="isLiverShow === 1"
+              v-if="isLiverShown === 1"
               :live-data="summitData.liver.liveData2"
               class-name="odd2022"
               class="summit-box"

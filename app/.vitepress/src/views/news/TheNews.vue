@@ -16,29 +16,7 @@ import illustration from '@/assets/illustrations/news.png';
 import IconSearch from '~icons/app/icon-search.svg';
 
 import { getSortData, getTagsData } from '@/api/api-search';
-
-interface NewsData {
-  articleName: string;
-  author: any;
-  banner: string;
-  category: string;
-  date: string;
-  deleteType: string;
-  lang: string;
-  path: string;
-  summary: string;
-  tags: string[];
-  textContent: string;
-  title: string;
-  type: string;
-}
-
-interface ParamsType {
-  page: number;
-  pageSize: number;
-  lang: string;
-  category: string;
-}
+import type { NewsData, ParamsType } from '@/shared/@types/type-news';
 
 const router = useRouter();
 const { lang } = useData();
@@ -536,19 +514,15 @@ const changeCurrentMoblie = (val: string) => {
               >{{ paginationData.currentpage }}/{{ pageTotal }}</span
             >
           </OPagination>
+          <AppPaginationMo
+            v-else
+            :current-page="paginationData.currentpage"
+            :total-page="pageTotal"
+            @turn-page="changeCurrentMoblie"
+          >
+          </AppPaginationMo>
         </ClientOnly>
-        <AppPaginationMo
-          :current-page="paginationData.currentpage"
-          :total-page="pageTotal"
-          @turn-page="changeCurrentMoblie"
-        >
-        </AppPaginationMo>
       </div>
-      <AppPaginationMo
-        :current-page="paginationData.currentpage"
-        :total-page="Math.ceil(paginationData.total / 10)"
-        @turn-page="changeCurrentMoblie"
-      />
     </template>
     <NotFound v-else />
   </AppContent>
@@ -568,11 +542,6 @@ const changeCurrentMoblie = (val: string) => {
     display: flex;
     flex-direction: row;
   }
-  @media (max-width: 620px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
   @media (max-width: 500px) {
     display: flex;
     flex-direction: column;
@@ -585,9 +554,6 @@ const changeCurrentMoblie = (val: string) => {
   filter: brightness(0.8) grayscale(0.2) contrast(1.2);
 }
 .news-pagination {
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
   .pagination-slot {
     font-size: var(--o-font-size-text);
     font-weight: 400;
@@ -604,11 +570,6 @@ const changeCurrentMoblie = (val: string) => {
   flex-direction: row;
   width: 1416px;
   @media (max-width: 1100px) {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  @media (max-width: 500px) {
     display: none;
   }
   .news-select-item {

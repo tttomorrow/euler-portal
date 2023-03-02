@@ -510,7 +510,7 @@ onMounted(() => {
         display: none;
       }
     }
-    .pagination-h5 {
+    .pagination-mobile {
       display: none;
       @media (max-width: 768px) {
         width: 100%;

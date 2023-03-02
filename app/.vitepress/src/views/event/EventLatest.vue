@@ -191,7 +191,7 @@ onMounted(async () => {
 .o-pagination {
   margin-top: var(--o-spacing-h2);
 }
-.pagination-h5 {
+.pagination-mobile {
   margin-top: var(--o-spacing-h4);
 }
 

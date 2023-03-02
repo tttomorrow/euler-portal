@@ -60,7 +60,7 @@ function jumpPage(e: any) {
 </script>
 
 <template>
-  <div class="pagination-h5">
+  <div class="pagination-mobile">
     <OIcon class="icon-prev" :class="currentPage === 1 ? 'disable-button' : ''">
       <IconChevronLeft />
     </OIcon>
@@ -98,7 +98,7 @@ function jumpPage(e: any) {
 </template>
 
 <style scoped lang="scss">
-.pagination-h5 {
+.pagination-mobile {
   display: none;
   @media (max-width: 768px) {
     width: 100%;
