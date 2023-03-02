@@ -196,7 +196,7 @@ onUnmounted(() => {
               v-for="item2 in caseData &&
               caseData[i18n.home.USER_CASE.CASE_LIST[active].TYPE]"
               :key="item2.summary"
-              :href="item2.path.replace(/(index)$/g, '')"
+              :href="'/' + item2.path.replace(/(index)$/g, '')"
               target="_blank"
               class="user-card"
             >

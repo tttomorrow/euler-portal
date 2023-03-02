@@ -103,7 +103,7 @@ function jumpPage(page: number) {
 }
 // 点击跳转案例详情页面
 function goDetail(link: string, item: any, index: number) {
-  const search_result_url = '/' + item.lang + '/' + link.replace('index', '');
+  const search_result_url = '/' + link.replace('index', '');
   const searchKeyObj = {
     search_tag: currentTag.value,
     search_rank_num: pageSize.value * (currentPage.value - 1) + (index + 1),
