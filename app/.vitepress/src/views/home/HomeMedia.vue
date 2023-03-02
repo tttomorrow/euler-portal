@@ -131,7 +131,7 @@ onMounted(async () => {
               <div class="room-item-right">
                 <div class="room-top">
                   <a
-                    :href="`${item.path}.html`"
+                    :href="`/${item.path}.html`"
                     :title="item.title"
                     target="_blank"
                   >
@@ -152,7 +152,7 @@ onMounted(async () => {
                   <a
                     class="word-hover"
                     :title="item.summary"
-                    :href="`${item.path}.html`"
+                    :href="`/${item.path}.html`"
                     target="_blank"
                   >
                     {{ item.summary }}
@@ -174,7 +174,7 @@ onMounted(async () => {
               <a
                 class="word-hover"
                 :title="item.summary"
-                :href="`${item.path}.html`"
+                :href="`/${item.path}.html`"
                 target="_blank"
               >
                 {{ item.summary }}
@@ -217,7 +217,7 @@ onMounted(async () => {
               <div class="room-item-right">
                 <div class="room-top">
                   <a
-                    :href="`${item.path}.html`"
+                    :href="`/${item.path}.html`"
                     :title="item.title"
                     target="_blank"
                   >
@@ -238,7 +238,7 @@ onMounted(async () => {
                   <a
                     class="word-hover"
                     :title="item.summary"
-                    :href="`${item.path}.html`"
+                    :href="`/${item.path}.html`"
                     target="_blank"
                   >
                     {{ item.summary }}
@@ -260,7 +260,7 @@ onMounted(async () => {
               <a
                 class="word-hover"
                 :title="item.summary"
-                :href="`${item.path}.html`"
+                :href="`/${item.path}.html`"
                 target="_blank"
               >
                 {{ item.summary }}

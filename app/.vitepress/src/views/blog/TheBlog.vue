@@ -85,8 +85,7 @@ const paginationData = ref({
 });
 
 const toBlogContent = (path: string) => {
-  const path1 = router.route.path.substring(0, 3);
-  router.go(`${path1}/${path}`);
+  router.go(`/${path}`);
 };
 // 获取标签数据
 const getTagsList = () => {

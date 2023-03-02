@@ -73,8 +73,7 @@ const i18n = useI18n();
 const userCaseData = computed(() => i18n.value.interaction);
 
 const toNewsContent = (path: string) => {
-  const path1 = router.route.path.substring(0, 3);
-  router.go(`${path1}/${path}`);
+  router.go(`/${path}`);
 };
 
 //筛选数据
