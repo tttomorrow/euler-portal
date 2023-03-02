@@ -21,7 +21,7 @@ export default {
       {
         LEFT: {
           LEFT_INFO:
-            'Your mailbox will receive an e-mail from the mailing list, asking you to confirm that you have subscribed to the mailing list. Reply to the e-mail to confirm the subscription.',
+            'Your mailbox will receive an e-mail from the mailing list, asking you to confirm that you have subscribed to the mailing list. Click the confirmation link to confirm the subscription.',
           LEFT_CIRCLE: 'Confirm ',
           LEFT_IMG: '/img/community/maillist/mail3.png',
           INDEX: '03',

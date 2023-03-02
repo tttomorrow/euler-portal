@@ -399,7 +399,7 @@ const isMobile = computed(() => {
       display: flex;
       align-items: center;
       margin-left: 8px;
-      font-size: var(--o-font-size-h8);
+      font-size: var(--o-font-size-h6);
     }
   }
 }

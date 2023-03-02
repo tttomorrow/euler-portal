@@ -69,6 +69,7 @@ const config: UserConfig = {
   },
   themeConfig: {
     docsUrl: 'https://docs.ru.openeuler.org',
+    forumUrl: 'https://forum.openeuler.org',
   },
 };
 export default config;

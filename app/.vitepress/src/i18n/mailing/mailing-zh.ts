@@ -17,7 +17,7 @@ export default {
       {
         LEFT: {
           LEFT_INFO:
-            '您的邮箱将收到一封来自邮件列表的电子邮件，要求您确认订阅了邮件列表，回复该电子邮件确认订阅',
+            '您的邮箱将收到一封来自邮件列表的电子邮件，要求您确认订阅了邮件列表，点击确认链接确认订阅',
           LEFT_IMG: '/img/community/maillist/mail3.png',
           INDEX: '确认',
         },
