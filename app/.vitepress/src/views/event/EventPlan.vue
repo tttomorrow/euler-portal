@@ -55,12 +55,12 @@ const commonStore = useCommon();
     }
     .events {
       right: 0;
-      bottom: 75px;
+      bottom: 80px;
       height: 20px;
       width: 140px;
     }
     .marketing {
-      top: 258px;
+      top: 70px;
       right: 0;
       width: 170px;
       height: 20px;
@@ -68,37 +68,37 @@ const commonStore = useCommon();
     .beijin-dpu {
       width: 65px;
       height: 70px;
-      top: 295px;
+      top: 110px;
       left: 170px;
     }
     .fosdem {
       width: 85px;
       height: 50px;
-      top: 190px;
+      top: 4px;
       left: 260px;
     }
     .internship {
       width: 80px;
       height: 20px;
-      bottom: 180px;
+      bottom: 190px;
       left: 755px;
     }
     .risc-v {
       width: 85px;
       height: 22px;
-      top: 345px;
+      top: 160px;
       left: 260px;
     }
     .embedded {
       width: 95px;
       height: 22px;
-      top: 370px;
+      top: 185px;
       left: 260px;
     }
     .linaro-techday {
       width: 100px;
       height: 20px;
-      top: 220px;
+      top: 34px;
       left: 360px;
     }
   }
