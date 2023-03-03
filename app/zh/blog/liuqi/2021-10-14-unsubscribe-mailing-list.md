@@ -58,15 +58,9 @@ summary: 本博客介绍了两种退订openEuler邮件列表的方式
 
   <img src='./2021-10-14-unsubscribe-mailing-list-08.png' width=900 alt='发送退订邮件'>
 
-  接下来是两种邮件退订方式的共同操作。
+  通过以上两种方式发送退订邮件后，会收到一封test-bounces发送的退订成功告知邮件
 
-  在收到标题为 **Your confirmation is needed to leave the test@openeuler.org mailing list.**  的邮件后，直接回复该邮件，无需填写内容
-
-  <img src='./2021-10-14-unsubscribe-mailing-list-09.png' width=900 alt='通过邮件页脚退订回复邮件'>
-
-  回复确认邮件后，会收到一封test-bounces发送的退订成功告知邮件
-
-  <img src='./2021-10-14-unsubscribe-mailing-list-10.png' width=900 alt='退订成功'>
+  <img src='./2021-10-14-unsubscribe-mailing-list-09.png' width=900 alt='退订成功'>
 
 ### 更多
 更多社区邮件列表相关问题可参考[**Mailweb List FAQ**](https://osinfra.cn/faq/mailinglist.html)
