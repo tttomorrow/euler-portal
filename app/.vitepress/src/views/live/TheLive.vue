@@ -180,7 +180,7 @@ function turnPage(option: string) {
     color: var(--o-color-text1);
     line-height: var(--o-spacing-h4);
   }
-  &-top-title {
+  .live-top-title {
     width: 100%;
     margin: 0 auto;
     font-weight: 300;
@@ -191,7 +191,7 @@ function turnPage(option: string) {
       font-size: var(--o-font-size-h8);
     }
   }
-  &-list {
+  .live-list {
     display: grid;
     max-width: 1504px;
     margin: var(--o-spacing-h2) auto;
@@ -199,17 +199,23 @@ function turnPage(option: string) {
     align-items: center;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: var(--o-spacing-h4);
+    @media (max-width: 1504px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 1080px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
     @media screen and (max-width: 767px) {
       margin: var(--o-spacing-h5) auto;
     }
-    &-item {
+    .live-list-item {
       width: 100%;
       flex: 1;
       padding: 0;
       max-height: 260px;
     }
   }
-  &-detail {
+  .live-detail {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -233,7 +239,7 @@ function turnPage(option: string) {
         }
       }
     }
-    &-right {
+    .live-detail-right {
       padding: var(--o-spacing-h4);
       height: 100%;
       flex: 1;
@@ -246,7 +252,7 @@ function turnPage(option: string) {
         padding: 16px var(--o-spacing-h6);
       }
     }
-    &-title {
+    .live-detail-title {
       overflow: hidden;
       text-overflow: ellipsis;
       font-size: var(--o-font-size-h5);
@@ -259,7 +265,7 @@ function turnPage(option: string) {
       }
     }
   }
-  &-background {
+  .live-background {
     width: 262px;
     height: 260px;
     @media screen and (max-width: 767px) {
@@ -268,7 +274,7 @@ function turnPage(option: string) {
       background-repeat: no-repeat;
       background-color: var(--o-color-bg4);
     }
-    &-img {
+    .live-background-img {
       margin: 70px 71px;
       width: 120px;
       height: 120px;
@@ -280,7 +286,7 @@ function turnPage(option: string) {
       }
     }
   }
-  &-desc {
+  .live-desc {
     margin-top: var(--o-spacing-h4);
     padding: 0;
     line-height: var(--o-line-height-tip);
@@ -291,7 +297,7 @@ function turnPage(option: string) {
     @media screen and (max-width: 767px) {
       margin-top: var(--o-spacing-h5);
     }
-    &-text {
+    .live-desc-text {
       margin-right: var(--o-spacing-h3);
       line-height: var(--o-line-height-tip);
       font-size: var(--o-font-size-text);
@@ -304,16 +310,16 @@ function turnPage(option: string) {
       }
     }
   }
-  &-button {
-    &-icon {
+  .live-button {
+    .live-button-icon {
       color: var(--o-color-brand1);
     }
   }
-  &-pagination {
+  .live-pagination {
     width: auto;
     height: auto;
     margin: auto;
-    &-pc {
+    .live-pagination-pc {
       @media screen and (max-width: 767px) {
         display: none;
       }
@@ -330,7 +336,7 @@ function turnPage(option: string) {
     }
   }
   .pagination {
-    &-mobile {
+    .pagination-mobile {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -338,53 +344,38 @@ function turnPage(option: string) {
       width: 100%;
       height: 18px;
     }
-    &-options {
+    .pagination-options {
       display: flex;
       flex-direction: row;
       margin: auto;
-      &-icon {
+      .pagination-options-icon {
         font-size: var(--o-font-size-tip);
         color: var(--o-color-brand1);
       }
-      &-icon:hover {
+      .pagination-options-icon:hover {
         cursor: pointer;
       }
-      &-text {
+      .pagination-options-text {
         font-size: var(--o-font-size-tip);
         margin-left: var(--o-spacing-h8);
         margin-right: var(--o-spacing-h8);
         color: var(--o-color-text1);
       }
-      &-text:hover {
+      .pagination-options-text:hover {
         color: var(--o-color-brand1);
         cursor: pointer;
       }
     }
-    &-information {
+    .pagination-information {
       margin-left: 20px;
       margin-right: 20px;
       font-size: var(--o-font-size-tip);
       color: var(--o-color-text1);
-      &-current {
+      .pagination-information-current {
         color: var(--o-color-brand1);
         font-size: var(--o-font-size-tip);
       }
     }
-  }
-}
-
-@media (max-width: 1504px) {
-  .live-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 1280px) {
-}
-
-@media (max-width: 1080px) {
-  .live-list {
-    grid-template-columns: repeat(1, 1fr);
   }
 }
 

@@ -69,7 +69,7 @@ const goLink = (url: string, isBlank: boolean) => {
   background-color: var(--o-color-bg1);
   width: 100%;
   padding-bottom: var(--o-spacing-h1);
-  &-img {
+  .content-map-img {
     width: 1416px;
     min-height: 650px;
     position: relative;
@@ -112,7 +112,7 @@ const goLink = (url: string, isBlank: boolean) => {
       width: 1254px;
     }
   }
-  &-img-en {
+  .content-map-img-en {
     position: relative;
     width: 1416px;
     min-height: 650px;
@@ -143,7 +143,7 @@ const goLink = (url: string, isBlank: boolean) => {
       }
     }
   }
-  &-print {
+  .content-map-print {
     position: absolute;
     cursor: pointer;
     width: 100px;
@@ -928,7 +928,7 @@ const goLink = (url: string, isBlank: boolean) => {
     }
   }
 
-  &-mobile-img {
+  .content-map-mobile-img {
     width: 100%;
     height: auto;
     position: relative;
@@ -943,7 +943,7 @@ const goLink = (url: string, isBlank: boolean) => {
       width: 100%;
     }
   }
-  &-mobile-img-en {
+  .content-map-mobile-img-en {
     display: none;
   }
   .mobile-link {

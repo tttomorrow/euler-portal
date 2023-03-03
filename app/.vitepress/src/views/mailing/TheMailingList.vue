@@ -72,7 +72,7 @@ const isMobile = computed(() => {
                   <span>{{ item.LEFT.INDEX }}</span>
                 </div>
                 <div class="mail-card-text">
-                  <span class="left-title" v-if="item.LEFT.LEFT_CIRCLE">
+                  <span v-if="item.LEFT.LEFT_CIRCLE" class="left-title">
                     {{ item.LEFT.LEFT_CIRCLE }}
                   </span>
                   <span class="right-docs" :title="item.LEFT.LEFT_INFO">{{
@@ -94,7 +94,7 @@ const isMobile = computed(() => {
                   <span>{{ item.RIGHT.INDEX }}</span>
                 </div>
                 <div class="mail-card-text">
-                  <span class="left-title" v-if="item.RIGHT.RIGHT_CIRCLE">
+                  <span v-if="item.RIGHT.RIGHT_CIRCLE" class="left-title">
                     {{ item.RIGHT.RIGHT_CIRCLE }}
                   </span>
                   <span class="right-docs" :title="item.RIGHT.RIGHT_INFO"
