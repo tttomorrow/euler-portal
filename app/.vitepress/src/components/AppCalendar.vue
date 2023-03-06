@@ -99,7 +99,7 @@ function selectTab(tab: TabsPaneContext) {
       );
     }
   } catch (error: any) {
-    throw Error(error);
+    console.error(error);
   }
 }
 

@@ -66,7 +66,11 @@ const jumpTo = (item: any) => {
     :navigation="true"
     @swiper="onSwiper"
   >
-    <swiper-slide v-for="item in homeBanner" :key="item.link">
+    <swiper-slide
+      v-for="item in homeBanner"
+      :key="item.link"
+      :swiper-ref="SwiperCore"
+    >
       <div
         class="banner-panel"
         :class="{ 'is-link': item.link }"
@@ -81,13 +85,17 @@ const jumpTo = (item: any) => {
           }"
         >
           <div
-            v-if="item.title !== ''"
+            v-if="item.title?.length"
             class="banner-panel-content flex-column"
-            :class="item.id === 'prize' ? 'prize' : ''"
           >
             <div data-aos="fade-down" class="box">
-              <p class="title">
-                {{ item.title }}
+              <p
+                v-for="title in item.title"
+                class="title"
+                :key="title"
+                :class="item.id === 'eur' ? 'eur' : ''"
+              >
+                {{ title }}
               </p>
               <p class="desc">
                 <span
@@ -98,15 +106,7 @@ const jumpTo = (item: any) => {
                 >
               </p>
             </div>
-            <div
-              v-if="item.btn"
-              :class="[
-                item.id === 'newEdition' ? 'new-edition' : '',
-                item.id === 'prize' ? 'prize' : '',
-              ]"
-              data-aos="fade-up"
-              class="action"
-            >
+            <div v-if="item.btn" data-aos="fade-up" class="action">
               <OButton animation class="home-banner-btn">
                 {{ item.btn }}
                 <template #suffixIcon
@@ -143,6 +143,11 @@ html[lang='zh'] {
     padding: 5px 12px 5px 16px;
     line-height: 22px;
     font-size: 14px;
+  }
+}
+.eur {
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 }
 

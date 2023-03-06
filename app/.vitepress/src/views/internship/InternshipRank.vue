@@ -62,7 +62,7 @@ async function getRankData() {
       throw new Error(res.status + ' ' + res.message);
     }
   } catch (error: any) {
-    throw Error(error);
+    console.error(error);
   }
 }
 const toggleRankState = () => {

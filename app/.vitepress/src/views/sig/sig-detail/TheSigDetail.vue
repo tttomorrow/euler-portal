@@ -54,7 +54,7 @@ function getSigDetails() {
       sigMeetingData.value = res;
     });
   } catch (error) {
-    throw Error();
+    console.error(error);
   }
 }
 
@@ -85,7 +85,7 @@ function getSigMembers() {
       }
     });
   } catch (error) {
-    throw Error();
+    console.error(error);
   }
 }
 
