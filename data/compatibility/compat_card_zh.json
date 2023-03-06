@@ -15964,7 +15964,7 @@
     "driverSize": "247MB",
     "chipVendor": "Mellanox",
     "boardModel": "MCX631102AN-ADAT",
-    "chipModel": "Connect-6 Lx",
+    "chipModel": "ConnectX-6 Lx",
     "item": "",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/MLNX_OFED_LINUX-5.7-1.0.2.0-openeuler20.03sp3-aarch64.tgz"
   }
