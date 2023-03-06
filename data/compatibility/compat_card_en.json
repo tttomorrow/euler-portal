@@ -15948,5 +15948,24 @@
     "chipModel": "XL710",
     "item": "06310102",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/i40e-2.22.8.tar.gz"
+  },
+  {
+    "vendorID": "15b3",
+    "deviceID": "101f",
+    "svID": "15b3",
+    "ssID": "0001",
+    "architecture": "aarch64",
+    "os": "openEuler 20.03 LTS SP3",
+    "driverName": "mlx5_core",
+    "version": "5.7-1.0.2",
+    "type": "NIC",
+    "date": "2023.03.04",
+    "sha256": "40e6141671de4ff657c2557c1972b3872e01ecf206eacb9b4ebf35e42a1c5ab0",
+    "driverSize": "247MB",
+    "chipVendor": "Mellanox",
+    "boardModel": "MCX631102AN-ADAT",
+    "chipModel": "ConnectX-6 Lx",
+    "item": "",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/MLNX_OFED_LINUX-5.7-1.0.2.0-openeuler20.03sp3-aarch64.tgz"
   }
 ]
