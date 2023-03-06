@@ -32,7 +32,7 @@ onMounted(() => {
       oldSigList.value = res;
     });
   } catch (error) {
-    throw Error();
+    console.error(error);
   }
 });
 </script>

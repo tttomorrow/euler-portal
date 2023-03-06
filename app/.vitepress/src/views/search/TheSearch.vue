@@ -101,7 +101,7 @@ function searchRpm() {
       }
     });
   } catch (error: any) {
-    throw Error(error);
+    console.error(error);
   }
 }
 // 获取搜索结果各类型的数量
@@ -116,7 +116,7 @@ async function searchCountAll() {
       }
     });
   } catch (error: any) {
-    throw Error(error);
+    console.error(error);
   }
 }
 // 联想搜索
@@ -138,7 +138,7 @@ function searchDataAll() {
       }
     });
   } catch (error: any) {
-    throw Error(error);
+    console.error(error);
   }
 }
 // 获取搜索结果的所有内容

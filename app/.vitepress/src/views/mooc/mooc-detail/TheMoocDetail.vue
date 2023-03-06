@@ -92,7 +92,7 @@ onMounted(() => {
     courseIndex.value =
       JSON.parse(sessionStorage.getItem('courseIndex') || '0') * 1;
   } catch (error: any) {
-    throw Error(error);
+    console.error(error);
   }
   setCourseData(allNodeList.value[courseIndex.value]);
 });

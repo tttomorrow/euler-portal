@@ -115,7 +115,7 @@ const getAllRepo = () => {
       repoRenderList.value = res.data.slice(0, 99);
     });
   } catch (error) {
-    throw Error();
+    console.error(error);
   }
 };
 

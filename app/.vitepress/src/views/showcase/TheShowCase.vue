@@ -126,7 +126,7 @@ function goDetail(link: string, item: any, index: number) {
       ...searchKeyObj,
     });
   } catch (error: any) {
-    throw Error(error);
+    console.error(error);
   } finally {
     window.open(search_result_url);
   }
@@ -153,7 +153,7 @@ function setCurrentCaseListAll() {
       filterCase();
     });
   } catch (error: any) {
-    throw Error(error);
+    console.error(error);
   }
 }
 // 根据tag筛选需要显示的案例
