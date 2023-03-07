@@ -8062,5 +8062,66 @@
       "hostBusAdapter": "Chengdu Haiguang IC Design Co., Ltd. PSPCCP Command DMA Processor",
       "hardDiskDrive": "GOKE  GGAZT032S3IMASS  Msata 32G SSD"
     }
+  },
+  {
+    "hardwareFactory": "DELL",
+    "hardwareModel": "Dell PowerEdge R750",
+    "osVersion": "openEuler 22.03 LTS SP1",
+    "architecture": "x86_64",
+    "date": "2023/03/01",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "boardCards": [
+      {
+        "vendorID": "1000",
+        "deviceID": "10e2",
+        "svID": "1028",
+        "ssID": "1ae1",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "megaraid_sas",
+        "version": "07.714.04.00-rc1",
+        "type": "RAID",
+        "date": "2023.03.01",
+        "sha256": "9297c2087dc2ee4bc6c245dec3adc9b7dc9ecc22b263ea05773e6c126d3f853b",
+        "driverSize": "73.5k",
+        "chipVendor": "Broadcom",
+        "boardModel": "PERC H755N Front",
+        "chipModel": "9562-16i",
+        "item": "",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "14e4",
+        "deviceID": "165f",
+        "svID": "1028",
+        "ssID": "08ff",
+        "architecture": "x86_64",
+        "os": "openEuler 22.03 LTS SP1",
+        "driverName": "tg3",
+        "version": "",
+        "type": "NIC",
+        "date": "2023.03.01",
+        "sha256": "715d093f44a7d43e718ced26d8f8e8845de23a9ed82f99b038c2410da8ebf0cc",
+        "driverSize": "86.1k",
+        "chipVendor": "Broadcom",
+        "boardModel": "PowerEdge Rx5xx LOM Board",
+        "chipModel": "BCM5720",
+        "item": "",
+        "downloadLink": "inbox"
+      }
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "certificationTime": "2023/03/01",
+      "commitID": "I66XOH",
+      "mainboardModel": "",
+      "biosUefi": "1.8.2",
+      "cpu": "Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz",
+      "ram": "8*32G",
+      "portsBusTypes": "X16 PCI Express 4 X16",
+      "videoAdapter": "Matrox Electronics Systems Ltd.Integrated Matrox G200eW3 Graphics Controller(rev 04)",
+      "hostBusAdapter": "",
+      "hardDiskDrive": "DELL PERC H755 Front 5.21"
+    }
   }
 ]
