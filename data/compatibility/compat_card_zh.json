@@ -15986,5 +15986,43 @@
     "chipModel": "ConnectX-6 Lx",
     "item": "",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/MLNX_OFED_LINUX-5.8-1.0.1.1-openeuler20.03sp3-x86_64.tgz"
+  },
+  {
+    "vendorID": "15b3",
+    "deviceID": "101d",
+    "svID": "15b3",
+    "ssID": "0016",
+    "architecture": "x86_64",
+    "os": "openEuler 20.03 LTS SP3",
+    "driverName": "mlx5_core",
+    "version": "5.8-1.0.1",
+    "type": "NIC",
+    "date": "2023.03.03",
+    "sha256": "519cdc10b739552d23c5b55012ea52fe6ff77b16c385fdc45d013df3ce432b97",
+    "driverSize": "314MB",
+    "chipVendor": "Mellanox",
+    "boardModel": "MCX623106AN-CDAT",
+    "chipModel": "ConnectX-6 Dx",
+    "item": "",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/MLNX_OFED_LINUX-5.8-1.0.1.1-openeuler20.03sp3-x86_64.tgz"
+  },
+  {
+    "vendorID": "15b3",
+    "deviceID": "101d",
+    "svID": "15b3",
+    "ssID": "0016",
+    "architecture": "aarch64",
+    "os": "openEuler 20.03 LTS SP3",
+    "driverName": "mlx5_core",
+    "version": "5.8-1.0.1",
+    "type": "NIC",
+    "date": "2023.03.03",
+    "sha256": "8a9f70e3e60c0f130e30d62970750ddf723ea357e0cb71b6e6d922c6243f0987",
+    "driverSize": "253MB",
+    "chipVendor": "Mellanox",
+    "boardModel": "MCX623106AN-CDAT",
+    "chipModel": "ConnectX-6 Dx",
+    "item": "",
+    "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/MLNX_OFED_LINUX-5.8-1.0.1.1-openeuler20.03sp3-aarch64.tgz"
   }
 ]
