@@ -399,7 +399,7 @@ const changeCurrentPageMoblie = (val: string) => {
   <SeoBox :seo-data="seoConfig[lang]?.blogList" />
   <BannerLevel2
     :background-image="banner"
-    background-text="INTERACTION"
+    background-text="CONNECT"
     :title="userCaseData.BLOG"
     :illustration="blogIllustration"
   >

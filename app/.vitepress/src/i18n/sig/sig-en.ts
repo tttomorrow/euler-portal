@@ -2,7 +2,7 @@ export default {
   GUIDANCE_LIST: {
     GUIDE: {
       MOBILE_TITLE: 'SIG申请流程',
-      TITLE: 'Application Process',
+      TITLE: 'Set Up',
       LINE_CONTENT: [
         {
           LEFT: {
