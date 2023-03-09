@@ -99,7 +99,7 @@ export default {
     TITLE: 'Overall Introduction to the openEuler Hardware Compatibility Test',
     DISCRIPTION_TITLE: 'Introduction',
     DISCRIPTION_CONTENT:
-      'Openeuler provides a series of tools, documents and operation procedures to help you test the compatibility between openEuler and hardware. If you need to perform compatibility tests on hardware such as servers, perform the following process:',
+      'openEuler provides a series of tools, documents and operation procedures to help you test the compatibility between openEuler and hardware. If you need to perform compatibility tests on hardware such as servers, perform the following process:',
     PROCESS_TITLE: 'Compatibility Test Process',
     ITEM_ARR: [
       {

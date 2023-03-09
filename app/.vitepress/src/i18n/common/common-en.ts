@@ -167,7 +167,7 @@ export default {
           PATH: '/sig/sig-list/',
         },
         {
-          NAME: 'Application',
+          NAME: 'Set Up',
           ID: 'application',
           PATH: '/sig/sig-guidance/',
         },

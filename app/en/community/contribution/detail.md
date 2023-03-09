@@ -77,7 +77,7 @@ If you cannot find the SIG that you are interested in, send an email to [communi
 
 #### 3.2.2 Start a New SIG
 
-If you fail to find the SIGs you are interested in and want to start a new SIG for maintenance and development in the openEuler community, refer to [Application Process](https://www.openeuler.org/en/sig/sig-guidance/).
+If you fail to find the SIGs you are interested in and want to start a new SIG for maintenance and development in the openEuler community, refer to [Set Up](https://www.openeuler.org/en/sig/sig-guidance/).
 
 ### 3.3 Engage in Community Contributions
 

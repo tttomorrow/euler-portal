@@ -392,7 +392,7 @@ const changeCurrentMoblie = (val: string) => {
 <template>
   <BannerLevel2
     :background-image="banner"
-    background-text="INTERACTION"
+    background-text="CONNECT"
     :title="userCaseData.NEWS"
     :illustration="illustration"
   />

@@ -2,8 +2,7 @@ import techDay_pc from '@/assets/category/home/banner/tech-day_pc.png';
 import techDay_mo from '@/assets/category/home/banner/tech-day_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
 import migrationImg_mo from '@/assets/category/home/banner/migration_mo.png';
-import annals_pc from '@/assets/category/home/banner/annals_pc.jpg';
-import annals_mo from '@/assets/category/home/banner/annals_mo.png';
+
 import forum_pc from '@/assets/category/home/banner/forum_pc.jpg';
 import forum_mo from '@/assets/category/home/banner/forum_mo.jpg';
 import eur_mo from '@/assets/category/home/banner/eur-banner_mo.jpg';
@@ -19,13 +18,6 @@ export default {
         link: '/zh/blog/waaagh/openEuler-user-repo-intro.html',
         id: 'eur',
         title: ['openEuler', '用户软件仓（EUR）发布'],
-        targetTap: 1,
-      },
-      {
-        pcBanner: annals_pc,
-        moBanner: annals_mo,
-        link: '/zh/news/2022年度报告/年度报告.html',
-        id: '',
         targetTap: 1,
       },
       {

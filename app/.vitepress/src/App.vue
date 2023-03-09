@@ -3,6 +3,9 @@ import { useData } from 'vitepress';
 import type { Component } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 
+import zhCn from 'element-plus/lib/locale/lang/zh-cn';
+import en from 'element-plus/lib/locale/lang/en';
+
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
 import LayoutBlog from '@/layouts/LayoutBlog.vue';
@@ -18,6 +21,12 @@ import categories from '@/data/common/category';
 import { setStoreData } from './shared/login';
 
 const { frontmatter } = useData();
+
+const { lang } = useData();
+
+const locale = computed(() => {
+  return lang.value === 'zh' ? zhCn : en;
+});
 
 const compMapping: {
   [name: string]: Component;
@@ -58,10 +67,12 @@ onMounted(() => {
 
 <template>
   <AppHeader />
-  <main>
-    <component :is="comp" v-if="isCustomLayout"></component>
-    <Content v-else />
-  </main>
+  <el-config-provider :locale="locale">
+    <main>
+      <component :is="comp" v-if="isCustomLayout"></component>
+      <Content v-else />
+    </main>
+  </el-config-provider>
   <AppFooter :is-cookie-tip="isCookieTip" @click-cookie="onCookieClick" />
 </template>
 
