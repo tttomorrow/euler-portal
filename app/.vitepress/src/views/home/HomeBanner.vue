@@ -91,9 +91,9 @@ const jumpTo = (item: any) => {
             <div data-aos="fade-down" class="box">
               <p
                 v-for="title in item.title"
-                class="title"
                 :key="title"
                 :class="item.id === 'eur' ? 'eur' : ''"
+                class="title"
               >
                 {{ title }}
               </p>
