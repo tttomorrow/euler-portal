@@ -6,8 +6,7 @@ tags:
 archives: 2023-03
 author:
   - openEuler
-summary: RISC-V SIG 分别向社区申请并创建了 RISC-V
-专属的邮件列表和社区论坛中相对应的模块，目前已经正式投入使用。
+summary: RISC-V SIG 分别向社区申请并创建了 RISC-V 专属的邮件列表和社区论坛中相对应的模块，目前已经正式投入使用。
 ---
 
 
