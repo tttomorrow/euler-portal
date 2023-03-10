@@ -33,26 +33,26 @@ const editionList = ref([
         <div class="line line3"></div>
         <div class="line line4"></div>
         <div
-          class="activebox"
           v-for="(value, key) in planLink"
           :key="value"
+          class="activebox"
           :class="planLink[key].id"
         >
           <!-- 社区峰会、成员单位会议、开源项目、开发者活动 -->
-          <div class="titlebox" v-if="planLink[key].id !== 'college'">
+          <div v-if="planLink[key].id !== 'college'" class="title-box">
             <p>{{ planLink[key].title }}</p>
           </div>
-          <div class="contentbox" v-if="planLink[key].id !== 'college'">
+          <div v-if="planLink[key].id !== 'college'" class="content-box">
             <div
-              class="layout"
               v-for="item in planLink[key]['events']"
               :key="item"
               :class="['month' + item.month]"
+              class="layout"
             >
               <!-- 社区峰会、成员单位会议、开源项目 -->
-              <div class="eventbox" v-if="planLink[key].id !== 'developer'">
+              <div v-if="planLink[key].id !== 'developer'" class="event-box">
                 <h5>{{ item.month }}月</h5>
-                <div class="eventitem" v-for="it in item.actives" :key="it">
+                <div v-for="it in item.actives" :key="it" class="event-item">
                   <li></li>
                   <a
                     v-if="it.hasOwnProperty('activelink')"
@@ -68,14 +68,18 @@ const editionList = ref([
                 </div>
               </div>
               <!-- 开发者活动  需要添加tab-->
-              <div class="eventbox" v-if="planLink[key].id === 'developer'">
+              <div v-if="planLink[key].id === 'developer'" class="event-box">
                 <h5>{{ item.month }}月</h5>
-                <div class="develper" v-for="devel in item.actives">
+                <div
+                  v-for="devel in item.actives"
+                  :key="devel.activeType"
+                  class="develper"
+                >
                   <span class="tab">{{ devel.activeType }}</span>
                   <div
-                    class="eventitem"
                     v-for="it in devel.activeEvent"
                     :key="it"
+                    class="event-item"
                   >
                     <li></li>
                     <a
@@ -103,18 +107,21 @@ const editionList = ref([
             </p>
           </div>
           <!-- 高校活动 -->
-          <div class="titlebox" v-if="planLink[key].id === 'college'">
+          <div v-if="planLink[key].id === 'college'" class="title-box">
             <p>{{ planLink[key].title }}</p>
           </div>
-          <div class="collegee" v-if="planLink[key].id === 'college'">
+          <div v-if="planLink[key].id === 'college'" class="collegee">
             <div
-              class="collegee-item"
               v-for="colact in planLink['college'].actives"
               :key="colact"
               :style="{
-                width: (colact.endTime - (colact.startTime - 1)) * 105 + 'px',
-                marginLeft: (colact.startTime - 1) * 105 + 'px',
+                width:
+                  (colact.endTime - (colact.startTime - 1)) *
+                    (colact.endTime === 12 ? 108.5 : 104) +
+                  'px',
+                marginLeft: (colact.startTime - 1) * 104 + 'px',
               }"
+              class="collegee-item"
             >
               <a
                 v-if="colact.hasOwnProperty('activelink')"
@@ -140,12 +147,13 @@ const editionList = ref([
         </div>
         <!-- 版本发布计划 -->
         <div class="activebox edition">
-          <div class="titlebox">版本发布计划</div>
-          <div class="editionbox">
+          <div class="title-box">版本发布计划</div>
+          <div class="edition-box">
             <div
-              class="layout"
               v-for="(edit, index) in editionList"
               :class="['edit' + index]"
+              :key="edit.content"
+              class="layout"
             >
               <div class="edition-item">
                 <p class="edition-time">{{ edit.time }}</p>
@@ -161,11 +169,11 @@ const editionList = ref([
 
 <style lang="scss" scoped>
 $lineSpace: 315px;
-$eventboxWidth: 105px;
+$eventboxWidth: 127px;
 $contentWidth: 1302px;
 $titleboxWidth: 98px;
 $contenML: var(--o-spacing-h5);
-$gridGap:var(--o-spacing-h6);
+$gridGap: var(--o-spacing-h6);
 $lineLeft: calc($titleboxWidth + $contenML);
 
 .dark {
@@ -180,13 +188,13 @@ $lineLeft: calc($titleboxWidth + $contenML);
         );
       }
       .community {
-        .contentbox {
+        .content-box {
           background-image: linear-gradient(to right, #181f31, #273b70);
-          .eventbox {
+          .event-box {
             h5 {
               color: #7ba9ea;
             }
-            .eventitem {
+            .event-item {
               li {
                 color: #7ba9ea;
               }
@@ -195,13 +203,13 @@ $lineLeft: calc($titleboxWidth + $contenML);
         }
       }
       .units {
-        .contentbox {
+        .content-box {
           background-image: linear-gradient(to right, #282114, #543c12);
-          .eventbox {
+          .event-box {
             h5 {
               color: #feaa11;
             }
-            .eventitem {
+            .event-item {
               li {
                 color: #feaa11;
               }
@@ -210,13 +218,13 @@ $lineLeft: calc($titleboxWidth + $contenML);
         }
       }
       .opensoucrce {
-        .contentbox {
+        .content-box {
           background-image: linear-gradient(to right, #101a19, #0d2a26);
-          .eventbox {
+          .event-box {
             h5 {
               color: #00685a;
             }
-            .eventitem {
+            .event-item {
               li {
                 color: #00685a;
               }
@@ -225,13 +233,13 @@ $lineLeft: calc($titleboxWidth + $contenML);
         }
       }
       .developer {
-        .contentbox {
+        .content-box {
           background-image: linear-gradient(to right, #1d1528, #301b4e);
-          .eventbox {
+          .event-box {
             h5 {
               color: #7d32ea;
             }
-            .eventitem {
+            .event-item {
               li {
                 color: #7d32ea;
               }
@@ -240,7 +248,7 @@ $lineLeft: calc($titleboxWidth + $contenML);
         }
       }
       .collegee {
-        &-item {
+        .collegee-item {
           background-image: linear-gradient(to right, #121b24, #104370);
         }
       }
@@ -271,18 +279,16 @@ $lineLeft: calc($titleboxWidth + $contenML);
       );
     }
     @for $i from 1 through 4 {
-      $a:$i+px;
+      $a: $i + px;
       .line#{$i} {
         left: calc(calc($lineLeft + calc($lineSpace * $i)) - $a);
       }
     }
-    .titlebox {
+    .title-box {
       background-color: var(--o-color-kleinblue5);
       color: var(--o-color-white);
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
-      font-weight: 400;
-      box-sizing: border-box;
       min-width: $titleboxWidth;
       max-width: $titleboxWidth;
       display: flex;
@@ -290,8 +296,11 @@ $lineLeft: calc($titleboxWidth + $contenML);
       justify-content: center;
       text-align: center;
       padding: 0 var(--o-spacing-h6);
+      p {
+        word-spacing: 100vw;
+      }
     }
-    .contentbox {
+    .content-box {
       margin-left: $contenML;
       width: 100%;
       display: flex;
@@ -302,7 +311,7 @@ $lineLeft: calc($titleboxWidth + $contenML);
       div:last-of-type {
         margin-bottom: 0;
       }
-      &-item {
+      .collegee-item {
         height: 34px;
         font-size: var(--o-font-size-tip);
         color: var(--o-color-text1);
@@ -321,6 +330,9 @@ $lineLeft: calc($titleboxWidth + $contenML);
         p {
           cursor: default;
         }
+        .internship {
+          margin-left: 40px;
+        }
       }
     }
     .layout {
@@ -328,18 +340,17 @@ $lineLeft: calc($titleboxWidth + $contenML);
       height: auto;
       position: relative;
     }
-    .eventbox {
+    .event-box {
       position: relative;
       padding: var(--o-spacing-h6);
       min-width: $eventboxWidth;
-      max-width: $eventboxWidth;
       h5 {
         font-size: var(--o-font-size-h8);
         line-height: var(--o-line-height-text);
         font-weight: 500;
         cursor: default;
       }
-      .eventitem {
+      .event-item {
         display: flex;
         align-items: flex-start;
 
@@ -358,20 +369,26 @@ $lineLeft: calc($titleboxWidth + $contenML);
         p {
           cursor: default;
         }
+        a {
+          &:hover {
+            color: var(--o-color-brand1);
+          }
+        }
       }
     }
     .develper {
       .tab {
+        display: flex;
+        width: fit-content;
+        align-items: center;
         border: 1px solid #a358ff;
         height: 22px;
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
         text-align: center;
-        font-family: FZLTHJW--GB1-0, FZLTHJW--GB1;
         color: #a358ff;
         padding: 0 4px;
         margin: 4px 0;
-        display: inline-block;
         cursor: default;
       }
     }
@@ -391,13 +408,13 @@ $lineLeft: calc($titleboxWidth + $contenML);
           line-height: var(--o-line-height-tip);
         }
       }
-      .contentbox {
+      .content-box {
         background-image: linear-gradient(to right, #eff3fb, #dfeafb);
-        .eventbox {
+        .event-box {
           h5 {
             color: var(--o-color-kleinblue5);
           }
-          .eventitem {
+          .event-item {
             li {
               color: var(--o-color-kleinblue5);
             }
@@ -406,17 +423,17 @@ $lineLeft: calc($titleboxWidth + $contenML);
       }
     }
     .community {
-      .contentbox {
+      .content-box {
         background-image: linear-gradient(
           90deg,
           rgba(247, 241, 218, 0.3) 0%,
           rgba(251, 234, 175, 0.4) 100%
         );
-        .eventbox {
+        .event-box {
           h5 {
             color: var(--o-color-kleinblue5);
           }
-          .eventitem {
+          .event-item {
             li {
               color: var(--o-color-kleinblue5);
             }
@@ -425,17 +442,17 @@ $lineLeft: calc($titleboxWidth + $contenML);
       }
     }
     .units {
-      .contentbox {
+      .content-box {
         background-image: linear-gradient(
           90deg,
           rgba(232, 242, 255, 0.5) 0%,
           rgba(192, 218, 254, 0.43) 100%
         );
-        .eventbox {
+        .event-box {
           h5 {
             color: #feaa11;
           }
-          .eventitem {
+          .event-item {
             li {
               color: #feaa11;
             }
@@ -445,17 +462,17 @@ $lineLeft: calc($titleboxWidth + $contenML);
     }
     .opensoucrce {
       margin-bottom: 18px;
-      .contentbox {
+      .content-box {
         background-image: linear-gradient(
           90deg,
           rgba(236, 240, 243, 0.5) 0%,
           #cde8e7 100%
         );
-        .eventbox {
+        .event-box {
           h5 {
             color: #00685a;
           }
-          .eventitem {
+          .event-item {
             li {
               color: #00685a;
             }
@@ -464,17 +481,17 @@ $lineLeft: calc($titleboxWidth + $contenML);
       }
     }
     .developer {
-      .contentbox {
+      .content-box {
         background-image: linear-gradient(
           90deg,
           rgba(236, 237, 252, 0.5) 0%,
           #ebecfc 100%
         );
-        .eventbox {
+        .event-box {
           h5 {
             color: #7d32ea;
           }
-          .eventitem {
+          .event-item {
             li {
               color: #7d32ea;
             }
@@ -482,35 +499,35 @@ $lineLeft: calc($titleboxWidth + $contenML);
         }
       }
     }
-      .edition {
-    margin-top: 25px;
+    .edition {
+      margin-top: 25px;
 
-    .titlebox {
-      min-height: 72px;
-    }
-    .editionbox {
-      margin-left: var(--o-spacing-h5);
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      @for $i from 0 through 3 {
-        .edit#{$i} {
-          left: calc($lineSpace * calc($i + 1));
-        }
+      .title-box {
+        min-height: 72px;
       }
-      .edition-item {
+      .edition-box {
+        margin-left: var(--o-spacing-h5);
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        justify-content: center;
-        p {
-          font-size: var(--o-font-size-tip);
-          white-space: nowrap;
+        @for $i from 0 through 3 {
+          .edit#{$i} {
+            left: calc($lineSpace * calc($i + 1));
+          }
+        }
+        .edition-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          p {
+            font-size: var(--o-font-size-tip);
+            white-space: nowrap;
+          }
         }
       }
     }
-  }
     @for $i from 1 through 12 {
       .month#{$i} {
         left: calc(calc($i - 1) * 104px);

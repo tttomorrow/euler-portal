@@ -1,51 +1,51 @@
 export default {
-  community: {
-    title: '社区峰会',
-    id: 'community',
-    events: [
-      {
-        month: '5',
-        actives: [
-          {
-            activeName: 'openEuler Developer Day',
-          },
-        ],
-      },
-      {
-        month: '12',
-        actives: [
-          {
-            activeName: 'openEuler Summit 2023',
-          },
-          {
-            activeName: '操作系统峰会',
-          },
-        ],
-      },
-    ],
-  },
-  units: {
-    title: '成员单位会议',
-    id: 'units',
-    events: [
-      {
-        month: '6',
-        actives: [
-          {
-            activeName: '华为伙伴暨开发者大会',
-          },
-        ],
-      },
-      {
-        month: '11',
-        actives: [
-          {
-            activeName: '华为全联接大会',
-          },
-        ],
-      },
-    ],
-  },
+  // community: {
+  //   title: '社区峰会',
+  //   id: 'community',
+  //   events: [
+  //     {
+  //       month: '5',
+  //       actives: [
+  //         {
+  //           activeName: 'openEuler Developer Day',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       month: '12',
+  //       actives: [
+  //         {
+  //           activeName: 'openEuler Summit 2023',
+  //         },
+  //         {
+  //           activeName: '操作系统峰会',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // units: {
+  //   title: '成员单位会议',
+  //   id: 'units',
+  //   events: [
+  //     {
+  //       month: '6',
+  //       actives: [
+  //         {
+  //           activeName: '华为伙伴暨开发者大会',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       month: '11',
+  //       actives: [
+  //         {
+  //           activeName: '华为全联接大会',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
   opensoucrce: {
     title: '开源顶会',
     id: 'opensoucrce',
@@ -77,7 +77,7 @@ export default {
     ],
   },
   developer: {
-    title: '开发者活动',
+    title: '开发者 活动',
     id: 'developer',
     events: [
       {

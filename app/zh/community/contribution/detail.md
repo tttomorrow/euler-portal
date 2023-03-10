@@ -21,9 +21,9 @@ import illustration from '@/assets/illustrations/contribution.png';
 </ClientOnly>
 <ContributionTab />
 
-<div class="markdown word">
+<div class="markdown">
 
-<span class="desc">欢迎来到 openEuler！</span>
+### 欢迎来到 openEuler！
 
 ## 1. 体验 openEuler
 
@@ -175,29 +175,7 @@ openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社�
 </div>
 
 <style lang="scss" scoped>
-.word {
-  margin-top: var(--o-spacing-h2);
-  max-width: 1416px;
-  li::marker {
-    color: var(--o-color-text1) !important;
-  }
-  .desc {
-    font-size: var(--o-font-size-h7);
-    color: var(--o-color-text1);
-  }
-  a {
-    color: var(--o-color-link1);
-  }
   .care {
     color: var(--o-color-red5);
   }
-  @media screen and (max-width: 769px) {
-    padding: var(--o-spacing-h5);
-    .desc {
-      color: var(--o-color-text1);
-      font-size: var(--o-spacing-tip);
-      line-height: var(--o-line-height-tip);
-    }
-  }
-}
 </style>

@@ -32,6 +32,6 @@ export const selectMirror = (version: string) => {
     .get(url)
     .then((res: AxiosResponse) => res.data)
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 };

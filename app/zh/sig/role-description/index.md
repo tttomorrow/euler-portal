@@ -4,34 +4,10 @@ title: '角色说明'
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import useWindowResize from '@/components/hooks/useWindowResize';
 import BannerLevel2 from '@/components/BannerLevel2.vue'
 import banner from '@/assets/banner/banner-sig.png';
 import illustration from '@/assets/illustrations/sig-role.png';
-const tableData = [
-  {
-    SigName: 'Contributor',
-    Gitee: '项目的贡献者',
-    Email: '项目Owner',
-    IRC: 'Gitee注册成员'
-  },
-  {
-    SigName: 'Committer',
-    Gitee: '审核其他成员的贡献',
-    Email: 'SIG的积极贡献者，经验丰富，愿意投入精力参与到审核工作',
-    IRC: 'openEuler SIG拥有的储存库中OWNERS文件中的Commiter条目。'
-  },
-  {
-    SigName: 'Maintainer',
-    Gitee: '项目Owner',
-    Email: '经验丰富，富有责任心、出色的技术能力和管理能力',
-    IRC: 'openEuler SIG拥有的存储库中OWNERS文件中的Maintainer条目。'
-  }
-]
-const screenWidth = useWindowResize();
-const isMobile = computed(() => {
-  return screenWidth.value <= 768 ? true : false;
-});
+
 </script>
 
 <ClientOnly>
@@ -43,49 +19,26 @@ const isMobile = computed(() => {
   />
 </ClientOnly>
 
-<div :class="['markdown', isMobile ? 'markdown-mo' : '']">
+<div class="markdown">
 
-<div class="top">社区成员</div>
+### 社区成员
 
 本文简要描述了 openEuler 社区中贡献者角色的各种职责。大部分角色的职责限于这些 SIG(Special Interest Group)内：
 
-<OTable :data="tableData" v-show="!isMobile" class="duty-table">
-  <OTableColumn prop="SigName" label="SIG名称"/>
-  <OTableColumn prop="Gitee" label="Gitee主页"/>
-  <OTableColumn prop="Email" label="邮件"/>
-  <OTableColumn prop="IRC" label="IRC频道"/>
-</OTable>
 
-<div class="mo-card" v-show="isMobile">
-  <div
-    v-for="(item,index) in tableData"
-    :key="item.SigName"
-    :class="['mo-card-item', index === 1 ? 'mo-card-middle' : 'mo-card-sides' ]">
-    <div class="mo-card-item-text">
-      <p class="text-title">角色：</p>
-      <p class="text-content">{{ item.SigName }}</p>
-    </div>
-    <div class="mo-card-item-text">
-      <p class="text-title">职责范围：</p>
-      <p class="text-content">{{ item.Gitee }}</p>
-    </div>
-    <div class="mo-card-item-text">
-      <p class="text-title">要求：</p>
-      <p class="text-content">{{ item.Email }}</p>
-    </div>
-    <div class="mo-card-item-text">
-      <p class="text-title">定义的文件：</p>
-      <p class="text-content">{{ item.IRC }}</p>
-    </div>
-  </div>
-</div>
+| 角色        | 职责范围（简要描述） | 要求                                                  | 定义的文件                                                |
+| :---------- | :------------------- | :---------------------------------------------------- | :-------------------------------------------------------- |
+| Contributor | 项目的贡献者         |                                                       | Gitee注册成员                                             |
+| Committer   | 审核其他成员的贡献   | SIG的积极贡献者，经验丰富，愿意投入精力参与到审核工作 | openEuler SIG拥有的储存库中OWNERS文件中的Commiter条目。   |
+| Maintainer  | 项目Owner            | 经验丰富，富有责任心、出色的技术能力和管理能力        | openEuler SIG拥有的存储库中OWNERS文件中的Maintainer条目。 |
+
 
 说明：Maintainer 和 Committer 在 Gitee 的权限上不做区分，两者的区分主要是集中在 SIG 治理的管理范围上。详细可以见下面的描述。
 
 ## 新的贡献者
 
 欢迎新成员加入社区。我们有关于如何开始贡献的指导文档请参考：
-<a href="https://gitee.com/openeuler/community/blob/master/zh/contributors/README.md" class="link">openEuler 贡献者指南</a>
+<a href="https://gitee.com/openeuler/community/blob/master/zh/contributors/README.md" >openEuler 贡献者指南</a>
 
 ## 既有社区成员
 
@@ -190,53 +143,3 @@ const isMobile = computed(() => {
 - 召集 SIG 组会议：定期召集 SIG 会议，决策 SIG 内上升的争议。
 
 </div>
-
-<style scoped lang="scss">
-  .markdown {
-    margin-top: var(--o-spacing-h1);
-  }
-  .markdown-mo {
-    margin-top: var(--o-spacing-h2);
-    padding: var(--o-spacing-h5);
-  }
-  .top {
-    font-size: var(--o-font-size-h7);
-    font-weight: 500;
-    color: var(--o-color-text1);
-    line-height: var(--o-line-height-h7);
-  }
-  .duty-table {
-    margin-top: var(--o-spacing-h4);
-    margin-bottom: var(--o-spacing-h5);
-    box-shadow: none;
-    :deep(.el-table__header) {
-      tr {
-        border: none;
-      }
-    }
-    :deep(.el-table__body) {
-      border-collapse: separate;
-    }
-  }
-  .link {
-    color: var(--o-color-brand1);
-  }
-  .mo-card {
-    margin: var(--o-spacing-h4) 0;
-    &-item {
-      padding: var(--o-spacing-h5);
-      &-text {
-        display: flex;
-        .text-title {
-          white-space:nowrap;
-        }
-        .text-content {
-          color: var(--o-color-text4);
-        }
-      }
-    }
-    &-sides {
-      background-color: var(--o-color-bg1);
-    }
-  }
-</style>
