@@ -320,7 +320,7 @@ const isMobile = computed(() => {
           display: -webkit-box;
           text-overflow: ellipsis;
           overflow: hidden;
-          -webkit-line-clamp: 4;
+          -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
         }
       }
