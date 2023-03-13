@@ -66,11 +66,7 @@ const jumpTo = (item: any) => {
     :navigation="true"
     @swiper="onSwiper"
   >
-    <swiper-slide
-      v-for="item in homeBanner"
-      :key="item.link"
-      :swiper-ref="SwiperCore"
-    >
+    <swiper-slide v-for="item in homeBanner" :key="item.link">
       <div
         class="banner-panel"
         :class="{ 'is-link': item.link }"

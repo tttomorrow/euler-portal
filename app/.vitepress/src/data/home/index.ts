@@ -8,10 +8,20 @@ import forum_mo from '@/assets/category/home/banner/forum_mo.jpg';
 import eur_mo from '@/assets/category/home/banner/eur-banner_mo.jpg';
 import eur_pc from '@/assets/category/home/banner/eur-banner_pc.jpg';
 
+import internship_pc from '@/assets/category/home/banner/internship_pc.jpg';
+import internship_mo from '@/assets/category/home/banner/internship_mo.jpg';
+
 export default {
   // 首页banner  targetTap:1 新页签打开
   HOMEBANNER: {
     zh: [
+      {
+        pcBanner: internship_pc,
+        moBanner: internship_mo,
+        link: 'https://summer-ospp.ac.cn/',
+        id: '',
+        targetTap: 1,
+      },
       {
         pcBanner: eur_pc,
         moBanner: eur_mo,
