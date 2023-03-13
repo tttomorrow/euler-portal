@@ -356,15 +356,16 @@ $lineLeft: calc($titleboxWidth + $contenML);
 
         li {
           font-size: var(--o-font-size-tip);
-          line-height: 20px;
+          line-height: var(--o-line-height-tip);
+          width: 4px;
+          margin-right: 4px;
         }
         a,
         p {
           font-size: var(--o-font-size-tip);
           color: var(--o-color-text1);
           position: relative;
-          line-height: 20px;
-          left: -8px;
+          line-height: var(--o-line-height-tip);
         }
         p {
           cursor: default;
