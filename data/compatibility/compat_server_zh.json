@@ -8123,5 +8123,66 @@
       "hostBusAdapter": "",
       "hardDiskDrive": "DELL PERC H755 Front 5.21"
     }
+  },
+  {
+    "hardwareFactory": "华为",
+    "hardwareModel": "RH2288H V3",
+    "osVersion": "openEuler 20.03 LTS SP3",
+    "architecture": "x86_64",
+    "date": "2023/02/14",
+    "friendlyLink": "http://support.huawei.com/enterprise/zh/rack-servers/rh2288h-v3-pid-9901881",
+    "boardCards": [
+      {
+        "vendorID": "",
+        "deviceID": "",
+        "svID": "",
+        "ssID": "",
+        "architecture": "x86_64",
+        "os": "openEuler 20.03 LTS SP3",
+        "driverName": "megaraid_sas",
+        "version": "",
+        "type": "RAID",
+        "date": "2023.02.14",
+        "sha256": "",
+        "driverSize": "",
+        "chipVendor": "",
+        "boardModel": "",
+        "chipModel": "",
+        "item": "",
+        "downloadLink": ""
+      },
+      {
+        "vendorID": "",
+        "deviceID": "",
+        "svID": "",
+        "ssID": "",
+        "architecture": "x86_64",
+        "os": "openEuler 20.03 LTS SP3",
+        "driverName": "",
+        "version": "",
+        "type": "",
+        "date": "",
+        "sha256": "",
+        "driverSize": "",
+        "chipVendor": "",
+        "boardModel": "",
+        "chipModel": "",
+        "item": "",
+        "downloadLink": ""
+      }
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "http://support.huawei.com/enterprise/zh/rack-servers/rh2288h-v3-pid-9901881",
+      "certificationTime": "2022/02/14",
+      "commitID": "I6K833",
+      "mainboardModel": "BC11HGSA0",
+      "biosUefi": "5.03 (U47)",
+      "cpu": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
+      "ram": "2*16G Micron",
+      "portsBusTypes": "x8 PCI",
+      "videoAdapter": "Hi1710",
+      "hostBusAdapter": "",
+      "hardDiskDrive": "ATA ST2000NM0055-1V4、ATA MG04ACA200N"
+    }
   }
 ]
