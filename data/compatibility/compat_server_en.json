@@ -8116,7 +8116,7 @@
       "commitID": "I66XOH",
       "mainboardModel": "",
       "biosUefi": "1.8.2",
-      "cpu": "Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz",
+      "cpu": "icelake",
       "ram": "8*32G",
       "portsBusTypes": "X16 PCI Express 4 X16",
       "videoAdapter": "Matrox Electronics Systems Ltd.Integrated Matrox G200eW3 Graphics Controller(rev 04)",
@@ -8130,7 +8130,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/01",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750xs/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8172,12 +8172,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750xs/overview?lwp=rt",
       "certificationTime": "2023/03/01",
       "commitID": "I66XOH",
       "mainboardModel": "",
       "biosUefi": "1.8.2",
-      "cpu": "Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz",
+      "cpu": "icelake",
       "ram": "8*32G",
       "portsBusTypes": "X16 PCI Express 4 X16",
       "videoAdapter": "Matrox Electronics Systems Ltd.Integrated Matrox G200eW3 Graphics Controller(rev 04)",
@@ -8191,7 +8191,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/01",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750xa/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8233,12 +8233,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750xa/overview?lwp=rt",
       "certificationTime": "2023/03/01",
       "commitID": "I66XOH",
       "mainboardModel": "",
       "biosUefi": "1.8.2",
-      "cpu": "Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz",
+      "cpu": "icelake",
       "ram": "8*32G",
       "portsBusTypes": "X16 PCI Express 4 X16",
       "videoAdapter": "Matrox Electronics Systems Ltd.Integrated Matrox G200eW3 Graphics Controller(rev 04)",
@@ -8252,7 +8252,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/01",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r650/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8294,12 +8294,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r650/overview?lwp=rt",
       "certificationTime": "2023/03/01",
       "commitID": "I66XOH",
       "mainboardModel": "",
       "biosUefi": "1.8.2",
-      "cpu": "Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz",
+      "cpu": "icelake",
       "ram": "8*32G",
       "portsBusTypes": "X16 PCI Express 4 X16",
       "videoAdapter": "Matrox Electronics Systems Ltd.Integrated Matrox G200eW3 Graphics Controller(rev 04)",
@@ -8313,7 +8313,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/01",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r650xs/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8355,12 +8355,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r650xs/overview?lwp=rt",
       "certificationTime": "2023/03/01",
       "commitID": "I66XOH",
       "mainboardModel": "",
       "biosUefi": "1.8.2",
-      "cpu": "Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz",
+      "cpu": "icelake",
       "ram": "8*32G",
       "portsBusTypes": "X16 PCI Express 4 X16",
       "videoAdapter": "Matrox Electronics Systems Ltd.Integrated Matrox G200eW3 Graphics Controller(rev 04)",
@@ -8374,7 +8374,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/01",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r550/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8416,12 +8416,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r550/overview?lwp=rt",
       "certificationTime": "2023/03/01",
       "commitID": "I66XOH",
       "mainboardModel": "",
       "biosUefi": "1.8.2",
-      "cpu": "Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz",
+      "cpu": "icelake",
       "ram": "8*32G",
       "portsBusTypes": "X16 PCI Express 4 X16",
       "videoAdapter": "Matrox Electronics Systems Ltd.Integrated Matrox G200eW3 Graphics Controller(rev 04)",
@@ -8482,7 +8482,7 @@
       "commitID": "I6K833",
       "mainboardModel": "BC11HGSA0",
       "biosUefi": "5.03 (U47)",
-      "cpu": "Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz",
+      "cpu": "haswell",
       "ram": "2*16G Micron",
       "portsBusTypes": "x8 PCI",
       "videoAdapter": "Hi1710",
@@ -8496,7 +8496,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/09",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r7525/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8538,12 +8538,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r7525/overview?lwp=rt",
       "certificationTime": "2023/03/09",
       "commitID": "I6LM0S",
       "mainboardModel": "E68S",
       "biosUefi": "2.2.5",
-      "cpu": "AMD EPYC 7543 32-Core Processor",
+      "cpu": "AMD EPYC3",
       "ram": "8*32G DDR4 3200",
       "portsBusTypes": "x8 PCIE",
       "videoAdapter": "Matrox Electronics Systems Ltd. Integrated Matrox G200eW3 Graphics Controller (rev 04)",
@@ -8557,7 +8557,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/09",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r7515/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8599,12 +8599,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r7515/overview?lwp=rt",
       "certificationTime": "2023/03/09",
       "commitID": "I6LM0S",
       "mainboardModel": "E68S",
       "biosUefi": "2.2.5",
-      "cpu": "AMD EPYC 7543 32-Core Processor",
+      "cpu": "AMD EPYC3",
       "ram": "8*32G DDR4 3200",
       "portsBusTypes": "x8 PCIE",
       "videoAdapter": "Matrox Electronics Systems Ltd. Integrated Matrox G200eW3 Graphics Controller (rev 04)",
@@ -8618,7 +8618,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/09",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r6525/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8660,12 +8660,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r6525/overview?lwp=rt",
       "certificationTime": "2023/03/09",
       "commitID": "I6LM0S",
       "mainboardModel": "E68S",
       "biosUefi": "2.2.5",
-      "cpu": "AMD EPYC 7543 32-Core Processor",
+      "cpu": "AMD EPYC3",
       "ram": "8*32G DDR4 3200",
       "portsBusTypes": "x8 PCIE",
       "videoAdapter": "Matrox Electronics Systems Ltd. Integrated Matrox G200eW3 Graphics Controller (rev 04)",
@@ -8679,7 +8679,7 @@
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/09",
-    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+    "friendlyLink": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r6515/overview?lwp=rt",
     "boardCards": [
       {
         "vendorID": "1000",
@@ -8721,12 +8721,12 @@
       }
     ],
     "compatibilityConfiguration": {
-      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r750/overview?lwp=rt",
+      "productInformation": "https://www.dell.com/support/home/zh-cn/product-support/product/poweredge-r6515/overview?lwp=rt",
       "certificationTime": "2023/03/09",
       "commitID": "I6LM0S",
       "mainboardModel": "E68S",
       "biosUefi": "2.2.5",
-      "cpu": "AMD EPYC 7543 32-Core Processor",
+      "cpu": "AMD EPYC3",
       "ram": "8*32G DDR4 3200",
       "portsBusTypes": "x8 PCIE",
       "videoAdapter": "Matrox Electronics Systems Ltd. Integrated Matrox G200eW3 Graphics Controller (rev 04)",
