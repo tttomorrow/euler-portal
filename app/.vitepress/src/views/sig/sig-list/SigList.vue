@@ -106,17 +106,17 @@ const getSigList = (params: LIST_PARAMS) => {
   }
 };
 const getAllRepo = () => {
-  try {
-    getRepoList().then((res) => {
+  getRepoList()
+    .then((res) => {
       repositioryList.value = JSON.parse(JSON.stringify(res.data));
       repositioryList.value.sort((a, b) => {
         return a.localeCompare(b);
       });
       repoRenderList.value = res.data.slice(0, 99);
+    })
+    .catch((error) => {
+      throw new Error(error);
     });
-  } catch (error) {
-    console.error(error);
-  }
 };
 
 const getRepositoryList = () => {
