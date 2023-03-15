@@ -75,8 +75,10 @@ const windowWidth = ref(useWindowResize());
 
 function setMeetingDay() {
   currentMeet = JSON.parse(JSON.stringify(props.tableData)).pop();
-  renderData.value = currentMeet;
-  currentDay.value = resolveDate(currentMeet.date);
+  if (currentMeet && currentMeet.date) {
+    renderData.value = currentMeet;
+    currentDay.value = resolveDate(currentMeet.date);
+  }
 }
 // 判断会议时间修改提示
 function handleTimeTip(item: DayData) {
