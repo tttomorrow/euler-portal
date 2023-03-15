@@ -316,9 +316,6 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
               </a>
             </div>
             <div class="footer-links" :class="{ iszh: lang === 'zh' }">
-              <div class="footer-top">
-                <img src="" alt="" />
-              </div>
               <a
                 v-for="item in footerLinks"
                 :key="item.id"
