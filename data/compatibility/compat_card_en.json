@@ -16024,5 +16024,24 @@
     "chipModel": "ConnectX-6 Dx",
     "item": "",
     "downloadLink": "https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP3/contrib/drivers/source/Packages/MLNX_OFED_LINUX-5.8-1.0.1.1-openeuler20.03sp3-aarch64.tgz"
+  },
+  {
+    "vendorID": "19e5",
+    "deviceID": "0222",
+    "svID": "19e5",
+    "ssID": "00a1",
+    "architecture": "aarch64",
+    "os": "openEuler 20.03 LTS SP3",
+    "driverName": "hinic3",
+    "version": "15.7.6.1",
+    "type": "NIC",
+    "date": "2023.03.09",
+    "sha256": "3d60fd24a15d8f1633dcbceef2ff520e466f1e47ba268d69fe7d5b45629699c8",
+    "driverSize": "97K",
+    "chipVendor": "Huawei",
+    "boardModel": "SP670",
+    "chipModel": "Hi1823",
+    "item": "",
+    "downloadLink": "commercial driver"
   }
 ]
