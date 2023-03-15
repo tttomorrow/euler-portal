@@ -414,7 +414,7 @@ export default {
     LEARN_MORE: '了解更多',
     LATEST_MEETING: '最新会议',
     WONDERFUL_REVIEW: '精彩回顾',
-    EMPTY_TEXT: '最近没有活动，敬请期待',
+    EMPTY_TEXT: '最近没有会议，敬请期待',
     MEMBERS: 'SIG成员',
     MAINTAINER: '核心成员',
     MAINTAINER_EN: 'Maintainer',
