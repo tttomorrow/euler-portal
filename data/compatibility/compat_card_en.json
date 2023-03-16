@@ -16043,5 +16043,24 @@
     "chipModel": "Hi1823",
     "item": "",
     "downloadLink": "commercial driver"
+  },
+  {
+    "vendorID": "19e5",
+    "deviceID": "0222",
+    "svID": "19e5",
+    "ssID": "0052",
+    "architecture": "aarch64",
+    "os": "openEuler 20.03 LTS SP3",
+    "driverName": "hinic3",
+    "version": "15.7.6.1",
+    "type": "NIC",
+    "date": "2023.03.14",
+    "sha256": "3d60fd24a15d8f1633dcbceef2ff520e466f1e47ba268d69fe7d5b45629699c8",
+    "driverSize": "97K",
+    "chipVendor": "Huawei",
+    "boardModel": "SP680",
+    "chipModel": "Hi1823",
+    "item": "",
+    "downloadLink": "commerical driver"
   }
 ]
