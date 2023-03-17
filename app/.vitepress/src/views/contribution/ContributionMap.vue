@@ -927,6 +927,30 @@ const goLink = (url: string, isBlank: boolean) => {
       left: 757px;
     }
   }
+  .link:nth-of-type(33) {
+    width: 100px;
+    height: 17px;
+    bottom: 165px;
+    left: 265px;
+    @media screen and (min-width: 768px) and (max-width: 1079px) {
+      width: 50px;
+      height: 9px;
+      bottom: 118px;
+      left: 138px;
+    }
+    @media screen and (min-width: 1080px) and (max-width: 1279px) {
+      width: 80px;
+      height: 14px;
+      bottom: 140px;
+      left: 190px;
+    }
+    @media screen and (min-width: 1280px) and (max-width: 1439px) {
+      width: 95px;
+      height: 15px;
+      bottom: 155px;
+      left: 226px;
+    }
+  }
 
   .content-map-mobile-img {
     width: 100%;
@@ -1143,6 +1167,12 @@ const goLink = (url: string, isBlank: boolean) => {
     height: 1%;
     left: 26.4%;
     top: 92%;
+  }
+  .mobile-link:nth-of-type(33) {
+    width: 27%;
+    height: 0.8%;
+    left: 34.4%;
+    top: 36.8%;
   }
   .link-en {
     cursor: pointer;
