@@ -141,5 +141,9 @@ export default {
       URL: 'https://gitee.com/openeuler/community/blob/master/community-membership_cn.md',
       BLANK: true,
     },
+    {
+      URL: 'https://www.bilibili.com/video/BV12A411o7zY/?spm_id_from=333.337.search-card.all.click&vd_source=0aa547ea87e7a7505cf544eacc2236ac',
+      BLANK: true,
+    },
   ],
 };

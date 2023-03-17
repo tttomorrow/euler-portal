@@ -24,10 +24,19 @@ import majun from '@/assets/category/live/speaker/majun.png';
 import zhangtianxing from '@/assets/category/live/speaker/zhangtianxing.png';
 import boruifeng from '@/assets/category/live/speaker/boruifeng.png';
 import lixiang from '@/assets/category/live/speaker/lixiang.png';
+import lichaoran from '@/assets/category/live/speaker/lichaoran.png';
 
 export default {
   cn: {
     LIVE_LIST: [
+      {
+        LIVETITLE: 'openEuler用户软件仓介绍与功能演示',
+        LIVETEACHER: ' 李超然',
+        LIVETIME: '2023年 3月2日 19:30（周四） ',
+        PHOTOPATH: lichaoran,
+        FORMERLYLINK:
+          'https://www.bilibili.com/video/BV1zY4y117P9/?spm_id_from=333.337.search-card.all.click',
+      },
       {
         LIVETITLE: '手把手教你编写Avocado-VT用例',
         LIVETEACHER: ' 朱欢凯',
