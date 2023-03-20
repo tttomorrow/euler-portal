@@ -8694,9 +8694,9 @@
         "date": "2023/03/08",
         "sha256": "abf3ad2595702e635fb07be307414d9df4baccd8ad1a1c369d28be61a46c93b6",
         "driverSize": "343K",
-        "chipVendor": "LSI",
-        "boardModel": "LSI MegaRAID SAS 9361-8i",
-        "chipModel": "LSI MegaRAID SAS-3 3108",
+        "chipVendor": "Broadcom",
+        "boardModel": "9361-8i",
+        "chipModel": "SAS-3 3108",
         "item": "",
         "downloadLink": "inbox"
       },
