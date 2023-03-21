@@ -10,6 +10,7 @@ import ruantong_light from '@/assets/category/member/ruantong_light.png';
 import dianxing_light from '@/assets/category/member/dianxing_light.png';
 import liantong_light from '@/assets/category/member/liantong_light.png';
 import yidong_light from '@/assets/category/member/yidong_light.png';
+import zhongyin_light from '@/assets/category/member/zhongyin_light.png';
 
 import turbolinux_light from '@/assets/category/member/turbolinux_light.png';
 import baolande_light from '@/assets/category/member/baolande_light.png';
@@ -27,6 +28,7 @@ import ruantong_dark from '@/assets/category/member/ruantong_dark.png';
 import dianxing_dark from '@/assets/category/member/dianxing_dark.png';
 import liantong_dark from '@/assets/category/member/liantong_dark.png';
 import yidong_dark from '@/assets/category/member/yidong_dark.png';
+import zhongyin_dark from '@/assets/category/member/zhongyin_dark.png';
 
 import turbolinux_dark from '@/assets/category/member/turbolinux_dark.png';
 import baolande_dark from '@/assets/category/member/baolande_dark.png';
@@ -119,6 +121,10 @@ export default [
       {
         img_light: feiten_light,
         img_dark: feiten_dark,
+      },
+      {
+        img_light: zhongyin_light,
+        img_dark: zhongyin_dark,
       },
     ],
   },
