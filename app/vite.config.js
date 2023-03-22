@@ -60,6 +60,11 @@ export default defineConfig({
   ],
   server: {
     proxy: {
+      '/api-easyeditor/': {
+        target: 'https://easyeditor.test.osinfra.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-easyeditor/, ''),
+      },
       '/compatibility/': {
         target: 'https://api-proxy.openeuler.isrc.ac.cn',
         changeOrigin: true,

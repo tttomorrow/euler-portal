@@ -26,6 +26,7 @@ specifiers:
   pinia: ^2.0.13
   prettier: ^2.7.1
   sass: ^1.51.0
+  showdown: ^2.1.0
   swiper: 6.8.1
   typescript: ^4.7.4
   unplugin-element-plus: ^0.4.1
@@ -44,6 +45,7 @@ dependencies:
   lodash: registry.npmmirror.com/lodash/4.17.21
   opendesign: link:opendesign
   pinia: registry.npmmirror.com/pinia/2.0.13_xjnrgrp243ohupsbqdj4qd3cly
+  showdown: registry.npmmirror.com/showdown/2.1.0
   swiper: registry.npmmirror.com/swiper/6.8.1
   vue: registry.npmmirror.com/vue/3.2.33
 
@@ -1771,7 +1773,6 @@ packages:
     name: commander
     version: 9.3.0
     engines: {node: ^12.20.0 || >=14}
-    dev: true
 
   registry.npmmirror.com/concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/concat-map/-/concat-map-0.0.1.tgz}
@@ -3546,6 +3547,15 @@ packages:
       vscode-oniguruma: registry.npmmirror.com/vscode-oniguruma/1.6.2
       vscode-textmate: registry.npmmirror.com/vscode-textmate/5.2.0
     dev: true
+
+  registry.npmmirror.com/showdown/2.1.0:
+    resolution: {integrity: sha512-/6NVYu4U819R2pUIk79n67SYgJHWCce0a5xTP979WbNp0FL9MN1I1QK662IDU1b6JzKTvmhgI7T7JYIxBi3kMQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/showdown/-/showdown-2.1.0.tgz}
+    name: showdown
+    version: 2.1.0
+    hasBin: true
+    dependencies:
+      commander: registry.npmmirror.com/commander/9.3.0
+    dev: false
 
   registry.npmmirror.com/signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/signal-exit/-/signal-exit-3.0.7.tgz}
