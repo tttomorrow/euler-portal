@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { ref,onMounted } from 'vue';
-import useWindowResize from '@/components/hooks/useWindowResize';
+import { onMounted } from 'vue';
 import AOS from 'aos';
-const windowWidth = ref(useWindowResize());
 defineProps({
   bannerData: {
     type: Object,
@@ -22,13 +20,11 @@ onMounted(() => {
 <template>
   <div class="banner">
     <div
-      v-if="windowWidth > 767"
-      class="summit-banner-pc"
+      class="summit-banner-pc summit-banner"
       :style="{ backgroundImage: `url(${bannerData.img_pc})` }"
     ></div>
     <div
-      v-else
-      class="summit-banner-pc"
+      class="summit-banner-mo summit-banner"
       :style="{ backgroundImage: `url(${bannerData.img_mo})` }"
     ></div>
     <div data-aos="fade-down" class="banner-text">
@@ -38,7 +34,7 @@ onMounted(() => {
   </div>
 </template>
 <style scoped lang="scss">
-.dark .banner{
+.dark .banner {
   filter: brightness(80%) grayscale(20%) contrast(1.2);
 }
 .banner {
@@ -48,11 +44,23 @@ onMounted(() => {
   @media (max-width: 767px) {
     height: 300px;
   }
-  .summit-banner-pc {
+  .summit-banner {
     height: 100%;
     margin: 0 auto;
     background: no-repeat center/cover;
   }
+  .summit-banner-pc {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .summit-banner-mo {
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
   img {
     width: 100%;
     max-height: 300px;
