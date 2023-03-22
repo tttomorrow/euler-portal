@@ -30,6 +30,10 @@ const props = defineProps({
       return {};
     },
   },
+  meetingDetail: {
+    type: String,
+    default: '',
+  },
 });
 const commonStore = useCommon();
 let currentMeet = reactive<TableData>({
@@ -74,13 +78,27 @@ const meetingTip = ref(
 const windowWidth = ref(useWindowResize());
 
 function setMeetingDay() {
-  currentMeet = JSON.parse(JSON.stringify(props.tableData)).pop();
+  const meetingData = JSON.parse(JSON.stringify(props.tableData));
+  const recentMeeting: any = ref([]);
+  meetingData.forEach((item: any) => {
+    const startTime = new Date(item.date).getTime();
+    const newDate = new Date().getTime();
+    if (newDate < startTime) {
+      recentMeeting.value.push(item);
+    }
+  });
+  if (!recentMeeting.value[0]) {
+    currentMeet = meetingData.pop();
+  } else {
+    currentMeet = recentMeeting.value[0];
+  }
   if (currentMeet && currentMeet.date) {
     renderData.value = currentMeet;
     currentDay.value = resolveDate(currentMeet.date);
   }
 }
 // 判断会议时间修改提示
+const isActive = ref(false);
 function handleTimeTip(item: DayData) {
   const startTime = new Date(
     currentMeet.date + ' ' + item.startTime + ':00'
@@ -90,10 +108,13 @@ function handleTimeTip(item: DayData) {
   ).getTime();
   const newDate = new Date().getTime();
   if (newDate > startTime && newDate < endTime) {
+    isActive.value = true;
     return '正在进行';
   } else if (newDate < startTime) {
+    isActive.value = true;
     return '即将开始';
   } else {
+    isActive.value = false;
     return '精彩回顾';
   }
 }
@@ -136,13 +157,12 @@ function getOldEmail() {
     });
 }
 function getUrlParam(paraName: any) {
-  const url = document.location.toString();
-  const arrObj = url.split('?');
-  if (arrObj.length > 1) {
-    const arrPara = arrObj[1].split('&');
+  const searchList = location.search.split('?');
+  if (searchList.length > 1) {
+    const paraList = searchList[1].split('&');
     let arr;
-    for (let i = 0; i < arrPara.length; i++) {
-      arr = arrPara[i].split('=');
+    for (let i = 0; i < paraList.length; i++) {
+      arr = paraList[i].split('=');
       if (arr !== null && arr[0] === paraName) {
         return arr[1];
       }
@@ -152,6 +172,9 @@ function getUrlParam(paraName: any) {
     return '';
   }
 }
+const meetingSummaryLink = computed(() => {
+  return `https://etherpad.openeuler.org/p/${sigDetailName.value}-meetings`;
+});
 onMounted(() => {
   sigDetailName.value = getUrlParam('name');
   getOldEmail();
@@ -173,6 +196,9 @@ const watchData = watch(
   },
   { immediate: true }
 );
+function handleClickBtn(link = '') {
+  window.open(link, '_blank');
+}
 </script>
 <template>
   <div class="main-body">
@@ -188,7 +214,20 @@ const watchData = watch(
           >
         </p>
         <h5 class="meeting-title">{{ sigData.MEETING_TITLE }}</h5>
-        <p class="meeting-tip">{{ meetingTip }}</p>
+        <p
+          class="meeting-tip"
+          v-html="meetingDetail ? meetingDetail : meetingTip"
+        ></p>
+        <OButton
+          type="text"
+          class="meeting-bth"
+          @click="handleClickBtn(meetingSummaryLink)"
+          >{{ sigData.MEETING_SUMMARY }}
+
+          <template #suffixIcon>
+            <OIcon><IconArrowRight /></OIcon>
+          </template>
+        </OButton>
       </div>
     </div>
     <div class="detail-list">
@@ -216,7 +255,9 @@ const watchData = watch(
                     <div class="meet-left">
                       <div class="left-top">
                         <p class="meet-name">{{ item.name || item.title }}</p>
-                        <p class="time-tip">{{ handleTimeTip(item) }}</p>
+                        <p class="time-tip" :class="{ 'active-tip': isActive }">
+                          {{ handleTimeTip(item) }}
+                        </p>
                       </div>
                       <div
                         v-if="item.group_name"
@@ -438,7 +479,7 @@ const watchData = watch(
       @media screen and (max-width: 768px) {
         padding: var(--o-spacing-h5);
         font-size: var(--o-font-size-tip);
-        min-height: 0;
+        height: auto;
       }
       h5 {
         font-size: var(--o-font-size-h6);
@@ -466,6 +507,48 @@ const watchData = watch(
         margin-top: var(--o-spacing-h4);
         @media screen and (max-width: 768px) {
           margin-top: var(--o-spacing-h6);
+        }
+      }
+      .meeting-tip {
+        max-height: 60px;
+        overflow: auto;
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background: var(--o-color-bg4);
+        }
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+        &::-webkit-scrollbar-track {
+          border-radius: 0;
+          background: var(--o-color-bg2);
+        }
+        @media screen and (max-width: 768px) {
+          max-height: 100%;
+        }
+      }
+      .meeting-bth {
+        padding: 0;
+        margin-top: var(--o-spacing-h5);
+        font-size: var(--o-font-size-text);
+        @media screen and (max-width: 768px) {
+          margin-top: var(--o-spacing-h6);
+          font-size: var(--o-font-size-tip);
+        }
+        &:hover {
+          :deep(.suffix-icon) {
+            transform: translateX(3px);
+            @media screen and (max-width: 768px) {
+              transform: translateX(0);
+            }
+          }
+        }
+        :deep(.suffix-icon) {
+          color: var(--o-color-brand1);
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-text);
+          }
         }
       }
     }
@@ -808,13 +891,17 @@ const watchData = watch(
               line-height: var(--o-line-height-h7);
             }
             .time-tip {
-              background-color: var(--o-color-yellow5);
+              background-color: var(--o-color-neutral9);
               color: var(--o-color-black);
               font-size: var(--o-font-size-tip);
               line-height: var(--o-line-height-tip);
               white-space: nowrap;
               padding: 0 8px;
+              &.active-tip {
+                background-color: var(--o-color-yellow5);
+              }
             }
+
             .el-collapse-item__content {
               padding: 0 20px;
             }

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue';
+import { computed, ref, onMounted, onUpdated } from 'vue';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
+import showdown from 'showdown';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -10,6 +11,8 @@ import SigMeeting from './SigMeeting.vue';
 import MobileRepositoryList from './MobileRepositoryList.vue';
 import ContributList from './ContributList.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
+import SigAnchor from './SigAnchor.vue';
+import SigFloorMd from './SigFloorMd.vue';
 
 import IconEmail from '~icons/app/icon-mail.svg';
 import IconGitee from '~icons/app/icon-gitee.svg';
@@ -20,9 +23,8 @@ import {
   getSigMember,
   getSigRepositoryList,
   getSigList,
+  getSigDetailInfo,
 } from '@/api/api-sig';
-
-// import IconChevronRight from '~icons/app/icon-chevron-right.svg';
 
 interface SIGLIST {
   group_name: string;
@@ -170,10 +172,9 @@ function setDefaultImage(e: any) {
 }
 onMounted(() => {
   function getUrlParam(paraName: any) {
-    const url = document.location.toString();
-    const arrObj = url.split('?');
-    if (arrObj.length > 1) {
-      const arrPara = arrObj[1].split('&');
+    const searchArray = location.search.split('?');
+    if (searchArray.length > 1) {
+      const arrPara = searchArray[1].split('&');
       let arr;
       for (let i = 0; i < arrPara.length; i++) {
         arr = arrPara[i].split('=');
@@ -192,8 +193,57 @@ onMounted(() => {
   getSigMembers();
   getRepositoryList();
 });
+// 处理导航锚点功能
+const navRef: any = ref([]);
+const titleListBefor: any = ref();
+const titleList: any = ref();
+onMounted(() => {
+  titleListBefor.value = document.querySelectorAll('.floor-title');
+});
+onUpdated(() => {
+  titleList.value = document.querySelectorAll('.floor-title');
+  if (titleListBefor.value.length !== titleList.value.length) {
+    navRef.value = [];
+    Object.keys(titleList.value).forEach((item: any) => {
+      navRef.value.push(titleList.value[item]);
+    });
+    titleListBefor.value = titleList.value;
+  }
+});
+// 获取easyeditor编辑发布的信息
+const converter = new showdown.Converter();
+// 显示表格
+converter.setOption('tables', true);
+const href = 'https://www.openeuler.org/zh/sig/sig-detail/?name=sig-OpenDesign';
+const easyeditorInfo: any = ref({});
+function getEasyeditorInfo() {
+  getSigDetailInfo(href)
+    .then((res) => {
+      if (res.statusCode === 200 && res.data && res.data[0]) {
+        res.data.forEach((item: any) => {
+          if (item.content) {
+            item.content = converter.makeHtml(item.content);
+          }
+          easyeditorInfo.value[item.name] = item;
+        });
+      }
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
+}
+const isOpenDesign = ref(false);
+onMounted(() => {
+  if (location.href.includes('name=sig-OpenDesign')) {
+    isOpenDesign.value = true;
+    getEasyeditorInfo();
+  } else {
+    isOpenDesign.value = false;
+  }
+});
 </script>
 <template>
+  <SigAnchor :nav-ref="navRef" />
   <div class="sig-detail">
     <BreadCrumbs
       bread1="SIG"
@@ -202,16 +252,27 @@ onMounted(() => {
     />
     <div class="content">
       <div class="brief-introduction">
-        <h2 class="brief-introduction-title">
+        <h2
+          :id="sigDetail.INTRODUCTION"
+          class="brief-introduction-title floor-title"
+        >
           {{ sigDetailName }}
           <a :href="giteeHomeLink" target="_blank">
             <OIcon class="icon"> <IconGitee /> </OIcon
           ></a>
         </h2>
-        <p v-if="sigMemberData.description" class="no-meeting">
+        <p
+          v-if="
+            isOpenDesign &&
+            easyeditorInfo.introduction &&
+            easyeditorInfo.introduction.content
+          "
+          v-html="easyeditorInfo.introduction.content"
+        ></p>
+        <p v-if="sigMemberData.description">
           {{ sigMemberData.description }}
         </p>
-        <p v-else class="no-meeting">
+        <p v-else>
           {{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT1
           }}<a
             target="_blank"
@@ -220,8 +281,12 @@ onMounted(() => {
           >{{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT3 }}
         </p>
       </div>
+      <SigFloorMd
+        v-if="isOpenDesign && easyeditorInfo.markdown"
+        :floor-data="easyeditorInfo.markdown"
+      />
       <div v-if="lang === 'zh'" class="meeting">
-        <h2>
+        <h2 :id="sigDetail.ORGANIZING_MEETINGS" class="floor-title">
           <span class="title-bg">{{ sigDetail.ORGANIZING_MEETINGS_BG }}</span>
           <span class="title-text">{{ sigDetail.ORGANIZING_MEETINGS }}</span>
         </h2>
@@ -229,13 +294,16 @@ onMounted(() => {
           v-if="sigMeetingData.tableData"
           class="calender-box"
           :table-data="sigMeetingData.tableData"
+          :meeting-detail="
+            easyeditorInfo.meeting ? easyeditorInfo.meeting.content : null
+          "
         />
         <p v-else class="no-meeting">
           {{ sigDetail.NO_MEETINGS }}
         </p>
       </div>
       <div v-if="memberList.length" class="member">
-        <h2>
+        <h2 :id="sigDetail.MAINTAINER" class="floor-title">
           <span class="title-bg">{{ sigDetail.MAINTAINER_BG }}</span>
           <span class="title-text">{{ sigDetail.MAINTAINER }}</span>
         </h2>
@@ -267,7 +335,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="repository">
-        <h2>
+        <h2 :id="sigDetail.REPOSITORY_LIST" class="floor-title">
           <span class="title-bg">{{ sigDetail.REPOSITORY_LIST_BG }}</span>
           <span class="title-text">{{ sigDetail.REPOSITORY_LIST }}</span>
         </h2>
@@ -430,7 +498,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="contribution">
-        <h2>
+        <h2 :id="sigDetail.CONTRIBUTION" class="floor-title">
           <span class="title-bg">{{ sigDetail.CONTRIBUTION_BG }}</span>
           <span class="title-text">{{ sigDetail.CONTRIBUTION }}</span>
         </h2>
@@ -531,6 +599,7 @@ onMounted(() => {
   margin-top: var(--o-spacing-h2);
   background-color: var(--o-color-bg2);
   padding: var(--o-spacing-h2);
+  box-shadow: var(--o-shadow-l1);
   @media screen and (max-width: 768px) {
     margin-top: var(--o-spacing-h5);
     padding: var(--o-spacing-h5);
@@ -540,6 +609,9 @@ onMounted(() => {
   max-width: 1504px;
   padding: var(--o-spacing-h2) var(--o-spacing-h2) var(--o-spacing-h1);
   margin: 0 auto;
+  @media (max-width: 1100px) {
+    padding: 16px 16px var(--o-spacing-h2);
+  }
   .content {
     width: 100%;
     margin-top: var(--o-spacing-h2);
@@ -592,6 +664,14 @@ onMounted(() => {
         }
       }
     }
+    :deep(.floor-box) {
+      h2 {
+        @include title;
+      }
+      .markdown {
+        @include section-box;
+      }
+    }
     .meeting {
       margin-top: var(--o-spacing-h2);
       color: var(--o-color-text1);
@@ -603,10 +683,8 @@ onMounted(() => {
         @include title;
       }
       .calender-box {
-        margin-top: var(--o-spacing-h2);
-        @media screen and (max-width: 768px) {
-          margin-top: var(--o-spacing-h5);
-        }
+        @include section-box;
+        padding: 0;
       }
       .schedule {
         margin-top: var(--o-spacing-h4);
@@ -840,11 +918,6 @@ onMounted(() => {
         }
       }
     }
-  }
-}
-@media (max-width: 1100px) {
-  .sig-detail {
-    padding: 16px 16px var(--o-spacing-h2);
   }
 }
 </style>

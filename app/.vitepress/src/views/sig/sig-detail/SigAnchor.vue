@@ -1,0 +1,92 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+const props = defineProps({
+  navRef: {
+    type: Array,
+    default: () => {
+      return [];
+    },
+  },
+});
+const activeIndex = ref(0);
+const navList = computed(() => {
+  const titleList: any = [];
+  props.navRef.forEach((item: any) => {
+    if (item && item.id) {
+      titleList.push(item.id);
+    }
+  });
+  return titleList;
+});
+
+const handleScrollEvent = () => {
+  const scrollTop =
+    document.body.scrollTop || document.documentElement.scrollTop;
+  const activeList: Array<number> = [];
+  props.navRef.forEach((item: any, index: number) => {
+    if (scrollTop + 100 > item.offsetTop) {
+      activeList.push(index);
+    }
+  });
+  if (!activeList.length) {
+    activeList.push(0);
+  }
+  activeIndex.value = activeList[activeList.length - 1];
+};
+onMounted(() => {
+  window.addEventListener('scroll', handleScrollEvent);
+});
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScrollEvent);
+});
+</script>
+
+<template>
+  <ul class="nav-right">
+    <li v-for="(item, index) in navList" :key="item">
+      <a :href="'#' + item" :class="activeIndex === index ? 'active' : ''">{{
+        item
+      }}</a>
+    </li>
+  </ul>
+</template>
+<style lang="scss" scoped>
+.nav-right {
+  position: fixed;
+  top: calc(10% + 80px);
+  right: 0;
+  width: 200px;
+  z-index: 999;
+  &::after {
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 100%;
+    left: 0;
+    bottom: -50%;
+    background-color: var(--o-color-bg4);
+    z-index: 0;
+  }
+  @media screen and (max-width: 1880px) {
+    display: none;
+  }
+  a {
+    position: relative;
+    cursor: pointer;
+    display: block !important;
+    color: var(--o-color-text4);
+    line-height: var(--o-line-height-text);
+    font-size: var(--o-font-size-text);
+    border-left: 1px solid var(--o-color-bg4);
+    z-index: 1;
+    padding: 8px 12px;
+    &:hover {
+      color: var(--o-color-brand1);
+    }
+  }
+  .active {
+    color: var(--o-color-brand1);
+    border-left: 1px solid var(--o-color-brand1);
+  }
+}
+</style>
