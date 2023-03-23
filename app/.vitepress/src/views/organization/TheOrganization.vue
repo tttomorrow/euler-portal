@@ -16,7 +16,7 @@ import liuwenqing from '@/assets/category/organization/liuwenqing.png';
 import liuyanfei from '@/assets/category/organization/liuyanfei.png';
 import qiuchengfeng from '@/assets/category/organization/qiuchengfeng.png';
 import wuyanjun from '@/assets/category/organization/wuyanjun.png';
-import zhanglei from '@/assets/category/organization/zhanglei.png';
+import zujianzhong from '@/assets/category/organization/zujianzhong.png';
 import zhangshenju from '@/assets/category/organization/zhangshenju.png';
 import zhongxin from '@/assets/category/organization/zhongxin.png';
 
@@ -102,8 +102,8 @@ const organizationData: any = {
               position: ['中国科学院软件研究所'],
             },
             {
-              img: zhanglei,
-              name: '张磊',
+              img: zujianzhong,
+              name: '朱建忠',
               position: ['统信软件技术有限公司'],
             },
           ],

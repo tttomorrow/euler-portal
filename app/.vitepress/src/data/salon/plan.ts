@@ -125,10 +125,13 @@ export default {
         month: '3',
         actives: [
           {
-            activeType: 'Meetup',
+            activeType: '用户活动组',
             activeEvent: [
               {
                 activeName: '深圳 ROS',
+                activelink: {
+                  url: '/zh/interaction/event-list/detail/?id=89&isMini=1',
+                },
               },
             ],
           },
@@ -141,10 +144,10 @@ export default {
             activeType: 'Meetup',
             activeEvent: [
               {
-                activeName: 'eBPF',
-              },
-              {
-                activeName: 'Devkit',
+                activeName: 'Compiler& Embedded',
+                activelink: {
+                  url: '/zh/interaction/event-list/detail/?id=88&isMini=1',
+                },
               },
             ],
           },
