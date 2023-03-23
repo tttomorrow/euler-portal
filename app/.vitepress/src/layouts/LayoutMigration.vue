@@ -10,6 +10,7 @@ import tocInfo from '@/data/migration/migration-toc';
 import DocSideBar from '@/components/DocSideBar.vue';
 import DocSideBarMenu from '@/components/DocSideBarMenu.vue';
 import NavTree from '@/components/NavTree.vue';
+import DocAnchor from '@/components/DocAnchor.vue';
 
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconCatalog from '~icons/mooc/catalog.svg';
@@ -148,6 +149,7 @@ const handleNodeClick = (node: any) => {
       class="migration-content"
       :class="{ 'custom-layout': isCustomLayout }"
     />
+    <DocAnchor v-if="frontmatter.anchor" />
   </div>
 </template>
 
@@ -203,8 +205,62 @@ const handleNodeClick = (node: any) => {
   cursor: pointer;
 }
 
-.guidance {
-  max-width: 1132px;
+:deep(.guidance) {
+  max-width: calc(100% - 200px);
+  @media screen and (max-width: 1100px) {
+    max-width: max-content;
+  }
+  .instruction {
+    display: flex;
+    background: rgba(254, 229, 184, 0.2);
+    border-left: 6px solid #feb32a;
+    border-radius: 8px 0px 0px 8px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    .content {
+      padding: 20px;
+      @media screen and (max-width: 768px) {
+        padding: 12px;
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+          margin-bottom: var(--o-spacing-h8);
+        }
+        .o-icon {
+          font-size: 24px;
+          margin-right: 6px;
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-h7);
+          }
+        }
+        p {
+          font-size: var(--o-font-size-h8);
+          color: var(--o-color-text1);
+          line-height: var(--o-line-height-h8);
+          @media screen and (max-width: 768px) {
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            margin: 0;
+          }
+        }
+      }
+    }
+    .description {
+      font-size: var(--o-font-size-text);
+      color: var(--o-color-text4);
+      line-height: var(--o-line-height-text);
+      @media screen and (max-width: 768px) {
+        font-size: var(--o-font-size-tip);
+        line-height: var(--o-line-height-tip);
+      }
+    }
+  }
+  img {
+    margin-top: 12px;
+    width: 1024px;
+  }
 }
 
 .migration-sidebar-toc {
