@@ -15,6 +15,7 @@ anchor: true
 <script setup lang="ts">
   import { useData } from 'vitepress';
   import seoConfig from '@/data/common/seo';
+  import IconBook from '~icons/app/icon-book.svg';
 
   const { lang } = useData();
 </script>
