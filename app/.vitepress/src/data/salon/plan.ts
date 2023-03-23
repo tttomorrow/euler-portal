@@ -128,7 +128,7 @@ export default {
             activeType: '用户活动组',
             activeEvent: [
               {
-                activeName: '深圳 ROS',
+                activeName: '深圳 机器人',
                 activelink: {
                   url: '/zh/interaction/event-list/detail/?id=89&isMini=1',
                 },
