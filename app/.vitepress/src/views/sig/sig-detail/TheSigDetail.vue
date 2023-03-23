@@ -268,11 +268,12 @@ onMounted(() => {
             easyeditorInfo.introduction.content
           "
           v-html="easyeditorInfo.introduction.content"
+          class="introduction-content"
         ></p>
-        <p v-if="sigMemberData.description">
+        <p v-else-if="sigMemberData.description" class="introduction-content">
           {{ sigMemberData.description }}
         </p>
-        <p v-else>
+        <p v-else class="introduction-content">
           {{ i18n.sig.SIG_DETAIL.SIG_EMPTY_TEXT1
           }}<a
             target="_blank"
@@ -652,7 +653,7 @@ onMounted(() => {
           }
         }
       }
-      p {
+      .introduction-content {
         margin-top: var(--o-spacing-h5);
         font-size: var(--o-font-size-text);
         line-height: 22px;
