@@ -780,7 +780,7 @@ export default {
       { KEY: '', VALUE: '全部' },
       { KEY: 'SERVER', VALUE: '服务器' },
       { KEY: 'EDGE_CLOUD', VALUE: '边缘计算' },
-      { KEY: 'CLOUD_COMPUTING', VALUE: '云原生' },
+      { KEY: 'CLOUD_COMPUTING', VALUE: '云计算' },
       { KEY: 'EMBEDDED', VALUE: '嵌入式' },
     ],
   },
