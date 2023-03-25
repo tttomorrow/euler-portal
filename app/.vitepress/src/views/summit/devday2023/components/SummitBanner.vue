@@ -35,7 +35,7 @@ onMounted(() => {
       <h3>{{ bannerData.subtitle }}</h3>
       <a href="https://e-campaign.huawei.com/m/N7V3Eb" target="_blank">
         <OButton animation class="banner-btn">
-          了解更多
+          立即报名
           <template #suffixIcon
             ><OIcon><IconArrowRight /></OIcon
           ></template>
