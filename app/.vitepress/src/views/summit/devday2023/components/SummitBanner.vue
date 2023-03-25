@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import AOS from 'aos';
+
+import IconArrowRight from '~icons/app/icon-arrow-right.svg';
+
 defineProps({
   bannerData: {
     type: Object,
@@ -30,6 +33,14 @@ onMounted(() => {
     <div data-aos="fade-down" class="banner-text">
       <h2>{{ bannerData.title }}</h2>
       <h3>{{ bannerData.subtitle }}</h3>
+      <a href="https://e-campaign.huawei.com/m/N7V3Eb" target="_blank">
+        <OButton animation class="banner-btn">
+          了解更多
+          <template #suffixIcon
+            ><OIcon><IconArrowRight /></OIcon
+          ></template>
+        </OButton>
+      </a>
     </div>
   </div>
 </template>
@@ -67,32 +78,49 @@ onMounted(() => {
   }
   .banner-text {
     position: absolute;
-    top: 165px;
-    left: 50%;
+    top: 126px;
+    left: 54%;
     @media (max-width: 767px) {
-      top: 70px;
+      top: 40px;
       width: 100%;
       left: 0;
       text-align: center;
     }
     h2 {
       font-size: 40px;
-      line-height: var(--o-line-hight-h3);
+      line-height: var(--o-line-height-h3);
       font-weight: normal;
       @media (max-width: 767px) {
         font-size: var(--o-font-size-h7);
-        line-height: var(--o-line-hight-h7);
+        line-height: var(--o-line-height-h7);
       }
     }
     h3 {
       margin-top: 42px;
       font-size: var(--o-font-size-h5);
-      line-height: var(--o-line-hight-h5);
+      line-height: var(--o-line-height-h5);
       font-weight: normal;
       @media (max-width: 767px) {
         margin-top: 16px;
         font-size: var(--o-font-size-text);
-        line-height: var(--o-line-hight-text);
+        line-height: var(--o-line-height-text);
+      }
+    }
+    .banner-btn {
+      margin-top: 32px;
+      color: var(--o-color-black);
+      border: 1px solid var(--o-color-black);
+      @media (max-width: 768px) {
+        padding: 6px 16px;
+        margin-top: 21px;
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-height-text);
+        .o-icon {
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+          display: flex;
+          align-items: center;
+        }
       }
     }
   }
