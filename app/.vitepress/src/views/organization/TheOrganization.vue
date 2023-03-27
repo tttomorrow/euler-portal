@@ -172,7 +172,7 @@ const organizationData: any = {
           img: huxinwei,
           name: '胡欣蔚',
           post: '主席',
-          email: 'huxinwei@huawei.com',
+          email: 'shinwell_hu@openeuler.sh',
           gitee: 'shinwell_hu',
         },
         {
