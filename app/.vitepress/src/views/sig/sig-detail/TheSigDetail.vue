@@ -197,6 +197,24 @@ onMounted(() => {
 const navRef: any = ref([]);
 const titleListBefor: any = ref();
 const titleList: any = ref();
+const activeIndex = ref(0);
+const handleScrollEvent = () => {
+  const scrollTop =
+    document.body.scrollTop || document.documentElement.scrollTop;
+  const activeList: Array<number> = [];
+  navRef.value.forEach((item: any, index: number) => {
+    if (scrollTop + 100 > item.offsetTop) {
+      activeList.push(index);
+    }
+  });
+  if (!activeList.length) {
+    activeList.push(0);
+  }
+  activeIndex.value = activeList[activeList.length - 1];
+};
+onMounted(() => {
+  window.addEventListener('scroll', handleScrollEvent);
+});
 onMounted(() => {
   titleListBefor.value = document.querySelectorAll('.floor-title');
 });
@@ -212,12 +230,11 @@ onUpdated(() => {
 });
 // 获取easyeditor编辑发布的信息
 const converter = new showdown.Converter();
-// 显示表格
 converter.setOption('tables', true);
-const href = 'https://www.openeuler.org/zh/sig/sig-detail/?name=sig-OpenDesign';
+const href = `https://www.openeuler.org/${lang.value}/sig/sig-detail/?name=`;
 const easyeditorInfo: any = ref({});
 function getEasyeditorInfo() {
-  getSigDetailInfo(href)
+  getSigDetailInfo(href + sigDetailName.value)
     .then((res) => {
       if (res.statusCode === 200 && res.data && res.data[0]) {
         res.data.forEach((item: any) => {
@@ -232,18 +249,12 @@ function getEasyeditorInfo() {
       throw new Error(error);
     });
 }
-const isOpenDesign = ref(false);
 onMounted(() => {
-  if (location.href.includes('name=sig-OpenDesign')) {
-    isOpenDesign.value = true;
-    getEasyeditorInfo();
-  } else {
-    isOpenDesign.value = false;
-  }
+  getEasyeditorInfo();
 });
 </script>
 <template>
-  <SigAnchor :nav-ref="navRef" />
+  <SigAnchor :nav-ref="navRef" :active-index="activeIndex" />
   <div class="sig-detail">
     <BreadCrumbs
       bread1="SIG"
@@ -263,12 +274,10 @@ onMounted(() => {
         </h2>
         <p
           v-if="
-            isOpenDesign &&
-            easyeditorInfo.introduction &&
-            easyeditorInfo.introduction.content
+            easyeditorInfo.introduction && easyeditorInfo.introduction.content
           "
-          v-html="easyeditorInfo.introduction.content"
           class="introduction-content"
+          v-html="easyeditorInfo.introduction.content"
         ></p>
         <p v-else-if="sigMemberData.description" class="introduction-content">
           {{ sigMemberData.description }}
@@ -283,13 +292,12 @@ onMounted(() => {
         </p>
       </div>
       <SigFloorMd
-        v-if="isOpenDesign && easyeditorInfo.markdown"
-        :floor-data="easyeditorInfo.markdown"
+        v-if="easyeditorInfo.markdown1"
+        :floor-data="easyeditorInfo.markdown1"
       />
       <div v-if="lang === 'zh'" class="meeting">
         <h2 :id="sigDetail.ORGANIZING_MEETINGS" class="floor-title">
-          <span class="title-bg">{{ sigDetail.ORGANIZING_MEETINGS_BG }}</span>
-          <span class="title-text">{{ sigDetail.ORGANIZING_MEETINGS }}</span>
+          {{ sigDetail.ORGANIZING_MEETINGS }}
         </h2>
         <SigMeeting
           v-if="sigMeetingData.tableData"
@@ -303,10 +311,13 @@ onMounted(() => {
           {{ sigDetail.NO_MEETINGS }}
         </p>
       </div>
+      <SigFloorMd
+        v-if="easyeditorInfo.markdown2 && lang === 'zh'"
+        :floor-data="easyeditorInfo.markdown2"
+      />
       <div v-if="memberList.length" class="member">
         <h2 :id="sigDetail.MAINTAINER" class="floor-title">
-          <span class="title-bg">{{ sigDetail.MAINTAINER_BG }}</span>
-          <span class="title-text">{{ sigDetail.MAINTAINER }}</span>
+          {{ sigDetail.MAINTAINER }}
         </h2>
         <div class="member-box">
           <h5>{{ sigDetailName + ' ' + sigDetail.MAINTAINER_EN }}</h5>
@@ -335,10 +346,13 @@ onMounted(() => {
           </ul>
         </div>
       </div>
+      <SigFloorMd
+        v-if="easyeditorInfo.markdown3"
+        :floor-data="easyeditorInfo.markdown3"
+      />
       <div class="repository">
         <h2 :id="sigDetail.REPOSITORY_LIST" class="floor-title">
-          <span class="title-bg">{{ sigDetail.REPOSITORY_LIST_BG }}</span>
-          <span class="title-text">{{ sigDetail.REPOSITORY_LIST }}</span>
+          {{ sigDetail.REPOSITORY_LIST }}
         </h2>
         <div class="repository-box">
           <h5>
@@ -498,10 +512,13 @@ onMounted(() => {
           </div>
         </div>
       </div>
+      <SigFloorMd
+        v-if="easyeditorInfo.markdown4"
+        :floor-data="easyeditorInfo.markdown4"
+      />
       <div class="contribution">
         <h2 :id="sigDetail.CONTRIBUTION" class="floor-title">
-          <span class="title-bg">{{ sigDetail.CONTRIBUTION_BG }}</span>
-          <span class="title-text">{{ sigDetail.CONTRIBUTION }}</span>
+          {{ sigDetail.CONTRIBUTION }}
         </h2>
         <div class="contribution-box">
           <h5>
@@ -513,6 +530,10 @@ onMounted(() => {
           ></ContributList>
         </div>
       </div>
+      <SigFloorMd
+        v-if="easyeditorInfo.markdown5"
+        :floor-data="easyeditorInfo.markdown5"
+      />
       <!-- <div class="recent-event">
         <h5>{{ sigDetail.LATEST_DYNAMIC }}</h5>
         <div class="dynamic">
@@ -567,36 +588,16 @@ onMounted(() => {
 @mixin title {
   text-align: center;
   position: relative;
-  height: 64px;
+  font-size: var(--o-font-size-h3);
+  line-height: var(--o-line-height-h3);
+  color: var(--o-color-text1);
+  font-weight: 400;
   @media screen and (max-width: 768px) {
-    height: 30px;
-  }
-  .title-bg {
-    color: var(--o-color-neutral10);
-    font-size: 40px;
-    font-weight: 300;
-    @media screen and (max-width: 768px) {
-      font-size: var(--o-font-size-h8);
-    }
-  }
-  .title-text {
-    font-size: var(--o-font-size-h3);
-    line-height: var(--o-line-height-h3);
-    color: var(--o-color-text1);
-    font-weight: 400;
-    position: absolute;
-    z-index: 1;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    @media screen and (max-width: 768px) {
-      top: 8px;
-      font-size: var(--o-font-size-h8);
-      line-height: var(--o-line-height-h8);
-    }
+    font-size: var(--o-font-size-h8);
+    line-height: var(--o-line-height-h8);
   }
 }
-@mixin section-box {
+@mixin floor-content {
   margin-top: var(--o-spacing-h2);
   background-color: var(--o-color-bg2);
   padding: var(--o-spacing-h2);
@@ -604,6 +605,12 @@ onMounted(() => {
   @media screen and (max-width: 768px) {
     margin-top: var(--o-spacing-h5);
     padding: var(--o-spacing-h5);
+  }
+}
+@mixin floor-box {
+  margin-top: var(--o-spacing-h1);
+  @media screen and (max-width: 768px) {
+    margin-top: var(--o-spacing-h2);
   }
 }
 .sig-detail {
@@ -630,7 +637,7 @@ onMounted(() => {
       line-height: var(--o-spacing-h4);
     }
     .brief-introduction {
-      @include section-box;
+      @include floor-content;
       .brief-introduction-title {
         font-size: var(--o-font-size-h3);
         line-height: var(--o-line-height-h3);
@@ -666,25 +673,25 @@ onMounted(() => {
       }
     }
     :deep(.floor-box) {
-      h2 {
+      @include floor-box;
+      .floor-title {
         @include title;
       }
       .markdown {
-        @include section-box;
+        @include floor-content;
       }
     }
     .meeting {
-      margin-top: var(--o-spacing-h2);
-      color: var(--o-color-text1);
+      @include floor-box;
       .no-meeting {
         padding: var(--o-spacing-h5) 0;
         text-align: center;
       }
-      h2 {
+      .floor-title {
         @include title;
       }
       .calender-box {
-        @include section-box;
+        @include floor-content;
         padding: 0;
       }
       .schedule {
@@ -696,13 +703,13 @@ onMounted(() => {
     }
 
     .member {
-      margin-top: var(--o-spacing-h2);
+      @include floor-box;
       color: var(--o-color-text1);
-      h2 {
+      .floor-title {
         @include title;
       }
       .member-box {
-        @include section-box;
+        @include floor-content;
         h5 {
           font-size: var(--o-font-size-h6);
           line-height: var(--o-line-height-h6);
@@ -767,13 +774,13 @@ onMounted(() => {
       }
     }
     .repository {
-      margin-top: var(--o-spacing-h2);
+      @include floor-box;
       color: var(--o-color-text1);
-      h2 {
+      .floor-title {
         @include title;
       }
       .repository-box {
-        @include section-box;
+        @include floor-content;
         h5 {
           font-size: var(--o-font-size-h6);
           font-weight: 400;
@@ -837,13 +844,13 @@ onMounted(() => {
       }
     }
     .contribution {
-      margin-top: var(--o-spacing-h2);
+      @include floor-box;
       color: var(--o-color-text1);
-      h2 {
+      .floor-title {
         @include title;
       }
       .contribution-box {
-        @include section-box;
+        @include floor-content;
         h5 {
           font-size: var(--o-font-size-h6);
           font-weight: 400;
@@ -855,68 +862,6 @@ onMounted(() => {
       }
       @media screen and (max-width: 768px) {
         display: none;
-      }
-    }
-    .recent-event {
-      margin-top: var(--o-spacing-h2);
-      color: var(--o-color-text1);
-      h2 {
-        @include title;
-      }
-      .dynamic {
-        display: grid;
-        width: 100%;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 24px;
-        margin-top: var(--o-spacing-h4);
-        @media (max-width: 780px) {
-          grid-template-columns: 1fr;
-        }
-        .item {
-          max-width: 656px;
-          padding: 40px;
-          background-color: var(--o-color-bg2);
-          border: 1px solid transparent;
-          .header {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            .left {
-              font-size: var(--o-font-size-h6);
-              line-height: var(--o-line-height-h6);
-              font-weight: 600;
-              &::after {
-                display: block;
-                content: '';
-                width: 20px;
-                height: 2px;
-                background-color: var(--o-color-brand1);
-              }
-            }
-            .right {
-              font-size: var(--o-font-size-text);
-              line-height: 22px;
-              cursor: pointer;
-              .icon-more {
-                font-size: var(--o-font-size-h8);
-                margin-left: var(--o-spacing-h8);
-                position: relative;
-                top: 2px;
-                color: var(--o-color-brand1);
-              }
-            }
-          }
-          .item-body {
-            margin-top: var(--o-spacing-h4);
-            font-size: var(--o-font-size-text);
-            line-height: 22px;
-          }
-          &:hover {
-            background-color: var(--o-color-bg2);
-            border: 1px solid var(--o-color-kleinblue8);
-            box-shadow: var(--o-shadow-l4);
-          }
-        }
       }
     }
   }

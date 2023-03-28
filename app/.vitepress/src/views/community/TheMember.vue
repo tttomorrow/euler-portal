@@ -29,7 +29,7 @@ const commonStore = useCommon();
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .member {
   display: grid;
   grid-row-gap: 40px;
