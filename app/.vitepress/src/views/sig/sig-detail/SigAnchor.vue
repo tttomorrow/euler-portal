@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { computed } from 'vue';
 const props = defineProps({
   navRef: {
     type: Array,
@@ -7,8 +7,13 @@ const props = defineProps({
       return [];
     },
   },
+  activeIndex: {
+    type: Number,
+    default: 0,
+  },
 });
-const activeIndex = ref(0);
+// const { activeIndex } = toRefs(props);
+// const activeIndex = ref(0);
 const navList = computed(() => {
   const titleList: any = [];
   props.navRef.forEach((item: any) => {
@@ -19,26 +24,26 @@ const navList = computed(() => {
   return titleList;
 });
 
-const handleScrollEvent = () => {
-  const scrollTop =
-    document.body.scrollTop || document.documentElement.scrollTop;
-  const activeList: Array<number> = [];
-  props.navRef.forEach((item: any, index: number) => {
-    if (scrollTop + 100 > item.offsetTop) {
-      activeList.push(index);
-    }
-  });
-  if (!activeList.length) {
-    activeList.push(0);
-  }
-  activeIndex.value = activeList[activeList.length - 1];
-};
-onMounted(() => {
-  window.addEventListener('scroll', handleScrollEvent);
-});
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScrollEvent);
-});
+// const handleScrollEvent = () => {
+//   const scrollTop =
+//     document.body.scrollTop || document.documentElement.scrollTop;
+//   const activeList: Array<number> = [];
+//   props.navRef.forEach((item: any, index: number) => {
+//     if (scrollTop + 100 > item.offsetTop) {
+//       activeList.push(index);
+//     }
+//   });
+//   if (!activeList.length) {
+//     activeList.push(0);
+//   }
+//   activeIndex.value = activeList[activeList.length - 1];
+// };
+// onMounted(() => {
+//   window.addEventListener('scroll', handleScrollEvent);
+// });
+// onUnmounted(() => {
+//   window.removeEventListener('scroll', handleScrollEvent);
+// });
 </script>
 
 <template>
