@@ -12,6 +12,8 @@ import internship_pc from '@/assets/category/home/banner/internship_pc.jpg';
 import internship_mo from '@/assets/category/home/banner/internship_mo.jpg';
 import devday_pc from '@/assets/category/home/banner/devday_pc.jpg';
 import devday_mo from '@/assets/category/home/banner/devday_mo.png';
+import sigWork_pc from '@/assets/category/home/banner/sig-work_pc.jpg';
+import sigWork_mo from '@/assets/category/home/banner/sig-work_mo.jpg';
 
 export default {
   // 首页banner  targetTap:1 新页签打开
@@ -22,8 +24,15 @@ export default {
         moBanner: devday_mo,
         link: '/zh/interaction/summit-list/devday2023/',
         id: 'devday',
-        title: ['openEuler Developer Day 2023' ],
+        title: ['openEuler Developer Day 2023'],
         desc: ['4月20-21日  中国·上海浦东嘉里酒店'],
+        targetTap: 1,
+      },
+      {
+        pcBanner: sigWork_pc,
+        moBanner: sigWork_mo,
+        link: 'https://shimo.im/forms/ajofLUZ8Wac7lOJY/fill',
+        id: '',
         targetTap: 1,
       },
       {
