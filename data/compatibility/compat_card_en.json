@@ -16119,5 +16119,43 @@
     "chipModel": "X722",
     "item": "",
     "downloadLink": "inbox"
+  },
+  {
+    "vendorID": "15b3",
+    "deviceID": "101d",
+    "svID": "15b3",
+    "ssID": "0016",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS SP1",
+    "driverName": "mlx5_core",
+    "version": "5.0-0",
+    "type": "NIC",
+    "date": "2023.03.30",
+    "sha256": "4cfe6d345c8d00ec0c7bb82e0c6af6b79709adae73043532e55251f1b2732200",
+    "driverSize": "418KB",
+    "chipVendor": "Mellanox",
+    "boardModel": "MCX623106AN-CDAT",
+    "chipModel": "ConnectX-6 Dx",
+    "item": "",
+    "downloadLink": "inbox"
+  },
+  {
+    "vendorID": "15b3",
+    "deviceID": "101d",
+    "svID": "15b3",
+    "ssID": "0016",
+    "architecture": "aarch64",
+    "os": "openEuler 22.03 LTS SP1",
+    "driverName": "mlx5_core",
+    "version": "5.0-0",
+    "type": "NIC",
+    "date": "2023.03.30",
+    "sha256": "b4ad88a56b71cba34603f0c0c18375aa98e303bbe4483d47c2e65bc16b746d56",
+    "driverSize": "351KB",
+    "chipVendor": "Mellanox",
+    "boardModel": "MCX623106AN-CDAT",
+    "chipModel": "ConnectX-6 Dx",
+    "item": "",
+    "downloadLink": "inbox"
   }
 ]
