@@ -853,7 +853,7 @@ export default {
       {
         NAME: 'openEuler 23.03',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-23.03/',
-        DESC: 'openEuler openEuler 23.03 uses the Linux Kernel 6.1, which is prepared for using the 6.x kernel in future openEuler long-term versions.',
+        DESC: 'openEuler 23.03 uses Linux Kernel 6.1 to explore technologies, adapt hardware, and innovate basic technologies and upper-layer applications for future openEuler LTS versions built on Linux Kernel 6.x.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:
