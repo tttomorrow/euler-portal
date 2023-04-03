@@ -12,7 +12,7 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-23.03/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
-        // WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-SP1.pdf',
+        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2303.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=23.03',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/',
@@ -1548,7 +1548,7 @@ export default {
       {
         NAME: 'openEuler 23.03',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-23.03/',
-        DESC: 'openEuler openEuler 23.03 uses the Linux Kernel 6.1, which is prepared for using the 6.x kernel in future openEuler long-term versions.',
+        DESC: 'openEuler 23.03 uses Linux Kernel 6.1 to explore technologies, adapt hardware, and innovate basic technologies and upper-layer applications for future openEuler LTS versions built on Linux Kernel 6.x.',
         RELEASE_DESC_URL:
           'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:

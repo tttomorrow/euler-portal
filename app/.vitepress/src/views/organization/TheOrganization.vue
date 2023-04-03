@@ -39,7 +39,7 @@ import weigang from '@/assets/category/organization/weigang.png';
 import wufengguang from '@/assets/category/organization/wufengguang.png';
 import xiexiuqi from '@/assets/category/organization/xiexiuqi.png';
 import xiongwei from '@/assets/category/organization/xiongwei.png';
-import yeqinglong from '@/assets/category/organization/yeqinglong.png';
+import lvcongqing from '@/assets/category/organization/lvcongqing.png';
 import zhaochuanfeng from '@/assets/category/organization/zhaochuanfeng.png';
 
 import huotaiwen from '@/assets/category/organization/huotaiwen.png';
@@ -232,6 +232,13 @@ const organizationData: any = {
           gitee: 'pangbanme',
         },
         {
+          img: lvcongqing,
+          name: '吕从庆',
+          post: '委员',
+          email: 'lvcongqing@uniontech.com',
+          gitee: 'HelloWorld_lvcongqing',
+        },
+        {
           img: renwei,
           name: '任慰',
           post: '委员',
@@ -300,13 +307,6 @@ const organizationData: any = {
           post: '委员',
           email: 'xiongwei888@huawei.com',
           gitee: 'myeuler',
-        },
-        {
-          img: yeqinglong,
-          name: '叶青龙',
-          post: '委员',
-          email: 'yeqinglong@uniontech.com',
-          gitee: 'yeqinglong01',
         },
         {
           img: zhaochuanfeng,
