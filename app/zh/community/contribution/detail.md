@@ -51,7 +51,7 @@ import illustration from '@/assets/illustrations/contribution.png';
 ## 2. 签署 CLA
 
 在参与社区贡献前，您需要签署 openEuler 社区贡献者许可协议（CLA）。   
-查看：[openEuler CLA 签署](https://search.bilibili.com/all?vt=20411492&keyword=openEuler%20CLA&from_source=webtop_search&spm_id_from=333.999&search_source=5)。   
+查看：[openEuler CLA 签署](https://www.bilibili.com/video/BV12A411o7zY/?spm_id_from=333.337.search-card.all.click&vd_source=0aa547ea87e7a7505cf544eacc2236ac)。   
 根据您的参与身份，选择签署个人 CLA、员工 CLA 或企业 CLA，请点击[这里](https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZXVsZXI=)签署
 
 - 个人 CLA：以个人身份参与社区，请签署个人 CLA

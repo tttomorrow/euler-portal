@@ -8977,5 +8977,66 @@
       "hostBusAdapter": "",
       "hardDiskDrive": "Intel S4510 960G"
     }
+  },
+  {
+    "hardwareFactory": "xFusion",
+    "hardwareModel": "RH2288H V3",
+    "osVersion": "openEuler 20.03 LTS SP3",
+    "architecture": "x86_64",
+    "date": "2023/03/23",
+    "friendlyLink": "https://support.xfusion.com/support/#/zh/rack-servers/rh2288h-v3-pid-9901881/document",
+    "boardCards": [
+      {
+        "vendorID": "14e4",
+        "deviceID": "16d7",
+        "svID": "14e4",
+        "ssID": "1402",
+        "architecture": "x86_64",
+        "os": "openEuler 20.03 LTS SP3",
+        "driverName": "bnxt_en",
+        "version": "1.9.2",
+        "type": "NIC",
+        "date": "2023/03/23",
+        "sha256": "94d44f28b216b674a6d52e09b002a7d44d5c0e286f7ef694aa200c37fc0e64ef",
+        "driverSize": "394K",
+        "chipVendor": "Broadcom",
+        "boardModel": "BCM957414A4142CC",
+        "chipModel": "BCM57414",
+        "item": "06310148",
+        "downloadLink": "inbox"
+      },
+      {
+       "vendorID": "1000",
+       "deviceID": "0097",
+       "svID": "1000",
+       "ssID": "3090",
+       "architecture": "x86_64",
+       "os": "openEuler 20.03 LTS SP3",
+       "driverName": "mpt3sas",
+       "version": "26.100.00.00",
+       "type": "RAID",
+       "date": "2022.03.23",
+       "sha256": "4830b538da0cfdfec2c008cb6002a7f520b9ba3dab8df4a7f119cadb8b6753b9",
+       "driverSize": "538KB",
+       "chipVendor": "Avago",
+       "boardModel": "SR130",
+       "chipModel": "SAS3008",
+       "item": "03022CDE",
+       "downloadLink": "inbox"
+      }
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "https://support.xfusion.com/support/#/zh/rack-servers/rh2288h-v3-pid-9901881/document",
+      "certificationTime": "2023/03/23",
+      "commitID": "",
+      "mainboardModel": "BC11HGSA",
+      "biosUefi": "3.57 (U47)",
+      "cpu": "Broadwell",
+      "ram": "10*32G DIMMs",
+      "portsBusTypes": "x16 PCI Express x16",
+      "videoAdapter": "Hi171x",
+      "hostBusAdapter": "",
+      "hardDiskDrive": "TOSHIBA AL14SEB060N"
+    }
   }
 ]

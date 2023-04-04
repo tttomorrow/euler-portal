@@ -2,6 +2,70 @@ export default {
   zh: {
     DOWNLOAD_LIST: [
       {
+        NAME: 'openEuler 23.03',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-23.03/',
+        DESC: 'openEuler 23.03采用 Linux Kernel 6.1 内核，为未来 openEuler 长生命周期版本采用 6.x内核提前进行技术探索、硬件适配、基础技术创新和上层应用创新。',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/zh/docs/23.03/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/zh/docs/23.03/docs/Installation/installation.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-23.03/ISO/',
+        LIFE_CYCLE_URL: '/zh/other/lifecycle/',
+        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2303.pdf',
+        WEBSITE_SELECT: '/zh/mirror/select/?version=23.03',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-23.03/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-23.03/embedded_img/',
+        MANUFACTURER: 'openEuler社区',
+        PUBLISH_DATE: '2023/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm32/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
+      },
+      {
         NAME: 'openEuler 22.03 LTS SP1',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/',
         DESC: 'openEuler 22.03 LTS SP1 是openEuler 22.03 LTS的补丁版本，生命周期与LTS版本相同。',
@@ -780,12 +844,75 @@ export default {
       { KEY: '', VALUE: '全部' },
       { KEY: 'SERVER', VALUE: '服务器' },
       { KEY: 'EDGE_CLOUD', VALUE: '边缘计算' },
-      { KEY: 'CLOUD_COMPUTING', VALUE: '云原生' },
+      { KEY: 'CLOUD_COMPUTING', VALUE: '云计算' },
       { KEY: 'EMBEDDED', VALUE: '嵌入式' },
     ],
   },
   en: {
     DOWNLOAD_LIST: [
+      {
+        NAME: 'openEuler 23.03',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-23.03/',
+        DESC: 'openEuler 23.03 uses Linux Kernel 6.1 to explore technologies, adapt hardware, and innovate basic technologies and upper-layer applications for future openEuler LTS versions built on Linux Kernel 6.x.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/installing-the-os.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/23.03/ISO/',
+        LIFE_CYCLE_URL: '/en/other/lifecycle/',
+        WEBSITE_SELECT: '/en/mirror/select/?version=23.03',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-23.03/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-23.03/embedded_img/',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2023/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm32/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
+      },
       {
         NAME: 'openEuler 22.03 LTS SP1',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/',
@@ -1418,6 +1545,69 @@ export default {
   },
   ru: {
     DOWNLOAD_LIST: [
+      {
+        NAME: 'openEuler 23.03',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-23.03/',
+        DESC: 'openEuler 23.03 uses Linux Kernel 6.1 to explore technologies, adapt hardware, and innovate basic technologies and upper-layer applications for future openEuler LTS versions built on Linux Kernel 6.x.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/installing-the-os.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/23.03/ISO/',
+        LIFE_CYCLE_URL: '/en/other/lifecycle/',
+        WEBSITE_SELECT: '/en/mirror/select/?version=23.03',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-23.03/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-23.03/embedded_img/',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2023/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm32/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
+      },
       {
         NAME: 'openEuler 22.03 LTS SP1',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/',

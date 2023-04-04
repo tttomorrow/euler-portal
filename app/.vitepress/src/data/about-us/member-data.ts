@@ -81,7 +81,6 @@ export default [
       {
         img_light: ruantong_light,
         img_dark: ruantong_dark,
-        noIcon: true,
       },
       {
         img_light: dianxing_light,
@@ -125,6 +124,7 @@ export default [
       {
         img_light: zhongyin_light,
         img_dark: zhongyin_dark,
+        noIcon: true,
       },
     ],
   },

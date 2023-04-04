@@ -74,6 +74,18 @@ export default {
           },
         ],
       },
+      {
+        month: '4',
+        actives: [
+          {
+            activeName: 'FOSSASIA',
+            activelink: {
+              url: 'https://eventyay.com/e/7cfe0771/schedule',
+              className: 'linaro',
+            },
+          },
+        ],
+      },
     ],
   },
   developer: {
