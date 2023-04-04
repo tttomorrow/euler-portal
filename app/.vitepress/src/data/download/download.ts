@@ -921,6 +921,8 @@ export default {
           'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/installing-the-os.html',
+        WHITE_PAPER:
+          '/whitepaper/en/openEuler-22.03 LTS SP1 Technical White Paper.pdf',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
@@ -1619,7 +1621,8 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
-        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-SP1.pdf',
+        WHITE_PAPER:
+          '/whitepaper/ru/openEuler-22.03 LTS SP1 Технический информационный документ.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',
@@ -1684,7 +1687,8 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
-        WHITE_PAPER: '/whitepaper/en/openEuler-22.09 Technical White Paper.pdf',
+        WHITE_PAPER:
+          '/whitepaper/ru/openEuler-22.09 Технический информационный документ.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
         SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
         CLOUD_IMAGE:
@@ -1841,8 +1845,8 @@ export default {
           'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WHITE_PAPER:
-          'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-ru.pdf',
-        WEBSITE_SELECT: '/ru/mirror/select/?version=21.09',
+          '/whitepaper/ru/openEuler-21.09 Технический информационный документ.pdf',
+        WEBSITE_SELECT: '/en/mirror/select/?version=21.09',
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/09',
         LTS: false,
