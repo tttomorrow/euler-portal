@@ -8743,17 +8743,17 @@
     "friendlyLink": "https://www.kt.lenovo.com/ProductThree/29",
     "boardCards": [
       {
-        "vendorID": "02:00.0",
-        "deviceID": "0200",
+        "vendorID": "0x1000",
+        "deviceID": "0x10E2",
         "svID": "8086",
         "ssID": "1521",
         "architecture": "x86_64",
         "os": "openEuler 20.03 LTS SP1",
         "driverName": "igb",
         "version": "5.4.0-k",
-        "type": "ETHERNET",
+        "type": "NIC",
         "date": "2023/02/07",
-        "sha256": "4d6ac45a022480d99756907d6536596f",
+        "sha256": "67CB2F34DC66D76DE0C84BBF64688B91CE243549",
         "driverSize": "487k",
         "chipVendor": "intel",
         "boardModel": "SP210",
@@ -8762,7 +8762,7 @@
         "downloadLink": "inbox"
       },
       {
-        "vendorID": "01:00.0",
+        "vendorID": "0x8086",
         "deviceID": "0104",
         "svID": "1000",
         "ssID": "0016",
@@ -8775,8 +8775,8 @@
         "sha256": "12bf7db93b721978107266e43d09404be9ad107f2565fb62bc35a3b825f56cf8",
         "driverSize": "290K",
         "chipVendor": "Broadcom / LSI",
-        "boardModel": "egaRAID Tri-Mode SAS3508",
-        "chipModel": "3508",
+        "boardModel": "ThinkSystem RAID 940-8i",
+        "chipModel": "SAS3908",
         "item": "",
         "downloadLink": "inbox"
       }
@@ -8787,14 +8787,14 @@
       "commitID": "",
       "mainboardModel": "HengShan Rev 1.0",
       "biosUefi": "HSE152A-1.02",
-      "cpu": "Hygon C86 7265 24-core Processor",
+      "cpu": "Hygon 3",
       "ram": "16*32G DIMMs",
       "portsBusTypes": "J9,J69",
-      "videoAdapter": "J41,J2",
+      "videoAdapter": "AMI BMC 2500",
       "hostBusAdapter": "",
       "hardDiskDrive": "930-8I-2GB"
     }
-  },
+  }  ,
   {
     "hardwareFactory": "联想开天",
     "hardwareModel": "SR658H V2",
@@ -8804,7 +8804,7 @@
     "friendlyLink": "https://www.kt.lenovo.com/ProductThree/29",
     "boardCards": [
       {
-        "vendorID": "02:00.0",
+        "vendorID": "0x8086",
         "deviceID": "0200",
         "svID": "8086",
         "ssID": "1521",
@@ -8812,9 +8812,9 @@
         "os": "openEuler 20.03 LTS SP1",
         "driverName": "igb",
         "version": "5.4.0-k",
-        "type": "ETHERNET",
+        "type": "NIC",
         "date": "2023/02/07",
-        "sha256": "4d6ac45a022480d99756907d6536596f",
+        "sha256": "67CB2F34DC66D76DE0C84BBF64688B91CE243549",
         "driverSize": "487k",
         "chipVendor": "intel",
         "boardModel": "SP210",
@@ -8823,7 +8823,7 @@
         "downloadLink": "inbox"
       },
       {
-        "vendorID": "01:00.0",
+        "vendorID": "0x1000",
         "deviceID": "0104",
         "svID": "1000",
         "ssID": "0016",
@@ -8836,8 +8836,8 @@
         "sha256": "12bf7db93b721978107266e43d09404be9ad107f2565fb62bc35a3b825f56cf8",
         "driverSize": "290K",
         "chipVendor": "Broadcom / LSI",
-        "boardModel": "egaRAID Tri-Mode SAS3508",
-        "chipModel": "3508",
+        "boardModel": "ThinkSystem RAID 940-8i",
+        "chipModel": "SAS3908",
         "item": "",
         "downloadLink": "inbox"
       }
@@ -8848,17 +8848,17 @@
       "commitID": "",
       "mainboardModel": "HengShan Rev 1.0",
       "biosUefi": "HSE152A-1.02",
-      "cpu": "Hygon C86 7265 24-core Processor",
+      "cpu": "Hygon 3",
       "ram": "16*32G DIMMs",
       "portsBusTypes": "J9,J69",
-      "videoAdapter": "J41,J2",
+      "videoAdapter": "AMI BMC 2500",
       "hostBusAdapter": "",
       "hardDiskDrive": "930-8I-2GB"
     }
   },
   {
     "hardwareFactory": "联想",
-    "hardwareModel": "ThankServer SR660 V2",
+    "hardwareModel": "ThinkServer SR660 V2",
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/03",
@@ -8872,20 +8872,20 @@
         "architecture": "x86_64",
         "os": "openEuler 22.03 LTS SP1",
         "driverName": "igb",
-        "version": "5.10.0-136.19.0.95.oe2203sp1.x86_64",
+        "version": "",
         "type": "NIC",
         "date": "2023/03/03",
-        "sha256": "4d6ac45a022480d99756907d6536596f",
+        "sha256": "27d8c33fb3db3123e71cb803ca3828ea9061ce0828e03ebfc0cd3a6775f129a9",
         "driverSize": "487k",
         "chipVendor": "intel",
-        "boardModel": "intel I350",
+        "boardModel": "I350-T4",
         "chipModel": "I350",
         "item": "",
         "downloadLink": "inbox"
       },
       {
-        "vendorID": "9005",
-        "deviceID": "28F",
+        "vendorID": "0x8086",
+        "deviceID": "0x1521",
         "svID": "1D49",
         "ssID": "0620",
         "architecture": "x86_64",
@@ -8897,7 +8897,7 @@
         "sha256": "2f8350ec5795a95693822c004837fc92591b3b3e57b02f50df6d7f39dc9d998e",
         "driverSize": "143k",
         "chipVendor": "Adaptec",
-        "boardModel": "RAID 9350-8i",
+        "boardModel": "9350-8i",
         "chipModel": "PM8204",
         "item": "",
         "downloadLink": "inbox"
@@ -8914,12 +8914,12 @@
       "portsBusTypes": "X16",
       "videoAdapter": "ASPEED",
       "hostBusAdapter": "",
-      "hardDiskDrive": "9350-8i"
+      "hardDiskDrive": "Intel S4510 960G"
     }
   },
   {
     "hardwareFactory": "联想开天",
-    "hardwareModel": "ThankServer SR660 V2",
+    "hardwareModel": "ThinkServer SR660 V2",
     "osVersion": "openEuler 22.03 LTS SP1",
     "architecture": "x86_64",
     "date": "2023/03/03",
@@ -8933,20 +8933,20 @@
         "architecture": "x86_64",
         "os": "openEuler 22.03 LTS SP1",
         "driverName": "igb",
-        "version": "5.10.0-136.19.0.95.oe2203sp1.x86_64",
+        "version": "",
         "type": "NIC",
         "date": "2023/03/03",
-        "sha256": "4d6ac45a022480d99756907d6536596f",
+        "sha256": "27d8c33fb3db3123e71cb803ca3828ea9061ce0828e03ebfc0cd3a6775f129a9",
         "driverSize": "487k",
         "chipVendor": "intel",
-        "boardModel": "intel I350",
+        "boardModel": "Intel S4510 960G",
         "chipModel": "I350",
         "item": "",
         "downloadLink": "inbox"
       },
       {
         "vendorID": "9005",
-        "deviceID": "28F",
+        "deviceID": "028F",
         "svID": "1D49",
         "ssID": "0620",
         "architecture": "x86_64",
@@ -8958,7 +8958,7 @@
         "sha256": "2f8350ec5795a95693822c004837fc92591b3b3e57b02f50df6d7f39dc9d998e",
         "driverSize": "143k",
         "chipVendor": "Adaptec",
-        "boardModel": "RAID 9350-8i",
+        "boardModel": "9350-8i",
         "chipModel": "PM8204",
         "item": "",
         "downloadLink": "inbox"
@@ -8975,7 +8975,7 @@
       "portsBusTypes": "X16",
       "videoAdapter": "ASPEED",
       "hostBusAdapter": "",
-      "hardDiskDrive": "9350-8i"
+      "hardDiskDrive": "Intel S4510 960G"
     }
   }
 ]
