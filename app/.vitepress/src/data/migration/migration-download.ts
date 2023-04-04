@@ -29,5 +29,31 @@ export default {
         },
       ],
     },
+    {
+      version: '3.0.0',
+      sourceLinks: [
+        {
+          name: '软件下载',
+          softLinks: [
+            {
+              name: 'x86_64 ',
+              link: 'https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/x2openEuler/x86_64/Packages/x2openEuler-core-3.0.0-20230329.x86_64.rpm',
+            },
+            {
+              name: 'aarch64 ',
+              link: 'https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP1/contrib/x2openEuler/aarch64/Packages/x2openEuler-core-3.0.0-20230329.aarch64.rpm',
+            },
+          ],
+        },
+        {
+          name: '使用指南',
+          link: 'https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/thirdparty_migration/x2openEuler-Userguide.html',
+        },
+        {
+          name: '视频实操',
+          link: 'https://www.bilibili.com/video/BV1yR4y1b76k/?spm_id_from=333.999.0.0&vd_source=0aa547ea87e7a7505cf544eacc2236ac',
+        },
+      ],
+    },
   ],
 };
