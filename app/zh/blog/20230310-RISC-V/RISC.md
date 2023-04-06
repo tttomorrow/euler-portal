@@ -1,5 +1,6 @@
 ---
 title: RISC-V SIG 创建专属邮件列表和论坛板块
+category: blog
 date: 2023-03-07
 tags:
   - RISC-V

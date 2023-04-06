@@ -1,5 +1,6 @@
 ---
 title: 可重复构建为软件供应链安全保驾护航
+category: blog
 date: 2023-02-27
 tags:
   - openEuler
