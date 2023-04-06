@@ -128,7 +128,7 @@ const getRepositoryList = () => {
         replaceMail();
         data.map((item: SIGLIST) => {
           sigSelectList.value.push(item.sig_name);
-          item.maintainers.forEach((subItem: string) => {
+          item?.maintainers?.forEach((subItem: string) => {
             maintainerList.value.push(subItem);
           });
           sigSelectList.value.sort((a, b) => {

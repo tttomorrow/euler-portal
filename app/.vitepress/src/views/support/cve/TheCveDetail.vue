@@ -28,12 +28,12 @@ function goBackPage() {
 }
 
 function goDetail(id: string) {
-  const url = router.route.path.replace('cve', 'safety-bulletin');
+  const url = router.route.path.replace('cve', 'security-bulletins');
   router.go(url + `?id=${id}`);
 }
 
 function jumpBulletinDetail(val: any) {
-  router.go(`/${lang.value}/security/safety-bulletin/detail/?id=${val}`);
+  router.go(`/${lang.value}/security/security-bulletins/detail/?id=${val}`);
 }
 
 onMounted(() => {
