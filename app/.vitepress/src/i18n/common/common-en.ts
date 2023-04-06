@@ -254,8 +254,8 @@ export default {
         },
         {
           NAME: 'Security Advisories',
-          ID: 'safety-bulletin',
-          PATH: '/security/safety-bulletin/',
+          ID: 'security-bulletins',
+          PATH: '/security/security-bulletins/',
         },
         {
           NAME: 'CVE',

@@ -114,7 +114,7 @@ export default [
     lang: ['zh', 'en', 'ru'],
   },
   {
-    name: 'safety-bulletin',
+    name: 'security-bulletins',
     lang: ['zh', 'en', 'ru'],
   },
   {

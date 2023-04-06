@@ -290,8 +290,8 @@ export default {
         },
         {
           NAME: '安全公告',
-          ID: 'safety-bulletin',
-          PATH: '/security/safety-bulletin/',
+          ID: 'security-bulletins',
+          PATH: '/security/security-bulletins/',
         },
         {
           NAME: 'CVE',
