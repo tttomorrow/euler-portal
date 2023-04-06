@@ -29,8 +29,8 @@ import illustration from '@/assets/illustrations/sig-role.png';
 | 角色        | 职责范围（简要描述） | 要求                                                  | 定义的文件                                                |
 | :---------- | :------------------- | :---------------------------------------------------- | :-------------------------------------------------------- |
 | Contributor | 项目的贡献者         |                                                       | Gitee注册成员                                             |
-| Committer   | 审核其他成员的贡献   | SIG的积极贡献者，经验丰富，愿意投入精力参与到审核工作 | openEuler SIG拥有的储存库中OWNERS文件中的Commiter条目。   |
-| Maintainer  | 项目Owner            | 经验丰富，富有责任心、出色的技术能力和管理能力        | openEuler SIG拥有的存储库中OWNERS文件中的Maintainer条目。 |
+| Committer   | 审核其他成员的贡献   | SIG的积极贡献者，经验丰富，愿意投入精力参与到审核工作 | openEuler SIG拥有的存储库中sig-info.yaml文件中的Commiter条目。   |
+| Maintainer  | 项目Owner            | 经验丰富，富有责任心、出色的技术能力和管理能力        | openEuler SIG拥有的存储库中sig-info.yaml文件中的Maintainer条目。 |
 
 
 说明：Maintainer 和 Committer 在 Gitee 的权限上不做区分，两者的区分主要是集中在 SIG 治理的管理范围上。详细可以见下面的描述。
@@ -74,10 +74,7 @@ import illustration from '@/assets/illustrations/sig-role.png';
   - 能够让测试用例始终通过
   - 解决后继发生的错误或问题
 
-- 可以通过 /lgtm 打开 PR
-- 可以分配问题或 PR，可以通过 /cc @username 要求成员进行评论
-- 可以针对 PR 自动运行测试。/ok-to-test 不是必要的
-- 可以使用/ok-to-test 为具有 needs-ok-to-test 标签的 PR 进行操作，并使用诸如/close 对 PR 进行关闭。
+- 可以分配问题或 PR
 
 注意：经常贡献代码的成员应积极的参与代码审查，并努力成为 SIG 的审核者 Committer。
 
@@ -85,7 +82,7 @@ import illustration from '@/assets/illustrations/sig-role.png';
 
 审核者能够在 SIG 或 SIG 的某些部分中审核代码的质量和正确性。审核者对代码库和软件工程原理非常了解。
 
-定义：openEuler SIG 拥有的存储库中 OWNERS 文件中的 developer 条目。
+定义：openEuler SIG 拥有的存储库中 sig-info.yaml 文件中的 Committer 条目。
 
 ### 要求
 
@@ -101,8 +98,8 @@ import illustration from '@/assets/illustrations/sig-role.png';
 - 评审 PR：对 Contributor 提交的 PR 完成评审，评审可以参考社区的[编程建议]()和[安全编程规范](https://gitee.com/openeuler/security-committee/blob/master/guide/SecureCoding.md)。
 
 - 分发处理问题:请参考“[问题处理流程](https://gitee.com/openeuler/community/blob/master/zh/contributors/issue-submit.md)”。
-- 跟踪依赖性问题：在开发分支中，其他 SIG 组的软件包的更新可能会到导致破坏本 SIG 内软件包的依赖关系。此时 Committer 会收到告警提示，Committer 应尽力重建软件包。依赖关系出错可能会使最终用户无法更新系统，打包团队也会介入并重建存在依赖性问题的软件包，但 Maintainer 不应依赖这些重建。
-- 如有接口变更，通知可能会影响到的 SIG：其他 SIG 或项目会依赖本 SIG 的软件包，对软件包接口的变更可能会对他们造成影响。Maintainer 应了解并评审&决策变更造成的依赖影响，并公告和发送 API 或 ABI 变更的告警邮件。这类公告应在变更发生至少一周前完成，并应通知到所有可能受影响的 SIG。具体请参考[接口变更通知流程]()。
+- 跟踪依赖性问题：在开发分支中，其他 SIG 组的软件包的更新可能会到导致破坏本 SIG 内软件包的依赖关系。此时 Committer 会收到告警提示，Committer 应尽力重建软件包。依赖关系出错可能会使最终用户无法更新系统，打包团队也会介入并重建存在依赖性问题的软件包，但 Committer 不应依赖这些重建。
+- 如有接口变更，通知可能会影响到的 SIG：其他 SIG 或项目会依赖本 SIG 的软件包，对软件包接口的变更可能会对他们造成影响。Committer 应了解并评审&决策变更造成的依赖影响，并公告和发送 API 或 ABI 变更的告警邮件。这类公告应在变更发生至少一周前完成，并应通知到所有可能受影响的 SIG。具体请参考[接口变更通知流程]()。
 - 更新和维护软件包版本：遵守社区的[软件包更新质量控制策略]()完成软件包的更新。
 - 和上游社区合作，包括：
 
@@ -110,7 +107,7 @@ import illustration from '@/assets/illustrations/sig-role.png';
 
   - 参与上游社区邮件列表
   - 获取上游社区的 bug 跟踪器的账户，并跟踪上游社区的重要 bug
-  - 将严重的错误转发给上游社区以寻求帮助 更多信息，请参考“[上游社区软件包管理建议]()”
+  - 将严重的错误转发给上游社区以寻求帮助，更多信息请参考“[上游社区软件包管理建议]()”
 
 - 和测试团队合作，包括：
 
@@ -123,7 +120,7 @@ import illustration from '@/assets/illustrations/sig-role.png';
 
 维护者是 SIG 组的组长或者管理委员会成员，也是软件包的维护者，能够像 Committer 一样审查和批准代码贡献。代码审查的重点是代码质量和正确性，而批准的重点是对贡献的整体接受度。所有 Committer 的责任与权力，Maintainer 均具有。除此之外，Maintainer 还承担了团队的技术路线、内外协调等工作。
 
-定义：openEuler SIG 拥有的存储库中 OWNERS 文件中的 developer 条目。
+定义：openEuler SIG 拥有的存储库中 sig-info.yaml 文件中的 Maintainer 条目。
 
 ### 要求
 
