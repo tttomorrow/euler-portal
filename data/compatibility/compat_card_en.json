@@ -16157,5 +16157,43 @@
     "chipModel": "ConnectX-6 Dx",
     "item": "",
     "downloadLink": "inbox"
+  },
+  {
+    "vendorID": "8088",
+    "deviceID": "0101",
+    "svID": "8088",
+    "ssID": "0201",
+    "architecture": "aarch64",
+    "os": "openEuler 22.03 LTS SP1",
+    "driverName": "ngbe",
+    "version": "1.2.2oe",
+    "type": "NIC",
+    "date": "2023/03/31",
+    "sha256": "a87c414d48f1433bdc1f2f9dfed50bfa330481548a7a0e2cdf6afe7dd442029e",
+    "driverSize": "86.65K",
+    "chipVendor": "Netswift",
+    "boardModel": "SF200T",
+    "chipModel": "WX1860A2",
+    "item": "06310300",
+    "downloadLink": "inbox"
+  },
+  {
+    "vendorID": "8088",
+    "deviceID": "0101",
+    "svID": "8088",
+    "ssID": "0201",
+    "architecture": "x86_64",
+    "os": "openEuler 22.03 LTS SP1",
+    "driverName": "ngbe",
+    "version": "1.2.2oe",
+    "type": "NIC",
+    "date": "2023/03/31",
+    "sha256": "d7eb55c131a8214c50b70ece05f835647637c149625994ea1344a73596dc6dcc",
+    "driverSize": "86.16K",
+    "chipVendor": "Netswift",
+    "boardModel": "SF200T",
+    "chipModel": "WX1860A2",
+    "item": "06310300",
+    "downloadLink": "inbox"
   }
 ]
