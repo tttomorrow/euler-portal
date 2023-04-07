@@ -9062,8 +9062,8 @@
         "driverSize": "166K",
         "chipVendor": "huawei",
         "boardModel": "TM210",
-        "chipModel": "HNS",
-        "item": "",
+        "chipModel": "HNS GE/10GE/25GE",
+        "item": "03025VYQ",
         "downloadLink": "inbox"
       },
       {
@@ -9081,8 +9081,8 @@
         "driverSize": "293K",
         "chipVendor": "Avago",
         "boardModel": "9440-8i",
-        "chipModel": "9440-8i",
-        "item": "",
+        "chipModel": "SAS3408",
+        "item": "02312QWY",
         "downloadLink": "inbox"
       }
     ],
