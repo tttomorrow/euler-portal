@@ -40,7 +40,7 @@ export default {
       REMIND: '您不创建也可订阅。如果您愿意，请使用下面的表格。',
       INPUT_ADD: '您的电子邮件地址',
       INPUT_NAME: '您的名字（选填）',
-      BUTTON: '订阅',
+      BUTTON: '订阅邮件',
     },
     TABLE: {
       NAME: '列表名称',
