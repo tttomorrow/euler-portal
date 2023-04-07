@@ -68,10 +68,10 @@ const jumpTo = (item: any) => {
   >
     <swiper-slide v-for="item in homeBanner" :key="item.link">
       <div
+        :id="item.id"
         class="banner-panel"
         :class="{ 'is-link': item.link }"
         @click="jumpTo(item)"
-        :id="item.id"
       >
         <div
           class="banner-panel-cover"
@@ -148,7 +148,7 @@ html[lang='zh'] {
   }
 }
 #devday {
-  .box{
+  .box {
     position: absolute;
     top: 165px;
     left: 50%;
@@ -159,29 +159,28 @@ html[lang='zh'] {
       text-align: center;
     }
     .title {
-    font-size: 40px;
-    line-height: var(--o-line-hight-h3);
-    font-weight: normal;
-    color: #000;
-    @media (max-width: 767px) {
-      font-size: var(--o-font-size-h7);
-      line-height: var(--o-line-hight-h7);
+      font-size: 40px;
+      line-height: var(--o-line-hight-h3);
+      font-weight: normal;
+      color: #000;
+      @media (max-width: 767px) {
+        font-size: var(--o-font-size-h7);
+        line-height: var(--o-line-hight-h7);
+      }
+    }
+    .desc {
+      margin-top: 42px;
+      font-size: var(--o-font-size-h5);
+      line-height: var(--o-line-hight-h5);
+      font-weight: normal;
+      color: #000;
+      @media (max-width: 767px) {
+        margin-top: 16px;
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-hight-text);
+      }
     }
   }
-  .desc {
-    margin-top: 42px;
-    font-size: var(--o-font-size-h5);
-    line-height: var(--o-line-hight-h5);
-    font-weight: normal;
-    color: #000;
-    @media (max-width: 767px) {
-      margin-top: 16px;
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-hight-text);
-    }
-  }
-  }
-  
 }
 
 .home-banner {

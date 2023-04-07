@@ -151,8 +151,8 @@ const editionList = ref([
           <div class="edition-box">
             <div
               v-for="(edit, index) in editionList"
-              :class="['edit' + index]"
               :key="edit.content"
+              :class="['edit' + index]"
               class="layout"
             >
               <div class="edition-item">
