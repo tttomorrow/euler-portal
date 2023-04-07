@@ -21,7 +21,6 @@ import notFoundImg_light from '@/assets/illustrations/404.png';
 import notFoundImg_dark from '@/assets/illustrations/404_dark.png';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
-import { getSigMember } from '@/api/api-sig';
 
 const props = defineProps({
   tableData: {
@@ -31,6 +30,10 @@ const props = defineProps({
     },
   },
   meetingDetail: {
+    type: String,
+    default: '',
+  },
+  oldEmail: {
     type: String,
     default: '',
   },
@@ -147,22 +150,7 @@ const resolveDate = (date: string) => {
   return date;
 };
 const sigDetailName = ref('');
-const oldEmail = ref('');
-function getOldEmail() {
-  const param = {
-    community: 'openeuler',
-    sig: sigDetailName.value,
-  };
-  getSigMember(param)
-    .then((res: any) => {
-      if (res?.data[0]) {
-        oldEmail.value = res.data[0].mailing_list;
-      }
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
-}
+
 function getUrlParam(paraName: any) {
   const searchList = location.search.split('?');
   if (searchList.length > 1) {
@@ -184,7 +172,6 @@ const meetingSummaryLink = computed(() => {
 });
 onMounted(() => {
   sigDetailName.value = getUrlParam('name');
-  getOldEmail();
 });
 const watchData = watch(
   () => props.tableData.length,
@@ -220,10 +207,13 @@ function handleClickBtn(link = '') {
           >
           <a
             v-if="
-              oldEmail?.split('@').length &&
-              oldEmail?.split('@')[1] === 'openeuler.org'
+              (oldEmail?.split('@').length &&
+                oldEmail?.split('@')[1] === 'openeuler.org') ||
+              !oldEmail
             "
-            :href="`https://mailweb.openeuler.org/postorius/lists/${oldEmail}/`"
+            :href="`https://mailweb.openeuler.org/postorius/lists/${
+              oldEmail || 'dev@openeuler.org'
+            }/`"
             target="_blank"
             class="subscribe"
             >{{ i18n.mailing.MAILING_LIST.SUBSCRIBE.BUTTON }}</a
