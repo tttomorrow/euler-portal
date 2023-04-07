@@ -16,6 +16,7 @@ import p1 from '@/assets/category/mailing/p1.png';
 import p2 from '@/assets/category/mailing/p2.png';
 import p3 from '@/assets/category/mailing/p3.png';
 import p4 from '@/assets/category/mailing/p4.png';
+import IconSubscribe from '~icons/app/icon-subscribe.svg';
 
 const LEFT_IMG = [p1, p2];
 const RIGHT_IMG = [p3, p4];
@@ -145,9 +146,15 @@ const isMobile = computed(() => {
                   target="_blank"
                 >
                   {{ i18n.mailing.MAILING_LIST.SUBSCRIBE.BUTTON }}
-                  <!-- <OIcon class="icon">
+                </a>
+                <a
+                  class="subscribe-mail-mo"
+                  :href="`https://mailweb.openeuler.org/postorius/lists/${scope.row.fqdn_listname}/`"
+                  target="_blank"
+                >
+                  <OIcon class="icon">
                     <IconSubscribe />
-                  </OIcon> -->
+                  </OIcon>
                 </a>
               </div>
             </template>
@@ -412,6 +419,12 @@ const isMobile = computed(() => {
         & {
           display: none;
         }
+      }
+    }
+    .subscribe-mail-mo {
+      display: none;
+      @media screen and(max-width:768px) {
+        display: flex;
       }
     }
   }

@@ -303,6 +303,7 @@ onMounted(() => {
           v-if="sigMeetingData.tableData"
           class="calender-box"
           :table-data="sigMeetingData.tableData"
+          :old-email="oldEmail"
           :meeting-detail="
             easyeditorInfo.meeting ? easyeditorInfo.meeting.content : null
           "
