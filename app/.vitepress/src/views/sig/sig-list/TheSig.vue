@@ -27,13 +27,13 @@ const i18n = useI18n();
 const oldSigList = ref<SIGLIST[]>([]);
 
 onMounted(() => {
-  try {
-    getSigList().then((res) => {
+  getSigList()
+    .then((res) => {
       oldSigList.value = res;
+    })
+    .catch((error) => {
+      throw new Error(error);
     });
-  } catch (error) {
-    console.error(error);
-  }
 });
 </script>
 

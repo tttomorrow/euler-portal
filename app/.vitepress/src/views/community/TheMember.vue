@@ -25,11 +25,18 @@ const commonStore = useCommon();
     <div class="tip">
       <p>注1：捐赠人按照汉语拼音排序</p>
       <p>注2：带*号的捐赠人，捐赠协议正在流程中</p>
+      <p style="margin-top: 20px">资金捐赠，请联系开放原子开源基金会。</p>
+      <p>
+        联系人：李扬；电话：010-59258678转8007；邮箱：<a
+          href="mailto:liyang@openatom.org"
+          >liyang@openatom.org</a
+        >。
+      </p>
     </div>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .member {
   display: grid;
   grid-row-gap: 40px;

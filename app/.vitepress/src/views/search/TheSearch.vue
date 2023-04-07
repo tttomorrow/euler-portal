@@ -435,7 +435,7 @@ watch(
   @media (max-width: 1160px) {
     grid-gap: 12px;
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     padding: 0 16px var(--o-spacing-h2);
     padding-top: var(--o-spacing-h2);
     grid-template-columns: 1fr;
@@ -480,6 +480,9 @@ watch(
         padding: 0 40px;
         background-color: var(--o-color-bg2);
         border-bottom: 1px solid var(--o-color-division1);
+        @media screen and (max-width: 1620px) {
+          padding: 0 24px;
+        }
         @media screen and (max-width: 768px) {
           justify-content: center;
           align-items: flex-start;
@@ -491,8 +494,10 @@ watch(
         }
         .type {
           display: flex;
+          flex-shrink: 0;
           background-color: var(--o-color-bg2);
           @media (max-width: 768px) {
+            // min-width: 400px;
             width: 100%;
             padding: 0 16px;
             margin-bottom: 16px;
@@ -504,11 +509,13 @@ watch(
             align-items: center;
             height: 63px;
             min-width: 56px;
-            margin-right: var(--o-spacing-h2);
+            margin-right: var(--o-spacing-h3);
             color: var(--o-color-text1);
             font-size: var(--o-font-size-h8);
-            // line-height: 63px;
             cursor: pointer;
+            @media screen and (max-width: 1620px) {
+              margin-right: 24px;
+            }
             @media (max-width: 768px) {
               height: 34px;
               line-height: 34px;
@@ -517,7 +524,7 @@ watch(
               margin-right: 0;
               text-align: center;
               & + li {
-                margin-left: 16px;
+                margin-left: 12px;
               }
               span {
                 display: none;
@@ -676,7 +683,7 @@ watch(
     margin-top: 78px;
     background-color: var(--o-color-bg2);
     box-shadow: var(--o-shadow-l1);
-    @media (max-width: 1100px) {
+    @media (max-width: 1200px) {
       display: none;
     }
     h3 {
