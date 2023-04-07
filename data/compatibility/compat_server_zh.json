@@ -9038,5 +9038,66 @@
       "hostBusAdapter": "",
       "hardDiskDrive": "TOSHIBA AL14SEB060N"
     }
+  }  ,
+  {
+    "hardwareFactory": "河南昆仑",
+    "hardwareModel": "KunLun 2280",
+    "osVersion": "openEuler 20.03 LTS SP1",
+    "architecture": "aarch64",
+    "date": "2023/4/07",
+    "friendlyLink": "https://www.kunlunit.com/product/server/kunlun-2280",
+    "boardCards": [
+      {
+        "vendorID": "19e5",
+        "deviceID": "a221",
+        "svID": "19e5",
+        "ssID": "04cc",
+        "architecture": "aarch64",
+        "os": "openEuler 20.03 LTS SP1",
+        "driverName": "hns3",
+        "version": "1.9.40.24",
+        "type": "NIC",
+        "date": "2023.4.7",
+        "sha256": "cfbf3391871795c1387799941210521e7e92954cb3ce4120a0bf8ede51597e49",
+        "driverSize": "166K",
+        "chipVendor": "huawei",
+        "boardModel": "TM210",
+        "chipModel": "HNS GE/10GE/25GE",
+        "item": "03025VYQ",
+        "downloadLink": "inbox"
+      },
+      {
+        "vendorID": "1000",
+        "deviceID": "0017",
+        "svID": "1000",
+        "ssID": "9440",
+        "architecture": "aarch64",
+        "os": "openEuler 20.03 LTS SP1",
+        "driverName": "megaraid_sas",
+        "version": "07.706.03.00-rc1",
+        "type": "raid",
+        "date": "2023.4.7",
+        "sha256": "32a528f2885b12a9d6cacfe58a33c044ad73a2b50a83f78704fec4d83c2a55c9",
+        "driverSize": "293K",
+        "chipVendor": "Avago",
+        "boardModel": "9440-8i",
+        "chipModel": "SAS3408",
+        "item": "02312QWY",
+        "downloadLink": "inbox"
+      }
+    ],
+    "compatibilityConfiguration": {
+      "productInformation": "https://www.kunlunit.com/product/server/kunlun-2280",
+      "certificationTime": "2023/4/07",
+      "commitID": "",
+      "mainboardModel": "5104-00517",
+      "biosUefi": "1.98",
+      "cpu": "Kunpeng-920",
+      "ram": "2*32G DIMMs",
+      "portsBusTypes": "x8 PCI Express x8",
+      "videoAdapter": "1711",
+      "hostBusAdapter": "9440-8i",
+      "hardDiskDrive": "HGSTHUC101212CSS600"
+    }
   }
 ]
