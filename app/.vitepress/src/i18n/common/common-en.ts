@@ -122,14 +122,14 @@ export default {
       ID: 'community',
       CHILDREN: [
         {
+          NAME: 'About Us',
+          ID: 'about-us',
+          PATH: '/community/organization/',
+        },
+        {
           NAME: 'Contribution',
           ID: 'contribution',
           PATH: '/community/contribution/',
-        },
-        {
-          NAME: 'Convention',
-          ID: 'convention',
-          PATH: '/community/conduct/',
         },
         {
           NAME: 'Mailing Lists',

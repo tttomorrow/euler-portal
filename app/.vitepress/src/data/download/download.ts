@@ -66,6 +66,34 @@ export default {
         ],
       },
       {
+        NAME: '超聚变服务器操作系统 FusionOS 22 （免费使用授权）',
+        DOWNLOAD_URL:
+          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+        DESC: 'FusionOS 22是一款基于openEuler操作系统，面向运营商、金融、政企等行业关键业务设计开发的企业级服务器操作系统。为了让广大的用户能更便捷、更低成本地获得FusionOS 22的极致业务体验，超聚变提供了超聚变服务器操作系统FusionOS 22（免费使用授权）。',
+        RELEASE_DESC_URL:
+          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+        INSTALL_GUIDENCE_URL:
+          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+        SEEK_HELP_URL: 'https://www.xfusion.com',
+        GET_ISO_URL:
+          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+        MANUFACTURER: '超聚变数字技术有限公司',
+        PUBLISH_DATE: '2023/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
         NAME: 'openEuler 22.03 LTS SP1',
         DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/',
         DESC: 'openEuler 22.03 LTS SP1 是openEuler 22.03 LTS的补丁版本，生命周期与LTS版本相同。',

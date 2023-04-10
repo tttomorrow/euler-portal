@@ -24,6 +24,7 @@ import compatibility from './support/compatibility';
 import cve from './support/cve';
 import safetyBulletin from './support/safety-bulletin';
 import certification from './certification';
+import about from './about';
 
 const i18n: { [key: string]: any } = {
   zh: {
@@ -50,6 +51,7 @@ const i18n: { [key: string]: any } = {
     mailing: mailing.zh,
     search: search.zh,
     certification: certification.zh,
+    about: about.zh,
   },
   en: {
     sig: sig.en,
@@ -74,6 +76,7 @@ const i18n: { [key: string]: any } = {
     mailing: mailing.en,
     search: search.en,
     certification: certification.en,
+    about: about.en,
   },
   ru: {
     sig: sig.ru,
@@ -98,6 +101,7 @@ const i18n: { [key: string]: any } = {
     mailing: mailing.ru,
     search: search.ru,
     certification: certification.ru,
+    about: about.ru,
   },
 };
 

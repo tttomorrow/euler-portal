@@ -1,71 +1,55 @@
 ---
-title: 'Code of Covenant'
+title: Code of Conduct
+category: about-us
 ---
 
-<script setup lang="ts">
-import BannerLevel2 from '@/components/BannerLevel2.vue'
-import banner from '@/assets/banner/banner-community.png';
-import illustration from '@/assets/illustrations/conduct.png';
 
-</script>
+<div class='conduct-en'>
 
-<ClientOnly>
-  <BannerLevel2
-    background-text="COMMUNITY"
-    :background-image="banner"
-    title="Code of Conduct"
-    :illustration="illustration"
-  />
-</ClientOnly>
+# openEuler Community Code of Conduct
 
-<div class='markdown' >
+##### 1. To build an open and friendly environment, we as contributors and maintainers pledge to make participation in our community a harassment-free experience for participants of the program and community, regardless of age, body size, visible or invisible disability, ethnicity, level of experience, education, socioeconomic status, nationality, personal appearance, or race.
 
-The openEuelr community complies with the code of conduct specified in the open source community V1.4. For details, visit the following website:
+##### 2. Behaviors that contribute to a positive environment for our community include:
 
-If you need to report insults, harassment, or other unacceptable behavior, you can send an email to tc@openeuler.org to contact the openEuler Technical Committee.
+(1) Friendly and inclusive wording;
 
-## Commitment of Contributors
+(2) Respecting different viewpoints and experiences;
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+(3) Gracefully accepting constructive feedback;
 
-## Our Standards
+(4) Focusing on what is best for the community;
 
-Examples of behavior that contributes to creating a positive environment include:
+(5) Demonstrating kindness toward other people.
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
+##### 3. Unacceptable behaviors in the program and community include:
 
-Examples of unacceptable behavior by participants include:
+(1) Use of sexualized and violent language or imagery;
 
-- Use of sexualized language or imagery and unwelcome sexual attention or advances
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+(2) Disruption, incitement, rumor-making, insulting, derogatory comments, and personal and political attacks;
 
-## Our Obligations
+(3) Public or private harassment to participants in the program and community;
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+(4) Publishing others' information, such as physical and email addresses, without their explicit authorization;
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+(5) Other conduct that can reasonably be considered as a violation of this Code of Conduct.
 
-## Applicable to
+##### 4. Community project maintainers are responsible for clarifying and enforcing our standards of "proper conduct" and will take appropriate and fair corrective action in response to any conduct that they deem inappropriate. Community project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, and issues that violate this Code of Conduct, and will temporarily or permanently ban any participant because of the behavior they consider to be threatening, offensive, or harmful.
 
-his Code of Covenant applies within all project spaces, and it also applies when an individual is representing the project or its community in public spaces.
+##### 5. This Code of Conduct applies within all community spaces, and applies when an individual represents the community in public spaces.
 
-Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
+##### 6. Examples of representing the community include using an official email address, posting through an official media account, and participating in online or offline events as an appointed representative.
 
-Representation of a project may be further defined and clarified by project maintainers.
-
-## Enforcement
-
-You can send an e-mail to tc@openeuler.org report abuse, harassment, and misconduct to the project team.
-
-All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The community team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
-
-Project maintainers who do not follow or enforce the Covenant in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
-
+##### 7. The program office can further define and interpret the conduct of representing the community and report to the openEuler Committee for approval and publishing.
 </div>
+
+<style>
+.conduct-en h5{
+    margin-top: var(--o-spacing-h8);
+    margin-bottom: var(--o-spacing-h8);
+    font-size: var(--o-font-size-text);
+    font-weight: 400;
+    color: var(--o-color-text4);
+    line-height: var(--o-line-height-text);
+}
+</style>
