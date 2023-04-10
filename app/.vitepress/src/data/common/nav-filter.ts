@@ -159,11 +159,11 @@ export default [
   },
   {
     name: 'member',
-    lang: ['zh'],
+    lang: ['zh', 'en'],
   },
   {
     name: 'organization',
-    lang: ['zh'],
+    lang: ['zh', 'en'],
   },
   {
     name: 'honor',

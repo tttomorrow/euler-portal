@@ -35,107 +35,225 @@ import baolande_dark from '@/assets/category/member/baolande_dark.png';
 import feiten_dark from '@/assets/category/member/feiten_dark.png';
 import iscas_dark from '@/assets/category/member/iscas_dark.png';
 
-export default [
-  {
-    donorTitle: '战略捐赠人',
-    logoList: [
-      {
-        img_light: huawei_light,
-        img_dark: huawei_dark,
-        noIcon: true,
-      },
-    ],
-  },
-  {
-    donorTitle: '白金捐赠人',
-    logoList: [
-      {
-        img_light: qilin_light,
-        img_dark: qilin_dark,
-        noIcon: true,
-      },
-      {
-        img_light: qilinSoft_light,
-        img_dark: qilinSoft_dark,
-        noIcon: true,
-      },
-      {
-        img_light: tongxin_light,
-        img_dark: tongxin_dark,
-        noIcon: true,
-      },
-    ],
-  },
-  {
-    donorTitle: '黄金捐赠人',
-    logoList: [
-      {
-        img_light: afusion_light,
-        img_dark: afusion_dark,
-      },
-      {
-        img_light: runhe_light,
-        img_dark: runhe_dark,
-        noIcon: true,
-      },
-      {
-        img_light: ruantong_light,
-        img_dark: ruantong_dark,
-      },
-      {
-        img_light: dianxing_light,
-        img_dark: dianxing_dark,
-      },
-      {
-        img_light: liantong_light,
-        img_dark: liantong_dark,
-      },
-      {
-        img_light: yidong_light,
-        img_dark: yidong_dark,
-      },
-    ],
-  },
-  {
-    donorTitle: '白银捐赠人',
-    logoList: [
-      {
-        img_light: xinhua_light,
-        img_dark: xinhua_dark,
-      },
-      {
-        img_light: turbolinux_light,
-        img_dark: turbolinux_dark,
-      },
-    ],
-  },
-  {
-    donorTitle: '青铜捐赠人',
-    logoList: [
-      {
-        img_light: baolande_light,
-        img_dark: baolande_dark,
-        noIcon: true,
-      },
-      {
-        img_light: feiten_light,
-        img_dark: feiten_dark,
-      },
-      {
-        img_light: zhongyin_light,
-        img_dark: zhongyin_dark,
-        noIcon: true,
-      },
-    ],
-  },
-  {
-    donorTitle: '学术机构和非营利组织',
-    logoList: [
-      {
-        img_light: iscas_light,
-        img_dark: iscas_dark,
-        noIcon: true,
-      },
-    ],
-  },
-];
+export default {
+  zh: [
+    {
+      donorTitle: '战略捐赠人',
+      ID: 'Strategic-Donors',
+      logoList: [
+        {
+          img_light: huawei_light,
+          img_dark: huawei_dark,
+          noIcon: true,
+        },
+      ],
+    },
+    {
+      donorTitle: '白金捐赠人',
+      ID: 'Platinum-Donors',
+      logoList: [
+        {
+          img_light: qilin_light,
+          img_dark: qilin_dark,
+          noIcon: true,
+        },
+        {
+          img_light: qilinSoft_light,
+          img_dark: qilinSoft_dark,
+          noIcon: true,
+        },
+        {
+          img_light: tongxin_light,
+          img_dark: tongxin_dark,
+          noIcon: true,
+        },
+      ],
+    },
+    {
+      donorTitle: '黄金捐赠人',
+      ID: 'Gold-Donors',
+      logoList: [
+        {
+          img_light: afusion_light,
+          img_dark: afusion_dark,
+        },
+        {
+          img_light: runhe_light,
+          img_dark: runhe_dark,
+          noIcon: true,
+        },
+        {
+          img_light: ruantong_light,
+          img_dark: ruantong_dark,
+        },
+        {
+          img_light: dianxing_light,
+          img_dark: dianxing_dark,
+        },
+        {
+          img_light: liantong_light,
+          img_dark: liantong_dark,
+        },
+        {
+          img_light: yidong_light,
+          img_dark: yidong_dark,
+        },
+      ],
+    },
+    {
+      donorTitle: '白银捐赠人',
+      ID: 'Silver-Donors',
+      logoList: [
+        {
+          img_light: xinhua_light,
+          img_dark: xinhua_dark,
+        },
+        {
+          img_light: turbolinux_light,
+          img_dark: turbolinux_dark,
+        },
+      ],
+    },
+    {
+      donorTitle: '青铜捐赠人',
+      ID: 'Bronze-Donors',
+      logoList: [
+        {
+          img_light: baolande_light,
+          img_dark: baolande_dark,
+          noIcon: true,
+        },
+        {
+          img_light: feiten_light,
+          img_dark: feiten_dark,
+        },
+        {
+          img_light: zhongyin_light,
+          img_dark: zhongyin_dark,
+          noIcon: true,
+        },
+      ],
+    },
+    {
+      donorTitle: '学术机构和非营利组织',
+      ID: 'Academic-Institutions ',
+      logoList: [
+        {
+          img_light: iscas_light,
+          img_dark: iscas_dark,
+          noIcon: true,
+        },
+      ],
+    },
+  ],
+  en: [
+    {
+      donorTitle: 'Strategic Donors',
+      ID: 'Strategic-Donors',
+      logoList: [
+        {
+          img_light: huawei_light,
+          img_dark: huawei_dark,
+          noIcon: true,
+        },
+      ],
+    },
+    {
+      donorTitle: 'Platinum Donors',
+      ID: 'Platinum-Donors',
+      logoList: [
+        {
+          img_light: qilin_light,
+          img_dark: qilin_dark,
+          noIcon: true,
+        },
+        {
+          img_light: qilinSoft_light,
+          img_dark: qilinSoft_dark,
+          noIcon: true,
+        },
+        {
+          img_light: tongxin_light,
+          img_dark: tongxin_dark,
+          noIcon: true,
+        },
+      ],
+    },
+    {
+      donorTitle: 'Gold Donors',
+      ID: 'Gold-Donors',
+      logoList: [
+        {
+          img_light: afusion_light,
+          img_dark: afusion_dark,
+        },
+        {
+          img_light: runhe_light,
+          img_dark: runhe_dark,
+          noIcon: true,
+        },
+        {
+          img_light: ruantong_light,
+          img_dark: ruantong_dark,
+        },
+        {
+          img_light: dianxing_light,
+          img_dark: dianxing_dark,
+        },
+        {
+          img_light: liantong_light,
+          img_dark: liantong_dark,
+        },
+        {
+          img_light: yidong_light,
+          img_dark: yidong_dark,
+        },
+      ],
+    },
+    {
+      donorTitle: 'Silver Donors',
+      ID: 'Silver-Donors',
+      logoList: [
+        {
+          img_light: xinhua_light,
+          img_dark: xinhua_dark,
+        },
+        {
+          img_light: turbolinux_light,
+          img_dark: turbolinux_dark,
+        },
+      ],
+    },
+    {
+      donorTitle: 'Bronze Donors',
+      ID: 'Bronze-Donors',
+      logoList: [
+        {
+          img_light: baolande_light,
+          img_dark: baolande_dark,
+          noIcon: true,
+        },
+        {
+          img_light: feiten_light,
+          img_dark: feiten_dark,
+        },
+        {
+          img_light: zhongyin_light,
+          img_dark: zhongyin_dark,
+          noIcon: true,
+        },
+      ],
+    },
+    {
+      donorTitle: 'Academic Institutions and Non-profit Organizations',
+      ID: 'Academic-Institutions',
+      logoList: [
+        {
+          img_light: iscas_light,
+          img_dark: iscas_dark,
+          noIcon: true,
+        },
+      ],
+    },
+  ],
+};

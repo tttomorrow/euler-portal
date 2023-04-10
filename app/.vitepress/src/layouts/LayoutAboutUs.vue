@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue';
 import { useData, useRouter } from 'vitepress';
 
-import tocInfo from '@/data/about-us/about-us-toc';
+import TOC_INFO from '@/data/about-us/about-us-toc';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
 import DocSideBar from '@/components/DocSideBar.vue';
@@ -26,6 +26,14 @@ const commonStore = useCommon();
 const defaultProps = ref({
   children: 'children',
   label: 'label',
+});
+
+const tocInfo = computed(() => {
+  if (lang.value === 'en') {
+    return TOC_INFO.en;
+  } else {
+    return TOC_INFO.zh;
+  }
 });
 
 const routeList = router.route.path.split('/');
