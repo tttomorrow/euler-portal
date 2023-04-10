@@ -2,13 +2,6 @@
 import { ref } from 'vue';
 import IconTime from '~icons/app/icon-time.svg';
 
-// import agenda from '../data/agenda';
-
-// const value1 = ref<[Date, Date]>([
-//   new Date(2016, 9, 10, 8, 40),
-//   new Date(2016, 9, 10, 9, 40),
-// ]);
-// const value1 = ref<any>(['15:55', '15:59']);
 defineProps({
   agendaData: {
     type: Object,
@@ -21,13 +14,7 @@ defineProps({
     },
   },
 });
-// const agendaDatass: any = JSON.parse(props.agendaData.content);
-// const agendaDatass = computed(() => {
-//   if(props.agendaData.content){
-//     console.log(JSON.parse(props.agendaData.content));
-//   }
-//   return props.agendaData.content ? JSON.parse(props.agendaData.content) : {};
-// });
+
 // 控制分论坛的详情弹窗显示
 const idSubItemShow: any = ref('');
 const idShow: any = ref('');
@@ -40,25 +27,6 @@ const otherTabType = ref(0);
 
 <template>
   <div class="schedule">
-    <!-- <el-tabs
-      v-if="agendaData[0].lable"
-      v-model.number="tabType"
-      class="schedule-tabs"
-      @tab-click="tabClick"
-    >
-      <el-tab-pane
-        v-for="(itemList, index) in agendaData"
-        :key="itemList.id"
-        :name="index"
-      >
-        <template #label>
-          <div class="time-tabs">
-            {{ itemList.lable }}
-          </div>
-        </template>
-      </el-tab-pane>
-    </el-tabs>
-    <el-container :level-index="1"> </el-container> -->
     <h4>{{ agendaData.lable }}</h4>
     <div class="schedule-item other">
       <el-tabs
@@ -108,11 +76,15 @@ const otherTabType = ref(0);
               :class="{ 'exit-detail': subItem.detail }"
               @click="changeIndexShow(itemList.id, subItem.id)"
             >
-              <span v-html="subItem.desc"></span>
+              <span
+                v-for="item in subItem.desc.split('\n')"
+                :key="item + '1'"
+                >{{ item }}</span
+              >
             </span>
             <div v-if="subItem.person[0]" class="name-box">
               <div v-for="personItem in subItem.person" :key="personItem.id">
-                <span class="name">
+                <span v-if="personItem.name" class="name">
                   {{ personItem.name }}
                 </span>
                 <span v-if="personItem.post" class="post">
@@ -121,12 +93,21 @@ const otherTabType = ref(0);
               </div>
             </div>
             <div v-if="subItem.detail" class="detail">
-              <p><span>议题名称：</span><span v-html="subItem.desc"></span></p>
-              <p v-if="subItem.detail">
-                <span>议题简介：</span
+              <p>
+                <span>议题名称：</span
                 ><span
-                  ><span class="detail-text" v-html="subItem.detail"> </span
-                ></span>
+                  ><span v-for="item in subItem.desc.split('\n')" :key="item">{{
+                    item
+                  }}</span></span
+                >
+              </p>
+              <p v-if="subItem.detail">
+                <span>议题简介：</span>
+                <span>
+                  <span v-for="item in subItem.detail.split('\n')" :key="item"
+                    >{{ item }}
+                  </span>
+                </span>
               </p>
               <p v-if="subItem.person[0]">
                 <span>发言人：</span>
@@ -369,7 +350,7 @@ const otherTabType = ref(0);
     display: grid;
     grid-template-columns: 192px 580px 445px;
     // border-bottom: 1px solid var(--o-color-border2);
-    padding: 20px 0;
+    padding: 20px 0px;
     transition: all 0.25s ease;
     align-items: center;
     min-height: 64px;
@@ -386,9 +367,9 @@ const otherTabType = ref(0);
       min-height: 36px;
       position: static;
     }
-    &:hover {
-      background-color: var(--o-color-bg4);
-    }
+    // &:hover {
+    //   background-color: var(--o-color-bg4);
+    // }
     .name-box {
       @media screen and (max-width: 1100px) {
         grid-column-end: 3;
@@ -491,7 +472,7 @@ const otherTabType = ref(0);
       width: 75%;
       padding: 40px;
       position: absolute;
-      top: 60px;
+      top: 70%;
       left: 50%;
       transform: translateX(-50%);
       z-index: 9;
@@ -546,16 +527,11 @@ const otherTabType = ref(0);
     &:nth-last-of-type(3) {
       .detail {
         top: auto;
-        bottom: 68px;
+        bottom: 70%;
         @media (max-width: 1100px) {
           top: auto;
-          bottom: 72px;
+          bottom: auto;
         }
-      }
-    }
-    &:nth-last-of-type(4) {
-      .detail {
-        top: 80px;
       }
     }
   }

@@ -31,6 +31,7 @@ onMounted(() => {
       :style="{ backgroundImage: `url(${bannerData.img_mo})` }"
     ></div>
     <div data-aos="fade-down" class="banner-text">
+      <h4>{{ bannerData.suptitle }}</h4>
       <h2>{{ bannerData.title }}</h2>
       <h3>{{ bannerData.subtitle }}</h3>
       <a href="https://e-campaign.huawei.com/m/N7V3Eb" target="_blank">
@@ -78,25 +79,36 @@ onMounted(() => {
   }
   .banner-text {
     position: absolute;
-    top: 126px;
+    top: 50%;
     left: 54%;
+    transform: translateY(-50%);
     @media (max-width: 767px) {
-      top: 40px;
       width: 100%;
       left: 0;
       text-align: center;
+    }
+    h4 {
+      font-size: var(--o-font-size-h4);
+      line-height: var(--o-line-height-h4);
+      font-weight: normal;
+      @media (max-width: 767px) {
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-hight-h8);
+      }
     }
     h2 {
       font-size: 40px;
       line-height: var(--o-line-height-h3);
       font-weight: normal;
+      margin-top: var(--o-spacing-h5);
       @media (max-width: 767px) {
+        margin-top: var(--o-spacing-h8);
         font-size: var(--o-font-size-h7);
         line-height: var(--o-line-height-h7);
       }
     }
     h3 {
-      margin-top: 42px;
+      margin-top: 32px;
       font-size: var(--o-font-size-h5);
       line-height: var(--o-line-height-h5);
       font-weight: normal;

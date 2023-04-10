@@ -60,7 +60,7 @@ const jumpTo = (item: any) => {
       clickable: true,
     }"
     :autoplay="{
-      delay: 5000,
+      delay: 5000000,
       disableOnInteraction: false,
     }"
     :navigation="true"
@@ -167,9 +167,19 @@ html[lang='zh'] {
         font-size: var(--o-font-size-h7);
         line-height: var(--o-line-hight-h7);
       }
+      &:nth-of-type(1) {
+        font-size: var(--o-font-size-h4);
+        line-height: var(--o-line-hight-h4);
+        margin-bottom: 16px;
+        @media (max-width: 767px) {
+          font-size: var(--o-font-size-h8);
+          line-height: var(--o-line-hight-h8);
+          margin-top: var(--o-spacing-h8);
+        }
+      }
     }
     .desc {
-      margin-top: 42px;
+      margin-top: 32px;
       font-size: var(--o-font-size-h5);
       line-height: var(--o-line-hight-h5);
       font-weight: normal;

@@ -38,19 +38,6 @@ export default {
                 detail: '',
               },
               {
-                id: 'idd7',
-                time: ['9:30', '11:30'],
-                desc: '教育信息技术应用创新峰会',
-                person: [
-                  {
-                    id: 'idd8',
-                    name: '统信主办-南昌',
-                    post: '',
-                  },
-                ],
-                detail: '',
-              },
-              {
                 id: 'idd9',
                 time: ['14:00', '16:30'],
                 desc: '金融行业技术创新及应用闭门会议',
