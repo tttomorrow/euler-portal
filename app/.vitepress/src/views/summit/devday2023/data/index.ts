@@ -6,6 +6,7 @@ export default {
   banner: {
     img_pc: bannerDevdayPc,
     img_mo: bannerDevdayMo,
+    suptitle: '开放原子开源基金会',
     title: 'openEuler Developer Day 2023',
     subtitle: '4月20-21日  中国·上海浦东嘉里酒店',
   },

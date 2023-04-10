@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useCommon } from '@/stores/common';
 import AOS from 'aos';
 
 import AppContext from '@/components/AppContent.vue';
 import SummitBanner from './components/SummitBanner.vue';
 import SummitSchedule from './components/SummitSchedule.vue';
+import SummitPartner from './components/SummitPartner.vue';
 
 import liveLightImg from './img/live.png';
 import liveDarkImg from './img/live-dark.png';
@@ -27,19 +28,20 @@ onMounted(() => {
   });
   // const href =
   //   'https://www.openeuler.org/zh/interaction/summit-list/devday2023/';
-  // getEasyeditorInfo(href).then((res) => {
-  //   getData.value=JSON.parse(res.data[0].content)
-  //   console.log(getData.value);
-  //   getData.value={
-  //     title:"会议日程",
-  //     content:JSON.parse(res.data[0].content)
-  //   }
-  //   res.data.forEach((item: any) => {
-  //     item.content=JSON.parse(item.content)
-  //     getData.value[item.name] = item;
+  // getEasyeditorInfo(href)
+  //   .then((res) => {
+  //     console.log(res);
+  //     if (res.data && res.data[0]) {
+  //       for (let i = 0; i < res.data.length; i++) {
+  //         res.data[i].content = JSON.parse(res.data[i].content);
+  //         getData.value[res.data[i].name] = res.data[i];
+  //       }
+  //       agendaData2.value = getData.value.schedule.content.content.slice(0, 1);
+  //     }
+  //   })
+  //   .catch((e) => {
+  //     throw new Error(e);
   //   });
-  //   console.log(getData.value);
-  // });
 });
 const showIndex = ref(1);
 function setShowIndex(index: number) {
@@ -47,11 +49,25 @@ function setShowIndex(index: number) {
 }
 // 控制上下午切换
 const tabType = ref(0);
-const agendaData2: any = computed(() => {
-  return tabType.value === 0
-    ? summitData.agenda1.content.content.slice(0, 1)
-    : summitData.agenda1.content.content.slice(1);
-});
+const agendaData2: any = ref([]);
+watch(
+  tabType,
+  () => {
+    // if (tabType.value === 1 && getData.value.schedule) {
+    //   agendaData2.value = getData.value.schedule.content.content.slice(1);
+    // } else if (getData.value.schedule) {
+    //   agendaData2.value = getData.value.schedule.content.content.slice(0, 1);
+    // }
+    if (tabType.value === 1) {
+      agendaData2.value = summitData.agenda1.content.content.slice(1);
+    } else {
+      agendaData2.value = summitData.agenda1.content.content.slice(0, 1);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
 <template>
   <SummitBanner :banner-data="summitData.banner" />
@@ -79,6 +95,17 @@ const agendaData2: any = computed(() => {
           <p class="date-month">APRIL</p>
         </div>
       </div>
+      <!-- <template
+        v-if="getData['schedule-20'] && getData['schedule-20'].content.content"
+      >
+        <template
+          v-for="item in getData['schedule-20'].content.content"
+          :key="item.lable"
+        >
+          <SummitSchedule v-show="showIndex === 0" :agenda-data="item" />
+        </template>
+      </template> -->
+
       <template
         v-for="item in summitData.agenda.content.content"
         :key="item.lable"
@@ -86,11 +113,7 @@ const agendaData2: any = computed(() => {
         <SummitSchedule v-show="showIndex === 0" :agenda-data="item" />
       </template>
       <div v-show="showIndex === 1">
-        <el-tabs
-          v-if="summitData.agenda1.content.content[0].lable"
-          v-model.number="tabType"
-          class="schedule-tabs"
-        >
+        <el-tabs v-model.number="tabType" class="schedule-tabs">
           <el-tab-pane :name="0">
             <template #label>
               <div class="time-tabs">上午</div>
@@ -107,6 +130,7 @@ const agendaData2: any = computed(() => {
         </template>
       </div>
     </div>
+    <SummitPartner />
     <div class="previous" data-aos="fade-up">
       <div class="previous-title">
         <h3>{{ summitData.previous.title }}</h3>
@@ -277,7 +301,7 @@ const agendaData2: any = computed(() => {
   }
 }
 .previous {
-  margin-top: var(--o-spacing-h2);
+  margin-top: var(--o-spacing-h1);
   @media screen and (max-width: 768px) {
     margin-top: var(--o-spacing-h4);
   }
