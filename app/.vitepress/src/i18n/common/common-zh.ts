@@ -424,6 +424,23 @@ export default {
               NAME: '安全中心',
               LABEL: '查看漏洞管理、安全公告等安全问题',
               PATH: '',
+              CHILDREN: [
+                {
+                  NAME: '漏洞管理',
+                  LABEL: '',
+                  PATH: '',
+                },
+                {
+                  NAME: '安全公告',
+                  LABEL: '',
+                  PATH: '',
+                },
+                {
+                  NAME: 'CVE',
+                  LABEL: '',
+                  PATH: '',
+                },
+              ],
             },
           ],
         },

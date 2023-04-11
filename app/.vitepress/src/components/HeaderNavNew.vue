@@ -165,9 +165,9 @@ watch(
     top: 48px;
     left: 0px;
     padding: 0;
-    width: calc(100% - 120px);
-    max-width: calc(100% - 120px);
-    transform: translateX(120px);
+    width: calc(100% - 164px);
+    max-width: calc(100% - 164px);
+    transform: translateX(164px);
     height: calc(100% - 48px);
     z-index: 190;
     box-shadow: none;
@@ -197,7 +197,9 @@ watch(
       flex: 0 1 190px;
       @media (max-width: 1100px) {
         &:not(:last-child) {
-          margin-bottom: 24px;
+          margin-bottom: 12px;
+          border-bottom: 1px solid var(--o-color-border2);
+          padding-bottom: 12px;
         }
       }
 
@@ -257,7 +259,7 @@ watch(
         flex-basis: 400px;
         .nav-dropdown-box {
           grid-template-columns: repeat(2, 1fr);
-          gap: 40px;
+          gap: 16px 40px;
         }
       }
     }
@@ -267,7 +269,7 @@ watch(
   height: 100%;
   position: relative;
   @media screen and (max-width: 1100px) {
-    width: 120px;
+    width: 164px;
     background: var(--o-color-bg1);
   }
   .o-nav-list {
