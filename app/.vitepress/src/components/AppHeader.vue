@@ -8,6 +8,7 @@ import { showGuard, logout, useStoreData, getUserAuth } from '../shared/login';
 import navFilterConfig from '@/data/common/nav-filter';
 
 import HeaderNav from './HeaderNav.vue';
+// import HeaderNavNew from './HeaderNavNew.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
 import HeaderSearch from './HeaderSearch.vue';
@@ -40,6 +41,7 @@ const documentElement = document.documentElement;
 
 // 导航数据
 const navRouter = computed(() => i18n.value.common.NAV_ROUTER_CONFIG);
+const navRouterNew = computed(() => i18n.value.common.NAV_ROUTER_CONFIG_NEW);
 
 const activeNav = ref<string>();
 const logo = computed(() =>
@@ -225,7 +227,11 @@ const searchLink = `/${lang.value}/other/search/`;
       </div>
       <ClientOnly>
         <div v-show="!isShowBox" class="header-content">
-          <div class="header-nav">
+          <div class="header-nav" :class="{ active: mobileMenuIcon }">
+            <!-- <HeaderNavNew
+              :nav-items="navRouterNew"
+              :isSwitch="mobileMenuIcon"
+            /> -->
             <HeaderNav :nav-items="navRouter" />
           </div>
           <div class="header-tool">
@@ -239,7 +245,7 @@ const searchLink = `/${lang.value}/other/search/`;
         </div>
       </ClientOnly>
 
-      <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"   -->
+      <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"    -->
       <div
         v-if="toBody"
         class="mobile-menu"
@@ -392,12 +398,42 @@ const searchLink = `/${lang.value}/other/search/`;
   flex: 1;
   height: 100%;
   @media screen and (max-width: 1100px) {
-    display: none;
+    // display: none;
   }
   .header-nav {
     height: 100%;
     display: flex;
     flex: 1;
+    @media screen and (max-width: 1100px) {
+      width: 100%;
+      position: fixed;
+      left: 0;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      border-top: 1px solid var(--o-color-division);
+      // background: rgba(0, 0, 0, 0.4);
+      top: 48px;
+      height: calc(100% - 48px);
+      z-index: 999;
+      transform: translateX(-130%);
+
+      transition-duration: 0.333s;
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.5, 0, 0.84, 0.25);
+    }
+    &.active {
+      opacity: 1;
+      z-index: 1101;
+      visibility: visible;
+      transform: translateX(0);
+
+      // .mobile-menu-side {
+      //   left: 0;
+      //   opacity: 1;
+      //   z-index: 9;
+      // }
+    }
   }
 
   .header-tool {
@@ -417,6 +453,9 @@ const searchLink = `/${lang.value}/other/search/`;
     &-theme {
       cursor: pointer;
     }
+    @media screen and (max-width: 1100px) {
+      display: none;
+    }
   }
   .icon {
     font-size: 22px;
@@ -428,7 +467,6 @@ const searchLink = `/${lang.value}/other/search/`;
   width: 100%;
   position: fixed;
   left: 0;
-  // transition: all 0.3s linear;
   overflow: hidden;
   display: flex;
   opacity: 0;
