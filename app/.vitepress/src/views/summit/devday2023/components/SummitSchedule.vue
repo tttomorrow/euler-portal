@@ -67,9 +67,7 @@ const otherTabType = ref(0);
           >
             <span class="time">
               <IconTime />
-              {{ subItem.time[0] }}
-              -
-              {{ subItem.time[1] }}
+              {{ subItem.time }}
             </span>
             <span
               class="desc"
