@@ -2,7 +2,7 @@
 import { computed, ref, onMounted, onUpdated } from 'vue';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
-import showdown from 'showdown';
+import showMd from 'markdown-it';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 
@@ -25,7 +25,6 @@ import {
   getSigList,
   getSigDetailInfo,
 } from '@/api/api-sig';
-
 interface SIGLIST {
   group_name: string;
   maillist: string;
@@ -229,17 +228,17 @@ onUpdated(() => {
   }
 });
 // 获取easyeditor编辑发布的信息
-const converter = new showdown.Converter();
-converter.setOption('tables', true);
 const href = `https://www.openeuler.org/${lang.value}/sig/sig-detail/?name=`;
 const easyeditorInfo: any = ref({});
 function getEasyeditorInfo() {
+  
   getSigDetailInfo(href + sigDetailName.value)
     .then((res) => {
+      
       if (res.statusCode === 200 && res.data && res.data[0]) {
         res.data.forEach((item: any) => {
           if (item.content) {
-            item.content = converter.makeHtml(item.content);
+            item.content = showMd().render(item.content);
           }
           easyeditorInfo.value[item.name] = item;
         });

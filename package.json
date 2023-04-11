@@ -24,7 +24,7 @@
     "lodash": "^4.17.21",
     "opendesign": "./opendesign",
     "pinia": "^2.0.13",
-    "showdown": "^2.1.0",
+    "markdown-it": "^12.3.2",
     "swiper": "6.8.1",
     "vue": "^3.2.33"
   },

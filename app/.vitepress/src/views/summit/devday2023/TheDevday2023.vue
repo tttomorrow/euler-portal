@@ -7,18 +7,19 @@ import AppContext from '@/components/AppContent.vue';
 import SummitBanner from './components/SummitBanner.vue';
 import SummitSchedule from './components/SummitSchedule.vue';
 import SummitPartner from './components/SummitPartner.vue';
+// import SummitLive from './components/SummitLive.vue';
 
 import liveLightImg from './img/live.png';
 import liveDarkImg from './img/live-dark.png';
 
 import summitData from './data';
-// import { getEasyeditorInfo } from '@/api/api-easyeditor';
+import { getEasyeditorInfo } from '@/api/api-easyeditor';
 const commonStore = useCommon();
 const liveImg = computed(() =>
   commonStore.theme === 'light' ? liveLightImg : liveDarkImg
 );
 
-// const getData: any = ref({});
+const getData: any = ref({});
 onMounted(() => {
   AOS.init({
     offset: 50,
@@ -26,22 +27,21 @@ onMounted(() => {
     delay: 100,
     once: true,
   });
-  // const href =
-  //   'https://www.openeuler.org/zh/interaction/summit-list/devday2023/';
-  // getEasyeditorInfo(href)
-  //   .then((res) => {
-  //     console.log(res);
-  //     if (res.data && res.data[0]) {
-  //       for (let i = 0; i < res.data.length; i++) {
-  //         res.data[i].content = JSON.parse(res.data[i].content);
-  //         getData.value[res.data[i].name] = res.data[i];
-  //       }
-  //       agendaData2.value = getData.value.schedule.content.content.slice(0, 1);
-  //     }
-  //   })
-  //   .catch((e) => {
-  //     throw new Error(e);
-  //   });
+  const href =
+    'https://www.openeuler.org/zh/interaction/summit-list/devday2023/';
+  getEasyeditorInfo(href)
+    .then((res) => {
+      if (res.data && res.data[0]) {
+        for (let i = 0; i < res.data.length; i++) {
+          res.data[i].content = JSON.parse(res.data[i].content);
+          getData.value[res.data[i].name] = res.data[i];
+        }
+        agendaData2.value = getData.value.schedule.content.content.slice(0, 1);
+      }
+    })
+    .catch((e) => {
+      throw new Error(e);
+    });
 });
 const showIndex = ref(1);
 function setShowIndex(index: number) {
@@ -53,21 +53,23 @@ const agendaData2: any = ref([]);
 watch(
   tabType,
   () => {
-    // if (tabType.value === 1 && getData.value.schedule) {
-    //   agendaData2.value = getData.value.schedule.content.content.slice(1);
-    // } else if (getData.value.schedule) {
-    //   agendaData2.value = getData.value.schedule.content.content.slice(0, 1);
-    // }
-    if (tabType.value === 1) {
-      agendaData2.value = summitData.agenda1.content.content.slice(1);
-    } else {
-      agendaData2.value = summitData.agenda1.content.content.slice(0, 1);
+    if (tabType.value === 1 && getData.value.schedule) {
+      agendaData2.value = getData.value.schedule.content.content.slice(1);
+    } else if (getData.value.schedule) {
+      agendaData2.value = getData.value.schedule.content.content.slice(0, 1);
     }
+    // if (tabType.value === 1) {
+    //   agendaData2.value = summitData.agenda1.content.content.slice(1);
+    // } else {
+    //   agendaData2.value = summitData.agenda1.content.content.slice(0, 1);
+    // }
   },
   {
     immediate: true,
   }
 );
+// 控制直播
+// const isLiverShow = ref(0);
 </script>
 <template>
   <SummitBanner :banner-data="summitData.banner" />
@@ -75,6 +77,17 @@ watch(
     <div class="detail">
       <p v-for="item in summitData.detail" :key="item">{{ item }}</p>
     </div>
+    <!-- <div class="liver">
+      <h3 class="titleBar">{{ summitData.liver.title }}</h3>
+      <ClientOnly>
+        <SummitLive
+          v-if="isLiverShow === 0"
+          :live-data="summitData.liver.liveData1"
+          class-name="odd2022"
+          class="liver-box"
+        />
+      </ClientOnly>
+    </div> -->
     <div class="agenda">
       <h3>会议日程</h3>
       <div class="date">
@@ -95,7 +108,7 @@ watch(
           <p class="date-month">APRIL</p>
         </div>
       </div>
-      <!-- <template
+      <template
         v-if="getData['schedule-20'] && getData['schedule-20'].content.content"
       >
         <template
@@ -104,14 +117,14 @@ watch(
         >
           <SummitSchedule v-show="showIndex === 0" :agenda-data="item" />
         </template>
-      </template> -->
+      </template>
 
-      <template
+      <!-- <template
         v-for="item in summitData.agenda.content.content"
         :key="item.lable"
       >
         <SummitSchedule v-show="showIndex === 0" :agenda-data="item" />
-      </template>
+      </template> -->
       <div v-show="showIndex === 1">
         <el-tabs v-model.number="tabType" class="schedule-tabs">
           <el-tab-pane :name="0">
@@ -179,6 +192,29 @@ watch(
     }
     & + p {
       margin-top: var(--o-spacing-h6);
+    }
+  }
+}
+.liver {
+  margin-top: var(--o-spacing-h1);
+  @media (max-width: 767px) {
+    margin-top: var(--o-spacing-h2);
+  }
+  h3 {
+    text-align: center;
+    font-size: var(--o-font-size-h3);
+    line-height: var(--o-line-height-h3);
+    color: var(--o-color-text1);
+    font-weight: 300;
+    @media (max-width: 767px) {
+      font-size: var(--o-font-size-h8);
+      line-height: var(--o-line-height-h8);
+    }
+  }
+  .liver-box {
+    margin-top: var(--o-spacing-h2);
+    @media (max-width: 767px) {
+      margin-top: var(--o-spacing-h4);
     }
   }
 }
