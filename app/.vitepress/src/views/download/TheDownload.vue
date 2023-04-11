@@ -8,7 +8,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 
 import type { DownloadData } from '@/shared/@types/type-download';
 
-import AppContent from '@/components/AppContent.vue';
+// import AppContent from '@/components/AppContent.vue';
 import TagFilter from '@/components/TagFilter.vue';
 
 import IconDownload from '~icons/app/icon-download.svg';
@@ -163,7 +163,7 @@ onMounted(() => {
   <span style="display: none">
     {{ i18n.download.WHITE_PAPER }}
   </span>
-  <AppContent :mobile-top="16" class="download">
+  <div class="download">
     <!-- PC筛选 -->
     <ClientOnly>
       <OCard class="download-filter">
@@ -509,7 +509,7 @@ onMounted(() => {
         </OButton>
       </div>
     </div>
-  </AppContent>
+  </div>
 </template>
 
 <style lang="scss" scoped>
