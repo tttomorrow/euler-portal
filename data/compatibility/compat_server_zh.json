@@ -9259,7 +9259,8 @@
       "hostBusAdapter": "Huawei Technologies Co., Ltd. HiSilicon SAS 3.0 HBA (rev 21)",
       "hardDiskDrive": "Micro_5300_MTFD  U001"
     }
-  }  {
+  },  
+  {
     "hardwareFactory": "新华三",
     "hardwareModel": "H3C UniServer R4960 G5",
     "osVersion": "openEuler 20.03 LTS",
