@@ -18,20 +18,14 @@ const meetupData = ref({
   topic: '',
   company: '',
   date: '',
-  duration: {
-    optional: '',
-    comment: '',
-  },
+  duration: '' as any,
   city: '',
   meetupSize: '',
   principalUser: '',
   principalCompany: '',
   principalPhone: '',
   principalEmail: '',
-  meetupFormat: {
-    optional: '',
-    comment: '',
-  },
+  meetupFormat: '' as any,
   supports: [] as any,
   details: '',
 });
@@ -85,11 +79,9 @@ const rules = reactive<FormRules>({
       trigger: 'change',
     },
   ],
-
   duration: [
     {
       required: true,
-      type: 'array',
       message: placeholderList[3],
       trigger: 'change',
     },
@@ -140,7 +132,7 @@ const rules = reactive<FormRules>({
       required: true,
       message: placeholderList[9],
       validator: (rule: any, value: any, callback: any) => {
-        if (!value || !isEmail(meetupData.value.principalPhone)) {
+        if (!value || !isEmail(meetupData.value.principalEmail)) {
           return callback(new Error(value.message));
         }
         return callback();
@@ -150,7 +142,6 @@ const rules = reactive<FormRules>({
   ],
   meetupFormat: [
     {
-      type: 'array',
       required: true,
       message: placeholderList[10],
       trigger: 'change',
@@ -168,9 +159,10 @@ const rules = reactive<FormRules>({
 });
 
 const isDurationOptional = ref(false);
+const durationComment = ref('');
 const durationChange = () => {
   isDurationOptional.value =
-    meetupData.value.duration.optional === '其他' ? true : false;
+    meetupData.value.duration === '其他' ? true : false;
 };
 
 // 需要支持
@@ -183,9 +175,10 @@ const supportsChange = () => {
 };
 
 const isMeetupFormat = ref(false);
+const meetupFormatComment = ref('');
 const meetupFormatChange = () => {
   isMeetupFormat.value =
-    meetupData.value.meetupFormat.optional === '其他' ? true : false;
+    meetupData.value.meetupFormat === '其他' ? true : false;
 };
 
 // 格式化支持数据
@@ -203,6 +196,20 @@ const supportsFormat = () => {
     }
   });
   meetupData.value.supports = supports;
+
+  // 活动时长
+  let duration = {
+    optional: meetupData.value.duration,
+    comment: durationComment.value,
+  };
+  meetupData.value.duration = duration;
+
+  // 活动形式
+  let meetupFormat = {
+    optional: meetupData.value.meetupFormat,
+    comment: meetupFormatComment.value,
+  };
+  meetupData.value.meetupFormat = meetupFormat;
 };
 
 const meetupPrivacy = ref('');
@@ -218,7 +225,6 @@ const submitMeetupForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
-      console.log('submit!');
       supportsFormat();
       meetupApply();
     } else {
@@ -231,7 +237,13 @@ const submitMeetupForm = async (formEl: FormInstance | undefined) => {
 async function meetupApply() {
   try {
     await meetupApplyForm(meetupData.value).then((res) => {
-      console.log('object :>> ', res);
+      if (res.code === 200) {
+        ElMessage({
+          type: 'success',
+          message: '申请成功！',
+        });
+        ruleFormRef.value?.resetFields();
+      }
     });
   } catch (error: any) {
     console.error(error);
@@ -274,17 +286,14 @@ async function meetupApply() {
             />
           </el-form-item>
           <el-form-item label="活动时长" prop="duration">
-            <ORadioGroup
-              v-model="meetupData.duration.optional"
-              @change="durationChange"
-            >
+            <ORadioGroup v-model="meetupData.duration" @change="durationChange">
               <ORadio value="半天">半天（需准备3-5个议题）</ORadio>
               <ORadio value="全天">全天（需准备8-10个议题）</ORadio>
               <ORadio value="其他">其他</ORadio>
             </ORadioGroup>
             <OInput
               v-if="isDurationOptional"
-              v-model="meetupData.duration.comment"
+              v-model="durationComment"
               class="other-input"
               :placeholder="placeholderList[3]"
             />
@@ -327,7 +336,7 @@ async function meetupApply() {
           </el-form-item>
           <el-form-item label="活动形式" prop="meetupFormat">
             <ORadioGroup
-              v-model="meetupData.meetupFormat.optional"
+              v-model="meetupData.meetupFormat"
               @change="meetupFormatChange"
             >
               <ORadio value="线上活动">线上活动</ORadio>
@@ -337,7 +346,7 @@ async function meetupApply() {
             </ORadioGroup>
             <OInput
               v-if="isMeetupFormat"
-              v-model="meetupData.meetupFormat.comment"
+              v-model="meetupFormatComment"
               class="other-input"
               :placeholder="placeholderList[10]"
             />
@@ -430,7 +439,6 @@ async function meetupApply() {
     }
   }
   :deep(.el-date-editor) {
-    width: 100%;
     .el-input__wrapper {
       border-radius: 0;
       box-shadow: 0 0 0 1px var(--o-color-border1) inset;
