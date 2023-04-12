@@ -263,7 +263,9 @@ async function getPersonalInfo() {
   }
 }
 onMounted(() => {
-  getPersonalInfo();
+  if (token) {
+    getPersonalInfo();
+  }
 });
 </script>
 
