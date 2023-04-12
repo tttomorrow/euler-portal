@@ -231,10 +231,8 @@ onUpdated(() => {
 const href = `https://www.openeuler.org/${lang.value}/sig/sig-detail/?name=`;
 const easyeditorInfo: any = ref({});
 function getEasyeditorInfo() {
-  
   getSigDetailInfo(href + sigDetailName.value)
     .then((res) => {
-      
       if (res.statusCode === 200 && res.data && res.data[0]) {
         res.data.forEach((item: any) => {
           if (item.content) {

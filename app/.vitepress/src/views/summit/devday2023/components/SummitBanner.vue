@@ -2,8 +2,6 @@
 import { onMounted } from 'vue';
 import AOS from 'aos';
 
-import IconArrowRight from '~icons/app/icon-arrow-right.svg';
-
 defineProps({
   bannerData: {
     type: Object,
@@ -34,14 +32,6 @@ onMounted(() => {
       <h4>{{ bannerData.suptitle }}</h4>
       <h2>{{ bannerData.title }}</h2>
       <h3>{{ bannerData.subtitle }}</h3>
-      <a href="https://e-campaign.huawei.com/m/N7V3Eb" target="_blank">
-        <OButton animation class="banner-btn">
-          立即报名
-          <template #suffixIcon
-            ><OIcon><IconArrowRight /></OIcon
-          ></template>
-        </OButton>
-      </a>
     </div>
   </div>
 </template>
@@ -54,7 +44,7 @@ onMounted(() => {
   height: 380px;
   position: relative;
   @media (max-width: 767px) {
-    height: 300px;
+    height: auto;
   }
   .summit-banner {
     height: 100%;
@@ -68,6 +58,7 @@ onMounted(() => {
   }
   .summit-banner-mo {
     display: none;
+    height: 360px;
     @media (max-width: 768px) {
       display: block;
     }
@@ -75,7 +66,7 @@ onMounted(() => {
 
   img {
     width: 100%;
-    max-height: 300px;
+    max-height: 360px;
   }
   .banner-text {
     position: absolute;
