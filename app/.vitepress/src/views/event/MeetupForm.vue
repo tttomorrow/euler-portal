@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { computed, ref, reactive } from 'vue';
+import { computed, ref, reactive, onMounted } from 'vue';
 import { ElMessage, FormInstance, FormRules } from 'element-plus';
 import useWindowResize from '@/components/hooks/useWindowResize';
-import { meetupApplyForm } from '@/api/api-search';
+import { meetupApplyForm, queryPersonalInfo } from '@/api/api-search';
 import { showGuard, getUserAuth } from '@/shared/login';
+import { isTestEmail, isTestPhone } from '@/shared/utils';
 
 import AppContent from '@/components/AppContent.vue';
 
@@ -30,15 +31,6 @@ const meetupData = ref({
   details: '',
 });
 
-const isEmail = (str: string) => {
-  return /^([0-9a-zA-Z_\.\-\u4e00-\u9fa5])+\@([0-9a-zA-Z_\.\-\])+\.([a-zA-Z]{2,8})$/.test(
-    str
-  );
-};
-const isPhone = (str: string) => {
-  return /^1[3|4|5|6|7|8|9][0-9]\d{8}$/.test(str);
-};
-
 const placeholderList = [
   '如：xxx有限公司/xxx SIG/xxx城市组',
   '如：openEuler云原生Meetup深圳站/openEuler DPU Meetup北京站',
@@ -52,7 +44,7 @@ const placeholderList = [
   '请填写有效邮箱地址',
   '如果您有其他活动形式计划，请输入',
   '如果您有其他支持需求，请输入',
-  '是否已经准备好相关议题，如有请按要求输入',
+  '是否已经准备好相关议题，如有请按要求输入 1.《xxx》- 分享人 2.《xxx》- 分享人 ...',
 ];
 
 // 表单校验规则
@@ -119,7 +111,7 @@ const rules = reactive<FormRules>({
       required: true,
       message: placeholderList[8],
       validator: (rule: any, value: any, callback: any) => {
-        if (!value || !isPhone(meetupData.value.principalPhone)) {
+        if (!value || !isTestPhone(meetupData.value.principalPhone)) {
           return callback(new Error(value.message));
         }
         return callback();
@@ -132,7 +124,7 @@ const rules = reactive<FormRules>({
       required: true,
       message: placeholderList[9],
       validator: (rule: any, value: any, callback: any) => {
-        if (!value || !isEmail(meetupData.value.principalEmail)) {
+        if (!value || !isTestEmail(meetupData.value.principalEmail)) {
           return callback(new Error(value.message));
         }
         return callback();
@@ -198,18 +190,23 @@ const supportsFormat = () => {
   meetupData.value.supports = supports;
 
   // 活动时长
-  let duration = {
-    optional: meetupData.value.duration,
-    comment: durationComment.value,
-  };
-  meetupData.value.duration = duration;
+  if (
+    typeof meetupData.value.duration == 'string' ||
+    typeof meetupData.value.meetupFormat == 'string'
+  ) {
+    let duration = {
+      optional: meetupData.value.duration,
+      comment: durationComment.value,
+    };
+    meetupData.value.duration = duration;
 
-  // 活动形式
-  let meetupFormat = {
-    optional: meetupData.value.meetupFormat,
-    comment: meetupFormatComment.value,
-  };
-  meetupData.value.meetupFormat = meetupFormat;
+    // 活动形式
+    let meetupFormat = {
+      optional: meetupData.value.meetupFormat,
+      comment: meetupFormatComment.value,
+    };
+    meetupData.value.meetupFormat = meetupFormat;
+  }
 };
 
 const meetupPrivacy = ref('');
@@ -221,7 +218,6 @@ const submitMeetupForm = async (formEl: FormInstance | undefined) => {
     });
     return;
   }
-
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
@@ -233,7 +229,7 @@ const submitMeetupForm = async (formEl: FormInstance | undefined) => {
   });
 };
 
-// 获取搜索结果各类型的数量
+// 提交申请
 async function meetupApply() {
   try {
     await meetupApplyForm(meetupData.value).then((res) => {
@@ -243,12 +239,32 @@ async function meetupApply() {
           message: '申请成功！',
         });
         ruleFormRef.value?.resetFields();
+        meetupPrivacy.value = '';
       }
     });
   } catch (error: any) {
     console.error(error);
   }
 }
+
+// 获取用户信息
+const userInfo = ref([]);
+async function getPersonalInfo() {
+  try {
+    await queryPersonalInfo().then((res) => {
+      userInfo.value = res.data;
+      const { username, email, phone } = res.data;
+      meetupData.value.principalUser = username;
+      meetupData.value.principalEmail = email;
+      meetupData.value.principalPhone = phone;
+    });
+  } catch (error: any) {
+    console.error(error);
+  }
+}
+onMounted(() => {
+  getPersonalInfo();
+});
 </script>
 
 <template>
@@ -384,8 +400,9 @@ async function meetupApply() {
           <el-form-item label="活动环节议题" prop="details">
             <OInput
               v-model="meetupData.details"
+              type="textarea"
+              :rows="3"
               :placeholder="placeholderList[12]"
-              @blur="isEmail"
             />
           </el-form-item>
           <el-form-item>
@@ -439,6 +456,10 @@ async function meetupApply() {
     }
   }
   :deep(.el-date-editor) {
+    width: 500px;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
     .el-input__wrapper {
       border-radius: 0;
       box-shadow: 0 0 0 1px var(--o-color-border1) inset;

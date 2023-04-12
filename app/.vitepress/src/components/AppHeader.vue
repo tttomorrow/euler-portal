@@ -7,8 +7,8 @@ import { getPop } from '@/api/api-search';
 import { showGuard, logout, useStoreData, getUserAuth } from '../shared/login';
 import navFilterConfig from '@/data/common/nav-filter';
 
-import HeaderNav from './HeaderNav.vue';
-// import HeaderNavNew from './HeaderNavNew.vue';
+// import HeaderNav from './HeaderNav.vue';
+import HeaderNavNew from './HeaderNavNew.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
 import HeaderSearch from './HeaderSearch.vue';
@@ -42,6 +42,7 @@ const documentElement = document.documentElement;
 // 导航数据
 const navRouter = computed(() => i18n.value.common.NAV_ROUTER_CONFIG);
 const navRouterNew = computed(() => i18n.value.common.NAV_ROUTER_CONFIG_NEW);
+const navRouterNewInfo = computed(() => i18n.value.common.NAV_ROUTER_INFO);
 
 const activeNav = ref<string>();
 const logo = computed(() =>
@@ -124,6 +125,7 @@ watch(
         break;
       }
     }
+    mobileMenuIcon.value = false;
   },
   { immediate: true }
 );
@@ -221,18 +223,17 @@ const searchLink = `/${lang.value}/other/search/`;
           @focus-input="showDrawer"
         />
       </ClientOnly>
-      <!-- 移动端搜索按钮 -->
-      <div v-if="!isShowBox" class="mobile-search">
-        <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
-      </div>
+
       <ClientOnly>
         <div v-show="!isShowBox" class="header-content">
           <div class="header-nav" :class="{ active: mobileMenuIcon }">
-            <!-- <HeaderNavNew
+            <HeaderNavNew
               :nav-items="navRouterNew"
               :isSwitch="mobileMenuIcon"
-            /> -->
-            <HeaderNav :nav-items="navRouter" />
+              :nav-info="navRouterNewInfo"
+              :lang-show="langShow"
+            />
+            <!-- <HeaderNav :nav-items="navRouter" /> -->
           </div>
           <div class="header-tool">
             <div class="header-tool-search">
@@ -245,7 +246,7 @@ const searchLink = `/${lang.value}/other/search/`;
         </div>
       </ClientOnly>
 
-      <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"    -->
+      <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"    
       <div
         v-if="toBody"
         class="mobile-menu"
@@ -288,31 +289,37 @@ const searchLink = `/${lang.value}/other/search/`;
             </div>
           </div>
         </transition>
-      </div>
-      <ClientOnly>
-        <div v-if="lang !== 'ru'" class="opt-user">
-          <div v-if="token">
-            <div class="el-dropdown-link opt-info">
-              <img
-                v-if="guardAuthClient.photo"
-                :src="guardAuthClient.photo"
-                class="user-img"
-              />
-              <div v-else class="user-img"></div>
-              <p class="opt-name">{{ guardAuthClient.username }}</p>
-            </div>
-            <ul class="menu-list">
-              <li @click="jumpToUserZone()">{{ i18n.common.USER_CENTER }}</li>
-              <li @click="logout()">{{ i18n.common.LOGOUT }}</li>
-            </ul>
-          </div>
-          <div v-else class="login" @click="showGuard()">
-            <OIcon class="icon">
-              <IconLogin />
-            </OIcon>
-          </div>
+      </div>-->
+      <!-- 移动端搜索按钮 -->
+      <div class="head-tools">
+        <div v-if="!isShowBox" class="mobile-search">
+          <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
         </div>
-      </ClientOnly>
+        <ClientOnly>
+          <div v-if="lang !== 'ru'" class="opt-user">
+            <div v-if="token">
+              <div class="el-dropdown-link opt-info">
+                <img
+                  v-if="guardAuthClient.photo"
+                  :src="guardAuthClient.photo"
+                  class="user-img"
+                />
+                <div v-else class="user-img"></div>
+                <p class="opt-name">{{ guardAuthClient.username }}</p>
+              </div>
+              <ul class="menu-list">
+                <li @click="jumpToUserZone()">{{ i18n.common.USER_CENTER }}</li>
+                <li @click="logout()">{{ i18n.common.LOGOUT }}</li>
+              </ul>
+            </div>
+            <div v-else class="login" @click="showGuard()">
+              <OIcon class="icon">
+                <IconLogin />
+              </OIcon>
+            </div>
+          </div>
+        </ClientOnly>
+      </div>
     </div>
   </header>
 </template>
@@ -382,6 +389,10 @@ const searchLink = `/${lang.value}/other/search/`;
     color: var(--o-color-text1);
     cursor: pointer;
   }
+}
+.head-tools {
+  display: flex;
+  align-items: center;
 }
 .mobile-search {
   font-size: var(--o-font-size-h6);

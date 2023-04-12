@@ -169,4 +169,8 @@ export default [
     name: 'honor',
     lang: ['zh'],
   },
+  {
+    name: 'meetup-form',
+    lang: ['zh'],
+  },
 ];

@@ -23,7 +23,7 @@ import illustration from '@/assets/illustrations/collect.png';
 
 ## 如何申请
 
-如果您已经有了openEuler Meetup主办或组织计划，为了保证活动顺利进行，在申办社区开发者活动前，您需要在
+如果您已经有了openEuler Meetup主办或组织计划，为了保证活动顺利进行，在申办社区开发者活动前，您需要在[此处申请](/zh/interaction/event-list/meetup-form/)
 
 ## 申办审核
 
