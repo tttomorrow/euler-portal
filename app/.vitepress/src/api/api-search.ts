@@ -153,3 +153,21 @@ export function meetupApplyForm(params: any) {
       throw new Error(e);
     });
 }
+
+/**
+ * 查询用户信息
+ */
+export function queryPersonalInfo() {
+  const url = '/api-omapi/oneid/personal/center/user?community=openeuler';
+  const { token } = getUserAuth();
+  return request
+    .get(url, {
+      headers: {
+        token,
+      },
+    })
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}

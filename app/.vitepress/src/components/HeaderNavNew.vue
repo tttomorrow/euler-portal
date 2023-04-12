@@ -2,7 +2,9 @@
 import { ref, watch, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
-import { throttle, debounce } from 'lodash';
+import { throttle } from 'lodash';
+
+import AppLanguage from './AppLanguage.vue';
 
 const props = defineProps({
   navItems: {
@@ -17,7 +19,21 @@ const props = defineProps({
       return false;
     },
   },
+  navInfo: {
+    type: Object,
+    default() {
+      return {};
+    },
+  },
+  langShow: {
+    type: Object,
+    default() {
+      return [];
+    },
+  },
 });
+
+console.log('object :>> ', props.langShow);
 
 interface NavItem {
   NAME: string;
@@ -77,6 +93,23 @@ const currentNavItems = computed(
   () => props.navItems[currentIndex.value].CHILDREN
 );
 
+const goPath = (item: NavItem) => {
+  if (item.IS_OPEN_WINDOW) {
+    window.open(theme.value.docsUrl + item.PATH);
+    return;
+  }
+  if (item.IS_OPEN_MINISITE_WINDOW) {
+    window.open(item.PATH);
+    return;
+  }
+
+  if (item.PATH) {
+    router.go('/' + lang.value + item.PATH);
+    navActive.value = '';
+  }
+  isShow.value = false;
+};
+
 watch(
   () => props.isSwitch,
   (val: boolean) => {
@@ -100,6 +133,9 @@ watch(
         <span>{{ item.NAME }} </span>
       </li>
     </ul>
+    <div v-if="isMobile" class="lang-switch">
+      <AppLanguage :show="langShow" />
+    </div>
   </nav>
   <!-- 下拉菜单 -->
   <Teleport to="body">
@@ -110,30 +146,48 @@ watch(
       @mouseleave="navMouseleave"
     >
       <div class="nav-dropdown-wrapper">
-        <div
-          v-for="(item, index) in currentNavItems"
-          :key="index"
-          class="nav-dropdown-content"
-          :class="[item.TYPE === 1 && 'type1']"
-        >
-          <p class="title">{{ item.NAME }}</p>
-          <div class="nav-dropdown-box">
-            <div
-              v-for="(list, listIndex) in item.CHILDREN"
-              :key="listIndex"
-              class="item-box"
-            >
-              <a :href="list.PATH" class="link">{{ list.NAME }}</a>
-              <p v-if="list.LABEL" class="desc">{{ list.LABEL }}</p>
-              <div v-if="list.CHILDREN" class="version-info">
-                <a
-                  v-for="vInfo in list.CHILDREN"
-                  :href="vInfo.PATH"
-                  class="link"
-                  >{{ vInfo.NAME }}</a
-                >
+        <div class="nav-dropdown-top">
+          <div
+            v-for="(item, index) in currentNavItems"
+            :key="index"
+            class="nav-dropdown-content"
+            :class="[item.TYPE === 1 && 'type1']"
+          >
+            <p class="title">{{ item.NAME }}</p>
+            <div class="nav-dropdown-box">
+              <div
+                v-for="(list, listIndex) in item.CHILDREN"
+                :key="listIndex"
+                class="item-box"
+              >
+                <span @click="goPath(list)" class="link">{{ list.NAME }}</span>
+                <p v-if="list.LABEL" class="desc">{{ list.LABEL }}</p>
+                <div v-if="list.CHILDREN" class="version-info">
+                  <span
+                    v-for="vInfo in list.CHILDREN"
+                    @click="goPath(vInfo)"
+                    class="link"
+                    >{{ vInfo.NAME }}
+                  </span>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div v-if="currentIndex !== 3" class="nav-dropdown-bottom">
+          <div
+            v-for="(item, index) in navInfo"
+            :key="index"
+            class="nav-bottom-item"
+          >
+            <p class="title">{{ item.NAME }}</p>
+            <span
+              v-for="(list, listIndex) in item.CHILDREN"
+              :key="listIndex"
+              @click="goPath(list)"
+              class="link"
+              >{{ list.NAME }}</span
+            >
           </div>
         </div>
       </div>
@@ -182,15 +236,62 @@ watch(
     }
   }
   .nav-dropdown-wrapper {
-    display: flex;
-    gap: 120px;
     @media (max-width: 1439px) {
-      display: block;
       background: var(--o-color-bg2);
       overflow-y: auto;
       padding: 16px;
       height: 100%;
     }
+    .nav-dropdown-top {
+      display: flex;
+      gap: 120px;
+      @media (max-width: 1439px) {
+        display: block;
+      }
+    }
+    .nav-dropdown-bottom {
+      border-top: 1px solid var(--o-color-border2);
+      margin-top: 24px;
+      display: flex;
+      gap: 120px;
+      padding: 16px 0 0;
+      @media (max-width: 1439px) {
+        display: block;
+        margin-top: 16px;
+      }
+      .nav-bottom-item {
+        display: flex;
+        gap: 24px;
+        @media (max-width: 1439px) {
+          display: block;
+          &:not(:last-child) {
+            margin-bottom: 12px;
+          }
+        }
+        .title {
+          font-size: 14px;
+          font-weight: 400;
+          color: var(--o-color-text4);
+          line-height: 24px;
+          @media (max-width: 1100px) {
+            font-size: 12px;
+            margin-bottom: 12px;
+          }
+        }
+        .link {
+          font-size: 16px;
+          font-weight: 500;
+          color: var(--o-color-brand1);
+          line-height: 24px;
+          display: inline-block;
+          @media (max-width: 1100px) {
+            display: block;
+            margin-bottom: 16px;
+          }
+        }
+      }
+    }
+
     .nav-dropdown-content {
       display: block;
       flex: 1;
@@ -271,11 +372,20 @@ watch(
   @media screen and (max-width: 1100px) {
     width: 164px;
     background: var(--o-color-bg1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .lang-switch {
+    padding: 0 16px;
   }
   .o-nav-list {
     height: 100%;
     padding: 0;
     margin: 0;
+    @media screen and (max-width: 1100px) {
+      height: auto;
+    }
     > li {
       position: relative;
       display: inline-flex;
@@ -293,18 +403,18 @@ watch(
         position: relative;
         display: block;
         height: auto;
+        &.active {
+          color: var(--o-color-brand1);
+          @media (max-width: 1100px) {
+            background: var(--o-color-bg2);
+          }
+          &::after {
+            background: var(--o-color-brand1);
+          }
+        }
       }
 
-      &.active {
-        color: var(--o-color-brand1);
-        @media (max-width: 1100px) {
-          background: var(--o-color-bg2);
-        }
-        &::after {
-          background: var(--o-color-brand1);
-        }
-      }
-      &.hover {
+      &:hover {
         color: var(--o-color-brand1);
         .sub-menu {
           transform: translate(-50%) scaleY(1);

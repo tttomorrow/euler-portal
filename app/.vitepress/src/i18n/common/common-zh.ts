@@ -354,6 +354,58 @@ export default {
       CLASS: ['code'],
     },
   ],
+  NAV_ROUTER_INFO: [
+    {
+      NAME: '动态',
+      CHILDREN: [
+        {
+          NAME: '新闻',
+          LABEL: '',
+          PATH: '/interaction/news-list/',
+        },
+        {
+          NAME: '博客',
+          LABEL: '',
+          PATH: '/interaction/blog-list/',
+        },
+        {
+          NAME: '活动',
+          LABEL: '',
+          PATH: '/interaction/event-list/',
+        },
+        {
+          NAME: '峰会',
+          LABEL: '',
+          PATH: '/interaction/summit-list/devday2023/',
+        },
+      ],
+    },
+    {
+      NAME: '交流',
+      CHILDREN: [
+        {
+          NAME: '论坛',
+          LABEL: '',
+          PATH: 'https://forum.openeuler.org/',
+        },
+        {
+          NAME: '邮件列表',
+          LABEL: '',
+          PATH: '/community/mailing-list/',
+        },
+        {
+          NAME: '线上会议',
+          LABEL: '',
+          PATH: '',
+        },
+        {
+          NAME: '社交媒体',
+          LABEL: '',
+          PATH: '',
+        },
+      ],
+    },
+  ],
   NAV_ROUTER_CONFIG_NEW: [
     {
       NAME: '用户',
@@ -366,7 +418,7 @@ export default {
             {
               NAME: '用户案例',
               LABEL: '了解openEuler在各行业的最佳案例',
-              PATH: '',
+              PATH: '/showcase/',
             },
             {
               NAME: '行业白皮书',

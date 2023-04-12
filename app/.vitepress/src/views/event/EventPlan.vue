@@ -176,9 +176,9 @@ const editionList = ref([
           </p>
         </div>
         <div class="meetup-form-btn">
-          <a href="/zh/interaction/event-list/meetup-form/">
+          <a href="/zh/interaction/event-list/collect/">
             <OButton type="outline" animation size="mini">
-              立即申请
+              查看攻略
               <template #suffixIcon>
                 <OIcon class="right-icon"><IconRight /></OIcon>
               </template>
