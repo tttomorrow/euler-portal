@@ -64,34 +64,50 @@ export default {
             SCENARIO: 'EMBEDDED',
           },
         ],
-      },
-      {
-        NAME: '超聚变服务器操作系统 FusionOS 22 （免费使用授权）',
-        DOWNLOAD_URL:
-          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
-        DESC: 'FusionOS 22是一款基于openEuler操作系统，面向运营商、金融、政企等行业关键业务设计开发的企业级服务器操作系统。为了让广大的用户能更便捷、更低成本地获得FusionOS 22的极致业务体验，超聚变提供了超聚变服务器操作系统FusionOS 22（免费使用授权）。',
-        RELEASE_DESC_URL:
-          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
-        INSTALL_GUIDENCE_URL:
-          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
-        SEEK_HELP_URL: 'https://www.xfusion.com',
-        GET_ISO_URL:
-          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
-        MANUFACTURER: '超聚变数字技术有限公司',
-        PUBLISH_DATE: '2023/03',
-        LTS: false,
-        DETAILED_LINK: [
+        // 新增 start
+        PLANNED_EOL: '未定',
+        DOWNLOAD_LIST: [
           {
-            LINK: 'https://eco.xfusion.com/solutions/market/application/419662379870064640',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
+            TYPE: 'Offline Standard ISO',
+            SIZE: '3.1 GB',
+            EDITION: 'enterprise',
+            SELECTION_VALUE: 'Peking-University (10000 Mb/s)',
+            SELECTION_LIST: [
+              'Peking-University (10000 Mb/s)',
+              'Peking-University (20000 Mb/s)',
+              'Peking-University (30000 Mb/s)',
+            ],
+            SHACODE: '2324354657687980',
+            DOWNLOAD: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
           },
           {
-            LINK: 'https://eco.xfusion.com/solutions/market/application/419662379870064640',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
+            TYPE: 'Offline Everything ISO',
+            SIZE: '16.1 GB',
+            EDITION: 'simple',
+            SELECTION_VALUE: 'Peking-University (10000 Mb/s)',
+            SELECTION_LIST: [
+              'Peking-University (10000 Mb/s)',
+              'Peking-University (20000 Mb/s)',
+              'Peking-University (30000 Mb/s)',
+            ],
+            SHACODE: '2324354657687980',
+            DOWNLOAD: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+          },
+          {
+            TYPE: 'Network Install ISO',
+            SIZE: '707.6MB',
+            EDITION: 'lite',
+            SELECTION_VALUE: 'Peking-University (10000 Mb/s)',
+            SELECTION_LIST: [
+              'Peking-University (10000 Mb/s)',
+              'Peking-University (20000 Mb/s)',
+              'Peking-University (30000 Mb/s)',
+            ],
+            SHACODE: '2324354657687980',
+            DOWNLOAD: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
           },
         ],
+        // 新增 end
       },
       {
         NAME: 'openEuler 22.03 LTS SP1',
@@ -157,6 +173,7 @@ export default {
             SCENARIO: 'EMBEDDED',
           },
         ],
+        plannedEOL: '未定',
       },
       {
         NAME: 'openEuler 22.09',
@@ -949,8 +966,6 @@ export default {
           'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/release_notes.html',
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/installing-the-os.html',
-        WHITE_PAPER:
-          '/whitepaper/en/openEuler-22.03 LTS SP1 Technical White Paper.pdf',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
@@ -1649,8 +1664,7 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
-        WHITE_PAPER:
-          '/whitepaper/ru/openEuler-22.03 LTS SP1 Технический информационный документ.pdf',
+        WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-SP1.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',
@@ -1715,8 +1729,7 @@ export default {
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
-        WHITE_PAPER:
-          '/whitepaper/ru/openEuler-22.09 Технический информационный документ.pdf',
+        WHITE_PAPER: '/whitepaper/en/openEuler-22.09 Technical White Paper.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
         SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
         CLOUD_IMAGE:
@@ -1873,8 +1886,8 @@ export default {
           'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WHITE_PAPER:
-          '/whitepaper/ru/openEuler-21.09 Технический информационный документ.pdf',
-        WEBSITE_SELECT: '/en/mirror/select/?version=21.09',
+          'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-ru.pdf',
+        WEBSITE_SELECT: '/ru/mirror/select/?version=21.09',
         MANUFACTURER: 'openEuler community',
         PUBLISH_DATE: '2021/09',
         LTS: false,

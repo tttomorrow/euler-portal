@@ -7,7 +7,7 @@ export default {
   GET_ISO: 'Получить ISO',
   LIFE_CYCLE: 'Жизненный цикл',
   DOWNLOAD_BTN_NAME: 'Загрузить',
-  OUTSIDE_TITLE: 'ISO',
+  OUTSIDE_TITLE: 'Download',
   VERSION: 'Version',
   SCENARIO: 'Scenario',
   RELEASE_DATE: 'Release Date',

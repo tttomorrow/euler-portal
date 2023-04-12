@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { reactive, ref, watch, computed } from 'vue';
+import { useData } from 'vitepress';
 
 import _ from 'lodash';
 
@@ -10,8 +11,10 @@ import type { DownloadData, ArchList } from '@/shared/@types/type-download';
 import TagFilter from '@/components/TagFilter.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import AppContent from '@/components/AppContent.vue';
+import BreadCrumbs from '@/components/BreadCrumbs.vue';
 
 const i18n = useI18n();
+const { lang } = useData();
 
 const downloadData: DownloadData[] = _.cloneDeep(
   i18n.value.download.DOWNLOAD_LIST
@@ -149,6 +152,12 @@ watch(
 </script>
 <template>
   <AppContent :mobile-top="16">
+    <BreadCrumbs
+      :bread1="i18n.download.OUTSIDE_TITLE"
+      :bread2="i18n.download.HISTORY"
+      :link1="'/' + lang + '/download/'"
+      class="bread"
+    />
     <OSearch
       v-model="searchContent"
       class="o-search"
@@ -303,7 +312,9 @@ watch(
 }
 .o-search {
   height: 48px;
+  margin-top: var(--o-spacing-h2);
   @media screen and (max-width: 768px) {
+    margin-top: var(--o-spacing-h4);
     height: 36px;
     margin-bottom: var(--o-spacing-h6);
   }

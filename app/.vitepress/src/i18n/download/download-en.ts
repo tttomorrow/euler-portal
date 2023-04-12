@@ -15,7 +15,7 @@ export default {
   ARCHITECTURE: 'Architecture',
   LIFE_CYCLE: 'Lifecycle',
   DOWNLOAD_BTN_NAME: 'Download',
-  OUTSIDE_TITLE: 'ISO',
+  OUTSIDE_TITLE: 'Download',
   SCENARIO: 'Scenario',
   RELEASE_DATE: 'Release Date',
   DOWNLOAD_LINK: 'Download',

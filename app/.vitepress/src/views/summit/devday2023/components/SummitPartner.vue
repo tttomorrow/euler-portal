@@ -33,7 +33,9 @@ const props = withDefaults(
           class="link-item"
         >
           <img
-            :src="commonStore.theme === 'light' ? itemLogo.img : itemLogo.img_dark"
+            :src="
+              commonStore.theme === 'light' ? itemLogo.img : itemLogo.img_dark
+            "
           />
         </a>
       </div>
