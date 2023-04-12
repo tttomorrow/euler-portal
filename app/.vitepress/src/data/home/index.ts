@@ -24,8 +24,6 @@ export default {
         moBanner: devday_mo,
         link: '/zh/interaction/summit-list/devday2023/',
         id: 'devday',
-        title: ['开放原子开源基金会', 'openEuler Developer Day 2023'],
-        desc: ['4月20-21日  中国·上海浦东嘉里酒店'],
         targetTap: 1,
       },
       {
