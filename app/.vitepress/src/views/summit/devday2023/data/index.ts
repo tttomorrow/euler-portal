@@ -1,10 +1,14 @@
 import bannerDevdayMo from '../img/banner-devday_mo.png';
 import bannerDevdayPc from '../img/banner-devday_pc.jpg';
+import bannerTextMo from '../img/banner-text_mo.png';
+import bannerTextPc from '../img/banner-text_pc.png';
 import liver from './liver';
 export default {
   banner: {
     img_pc: bannerDevdayPc,
     img_mo: bannerDevdayMo,
+    img_text_pc: bannerTextPc,
+    img_text_mo: bannerTextMo,
     suptitle: '',
     title: '',
     subtitle: '',

@@ -113,6 +113,18 @@ const jumpTo = (item: any) => {
             </div>
           </div>
           <img v-else class="isH5show" :src="item.moBanner" alt="openEuler" />
+
+          <div
+            v-if="(item.id = 'devday')"
+            class="img-box"
+            :class="windowWidth < 824 ? 'box-mo' : ''"
+          >
+            <img
+              v-if="(item as any).textImg_pc"
+              :src="windowWidth < 824 ? (item as any).textImg_mo : (item as any).textImg_pc"
+              alt="openEuler"
+            />
+          </div>
         </div>
       </div>
     </swiper-slide>
@@ -188,6 +200,30 @@ html[lang='zh'] {
         margin-top: 16px;
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-hight-text);
+      }
+    }
+  }
+  .img-box {
+    max-width: 1504px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    img {
+      max-width: 659px;
+      align-self: center;
+    }
+    &.box-mo {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      img {
+        max-width: 250px;
+        width: 100%;
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }

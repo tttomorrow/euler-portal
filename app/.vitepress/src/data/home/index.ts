@@ -12,6 +12,8 @@ import internship_pc from '@/assets/category/home/banner/internship_pc.jpg';
 import internship_mo from '@/assets/category/home/banner/internship_mo.jpg';
 import devday_pc from '@/assets/category/home/banner/devday_pc.jpg';
 import devday_mo from '@/assets/category/home/banner/devday_mo.png';
+import devdayText_mo from '@/assets/category/home/banner/devday-text_mo.png';
+import devdayText_pc from '@/assets/category/home/banner/devday-text_pc.png';
 import sigWork_pc from '@/assets/category/home/banner/sig-work_pc.jpg';
 import sigWork_mo from '@/assets/category/home/banner/sig-work_mo.jpg';
 
@@ -22,6 +24,8 @@ export default {
       {
         pcBanner: devday_pc,
         moBanner: devday_mo,
+        textImg_pc: devdayText_pc,
+        textImg_mo: devdayText_mo,
         link: '/zh/interaction/summit-list/devday2023/',
         id: 'devday',
         targetTap: 1,
