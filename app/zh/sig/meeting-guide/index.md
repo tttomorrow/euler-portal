@@ -25,9 +25,9 @@ import illustration from '@/assets/illustrations/sig-meeting.png';
   />
 </ClientOnly>
 
-<div :class="['markdown', isMobile ? 'markdown-mo' : '']">
+<div class='markdown'>
 
-# openEuler Developer Day 2022 SIG 组版本工作会议指南
+# openEuler Developer Day 2023 SIG 组版本工作会议指南
 
 ## 介绍
 
@@ -97,15 +97,4 @@ SIG 版本规划工作会议遵循开源、开放原则，议题收集、技术�
 
 </div>
 
-<style scoped>
-  .markdown-mo {
-    padding: var(--o-spacing-h5);
-  }
-  .link {
-    word-break: break-all;
-    color: var(--o-color-brand1);
-  }
-  .space {
-    margin-left: var(--o-spacing-h4);
-  }
-</style>
+

@@ -17,7 +17,7 @@ const router = useRouter();
 
 const bannerData = {
   bannerImg: banner,
-  bannerText: 'INTERACTION',
+  bannerText: 'CONNECT',
   bannerTitle: salonData.value.MEETUPS,
   bannerIllustration: illustration,
 };

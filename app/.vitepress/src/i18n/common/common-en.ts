@@ -122,14 +122,14 @@ export default {
       ID: 'community',
       CHILDREN: [
         {
+          NAME: 'About Us',
+          ID: 'about-us',
+          PATH: '/community/organization/',
+        },
+        {
           NAME: 'Contribution',
           ID: 'contribution',
           PATH: '/community/contribution/',
-        },
-        {
-          NAME: 'Convention',
-          ID: 'convention',
-          PATH: '/community/conduct/',
         },
         {
           NAME: 'Mailing Lists',
@@ -167,7 +167,7 @@ export default {
           PATH: '/sig/sig-list/',
         },
         {
-          NAME: 'Application',
+          NAME: 'Set Up',
           ID: 'application',
           PATH: '/sig/sig-guidance/',
         },
@@ -254,8 +254,8 @@ export default {
         },
         {
           NAME: 'Security Advisories',
-          ID: 'safety-bulletin',
-          PATH: '/security/safety-bulletin/',
+          ID: 'security-bulletins',
+          PATH: '/security/security-bulletins/',
         },
         {
           NAME: 'CVE',

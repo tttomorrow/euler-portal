@@ -74,11 +74,11 @@ const initTable = (data: any[]) => {
   const asData = result.filter((item) => {
     return item.continentCode === 'AS';
   });
-  asData.unshift({ name: 'Asia:', area: true });
+  asData.unshift({ name: `Asia (${asData.length}):`, area: true });
   const euData = result.filter((item) => {
     return item.continentCode === 'EU';
   });
-  euData.unshift({ name: 'Europe:', area: true });
+  euData.unshift({ name: `Europe (${euData.length}):`, area: true });
   result = [...asData, ...euData];
   return result;
 };

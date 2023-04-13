@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue';
+import { computed, watch, ref, onMounted, reactive } from 'vue';
 import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import {
@@ -7,8 +7,10 @@ import {
   getSearchCount,
   getSearchRpm,
   getRelevant,
+  getTagsData,
 } from '@/api/api-search';
 
+import IconSearch from '~icons/app/icon-search.svg';
 import NotFound from '@/NotFound.vue';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
@@ -46,14 +48,34 @@ const searchData = computed(() => {
     pageSize: pageSize.value,
     lang: lang.value,
     type: searchType.value,
+    docsVersion:
+      activeVersion.value === i18n.value.search.tagList.all
+        ? ''
+        : activeVersion.value,
   };
 });
 const searchCount = computed(() => {
   return {
     keyword: searchInput.value,
     lang: lang.value,
+    docsVersion:
+      activeVersion.value === i18n.value.search.tagList.all
+        ? ''
+        : activeVersion.value,
   };
 });
+
+const tagsParams = reactive({
+  lang: lang.value,
+  category: 'docs',
+  want: 'version',
+});
+const versionList = ref([
+  {
+    count: 0,
+    key: i18n.value.search.tagList.all,
+  },
+]);
 // 接收获取的搜索数据
 const searchResultList: any = ref([]);
 // 接收软件包数据
@@ -70,6 +92,17 @@ const totalPage = computed(() => {
 });
 // 关联词
 const suggestList = ref([]);
+//
+const activeVersion = ref('');
+
+async function getVersionTag() {
+  await getTagsData(tagsParams).then((res) => {
+    if (res.obj?.totalNum.length) {
+      activeVersion.value = res.obj?.totalNum[0].key;
+    }
+    versionList.value.push(...res.obj?.totalNum);
+  });
+}
 
 // 点击搜索框的删除图标
 function clearSearchInput() {
@@ -105,10 +138,16 @@ function searchRpm() {
   }
 }
 // 获取搜索结果各类型的数量
-async function searchCountAll() {
+async function searchCountAll(key?: string) {
   try {
     await getSearchCount(searchCount.value).then((res) => {
       if (res.status === 200 && res.obj.total[0]) {
+        res.obj.total.some((item: { key: string }, index: number) => {
+          if (item.key === key) {
+            currentIndex.value = index;
+            return true;
+          }
+        });
         searchNumber.value = res.obj.total;
         getSussageData();
       } else {
@@ -133,6 +172,10 @@ function searchDataAll() {
         searchResultList.value = res.obj.records;
         pageShow.value = true;
       } else {
+        if (searchType.value === 'docs') {
+          searchType.value = '';
+          searchAll();
+        }
         searchResultList.value = [];
         pageShow.value = false;
       }
@@ -142,15 +185,19 @@ function searchDataAll() {
   }
 }
 // 获取搜索结果的所有内容
-function searchAll() {
+function searchAll(current?: string) {
   if (searchInput.value) {
-    addSearchBuriedData(searchInput.value);
-    currentIndex.value = 0;
-    searchType.value = '';
+    if (!current) {
+      currentIndex.value = 0;
+    }
     currentPage.value = 1;
-    searchCountAll();
+    addSearchBuriedData(searchInput.value);
+    searchType.value = current || '';
+    searchCountAll(current);
     searchDataAll();
     searchRpm();
+  } else {
+    clearSearchInput();
   }
 }
 function handleSelect(val: string) {
@@ -165,7 +212,7 @@ function goLink(data: any, index: number) {
     search_tag: data.type,
     search_rank_num: pageSize.value * (currentPage.value - 1) + (index + 1),
     search_result_total_num: total.value,
-    search_result_url: location.origin + search_result_url,
+    search_result_url: '',
   };
   const sensors = (window as any)['sensorsDataAnalytic201505'];
   const sensorObj = {
@@ -187,7 +234,6 @@ function goLink(data: any, index: number) {
     data.type === 'news' || data.type === 'blog'
       ? (search_result_url = `${search_result_url}.html`)
       : '';
-
     search_result_url = location.origin + search_result_url;
   }
   window.open(encodeURI(search_result_url));
@@ -208,12 +254,20 @@ function jumpPage(page: number) {
   currentPage.value = page;
   searchDataAll();
 }
-onMounted(() => {
+onMounted(async () => {
+  await getVersionTag();
   if (decodeURI(location.href.split('=')[1]) !== 'undefined') {
     searchInput.value = decodeURI(window.location.href.split('=')[1]) + '';
   }
   searchAll();
 });
+
+watch(
+  () => activeVersion.value,
+  () => {
+    searchAll('docs');
+  }
+);
 </script>
 <template>
   <div class="search">
@@ -221,7 +275,7 @@ onMounted(() => {
       <OSearch
         v-model="searchInput"
         :placeholder="searchValue.PLEACHOLDER"
-        @change="searchAll"
+        @change="() => searchAll()"
       >
         <template #suffix>
           <OIcon class="close" @click="clearSearchInput"><IconCancel /></OIcon>
@@ -243,31 +297,45 @@ onMounted(() => {
         class="search-content"
         :class="suggestList.length ? 'exist-suggest' : ''"
       >
-        <ul class="type">
-          <li
-            v-for="(item, index) in searchNumber"
-            :key="item"
-            :class="currentIndex === index ? 'active' : ''"
-            @click="setCurrentType(index, item.key)"
-          >
-            {{ i18n.search.tagList[item.key] }}
-            <span>({{ item.doc_count }})</span>
-          </li>
-        </ul>
+        <div class="select-options">
+          <ul class="type">
+            <li
+              v-for="(item, index) in searchNumber"
+              :key="item"
+              :class="currentIndex === index ? 'active' : ''"
+              @click="setCurrentType(index, item.key)"
+            >
+              {{ i18n.search.tagList[item.key] }}
+              <span>({{ item.doc_count }})</span>
+            </li>
+          </ul>
+
+          <ClientOnly>
+            <OSelect v-model="activeVersion" :placeholder="i18n.sig.SIG_ALL">
+              <template #prefix>
+                <OIcon>
+                  <IconSearch />
+                </OIcon>
+              </template>
+              <OOption
+                v-for="item in versionList"
+                :key="item.key"
+                :label="item.key"
+                :value="item.key"
+              />
+            </OSelect>
+          </ClientOnly>
+        </div>
+
         <div class="content-box">
           <ul v-if="searchResultList.length" class="content-list">
             <li v-for="(item, index) in searchResultList" :key="item.id">
-              <!-- eslint-disable-next-line -->
               <h3 @click="goLink(item, index)" v-html="item.title"></h3>
-              <!-- eslint-disable-next-line -->
-
-              <!-- eslint-disable-next-line -->
               <p
                 class="detail"
                 @click="goLink(item, index)"
                 v-html="item.textContent"
               ></p>
-              <!-- eslint-disable-next-line -->
               <p class="from">
                 <span>{{ i18n.search.form }}</span>
                 <span>{{ i18n.search.tagList[item.type] }}</span>
@@ -367,7 +435,7 @@ onMounted(() => {
   @media (max-width: 1160px) {
     grid-gap: 12px;
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     padding: 0 16px var(--o-spacing-h2);
     padding-top: var(--o-spacing-h2);
     grid-template-columns: 1fr;
@@ -378,9 +446,6 @@ onMounted(() => {
   }
   .search-left {
     max-width: 1072px;
-    @media (max-width: 1220px) {
-      min-width: 768px;
-    }
 
     @media (max-width: 768px) {
       :deep(.o-search) {
@@ -408,58 +473,96 @@ onMounted(() => {
       @media (max-width: 768px) {
         margin-top: var(--o-spacing-h5);
       }
-      .type {
-        width: 100%;
+      .select-options {
         display: flex;
-        padding-left: var(--o-spacing-h2);
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
         background-color: var(--o-color-bg2);
         border-bottom: 1px solid var(--o-color-division1);
-        @media (max-width: 768px) {
-          padding-left: var(--o-spacing-h4);
-          padding-right: var(--o-spacing-h5);
+        @media screen and (max-width: 1620px) {
+          padding: 0 24px;
         }
-        li {
-          height: 55px;
-          min-width: 56px;
-          margin-right: var(--o-spacing-h2);
-          color: var(--o-color-text1);
-          font-size: var(--o-font-size-h8);
-          line-height: 55px;
-          cursor: pointer;
+        @media screen and (max-width: 768px) {
+          justify-content: center;
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 0;
+          margin: 0 16px;
+          background-color: var(--o-color-bg1);
+          border: none;
+        }
+        .type {
+          display: flex;
+          flex-shrink: 0;
+          background-color: var(--o-color-bg2);
           @media (max-width: 768px) {
-            height: 34px;
-            line-height: 34px;
-            min-width: auto;
-            font-size: var(--o-font-size-text);
-            margin-right: 0;
-            text-align: center;
-            & + li {
-              margin-left: 16px;
+            // min-width: 400px;
+            width: 100%;
+            padding: 0 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--o-shadow-l1);
+          }
+          li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 63px;
+            min-width: 56px;
+            margin-right: var(--o-spacing-h3);
+            color: var(--o-color-text1);
+            font-size: var(--o-font-size-h8);
+            cursor: pointer;
+            @media screen and (max-width: 1620px) {
+              margin-right: 24px;
             }
-            span {
-              display: none;
+            @media (max-width: 768px) {
+              height: 34px;
+              line-height: 34px;
+              min-width: auto;
+              font-size: var(--o-font-size-text);
+              margin-right: 0;
+              text-align: center;
+              & + li {
+                margin-left: 12px;
+              }
+              span {
+                display: none;
+              }
+            }
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              height: 2px;
+              background-color: transparent;
+              @media (max-width: 768px) {
+                bottom: -1px;
+              }
             }
           }
-          &::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: transparent;
-            @media (max-width: 768px) {
-              position: relative;
-              width: 100%;
-              top: -1px;
+          .active {
+            color: var(--o-color-brand1);
+            &::after {
+              background-color: var(--o-color-brand1);
             }
           }
         }
-        .active {
-          color: var(--o-color-brand1);
-          &::after {
-            background-color: var(--o-color-brand1);
+        :deep(.el-select) {
+          @media screen and (max-width: 768px) {
+            width: 100%;
+            padding-bottom: 8px;
+          }
+          &:hover {
+            box-shadow: none;
+          }
+          .el-input__wrapper {
+            box-shadow: 0 0 1px var(--o-color-border1);
           }
         }
       }
+
       .content-box {
         min-height: 1948px;
         box-shadow: var(--o-shadow-l1);
@@ -580,7 +683,7 @@ onMounted(() => {
     margin-top: 78px;
     background-color: var(--o-color-bg2);
     box-shadow: var(--o-shadow-l1);
-    @media (max-width: 1100px) {
+    @media (max-width: 1200px) {
       display: none;
     }
     h3 {

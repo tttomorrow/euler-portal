@@ -145,6 +145,13 @@ const isMobile = computed(() => {
                   :href="`https://mailweb.openeuler.org/postorius/lists/${scope.row.fqdn_listname}/`"
                   target="_blank"
                 >
+                  {{ i18n.mailing.MAILING_LIST.SUBSCRIBE.BUTTON }}
+                </a>
+                <a
+                  class="subscribe-mail-mo"
+                  :href="`https://mailweb.openeuler.org/postorius/lists/${scope.row.fqdn_listname}/`"
+                  target="_blank"
+                >
                   <OIcon class="icon">
                     <IconSubscribe />
                   </OIcon>
@@ -320,7 +327,7 @@ const isMobile = computed(() => {
           display: -webkit-box;
           text-overflow: ellipsis;
           overflow: hidden;
-          -webkit-line-clamp: 4;
+          -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
         }
       }
@@ -396,10 +403,29 @@ const isMobile = computed(() => {
     display: flex;
     align-items: center;
     .subscribe-mail {
-      display: flex;
-      align-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      color: var(--o-color-brand1);
+      padding: 2px 11px;
       margin-left: 8px;
-      font-size: var(--o-font-size-h6);
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      border: 1px solid var(--o-color-brand1);
+      &:hover {
+        border: 1px solid var(--o-color-brand2);
+      }
+
+      @media screen and (max-width: 768px) {
+        & {
+          display: none;
+        }
+      }
+    }
+    .subscribe-mail-mo {
+      display: none;
+      @media screen and(max-width:768px) {
+        display: flex;
+      }
     }
   }
 }

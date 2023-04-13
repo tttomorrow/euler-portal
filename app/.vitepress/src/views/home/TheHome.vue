@@ -60,7 +60,7 @@ onMounted(async () => {
     once: true,
   });
   try {
-    // 获取日历，会议、活动数据并合并
+    // 获取会议、活动数据并合并
     Promise.all([getActivityData(), getMeetingData()]).then((res) => {
       res[0].tableData.forEach((item: any) => {
         item.timeData.map((item2: any) => {
@@ -79,7 +79,7 @@ onMounted(async () => {
       }, []);
     });
   } catch (e: any) {
-    throw new Error(e);
+    console.error(e);
   }
   try {
     Promise.all([
@@ -92,7 +92,7 @@ onMounted(async () => {
       blogData.value = res[2];
     });
   } catch (e: any) {
-    throw new Error(e);
+    console.error(e);
   }
 });
 </script>

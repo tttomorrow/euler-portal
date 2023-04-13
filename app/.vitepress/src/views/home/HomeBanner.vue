@@ -60,18 +60,15 @@ const jumpTo = (item: any) => {
       clickable: true,
     }"
     :autoplay="{
-      delay: 5000,
+      delay: 5000000,
       disableOnInteraction: false,
     }"
     :navigation="true"
     @swiper="onSwiper"
   >
-    <swiper-slide
-      v-for="item in homeBanner"
-      :key="item.link"
-      :swiper-ref="SwiperCore"
-    >
+    <swiper-slide v-for="item in homeBanner" :key="item.link">
       <div
+        :id="item.id"
         class="banner-panel"
         :class="{ 'is-link': item.link }"
         @click="jumpTo(item)"
@@ -91,9 +88,9 @@ const jumpTo = (item: any) => {
             <div data-aos="fade-down" class="box">
               <p
                 v-for="title in item.title"
-                class="title"
                 :key="title"
                 :class="item.id === 'eur' ? 'eur' : ''"
+                class="title"
               >
                 {{ title }}
               </p>
@@ -116,6 +113,18 @@ const jumpTo = (item: any) => {
             </div>
           </div>
           <img v-else class="isH5show" :src="item.moBanner" alt="openEuler" />
+
+          <div
+            v-if="item.id === 'devday'"
+            class="img-box"
+            :class="windowWidth < 824 ? 'box-mo' : ''"
+          >
+            <img
+              v-if="(item as any).textImg_pc"
+              :src="windowWidth < 824 ? (item as any).textImg_mo : (item as any).textImg_pc"
+              alt="openEuler"
+            />
+          </div>
         </div>
       </div>
     </swiper-slide>
@@ -148,6 +157,75 @@ html[lang='zh'] {
 .eur {
   @media screen and (max-width: 768px) {
     display: none;
+  }
+}
+#devday {
+  .box {
+    position: absolute;
+    top: 165px;
+    left: 50%;
+    @media (max-width: 767px) {
+      top: 70px;
+      width: 100%;
+      left: 0;
+      text-align: center;
+    }
+    .title {
+      font-size: 40px;
+      line-height: var(--o-line-hight-h3);
+      font-weight: normal;
+      color: #000;
+      @media (max-width: 767px) {
+        font-size: var(--o-font-size-h7);
+        line-height: var(--o-line-hight-h7);
+      }
+      &:nth-of-type(1) {
+        font-size: var(--o-font-size-h4);
+        line-height: var(--o-line-hight-h4);
+        margin-bottom: 16px;
+        @media (max-width: 767px) {
+          font-size: var(--o-font-size-h8);
+          line-height: var(--o-line-hight-h8);
+          margin-top: var(--o-spacing-h8);
+        }
+      }
+    }
+    .desc {
+      margin-top: 32px;
+      font-size: var(--o-font-size-h5);
+      line-height: var(--o-line-hight-h5);
+      font-weight: normal;
+      color: #000;
+      @media (max-width: 767px) {
+        margin-top: 16px;
+        font-size: var(--o-font-size-text);
+        line-height: var(--o-line-hight-text);
+      }
+    }
+  }
+  .img-box {
+    max-width: 1504px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    img {
+      max-width: 548px;
+      align-self: center;
+    }
+    &.box-mo {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      img {
+        max-width: 250px;
+        width: 100%;
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   }
 }
 

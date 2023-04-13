@@ -21,7 +21,7 @@ summary: openEuler lifecycle。
 - 社区版本分为长期支持版本和创新版本。
 - We have two kinds of release： long-term support release and innovation release.
 - 长期支持版本：发布间隔周期定为 2 年，提供 4 年社区支持。社区首个 LTS 版本 openEuler 20.03 将于 20 年 3 月正式发布。
-- Long-term support release: The release interval is set to two years, and four-year-community-support is provided. OpenEuler 20.03-the first LTS will be officially released in March 2020.
+- Long-term support release: The release interval is set to two years, and four-year-community-support is provided. openEuler 20.03-the first LTS will be officially released in March 2020.
 - 社区创新版本：LTS 版本之间每隔 6 个月 openEuler 会发布一个社区创新版本，提供 6 个月社区支持。
 - Innovation release: openEuler publishes an innovation version every six months between LTS versions and provides six-month community support.
 - 欢迎社区开发者和用户提出宝贵建议，以上规则将根据反馈意见以及社区实施情况不断完善。

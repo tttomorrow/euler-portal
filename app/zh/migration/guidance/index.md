@@ -9,20 +9,18 @@ head:
   #   - name: keywords
   #     content: CentOS迁移工具,操作系统迁移,操作系统替换,服务器系统迁移软件,服务器系统迁移工具,Centos系统迁移
 category: migration
+anchor: true
 ---
 
 <script setup lang="ts">
-  import DocAnchor from '@/components/DocAnchor.vue';
-  import IconBook from '~icons/app/icon-book.svg';
   import { useData } from 'vitepress';
   import seoConfig from '@/data/common/seo';
+  import IconBook from '~icons/app/icon-book.svg';
 
   const { lang } = useData();
 </script>
 
 <SeoBox :seo-data="seoConfig[lang]?.migrationBackground" />
-
-<DocAnchor/>
 
 <div class='guidance' >
 
@@ -187,63 +185,3 @@ openEuler 为用户提供两种迁移路径：
 安全漏洞更新维护是业务上线后面临的主要问题和风险之一。[openEuler 成立了安全委员会、制定了严格的漏洞处理流程，让您安全无忧。](https://www.openeuler.org/zh/security/vulnerability-reporting/)
 
 </div>
-
-<style lang="scss" scoped>
-  .guidance {
-    max-width: calc(100% - 200px);
-    @media screen and (max-width: 1100px) {
-      max-width: max-content;
-    }
-  }
-    img {
-        margin-top: 12px;
-        width: 1024px;
-    }
-    .instruction {
-        display: flex;
-        background: rgba(254, 229, 184, 0.2);
-        border-left: 6px solid #feb32a;
-        border-radius: 8px 0px 0px 8px;
-        margin-top: 20px;
-        margin-bottom: 8px;
-        .content {
-            padding: 20px;
-            @media screen and (max-width:768px){
-              padding: 12px;
-            } 
-            .title {
-              display: flex;
-              align-items: center;
-              @media screen and (max-width:768px){
-                margin-bottom: var(--o-spacing-h8);
-              } 
-              .o-icon{
-                font-size: 24px;
-                margin-right: 6px;
-                @media screen and (max-width:768px){
-                  font-size: var(--o-font-size-h7);
-                } 
-              }
-              p {
-                font-size: var(--o-font-size-h8);
-                color: var(--o-color-text1);
-                line-height: var(--o-line-height-h8);
-                @media screen and (max-width:768px){
-                  font-size: var(--o-font-size-text);
-                  line-height: var(--o-line-height-text);
-                  margin: 0;
-                } 
-              }
-            }
-        }
-        .description {
-          font-size: var(--o-font-size-text);
-          color: var(--o-color-text4);
-          line-height: var(--o-line-height-text);
-          @media screen and (max-width:768px){
-            font-size: var(--o-font-size-tip);
-            line-height: var(--o-line-height-tip);
-          }
-        }
-    }
-</style>

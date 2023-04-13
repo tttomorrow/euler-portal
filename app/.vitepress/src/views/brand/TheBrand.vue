@@ -222,7 +222,7 @@ list.value = initList();
     padding: 0 var(--o-spacing-h5);
     margin: var(--o-spacing-h2) auto;
   }
-  &-title {
+  .brand-title {
     font-size: var(--o-font-size-h3);
     font-weight: 300;
     color: var(--o-color-text1);
@@ -235,7 +235,7 @@ list.value = initList();
     }
   }
 
-  &-faq {
+  .brand-faq {
     font-size: var(--o-font-size-h7);
     font-weight: 500;
     color: var(--o-color-text1);
@@ -251,11 +251,11 @@ list.value = initList();
     }
   }
 
-  &-other-word {
+  .brand-other-word {
     margin-top: var(--o-spacing-h2);
   }
 
-  &-word {
+  .brand-word {
     font-size: var(--o-font-size-h7);
     font-weight: 300;
     color: var(--o-color-text1);
@@ -271,7 +271,7 @@ list.value = initList();
     }
   }
 
-  &-list {
+  .brand-list {
     display: grid;
     width: 100%;
     margin-top: var(--o-spacing-h2);
@@ -281,7 +281,7 @@ list.value = initList();
     grid-gap: var(--o-spacing-h4);
   }
 
-  &-item {
+  .brand-item {
     width: 100%;
     padding: 0;
     @media (max-width: 768px) {
@@ -326,7 +326,7 @@ list.value = initList();
     }
   }
 
-  &-ppt {
+  .brand-ppt {
     margin-top: var(--o-spacing-h2);
     width: 100%;
 
@@ -342,47 +342,43 @@ list.value = initList();
         line-height: var(--o-line-height-h8);
       }
     }
-  }
-}
-
-.ppt {
-  &-list {
-    display: grid;
-    width: 100%;
-    margin-top: var(--o-spacing-h2);
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: var(--o-spacing-h4);
-    @media (max-width: 768px) {
-      font-size: var(--o-font-size-h8);
-      line-height: var(--o-line-height-h8);
-    }
-  }
-  &-item {
-    width: 100%;
-
-    a {
+    .ppt-list {
+      display: grid;
       width: 100%;
-      img {
-        width: 100%;
+      margin-top: var(--o-spacing-h2);
+      justify-items: center;
+      align-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: var(--o-spacing-h4);
+      @media (max-width: 768px) {
+        font-size: var(--o-font-size-h8);
+        line-height: var(--o-line-height-h8);
       }
-    }
-    :deep(.el-card__body) {
-      padding: 0;
-    }
-  }
+      .ppt-item {
+        width: 100%;
 
-  &-word {
-    padding: var(--o-spacing-h4);
-    color: var(--o-color-text1);
-    font-size: var(--o-font-size-h7);
-    line-height: var(--o-line-height-h7);
-    @media (max-width: 768px) {
-      padding: var(--o-spacing-h6);
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-      font-weight: 500;
+        a {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+          .ppt-word {
+            padding: var(--o-spacing-h4);
+            color: var(--o-color-text1);
+            font-size: var(--o-font-size-h7);
+            line-height: var(--o-line-height-h7);
+            @media (max-width: 768px) {
+              padding: var(--o-spacing-h6);
+              font-size: var(--o-font-size-text);
+              line-height: var(--o-line-height-text);
+              font-weight: 500;
+            }
+          }
+        }
+        :deep(.el-card__body) {
+          padding: 0;
+        }
+      }
     }
   }
 }

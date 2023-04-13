@@ -179,6 +179,13 @@ export default {
       GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/sig-SDS',
     },
     {
+      NAME: 'sig-AccLib',
+      NAME_LINK: 'https://www.openeuler.org/zh/sig/sig-detail/?name=sig-AccLib',
+      INTRODUCE: '致力于围绕加速器和加速指令打造异构算力加速框架和引擎!',
+      TASK: 'https://gitee.com/organizations/openeuler/issues?assignee_id=&author_id=&branch=&collaborator_ids=&issue_search=&label_ids=198122374&label_text=&milestone_id=&priority=&private_issue=&program_id=&project_id=&project_type=&scope=&single_label_id=198122374&single_label_text=&sort=&state=open&target_project&skip_mobile=true',
+      GITEE: 'https://gitee.com/openeuler/community/tree/master/sig/sig-AccLib',
+    },
+    {
       NAME_LINK: '',
       INTRODUCE: '更多SIG任务，敬请期待',
       GITEE: '',

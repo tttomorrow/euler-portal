@@ -313,7 +313,6 @@ onMounted(() => {
         }
         span {
           padding-left: 30px;
-          font-family: FZLTHJW--GB1-0, FZLTHJW--GB1;
           font-size: 14px;
           color: rgba(0, 0, 0, 0.5);
           line-height: 16px;

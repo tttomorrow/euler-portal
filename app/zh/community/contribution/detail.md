@@ -21,9 +21,9 @@ import illustration from '@/assets/illustrations/contribution.png';
 </ClientOnly>
 <ContributionTab />
 
-<div class="markdown word">
+<div class="markdown">
 
-<span class="desc">欢迎来到 openEuler！</span>
+### 欢迎来到 openEuler！
 
 ## 1. 体验 openEuler
 
@@ -50,7 +50,8 @@ import illustration from '@/assets/illustrations/contribution.png';
 
 ## 2. 签署 CLA
 
-在参与社区贡献前，您需要签署 openEuler 社区贡献者许可协议（CLA）。  
+在参与社区贡献前，您需要签署 openEuler 社区贡献者许可协议（CLA）。   
+查看：[openEuler CLA 签署](https://www.bilibili.com/video/BV12A411o7zY/?spm_id_from=333.337.search-card.all.click&vd_source=0aa547ea87e7a7505cf544eacc2236ac)。   
 根据您的参与身份，选择签署个人 CLA、员工 CLA 或企业 CLA，请点击[这里](https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZXVsZXI=)签署
 
 - 个人 CLA：以个人身份参与社区，请签署个人 CLA
@@ -175,29 +176,7 @@ openEuler 技术委员会（Technical Committee，简称 TC）是 openEuler 社�
 </div>
 
 <style lang="scss" scoped>
-.word {
-  margin-top: var(--o-spacing-h2);
-  max-width: 1416px;
-  li::marker {
-    color: var(--o-color-text1) !important;
-  }
-  .desc {
-    font-size: var(--o-font-size-h7);
-    color: var(--o-color-text1);
-  }
-  a {
-    color: var(--o-color-link1);
-  }
   .care {
     color: var(--o-color-red5);
   }
-  @media screen and (max-width: 769px) {
-    padding: var(--o-spacing-h5);
-    .desc {
-      color: var(--o-color-text1);
-      font-size: var(--o-spacing-tip);
-      line-height: var(--o-line-height-tip);
-    }
-  }
-}
 </style>

@@ -10,7 +10,6 @@ import AppPaginationMo from '@/components/AppPaginationMo.vue';
 
 import { getCompleteList, getAllList, getRepoList } from '@/api/api-sig';
 
-import IconSubscribe from '~icons/app/icon-subscribe.svg';
 import IconGitee from '~icons/app/icon-gitee.svg';
 import IconSearch from '~icons/app/icon-search.svg';
 import IconHome from '~icons/app/icon-home.svg';
@@ -106,17 +105,17 @@ const getSigList = (params: LIST_PARAMS) => {
   }
 };
 const getAllRepo = () => {
-  try {
-    getRepoList().then((res) => {
+  getRepoList()
+    .then((res) => {
       repositioryList.value = JSON.parse(JSON.stringify(res.data));
       repositioryList.value.sort((a, b) => {
         return a.localeCompare(b);
       });
       repoRenderList.value = res.data.slice(0, 99);
+    })
+    .catch((error) => {
+      throw new Error(error);
     });
-  } catch (error) {
-    console.error(error);
-  }
 };
 
 const getRepositoryList = () => {
@@ -128,7 +127,7 @@ const getRepositoryList = () => {
         replaceMail();
         data.map((item: SIGLIST) => {
           sigSelectList.value.push(item.sig_name);
-          item.maintainers.forEach((subItem: string) => {
+          item?.maintainers?.forEach((subItem: string) => {
             maintainerList.value.push(subItem);
           });
           sigSelectList.value.sort((a, b) => {
@@ -470,9 +469,7 @@ onMounted(() => {
               :href="`https://mailweb.openeuler.org/postorius/lists/${scope.row.mailing_list}/`"
               target="_blank"
             >
-              <OIcon class="icon">
-                <IconSubscribe />
-              </OIcon>
+              {{ i18n.mailing.MAILING_LIST.SUBSCRIBE.BUTTON }}
             </a>
           </div>
         </template>
@@ -538,9 +535,6 @@ onMounted(() => {
               :href="`https://mailweb.openeuler.org/postorius/lists/${item.mailing_list}/`"
               target="_blank"
             >
-              <OIcon class="icon">
-                <IconSubscribe />
-              </OIcon>
             </a>
           </div>
           <div class="mo-item-text mo-item-repos">
@@ -633,10 +627,16 @@ onMounted(() => {
     display: flex;
     align-items: center;
     .subscribe-sig {
-      display: flex;
-      align-items: center;
-      margin-left: var(--o-spacing-h8);
-      font-size: var(--o-font-size-h6);
+      cursor: pointer;
+      color: var(--o-color-brand1);
+      padding: 2px 11px;
+      margin-left: 8px;
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
+      border: 1px solid var(--o-color-brand1);
+      &:hover {
+        border: 1px solid var(--o-color-brand2);
+      }
     }
   }
   .ellipsis {

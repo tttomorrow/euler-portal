@@ -114,7 +114,7 @@ export default [
     lang: ['zh', 'en', 'ru'],
   },
   {
-    name: 'safety-bulletin',
+    name: 'security-bulletins',
     lang: ['zh', 'en', 'ru'],
   },
   {
@@ -159,11 +159,11 @@ export default [
   },
   {
     name: 'member',
-    lang: ['zh'],
+    lang: ['zh', 'en'],
   },
   {
     name: 'organization',
-    lang: ['zh'],
+    lang: ['zh', 'en'],
   },
   {
     name: 'honor',

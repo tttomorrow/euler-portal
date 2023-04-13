@@ -147,8 +147,8 @@ export default {
       IMG_HOVER: summitHover,
       IMG_DARK: summitDark,
       IMG_DARK_HOVER: summitDarkHover,
-      DSSCRIPTIVE: 'openEuler Summit 2022',
-      LINK: '/zh/interaction/summit-list/summit2022/',
+      DSSCRIPTIVE: 'openEuler Developer Day 2023',
+      LINK: '/zh/interaction/summit-list/devday2023/',
     },
   ],
   IMG_CAROUSE: {
@@ -375,7 +375,7 @@ export default {
       IMG_DARK: iscasLogo_dark,
     },
     {
-      LINK: 'https://www.isoftstone.com/',
+      LINK: 'https://www.isoftstone.com/htmls/isseos/index.html',
       IMG: ruantongLogo,
       IMG_DARK: ruantongLogo_dark,
     },
