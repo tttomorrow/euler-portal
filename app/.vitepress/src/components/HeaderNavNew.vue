@@ -33,8 +33,6 @@ const props = defineProps({
   },
 });
 
-console.log('object :>> ', props.langShow);
-
 interface NavItem {
   NAME: string;
   PATH: string;
@@ -284,6 +282,7 @@ watch(
           color: var(--o-color-brand1);
           line-height: 24px;
           display: inline-block;
+          cursor: pointer;
           @media (max-width: 1100px) {
             display: block;
             margin-bottom: 16px;
@@ -347,6 +346,7 @@ watch(
         color: var(--o-color-brand1);
         line-height: 24px;
         margin-bottom: 4px;
+        cursor: pointer;
         display: inline-block;
       }
       .desc {
@@ -357,7 +357,7 @@ watch(
         text-align: justify;
       }
       &.type1 {
-        flex-basis: 400px;
+        flex-basis: 420px;
         .nav-dropdown-box {
           grid-template-columns: repeat(2, 1fr);
           gap: 16px 40px;

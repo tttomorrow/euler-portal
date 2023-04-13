@@ -33,7 +33,7 @@ const meetupData = ref({
 
 const placeholderList = [
   '如：xxx有限公司/xxx SIG/xxx城市组',
-  '如：openEuler云原生Meetup深圳站/openEuler DPU Meetup北京站',
+  '如：openEuler云原生Meetup深圳站/ openEuler DPU Meetup北京站',
   '请初步选择期望举办日期，社区将根据实际排期与您协商安排',
   '如果您有其他时间安排计划，请输入',
   '请填写城市名',
@@ -44,7 +44,7 @@ const placeholderList = [
   '请填写有效邮箱地址',
   '如果您有其他活动形式计划，请输入',
   '如果您有其他支持需求，请输入',
-  '是否已经准备好相关议题，如有请按要求输入 1.《xxx》- 分享人 2.《xxx》- 分享人 ...',
+  '是否已经准备好相关议题，如有请按要求输入 \n 1.《xxx》- 分享人 \n 2.《xxx》- 分享人 ...',
 ];
 
 // 表单校验规则
