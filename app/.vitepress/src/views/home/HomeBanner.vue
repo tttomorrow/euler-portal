@@ -115,7 +115,7 @@ const jumpTo = (item: any) => {
           <img v-else class="isH5show" :src="item.moBanner" alt="openEuler" />
 
           <div
-            v-if="(item.id = 'devday')"
+            v-if="(item.id === 'devday')"
             class="img-box"
             :class="windowWidth < 824 ? 'box-mo' : ''"
           >
@@ -209,7 +209,7 @@ html[lang='zh'] {
     margin: 0 auto;
     display: flex;
     img {
-      max-width: 659px;
+      max-width: 548px;
       align-self: center;
     }
     &.box-mo {

@@ -83,9 +83,9 @@ onMounted(() => {
       max-width: 1504px;
       height: 100%;
       margin: 0 auto;
-      padding-top: 10px;
+      padding-top: 32px;
       img {
-        max-width: 659px;
+        max-width: 548px;
         display: block;
       }
       a {
