@@ -1,6 +1,6 @@
 import { request } from '@/shared/axios';
 import type { AxiosResponse } from '@/shared/axios';
-
+import { getUserAuth } from '@/shared/login';
 /**
  * 通用筛选
  * @name getSortData
@@ -131,4 +131,43 @@ export function getStatistic() {
       $ignoreLoading: true,
     })
     .then((res: AxiosResponse) => res.data);
+}
+
+/**
+ * meetup接口  申请表
+ * @name meetupApplyForm
+ * @param {}
+ * @return  Array
+ */
+export function meetupApplyForm(params: any) {
+  const url = `/api-dsapi/query/meetupApplyForm?community=openeuler`;
+  const { token } = getUserAuth();
+  return request
+    .post(url, params, {
+      headers: {
+        token,
+      },
+    })
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
+}
+
+/**
+ * 查询用户信息
+ */
+export function queryPersonalInfo() {
+  const url = '/api-omapi/oneid/personal/center/user?community=openeuler';
+  const { token } = getUserAuth();
+  return request
+    .get(url, {
+      headers: {
+        token,
+      },
+    })
+    .then((res: AxiosResponse) => res.data)
+    .catch((e: any) => {
+      throw new Error(e);
+    });
 }

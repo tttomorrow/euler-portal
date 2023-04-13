@@ -153,3 +153,12 @@ export function getUrlParam(paraName: string) {
     return '';
   }
 }
+
+export function isTestEmail(str: string) {
+  return /^([0-9a-zA-Z_\.\-\u4e00-\u9fa5])+\@([0-9a-zA-Z_\.\-\])+\.([a-zA-Z]{2,8})$/.test(
+    str
+  );
+}
+export function isTestPhone(str: string) {
+  return /^1[3|4|5|6|7|8|9][0-9]\d{8}$/.test(str);
+}

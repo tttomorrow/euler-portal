@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { ref, Ref, watch } from 'vue';
+import { ref, Ref, watch, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
 import IconDown from '~icons/app/icon-chevron-down.svg';
 
@@ -15,6 +16,8 @@ const props = defineProps({
 
 const router = useRouter();
 const { lang } = useData();
+const screenWidth = ref(useWindowResize());
+const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
 // 选择语言;
 const langOptions = [
@@ -81,9 +84,14 @@ watch(
 </script>
 
 <template>
-  <div class="lang-menu" @mouseenter="showSub()" @mouseleave="hideSub()">
+  <div
+    v-if="!isMobile"
+    class="lang-menu"
+    @mouseenter="showSub()"
+    @mouseleave="hideSub()"
+  >
     <span class="lang-menu-link" :class="{ 'no-state': langList.length < 2 }">
-      {{ lang === 'zh' ? '中文' : lang === 'ru' ? 'Русский' : 'English' }}
+      {{ lang === 'zh' ? '中文' : lang === 'ru' ? 'RU' : 'EN' }}
       <OIcon v-if="langList.length > 1"><icon-down></icon-down></OIcon>
     </span>
     <ul v-if="isMenu && langList.length > 1" class="lang-menu-list">
@@ -94,17 +102,17 @@ watch(
         :class="{ active: lang === item.id }"
         @click="changeLanguage(item.id)"
       >
-        {{ item.label }}
+        {{ item.id === 'zh' ? '中文' : item.id === 'ru' ? 'RU' : 'EN' }}
       </li>
     </ul>
   </div>
-  <div class="mobile-change-language">
+  <div v-else class="mobile-change-language">
     <span
       v-for="item in langList"
       :key="item.id"
       :class="{ active: lang === item.id }"
       @click.stop="changeLanguageMobile(item.id)"
-      >{{ item.label }}</span
+      >{{ item.id === 'zh' ? '中文' : item.id === 'ru' ? 'RU' : 'EN' }}</span
     >
   </div>
 </template>
