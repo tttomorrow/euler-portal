@@ -140,7 +140,7 @@ export function getStatistic() {
  * @return  Array
  */
 export function meetupApplyForm(params: any) {
-  const url = `/api-omapi/add/meetupApplyForm?community=openeuler`;
+  const url = `/api-dsapi/query/meetupApplyForm?community=openeuler`;
   const { token } = getUserAuth();
   return request
     .post(url, params, {

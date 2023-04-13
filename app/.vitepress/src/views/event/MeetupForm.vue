@@ -211,7 +211,7 @@ const supportsFormat = () => {
 
 const meetupPrivacy = ref('');
 const submitMeetupForm = async (formEl: FormInstance | undefined) => {
-  if (meetupPrivacy.value === '') {
+  if (meetupPrivacy.value.length < 1) {
     ElMessage({
       type: 'error',
       message: '请勾选隐私声明',
@@ -223,8 +223,6 @@ const submitMeetupForm = async (formEl: FormInstance | undefined) => {
     if (valid) {
       supportsFormat();
       meetupApply();
-    } else {
-      console.log('error submit!', fields);
     }
   });
 };
