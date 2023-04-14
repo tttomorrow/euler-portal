@@ -1650,7 +1650,7 @@ export default {
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
         LIFE_CYCLE_URL: '/ru/other/lifecycle/',
         WHITE_PAPER:
-          '/whitepaper/ru/openEuler-22.03 LTS SP1 Технический информационный документ.pdf',
+          '/whitepaper/ru/openEuler 22.03 LTS SP1 Технический информационный документ.pdf',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',

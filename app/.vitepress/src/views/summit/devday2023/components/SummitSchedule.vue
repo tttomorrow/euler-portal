@@ -28,6 +28,26 @@ const otherTabType = ref(0);
 <template>
   <div class="schedule">
     <h4>{{ agendaData.lable }}</h4>
+    <span
+      v-if="agendaData.lable.includes('TC开放工作会议')"
+      class="go-etherpad"
+    >
+      <a
+        href="https://etherpad.openeuler.org/p/odd2023-TC-Meeting"
+        target="_blank"
+        >点击此处</a
+      >按要求填写议题需求
+    </span>
+    <span
+      v-if="agendaData.lable.includes('SIG组开放工作会议')"
+      class="go-etherpad"
+    >
+      <a
+        href="https://etherpad.openeuler.org/p/ODD-2023-SIG-Meeting"
+        target="_blank"
+        >点击此处</a
+      >并选择感兴趣的SIG组-Etherpad文件，按要求填写议题和参会信息
+    </span>
     <div class="schedule-item other">
       <el-tabs
         v-if="agendaData.content[1]"
@@ -149,6 +169,17 @@ const otherTabType = ref(0);
       margin-top: 24px;
       font-size: 14px;
       line-height: 20px;
+    }
+  }
+  .go-etherpad {
+    display: block;
+    margin-top: 18px;
+    justify-content: center;
+    text-align: center;
+    @media screen and (max-width: 768px) {
+      margin-top: 4px;
+      font-size: var(--o-font-size-tip);
+      line-height: var(--o-line-height-tip);
     }
   }
   .meeting-title {
