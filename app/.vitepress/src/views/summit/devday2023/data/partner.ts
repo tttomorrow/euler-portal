@@ -31,12 +31,18 @@ export default {
   title: '共建单位',
   partnerList: [
     {
-      subTitle: '主办单位',
+      subTitle: '指导单位',
+      class: 'center',
       logoList: [
         {
           img: atom,
           img_dark: atomDark,
         },
+      ],
+    },
+    {
+      subTitle: '主办单位',
+      logoList: [
         {
           img: csia,
           img_dark: csiaDark,
