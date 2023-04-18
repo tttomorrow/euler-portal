@@ -74,7 +74,7 @@ watch(
 // 控制直播
 // const isLiverShow = ref(0);
 
-// 判断是否通过广告进入并埋点
+// 埋点统计
 function setAdvertisedData() {
   const sensors = (window as any)['sensorsDataAnalytic201505'];
   const { href } = window.location;
