@@ -4,7 +4,7 @@ import { useRouter, useData } from 'vitepress';
 
 import { debounce } from 'lodash';
 
-const props = defineProps({
+defineProps({
   navItems: {
     type: Object,
     default() {

@@ -35,7 +35,7 @@ interface NavItem {
 }
 
 const router = useRouter();
-const { lang, theme } = useData();
+const { lang } = useData();
 const screenWidth = ref(useWindowResize());
 const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
@@ -95,7 +95,7 @@ watch(
         @mouseenter="toggleSubDebounced(item)"
         @mouseleave="toggleSubDebounced(null)"
       >
-        <span @click="handleMobileNavClick(index, item)" class="nav-link">{{
+        <span class="nav-link" @click="handleMobileNavClick(index, item)">{{
           item.NAME
         }}</span>
 
