@@ -28,7 +28,11 @@ onMounted(() => {
     >
       <div v-if="bannerData.img_text_pc" class="img-box">
         <img :src="bannerData.img_text_pc" alt="" />
-        <a href="https://e-campaign.huawei.com/m/N7V3Eb" target="_blank">
+        <a
+          href="https://e-campaign.huawei.com/m/N7V3Eb"
+          data-aos="fade-up"
+          target="_blank"
+        >
           <OButton animation class="banner-btn">
             立即报名
             <template #suffixIcon
