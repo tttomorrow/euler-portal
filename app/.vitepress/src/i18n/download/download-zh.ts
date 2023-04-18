@@ -11,8 +11,8 @@ export default {
   GET_ISO: '获取 ISO',
   SELECT: '筛选',
   // 新增 start
-  COMMUNITY: '社区发行',
-  BUSINESS: '商业发行',
+  COMMUNITY: '社区发行版',
+  BUSINESS: '商业发行版',
   DETAIL1:
     'openEuler当前最新版本为23年3月发布的openEuler 23.03，欢迎下载体验！',
   DETAIL2: '请',

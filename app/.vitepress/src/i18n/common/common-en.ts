@@ -465,7 +465,7 @@ export default {
           TYPE: 0,
           CHILDREN: [
             {
-              NAME: 'EulerVM',
+              NAME: 'EulerLauncher',
               LABEL: '跨平台openEuler虚拟机管理工具',
               PATH: '',
             },

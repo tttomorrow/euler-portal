@@ -104,19 +104,20 @@ const onScenarioTagClick = (select: string) => {
   activeScenario.value = select;
 };
 //TODO: 控制不能组合的tag的禁用
-function isDisable(tag: string, type: string) {
+let tempTag = '';
+function isDisable(tag: string) {
   let flag = false;
   contentData.value[0].DETAILED_LINK.forEach((item: any) => {
-    if (type === 'scenario') {
-      if (item.ARCH === activeArch.value && item.SCENARIO === tag) {
-        flag = true;
-      }
-    } else {
-      if (item.SCENARIO === activeScenario.value && item.ARCH === tag) {
-        flag = true;
-      }
+    if (item.ARCH === activeArch.value && item.SCENARIO === tag) {
+      flag = true;
+      tempTag = tag;
     }
   });
+  if (!flag) {
+    if (activeScenario.value === tag) {
+      activeScenario.value = tempTag;
+    }
+  }
   return !flag;
 }
 // 获取镜像仓及表格显示数据
@@ -254,8 +255,7 @@ function setShowIndex(index: number) {
           :key="'tag' + index"
           checkable
           :type="activeArch === item ? 'primary' : 'text'"
-          :class="{ disable: isDisable(item, 'arch') }"
-          @click="isDisable(item, 'arch') ? '' : onArchTagClick(index, item)"
+          @click="onArchTagClick(index, item)"
         >
           {{ item }}
         </OTag>
@@ -266,10 +266,8 @@ function setShowIndex(index: number) {
           :key="item.VALUE + index"
           checkable
           :type="activeScenario === item.KEY ? 'primary' : 'text'"
-          :class="{ disable: isDisable(item.KEY, 'scenario') }"
-          @click="
-            isDisable(item.KEY, 'scenario') ? '' : onScenarioTagClick(item.KEY)
-          "
+          :class="{ disable: isDisable(item.KEY) }"
+          @click="isDisable(item.KEY) ? '' : onScenarioTagClick(item.KEY)"
         >
           {{ item.VALUE }}
         </OTag>
@@ -284,7 +282,7 @@ function setShowIndex(index: number) {
         style="width: 100%"
       >
         <el-table-column
-          width="220"
+          width="280"
           :label="i18n.download.TABLE_HEAD[0]"
           prop="name"
         >
@@ -305,7 +303,7 @@ function setShowIndex(index: number) {
           </template>
         </el-table-column>
         <el-table-column
-          width="190"
+          width="200"
           :label="i18n.download.TABLE_HEAD[1]"
           prop="size"
         >
@@ -313,11 +311,7 @@ function setShowIndex(index: number) {
             {{ scope.row.SIZE }}
           </template>
         </el-table-column>
-        <el-table-column
-          width="380"
-          :label="i18n.download.TABLE_HEAD[2]"
-          prop="down_url"
-        >
+        <el-table-column :label="i18n.download.TABLE_HEAD[2]" prop="down_url">
           <template #default="scope">
             <ClientOnly>
               <el-select
@@ -366,14 +360,17 @@ function setShowIndex(index: number) {
             </ClientOnly>
           </template>
         </el-table-column>
-        <el-table-column :label="i18n.download.TABLE_HEAD[3]" prop="sha_code">
+        <el-table-column
+          width="200"
+          :label="i18n.download.TABLE_HEAD[3]"
+          prop="sha_code"
+        >
           <template #default="scope">
             <div v-if="scope.row.SHACODE" class="down-action">
               <OButton
                 class="down-copy"
                 size="mini"
                 type="text"
-                animation
                 @click="handleUrlCopy(scope.row.SHACODE)"
               >
                 {{ shaText }}
@@ -384,13 +381,17 @@ function setShowIndex(index: number) {
             </div>
           </template>
         </el-table-column>
-        <el-table-column :label="i18n.download.TABLE_HEAD[4]" prop="docsName">
+        <el-table-column
+          width="200"
+          :label="i18n.download.TABLE_HEAD[4]"
+          prop="docsName"
+        >
           <template #default="scope">
             <a
               class="down-link"
               :href="activeMirrorLink[scope.$index] + scope.row.DOWNLOAD_LINK"
             >
-              <OButton size="mini" type="primary" animation>
+              <OButton size="mini" type="primary">
                 {{ i18n.download.DOWNLOAD_BTN_NAME }}
                 <template #suffixIcon>
                   <IconDownload />
@@ -482,7 +483,6 @@ function setShowIndex(index: number) {
                 class="down-copy"
                 size="mini"
                 type="text"
-                animation
                 @click="handleUrlCopy(item.SHACODE)"
               >
                 {{ shaText }}
@@ -578,6 +578,7 @@ function setShowIndex(index: number) {
         gap: 32px;
       }
       .label {
+        color: var(--o-color-text1);
         @media screen and (max-width: 768px) {
           width: auto;
           font-size: var(--o-font-size-tip);
@@ -586,9 +587,9 @@ function setShowIndex(index: number) {
       .tag-filter-box {
         flex-grow: 1;
       }
-      .o-tag {
-        padding: 3px 8px;
-        font-size: var(--o-font-height-tip);
+      :deep(.o-tag) {
+        padding: 3px 12px;
+        font-size: var(--o-font-text-tip);
         line-height: var(--o-line-height-tip);
       }
       &.os-box {
@@ -635,7 +636,10 @@ function setShowIndex(index: number) {
         padding-left: 0;
         color: var(--o-color-brand1);
         :deep(.suffix-icon) {
-          width: 12px;
+          width: 14px;
+          @media (max-width: 1100px) {
+            width: 12px;
+          }
         }
       }
       .down-link {
@@ -652,6 +656,7 @@ function setShowIndex(index: number) {
       :deep(.cell) {
         line-height: 46px;
         overflow: visible;
+        padding: 0 var(--o-spacing-h2);
         a {
           word-break: normal;
         }

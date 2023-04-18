@@ -210,7 +210,7 @@ const changeCurrentPageMoblie = (val: string) => {
 </script>
 
 <template>
-  <AppContent>
+  <AppContent :pc-top="40" :mobile-top="24">
     <BreadCrumbs
       :bread1="i18n.download.OUTSIDE_TITLE"
       :bread2="i18n.download.HISTORY"
@@ -411,7 +411,7 @@ const changeCurrentPageMoblie = (val: string) => {
       <!-- mobild -->
 
       <!-- 页码 -->
-      <div class="page-box">
+      <div class="page-box" v-if="total">
         <ClientOnly>
           <OPagination
             v-if="!isMobile"
@@ -483,7 +483,7 @@ const changeCurrentPageMoblie = (val: string) => {
   }
   :deep(.o-pagination) {
     display: flex;
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) {
       display: none;
     }
   }
@@ -497,7 +497,7 @@ const changeCurrentPageMoblie = (val: string) => {
     align-items: center;
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) {
       display: flex;
     }
   }
@@ -522,19 +522,19 @@ const changeCurrentPageMoblie = (val: string) => {
     margin: var(--o-spacing-h4) 0;
     background-color: var(--o-color-bg2);
     padding: var(--o-spacing-h5) var(--o-spacing-h2);
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1100px) {
       padding: 0;
       font-size: var(--o-font-size-tip);
     }
     :deep(.tag-filter) {
       padding: 0;
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 1100px) {
         padding: 8px;
         display: flex;
         gap: 0;
       }
       .label {
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1100px) {
           display: block;
           min-width: 60px !important;
           font-size: var(--o-font-size-tip);
@@ -544,14 +544,14 @@ const changeCurrentPageMoblie = (val: string) => {
       //   flex-grow: 1;
       // }
       .o-tag {
-        padding: 3px 8px;
-        font-size: var(--o-font-height-tip);
+        padding: 3px 12px;
+        font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-tip);
       }
       &.os-box,
       &.version-box {
         margin-top: var(--o-spacing-h5);
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1100px) {
           margin-top: 0;
           padding-top: 0;
         }
@@ -563,7 +563,7 @@ const changeCurrentPageMoblie = (val: string) => {
   }
   .o-search {
     margin-top: var(--o-spacing-h2);
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) {
       margin-top: var(--o-spacing-h4);
       height: 28px;
       font-size: var(--o-font-size-text);
@@ -573,7 +573,7 @@ const changeCurrentPageMoblie = (val: string) => {
     padding: 0 var(--o-spacing-h5);
     margin-top: var(--o-spacing-h2);
     display: flex;
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) {
       display: none;
     }
   }
@@ -585,7 +585,10 @@ const changeCurrentPageMoblie = (val: string) => {
         cursor: pointer;
         color: var(--o-color-link1);
       }
-      @media screen and (max-width: 768px) {
+      :deep(.cell){
+        padding: 0 var(--o-spacing-h2);
+      }
+      @media screen and (max-width: 1100px) {
         display: none;
       }
       .arch-box,
@@ -600,6 +603,12 @@ const changeCurrentPageMoblie = (val: string) => {
       .download-detail {
         display: flex;
         align-items: center;
+        :deep(.o-button) {
+          font-size: 14px;
+          @media (max-width: 1100px) {
+            font-size: 12px;
+          }
+        }
       }
     }
     .mobile-list {
@@ -712,7 +721,7 @@ const changeCurrentPageMoblie = (val: string) => {
     .empty-text {
       margin-top: var(--o-spacing-h5);
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1100px) {
       padding-top: var(--o-spacing-h2);
       font-size: var(--o-font-size-text);
       .empty-img {
@@ -728,7 +737,7 @@ const changeCurrentPageMoblie = (val: string) => {
     font-size: var(--o-font-size-h5);
     color: var(--o-color-text1);
     line-height: var(--o-line-height-h5);
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) {
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-text);
     }
@@ -744,7 +753,7 @@ const changeCurrentPageMoblie = (val: string) => {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
       margin-top: var(--o-spacing-h10);
@@ -754,8 +763,12 @@ const changeCurrentPageMoblie = (val: string) => {
   .download-button {
     padding-left: 0;
     .download-button-icon {
-      margin-left: 8px;
+      // margin-left: 8px;
+      font-size: 14px;
       color: var(--o-color-brand1);
+      @media (max-width: 1100px) {
+        font-size: 12px;
+      }
     }
   }
   .page-box {
@@ -764,7 +777,7 @@ const changeCurrentPageMoblie = (val: string) => {
 }
 .download-filter-item {
   margin: var(--o-spacing-h10);
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-size: var(--o-font-size-tip);
     line-height: var(--o-line-height-tip);
   }
@@ -799,7 +812,7 @@ const changeCurrentPageMoblie = (val: string) => {
   a {
     font-size: var(--o-font-size-text);
     color: var(--o-color-brand1);
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) {
       font-size: var(--o-font-size-tip);
       line-height: var(--o-line-height-tip);
     }
