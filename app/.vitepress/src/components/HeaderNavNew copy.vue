@@ -2,7 +2,8 @@
 import { ref, watch, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
-import { throttle, debounce } from 'lodash';
+// import { throttle, debounce } from 'lodash';
+import { throttle } from 'lodash';
 
 const props = defineProps({
   navItems: {
@@ -35,7 +36,7 @@ interface NavItem {
 }
 
 const router = useRouter();
-const { lang, theme } = useData();
+const { lang } = useData();
 const screenWidth = ref(useWindowResize());
 const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
@@ -113,7 +114,6 @@ watch(
         @click="handleMobileNavClick(index, item)"
       >
         <span>{{ item.NAME }}</span>
-        
       </li>
     </ul>
   </nav>

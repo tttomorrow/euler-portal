@@ -37,6 +37,7 @@ const pathTarget = computed(() => (path: string) => {
             <div class="btn">
               <a
                 v-for="subitem in item.CHILDREN"
+                :key="subitem.NAME"
                 :href="subitem.PATH"
                 :target="pathTarget(subitem.PATH)"
               >

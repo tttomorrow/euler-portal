@@ -18,7 +18,7 @@ import banner from '@/assets/banner/banner-download.png';
 const i18n = useI18n();
 
 const downloadData: DownloadData[] = _.cloneDeep(
-  i18n.value.download.DOWNLOAD_LIST
+  i18n.value.download.COMMUNITY_LIST
 );
 
 interface MapMsg {
