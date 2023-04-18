@@ -46,11 +46,11 @@ import illustration from '@/assets/illustrations/collect.png';
 
 申办单位作为联合主办方参与筹办 Meetup，活动物料使用符合 openEuler 社区品牌规范，作为主导力量推动活动全流程，保证活动的顺利进行。
 
-## 验收反馈
+## 活动成果反馈
 
 感谢 Meetup 主办方为 openEuler 社区举办精彩的开发者活动。可以更好地了解活动的情况和效果，从而不断提升 openEuler Meetup 活动的质量和影响力，在活动结束后 3 个工作日内主办方需向社区提供验收反馈资料。
 
-<!--在此处填写[Meetup成果反馈表单](https://www.openeuler.org/) -->
+在此处填写[Meetup成果反馈表单](/zh/interaction/event-list/meetup-feedback/)
 
 </div>
 

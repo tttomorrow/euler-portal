@@ -11,7 +11,7 @@ import AppFooter from '@/components/AppFooter.vue';
 import LayoutBlog from '@/layouts/LayoutBlog.vue';
 import LayoutNews from '@/layouts/LayoutNews.vue';
 import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
-import LayoutShoucaseRoute from '@/layouts/LayoutShoucaseRoute.vue';
+import LayoutSigRoute from '@/layouts/LayoutSigRoute.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
 import LayoutAboutUs from '@/layouts/LayoutAboutUs.vue';
 import LayoutDownload from './layouts/LayoutDownload.vue';
@@ -37,7 +37,7 @@ const compMapping: {
   migration: LayoutMigration,
   'about-us': LayoutAboutUs,
   download: LayoutDownload,
-  'showcase-route': LayoutShoucaseRoute,
+  'sig-route': LayoutSigRoute,
   event: LayoutEvent,
 };
 
@@ -50,7 +50,7 @@ const isCustomLayout = computed(() => {
 const comp = computed(() => {
   return compMapping[frontmatter.value.category];
 });
-
+ 
 // cookies使用提示
 const isCookieTip = ref(false);
 function onCookieClick() {

@@ -209,7 +209,6 @@ onMounted(() => {
 
 <template>
   <BannerLevel2
-    v-if="lang !== 'zh'"
     :background-image="banner"
     background-text="COMMNUNITY"
     :title="userCaseData.bannerTitle"
