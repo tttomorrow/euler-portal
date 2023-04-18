@@ -14,8 +14,6 @@ import devday_pc from '@/assets/category/home/banner/devday_pc.jpg';
 import devday_mo from '@/assets/category/home/banner/devday_mo.png';
 import devdayText_mo from '@/assets/category/home/banner/devday-text_mo.png';
 import devdayText_pc from '@/assets/category/home/banner/devday-text_pc.png';
-import sigWork_pc from '@/assets/category/home/banner/sig-work_pc.jpg';
-import sigWork_mo from '@/assets/category/home/banner/sig-work_mo.jpg';
 
 export default {
   // 首页banner  targetTap:1 新页签打开
@@ -28,13 +26,6 @@ export default {
         textImg_mo: devdayText_mo,
         link: '/zh/interaction/summit-list/devday2023/',
         id: 'devday',
-        targetTap: 1,
-      },
-      {
-        pcBanner: sigWork_pc,
-        moBanner: sigWork_mo,
-        link: 'https://shimo.im/forms/ajofLUZ8Wac7lOJY/fill',
-        id: '',
         targetTap: 1,
       },
       {

@@ -32,7 +32,7 @@ export default {
   partnerList: [
     {
       subTitle: '指导单位',
-      class: 'center',
+      class: 'center guidance-unit',
       logoList: [
         {
           img: atom,
@@ -42,6 +42,7 @@ export default {
     },
     {
       subTitle: '主办单位',
+      class: 'center',
       logoList: [
         {
           img: csia,

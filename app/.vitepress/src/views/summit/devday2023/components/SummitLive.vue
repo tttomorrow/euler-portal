@@ -4,7 +4,7 @@ import useWindowResize from '@/components/hooks/useWindowResize';
 
 import liveActiveBg from '../img/live-active-bg.png';
 
-interface RENDERDATA {
+interface RenderData {
   id: number;
   liveId: number;
   liveTestId: number;
@@ -27,9 +27,9 @@ const props = defineProps({
 const screenWidth = useWindowResize();
 const isTest = ref(false);
 const liveUrl = ref('');
-const renderData: Array<RENDERDATA> = props.liveData as any;
+const renderData: Array<RenderData> = props.liveData as any;
 const roomId = ref(0);
-const setLiveRoom = (item: RENDERDATA, index: number): void => {
+const setLiveRoom = (item: RenderData, index: number): void => {
   roomId.value = index;
   createUserId(isTest.value ? item.liveTestId : item.liveId);
 };

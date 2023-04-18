@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import AOS from 'aos';
+import { onMounted } from 'vue';
+
 import partnerData from '../data/partner';
 import { useCommon } from '@/stores/common';
 
@@ -11,6 +14,13 @@ const props = withDefaults(
     row: 4,
   }
 );
+onMounted(() => {
+  AOS.init({
+    offset: 100,
+    duration: 800,
+    delay: 100,
+  });
+});
 </script>
 
 <template>
@@ -24,7 +34,8 @@ const props = withDefaults(
       class="partner-item"
     >
       <h4>{{ item.subTitle }}</h4>
-      <div class="picture-panel" :class="item?.class">
+
+      <div class="picture-panel" data-aos="fade-zoom-in" :class="item?.class">
         <a
           v-for="itemLogo in item.logoList"
           :key="itemLogo.img"
@@ -81,12 +92,23 @@ const props = withDefaults(
 .center {
   display: flex;
   justify-content: center;
-  width: 25%;
-  @media screen and (max-width: 1416px) {
-    width: 33%;
-  }
+  flex-wrap: wrap;
   @media screen and (max-width: 768px) {
-    width: 50%;
+    justify-content: flex-start;
+  }
+  .link-item {
+    width: 25%;
+    @media screen and (max-width: 1416px) {
+      width: 33%;
+    }
+    @media screen and (max-width: 768px) {
+      width: 50%;
+    }
+  }
+}
+.guidance-unit {
+  @media screen and (max-width: 768px) {
+    justify-content: center;
   }
 }
 .partner {

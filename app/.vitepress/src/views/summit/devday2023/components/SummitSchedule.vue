@@ -176,6 +176,7 @@ const otherTabType = ref(0);
     margin-top: 18px;
     justify-content: center;
     text-align: center;
+    color: var(--o-color-text1);
     @media screen and (max-width: 768px) {
       margin-top: 4px;
       font-size: var(--o-font-size-tip);
