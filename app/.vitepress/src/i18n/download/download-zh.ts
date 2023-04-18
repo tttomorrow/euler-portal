@@ -1,4 +1,4 @@
-import data from '../../data/download/download';
+import data from '../../data/download/download-new';
 export default {
   RELEASE_DESC: '发行说明',
   COPY_SUCCESS: '复制成功',
@@ -11,25 +11,60 @@ export default {
   GET_ISO: '获取 ISO',
   SELECT: '筛选',
   // 新增 start
-  VERSION: '社区发行',
-  ARCHITECTURE: '商业发行',
+  COMMUNITY: '社区发行',
+  BUSINESS: '商业发行',
   DETAIL1:
     'openEuler当前最新版本为22年12月发布的openEuler 22.03 LTS SP1，欢迎下载体验！',
   DETAIL2: '更多历史版本下载请',
   CLICK_VIEW: '点此查看。',
-  ARCHIVE_LINK: '/zh/download/architecture/',
+  ARCHIVE_LINK: '/zh/download/archive/',
   DETAIL3:
     '我们会根据访问的IP地址为您推荐最优镜像仓下载源，如果您需要寻找特定的镜像仓、或者您在考虑为openEuler社区创建一个新的公共镜像仓，请',
   HISTORY: '历史版本下载',
+  ARCHITECTURE2: '架构',
+  SCENARIO2: '场景',
+  ARCHITECTUREList: ['x86_64', 'AArch64', 'ARM32'],
+  SCENARIOList: ['服务器', '边缘计算', '云计算', '嵌入式'],
+  VERSION_TYPE: '版本类型',
+  VERSION_LIST: [
+    {
+      KEY: 'ALL',
+      VALUE: '全部',
+    },
+    {
+      KEY: 'LTS',
+      VALUE: 'LTS',
+    },
+    {
+      KEY: 'NEW',
+      VALUE: '创新版本',
+    },
+  ],
+  PLANNEDEOL: 'Planned EOL',
+  DOWNLOADGO: '前往下载',
+  CLICK_DOWNLOAD: '点此下载',
+  PUBLISH_FACTURER: '发行厂商：',
+  APPROVE_ARCH: '支持架构：',
+  PLACEHOLDER: '请输入版本名称',
+  TABLE_HEAD: [
+    '软件包类型',
+    '软件包大小',
+    '镜像仓推荐',
+    '完整性校验',
+    '软件包下载',
+  ],
   // 新增 end
-  CLICK_List: '点此访问openEuler镜像仓列表。',
+
+  VERSION: '版本',
+  ARCHITECTURE: '架构',
   SCENARIO: '应用场景',
-  RELEASE_DATE: '发布时间',
+  // 改动
+  RELEASE_DATE: '发行时间',
   DOWNLOAD_LINK: '下载地址',
   ALL_DATA: '全部',
   LIFE_CYCLE: '生命周期',
   DOWNLOAD_BTN_NAME: '立即下载',
-  OUTSIDE_TITLE: '下载',
+  OUTSIDE_TITLE: 'ISO',
   MANUFACTURER: '厂商',
   PUBLISH_DATE: '发行时间',
   WHITE_PAPER: '白皮书',
@@ -41,8 +76,9 @@ export default {
   PAGINATION: ['已显示', '条记录/共', '条', '加载更多'],
   BTNSURE: '确定',
   BTNRESET: '重置',
-  DOWNLOAD_LIST: data.zh.DOWNLOAD_LIST,
+  COMMUNITY_LIST: data.zh.COMMUNITY_LIST,
   SCENARIO_LIST: data.zh.SCENARIO_LIST,
+  BUSINESS_LIST: data.zh.BUSINESS_LIST,
   MIRROR_SELECT: {
     TITLE: '获取 ISO',
     RANK: 'Rank',

@@ -1,4 +1,4 @@
-import data from '../../data/download/download';
+import data from '../../data/download/download-new';
 export default {
   COPY_SUCCESS: 'copied successfully.',
   RELEASE_DESC: 'Release Notes',
@@ -10,6 +10,23 @@ export default {
   SEEK_HELP: 'Seek Help',
   GET_ISO: 'Get ISO',
   SELECT: 'Filter',
+  // 新增 start
+  COMMUNITY: '社区发行',
+  BUSINESS: '商业发行',
+  DETAIL1:
+    'openEuler当前最新版本为22年12月发布的openEuler 22.03 LTS SP1，欢迎下载体验！',
+  DETAIL2: '更多历史版本下载请',
+  CLICK_VIEW: '点此查看。',
+  ARCHIVE_LINK: '/en/download/archive/',
+  DETAIL3:
+    '我们会根据访问的IP地址为您推荐最优镜像仓下载源，如果您需要寻找特定的镜像仓、或者您在考虑为openEuler社区创建一个新的公共镜像仓，请',
+  HISTORY: '历史版本下载',
+  ARCHITECTURE2: '架构',
+  SCENARIO2: '场景',
+  ARCHITECTUREList: ['x86_64', 'AArch64', 'ARM32'],
+  SCENARIOList: ['服务器', '边缘计算', '云计算', '嵌入式'],
+  // 新增 end
+
   ALL_DATA: 'All',
   VERSION: 'Version',
   ARCHITECTURE: 'Architecture',
@@ -30,8 +47,9 @@ export default {
   BTNSURE: 'Confirm',
   PAGINATION: ['已显示', '条记录/共', '条', '加载更多'],
   BTNRESET: 'Reset',
-  DOWNLOAD_LIST: data.en.DOWNLOAD_LIST,
+  COMMUNITY_LIST: data.en.COMMUNITY_LIST,
   SCENARIO_LIST: data.en.SCENARIO_LIST,
+  BUSINESS_LIST: data.en.BUSINESS_LIST,
   MIRROR_SELECT: {
     TITLE: 'Get ISO',
     RANK: 'Rank',

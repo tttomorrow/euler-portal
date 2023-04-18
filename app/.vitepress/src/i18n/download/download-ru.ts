@@ -1,4 +1,4 @@
-import data from '../../data/download/download';
+import data from '../../data/download/download-new';
 export default {
   COPY_SUCCESS: 'copied successfully.',
   RELEASE_DESC: 'Описание релиза',
@@ -22,8 +22,9 @@ export default {
   COPY_SUCCESSFULLY: 'copied successfully.',
   BTNSURE: 'Подтвердить',
   BTNRESET: 'сбросить',
-  DOWNLOAD_LIST: data.ru.DOWNLOAD_LIST,
+  COMMUNITY_LIST: data.ru.COMMUNITY_LIST,
   SCENARIO_LIST: data.ru.SCENARIO_LIST,
+  BUSINESS_LIST: data.ru.BUSINESS_LIST,
   PAGINATION: ['已显示', '条记录/共', '条', '加载更多'],
   MIRROR_SELECT: {
     TITLE: 'Получить ISO',

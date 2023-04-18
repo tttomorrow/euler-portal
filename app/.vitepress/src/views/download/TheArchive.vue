@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { reactive, ref, watch, computed } from 'vue';
+/* import { reactive, ref, watch, computed, Ref } from 'vue';
 import { useData } from 'vitepress';
 
-import _ from 'lodash';
+import cloneTool from 'lodash';
 
 import { useI18n } from '@/i18n';
 
@@ -16,27 +16,27 @@ import BreadCrumbs from '@/components/BreadCrumbs.vue';
 const i18n = useI18n();
 const { lang } = useData();
 
-const downloadData: DownloadData[] = _.cloneDeep(
-  i18n.value.download.DOWNLOAD_LIST
+const downloadData: DownloadData[] = cloneTool.cloneDeep(
+  i18n.value.download.COMMUNITY_LIST
 );
-
 const allFilterData = ref<ArchList[]>([]);
 
 const scenarioList = [...i18n.value.download.SCENARIO_LIST];
 
 const archList = ref<string[]>([i18n.value.download.ALL_DATA]);
 
-const activeArch = ref(0);
 const activeScenario = ref(0);
+const activeVersion = ref(0);
 const currentPage = ref(1);
 const pageSize = ref(10);
 const searchContent = ref('');
-const allData = ref<ArchList[]>([]);
+const allData: any = ref([]);
 
 const filterCondition = reactive({
   search: '',
   scenario: '',
   arch: '',
+  version: '',
 });
 
 const randerData = computed(() => {
@@ -57,15 +57,14 @@ const changeCurrentPageMoblie = (val: string) => {
 };
 
 downloadData.forEach((version) => {
+  allData.value.push(version);
   version.DETAILED_LINK?.forEach((arch: ArchList) => {
-    arch['NAME'] = version.NAME;
-    arch['PUBLISH_DATE'] = version.PUBLISH_DATE;
-    allData.value.push(arch);
     // 获取所有架构
     archList.value.includes(arch.ARCH) ? '' : archList.value.push(arch.ARCH);
   });
   // 按发布时间排序
   changeOrder(allData.value, '');
+  // console.log(allData.value);
 });
 
 function getFilterData() {
@@ -121,19 +120,14 @@ function changeOrder(list: any, order: string) {
   });
 }
 
-const selectArchtag = (i: number, category: string) => {
-  activeArch.value = i;
-  if (category === i18n.value.download.ALL_DATA) {
-    filterCondition.arch = '';
-    return;
-  }
-  filterCondition.arch = category;
-};
-
 const selectScenarioTag = (i: number, category: string) => {
   activeScenario.value = i;
   filterCondition.scenario = category;
 };
+// const selectVersionTag = (i: number, category: string) => {
+//   activeVersion.value = i;
+//   filterCondition.version = category;
+// };
 
 const changeSearchVal = (val: string) => {
   filterCondition.search = val;
@@ -149,9 +143,125 @@ watch(
     immediate: true,
   }
 );
+// 获取该软件所有支持的架构
+// const getItemArchList = (link: any) => {
+//   const itemArchList: any = [];
+//   link.forEach((item: any) => {
+//     if (!itemArchList.includes(item.ARCH)) {
+//       itemArchList.push(item.ARCH);
+//     }
+//   });
+//   return itemArchList;
+// };
+//数据筛选
+// const tagManufacturer: Ref<string[]> = ref([]);
+const manufacturerAll = ref(true);
+const activeManufacturer: Ref<string[]> = ref([]);
+// const tagArch: Ref<string[]> = ref([]);
+const archAll = ref(true);
+const activeArch: Ref<string[]> = ref([]);
+const allList: any = cloneTool.cloneDeep(i18n.value.download.COMMUNITY_LIST);
+// const setTagArch = () => {
+//   allList.forEach((item: any) => {
+//     if (item.DETAILED_LINK) {
+//       item.DETAILED_LINK.forEach((itemLink: any) => {
+//         if (!tagArch.value.includes(itemLink.ARCH)) {
+//           tagArch.value.push(itemLink.ARCH);
+//         }
+//       });
+//     }
+//   });
+//   tagArch.value.unshift(i18n.value.download.ALL_DATA);
+// };
+// const setTagManufacturer = () => {
+//   const temp = [...allList];
+//   const eulerFac: [string] = [''];
+//   const manufacturer = temp.map((item) => {
+//     if (!item.MANUFACTURER.includes('openEuler')) {
+//       return item.MANUFACTURER;
+//     }
+//   });
+//   tagManufacturer.value = Array.from(new Set(manufacturer));
+//   tagManufacturer.value.sort((a, b) => {
+//     return a.localeCompare(b);
+//   });
+//   tagManufacturer.value.unshift(
+//     i18n.value.download.ALL_DATA,
+//     ...new Set(eulerFac)
+//   );
+//   tagManufacturer.value = tagManufacturer.value.filter((b) => b);
+// };
+const filterTagList = () => {
+  let result = [...allList];
+  if (!manufacturerAll.value) {
+    result = result.filter((item: { MANUFACTURER: string }) => {
+      return activeManufacturer.value.indexOf(item.MANUFACTURER) > -1;
+    });
+  }
+  if (!archAll.value) {
+    const temp: any = [];
+    result.forEach((item) => {
+      let flag = false;
+      if (item.DETAILED_LINK) {
+        item.DETAILED_LINK.forEach((itemLink: any) => {
+          if (activeArch.value.includes(itemLink.ARCH)) {
+            flag = true;
+          }
+        });
+      }
+      if (flag) {
+        temp.push(item);
+      }
+    });
+    result = temp;
+  }
+  // total.value = result.length;
+
+  // filterList.value = result;
+  currentPage.value = 1;
+};
+const handleArchClick = (item: string, all: number) => {
+  currentPage.value = 1;
+  if (all === 0) {
+    archAll.value = true;
+    activeArch.value = [];
+  } else {
+    archAll.value = false;
+    const index = activeArch.value.indexOf(item);
+    if (index > -1) {
+      activeArch.value.splice(index, 1);
+      if (activeArch.value.length === 0) {
+        archAll.value = true;
+      }
+    } else {
+      activeArch.value.push(item);
+    }
+  }
+  filterTagList();
+};
+const handleManufacturerClick = (item: string, all: number) => {
+  currentPage.value = 1;
+  if (all === 0) {
+    manufacturerAll.value = true;
+    activeManufacturer.value = [];
+  } else {
+    manufacturerAll.value = false;
+    const index = activeManufacturer.value.indexOf(item);
+    if (index > -1) {
+      activeManufacturer.value.splice(index, 1);
+      if (activeManufacturer.value.length === 0) {
+        manufacturerAll.value = true;
+      }
+    } else {
+      activeManufacturer.value.push(item);
+    }
+  }
+  filterTagList();
+}; */
 </script>
 <template>
-  <AppContent :mobile-top="16">
+  <div>22222222</div>
+  <!-- <AppContent :mobile-top="16">
     <BreadCrumbs
       :bread1="i18n.download.OUTSIDE_TITLE"
       :bread2="i18n.download.HISTORY"
@@ -170,8 +280,16 @@ watch(
           v-for="(item, index) in archList"
           :key="item"
           checkable
-          :type="activeArch === index ? 'primary' : 'text'"
-          @click="selectArchtag(index, item)"
+          :type="
+            index === 0
+              ? manufacturerAll
+                ? 'primary'
+                : 'text'
+              : activeManufacturer.indexOf(item) > -1
+              ? 'primary'
+              : 'text'
+          "
+          @click="handleManufacturerClick(item, index)"
         >
           {{ item }}
         </OTag>
@@ -181,22 +299,73 @@ watch(
           v-for="(item, index) in i18n.download.SCENARIO_LIST"
           :key="item"
           checkable
-          :type="activeScenario === index ? 'primary' : 'text'"
-          @click="selectScenarioTag(index, item.KEY)"
+          :type="
+            index === 0
+              ? archAll
+                ? 'primary'
+                : 'text'
+              : activeArch.indexOf(item) > -1
+              ? 'primary'
+              : 'text'
+          "
+          @click="handleArchClick(item, index)"
         >
           {{ item.VALUE }}
         </OTag>
       </TagFilter>
     </div>
+    <OTable class="pc-list" :data="dataList">
+      <el-table-column :label="i18n.download.VERSION" width="200">
+        <template #default="scope">
+          {{ scope.row?.NAME }}
+        </template>
+      </el-table-column>
+      <OTableColumn
+        :label="i18n.download.ARCHITECTURE"
+        prop="ARCH"
+        width="150"
+      ></OTableColumn>
+      <el-table-column :label="i18n.download.SCENARIO" width="200">
+        <template #default="scope">
+          {{ getScenarioValue(scope.row?.SCENARIO) }}
+        </template>
+      </el-table-column>
+      <el-table-column :label="i18n.download.RELEASE_DATE" width="200">
+        <template #default="scope">
+          {{ scope.row?.PUBLISH_DATE }}
+        </template>
+      </el-table-column>
+      <el-table-column :label="i18n.download.PLANNEDEOL" width="200">
+        <template #default="scope">
+          {{ scope.row?.PUBLISH_DATE }}
+        </template>
+      </el-table-column>
+      <el-table-column :label="i18n.download.DOWNLOAD_LINK">
+        <template #default="scope">
+          <a :href="scope.row?.LINK" target="_blank">{{ i18n.download.DOWNLOADGO }}</a>
+          <a :href="'/' + lang + '/download/archive/detail/'">{{
+            i18n.download.DOWNLOADGO
+          }}</a>
+        </template>
+      </el-table-column>
+    </OTable>
     <ClientOnly>
       <div class="filter-mobile">
         <div class="filter">
           <div
             v-for="(item, index) in archList"
             :key="index"
-            :class="activeArch === index ? 'selected' : ''"
+            :class="
+              index === 0
+                ? manufacturerAll
+                  ? 'selected'
+                  : ''
+                : activeManufacturer.indexOf(item) > -1
+                ? 'selected'
+                : ''
+            "
             class="filter-item"
-            @click="selectArchtag(index, item)"
+            @click="handleManufacturerClick(item, index)"
           >
             {{ item }}
           </div>
@@ -214,14 +383,20 @@ watch(
         </div>
       </div>
       <ul class="mobile-list">
-        <li v-for="(item, index) in randerData" :key="index" class="item">
+        <li v-for="(item, index) in dataList" :key="index" class="item">
           <ul>
             <li>
               <span>{{ i18n.download.VERSION }}:</span>{{ item.NAME }}
             </li>
             <li>
               <span>{{ i18n.download.DOWNLOAD_LINK }}:</span
-              ><a :href="item.LINK" target="_blank">{{ item.LINK }}</a>
+              ><a
+                v-for="itemLink in item.LINK_LIST"
+                :key="itemLink.DOWNLOAD_LINK"
+                :href="itemLink.DOWNLOAD_LINK"
+                target="_blank"
+                >{{ itemLink.DOWNLOAD_LINK }}</a
+              >
             </li>
             <li>
               <span>{{ i18n.download.ARCHITECTURE }}:</span>{{ item.ARCH }}
@@ -237,33 +412,6 @@ watch(
         </li>
       </ul>
     </ClientOnly>
-    <OTable class="pc-list" :data="randerData">
-      <el-table-column :label="i18n.download.VERSION" width="200">
-        <template #default="scope">
-          {{ scope.row?.NAME }}
-        </template>
-      </el-table-column>
-      <el-table-column :label="i18n.download.DOWNLOAD_LINK">
-        <template #default="scope">
-          <a :href="scope.row?.LINK" target="_blank">{{ scope.row?.LINK }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column :label="i18n.download.SCENARIO" width="200">
-        <template #default="scope">
-          {{ getScenarioValue(scope.row?.SCENARIO) }}
-        </template>
-      </el-table-column>
-      <OTableColumn
-        :label="i18n.download.ARCHITECTURE"
-        prop="ARCH"
-        width="150"
-      ></OTableColumn>
-      <el-table-column :label="i18n.download.RELEASE_DATE" width="200">
-        <template #default="scope">
-          {{ scope.row?.PUBLISH_DATE }}
-        </template>
-      </el-table-column>
-    </OTable>
 
     <div v-if="!randerData.length" class="empty-status">
       {{ i18n.cve.EMPTY_SEARCH_RESULT }}
@@ -297,7 +445,7 @@ watch(
       @turn-page="changeCurrentPageMoblie"
     >
     </AppPaginationMo>
-  </AppContent>
+  </AppContent> -->
 </template>
 <style lang="scss" scoped>
 @media screen and (max-width: 768px) {

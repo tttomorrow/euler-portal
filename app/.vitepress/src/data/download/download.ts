@@ -13,7 +13,8 @@ export default {
         GET_ISO_URL: 'https://repo.openeuler.org/openEuler-23.03/ISO/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2303.pdf',
-        WEBSITE_SELECT: '/zh/mirror/select/?version=23.03',
+        // WEBSITE_SELECT: '/zh/mirror/select/?version=23.03',
+        VERSION: '23.03',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/',
         EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-23.03/edge_img/',
@@ -24,42 +25,146 @@ export default {
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+            LINK: [
+              {
+                TYPE: 'Offline Standard ISO ',
+                SIZE: '3.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'openEuler-23.03/ISO/x86_64/openEuler-23.03-netinst-x86_64-dvd.iso',
+              },
+              {
+                TYPE: 'Offline Everything ISO',
+                SIZE: '18.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'openEuler-23.03/ISO/x86_64/openEuler-23.03-everything-x86_64-dvd.iso',
+              },
+              {
+                TYPE: 'Network Install ISO',
+                SIZE: '779.0 MiB',
+                SHACODE:
+                  'ed48a94d38dca4aec18954a6f40e48b568a5a17ce4b836b0bae6c6a0739809f0',
+                DOWNLOAD_LINK:
+                  'openEuler-23.03/ISO/x86_64/openEuler-23.03-netinst-x86_64-dvd.iso',
+              },
+              {
+                TYPE: 'Network Install ISO',
+                SIZE: '779.0 MiB',
+                SHACODE:
+                  'ed48a94d38dca4aec18954a6f40e48b568a5a17ce4b836b0bae6c6a0739809f0',
+                DOWNLOAD_LINK:
+                  'openEuler-23.03/ISO/x86_64/openEuler-23.03-netinst-x86_64-dvd.iso',
+              },
+            ],
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/aarch64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/aarch64/',
+            LINK: [
+              {
+                TYPE: 'Offline Standard ISO ',
+                SIZE: '18.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/openEuler-23.03-everything-x86_64-dvd.iso',
+              },
+            ],
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/x86_64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/x86_64/',
+            LINK: [
+              {
+                TYPE: 'Offline Standard ISO ',
+                SIZE: '18.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/openEuler-23.03-everything-x86_64-dvd.iso',
+              },
+            ],
             ARCH: 'x86_64',
             SCENARIO: 'EDGE_CLOUD',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/aarch64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/aarch64/',
+            LINK: [
+              {
+                TYPE: 'Offline Standard ISO ',
+                SIZE: '18.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/openEuler-23.03-everything-x86_64-dvd.iso',
+              },
+            ],
             ARCH: 'AArch64',
             SCENARIO: 'EDGE_CLOUD',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/x86_64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/x86_64/',
+            LINK: [
+              {
+                TYPE: 'Offline Standard ISO ',
+                SIZE: '18.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/openEuler-23.03-everything-x86_64-dvd.iso',
+              },
+            ],
             ARCH: 'x86_64',
             SCENARIO: 'CLOUD_COMPUTING',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/aarch64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/aarch64/',
+            LINK: [
+              {
+                TYPE: 'Offline Standard ISO ',
+                SIZE: '18.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/openEuler-23.03-everything-x86_64-dvd.iso',
+              },
+            ],
             ARCH: 'AArch64',
             SCENARIO: 'CLOUD_COMPUTING',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm64/',
+            LINK: [
+              {
+                TYPE: 'Offline Standard ISO',
+                SIZE: '18.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/openEuler-23.03-everything-x86_64-dvd.iso',
+              },
+            ],
             ARCH: 'AArch64',
             SCENARIO: 'EMBEDDED',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm32/',
+            // LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm32/',
+            LINK: [
+              {
+                TYPE: 'Offline Standard ISO ',
+                SIZE: '18.7 GiB',
+                SHACODE:
+                  '8d8d6dc6b5fbfcdfa9fa66e91871b464781322283d131172bdd374e7378db4f5',
+                DOWNLOAD_LINK:
+                  'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/openEuler-23.03-everything-x86_64-dvd.iso',
+              },
+            ],
             ARCH: 'ARM32',
             SCENARIO: 'EMBEDDED',
           },
@@ -957,6 +1062,50 @@ export default {
             SCENARIO: 'EMBEDDED',
           },
         ],
+        // 新增 start
+        PLANNED_EOL: '未定',
+        DOWNLOAD_LIST: [
+          {
+            TYPE: 'Offline Standard ISO',
+            SIZE: '3.1 GB',
+            EDITION: 'enterprise',
+            SELECTION_VALUE: 'Peking-University (10000 Mb/s)',
+            SELECTION_LIST: [
+              'Peking-University (10000 Mb/s)',
+              'Peking-University (20000 Mb/s)',
+              'Peking-University (30000 Mb/s)',
+            ],
+            SHACODE: '2324354657687980',
+            DOWNLOAD: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+          },
+          {
+            TYPE: 'Offline Everything ISO',
+            SIZE: '16.1 GB',
+            EDITION: 'simple',
+            SELECTION_VALUE: 'Peking-University (10000 Mb/s)',
+            SELECTION_LIST: [
+              'Peking-University (10000 Mb/s)',
+              'Peking-University (20000 Mb/s)',
+              'Peking-University (30000 Mb/s)',
+            ],
+            SHACODE: '2324354657687980',
+            DOWNLOAD: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+          },
+          {
+            TYPE: 'Network Install ISO',
+            SIZE: '707.6MB',
+            EDITION: 'lite',
+            SELECTION_VALUE: 'Peking-University (10000 Mb/s)',
+            SELECTION_LIST: [
+              'Peking-University (10000 Mb/s)',
+              'Peking-University (20000 Mb/s)',
+              'Peking-University (30000 Mb/s)',
+            ],
+            SHACODE: '2324354657687980',
+            DOWNLOAD: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+          },
+        ],
+        // 新增 end
       },
       {
         NAME: 'openEuler 22.03 LTS SP1',

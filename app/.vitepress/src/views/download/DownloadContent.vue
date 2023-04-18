@@ -1,31 +1,42 @@
 <script lang="ts" setup>
-import { ref, computed, Ref, toRefs, onMounted, reactive } from 'vue';
+import { ref, computed, Ref, toRefs, onMounted, watch } from 'vue';
 
 import { useI18n } from '@/i18n';
+import _ from 'lodash';
 // import { useData } from 'vitepress';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { ElMessage } from 'element-plus';
+import { selectMirror } from '@/api/api-mirror';
 
 import TagFilter from '@/components/TagFilter.vue';
 
 import IconCopy from '~icons/app/icon-copy.svg';
+import IconDownload from '~icons/app/icon-download.svg';
 import IconTips from '~icons/app/icon-tips.svg';
 
 const props = defineProps({
-  contentData: {
+  version: {
     required: true,
-    type: Array,
+    type: String,
     default: () => {
-      return [];
+      return '';
     },
   },
 });
+const { version } = toRefs(props);
 const i18n = useI18n();
+const downloadList = i18n.value.download.COMMUNITY_LIST;
 // const { lang, theme } = useData();
 const shaText = 'SHA256';
-const { contentData } = toRefs(props);
 
+const contentData: any = computed(() => {
+  downloadList.filter((item: any) => {
+    console.log(item.NAME, version.value);
+  });
+
+  return downloadList.filter((item: any) => item.NAME === version.value);
+});
 // 移动端提示
 const screenWidth = useWindowResize();
 // function setShowIndex(index: number) {
@@ -41,12 +52,16 @@ async function handleUrlCopy(value: string | undefined) {
     document.execCommand('copy');
   }
   ElMessage({
-    message: i18n.value.download.COPY_SUCCESS,
+    message: i18n.value.download.COPY_SUCCESSFULLY,
     type: 'success',
   });
 }
 onMounted(() => {
   inputDom.value = document.getElementById('useCopy');
+  // getMirrors().then(res=>{
+  //   console.log(res);
+
+  // })
 });
 // tips
 const hoverTips = computed(() => (type: string) => {
@@ -67,27 +82,135 @@ const hoverTips = computed(() => (type: string) => {
   }
   return tips;
 });
-// 架构、场景筛选
-const archList = ref<string[]>([i18n.value.download.ALL_DATA]);
-const activeArch = ref(0);
-const activeScenario = ref(0);
-const filterCondition = reactive({
-  search: '',
-  scenario: '',
-  arch: '',
-});
-const selectArchtag = (i: number, category: string) => {
-  activeArch.value = i;
-  if (category === i18n.value.download.ALL_DATA) {
-    filterCondition.arch = '';
-    return;
+// tag筛选
+const activeArch = ref('');
+const activeScenario = ref('');
+const architectureList: any = ref([]);
+const scenarioList: any = ref([]);
+function setTagList() {
+  const temp: any = [];
+  architectureList.value = [];
+  scenarioList.value = [];
+  contentData.value[0].DETAILED_LINK.forEach((item: any) => {
+    if (!architectureList.value.includes(item.ARCH)) {
+      architectureList.value.push(item.ARCH);
+    }
+    if (!temp.includes(item.SCENARIO)) {
+      temp.push(item.SCENARIO);
+    }
+  });
+  temp.forEach((item: any) => {
+    i18n.value.download.SCENARIO_LIST.forEach((itemList: any) => {
+      if (item === itemList.KEY && !scenarioList.value.includes(itemList)) {
+        scenarioList.value.push(itemList);
+      }
+    });
+  });
+  activeArch.value = architectureList.value[0];
+  activeScenario.value = scenarioList.value[0].KEY;
+  console.log(activeArch.value, activeScenario.value);
+}
+
+const onArchTagClick = (i: number, select: string) => {
+  activeArch.value = select;
+  console.log(activeArch.value);
+};
+const onScenarioTagClick = (select: string) => {
+  activeScenario.value = select;
+};
+// 控制不能组合的tag的禁用
+function isDisable(item: string) {
+  if (activeScenario.value === 'SERVER' && item === 'ARM32') {
+    return true;
+  } else if (item === 'SERVER' && activeArch.value === 'ARM32') {
+    return true;
+  } else if (item === 'EMBEDDED' && activeArch.value === 'x86_64') {
+    return true;
+  } else if (activeScenario.value === 'EMBEDDED' && item === 'x86_64') {
+    return true;
   }
-  filterCondition.arch = category;
-};
-const selectScenarioTag = (i: number, category: string) => {
-  activeScenario.value = i;
-  filterCondition.scenario = category;
-};
+}
+// 获取镜像仓及表格显示数据
+const tableData: any = ref([]);
+const activeMirror: any = ref([]);
+const activeMirrorLink: any = ref([]);
+const mirrorList: any = ref([]);
+function getTableData() {
+  console.log(activeArch.value, activeScenario.value);
+  contentData.value[0].DETAILED_LINK.forEach((item: any) => {
+    if (
+      item.ARCH === activeArch.value &&
+      item.SCENARIO === activeScenario.value
+    ) {
+      tableData.value = item.LINK_LIST;
+    }
+  });
+  if (
+    mirrorList.value[0] &&
+    !activeMirror.value[0] &&
+    !activeMirrorLink.value[0]
+  ) {
+    tableData.value.forEach(() => {
+      const temp = _.cloneDeep(mirrorList.value);
+      temp[0].NameSpend =
+        temp[0].Name + '(' + temp[0].NetworkBandwidth + 'Mb/s)';
+      activeMirror.value.push(temp[0].NameSpend);
+      activeMirrorLink.value.push(temp[0].HttpURL);
+    });
+  }
+}
+async function getMirrorList() {
+  try {
+    const mirrorData = await selectMirror(contentData.value[0].VERSION);
+    for (let i = 0; i < mirrorData.MirrorList.length; i++) {
+      for (let j = i; j < mirrorData.MirrorList.length; j++) {
+        if (
+          mirrorData.MirrorList[i].NetworkBandwidth <
+          mirrorData.MirrorList[j].NetworkBandwidth
+        ) {
+          [mirrorData.MirrorList[i], mirrorData.MirrorList[j]] = [
+            mirrorData.MirrorList[j],
+            mirrorData.MirrorList[i],
+          ];
+        }
+      }
+    }
+    mirrorList.value = _.cloneDeep(mirrorData.MirrorList.splice(0, 3));
+    console.log(mirrorList.value);
+
+    mirrorList.value.forEach((item: any) => {
+      item.NameSpend = item.Name + '(' + item.NetworkBandwidth + 'Mb/s)';
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+}
+onMounted(async () => {
+  setTagList();
+  await getMirrorList();
+  getTableData();
+  watch(activeArch, function () {
+    getTableData();
+  });
+  watch(activeScenario, function () {
+    getTableData();
+  });
+  watch(version, function () {
+    console.log(111111111111);
+
+    setTagList();
+    getTableData();
+  });
+});
+
+function setMirrorLink(index: number) {
+  mirrorList.value.forEach((item: any) => {
+    if (item.NameSpend === activeMirror.value[index]) {
+      activeMirrorLink.value[index] = item.HttpURL;
+    }
+  });
+  return '';
+}
 </script>
 
 <template>
@@ -98,36 +221,55 @@ const selectScenarioTag = (i: number, category: string) => {
       Planned EOL:{{ (contentData[0] as any).PLANNED_EOL }}
     </p>
     <div class="other-link">
-      <a href="" target="_blank">{{ i18n.download.RELEASE_DESC }}</a
-      ><a href="https://gitee.com/opengauss/community/issues" target="_blank">{{
-        i18n.download.INSTALL_GUIDENCE
-      }}</a>
-      <a href="https://gitee.com/opengauss/community/issues" target="_blank">{{
-        i18n.download.WHITE_PAPER
-      }}</a>
-      <a href="https://gitee.com/opengauss/community/issues" target="_blank">{{
-        i18n.download.LIFE_CYCLE
-      }}</a>
+      <a
+        v-if="(contentData[0] as any).RELEASE_DESC_URL"
+        :href="(contentData[0] as any).RELEASE_DESC_URL"
+        target="_blank"
+        >{{ i18n.download.RELEASE_DESC }}</a
+      ><a
+        v-if="(contentData[0] as any).INSTALL_GUIDENCE_URL"
+        :href="(contentData[0] as any).INSTALL_GUIDENCE_URL"
+        target="_blank"
+        >{{ i18n.download.INSTALL_GUIDENCE }}</a
+      >
+      <a
+        v-if="(contentData[0] as any).WHITE_PAPER"
+        :href="(contentData[0] as any).WHITE_PAPER"
+        target="_blank"
+        >{{ i18n.download.WHITE_PAPER }}</a
+      >
+      <a
+        v-if="(contentData[0] as any).LIFE_CYCLE_URL"
+        :href="(contentData[0] as any).LIFE_CYCLE_URL"
+        target="_blank"
+        >{{ i18n.download.LIFE_CYCLE }}</a
+      >
     </div>
     <div class="filter-card">
-      <TagFilter :label="i18n.download.ARCHITECTURE" :show="false">
+      <TagFilter
+        class="architecture-box"
+        :label="i18n.download.ARCHITECTURE2"
+        :show="false"
+      >
         <OTag
-          v-for="(item, index) in archList"
-          :key="item"
+          v-for="(item, index) in architectureList"
+          :key="'tag' + index"
           checkable
-          :type="activeArch === index ? 'primary' : 'text'"
-          @click="selectArchtag(index, item)"
+          :type="activeArch === item ? 'primary' : 'text'"
+          :class="{ disable: isDisable(item) }"
+          @click="isDisable(item) ? '' : onArchTagClick(index, item)"
         >
           {{ item }}
         </OTag>
       </TagFilter>
-      <TagFilter :label="i18n.download.SCENARIO" :show="false">
+      <TagFilter class="os-box" :label="i18n.download.SCENARIO2" :show="false">
         <OTag
-          v-for="(item, index) in i18n.download.SCENARIO_LIST"
-          :key="item"
+          v-for="(item, index) in scenarioList"
+          :key="item.VALUE + index"
           checkable
-          :type="activeScenario === index ? 'primary' : 'text'"
-          @click="selectScenarioTag(index, item.KEY)"
+          :type="activeScenario === item.KEY ? 'primary' : 'text'"
+          :class="{ disable: isDisable(item.KEY) }"
+          @click="isDisable(item.KEY) ? '' : onScenarioTagClick(item.KEY)"
         >
           {{ item.VALUE }}
         </OTag>
@@ -137,15 +279,19 @@ const selectScenarioTag = (i: number, category: string) => {
       <!-- pc  -->
       <OTable
         v-if="screenWidth > 1100"
-        :data="(contentData[0] as any).DOWNLOAD_LIST"
+        :data="tableData"
         class="download-pc"
         style="width: 100%"
       >
-        <el-table-column width="320" label="软件包类型" prop="name">
+        <el-table-column
+          width="220"
+          :label="i18n.download.TABLE_HEAD[0]"
+          prop="name"
+        >
           <template #default="scope">
             <div class="name-info">
               {{ scope.row.TYPE }}
-              <template v-if="scope.row.table === 'server'">
+              <template v-if="true">
                 <el-tooltip placement="right-start">
                   <template #content>
                     <p class="server-name">
@@ -158,39 +304,40 @@ const selectScenarioTag = (i: number, category: string) => {
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="软件包大小" prop="size">
+        <el-table-column
+          width="190"
+          :label="i18n.download.TABLE_HEAD[1]"
+          prop="size"
+        >
           <template #default="scope">
             {{ scope.row.SIZE }}
           </template>
         </el-table-column>
-        <el-table-column label="镜像仓推荐" prop="down_url">
+        <el-table-column
+          width="380"
+          :label="i18n.download.TABLE_HEAD[2]"
+          prop="down_url"
+        >
           <template #default="scope">
-            <div v-if="scope.row.SELECTION_LIST[0] !== ''" class="down-action">
-              <!-- <a :href="scope.row.SELECTION">
-                <OButton size="mini" type="primary" animation>
-                  {{ scope.row.SELECTION }}
-                  <template #suffixIcon>
-                    <IconDownload />
-                  </template>
-                </OButton>
-              </a> -->
-              <ClientOnly>
-                <OSelect
-                  v-model="scope.row.SELECTION_VALUE"
-                  class="select-version"
-                >
-                  <OOption
-                    v-for="itemData in scope.row.SELECTION_LIST"
-                    :key="itemData"
-                    :label="itemData"
-                    :value="itemData"
-                  />
-                </OSelect>
-              </ClientOnly>
-            </div>
+            <!-- <ClientOnly> -->
+            <el-select
+              v-model="activeMirror[scope.$index]"
+              placeholder="Select"
+              placement="bottom-end"
+              @change="setMirrorLink(scope.$index)"
+            >
+              <el-option
+                v-for="item in mirrorList"
+                :key="item.Name"
+                :label="item.Name + '(' + item.NetworkBandwidth + 'Mb/s)'"
+                :value="item.Name + '(' + item.NetworkBandwidth + 'Mb/s)'"
+              >
+              </el-option>
+            </el-select>
+            <!-- </ClientOnly> -->
           </template>
         </el-table-column>
-        <el-table-column label="完整性校验" prop="sha_code">
+        <el-table-column :label="i18n.download.TABLE_HEAD[3]" prop="sha_code">
           <template #default="scope">
             <div class="down-action">
               <OButton
@@ -208,26 +355,34 @@ const selectScenarioTag = (i: number, category: string) => {
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="软件包下载" prop="docsName">
+        <el-table-column :label="i18n.download.TABLE_HEAD[4]" prop="docsName">
           <template #default="scope">
-            <a :href="scope.row.DOWNLOAD" target="_blank">{{
-              i18n.download.DOWNLOAD_BTN_NAME
-            }}</a>
+            <a
+              class="down-link"
+              :href="activeMirrorLink[scope.$index] + scope.row.DOWNLOAD_LINK"
+            >
+              <OButton size="mini" type="primary" animation>
+                {{ i18n.download.DOWNLOAD_BTN_NAME }}
+                <template #suffixIcon>
+                  <IconDownload />
+                </template>
+              </OButton>
+            </a>
           </template>
         </el-table-column>
       </OTable>
       <!-- mobild -->
-      <!-- <ul v-else class="download-mobile">
+      <ul v-else class="download-mobile">
         <li
-          v-for="(item, index) in renderData.content"
-          :key="item.name"
+          v-for="(item, index) in tableData"
+          :key="item.TYPE"
           class="download-item"
         >
-          <p class="item-text">
-            <span>{{ tableData.thead[0] + ':' }}</span
+          <div class="item-text">
+            <span>{{ i18n.download.TABLE_HEAD[0] + ':' }}</span
             ><span class="tips-box"
-              >{{ item.name }}
-              <template v-if="item.table === 'server'">
+              >{{ item.TYPE }}
+              <!-- <template v-if="item.table === 'server'">
                 <p v-show="showIndex === index" class="server-name">
                   {{ hoverTips(item.edition) }}
                 </p>
@@ -237,56 +392,59 @@ const selectScenarioTag = (i: number, category: string) => {
                   class="mask-mobile"
                   @click="setShowIndex(-1)"
                 ></div> </template
-            ></span>
-          </p>
-          <p class="item-text">
-            <span>{{ tableData.thead[1] + ':' }}</span
-            ><span class="text-size">{{ item.size }}</span>
-          </p>
-          <p class="item-text">
-            <span>{{ tableData.thead[2] + ':' }}</span>
+            > -->
+            </span>
+          </div>
+          <div class="item-text">
+            <span>{{ i18n.download.TABLE_HEAD[1] + ':' }}</span
+            ><span class="text-size">{{ item.SIZE }}</span>
+          </div>
+          <div class="item-text">
+            <span>{{ i18n.download.TABLE_HEAD[2] + ':' }}</span>
+            <el-select
+              v-model="activeMirror[index]"
+              placeholder="Select"
+              fit-input-width
+              placement="bottom-end"
+              @change="setMirrorLink(index)"
+            >
+              <el-option
+                v-for="item in mirrorList"
+                :key="item.Name"
+                :label="item.Name + '(' + item.NetworkBandwidth + 'Mb/s)'"
+                :value="item.Name + '(' + item.NetworkBandwidth + 'Mb/s)'"
+              >
+              </el-option>
+            </el-select>
+          </div>
+          <div class="item-text">
+            <span>{{ i18n.download.TABLE_HEAD[3] + ':' }}</span>
+            <div class="copy-box">
+              <OButton
+                class="down-copy"
+                size="mini"
+                type="text"
+                animation
+                @click="handleUrlCopy(item.SHACODE)"
+              >
+                {{ shaText }}
+                <template #suffixIcon>
+                  <IconCopy />
+                </template>
+              </OButton>
+            </div>
+          </div>
+          <div class="item-text">
+            <span>{{ i18n.download.TABLE_HEAD[4] + ':' }}</span>
             <a
-              v-if="
-                versionShownIndex === downloadVersionAuthIndex &&
-                !guardAuthClient.username
-              "
-              @click="changeDownloadAuth"
+              class="down-link"
+              :href="activeMirrorLink[index] + item.DOWNLOAD_LINK"
             >
-              {{ i18n.download.BTN_TEXT_MO }}</a
-            >
-            <a v-else :href="item.down_url">
-              {{ i18n.download.BTN_TEXT_MO }}
+              {{ i18n.download.CLICK_DOWNLOAD }}
             </a>
-          </p>
-          <p class="item-text">
-            <span>{{ tableData.thead[3] + ':' }}</span>
-            <OButton
-              class="down-copy"
-              size="mini"
-              type="text"
-              animation
-              @click="handleUrlCopy(item.sha_code)"
-            >
-              {{ shaText }}
-              <template #suffixIcon>
-                <IconCopy />
-              </template>
-            </OButton>
-          </p>
-          <p v-if="tableData.thead[4]" class="item-text">
-            <span>{{ tableData.thead[4] + ':' }}</span
-            ><a
-              :href="
-                item.docs_url.includes('https')
-                  ? item.docs_url
-                  : theme.docsUrl + '/' + lang + item.docs_url
-              "
-              target="_blank"
-              >{{ item.docsName }}</a
-            >
-          </p>
+          </div>
         </li>
-      </ul> -->
+      </ul>
     </div>
     <div class="input-box">
       <!-- 用于复制RSNC的值 -->
@@ -352,12 +510,35 @@ const selectScenarioTag = (i: number, category: string) => {
     background-color: var(--o-color-bg2);
     padding: var(--o-spacing-h5) var(--o-spacing-h2);
     @media screen and (max-width: 768px) {
-      display: none;
+      padding: 0;
+      font-size: var(--o-font-size-tip);
     }
     :deep(.tag-filter) {
-      .label {
-        width: 80px;
+      padding: 0;
+      @media screen and (max-width: 768px) {
+        display: flex;
+        gap: 32px;
       }
+      .label {
+        @media screen and (max-width: 768px) {
+          width: auto;
+          font-size: var(--o-font-size-tip);
+        }
+      }
+      .tag-filter-box {
+        flex-grow: 1;
+      }
+      .o-tag {
+        padding: 3px 8px;
+        font-size: var(--o-font-height-tip);
+        line-height: var(--o-line-height-tip);
+      }
+      &.os-box {
+        margin-top: var(--o-spacing-h5);
+      }
+    }
+    .disable {
+      color: var(--o-color-text5);
     }
   }
   .content-item {
@@ -373,37 +554,6 @@ const selectScenarioTag = (i: number, category: string) => {
       @media (max-width: 1100px) {
         font-size: var(--o-font-size-text);
         line-height: var(--o-line-height-text);
-      }
-    }
-    .select-box {
-      margin-top: var(--o-spacing-h4);
-      text-align: center;
-      font-size: var(--o-font-size-h8);
-      line-height: var(--o-line-height-h8);
-      :deep(.el-input__wrapper) {
-        min-width: 252px;
-        padding: 0 16px;
-      }
-      :deep(.el-input__prefix) {
-        display: none;
-      }
-      @media (max-width: 1100px) {
-        font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-height-tip);
-      }
-      .label {
-        margin-right: var(--o-spacing-h5);
-        color: var(--o-color-text3);
-        display: inline-block;
-        @media (max-width: 1100px) {
-          padding-bottom: var(--o-spacing-h8);
-        }
-      }
-      .select-version {
-        color: var(--o-color-text1);
-        @media (max-width: 1100px) {
-          display: block;
-        }
       }
     }
     .download-pc {
@@ -423,11 +573,46 @@ const selectScenarioTag = (i: number, category: string) => {
         font-size: var(--o-font-size-text);
         padding-left: 0;
         color: var(--o-color-brand1);
+        :deep(.suffix-icon) {
+          width: 12px;
+        }
+      }
+      .down-link {
+        display: inline-block;
+        :deep(.suffix-icon) {
+          width: 14px;
+          height: 18px;
+        }
       }
       :deep(.cell) {
+        line-height: 46px;
+        overflow: visible;
         a {
           word-break: normal;
         }
+        .o-select:hover {
+          background-color: red;
+        }
+      }
+      :deep(.el-input__wrapper) {
+        box-shadow: none;
+        background-color: transparent;
+        input,
+        i {
+          color: var(--o-color-brand1);
+        }
+      }
+      :deep(.el-select) {
+        width: 260px;
+        .el-input .el-input__wrapper {
+          box-shadow: none !important;
+        }
+        .is-focus {
+          box-shadow: none !important;
+        }
+      }
+      :deep(.el-table__cell) {
+        padding: 8px 0;
       }
     }
     .download-mobile {
@@ -483,6 +668,30 @@ const selectScenarioTag = (i: number, category: string) => {
               width: 100vw;
               height: 100vh;
               z-index: 99;
+            }
+          }
+          :deep(.el-select) {
+            .el-input__wrapper {
+              background-color: transparent;
+              border: none;
+              outline: none;
+              box-shadow: none;
+              padding: 0;
+              input {
+                font-size: var(--o-font-size-tip);
+                vertical-align: top;
+                line-height: auto;
+                height: 14px;
+              }
+            }
+          }
+          .copy-box {
+            :deep(.o-button) {
+              font-size: 12px;
+            }
+            :deep(.suffix-icon) {
+              width: 12px;
+              height: 12px;
             }
           }
         }
