@@ -242,7 +242,11 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
 </script>
 
 <template>
-  <footer class="footer" :class="{ 'is-doc': isMigration || isAbout }">
+  <footer
+    id="footer"
+    class="footer"
+    :class="{ 'is-doc': isMigration || isAbout }"
+  >
     <!-- 隐私政策 -->
     <div
       v-if="isCookieTip"

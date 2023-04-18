@@ -175,7 +175,7 @@ const meetupFormatChange = () => {
 
 // 格式化支持数据
 const supportsFormat = () => {
-  let supports = meetupData.value.supports.map((item: any) => {
+  const supports = meetupData.value.supports.map((item: any) => {
     if (item === '其他') {
       return {
         optional: item,
@@ -191,17 +191,17 @@ const supportsFormat = () => {
 
   // 活动时长
   if (
-    typeof meetupData.value.duration == 'string' ||
-    typeof meetupData.value.meetupFormat == 'string'
+    typeof meetupData.value.duration === 'string' ||
+    typeof meetupData.value.meetupFormat === 'string'
   ) {
-    let duration = {
+    const duration = {
       optional: meetupData.value.duration,
       comment: durationComment.value,
     };
     meetupData.value.duration = duration;
 
     // 活动形式
-    let meetupFormat = {
+    const meetupFormat = {
       optional: meetupData.value.meetupFormat,
       comment: meetupFormatComment.value,
     };
@@ -211,7 +211,7 @@ const supportsFormat = () => {
 
 const meetupPrivacy = ref('');
 const submitMeetupForm = async (formEl: FormInstance | undefined) => {
-  if (meetupPrivacy.value === '') {
+  if (meetupPrivacy.value.length < 1) {
     ElMessage({
       type: 'error',
       message: '请勾选隐私声明',
@@ -219,12 +219,10 @@ const submitMeetupForm = async (formEl: FormInstance | undefined) => {
     return;
   }
   if (!formEl) return;
-  await formEl.validate((valid, fields) => {
+  await formEl.validate((valid) => {
     if (valid) {
       supportsFormat();
       meetupApply();
-    } else {
-      console.log('error submit!', fields);
     }
   });
 };
@@ -272,7 +270,7 @@ onMounted(() => {
 <template>
   <AppContent :pc-top="40" :mobile-top="12">
     <div class="meetup-form">
-      <h2>申请表</h2>
+      <h2>openEuler Meetup申请表</h2>
       <template v-if="token">
         <el-form
           ref="ruleFormRef"
@@ -371,8 +369,8 @@ onMounted(() => {
           </el-form-item>
           <el-form-item label="需要什么支持" prop="supports">
             <OCheckboxGroup
-              class="column"
               v-model="meetupData.supports"
+              class="column"
               @change="supportsChange"
             >
               <OCheckbox value="openEuler社区介绍PPT"
@@ -426,7 +424,9 @@ onMounted(() => {
       </template>
       <template v-else>
         <div class="auth-box">
-          <OButton type="primary" @click="showGuard()"> 请先登录 </OButton>
+          <OButton type="primary" @click="showGuard()"
+            >请先登录后，在填写</OButton
+          >
         </div>
       </template>
     </div>

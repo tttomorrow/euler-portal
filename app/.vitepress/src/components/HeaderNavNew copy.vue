@@ -2,7 +2,7 @@
 import { ref, watch, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
-import { debounce } from 'lodash';
+import { throttle, debounce } from 'lodash';
 
 const props = defineProps({
   navItems: {
@@ -40,28 +40,46 @@ const screenWidth = ref(useWindowResize());
 const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
 // nav 鼠标滑过事件
-const isShow = ref(true);
+const isShow = ref(false);
 const navActive = ref('');
-const toggleSubDebounced = debounce(
-  function (item: any | null) {
+const toggleSubDebounced = throttle(
+  function (index: string, item: any) {
     if (isMobile.value) return;
-    if (item === null) {
-      navActive.value = '';
-    } else {
-      navActive.value = item.ID;
-      isShow.value = true;
-    }
+    navActive.value = item.ID;
+    isShow.value = true;
+    currentIndex.value = Number(index);
   },
-  150,
+  100,
+  {
+    trailing: true,
+  }
+);
+const handleMobileNavClick = (index: string, item: any) => {
+  if (!isMobile.value) return;
+  navActive.value = item.ID;
+  currentIndex.value = Number(index);
+};
+const navMouseleave = throttle(
+  function () {
+    if (isMobile.value) return;
+    navActive.value = '';
+    isShow.value = false;
+  },
+  300,
   {
     trailing: true,
   }
 );
 
-const handleMobileNavClick = (index: string, item: any) => {
-  if (!isMobile.value) return;
-  navActive.value = item.ID;
+const navDropdownShow = () => {
+  if (isMobile.value) return;
+  isShow.value = true;
 };
+
+const currentIndex = ref(0);
+const currentNavItems = computed(
+  () => props.navItems[currentIndex.value].CHILDREN
+);
 
 const goPath = (item: NavItem) => {
   if (item.PATH.startsWith('https')) {
@@ -78,89 +96,91 @@ watch(
   () => props.isSwitch,
   (val: boolean) => {
     isShow.value = val;
-    navActive.value = 'user';
   }
 );
 </script>
 
 <template>
   <nav class="o-nav">
-    <ul class="o-nav-list">
+    <ul class="o-nav-list" @mouseleave="navMouseleave">
       <li
         v-for="(item, index) in navItems"
         :key="item.ID"
         :class="{
-          active: navActive === item.ID,
+          active: currentIndex === Number(index),
         }"
-        @mouseenter="toggleSubDebounced(item)"
-        @mouseleave="toggleSubDebounced(null)"
+        @mouseenter="toggleSubDebounced(index, item)"
+        @click="handleMobileNavClick(index, item)"
       >
-        <span @click="handleMobileNavClick(index, item)" class="nav-link">{{
-          item.NAME
-        }}</span>
-
-        <div v-if="isShow" class="nav-dropdown">
-          <div class="nav-dropdown-wrapper">
-            <div class="nav-dropdown-top">
-              <div
-                v-for="(subitem, index) in item.CHILDREN"
-                :key="index"
-                class="nav-dropdown-content"
-                :class="[subitem.TYPE === 1 && 'type1']"
-              >
-                <p class="title">{{ subitem.NAME }}</p>
-                <div class="nav-dropdown-box">
-                  <div
-                    v-for="(list, listIndex) in subitem.CHILDREN"
-                    :key="listIndex"
-                    class="item-box"
-                  >
-                    <span class="link" @click="goPath(list)">{{
-                      list.NAME
-                    }}</span>
-                    <p v-if="list.LABEL" class="desc">{{ list.LABEL }}</p>
-                    <div v-if="list.CHILDREN" class="version-info">
-                      <span
-                        v-for="(vInfo, vIdx) in list.CHILDREN"
-                        :key="vIdx"
-                        class="link"
-                        @click="goPath(vInfo)"
-                        >{{ vInfo.NAME }}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div v-if="item.ID !== 'download'" class="nav-dropdown-bottom">
-              <div
-                v-for="(item, index) in navInfo"
-                :key="index"
-                class="nav-bottom-item"
-              >
-                <p class="title">{{ item.NAME }}</p>
-                <span
-                  v-for="(list, listIndex) in item.CHILDREN"
-                  :key="listIndex"
-                  class="link"
-                  @click="goPath(list)"
-                  >{{ list.NAME }}</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
+        <span>{{ item.NAME }}</span>
+        
       </li>
     </ul>
   </nav>
   <!-- 下拉菜单 -->
+  <Teleport to="body">
+    <div
+      class="nav-dropdown"
+      :class="[{ 'slide-animation': !isShow }]"
+      @mouseenter="navDropdownShow"
+      @mouseleave="navMouseleave"
+    >
+      <div class="nav-dropdown-wrapper">
+        <div class="nav-dropdown-top">
+          <div
+            v-for="(item, index) in currentNavItems"
+            :key="index"
+            class="nav-dropdown-content"
+            :class="[item.TYPE === 1 && 'type1']"
+          >
+            <p class="title">{{ item.NAME }}</p>
+            <div class="nav-dropdown-box">
+              <div
+                v-for="(list, listIndex) in item.CHILDREN"
+                :key="listIndex"
+                class="item-box"
+              >
+                <span class="link" @click="goPath(list)">{{ list.NAME }}</span>
+                <p v-if="list.LABEL" class="desc">{{ list.LABEL }}</p>
+                <div v-if="list.CHILDREN" class="version-info">
+                  <span
+                    v-for="(vInfo, vIdx) in list.CHILDREN"
+                    :key="vIdx"
+                    class="link"
+                    @click="goPath(vInfo)"
+                    >{{ vInfo.NAME }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if="currentIndex !== 3" class="nav-dropdown-bottom">
+          <div
+            v-for="(item, index) in navInfo"
+            :key="index"
+            class="nav-bottom-item"
+          >
+            <p class="title">{{ item.NAME }}</p>
+            <span
+              v-for="(list, listIndex) in item.CHILDREN"
+              :key="listIndex"
+              class="link"
+              @click="goPath(list)"
+              >{{ list.NAME }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </Teleport>
 </template>
 
 <style lang="scss" scoped>
 .nav-dropdown {
   position: fixed;
   top: 80px;
-  left: 0;
+  left: 0%;
   right: 0;
   background-color: var(--o-color-bg2);
   z-index: 90;
@@ -169,29 +189,34 @@ watch(
   max-width: calc(100% + 16px);
   width: calc(100% + 16px);
   padding: 24px calc((100% - 1416px) / 2);
-  transform-origin: top;
-  transition: all 0.3s cubic-bezier(0.5, 0, 0.84, 0.25);
 
-  transform: scaleY(0);
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.84, 0.25);
   @media screen and (max-width: 1100px) {
     border-top: 1px solid var(--o-color-border2);
-    top: 0;
+    top: 48px;
     left: 0px;
     padding: 0;
     width: calc(100% - 164px);
     max-width: calc(100% - 164px);
     transform: translateX(164px);
-    height: calc(100%);
+    height: calc(100% - 48px);
     z-index: 190;
     box-shadow: none;
-    display: none;
   }
 
+  &.slide-animation {
+    transition-timing-function: cubic-bezier(0.16, 0.75, 0.5, 1);
+    transform: translateY(-130%);
+    @media screen and (max-width: 1100px) {
+      transform: none;
+      transform: translateX(-120%);
+    }
+  }
   .nav-dropdown-wrapper {
     @media (max-width: 1439px) {
       background: var(--o-color-bg2);
       overflow-y: auto;
-      padding: 16px;
+      padding: 0 16px;
       height: 100%;
     }
     .nav-dropdown-top {
@@ -225,6 +250,9 @@ watch(
         }
         @media (max-width: 1100px) {
           display: block;
+          &:not(:last-child) {
+            margin-bottom: 12px;
+          }
         }
         .title {
           font-size: 14px;
@@ -275,6 +303,9 @@ watch(
           max-width: 190px;
           @media (max-width: 1100px) {
             max-width: 100%;
+            &:not(:last-child) {
+              margin-bottom: 12px;
+            }
           }
         }
       }
@@ -294,7 +325,7 @@ watch(
         line-height: 22px;
         margin-bottom: 16px;
         @media (max-width: 1100px) {
-          margin-bottom: 0;
+          margin-bottom: 12px;
           font-size: 12px;
         }
       }
@@ -352,7 +383,7 @@ watch(
       display: inline-flex;
       align-items: center;
       height: 100%;
-
+      padding: 0 var(--o-spacing-h4);
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-h8);
       color: var(--o-color-text1);
@@ -360,7 +391,7 @@ watch(
       @media screen and (max-width: 1100px) {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-h3);
-
+        padding: 0 var(--o-spacing-h5);
         position: relative;
         display: block;
         height: auto;
@@ -374,29 +405,17 @@ watch(
           }
         }
       }
-      @media screen and (min-width: 1100px) {
-        &:hover {
-          color: var(--o-color-brand1);
-          z-index: 99;
-          .nav-dropdown {
-            transform: scaleY(1);
-            transition-timing-function: cubic-bezier(0.16, 0.75, 0.5, 1);
-          }
-          &::after {
-            background: var(--o-color-brand1);
-          }
-        }
-      }
-      &.active {
+
+      &:hover {
         color: var(--o-color-brand1);
-        z-index: 99;
-        .nav-dropdown {
-          display: block;
+        .sub-menu {
+          transform: translate(-50%) scaleY(1);
         }
         &::after {
           background: var(--o-color-brand1);
         }
       }
+
       &::after {
         content: '';
         position: absolute;
@@ -409,13 +428,6 @@ watch(
         @media (max-width: 1100px) {
           width: 24px;
           left: 16px;
-        }
-      }
-      .nav-link {
-        display: block;
-        padding: 0 var(--o-spacing-h4);
-        @media screen and (max-width: 1100px) {
-          padding: 0 var(--o-spacing-h6);
         }
       }
     }

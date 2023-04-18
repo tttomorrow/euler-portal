@@ -3,23 +3,22 @@ import { computed, onMounted, ref, onUnmounted, watch, nextTick } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useCommon } from '@/stores/common';
 import { useI18n } from '@/i18n';
-import { getPop } from '@/api/api-search';
-import { showGuard, logout, useStoreData, getUserAuth } from '../shared/login';
+
+import useWindowResize from '@/components/hooks/useWindowResize';
 import navFilterConfig from '@/data/common/nav-filter';
 
-// import HeaderNav from './HeaderNav.vue';
+import HeaderNav from './HeaderNav.vue';
 import HeaderNavNew from './HeaderNavNew.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
 import HeaderSearch from './HeaderSearch.vue';
+import AppLogin from './AppLogin.vue';
 
 import logo_light from '@/assets/common/header/logo.svg';
 import logo_dark from '@/assets/common/header/logo_dark.svg';
 
-import IconSearch from '~icons/app/icon-search.svg';
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconMenu from '~icons/app/icon-menu.svg';
-import IconLogin from '~icons/app/icon-login.svg';
 
 interface NavItem {
   NAME: string;
@@ -30,8 +29,8 @@ interface NavItem {
   IS_OPEN_MINISITE_WINDOW?: string;
 }
 
-const { token } = getUserAuth();
-const { guardAuthClient } = useStoreData();
+const screenWidth = ref(useWindowResize());
+const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
 const router = useRouter();
 const { lang, theme } = useData();
@@ -44,10 +43,10 @@ const navRouter = computed(() => i18n.value.common.NAV_ROUTER_CONFIG);
 const navRouterNew = computed(() => i18n.value.common.NAV_ROUTER_CONFIG_NEW);
 const navRouterNewInfo = computed(() => i18n.value.common.NAV_ROUTER_INFO);
 
-const activeNav = ref<string>();
 const logo = computed(() =>
   commonStore.theme === 'light' ? logo_light : logo_dark
 );
+
 const roterPath = ref<string>(router.route.path);
 
 // 移动菜单事件
@@ -65,6 +64,46 @@ const mobileMenuPanel = () => {
   }, 200);
 };
 
+const langShow = ref([] as any);
+watch(
+  () => router.route.path,
+  (val: string) => {
+    roterPath.value = val;
+
+    // 语言过滤
+    for (let i = 0; i < navFilterConfig.length; i++) {
+      if (val.includes(navFilterConfig[i].name)) {
+        langShow.value = navFilterConfig[i].lang;
+        break;
+      }
+      if (val === `/${lang.value}/`) {
+        langShow.value = ['zh', 'en', 'ru'];
+        break;
+      }
+    }
+  },
+  { immediate: true }
+);
+
+const toBody = ref(false);
+onMounted(() => {
+  toBody.value = true;
+  handleDefaultSelectedMobile();
+});
+onUnmounted(() => {
+  toBody.value = false;
+});
+
+// 返回首页
+const goHome = () => {
+  toBody.value = false;
+  mobileMenuIcon.value = false;
+  documentElement.classList.remove('overflow');
+  router.go(`/${lang.value}/`);
+};
+
+// 兼容非ZH
+const activeNav = ref<string>();
 const handleMenuLayer = (e: any) => {
   if (e.target.className !== 'mobile-menu-side') {
     if (mobileChildMenu.value.length === 0) {
@@ -73,7 +112,6 @@ const handleMenuLayer = (e: any) => {
     }
   }
 };
-
 // 移动端一级导航事件
 const goFirstNavMobile = (item: NavItem) => {
   mobileChildMenu.value = [];
@@ -108,27 +146,6 @@ const goSubNavMobile = (item: NavItem) => {
     });
   }
 };
-
-const langShow = ref([] as any);
-watch(
-  () => router.route.path,
-  (val: string) => {
-    roterPath.value = val;
-    // 语言过滤
-    for (let i = 0; i < navFilterConfig.length; i++) {
-      if (val.includes(navFilterConfig[i].name)) {
-        langShow.value = navFilterConfig[i].lang;
-        break;
-      }
-      if (val === `/${lang.value}/`) {
-        langShow.value = ['zh', 'en', 'ru'];
-        break;
-      }
-    }
-    mobileMenuIcon.value = false;
-  },
-  { immediate: true }
-);
 // 移动端默认选中、二级菜单
 const handleDefaultSelectedMobile = () => {
   navRouter.value.forEach((item: any) => {
@@ -141,189 +158,107 @@ const handleDefaultSelectedMobile = () => {
   });
 };
 
-const toBody = ref(false);
-onMounted(() => {
-  toBody.value = true;
-  handleDefaultSelectedMobile();
-});
-onUnmounted(() => {
-  toBody.value = false;
-});
-
-// 返回首页
-const goHome = () => {
-  toBody.value = false;
-  mobileMenuIcon.value = false;
-  documentElement.classList.remove('overflow');
-  router.go(`/${lang.value}/`);
-};
-
-const searchValue = computed(() => i18n.value.common.SEARCH);
-// 显示/移除搜索框
 const isShowBox = ref(false);
-const showSearchBox = () => {
-  commonStore.iconMenuShow = false;
-  isShowBox.value = true;
-};
 
-// 搜索抽屉
-const popList = ref<string[]>([]);
-const isShowDrawer = ref(true);
-const showDrawer = () => {
-  // isShowDrawer.value = true;
-  //热搜
-  const params = `lang=${lang.value}`;
-  getPop(params).then((res) => {
-    if (popList.value.length === 0) {
-      res.obj.forEach((item: string) => {
-        popList.value.push(item);
-      });
-    }
-  });
+const searchControl = (val: boolean) => {
+  isShowBox.value = val;
+  console.log('searchControl :>> ', val);
 };
-// 关闭搜索框
-const closeSearchBox = () => {
-  isShowBox.value = false;
-  searchInput.value = '';
-  popList.value = [];
-  commonStore.iconMenuShow = true;
-};
-// 搜索内容
-const searchInput = ref<string>('');
-const jumpToUserZone = () => {
-  const language = lang.value === 'zh' ? 'zh' : 'en';
-  const origin = import.meta.env.VITE_LOGIN_ORIGIN;
-  window.open(`${origin}/${language}/profile`, '_black');
-};
-// 搜索组件跳转链接
-const searchLink = `/${lang.value}/other/search/`;
 </script>
 
 <template>
   <header class="app-header">
     <div class="app-header-body">
       <!-- 移动端菜单图标 -->
-      <div class="mobile-menu-icon">
+      <div v-if="isMobile" class="mobile-menu-icon">
         <OIcon v-if="!mobileMenuIcon" class="icon" @click="mobileMenuPanel">
           <IconMenu />
         </OIcon>
-        <OIcon v-else class="icon" @click="mobileMenuPanel"
-          ><IconCancel
-        /></OIcon>
+        <OIcon v-else class="icon" @click="mobileMenuPanel">
+          <IconCancel />
+        </OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
       <ClientOnly>
-        <HeaderSearch
-          v-if="isShowBox"
-          :placeholder="searchValue.PLEACHOLDER"
-          :pop-list="popList"
-          :link="searchLink"
-          :is-show-drawer="isShowDrawer"
-          @click-close="closeSearchBox"
-          @focus-input="showDrawer"
-        />
-      </ClientOnly>
-
-      <ClientOnly>
-        <div v-show="!isShowBox" class="header-content">
+        <div v-show="!isShowBox" class="header-content" :class="lang">
           <div class="header-nav" :class="{ active: mobileMenuIcon }">
-            <HeaderNavNew
-              :nav-items="navRouterNew"
-              :isSwitch="mobileMenuIcon"
-              :nav-info="navRouterNewInfo"
-              :lang-show="langShow"
-            />
-            <!-- <HeaderNav :nav-items="navRouter" /> -->
-          </div>
-          <div class="header-tool">
-            <div class="header-tool-search">
-              <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
-            </div>
-            <!-- 中英文切换 -->
-            <AppLanguage :show="langShow" />
-            <AppTheme />
-          </div>
-        </div>
-      </ClientOnly>
+            <template v-if="lang === 'zh'">
+              <HeaderNavNew
+                :nav-items="navRouterNew"
+                :is-switch="mobileMenuIcon"
+                :nav-info="navRouterNewInfo"
+              />
+            </template>
+            <template v-else>
+              <HeaderNav :nav-items="navRouter" />
+            </template>
 
-      <!-- 移动端菜单   :class="{ active: mobileMenuIcon, cookie: isShowTip }"    
-      <div
-        v-if="toBody"
-        class="mobile-menu"
-        :class="{ active: mobileMenuIcon }"
-        @click="handleMenuLayer($event)"
-      >
-        <div class="mobile-menu-side">
-          <div class="mobile-nav">
-            <div
-              v-for="item in navRouter"
-              :key="item.ID"
-              class="link"
-              :class="{
-                active: activeNav === item.ID,
-              }"
-              @click.stop="goFirstNavMobile(item)"
-            >
-              {{ item.NAME }}
+            <div v-if="isMobile" class="header-tool">
+              <AppLanguage
+                :show="langShow"
+                @language-click="mobileMenuIcon = false"
+              />
+              <AppTheme />
             </div>
           </div>
-          <div class="mobile-tools">
-            <AppTheme />
-            <AppLanguage
-              :show="langShow"
-              @language-click="mobileMenuIcon = false"
-            />
-          </div>
         </div>
-        <transition name="menu-sub">
-          <div v-if="mobileChildMenu.length > 0" class="mobile-menu-content">
-            <div class="mobile-menu-list">
+        <div
+          v-if="toBody && lang !== 'zh' && isMobile"
+          class="mobile-menu"
+          :class="{ active: mobileMenuIcon }"
+          @click="handleMenuLayer($event)"
+        >
+          <div class="mobile-menu-side">
+            <div class="mobile-nav">
               <div
-                v-for="item in mobileChildMenu"
+                v-for="item in navRouter"
                 :key="item.ID"
                 class="link"
-                @click="goSubNavMobile(item)"
+                :class="{
+                  active: activeNav === item.ID,
+                }"
+                @click.stop="goFirstNavMobile(item)"
               >
                 {{ item.NAME }}
               </div>
             </div>
+            <div class="mobile-tools">
+              <AppLanguage
+                :show="langShow"
+                @language-click="mobileMenuIcon = false"
+              />
+              <AppTheme />
+            </div>
           </div>
-        </transition>
-      </div>-->
-      <!-- 移动端搜索按钮 -->
-      <div class="head-tools">
-        <div v-if="!isShowBox" class="mobile-search">
-          <OIcon class="icon" @click="showSearchBox"><IconSearch /></OIcon>
-        </div>
-        <ClientOnly>
-          <div v-if="lang !== 'ru'" class="opt-user">
-            <div v-if="token">
-              <div class="el-dropdown-link opt-info">
-                <img
-                  v-if="guardAuthClient.photo"
-                  :src="guardAuthClient.photo"
-                  class="user-img"
-                />
-                <div v-else class="user-img"></div>
-                <p class="opt-name">{{ guardAuthClient.username }}</p>
+          <transition name="menu-sub">
+            <div v-if="mobileChildMenu.length > 0" class="mobile-menu-content">
+              <div class="mobile-menu-list">
+                <div
+                  v-for="item in mobileChildMenu"
+                  :key="item.ID"
+                  class="link"
+                  @click="goSubNavMobile(item)"
+                >
+                  {{ item.NAME }}
+                </div>
               </div>
-              <ul class="menu-list">
-                <li @click="jumpToUserZone()">{{ i18n.common.USER_CENTER }}</li>
-                <li @click="logout()">{{ i18n.common.LOGOUT }}</li>
-              </ul>
             </div>
-            <div v-else class="login" @click="showGuard()">
-              <OIcon class="icon">
-                <IconLogin />
-              </OIcon>
-            </div>
-          </div>
-        </ClientOnly>
-      </div>
+          </transition>
+        </div>
+        <!-- 搜索 -->
+        <HeaderSearch @search-click="searchControl" />
+        <!-- 切换语言、网站风格 -->
+        <div v-if="!isMobile" v-show="!isShowBox" class="header-tool">
+          <AppLanguage :show="langShow" />
+          <AppTheme />
+        </div>
+
+        <!-- 登录 -->
+        <AppLogin />
+      </ClientOnly>
     </div>
   </header>
 </template>
-
 <style lang="scss" scoped>
 :deep(.el-input__wrapper) {
   background-color: var(--o-color-bg-secondary) !important;
@@ -390,31 +325,24 @@ const searchLink = `/${lang.value}/other/search/`;
     cursor: pointer;
   }
 }
-.head-tools {
-  display: flex;
-  align-items: center;
-}
-.mobile-search {
-  font-size: var(--o-font-size-h6);
-  display: none;
-  color: var(--o-color-text1);
-  @media (max-width: 1100px) {
-    display: block;
-  }
-}
+
 .header-content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
   height: 100%;
-  @media screen and (max-width: 1100px) {
-    // display: none;
+  &.en {
+    @media screen and (max-width: 1100px) {
+      display: none;
+    }
   }
+
   .header-nav {
     height: 100%;
     display: flex;
     flex: 1;
+    justify-content: space-between;
     @media screen and (max-width: 1100px) {
       width: 100%;
       position: fixed;
@@ -422,8 +350,7 @@ const searchLink = `/${lang.value}/other/search/`;
       overflow: hidden;
       opacity: 0;
       visibility: hidden;
-      border-top: 1px solid var(--o-color-division);
-      // background: rgba(0, 0, 0, 0.4);
+      border-top: 1px solid var(--o-color-border2);
       top: 48px;
       height: calc(100% - 48px);
       z-index: 999;
@@ -432,52 +359,55 @@ const searchLink = `/${lang.value}/other/search/`;
       transition-duration: 0.333s;
       transition-property: all;
       transition-timing-function: cubic-bezier(0.5, 0, 0.84, 0.25);
+      display: block;
     }
+
     &.active {
       opacity: 1;
       z-index: 1101;
       visibility: visible;
       transform: translateX(0);
-
-      // .mobile-menu-side {
-      //   left: 0;
-      //   opacity: 1;
-      //   z-index: 9;
-      // }
     }
   }
 
-  .header-tool {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    height: 100%;
-    .lang {
-      color: var(--o-color-text1);
-      letter-spacing: 0.08em;
-      font-size: 16px;
-    }
-    &-search {
-      cursor: pointer;
-    }
-    &-theme {
-      cursor: pointer;
-    }
-    @media screen and (max-width: 1100px) {
-      display: none;
-    }
-  }
   .icon {
-    font-size: 22px;
+    font-size: var(--o-font-size-h6);
     color: var(--o-color-text1);
   }
 }
-
+.header-tool {
+  display: flex;
+  gap: var(--o-spacing-h5);
+  align-items: center;
+  height: 100%;
+  margin-left: var(--o-spacing-h5);
+  .lang {
+    color: var(--o-color-text1);
+    letter-spacing: 0.08em;
+    font-size: 16px;
+  }
+  &-search {
+    cursor: pointer;
+  }
+  &-theme {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 1100px) {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 0;
+    height: auto;
+    width: 164px;
+    padding: 16px;
+  }
+}
 .mobile-menu {
   width: 100%;
   position: fixed;
   left: 0;
+  // transition: all 0.3s linear;
   overflow: hidden;
   display: flex;
   opacity: 0;
@@ -621,88 +551,5 @@ const searchLink = `/${lang.value}/other/search/`;
 .menu-sub-leave {
   opacity: 1;
   left: -100%;
-}
-.opt-user {
-  margin-left: 24px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  position: relative;
-  .opt-info {
-    display: flex;
-    align-items: center;
-    .user-img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      vertical-align: middle;
-      @media (max-width: 1100px) {
-        width: 28px;
-        height: 28px;
-      }
-    }
-    .opt-name {
-      color: var(--o-color-text1);
-      margin-left: 8px;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      width: 72px;
-      line-height: var(--o-line-height-h8);
-      @media (max-width: 1100px) {
-        display: none;
-      }
-    }
-  }
-  &:hover {
-    .menu-list {
-      display: block;
-    }
-  }
-  .menu-list {
-    display: none;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    @media (max-width: 1100px) {
-      top: 48px;
-      left: -60px;
-    }
-    background: var(--o-color-bg2);
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: var(--o-shadow-l1);
-    min-width: 78px;
-    li {
-      line-height: var(--o-line-height-h3);
-      text-align: center;
-      font-size: var(--o-font-size-text);
-      color: var(--o-color-text1);
-      border-bottom: 1px solid var(--o-color-division1);
-      padding: 0 var(--o-spacing-h5);
-      white-space: nowrap;
-      &:last-child {
-        border-bottom: 0 none;
-      }
-
-      &:hover {
-        background: var(--o-color-brand1);
-        color: var(--o-color-text2);
-      }
-      &.active {
-        color: var(--o-color-brand1);
-        background: none;
-        cursor: default;
-      }
-    }
-  }
-}
-.login {
-  .icon {
-    font-size: var(--o-font-size-h6);
-    color: var(--o-color-text1);
-    cursor: pointer;
-  }
 }
 </style>

@@ -3,14 +3,10 @@ import { onMounted, ref } from 'vue';
 import { useI18n } from '@/i18n';
 
 import AppContext from '@/components/AppContent.vue';
-import BannerLevel2 from '@/components/BannerLevel2.vue';
 import SigList from './SigList.vue';
 import SigLandscape from './SigLandscape.vue';
 
 import { getSigList } from '@/api/api-sig';
-
-import banner from '@/assets/banner/banner-sig.png';
-import illustration from '@/assets/illustrations/sig-list.png';
 
 // sig 列表数据 邮件字段采用/api/meetings 接口数据，其余字段采用 omapi
 
@@ -38,13 +34,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <BannerLevel2
-    :background-image="banner"
-    :illustration="illustration"
-    title="SIG"
-    :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
-    background-text="SIG"
-  />
   <AppContext :mobile-top="16">
     <div class="sig-ul">
       <ul>

@@ -1,23 +1,7 @@
 ---
 title: '角色说明'
+category: sig-route
 ---
-
-<script setup lang="ts">
-import { computed } from 'vue';
-import BannerLevel2 from '@/components/BannerLevel2.vue'
-import banner from '@/assets/banner/banner-sig.png';
-import illustration from '@/assets/illustrations/sig-role.png';
-
-</script>
-
-<ClientOnly>
-  <BannerLevel2
-    :background-image="banner"
-    background-text="SIG"
-    title="角色说明"
-    :illustration="illustration"
-  />
-</ClientOnly>
 
 <div class="markdown">
 
@@ -25,13 +9,11 @@ import illustration from '@/assets/illustrations/sig-role.png';
 
 本文简要描述了 openEuler 社区中贡献者角色的各种职责。大部分角色的职责限于这些 SIG(Special Interest Group)内：
 
-
-| 角色        | 职责范围（简要描述） | 要求                                                  | 定义的文件                                                |
-| :---------- | :------------------- | :---------------------------------------------------- | :-------------------------------------------------------- |
-| Contributor | 项目的贡献者         |                                                       | Gitee注册成员                                             |
-| Committer   | 审核其他成员的贡献   | SIG的积极贡献者，经验丰富，愿意投入精力参与到审核工作 | openEuler SIG拥有的存储库中sig-info.yaml文件中的Commiter条目。   |
-| Maintainer  | 项目Owner            | 经验丰富，富有责任心、出色的技术能力和管理能力        | openEuler SIG拥有的存储库中sig-info.yaml文件中的Maintainer条目。 |
-
+| 角色        | 职责范围（简要描述） | 要求                                                   | 定义的文件                                                            |
+| :---------- | :------------------- | :----------------------------------------------------- | :-------------------------------------------------------------------- |
+| Contributor | 项目的贡献者         |                                                        | Gitee 注册成员                                                        |
+| Committer   | 审核其他成员的贡献   | SIG 的积极贡献者，经验丰富，愿意投入精力参与到审核工作 | openEuler SIG 拥有的存储库中 sig-info.yaml 文件中的 Commiter 条目。   |
+| Maintainer  | 项目 Owner           | 经验丰富，富有责任心、出色的技术能力和管理能力         | openEuler SIG 拥有的存储库中 sig-info.yaml 文件中的 Maintainer 条目。 |
 
 说明：Maintainer 和 Committer 在 Gitee 的权限上不做区分，两者的区分主要是集中在 SIG 治理的管理范围上。详细可以见下面的描述。
 
@@ -129,7 +111,7 @@ import illustration from '@/assets/illustrations/sig-role.png';
 - 作为主要审阅者至少参与了 12 次 PR 的审阅
 - 审阅或合并至少 30 个基本 PR 到代码库
 - 熟悉代码库
-- 可以自我提名，也可以由子项目Maintainer提名，并且没有其他子项目Maintainer的反对
+- 可以自我提名，也可以由子项目 Maintainer 提名，并且没有其他子项目 Maintainer 的反对
 
 ### 责任与权力
 

@@ -2,13 +2,13 @@
 import { ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
 
-import whitePaperData from '@/data/showcase/showcase';
+import technicalData from '@/data/showcase/technical-while-paper';
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import NotFound from '@/NotFound.vue';
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner/banner-community.png';
-import search from '@/assets/illustrations/white-paper.png';
+import technicalIll from '@/assets/illustrations/technical-white-paper.png';
 
 const i18n = useI18n();
 
@@ -19,28 +19,22 @@ const currentPage = ref(1);
 const pageSize = ref(12);
 
 const randerPaperList = computed(() => {
-  if (whitePaperData.length > pageSize.value) {
-    return whitePaperData.slice(
+  if (technicalData.length > pageSize.value) {
+    return technicalData.slice(
       (currentPage.value - 1) * pageSize.value,
       currentPage.value * pageSize.value
     );
   } else {
-    return whitePaperData;
+    return technicalData;
   }
 });
 
 // 数据总条数
-const total = computed(() => {
-  return whitePaperData.length;
-});
+const total = computed(() => technicalData.length);
 // 分页器总页数
-const totalPage = computed(() => {
-  return Math.ceil(total.value / pageSize.value);
-});
+const totalPage = computed(() => Math.ceil(total.value / pageSize.value));
 
-const paginationVisible = computed(() => {
-  return totalPage.value > 1 ? true : false;
-});
+const paginationVisible = computed(() => (totalPage.value > 1 ? true : false));
 // 根据滚动位置移动端tag吸顶
 
 // 移动端翻页事件
@@ -64,8 +58,8 @@ const downloadPaper = (path: string) => {
   <BannerLevel2
     :background-image="banner"
     background-text="COMMNUNITY"
-    :title="userCaseData.whilePaper"
-    :illustration="search"
+    :title="userCaseData.technicalWhilePaper"
+    :illustration="technicalIll"
   />
   <div class="user-case">
     <div class="case-list">
