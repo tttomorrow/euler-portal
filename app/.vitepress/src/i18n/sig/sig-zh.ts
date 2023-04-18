@@ -478,4 +478,18 @@ export default {
       },
     ],
   },
+  SIG_CENTER_LIST: [
+    {
+      NAME: 'SIG申请流程',
+      PATH: '/sig/sig-guidance/',
+    },
+    {
+      NAME: 'SIG角色说明',
+      PATH: '/sig/role-description/',
+    },
+    {
+      NAME: 'SIG会议指南',
+      PATH: '/sig/meeting-guide/',
+    },
+  ],
 };

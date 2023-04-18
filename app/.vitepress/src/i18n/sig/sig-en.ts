@@ -486,4 +486,14 @@ export default {
       },
     ],
   },
+  SIG_CENTER_LIST: [
+    {
+      NAME: 'Set Up',
+      PATH: '/sig/sig-guidance/',
+    },
+    {
+      NAME: 'SIG Community Member',
+      PATH: '/sig/role-description/',
+    },
+  ],
 };

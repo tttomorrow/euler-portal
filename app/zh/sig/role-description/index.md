@@ -1,8 +1,23 @@
 ---
 title: '角色说明'
-category: sig-route
 ---
 
+<script setup lang="ts">
+import { computed } from 'vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue'
+import banner from '@/assets/banner/banner-sig.png';
+import illustration from '@/assets/illustrations/sig-role.png';
+
+</script>
+
+<ClientOnly>
+  <BannerLevel2
+    :background-image="banner"
+    background-text="SIG"
+    title="角色说明"
+    :illustration="illustration"
+  />
+</ClientOnly>
 <div class="markdown">
 
 ### 社区成员

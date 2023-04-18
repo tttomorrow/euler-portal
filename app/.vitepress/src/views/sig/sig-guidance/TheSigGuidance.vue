@@ -4,6 +4,10 @@ import { useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import AppContext from '@/components/AppContent.vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+
+import banner from '@/assets/banner/banner-sig.png';
+import illustration from '@/assets/illustrations/sig-guidance.png';
 
 import sig1 from '@/assets/category/sig/guidance/sig1.png';
 import sig2 from '@/assets/category/sig/guidance/sig2.png';
@@ -21,6 +25,12 @@ const language = configData.lang;
 </script>
 
 <template>
+  <BannerLevel2
+    :background-image="banner"
+    background-text="SIG"
+    :title="i18n.sig.GUIDANCE_LIST.GUIDE.TITLE"
+    :illustration="illustration"
+  />
   <AppContext :pc-top="40">
     <div class="application">
       <div class="middle">

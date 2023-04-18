@@ -1,6 +1,5 @@
 ---
 title: '查看SIG'
-category: sig-route
 ---
 
 <script setup lang="ts">

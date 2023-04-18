@@ -1,6 +1,5 @@
 ---
 title: '申请流程'
-category: sig-route
 ---
 
 <script setup lang="ts">

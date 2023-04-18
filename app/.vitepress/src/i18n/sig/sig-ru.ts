@@ -485,4 +485,10 @@ export default {
       },
     ],
   },
+  SIG_CENTER_LIST: [
+    {
+      NAME: 'Списки SIG',
+      PATH: '/sig/sig-guidance/',
+    },
+  ],
 };
