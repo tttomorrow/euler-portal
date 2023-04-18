@@ -19,7 +19,7 @@ downloadList.pop();
 const activeVersion = ref(downloadList[0].NAME);
 
 function handleSelectChange() {
-  history.pushState(null, '', `version=${activeVersion.value}`);
+  history.pushState(null, '', `?version=${activeVersion.value}`);
 }
 onMounted(() => {
   activeVersion.value = decodeURIComponent(getUrlParam('version'));
