@@ -478,6 +478,7 @@ export default {
       },
     ],
   },
+  SIG_CENTER: 'SIG中心',
   SIG_CENTER_LIST: [
     {
       NAME: 'SIG申请流程',

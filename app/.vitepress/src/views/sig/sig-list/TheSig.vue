@@ -42,7 +42,7 @@ onMounted(() => {
 });
 
 const handlerSigClick = (path: string) => {
-  router.go(`/${lang.value}/${path}`);
+  router.go(`/${lang.value + path}`);
 };
 </script>
 
@@ -50,7 +50,7 @@ const handlerSigClick = (path: string) => {
   <BannerLevel2
     :background-image="banner"
     :illustration="illustration"
-    title="SIG中心"
+    :title="i18n.sig.SIG_CENTER"
     :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
     background-text="SIG"
   />
