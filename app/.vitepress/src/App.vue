@@ -11,7 +11,6 @@ import AppFooter from '@/components/AppFooter.vue';
 import LayoutBlog from '@/layouts/LayoutBlog.vue';
 import LayoutNews from '@/layouts/LayoutNews.vue';
 import LayoutShowcase from '@/layouts/LayoutShowcase.vue';
-import LayoutSigRoute from '@/layouts/LayoutSigRoute.vue';
 import LayoutMigration from '@/layouts/LayoutMigration.vue';
 import LayoutAboutUs from '@/layouts/LayoutAboutUs.vue';
 import LayoutDownload from './layouts/LayoutDownload.vue';
@@ -20,9 +19,7 @@ import LayoutEvent from './layouts/LayoutEvent.vue';
 import categories from '@/data/common/category';
 import { setStoreData } from './shared/login';
 
-const { frontmatter } = useData();
-
-const { lang } = useData();
+const { frontmatter, lang } = useData();
 
 const locale = computed(() => {
   return lang.value === 'zh' ? zhCn : en;
@@ -37,7 +34,6 @@ const compMapping: {
   migration: LayoutMigration,
   'about-us': LayoutAboutUs,
   download: LayoutDownload,
-  'sig-route': LayoutSigRoute,
   event: LayoutEvent,
 };
 
@@ -50,7 +46,7 @@ const isCustomLayout = computed(() => {
 const comp = computed(() => {
   return compMapping[frontmatter.value.category];
 });
- 
+
 // cookies使用提示
 const isCookieTip = ref(false);
 function onCookieClick() {

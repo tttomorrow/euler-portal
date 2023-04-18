@@ -9,9 +9,9 @@ import navFilterConfig from '@/data/common/nav-filter';
 
 import HeaderNav from './HeaderNav.vue';
 import HeaderNavNew from './HeaderNavNew.vue';
+import HeaderSearch from './HeaderSearch.vue';
 import AppTheme from './AppTheme.vue';
 import AppLanguage from './AppLanguage.vue';
-import HeaderSearch from './HeaderSearch.vue';
 import AppLogin from './AppLogin.vue';
 
 import logo_light from '@/assets/common/header/logo.svg';
@@ -25,18 +25,16 @@ interface NavItem {
   PATH: string;
   ID: string;
   CHILDREN: NavItem;
-  IS_OPEN_WINDOW?: number;
-  IS_OPEN_MINISITE_WINDOW?: string;
+  LABEL?: string;
 }
 
 const screenWidth = ref(useWindowResize());
 const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
 const router = useRouter();
-const { lang, theme } = useData();
+const { lang } = useData();
 const i18n = useI18n();
 const commonStore = useCommon();
-const documentElement = document.documentElement;
 
 // 导航数据
 const navRouter = computed(() => i18n.value.common.NAV_ROUTER_CONFIG);
@@ -58,7 +56,7 @@ const mobileMenuPanel = () => {
   toBody.value = true;
   setTimeout(() => {
     mobileMenuIcon.value = !mobileMenuIcon.value;
-    documentElement.classList.toggle('overflow');
+    document.documentElement.classList.toggle('overflow');
     activeNav.value = '';
     handleDefaultSelectedMobile();
   }, 200);
@@ -98,7 +96,7 @@ onUnmounted(() => {
 const goHome = () => {
   toBody.value = false;
   mobileMenuIcon.value = false;
-  documentElement.classList.remove('overflow');
+  document.documentElement.classList.remove('overflow');
   router.go(`/${lang.value}/`);
 };
 
@@ -108,7 +106,7 @@ const handleMenuLayer = (e: any) => {
   if (e.target.className !== 'mobile-menu-side') {
     if (mobileChildMenu.value.length === 0) {
       mobileMenuIcon.value = false;
-      documentElement.classList.remove('overflow');
+      document.documentElement.classList.remove('overflow');
     }
   }
 };
@@ -120,26 +118,20 @@ const goFirstNavMobile = (item: NavItem) => {
   } else {
     mobileMenuIcon.value = false;
     router.go('/' + lang.value + item.PATH);
-    documentElement.classList.remove('overflow');
+    document.documentElement.classList.remove('overflow');
   }
   activeNav.value = item.ID;
 };
 
 // 移动端二级导航事件
 const goSubNavMobile = (item: NavItem) => {
-  if (item.IS_OPEN_WINDOW) {
-    window.open(theme.value.docsUrl + item.PATH);
-    return;
-  }
-  if (item.IS_OPEN_MINISITE_WINDOW) {
+  if (item.PATH.startsWith('https')) {
     window.open(item.PATH);
     return;
-  }
-
-  if (item.PATH) {
+  } else if (item.PATH) {
     setTimeout(() => {
       mobileMenuIcon.value = false;
-      documentElement.classList.remove('overflow');
+      document.documentElement.classList.remove('overflow');
     }, 200);
     nextTick(() => {
       router.go('/' + lang.value + item.PATH);
@@ -162,7 +154,6 @@ const isShowBox = ref(false);
 
 const searchControl = (val: boolean) => {
   isShowBox.value = val;
-  console.log('searchControl :>> ', val);
 };
 </script>
 
@@ -171,11 +162,9 @@ const searchControl = (val: boolean) => {
     <div class="app-header-body">
       <!-- 移动端菜单图标 -->
       <div v-if="isMobile" class="mobile-menu-icon">
-        <OIcon v-if="!mobileMenuIcon" class="icon" @click="mobileMenuPanel">
-          <IconMenu />
-        </OIcon>
-        <OIcon v-else class="icon" @click="mobileMenuPanel">
-          <IconCancel />
+        <OIcon class="icon" @click="mobileMenuPanel">
+          <IconMenu v-if="!mobileMenuIcon" />
+          <IconCancel v-else />
         </OIcon>
       </div>
       <img class="logo" alt="openEuler logo" :src="logo" @click="goHome" />
