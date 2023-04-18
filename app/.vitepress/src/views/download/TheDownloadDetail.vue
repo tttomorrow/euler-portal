@@ -17,6 +17,10 @@ const { lang } = useData();
 const downloadList: any = lodash.cloneDeep(i18n.value.download.COMMUNITY_LIST);
 downloadList.pop();
 const activeVersion = ref(downloadList[0].NAME);
+
+function handleSelectChange() {
+  history.pushState(null, '', `version=${activeVersion.value}`);
+}
 onMounted(() => {
   activeVersion.value = decodeURIComponent(getUrlParam('version'));
 });
@@ -40,7 +44,11 @@ onMounted(() => {
       <div class="select-box">
         <span class="lable">{{ i18n.download.VERSION }}</span>
         <ClientOnly>
-          <OSelect v-model="activeVersion" class="select-version">
+          <OSelect
+            v-model="activeVersion"
+            @change="handleSelectChange"
+            class="select-version"
+          >
             <OOption
               v-for="itemData in downloadList"
               :key="itemData.NAME"
