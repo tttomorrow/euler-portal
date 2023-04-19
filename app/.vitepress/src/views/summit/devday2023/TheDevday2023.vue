@@ -7,7 +7,7 @@ import AppContext from '@/components/AppContent.vue';
 import SummitBanner from './components/SummitBanner.vue';
 import SummitSchedule from './components/SummitSchedule.vue';
 import SummitPartner from './components/SummitPartner.vue';
-// import SummitLive from './components/SummitLive.vue';
+import SummitLive from './components/SummitLive.vue';
 import SummitGuests from './components/SummitGuests.vue';
 
 import liveLightImg from './img/live.png';
@@ -15,7 +15,6 @@ import liveDarkImg from './img/live-dark.png';
 
 import summitData from './data';
 import { getEasyeditorInfo } from '@/api/api-easyeditor';
-import { getUrlParams } from '@/shared/utils';
 
 const commonStore = useCommon();
 const liveImg = computed(() =>
@@ -72,7 +71,7 @@ watch(
   }
 );
 // 控制直播
-// const isLiverShow = ref(0);
+const isLiverShow = ref(0);
 
 // 埋点统计
 function setAdvertisedData() {
@@ -98,7 +97,7 @@ onMounted(() => {
     <div class="detail">
       <p v-for="item in summitData.detail" :key="item">{{ item }}</p>
     </div>
-    <!-- <div class="liver">
+    <div class="liver">
       <h3 class="title-bar">{{ summitData.liver.title }}</h3>
       <ClientOnly>
         <SummitLive
@@ -108,7 +107,7 @@ onMounted(() => {
           class="liver-box"
         />
       </ClientOnly>
-    </div> -->
+    </div>
     <div class="agenda" :class="{ 'min-height': showIndex === 1 }">
       <h3>会议日程</h3>
       <div class="date">

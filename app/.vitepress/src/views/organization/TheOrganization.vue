@@ -54,12 +54,23 @@ onUnmounted(() => {
     </li>
   </ul>
   <div class="council">
-    <h2 :id="organizationData.idList[0]">
+    <h2 :id="organizationData.idList[0]" class="council-counselor">
       {{ organizationData.memberList[0].title }}
     </h2>
     <div class="council-list">
+      <OrganizationGuests
+        :lecturer-list="organizationData.memberList[0].list"
+        shape="circle"
+        :web-columns-num="6"
+        :mobile-columns-num="2"
+      ></OrganizationGuests>
+    </div>
+    <h2 :id="organizationData.idList[1]" class="council-Committee">
+      {{ organizationData.memberList[1].title }}
+    </h2>
+    <div class="council-list">
       <div
-        v-for="item in organizationData.memberList[0].list"
+        v-for="item in organizationData.memberList[1].list"
         :key="item.title"
         class="council-item"
       >
@@ -72,12 +83,12 @@ onUnmounted(() => {
         ></OrganizationGuests>
       </div>
     </div>
-    <h2 :id="organizationData.idList[1]" class="council-technology">
-      {{ organizationData.memberList[1].title }}
+    <h2 :id="organizationData.idList[2]" class="council-technology">
+      {{ organizationData.memberList[2].title }}
     </h2>
     <ul class="council-list list-technology">
       <li
-        v-for="(item, index) in organizationData.memberList[1].list"
+        v-for="(item, index) in organizationData.memberList[2].list"
         :key="index"
         data-aos="fade-up"
       >
@@ -98,17 +109,6 @@ onUnmounted(() => {
         </p>
       </li>
     </ul>
-    <h2 :id="organizationData.idList[2]" class="council-counselor">
-      {{ organizationData.memberList[2].title }}
-    </h2>
-    <div class="council-list">
-      <OrganizationGuests
-        :lecturer-list="organizationData.memberList[2].list"
-        shape="circle"
-        :web-columns-num="6"
-        :mobile-columns-num="2"
-      ></OrganizationGuests>
-    </div>
     <h2 :id="organizationData.idList[3]" class="council-counselor">
       {{ organizationData.memberList[3].title }}
     </h2>
@@ -131,6 +131,7 @@ onUnmounted(() => {
         :mobile-columns-num="2"
       ></OrganizationGuests>
     </div>
+
     <p class="notice">{{ organizationData.notice }}</p>
   </div>
 </template>
@@ -174,7 +175,7 @@ onUnmounted(() => {
 .council {
   max-width: 1380px;
   padding-right: 200px;
-  margin: 0 auto;
+  margin: 40px auto 0;
   @media screen and (max-width: 1720px) {
     padding-right: 0px;
   }
@@ -189,6 +190,7 @@ onUnmounted(() => {
       line-height: var(--o-line-height-h8);
     }
   }
+  .council-Committee,
   .council-technology,
   .council-counselor {
     margin-top: var(--o-spacing-h2);

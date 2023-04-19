@@ -6,7 +6,7 @@ export default {
       liveId: 12562,
       liveTestId: 12561,
       id: 0,
-      name: '主会场',
+      name: 'openEuler Developer Day 2023',
     },
     {
       liveId: 12563,

@@ -158,11 +158,11 @@ const filterRepositoryList = () => {
         (!slectedInfo.sigSelected ||
           item.sig_name === slectedInfo.sigSelected) &&
         (!slectedInfo.repositiorySelected ||
-          item.repos.find((subItem: string) => {
+          item.repos?.find((subItem: string) => {
             return subItem === slectedInfo.repositiorySelected;
           })) &&
         (!slectedInfo.maintainerSelected ||
-          item.maintainers.find((subItem: string) => {
+          item.maintainers?.find((subItem: string) => {
             return subItem === slectedInfo.maintainerSelected;
           }))
       );

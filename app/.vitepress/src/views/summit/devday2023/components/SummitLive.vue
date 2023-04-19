@@ -2,7 +2,8 @@
 import { ref, onMounted } from 'vue';
 import useWindowResize from '@/components/hooks/useWindowResize';
 
-import liveActiveBg from '../img/live-active-bg.png';
+import liveActiveBg from '../img/live/live-btn.png';
+import liveActiveBgLong from '../img/live/live-btn-long.png';
 
 interface RenderData {
   id: number;
@@ -79,11 +80,6 @@ function messageEvent() {
         data = event.data;
       }
       setHeight(data);
-      // if (data.state !== undefined) {
-
-      // }
-      // console.log(state.value, '收到', data);
-      // console.log('收到' + event.origin + '消息:' + data);
     },
     false
   );
@@ -98,6 +94,7 @@ onMounted(async () => {
 
 // 背景
 const ActiveBg = `url(${liveActiveBg})`;
+const ActiveBgLong = `url(${liveActiveBgLong})`;
 
 const liveRoom = ref(renderData[0].name);
 const changeLive = (val: number): void => {
@@ -184,17 +181,17 @@ const changeLive = (val: number): void => {
       justify-content: space-between;
       &.odd2022 {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 16px;
         flex-direction: row;
         width: 100%;
         flex-wrap: wrap;
         justify-content: space-between;
         .link-main {
-          grid-column: 1/5;
+          grid-column: 1/7;
         }
       }
-      &.odd2021 {
+      &.odd2023 {
         display: grid;
         grid-template-columns: 300px 1fr 300px;
         grid-template-areas: 'a b c';
@@ -230,6 +227,9 @@ const changeLive = (val: number): void => {
         p {
           color: #fff;
         }
+      }
+      .link-active.link-main {
+        background: v-bind('ActiveBgLong') no-repeat center/cover;
       }
     }
   }

@@ -34,12 +34,14 @@ import xiongwei from '@/assets/category/organization/xiongwei.png';
 import lvcongqing from '@/assets/category/organization/lvcongqing.png';
 import zhaochuanfeng from '@/assets/category/organization/zhaochuanfeng.png';
 
-import huotaiwen from '@/assets/category/organization/huotaiwen.png';
-import liaoxiangke from '@/assets/category/organization/liaoxiangke.png';
-import lusouqun from '@/assets/category/organization/lusouqun.png';
-import niguangnan from '@/assets/category/organization/niguangnan.png';
-import wanghuaimin from '@/assets/category/organization/wanghuaimin.png';
-import zhouminghui from '@/assets/category/organization/zhouminghui.png';
+// 专家委员会
+import huotaiwen from '@/assets/category/organization/expert/huotaiwen.png';
+import liaoxiangke from '@/assets/category/organization/expert/liaoxiangke.png';
+import lusouqun from '@/assets/category/organization/expert/lusouqun.png';
+import niguangnan from '@/assets/category/organization/expert/niguangnan.png';
+import wanghuaimin from '@/assets/category/organization/expert/wanghuaimin.png';
+import zhouminghui from '@/assets/category/organization/expert/zhouminghui.png';
+import wuheshuan from '@/assets/category/organization/expert/wuheshuan.png';
 
 import liangbin from '@/assets/category/organization/brand/liangbin.png';
 import huangzhaowei from '@/assets/category/organization/brand/huangzhaowei.png';
@@ -63,6 +65,46 @@ import zuchen from '@/assets/category/organization/user/zuchen.png';
 export default {
   zh: {
     memberList: [
+      {
+        title: 'openEuler 委员会顾问专家委员会',
+        list: [
+          {
+            img: lusouqun,
+            name: '陆首群',
+            position: ['中国开源软件联盟名誉主席', '原国务院信息办常务副主任'],
+          },
+          {
+            img: niguangnan,
+            name: '倪光南',
+            position: ['中国工程院院士'],
+          },
+          {
+            img: liaoxiangke,
+            name: '廖湘科',
+            position: ['中国工程院院士'],
+          },
+          {
+            img: wanghuaimin,
+            name: '王怀民',
+            position: ['中国科学院院士'],
+          },
+          {
+            img: wuheshuan,
+            name: '邬贺铨',
+            position: ['中国科学院院士'],
+          },
+          {
+            img: zhouminghui,
+            name: '周明辉',
+            position: ['北京大学计算机系教授', '北大博雅特聘教授'],
+          },
+          {
+            img: huotaiwen,
+            name: '霍太稳',
+            position: ['极客邦科技创始人兼CEO'],
+          },
+        ],
+      },
       {
         title: '2023-2024 年 openEuler 委员会',
         list: [
@@ -422,41 +464,6 @@ export default {
           },
         ],
       },
-      {
-        title: 'openEuler 委员会顾问专家委员会',
-        list: [
-          {
-            img: huotaiwen,
-            name: '霍太稳',
-            position: ['极客邦科技创始人兼CEO'],
-          },
-          {
-            img: liaoxiangke,
-            name: '廖湘科',
-            position: ['中国工程院院士'],
-          },
-          {
-            img: lusouqun,
-            name: '陆首群',
-            position: ['中国开源软件联盟名誉主席', '原国务院信息办常务副主任'],
-          },
-          {
-            img: niguangnan,
-            name: '倪光南',
-            position: ['中国工程院院士'],
-          },
-          {
-            img: wanghuaimin,
-            name: '王怀民',
-            position: ['中国科学院院士'],
-          },
-          {
-            img: zhouminghui,
-            name: '周明辉',
-            position: ['北京大学计算机系教授', '北大博雅特聘教授'],
-          },
-        ],
-      },
     ],
     idList: [
       '委员会',
@@ -469,6 +476,52 @@ export default {
   },
   en: {
     memberList: [
+      {
+        title: 'Advisory Committee of the openEuler Committee',
+        list: [
+          {
+            img: lusouqun,
+            name: 'Lu Shouqun',
+            position: [
+              'Honorary Chairman of China OSS Promotion Union',
+              'Former Executive Deputy Director of the Informatization Office of the State Council',
+            ],
+          },
+          {
+            img: niguangnan,
+            name: 'Ni Guangnan',
+            position: ['Academician of Chinese Academy of Engineering'],
+          },
+          {
+            img: liaoxiangke,
+            name: 'Liao Xiangke',
+            position: ['Academicians of Chinese Academy of Engineering'],
+          },
+          {
+            img: wanghuaimin,
+            name: 'Wang Huaimin',
+            position: ['Academician of Chinese Academy of Sciences'],
+          },
+          {
+            img: wuheshuan,
+            name: 'Wu Hequan',
+            position: ['Academician of Chinese Academy of Sciences'],
+          },
+          {
+            img: zhouminghui,
+            name: 'Zhou Minghui',
+            position: [
+              'Professor of School of Computer Science, Peking University',
+              'Peking University Boya Chair Professor',
+            ],
+          },
+          {
+            img: huotaiwen,
+            name: 'Huo Taiwen',
+            position: ['Founder and CEO of Geekbang Technology'],
+          },
+        ],
+      },
       {
         title: 'openEuler Committee 2023-2024',
         list: [
@@ -831,47 +884,6 @@ export default {
             name: 'Zhu Chen',
             position: ['Committee member'],
             email: 'zhuchen@kylinos.cn',
-          },
-        ],
-      },
-      {
-        title: 'Advisory Committee of the openEuler Committee',
-        list: [
-          {
-            img: huotaiwen,
-            name: 'Huo Taiwen',
-            position: ['Founder and CEO of Geekbang Technology'],
-          },
-          {
-            img: liaoxiangke,
-            name: 'Liao Xiangke',
-            position: ['Academicians of Chinese Academy of Engineering'],
-          },
-          {
-            img: lusouqun,
-            name: 'Lu Shouqun',
-            position: [
-              'Honorary Chairman of China OSS Promotion Union',
-              'Former Executive Deputy Director of the Informatization Office of the State Council',
-            ],
-          },
-          {
-            img: niguangnan,
-            name: 'Ni Guangnan',
-            position: ['Academician of Chinese Academy of Engineering'],
-          },
-          {
-            img: wanghuaimin,
-            name: 'Wang Huaimin',
-            position: ['Academician of Chinese Academy of Sciences'],
-          },
-          {
-            img: zhouminghui,
-            name: 'Zhou Minghui',
-            position: [
-              'Professor of School of Computer Science, Peking University',
-              'Peking University Boya Chair Professor',
-            ],
           },
         ],
       },
