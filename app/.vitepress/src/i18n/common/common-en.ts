@@ -498,12 +498,12 @@ export default {
               LABEL: "openEuler's donors",
               PATH: '/community/member/',
             },
-            {
-              NAME: 'Policies',
-              LABEL:
-                'Charter, regulations, code of conduct, and license policies',
-              PATH: '/community/charter/',
-            },
+            // {
+            //   NAME: 'Policies',
+            //   LABEL:
+            //     'Charter, regulations, code of conduct, and license policies',
+            //   PATH: '/community/charter/',
+            // },
             {
               NAME: 'Statistics',
               LABEL: 'Community statistics',

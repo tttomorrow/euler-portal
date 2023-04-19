@@ -67,7 +67,7 @@ const emits = defineEmits(['nav-click']);
 const goPath = (item: NavItem, flag: boolean) => {
   if (item.PATH === '') return;
   // 处理下载传参mac不响应问题
-  if (!flag) {
+  if (!flag || item.PATH.startsWith('/download/')) {
     window.open('/' + lang.value + item.PATH, '_self');
     return;
   }
@@ -110,16 +110,16 @@ watch(
           <div class="nav-dropdown-wrapper">
             <div class="nav-dropdown-top">
               <div
-                v-for="(subitem, index) in item.CHILDREN"
-                :key="index"
+                v-for="subitem in item.CHILDREN"
+                :key="subitem.NAME"
                 class="nav-dropdown-content"
                 :class="[subitem.TYPE === 1 && 'type1']"
               >
                 <p class="title">{{ subitem.NAME }}</p>
                 <div class="nav-dropdown-box">
                   <div
-                    v-for="(list, listIndex) in subitem.CHILDREN"
-                    :key="listIndex"
+                    v-for="list in subitem.CHILDREN"
+                    :key="list.NAME"
                     class="item-box"
                   >
                     <span
@@ -137,8 +137,8 @@ watch(
                     </p>
                     <div v-if="list.CHILDREN" class="version-info">
                       <span
-                        v-for="(vInfo, vIdx) in list.CHILDREN"
-                        :key="vIdx"
+                        v-for="vInfo in list.CHILDREN"
+                        :key="vInfo.NAME"
                         class="link"
                         @click="goPath(vInfo, false)"
                         >{{ vInfo.NAME }}
@@ -150,14 +150,14 @@ watch(
             </div>
             <div v-if="item.ID !== 'download'" class="nav-dropdown-bottom">
               <div
-                v-for="(item, index) in navInfo"
-                :key="index"
+                v-for="nitem in navInfo"
+                :key="nitem.NAME"
                 class="nav-bottom-item"
               >
-                <p class="title">{{ item.NAME }}</p>
+                <p class="title">{{ nitem.NAME }}</p>
                 <span
-                  v-for="(list, listIndex) in item.CHILDREN"
-                  :key="listIndex"
+                  v-for="list in nitem.CHILDREN"
+                  :key="list.PATH"
                   class="link"
                   @click="goPath(list, true)"
                   >{{ list.NAME }}</span
@@ -322,7 +322,6 @@ watch(
         color: var(--o-color-brand1);
         line-height: var(--o-line-height-h8);
         font-size: var(--o-font-size-h8);
-        margin-bottom: 4px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -354,6 +353,7 @@ watch(
         overflow: hidden;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+        margin-top: 4px;
         @media (max-width: 1100px) {
           display: block;
         }
