@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, computed } from 'vue';
+import { reactive, computed, ref, onMounted, onUpdated } from 'vue';
 import { useData } from 'vitepress';
 
 import { useI18n } from '@/i18n';
@@ -31,17 +31,24 @@ const tabsData = reactive({
   tabPane: [
     {
       label: computed(() => {
-        return i18n.value.download.VERSION;
+        return i18n.value.download.COMMUNITY;
       }),
       name: 'download',
     },
     {
       label: computed(() => {
-        return i18n.value.download.ARCHITECTURE;
+        return i18n.value.download.BUSINESS;
       }),
-      name: 'architecture',
+      name: 'commercial-release',
     },
   ],
+});
+const activeTab = ref('');
+onMounted(() => {
+  onUpdated(() => {
+    const pathList = router.route.path.split('/');
+    activeTab.value = pathList[pathList.length - 2];
+  });
 });
 </script>
 <template>
@@ -50,6 +57,7 @@ const tabsData = reactive({
     <AppRouterTemplate
       :banner-data="bannerData"
       :tabs-data="tabsData"
+      :active-tab="activeTab"
       @click-tab="clickTab"
     />
     <Content />

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { useData, useRouter } from 'vitepress';
 import { useI18n } from '@/i18n';
 
 import AppContext from '@/components/AppContent.vue';
@@ -12,6 +13,8 @@ import { getSigList } from '@/api/api-sig';
 import banner from '@/assets/banner/banner-sig.png';
 import illustration from '@/assets/illustrations/sig-list.png';
 
+import IconRight from '~icons/app/icon-arrow-right.svg';
+
 // sig 列表数据 邮件字段采用/api/meetings 接口数据，其余字段采用 omapi
 
 interface SIGLIST {
@@ -23,6 +26,8 @@ interface SIGLIST {
   owners: string;
 }
 
+const { lang } = useData();
+const router = useRouter();
 const i18n = useI18n();
 const oldSigList = ref<SIGLIST[]>([]);
 
@@ -35,13 +40,17 @@ onMounted(() => {
       throw new Error(error);
     });
 });
+
+const handlerSigClick = (path: string) => {
+  router.go(`/${lang.value + path}`);
+};
 </script>
 
 <template>
   <BannerLevel2
     :background-image="banner"
     :illustration="illustration"
-    title="SIG"
+    :title="i18n.sig.SIG_CENTER"
     :subtitle="i18n.sig.SIG_DESCRIPTION.MEANING"
     background-text="SIG"
   />
@@ -64,9 +73,46 @@ onMounted(() => {
         </OTabPane>
       </OTabs>
     </div>
+    <div class="sig-center-list">
+      <OCard
+        v-for="item in i18n.sig.SIG_CENTER_LIST"
+        :key="item.PATH"
+        shadow="hover"
+        @click="handlerSigClick(item.PATH)"
+      >
+        <OButton class="post-btn" type="text" animation size="nomral">
+          {{ item.NAME }}
+          <template #suffixIcon>
+            <OIcon class="right-icon"><IconRight /></OIcon>
+          </template>
+        </OButton>
+      </OCard>
+    </div>
   </AppContext>
 </template>
 <style lang="scss" scoped>
+.sig-center-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin-top: var(--o-spacing-h1);
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+  :deep(.el-card__body) {
+    background: url(@/assets/category/sig/illustration.png) no-repeat right
+      center/60%;
+  }
+}
+.o-icon {
+  font-size: var(--o-font-size-h7);
+  color: var(--o-color-brand1);
+}
 .sig-ul {
   font-size: var(--o-font-size-text);
   font-weight: 400;

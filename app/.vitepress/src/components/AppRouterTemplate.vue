@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
 import { useRouter } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
-defineProps({
+const props = defineProps({
   bannerData: {
     type: Object,
     default: () => {
@@ -17,12 +17,22 @@ defineProps({
       return {};
     },
   },
+  activeTab: {
+    type: String,
+    default: '',
+  },
 });
 const router = useRouter();
 
 const active = router.route.path.split('/');
 
-const activeRoute = ref(active[active.length - 2]);
+const activeRoute = computed(() => {
+  if (props.activeTab) {
+    return props.activeTab;
+  } else {
+    return active[active.length - 2];
+  }
+});
 
 const emits = defineEmits(['click-tab']);
 

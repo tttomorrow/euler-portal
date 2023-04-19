@@ -5,7 +5,7 @@ const categories: string[] = [
   'migration',
   'about-us',
   'download',
-  'showcase-route',
+  'sig-route',
   'event',
 ];
 

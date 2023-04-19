@@ -1,46 +1,26 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useData } from 'vitepress';
-import IconCancel from '~icons/app/icon-cancel.svg';
+import { useCommon } from '@/stores/common';
+import { useI18n } from '@/i18n';
+import { getPop } from '@/api/api-search';
 
-const props = defineProps({
-  placeholder: {
-    type: String,
-    default: '',
-  },
-  link: {
-    type: String,
-    default: '',
-  },
-  popList: {
-    type: Array,
-    default: () => {
-      return [];
-    },
-  },
-  isShowDrawer: {
-    type: Boolean,
-    default: false,
-  },
-});
+import IconCancel from '~icons/app/icon-cancel.svg';
+import IconSearch from '~icons/app/icon-search.svg';
+
 const { lang } = useData();
-const emits = defineEmits(['click-close', 'focus-input']);
+const emits = defineEmits(['focus-input', 'search-click']);
 const isShowDrawer = ref(false);
 const searchInput = ref('');
-// 搜索抽屉
-const showDrawer = () => {
-  if (props.isShowDrawer) {
-    isShowDrawer.value = true;
-    emits('focus-input');
-  }
-};
-const hiddenSearchBox = () => {
-  emits('click-close');
-};
+const i18n = useI18n();
+// 搜索组件跳转链接
+const searchLink = `/${lang.value}/other/search/`;
+
+const commonStore = useCommon();
+
 // 搜索事件
 function handleSearchEvent() {
-  window.open(`${props.link}?search=${searchInput.value}`, '_self');
-  hiddenSearchBox();
+  window.open(`${searchLink}?search=${searchInput.value}`, '_self');
 }
 // 点击热搜标签
 const onTopSearchItemClick = (val: any) => {
@@ -50,18 +30,51 @@ const onTopSearchItemClick = (val: any) => {
 const topSearch = computed(() =>
   lang.value === 'zh' ? '热门搜索' : 'Top search'
 );
+
+const searchValue = computed(() => i18n.value.common.SEARCH);
+// 显示/移除搜索框
+const isShowBox = ref(false);
+const showSearchBox = () => {
+  commonStore.iconMenuShow = false;
+  isShowBox.value = true;
+  emits('search-click', isShowBox.value);
+};
+
+// // 搜索抽屉
+const popList = ref<string[]>([]);
+const showDrawer = () => {
+  //热搜
+  const params = `lang=${lang.value}`;
+  getPop(params).then((res) => {
+    if (popList.value.length === 0) {
+      res.obj.forEach((item: string) => {
+        popList.value.push(item);
+      });
+      isShowDrawer.value = true;
+    }
+  });
+};
+// 关闭搜索框
+const closeSearchBox = () => {
+  isShowBox.value = false;
+  searchInput.value = '';
+  popList.value = [];
+  commonStore.iconMenuShow = true;
+  isShowDrawer.value = false;
+  emits('search-click', isShowBox.value);
+};
 </script>
 <template>
-  <div class="header-search">
+  <div v-if="isShowBox" class="header-search">
     <div class="header-search-box">
       <OSearch
         v-model="searchInput"
-        :placeholder="placeholder"
+        :placeholder="searchValue.PLEACHOLDER"
         @change="handleSearchEvent"
         @focus="showDrawer"
       >
         <template #suffix>
-          <OIcon class="close" @click="hiddenSearchBox"><IconCancel /></OIcon>
+          <OIcon class="close" @click="closeSearchBox"><IconCancel /></OIcon>
         </template>
       </OSearch>
     </div>
@@ -83,8 +96,20 @@ const topSearch = computed(() =>
       </div>
     </div>
   </div>
+  <div v-else class="header-search-icon">
+    <OIcon class="icon" @click="showSearchBox">
+      <IconSearch />
+    </OIcon>
+  </div>
 </template>
 <style lang="scss" scoped>
+.icon {
+  font-size: var(--o-font-size-h6);
+  color: var(--o-color-text1);
+}
+.header-search-icon {
+  cursor: pointer;
+}
 .header-search {
   position: relative;
   width: 900px;

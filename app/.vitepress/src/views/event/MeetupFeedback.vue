@@ -1,14 +1,10 @@
 <script lang="ts" setup>
-import { computed, ref, reactive, onMounted } from 'vue';
-import useWindowResize from '@/components/hooks/useWindowResize';
-import { showGuard, getUserAuth, useStoreData } from '@/shared/login';
+import { ref } from 'vue';
+import { showGuard, getUserAuth } from '@/shared/login';
 
 import AppContent from '@/components/AppContent.vue';
 
 const { token } = getUserAuth();
-
-const screenWidth = ref(useWindowResize());
-const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
 const feedbackUrl = `https://wenjuan.feishu.cn/m/cfm?t=s0rcoBn7lZKi-4km2`;
 
@@ -18,6 +14,7 @@ const height = ref(1710);
 <template>
   <AppContent :pc-top="40" :mobile-top="12">
     <div class="feedback-wrap">
+      <h2>openEuler Meetup成果反馈</h2>
       <template v-if="token">
         <iframe
           ref="feedbackPage"
@@ -34,7 +31,6 @@ const height = ref(1710);
       </template>
       <template v-else>
         <div class="auth-box">
-          <h2>openEuler Meetup成果反馈</h2>
           <OButton type="primary" @click="showGuard()">
             请先登录后，在填写
           </OButton>

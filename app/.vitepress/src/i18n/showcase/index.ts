@@ -9,6 +9,7 @@ export default {
     type: '案例类别',
     showcase: '案例',
     whilePaper: '行业白皮书',
+    technicalWhilePaper: '技术白皮书',
     find1: '发现',
     find2: '个案例研究',
     button: '阅读案例',

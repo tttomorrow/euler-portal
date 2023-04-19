@@ -2,10 +2,8 @@
 import { ref, watch, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
-import { throttle } from 'lodash';
-
-import AppLanguage from './AppLanguage.vue';
-
+import { debounce } from 'lodash';
+import IconOutLink from '~icons/app/icon-out-link.svg';
 const props = defineProps({
   navItems: {
     type: Object,
@@ -25,12 +23,6 @@ const props = defineProps({
       return {};
     },
   },
-  langShow: {
-    type: Object,
-    default() {
-      return [];
-    },
-  },
 });
 
 interface NavItem {
@@ -43,68 +35,50 @@ interface NavItem {
 }
 
 const router = useRouter();
-const { lang, theme } = useData();
-const activeItem = ref(router.route.path);
+const { lang } = useData();
 const screenWidth = ref(useWindowResize());
-
 const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
 // nav 鼠标滑过事件
-const isShow = ref(false);
+const isShow = ref(true);
 const navActive = ref('');
-const toggleSubDebounced = throttle(
-  function (index: string, item: any) {
+const toggleSubDebounced = debounce(
+  function (item: any | null) {
     if (isMobile.value) return;
-    navActive.value = item.ID;
-    isShow.value = true;
-    currentIndex.value = Number(index);
+    if (item === null) {
+      navActive.value = '';
+    } else {
+      navActive.value = item.ID;
+      isShow.value = true;
+    }
   },
-  100,
+  150,
   {
     trailing: true,
   }
 );
+
 const handleMobileNavClick = (index: string, item: any) => {
   if (!isMobile.value) return;
   navActive.value = item.ID;
-  currentIndex.value = Number(index);
-};
-const navMouseleave = throttle(
-  function () {
-    if (isMobile.value) return;
-    navActive.value = '';
-    isShow.value = false;
-  },
-  300,
-  {
-    trailing: true,
-  }
-);
-
-const navDropdownShow = () => {
-  if (isMobile.value) return;
-  isShow.value = true;
 };
 
-const currentIndex = ref(0);
-const currentNavItems = computed(
-  () => props.navItems[currentIndex.value].CHILDREN
-);
-
-const goPath = (item: NavItem) => {
-  if (item.IS_OPEN_WINDOW) {
-    window.open(theme.value.docsUrl + item.PATH);
+const emits = defineEmits(['nav-click']);
+const goPath = (item: NavItem, flag: boolean) => {
+  if (item.PATH === '') return;
+  // 处理下载传参mac不响应问题
+  if (!flag) {
+    window.open('/' + lang.value + item.PATH, '_self');
     return;
   }
-  if (item.IS_OPEN_MINISITE_WINDOW) {
+  if (item.PATH.startsWith('https')) {
     window.open(item.PATH);
     return;
-  }
-
-  if (item.PATH) {
+  } else {
     router.go('/' + lang.value + item.PATH);
     navActive.value = '';
   }
+  emits('nav-click');
   isShow.value = false;
 };
 
@@ -112,92 +86,97 @@ watch(
   () => props.isSwitch,
   (val: boolean) => {
     isShow.value = val;
+    navActive.value = 'user';
   }
 );
 </script>
 
 <template>
   <nav class="o-nav">
-    <ul class="o-nav-list" @mouseleave="navMouseleave">
+    <ul class="o-nav-list">
       <li
         v-for="(item, index) in navItems"
         :key="item.ID"
         :class="{
-          active: currentIndex === Number(index),
+          active: navActive === item.ID,
         }"
-        @mouseenter="toggleSubDebounced(index, item)"
-        @click="handleMobileNavClick(index, item)"
+        @mouseenter="toggleSubDebounced(item)"
+        @mouseleave="toggleSubDebounced(null)"
       >
-        <span>{{ item.NAME }} </span>
-      </li>
-    </ul>
-    <div v-if="isMobile" class="lang-switch">
-      <AppLanguage :show="langShow" />
-    </div>
-  </nav>
-  <!-- 下拉菜单 -->
-  <Teleport to="body">
-    <div
-      class="nav-dropdown"
-      :class="[{ 'slide-animation': !isShow }]"
-      @mouseenter="navDropdownShow"
-      @mouseleave="navMouseleave"
-    >
-      <div class="nav-dropdown-wrapper">
-        <div class="nav-dropdown-top">
-          <div
-            v-for="(item, index) in currentNavItems"
-            :key="index"
-            class="nav-dropdown-content"
-            :class="[item.TYPE === 1 && 'type1']"
-          >
-            <p class="title">{{ item.NAME }}</p>
-            <div class="nav-dropdown-box">
+        <span class="nav-link" @click="handleMobileNavClick(index, item)">{{
+          item.NAME
+        }}</span>
+        <div v-if="isShow" :class="['nav-dropdown', item.ID]">
+          <div class="nav-dropdown-wrapper">
+            <div class="nav-dropdown-top">
               <div
-                v-for="(list, listIndex) in item.CHILDREN"
-                :key="listIndex"
-                class="item-box"
+                v-for="(subitem, index) in item.CHILDREN"
+                :key="index"
+                class="nav-dropdown-content"
+                :class="[subitem.TYPE === 1 && 'type1']"
               >
-                <span @click="goPath(list)" class="link">{{ list.NAME }}</span>
-                <p v-if="list.LABEL" class="desc">{{ list.LABEL }}</p>
-                <div v-if="list.CHILDREN" class="version-info">
-                  <span
-                    v-for="vInfo in list.CHILDREN"
-                    @click="goPath(vInfo)"
-                    class="link"
-                    >{{ vInfo.NAME }}
-                  </span>
+                <p class="title">{{ subitem.NAME }}</p>
+                <div class="nav-dropdown-box">
+                  <div
+                    v-for="(list, listIndex) in subitem.CHILDREN"
+                    :key="listIndex"
+                    class="item-box"
+                  >
+                    <span
+                      :class="[{ 'no-link': list.PATH === '' }, 'link']"
+                      @click="goPath(list, true)"
+                    >
+                      {{ list.NAME }}
+                      <OIcon v-if="list.PATH.startsWith('https')" class="icon">
+                        <IconOutLink />
+                      </OIcon>
+                    </span>
+
+                    <p v-if="list.LABEL" class="desc">
+                      {{ list.LABEL }}
+                    </p>
+                    <div v-if="list.CHILDREN" class="version-info">
+                      <span
+                        v-for="(vInfo, vIdx) in list.CHILDREN"
+                        :key="vIdx"
+                        class="link"
+                        @click="goPath(vInfo, false)"
+                        >{{ vInfo.NAME }}
+                      </span>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </div>
+            <div v-if="item.ID !== 'download'" class="nav-dropdown-bottom">
+              <div
+                v-for="(item, index) in navInfo"
+                :key="index"
+                class="nav-bottom-item"
+              >
+                <p class="title">{{ item.NAME }}</p>
+                <span
+                  v-for="(list, listIndex) in item.CHILDREN"
+                  :key="listIndex"
+                  class="link"
+                  @click="goPath(list, true)"
+                  >{{ list.NAME }}</span
+                >
               </div>
             </div>
           </div>
         </div>
-        <div v-if="currentIndex !== 3" class="nav-dropdown-bottom">
-          <div
-            v-for="(item, index) in navInfo"
-            :key="index"
-            class="nav-bottom-item"
-          >
-            <p class="title">{{ item.NAME }}</p>
-            <span
-              v-for="(list, listIndex) in item.CHILDREN"
-              :key="listIndex"
-              @click="goPath(list)"
-              class="link"
-              >{{ list.NAME }}</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </Teleport>
+      </li>
+    </ul>
+  </nav>
+  <!-- 下拉菜单 -->
 </template>
 
 <style lang="scss" scoped>
 .nav-dropdown {
   position: fixed;
   top: 80px;
-  left: 0%;
+  left: 0;
   right: 0;
   background-color: var(--o-color-bg2);
   z-index: 90;
@@ -205,34 +184,25 @@ watch(
 
   max-width: calc(100% + 16px);
   width: calc(100% + 16px);
-  margin-left: 0rem;
   padding: 24px calc((100% - 1416px) / 2);
-  color: #fff;
-  border: 0 none;
+  transform-origin: top;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.84, 0.25);
 
-  transition-duration: 0.333s;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.5, 0, 0.84, 0.25);
+  transform: scaleY(0);
   @media screen and (max-width: 1100px) {
-    top: 48px;
+    border-top: 1px solid var(--o-color-border2);
+    top: 0;
     left: 0px;
     padding: 0;
     width: calc(100% - 164px);
     max-width: calc(100% - 164px);
     transform: translateX(164px);
-    height: calc(100% - 48px);
+    height: calc(100%);
     z-index: 190;
     box-shadow: none;
+    display: none;
   }
 
-  &.slide-animation {
-    transition-timing-function: cubic-bezier(0.16, 0.75, 0.5, 1);
-    transform: translateY(-130%);
-    @media screen and (max-width: 1100px) {
-      transform: none;
-      transform: translateX(-120%);
-    }
-  }
   .nav-dropdown-wrapper {
     @media (max-width: 1439px) {
       background: var(--o-color-bg2);
@@ -244,6 +214,9 @@ watch(
       display: flex;
       gap: 120px;
       @media (max-width: 1439px) {
+        gap: 48px;
+      }
+      @media (max-width: 1100px) {
         display: block;
       }
     }
@@ -254,6 +227,10 @@ watch(
       gap: 120px;
       padding: 16px 0 0;
       @media (max-width: 1439px) {
+        gap: 48px;
+        margin-top: 16px;
+      }
+      @media (max-width: 1100px) {
         display: block;
         margin-top: 16px;
       }
@@ -261,10 +238,9 @@ watch(
         display: flex;
         gap: 24px;
         @media (max-width: 1439px) {
+        }
+        @media (max-width: 1100px) {
           display: block;
-          &:not(:last-child) {
-            margin-bottom: 12px;
-          }
         }
         .title {
           font-size: 14px;
@@ -283,9 +259,12 @@ watch(
           line-height: 24px;
           display: inline-block;
           cursor: pointer;
+          &:hover {
+            color: var(--o-color-brand2);
+          }
           @media (max-width: 1100px) {
             display: block;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
           }
         }
       }
@@ -302,7 +281,6 @@ watch(
           padding-bottom: 12px;
         }
       }
-
       .nav-dropdown-box {
         display: grid;
         gap: 16px 0;
@@ -311,7 +289,6 @@ watch(
         }
         .item-box {
           max-width: 190px;
-
           @media (max-width: 1100px) {
             max-width: 100%;
             &:not(:last-child) {
@@ -330,31 +307,56 @@ watch(
         }
       }
       .title {
-        font-size: 14px;
+        line-height: var(--o-line-height-text);
+        font-size: var(--o-font-size-text);
         font-weight: 400;
         color: var(--o-color-text4);
-        line-height: 22px;
         margin-bottom: 16px;
         @media (max-width: 1100px) {
-          margin-bottom: 12px;
+          margin-bottom: 16px;
           font-size: 12px;
         }
       }
       .link {
-        font-size: 16px;
         font-weight: 500;
         color: var(--o-color-brand1);
-        line-height: 24px;
+        line-height: var(--o-line-height-h8);
+        font-size: var(--o-font-size-h8);
         margin-bottom: 4px;
         cursor: pointer;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        @media (max-width: 1100px) {
+          line-height: var(--o-line-height-text);
+          font-size: var(--o-font-size-text);
+        }
+        .o-icon {
+          margin-left: var(--o-spacing-h9);
+          color: var(--o-color-text1);
+          font-size: 14px;
+        }
+        &:hover {
+          color: var(--o-color-brand2);
+        }
+        &.no-link {
+          color: var(--o-color-text1) !important;
+          cursor: default;
+        }
       }
       .desc {
         font-size: 12px;
         font-weight: 400;
         color: var(--o-color-text1);
         line-height: 18px;
-        text-align: justify;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        @media (max-width: 1100px) {
+          display: block;
+        }
       }
       &.type1 {
         flex-basis: 420px;
@@ -366,6 +368,22 @@ watch(
     }
   }
 }
+html[lang='en'] .o-nav .o-nav-list > li {
+  .user {
+    .nav-dropdown-top {
+      .nav-dropdown-content:first-child {
+        flex-basis: 190px;
+        .nav-dropdown-box {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+  .version-info {
+    display: block !important;
+  }
+}
+
 .o-nav {
   height: 100%;
   position: relative;
@@ -391,15 +409,12 @@ watch(
       display: inline-flex;
       align-items: center;
       height: 100%;
-      padding: 0 var(--o-spacing-h4);
+
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-h8);
       color: var(--o-color-text1);
-      cursor: pointer;
       @media screen and (max-width: 1100px) {
-        font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-h3);
-        padding: 0 var(--o-spacing-h5);
         position: relative;
         display: block;
         height: auto;
@@ -413,17 +428,29 @@ watch(
           }
         }
       }
-
-      &:hover {
+      @media screen and (min-width: 1100px) {
+        &:hover {
+          color: var(--o-color-brand1);
+          z-index: 99;
+          .nav-dropdown {
+            transform: scaleY(1);
+            transition-timing-function: cubic-bezier(0.16, 0.75, 0.5, 1);
+          }
+          &::after {
+            background: var(--o-color-brand1);
+          }
+        }
+      }
+      &.active {
         color: var(--o-color-brand1);
-        .sub-menu {
-          transform: translate(-50%) scaleY(1);
+        z-index: 99;
+        .nav-dropdown {
+          display: block;
         }
         &::after {
           background: var(--o-color-brand1);
         }
       }
-
       &::after {
         content: '';
         position: absolute;
@@ -438,8 +465,16 @@ watch(
           left: 16px;
         }
       }
+      .nav-link {
+        display: block;
+        padding: 0 var(--o-spacing-h4);
+        cursor: pointer;
+        @media screen and (max-width: 1100px) {
+          padding: 0 var(--o-spacing-h6);
+          font-size: var(--o-font-size-text);
+        }
+      }
     }
   }
 }
 </style>
-x``

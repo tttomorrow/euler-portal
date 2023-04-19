@@ -3,9 +3,12 @@ import { ref, computed } from 'vue';
 import { useI18n } from '@/i18n';
 
 import whitePaperData from '@/data/showcase/showcase';
-
 import AppPaginationMo from '@/components/AppPaginationMo.vue';
 import NotFound from '@/NotFound.vue';
+import BannerLevel2 from '@/components/BannerLevel2.vue';
+
+import banner from '@/assets/banner/banner-community.png';
+import search from '@/assets/illustrations/white-paper.png';
 
 const i18n = useI18n();
 
@@ -58,6 +61,12 @@ const downloadPaper = (path: string) => {
 </script>
 
 <template>
+  <BannerLevel2
+    :background-image="banner"
+    background-text="COMMNUNITY"
+    :title="userCaseData.whilePaper"
+    :illustration="search"
+  />
   <div class="user-case">
     <div class="case-list">
       <OCard
