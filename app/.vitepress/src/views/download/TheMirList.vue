@@ -143,7 +143,6 @@ onMounted(async () => {
   <SeoBox :seo-data="seoConfig[lang]?.mirrorList" />
   <BannerLevel2
     :background-image="banner"
-    background-text="DOWNLOAD"
     :title="i18n.download.MIRROR_ALL.TITLE"
     :illustration="illustration"
   />
