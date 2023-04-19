@@ -208,7 +208,7 @@ export default {
           IS_OPEN_MINISITE_WINDOW: 1,
         },
         {
-          NAME: 'radiaTest',
+          NAME: 'EulerTest',
           ID: 'radiaTest',
           PATH: 'https://radiatest.openeuler.org',
           IS_OPEN_MINISITE_WINDOW: 1,

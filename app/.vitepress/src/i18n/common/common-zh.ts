@@ -558,7 +558,7 @@ export default {
               PATH: 'https://compliance.openeuler.org/',
             },
             {
-              NAME: 'radiaTest',
+              NAME: 'EulerTest',
               LABEL: '基于openEuler环境开发的测试管理平台',
               PATH: 'https://radiatest.openeuler.org',
             },
