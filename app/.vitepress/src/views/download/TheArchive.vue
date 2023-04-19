@@ -204,7 +204,6 @@ const changeCurrentPageMoblie = (val: string) => {
       :bread1="i18n.download.OUTSIDE_TITLE"
       :bread2="i18n.download.HISTORY"
       :link1="'/' + lang + '/download/'"
-      class="bread"
     />
     <div class="download">
       <OSearch
@@ -451,10 +450,12 @@ const changeCurrentPageMoblie = (val: string) => {
 
 <style lang="scss" scoped>
 .download {
+  
   .filter-card {
     margin: var(--o-spacing-h4) 0;
     background-color: var(--o-color-bg2);
     padding: var(--o-spacing-h5) var(--o-spacing-h2);
+    box-shadow: var(--o-shadow-l2);
     @media screen and (max-width: 1100px) {
       padding: 0;
       font-size: var(--o-font-size-tip);
