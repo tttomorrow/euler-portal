@@ -67,7 +67,7 @@ const emits = defineEmits(['nav-click']);
 const goPath = (item: NavItem, flag: boolean) => {
   if (item.PATH === '') return;
   // 处理下载传参mac不响应问题
-  if (!flag) {
+  if (!flag || item.PATH.startsWith('/download/')) {
     window.open('/' + lang.value + item.PATH, '_self');
     return;
   }
