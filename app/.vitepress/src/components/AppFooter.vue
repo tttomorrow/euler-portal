@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, toRefs, ref } from 'vue';
+import { computed, toRefs, ref, onMounted } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import { useI18n } from '@/i18n';
 import AppContent from '@/components/AppContent.vue';
@@ -35,6 +35,7 @@ import CodeImgZgz from '@/assets/common/footer/code-zgz.png';
 // float
 import floatLight from '@/assets/common/footer/float_light.png';
 import floatDark from '@/assets/common/footer/float_dark.png';
+import floatQr from '@/assets/common/footer/float-img.png';
 
 import IconCancel from '~icons/app/icon-cancel.svg';
 import IconRobot_light from '~icons/footer/icon-robot_light.svg';
@@ -57,6 +58,7 @@ const isDark = computed(() => {
 const { lang, frontmatter } = useData();
 const i18n = useI18n();
 const router = useRouter();
+const isQrTipVisible = ref(false);
 
 // 友情链接
 const linksData = {
@@ -237,8 +239,15 @@ function onCookieClick() {
   emits('click-cookie');
 }
 
+function handleCloseQr() {
+  isQrTipVisible.value = false;
+  localStorage.setItem('euler-feedback', 'false');
+}
 // 控制issue浮窗在峰会页面不显示
 const isFloShow = computed(() => !router.route.path.includes('summit-list'));
+onMounted(() => {
+  isQrTipVisible.value = localStorage.getItem('euler-feedback') ? false : true;
+});
 </script>
 
 <template>
@@ -334,6 +343,15 @@ const isFloShow = computed(() => !router.route.path.includes('summit-list'));
           </div>
         </div>
       </AppContent>
+    </div>
+    <div
+      v-show="lang === 'zh' && isQrTipVisible && isFloShow"
+      class="float-left float-right"
+    >
+      <a href="https://huaweicompute.wjx.cn/vm/rxE9GVe.aspx#1" target="_blank">
+        <img :src="floatQr" alt="" />
+      </a>
+      <span class="close" @click.stop="handleCloseQr" title="close"></span>
     </div>
     <div
       v-show="lang === 'zh' && isFloShow"
@@ -535,7 +553,6 @@ $color: #fff;
       order: -1;
     }
   }
-
   .footer-right {
     flex: 1;
     .code-box {
@@ -709,6 +726,23 @@ $color: #fff;
 
     @media screen and (max-width: 1200px) {
       display: none;
+    }
+  }
+  .float-left {
+    left: 40px;
+    right: inherit;
+    box-shadow: none;
+    .close {
+      cursor: pointer;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: 0;
+      right: 0;
+      z-index: 11;
+    }
+    img {
+      width: 150px;
     }
   }
   .dark-nav {
