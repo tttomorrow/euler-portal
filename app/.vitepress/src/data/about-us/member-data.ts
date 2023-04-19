@@ -29,6 +29,8 @@ import dianxing_dark from '@/assets/category/member/dianxing_dark.png';
 import liantong_dark from '@/assets/category/member/liantong_dark.png';
 import yidong_dark from '@/assets/category/member/yidong_dark.png';
 import zhongyin_dark from '@/assets/category/member/zhongyin_dark.png';
+import zhongruan_dark from '@/assets/category/member/zhongruan_dark.png';
+import zhongruan_light from '@/assets/category/member/zhongruan_light.png';
 
 import turbolinux_dark from '@/assets/category/member/turbolinux_dark.png';
 import baolande_dark from '@/assets/category/member/baolande_dark.png';
@@ -60,12 +62,10 @@ export default {
         {
           img_light: qilinSoft_light,
           img_dark: qilinSoft_dark,
-          noIcon: true,
         },
         {
           img_light: tongxin_light,
           img_dark: tongxin_dark,
-          noIcon: true,
         },
       ],
     },
@@ -111,6 +111,11 @@ export default {
         {
           img_light: turbolinux_light,
           img_dark: turbolinux_dark,
+          noIcon: true,
+        },
+        {
+          img_light: zhongruan_light,
+          img_dark: zhongruan_dark,
         },
       ],
     },
