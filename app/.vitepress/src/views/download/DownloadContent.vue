@@ -104,18 +104,28 @@ const onScenarioTagClick = (select: string) => {
   activeScenario.value = select;
 };
 //TODO: 控制不能组合的tag的禁用
-let tempTag = '';
+const tempTag = ref('');
+function setTempTag() {
+  let flag = true;
+  contentData.value[0].DETAILED_LINK.forEach((item: any) => {
+    if (item.ARCH === activeArch.value) {
+      if (flag) {
+        tempTag.value = item.SCENARIO;
+        flag = false;
+      }
+    }
+  });
+}
 function isDisable(tag: string) {
   let flag = false;
   contentData.value[0].DETAILED_LINK.forEach((item: any) => {
     if (item.ARCH === activeArch.value && item.SCENARIO === tag) {
       flag = true;
-      tempTag = tag;
     }
   });
   if (!flag) {
     if (activeScenario.value === tag) {
-      activeScenario.value = tempTag;
+      activeScenario.value = tempTag.value;
     }
   }
   return !flag;
@@ -127,12 +137,22 @@ const activeMirrorLink: any = ref([]);
 const mirrorList: any = ref([]);
 const moreMirrorList: any = ref([]);
 function setActiveMirror() {
-  tableData.value.forEach(() => {
-    const temp = lodash.cloneDeep(mirrorList.value);
-    temp[0].NameSpend = temp[0].Name + ' (' + temp[0].NetworkBandwidth + 'Mb/s)';
-    activeMirror.value.push(temp[0].NameSpend);
-    activeMirrorLink.value.push(temp[0].HttpURL);
-  });
+  activeMirror.value = [];
+  activeMirrorLink.value = [];
+  if (mirrorList.value[0]) {
+    tableData.value.forEach(() => {
+      const temp = lodash.cloneDeep(mirrorList.value);
+      temp[0].NameSpend =
+        temp[0].Name + ' (' + temp[0].NetworkBandwidth + 'Mb/s)';
+      activeMirror.value.push(temp[0].NameSpend);
+      activeMirrorLink.value.push(temp[0].HttpURL);
+    });
+  } else {
+    tableData.value.forEach(() => {
+      activeMirror.value.push(contentData.value[0].GET_ISO_URL);
+      activeMirrorLink.value.push(contentData.value[0].GET_ISO_URL);
+    });
+  }
 }
 function getTableData() {
   tableData.value = [];
@@ -145,7 +165,6 @@ function getTableData() {
     }
   });
   if (
-    mirrorList.value[0] &&
     !activeMirror.value[0] &&
     !activeMirrorLink.value[0] &&
     tableData.value[0]
@@ -156,42 +175,56 @@ function getTableData() {
 async function getMirrorList() {
   try {
     const mirrorData = await selectMirror(contentData.value[0].VERSION);
-    for (let i = 0; i < mirrorData.MirrorList.length; i++) {
-      for (let j = i; j < mirrorData.MirrorList.length; j++) {
-        if (
-          mirrorData.MirrorList[i].NetworkBandwidth <
-          mirrorData.MirrorList[j].NetworkBandwidth
-        ) {
-          [mirrorData.MirrorList[i], mirrorData.MirrorList[j]] = [
-            mirrorData.MirrorList[j],
-            mirrorData.MirrorList[i],
-          ];
+    mirrorList.value = [];
+    moreMirrorList.value = [];
+    if (mirrorData) {
+      for (let i = 0; i < mirrorData.MirrorList.length; i++) {
+        for (let j = i; j < mirrorData.MirrorList.length; j++) {
+          if (
+            mirrorData.MirrorList[i].NetworkBandwidth <
+            mirrorData.MirrorList[j].NetworkBandwidth
+          ) {
+            [mirrorData.MirrorList[i], mirrorData.MirrorList[j]] = [
+              mirrorData.MirrorList[j],
+              mirrorData.MirrorList[i],
+            ];
+          }
         }
       }
+      mirrorData.MirrorList.forEach((item: any) => {
+        item.NameSpend = item.Name + ' (' + item.NetworkBandwidth + 'Mb/s)';
+      });
+      mirrorList.value = lodash.cloneDeep(mirrorData.MirrorList.splice(0, 3));
+      moreMirrorList.value = lodash.cloneDeep(mirrorData.MirrorList);
+    } else {
+      mirrorList.value = [];
+      moreMirrorList.value = [];
     }
-    mirrorData.MirrorList.forEach((item: any) => {
-      item.NameSpend = item.Name +' (' + item.NetworkBandwidth + 'Mb/s)';
-    });
-    mirrorList.value = lodash.cloneDeep(mirrorData.MirrorList.splice(0, 3));
-    moreMirrorList.value = lodash.cloneDeep(mirrorData.MirrorList);
   } catch (e: any) {
     throw new Error(e);
   }
 }
 onMounted(async () => {
-  await getMirrorList();
   setTagList();
   getTableData();
   watch(activeArch, function () {
     getTableData();
+    setTempTag();
   });
   watch(activeScenario, function () {
     getTableData();
   });
-  watch(version, function () {
-    setTagList();
-    getTableData();
-  });
+  watch(
+    version,
+    async function () {
+      await getMirrorList();
+      setTagList();
+      getTableData();
+    },
+    {
+      immediate: true,
+    }
+  );
   watch(tableData, function () {
     setActiveMirror();
   });
@@ -618,6 +651,21 @@ function setShowIndex(index: number) {
     @media (max-width: 1100px) {
       margin-top: var(--o-spacing-h4);
     }
+    :deep(.el-scrollbar) {
+      tr {
+        &:hover {
+          background-color: var(--o-color-bg2);
+        }
+      }
+    }
+    :deep(.el-table__inner-wrapper) {
+      &::before{
+        background-color: #e5e5e5;
+      }
+    }
+    :deep(.o-table.el-table) {
+      box-shadow: none;
+    }
     h3 {
       text-align: center;
       font-size: var(--o-font-size-h5);
@@ -754,6 +802,7 @@ function setShowIndex(index: number) {
             }
           }
           :deep(.el-select) {
+            position: relative;
             .el-input__wrapper {
               background-color: transparent;
               border: none;
@@ -765,6 +814,12 @@ function setShowIndex(index: number) {
                 vertical-align: top;
                 line-height: auto;
                 height: 16px;
+                position: relative;
+                top: -2px;
+              }
+              .el-input__suffix {
+                position: relative;
+                top: -2px;
               }
             }
           }

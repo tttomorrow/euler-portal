@@ -58,7 +58,7 @@ export default {
   APPROVE_MIRROR: '推荐镜像仓',
   MORE_MIRROR: '更多镜像仓',
   ALL_MIRROR: '查看全部镜像仓',
-  EMPTY_TIP:'暂无数据',
+  EMPTY_TIP: '暂无数据',
   // 新增 end
 
   VERSION: '版本',

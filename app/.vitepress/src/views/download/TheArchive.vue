@@ -62,7 +62,6 @@ const setTagArch = () => {
   });
   tagArch.value.unshift(i18n.value.download.ALL_DATA);
   activeArch.value = tagArch.value[0];
-  console.log(tagArch.value);
 };
 function onArchTagClick(index: number, item: string) {
   activeArch.value = item;
@@ -419,7 +418,7 @@ const changeCurrentPageMoblie = (val: string) => {
       <!-- mobild -->
 
       <!-- 页码 -->
-      <div class="page-box" v-if="total">
+      <div v-if="total" class="page-box">
         <ClientOnly>
           <OPagination
             v-if="!isMobile"

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, } from 'vue';
+import { computed } from 'vue';
 import { useRouter } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
