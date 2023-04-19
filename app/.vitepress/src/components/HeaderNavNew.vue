@@ -63,6 +63,7 @@ const handleMobileNavClick = (index: string, item: any) => {
   navActive.value = item.ID;
 };
 
+const emits = defineEmits(['nav-click']);
 const goPath = (item: NavItem) => {
   if (item.PATH === '') return;
   if (item.PATH.startsWith('https')) {
@@ -72,6 +73,7 @@ const goPath = (item: NavItem) => {
     router.go('/' + lang.value + item.PATH);
     navActive.value = '';
   }
+  emits('nav-click');
   isShow.value = false;
 };
 
@@ -127,7 +129,9 @@ watch(
                       </OIcon>
                     </span>
 
-                    <p v-if="list.LABEL" class="desc">{{ list.LABEL }}</p>
+                    <p v-if="list.LABEL" class="desc">
+                      {{ list.LABEL }}
+                    </p>
                     <div v-if="list.CHILDREN" class="version-info">
                       <span
                         v-for="(vInfo, vIdx) in list.CHILDREN"
@@ -282,12 +286,11 @@ watch(
         }
         .item-box {
           max-width: 190px;
-          &:not(:last-child) {
-            margin-bottom: 8px;
-          }
-
           @media (max-width: 1100px) {
             max-width: 100%;
+            &:not(:last-child) {
+              margin-bottom: 12px;
+            }
           }
         }
       }
@@ -301,26 +304,30 @@ watch(
         }
       }
       .title {
-        font-size: 14px;
+        line-height: var(--o-line-height-text);
+        font-size: var(--o-font-size-text);
         font-weight: 400;
         color: var(--o-color-text4);
-        line-height: 22px;
         margin-bottom: 16px;
         @media (max-width: 1100px) {
-          margin-bottom: 8px;
+          margin-bottom: 16px;
           font-size: 12px;
         }
       }
       .link {
-        font-size: 16px;
         font-weight: 500;
         color: var(--o-color-brand1);
-        line-height: 24px;
+        line-height: var(--o-line-height-h8);
+        font-size: var(--o-font-size-h8);
         margin-bottom: 4px;
         cursor: pointer;
         display: flex;
         align-items: center;
         cursor: pointer;
+        @media (max-width: 1100px) {
+          line-height: var(--o-line-height-text);
+          font-size: var(--o-font-size-text);
+        }
         .o-icon {
           margin-left: var(--o-spacing-h9);
           color: var(--o-color-text1);
@@ -339,6 +346,14 @@ watch(
         font-weight: 400;
         color: var(--o-color-text1);
         line-height: 18px;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        @media (max-width: 1100px) {
+          display: block;
+        }
       }
       &.type1 {
         flex-basis: 420px;
@@ -396,9 +411,7 @@ html[lang='en'] .o-nav .o-nav-list > li {
       line-height: var(--o-line-height-h8);
       color: var(--o-color-text1);
       @media screen and (max-width: 1100px) {
-        font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-h3);
-
         position: relative;
         display: block;
         height: auto;
@@ -455,6 +468,7 @@ html[lang='en'] .o-nav .o-nav-list > li {
         cursor: pointer;
         @media screen and (max-width: 1100px) {
           padding: 0 var(--o-spacing-h6);
+          font-size: var(--o-font-size-text);
         }
       }
     }
