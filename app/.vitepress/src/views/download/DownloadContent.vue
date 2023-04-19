@@ -3,7 +3,7 @@ import { ref, computed, Ref, toRefs, onMounted, watch } from 'vue';
 
 import { useI18n } from '@/i18n';
 import lodash from 'lodash';
-import { useData } from 'vitepress';
+import { useRouter, useData } from 'vitepress';
 
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { ElMessage } from 'element-plus';
@@ -18,6 +18,7 @@ import IconDownload from '~icons/app/icon-download.svg';
 import IconTips from '~icons/app/icon-tips.svg';
 import IconArrowRight from '~icons/app/icon-arrow-right.svg';
 
+const router = useRouter();
 const commonStore = useCommon();
 const props = defineProps({
   version: {
@@ -61,6 +62,33 @@ const activeArch = ref('');
 const activeScenario = ref('');
 const architectureList: any = ref([]);
 const scenarioList: any = ref([]);
+function initActiveScenario() {
+  // 查看是否有携带筛选参数
+  const scenario = getUrlParam('scenario');
+  if (scenario) {
+    activeScenario.value = scenario;
+    let flag = true;
+    contentData.value[0].DETAILED_LINK.forEach((item: any) => {
+      if (item.SCENARIO === activeScenario.value && flag) {
+        activeArch.value = item.ARCH;
+        flag = false;
+      }
+    });
+  } else {
+    activeScenario.value = contentData.value[0].DETAILED_LINK[0].SCENARIO;
+    activeArch.value = contentData.value[0].DETAILED_LINK[0].ARCH;
+  }
+}
+onMounted(() => {
+  watch(
+    () => router.route.path,
+    () => {
+      initActiveScenario();
+    },
+    { immediate: true }
+  );
+});
+
 function setTagList() {
   const temp: any = [];
   architectureList.value = [];
@@ -81,20 +109,7 @@ function setTagList() {
     });
   });
   // 查看是否有携带筛选参数
-  const scenario = getUrlParam('scenario');
-  if (scenario) {
-    activeScenario.value = scenario;
-    let flag = true;
-    contentData.value[0].DETAILED_LINK.forEach((item: any) => {
-      if (item.SCENARIO === activeScenario.value && flag) {
-        activeArch.value = item.ARCH;
-        flag = false;
-      }
-    });
-  } else {
-    activeScenario.value = scenarioList.value[0].KEY;
-    activeArch.value = architectureList.value[0];
-  }
+  initActiveScenario();
 }
 
 const onArchTagClick = (i: number, select: string) => {
@@ -631,7 +646,7 @@ function setShowIndex(index: number) {
         height: 28px;
         line-height: 28px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         @media screen and (max-width: 768px) {
           padding: 0 6px;
           font-size: var(--o-font-size-tip) !important;
@@ -659,7 +674,7 @@ function setShowIndex(index: number) {
       }
     }
     :deep(.el-table__inner-wrapper) {
-      &::before{
+      &::before {
         background-color: #e5e5e5;
       }
     }
@@ -816,6 +831,8 @@ function setShowIndex(index: number) {
                 height: 16px;
                 position: relative;
                 top: -2px;
+                display: flex;
+                align-items: center;
               }
               .el-input__suffix {
                 position: relative;
