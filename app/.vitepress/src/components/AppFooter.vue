@@ -351,7 +351,7 @@ onMounted(() => {
       <a href="https://huaweicompute.wjx.cn/vm/rxE9GVe.aspx#1" target="_blank">
         <img :src="floatQr" alt="" />
       </a>
-      <span class="close" @click.stop="handleCloseQr" title="close"></span>
+      <span class="close" title="close" @click.stop="handleCloseQr"></span>
     </div>
     <div
       v-show="lang === 'zh' && isFloShow"
