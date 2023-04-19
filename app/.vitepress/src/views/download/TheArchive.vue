@@ -25,12 +25,7 @@ const { lang } = useData();
 const i18n = useI18n();
 const commonStore = useCommon();
 const screenWidth = useWindowResize();
-const isMobile = computed(() => (screenWidth.value <= 768 ? true : false));
-
-//打开网页
-// const handleDownloadUrl = (url: string) => {
-//   window.open(url);
-// };
+const isMobile = computed(() => (screenWidth.value <= 1100 ? true : false));
 
 //分页与数据项目
 const currentPage = ref(1);
@@ -46,12 +41,6 @@ const total = computed(() => {
   return filterList.value.length;
 });
 
-//移动端筛选弹框
-// const isDrawerOpen = ref(false);
-// const handleToggleDrawer = () => {
-//   isDrawerOpen.value = !isDrawerOpen.value;
-// };
-
 //数据筛选
 const tagScenario = cloneTool.cloneDeep(i18n.value.download.SCENARIO_LIST);
 const activeScenario = ref(tagScenario[0].KEY);
@@ -65,7 +54,7 @@ const setTagArch = () => {
   allList.value.forEach((item: any) => {
     if (item.DETAILED_LINK) {
       item.DETAILED_LINK.forEach((itemLink: any) => {
-        if (!tagArch.value.includes(itemLink.ARCH)) {
+        if (!tagArch.value.includes(itemLink.ARCH) && itemLink.ARCH) {
           tagArch.value.push(itemLink.ARCH);
         }
       });
@@ -73,6 +62,7 @@ const setTagArch = () => {
   });
   tagArch.value.unshift(i18n.value.download.ALL_DATA);
   activeArch.value = tagArch.value[0];
+  console.log(tagArch.value);
 };
 function onArchTagClick(index: number, item: string) {
   activeArch.value = item;
@@ -275,12 +265,18 @@ const changeCurrentPageMoblie = (val: string) => {
       <!-- 表格 -->
       <div v-if="dataList.length" class="download-list">
         <OTable class="pc-list" :data="dataList">
-          <el-table-column :label="i18n.download.VERSION" width="200">
+          <el-table-column
+            :label="i18n.download.VERSION"
+            :width="screenWidth > 1400 ? '200' : '200'"
+          >
             <template #default="scope">
               {{ scope.row?.NAME }}
             </template>
           </el-table-column>
-          <el-table-column :label="i18n.download.ARCHITECTURE" width="300">
+          <el-table-column
+            :label="i18n.download.ARCHITECTURE"
+            :width="screenWidth > 1400 ? '300' : ''"
+          >
             <template #default="scope">
               <div class="arch-box">
                 <span
@@ -291,7 +287,10 @@ const changeCurrentPageMoblie = (val: string) => {
               </div>
             </template>
           </el-table-column>
-          <el-table-column :label="i18n.download.SCENARIO" width="300">
+          <el-table-column
+            :label="i18n.download.SCENARIO"
+            :width="screenWidth > 1400 ? '300' : ''"
+          >
             <template #default="scope">
               <div class="scenario-box">
                 <span
@@ -305,17 +304,26 @@ const changeCurrentPageMoblie = (val: string) => {
               </div>
             </template>
           </el-table-column>
-          <el-table-column :label="i18n.download.RELEASE_DATE" width="200">
+          <el-table-column
+            :label="i18n.download.RELEASE_DATE"
+            :width="screenWidth > 1400 ? '200' : '150'"
+          >
             <template #default="scope">
               {{ scope.row?.PUBLISH_DATE }}
             </template>
           </el-table-column>
-          <el-table-column :label="i18n.download.PLANNEDEOL" width="200">
+          <el-table-column
+            :label="i18n.download.PLANNEDEOL"
+            :width="screenWidth > 1400 ? '200' : '150'"
+          >
             <template #default="scope">
               {{ scope.row?.PLANNED_EOL }}
             </template>
           </el-table-column>
-          <el-table-column :label="i18n.download.DOWNLOAD_LINK">
+          <el-table-column
+            :label="i18n.download.DOWNLOAD_LINK"
+            :width="screenWidth > 1400 ? '' : '200'"
+          >
             <template #default="scope">
               <a
                 class="download-detail"
@@ -443,80 +451,6 @@ const changeCurrentPageMoblie = (val: string) => {
 </template>
 
 <style lang="scss" scoped>
-.filter-drawer {
-  .filter-drawer-title {
-    width: 100%;
-    font-size: var(--o-font-size-tip);
-    line-height: var(--o-line-height-tip);
-    color: var(--o-color-text1);
-    margin-top: var(--o-spacing-h4);
-    margin-bottom: var(--o-spacing-h9);
-  }
-
-  .filter-drawer-button {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: var(--o-spacing-h5);
-    .filter-drawer-button-item {
-      padding: var(--o-spacing-h10) var(--o-spacing-h3);
-      margin: var(--o-spacing-h9);
-      font-size: var(--o-font-size-text);
-      line-height: var(--o-line-height-text);
-    }
-  }
-}
-.tag-filter :deep(.label) {
-  color: var(--o-color-text1);
-}
-.page-box {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-  .pagination-slot {
-    font-size: var(--o-font-size-text);
-    font-weight: 400;
-    color: var(--o-color-text1);
-    line-height: var(--o-spacing-h4);
-  }
-  :deep(.o-pagination) {
-    display: flex;
-    @media (max-width: 1100px) {
-      display: none;
-    }
-  }
-
-  .page-box-mobile {
-    width: 100%;
-    display: none;
-    flex-flow: column;
-    justify-content: center;
-    color: var(--o-color-text1);
-    align-items: center;
-    font-size: var(--o-font-size-tip);
-    line-height: var(--o-line-height-tip);
-    @media (max-width: 1100px) {
-      display: flex;
-    }
-  }
-
-  .page-box-divide {
-    width: 100%;
-    height: 1px;
-    margin-top: var(--o-spacing-h5);
-    background-color: var(--o-color-bg-secondary);
-    .page-box-divide-in {
-      height: 100%;
-      background-color: var(--o-color-brand1);
-    }
-  }
-
-  .page-box-button {
-    margin-top: var(--o-spacing-h5);
-  }
-}
 .download {
   .filter-card {
     margin: var(--o-spacing-h4) 0;
@@ -534,19 +468,29 @@ const changeCurrentPageMoblie = (val: string) => {
         gap: 0;
       }
       .label {
+        color: var(--o-color-text1);
         @media screen and (max-width: 1100px) {
           display: block;
           min-width: 60px !important;
           font-size: var(--o-font-size-tip);
         }
       }
-      // .tag-filter-box {
-      //   flex-grow: 1;
-      // }
+      .tag-filter-box {
+        flex-grow: 1;
+        display: flex;
+      }
       .o-tag {
         padding: 3px 12px;
-        font-size: var(--o-font-size-tip);
-        line-height: var(--o-line-height-tip);
+        font-size: var(--o-font-size-text);
+        height: 28px;
+        line-height: 28px;
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 1100px) {
+          padding: 2px 8px;
+          font-size: var(--o-font-size-tip);
+          line-height: var(--o-line-height-tip);
+        }
       }
       &.os-box,
       &.version-box {
@@ -585,8 +529,8 @@ const changeCurrentPageMoblie = (val: string) => {
         cursor: pointer;
         color: var(--o-color-link1);
       }
-      :deep(.cell){
-        padding: 0 var(--o-spacing-h2);
+      :deep(.cell) {
+        padding-left: var(--o-spacing-h2);
       }
       @media screen and (max-width: 1100px) {
         display: none;
@@ -772,49 +716,42 @@ const changeCurrentPageMoblie = (val: string) => {
     }
   }
   .page-box {
-    margin-top: var(--o-spacing-h4);
-  }
-}
-.download-filter-item {
-  margin: var(--o-spacing-h10);
-  @media (max-width: 1100px) {
-    font-size: var(--o-font-size-tip);
-    line-height: var(--o-line-height-tip);
-  }
-}
-.line-class {
-  display: flex;
-  .class-title {
-    flex-shrink: 0;
-  }
-  .facturer-class,
-  .date-class {
-    color: var(--o-color-text4);
-  }
-  .arch-class {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px 16px;
-    div {
-      padding: 2px 8px;
-      background-color: var(--o-color-bg4);
-      color: var(--o-color-text4);
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--o-spacing-h4);
+    .pagination-slot {
+      font-size: var(--o-font-size-text);
+      font-weight: 400;
+      color: var(--o-color-text1);
+      line-height: var(--o-spacing-h4);
     }
-  }
-}
-.url-list {
-  margin-top: var(--o-spacing-h4);
-  display: flex;
-  flex-direction: column;
-  row-gap: 16px;
-  font-size: 14px;
+    :deep(.o-pagination) {
+      display: flex;
+      @media (max-width: 1100px) {
+        display: none;
+      }
+    }
+    .page-box-divide {
+      width: 100%;
+      height: 1px;
+      margin-top: var(--o-spacing-h5);
+      background-color: var(--o-color-bg-secondary);
+      .page-box-divide-in {
+        height: 100%;
+        background-color: var(--o-color-brand1);
+      }
+    }
 
-  a {
-    font-size: var(--o-font-size-text);
-    color: var(--o-color-brand1);
-    @media (max-width: 1100px) {
-      font-size: var(--o-font-size-tip);
-      line-height: var(--o-line-height-tip);
+    .page-box-button {
+      margin-top: var(--o-spacing-h5);
+    }
+    :deep(.pagination-mobile) {
+      display: block;
+      @media (max-width: 768px) {
+        display: flex;
+      }
     }
   }
 }

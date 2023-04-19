@@ -46,7 +46,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppContent>
+  <AppContent :pc-top="40" :mobile-top="24">
     <div class="download-community">
       <div class="detail">
         <p>{{ i18n.download.DETAIL1 }}</p>

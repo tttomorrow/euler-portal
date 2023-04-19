@@ -386,19 +386,28 @@ const getItemArchList = (link: any) => {
                   i18n.download.RELEASE_DATE + '：'
                 }}</span>
                 <div class="date-class">
-                  {{ download.PUBLISH_DATE }}
+                  {{
+                    download.PUBLISH_DATE
+                      ? download.PUBLISH_DATE
+                      : i18n.download.EMPTY_TIP
+                  }}
                 </div>
               </div>
-              <div v-if="download.DETAILED_LINK" class="line-class">
+              <div class="line-class">
                 <span class="class-title">{{
                   i18n.download.APPROVE_ARCH
                 }}</span>
-                <div class="arch-class">
+                <div class="arch-class" v-if="download.DETAILED_LINK">
                   <div
                     v-for="item in getItemArchList(download.DETAILED_LINK)"
                     :key="item"
                   >
                     {{ item }}
+                  </div>
+                </div>
+                <div class="arch-class" v-else>
+                  <div class="no-data">
+                    {{ i18n.download.EMPTY_TIP }}
                   </div>
                 </div>
               </div>
@@ -780,6 +789,10 @@ const getItemArchList = (link: any) => {
       padding: 2px 8px;
       background-color: var(--o-color-bg4);
       color: var(--o-color-text4);
+    }
+    .no-data {
+      background-color: transparent;
+      padding: 0;
     }
   }
 }
