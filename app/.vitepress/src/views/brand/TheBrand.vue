@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
 import { useI18n } from '@/i18n';
+import { useData } from 'vitepress';
 
 import BannerLevel2 from '@/components/BannerLevel2.vue';
 
 import banner from '@/assets/banner/banner-download.png';
 import illustration from '@/assets/illustrations/brand.png';
 
+const { lang } = useData();
 const i18n = useI18n();
 
 const list: Ref<any[]> = ref([]);
@@ -81,9 +83,14 @@ list.value = initList();
         }}</a>
         <br />
         {{ i18n.brand.WORDS[7] }}
-        <a :href="i18n.brand.WORDS_LINK[3]" download>{{
-          i18n.brand.WORDS[8]
-        }}</a>
+        <a
+          :href="
+            lang === 'zh'
+              ? `/zh/other/brand/specification/`
+              : i18n.brand.WORDS_LINK[3]
+          "
+          >{{ i18n.brand.WORDS[8] }}</a
+        >
       </div>
     </div>
     <div class="brand-list">

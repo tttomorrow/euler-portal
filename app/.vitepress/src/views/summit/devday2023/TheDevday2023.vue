@@ -392,6 +392,9 @@ onMounted(() => {
 // 日程数据异步加载导致AOS动效位置计算失效
 .min-height {
   min-height: 1160px;
+  @media screen and (max-width: 1100px) {
+    min-height: fit-content;
+  }
 }
 .previous {
   margin-top: var(--o-spacing-h1);
