@@ -64,8 +64,13 @@ const handleMobileNavClick = (index: string, item: any) => {
 };
 
 const emits = defineEmits(['nav-click']);
-const goPath = (item: NavItem) => {
+const goPath = (item: NavItem, flag: boolean) => {
   if (item.PATH === '') return;
+  // 处理下载传参mac不响应问题
+  if (!flag) {
+    window.open('/' + lang.value + item.PATH, '_self');
+    return;
+  }
   if (item.PATH.startsWith('https')) {
     window.open(item.PATH);
     return;
@@ -81,7 +86,6 @@ watch(
   () => props.isSwitch,
   (val: boolean) => {
     isShow.value = val;
-    console.log('watch :>> ', val);
     navActive.value = 'user';
   }
 );
@@ -102,7 +106,6 @@ watch(
         <span class="nav-link" @click="handleMobileNavClick(index, item)">{{
           item.NAME
         }}</span>
-
         <div v-if="isShow" :class="['nav-dropdown', item.ID]">
           <div class="nav-dropdown-wrapper">
             <div class="nav-dropdown-top">
@@ -121,7 +124,7 @@ watch(
                   >
                     <span
                       :class="[{ 'no-link': list.PATH === '' }, 'link']"
-                      @click="goPath(list)"
+                      @click="goPath(list, true)"
                     >
                       {{ list.NAME }}
                       <OIcon v-if="list.PATH.startsWith('https')" class="icon">
@@ -137,7 +140,7 @@ watch(
                         v-for="(vInfo, vIdx) in list.CHILDREN"
                         :key="vIdx"
                         class="link"
-                        @click="goPath(vInfo)"
+                        @click="goPath(vInfo, false)"
                         >{{ vInfo.NAME }}
                       </span>
                     </div>
@@ -156,7 +159,7 @@ watch(
                   v-for="(list, listIndex) in item.CHILDREN"
                   :key="listIndex"
                   class="link"
-                  @click="goPath(list)"
+                  @click="goPath(list, true)"
                   >{{ list.NAME }}</span
                 >
               </div>
