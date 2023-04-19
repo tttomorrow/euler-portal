@@ -35,6 +35,7 @@ const data = ref({
   page: 1,
   pageSize: 100,
   lang: lang.value,
+  category: 'showcase',
 });
 // 搜索接口传递参数
 const searchData = computed(() => {

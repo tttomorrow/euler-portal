@@ -3,8 +3,8 @@ import techDay_mo from '@/assets/category/home/banner/tech-day_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
 import migrationImg_mo from '@/assets/category/home/banner/migration_mo.png';
 
-import forum_pc from '@/assets/category/home/banner/forum_pc.jpg';
-import forum_mo from '@/assets/category/home/banner/forum_mo.jpg';
+import downloadBanner_pc from '@/assets/category/home/banner/download-banner_pc.png';
+import downloadBanner_mo from '@/assets/category/home/banner/download-banner_mo.png';
 import eur_mo from '@/assets/category/home/banner/eur-banner_mo.jpg';
 import eur_pc from '@/assets/category/home/banner/eur-banner_pc.jpg';
 
@@ -29,6 +29,16 @@ export default {
         targetTap: 1,
       },
       {
+        pcBanner: downloadBanner_pc,
+        moBanner: downloadBanner_mo,
+        link: '/zh/download/',
+        title: ['openEuler下载体验升级'],
+        desc: ['更便捷地找到您需要的软件'],
+        btn: '立即体验',
+        id: 'download',
+        targetTap: 1,
+      },
+      {
         pcBanner: internship_pc,
         moBanner: internship_mo,
         link: 'https://summer-ospp.ac.cn/',
@@ -43,13 +53,7 @@ export default {
         title: ['openEuler', '用户软件仓（EUR）发布'],
         targetTap: 1,
       },
-      {
-        pcBanner: forum_pc,
-        moBanner: forum_mo,
-        link: 'https://forum.openeuler.org/',
-        id: '',
-        targetTap: 1,
-      },
+
       {
         pcBanner: migrationImg_pc,
         moBanner: migrationImg_mo,
