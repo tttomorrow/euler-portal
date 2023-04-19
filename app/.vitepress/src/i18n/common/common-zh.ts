@@ -584,7 +584,7 @@ export default {
           TYPE: 0,
           CHILDREN: [
             {
-              NAME: 'EulerVM',
+              NAME: 'EulerLauncher',
               LABEL: '跨平台openEuler虚拟机管理工具',
               PATH: 'https://gitee.com/openeuler/omnivirt',
             },
@@ -729,7 +729,7 @@ export default {
             {
               NAME: 'openEuler 22.03 LTS SP1',
               LABEL:
-                'openEuler 22.03 LTS SP1 是openEuler 22.03 LTS的补丁版本，基于5.10内核构建，实现了服务器、云、边缘和嵌入式的全场景支持',
+                'openEuler 22.03 LTS SP1 是openEuler 22.03 LTS的补丁版本，生命周期与LTS版本相同。',
               PATH: '/download/?version=openEuler 22.03 LTS SP1',
               CHILDREN: [
                 {
@@ -791,12 +791,12 @@ export default {
             {
               NAME: '社区发行版',
               LABEL: '',
-              PATH: '/download/?name=community',
+              PATH: '/download/',
             },
             {
               NAME: '商业发行版',
               LABEL: '',
-              PATH: '/download/commercial-release/?name=business',
+              PATH: '/download/commercial-release/',
             },
             // {
             //   NAME: '企业自用版',

@@ -1,81 +1,88 @@
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useI18n } from '@/i18n';
 
 import { getUrlParam } from '@/shared/utils';
 
-import bannerImg from '@/assets/banner/banner-download.png';
-import illustrationImg from '@/assets/illustrations/iso.png';
+import DownloadContent from './DownloadContent.vue';
 
-import BannerLevel2 from '@/components/BannerLevel2.vue';
 import AppContent from '@/components/AppContent.vue';
-import DownloadBusiness from './DownloadBusiness.vue';
-import DownloadCommunity from './DownloadCommunity.vue';
 
 const i18n = useI18n();
-const bannerData = {
-  bannerImg: bannerImg,
-  bannerText: 'DOWNLOAD',
-  bannerTitle: i18n.value.download.OUTSIDE_TITLE,
-  bannerIllustration: illustrationImg,
-};
-const tabsData = reactive({
-  tabPane: [
-    {
-      label: computed(() => {
-        return i18n.value.download.COMMUNITY;
-      }),
-      name: 'community',
-    },
-    {
-      label: computed(() => {
-        return i18n.value.download.BUSINESS;
-      }),
-      name: 'business',
-    },
-  ],
-});
-const activeName = ref(tabsData.tabPane[0].name);
+const downloadList = i18n.value.download.COMMUNITY_LIST;
+const shownNameList: any = [];
+let shownIndex = 0;
+function setShownNameList() {
+  let ltsIndex = 0;
+  let standerIndex = 0;
+  for (let i = 0; i < downloadList.length; i++) {
+    if (!shownNameList[0] && downloadList[i].LTS) {
+      ltsIndex = i;
+      shownNameList[0] = downloadList[i].NAME;
+    } else if (!shownNameList[1] && !downloadList[i].LTS) {
+      standerIndex = i;
+      shownNameList[1] = downloadList[i].NAME;
+    } else if (shownNameList[0] && shownNameList[1]) {
+      if (standerIndex < ltsIndex) {
+        shownIndex = 1;
+      }
+      break;
+    }
+  }
+}
+setShownNameList();
+// 获取版版本数据
+
+const versionShownName = ref(shownNameList[shownIndex]);
+function setversionShownName(version: string) {
+  versionShownName.value = version;
+}
 onMounted(() => {
-  if (getUrlParam('name')) {
-    activeName.value = getUrlParam('name');
+  const urlVersion = decodeURIComponent(getUrlParam('version'));
+  if (getUrlParam('version') && shownNameList.includes(urlVersion)) {
+    versionShownName.value = decodeURIComponent(getUrlParam('version'));
   }
 });
 </script>
+
 <template>
-  <div class="download">
-    <BannerLevel2
-      :background-image="bannerData.bannerImg"
-      :background-text="bannerData.bannerText"
-      :title="bannerData.bannerTitle"
-      :illustration="bannerData.bannerIllustration"
-    />
-    <div class="download-tabs">
-      <OTabs v-model="activeName">
-        <OTabPane
-          v-for="item in tabsData.tabPane"
-          :key="item.name"
-          :label="item.label"
-          :name="item.name"
-        ></OTabPane>
-      </OTabs>
+  <AppContent>
+    <div class="download-community">
+      <div class="detail">
+        <p>{{ i18n.download.DETAIL1 }}</p>
+        <p>
+          {{ i18n.download.DETAIL2
+          }}<a :href="i18n.download.ARCHIVE_LINK">{{
+            i18n.download.CLICK_VIEW
+          }}</a>
+        </p>
+        <p class="detail-last">
+          {{ i18n.download.DETAIL3
+          }}<a :href="i18n.download.MIRROR_LIST_LINK">{{
+            i18n.download.CLICK_LIST
+          }}</a>
+        </p>
+      </div>
+      <div class="download-content">
+        <div class="content-selection">
+          <div
+            v-for="item in shownNameList"
+            :key="item"
+            class="selection-item"
+            :class="{ active: versionShownName === item }"
+            @click="setversionShownName(item)"
+          >
+            {{ item }}
+          </div>
+        </div>
+        <DownloadContent :version="versionShownName" />
+      </div>
     </div>
-    <AppContent :pc-top="40" :mobile-top="24">
-      <DownloadCommunity v-if="activeName === 'community'" />
-      <DownloadBusiness v-else />
-    </AppContent>
-  </div>
+  </AppContent>
 </template>
+
 <style lang="scss" scoped>
-.download {
-  .download-tabs {
-    margin: 0 auto;
-    background-color: var(--o-color-bg2);
-    :deep(.el-tabs__nav-scroll) {
-      display: flex;
-      justify-content: center;
-    }
-  }
+.download-community {
   .detail {
     p {
       font-size: var(--o-font-size-text);
@@ -86,9 +93,9 @@ onMounted(() => {
         line-height: var(--o-line-height-tip);
       }
       &.detail-last {
-        margin-top: var(--o-spacing-h2);
+        margin-top: var(--o-spacing-h5);
         @media (max-width: 1100px) {
-          margin-top: var(--o-spacing-h4);
+          margin-top: var(--o-spacing-h6);
         }
       }
     }
@@ -110,9 +117,13 @@ onMounted(() => {
         line-height: 40px;
         cursor: pointer;
         @media (max-width: 1100px) {
+          width: 50%;
           font-size: var(--o-font-size-text);
           line-height: 22px;
-          padding: 10px 0;
+          padding: 10px 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         &.active {
           background-color: var(--o-color-brand1);
