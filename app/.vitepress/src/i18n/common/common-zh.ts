@@ -509,7 +509,7 @@ export default {
             {
               NAME: '文档',
               LABEL: '',
-              PATH: '',
+              PATH: 'https://docs.openeuler.org/zh/',
             },
             {
               NAME: '课程中心',
@@ -660,7 +660,7 @@ export default {
             {
               NAME: '文档',
               LABEL: '',
-              PATH: '',
+              PATH: 'https://docs.openeuler.org/zh/',
             },
             {
               NAME: '课程中心',

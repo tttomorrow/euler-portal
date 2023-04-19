@@ -64,6 +64,7 @@ const handleMobileNavClick = (index: string, item: any) => {
 };
 
 const goPath = (item: NavItem) => {
+  if (item.PATH === '') return;
   if (item.PATH.startsWith('https')) {
     window.open(item.PATH);
     return;
@@ -78,6 +79,7 @@ watch(
   () => props.isSwitch,
   (val: boolean) => {
     isShow.value = val;
+    console.log('watch :>> ', val);
     navActive.value = 'user';
   }
 );
@@ -99,7 +101,7 @@ watch(
           item.NAME
         }}</span>
 
-        <div v-if="isShow" class="nav-dropdown">
+        <div v-if="isShow" :class="['nav-dropdown', item.ID]">
           <div class="nav-dropdown-wrapper">
             <div class="nav-dropdown-top">
               <div
@@ -115,7 +117,10 @@ watch(
                     :key="listIndex"
                     class="item-box"
                   >
-                    <span class="link" @click="goPath(list)">
+                    <span
+                      :class="[{ 'no-link': list.PATH === '' }, 'link']"
+                      @click="goPath(list)"
+                    >
                       {{ list.NAME }}
                       <OIcon v-if="list.PATH.startsWith('https')" class="icon">
                         <IconOutLink />
@@ -252,7 +257,7 @@ watch(
           }
           @media (max-width: 1100px) {
             display: block;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
           }
         }
       }
@@ -277,6 +282,10 @@ watch(
         }
         .item-box {
           max-width: 190px;
+          &:not(:last-child) {
+            margin-bottom: 8px;
+          }
+
           @media (max-width: 1100px) {
             max-width: 100%;
           }
@@ -298,7 +307,7 @@ watch(
         line-height: 22px;
         margin-bottom: 16px;
         @media (max-width: 1100px) {
-          margin-bottom: 0;
+          margin-bottom: 8px;
           font-size: 12px;
         }
       }
@@ -311,13 +320,18 @@ watch(
         cursor: pointer;
         display: flex;
         align-items: center;
+        cursor: pointer;
         .o-icon {
           margin-left: var(--o-spacing-h9);
           color: var(--o-color-text1);
-          font-size: 16px;
+          font-size: 14px;
         }
         &:hover {
           color: var(--o-color-brand2);
+        }
+        &.no-link {
+          color: var(--o-color-text1) !important;
+          cursor: default;
         }
       }
       .desc {
@@ -325,7 +339,6 @@ watch(
         font-weight: 400;
         color: var(--o-color-text1);
         line-height: 18px;
-        text-align: justify;
       }
       &.type1 {
         flex-basis: 420px;
@@ -337,6 +350,22 @@ watch(
     }
   }
 }
+html[lang='en'] .o-nav .o-nav-list > li {
+  .user {
+    .nav-dropdown-top {
+      .nav-dropdown-content:first-child {
+        flex-basis: 190px;
+        .nav-dropdown-box {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+  .version-info {
+    display: block !important;
+  }
+}
+
 .o-nav {
   height: 100%;
   position: relative;
@@ -366,7 +395,6 @@ watch(
       font-size: var(--o-font-size-text);
       line-height: var(--o-line-height-h8);
       color: var(--o-color-text1);
-      cursor: pointer;
       @media screen and (max-width: 1100px) {
         font-size: var(--o-font-size-tip);
         line-height: var(--o-line-height-h3);
@@ -424,6 +452,7 @@ watch(
       .nav-link {
         display: block;
         padding: 0 var(--o-spacing-h4);
+        cursor: pointer;
         @media screen and (max-width: 1100px) {
           padding: 0 var(--o-spacing-h6);
         }
@@ -432,4 +461,3 @@ watch(
   }
 }
 </style>
-x``

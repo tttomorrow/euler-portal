@@ -299,405 +299,364 @@ export default {
       CLASS: ['code'],
     },
   ],
+  NAV_ROUTER_INFO: [
+    {
+      NAME: 'Updates',
+      CHILDREN: [
+        {
+          NAME: 'News',
+          LABEL: '',
+          PATH: '/interaction/news-list/',
+        },
+        {
+          NAME: 'Blogs',
+          LABEL: '',
+          PATH: '/interaction/blog-list/',
+        },
+      ],
+    },
+    {
+      NAME: 'Connects',
+      CHILDREN: [
+        {
+          NAME: 'Mailing Lists',
+          LABEL: '',
+          PATH: '/community/mailing-list/',
+        },
+      ],
+    },
+  ],
   NAV_ROUTER_CONFIG_NEW: [
     {
-      NAME: '用户',
+      NAME: 'Users',
       ID: 'user',
       CHILDREN: [
         {
-          NAME: '技术展示',
+          NAME: 'Technology Highlights',
           TYPE: 1,
           CHILDREN: [
             {
-              NAME: '用户案例',
-              LABEL: '了解openEuler在各行业的最佳案例',
-              PATH: '',
-            },
-            {
-              NAME: '行业白皮书',
-              LABEL: '了解openEuler在行业的生态现状、业务场景的应用',
-              PATH: '',
-            },
-            {
-              NAME: '技术白皮书',
-              LABEL: '了解openEuler各版本的技术详情',
-              PATH: '',
+              NAME: 'Success Stories',
+              LABEL:
+                'Best practices of openEuler for different industry projects',
+              PATH: '/showcase/',
             },
           ],
         },
         {
-          NAME: '使用指南',
+          NAME: 'Usage Guides',
           TYPE: 0,
           CHILDREN: [
             {
-              NAME: '文档',
+              NAME: 'Documentation',
               LABEL: '',
-              PATH: '',
-            },
-            {
-              NAME: '课程中心',
-              LABEL: '',
-              PATH: '',
-            },
-            {
-              NAME: '迁移中心',
-              LABEL: '助力企业进行操作系统迁移的指南文档',
-              PATH: '',
+              PATH: 'https://docs.openeuler.org/en/',
             },
           ],
         },
         {
-          NAME: '支持与服务',
+          NAME: 'Support & Services',
           TYPE: 1,
           CHILDREN: [
             {
-              NAME: 'OSV技术测评',
-              LABEL: '帮助企业快速申请兼容性技术测评',
-              PATH: '',
+              NAME: 'Compatibility List',
+              LABEL: 'openEuler compatibility list',
+              PATH: '/compatibility/',
             },
             {
-              NAME: '兼容性技术测评',
-              LABEL: '帮助企业快速申请兼容性技术测评',
+              NAME: 'Security Center',
+              LABEL: 'Vulnerability management and security advisories',
               PATH: '',
-            },
-            {
-              NAME: '兼容性列表',
-              LABEL: '查看openEuler兼容性列表',
-              PATH: '',
-            },
-            {
-              NAME: '安全中心',
-              LABEL: '查看漏洞管理、安全公告等安全问题',
-              PATH: '',
+              CHILDREN: [
+                {
+                  NAME: 'Vulnerability Management',
+                  LABEL: '',
+                  PATH: '/security/vulnerability-reporting/',
+                },
+                {
+                  NAME: 'Security Advisories',
+                  LABEL: '',
+                  PATH: '/security/security-bulletins/',
+                },
+                {
+                  NAME: 'CVE',
+                  LABEL: '',
+                  PATH: '/security/cve/',
+                },
+              ],
             },
           ],
         },
       ],
     },
     {
-      NAME: '开发者',
+      NAME: 'Developers',
       ID: 'developer',
       CHILDREN: [
         {
-          NAME: '学习与贡献',
+          NAME: 'Learning & Contribution',
           TYPE: 0,
           CHILDREN: [
             {
-              NAME: '文档',
+              NAME: 'Documentation',
               LABEL: '',
-              PATH: '',
+              PATH: 'https://docs.openeuler.org/en/',
             },
             {
-              NAME: '课程中心',
+              NAME: 'Contribution Guide',
               LABEL: '',
-              PATH: '',
+              PATH: '/community/contribution/',
             },
             {
-              NAME: '贡献攻略',
+              NAME: 'SIG Center',
               LABEL: '',
-              PATH: '',
-            },
-            {
-              NAME: 'SIG中心',
-              LABEL: '',
-              PATH: '',
-            },
-            {
-              NAME: '开源实习',
-              LABEL: '',
-              PATH: '',
+              PATH: '/sig/sig-list/',
             },
           ],
         },
         {
-          NAME: '开发openEuler',
+          NAME: 'Develop openEuler',
           TYPE: 1,
           CHILDREN: [
             {
               NAME: 'QuickIssue',
-              LABEL: '简易快捷地查询、提交社区Issues',
-              PATH: '',
+              LABEL: 'Query and submit issues',
+              PATH: 'https://quickissue.openeuler.org/en/',
             },
             {
               NAME: 'Pkgship',
-              LABEL: '管理操作系统软件包信息和依赖项的查询工具',
-              PATH: '',
+              LABEL: 'Query software packages and dependencies',
+              PATH: 'https://pkgmanage.openeuler.org',
             },
             {
-              NAME: '软件包贡献',
-              LABEL: '为全球开发者提供简便顺畅的软件包贡献流程',
-              PATH: '',
-            },
-            {
-              NAME: 'License兼容性检查工具',
-              LABEL: '帮助快速检测License兼容性',
-              PATH: '',
+              NAME: 'Compliance',
+              LABEL: 'Detect license compatibility and compliance',
+              PATH: 'https://compliance.openeuler.org/',
             },
             {
               NAME: 'radiaTest',
-              LABEL: '基于openEuler环境开发的测试管理平台',
-              PATH: '',
-            },
-            {
-              NAME: 'X2openEuler',
-              LABEL: '简介简介简介简介简介',
-              PATH: '',
+              LABEL: 'Testing management platform developed based on openEuler',
+              PATH: 'https://radiatest.openeuler.org',
             },
             {
               NAME: 'Compass-CI',
-              LABEL: '开放式测试服务平台',
-              PATH: '',
-            },
-            {
-              NAME: 'EulerMaker',
-              LABEL: '简介简介简介简介简介',
-              PATH: '',
-            },
-            {
-              NAME: 'OEPKGS',
-              LABEL: 'oepkgs软件托管平台',
-              PATH: '',
+              LABEL: 'Open test service platform',
+              PATH: 'https://compass-ci.openeuler.org/',
             },
           ],
         },
         {
-          NAME: '在openEuler上开发',
+          NAME: 'Develop on openEuler',
           TYPE: 0,
           CHILDREN: [
             {
-              NAME: 'EulerLauncher',
-              LABEL: '跨平台openEuler虚拟机管理工具',
-              PATH: '',
-            },
-            {
-              NAME: 'openEuler on WSL',
-              LABEL: '在Microsotf WSL中使用openEuler',
-              PATH: '',
-            },
-            {
-              NAME: 'openEuler SDK',
-              LABEL: 'x',
-              PATH: '',
-            },
-            {
-              NAME: '用户软件仓(EUR)',
-              LABEL: '开发者易用的软件包托管分发平台',
-              PATH: '',
+              NAME: 'openEuler User Repo',
+              LABEL:
+                'Easy-to-use software package hosting and distribution platform for developers',
+              PATH: 'https://eur.openeuler.openatom.cn/coprs/',
             },
           ],
         },
         {
-          NAME: '源码',
+          NAME: 'Code',
           TYPE: 0,
           CHILDREN: [
             {
-              NAME: '代码仓',
+              NAME: 'Code Sources',
               LABEL: '',
-              PATH: '',
+              PATH: 'https://gitee.com/openeuler',
             },
             {
-              NAME: '软件包仓',
+              NAME: 'Package Sources',
               LABEL: '',
-              PATH: '',
+              PATH: 'https://gitee.com/src-openeuler',
             },
             {
-              NAME: 'Github镜像仓',
+              NAME: 'GitHub Mirror',
               LABEL: '',
-              PATH: '',
+              PATH: 'https://github.com/openeuler-mirror',
             },
           ],
         },
       ],
     },
     {
-      NAME: '社区',
+      NAME: 'Community',
       ID: 'community',
       CHILDREN: [
         {
-          NAME: '关于社区',
+          NAME: 'About',
           TYPE: 1,
           CHILDREN: [
             {
-              NAME: '组织架构',
-              LABEL: '了解openEuler的委员会成员',
-              PATH: '',
+              NAME: 'Organizational Structure',
+              LABEL: 'Committee members',
+              PATH: '/community/organization/',
             },
             {
-              NAME: '成员单位',
-              LABEL: '了解openEuler的捐赠单位',
-              PATH: '',
+              NAME: 'Donors',
+              LABEL: "openEuler's donors",
+              PATH: '/community/member/',
             },
             {
-              NAME: '社区章程',
-              LABEL: '了解openEuler的章程、条例、行为准则、License策略',
-              PATH: '',
+              NAME: 'Policies',
+              LABEL:
+                'Charter, regulations, code of conduct, and license policies',
+              PATH: '/community/charter/',
             },
             {
-              NAME: '社区荣誉',
-              LABEL: '了解openEuler的荣誉奖项',
-              PATH: '',
-            },
-            {
-              NAME: '贡献看板',
-              LABEL: '查看openEuler社区数据',
-              PATH: '',
-            },
-            {
-              NAME: '社区基础设施赞助人',
-              LABEL: '了解企业设备投入',
-              PATH: '',
+              NAME: 'Statistics',
+              LABEL: 'Community statistics',
+              PATH: 'https://datastat.openeuler.org/en/overview',
             },
           ],
         },
         {
-          NAME: '学习与贡献',
+          NAME: 'Learning & Contribution',
           TYPE: 0,
           CHILDREN: [
             {
-              NAME: '文档',
+              NAME: 'Documentation',
               LABEL: '',
-              PATH: '',
+              PATH: 'https://docs.openeuler.org/en/',
             },
             {
-              NAME: '课程中心',
+              NAME: 'Contribution Guide',
               LABEL: '',
-              PATH: '',
+              PATH: '/community/contribution/',
             },
             {
-              NAME: '贡献攻略',
+              NAME: 'SIG Center',
               LABEL: '',
-              PATH: '',
+              PATH: '/sig/sig-list/',
             },
             {
-              NAME: 'SIG中心',
+              //培训认证
+              NAME: 'Certification',
               LABEL: '',
-              PATH: '',
-            },
-            {
-              NAME: '培训认证',
-              LABEL: '',
-              PATH: '',
+              PATH: 'https://talent-assessment.openeuler.org/',
             },
           ],
         },
         {
-          NAME: '项目',
+          NAME: 'Projects',
           TYPE: 1,
           CHILDREN: [
             {
               NAME: 'A-Tune',
-              LABEL: '一款基于AI开发的智能优化引擎',
-              PATH: '',
+              LABEL: 'AI-powered tuning engine',
+              PATH: '/other/projects/atune/',
             },
             {
               NAME: 'BiSheng JDK',
-              LABEL: 'ARM上最好用的JDK',
-              PATH: '',
+              LABEL: 'Optimal JDK on Arm',
+              PATH: '/other/projects/bishengjdk/',
             },
             {
               NAME: 'iSula',
-              LABEL: '容器技术方案',
-              PATH: '',
+              LABEL: 'Container solution',
+              PATH: '/other/projects/isula/',
             },
             {
               NAME: 'secGear',
-              LABEL: '供开发者开发安全应用的机密计算框架',
-              PATH: '',
+              LABEL:
+                'Confidential computing framework for secure application development',
+              PATH: '/other/projects/secgear/',
             },
             {
               NAME: 'StratoVirt',
-              LABEL: '面向云数据中心的企业级虚拟化VMM',
-              PATH: '',
+              LABEL: 'Enterprise-level VMM intended for cloud data centers',
+              PATH: '/other/projects/stratovirt/',
             },
           ],
         },
       ],
     },
     {
-      NAME: '下载',
+      NAME: 'Downloads',
       ID: 'download',
       CHILDREN: [
         {
-          NAME: '最新版本',
+          NAME: 'Latest',
           TYPE: 1,
           CHILDREN: [
             {
               NAME: 'openEuler 22.03 LTS SP1',
               LABEL:
-                'openEuler 22.03 LTS SP1 是openEuler 22.03 LTS的补丁版本，基于5.10内核构建，实现了服务器、云、边缘和嵌入式的全场景支持',
-              PATH: '',
+                'openEuler openEuler 22.03 LTS SP1 is the patch version of openEuler 22.03 LTS, and both versions have the same lifecycle.',
+              PATH: '/download/?version=openEuler 22.03 LTS SP1',
               CHILDREN: [
                 {
-                  NAME: '服务器',
+                  NAME: 'Server',
                   LABEL: '',
-                  PATH: '',
+                  PATH: '/download/?version=openEuler 22.03 LTS SP1&scenario=SERVER',
                 },
                 {
-                  NAME: '边缘计算',
+                  NAME: 'Edge Cloud',
                   LABEL: '',
-                  PATH: '',
+                  PATH: '/download/?version=openEuler 22.03 LTS SP1&scenario=EDGE_CLOUD',
                 },
                 {
-                  NAME: '云计算',
+                  NAME: 'Cloud Computing',
                   LABEL: '',
-                  PATH: '',
+                  PATH: '/download/?version=openEuler 22.03 LTS SP1&scenario=CLOUD_COMPUTING',
                 },
                 {
-                  NAME: '嵌入式',
+                  NAME: 'Embedded',
                   LABEL: '',
-                  PATH: '',
+                  PATH: '/download/?version=openEuler 22.03 LTS SP1&scenario=EMBEDDED',
                 },
               ],
             },
             {
-              NAME: 'openEuler 22.03',
+              NAME: 'openEuler 23.03',
               LABEL:
-                'openEuler 23.03 uses Linux Kernel 6.1 to explore technologies, adapt hardware, and innovate basic technologies and upper-layer applications for future openEuler LTS versions built on Linux Kernel 6.x.',
-              PATH: '',
+                'openEuler 22.03 LTS SP1 is a patch version of openEuler 22.03 LTS. Built on Linux kernel 5.10, it is designed for servers, clouds, edges, and embedded systems.',
+              PATH: '/download/?version=openEuler 2023.03',
               CHILDREN: [
                 {
-                  NAME: '服务器',
+                  NAME: 'Server',
                   LABEL: '',
-                  PATH: '',
+                  PATH: '/download/?version=openEuler 23.03&scenario=SERVER',
                 },
                 {
-                  NAME: '边缘计算',
+                  NAME: 'Edge Cloud',
                   LABEL: '',
-                  PATH: '',
+                  PATH: '/download/?version=openEuler 23.03&scenario=EDGE_CLOUD',
                 },
                 {
-                  NAME: '云计算',
+                  NAME: 'Cloud Computing',
                   LABEL: '',
-                  PATH: '',
+                  PATH: '/download/?version=openEuler 23.03&scenario=CLOUD_COMPUTING',
                 },
                 {
-                  NAME: '嵌入式',
+                  NAME: 'Embedded',
                   LABEL: '',
-                  PATH: '',
+                  PATH: '/download/?version=openEuler 23.03&scenario=EMBEDDED',
                 },
               ],
             },
           ],
         },
         {
-          NAME: '其他版本',
+          NAME: 'Other',
           TYPE: 0,
           CHILDREN: [
             {
-              NAME: '社区发行版',
+              NAME: 'Community Editions',
               LABEL: '',
-              PATH: '',
+              PATH: '/download/',
             },
             {
-              NAME: '商业发行版',
+              NAME: 'Commercial Editions',
               LABEL: '',
-              PATH: '',
+              PATH: '/download/commercial-release/',
             },
-            {
-              NAME: '企业自用版',
-              LABEL: '',
-              PATH: '',
-            },
+            // {
+            //   NAME: '企业自用版',
+            //   LABEL: '',
+            //   PATH: '',
+            // },
           ],
         },
       ],
