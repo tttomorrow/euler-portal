@@ -3,7 +3,7 @@ import { ref, watch, computed } from 'vue';
 import { useRouter, useData } from 'vitepress';
 import useWindowResize from '@/components/hooks/useWindowResize';
 import { debounce } from 'lodash';
-
+import IconOutLink from '~icons/app/icon-out-link.svg';
 const props = defineProps({
   navItems: {
     type: Object,
@@ -115,9 +115,13 @@ watch(
                     :key="listIndex"
                     class="item-box"
                   >
-                    <span class="link" @click="goPath(list)">{{
-                      list.NAME
-                    }}</span>
+                    <span class="link" @click="goPath(list)">
+                      {{ list.NAME }}
+                      <OIcon v-if="list.PATH.startsWith('https')" class="icon">
+                        <IconOutLink />
+                      </OIcon>
+                    </span>
+
                     <p v-if="list.LABEL" class="desc">{{ list.LABEL }}</p>
                     <div v-if="list.CHILDREN" class="version-info">
                       <span
@@ -305,7 +309,13 @@ watch(
         line-height: 24px;
         margin-bottom: 4px;
         cursor: pointer;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        .o-icon {
+          margin-left: var(--o-spacing-h9);
+          color: var(--o-color-text1);
+          font-size: 16px;
+        }
         &:hover {
           color: var(--o-color-brand2);
         }

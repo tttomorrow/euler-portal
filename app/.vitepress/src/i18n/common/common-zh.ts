@@ -755,30 +755,30 @@ export default {
               ],
             },
             {
-              NAME: 'openEuler 22.09',
+              NAME: 'openEuler 23.03',
               LABEL:
-                'openEuler 22.09 充分释放多样性算力，持续深化全场景创新，打造极致迁移能力，实现欧拉鸿蒙互联互通',
-              PATH: '/download/?version=openEuler 2023.09',
+                'openEuler 23.03采用 Linux Kernel 6.1 内核，为未来 openEuler 长生命周期版本采用 6.x内核提前进行技术探索、硬件适配、基础技术创新和上层应用创新。',
+              PATH: '/download/?version=openEuler 2023.03',
               CHILDREN: [
                 {
                   NAME: '服务器',
                   LABEL: '',
-                  PATH: '/download/?version=openEuler 23.09&scenario=SERVER',
+                  PATH: '/download/?version=openEuler 23.03&scenario=SERVER',
                 },
                 {
                   NAME: '边缘计算',
                   LABEL: '',
-                  PATH: '/download/?version=openEuler 23.09&scenario=EDGE_CLOUD',
+                  PATH: '/download/?version=openEuler 23.03&scenario=EDGE_CLOUD',
                 },
                 {
                   NAME: '云计算',
                   LABEL: '',
-                  PATH: '/download/?version=openEuler 23.09&scenario=CLOUD_COMPUTING',
+                  PATH: '/download/?version=openEuler 23.03&scenario=CLOUD_COMPUTING',
                 },
                 {
                   NAME: '嵌入式',
                   LABEL: '',
-                  PATH: '/download/?version=openEuler 23.09&scenario=EMBEDDED',
+                  PATH: '/download/?version=openEuler 23.03&scenario=EMBEDDED',
                 },
               ],
             },
@@ -796,7 +796,7 @@ export default {
             {
               NAME: '商业发行版',
               LABEL: '',
-              PATH: '/download/?name=business',
+              PATH: '/download/commercial-release/?name=business',
             },
             // {
             //   NAME: '企业自用版',

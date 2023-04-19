@@ -650,9 +650,9 @@ export default {
               ],
             },
             {
-              NAME: 'openEuler 22.09',
+              NAME: 'openEuler 22.03',
               LABEL:
-                'openEuler 22.09 充分释放多样性算力，持续深化全场景创新，打造极致迁移能力，实现欧拉鸿蒙互联互通',
+                'openEuler 23.03 uses Linux Kernel 6.1 to explore technologies, adapt hardware, and innovate basic technologies and upper-layer applications for future openEuler LTS versions built on Linux Kernel 6.x.',
               PATH: '',
               CHILDREN: [
                 {
