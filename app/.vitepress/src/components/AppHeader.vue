@@ -179,6 +179,7 @@ const searchControl = (val: boolean) => {
                 :nav-items="navRouterNew"
                 :is-switch="mobileMenuIcon"
                 :nav-info="navRouterNewInfo"
+                @nav-click="mobileMenuIcon = false"
               />
             </template>
             <div v-if="isMobile" class="header-tool">

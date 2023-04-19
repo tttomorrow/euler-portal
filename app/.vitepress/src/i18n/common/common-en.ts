@@ -452,7 +452,7 @@ export default {
             {
               NAME: 'openEuler User Repo',
               LABEL:
-                'Easy-to-use software package hosting and distribution platform for developers',
+                'Easy-to-use software package hosting and distribution platform',
               PATH: 'https://eur.openeuler.openatom.cn/coprs/',
             },
           ],
