@@ -110,8 +110,8 @@ watch(
           <div class="nav-dropdown-wrapper">
             <div class="nav-dropdown-top">
               <div
-                v-for="(subitem, index) in item.CHILDREN"
-                :key="index"
+                v-for="(subitem, sindex) in item.CHILDREN"
+                :key="sindex"
                 class="nav-dropdown-content"
                 :class="[subitem.TYPE === 1 && 'type1']"
               >
@@ -150,13 +150,13 @@ watch(
             </div>
             <div v-if="item.ID !== 'download'" class="nav-dropdown-bottom">
               <div
-                v-for="(item, index) in navInfo"
-                :key="index"
+                v-for="(nitem, nindex) in navInfo"
+                :key="nindex"
                 class="nav-bottom-item"
               >
-                <p class="title">{{ item.NAME }}</p>
+                <p class="title">{{ nitem.NAME }}</p>
                 <span
-                  v-for="(list, listIndex) in item.CHILDREN"
+                  v-for="(list, listIndex) in nitem.CHILDREN"
                   :key="listIndex"
                   class="link"
                   @click="goPath(list, true)"
@@ -322,7 +322,6 @@ watch(
         color: var(--o-color-brand1);
         line-height: var(--o-line-height-h8);
         font-size: var(--o-font-size-h8);
-        margin-bottom: 4px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -354,6 +353,7 @@ watch(
         overflow: hidden;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+        margin-top: 4px;
         @media (max-width: 1100px) {
           display: block;
         }
