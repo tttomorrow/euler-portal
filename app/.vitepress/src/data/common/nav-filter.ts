@@ -173,4 +173,8 @@ export default [
     name: 'meetup-form',
     lang: ['zh'],
   },
+  {
+    name: 'specification',
+    lang: ['zh'],
+  },
 ];
