@@ -43,10 +43,16 @@ function setversionShownName(version: string) {
   versionShownName.value = version;
 }
 onMounted(() => {
-  const urlVersion = decodeURIComponent(getUrlParam('version'));
-  if (getUrlParam('version') && shownNameList.includes(urlVersion)) {
-    versionShownName.value = decodeURIComponent(getUrlParam('version'));
-  }
+  watch(
+    () => router.route.path,
+    () => {
+      const urlVersion = decodeURIComponent(getUrlParam('version'));
+      if (urlVersion && shownNameList.includes(urlVersion)) {
+        versionShownName.value = urlVersion;
+      }
+    },
+    { immediate: true }
+  );
 });
 onMounted(() => {
   watch(
