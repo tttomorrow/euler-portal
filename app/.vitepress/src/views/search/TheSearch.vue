@@ -196,9 +196,13 @@ function searchAll(current?: string) {
     searchCountAll(current);
     searchDataAll();
     searchRpm();
+    handleSelectChange(searchInput.value);
   } else {
     clearSearchInput();
   }
+}
+function handleSelectChange(val: string) {
+  history.pushState(null, '', `?search=${val}`);
 }
 function handleSelect(val: string) {
   searchInput.value = val.replace(/<[^>]+>/g, '');
@@ -558,6 +562,7 @@ watch(
             box-shadow: none;
           }
           .el-input__wrapper {
+            padding: 0 8px;
             box-shadow: 0 0 1px var(--o-color-border1);
           }
         }

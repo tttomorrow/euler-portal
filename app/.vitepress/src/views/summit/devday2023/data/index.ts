@@ -24,6 +24,8 @@ import zhaolei from '../img/guest/zhaolei.png';
 import fengchengwen from '../img/guest/fengchengwen.png';
 import huangheqing from '../img/guest/huangheqing.png';
 import youyifeng from '../img/guest/youyifeng.png';
+import hukekai from '../img/guest/hukekai.png';
+import zhouguangwei from '../img/guest/zhouguangwei.png';
 import yangmutian from '../img/guest/yangmutian.png';
 import liuxinhao from '../img/guest/liuxinhao.png';
 import lichong from '../img/guest/licong.png';
@@ -146,6 +148,16 @@ export default {
           img: youyifeng,
           name: '游益锋',
           position: ['天翼云科技有限公司', '后台开发工程师'],
+        },
+        {
+          img: hukekai,
+          name: '胡科开',
+          position: ['华为技术有限公司', '资深安全专家'],
+        },
+        {
+          img: zhouguangwei,
+          name: '周广伟',
+          position: ['华为技术有限公司', '安全技术专家'],
         },
         {
           img: yangmutian,
