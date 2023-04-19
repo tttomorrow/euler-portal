@@ -43,7 +43,11 @@ onMounted(() => {
       <div class="select-box">
         <span class="lable">{{ i18n.download.VERSION }}</span>
         <ClientOnly>
-          <OSelect v-model="activeVersion" @change="handleSelectChange" class="select-version">
+          <OSelect
+            v-model="activeVersion"
+            class="select-version"
+            @change="handleSelectChange"
+          >
             <OOption
               v-for="itemData in downloadList"
               :key="itemData.NAME"

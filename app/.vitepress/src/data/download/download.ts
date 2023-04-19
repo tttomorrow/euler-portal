@@ -10,7 +10,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/23.03/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-23.03/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2303.pdf',
         // WEBSITE_SELECT: '/zh/mirror/select/?version=23.03',
@@ -276,7 +276,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/22.03_LTS_SP1/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203-SP1.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=22.03-LTS-SP1',
@@ -820,7 +820,7 @@ export default {
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2203.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=22.03-LTS',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/',
         EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/',
@@ -1157,7 +1157,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/20.03_LTS_SP3/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WEBSITE_SELECT: '/zh/mirror/select/?version=20.03-LTS-SP3',
         MANUFACTURER: 'openEuler社区',
@@ -1245,8 +1245,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf',
@@ -1336,7 +1335,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/20.03_LTS_SP2/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WEBSITE_SELECT: '/zh/mirror/select/?version=20.03-LTS-SP2',
         MANUFACTURER: 'openEuler社区',
@@ -1424,8 +1423,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/21.03/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2103.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=21.03',
@@ -1514,7 +1512,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WEBSITE_SELECT: '/zh/mirror/select/?version=20.03-LTS-SP1',
         MANUFACTURER: 'openEuler社区',
@@ -1602,8 +1600,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/20.09/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WHITE_PAPER: '/whitepaper/openEuler-whitepaper-2009.pdf',
         WEBSITE_SELECT: '/zh/mirror/select/?version=20.09',
@@ -1674,7 +1671,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/zh/docs/20.03_LTS/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/zh/other/lifecycle/',
         WEBSITE_SELECT: '/zh/mirror/select/?version=20.03-LTS',
         MANUFACTURER: 'openEuler社区',
@@ -1757,7 +1754,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://gitee.com/openeuler/RISC-V/blob/master/documents/Installing.md',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/RISC-V/issues',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-preview/RISC-V/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         MANUFACTURER: 'openEuler RISC-V SIG组',
         PUBLISH_DATE: '2020/09',
         LTS: false,
@@ -1782,6 +1779,34 @@ export default {
       },
     ],
     BUSINESS_LIST: [
+      {
+        NAME: '超聚变服务器操作系统 FusionOS 22 （免费使用授权）',
+        DOWNLOAD_URL:
+          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+        DESC: 'FusionOS 22是一款基于openEuler操作系统，面向运营商、金融、政企等行业关键业务设计开发的企业级服务器操作系统。为了让广大的用户能更便捷、更低成本地获得FusionOS 22的极致业务体验，超聚变提供了超聚变服务器操作系统FusionOS 22（免费使用授权）。',
+        RELEASE_DESC_URL:
+          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+        INSTALL_GUIDENCE_URL:
+          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+        SEEK_HELP_URL: 'https://www.xfusion.com',
+        GET_ISO_URL:
+          'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+        MANUFACTURER: '超聚变数字技术有限公司',
+        PUBLISH_DATE: '2023/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://eco.xfusion.com/solutions/market/application/419662379870064640',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
       {
         NAME: '凝思安全操作系统V6.0',
         DOWNLOAD_URL: 'https://www.linx-info.com/download/os/el/',
@@ -1865,6 +1890,73 @@ export default {
         ],
       },
       {
+        NAME: '红旗Asianux服务器操作系统V8.1',
+        DOWNLOAD_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        DESC: '红旗Asianux服务器操作系统（欧拉版）是基于openEuler20.03 LTS SP1进行二次开发的商业发行版，目前内核版本为4.19。',
+        RELEASE_DESC_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        INSTALL_GUIDENCE_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '中科红旗（北京）信息科技有限公司',
+        PUBLISH_DATE: '2021/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: '红旗Asianux服务器操作系统V8.1',
+        DOWNLOAD_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        DESC: '红旗Asianux服务器操作系统（欧拉版）是基于openEuler20.03 LTS SP1进行二次开发的商业发行版，目前内核版本为4.19。',
+        RELEASE_DESC_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        INSTALL_GUIDENCE_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '中科红旗（北京）信息科技有限公司',
+        PUBLISH_DATE: '2021/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'HopeStage',
+        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
+        DESC: '企业级通用操作系统HopeStage是基于openEuler构建的企业级Linux操作系统，具备高效、稳定、安全的特性，致力于为企业级的数据库、大数据、云计算、人工智能平台提供安全稳定的运行基础。',
+        RELEASE_DESC_URL:
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
+        SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '江苏润和',
+        PUBLISH_DATE: '2020/09',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
         NAME: '银河麒麟高级服务器操作系统V10',
         DOWNLOAD_URL: 'https://kylinos.cn/scheme/server/1.html',
         DESC: '银河麒麟高级服务器操作系统V10是针对企业级关键业务，适应虚拟化、云计算、大数据、工业互联网时代对主机系统可靠性、安全性、性能、扩展性和实时性等需求，依据CMMI5级标准研制的提供内生本质安全、云原生支持、自主平台深入优化、 高性能、易管理的新一代自主服务器操作系统，同源支持飞腾、鲲鹏、龙芯、申威、海光、兆芯等自主平台；应用于政府、金融、教育、财税、公安、审计、交通、医疗、制造等领域。基于银河麒麟高级服务器操作系统，用户可轻松构建数据中心、高可用集群和负载均衡集群、虚拟化应用服务、分布式文件系统等，并实现对虚拟数据中心的跨物理系统、虚拟机集群进行统一的监控和管理。 银河麒麟高级服务器操作系统支持云原生应用，满足企业当前数据中心及下一代的虚拟化(含Docker容器)、大数据、云服务的需求，为用户提供融合、统一、自主创新的基础软件平台及灵活的管理服务。',
@@ -1873,60 +1965,6 @@ export default {
         MANUFACTURER: '麒麟软件有限公司',
         PUBLISH_DATE: '2020/07',
         LTS: false,
-      },
-      {
-        NAME: '麒麟信安 Kylinsec V3.5.1',
-        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.5-1/',
-        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
-        RELEASE_DESC_URL:
-          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/kylinsecpages3.5.1.pdf',
-        INSTALL_GUIDENCE_URL:
-          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/KYJS-KY3.5.1-Server-SUM-V1.0.pdf',
-        SEEK_HELP_URL: '',
-        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/',
-        LIFE_CYCLE_URL: '',
-        MANUFACTURER: '麒麟信安 Kylinsec',
-        PUBLISH_DATE: '',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/x86_64/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/aarch64/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
-      {
-        NAME: '麒麟信安 Kylinsec V3.4-4',
-        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
-        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
-        RELEASE_DESC_URL:
-          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
-        INSTALL_GUIDENCE_URL:
-          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846807a00f.pdf',
-        SEEK_HELP_URL: '',
-        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/',
-        LIFE_CYCLE_URL: '',
-        MANUFACTURER: '麒麟信安 Kylinsec',
-        PUBLISH_DATE: '',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
       },
       {
         NAME: 'HopeEdge',
@@ -1983,32 +2021,6 @@ export default {
         ],
       },
       {
-        NAME: '普华服务器操作系统v5.1',
-        DOWNLOAD_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
-        DESC: '暂无描述',
-        RELEASE_DESC_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
-        INSTALL_GUIDENCE_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
-        SEEK_HELP_URL:
-          'https://p.qiao.baidu.com/cps4/chatIndex?siteToken=9a45f9cee67affa160b6addd06e07a8d&speedLogId=160067949693727da_1600679496937_87121&eid=30746007&reqParam=%7B%22from%22%3A0%2C%22sid%22%3A%22-100%22%2C%22tid%22%3A%22-1%22%2C%22ttype%22%3A1%2C%22siteId%22%3A%2215215804%22%2C%22userId%22%3A%2230746007%22%2C%22pageId%22%3A0%7D ',
-        GET_ISO_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
-        LIFE_CYCLE_URL: '',
-        MANUFACTURER: '普华软件',
-        PUBLISH_DATE: '',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
-      {
         NAME: '拓林思企业级服务器操作系统',
         DOWNLOAD_URL: 'http://download.turbolinux.com.cn:8011/',
         DESC: ' 拓林思企业级服务器操作系统是一款基于openEuler操作系统打造的针对AArch64处理器架构的操作系统发行版，适用于数据库、云计算、大数据、分布式计算等多种应用场景，为客户提供安全、可靠的解决系统方案，为各类应用提供标准、稳定的运行环境。',
@@ -2045,47 +2057,107 @@ export default {
         LTS: false,
       },
       {
-        NAME: 'HopeStage',
-        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
-        DESC: '企业级通用操作系统HopeStage是基于openEuler构建的企业级Linux操作系统，具备高效、稳定、安全的特性，致力于为企业级的数据库、大数据、云计算、人工智能平台提供安全稳定的运行基础。',
+        NAME: '麒麟信安 Kylinsec V3.5.1',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.5-1/',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
         RELEASE_DESC_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/kylinsecpages3.5.1.pdf',
         INSTALL_GUIDENCE_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
-        SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/KYJS-KY3.5.1-Server-SUM-V1.0.pdf',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/',
         LIFE_CYCLE_URL: '',
-        MANUFACTURER: '江苏润和',
-        PUBLISH_DATE: '2020/09',
+        MANUFACTURER: '麒麟信安 Kylinsec',
+        PUBLISH_DATE: '',
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/x86_64/',
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.5-1/isos/aarch64/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
         ],
       },
       {
-        NAME: '红旗Asianux服务器操作系统V8.1',
-        DOWNLOAD_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
-        DESC: '红旗Asianux服务器操作系统（欧拉版）是基于openEuler20.03 LTS SP1进行二次开发的商业发行版，目前内核版本为4.19。',
-        RELEASE_DESC_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
-        INSTALL_GUIDENCE_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        NAME: '麒麟信安 Kylinsec V3.4-5',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-5/',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
+        RELEASE_DESC_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/kylinsecpages-3.4-5.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://kylinsec.com.cn/Uploads/Pdf/2022-11-18/KYJS-KY3.4-5-SUM-V1.0.pdf',
         SEEK_HELP_URL: '',
-        GET_ISO_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-5/isos/',
         LIFE_CYCLE_URL: '',
-        MANUFACTURER: '中科红旗（北京）信息科技有限公司',
-        PUBLISH_DATE: '2021/03',
+        MANUFACTURER: '麒麟信安 Kylinsec',
+        PUBLISH_DATE: '',
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-5/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-5/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: '麒麟信安 Kylinsec V3.4-4',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
+        DESC: '麒麟信安操作系统基于Linux内核开发，以openEuler LTS为基础，具备高安全、高可靠、强实时、可定制等特性，与国内主要软硬件厂商共建生态体系。该系统连续七次通过公安部四级测评，承担多项国家级重大专项任务，为国防、政务、能源、交通等领域提供行业级操作系统解决方案。',
+        RELEASE_DESC_URL:
+          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846807a00f.pdf',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '麒麟信安 Kylinsec',
+        PUBLISH_DATE: '',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: '普华服务器操作系统v5.1',
+        DOWNLOAD_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+        DESC: '暂无描述',
+        RELEASE_DESC_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+        INSTALL_GUIDENCE_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+        SEEK_HELP_URL:
+          'https://p.qiao.baidu.com/cps4/chatIndex?siteToken=9a45f9cee67affa160b6addd06e07a8d&speedLogId=160067949693727da_1600679496937_87121&eid=30746007&reqParam=%7B%22from%22%3A0%2C%22sid%22%3A%22-100%22%2C%22tid%22%3A%22-1%22%2C%22ttype%22%3A1%2C%22siteId%22%3A%2215215804%22%2C%22userId%22%3A%2230746007%22%2C%22pageId%22%3A0%7D ',
+        GET_ISO_URL: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: '普华软件',
+        PUBLISH_DATE: '',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -2111,7 +2183,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/installing-the-os.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/23.03/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=23.03',
         CLOUD_IMAGE:
@@ -2367,7 +2439,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/installing-the-os.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
@@ -2621,7 +2693,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/en/docs/22.09/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
         SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
@@ -2893,7 +2965,7 @@ export default {
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/',
         EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/',
@@ -3218,7 +3290,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.03_LTS_SP3/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.03-LTS-SP3',
         MANUFACTURER: 'openEuler community',
@@ -3249,8 +3321,7 @@ export default {
           'https://docs.openeuler.org/en/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-en.pdf',
@@ -3338,7 +3409,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.03_LTS_SP2/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.03-LTS-SP2',
         MANUFACTURER: 'openEuler community',
@@ -3424,8 +3495,7 @@ export default {
           'https://docs.openeuler.org/en/docs/21.03/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         WHITE_PAPER: '/whitepaper/en/openEuler-21.03-Technical-White-Paper.pdf',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=21.03',
@@ -3512,7 +3582,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.03_LTS_SP1/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.03-LTS-SP1',
         MANUFACTURER: 'openEuler community',
@@ -3598,8 +3668,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.09/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.09',
         MANUFACTURER: 'openEuler community',
@@ -3669,7 +3738,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.03_LTS/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.03-LTS',
         MANUFACTURER: 'openEuler community',
@@ -3750,7 +3819,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://gitee.com/openeuler/RISC-V/blob/master/documents/Installing.md',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/RISC-V/issues',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-preview/RISC-V/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         MANUFACTURER: 'openEuler RISC-V SIG group',
         PUBLISH_DATE: '2020/09',
         LTS: false,
@@ -3775,32 +3844,53 @@ export default {
     ],
     BUSINESS_LIST: [
       {
-        NAME: 'Kylinsec',
-        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
-        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/',
-        DESC: 'No description available',
-        RELEASE_DESC_URL:
-          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
-        INSTALL_GUIDENCE_URL:
-          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846807a00f.pdf',
+        NAME: 'RedFlag Asianux Server - 8.1',
+        DOWNLOAD_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        DESC: 'Red Flag Asianux Server OS (openEuler) is a commercial release based on the secondary development of openEuler 20.03 LTS SP1. The current kernel version is 4.19.',
+        RELEASE_DESC_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        INSTALL_GUIDENCE_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
         SEEK_HELP_URL: '',
+        GET_ISO_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
         LIFE_CYCLE_URL: '',
-        MANUFACTURER: 'Kylinsec',
-        PUBLISH_DATE: '',
+        MANUFACTURER: 'Red Flag Asianux Server',
+        PUBLISH_DATE: '2021/03',
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
+            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
         ],
       },
+      {
+        NAME: 'HopeStage',
+        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
+        DESC: 'HopeStage Enterprise Linux is an enterprise-level Linux operating system based on openEuler, which has the advantages of high efficiency, stability and security. HopeStage is committed to providing a safe and stable operating basis for enterprise-level databases, big data, cloud computing and artificial intelligence platforms.',
+        RELEASE_DESC_URL:
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
+        SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: 'HOPERUN',
+        PUBLISH_DATE: '2020/09',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+
       {
         NAME: 'HopeEdge',
         DESC: 'HopeEdge Linux for Edge Computing is an edge computing operating system based on openEuler, which is oriented to IoT scenarios. It has four key characteristics: lightweight security, independent innovation, efficient interconnection and rapid deployment. HopeEdge also provides equipment management, data acquisition, cloud-edge collaboration, artificial intelligence and other characteristics.',
@@ -3856,6 +3946,57 @@ export default {
         ],
       },
       {
+        NAME: 'TurboLinux Enterprise server v15',
+        DOWNLOAD_URL: 'http://download.turbolinux.com.cn:8011/',
+        DESC: 'Turbolinux Enterprise Server 15 (TLES15) is the enterprise commercial Linux distribution based on the openEuler community, designed for the AArch64 processor architecture.',
+        INSTALL_GUIDENCE_URL:
+          'http://download.turbolinux.com.cn:8011/docs/TurboLinux16-Installation-AArch64.pdf',
+        SEEK_HELP_URL: 'http://forum.turbolinux.com.cn/ ',
+        GET_ISO_URL: 'http://download.turbolinux.com.cn:8011/',
+        MANUFACTURER: 'TurboLinux',
+        PUBLISH_DATE: '2020/04',
+        LIFE_CYCLE_URL:
+          'http://download.turbolinux.com.cn:8011/docs/TLES-OS-PLANNING.pdf',
+        RELEASE_DESC_URL:
+          'http://www.turbolinux.com.cn/index.php/pages/cat_id/2.html',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://download.turbolinux.com.cn:8011/iso/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+
+      {
+        NAME: 'Kylinsec',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/',
+        DESC: 'No description available',
+        RELEASE_DESC_URL:
+          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846807a00f.pdf',
+        SEEK_HELP_URL: '',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: 'Kylinsec',
+        PUBLISH_DATE: '',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
         NAME: 'iSoftServerOS-Kunpeng-5.1',
         DOWNLOAD_URL: 'http://www.i-soft.com.cn/type/4/714.jhtml',
         DESC: 'No description available',
@@ -3881,76 +4022,6 @@ export default {
           },
         ],
       },
-      {
-        NAME: 'TurboLinux Enterprise server v15',
-        DOWNLOAD_URL: 'http://download.turbolinux.com.cn:8011/',
-        DESC: 'Turbolinux Enterprise Server 15 (TLES15) is the enterprise commercial Linux distribution based on the openEuler community, designed for the AArch64 processor architecture.',
-        INSTALL_GUIDENCE_URL:
-          'http://download.turbolinux.com.cn:8011/docs/TurboLinux16-Installation-AArch64.pdf',
-        SEEK_HELP_URL: 'http://forum.turbolinux.com.cn/ ',
-        GET_ISO_URL: 'http://download.turbolinux.com.cn:8011/',
-        MANUFACTURER: 'TurboLinux',
-        PUBLISH_DATE: '2020/04',
-        LIFE_CYCLE_URL:
-          'http://download.turbolinux.com.cn:8011/docs/TLES-OS-PLANNING.pdf',
-        RELEASE_DESC_URL:
-          'http://www.turbolinux.com.cn/index.php/pages/cat_id/2.html',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'http://download.turbolinux.com.cn:8011/iso/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
-      {
-        NAME: 'HopeStage',
-        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
-        DESC: 'HopeStage Enterprise Linux is an enterprise-level Linux operating system based on openEuler, which has the advantages of high efficiency, stability and security. HopeStage is committed to providing a safe and stable operating basis for enterprise-level databases, big data, cloud computing and artificial intelligence platforms.',
-        RELEASE_DESC_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_ReleaseNotes.pdf',
-        INSTALL_GUIDENCE_URL:
-          'http://webapp.hoperun.com:8007/HopeStage/HopeStage-Enterprise-Linux_Installation_Guide.pdf',
-        SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeStage/',
-        LIFE_CYCLE_URL: '',
-        MANUFACTURER: 'HOPERUN',
-        PUBLISH_DATE: '2020/09',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
-      {
-        NAME: 'RedFlag Asianux Server - 8.1',
-        DOWNLOAD_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
-        DESC: 'Red Flag Asianux Server OS (openEuler) is a commercial release based on the secondary development of openEuler 20.03 LTS SP1. The current kernel version is 4.19.',
-        RELEASE_DESC_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
-        INSTALL_GUIDENCE_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
-        SEEK_HELP_URL: '',
-        GET_ISO_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
-        LIFE_CYCLE_URL: '',
-        MANUFACTURER: 'Red Flag Asianux Server',
-        PUBLISH_DATE: '2021/03',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
     ],
     SCENARIO_LIST: [
       { KEY: '', VALUE: 'All' },
@@ -3971,7 +4042,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/installing-the-os.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/23.03/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=23.03',
         CLOUD_IMAGE:
@@ -4227,7 +4298,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/installing-the-os.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
         CLOUD_IMAGE:
@@ -4481,7 +4552,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://docs.openeuler.org/en/docs/22.09/docs/Installation/installation.html',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
         SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
@@ -4753,7 +4824,7 @@ export default {
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         CLOUD_IMAGE:
           'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/',
         EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/',
@@ -5069,37 +5140,6 @@ export default {
         PLANNED_EOL: '2024/03',
       },
       {
-        NAME: 'openEuler 20.03 LTS SP3',
-        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/',
-        DESC: 'openEuler 20.03 LTS SP3 is the patch version of openEuler 20.03 LTS, and both versions have the same lifecycle.',
-        RELEASE_DESC_URL:
-          'https://docs.openeuler.org/en/docs/20.03_LTS_SP3/docs/Releasenotes/release_notes.html',
-        INSTALL_GUIDENCE_URL:
-          'https://docs.openeuler.org/en/docs/20.03_LTS_SP3/docs/Installation/Installation.html',
-        SEEK_HELP_URL:
-          'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/',
-        LIFE_CYCLE_URL: '/en/other/lifecycle/',
-        WEBSITE_SELECT: '/en/mirror/select/?version=20.03-LTS-SP3',
-        MANUFACTURER: 'openEuler community',
-        PUBLISH_DATE: '2021/12',
-        LTS: true,
-        VERSION: '20.03-LTS-SP3',
-        DETAILED_LINK: [
-          {
-            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/x86_64/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/aarch64/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-        PLANNED_EOL: '2025/12',
-      },
-      {
         NAME: 'openEuler 21.09',
         DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/',
         DESC: 'openEuler 21.09 is an innovative version for all scenarios, including edge and embedded devices. It enhances server and cloud computing features, and incorporates key technologies including cloud-native scheduling algorithms for hybrid service deployments and the container operating system KubeOS.',
@@ -5109,8 +5149,7 @@ export default {
           'https://docs.openeuler.org/en/docs/21.09/docs/Installation/installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WHITE_PAPER:
           'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/pdf/openEuler%2021.09%20%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-en.pdf',
@@ -5198,7 +5237,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.03_LTS_SP2/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.03-LTS-SP2',
         MANUFACTURER: 'openEuler community',
@@ -5284,8 +5323,7 @@ export default {
           'https://docs.openeuler.org/en/docs/21.03/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         WHITE_PAPER: '/whitepaper/en/openEuler-21.03-Technical-White-Paper.pdf',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=21.03',
@@ -5372,7 +5410,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.03_LTS_SP1/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.03-LTS-SP1',
         MANUFACTURER: 'openEuler community',
@@ -5458,8 +5496,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.09/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL:
-          'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
+        GET_ISO_URL: 'https://archives.openeuler.openatom.cn/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.09',
         MANUFACTURER: 'openEuler community',
@@ -5529,7 +5566,7 @@ export default {
           'https://docs.openeuler.org/en/docs/20.03_LTS/docs/Installation/Installation.html',
         SEEK_HELP_URL:
           'https://gitee.com/openeuler/community-issue/blob/master/README.md',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         LIFE_CYCLE_URL: '/en/other/lifecycle/',
         WEBSITE_SELECT: '/en/mirror/select/?version=20.03-LTS',
         MANUFACTURER: 'openEuler community',
@@ -5610,7 +5647,7 @@ export default {
         INSTALL_GUIDENCE_URL:
           'https://gitee.com/openeuler/RISC-V/blob/master/documents/Installing.md',
         SEEK_HELP_URL: 'https://gitee.com/openeuler/RISC-V/issues',
-        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-preview/RISC-V/',
+        GET_ISO_URL: 'https://repo.openeuler.org/',
         MANUFACTURER: 'openEuler RISC-V SIG group',
         PUBLISH_DATE: '2020/09',
         LTS: false,
@@ -5635,130 +5672,20 @@ export default {
     ],
     BUSINESS_LIST: [
       {
-        NAME: 'Kylinsec',
-        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
-        DESC: 'Описание недоступно',
-        RELEASE_DESC_URL:
-          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
-        INSTALL_GUIDENCE_URL:
-          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846807a00f.pdf',
+        NAME: 'RedFlag Asianux Server - 8.1',
+        DOWNLOAD_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        DESC: 'Red Flag Asianux Server OS (openEuler) is a commercial release based on the secondary development of openEuler 20.03 LTS SP1. The current kernel version is 4.19.',
+        RELEASE_DESC_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        INSTALL_GUIDENCE_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
         SEEK_HELP_URL: '',
-        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/',
+        GET_ISO_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
         LIFE_CYCLE_URL: '',
-        MANUFACTURER: 'Kylinsec',
-        PUBLISH_DATE: '',
+        MANUFACTURER: 'Red Flag Asianux Server',
+        PUBLISH_DATE: '2021/03',
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
-      {
-        NAME: 'HopeEdge',
-        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/',
-        DESC: 'HopeEdge Linux for Edge Computing is an edge computing operating system based on openEuler, which is oriented to IoT scenarios. It has four key characteristics: lightweight security, independent innovation, efficient interconnection and rapid deployment. HopeEdge also provides equipment management, data acquisition, cloud-edge collaboration, artificial intelligence and other characteristics.',
-        RELEASE_DESC_URL:
-          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_ReleaseNote.pdf',
-        INSTALL_GUIDENCE_URL:
-          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_Installation_Guide.pdf',
-        SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
-        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeEdge/',
-        LIFE_CYCLE_URL: '',
-        MANUFACTURER: 'HOPERUN',
-        PUBLISH_DATE: '2020/07',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
-      {
-        NAME: 'EulixOS Server',
-        DOWNLOAD_URL: 'https://eulixos.com/#/download',
-        DESC: 'EulixOS — это дистрибутив серверной операционной системы, основанный на ОС openEuler. Поддерживая такие процессорные архитектуры, как x86_64, AArch64 и RISC-V, EulixOS идеально подходит для применения в различных сценариях, в том числе в базах данных, облачных вычислениях, больших данных, системах искусственного интеллекта и распределенных вычислениях. Сочетая свойства высокой безопасности и надежности, а также превосходной производительности, которая отличает все платформы, данный дистрибутив обеспечит стандартную, безопасную и надежную операционную систему и качественные сервисы, применимые в различных приложениях и решениях.',
-        RELEASE_DESC_URL:
-          'https://eulixos.com/userguide/%E5%8F%91%E8%A1%8C%E8%AF%B4%E6%98%8E/%E7%89%88%E6%9C%AC%E5%8F%91%E8%A1%8C%E8%AF%B4%E6%98%8E.html',
-        INSTALL_GUIDENCE_URL:
-          'https://eulixos.com/userguide/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E5%89%8D%E8%A8%80.html',
-        SEEK_HELP_URL: 'https://eulixos.com/#/feedback',
-        GET_ISO_URL: 'https://eulixos.com/#/download',
-        LIFE_CYCLE_URL: '',
-        MANUFACTURER: 'ISCAS',
-        PUBLISH_DATE: '2020/05',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'https://eulixos.com/#/download',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'https://eulixos.com/#/download',
-            ARCH: 'RISC-V',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
-      {
-        NAME: 'iSoftServerOS-Kunpeng-5.1',
-        DOWNLOAD_URL: 'http://www.i-soft.com.cn/type/4/714.jhtml',
-        DESC: 'Описание недоступно',
-        RELEASE_DESC_URL: 'http://www.i-soft.com.cn/type/4/716.jhtml',
-        INSTALL_GUIDENCE_URL: 'http://www.i-soft.com.cn/type/4/716.jhtml ',
-        SEEK_HELP_URL:
-          'https://p.qiao.baidu.com/cps4/chatIndex?siteToken=9a45f9cee67affa160b6addd06e07a8d&speedLogId=160067949693727da_1600679496937_87121&eid=30746007&reqParam=%7B%22from%22%3A0%2C%22sid%22%3A%22-100%22%2C%22tid%22%3A%22-1%22%2C%22ttype%22%3A1%2C%22siteId%22%3A%2215215804%22%2C%22userId%22%3A%2230746007%22%2C%22pageId%22%3A0%7D ',
-        GET_ISO_URL: 'http://www.i-soft.com.cn/type/4/714.jhtml ',
-        LIFE_CYCLE_URL: '',
-        MANUFACTURER: 'iSoft',
-        PUBLISH_DATE: '',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
-            ARCH: 'x86_64',
-            SCENARIO: 'SERVER',
-          },
-          {
-            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
-            ARCH: 'AArch64',
-            SCENARIO: 'SERVER',
-          },
-        ],
-      },
-      {
-        NAME: 'TurboLinux Enterprise server v15',
-        DOWNLOAD_URL: 'http://download.turbolinux.com.cn:8011/',
-        DESC: 'Turbolinux Enterprise Server 15 (TLES15) is the enterprise commercial Linux distribution based on the openEuler community, designed for the AArch64 processor architecture.',
-        INSTALL_GUIDENCE_URL:
-          'http://download.turbolinux.com.cn:8011/docs/TurboLinux16-Installation-AArch64.pdf',
-        SEEK_HELP_URL: 'http://forum.turbolinux.com.cn/ ',
-        GET_ISO_URL: 'http://download.turbolinux.com.cn:8011/',
-        MANUFACTURER: 'TurboLinux',
-        PUBLISH_DATE: '2020/04',
-        LIFE_CYCLE_URL:
-          'http://download.turbolinux.com.cn:8011/docs/TLES-OS-PLANNING.pdf',
-        RELEASE_DESC_URL:
-          'http://www.turbolinux.com.cn/index.php/pages/cat_id/2.html',
-        LTS: false,
-        DETAILED_LINK: [
-          {
-            LINK: 'http://download.turbolinux.com.cn:8011/iso/',
+            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -5791,21 +5718,133 @@ export default {
           },
         ],
       },
+
       {
-        NAME: 'RedFlag Asianux Server - 8.1',
-        DOWNLOAD_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
-        DESC: 'Red Flag Asianux Server OS (openEuler) is a commercial release based on the secondary development of openEuler 20.03 LTS SP1. The current kernel version is 4.19.',
-        RELEASE_DESC_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
-        INSTALL_GUIDENCE_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
-        SEEK_HELP_URL: '',
-        GET_ISO_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        NAME: 'HopeEdge',
+        DESC: 'HopeEdge Linux for Edge Computing is an edge computing operating system based on openEuler, which is oriented to IoT scenarios. It has four key characteristics: lightweight security, independent innovation, efficient interconnection and rapid deployment. HopeEdge also provides equipment management, data acquisition, cloud-edge collaboration, artificial intelligence and other characteristics.',
+        DOWNLOAD_URL: 'http://webapp.hoperun.com:8007/',
+        RELEASE_DESC_URL:
+          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_ReleaseNote.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://webapp.hoperun.com:8007/HopeEdge/HopeEdgeOS_Installation_Guide.pdf',
+        SEEK_HELP_URL: 'http://www.hopeinfra.com/contactus.html',
+        GET_ISO_URL: 'http://webapp.hoperun.com:8007/HopeEdge/',
         LIFE_CYCLE_URL: '',
-        MANUFACTURER: 'Red Flag Asianux Server',
-        PUBLISH_DATE: '2021/03',
+        MANUFACTURER: 'HOPERUN',
+        PUBLISH_DATE: '2020/07',
         LTS: false,
         DETAILED_LINK: [
           {
-            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'http://webapp.hoperun.com:8007/HopeStage/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'EulixOS Server',
+        DOWNLOAD_URL: 'https://eulixos.com/#/download',
+        DESC: 'The EulixOS is a server OS distribution based on the openEuler OS. The EulixOS supports multiple processor architectures, such as x86_64, AArch64, and RISC-V, and is ideal for various application scenarios, including databases, cloud computing, big data, AI, and distributed computing. It combines high security and reliability with the ultimate performance across platforms, aiming to provide a standard, secure, and reliable operating system and quality services for diverse applications and solutions.',
+        RELEASE_DESC_URL:
+          'https://eulixos.com/userguide/%E5%8F%91%E8%A1%8C%E8%AF%B4%E6%98%8E/%E7%89%88%E6%9C%AC%E5%8F%91%E8%A1%8C%E8%AF%B4%E6%98%8E.html',
+        INSTALL_GUIDENCE_URL:
+          'https://eulixos.com/userguide/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E5%89%8D%E8%A8%80.html',
+        SEEK_HELP_URL: 'https://eulixos.com/#/feedback',
+        GET_ISO_URL: 'https://eulixos.com/#/download',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: 'ISCAS',
+        PUBLISH_DATE: '2020/05',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://eulixos.com/#/download',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://eulixos.com/#/download',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'TurboLinux Enterprise server v15',
+        DOWNLOAD_URL: 'http://download.turbolinux.com.cn:8011/',
+        DESC: 'Turbolinux Enterprise Server 15 (TLES15) is the enterprise commercial Linux distribution based on the openEuler community, designed for the AArch64 processor architecture.',
+        INSTALL_GUIDENCE_URL:
+          'http://download.turbolinux.com.cn:8011/docs/TurboLinux16-Installation-AArch64.pdf',
+        SEEK_HELP_URL: 'http://forum.turbolinux.com.cn/ ',
+        GET_ISO_URL: 'http://download.turbolinux.com.cn:8011/',
+        MANUFACTURER: 'TurboLinux',
+        PUBLISH_DATE: '2020/04',
+        LIFE_CYCLE_URL:
+          'http://download.turbolinux.com.cn:8011/docs/TLES-OS-PLANNING.pdf',
+        RELEASE_DESC_URL:
+          'http://www.turbolinux.com.cn/index.php/pages/cat_id/2.html',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://download.turbolinux.com.cn:8011/iso/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+
+      {
+        NAME: 'Kylinsec',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/',
+        DESC: 'No description available',
+        RELEASE_DESC_URL:
+          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846807a00f.pdf',
+        SEEK_HELP_URL: '',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: 'Kylinsec',
+        PUBLISH_DATE: '',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'iSoftServerOS-Kunpeng-5.1',
+        DOWNLOAD_URL: 'http://www.i-soft.com.cn/type/4/714.jhtml',
+        DESC: 'No description available',
+        RELEASE_DESC_URL: 'http://www.i-soft.com.cn/type/4/716.jhtml',
+        INSTALL_GUIDENCE_URL: 'http://www.i-soft.com.cn/type/4/716.jhtml ',
+        SEEK_HELP_URL:
+          'https://p.qiao.baidu.com/cps4/chatIndex?siteToken=9a45f9cee67affa160b6addd06e07a8d&speedLogId=160067949693727da_1600679496937_87121&eid=30746007&reqParam=%7B%22from%22%3A0%2C%22sid%22%3A%22-100%22%2C%22tid%22%3A%22-1%22%2C%22ttype%22%3A1%2C%22siteId%22%3A%2215215804%22%2C%22userId%22%3A%2230746007%22%2C%22pageId%22%3A0%7D ',
+        GET_ISO_URL: 'http://www.i-soft.com.cn/type/4/714.jhtml ',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: 'iSoft',
+        PUBLISH_DATE: '',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://www.i-soft.com.cn/type/4/714.jhtml/',
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },

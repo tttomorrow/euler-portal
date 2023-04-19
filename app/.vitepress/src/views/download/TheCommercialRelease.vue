@@ -397,7 +397,7 @@ const getItemArchList = (link: any) => {
                 <span class="class-title">{{
                   i18n.download.APPROVE_ARCH
                 }}</span>
-                <div class="arch-class" v-if="download.DETAILED_LINK">
+                <div v-if="download.DETAILED_LINK" class="arch-class">
                   <div
                     v-for="item in getItemArchList(download.DETAILED_LINK)"
                     :key="item"
@@ -405,7 +405,7 @@ const getItemArchList = (link: any) => {
                     {{ item }}
                   </div>
                 </div>
-                <div class="arch-class" v-else>
+                <div v-else class="arch-class">
                   <div class="no-data">
                     {{ i18n.download.EMPTY_TIP }}
                   </div>
@@ -440,7 +440,7 @@ const getItemArchList = (link: any) => {
         </p>
       </div>
       <!-- 页码 -->
-      <div class="page-box" v-if="total">
+      <div v-if="total" class="page-box">
         <ClientOnly>
           <OPagination
             v-if="dataList.length"
