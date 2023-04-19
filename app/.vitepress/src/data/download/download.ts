@@ -948,7 +948,7 @@ export default {
             // LINK: 'https://repo.openeuler.org/openEuler-preview/sw_arch/openEuler-22.03-LTS/ISO/',
             LINK_LIST: [
               {
-                TYPE: '暂定',
+                TYPE: 'OS-isoe',
                 SIZE: '2.8 GiB',
                 SHACODE:
                   'a0e5e38f9100e52bb89e24a0b0d4640e77ed64f898d526b288bff11c6877bf5a',
@@ -966,7 +966,7 @@ export default {
                 TIPS: 'SW64架构的全量安装ISO，包含了运行完整系统所需的全部组件',
               },
               {
-                TYPE: '暂定',
+                TYPE: 'OS-isoe',
                 SIZE: '3.6 GiB',
                 SHACODE: 'b2ed6c518cf8637e84bd3e019d4200c4',
                 DOWNLOAD_LINK:
@@ -3087,7 +3087,7 @@ export default {
             // LINK: 'https://repo.openeuler.org/openEuler-preview/sw_arch/openEuler-22.03-LTS/ISO/',
             LINK_LIST: [
               {
-                TYPE: '暂定',
+                TYPE: 'OS-isoe',
                 SIZE: '2.8 GiB',
                 SHACODE:
                   'a0e5e38f9100e52bb89e24a0b0d4640e77ed64f898d526b288bff11c6877bf5a',
@@ -3104,7 +3104,7 @@ export default {
                 TIPS: 'Full installation ISO file of the sw_arch architecture, including all components for running the entire system.',
               },
               {
-                TYPE: '暂定',
+                TYPE: 'OS-isoe',
                 SIZE: '3.6 GiB',
                 SHACODE: 'b2ed6c518cf8637e84bd3e019d4200c4',
                 DOWNLOAD_LINK:
@@ -3299,12 +3299,70 @@ export default {
         VERSION: '20.03-LTS-SP3',
         DETAILED_LINK: [
           {
-            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/x86_64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/x86_64/',
+            LINK_LIST: [
+              {
+                TYPE: 'Offline Standard ISO',
+                SIZE: '4.1 GiB',
+                SHACODE:
+                  'a359c4a31e3550d548537084bbf1cad9a4c035b7b75fde304bd8bf4b23fa0719',
+                DOWNLOAD_LINK:
+                  'openEuler-20.03-LTS-SP3/ISO/x86_64/openEuler-20.03-LTS-SP3-x86_64-dvd.iso',
+                TIPS: 'Base installation ISO file of the x86_64 architecture, including the core components for running the minimum system.',
+              },
+              {
+                TYPE: 'Offline Everything ISO',
+                SIZE: '15.7 GiB',
+                SHACODE:
+                  'f70396215a0eb175778eb43e494730de1a1c983062bd29848d8ce20f70021d42',
+                DOWNLOAD_LINK:
+                  'openEuler-20.03-LTS-SP3/ISO/x86_64/openEuler-20.03-LTS-SP3-everything-x86_64-dvd.iso',
+                TIPS: 'Full installation ISO file of the x86_64 architecture, including all components for running the entire system.',
+              },
+              {
+                TYPE: 'Network Install ISO',
+                SIZE: '826.9 MiB',
+                SHACODE:
+                  'e5f45b93df03dea414490adc584dfdb01b1176ea1b1eb50a95f065e4e189e1b4',
+                DOWNLOAD_LINK:
+                  'openEuler-20.03-LTS-SP3/ISO/x86_64/openEuler-20.03-LTS-SP3-netinst-x86_64-dvd.iso',
+                TIPS: '',
+              },
+            ],
             ARCH: 'x86_64',
             SCENARIO: 'SERVER',
           },
           {
-            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/aarch64/',
+            // LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP3/ISO/aarch64/',
+            LINK_LIST: [
+              {
+                TYPE: 'Offline Standard ISO',
+                SIZE: '3.7 GiB',
+                SHACODE:
+                  'fac6be30bcbf276c08bd1ebea1ae319406d1f2e99ceb73e041fe01a91451bb0f',
+                DOWNLOAD_LINK:
+                  'openEuler-20.03-LTS-SP3/ISO/aarch64/openEuler-20.03-LTS-SP3-aarch64-dvd.iso',
+                TIPS: 'Base installation ISO file of the aarch64 architecture, including the core components for running the minimum system.',
+              },
+              {
+                TYPE: 'Offline Everything ISO',
+                SIZE: '15.3 GiB',
+                SHACODE:
+                  '895f718d0e345d23decf2c7ea82d9ba272e63932c30799fd2f7fd333e72ba110',
+                DOWNLOAD_LINK:
+                  'openEuler-20.03-LTS-SP3/ISO/aarch64/openEuler-20.03-LTS-SP3-everything-aarch64-dvd.iso',
+                TIPS: 'Full installation ISO file of the aarch64 architecture, including all components for running the entire system.',
+              },
+              {
+                TYPE: 'Network Install ISO',
+                SIZE: '799.6 MiB',
+                SHACODE:
+                  '27f58c46e59ff2579d3c8cddb6b2f178d9663d59b4cad1826a0106baeb0960a0',
+                DOWNLOAD_LINK:
+                  'openEuler-20.03-LTS-SP3/ISO/aarch64/openEuler-20.03-LTS-SP3-netinst-aarch64-dvd.iso',
+                TIPS: '',
+              },
+            ],
             ARCH: 'AArch64',
             SCENARIO: 'SERVER',
           },
@@ -4946,7 +5004,7 @@ export default {
             // LINK: 'https://repo.openeuler.org/openEuler-preview/sw_arch/openEuler-22.03-LTS/ISO/',
             LINK_LIST: [
               {
-                TYPE: '暂定',
+                TYPE: 'OS-isoe',
                 SIZE: '2.8 GiB',
                 SHACODE:
                   'a0e5e38f9100e52bb89e24a0b0d4640e77ed64f898d526b288bff11c6877bf5a',
@@ -4963,7 +5021,7 @@ export default {
                 TIPS: 'Full installation ISO file of the sw_arch architecture, including all components for running the entire system.',
               },
               {
-                TYPE: '暂定',
+                TYPE: 'OS-isoe',
                 SIZE: '3.6 GiB',
                 SHACODE: 'b2ed6c518cf8637e84bd3e019d4200c4',
                 DOWNLOAD_LINK:

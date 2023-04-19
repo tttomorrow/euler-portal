@@ -646,7 +646,7 @@ function setShowIndex(index: number) {
         height: 28px;
         line-height: 28px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         @media screen and (max-width: 768px) {
           padding: 0 6px;
           font-size: var(--o-font-size-tip) !important;
@@ -831,6 +831,8 @@ function setShowIndex(index: number) {
                 height: 16px;
                 position: relative;
                 top: -2px;
+                display: flex;
+                align-items: center;
               }
               .el-input__suffix {
                 position: relative;

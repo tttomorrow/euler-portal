@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useI18n } from '@/i18n';
 
 import { getUrlParam } from '@/shared/utils';
+import { useRouter } from 'vitepress';
 
 import DownloadContent from './DownloadContent.vue';
 
 import AppContent from '@/components/AppContent.vue';
 
+import useWindowResize from '@/components/hooks/useWindowResize';
+
 const i18n = useI18n();
 const downloadList = i18n.value.download.COMMUNITY_LIST;
+const screenWidth = useWindowResize();
+const router = useRouter();
 const shownNameList: any = [];
 let shownIndex = 0;
 function setShownNameList() {
@@ -43,12 +48,24 @@ onMounted(() => {
     versionShownName.value = decodeURIComponent(getUrlParam('version'));
   }
 });
+onMounted(() => {
+  watch(
+    () => router.route.path,
+    () => {
+      const scenario = getUrlParam('scenario');
+      if (scenario && screenWidth.value > 1100) {
+        window.scrollTo(0, 200);
+      }
+    },
+    { immediate: true }
+  );
+});
 </script>
 
 <template>
   <AppContent :pc-top="40" :mobile-top="24">
     <div class="download-community">
-      <div class="detail">
+      <div id="detail-id" class="detail">
         <p>{{ i18n.download.DETAIL1 }}</p>
         <p>
           {{ i18n.download.DETAIL2

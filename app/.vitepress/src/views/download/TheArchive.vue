@@ -477,6 +477,7 @@ const changeCurrentPageMoblie = (val: string) => {
       .tag-filter-box {
         flex-grow: 1;
         display: flex;
+        flex-wrap: wrap;
       }
       .o-tag {
         padding: 3px 12px;
