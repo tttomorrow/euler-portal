@@ -171,17 +171,16 @@ const searchControl = (val: boolean) => {
       <ClientOnly>
         <div v-show="!isShowBox" class="header-content" :class="lang">
           <div class="header-nav" :class="{ active: mobileMenuIcon }">
-            <template v-if="lang === 'zh'">
+            <template v-if="lang === 'ru'">
+              <HeaderNav :nav-items="navRouter" />
+            </template>
+            <template v-else>
               <HeaderNavNew
                 :nav-items="navRouterNew"
                 :is-switch="mobileMenuIcon"
                 :nav-info="navRouterNewInfo"
               />
             </template>
-            <template v-else>
-              <HeaderNav :nav-items="navRouter" />
-            </template>
-
             <div v-if="isMobile" class="header-tool">
               <AppLanguage
                 :show="langShow"
@@ -192,7 +191,7 @@ const searchControl = (val: boolean) => {
           </div>
         </div>
         <div
-          v-if="toBody && lang !== 'zh' && isMobile"
+          v-if="toBody && lang === 'ru' && isMobile"
           class="mobile-menu"
           :class="{ active: mobileMenuIcon }"
           @click="handleMenuLayer($event)"
@@ -321,7 +320,7 @@ const searchControl = (val: boolean) => {
   align-items: center;
   flex: 1;
   height: 100%;
-  &.en {
+  &.ru {
     @media screen and (max-width: 1100px) {
       display: none;
     }
