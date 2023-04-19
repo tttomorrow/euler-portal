@@ -100,51 +100,51 @@ function jumpPage(e: any) {
 <style scoped lang="scss">
 .pagination-mobile {
   display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--o-font-size-tip);
+  .icon-prev {
+    margin-right: 8px;
+    color: var(--o-color-brand1);
+  }
+  .page-number {
+    margin: 0 28px;
+    text-align: center;
+    .current-page {
+      width: 16px;
+      height: 14px;
+      text-align: right;
+      border: none;
+      background-color: transparent;
+      color: var(--o-color-brand1);
+      &:focus {
+        text-align: center;
+        outline: 1px solid var(--o-color-brand1);
+      }
+    }
+    span {
+      color: var(--o-color-text1);
+      display: inline-block;
+      width: 16px;
+      text-align: left;
+    }
+  }
+  .icon-next {
+    margin-left: 8px;
+    color: var(--o-color-brand1);
+  }
+  .next,
+  .prev {
+    color: var(--o-color-text1);
+    line-height: 100%;
+    cursor: pointer;
+  }
+  .disable-button {
+    color: var(--o-color-text4);
+  }
   @media (max-width: 768px) {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: var(--o-font-size-tip);
-    .icon-prev {
-      margin-right: 8px;
-      color: var(--o-color-brand1);
-    }
-    .page-number {
-      margin: 0 28px;
-      text-align: center;
-      .current-page {
-        width: 16px;
-        height: 14px;
-        text-align: right;
-        border: none;
-        background-color: transparent;
-        color: var(--o-color-brand1);
-        &:focus {
-          text-align: center;
-          outline: 1px solid var(--o-color-brand1);
-        }
-      }
-      span {
-        color: var(--o-color-text1);
-        display: inline-block;
-        width: 16px;
-        text-align: left;
-      }
-    }
-    .icon-next {
-      margin-left: 8px;
-      color: var(--o-color-brand1);
-    }
-    .next,
-    .prev {
-      color: var(--o-color-text1);
-      line-height: 100%;
-      cursor: pointer;
-    }
-    .disable-button {
-      color: var(--o-color-text4);
-    }
   }
 }
 </style>

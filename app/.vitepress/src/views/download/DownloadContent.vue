@@ -129,7 +129,7 @@ const moreMirrorList: any = ref([]);
 function setActiveMirror() {
   tableData.value.forEach(() => {
     const temp = lodash.cloneDeep(mirrorList.value);
-    temp[0].NameSpend = temp[0].Name + '(' + temp[0].NetworkBandwidth + 'Mb/s)';
+    temp[0].NameSpend = temp[0].Name + ' (' + temp[0].NetworkBandwidth + 'Mb/s)';
     activeMirror.value.push(temp[0].NameSpend);
     activeMirrorLink.value.push(temp[0].HttpURL);
   });
@@ -170,7 +170,7 @@ async function getMirrorList() {
       }
     }
     mirrorData.MirrorList.forEach((item: any) => {
-      item.NameSpend = item.Name + '(' + item.NetworkBandwidth + 'Mb/s)';
+      item.NameSpend = item.Name +' (' + item.NetworkBandwidth + 'Mb/s)';
     });
     mirrorList.value = lodash.cloneDeep(mirrorData.MirrorList.splice(0, 3));
     moreMirrorList.value = lodash.cloneDeep(mirrorData.MirrorList);
@@ -217,7 +217,7 @@ function setShowIndex(index: number) {
     <h2 class="title">{{ (contentData[0] as any).NAME }}</h2>
     <p class="subtitle">{{ (contentData[0] as any).DESC }}</p>
     <p class="subtitle">
-      Planned EOL:{{ (contentData[0] as any).PLANNED_EOL }}
+      Planned EOL: {{ (contentData[0] as any).PLANNED_EOL }}
     </p>
     <div class="other-link">
       <a
@@ -282,7 +282,7 @@ function setShowIndex(index: number) {
         style="width: 100%"
       >
         <el-table-column
-          width="280"
+          :width="screenWidth > 1310 ? '280' : '230'"
           :label="i18n.download.TABLE_HEAD[0]"
           prop="name"
         >
@@ -290,9 +290,13 @@ function setShowIndex(index: number) {
             <div class="name-info">
               {{ scope.row.TYPE }}
               <template v-if="scope.row.TIPS">
-                <el-tooltip placement="right-start" :effect="commonStore.theme">
+                <el-tooltip
+                  placement="right-start"
+                  :offset-y="60"
+                  :effect="commonStore.theme"
+                >
                   <template #content>
-                    <p class="server-name">
+                    <p class="tips-text">
                       {{ scope.row.TIPS }}
                     </p>
                   </template>
@@ -303,7 +307,7 @@ function setShowIndex(index: number) {
           </template>
         </el-table-column>
         <el-table-column
-          width="200"
+          :width="screenWidth > 1310 ? '200' : '130'"
           :label="i18n.download.TABLE_HEAD[1]"
           prop="size"
         >
@@ -361,7 +365,7 @@ function setShowIndex(index: number) {
           </template>
         </el-table-column>
         <el-table-column
-          width="200"
+          :width="screenWidth > 1310 ? '200' : '150'"
           :label="i18n.download.TABLE_HEAD[3]"
           prop="sha_code"
         >
@@ -382,7 +386,7 @@ function setShowIndex(index: number) {
           </template>
         </el-table-column>
         <el-table-column
-          width="200"
+          :width="screenWidth > 1310 ? '200' : '160'"
           :label="i18n.download.TABLE_HEAD[4]"
           prop="docsName"
         >
@@ -413,7 +417,7 @@ function setShowIndex(index: number) {
             ><span class="tips-box"
               >{{ item.TYPE }}
               <template v-if="item.TIPS">
-                <p v-show="showIndex === index" class="server-name">
+                <p v-show="showIndex === index" class="tips-text">
                   {{ item.TIPS }}
                 </p>
                 <IconTips class="server-tips" @click="setShowIndex(index)" />
@@ -580,17 +584,26 @@ function setShowIndex(index: number) {
       .label {
         color: var(--o-color-text1);
         @media screen and (max-width: 768px) {
-          width: auto;
+          width: 26px;
           font-size: var(--o-font-size-tip);
         }
       }
       .tag-filter-box {
         flex-grow: 1;
+        display: flex;
       }
-      :deep(.o-tag) {
-        padding: 3px 12px;
-        font-size: var(--o-font-text-tip);
-        line-height: var(--o-line-height-tip);
+      .o-tag {
+        padding: 0 12px;
+        font-size: var(--o-font-size-text);
+        height: 28px;
+        line-height: 28px;
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+          padding: 0 6px;
+          font-size: var(--o-font-size-tip) !important;
+          line-height: 24px;
+        }
       }
       &.os-box {
         margin-top: var(--o-spacing-h5);
@@ -622,12 +635,9 @@ function setShowIndex(index: number) {
         align-items: center;
         gap: var(--o-spacing-h8);
         color: var(--o-color-text1);
-        .server-name {
-          background-color: red;
-        }
         .server-tips {
           width: var(--o-font-size-h6);
-          height: var(--o-font-size-h6);
+          height: 32px;
           color: var(--o-color-text4);
         }
       }
@@ -656,24 +666,26 @@ function setShowIndex(index: number) {
       :deep(.cell) {
         line-height: 46px;
         overflow: visible;
-        padding: 0 var(--o-spacing-h2);
+        padding-left: var(--o-spacing-h2);
         a {
           word-break: normal;
         }
         .o-select:hover {
           background-color: red;
         }
-      }
-      :deep(.el-input__wrapper) {
-        box-shadow: none;
-        background-color: transparent;
-        input,
-        i {
-          color: var(--o-color-brand1);
+        .el-input__wrapper {
+          box-shadow: none;
+          background-color: transparent;
+          padding: 0;
+          width: 200px;
+          input,
+          i {
+            color: var(--o-color-brand1);
+          }
         }
       }
       :deep(.el-select) {
-        width: 260px;
+        width: 230px;
         .el-input .el-input__wrapper {
           box-shadow: none !important;
         }
@@ -718,7 +730,7 @@ function setShowIndex(index: number) {
             display: flex;
             align-items: center;
             position: relative;
-            .server-name {
+            .tips-text {
               position: absolute;
               left: 0;
               top: -46px;
@@ -730,6 +742,7 @@ function setShowIndex(index: number) {
               height: var(--o-font-size-tip);
               color: var(--o-color-text4);
               margin-left: var(--o-spacing-h9);
+              transform: translateY(-1px);
             }
             .mask-mobile {
               position: fixed;
@@ -751,7 +764,7 @@ function setShowIndex(index: number) {
                 font-size: var(--o-font-size-tip);
                 vertical-align: top;
                 line-height: auto;
-                height: 14px;
+                height: 16px;
               }
             }
           }
