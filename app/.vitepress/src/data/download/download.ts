@@ -5776,7 +5776,534 @@ export default {
           },
         ],
       },
-
+      {
+        NAME: 'RedFlag Asianux Server - 8.1',
+        DOWNLOAD_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        DESC: 'Red Flag Asianux Server OS (openEuler) is a commercial release based on the secondary development of openEuler 20.03 LTS SP1. The current kernel version is 4.19.',
+        RELEASE_DESC_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        INSTALL_GUIDENCE_URL: 'http://www.linuxsir.cn/?product.htm&pid=2',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: 'Red Flag Asianux Server',
+        PUBLISH_DATE: '2021/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'http://pan.chinaredflag.cn/d/d3041d958a8d4da1881d/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+    ],
+    SCENARIO_LIST: [
+      { KEY: '', VALUE: 'All' },
+      { KEY: 'SERVER', VALUE: 'Server' },
+      { KEY: 'EDGE_CLOUD', VALUE: 'Edge Cloud' },
+      { KEY: 'CLOUD_COMPUTING', VALUE: 'Cloud Computing' },
+      { KEY: 'EMBEDDED', VALUE: 'Embedded' },
+    ],
+  },
+  ru: {
+    DOWNLOAD_LIST: [
+      {
+        NAME: 'openEuler 23.03',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-23.03/',
+        DESC: 'openEuler 23.03 uses Linux Kernel 6.1 to explore technologies, adapt hardware, and innovate basic technologies and upper-layer applications for future openEuler LTS versions built on Linux Kernel 6.x.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/23.03/docs/Releasenotes/installing-the-os.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/23.03/ISO/',
+        LIFE_CYCLE_URL: '/en/other/lifecycle/',
+        WEBSITE_SELECT: '/en/mirror/select/?version=23.03',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-23.03/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-23.03/embedded_img/',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2023/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-23.03/embedded_img/arm32/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 22.03 LTS SP1',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/',
+        DESC: 'openEuler 22.03 LTS SP1 — это версия патча openEuler 22.03 LTS, и обе версии имеют одинаковый жизненный цикл.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/22.03_LTS_SP1/docs/Releasenotes/installing-the-os.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/',
+        LIFE_CYCLE_URL: '/ru/other/lifecycle/',
+        WHITE_PAPER:
+          '/whitepaper/ru/openEuler 22.03 LTS SP1 Технический информационный документ.pdf',
+        WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS-SP1',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/',
+        EDGE_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2022/12',
+        LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/arm64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS-SP1/embedded_img/arm32/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 22.09',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.09/',
+        DESC: 'Unleashing diversified computing power, openEuler 22.09 innovates versatile scenarios, builds optimal porting capability, and interconnects with OpenHarmony.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/22.09/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/22.09/docs/Installation/installation.html',
+        SEEK_HELP_URL: 'https://gitee.com/openeuler/community-issue',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        LIFE_CYCLE_URL: '/en/other/lifecycle/',
+        WHITE_PAPER:
+          '/whitepaper/ru/openEuler-22.09 Технический информационный документ.pdf',
+        WEBSITE_SELECT: '/en/mirror/select/?version=22.09',
+        SERVER_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/ISO/',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.09/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.09/embedded_img/',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2022/09',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-22.09-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/embedded_img/arm64/aarch64-std/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.09/embedded_img/arm32/arm-std/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 22.03 LTS',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/',
+        DESC: 'openEuler 22.03-LTS is based on the 5.10 kernel and supports all scenarios of server, cloud, edge and embedded',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/22.03_LTS/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/22.03_LTS/docs/Installation/installation.html',
+        SEEK_HELP_URL:
+          'https://gitee.com/openeuler/community-issue/blob/master/README.md',
+        LIFE_CYCLE_URL: '/en/other/lifecycle/',
+        WEBSITE_SELECT: '/en/mirror/select/?version=22.03-LTS',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/',
+        CLOUD_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/',
+        EDGE_IMAGE: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/',
+        EMBEDDEN_IMAGE:
+          'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2022/03',
+        LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-22.03-V1-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/loongarch/ISO/',
+            ARCH: 'LoongArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/power/ISO/',
+            ARCH: 'Power',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/sw_arch/openEuler-22.03-LTS/ISO/',
+            ARCH: 'SW64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/edge_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EDGE_CLOUD',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/virtual_machine_img/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'CLOUD_COMPUTING',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/arm64/aarch64-std/',
+            ARCH: 'AArch64',
+            SCENARIO: 'EMBEDDED',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-22.03-LTS/embedded_img/arm32/arm-std/',
+            ARCH: 'ARM32',
+            SCENARIO: 'EMBEDDED',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 21.09',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.09/',
+        DESC: 'openEuler 21.09 is an innovative version for all scenarios, including edge and embedded devices. It enhances server and cloud computing features, and incorporates key technologies including cloud-native scheduling algorithms for hybrid service deployments and the container operating system KubeOS.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/21.09/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/21.09/docs/Installation/installation.html',
+        SEEK_HELP_URL:
+          'https://gitee.com/openeuler/community-issue/blob/master/README.md',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/',
+        LIFE_CYCLE_URL: '/ru/other/lifecycle/',
+        WHITE_PAPER:
+          '/whitepaper/ru/openEuler-21.09 Технический информационный документ.pdf',
+        WEBSITE_SELECT: '/en/mirror/select/?version=21.09',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2021/09',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 20.03 LTS SP2',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/',
+        DESC: 'openEuler 20.03 LTS SP2 — это версия патча openEuler 20.03 LTS, и обе версии имеют одинаковый жизненный цикл.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/20.03_LTS_SP2/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/20.03_LTS_SP2/docs/Installation/Installation.html',
+        SEEK_HELP_URL:
+          'https://gitee.com/openeuler/community-issue/blob/master/README.md',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/',
+        LIFE_CYCLE_URL: '/ru/other/lifecycle/',
+        WEBSITE_SELECT: '/ru/mirror/select/?version=20.03-LTS-SP2',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2021/07',
+        LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP2/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 21.03',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-21.03/',
+        DESC: 'The openEuler 21.03 version is an innovative release for open scenarios,with a lifecycle of six months.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/21.03/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/21.03/docs/Installation/Installation.html',
+        SEEK_HELP_URL:
+          'https://gitee.com/openeuler/community-issue/blob/master/README.md',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/',
+        LIFE_CYCLE_URL: '/ru/other/lifecycle/',
+        WHITE_PAPER:
+          '/whitepaper/ru/openEuler-21.03-Технический-информационный-документ.pdf',
+        WEBSITE_SELECT: '/ru/mirror/select/?version=21.03',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2021/03',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-21.03/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 20.03 LTS SP1',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/',
+        DESC: 'openEuler 20.03 LTS SP1 — это версия патча openEuler 20.03 LTS, и обе версии имеют одинаковый жизненный цикл.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/20.03_LTS_SP1/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/20.03_LTS_SP1/docs/Installation/Installation.html',
+        SEEK_HELP_URL:
+          'https://gitee.com/openeuler/community-issue/blob/master/README.md',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/',
+        LIFE_CYCLE_URL: '/ru/other/lifecycle/',
+        WEBSITE_SELECT: '/ru/mirror/select/?version=20.03-LTS-SP1',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2020/12',
+        LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS-SP1/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 20.09',
+        DOWNLOAD_URL: 'https://archives.openeuler.openatom.cn/openEuler-20.09/',
+        DESC: 'openEuler 20.09 LTS — это инновационный релиз для сценариев использования программного обеспечения с открытым исходным кодом с жизненным циклом шесть месяцев.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/20.09/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/20.09/docs/Installation/Installation.html',
+        SEEK_HELP_URL:
+          'https://gitee.com/openeuler/community-issue/blob/master/README.md',
+        GET_ISO_URL:
+          'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/',
+        LIFE_CYCLE_URL: '/ru/other/lifecycle/',
+        WEBSITE_SELECT: '/ru/mirror/select/?version=20.09',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2020/09',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://archives.openeuler.openatom.cn/openEuler-20.09/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'openEuler 20.03 LTS',
+        DOWNLOAD_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS/',
+        DESC: 'openEuler 20.03 LTS — это стандартный релиз для сценариев использования программного обеспечения с открытым исходным кодом с жизненным циклом четыре года.',
+        RELEASE_DESC_URL:
+          'https://docs.openeuler.org/en/docs/20.03_LTS/docs/Releasenotes/release_notes.html',
+        INSTALL_GUIDENCE_URL:
+          'https://docs.openeuler.org/en/docs/20.03_LTS/docs/Installation/Installation.html',
+        SEEK_HELP_URL:
+          'https://gitee.com/openeuler/community-issue/blob/master/README.md',
+        GET_ISO_URL: 'https://repo.openeuler.org/openEuler-20.03-LTS/',
+        LIFE_CYCLE_URL: '/ru/other/lifecycle/',
+        WEBSITE_SELECT: '/ru/mirror/select/?version=20.03-LTS',
+        MANUFACTURER: 'openEuler community',
+        PUBLISH_DATE: '2020/03',
+        LTS: true,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-20.03-LTS/ISO/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://repo.openeuler.org/openEuler-preview/RISC-V/openEuler-20.03-riscv64/',
+            ARCH: 'RISC-V',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
+      {
+        NAME: 'Kylinsec',
+        DOWNLOAD_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/',
+        DESC: 'Описание недоступно',
+        RELEASE_DESC_URL:
+          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846656373a.pdf',
+        INSTALL_GUIDENCE_URL:
+          'http://www.kylinsec.com.cn/Uploads/Download/2020-09-21/5f6846807a00f.pdf',
+        SEEK_HELP_URL: '',
+        GET_ISO_URL: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/',
+        LIFE_CYCLE_URL: '',
+        MANUFACTURER: 'Kylinsec',
+        PUBLISH_DATE: '',
+        LTS: false,
+        DETAILED_LINK: [
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/x86_64/',
+            ARCH: 'x86_64',
+            SCENARIO: 'SERVER',
+          },
+          {
+            LINK: 'https://mirrors.kylinsec.com.cn/V3.4-4/isos/aarch64/',
+            ARCH: 'AArch64',
+            SCENARIO: 'SERVER',
+          },
+        ],
+      },
       {
         NAME: 'HopeEdge',
         DESC: 'HopeEdge Linux for Edge Computing is an edge computing operating system based on openEuler, which is oriented to IoT scenarios. It has four key characteristics: lightweight security, independent innovation, efficient interconnection and rapid deployment. HopeEdge also provides equipment management, data acquisition, cloud-edge collaboration, artificial intelligence and other characteristics.',

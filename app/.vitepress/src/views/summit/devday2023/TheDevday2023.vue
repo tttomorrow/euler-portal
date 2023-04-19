@@ -7,13 +7,15 @@ import AppContext from '@/components/AppContent.vue';
 import SummitBanner from './components/SummitBanner.vue';
 import SummitSchedule from './components/SummitSchedule.vue';
 import SummitPartner from './components/SummitPartner.vue';
-// import SummitLive from './components/SummitLive.vue';
+import SummitLive from './components/SummitLive.vue';
+import SummitGuests from './components/SummitGuests.vue';
 
 import liveLightImg from './img/live.png';
 import liveDarkImg from './img/live-dark.png';
 
 import summitData from './data';
 import { getEasyeditorInfo } from '@/api/api-easyeditor';
+
 const commonStore = useCommon();
 const liveImg = computed(() =>
   commonStore.theme === 'light' ? liveLightImg : liveDarkImg
@@ -69,7 +71,25 @@ watch(
   }
 );
 // 控制直播
-// const isLiverShow = ref(0);
+const isLiverShow = ref(0);
+
+// 埋点统计
+function setAdvertisedData() {
+  const sensors = (window as any)['sensorsDataAnalytic201505'];
+  const { href } = window.location;
+  if (href.includes('?utm_source')) {
+    sensors?.setProfile({
+      ...(window as any)['sensorsCustomBuriedData'],
+      profileType: 'fromAdvertised',
+      origin: href,
+    });
+  }
+}
+onMounted(() => {
+  setTimeout(() => {
+    setAdvertisedData();
+  }, 300);
+});
 </script>
 <template>
   <SummitBanner :banner-data="summitData.banner" />
@@ -77,8 +97,8 @@ watch(
     <div class="detail">
       <p v-for="item in summitData.detail" :key="item">{{ item }}</p>
     </div>
-    <!-- <div class="liver">
-      <h3 class="titleBar">{{ summitData.liver.title }}</h3>
+    <div class="liver">
+      <h3 class="title-bar">{{ summitData.liver.title }}</h3>
       <ClientOnly>
         <SummitLive
           v-if="isLiverShow === 0"
@@ -87,8 +107,8 @@ watch(
           class="liver-box"
         />
       </ClientOnly>
-    </div> -->
-    <div class="agenda">
+    </div>
+    <div class="agenda" :class="{ 'min-height': showIndex === 1 }">
       <h3>会议日程</h3>
       <div class="date">
         <div
@@ -143,6 +163,24 @@ watch(
         </template>
       </div>
     </div>
+    <div class="guest">
+      <h3 class="guest-title">{{ summitData.guest.title }}</h3>
+
+      <h4>{{ summitData.guest.guestListMain.title }}</h4>
+      <SummitGuests
+        :lecturer-list="summitData.guest.guestListMain.guestList"
+        shape="circle"
+        :web-columns-num="4"
+        :mobile-columns-num="2"
+      />
+      <h3>{{ summitData.guest.guestListKv.title }}</h3>
+      <SummitGuests
+        :lecturer-list="summitData.guest.guestListKv.guestList"
+        shape="circle"
+        :web-columns-num="4"
+        :mobile-columns-num="2"
+      />
+    </div>
     <SummitPartner />
     <div class="previous" data-aos="fade-up">
       <div class="previous-title">
@@ -195,7 +233,8 @@ watch(
     }
   }
 }
-.liver {
+.liver,
+.guest {
   margin-top: var(--o-spacing-h1);
   @media (max-width: 767px) {
     margin-top: var(--o-spacing-h2);
@@ -209,6 +248,19 @@ watch(
     @media (max-width: 767px) {
       font-size: var(--o-font-size-h8);
       line-height: var(--o-line-height-h8);
+    }
+  }
+  h4 {
+    margin-top: 20px;
+    font-size: var(--o-font-size-h5);
+    line-height: var(--o-line-height-h5);
+    color: var(--o-color-text1);
+    font-weight: 400;
+    text-align: center;
+    @media screen and (max-width: 768px) {
+      font-size: var(--o-font-size-text);
+      line-height: var(--o-line-height-text);
+      margin-top: var(--o-spacing-h5);
     }
   }
   .liver-box {
@@ -334,6 +386,13 @@ watch(
       background: var(--o-color-brand1);
       border-color: var(--o-color-brand1);
     }
+  }
+}
+// 日程数据异步加载导致AOS动效位置计算失效
+.min-height {
+  min-height: 1160px;
+  @media screen and (max-width: 1100px) {
+    min-height: fit-content;
   }
 }
 .previous {

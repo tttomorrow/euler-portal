@@ -66,7 +66,7 @@ onUnmounted(() => {
       <p>{{ i18n.about.TIP1 }}</p>
       <p>{{ i18n.about.TIP2 }}</p>
       <div v-if="lang === 'zh'" class="contact">
-        <p style="margin-top: 20px">资金捐赠，请联系开放原子开源基金会。</p>
+        <p>资金捐赠，请联系开放原子开源基金会。</p>
         <p>
           联系人：李扬；电话：010-59258678转8007；邮箱：<a
             href="mailto:liyang@openatom.org"
@@ -142,6 +142,8 @@ onUnmounted(() => {
       font-size: 12px;
     }
     .contact {
+      display: grid;
+      grid-row-gap: 16px;
       margin-top: 20px;
     }
   }

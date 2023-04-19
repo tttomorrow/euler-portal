@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import useWindowResize from '@/components/hooks/useWindowResize';
 
-import liveActiveBg from '../img/live-active-bg.png';
+import liveActiveBg from '../img/live/live-btn.png';
+import liveActiveBgLong from '../img/live/live-btn-long.png';
 
-interface RENDERDATA {
+interface RenderData {
   id: number;
   liveId: number;
   liveTestId: number;
@@ -23,11 +25,12 @@ const props = defineProps({
     default: '',
   },
 });
+const screenWidth = useWindowResize();
 const isTest = ref(false);
 const liveUrl = ref('');
-const renderData: Array<RENDERDATA> = props.liveData as any;
+const renderData: Array<RenderData> = props.liveData as any;
 const roomId = ref(0);
-const setLiveRoom = (item: RENDERDATA, index: number): void => {
+const setLiveRoom = (item: RenderData, index: number): void => {
   roomId.value = index;
   createUserId(isTest.value ? item.liveTestId : item.liveId);
 };
@@ -52,26 +55,31 @@ function createUserId(liveId: number) {
 // const state = ref(-1);
 const height = ref(800);
 function setHeight(data: any) {
-  if (data.height === 'auto') {
-    height.value = 550;
-  } else if (data.height) {
-    height.value = parseInt(data.height);
+  // data.state=0,直播未开始，1正在直播，2直播结束，3回放中
+  // 注意pc端对面会传一个高度过来可以直接用，但是移动端不会传，所以要根据直播状态自己写
+  if (screenWidth.value <= 1100) {
+    if (data.state === 1 || data.state === 3) {
+      height.value = screenWidth.value * 1.31;
+    } else if (data.state === 0 || data.state === 2) {
+      height.value = screenWidth.value * 0.5;
+    }
+  } else {
+    height.value = data.height ? parseInt(data.height) : 800;
   }
 }
 function messageEvent() {
   window.addEventListener(
     'message',
     function (event) {
-      let data = '';
+      let data = {
+        state: '',
+      };
       try {
         data = JSON.parse(event.data);
       } catch (e) {
         data = event.data;
       }
-      // data.state=2,直播结束
       setHeight(data);
-      // console.log(state.value, '收到', data);
-      // console.log('收到' + event.origin + '消息:' + data);
     },
     false
   );
@@ -86,6 +94,7 @@ onMounted(async () => {
 
 // 背景
 const ActiveBg = `url(${liveActiveBg})`;
+const ActiveBgLong = `url(${liveActiveBgLong})`;
 
 const liveRoom = ref(renderData[0].name);
 const changeLive = (val: number): void => {
@@ -155,7 +164,7 @@ const changeLive = (val: number): void => {
     width: 100%;
     display: block;
     border: none;
-    @media (max-width: 780px) {
+    @media (max-width: 1100px) {
       margin-top: var(--o-spacing-h5);
     }
   }
@@ -172,17 +181,17 @@ const changeLive = (val: number): void => {
       justify-content: space-between;
       &.odd2022 {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 16px;
         flex-direction: row;
         width: 100%;
         flex-wrap: wrap;
         justify-content: space-between;
         .link-main {
-          grid-column: 1/5;
+          grid-column: 1/7;
         }
       }
-      &.odd2021 {
+      &.odd2023 {
         display: grid;
         grid-template-columns: 300px 1fr 300px;
         grid-template-areas: 'a b c';
@@ -218,6 +227,9 @@ const changeLive = (val: number): void => {
         p {
           color: #fff;
         }
+      }
+      .link-active.link-main {
+        background: v-bind('ActiveBgLong') no-repeat center/cover;
       }
     }
   }

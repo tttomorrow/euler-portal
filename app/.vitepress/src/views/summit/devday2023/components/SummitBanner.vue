@@ -25,23 +25,44 @@ onMounted(() => {
     <div
       class="summit-banner-pc summit-banner"
       :style="{ backgroundImage: `url(${bannerData.img_pc})` }"
-    ></div>
+    >
+      <div v-if="bannerData.img_text_pc" class="img-box">
+        <img :src="bannerData.img_text_pc" alt="" />
+        <a
+          href="https://e-campaign.huawei.com/m/N7V3Eb"
+          data-aos="fade-up"
+          target="_blank"
+        >
+          <OButton animation class="banner-btn">
+            立即报名
+            <template #suffixIcon
+              ><OIcon><IconArrowRight /></OIcon
+            ></template>
+          </OButton>
+        </a>
+      </div>
+    </div>
     <div
       class="summit-banner-mo summit-banner"
       :style="{ backgroundImage: `url(${bannerData.img_mo})` }"
-    ></div>
+    >
+      <div v-if="bannerData.img_text_mo" class="img-box">
+        <img :src="bannerData.img_text_mo" alt="" />
+        <a href="https://e-campaign.huawei.com/m/N7V3Eb" target="_blank">
+          <OButton animation class="banner-btn">
+            立即报名
+            <template #suffixIcon
+              ><OIcon><IconArrowRight /></OIcon
+            ></template>
+          </OButton>
+        </a>
+      </div>
+    </div>
+
     <div data-aos="fade-down" class="banner-text">
-      <h4>{{ bannerData.suptitle }}</h4>
-      <h2>{{ bannerData.title }}</h2>
-      <h3>{{ bannerData.subtitle }}</h3>
-      <a href="https://e-campaign.huawei.com/m/N7V3Eb" target="_blank">
-        <OButton animation class="banner-btn">
-          立即报名
-          <template #suffixIcon
-            ><OIcon><IconArrowRight /></OIcon
-          ></template>
-        </OButton>
-      </a>
+      <h4 v-if="bannerData.suptitle">{{ bannerData.suptitle }}</h4>
+      <h2 v-if="bannerData.title">{{ bannerData.title }}</h2>
+      <h3 v-if="bannerData.subtitle">{{ bannerData.subtitle }}</h3>
     </div>
   </div>
 </template>
@@ -54,7 +75,7 @@ onMounted(() => {
   height: 380px;
   position: relative;
   @media (max-width: 767px) {
-    height: 300px;
+    height: auto;
   }
   .summit-banner {
     height: 100%;
@@ -62,21 +83,86 @@ onMounted(() => {
     background: no-repeat center/cover;
   }
   .summit-banner-pc {
+    .img-box {
+      max-width: 1504px;
+      height: 100%;
+      margin: 0 auto;
+      padding-top: 50px;
+      img {
+        max-width: 548px;
+        display: block;
+      }
+      a {
+        display: inline-block;
+        margin-left: 40px;
+        .banner-btn {
+          color: #fff;
+          border: 1px solid #fff;
+          @media (max-width: 768px) {
+            padding: 6px 16px;
+            margin-top: 21px;
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            .o-icon {
+              font-size: var(--o-font-size-tip);
+              line-height: var(--o-line-height-tip);
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+
     @media (max-width: 768px) {
       display: none;
     }
   }
   .summit-banner-mo {
     display: none;
+    height: 360px;
     @media (max-width: 768px) {
+      width: 100%;
       display: block;
+    }
+    .img-box {
+      margin: 0 auto;
+      max-width: 250px;
+      height: 360px;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      img {
+        width: 100%;
+        position: absolute;
+        bottom: 16px;
+      }
+      a {
+        display: inline-block;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        .banner-btn {
+          color: #fff;
+          border: 1px solid #fff;
+          @media (max-width: 768px) {
+            padding: 6px 16px;
+            margin-top: 21px;
+            font-size: var(--o-font-size-text);
+            line-height: var(--o-line-height-text);
+            .o-icon {
+              font-size: var(--o-font-size-tip);
+              line-height: var(--o-line-height-tip);
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+      }
     }
   }
 
-  img {
-    width: 100%;
-    max-height: 300px;
-  }
   .banner-text {
     position: absolute;
     top: 50%;
