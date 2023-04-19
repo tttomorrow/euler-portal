@@ -35,7 +35,7 @@ onMounted(() => {
         :link2="'/' + lang + '/download/archive/'"
         class="bread"
       >
-        <OIcon>
+        <OIcon class="bread-icon-detail">
           <IconChevronRight />
         </OIcon>
         <span class="next-bread">{{ activeVersion }}</span>
@@ -63,6 +63,15 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .download-detail {
+  :deep(.bread){
+    .bread-icon{
+      color: var(--o-color-text4);
+    }
+  }
+  .bread-icon-detail{
+    color: var(--o-color-text1);
+    font-size: 16px;
+  }
   .next-bread {
     color: var(--o-color-text1);
   }

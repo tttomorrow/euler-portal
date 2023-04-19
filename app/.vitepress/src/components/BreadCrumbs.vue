@@ -26,7 +26,7 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
     <span>
       <a :href="link1">{{ bread1 }}</a>
     </span>
-    <OIcon>
+    <OIcon class="bread-icon">
       <IconChevronRight />
     </OIcon>
     <span
@@ -47,6 +47,9 @@ const { bread1, bread2, link1, link2 } = toRefs(props);
   // @media (max-width: 768px) {
   //   height: var(--o-spacing-h4);
   // }
+  .bread-icon{
+    color: var(--o-color-text1);
+  }
   span {
     display: inline-block;
   }

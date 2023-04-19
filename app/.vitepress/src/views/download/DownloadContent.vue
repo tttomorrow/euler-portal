@@ -568,6 +568,7 @@ function setShowIndex(index: number) {
   margin-top: var(--o-spacing-h4);
   background-color: var(--o-color-bg2);
   padding: var(--o-spacing-h2) var(--o-spacing-h1);
+  box-shadow: var(--o-shadow-l2);
   @media (max-width: 1100px) {
     margin-top: var(--o-spacing-h5);
     padding: var(--o-spacing-h4) var(--o-spacing-h8);
@@ -659,6 +660,7 @@ function setShowIndex(index: number) {
     }
     .disable {
       color: var(--o-color-text5);
+      cursor: not-allowed;
     }
   }
   .content-item {
@@ -675,7 +677,7 @@ function setShowIndex(index: number) {
     }
     :deep(.el-table__inner-wrapper) {
       &::before {
-        background-color: #e5e5e5;
+        background-color: var(--o-color-border2);
       }
     }
     :deep(.o-table.el-table) {
@@ -818,11 +820,22 @@ function setShowIndex(index: number) {
           }
           :deep(.el-select) {
             position: relative;
+            height: 16px;
+            padding: 0;
+            .select-trigger {
+              height: 16px;
+              padding: 0;
+            }
+            .el-input {
+              height: 16px;
+              padding: 0;
+            }
             .el-input__wrapper {
               background-color: transparent;
               border: none;
               outline: none;
               box-shadow: none;
+              height: 16px;
               padding: 0;
               input {
                 font-size: var(--o-font-size-tip);
@@ -833,6 +846,9 @@ function setShowIndex(index: number) {
                 top: -2px;
                 display: flex;
                 align-items: center;
+                &:focus {
+                  height: 16px;
+                }
               }
               .el-input__suffix {
                 position: relative;
