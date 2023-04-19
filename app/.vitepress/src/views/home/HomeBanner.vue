@@ -60,7 +60,7 @@ const jumpTo = (item: any) => {
       clickable: true,
     }"
     :autoplay="{
-      delay: 5000,
+      delay: 500000,
       disableOnInteraction: false,
     }"
     :navigation="true"
@@ -84,6 +84,7 @@ const jumpTo = (item: any) => {
           <div
             v-if="item.title?.length"
             class="banner-panel-content flex-column"
+            :class="item.id === 'download' ? 'download' : ''"
           >
             <div data-aos="fade-down" class="box">
               <p
@@ -146,8 +147,8 @@ html[lang='zh'] {
   filter: brightness(80%) grayscale(20%) contrast(1.2);
 }
 .home-banner-btn {
-  border-color: $banner-color !important;
-  color: $banner-color !important;
+  border-color: $banner-color;
+  color: $banner-color;
   @media screen and (max-width: 824px) {
     padding: 5px 12px 5px 16px;
     line-height: 22px;
@@ -157,6 +158,18 @@ html[lang='zh'] {
 .eur {
   @media screen and (max-width: 768px) {
     display: none;
+  }
+}
+.download {
+  .title {
+    color: var(--o-color-black);
+  }
+  .desc {
+    color: var(--o-color-black);
+  }
+  .o-button {
+    border: 1px solid var(--o-color-black);
+    color: var(--o-color-black);
   }
 }
 #devday {
@@ -309,7 +322,6 @@ html[lang='zh'] {
         .o-icon {
           @media screen and (max-width: 824px) {
             font-size: 16px;
-            color: var(--o-color-yellow5);
           }
         }
         @media screen and (max-width: 824px) {
@@ -334,6 +346,14 @@ html[lang='zh'] {
         justify-content: space-between;
         box-sizing: border-box;
         text-align: center;
+      }
+    }
+    .download {
+      @media screen and (max-width: 768px) {
+        justify-content: flex-end;
+        .o-button {
+          margin-top: 8px;
+        }
       }
     }
 
