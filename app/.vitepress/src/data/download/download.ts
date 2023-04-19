@@ -1737,7 +1737,7 @@ export default {
                 SIZE: '433.4 MiB',
                 SHACODE: '',
                 DOWNLOAD_LINK:
-                  'openEuler-preview/RISC-V/openEuler-20.03-riscv64/QEMU/openEuler-22.03-V1-riscv64-qemu.qcow2.tar.zst',
+                  'openEuler-preview/RISC-V/openEuler-20.03-riscv64/Image/openEuler-preview.riscv64.qcow2',
                 TIPS: '',
               },
             ],
