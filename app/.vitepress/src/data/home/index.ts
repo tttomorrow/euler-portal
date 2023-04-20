@@ -3,8 +3,8 @@ import techDay_mo from '@/assets/category/home/banner/tech-day_mo.png';
 import migrationImg_pc from '@/assets/category/home/banner/migration_pc.png';
 import migrationImg_mo from '@/assets/category/home/banner/migration_mo.png';
 
-import downloadBanner_pc from '@/assets/category/home/banner/download-banner_pc.png';
-import downloadBanner_mo from '@/assets/category/home/banner/download-banner_mo.png';
+import downloadBanner_pc from '@/assets/category/home/banner/download-banner_pc.jpg';
+import downloadBanner_mo from '@/assets/category/home/banner/download-banner_mo.jpg';
 import eur_mo from '@/assets/category/home/banner/eur-banner_mo.jpg';
 import eur_pc from '@/assets/category/home/banner/eur-banner_pc.jpg';
 

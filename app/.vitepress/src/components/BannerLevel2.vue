@@ -58,9 +58,6 @@ onMounted(() => {
         data-aos-once="true"
         data-aos-duration="800"
       >
-        <p v-if="backgroundText" class="banner-text-bg">
-          {{ backgroundText }}
-        </p>
         <h1 v-if="title" class="banner-title">{{ title }}</h1>
         <p v-if="subtitle && !slots.default" class="banner-subtitle">
           {{ subtitle }}
